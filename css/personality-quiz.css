@@ -1,0 +1,378 @@
+.pers-wrapper {
+  max-width: 1100px;
+  margin: 40px auto;
+  box-sizing: border-box;
+  font-family: inherit;
+  color: inherit;
+}
+
+.pers-section {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  padding: 22px 18px;
+  margin: 18px 0;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: persFadeUp 0.7s ease forwards;
+}
+
+.pers-section:nth-of-type(1) { animation-delay: 0.05s; }
+.pers-section:nth-of-type(2) { animation-delay: 0.15s; }
+.pers-section:nth-of-type(3) { animation-delay: 0.25s; }
+
+@keyframes persFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pers-title-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.pers-title-icon {
+  font-size: 1.9rem;
+}
+
+.pers-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.pers-subtitle {
+  margin: 0;
+  font-size: 0.96rem;
+  color: #4b5563;
+}
+
+.pers-text {
+  font-size: 0.95rem;
+  color: #374151;
+  margin: 6px 0;
+}
+
+.pers-mini {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* Lesson cards */
+.pers-grid-3 {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 10px 16px;
+  margin-top: 8px;
+}
+
+@media (min-width: 900px) {
+  .pers-grid-3 {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+}
+
+.pers-card {
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+
+.pers-card-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.pers-card-emoji {
+  font-size: 1.5rem;
+}
+
+.pers-card-title {
+  font-weight: 600;
+}
+
+.pers-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.pers-pill {
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: #e5e7eb;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.pers-pill span.emoji {
+  font-size: 1rem;
+}
+
+.pers-pill.pers-selected {
+  background: #bfdbfe;
+  transform: translateY(-1px);
+}
+
+.pers-mywords {
+  margin-top: 10px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #f3f4f6;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+
+.pers-mywords-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.pers-mywords-text {
+  font-size: 0.88rem;
+  color: #111827;
+}
+
+/* Sentence builder */
+.pers-grid-2 {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 10px 16px;
+  margin-top: 8px;
+}
+
+@media (min-width: 900px) {
+  .pers-grid-2 {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+.pers-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.9rem;
+}
+
+.pers-field label {
+  font-weight: 600;
+}
+
+.pers-input,
+.pers-select,
+.pers-textarea {
+  padding: 6px 8px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.pers-select {
+  width: 100%;
+}
+
+.pers-textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+.pers-output-box {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+}
+
+/* Quiz */
+.pers-quiz-intro {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.pers-questions {
+  margin-top: 10px;
+}
+
+.pers-question {
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.pers-q-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.pers-q-context {
+  font-size: 0.88rem;
+  color: #4b5563;
+  margin-bottom: 4px;
+}
+
+.pers-options {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pers-option {
+  border-radius: 999px;
+  border: none;
+  padding: 6px 10px;
+  font-size: 0.86rem;
+  text-align: left;
+  cursor: pointer;
+  background: #e5e7eb;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.pers-option:hover {
+  background: #d1d5db;
+  transform: translateY(-1px);
+}
+
+.pers-option.pers-answer-selected {
+  background: #bfdbfe;
+}
+
+.pers-btn-row {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.pers-btn {
+  border-radius: 999px;
+  border: none;
+  padding: 7px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: #2563eb;
+  color: #ffffff;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.pers-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(37,99,235,0.45);
+}
+
+.pers-result-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 10px 16px;
+  margin-top: 10px;
+}
+
+@media (min-width: 900px) {
+  .pers-result-grid {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.pers-result-card {
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+
+.pers-result-title {
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.pers-result-type {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.pers-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.pers-tag {
+  border-radius: 999px;
+  padding: 3px 7px;
+  background: #e5e7eb;
+  font-size: 0.78rem;
+}
+
+.pers-audio-row {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.pers-audio-row button {
+  border-radius: 999px;
+  border: none;
+  padding: 5px 9px;
+  font-size: 0.86rem;
+  cursor: pointer;
+  background: #e5e7eb;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.pers-audio-row button:hover {
+  background: #d1d5db;
+  transform: translateY(-1px);
+}
+
+.pers-label-inline {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+/* Match questionnaire */
+.pers-match-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 10px 16px;
+  margin-top: 8px;
+}
+
+@media (min-width: 900px) {
+  .pers-match-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+.pers-note {
+  font-size: 0.78rem;
+  color: #6b7280;
+  margin-top: 4px;
+}

@@ -1,0 +1,626 @@
+/* Root layout for this page */
+.activity-fairytale {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.ft-section {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 20px 16px 22px;
+  margin-top: 18px;
+}
+
+@media (min-width: 768px) {
+  .ft-section {
+    padding: 24px 22px 26px;
+  }
+}
+
+.ft-kicker {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin: 0 0 4px;
+}
+
+.ft-title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.ft-subtitle {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.ft-section-title {
+  margin: 0 0 6px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.ft-text {
+  margin: 4px 0 10px;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.ft-note {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: #6b7280;
+}
+
+/* Summary card + audio */
+.ft-summary-card {
+  margin-top: 12px;
+  border-radius: 14px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 12px 12px 14px;
+}
+
+.ft-summary-text {
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: #111827;
+}
+
+.ft-audio-controls {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.ft-chip-button {
+  border-radius: 999px;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  background: #e5e7eb;
+  color: #111827;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.ft-chip-button:hover {
+  background: #d1d5db;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(100, 116, 139, 0.4);
+}
+
+.ft-audio-note {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* Buttons + quiz common styles */
+.ft-btn-row {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ft-btn {
+  border-radius: 999px;
+  border: none;
+  padding: 7px 14px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: #2563eb;
+  color: #ffffff;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.ft-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.4);
+}
+
+.ft-btn-secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.ft-btn-secondary:hover {
+  background: #d1d5db;
+}
+
+/* Quiz blocks */
+.ft-quiz {
+  margin-top: 8px;
+}
+
+.ft-question {
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font-size: 0.92rem;
+}
+
+.ft-question-text {
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+.ft-answers {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ft-answers button {
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  padding: 7px 10px;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  background: #ffffff;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease, border-color 0.2s ease;
+}
+
+.ft-answers button:hover {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(191, 219, 254, 0.7);
+}
+
+.ft-answers button.correct {
+  background: #dcfce7;
+  border-color: #16a34a;
+}
+
+.ft-answers button.incorrect {
+  background: #fee2e2;
+  border-color: #dc2626;
+}
+
+/* Dropdown questions */
+.ft-select {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  padding: 7px 10px;
+  font-size: 0.9rem;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.ft-select.correct {
+  border-color: #16a34a;
+  background: #dcfce7;
+}
+
+.ft-select.incorrect {
+  border-color: #dc2626;
+  background: #fee2e2;
+}
+
+.ft-feedback {
+  margin-top: 4px;
+  font-size: 0.84rem;
+  min-height: 1.2em;
+}
+
+.ft-score {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Character cards */
+.ft-character-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .ft-character-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.ft-character-card {
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 10px 12px 12px;
+}
+
+.ft-character-image {
+  margin-bottom: 6px;
+}
+
+.ft-image-placeholder {
+  border-radius: 12px;
+  border: 2px dashed #d1d5db;
+  background: #f3f4f6;
+  text-align: center;
+  padding: 18px 6px;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.ft-character-name {
+  margin: 4px 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.ft-character-role {
+  margin: 0 0 4px;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.ft-character-note {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+/* Language toolbox */
+.ft-language-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+
+@media (min-width: 900px) {
+  .ft-language-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.ft-language-card {
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 10px 12px 12px;
+}
+
+.ft-language-title {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.ft-list {
+  margin: 4px 0 0 16px;
+  padding: 0;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.ft-list li {
+  margin-bottom: 4px;
+}
+
+.ft-adjectives-display {
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ft-adj-chip {
+  border-radius: 999px;
+  background: #e5e7eb;
+  padding: 3px 10px;
+  font-size: 0.86rem;
+}
+
+/* Builder */
+.ft-builder-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 10px;
+}
+
+@media (min-width: 900px) {
+  .ft-builder-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+  }
+}
+
+.ft-subtitle {
+  margin: 0 0 6px;
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.ft-form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px 10px;
+}
+
+@media (min-width: 720px) {
+  .ft-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.ft-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.9rem;
+}
+
+.ft-field-wide {
+  grid-column: 1 / -1;
+}
+
+.ft-field label {
+  font-weight: 600;
+}
+
+.ft-label-note {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.ft-field input,
+.ft-field select,
+.ft-field textarea {
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.ft-field textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* Adjective pills in builder */
+.ft-adjectives-grid {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ft-adj-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background: #f3f4f6;
+  padding: 4px 9px;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+}
+
+.ft-adj-pill input {
+  margin: 0;
+}
+
+.ft-adj-pill:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+  transform: translateY(-1px);
+}
+
+.ft-adj-emoji {
+  font-size: 1rem;
+}
+
+/* Output cards */
+.ft-builder-output {
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 10px 12px 12px;
+}
+
+.ft-output-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 6px;
+}
+
+@media (min-width: 720px) {
+  .ft-output-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.ft-output-card {
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 8px 10px 10px;
+  font-size: 0.9rem;
+}
+
+.ft-output-title {
+  margin: 0 0 4px;
+  font-size: 0.96rem;
+  font-weight: 600;
+}
+
+.ft-output-text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.ft-suggestion-select {
+  margin-top: 4px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  padding: 4px 8px;
+  font-size: 0.85rem;
+  background: #f9fafb;
+  box-sizing: border-box;
+}
+/* === FAIRY TALE – VOCABULARY SECTION === */
+
+.ft-intro-text {
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin: 4px 0 10px;
+}
+
+.ft-vocab-section {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px 16px 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  margin-bottom: 18px;
+}
+
+.ft-vocab-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 10px 14px;
+  margin-top: 8px;
+}
+
+@media (min-width: 640px) {
+  .ft-vocab-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (min-width: 960px) {
+  .ft-vocab-grid {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+}
+
+.ft-vocab-card {
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+
+.ft-vocab-icon {
+  width: 72px;
+    width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  background: #e5e7eb;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* If you add real <img>, make them fill the box */
+.ft-vocab-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+.ft-vocab-word {
+  font-weight: 700;
+  margin: 0;
+}
+
+.ft-vocab-def {
+  margin: 0;
+  color: #374151;
+  font-size: 0.88rem;
+}
+
+/* === FAIRY TALE – LANGUAGE TOOLKIT (ADJECTIVES, SEQUENCE, CONNECTORS) === */
+
+.ft-language-tools {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px 16px 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  margin-bottom: 18px;
+}
+
+.ft-tools-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 10px 16px;
+  margin-top: 10px;
+}
+
+@media (min-width: 900px) {
+  .ft-tools-grid {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+}
+
+.ft-tool-card {
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+
+.ft-tool-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.ft-tool-icon {
+  font-size: 1.4rem;
+}
+
+.ft-tool-caption {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.ft-tool-list {
+  margin: 4px 0 0 16px;
+  padding: 0;
+  font-size: 0.88rem;
+  color: #374151;
+}
+
+.ft-tool-list li {
+  margin-bottom: 4px;
+}
+
+.ft-example {
+  display: block;
+  font-size: 0.8rem;
+  color: #4b5563;
+}
