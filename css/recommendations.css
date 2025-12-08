@@ -1,0 +1,254 @@
+.rec-lesson {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  max-width: 100%;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.rec-lesson h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.rec-taglineobject {
+  font-size: 80%;
+  opacity: 0.8;
+  text-align: center;
+  width: 100%;
+}
+
+.objective-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.rec-tagline {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  text-align: center;
+  width: 100%;
+}
+
+.rec-box {
+  background: #fdf7ec;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  border: 1px solid #f1d9a8;
+}
+
+/* Vocabulary table */
+.rec-vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.rec-vocab-table th,
+.rec-vocab-table td {
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid #f3c9a8;
+}
+
+.rec-vocab-table th {
+  text-align: left;
+  background: #f9a867;
+  color: #222;
+}
+
+.rec-vocab-table tr:nth-child(even) td {
+  background: #ffe3c7;
+}
+
+/* Quiz styles */
+.rec-quiz {
+  margin-top: 1.5rem;
+}
+
+.quiz-container {
+  background: #eef6ff;
+  border-radius: 12px;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid #c4dcff;
+}
+
+.quiz-container h3 {
+  margin-top: 0;
+}
+
+.question {
+  margin-bottom: 1.25rem;
+}
+
+.question p {
+  margin-bottom: 0.4rem;
+}
+
+.answers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.answers button {
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid #c2c2c2;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+}
+
+.answers button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.answers button:disabled {
+  cursor: default;
+  opacity: 0.9;
+}
+
+.answers button.correct {
+  background: #d4f7d4;
+  border-color: #46b846;
+  font-weight: 600;
+}
+
+.answers button.incorrect {
+  background: #ffd5d5;
+  border-color: #e45b5b;
+}
+
+.feedback {
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.feedback.correct {
+  color: #2f7b2f;
+}
+
+.feedback.incorrect {
+  color: #b33838;
+}
+
+/* Builder */
+.rec-builder-form label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: block;
+  margin-top: 0.7rem;
+  margin-bottom: 0.15rem;
+}
+
+.rec-builder-form input[type="text"],
+.rec-builder-form select,
+.rec-builder-form textarea {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.rec-builder-form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.rec-btn {
+  margin-top: 1rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: none;
+  background: #1c8bff;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.rec-btn:hover {
+  background: #156fd0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.rec-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.rec-builder-results {
+  margin-top: 1rem;
+  padding: 0.8rem 0.9rem;
+  border-radius: 10px;
+  background: #f1fbf6;
+  border: 1px solid #b9ebca;
+  font-size: 0.95rem;
+}
+
+.rec-builder-results h4 {
+  margin: 0.35rem 0 0.15rem;
+}
+
+.rec-level-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+}
+
+.hidden {
+  display: none;
+}
+
+.fade-in {
+  animation: recFadeIn 0.35s ease-out;
+}
+
+@keyframes recFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Phrase chips */
+.rec-phrases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0 0.8rem;
+}
+
+.rec-phrase {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px dashed #999;
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: #fff;
+  transition: background 0.1s ease, transform 0.1s ease;
+}
+
+.rec-phrase:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+.rec-free-text {
+  min-height: 90px;
+}
