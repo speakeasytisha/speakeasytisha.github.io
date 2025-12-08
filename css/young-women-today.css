@@ -1,0 +1,425 @@
+/* Root module */
+#young-women-module {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  max-width: 980px;
+  margin: 0 auto 2rem;
+  padding: 0 1rem 2rem;
+  box-sizing: border-box;
+}
+
+/* Sections */
+.yw-section {
+  background: #ffffff;
+  margin-top: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 18px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.yw-section-header {
+  margin-bottom: 0.75rem;
+}
+
+.yw-section-header h2 {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.4rem;
+}
+
+.yw-tagline {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #4b5563;
+}
+
+.yw-note,
+.yw-note-inline {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.yw-note-inline {
+  font-style: italic;
+}
+
+/* Vocabulary grid */
+.yw-vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+.yw-vocab-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 0.6rem 0.75rem;
+}
+
+.yw-emoji {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.yw-vocab-item strong {
+  font-size: 0.96rem;
+}
+
+.yw-vocab-item small {
+  display: block;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* Reading box */
+.yw-reading-box {
+  background: #f9fafb;
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  margin-top: 0.9rem;
+  border: 1px solid #e5e7eb;
+  font-size: 0.97rem;
+}
+
+.yw-reading-box p {
+  margin: 0 0 0.8rem 0;
+}
+
+/* Buttons & audio controls */
+.yw-btn {
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 0.4rem 0.95rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.yw-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.4);
+}
+
+.yw-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(37, 99, 235, 0.35);
+}
+
+.yw-secondary {
+  background: #ffffff;
+  color: #1f2933;
+  border: 1px solid #cbd5e1;
+  box-shadow: none;
+}
+
+.yw-secondary:hover {
+  background: #f3f4f6;
+  box-shadow: 0 2px 6px rgba(148, 163, 184, 0.4);
+}
+
+.yw-audio-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  margin-top: 0.7rem;
+}
+
+/* Quiz: comprehension */
+#yw-comp-questions {
+  margin-top: 0.8rem;
+}
+
+.yw-q {
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 0.7rem;
+}
+
+.yw-q-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+}
+
+.yw-q-options button {
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.1s ease, transform 0.08s ease, box-shadow 0.12s ease;
+}
+
+.yw-q-options button:hover {
+  background: #f3f4f6;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(148, 163, 184, 0.4);
+}
+
+.yw-q-options button.yw-correct {
+  background: #dcfce7;
+  border-color: #16a34a;
+  font-weight: 600;
+}
+
+.yw-q-options button.yw-incorrect {
+  background: #fee2e2;
+  border-color: #dc2626;
+}
+
+.yw-q-feedback {
+  min-height: 1.1em;
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+}
+
+.yw-q-feedback.yw-ok {
+  color: #15803d;
+}
+
+.yw-q-feedback.yw-error {
+  color: #b91c1c;
+}
+
+/* Score boxes */
+.yw-score-box {
+  margin-top: 0.9rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed #d1d5db;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.92rem;
+}
+
+.yw-score-actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.yw-final-message {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+}
+
+/* Grammar cards */
+.yw-grammar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.9rem;
+  margin-top: 0.8rem;
+}
+
+.yw-grammar-box {
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid #e5e7eb;
+  font-size: 0.93rem;
+}
+
+.yw-grammar-box h3 {
+  margin: 0 0 0.35rem 0;
+  font-size: 1.05rem;
+}
+
+.yw-grammar-box ul {
+  margin: 0.4rem 0;
+  padding-left: 1.1rem;
+}
+
+.yw-grammar-box li {
+  margin-bottom: 0.15rem;
+}
+
+.yw-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0.3rem 0 0.4rem;
+}
+
+.yw-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  font-size: 0.8rem;
+}
+
+/* Grammar quiz */
+#yw-gq-list {
+  margin-top: 0.8rem;
+}
+
+.yw-gq {
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.yw-gq select {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+}
+
+.yw-gq-check {
+  margin-left: 0.4rem;
+  margin-top: 0.25rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: none;
+  background: #e5e7eb;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.yw-gq-feedback {
+  min-height: 1.1em;
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+}
+
+.yw-gq-feedback.yw-ok {
+  color: #15803d;
+}
+
+.yw-gq-feedback.yw-error {
+  color: #b91c1c;
+}
+
+/* Opinion builder */
+.yw-opinion-form {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.yw-op-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.7rem;
+}
+
+.yw-opinion-form label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+  display: block;
+}
+
+.yw-opinion-form select {
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  box-sizing: border-box;
+}
+
+.yw-op-build {
+  margin-top: 0.4rem;
+}
+
+.yw-op-results {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.yw-op-block + hr {
+  margin: 0.7rem 0;
+  border: none;
+  border-top: 1px dashed #d1d5db;
+}
+
+.yw-level-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+}
+
+.yw-op-block h3 {
+  margin: 0.2rem 0 0.25rem 0;
+}
+
+/* Open questions */
+.yw-open-list {
+  margin: 0.5rem 0 0.7rem 1.1rem;
+  padding: 0;
+  font-size: 0.96rem;
+}
+
+.yw-open-list li {
+  margin-bottom: 0.35rem;
+}
+
+.yw-free-text-box {
+  margin-top: 0.5rem;
+}
+
+.yw-free-text-box label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+#yw-free-text {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+/* Helpers */
+.yw-hidden {
+  display: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  #young-women-module {
+    padding: 0 0.75rem 2.25rem;
+  }
+
+  .yw-section {
+    padding: 1.1rem 1.1rem;
+  }
+
+  .yw-audio-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
