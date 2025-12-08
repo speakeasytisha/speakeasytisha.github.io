@@ -1,0 +1,409 @@
+/* ==========================
+   QUESTION TOOLKIT – LAYOUT
+========================== */
+#questions-module.qt-lesson {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  color: #122028;
+}
+
+#questions-module h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.6rem;
+}
+
+#questions-module h3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.4rem;
+  font-size: 1.25rem;
+}
+
+#questions-module .qt-section {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+#questions-module .qt-section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+#questions-module .qt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  background: #eef6ff;
+  color: #1f5fbf;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+}
+
+#questions-module .qt-text {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+#questions-module .qt-list {
+  padding-left: 1.2rem;
+  font-size: 0.95rem;
+}
+
+#questions-module .qt-list li + li {
+  margin-top: 0.15rem;
+}
+
+/* ==========================
+   VOCAB GRID
+========================== */
+#questions-module .qt-vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.75rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+#questions-module .qt-vocab-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background: #f7fafc;
+  border-radius: 12px;
+  padding: 0.5rem 0.6rem;
+}
+
+#questions-module .qt-emoji {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+#questions-module .qt-vocab-item strong {
+  font-size: 0.95rem;
+  display: block;
+}
+
+#questions-module .qt-vocab-item small {
+  display: block;
+  font-size: 0.8rem;
+  color: #5b6b79;
+}
+
+/* ==========================
+   TABLE
+========================== */
+#questions-module .qt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+#questions-module .qt-table th,
+#questions-module .qt-table td {
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+#questions-module .qt-table th {
+  text-align: left;
+  background: #f8fafc;
+}
+
+/* ==========================
+   GRAMMAR BOXES
+========================== */
+#questions-module .qt-grammar-box {
+  background: #f9f5ff;
+  border-radius: 12px;
+  padding: 0.75rem 0.8rem;
+  border: 1px solid #e0d4ff;
+  font-size: 0.9rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+#questions-module .qt-example {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #314154;
+}
+
+/* ==========================
+   QUIZ STYLES
+========================== */
+#questions-module .qt-question {
+  border-radius: 12px;
+  padding: 0.75rem 0.8rem;
+  margin-bottom: 0.75rem;
+  background: #f7fafc;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+#questions-module .qt-question p {
+  margin: 0 0 0.45rem 0;
+  font-size: 0.95rem;
+}
+
+#questions-module .qt-question-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.3rem;
+}
+
+#questions-module .qt-question button[data-option] {
+  border-radius: 999px;
+  border: 1px solid #c6d4e2;
+  background: #ffffff;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+#questions-module .qt-question button[data-option]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+#questions-module .qt-question-answered {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  border-color: #b6c7f5;
+}
+
+#questions-module .qt-correct-btn {
+  background: #e1f8e3;
+  border-color: #2f9e44;
+}
+
+#questions-module .qt-incorrect-btn {
+  background: #ffe3e3;
+  border-color: #f03e3e;
+}
+
+#questions-module .qt-feedback {
+  font-size: 0.9rem;
+  min-height: 1.1em;
+}
+
+#questions-module .qt-feedback-ok {
+  color: #2f9e44;
+}
+
+#questions-module .qt-feedback-error {
+  color: #c92a2a;
+}
+
+/* ==========================
+   SCORE BOX
+========================== */
+#questions-module .qt-score-box {
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px dashed #c6d4e2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+#questions-module .qt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: #edf2ff;
+  color: #364fc7;
+  font-size: 0.85rem;
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+#questions-module .qt-primary-btn {
+  border-radius: 999px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+#questions-module .qt-primary-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.4);
+}
+
+#questions-module .qt-secondary-btn {
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+#questions-module .qt-secondary-btn:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+}
+
+/* ==========================
+   BUILDERS
+========================== */
+#questions-module .qt-builder-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+#questions-module .qt-builder-form input[type="text"],
+#questions-module .qt-builder-form select {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.85rem;
+  background: #ffffff;
+  margin-bottom: 0.4rem;
+}
+
+#questions-module .qt-builder-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+#questions-module .qt-builder-output {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 120px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  padding: 0.55rem 0.6rem;
+  font-size: 0.87rem;
+  resize: vertical;
+  background: #ffffff;
+  margin-top: 0.35rem;
+  white-space: pre-line;
+}
+
+/* ==========================
+   HELPERS
+========================== */
+#questions-module .qt-hidden {
+  display: none;
+}
+
+#questions-module .qt-fade-in {
+  animation: qtFadeIn 0.35s ease-out;
+}
+
+@keyframes qtFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  #questions-module.qt-lesson {
+    padding: 1rem;
+  }
+}
+
+/* ==========================
+   HERO / FOOTER (if needed)
+========================== */
+.page-hero {
+  max-width: 980px;
+  margin: 1.25rem auto 0.5rem;
+  padding: 0 1.5rem;
+}
+
+.page-hero-inner {
+  padding: 0.75rem 1.25rem;
+  border-radius: 16px;
+  background: #f5f7ff;
+}
+
+.page-hero .breadcrumb {
+  font-size: 0.85rem;
+  margin: 0 0 0.35rem 0;
+  opacity: 0.75;
+}
+
+.page-hero .breadcrumb a {
+  text-decoration: none;
+}
+
+.page-hero h1 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.7rem;
+}
+
+.page-hero-tagline {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.site-footer {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+}
+
+.site-footer .footer-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.site-footer .footer-logo {
+  font-weight: 600;
+}
+
+.site-footer .footer-nav a {
+  margin-right: 0.75rem;
+  text-decoration: none;
+}
