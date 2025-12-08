@@ -2,199 +2,305 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Theme – Daily Routine · SpeakEasyTisha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Routine – Student Lesson</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f5f5f5;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #111827;
+    }
 
-  <!-- Global styles for the whole site -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/speakeasy.css" />
+    .routine-lesson {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px;
+      box-sizing: border-box;
 
-  <!-- Page-specific styles -->
-  <link rel="stylesheet" href="css/theme-daily-routine.css" />
+      font-size: 16px;
+      line-height: 1.5;
+      background: transparent;
+    }
+
+    .routine-lesson h1,
+    .routine-lesson h2,
+    .routine-lesson h3 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .routine-lesson h1 {
+      font-size: 1.8em;
+      margin-bottom: 12px;
+    }
+
+    .routine-lesson h2 {
+      font-size: 1.3em;
+      margin-bottom: 8px;
+    }
+
+    .routine-lesson h3 {
+      font-size: 1.1em;
+      margin-top: 16px;
+      margin-bottom: 6px;
+    }
+
+    .routine-section {
+      margin-bottom: 28px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: none;
+    }
+
+    .routine-section + .routine-section {
+      margin-top: 18px;
+    }
+
+    .routine-tagline {
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .routine-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .routine-card {
+      flex: 1 1 220px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+    }
+
+    .routine-card h4 {
+      margin: 0 0 4px;
+      font-size: 1em;
+    }
+
+    .routine-card ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 0.95em;
+    }
+
+    .routine-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95em;
+      margin-top: 8px;
+    }
+
+    .routine-table th,
+    .routine-table td {
+      border: 1px solid #e5e7eb;
+      padding: 6px 8px;
+      text-align: left;
+    }
+
+    .routine-table th {
+      background: #eef2ff;
+    }
+
+    .quiz-container {
+      margin-top: 8px;
+    }
+
+    .routine-question {
+      margin-bottom: 12px;
+      padding: 10px 10px 8px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+    }
+
+    .routine-question p {
+      margin: 0 0 6px;
+    }
+
+    .routine-answers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .routine-answers button {
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 0.95em;
+      cursor: pointer;
+
+      border: 1px solid #d1d5db;
+      background: #f3f4f6;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.08s ease;
+    }
+
+    .routine-answers button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+
+    .routine-answers button.correct {
+      background: #dcfce7;
+      border-color: #22c55e;
+    }
+
+    .routine-answers button.incorrect {
+      background: #fee2e2;
+      border-color: #ef4444;
+    }
+
+    .routine-answers button.chosen {
+      box-shadow: 0 0 0 2px rgba(59,130,246,0.25);
+    }
+
+    .routine-feedback {
+      font-size: 0.85em;
+      min-height: 16px;
+    }
+
+    .routine-feedback.correct {
+      color: #15803d;
+    }
+
+    .routine-feedback.incorrect {
+      color: #b91c1c;
+    }
+
+    .routine-note {
+      font-size: 0.9em;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    .routine-reading {
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      padding: 10px 12px;
+      background: #ffffff;
+    }
+
+    .routine-reading strong.grammar {
+      background: #fff7ed;
+      padding: 0 2px;
+      border-radius: 4px;
+    }
+
+    .routine-score-box {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #c7d2fe;
+      background: #eef2ff;
+      font-size: 0.95em;
+    }
+
+    .routine-score-btn,
+    .routine-builder-btn {
+      margin-top: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: none;
+      background: #4f46e5;
+      color: #fff;
+      font-size: 0.95em;
+      cursor: pointer;
+    }
+
+    .routine-score-btn:hover,
+    .routine-builder-btn:hover {
+      filter: brightness(1.05);
+    }
+
+    .routine-builder-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.95em;
+    }
+
+    .routine-builder-controls label {
+      display: block;
+    }
+
+    .routine-builder-controls select,
+    .routine-builder-controls input {
+      width: 100%;
+      margin-top: 3px;
+      padding: 4px;
+      font-size: 0.95em;
+    }
+
+    .routine-builder-checkboxes {
+      font-size: 0.95em;
+      margin-top: 6px;
+    }
+
+    .routine-builder-checkboxes label {
+      display: block;
+    }
+
+    .routine-builder-output {
+      margin-top: 10px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      padding: 8px 10px;
+      min-height: 60px;
+      white-space: pre-wrap;
+      background: #ffffff;
+    }
+
+    .routine-level-box {
+      margin-top: 6px;
+      font-size: 0.95em;
+    }
+
+    .profile-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      align-items: end;
+      margin-top: 10px;
+    }
+
+    .profile-row label {
+      font-size: 0.95em;
+      display: block;
+    }
+
+    .profile-row input,
+    .profile-row select {
+      width: 100%;
+      margin-top: 4px;
+      padding: 4px;
+      font-size: 0.95em;
+    }
+
+    .profile-pronouns {
+      margin-top: 8px;
+      font-size: 0.9em;
+      color: #374151;
+    }
+
+    @media (max-width: 640px) {
+      .routine-lesson {
+        padding: 12px;
+      }
+      .routine-section {
+        padding: 12px 12px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <!-- 1️⃣ COPY-PASTE the whole <nav class="main-nav">…</nav> block
-         from index.html here so the navigation is identical. -->
-      <nav class="main-nav">
-      <div class="nav-inner">
-        <a href="index.html#top" class="nav-logo">
-          <span class="logo-script">SpeakEasy</span><span class="logo-bold">Tisha</span>
-        </a>
-
-        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-        </button>
-
-        <ul class="nav-links">
-          <li class="nav-item">
-            <a href="index.html#top" class="nav-link">Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a href="index.html#about" class="nav-link">ABOUT</a>
-          </li>
-
-          <!-- Vocabulary -->
-          <li class="nav-item has-dropdown">
-            <button class="nav-link nav-button" type="button">
-              Vocabulary
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="vocabulary-days-of-the-week.html">Days of the Week</a></li>
-              <li><a href="vocabulary-telling-time.html">Telling Time</a></li>
-              <li><a href="vocabulary-months-of-the-year.html">Months of the Year</a></li>
-              <li><a href="vocabulary-how-to-say-the-year.html">How to say the year</a></li>
-              <li><a href="vocabulary-how-to-write-the-date.html">How to write the date</a></li>
-              <li><a href="vocabulary-numbers.html">Numbers</a></li>
-            </ul>
-          </li>
-
-          <!-- Theme -->
-          <li class="nav-item has-dropdown">
-            <button class="nav-link nav-button" type="button">
-              Theme
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="theme-greetings.html">Greetings</a></li>
-              <li><a href="theme-polite-request.html">Polite Request</a></li>
-              <li><a href="theme-polite-questions.html">Polite Questions</a></li>
-
-              <!-- NEW: parent About me! page -->
-              <li><a href="theme-about-me.html">About me!</a></li>
-              <li><a href="theme-about-me-beginner.html">About me! – Beginner</a></li>
-              <li><a href="theme-about-me-advanced.html">About me! – Advanced</a></li>
-              <li><a href="theme-questions.html">Questions</a></li>
-              <li><a href="theme-smalltalk.html">Small Talk – Casual conversations</a></li>
-              <li><a href="travel101.html">Travel 101</a></li>
-              <li><a href="theme-apartment-rental-walnut-creek.html">Apartment Rental in Walnut Creek</a></li>
-              <li><a href="theme-restaurant-of-the-year.html">RESTAURANT OF THE YEAR</a></li>
-              
-              <li><a href="recommendations.html">Recommendations – Hotel & Travel</a></li>
-              <li><a href="theme-purchasing-a-home.html">Purchasing a home</a></li>
-              <li><a href="theme-thanksgiving.html">Thanksgiving</a></li>
-              <li><a href="theme-errands.html">Errands</a></li>
-              <li><a href="theme-daily-routine.html">Routine / Schedule</a></li>
-              <li><a href="theme-airport-review.html">AIRPORT REVIEW</a></li>
-              <li><a href="theme-ballynahinch-castle.html">BALLYNAHINCH CASTLE</a></li>
-              <li><a href="london.html">London</a></li>
-              <li><a href="review.html">Review</a></li>
-            </ul>
-          </li>
-
-          <!-- Grammar -->
-          <li class="nav-item has-dropdown">
-            <button class="nav-link nav-button" type="button">
-              Grammar
-            </button>
-            <ul class="dropdown-menu">
-              <li class="dropdown-heading">Verbs</li>
-              <li><a href="grammar-present-continuous.html">Present Continuous</a></li>
-              <li><a href="grammar-present-simple.html">Present Simple</a></li>
-              <li><a href="grammar-future.html">Future</a></li>
-              <li><a href="grammar-past-simple.html">Past Simple</a></li>
-              <li><a href="grammar-past-continuous.html">Past Continuous</a></li>
-              <li><a href="grammar-present-perfect.html">PRESENT PERFECT</a></li>
-
-              <li class="dropdown-heading">Prepositions</li>
-              <li><a href="grammar-prepositions-of-time.html">Prepositions of time</a></li>
-              <li><a href="grammar-prepositions-of-place.html">Prepositions of place</a></li>
-
-              <li class="dropdown-heading">More</li>
-              <li><a href="grammar-superlatives.html">Superlatives</a></li>
-              <li><a href="grammar-modifiers.html">Modifiers</a></li>
-              <li><a href="grammar-adverbs.html">Adverbs</a></li>
-            </ul>
-          </li>
-
-          <!-- Activités -->
-          <li class="nav-item has-dropdown">
-            <button class="nav-link nav-button" type="button">
-              Activités
-            </button>
-            <ul class="dropdown-menu">
-              <li class="dropdown-heading">Dialogues</li>
-              <li><a href="activities-hotel-check-out.html">HOTEL – CHECK-OUT</a></li>
-              <li><a href="activities-role-play.html">Role-Play</a></li>
-              <li><a href="write-review.html">Write A Review</a></li>
-              <li><a href="activities-mock-test-leveltel.html">Mock Test LevelTel</a></li>
-              <li><a href="activities-thankful.html">Thankful</a></li>
-              <li><a href="activity-fairy-tale.html">Fairy Tale - By Stephen King</a></li>
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a href="index.html#contact" class="nav-link">Contact</a>
-          </li>
-        </ul>
-        </div>
-    </nav>
-
-    <!-- ========== HERO / MAIN IMAGE ========== -->
-    <section class="hero" id="top">
-      <div class="hero-inner">
-        <div class="hero-text">
-          <span class="sub-heading">Une immersion linguistique</span>
-          <h1 class="hero-title">SpeakEasyTisha</h1>
-          <span class="fly-line"></span>
-          <p class="hero-tagline">Sans partir à l'étranger</p>
-          <p class="hero-description">
-            Cours d’anglais personnalisés pour adultes et jeunes, en ligne ou en présentiel.
-            Choisissez vos thèmes (réserver, sortir, se repérer, téléphoner…) et pratiquez
-            avec des dialogues réalistes, des quiz interactifs et des activités guidées.
-          </p>
-          <div class="hero-buttons">
-            <a href="#adultes" class="btn btn-gold">Adultes</a>
-            <a href="#jeunes" class="btn btn-outline">Jeunes</a>
-            <a href="#themes" class="btn btn-text">Choisissez votre thème ↓</a>
-          </div>
-        </div>
-
-        <!-- "Main image" area using your img/ folder -->
-        <div class="hero-visual floating">
-          <div class="hero-card">
-            <p class="hero-card-label">Une immersion linguistique</p>
-            <div class="hero-card-image"></div>
-            <p class="hero-card-caption">
-              Créez vos dialogues et quiz interactifs pour chaque situation de la vie réelle.
-            </p>
-          </div>
-        </div>
-      </div>
-      <a href="#themes" class="hero-scroll">
-        ↓ Découvrir les thèmes
-      </a>
-    </section>
-  </header>
-
-  <main class="page-main">
-    <!-- ========== HERO ========== -->
-    <section class="page-hero lesson-hero">
-      <div class="lesson-hero-inner">
-        <div class="lesson-hero-text">
-          <h1>Daily Routine — Present Simple &amp; Continuous</h1>
-          <p>
-            Talk about your typical day and special plans using the correct tenses,
-            time expressions, dates, adverbs and sequencing.
-          </p>
-        </div>
-
-        <div class="lesson-hero-image" aria-hidden="true">
-          <!-- HERO IMAGE:
-               Put an image in img/daily-routine/daily-routine-hero.jpg
-               (for example 1200×800) and it will display here. -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== DAILY ROUTINE LESSON CONTENT ========== -->
-    <div class="routine-lesson">
-      <!-- 2️⃣ HERE you paste ALL the lesson HTML you sent me,
-           BUT WITHOUT the <style>…</style> and <script>…</script> blocks. -->
-      <!-- Keep all the <section class="routine-section">…</section>,
-           quizzes, paragraph builder, etc. exactly as they are. -->
-        <!-- INTRO -->
+  <div class="routine-lesson">
+    <!-- INTRO -->
     <section class="routine-section">
       <h1>Daily Routine — Present Simple &amp; Continuous</h1>
       <p class="routine-tagline">
@@ -208,8 +314,9 @@
         <li>Writing and saying dates (US vs UK/EU format).</li>
         <li>Reading comprehension and paragraph builder with level indication.</li>
       </ul>
-        </section>
-        <!-- STUDENT PROFILE -->
+    </section>
+
+    <!-- STUDENT PROFILE -->
     <section class="routine-section">
       <h2>Student profile</h2>
       <p class="routine-note">
@@ -219,7 +326,7 @@
         <div>
           <label>
             Student name
-            <input id="student-name-input" type="text" value="Student name" />
+            <input id="student-name-input" type="text" value="Thomas" />
           </label>
         </div>
         <div>
@@ -237,7 +344,7 @@
         </div>
       </div>
       <div class="profile-pronouns" id="student-pronoun-display">
-        Subject: they · Object: them · Possessive adjective: their
+        Subject: he · Object: him · Possessive adjective: his
       </div>
     </section>
 
@@ -299,7 +406,7 @@
         <p class="routine-note">Choose the best answer.</p>
 
         <div class="routine-question">
-          <p>1. In the morning <span data-role="student-name">I</span> usually ________ at 6:30.</p>
+          <p>1. In the morning <span data-role="student-name">Thomas</span> usually ________ at 6:30.</p>
           <div class="routine-answers">
             <button data-correct="false">take a break</button>
             <button data-correct="true">wake up</button>
@@ -893,52 +1000,368 @@
         not an official CEFR certification.
       </p>
     </section>
-    </div>
-  </main>
+  </div>
 
-  <!-- Page JS -->
-  <script src="js/theme-daily-routine.js"></script>
-  <!-- 4️⃣ Nav JS – copy the SAME <script> ... </script> block from index.html
-       (mobile toggle + dropdown behaviour) and paste it here under the line above. -->
-  <!-- Simple JS for mobile nav toggle -->
   <script>
-  (function () {
-    const toggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    document.addEventListener('DOMContentLoaded', function () {
+      const lesson = document.querySelector('.routine-lesson');
+      if (!lesson) return;
 
-    // Mobile main menu toggle
-    if (toggle && navLinks) {
-      toggle.addEventListener('click', function () {
-        const isOpen = navLinks.classList.toggle('is-open');
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-    }
+      /* ====== STUDENT PROFILE (NAME + PRONOUNS) ====== */
+      const profile = {
+        name: 'Thomas',
+        pronounKey: 'he', // 'he' | 'she' | 'they'
+      };
 
-    // Dropdowns: open/close on click
-    const dropdownParents = document.querySelectorAll('.has-dropdown');
+      const pronounSets = {
+        he:  { subj: 'he',   subjCap: 'He',   obj: 'him',  possAdj: 'his' },
+        she: { subj: 'she',  subjCap: 'She',  obj: 'her',  possAdj: 'her' },
+        they:{ subj: 'they', subjCap: 'They', obj: 'them', possAdj: 'their' }
+      };
 
-    dropdownParents.forEach(function (parent) {
-      const button = parent.querySelector('.nav-button');
-      if (!button) return;
+      const nameInput        = document.getElementById('student-name-input');
+      const pronounSelect    = document.getElementById('student-pronoun-select');
+      const applyBtn         = document.getElementById('student-apply-btn');
+      const pronounDisplay   = document.getElementById('student-pronoun-display');
+      const subjectStudentOp = document.getElementById('rb-subject-student');
 
-      button.addEventListener('click', function (event) {
-        // Don't let this click close things immediately
-        event.stopPropagation();
-
-        // Toggle only this dropdown
-        parent.classList.toggle('is-open');
-      });
-    });
-
-    // Close dropdowns when clicking outside (desktop)
-    document.addEventListener('click', function (event) {
-      document.querySelectorAll('.has-dropdown.is-open').forEach(function (parent) {
-        if (!parent.contains(event.target)) {
-          parent.classList.remove('is-open');
+      function updateNameInDOM() {
+        const spans = lesson.querySelectorAll('[data-role="student-name"]');
+        spans.forEach(span => {
+          span.textContent = profile.name;
+        });
+        if (subjectStudentOp) {
+          subjectStudentOp.textContent = profile.name;
         }
+      }
+
+      function updatePronounsInDOM() {
+        const set = pronounSets[profile.pronounKey];
+        if (!set) return;
+
+        const lowerSpans = lesson.querySelectorAll('[data-role="pronoun-subj-lower"]');
+        lowerSpans.forEach(span => {
+          span.textContent = set.subj;
+        });
+
+        const capSpans = lesson.querySelectorAll('[data-role="pronoun-subj-cap"]');
+        capSpans.forEach(span => {
+          span.textContent = set.subjCap;
+        });
+
+        if (pronounDisplay) {
+          pronounDisplay.textContent =
+            'Subject: ' + set.subj +
+            ' · Object: ' + set.obj +
+            ' · Possessive adjective: ' + set.possAdj;
+        }
+      }
+
+      if (applyBtn) {
+        applyBtn.addEventListener('click', () => {
+          if (nameInput && nameInput.value.trim()) {
+            profile.name = nameInput.value.trim();
+          }
+          if (pronounSelect && pronounSelect.value) {
+            profile.pronounKey = pronounSelect.value;
+          }
+          updateNameInDOM();
+          updatePronounsInDOM();
+        });
+      }
+
+      // Initial sync
+      updateNameInDOM();
+      updatePronounsInDOM();
+
+      /* ====== QUIZ LOGIC (MCQ WITH FEEDBACK + SCORE) ====== */
+      const questions = lesson.querySelectorAll('.routine-question');
+
+      questions.forEach(question => {
+        const buttons = question.querySelectorAll('.routine-answers button[data-correct]');
+        const feedback = question.querySelector('.routine-feedback');
+
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            // clear previous styles
+            buttons.forEach(b => {
+              b.classList.remove('correct', 'incorrect', 'chosen');
+            });
+
+            const isCorrect = btn.dataset.correct === 'true';
+            btn.classList.add('chosen');
+
+            if (isCorrect) {
+              btn.classList.add('correct');
+              question.dataset.score = '1';
+              if (feedback) {
+                feedback.textContent = '✅ Correct!';
+                feedback.classList.remove('incorrect');
+                feedback.classList.add('correct');
+              }
+            } else {
+              btn.classList.add('incorrect');
+              question.dataset.score = '0';
+              if (feedback) {
+                feedback.textContent = '❌ Not quite. Try again.';
+                feedback.classList.remove('correct');
+                feedback.classList.add('incorrect');
+              }
+            }
+          });
+        });
       });
+
+      const scoreBtn = document.getElementById('routine-calc-score');
+      const scoreResult = document.getElementById('routine-score-result');
+      const resetQuizzesBtn = document.getElementById('routine-reset-quizzes');
+
+      if (scoreBtn && scoreResult) {
+        scoreBtn.addEventListener('click', () => {
+          let total = 0;
+          let answered = 0;
+          let correct = 0;
+
+          questions.forEach(q => {
+            total += 1;
+            const val = q.dataset.score;
+            if (val === '1' || val === '0') {
+              answered += 1;
+              if (val === '1') correct += 1;
+            }
+          });
+
+          const percent = total ? Math.round((correct / total) * 100) : 0;
+          let msg = '';
+          if (percent >= 80) {
+            msg = '🌟 Excellent! You’re controlling these structures very well.';
+          } else if (percent >= 60) {
+            msg = '👍 Good job! Review the red questions and try again.';
+          } else {
+            msg = '🧱 Keep practicing. Go back to the grammar and vocabulary sections.';
+          }
+
+          scoreResult.innerHTML = `
+            <p><strong>Questions answered:</strong> ${answered} / ${total}</p>
+            <p><strong>Correct answers:</strong> ${correct} / ${total} (${percent}%)</p>
+            <p>${msg}</p>
+          `;
+        });
+      }
+
+      if (resetQuizzesBtn && scoreResult) {
+        resetQuizzesBtn.addEventListener('click', () => {
+          questions.forEach(q => {
+            delete q.dataset.score;
+            const buttons = q.querySelectorAll('.routine-answers button');
+            const feedback = q.querySelector('.routine-feedback');
+            buttons.forEach(b => b.classList.remove('correct', 'incorrect', 'chosen'));
+            if (feedback) {
+              feedback.textContent = '';
+              feedback.classList.remove('correct', 'incorrect');
+            }
+          });
+          scoreResult.innerHTML = '<p>All quiz answers have been reset.</p>';
+        });
+      }
+
+      /* ====== PARAGRAPH BUILDER + TTS (LISTEN / PAUSE / RESET) ====== */
+      const rbSubject = document.getElementById('rb-subject');
+      const rbWakeup = document.getElementById('rb-wakeup');
+      const rbFrequency = document.getElementById('rb-frequency');
+      const rbWorkstart = document.getElementById('rb-workstart');
+      const rbWorkplace = document.getElementById('rb-workplace');
+      const rbEvening = document.getElementById('rb-evening');
+      const rbActivities = document.querySelectorAll('.rb-activity');
+      const rbUseContinuous = document.getElementById('rb-use-continuous');
+      const rbUseAdverbs = document.getElementById('rb-use-adverbs');
+      const rbUseSequencing = document.getElementById('rb-use-sequencing');
+
+      const rbBuildBtn = document.getElementById('rb-build');
+      const rbListenBtn = document.getElementById('rb-listen');
+      const rbPauseBtn = document.getElementById('rb-pause');
+      const rbResetBtn = document.getElementById('rb-reset');
+      const rbOutput = document.getElementById('rb-output');
+      const rbLevel = document.getElementById('rb-level');
+
+      let currentUtterance = null;
+
+      function buildParagraph() {
+        const subjectChoice = rbSubject ? rbSubject.value : 'I'; // 'I' or 'student'
+        const isI = subjectChoice === 'I';
+        const name = profile.name || 'the student';
+
+        const wake = rbWakeup ? rbWakeup.value : '7:00';
+        const freq = rbFrequency ? rbFrequency.value : 'usually';
+        const workStart = rbWorkstart ? rbWorkstart.value : '8:30';
+        const workplace = rbWorkplace ? rbWorkplace.value : 'in an office';
+        const evening = rbEvening ? rbEvening.value : 'relaxing and watching TV';
+
+        const selectedActivities = [];
+        rbActivities.forEach(ch => {
+          if (ch.checked) selectedActivities.push(ch.value);
+        });
+
+        const useCont = rbUseContinuous && rbUseContinuous.checked;
+        const useAdv = rbUseAdverbs && rbUseAdverbs.checked;
+        const useSeq = rbUseSequencing && rbUseSequencing.checked;
+
+        let seqWords = [];
+        if (useSeq) seqWords = ['First', 'Then', 'After that', 'Finally'];
+
+        let sentences = [];
+        let adverbCount = 0;
+        let continuousCount = 0;
+        let seqCount = 0;
+
+        // Morning sentence
+        let s1 = '';
+        if (useSeq && seqWords[0]) {
+          s1 += seqWords[0] + ', ';
+          seqCount++;
+        }
+        if (isI) {
+          s1 += 'I ' + freq + ' wake up at ' + wake + ' in the morning.';
+        } else {
+          s1 += name + ' ' + freq + ' wakes up at ' + wake + ' in the morning.';
+        }
+        adverbCount++;
+        sentences.push(s1);
+
+        // Activities
+        if (selectedActivities.length > 0) {
+          let s2 = '';
+          if (useSeq && seqWords[1]) {
+            s2 += seqWords[1] + ', ';
+            seqCount++;
+          }
+          if (isI) {
+            s2 += 'I usually ' + selectedActivities.join(', and ') + '.';
+          } else {
+            s2 += name + ' usually ' + selectedActivities.join(', and ') + '.';
+          }
+          adverbCount++;
+          sentences.push(s2);
+        }
+
+        // Work sentence (present simple)
+        let s3 = '';
+        if (useSeq && seqWords[2]) {
+          s3 += seqWords[2] + ', ';
+          seqCount++;
+        }
+        if (isI) {
+          s3 += 'I start work at ' + workStart + ' and work ' + workplace + '.';
+        } else {
+          s3 += name + ' starts work at ' + workStart + ' and works ' + workplace + '.';
+        }
+        sentences.push(s3);
+
+        // Present continuous sentence (this week / right now)
+        if (useCont) {
+          let s4 = '';
+          if (useAdv) {
+            s4 += 'Right now, ';
+            adverbCount++;
+          }
+          if (isI) {
+            s4 += 'I am working on a special project this week.';
+          } else {
+            s4 += name + ' is working on a special project this week.';
+          }
+          continuousCount++;
+          sentences.push(s4);
+        }
+
+        // Evening sentence
+        let s5 = '';
+        if (useSeq && seqWords[3]) {
+          s5 += seqWords[3] + ', ';
+          seqCount++;
+        }
+        if (useAdv) {
+          s5 += 'In the evening, ';
+          adverbCount++;
+        }
+        if (isI) {
+          s5 += 'I usually spend my evening ' + evening + '.';
+        } else {
+          s5 += name + ' usually spends the evening ' + evening + '.';
+        }
+        sentences.push(s5);
+
+        const paragraph = sentences.join(' ');
+        if (rbOutput) rbOutput.textContent = paragraph;
+
+        // Determine approximate level
+        let levelText = '';
+        if (continuousCount >= 1 && adverbCount >= 3 && seqCount >= 3) {
+          levelText = 'Estimated level: B1+ — good control of present simple / continuous, adverbs and sequencing.';
+        } else if ((continuousCount >= 1 && adverbCount >= 2) || seqCount >= 2) {
+          levelText = 'Estimated level: A2–B1 — mix of tenses with some adverbs and sequencing.';
+        } else {
+          levelText = 'Estimated level: A1–A2 — basic present simple with limited connectors.';
+        }
+        if (rbLevel) rbLevel.textContent = levelText;
+      }
+
+      function speakParagraph() {
+        if (!rbOutput) return;
+        const text = rbOutput.textContent.trim();
+        if (!text) {
+          alert('Build your paragraph first.');
+          return;
+        }
+        if (!('speechSynthesis' in window)) {
+          alert('Speech synthesis is not supported in this browser.');
+          return;
+        }
+        window.speechSynthesis.cancel();
+        currentUtterance = new SpeechSynthesisUtterance(text);
+        currentUtterance.lang = 'en-US';
+        window.speechSynthesis.speak(currentUtterance);
+      }
+
+      function togglePauseSpeech() {
+        if (!('speechSynthesis' in window)) return;
+        if (!window.speechSynthesis.speaking) return;
+
+        if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+          if (rbPauseBtn) rbPauseBtn.textContent = '⏸ Pause';
+        } else {
+          window.speechSynthesis.pause();
+          if (rbPauseBtn) rbPauseBtn.textContent = '▶ Resume';
+        }
+      }
+
+      function resetBuilder() {
+        if (rbSubject) rbSubject.value = 'I';
+        if (rbWakeup) rbWakeup.value = '7:00';
+        if (rbFrequency) rbFrequency.value = 'usually';
+        if (rbWorkstart) rbWorkstart.value = '8:30';
+        if (rbWorkplace) rbWorkplace.value = 'in an office';
+        if (rbEvening) rbEvening.value = 'relaxing and watching TV';
+
+        rbActivities.forEach(ch => (ch.checked = false));
+        if (rbUseContinuous) rbUseContinuous.checked = false;
+        if (rbUseAdverbs) rbUseAdverbs.checked = false;
+        if (rbUseSequencing) rbUseSequencing.checked = false;
+
+        if (rbOutput) rbOutput.textContent = '';
+        if (rbLevel) rbLevel.textContent = '';
+
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+        }
+        if (rbPauseBtn) rbPauseBtn.textContent = '⏸ Pause';
+      }
+
+      if (rbBuildBtn) rbBuildBtn.addEventListener('click', buildParagraph);
+      if (rbListenBtn) rbListenBtn.addEventListener('click', speakParagraph);
+      if (rbPauseBtn) rbPauseBtn.addEventListener('click', togglePauseSpeech);
+      if (rbResetBtn) rbResetBtn.addEventListener('click', resetBuilder);
     });
-  })();
-</script>
+  </script>
 </body>
 </html>

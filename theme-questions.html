@@ -8,18 +8,24 @@
   <!-- Google Fonts similar to your old site -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet" />
     <!-- Global styles -->
-  <link rel="stylesheet" href="css/speakeasy.css" />
+  <link rel="stylesheet" href="./css/speakeasy.css" />
   <!-- Main stylesheet -->
-  <link rel="stylesheet" href="css/questions.css" />
+  <link rel="stylesheet" href="./css/questions.css" />
 </head>
 <body>
-  <!-- ========== NAVIGATION ========== -->
+  <!-- HEADER + NAV (same structure as index.html) -->
   <header class="site-header">
     <nav class="main-nav">
       <div class="nav-inner">
         <a href="index.html#top" class="nav-logo">
           <span class="logo-script">SpeakEasy</span><span class="logo-bold">Tisha</span>
         </a>
+
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
 
         <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
           <span class="nav-toggle-bar"></span>
@@ -64,18 +70,21 @@
               <li><a href="theme-about-me.html">About me!</a></li>
               <li><a href="theme-about-me-beginner.html">About me! – Beginner</a></li>
               <li><a href="theme-about-me-advanced.html">About me! – Advanced</a></li>
-
+              <li><a href="theme-questions.html">Questions</a></li>
+              <li><a href="theme-smalltalk.html">Small Talk – Casual conversations</a></li>
+              <li><a href="travel101.html">Travel 101</a></li>
               <li><a href="theme-apartment-rental-walnut-creek.html">Apartment Rental in Walnut Creek</a></li>
               <li><a href="theme-restaurant-of-the-year.html">RESTAURANT OF THE YEAR</a></li>
-              <li><a href="theme-recommendations.html">Recommendations</a></li>
+              
               <li><a href="recommendations.html">Recommendations – Hotel & Travel</a></li>
               <li><a href="theme-purchasing-a-home.html">Purchasing a home</a></li>
               <li><a href="theme-thanksgiving.html">Thanksgiving</a></li>
               <li><a href="theme-errands.html">Errands</a></li>
-              <li><a href="theme-daily-routine.html">Routine / Schedule</a></li>              
+              <li><a href="theme-daily-routine.html">Routine / Schedule</a></li>
               <li><a href="theme-airport-review.html">AIRPORT REVIEW</a></li>
               <li><a href="theme-ballynahinch-castle.html">BALLYNAHINCH CASTLE</a></li>
-              <li><a href="london.html">LONDON</a></li>
+              <li><a href="london.html">London</a></li>
+              <li><a href="review.html">Review</a></li>
             </ul>
           </li>
 
@@ -113,9 +122,10 @@
               <li class="dropdown-heading">Dialogues</li>
               <li><a href="activities-hotel-check-out.html">HOTEL – CHECK-OUT</a></li>
               <li><a href="activities-role-play.html">Role-Play</a></li>
+              <li><a href="write-review.html">Write A Review</a></li>
               <li><a href="activities-mock-test-leveltel.html">Mock Test LevelTel</a></li>
               <li><a href="activities-thankful.html">Thankful</a></li>
-              <li><a href="activity-fairy-tale.html">Fairy Tale – by Stephen King</a></li>
+              <li><a href="activity-fairy-tale.html">Fairy Tale - By Stephen King</a></li>
             </ul>
           </li>
 
@@ -807,28 +817,46 @@
   <!-- =======================
        FOOTER
   ======================== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="footer-inner">
-      <p class="footer-logo">SpeakEasyTisha</p>
-      <nav class="footer-nav">
-        <a href="index.html">Home</a>
-        <a href="themes.html">Themes</a>
-        <a href="activities.html">Activities</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <p class="footer-meta">© <span id="footer-year"></span> SpeakEasyTisha · Curious Conversations</p>
-    </div>
+    <p>© SpeakEasyTisha – Theme · Restaurant of the Year</p>
   </footer>
 
-  <!-- Footer year -->
+  <!-- NAV BEHAVIOUR (same as index.html) -->
   <script>
     (function () {
-      var y = document.getElementById('footer-year');
-      if (y) y.textContent = new Date().getFullYear();
+      const toggle = document.querySelector(".nav-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (toggle && navLinks) {
+        toggle.addEventListener("click", function () {
+          const isOpen = navLinks.classList.toggle("is-open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+      }
+
+      const dropdownParents = document.querySelectorAll(".has-dropdown");
+      dropdownParents.forEach(function (parent) {
+        const button = parent.querySelector(".nav-button");
+        if (!button) return;
+
+        button.addEventListener("click", function (event) {
+          event.stopPropagation();
+          parent.classList.toggle("is-open");
+        });
+      });
+
+      document.addEventListener("click", function (event) {
+        document.querySelectorAll(".has-dropdown.is-open").forEach(function (parent) {
+          if (!parent.contains(event.target)) {
+            parent.classList.remove("is-open");
+          }
+        });
+      });
     })();
   </script>
 
   <!-- Page-specific JS -->
-  <script src="js/questions.js"></script>
+  <script src="./js/questions"></script>
 </body>
 </html>
