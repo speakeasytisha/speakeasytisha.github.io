@@ -113,45 +113,221 @@
   /* ==========================
      QUESTION BUILDER
   =========================== */
+   /* ==========================
+     QUESTION BUILDER
+  =========================== */
   const builderForm = module.querySelector("#qt-builder-form");
   const builderOutput = module.querySelector("#qt-builder-output");
   const builderResetBtn = module.querySelector("#qt-builder-reset");
+
+  // --- Helpers to keep every combination natural and correct ---
+
+  function makePresentSimpleQuestion(verb, place, detail) {
+    let question = "";
+    const hasPlace = !!place;
+
+    switch (verb) {
+      case "work":
+        if (detail === "basic") {
+          question = "Where do you work?";
+        } else {
+          question =
+            hasPlace && place !== "to London"
+              ? "Do you work " + place + "?"
+              : "Do you work full-time or part-time?";
+        }
+        break;
+
+      case "live":
+        if (detail === "basic") {
+          question = "Where do you live?";
+        } else {
+          if (place === "in this city") {
+            question = "Do you live in this city or outside the city?";
+          } else {
+            question = "Do you live in a house or an apartment?";
+          }
+        }
+        break;
+
+      case "study":
+        if (detail === "basic") {
+          question = "Where do you study?";
+        } else {
+          question =
+            hasPlace && place !== "to London"
+              ? "Do you study " + place + "?"
+              : "Do you study in the evening or at the weekend?";
+        }
+        break;
+
+      case "travel":
+        if (detail === "basic") {
+          question =
+            place === "to London"
+              ? "How often do you travel to London?"
+              : "How often do you travel for work or for pleasure?";
+        } else {
+          question =
+            place === "to London"
+              ? "Do you travel to London for work or for holidays?"
+              : "Which countries do you usually travel to?";
+        }
+        break;
+
+      default:
+        question = "Where do you " + verb + "?";
+    }
+
+    return question;
+  }
+
+  function makePresentContinuousQuestion(verb, place, detail) {
+    const nowPhrase = detail === "basic" ? "now" : "at the moment";
+    let question = "";
+    const hasPlace = !!place && place !== "to London";
+
+    switch (verb) {
+      case "work":
+        if (hasPlace) {
+          question = "Are you working " + place + " " + nowPhrase + "?";
+        } else {
+          question = "Are you working " + nowPhrase + "?";
+        }
+        break;
+
+      case "study":
+        if (hasPlace) {
+          question = "Are you studying " + place + " " + nowPhrase + "?";
+        } else {
+          question = "Are you studying " + nowPhrase + "?";
+        }
+        break;
+
+      case "live":
+        if (place === "in this city") {
+          question = "Are you living in this city " + nowPhrase + "?";
+        } else {
+          question = "Are you living here " + nowPhrase + "?";
+        }
+        break;
+
+      case "travel":
+        if (place === "to London") {
+          question = "Are you travelling to London " + nowPhrase + "?";
+        } else {
+          question = "Are you travelling " + nowPhrase + "?";
+        }
+        break;
+
+      default:
+        question = "What are you doing " + nowPhrase + "?";
+    }
+
+    return question;
+  }
+
+  function makePresentPerfectQuestion(verb, place, detail, verbPP) {
+    let question = "";
+    const hasPlace = !!place;
+
+    // detail === "basic" → experience questions
+    // detail === "extra" → duration / frequency questions
+    if (detail === "basic") {
+      switch (verb) {
+        case "work":
+          if (hasPlace && place !== "to London") {
+            question = "Have you ever worked " + place + " before?";
+          } else {
+            question = "Have you ever worked in another country?";
+          }
+          break;
+
+        case "live":
+          if (place === "in this city") {
+            question = "Have you ever lived in another city?";
+          } else {
+            question = "Have you ever lived in a big city?";
+          }
+          break;
+
+        case "study":
+          question =
+            "Have you ever studied English with a private teacher before?";
+          break;
+
+        case "travel":
+          if (place === "to London") {
+            question = "Have you ever travelled to London?";
+          } else {
+            question = "Have you ever travelled to another country?";
+          }
+          break;
+
+        default:
+          question = "Have you ever " + verbPP + " like this before?";
+      }
+    } else {
+      // detail === "extra" → duration / frequency
+      switch (verb) {
+        case "work":
+          if (hasPlace && place !== "to London") {
+            question = "How long have you worked " + place + "?";
+          } else {
+            question = "How long have you worked here?";
+          }
+          break;
+
+        case "live":
+          if (place === "in this city") {
+            question = "How long have you lived in this city?";
+          } else {
+            question = "How long have you lived here?";
+          }
+          break;
+
+        case "study":
+          question = "How long have you studied English?";
+          break;
+
+        case "travel":
+          if (place === "to London") {
+            question = "How many times have you travelled to London?";
+          } else {
+            question = "How long have you been travelling for work?";
+          }
+          break;
+
+        default:
+          question = "How long have you " + verbPP + "?";
+      }
+    }
+
+    return question;
+  }
 
   function buildQuestion() {
     if (!builderForm || !builderOutput) return;
 
     const tense = builderForm.tense.value || "present-simple";
-    const verbOption = builderForm.verb.options[builderForm.verb.selectedIndex];
+    const verbSelect = builderForm.verb;
+    const verbOption = verbSelect.options[verbSelect.selectedIndex];
     const verb = verbOption.value || "work";
-    const verbIng = verbOption.dataset.ing || (verb + "ing");
-    const verbPP = verbOption.dataset.pp || (verb + "ed");
+    const verbPP = verbOption.dataset.pp || verb + "ed";
     const place = builderForm.place.value || "";
     const detail = builderForm.detail.value || "basic";
 
     let question = "";
 
     if (tense === "present-simple") {
-      if (detail === "basic") {
-        question = "Where do you " + verb + "?";
-      } else {
-        question = "Where do you " + verb + (place ? " " + place : "") + "?";
-      }
+      question = makePresentSimpleQuestion(verb, place, detail);
     } else if (tense === "present-continuous") {
-      if (detail === "basic") {
-        question = "What are you " + verbIng + " right now?";
-      } else {
-        question =
-          "What are you " + verbIng + (place ? " " + place : "") + " right now?";
-      }
+      question = makePresentContinuousQuestion(verb, place, detail);
     } else if (tense === "present-perfect") {
-      if (detail === "basic") {
-        question = "How long have you " + verbPP + "?";
-      } else {
-        question =
-          "How long have you " + verbPP + (place ? " " + place : "") + "?";
-      }
+      question = makePresentPerfectQuestion(verb, place, detail, verbPP);
     } else {
-      question = "What do you " + verb + "?";
+      // fallback
+      question = "Where do you " + verb + "?";
     }
 
     builderOutput.value = question;
@@ -166,7 +342,7 @@
   }
 
   if (builderResetBtn && builderForm && builderOutput) {
-    builderResetBtn.addEventListener("click", () => {
+    builderResetBtn.addEventListener("click", function () {
       builderForm.reset();
       builderOutput.value = "";
       builderOutput.classList.remove("qt-fade-in");

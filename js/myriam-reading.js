@@ -2,6 +2,46 @@
   const page = document.querySelector(".mr-shell");
   if (!page) return;
 
+  // ==========================
+  // HAVE / HAS HELPER
+  // ==========================
+  function getHaveForm(subject) {
+    const raw = (subject || "").trim();
+    const s = raw.toLowerCase();
+
+    // Pronouns
+    if (["i", "you", "we", "they"].includes(s)) return "have";
+    if (["he", "she", "it"].includes(s)) return "has";
+
+    // Obvious plurals
+    if (
+      s.includes("children") ||
+      s.includes("people") ||
+      s.includes("parents") ||
+      s.includes("friends")
+    ) {
+      return "have";
+    }
+
+    // More than one person: "Claire and Tom"
+    if (raw.includes(" and ")) {
+      return "have";
+    }
+
+    // Noun groups that are usually singular: "my friend", "his sister", "the teacher"
+    if (s.match(/\b(my|your|his|her|the|this|that)\b/) && !s.endsWith("s")) {
+      return "has";
+    }
+
+    // Single name like "Claire", "Mathieu"
+    if (!raw.includes(" ") && !s.endsWith("s")) {
+      return "has";
+    }
+
+    // Default: "have"
+    return "have";
+  }
+
   /* ============================
      1. FOOTER YEAR
   ============================ */
@@ -241,11 +281,16 @@
       const connector = builderForm.connector.value;
       const personalLink = builderForm.personalLink.value;
 
+      // ✅ Choose "have" or "has" depending on the subject
+      const haveVerb = getHaveForm(viewpoint);
+
       // Level 1: Basic
       const basicSentence =
         "In my opinion, " +
         viewpoint +
-        " have a very " +
+        " " +
+        haveVerb +
+        " a very " +
         adjective +
         " life. " +
         positive;
@@ -254,7 +299,9 @@
       const standardSentence =
         "Personally, I think that " +
         viewpoint +
-        " have a very " +
+        " " +
+        haveVerb +
+        " a very " +
         adjective +
         " life. " +
         positive +
@@ -267,7 +314,9 @@
       const advancedSentence =
         "In my opinion, " +
         viewpoint +
-        " today have one of the most " +
+        " today " +
+        haveVerb +
+        " one of the most " +
         adjective +
         " lives in our society. " +
         positive +
@@ -295,7 +344,8 @@
       });
     }
   }
-      /* ============================
+
+  /* ============================
      5. PRINT SECTION(S)
   ============================ */
 
@@ -347,8 +397,7 @@
     printWindow.document.close();
     printWindow.focus();
     printWindow.print();
-    // Optionally close automatically:
-    // printWindow.close();
+    // printWindow.close(); // optional
   }
 
   function handlePrintButtonClick(btn) {
@@ -368,5 +417,4 @@
   printButtons.forEach((btn) => {
     btn.addEventListener("click", () => handlePrintButtonClick(btn));
   });
-
 })();
