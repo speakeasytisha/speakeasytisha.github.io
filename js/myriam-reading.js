@@ -295,4 +295,78 @@
       });
     }
   }
+      /* ============================
+     5. PRINT SECTION(S)
+  ============================ */
+
+  function openPrintWindowForElement(targetId) {
+    if (!targetId || targetId === "page") {
+      // Default browser print = whole page
+      window.print();
+      return;
+    }
+
+    const el = document.getElementById(targetId);
+    if (!el) {
+      alert("Sorry, I can’t find this section to print.");
+      return;
+    }
+
+    const printWindow = window.open("", "_blank", "width=900,height=650");
+    if (!printWindow) return;
+
+    const title = document.title || "Print";
+
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>${title}</title>
+        <meta charset="UTF-8">
+        <style>
+          body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+            color: #111827;
+            padding: 24px;
+          }
+          h1, h2, h3, h4 {
+            margin-top: 0;
+          }
+          p {
+            margin: 0 0 0.6rem 0;
+          }
+        </style>
+      </head>
+      <body>
+        ${el.innerHTML}
+      </body>
+      </html>
+    `);
+
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+    // Optionally close automatically:
+    // printWindow.close();
+  }
+
+  function handlePrintButtonClick(btn) {
+    const target = btn.getAttribute("data-print-target") || "page";
+
+    if (target === "choose") {
+      const select = document.getElementById("mr-print-select");
+      const chosen = select ? select.value : "page";
+      openPrintWindowForElement(chosen);
+    } else {
+      openPrintWindowForElement(target);
+    }
+  }
+
+  // Attach event listeners to all print buttons on this page
+  const printButtons = page.querySelectorAll(".mr-print-btn");
+  printButtons.forEach((btn) => {
+    btn.addEventListener("click", () => handlePrintButtonClick(btn));
+  });
+
 })();
