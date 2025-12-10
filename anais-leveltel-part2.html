@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anaïs – Leveltel B1.1 Simulation – Part 2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/anais-leveltel.css" />
+</head>
+<body>
+  <main id="anais-leveltel-sim">
+    <header class="sim-header">
+      <h1>Anaïs – Leveltel B1.1 Simulation – Part 2</h1>
+      <p class="sim-intro">
+        This second part of the simulation focuses on <strong>visio conferences</strong>,
+        <strong>role-play with customers</strong>, <strong>email structure (drag & drop)</strong>,
+        <strong>dates and times</strong>, and <strong>customer complaints</strong>.
+      </p>
+
+      <div class="sim-top-bar">
+        <div class="score-box">
+          <span class="score-label">Score:</span>
+          <span id="score-current">0</span>
+          <span>/</span>
+          <span id="score-total">0</span>
+        </div>
+        <button id="reset-all" type="button" class="btn-secondary">
+          Reset all answers
+        </button>
+      </div>
+
+      <p class="sim-note">
+        Each question gives <strong>Right / Wrong</strong> feedback and a short hint if you make a mistake.
+      </p>
+    </header>
+
+    <!-- PART 6 – VISIO LISTENING -->
+    <section id="visio-listening" class="quiz-section">
+      <h2>
+        <img src="img/icon-visio.svg" alt="" class="inline-icon" />
+        Part 6 – Listening: Visio conference
+      </h2>
+      <p class="section-desc">
+        Listen to a short visio conference between Anaïs and two colleagues.
+        Answer the questions. The transcript appears only when you have attempted all listening questions.
+      </p>
+
+      <div class="audio-block">
+        <p class="audio-instruction">
+          ▶ Listen carefully to the visio recording:
+        </p>
+
+        <!-- ⚠️ Fichier audio avec accent américain à créer -->
+        <audio id="visio-audio" src="audio/anais-leveltel-visio-us.mp3">
+          Your browser does not support the audio element.
+        </audio>
+
+        <div class="custom-audio-controls" data-audio-id="visio-audio">
+          <button type="button" class="btn-audio audio-control-btn" data-action="play">
+            ▶ Play
+          </button>
+          <button type="button" class="btn-audio audio-control-btn" data-action="pause">
+            ⏸ Pause
+          </button>
+          <button type="button" class="btn-audio audio-control-btn" data-action="restart">
+            ⏮ Restart
+          </button>
+        </div>
+
+        <div class="transcript-controls">
+          <button id="show-visio-transcript" type="button" class="btn-secondary" disabled>
+            Show transcript (available after answering)
+          </button>
+          <p id="visio-note" class="small-note">
+            Answer the visio listening questions first. The transcript will be unlocked afterwards.
+          </p>
+        </div>
+
+        <div id="visio-transcript" class="transcript hidden">
+          <h3>Transcript – Visio conference</h3>
+          <p>
+            <strong>Anaïs:</strong> Good afternoon everyone, can you hear me well?<br />
+            <strong>Mark (UK):</strong> Yes, loud and clear.<br />
+            <strong>Peter (Hungary):</strong> I can hear you too, thank you.<br />
+            <strong>Anaïs:</strong> Great. So, today we need to confirm the delivery schedule for the next three months
+            and talk about a recent complaint from one of our French customers.<br />
+            <strong>Mark:</strong> I’ve shared the updated schedule in the chat. Deliveries to France will be every
+            Monday and Thursday, starting from the first week of next month.<br />
+            <strong>Peter:</strong> And about the complaint, the customer received the parcels two days late and one box
+            was damaged during transport.<br />
+            <strong>Anaïs:</strong> Okay, thank you. We need to apologise and offer a solution. I suggest we send a new
+            product and a small discount on their next order.<br />
+            <strong>Mark:</strong> That sounds reasonable. I can prepare a draft email after the meeting.<br />
+            <strong>Peter:</strong> Perfect. I will also speak to our transport partner to avoid this in the future.<br />
+            <strong>Anaïs:</strong> Excellent. So, to summarise, we confirm the new delivery schedule,
+            we send a polite email to the customer with a replacement and a discount,
+            and we check the transport process. Is that correct?<br />
+            <strong>Mark &amp; Peter:</strong> Yes, that’s correct.<br />
+            <strong>Anaïs:</strong> Great. Thank you, everyone.
+          </p>
+        </div>
+      </div>
+
+      <div class="quiz-grid">
+        <!-- Q1 Visio listening -->
+        <div class="quiz-item visio-listening-question" data-type="mc"
+             data-hint="Think about the main goals at the start of the meeting.">
+          <h3>1. What are the two main topics of the visio?</h3>
+          <div class="mc-options">
+            <button type="button" class="mc-option" data-correct="true"
+                    data-hint="She mentions the delivery schedule and a customer complaint.">
+              The delivery schedule and a customer complaint.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="They do not talk about a new product design.">
+              A new product design and marketing campaign.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="No discussion about salaries.">
+              Salary increases and holidays.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="They do not speak about a new office.">
+              Opening a new office in France.
+            </button>
+          </div>
+          <p class="feedback"></p>
+        </div>
+
+        <!-- Q2 Visio listening -->
+        <div class="quiz-item visio-listening-question" data-type="mc"
+             data-hint="Listen to Mark's explanation of the schedule.">
+          <h3>2. How often will deliveries to France take place?</h3>
+          <div class="mc-options">
+            <button type="button" class="mc-option"
+                    data-hint="He says Monday and Thursday.">
+              Every Tuesday and Friday.
+            </button>
+            <button type="button" class="mc-option" data-correct="true"
+                    data-hint="Two times per week, specific days.">
+              Every Monday and Thursday.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Not just once a week.">
+              Once a week on Monday.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Not every day.">
+              Every day from Monday to Friday.
+            </button>
+          </div>
+          <p class="feedback"></p>
+        </div>
+
+        <!-- Q3 Visio listening -->
+        <div class="quiz-item visio-listening-question" data-type="mc"
+             data-hint="Focus on how they react to the complaint.">
+          <h3>3. What solution do they agree on for the complaint?</h3>
+          <div class="mc-options">
+            <button type="button" class="mc-option" data-correct="true"
+                    data-hint="They mention both points clearly.">
+              Send a new product and offer a small discount on the next order.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="They do not offer a free trip.">
+              Invite the customer to visit the factory.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="They do not ignore the complaint.">
+              Do nothing and wait for the customer to call again.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="They don’t propose a phone call only.">
+              Call the customer and explain the delay without any compensation.
+            </button>
+          </div>
+          <p class="feedback"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PART 7 – ROLE-PLAY & CUSTOMER COMPLAINTS -->
+    <section id="roleplay-section" class="quiz-section">
+      <h2>
+        <img src="img/icon-complaint.svg" alt="" class="inline-icon" />
+        Part 7 – Role-play: dealing with a customer complaint
+      </h2>
+      <p class="section-desc">
+        Choose the best sentences to create a professional conversation with a customer who is complaining
+        about a late and damaged delivery. Your choices will be used to build a role-play script.
+      </p>
+
+      <div class="quiz-grid">
+        <!-- Step 1 opening -->
+        <div class="quiz-item roleplay-step" data-type="mc"
+             data-hint="You need a calm, professional opening.">
+          <h3>4. Opening the call</h3>
+          <p class="question-text">
+            The customer is angry. How do you start the conversation?
+          </p>
+          <div class="mc-options">
+            <button type="button" class="mc-option" data-correct="true"
+                    data-hint="You recognise the problem and sound calm.">
+              Good afternoon, this is Anaïs from Customer Service. I’m really sorry to hear there was a problem with your delivery.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Too aggressive.">
+              It’s not my fault, what do you want me to do?
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Too informal and not professional enough.">
+              Hey, calm down, it’s not so bad.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="You don’t show empathy.">
+              Yes, I know, deliveries are always difficult.
+            </button>
+          </div>
+          <p class="feedback"></p>
+        </div>
+
+        <!-- Step 2 clarifying -->
+        <div class="quiz-item roleplay-step" data-type="mc"
+             data-hint="Ask clear questions to understand the details.">
+          <h3>5. Asking for details</h3>
+          <p class="question-text">
+            You need more information about the problem. What do you say?
+          </p>
+          <div class="mc-options">
+            <button type="button" class="mc-option"
+                    data-hint="Too short and not polite.">
+              What is wrong?
+            </button>
+            <button type="button" class="mc-option" data-correct="true"
+                    data-hint="Clear and polite, asks for key details.">
+              Could you please tell me exactly what happened and which products were damaged?
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="You should not say it is not important.">
+              It’s not important, just tell me if you want your money back.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Too informal for a complaint.">
+              So, what’s the story?
+            </button>
+          </div>
+          <p class="feedback"></p>
+        </div>
+
+        <!-- Step 3 proposing solution -->
+        <div class="quiz-item roleplay-step" data-type="mc"
+             data-hint="Offer a concrete, realistic solution.">
+          <h3>6. Proposing a solution</h3>
+          <p class="question-text">
+            You understand the situation now. How do you propose a solution?
+          </p>
+          <div class="mc-options">
+            <button type="button" class="mc-option" data-correct="true"
+                    data-hint="Clear, polite and concrete.">
+              We can send you a replacement for the damaged items and offer a 10% discount on your next order.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="You don’t offer anything.">
+              We will try to do better next time, but we can’t change this order.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Too aggressive.">
+              If you are not happy, you can cancel all future orders.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Not realistic.">
+              We will give you all future orders for free.
+            </button>
+          </div>
+          <p class="feedback"></p>
+        </div>
+
+        <!-- Step 4 closing -->
+        <div class="quiz-item roleplay-step" data-type="mc"
+             data-hint="You need a polite closing.">
+          <h3>7. Closing the conversation</h3>
+          <p class="question-text">
+            You agreed on the solution. How do you end the call?
+          </p>
+          <div class="mc-options">
+            <button type="button" class="mc-option" data-correct="true"
+                    data-hint="Shows empathy and clear next steps.">
+              Thank you for your patience. I will send you a confirmation email today. Have a nice afternoon.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Too brusque.">
+              Okay, goodbye.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Not professional.">
+              I hope you are not angry now, bye.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Too informal.">
+              All right, see ya!
+            </button>
+          </div>
+          <p class="feedback"></p>
+        </div>
+      </div>
+
+      <div class="roleplay-output-block">
+        <button id="build-roleplay" type="button" class="btn-primary">
+          Build my role-play script
+        </button>
+        <p class="small-note">
+          This will combine your correct answers into a short script you can practise orally.
+        </p>
+        <div id="roleplay-output" class="roleplay-output"></div>
+      </div>
+    </section>
+
+    <!-- PART 8 – DRAG & DROP LETTER + DATES & TIMES -->
+    <section id="letter-dragdrop-section" class="quiz-section">
+      <h2>
+        <img src="img/icon-email.svg" alt="" class="inline-icon" />
+        Part 8 – Drag & drop: email structure + dates and times
+      </h2>
+      <p class="section-desc">
+        Drag the different parts of the email into the correct position so that it becomes a clear,
+        professional letter to the customer about the complaint.
+      </p>
+
+      <div class="quiz-item" data-type="dragdrop"
+           data-hint="Think of the usual email order: subject, greeting, opening, body, closing.">
+        <h3>8. Organising the email</h3>
+        <p class="question-text">
+          Drag each block into the correct place. When all parts are correct, you get one point.
+        </p>
+
+        <div class="dragdrop-container">
+          <div class="drag-items-pool">
+            <div class="drag-item" id="drag-subject" draggable="true" data-part="subject">
+              Subject: Late and damaged delivery – order FR-4587
+            </div>
+            <div class="drag-item" id="drag-greeting" draggable="true" data-part="greeting">
+              Dear Mr Smith,
+            </div>
+            <div class="drag-item" id="drag-opening" draggable="true" data-part="opening">
+              Thank you for your message about your recent order. I am very sorry for the delay and for the damaged box you received.
+            </div>
+            <div class="drag-item" id="drag-body" draggable="true" data-part="body">
+              We will send you a replacement for the damaged items today and we would also like to offer you a 10% discount on your next order.
+            </div>
+            <div class="drag-item" id="drag-closing" draggable="true" data-part="closing">
+              Once again, we apologise for the inconvenience. If you have any questions, please contact me directly. Best regards, Anaïs Douty.
+            </div>
+          </div>
+
+          <div class="drop-zones">
+            <div class="drop-zone" data-accept="subject">
+              <span class="zone-label">Subject line</span>
+            </div>
+            <div class="drop-zone" data-accept="greeting">
+              <span class="zone-label">Greeting</span>
+            </div>
+            <div class="drop-zone" data-accept="opening">
+              <span class="zone-label">Opening / apology</span>
+            </div>
+            <div class="drop-zone" data-accept="body">
+              <span class="zone-label">Body: solution</span>
+            </div>
+            <div class="drop-zone" data-accept="closing">
+              <span class="zone-label">Closing &amp; signature</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-grid">
+        <!-- Dates & times -->
+        <div class="quiz-item" data-type="mc"
+             data-hint="American business emails usually use this format.">
+          <h3>9. Dates in emails (American style)</h3>
+          <p class="question-text">
+            Which date is written in a clear, American business style?
+          </p>
+          <div class="mc-options">
+            <button type="button" class="mc-option" data-correct="true"
+                    data-hint="Month + day + year is common in the US.">
+              Monday, April 14, 2025
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="This is understandable but not the most typical US format.">
+              14th April 2025
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Too short and not very clear.">
+              14/04/25
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Day and month can be confused internationally.">
+              04/14/25
+            </button>
+          </div>
+          <p class="feedback"></p>
+        </div>
+
+        <div class="quiz-item" data-type="select" data-correct="at"
+             data-hint="Use this preposition before a specific time.">
+          <h3>10. Times in a confirmation email</h3>
+          <p class="question-text">
+            Complete the sentence: “The visio conference is ______ 3:30 p.m. French time on Tuesday.”
+          </p>
+          <div class="select-row">
+            <select>
+              <option value="">-- Choose the correct preposition --</option>
+              <option value="in">in</option>
+              <option value="at">at</option>
+              <option value="on">on</option>
+              <option value="by">by</option>
+            </select>
+            <button type="button" class="btn-primary check-select">Check</button>
+          </div>
+          <p class="feedback"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PART 9 – CUSTOMER COMPLAINT EMAIL COMPREHENSION -->
+    <section id="complaint-reading-section" class="quiz-section">
+      <h2>
+        <img src="img/icon-letter.svg" alt="" class="inline-icon" />
+        Part 9 – Reading: customer complaint email
+      </h2>
+      <p class="section-desc">
+        Read the customer’s email, then answer the questions about the problem and the best response.
+      </p>
+
+      <article class="reading-text">
+        <h3>Customer complaint – Email</h3>
+        <p><strong>Subject:</strong> Late delivery and damaged box – Order FR-4587</p>
+        <p>Dear Sir or Madam,</p>
+        <p>
+          I am writing to complain about my last order (FR-4587). The parcels arrived
+          two days later than the date confirmed in your email, and one of the boxes was damaged.
+          Some products inside were broken and I cannot use them.
+        </p>
+        <p>
+          This delay and the damaged products caused a problem in my shop, because I did not have
+          enough stock for my customers. I would like to know what you can do to solve this situation.
+        </p>
+        <p>
+          I look forward to hearing from you soon.
+        </p>
+        <p>
+          Best regards,<br />
+          John Smith
+        </p>
+      </article>
+
+      <div class="quiz-grid">
+        <div class="quiz-item" data-type="mc"
+             data-hint="Look at both the delay and the damage.">
+          <h3>11. What are the two main problems?</h3>
+          <div class="mc-options">
+            <button type="button" class="mc-option" data-correct="true"
+                    data-hint="Both are clearly mentioned.">
+              The delivery was late and one box was damaged.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="The price is not mentioned.">
+              The order was too expensive and late.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="He did receive the order.">
+              The customer did not receive any parcels.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="No information about the wrong address.">
+              The parcels were delivered to the wrong address.
+            </button>
+          </div>
+          <p class="feedback"></p>
+        </div>
+
+        <div class="quiz-item" data-type="mc"
+             data-hint="You need to show empathy and propose a solution.">
+          <h3>12. Best first sentence in your answer</h3>
+          <p class="question-text">
+            Which sentence is the <strong>best</strong> way to start your reply?
+          </p>
+          <div class="mc-options">
+            <button type="button" class="mc-option"
+                    data-hint="You do not show empathy.">
+              We received your email. We will check your file.
+            </button>
+            <button type="button" class="mc-option" data-correct="true"
+                    data-hint="You apologise and mention the problem.">
+              Thank you for your email. I am very sorry for the delay and the damaged products in your last order.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Too aggressive.">
+              It is not our fault, there was a problem with the transport company.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Too informal for a complaint.">
+              Hi John, thanks for your message, that’s annoying!
+            </button>
+          </div>
+          <p class="feedback"></p>
+        </div>
+
+        <div class="quiz-item" data-type="mc"
+             data-hint="Think about a realistic and professional solution.">
+          <h3>13. Best solution to offer</h3>
+          <p class="question-text">
+            Which solution is the most appropriate?
+          </p>
+          <div class="mc-options">
+            <button type="button" class="mc-option" data-correct="true"
+                    data-hint="You replace the products and try to keep the customer.">
+              Send replacement products and offer a small discount on the next order.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="This is too weak for this problem.">
+              Say “sorry” and do nothing.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Too extreme.">
+              Cancel all future deliveries to this customer.
+            </button>
+            <button type="button" class="mc-option"
+                    data-hint="Unrealistic solution.">
+              Offer free products for life.
+            </button>
+          </div>
+          <p class="feedback"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/anais-leveltel.js" defer></script>
+</body>
+</html>
