@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Airport SFO – Full Interactive Lesson (Beginner)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/airport-eric-part2.css" />
+</head>
+<body>
+<main id="airport-part2-module">
+  <header class="module-header">
+    <h1>Airport SFO – From Plane to Customs 🛬</h1>
+    <p class="intro">
+      Practise airport and customs English with vocabulary, grammar and
+      a final role-play. Click to answer, see if it is right or wrong,
+      get a hint, and watch your score.
+    </p>
+    <div class="top-bar">
+      <div class="score-box">
+        <span class="score-label">Score</span>
+        <span id="score-current">0</span>
+        <span>/</span>
+        <span id="score-total">0</span>
+      </div>
+      <button id="reset-all" type="button" class="btn-secondary">
+        Reset all exercises
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================
+       SECTION 1 – AIRPORT VOCABULARY
+       ========================= -->
+  <section class="lesson-section" id="airport-vocab">
+    <h2>1. Useful vocabulary – at the airport 🛫</h2>
+    <p class="section-desc">
+      Learn the key places and words from your PowerPoint:
+      terminal, gate, check-in, security, baggage claim, customs…
+    </p>
+
+    <ul class="vocab-grid">
+      <li class="vocab-item">
+        <span class="vocab-emoji">🏢</span>
+        <div>
+          <strong>terminal</strong>
+          <p class="vocab-note">the main building of the airport</p>
+        </div>
+      </li>
+      <li class="vocab-item">
+        <span class="vocab-emoji">🎫</span>
+        <div>
+          <strong>check-in desk</strong>
+          <p class="vocab-note">where you drop your big suitcase and get your boarding pass</p>
+        </div>
+      </li>
+      <li class="vocab-item">
+        <span class="vocab-emoji">🔒</span>
+        <div>
+          <strong>security</strong>
+          <p class="vocab-note">where they scan your bags and check your liquids</p>
+        </div>
+      </li>
+      <li class="vocab-item">
+        <span class="vocab-emoji">🛫</span>
+        <div>
+          <strong>gate</strong>
+          <p class="vocab-note">the place where you board the plane</p>
+        </div>
+      </li>
+      <li class="vocab-item">
+        <span class="vocab-emoji">🧳</span>
+        <div>
+          <strong>baggage claim</strong>
+          <p class="vocab-note">where you pick up your suitcase after the flight</p>
+        </div>
+      </li>
+      <li class="vocab-item">
+        <span class="vocab-emoji">🛂</span>
+        <div>
+          <strong>passport control / immigration</strong>
+          <p class="vocab-note">where an officer checks your passport</p>
+        </div>
+      </li>
+      <li class="vocab-item">
+        <span class="vocab-emoji">🇺🇸</span>
+        <div>
+          <strong>customs</strong>
+          <p class="vocab-note">they ask about what you have in your luggage</p>
+        </div>
+      </li>
+      <li class="vocab-item">
+        <span class="vocab-emoji">🎒</span>
+        <div>
+          <strong>carry-on bag</strong>
+          <p class="vocab-note">small bag you take on the plane with you</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="quiz-grid">
+      <div class="quiz-item" data-type="mc">
+        <h3>1. Where do you drop your big suitcase?</h3>
+        <p class="question-text">Choose the correct answer.</p>
+        <div class="mc-options">
+          <button class="mc-option"
+                  data-hint="Security is after check-in.">
+            security
+          </button>
+          <button class="mc-option" data-correct="true"
+                  data-hint="Yes, you drop your suitcase at the check-in desk.">
+            check-in desk
+          </button>
+          <button class="mc-option"
+                  data-hint="The gate is where you board the plane.">
+            gate
+          </button>
+          <button class="mc-option"
+                  data-hint="Customs is after you arrive in the country.">
+            customs
+          </button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item" data-type="mc">
+        <h3>2. Where do you pick up your suitcase after the flight?</h3>
+        <p class="question-text">Choose the best option.</p>
+        <div class="mc-options">
+          <button class="mc-option"
+                  data-hint="The gate is for boarding and leaving the plane.">
+            gate
+          </button>
+          <button class="mc-option"
+                  data-hint="Check-in is at the start of the journey.">
+            check-in desk
+          </button>
+          <button class="mc-option" data-correct="true"
+                  data-hint="Exactly – after the flight, you go to baggage claim.">
+            baggage claim
+          </button>
+          <button class="mc-option"
+                  data-hint="Customs is where they ask questions about your luggage.">
+            customs
+          </button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item" data-type="mc">
+        <h3>3. The main building of the airport is the...</h3>
+        <p class="question-text">Choose one.</p>
+        <div class="mc-options">
+          <button class="mc-option"
+                  data-hint="The gate is just one place.">
+            gate
+          </button>
+          <button class="mc-option"
+                  data-hint="A suitcase is a bag.">
+            suitcase
+          </button>
+          <button class="mc-option" data-correct="true"
+                  data-hint="Yes, the main building is the terminal.">
+            terminal
+          </button>
+          <button class="mc-option"
+                  data-hint="Security is one area inside the airport.">
+            security
+          </button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       SECTION 2 – CUSTOMS & FORMS
+       ========================= -->
+  <section class="lesson-section" id="customs-forms">
+    <h2>2. Customs, forms and the officer 🇺🇸</h2>
+    <p class="section-desc">
+      When you arrive in the United States, you often speak to a customs officer
+      and fill in a declaration form.
+    </p>
+
+    <ul class="vocab-grid">
+      <li class="vocab-item">
+        <span class="vocab-emoji">📄</span>
+        <div>
+          <strong>declaration form</strong>
+          <p class="vocab-note">paper where you write what you bring into the country</p>
+        </div>
+      </li>
+      <li class="vocab-item">
+        <span class="vocab-emoji">🛃</span>
+        <div>
+          <strong>customs officer</strong>
+          <p class="vocab-note">the person who asks you questions and checks your bags</p>
+        </div>
+      </li>
+      <li class="vocab-item">
+        <span class="vocab-emoji">🚫</span>
+        <div>
+          <strong>nothing to declare</strong>
+          <p class="vocab-note">you have no food, alcohol or expensive items to declare</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="quiz-grid">
+      <div class="quiz-item" data-type="mc">
+        <h3>4. You have no food, no alcohol, no expensive items.</h3>
+        <p class="question-text">What do you say to the officer?</p>
+        <div class="mc-options">
+          <button class="mc-option"
+                  data-hint="This is not a declaration sentence.">
+            I am from France.
+          </button>
+          <button class="mc-option"
+                  data-hint="This is more about your stay.">
+            I am here on business.
+          </button>
+          <button class="mc-option" data-correct="true"
+                  data-hint="Yes, this is the common sentence.">
+            I have nothing to declare.
+          </button>
+          <button class="mc-option"
+                  data-hint="This is about your hotel, not customs.">
+            I have a reservation.
+          </button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item" data-type="mc">
+        <h3>5. The ______ checks your passport and asks questions.</h3>
+        <p class="question-text">Choose the correct word.</p>
+        <div class="mc-options">
+          <button class="mc-option"
+                  data-hint="A receptionist works at the hotel.">
+            receptionist
+          </button>
+          <button class="mc-option"
+                  data-hint="A pilot flies the plane.">
+            pilot
+          </button>
+          <button class="mc-option" data-correct="true"
+                  data-hint="Yes, this is the customs officer.">
+            customs officer
+          </button>
+          <button class="mc-option"
+                  data-hint="A taxi driver takes you to the hotel.">
+            taxi driver
+          </button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item" data-type="select"
+           data-answers="declaration"
+           data-hint-wrong="Think of the paper about items, money, food, etc.">
+        <h3>6. Before you enter the country...</h3>
+        <p class="question-text">
+          You fill in a ______ form.
+        </p>
+        <div class="select-row">
+          <select>
+            <option value="">-- Choose --</option>
+            <option value="reservation">reservation</option>
+            <option value="declaration">declaration</option>
+            <option value="application">application</option>
+          </select>
+          <button type="button" class="btn-primary check-select">Check</button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       SECTION 3 – WH-QUESTIONS (WHO / WHAT / WHEN / WHERE / WHY / HOW MANY)
+       ========================= -->
+  <section class="lesson-section" id="wh-questions">
+    <h2>3. WH-questions at the airport ❓</h2>
+    <p class="section-desc">
+      Customs officers use WH-words to ask questions, just like in your PowerPoint.
+    </p>
+
+    <ul class="mini-notes">
+      <li><strong>Who</strong> – person</li>
+      <li><strong>What</strong> – thing or information</li>
+      <li><strong>When</strong> – time</li>
+      <li><strong>Where</strong> – place</li>
+      <li><strong>Why</strong> – reason</li>
+      <li><strong>How many</strong> – quantity (countable: bags, days)</li>
+    </ul>
+
+    <div class="quiz-grid">
+      <div class="quiz-item" data-type="select"
+           data-answers="What"
+           data-hint-wrong="We ask for information about the airline – not a person or place.">
+        <h3>7. Airline</h3>
+        <p class="question-text">
+          ___ is your airline?
+        </p>
+        <div class="select-row">
+          <select>
+            <option value="">-- Choose WH-word --</option>
+            <option value="Who">Who</option>
+            <option value="What">What</option>
+            <option value="Where">Where</option>
+            <option value="When">When</option>
+          </select>
+          <button type="button" class="btn-primary check-select">Check</button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item" data-type="select"
+           data-answers="When"
+           data-hint-wrong="We ask 'when' for time.">
+        <h3>8. Time of the flight</h3>
+        <p class="question-text">
+          ___ does your flight leave?
+        </p>
+        <div class="select-row">
+          <select>
+            <option value="">-- Choose WH-word --</option>
+            <option value="Why">Why</option>
+            <option value="Where">Where</option>
+            <option value="When">When</option>
+            <option value="Who">Who</option>
+          </select>
+          <button type="button" class="btn-primary check-select">Check</button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item" data-type="select"
+           data-answers="Where"
+           data-hint-wrong="We ask 'where' for a destination / place.">
+        <h3>9. Destination</h3>
+        <p class="question-text">
+          ___ are you going?
+        </p>
+        <div class="select-row">
+          <select>
+            <option value="">-- Choose WH-word --</option>
+            <option value="Why">Why</option>
+            <option value="Where">Where</option>
+            <option value="How many">How many</option>
+            <option value="When">When</option>
+          </select>
+          <button type="button" class="btn-primary check-select">Check</button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item" data-type="select"
+           data-answers="How many"
+           data-hint-wrong="Bags can be counted, so we use 'How many'.">
+        <h3>10. Number of bags</h3>
+        <p class="question-text">
+          ___ bags do you have?
+        </p>
+        <div class="select-row">
+          <select>
+            <option value="">-- Choose WH-word --</option>
+            <option value="How many">How many</option>
+            <option value="How much">How much</option>
+            <option value="Where">Where</option>
+            <option value="Why">Why</option>
+          </select>
+          <button type="button" class="btn-primary check-select">Check</button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       SECTION 4 – HOW MUCH / HOW MANY
+       ========================= -->
+  <section class="lesson-section" id="howmuch-howmany">
+    <h2>4. How much / How many – countable & uncountable</h2>
+    <p class="section-desc">
+      This part comes directly from your PowerPoint: practising
+      <strong>How many</strong> (bags, days, people) and
+      <strong>How much</strong> (water, money, luggage).
+    </p>
+
+    <ul class="mini-notes">
+      <li><strong>How many</strong> bags / days / people?</li>
+      <li><strong>How much</strong> water / money / luggage?</li>
+    </ul>
+
+    <div class="quiz-grid">
+      <div class="quiz-item" data-type="select"
+           data-answers="How many"
+           data-hint-wrong="'Bags' can be counted → 'How many...?'.">
+        <h3>11. Bags</h3>
+        <p class="question-text">
+          ___ bags do you have?
+        </p>
+        <div class="select-row">
+          <select>
+            <option value="">-- Choose --</option>
+            <option value="How much">How much</option>
+            <option value="How many">How many</option>
+            <option value="Why">Why</option>
+          </select>
+          <button class="btn-primary check-select" type="button">Check</button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item" data-type="select"
+           data-answers="How much"
+           data-hint-wrong="'Water' is not countable → 'How much...?'">
+        <h3>12. Water</h3>
+        <p class="question-text">
+          ___ water is in the bottle?
+        </p>
+        <div class="select-row">
+          <select>
+            <option value="">-- Choose --</option>
+            <option value="How many">How many</option>
+            <option value="When">When</option>
+            <option value="How much">How much</option>
+          </select>
+          <button class="btn-primary check-select" type="button">Check</button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item" data-type="mc">
+        <h3>13. Luggage</h3>
+        <p class="question-text">
+          Choose the best sentence.
+        </p>
+        <div class="mc-options">
+          <button class="mc-option" data-correct="true"
+                  data-hint="Yes, this sounds natural.">
+            I have a lot of luggage.
+          </button>
+          <button class="mc-option"
+                  data-hint="'Many' is usually for countable nouns (bags, days, people).">
+            I have many luggage.
+          </button>
+          <button class="mc-option"
+                  data-hint="'Much luggage' is possible, but less common in positive sentences.">
+            I have much luggage.
+          </button>
+          <button class="mc-option"
+                  data-hint="We need 'have', not 'am'.">
+            I am luggage.
+          </button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       SECTION 5 – GRAMMAR IN CONTEXT
+       ========================= -->
+  <section class="lesson-section" id="grammar">
+    <h2>5. Grammar in context – travel to San Francisco ✈️</h2>
+    <p class="section-desc">
+      Use present simple for habits, present continuous for now,
+      and a simple future form for plans.
+    </p>
+
+    <ul class="mini-notes">
+      <li><strong>Present simple</strong>: I usually fly from Paris.</li>
+      <li><strong>Present continuous</strong>: Today I am travelling to San Francisco.</li>
+      <li><strong>Future (will)</strong>: I will stay in San Francisco for five days.</li>
+    </ul>
+
+    <div class="quiz-grid">
+      <div class="quiz-item" data-type="select"
+           data-answers="am travelling"
+           data-hint-wrong="For 'today' (a special, current action), use 'am + -ing'.">
+        <h3>14. Today’s flight</h3>
+        <p class="question-text">
+          Today I ______ to San Francisco. (travel)
+        </p>
+        <div class="select-row">
+          <select>
+            <option value="">-- Choose --</option>
+            <option value="travel">travel</option>
+            <option value="am travelling">am travelling</option>
+            <option value="will travelling">will travelling</option>
+          </select>
+          <button type="button" class="btn-primary check-select">Check</button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item" data-type="select"
+           data-answers="fly"
+           data-hint-wrong="'Usually' suggests a habit → present simple.">
+        <h3>15. Usual habit</h3>
+        <p class="question-text">
+          I usually ______ from Paris. (fly)
+        </p>
+        <div class="select-row">
+          <select>
+            <option value="">-- Choose --</option>
+            <option value="am flying">am flying</option>
+            <option value="fly">fly</option>
+            <option value="will fly">will fly</option>
+          </select>
+          <button type="button" class="btn-primary check-select">Check</button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item" data-type="select"
+           data-answers="are waiting"
+           data-hint-wrong="Right now = present continuous ('are waiting').">
+        <h3>16. At the gate now</h3>
+        <p class="question-text">
+          Right now we ______ at the gate. (wait)
+        </p>
+        <div class="select-row">
+          <select>
+            <option value="">-- Choose --</option>
+            <option value="wait">wait</option>
+            <option value="are waiting">are waiting</option>
+            <option value="will wait">will wait</option>
+          </select>
+          <button type="button" class="btn-primary check-select">Check</button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       SECTION 6 – REVIEW QUIZ
+       ========================= -->
+  <section class="lesson-section" id="review-quiz">
+    <h2>6. Review quiz – airport & customs ✅</h2>
+    <p class="section-desc">
+      A short quiz that brings together vocabulary and grammar from this lesson.
+    </p>
+
+    <div class="quiz-grid">
+      <div class="quiz-item" data-type="mc">
+        <h3>17. At security, you must...</h3>
+        <p class="question-text">
+          Choose the most correct sentence.
+        </p>
+        <div class="mc-options">
+          <button class="mc-option"
+                  data-hint="You do not give your bags to another passenger.">
+            Give your bags to another passenger.
+          </button>
+          <button class="mc-option" data-correct="true"
+                  data-hint="Yes, this is a real security rule.">
+            Take your laptop out of your bag.
+          </button>
+          <button class="mc-option"
+                  data-hint="The boarding pass is for the gate.">
+            Show your boarding pass only.
+          </button>
+          <button class="mc-option"
+                  data-hint="You cannot keep your coat on at all airports.">
+            Always keep your coat on.
+          </button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item" data-type="mc">
+        <h3>18. Which sentence is correct?</h3>
+        <p class="question-text">Choose one.</p>
+        <div class="mc-options">
+          <button class="mc-option"
+                  data-hint="'I stay' needs more context for a plan.">
+            I stay at a hotel near Union Square tomorrow.
+          </button>
+          <button class="mc-option"
+                  data-hint="'I am stay' is incorrect grammar.">
+            I am stay at a hotel near Union Square.
+          </button>
+          <button class="mc-option" data-correct="true"
+                  data-hint="Good! Correct grammar and natural travel English.">
+            I’m staying at a hotel near Union Square.
+          </button>
+          <button class="mc-option"
+                  data-hint="'I am to stay' is too formal/unnatural here.">
+            I am to stay at a hotel near Union Square.
+          </button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item" data-type="mc">
+        <h3>19. At customs, which sentence is best?</h3>
+        <p class="question-text">Choose the most natural sentence.</p>
+        <div class="mc-options">
+          <button class="mc-option"
+                  data-hint="Too short, not polite.">
+            Nothing.
+          </button>
+          <button class="mc-option" data-correct="true"
+                  data-hint="Yes, polite and complete.">
+            Good afternoon, I have nothing to declare.
+          </button>
+          <button class="mc-option"
+                  data-hint="You can say this, but it is not about declaration.">
+            Hello, I am from France.
+          </button>
+          <button class="mc-option"
+                  data-hint="This is not about customs.">
+            I am staying at Hotel Nikko tonight.
+          </button>
+        </div>
+        <p class="feedback"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       SECTION 7 – ROLE-PLAY BUILDER: CUSTOMS
+       ========================= -->
+  <section class="lesson-section" id="customs-roleplay">
+    <h2>7. Role-play builder – at customs 🎭</h2>
+    <p class="section-desc">
+      Build a short, realistic dialogue with the customs officer.
+      All options are grammatically and culturally correct. When a step is
+      correct, it is added to the final dialogue.
+    </p>
+
+    <!-- Step 1 – Country, reason & length of stay -->
+    <div class="quiz-item builder-step" data-type="builder"
+         data-builder="customs" data-step-id="c1"
+         data-template="Officer: Where are you coming from?&#10;Passenger: I’m coming from COUNTRY.&#10;Officer: What is the purpose of your trip?&#10;Passenger: I’m here for REASON.&#10;Officer: How long are you staying?&#10;Passenger: I’m staying for LENGTH.">
+      <h3>Step 1 – Basic information</h3>
+      <p class="question-text">
+        Choose your country, reason and length of stay.
+      </p>
+      <div class="builder-row">
+        <select data-placeholder="COUNTRY"
+                data-answers="France|Italy|Spain|Germany">
+          <option value="">-- Country --</option>
+          <option value="France">France</option>
+          <option value="Italy">Italy</option>
+          <option value="Spain">Spain</option>
+          <option value="Germany">Germany</option>
+        </select>
+        <select data-placeholder="REASON"
+                data-answers="business|holidays|a conference">
+          <option value="">-- Reason --</option>
+          <option value="business">business</option>
+          <option value="holidays">holidays</option>
+          <option value="a conference">a conference</option>
+        </select>
+        <select data-placeholder="LENGTH"
+                data-answers="one week|ten days|two weeks">
+          <option value="">-- Length --</option>
+          <option value="one week">one week</option>
+          <option value="ten days">ten days</option>
+          <option value="two weeks">two weeks</option>
+        </select>
+        <button type="button" class="btn-primary builder-check-add">
+          Check &amp; add
+        </button>
+      </div>
+      <p class="feedback"></p>
+    </div>
+
+    <!-- Step 2 – Hotel -->
+    <div class="quiz-item builder-step" data-type="builder"
+         data-builder="customs" data-step-id="c2"
+         data-template="Officer: Where are you staying?&#10;Passenger: I’m staying at HOTEL in CITY.">
+      <h3>Step 2 – Hotel</h3>
+      <p class="question-text">
+        Choose your hotel and city.
+      </p>
+      <div class="builder-row">
+        <select data-placeholder="HOTEL"
+                data-answers="Hotel Nikko|a hotel near Union Square|a small hotel downtown">
+          <option value="">-- Hotel --</option>
+          <option value="Hotel Nikko">Hotel Nikko</option>
+          <option value="a hotel near Union Square">a hotel near Union Square</option>
+          <option value="a small hotel downtown">a small hotel downtown</option>
+        </select>
+        <select data-placeholder="CITY"
+                data-answers="San Francisco|Oakland|San Jose">
+          <option value="">-- City --</option>
+          <option value="San Francisco">San Francisco</option>
+          <option value="Oakland">Oakland</option>
+          <option value="San Jose">San Jose</option>
+        </select>
+        <button type="button" class="btn-primary builder-check-add">
+          Check &amp; add
+        </button>
+      </div>
+      <p class="feedback"></p>
+    </div>
+
+    <!-- Step 3 – Luggage & declaration -->
+    <div class="quiz-item builder-step" data-type="builder"
+         data-builder="customs" data-step-id="c3"
+         data-template="Officer: What do you have in your luggage?&#10;Passenger: I have ITEMS in my luggage. I have nothing to declare.">
+      <h3>Step 3 – Luggage</h3>
+      <p class="question-text">
+        Choose what you have in your luggage.
+      </p>
+      <div class="builder-row">
+        <select data-placeholder="ITEMS"
+                data-answers="clothes and shoes|clothes, a laptop and some documents|clothes and some gifts for friends">
+          <option value="">-- Items --</option>
+          <option value="clothes and shoes">clothes and shoes</option>
+          <option value="clothes, a laptop and some documents">clothes, a laptop and some documents</option>
+          <option value="clothes and some gifts for friends">clothes and some gifts for friends</option>
+        </select>
+        <button type="button" class="btn-primary builder-check-add">
+          Check &amp; add
+        </button>
+      </div>
+      <p class="feedback"></p>
+    </div>
+
+    <div class="builder-preview-wrapper">
+      <h3>Your customs dialogue</h3>
+      <div id="customs-preview" class="builder-preview"
+           data-default-text="Your dialogue will appear here after you complete each step.">
+        Your dialogue will appear here after you complete each step.
+      </div>
+      <div class="tts-controls" data-target="customs-preview">
+        <button type="button" class="btn-secondary tts-btn" data-action="play">
+          🔊 Play
+        </button>
+        <button type="button" class="btn-secondary tts-btn" data-action="pause">
+          ⏸ Pause
+        </button>
+        <button type="button" class="btn-secondary tts-btn" data-action="restart">
+          ⏮ Restart
+        </button>
+      </div>
+    </div>
+
+    <button id="customs-reset" type="button" class="btn-secondary builder-reset">
+      Reset this dialogue
+    </button>
+  </section>
+</main>
+
+<script src="js/airport-eric-part2.js" defer></script>
+</body>
+</html>
+
