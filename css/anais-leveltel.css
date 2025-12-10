@@ -1,0 +1,587 @@
+/* ===========================
+   GLOBAL LAYOUT
+   =========================== */
+
+#anais-leveltel-sim {
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background: #ffffff;
+  color: #122028;
+}
+
+.sim-header h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.sim-intro {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.sim-top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.score-box {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  background: #f5f7fb;
+}
+
+.score-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.8;
+}
+
+.sim-note {
+  font-size: 0.9rem;
+  color: #4a5a68;
+}
+
+/* ===========================
+   SECTIONS
+   =========================== */
+
+.quiz-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e3e8f0;
+}
+
+.quiz-section h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.section-desc {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #4a5a68;
+}
+
+/* Small icons next to titles */
+.inline-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  display: inline-block;
+}
+
+/* ===========================
+   AUDIO BLOCKS
+   =========================== */
+
+.audio-block {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+  border: 1px solid #e3e8f0;
+  margin-bottom: 1.2rem;
+}
+
+.audio-instruction {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+audio {
+  width: 100%;
+  margin-bottom: 0.3rem;
+}
+
+/* Custom audio controls */
+.custom-audio-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-audio {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: none;
+  background: #e5e7eb;
+  color: #111827;
+  cursor: pointer;
+}
+
+.btn-audio:hover {
+  background: #d1d5db;
+}
+
+.transcript-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.small-note {
+  font-size: 0.85rem;
+  color: #6b7b8c;
+}
+
+/* Transcript */
+.transcript {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #cbd5e1;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ===========================
+   QUIZ GRID
+   =========================== */
+
+.quiz-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+/* On larger screens, two columns */
+@media (min-width: 900px) {
+  #part2 .quiz-grid,
+  #part3 .quiz-grid,
+  #part4 .quiz-grid,
+  #roleplay-section .quiz-grid,
+  #letter-dragdrop-section .quiz-grid,
+  #complaint-reading-section .quiz-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Question card */
+.quiz-item {
+  border-radius: 0.75rem;
+  border: 1px solid #e3e8f0;
+  padding: 0.9rem 1rem;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.quiz-item h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+.question-text {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* ===========================
+   BUTTONS
+   =========================== */
+
+button {
+  font-family: inherit;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary,
+.mc-option {
+  padding: 0.35rem 0.75rem;
+}
+
+.btn-primary {
+  background: #1d4ed8;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #1e40af;
+}
+
+.btn-secondary {
+  padding: 0.3rem 0.75rem;
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #d1d5db;
+}
+
+.btn-secondary:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Multiple choice buttons */
+.mc-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mc-option {
+  text-align: left;
+  background: #f3f4f6;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.mc-option:hover:not(:disabled) {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+.mc-option.chosen {
+  background: #dcfce7;
+}
+
+.mc-option.wrong {
+  background: #fee2e2;
+}
+
+.mc-option:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+/* ===========================
+   INPUTS / SELECTS
+   =========================== */
+
+.input-row,
+.select-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+input[type="text"],
+textarea,
+select {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #cbd5e1;
+  box-sizing: border-box;
+}
+
+input[type="text"],
+select {
+  min-width: 0;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+/* ===========================
+   FEEDBACK
+   =========================== */
+
+.feedback {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  min-height: 1.1em;
+}
+
+.feedback.correct {
+  color: #166534;
+}
+
+.feedback.incorrect {
+  color: #b91c1c;
+}
+
+/* ===========================
+   READING BLOCK
+   =========================== */
+
+.reading-text {
+  border-radius: 0.75rem;
+  border: 1px solid #e3e8f0;
+  padding: 1rem;
+  background: #f9fafb;
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.reading-text h3 {
+  margin-top: 0;
+}
+
+/* ===========================
+   WRITING TASKS (Part 5)
+   =========================== */
+
+.writing-task {
+  border-radius: 0.75rem;
+  border: 1px solid #e3e8f0;
+  padding: 1rem;
+  background: #f9fafb;
+  margin-bottom: 1rem;
+}
+
+.writing-task h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+.writing-task ul {
+  margin-top: 0.2rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.1rem;
+}
+
+/* ===========================
+   DRAG & DROP LETTER
+   =========================== */
+
+.dragdrop-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.5fr);
+  gap: 0.75rem;
+  margin-top: 0.6rem;
+}
+
+.drag-items-pool {
+  border-radius: 0.75rem;
+  border: 1px dashed #cbd5e1;
+  padding: 0.6rem;
+  background: #f9fafb;
+  min-height: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.drag-item {
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.5rem;
+  background: #e5e7eb;
+  cursor: grab;
+  font-size: 0.9rem;
+}
+
+.drag-item:active {
+  cursor: grabbing;
+}
+
+.drop-zones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.drop-zone {
+  border-radius: 0.75rem;
+  border: 1px dashed #cbd5e1;
+  padding: 0.5rem;
+  min-height: 2.6rem;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+}
+
+.zone-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.drop-zone.filled {
+  border-style: solid;
+  border-color: #22c55e;
+  background: #ecfdf5;
+}
+
+/* ===========================
+   ROLEPLAY OUTPUT
+   =========================== */
+
+.roleplay-output-block {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e3e8f0;
+  background: #f9fafb;
+}
+
+.roleplay-output {
+  margin-top: 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px dashed #cbd5e1;
+  padding: 0.6rem;
+  min-height: 3rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media (max-width: 600px) {
+  .sim-top-bar {
+    align-items: stretch;
+  }
+
+  .score-box {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #reset-all {
+    width: 100%;
+  }
+
+  .dragdrop-container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* ===========================
+   BUILDERS (EMAIL + MONOLOGUE)
+   =========================== */
+
+.builder-gender {
+  margin-top: 0.75rem;
+  margin-bottom: 1.2rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e3e8f0;
+  background: #f9fafb;
+  font-size: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.builder-gender-label {
+  font-weight: 600;
+}
+
+.builder-gender label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+}
+
+.builder-task {
+  border-radius: 0.75rem;
+  border: 1px solid #e3e8f0;
+  padding: 1rem;
+  background: #f9fafb;
+  margin-bottom: 1.2rem;
+}
+
+.builder-task h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+.builder-step {
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px dashed #cbd5e1;
+  background: #ffffff;
+}
+
+.builder-step h4 {
+  margin: 0 0 0.3rem 0;
+  font-size: 0.98rem;
+}
+
+.builder-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  margin-top: 0.35rem;
+}
+
+.builder-preview-wrapper {
+  margin-top: 0.9rem;
+}
+
+.builder-preview-wrapper h4 {
+  margin: 0 0 0.3rem 0;
+}
+
+.builder-preview {
+  border-radius: 0.75rem;
+  border: 1px dashed #cbd5e1;
+  padding: 0.6rem 0.75rem;
+  background: #ffffff;
+  font-size: 0.95rem;
+  min-height: 4rem;
+  white-space: pre-wrap;
+}
+
+.builder-reset {
+  margin-top: 0.6rem;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .builder-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .builder-row > select,
+  .builder-row > .btn-primary {
+    width: 100%;
+  }
+}
+/* ===========================
+   TYPED BUILDERS (INLINE INPUTS)
+   =========================== */
+
+.typed-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.typed-line {
+  font-size: 0.95rem;
+}
+
+.typed-line .typed-input {
+  width: 6rem;
+  display: inline-block;
+  margin: 0 0.25rem;
+}
+
+
