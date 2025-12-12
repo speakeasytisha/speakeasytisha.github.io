@@ -372,6 +372,7 @@ body {
   margin-bottom: 0.9rem;
 }
 
+
 .hero-card-caption {
   font-size: 0.9rem;
   color: #e5e7eb;
@@ -836,3 +837,21 @@ body {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+@media (max-width: 900px) {
+  .nav-links {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 72px; /* adjust if your header is taller */
+    height: calc((var(--vh, 1vh) * 100) - 72px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2rem;
+  }
+
+  body.nav-open {
+    overflow: hidden; /* page won't scroll, menu will */
+  }
+}
+
+
