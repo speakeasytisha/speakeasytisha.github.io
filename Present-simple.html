@@ -670,39 +670,9 @@
 
   <!-- Page logic -->
         <!-- NAV BEHAVIOUR (same as index.html) -->
-  <script>
-    (function () {
-      const toggle = document.querySelector(".nav-toggle");
-      const navLinks = document.querySelector(".nav-links");
-
-      if (toggle && navLinks) {
-        toggle.addEventListener("click", function () {
-          const isOpen = navLinks.classList.toggle("is-open");
-          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        });
-      }
-
-      const dropdownParents = document.querySelectorAll(".has-dropdown");
-      dropdownParents.forEach(function (parent) {
-        const button = parent.querySelector(".nav-button");
-        if (!button) return;
-
-        button.addEventListener("click", function (event) {
-          event.stopPropagation();
-          parent.classList.toggle("is-open");
-        });
-      });
-
-      document.addEventListener("click", function (event) {
-        document.querySelectorAll(".has-dropdown.is-open").forEach(function (parent) {
-          if (!parent.contains(event.target)) {
-            parent.classList.remove("is-open");
-          }
-        });
-      });
-    })();
-  </script>
+ 
   <script src="./js/present-simple.js"></script>
+<script src="./js/site-chrome.js" defer></script>
 </body>
 </html>
 
