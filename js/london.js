@@ -259,7 +259,7 @@
     infoForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const name = (infoForm.name.value || "Mathieu").trim();
+      const name = (infoForm.name.value || "Matt").trim();
       const fromCountry = (infoForm.fromCountry && infoForm.fromCountry.value) ? infoForm.fromCountry.value : "Congo";
       const liveIn = ((infoForm.liveIn && infoForm.liveIn.value) ? infoForm.liveIn.value : "France").trim();
       const stay = infoForm.stay.value || "in the city centre";
@@ -458,7 +458,7 @@
     travelForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const name = (travelForm.name.value || "Mathieu").trim();
+      const name = (travelForm.name.value || "Matt").trim();
       const fromCity = travelForm.fromCity.value || "Paris";
       const mode = travelForm.mode.value || "by train (via Paris, Eurostar)";
       const time = travelForm.time.value || "about 2–3 hours";
@@ -604,7 +604,7 @@
   ferryForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const name = (ferryForm.name.value || "Mathieu").trim();
+    const name = (ferryForm.name.value || "Matt").trim();
     const route = ferryForm.route.value || "Calais to Dover";
     const passengerType = ferryForm.passengerType.value || "on foot";
     const ticketType = ferryForm.ticketType.value || "a return ticket";
@@ -776,7 +776,7 @@ if (ferryBuilderResetBtn && ferryOutput && ferryForm) {
     meetForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const yourName = (meetForm.yourName.value || "Mathieu").trim();
+      const yourName = (meetForm.yourName.value || "Matt").trim();
       const friendName = (meetForm.friendName.value || "Daniel").trim();
       const yourCountry = meetForm.yourCountry.value || "Congo";
       const yourCity = (meetForm.yourCity.value || "France").trim();

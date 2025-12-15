@@ -1,4 +1,4 @@
-// Fabrice – Weekend & Workday small talk module
+// Past Continuous – interactive lesson module
 (function () {
   "use strict";
 
@@ -270,32 +270,23 @@
       };
     }
 
-    const dialogueBuilder = setupChoiceBuilder(
-      "dialogue",
-      "dialogue-preview",
-      "dialogue-reset",
-      ["dlg-1", "dlg-2", "dlg-3"]
+    const alibiBuilder = setupChoiceBuilder(
+      "alibi",
+      "alibi-preview",
+      "alibi-reset",
+      ["al-1", "al-2", "al-3", "al-4"]
     );
-    if (dialogueBuilder) builders.push(dialogueBuilder);
+    if (alibiBuilder) builders.push(alibiBuilder);
 
-    const workdayBuilder = setupChoiceBuilder(
-      "workday",
-      "workday-preview",
-      "workday-reset",
-      ["wd-1", "wd-2", "wd-3"]
+    const storyBuilder = setupChoiceBuilder(
+      "story",
+      "story-preview",
+      "story-reset",
+      ["st-1", "st-2", "st-3", "st-4"]
     );
-    if (workdayBuilder) builders.push(workdayBuilder);
+    if (storyBuilder) builders.push(storyBuilder);
 
-    
-    const plansBuilder = setupChoiceBuilder(
-      "plans",
-      "plans-preview",
-      "plans-reset",
-      ["pl-1", "pl-2", "pl-3", "pl-4"]
-    );
-    if (plansBuilder) builders.push(plansBuilder);
-
-// ===========================
+    // ===========================
     // TEXT-TO-SPEECH CONTROLS
     // ===========================
     const ttsGroups = Array.from(document.querySelectorAll(".tts-controls"));
