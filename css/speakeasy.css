@@ -129,22 +129,7 @@ body {
   position: relative;
 }
 
-.nav-link::after,
-.nav-button::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.35rem;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-gold);
-  transition: width 0.25s ease;
-}
 
-.nav-link:hover::after,
-.nav-button:hover::after {
-  width: 100%;
-}
 
 /* Dropdown menu */
 
@@ -156,11 +141,44 @@ body {
   width: 0;
 }
 
-.has-dropdown .nav-button::before {
-  content: "▾";
-  font-size: 0.7rem;
-  margin-left: 0.4rem;
+/* Dropdown button layout: caret right after text */
+.nav-button{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;        /* spacing between text and caret */
 }
+
+/* The caret itself */
+.nav-caret{
+  font-size: 0.7rem;
+  opacity: 0.9;
+  line-height: 1;
+  transform: translateY(1px);
+}
+
+/* Keep the gold underline hover effect like the other links */
+/* underline only the label text */
+.nav-label{
+  position: relative;
+  display: inline-block;
+}
+
+.nav-label::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-0.35rem;
+  width:0;
+  height:2px;
+  background-color: var(--color-gold);
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover .nav-label::after,
+.nav-button:hover .nav-label::after{
+  width:100%;
+}
+
 
 /* Container for dropdown list */
 
@@ -180,10 +198,11 @@ body {
 }
 
 /* Show dropdown on hover OR when JS adds .is-open */
-.has-dropdown:hover > .dropdown-menu,
+/*.has-dropdown:hover > .dropdown-menu,*/
 .has-dropdown.is-open > .dropdown-menu {
   display: block;
 }
+
 
 
 .dropdown-menu li {
@@ -622,14 +641,25 @@ body {
   }
 
   /* Dropdowns always visible under their heading on mobile */
-  .has-dropdown > .dropdown-menu {
-    position: static;
-    display: block;
-    box-shadow: none;
-    background-color: transparent;
-    padding: 0.2rem 0 0.5rem;
-  }
 
+.has-dropdown > .dropdown-menu {
+  position: static;
+  display: none;
+  box-shadow: none;
+  background-color: transparent;
+  padding: 0.2rem 0 0.5rem;
+}
+/* NAV: force uppercase everywhere */
+.nav-link,
+.nav-button,
+.dropdown-menu a,
+.dropdown-heading {
+  text-transform: uppercase;
+  letter-spacing: 0.08em; /* optional: helps uppercase look cleaner */
+}
+.has-dropdown.is-open > .dropdown-menu {
+  display: block;
+}
   .dropdown-menu a {
     padding-left: 1.2rem;
   }
