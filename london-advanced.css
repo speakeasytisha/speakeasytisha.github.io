@@ -1,0 +1,477 @@
+/* =========================================================
+   London (Advanced) lesson – page-specific styles
+   Keep this file separate from speakeasy.css
+   Prefix: .la-
+   ========================================================= */
+
+:root {
+  --la-bg: #f6f7fb;
+  --la-ink: #0f172a;
+  --la-muted: #475569;
+  --la-card: #ffffff;
+  --la-border: rgba(15, 23, 42, 0.10);
+  --la-shadow: 0 16px 40px rgba(15, 23, 42, 0.10);
+  --la-gold: var(--color-gold, #b6a85a);
+  --la-radius: 18px;
+  --la-hero-image: url("../img/hero-london.jpg");
+}
+
+.la-shell {
+  background: var(--la-bg);
+  color: var(--la-ink);
+}
+
+.la-hero {
+  position: relative;
+  min-height: 68vh;
+  padding: calc(var(--nav-height, 72px) + 3.5rem) 1.25rem 3.5rem;
+  background-image:
+    linear-gradient(135deg, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.62)),
+    var(--la-hero-image);
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.la-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.6rem;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  align-items: start;
+}
+
+.la-kicker {
+  margin: 0 0 0.5rem;
+  font-size: 0.86rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--la-gold);
+  font-weight: 600;
+}
+
+.la-hero h1 {
+  margin: 0;
+  font-size: 2.85rem;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.la-lead {
+  margin: 0.75rem 0 1rem;
+  max-width: 44rem;
+  color: rgba(249, 250, 251, 0.90);
+  font-size: 1.03rem;
+  line-height: 1.6;
+}
+
+.la-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1rem 0 1.2rem;
+}
+
+.la-chip {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(249, 250, 251, 0.10);
+  border: 1px solid rgba(249, 250, 251, 0.18);
+  color: rgba(249, 250, 251, 0.95);
+}
+
+.la-scorebar {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.la-scorepill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(249, 250, 251, 0.10);
+  border: 1px solid rgba(249, 250, 251, 0.18);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.la-note {
+  margin: 0.75rem 0 0;
+  color: rgba(249, 250, 251, 0.85);
+  font-size: 0.92rem;
+}
+
+/* Right card */
+.la-hero-card {
+  background: rgba(2, 6, 23, 0.62);
+  border: 1px solid rgba(249, 250, 251, 0.16);
+  border-radius: var(--la-radius);
+  padding: 1rem 1.1rem 1.1rem;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+}
+
+.la-card-title {
+  margin: 0 0 0.6rem;
+  font-size: 1.05rem;
+}
+
+.la-bullets {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: rgba(9, 125, 241, 0.92);
+  font-size: 0.94rem;
+}
+
+.la-bullets li + li {
+  margin-top: 0.35rem;
+}
+
+/* Sections */
+.la-section {
+  padding: 3.2rem 1.25rem;
+}
+
+.la-section:nth-of-type(odd) {
+  background: var(--la-bg);
+}
+
+.la-section:nth-of-type(even) {
+  background: #ffffff;
+}
+
+.la-section-head {
+  max-width: 1100px;
+  margin: 0 auto 1.1rem;
+}
+
+.la-section-head h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.8rem;
+}
+
+.la-section-head p {
+  margin: 0;
+  max-width: 60rem;
+  color: var(--la-muted);
+  font-size: 0.98rem;
+}
+
+.la-card {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--la-card);
+  border: 1px solid var(--la-border);
+  border-radius: var(--la-radius);
+  padding: 1.1rem 1.1rem 1.3rem;
+  box-shadow: var(--la-shadow);
+}
+
+.la-card h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1.25rem;
+}
+
+.la-sub {
+  margin: 0 0 0.85rem;
+  color: var(--la-muted);
+}
+
+/* Vocabulary cards */
+.la-vocab-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.la-vocab {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  padding: 0.85rem 0.9rem;
+  background: rgba(2, 6, 23, 0.03);
+  border: 1px solid var(--la-border);
+  border-radius: 16px;
+}
+
+.la-ico {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(182, 168, 90, 0.18);
+  border: 1px solid rgba(182, 168, 90, 0.30);
+  font-size: 1.25rem;
+}
+
+.la-vocab strong {
+  display: block;
+}
+
+.la-vocab small {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--la-muted);
+  line-height: 1.35;
+}
+
+.la-mt { margin-top: 1.1rem; }
+.la-mb { margin-bottom: 1.1rem; }
+
+/* Callout */
+.la-callout {
+  background: rgba(182, 168, 90, 0.12);
+  border: 1px solid rgba(182, 168, 90, 0.28);
+  border-radius: 16px;
+  padding: 0.85rem 0.95rem;
+  color: #0b1120;
+}
+
+.la-callout ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.la-callout li + li {
+  margin-top: 0.25rem;
+}
+
+/* Forms */
+.la-form label {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--la-ink);
+}
+
+.la-form select,
+.la-form input {
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.55rem 0.6rem;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  background: #ffffff;
+  font: inherit;
+  color: var(--la-ink);
+}
+
+.la-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.la-actions {
+  margin-top: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.la-result {
+  margin-top: 0.9rem;
+  border-top: 1px dashed rgba(15, 23, 42, 0.18);
+  padding-top: 0.85rem;
+  color: var(--la-ink);
+}
+
+.la-result h4 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.la-result p {
+  margin: 0.35rem 0 0;
+  color: var(--la-muted);
+}
+
+/* Buttons */
+.la-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--la-gold);
+  color: #0b1120;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, background-color 0.14s ease, border-color 0.14s ease;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.20);
+}
+
+.la-btn:hover { transform: translateY(-1px); }
+
+.la-btn:active { transform: translateY(0); }
+
+.la-btn-secondary {
+  background: rgba(2, 6, 23, 0.08);
+  border-color: rgba(2, 6, 23, 0.16);
+  color: #0b1120;
+  box-shadow: none;
+}
+
+/* Quiz */
+.la-quiz {
+  margin-top: 0.85rem;
+  display: grid;
+  gap: 0.95rem;
+}
+
+.la-q {
+  padding: 0.85rem 0.9rem 0.95rem;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  background: rgba(2, 6, 23, 0.03);
+}
+
+.la-q p {
+  margin: 0 0 0.6rem;
+  font-weight: 650;
+}
+
+.la-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.la-options button {
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  background: #ffffff;
+  padding: 0.45rem 0.85rem;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
+}
+
+.la-options button:hover { transform: translateY(-1px); }
+
+.la-options button[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.la-options button.la-correct {
+  border-color: rgba(22, 163, 74, 0.55);
+  background: rgba(220, 252, 231, 0.85);
+}
+
+.la-options button.la-wrong {
+  border-color: rgba(185, 28, 28, 0.55);
+  background: rgba(254, 226, 226, 0.90);
+}
+
+.la-tools {
+  margin-top: 0.55rem;
+}
+
+.la-clue {
+  border: 1px solid rgba(182, 168, 90, 0.40);
+  background: rgba(182, 168, 90, 0.14);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.la-feedback {
+  margin-top: 0.55rem;
+  min-height: 1.2em;
+  color: var(--la-muted);
+  font-size: 0.92rem;
+}
+
+.la-feedback strong { color: #0b1120; }
+
+.la-feedback.la-ok { color: #166534; }
+.la-feedback.la-bad { color: #991b1b; }
+
+.la-quiz-footer {
+  margin-top: 0.5rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed rgba(15, 23, 42, 0.16);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.la-final-msg {
+  font-weight: 800;
+  color: #0b1120;
+}
+
+/* Audio section */
+.la-audiohead {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.la-audio-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.la-textblock {
+  margin: 0.75rem 0 0;
+  padding: 0.85rem 0.95rem;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  background: rgba(2, 6, 23, 0.03);
+  color: #0b1120;
+  line-height: 1.65;
+}
+
+/* Output areas */
+.la-output {
+  width: 100%;
+  min-height: 180px;
+  margin-top: 0.85rem;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  background: #ffffff;
+  padding: 0.85rem 0.95rem;
+  font: inherit;
+  resize: vertical;
+}
+
+/* End */
+.la-end {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.2rem 1.25rem 3rem;
+  color: var(--la-muted);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .la-hero-inner { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .la-grid-2 { grid-template-columns: minmax(0, 1fr); }
+  .la-section-head h2 { font-size: 1.55rem; }
+  .la-hero { min-height: 62vh; padding-top: calc(var(--nav-height, 72px) + 2.8rem); }
+}
