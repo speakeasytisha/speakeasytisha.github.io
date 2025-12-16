@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English 360° – Préparation interactive · SpeakEasyTisha</title>
+
+  <!-- Main site CSS (optional) -->
+  <link rel="stylesheet" href="./css/speakeasy.css" />
+  <!-- Lesson CSS -->
+  <link rel="stylesheet" href="./css/english-360-prep.css" />
+</head>
+
+<body data-hero-image="./img/hero-exam.jpg"
+      data-hero-title="English 360°"
+      data-hero-tagline="Préparation interactive – CPF"
+      data-hero-desc="Comprendre le format + s’entraîner (listening, reading, grammar, speaking, writing).">
+
+  <!-- Optional shared header/footer loader -->
+  <div id="site-header"></div>
+
+  <main class="e360-shell" id="top">
+    <header class="e360-page-head">
+      <div class="e360-title">
+        <h1>English 360° – Préparation (45–60 min)</h1>
+        <p class="e360-sub">
+          Objectif : comprendre l’examen, puis s’entraîner sur <strong>5 compétences</strong> avec des exercices interactifs.
+          <span class="e360-note">Aucun prénom n’est imposé : tu peux saisir ton nom si tu veux.</span>
+        </p>
+      </div>
+
+      <div class="e360-controls">
+        <div class="e360-name">
+          <label for="e360Name">Nom (optionnel)</label>
+          <input id="e360Name" type="text" placeholder="Your name (optional)" />
+        </div>
+
+        <div class="e360-actions">
+          <button class="e360-btn e360-btn-primary" id="e360SaveName">💾 Enregistrer</button>
+          <button class="e360-btn" id="e360ResetAll">🔁 Reset tout</button>
+        </div>
+
+        <div class="e360-progress" aria-label="Progression">
+          <div class="e360-progress-row">
+            <span>Progression</span>
+            <span id="e360ProgressText">0%</span>
+          </div>
+          <div class="e360-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+            <div class="e360-progress-fill" id="e360ProgressFill" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- =======================
+         1) EXAM OVERVIEW
+    ======================== -->
+    <section class="e360-card" id="overview">
+      <div class="e360-card-head">
+        <h2>1) Présentation de la certification 📌</h2>
+        <span class="e360-badge">Comprendre avant de s’entraîner</span>
+      </div>
+
+      <div class="e360-grid-2">
+        <div>
+          <ul class="e360-list">
+            <li>🎯 <strong>Objectif</strong> : évaluer de manière complète et équilibrée l’anglais (5 compétences) avec une orientation professionnelle.</li>
+            <li>👥 <strong>Public</strong> : salariés, demandeurs d’emploi, étudiants (CPF).</li>
+            <li>⏱️ <strong>Durée</strong> : <strong>45–60 minutes</strong>, 100% en ligne, sans rendez-vous.</li>
+            <li>📈 <strong>Niveaux CECRL</strong> : A1 à C2, avec sous-niveaux (ex : A2+, A2++).</li>
+            <li>🧾 <strong>Résultats</strong> : généralement sous 24–72h (production orale/écrite évaluée humainement).</li>
+            <li>🗓️ <strong>Validité</strong> : 2 ans (pour les financeurs).</li>
+          </ul>
+
+          <div class="e360-callout">
+            <div class="e360-callout-icon">💡</div>
+            <div>
+              <p class="e360-callout-title">Stratégie gagnante (très important)</p>
+              <p class="e360-callout-text">
+                Les réponses <strong>développées</strong> et <strong>riches</strong> (oral + écrit) sont mieux valorisées.
+                Chaque question est chronométrée : entraîne-toi à être <strong>clair</strong>, <strong>structuré</strong> et <strong>efficace</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="e360-mini-title">Les 5 compétences évaluées</h3>
+          <div class="e360-skill-grid">
+            <div class="e360-skill"><span>🎧</span><div><strong>Listening</strong><small>Compréhension orale (QCM)</small></div></div>
+            <div class="e360-skill"><span>📖</span><div><strong>Reading</strong><small>Compréhension écrite (QCM + interactif)</small></div></div>
+            <div class="e360-skill"><span>🧩</span><div><strong>Grammar</strong><small>Grammaire (choix, erreurs, prépositions)</small></div></div>
+            <div class="e360-skill"><span>🗣️</span><div><strong>Speaking</strong><small>Interaction + production (une seule prise)</small></div></div>
+            <div class="e360-skill"><span>✍️</span><div><strong>Writing</strong><small>Email pro + tâche écrite</small></div></div>
+          </div>
+
+          <h3 class="e360-mini-title">Échelle indicative (repère rapide)</h3>
+          <div class="e360-scale">
+            <div class="e360-scale-row"><span>0–30%</span><span>A1</span></div>
+            <div class="e360-scale-row"><span>31–50%</span><span>A2</span></div>
+            <div class="e360-scale-row"><span>51–65%</span><span>B1</span></div>
+            <div class="e360-scale-row"><span>66–80%</span><span>B2</span></div>
+            <div class="e360-scale-row"><span>81–90%</span><span>C1</span></div>
+            <div class="e360-scale-row"><span>91–100%</span><span>C2</span></div>
+            <p class="e360-note">📝 Ce tableau sert de repère : le rapport final donne des sous-niveaux par compétence.</p>
+          </div>
+
+          <div class="e360-demo">
+            <h3 class="e360-mini-title">Lien “test démo”</h3>
+            <p class="e360-note">Tu peux coller ici le lien du test de démonstration (pour t’y retrouver facilement).</p>
+            <div class="e360-demo-row">
+              <input id="e360DemoLink" type="url" placeholder="https://..." />
+              <button class="e360-btn" id="e360SaveDemo">💾</button>
+              <a class="e360-btn e360-btn-link" id="e360OpenDemo" href="#" target="_blank" rel="noopener">🔗 Ouvrir</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         2) FRENCH vs ENGLISH
+    ======================== -->
+    <section class="e360-card" id="fr-en-diff">
+      <div class="e360-card-head">
+        <h2>2) Pièges fréquents (Français → Anglais) ⚠️</h2>
+        <span class="e360-badge">Ce que les évaluateurs remarquent</span>
+      </div>
+
+      <div class="e360-grid-3">
+        <div class="e360-tip">
+          <h3>✅ “Je vais …”</h3>
+          <p><strong>EN</strong> : <em>I’m going to…</em> (plan/ intention)</p>
+          <p class="e360-note">Pas “I will go to…” si c’est un plan déjà décidé.</p>
+        </div>
+
+        <div class="e360-tip">
+          <h3>✅ “Je te promets / je décide maintenant”</h3>
+          <p><strong>EN</strong> : <em>I’ll…</em> (décision spontanée / promesse / offre)</p>
+          <p class="e360-note">Ex: “I’ll email you the report this afternoon.”</p>
+        </div>
+
+        <div class="e360-tip">
+          <h3>✅ “J’ai déjà un rendez-vous”</h3>
+          <p><strong>EN</strong> : <em>I’m meeting a client at 3pm.</em> (arrangement certain)</p>
+          <p class="e360-note">Présent continuous = agenda/arrangement.</p>
+        </div>
+      </div>
+
+      <div class="e360-mini-quiz" data-e360-quiz="frEn">
+        <h3>Mini-check (2 min)</h3>
+
+        <div class="e360-q" data-answer="b" data-explain="Plan déjà décidé → 'going to'.">
+          <p>1) “Ce week-end, je vais visiter Londres.”</p>
+          <div class="e360-opts">
+            <button data-opt="a">I will visit London this weekend.</button>
+            <button data-opt="b">I’m going to visit London this weekend.</button>
+            <button data-opt="c">I visit London this weekend.</button>
+          </div>
+          <div class="e360-fb"></div>
+        </div>
+
+        <div class="e360-q" data-answer="a" data-explain="Décision spontanée (sur le moment) → 'will'.">
+          <p>2) “Oh, tu es occupée ? Je t’appelle plus tard.”</p>
+          <div class="e360-opts">
+            <button data-opt="a">OK, I’ll call you later.</button>
+            <button data-opt="b">OK, I’m going to call you later.</button>
+            <button data-opt="c">OK, I calling you later.</button>
+          </div>
+          <div class="e360-fb"></div>
+        </div>
+
+        <div class="e360-scoreline">
+          <span class="e360-pill">Score: <span data-score>0</span>/<span data-total>0</span></span>
+          <button class="e360-btn" data-show-score>🎯 Voir mon score</button>
+          <button class="e360-btn" data-reset>🔁 Reset</button>
+          <span class="e360-note" data-final></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         3) LISTENING PRACTICE
+    ======================== -->
+    <section class="e360-card" id="listening">
+      <div class="e360-card-head">
+        <h2>3) Listening 🎧 (QCM + chronomètre)</h2>
+        <span class="e360-badge">Entraînement au format</span>
+      </div>
+
+      <p class="e360-note">
+        Ici, les “audios” sont joués via la voix du navigateur (TTS) pour simuler un enregistrement.
+        Dans l’examen, ce sont de vrais audios : l’objectif est de t’entraîner à <strong>repérer l’information</strong> rapidement.
+      </p>
+
+      <div class="e360-audio-card">
+        <div class="e360-audio-head">
+          <h3>Audio A – Problème client (service / réception)</h3>
+          <div class="e360-audio-actions">
+            <button class="e360-btn e360-btn-primary" data-tts-play="audA">▶️ Play</button>
+            <button class="e360-btn" data-tts-stop>⏹ Stop</button>
+            <span class="e360-timer">
+              ⏱️ <span data-timer="audA">00:45</span>
+              <button class="e360-btn e360-btn-small" data-timer-start="audA">Start</button>
+              <button class="e360-btn e360-btn-small" data-timer-reset="audA">Reset</button>
+            </span>
+          </div>
+        </div>
+
+        <p class="e360-script" data-script="audA">
+          “Hi, I’m calling about my invoice. I was charged twice for the same booking.
+          The reservation was under Patel, last Thursday. I need the duplicate charge refunded today because my company closes accounts at 5 p.m.
+          Could you email me a corrected invoice and confirm the refund reference number?”
+        </p>
+
+        <div class="e360-mini-quiz" data-e360-quiz="listenA">
+          <div class="e360-q" data-answer="c" data-explain="The caller says they were charged twice.">
+            <p>1) What is the main issue?</p>
+            <div class="e360-opts">
+              <button data-opt="a">The booking was cancelled.</button>
+              <button data-opt="b">The room was not available.</button>
+              <button data-opt="c">They were charged twice.</button>
+              <button data-opt="d">The invoice is missing.</button>
+            </div>
+            <div class="e360-fb"></div>
+          </div>
+
+          <div class="e360-q" data-answer="b" data-explain="They need it today; accounts close at 5 p.m.">
+            <p>2) Why is it urgent?</p>
+            <div class="e360-opts">
+              <button data-opt="a">They are leaving tomorrow.</button>
+              <button data-opt="b">Their company closes accounts at 5 p.m.</button>
+              <button data-opt="c">They lost the receipt.</button>
+              <button data-opt="d">They need a taxi.</button>
+            </div>
+            <div class="e360-fb"></div>
+          </div>
+
+          <div class="e360-q" data-answer="a" data-explain="They ask for a corrected invoice + refund reference.">
+            <p>3) What does the caller request?</p>
+            <div class="e360-opts">
+              <button data-opt="a">A corrected invoice and refund confirmation.</button>
+              <button data-opt="b">A discount for next time.</button>
+              <button data-opt="c">A room upgrade.</button>
+              <button data-opt="d">A letter for HR.</button>
+            </div>
+            <div class="e360-fb"></div>
+          </div>
+
+          <div class="e360-scoreline">
+            <span class="e360-pill">Score: <span data-score>0</span>/<span data-total>0</span></span>
+            <button class="e360-btn" data-show-score>🎯 Voir mon score</button>
+            <button class="e360-btn" data-reset>🔁 Reset</button>
+            <span class="e360-note" data-final></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="e360-audio-card">
+        <div class="e360-audio-head">
+          <h3>Audio B – Annonce interne (réunion)</h3>
+          <div class="e360-audio-actions">
+            <button class="e360-btn e360-btn-primary" data-tts-play="audB">▶️ Play</button>
+            <button class="e360-btn" data-tts-stop>⏹ Stop</button>
+            <span class="e360-timer">
+              ⏱️ <span data-timer="audB">00:35</span>
+              <button class="e360-btn e360-btn-small" data-timer-start="audB">Start</button>
+              <button class="e360-btn e360-btn-small" data-timer-reset="audB">Reset</button>
+            </span>
+          </div>
+        </div>
+
+        <p class="e360-script" data-script="audB">
+          “Quick reminder: the project update meeting has moved from Wednesday to Thursday at 10:30.
+          Please upload your slides by 9:00 a.m. Thursday. If you can’t attend, send your updates by email to the team lead.”
+        </p>
+
+        <div class="e360-mini-quiz" data-e360-quiz="listenB">
+          <div class="e360-q" data-answer="b" data-explain="It moved from Wednesday to Thursday at 10:30.">
+            <p>1) When is the meeting now?</p>
+            <div class="e360-opts">
+              <button data-opt="a">Wednesday at 10:30</button>
+              <button data-opt="b">Thursday at 10:30</button>
+              <button data-opt="c">Thursday at 9:00</button>
+              <button data-opt="d">Friday at 10:30</button>
+            </div>
+            <div class="e360-fb"></div>
+          </div>
+
+          <div class="e360-q" data-answer="a" data-explain="Slides must be uploaded by 9:00 a.m. Thursday.">
+            <p>2) What must participants do before the meeting?</p>
+            <div class="e360-opts">
+              <button data-opt="a">Upload slides by 9:00 a.m.</button>
+              <button data-opt="b">Call the team lead.</button>
+              <button data-opt="c">Print the agenda.</button>
+              <button data-opt="d">Book a room.</button>
+            </div>
+            <div class="e360-fb"></div>
+          </div>
+
+          <div class="e360-q" data-answer="c" data-explain="If you can't attend, email your updates to the team lead.">
+            <p>3) If you cannot attend, what should you do?</p>
+            <div class="e360-opts">
+              <button data-opt="a">Cancel the meeting.</button>
+              <button data-opt="b">Ask for a refund.</button>
+              <button data-opt="c">Email your updates.</button>
+              <button data-opt="d">Arrive earlier.</button>
+            </div>
+            <div class="e360-fb"></div>
+          </div>
+
+          <div class="e360-scoreline">
+            <span class="e360-pill">Score: <span data-score>0</span>/<span data-total>0</span></span>
+            <button class="e360-btn" data-show-score>🎯 Voir mon score</button>
+            <button class="e360-btn" data-reset>🔁 Reset</button>
+            <span class="e360-note" data-final></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         4) READING PRACTICE
+    ======================== -->
+    <section class="e360-card" id="reading">
+      <div class="e360-card-head">
+        <h2>4) Reading 📖 (email pro + tâche interactive)</h2>
+        <span class="e360-badge">Repérer ton + intention + action attendue</span>
+      </div>
+
+      <div class="e360-grid-2">
+        <div class="e360-read-box">
+          <h3>Email professionnel</h3>
+          <p class="e360-email">
+            <strong>Subject:</strong> Request to reschedule Thursday’s training session<br>
+            Hi,<br><br>
+            Unfortunately, our supplier meeting has been brought forward to Thursday morning, so I won’t be able to attend the training session at 10:00.
+            Would it be possible to reschedule to Friday afternoon? If not, I can join next week’s session instead.<br><br>
+            Many thanks,<br>
+            Alex Martin
+          </p>
+
+          <div class="e360-mini-quiz" data-e360-quiz="readEmail">
+            <div class="e360-q" data-answer="d" data-explain="They cannot attend Thursday at 10:00 because of a supplier meeting.">
+              <p>1) Why is Alex writing?</p>
+              <div class="e360-opts">
+                <button data-opt="a">To cancel the training permanently.</button>
+                <button data-opt="b">To complain about the trainer.</button>
+                <button data-opt="c">To request a refund.</button>
+                <button data-opt="d">To reschedule a training session.</button>
+              </div>
+              <div class="e360-fb"></div>
+            </div>
+
+            <div class="e360-q" data-answer="b" data-explain="Friday afternoon is the preferred alternative.">
+              <p>2) What is the preferred alternative time?</p>
+              <div class="e360-opts">
+                <button data-opt="a">Thursday morning</button>
+                <button data-opt="b">Friday afternoon</button>
+                <button data-opt="c">Next month</button>
+                <button data-opt="d">Saturday</button>
+              </div>
+              <div class="e360-fb"></div>
+            </div>
+
+            <div class="e360-q" data-answer="a" data-explain="If Friday is not possible, Alex can join next week.">
+              <p>3) If the reschedule is not possible, what will Alex do?</p>
+              <div class="e360-opts">
+                <button data-opt="a">Join next week’s session.</button>
+                <button data-opt="b">Cancel the course.</button>
+                <button data-opt="c">Call HR.</button>
+                <button data-opt="d">Ask for a discount.</button>
+              </div>
+              <div class="e360-fb"></div>
+            </div>
+
+            <div class="e360-scoreline">
+              <span class="e360-pill">Score: <span data-score>0</span>/<span data-total>0</span></span>
+              <button class="e360-btn" data-show-score>🎯 Voir mon score</button>
+              <button class="e360-btn" data-reset>🔁 Reset</button>
+              <span class="e360-note" data-final></span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3>Tâche interactive (glisser-déposer)</h3>
+          <p class="e360-note">Complète l’email de réponse avec des expressions professionnelles.</p>
+
+          <div class="e360-dnd" data-dnd="emailReply">
+            <div class="e360-dnd-bank" aria-label="Word bank">
+              <div class="e360-chip" draggable="true" data-token="Thanks for your message.">🙏 Thanks for your message.</div>
+              <div class="e360-chip" draggable="true" data-token="I can confirm">✅ I can confirm</div>
+              <div class="e360-chip" draggable="true" data-token="Would Friday at 3 p.m. work for you?">🕒 Would Friday at 3 p.m. work for you?</div>
+              <div class="e360-chip" draggable="true" data-token="Best regards,">✉️ Best regards,</div>
+              <div class="e360-chip" draggable="true" data-token="If that doesn’t suit you,">🔁 If that doesn’t suit you,</div>
+            </div>
+
+            <div class="e360-dnd-text">
+              <p><strong>Reply:</strong></p>
+              <p>
+                <span class="drop" data-blank="1">[1]</span><br>
+                <span class="drop" data-blank="2">[2]</span> we can move the session to Friday afternoon.<br>
+                <span class="drop" data-blank="3">[3]</span><br>
+                <span class="drop" data-blank="4">[4]</span> we can offer next Tuesday at 10 a.m.<br><br>
+                <span class="drop" data-blank="5">[5]</span><br>
+                Training Team
+              </p>
+
+              <div class="e360-dnd-actions">
+                <button class="e360-btn e360-btn-primary" data-dnd-check>✅ Check</button>
+                <button class="e360-btn" data-dnd-reset>🔁 Reset</button>
+                <span class="e360-pill">Score: <span data-dnd-score>0</span>/5</span>
+              </div>
+              <div class="e360-note" data-dnd-feedback></div>
+            </div>
+          </div>
+
+          <div class="e360-fr-en">
+            <h3>Différence FR/EN (email)</h3>
+            <ul class="e360-list">
+              <li>🇫🇷 “Je vous remercie par avance” → 🇬🇧 <em>Thank you in advance</em> (OK mais à utiliser avec parcimonie).</li>
+              <li>🇫🇷 “Je reviens vers vous” → 🇬🇧 <em>I’ll get back to you</em> / <em>I’ll follow up</em>.</li>
+              <li>🇫🇷 “Cordialement” → 🇬🇧 <em>Best regards</em> / <em>Kind regards</em> (très standard).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         5) GRAMMAR PRACTICE
+    ======================== -->
+    <section class="e360-card" id="grammar">
+      <div class="e360-card-head">
+        <h2>5) Grammar 🧩 (temps, prépositions, erreurs)</h2>
+        <span class="e360-badge">Format “choisir / identifier”</span>
+      </div>
+
+      <p class="e360-note">Choisis la meilleure option, puis clique <strong>Check</strong>. Chaque item est chronométrable si tu veux.</p>
+
+      <div class="e360-grammar" data-grammar="set1">
+        <div class="e360-g" data-answer="present perfect" data-explain="Lien avec le présent (résultat/expérience) → present perfect.">
+          <p>1) I ________ (already / send) the updated invoice. (résultat maintenant)</p>
+          <select>
+            <option value="">— choose —</option>
+            <option value="past simple">past simple</option>
+            <option value="present perfect">present perfect</option>
+            <option value="past continuous">past continuous</option>
+          </select>
+          <button class="e360-btn e360-btn-small" data-g-check>Check</button>
+          <div class="e360-fb"></div>
+        </div>
+
+        <div class="e360-g" data-answer="in" data-explain="In + months/years/seasons.">
+          <p>2) The meeting is ___ November.</p>
+          <select>
+            <option value="">— choose —</option>
+            <option value="on">on</option>
+            <option value="at">at</option>
+            <option value="in">in</option>
+          </select>
+          <button class="e360-btn e360-btn-small" data-g-check>Check</button>
+          <div class="e360-fb"></div>
+        </div>
+
+        <div class="e360-g" data-answer="error: depends of" data-explain="En anglais: depends on (pas 'of').">
+          <p>3) Identify the error:</p>
+          <div class="e360-error">
+            “It depends of the supplier’s availability.”
+          </div>
+          <select>
+            <option value="">— choose —</option>
+            <option value="no error">no error</option>
+            <option value="error: depends of">error: depends of</option>
+            <option value="error: availability">error: availability</option>
+          </select>
+          <button class="e360-btn e360-btn-small" data-g-check>Check</button>
+          <div class="e360-fb"></div>
+        </div>
+
+        <div class="e360-g" data-answer="will" data-explain="Offre spontanée → will.">
+          <p>4) Don’t worry, I ___ call IT for you.</p>
+          <select>
+            <option value="">— choose —</option>
+            <option value="am going to">am going to</option>
+            <option value="will">will</option>
+            <option value="do">do</option>
+          </select>
+          <button class="e360-btn e360-btn-small" data-g-check>Check</button>
+          <div class="e360-fb"></div>
+        </div>
+
+        <div class="e360-scoreline">
+          <span class="e360-pill">Score: <span data-score>0</span>/<span data-total>0</span></span>
+          <button class="e360-btn" data-show-score>🎯 Voir mon score</button>
+          <button class="e360-btn" data-reset>🔁 Reset</button>
+          <span class="e360-note" data-final></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         6) SPEAKING PRACTICE
+    ======================== -->
+    <section class="e360-card" id="speaking">
+      <div class="e360-card-head">
+        <h2>6) Speaking 🗣️ (interaction + production, une seule prise)</h2>
+        <span class="e360-badge">Enregistrement (optionnel) + chronomètre</span>
+      </div>
+
+      <div class="e360-grid-2">
+        <div>
+          <h3>Interaction – réagir à une situation</h3>
+          <p class="e360-note">
+            Objectif : répondre de façon <strong>structurée</strong> (contexte → action → solution).
+            Dans l’examen, tu n’as qu’une prise. Ici tu peux t’entraîner avec un timer.
+          </p>
+
+          <div class="e360-prompt">
+            <label for="e360SpeakScenario">Choisis un scénario</label>
+            <select id="e360SpeakScenario">
+              <option value="A guest complains that the room is noisy. Apologise, ask 2 clarifying questions, and propose 2 solutions.">
+                🏨 Client mécontent (bruit dans la chambre)
+              </option>
+              <option value="A colleague is late with a report. Ask for an update, set a clear deadline, and stay diplomatic.">
+                📊 Relance collègue (rapport en retard)
+              </option>
+              <option value="A supplier changes the delivery date. Explain the impact and negotiate an alternative.">
+                🚚 Fournisseur (livraison décalée)
+              </option>
+            </select>
+
+            <div class="e360-prompt-box" id="e360SpeakPrompt"></div>
+
+            <div class="e360-rec-controls">
+              <span class="e360-pill">⏱️ <span id="e360SpeakTime">00:45</span></span>
+              <button class="e360-btn e360-btn-primary" id="e360SpeakStart">Start timer</button>
+              <button class="e360-btn" id="e360SpeakReset">Reset</button>
+              <span class="e360-sep"></span>
+              <button class="e360-btn" id="e360RecStart">⏺ Record</button>
+              <button class="e360-btn" id="e360RecStop" disabled>⏹ Stop</button>
+            </div>
+
+            <audio id="e360RecAudio" controls class="e360-audio-player"></audio>
+            <a id="e360RecDownload" class="e360-btn e360-btn-link" href="#" download="speaking-practice.webm" style="display:none">⬇️ Télécharger</a>
+
+            <div class="e360-checklist">
+              <p><strong>Checklist (interaction)</strong></p>
+              <ul class="e360-list">
+                <li>✅ 1 phrase d’empathie / excuse</li>
+                <li>✅ 2 questions de clarification</li>
+                <li>✅ 2 solutions + prochaine étape</li>
+                <li>✅ ton professionnel, phrases courtes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3>Production – parler 1 minute (sans support)</h3>
+          <p class="e360-note">Choisis un sujet, structure en 4 étapes : situation → action → résultat → leçon.</p>
+
+          <div class="e360-prompt">
+            <label for="e360ProdTopic">Sujet</label>
+            <select id="e360ProdTopic">
+              <option value="Introduce your role: what you do, who you work with, and what your priorities are this month.">
+                🧑‍💼 Présenter son poste
+              </option>
+              <option value="Describe a problem you faced at work recently and how you solved it.">
+                🧯 Problème & solution
+              </option>
+              <option value="Give your opinion on a tool or service you use at work, with pros/cons.">
+                🛠️ Donner un avis pro
+              </option>
+            </select>
+            <div class="e360-prompt-box" id="e360ProdPrompt"></div>
+
+            <div class="e360-rec-controls">
+              <span class="e360-pill">⏱️ <span id="e360ProdTime">01:00</span></span>
+              <button class="e360-btn e360-btn-primary" id="e360ProdStart">Start timer</button>
+              <button class="e360-btn" id="e360ProdReset">Reset</button>
+            </div>
+
+            <div class="e360-checklist">
+              <p><strong>Connecteurs utiles</strong></p>
+              <p class="e360-note">
+                <em>First / Then / However / As a result / Overall</em><br>
+                <em>In my view / What I mean is / The key point is…</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         7) WRITING PRACTICE
+    ======================== -->
+    <section class="e360-card" id="writing">
+      <div class="e360-card-head">
+        <h2>7) Writing ✍️ (email pro + auto-évaluation)</h2>
+        <span class="e360-badge">Structurer + être précis</span>
+      </div>
+
+      <div class="e360-grid-2">
+        <div>
+          <h3>Task 1 – Reply to an email</h3>
+          <p class="e360-note"><strong>Consigne :</strong> répondre à un client qui demande un report + proposer 2 créneaux + ton professionnel.</p>
+
+          <div class="e360-writing">
+            <div class="e360-rec-controls">
+              <span class="e360-pill">⏱️ <span id="e360WriteTime">08:00</span></span>
+              <button class="e360-btn e360-btn-primary" id="e360WriteStart">Start timer</button>
+              <button class="e360-btn" id="e360WriteReset">Reset</button>
+              <span class="e360-pill">🧮 Words: <span id="e360WordCount">0</span></span>
+            </div>
+
+            <textarea id="e360WriteBox" placeholder="Write your email here…"></textarea>
+
+            <div class="e360-writing-actions">
+              <button class="e360-btn" id="e360WriteChecklistBtn">✅ Checklist</button>
+              <button class="e360-btn" id="e360WriteSampleBtn">👀 Sample answer</button>
+              <button class="e360-btn" id="e360WriteCopyBtn">📋 Copier</button>
+            </div>
+
+            <div class="e360-modal" id="e360WriteChecklist" aria-hidden="true">
+              <div class="e360-modal-inner">
+                <h4>Checklist (email)</h4>
+                <ul class="e360-list">
+                  <li>Objet clair + formule d’ouverture</li>
+                  <li>Reformulation de la demande</li>
+                  <li>2 options concrètes (date/heure)</li>
+                  <li>Question de confirmation</li>
+                  <li>Clôture (Best regards / Kind regards)</li>
+                </ul>
+                <button class="e360-btn e360-btn-primary" data-close>OK</button>
+              </div>
+            </div>
+
+            <div class="e360-modal" id="e360WriteSample" aria-hidden="true">
+              <div class="e360-modal-inner">
+                <h4>Sample answer (model)</h4>
+                <p class="e360-note">
+                  Subject: Rescheduling your session<br><br>
+                  Hi Alex,<br><br>
+                  Thanks for your message. I can confirm we can reschedule your session.
+                  Would Friday at 3 p.m. work for you? If that doesn’t suit you, we can offer next Tuesday at 10 a.m.
+                  Please let me know which option you prefer, and I’ll send a calendar invite.<br><br>
+                  Best regards,<br>
+                  Training Team
+                </p>
+                <button class="e360-btn e360-btn-primary" data-close>OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3>Task 2 – Short story from a brief</h3>
+          <p class="e360-note"><strong>Brief :</strong> “You arrive at work and discover the system is down. Describe what happened and what you did.”</p>
+
+          <div class="e360-mini-quiz" data-e360-quiz="writingCheck">
+            <div class="e360-q" data-answer="c" data-explain="Past simple for completed actions; past continuous for background.">
+              <p>Quick grammar check: Which sentence is best?</p>
+              <div class="e360-opts">
+                <button data-opt="a">While I arrived, the system crashed.</button>
+                <button data-opt="b">I was arriving when the system crashes.</button>
+                <button data-opt="c">I arrived when the system crashed, and people were waiting for updates.</button>
+                <button data-opt="d">I arrive and the system was down.</button>
+              </div>
+              <div class="e360-fb"></div>
+            </div>
+
+            <div class="e360-scoreline">
+              <span class="e360-pill">Score: <span data-score>0</span>/<span data-total>0</span></span>
+              <button class="e360-btn" data-show-score>🎯 Voir mon score</button>
+              <button class="e360-btn" data-reset>🔁 Reset</button>
+              <span class="e360-note" data-final></span>
+            </div>
+          </div>
+
+          <div class="e360-callout">
+            <div class="e360-callout-icon">🧠</div>
+            <div>
+              <p class="e360-callout-title">Astuce “richesse”</p>
+              <p class="e360-callout-text">
+                Ajoute 2–3 détails pro (impact, priorité, action) :
+                <em>“This delayed check-ins, so I informed the team and offered manual alternatives.”</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="e360-footer">
+      <p>
+        ✅ Tu peux refaire les sections autant que tu veux. Objectif : automatiser la structure (intro → détail → action).
+      </p>
+    </footer>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <!-- Shared site chrome (optional). If you don't use it, remove this line. -->
+  <script src="./js/site-chrome.js" defer></script>
+
+  <!-- Lesson JS -->
+  <script src="./js/english-360-prep.js" defer></script>
+</body>
+</html>
