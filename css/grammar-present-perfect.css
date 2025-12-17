@@ -1,46 +1,258 @@
-/* Layout inside your main site frame */
-.page-main {
+/* =========================================================
+   Present Perfect page overrides + interactive components
+   Keeps your global speakeasy.css unchanged
+   ========================================================= */
+
+.pp-main { padding-top: 0; }
+
+/* Hero: allow per-page image via CSS variable */
+.pp-hero {
+  background-image:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.7)),
+    var(--hero-image, url("../img/hero-main.jpg")) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Make sure the mini hero card image matches */
+.pp-hero .hero-card-image {
+  background-image:
+    linear-gradient(135deg, rgba(182, 168, 90, 0.12), rgba(15, 23, 42, 0.7)),
+    var(--hero-image, url("../img/hero-main.jpg")) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.pp-shell{
   max-width: 1100px;
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 4rem;
+  padding: 2.5rem 1.25rem 4rem;
 }
 
-/* HERO at the top of the page */
-.pp-hero {
+.pp-section{
+  background: #ffffff;
+  border-radius: 1.2rem;
+  padding: 1.5rem 1.5rem 1.75rem;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  margin: 1.25rem 0;
+}
+
+.pp-h2{ margin: 0 0 0.6rem; font-size: 1.6rem; }
+.pp-h3{ margin: 0.2rem 0 0.65rem; font-size: 1.1rem; }
+.pp-lead{ margin: 0 0 1rem; color: #374151; }
+
+.pp-grid{
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.pp-card{
+  background: #f9fafb;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.pp-list{ margin: 0.5rem 0 0; padding-left: 1.1rem; color: #111827; }
+.pp-example{ margin: 0.65rem 0 0; color: #111827; }
+
+.pp-note{
+  margin-top: 1rem;
+  background: rgba(182, 168, 90, 0.10);
+  border: 1px solid rgba(182, 168, 90, 0.25);
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+}
+
+/* Vocab grid */
+.pp-vocab-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+}
+.pp-vocab{
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  background: #f9fafb;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 1rem;
+  padding: 0.9rem;
+}
+.pp-emoji{ font-size: 1.25rem; line-height: 1; }
+.pp-vocab small{ display:block; color:#4b5563; }
+
+/* Generic quiz */
+.pp-quiz{ margin-top: 0.6rem; }
+.pp-q + .pp-q{ margin-top: 1.1rem; padding-top: 1rem; border-top: 1px solid rgba(15,23,42,0.08); }
+
+.pp-btns{ display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0 0.25rem; }
+.pp-btns button{
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.pp-btns button:hover{ transform: translateY(-1px); }
+.pp-btns button.is-correct{ border-color: #16a34a; background: #dcfce7; }
+.pp-btns button.is-wrong{ border-color: #b91c1c; background: #fee2e2; }
+.pp-btns button:disabled{ cursor: default; opacity: 0.95; transform: none; }
+
+.pp-feedback{ min-height: 1.2em; font-size: 0.9rem; color: #374151; }
+.pp-feedback.is-correct{ color: #15803d; }
+.pp-feedback.is-wrong{ color: #b91c1c; }
+
+.pp-score{
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   align-items: center;
-  margin-bottom: 2.5rem;
 }
 
-.pp-hero-text h1 {
-  font-family: "Caveat", "Open Sans", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: clamp(2rem, 2.4vw, 2.7rem);
-  margin: 0 0 0.5rem;
+.pp-pill{
+  display:inline-flex;
+  align-items:center;
+  gap: 0.35rem;
+  background: rgba(15,23,42,0.05);
+  border: 1px solid rgba(15,23,42,0.08);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-weight: 700;
 }
 
-.pp-hero-text p {
-  margin: 0;
-  font-size: 0.98rem;
-  color: #4b5563;
+.pp-primary, .pp-secondary{
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.pp-primary{
+  background: var(--color-gold, #b6a85a);
+  color: #0b1120;
+  border-color: var(--color-gold, #b6a85a);
+}
+.pp-secondary{
+  background: #ffffff;
+  border-color: #9ca3af;
+  color: #111827;
+}
+.pp-final{ font-weight: 600; color: #111827; }
+
+/* Drag & Drop */
+.pp-dnd-grid{
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
 }
 
-/* HERO image – update the URL with your real image */
-.pp-hero-image {
-  min-height: 180px;
-  border-radius: 18px;
-  background-image: url("../img/grammar-present-perfect/pp-hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+.pp-dnd-bank, .pp-dnd-zone{
+  background: #f9fafb;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
-/* On small screens, put image under the text */
-@media (max-width: 768px) {
-  .pp-hero {
-    grid-template-columns: 1fr;
-  }
+.pp-dnd-items, .pp-dnd-drop{
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-height: 140px;
+}
+
+.pp-dnd-item{
+  text-align: left;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  border-radius: 0.9rem;
+  padding: 0.65rem 0.75rem;
+  cursor: grab;
+  font-weight: 600;
+}
+.pp-dnd-item:active{ cursor: grabbing; }
+.pp-dnd-item.is-selected{
+  outline: 2px solid rgba(182, 168, 90, 0.9);
+  outline-offset: 2px;
+}
+.pp-dnd-item.is-correct{ border-color: #16a34a; background: #dcfce7; }
+.pp-dnd-item.is-wrong{ border-color: #b91c1c; background: #fee2e2; }
+
+.pp-dnd-drop{
+  border: 2px dashed rgba(15, 23, 42, 0.25);
+  border-radius: 0.9rem;
+  padding: 0.7rem;
+  background: rgba(255,255,255,0.7);
+}
+
+.pp-dnd-drop.is-over{
+  border-color: rgba(182,168,90,0.9);
+  background: rgba(182,168,90,0.08);
+}
+
+.pp-dnd-actions{
+  margin-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.pp-form{
+  background: #f9fafb;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.pp-form-row{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+.pp-form label{ display:block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem; }
+.pp-form input, .pp-form select{
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.65rem;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+}
+.pp-form-actions{ display:flex; gap: 0.6rem; flex-wrap: wrap; }
+
+.pp-output{
+  width: 100%;
+  min-height: 170px;
+  margin-top: 0.8rem;
+  border-radius: 0.9rem;
+  border: 1px solid #d1d5db;
+  padding: 0.8rem;
+  font-size: 0.95rem;
+  resize: vertical;
+  background: #ffffff;
+}
+
+.pp-tts{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.pp-tts-note{
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .pp-dnd-grid{ grid-template-columns: 1fr; }
 }
