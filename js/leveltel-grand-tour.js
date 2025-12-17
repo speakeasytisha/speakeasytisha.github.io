@@ -198,13 +198,40 @@
   if (t1) t1.textContent = transcripts.audio1;
 
   const ttsSessions = new Map(); // id => utterance
+
+  // ---- Voice loading / caching (fix: French default voice on French systems) ----
+  // In some browsers, speechSynthesis.getVoices() is empty at first load. If we try to
+  // pick a voice too early, the browser may fall back to the device default voice (often fr-FR).
+  let VOICE_CACHE = [];
+  function refreshVoiceCache(){
+    try {
+      VOICE_CACHE = (speechSynthesis.getVoices ? speechSynthesis.getVoices() : []) || [];
+    } catch (e) {
+      VOICE_CACHE = [];
+    }
+    return VOICE_CACHE;
+  }
+  refreshVoiceCache();
+  if (typeof speechSynthesis !== "undefined" && speechSynthesis.addEventListener) {
+    speechSynthesis.addEventListener("voiceschanged", refreshVoiceCache);
+  }
+
   function pickVoice(preferLang="en-GB"){
-    const voices = speechSynthesis.getVoices ? speechSynthesis.getVoices() : [];
+    const voices = (VOICE_CACHE && VOICE_CACHE.length) ? VOICE_CACHE : refreshVoiceCache();
     if (!voices || !voices.length) return null;
-    // Prefer en-GB if possible; otherwise any English
-    let v = voices.find(v => (v.lang||"").toLowerCase() === preferLang.toLowerCase());
-    if (!v) v = voices.find(v => (v.lang||"").toLowerCase().startsWith("en-"));
-    return v || voices[0];
+
+    const prefer = (preferLang || "").toLowerCase();
+    const preferShort = prefer.split("-")[0];
+
+    // Prefer exact match (en-GB), then any English (en-*), then fall back to first available.
+    let v =
+      voices.find(v => (v.lang || "").toLowerCase() === prefer) ||
+      voices.find(v => (v.lang || "").toLowerCase().startsWith(preferShort + "-")) ||
+      voices.find(v => (v.lang || "").toLowerCase().startsWith("en-")) ||
+      voices.find(v => (v.lang || "").toLowerCase() === "en") ||
+      null;
+
+    return v || voices[0] || null;
   }
 
   function ttsPlay(id){
@@ -213,8 +240,14 @@
     if (!text) return;
 
     const u = new SpeechSynthesisUtterance(text);
-    const v = pickVoice("en-GB");
+
+    // Force English language, even if we cannot pick a voice yet.
+    u.lang = "en-GB";
+
+    // Try to select a British English voice (falls back to any English voice).
+    const v = pickVoice("en-GB") || pickVoice("en-US");
     if (v) u.voice = v;
+
     u.rate = 1.0;
     u.pitch = 1.0;
     u.volume = 1.0;
@@ -523,7 +556,8 @@
       if (!txt) return;
       speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(txt.replace(/\n/g, " "));
-      const v = pickVoice("en-GB");
+      u.lang = "en-GB";
+      const v = pickVoice("en-GB") || pickVoice("en-US");
       if (v) u.voice = v;
       u.rate = 0.98;
       speechSynthesis.speak(u);
