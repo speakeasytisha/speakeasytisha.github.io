@@ -711,19 +711,49 @@ ${who}: Tomorrow could work. Let’s go for the matinée — thank you.`;
     const utter = new SpeechSynthesisUtterance(text);
     laUtterance = utter;
 
-    // voice selection may be async; try now + after voiceschanged
-    const setVoice = () => {
-      const voices = window.speechSynthesis.getVoices() || [];
-      const voice = chooseVoice(voices);
-      if (voice) utter.voice = voice;
-    };
-    setVoice();
-    window.speechSynthesis.onvoiceschanged = setVoice;
-
+    // Force UK English (accent depends on the available voices on the device)
+    utter.lang = "en-GB";
     utter.rate = 1.0;
     utter.pitch = 1.0;
 
-    window.speechSynthesis.speak(utter);
+    let started = false;
+
+    const setVoice = () => {
+      const voices = window.speechSynthesis.getVoices() || [];
+      const voice = chooseVoice(voices);
+
+      // If an en-GB / English voice exists, use it explicitly (prevents default French voice).
+      if (voice) {
+        utter.voice = voice;
+        utter.lang = voice.lang || utter.lang;
+      }
+    };
+
+    const startSpeaking = () => {
+      if (started) return;
+      started = true;
+      setVoice();
+      window.speechSynthesis.speak(utter);
+    };
+
+    // Some browsers load voices asynchronously. If voices aren't ready yet,
+    // wait briefly for voiceschanged before speaking (otherwise the default voice may be French).
+    const voicesNow = window.speechSynthesis.getVoices() || [];
+    if (voicesNow.length) {
+      startSpeaking();
+      return;
+    }
+
+    const prev = window.speechSynthesis.onvoiceschanged;
+    window.speechSynthesis.onvoiceschanged = function () {
+      try { if (typeof prev === "function") prev(); } catch (_) {}
+      startSpeaking();
+      // restore previous handler (avoid hijacking globally)
+      window.speechSynthesis.onvoiceschanged = prev || null;
+    };
+
+    // Fallback: start anyway after a short delay if voiceschanged never fires.
+    setTimeout(() => startSpeaking(), 900);
   }
 
   function initTTSButtons() {

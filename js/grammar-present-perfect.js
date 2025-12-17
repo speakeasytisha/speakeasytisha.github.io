@@ -1,462 +1,395 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const lesson = document.getElementById("presentPerfectLesson");
-  if (!lesson) return;
+/* =========================================================
+   Present Perfect page JS
+   - Fixes drag & drop (desktop + mobile tap-to-move)
+   - Forces US voice when available (avoids French default)
+   - Makes MCQ quizzes robust (won't crash if elements missing)
+   ========================================================= */
 
-  /* ========= GENERIC QUIZ HANDLER ========= */
+(function () {
+  'use strict';
 
-  function setupQuiz(quizId) {
-    const quiz = document.getElementById(quizId);
-    if (!quiz) return;
+  // -----------------------------
+  // US TTS helper
+  // -----------------------------
+  const ttsNote = document.getElementById('pp-tts-note');
 
-    const questions = quiz.querySelectorAll(".pp-question");
+  function pickVoice(preferredLang) {
+    const synth = window.speechSynthesis;
+    if (!synth || !synth.getVoices) return null;
+    const voices = synth.getVoices() || [];
+    const exact = voices.find(v => v.lang === preferredLang);
+    const starts = voices.find(v => (v.lang || '').startsWith(preferredLang));
+    const anyEnUS = voices.find(v => (v.lang || '').startsWith('en-US'));
+    const anyEn = voices.find(v => (v.lang || '').startsWith('en'));
+    return exact || starts || anyEnUS || anyEn || null;
+  }
+
+  let US_VOICE = null;
+
+  function ensureVoiceReady() {
+    if (!('speechSynthesis' in window)) return;
+
+    const trySet = () => {
+      US_VOICE = pickVoice('en-US');
+      if (ttsNote) {
+        if (US_VOICE && (US_VOICE.lang || '').startsWith('en-US')) {
+          ttsNote.textContent = 'US voice ready ✅';
+        } else if (US_VOICE) {
+          ttsNote.textContent = 'English voice ready (US not available on this device) ✅';
+        } else {
+          ttsNote.textContent = 'Voice not available on this browser.';
+        }
+      }
+    };
+
+    trySet();
+    // Voices can load async (especially Chrome)
+    window.speechSynthesis.addEventListener('voiceschanged', trySet, { once: true });
+  }
+
+  function speakUS(text) {
+    if (!text) return;
+    const synth = window.speechSynthesis;
+    if (!synth) return;
+
+    synth.cancel(); // stop anything already speaking
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US';
+    u.rate = 1;
+    u.pitch = 1;
+    if (US_VOICE) u.voice = US_VOICE;
+    synth.speak(u);
+  }
+
+  function pauseSpeech() {
+    const synth = window.speechSynthesis;
+    if (synth && synth.speaking) synth.pause();
+  }
+
+  function resumeSpeech() {
+    const synth = window.speechSynthesis;
+    if (synth && synth.paused) synth.resume();
+  }
+
+  // -----------------------------
+  // MCQ quiz (button-based)
+  // -----------------------------
+  function initQuiz(quizEl) {
+    if (!quizEl) return;
+
+    const questions = Array.from(quizEl.querySelectorAll('.pp-q'));
+    const scoreEl = quizEl.querySelector('[data-score]');
+    const totalEl = quizEl.querySelector('[data-total]');
+    const finalEl = quizEl.querySelector('.pp-final');
+    const showBtn = quizEl.querySelector('[data-action="show-score"]');
+    const resetBtn = quizEl.querySelector('[data-action="reset"]');
+
+    if (totalEl) totalEl.textContent = String(questions.length);
+
+    let correctCount = 0;
 
     questions.forEach((q) => {
-      const buttons = q.querySelectorAll(".pp-answers button");
-      const feedback = q.querySelector(".pp-feedback");
-      const explanation = q.getAttribute("data-explanation") || "";
+      const correct = (q.getAttribute('data-correct') || '').trim();
+      const hint = (q.getAttribute('data-hint') || '').trim();
+      const feedback = q.querySelector('.pp-feedback');
+      const buttons = Array.from(q.querySelectorAll('button[data-option]'));
+
+      let answered = false;
 
       buttons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          // clear previous styles
-          buttons.forEach((b) => {
-            b.classList.remove("correct", "incorrect");
-          });
-          if (feedback) {
-            feedback.classList.remove("correct", "incorrect");
-          }
+        btn.addEventListener('click', () => {
+          if (answered) return;
+          answered = true;
 
-          const isCorrect = btn.dataset.correct === "true";
-          q.dataset.isCorrect = isCorrect ? "true" : "false";
+          const chosen = (btn.getAttribute('data-option') || '').trim();
 
-          if (isCorrect) {
-            btn.classList.add("correct");
+          buttons.forEach(b => b.disabled = true);
+
+          if (chosen === correct) {
+            correctCount += 1;
+            btn.classList.add('is-correct');
             if (feedback) {
-              feedback.textContent = "✅ Correct! " + explanation;
-              feedback.classList.add("correct");
+              feedback.classList.remove('is-wrong');
+              feedback.classList.add('is-correct');
+              feedback.textContent = '✅ Correct!';
             }
           } else {
-            btn.classList.add("incorrect");
+            btn.classList.add('is-wrong');
+            const rightBtn = buttons.find(b => (b.getAttribute('data-option') || '').trim() === correct);
+            if (rightBtn) rightBtn.classList.add('is-correct');
+
             if (feedback) {
-              feedback.textContent = "❌ Not quite. " + explanation;
-              feedback.classList.add("incorrect");
+              feedback.classList.remove('is-correct');
+              feedback.classList.add('is-wrong');
+              feedback.textContent = hint ? `❌ Not quite. Hint: ${hint}` : '❌ Not quite.';
             }
           }
+
+          if (scoreEl) scoreEl.textContent = String(correctCount);
         });
       });
     });
-  }
 
-  function checkQuizScore(quizId) {
-    const quiz = document.getElementById(quizId);
-    if (!quiz) return;
-    const questions = quiz.querySelectorAll(".pp-question");
-    const scoreBox = quiz.querySelector(".pp-score");
-    let total = questions.length;
-    let correct = 0;
+    if (showBtn) {
+      showBtn.addEventListener('click', () => {
+        const total = questions.length || 1;
+        const pct = Math.round((correctCount / total) * 100);
+        if (finalEl) {
+          finalEl.textContent = `Score: ${correctCount}/${total} (${pct}%).`;
+        }
+      });
+    }
 
-    questions.forEach((q) => {
-      if (q.dataset.isCorrect === "true") correct++;
-    });
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        correctCount = 0;
+        if (scoreEl) scoreEl.textContent = '0';
+        if (finalEl) finalEl.textContent = '';
 
-    if (scoreBox) {
-      scoreBox.textContent = "Your score: " + correct + " / " + total;
+        questions.forEach((q) => {
+          const feedback = q.querySelector('.pp-feedback');
+          if (feedback) {
+            feedback.textContent = '';
+            feedback.classList.remove('is-correct', 'is-wrong');
+          }
+
+          q.querySelectorAll('button[data-option]').forEach((btn) => {
+            btn.disabled = false;
+            btn.classList.remove('is-correct', 'is-wrong');
+          });
+        });
+      });
     }
   }
 
-  function resetQuiz(quizId) {
-    const quiz = document.getElementById(quizId);
-    if (!quiz) return;
-    const questions = quiz.querySelectorAll(".pp-question");
-    const scoreBox = quiz.querySelector(".pp-score");
+  // -----------------------------
+  // Drag & Drop + tap-to-move
+  // -----------------------------
+  function initDnD() {
+    const bank = document.getElementById('pp-dnd-bank');
+    const zonePP = document.getElementById('pp-zone-pp');
+    const zonePS = document.getElementById('pp-zone-ps');
+    const checkBtn = document.getElementById('pp-dnd-check');
+    const resetBtn = document.getElementById('pp-dnd-reset');
+    const result = document.getElementById('pp-dnd-result');
 
-    questions.forEach((q) => {
-      q.dataset.isCorrect = "";
-      const buttons = q.querySelectorAll(".pp-answers button");
-      const feedback = q.querySelector(".pp-feedback");
-      buttons.forEach((b) => b.classList.remove("correct", "incorrect"));
-      if (feedback) {
-        feedback.textContent = "";
-        feedback.classList.remove("correct", "incorrect");
-      }
-    });
-    if (scoreBox) scoreBox.textContent = "";
-  }
+    if (!bank || !zonePP || !zonePS) return;
 
-  // Init all quizzes used in the lesson
-  const quizIds = [
-    "pp-quiz-form",
-    "pp-quiz-contrast",
-    "pp-quiz-adverbs",
-    "pp-quiz-sincefor"
-  ];
-  quizIds.forEach(setupQuiz);
+    const allZones = [zonePP, zonePS];
 
-  // Buttons “Check my score” / “Reset quiz”
-  lesson.querySelectorAll("[data-quiz-check]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const quizId = btn.getAttribute("data-quiz-check");
-      checkQuizScore(quizId);
-    });
-  });
-
-  lesson.querySelectorAll("[data-quiz-reset]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const quizId = btn.getAttribute("data-quiz-reset");
-      resetQuiz(quizId);
-    });
-  });
-
-  /* ========= DRAG & DROP (Present Perfect vs Past Simple) ========= */
-
-  const pool = document.getElementById("pp-dnd-pool");
-  const dropCols = lesson.querySelectorAll(".pp-dnd-col");
-  const dndScore = document.getElementById("pp-dnd-score");
-  let dragged = null;
-
-  function handleDragStart(ev) {
-    dragged = ev.target;
-    ev.target.classList.add("dragging");
-    ev.dataTransfer.effectAllowed = "move";
-  }
-
-  function handleDragEnd(ev) {
-    ev.target.classList.remove("dragging");
-  }
-
-  function handleDragOver(ev) {
-    ev.preventDefault();
-    ev.dataTransfer.dropEffect = "move";
-  }
-
-  function handleDrop(ev) {
-    ev.preventDefault();
-    const dropzone = ev.currentTarget.querySelector(".pp-dnd-dropzone");
-    if (!dropzone || !dragged) return;
-    dropzone.appendChild(dragged);
-    dragged.classList.remove("dragging");
-    dragged = null;
-  }
-
-  function resetDnd() {
-    if (!pool) return;
-    const items = lesson.querySelectorAll(".pp-dnd-item");
-    items.forEach((item) => pool.appendChild(item));
-    if (dndScore) dndScore.textContent = "";
-  }
-
-  function checkDnd() {
-    const items = lesson.querySelectorAll(".pp-dnd-item");
-    let total = items.length;
-    let correct = 0;
-
-    items.forEach((item) => {
-      const parentCol = item.closest(".pp-dnd-col");
-      if (!parentCol) return;
-      const category = parentCol.getAttribute("data-category");
-      const answer = item.getAttribute("data-answer");
-      if (category === answer) correct++;
+    // Assign ids if missing
+    Array.from(bank.querySelectorAll('.pp-dnd-item')).forEach((item) => {
+      if (!item.id) item.id = `pp-item-${item.getAttribute('data-id') || Math.random().toString(16).slice(2)}`;
+      item.setAttribute('draggable', 'true');
     });
 
-    if (dndScore) {
-      dndScore.textContent = "Your score: " + correct + " / " + total;
-    }
-  }
+    let selectedItem = null;
 
-  if (pool) {
-    const items = lesson.querySelectorAll(".pp-dnd-item");
-    items.forEach((item) => {
-      item.addEventListener("dragstart", handleDragStart);
-      item.addEventListener("dragend", handleDragEnd);
-    });
-
-    dropCols.forEach((col) => {
-      col.addEventListener("dragover", handleDragOver);
-      col.addEventListener("drop", handleDrop);
-    });
-
-    pool.addEventListener("dragover", function (ev) {
-      ev.preventDefault();
-    });
-    pool.addEventListener("drop", function (ev) {
-      ev.preventDefault();
-      if (dragged) {
-        pool.appendChild(dragged);
-        dragged.classList.remove("dragging");
-        dragged = null;
-      }
-    });
-
-    const checkBtn = document.getElementById("pp-dnd-check");
-    const resetBtn = document.getElementById("pp-dnd-reset");
-    if (checkBtn) checkBtn.addEventListener("click", checkDnd);
-    if (resetBtn) resetBtn.addEventListener("click", resetDnd);
-  }
-
-  /* ========= DIALOGUE BUILDER – Catching up with a friend ========= */
-
-  const dlgYourName = document.getElementById("pp-your-name");
-  const dlgFriendName = document.getElementById("pp-friend-name");
-  const dlgHowLong = document.getElementById("pp-how-long");
-  const dlgWorkChange = document.getElementById("pp-work-change");
-  const dlgExperience = document.getElementById("pp-experience");
-  const dlgFeeling = document.getElementById("pp-feeling");
-  const dlgOutput = document.getElementById("pp-dialogue-output");
-  const dlgGenerate = document.getElementById("pp-dialogue-generate");
-  const dlgClear = document.getElementById("pp-dialogue-clear");
-
-  let dlgUtterance = null;
-  let warnedSpeech = false;
-
-  function buildDialogue() {
-    const you = (dlgYourName && dlgYourName.value.trim()) || "A";
-    const friend = (dlgFriendName && dlgFriendName.value.trim()) || "B";
-    const howLong = dlgHowLong ? dlgHowLong.value : "";
-    const workChange = dlgWorkChange ? dlgWorkChange.value : "";
-    const experience = dlgExperience ? dlgExperience.value : "";
-    const feeling = dlgFeeling ? dlgFeeling.value : "";
-
-    const lines = [];
-
-    lines.push(friend + ": Hey " + you + "! It's great to see you again.");
-    lines.push(
-      you +
-        ": Hi " +
-        friend +
-        "! Yeah, it's been a while. We've known each other " +
-        (howLong || "for a long time") +
-        "."
-    );
-    if (workChange) {
-      lines.push(friend + ": So, what's new with you?");
-      lines.push(you + ": Well, " + workChange + ".");
-    }
-    if (experience) {
-      lines.push(friend + ": Wow, really?");
-      lines.push(you + ": Yes, and " + experience + ".");
-    }
-    if (feeling) {
-      lines.push(friend + ": How have you been feeling lately?");
-      lines.push(you + ": " + feeling + ".");
-    }
-    lines.push(friend + ": That sounds great. We should catch up more often!");
-    lines.push(you + ": Definitely, it's been really nice to see you.");
-
-    const text = lines.join("\n");
-    if (dlgOutput) {
-      dlgOutput.textContent = text;
-    }
-  }
-
-  if (dlgGenerate) dlgGenerate.addEventListener("click", buildDialogue);
-
-  if (dlgClear) {
-    dlgClear.addEventListener("click", function () {
-      if (dlgYourName) dlgYourName.value = "";
-      if (dlgFriendName) dlgFriendName.value = "";
-      if (dlgHowLong) dlgHowLong.selectedIndex = 0;
-      if (dlgWorkChange) dlgWorkChange.selectedIndex = 0;
-      if (dlgExperience) dlgExperience.selectedIndex = 0;
-      if (dlgFeeling) dlgFeeling.selectedIndex = 0;
-      if (dlgOutput) dlgOutput.textContent = "Your dialogue will appear here…";
-    });
-  }
-
-  function getDialogueText() {
-    if (!dlgOutput) return "";
-    const txt = dlgOutput.textContent || "";
-    if (!txt || txt === "Your dialogue will appear here…") {
-      return "Hi, this is my introduction using the present perfect. I have studied English, I have travelled, and I have learned a lot.";
-    }
-    return txt;
-  }
-
-  function handleDialogueAudio(action) {
-    if (!("speechSynthesis" in window)) {
-      if (!warnedSpeech) {
-        warnedSpeech = true;
-        alert(
-          "Your browser does not support speech synthesis. The audio buttons may not work."
-        );
-      }
-      return;
+    function clearSelection() {
+      if (selectedItem) selectedItem.classList.remove('is-selected');
+      selectedItem = null;
     }
 
-    const synth = window.speechSynthesis;
+    // DRAG START
+    function onDragStart(e) {
+      const item = e.currentTarget;
+      clearSelection();
+      e.dataTransfer.setData('text/plain', item.id);
+      e.dataTransfer.effectAllowed = 'move';
+    }
 
-    if (action === "play") {
-      if (synth.paused) {
-        synth.resume();
+    // DRAG OVER / DROP
+    function onDragOver(e) {
+      e.preventDefault();
+      e.currentTarget.classList.add('is-over');
+      e.dataTransfer.dropEffect = 'move';
+    }
+
+    function onDragLeave(e) {
+      e.currentTarget.classList.remove('is-over');
+    }
+
+    function onDrop(e) {
+      e.preventDefault();
+      e.currentTarget.classList.remove('is-over');
+      const id = e.dataTransfer.getData('text/plain');
+      const item = id ? document.getElementById(id) : null;
+      if (item) e.currentTarget.appendChild(item);
+    }
+
+    // CLICK fallback (mobile)
+    function onItemClick(e) {
+      const item = e.currentTarget;
+      if (selectedItem === item) {
+        clearSelection();
         return;
       }
-      const text = getDialogueText();
-      synth.cancel();
-      dlgUtterance = new SpeechSynthesisUtterance(text);
-      dlgUtterance.lang = "en-US";
-      synth.speak(dlgUtterance);
-    } else if (action === "pause") {
-      synth.pause();
-    } else if (action === "restart") {
-      const text = getDialogueText();
-      synth.cancel();
-      dlgUtterance = new SpeechSynthesisUtterance(text);
-      dlgUtterance.lang = "en-US";
-      synth.speak(dlgUtterance);
+      clearSelection();
+      selectedItem = item;
+      item.classList.add('is-selected');
     }
-  }
 
-  lesson.querySelectorAll("[data-pp-audio]").forEach((btn) => {
-    btn.addEventListener("click", function () {
-      const action = btn.getAttribute("data-pp-audio");
-      handleDialogueAudio(action);
+    function onZoneClick(e) {
+      const drop = e.currentTarget;
+      if (!selectedItem) return;
+      drop.appendChild(selectedItem);
+      clearSelection();
+    }
+
+    // Wire events
+    Array.from(document.querySelectorAll('.pp-dnd-item')).forEach((item) => {
+      item.addEventListener('dragstart', onDragStart);
+      item.addEventListener('click', onItemClick);
     });
-  });
 
-  /* ========= NEW: CHILDHOOD MEMORY BUILDER ========= */
-
-  const memName = document.getElementById("pp-mem-your-name");
-  const memAge = document.getElementById("pp-mem-age");
-  const memPlace = document.getElementById("pp-mem-place");
-  const memPeople = document.getElementById("pp-mem-people");
-  const memEvent = document.getElementById("pp-mem-event");
-  const memFeeling = document.getElementById("pp-mem-feeling");
-  const memResult = document.getElementById("pp-mem-result");
-
-  const memOutput = document.getElementById("pp-mem-output");
-  const memGenerate = document.getElementById("pp-mem-generate");
-  const memClear = document.getElementById("pp-mem-clear");
-
-  let memUtterance = null;
-  let memWarnedSpeech = false;
-
-  function buildMemory() {
-    const you = (memName && memName.value.trim()) || "I";
-    const nameSubject =
-      you.toLowerCase() === "i" ? "I" : you; // allow “I” or their name
-
-    const age = memAge ? memAge.value : "";
-    const place = memPlace ? memPlace.value : "";
-    const people = memPeople ? memPeople.value : "";
-    const eventStr = memEvent ? memEvent.value : "";
-    const feeling = memFeeling ? memFeeling.value : "";
-    const result = memResult ? memResult.value : "";
-
-    const sentences = [];
-
-    // Past simple: setting the scene
-    sentences.push(
-      nameSubject +
-        " " +
-        (nameSubject === "I" ? "was " : "was ") +
-        (age || "quite young") +
-        " and lived " +
-        (place || "in my hometown") +
-        (people ? " with " + people + "." : ".")
-    );
-
-    // What happened
-    if (eventStr) {
-      sentences.push(
-        "One day, " +
-          nameSubject.toLowerCase() +
-          " " +
-          eventStr +
-          "."
-      );
-    }
-
-    // Feelings at the time
-    if (feeling) {
-      sentences.push(
-        nameSubject +
-          " " +
-          feeling +
-          " at that moment."
-      );
-    }
-
-    // Present perfect – connection with now
-    if (result) {
-      sentences.push(result + ".");
-    } else {
-      sentences.push(
-        "Since then, " +
-          (nameSubject === "I"
-            ? "I have kept this memory with me."
-            : nameSubject + " has kept this memory for a long time.") +
-          ""
-      );
-    }
-
-    const paragraph = sentences.join(" ");
-    if (memOutput) {
-      memOutput.textContent = paragraph;
-    }
-  }
-
-  if (memGenerate) memGenerate.addEventListener("click", buildMemory);
-
-  if (memClear) {
-    memClear.addEventListener("click", function () {
-      if (memName) memName.value = "";
-      if (memAge) memAge.selectedIndex = 0;
-      if (memPlace) memPlace.selectedIndex = 0;
-      if (memPeople) memPeople.selectedIndex = 0;
-      if (memEvent) memEvent.selectedIndex = 0;
-      if (memFeeling) memFeeling.selectedIndex = 0;
-      if (memResult) memResult.selectedIndex = 0;
-      if (memOutput) {
-        memOutput.textContent = "Your childhood memory will appear here…";
-      }
+    allZones.forEach((zone) => {
+      zone.addEventListener('dragover', onDragOver);
+      zone.addEventListener('dragleave', onDragLeave);
+      zone.addEventListener('drop', onDrop);
+      zone.addEventListener('click', onZoneClick);
     });
-  }
 
-  function getMemoryText() {
-    if (!memOutput) return "";
-    const txt = memOutput.textContent || "";
-    if (!txt || txt === "Your childhood memory will appear here…") {
-      return "When I was a child, I lived with my family and something special happened. I have never forgotten that day.";
+    // Also allow dropping back to bank
+    bank.addEventListener('dragover', onDragOver);
+    bank.addEventListener('dragleave', onDragLeave);
+    bank.addEventListener('drop', onDrop);
+    bank.addEventListener('click', () => { if (selectedItem) { bank.appendChild(selectedItem); clearSelection(); } });
+
+    function scoreDnD() {
+      // Clear old marks
+      document.querySelectorAll('.pp-dnd-item').forEach((it) => it.classList.remove('is-correct', 'is-wrong'));
+
+      const items = Array.from(document.querySelectorAll('.pp-dnd-item'));
+      const placed = items.filter(it => it.parentElement === zonePP || it.parentElement === zonePS);
+
+      let correct = 0;
+      placed.forEach((it) => {
+        const answer = (it.getAttribute('data-answer') || '').trim();
+        const inPP = it.parentElement === zonePP;
+        const ok = (answer === 'pp' && inPP) || (answer === 'ps' && !inPP);
+        it.classList.add(ok ? 'is-correct' : 'is-wrong');
+        if (ok) correct += 1;
+      });
+
+      const total = items.length;
+      const pct = Math.round((correct / total) * 100);
+      if (result) result.textContent = `Score: ${correct}/${total} (${pct}%).`;
     }
-    return txt;
+
+    function resetDnD() {
+      if (result) result.textContent = '';
+      clearSelection();
+      // Move all items back to bank
+      const items = Array.from(document.querySelectorAll('.pp-dnd-item'));
+      items.forEach((it) => {
+        it.classList.remove('is-correct', 'is-wrong', 'is-selected');
+        bank.appendChild(it);
+      });
+    }
+
+    if (checkBtn) checkBtn.addEventListener('click', scoreDnD);
+    if (resetBtn) resetBtn.addEventListener('click', resetDnD);
   }
 
-  function handleMemoryAudio(action) {
-    if (!("speechSynthesis" in window)) {
-      if (!memWarnedSpeech) {
-        memWarnedSpeech = true;
-        alert(
-          "Your browser does not support speech synthesis. The audio buttons may not work."
-        );
+  // -----------------------------
+  // Dialogue builder
+  // -----------------------------
+  function initDialogueBuilder() {
+    const form = document.getElementById('pp-dialogue-form');
+    const output = document.getElementById('pp-dialogue-output');
+    const clearBtn = document.getElementById('pp-dialogue-clear');
+
+    if (!form || !output) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const yourName = (form.yourName.value || 'You').trim();
+      const colleagueName = (form.colleagueName.value || 'Alex').trim();
+      const topic = form.topic.value || 'work';
+      const tone = form.tone.value || 'friendly';
+
+      let openLine = 'Hi! How have you been?';
+      let mid = '';
+      let close = 'Anyway, it’s been great catching up. Let’s talk again soon.';
+
+      if (tone === 'professional') {
+        openLine = 'Hello. How have you been?';
+        close = 'Thank you for the update. Speak soon.';
+      } else if (tone === 'excited') {
+        openLine = 'Hey! How have you been?!';
+        close = 'Amazing. Let’s celebrate soon!';
       }
-      return;
-    }
 
-    const synth = window.speechSynthesis;
-
-    if (action === "play") {
-      if (synth.paused) {
-        synth.resume();
-        return;
+      if (topic === 'work') {
+        mid = [
+          `I’ve just finished a big task, and I’ve already sent the main documents.`,
+          `We’ve had a few changes this week, so far the project has gone well.`,
+          `Have you ever worked with that new system? I’ve never used it before.`
+        ].join(' ');
+      } else if (topic === 'travel') {
+        mid = [
+          `I’ve been to a few places recently, but I haven’t travelled abroad yet this year.`,
+          `I’ve already booked a trip, and I’ve just checked the hotel details.`,
+          `Have you ever been to New York? I’ve never been, but I’d love to go.`
+        ].join(' ');
+      } else {
+        mid = [
+          `This week has been busy, but I’ve managed to get everything done.`,
+          `I’ve already made a few plans, but I haven’t decided on Saturday night yet.`,
+          `Have you ever tried a new restaurant at the last minute? I’ve done that a lot lately.`
+        ].join(' ');
       }
-      const text = getMemoryText();
-      synth.cancel();
-      memUtterance = new SpeechSynthesisUtterance(text);
-      memUtterance.lang = "en-US";
-      synth.speak(memUtterance);
-    } else if (action === "pause") {
-      synth.pause();
-    } else if (action === "restart") {
-      const text = getMemoryText();
-      synth.cancel();
-      memUtterance = new SpeechSynthesisUtterance(text);
-      memUtterance.lang = "en-US";
-      synth.speak(memUtterance);
-    }
-  }
 
-  lesson.querySelectorAll("[data-pp-mem-audio]").forEach((btn) => {
-    btn.addEventListener("click", function () {
-      const action = btn.getAttribute("data-pp-mem-audio");
-      handleMemoryAudio(action);
+      const text =
+        `${colleagueName}: ${openLine}\n` +
+        `${yourName}: Pretty good, thanks. And you?\n` +
+        `${colleagueName}: Not bad. What’s new?\n` +
+        `${yourName}: ${mid}\n` +
+        `${colleagueName}: Nice! I’ve had a similar week.\n` +
+        `${yourName}: ${close}`;
+
+      output.value = text;
+      output.classList.add('ldn-fade-in'); // if your global css includes this, it will animate; harmless if not
     });
-  });
-});
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        form.reset();
+        output.value = '';
+      });
+    }
+
+    // TTS controls
+    const ttsWrap = document.querySelector('.pp-tts');
+    if (ttsWrap) {
+      const play = ttsWrap.querySelector('[data-tts="play"]');
+      const pause = ttsWrap.querySelector('[data-tts="pause"]');
+      const restart = ttsWrap.querySelector('[data-tts="restart"]');
+
+      if (play) play.addEventListener('click', () => {
+        ensureVoiceReady();
+        // If paused, resume; otherwise speak from start
+        const synth = window.speechSynthesis;
+        if (synth && synth.paused) {
+          resumeSpeech();
+          return;
+        }
+        speakUS(output.value || 'Type or generate a dialogue first.');
+      });
+
+      if (pause) pause.addEventListener('click', () => pauseSpeech());
+      if (restart) restart.addEventListener('click', () => speakUS(output.value || 'Type or generate a dialogue first.'));
+    }
+  }
+
+  // -----------------------------
+  // Init all
+  // -----------------------------
+  ensureVoiceReady();
+
+  document.querySelectorAll('.pp-quiz').forEach(initQuiz);
+  initDnD();
+  initDialogueBuilder();
+
+})();
