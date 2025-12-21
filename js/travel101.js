@@ -1,460 +1,463 @@
+/* =========================================================
+   travel101.js
+   Interactive logic for Travel 101 page
+   - Vocabulary MCQ quiz
+   - Dialogue builders (check-in, car rental, immigration/customs)
+   - Adjective mini-quiz + short builder
+   - Optional TTS (en-US)
+   ========================================================= */
 (function () {
-  const module = document.getElementById("travel101-module");
-  if (!module) return;
+  "use strict";
 
- /* ---------- VOICE SETUP (AMERICAN ENGLISH IF POSSIBLE) ---------- */
-let t101Voices = [];
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const clean = (v) => String(v ?? "").trim().replace(/\s+/g, " ");
 
-function loadVoices() {
-  if (!("speechSynthesis" in window)) return;
-  t101Voices = window.speechSynthesis.getVoices() || [];
-}
+  // -------------------------
+  // TTS (American English)
+  // -------------------------
+  const TTS = (() => {
+    let voices = [];
+    let ready = false;
 
-if ("speechSynthesis" in window) {
-  loadVoices();
-  window.speechSynthesis.addEventListener("voiceschanged", loadVoices);
-}
+    function loadVoices() {
+      voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+      ready = voices.length > 0;
+      return voices;
+    }
 
-function getAmericanEnglishVoice() {
-  if (!("speechSynthesis" in window)) return null;
+    if ("speechSynthesis" in window) {
+      loadVoices();
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
 
-  if (!t101Voices || !t101Voices.length) {
-    t101Voices = window.speechSynthesis.getVoices() || [];
-  }
-  if (!t101Voices.length) return null;
+    function pickVoice(preferredLang = "en-US") {
+      if (!("speechSynthesis" in window)) return null;
+      if (!ready) loadVoices();
 
-  // 1) Prefer clear US voices by name (Chrome / Windows)
-  const preferredNames = [
-    "Google US English",
-    "Microsoft Zira Desktop - English (United States)",
-    "Microsoft David Desktop - English (United States)",
-    "Microsoft Mark - English (United States)",
-    "Microsoft Aria Online (Natural) - English (United States)",
-    "Microsoft Guy Online (Natural) - English (United States)"
-  ];
+      // exact match
+      let v = voices.find((x) => (x.lang || "").toLowerCase() === preferredLang.toLowerCase());
+      if (v) return v;
 
-  let voice =
-    t101Voices.find(v => preferredNames.includes(v.name)) ||
-    t101Voices.find(v => v.lang === "en-US") ||
-    t101Voices.find(v => v.lang && v.lang.toLowerCase().startsWith("en-us")) ||
-    t101Voices.find(v => v.lang && v.lang.toLowerCase().startsWith("en"));
+      // any English voice
+      v = voices.find((x) => (x.lang || "").toLowerCase().startsWith("en-"));
+      return v || null;
+    }
 
-  return voice || null;
-}
+    function speak(text, { lang = "en-US", rate = 1, pitch = 1 } = {}) {
+      if (!("speechSynthesis" in window)) return false;
+      const t = clean(text);
+      if (!t) return false;
 
-  /* ---------- MAIN REVIEW QUIZ (MULTIPLE CHOICE) ---------- */
-  const questions = module.querySelectorAll(".sfo-question");
-  const totalCountSpan = module.querySelector("#sfo-total-count");
-  const correctCountSpan = module.querySelector("#sfo-correct-count");
-  let correctCount = 0;
+      window.speechSynthesis.cancel();
 
-  if (totalCountSpan) {
-    totalCountSpan.textContent = questions.length.toString();
-  }
+      const utter = new SpeechSynthesisUtterance(t);
+      utter.lang = lang;
 
-  questions.forEach((q) => {
-    const correct = q.getAttribute("data-correct");
-    const buttons = q.querySelectorAll("button[data-option]");
-    const feedback = q.querySelector(".sfo-feedback");
+      const v = pickVoice(lang);
+      if (v) utter.voice = v;
 
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        if (q.classList.contains("answered")) return; // prevent changing score
+      utter.rate = rate;
+      utter.pitch = pitch;
 
-        q.classList.add("answered", "sfo-question-answered");
-        const chosen = btn.getAttribute("data-option");
+      window.speechSynthesis.speak(utter);
+      return true;
+    }
 
-        if (chosen === correct) {
-          btn.classList.add("sfo-correct");
-          if (feedback) {
-            feedback.textContent = "✅ Correct!";
-            feedback.classList.remove("sfo-error");
-            feedback.classList.add("sfo-ok");
-          }
-          correctCount++;
-          if (correctCountSpan) {
-            correctCountSpan.textContent = correctCount.toString();
-          }
-        } else {
-          btn.classList.add("sfo-incorrect");
-          if (feedback) {
-            feedback.textContent = "❌ Try again. The correct answer is highlighted.";
-            feedback.classList.remove("sfo-ok");
-            feedback.classList.add("sfo-error");
-          }
-          // highlight correct option
-          buttons.forEach((b) => {
-            if (b.getAttribute("data-option") === correct) {
-              b.classList.add("sfo-correct");
+    function pause() {
+      if (!("speechSynthesis" in window)) return;
+      window.speechSynthesis.pause();
+    }
+
+    function resume() {
+      if (!("speechSynthesis" in window)) return;
+      window.speechSynthesis.resume();
+    }
+
+    function stop() {
+      if (!("speechSynthesis" in window)) return;
+      window.speechSynthesis.cancel();
+    }
+
+    return { speak, pause, resume, stop };
+  })();
+
+  // -------------------------
+  // MCQ Quiz (buttons)
+  // -------------------------
+  function initMcqQuiz() {
+    const root = $("#sfo-quiz-questions");
+    if (!root) return;
+
+    const questions = $$(".sfo-question", root);
+    const totalEl = $("#sfo-total-count");
+    const correctEl = $("#sfo-correct-count");
+    const scoreBtn = $("#sfo-show-score");
+    const resetBtn = $("#sfo-reset-quiz");
+    const scoreOut = $("#sfo-final-score");
+
+    const total = questions.length;
+    if (totalEl) totalEl.textContent = String(total);
+
+    let correct = 0;
+
+    const setCorrect = () => {
+      if (correctEl) correctEl.textContent = String(correct);
+    };
+    setCorrect();
+
+    questions.forEach((q) => {
+      const correctOpt = q.getAttribute("data-correct");
+      const btns = $$("button", q);
+      const feedback = $(".sfo-feedback", q);
+
+      btns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (q.dataset.answered === "1") return;
+
+          const picked = btn.getAttribute("data-option");
+          const isCorrect = picked === correctOpt;
+
+          q.dataset.answered = "1";
+          btns.forEach((b) => (b.disabled = true));
+
+          if (isCorrect) {
+            correct += 1;
+            btn.classList.add("is-correct");
+            if (feedback) {
+              feedback.textContent = "✅ Correct!";
+              feedback.classList.remove("is-wrong");
+              feedback.classList.add("is-correct");
             }
-          });
-        }
+          } else {
+            btn.classList.add("is-wrong");
+            const correctBtn = btns.find((b) => b.getAttribute("data-option") === correctOpt);
+            if (correctBtn) correctBtn.classList.add("is-correct");
+            if (feedback) {
+              feedback.textContent = "❌ Not quite. See the correct answer.";
+              feedback.classList.remove("is-correct");
+              feedback.classList.add("is-wrong");
+            }
+          }
 
-        setTimeout(() => {
-          q.classList.remove("sfo-question-answered");
-        }, 400);
+          setCorrect();
+        });
       });
     });
-  });
 
-  const showScoreBtn = module.querySelector("#sfo-show-score");
-  const finalScoreDiv = module.querySelector("#sfo-final-score");
+    if (scoreBtn) {
+      scoreBtn.addEventListener("click", () => {
+        const answered = questions.filter((q) => q.dataset.answered === "1").length;
+        const pct = total ? Math.round((correct / total) * 100) : 0;
+        if (scoreOut) {
+          scoreOut.textContent =
+            answered < total
+              ? `You answered ${answered}/${total}. Current score: ${correct}/${total} (${pct}%).`
+              : `Final score: ${correct}/${total} (${pct}%).`;
+        }
+      });
+    }
 
-  if (showScoreBtn && finalScoreDiv) {
-    showScoreBtn.addEventListener("click", () => {
-      const total = questions.length;
-      let message = "Your final score: " + correctCount + " / " + total;
-      if (correctCount === total) {
-        message += " 🎉 Excellent! You’re ready for SFO and Hotel Nikko.";
-      } else if (correctCount >= Math.round(total * 0.7)) {
-        message += " 👍 Good job! A few details to review.";
-      } else {
-        message += " 💪 Keep practicing and try again.";
-      }
-      finalScoreDiv.textContent = message;
-    });
-  }
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        correct = 0;
+        setCorrect();
+        if (scoreOut) scoreOut.textContent = "";
 
-  const resetQuizBtn = module.querySelector("#sfo-reset-quiz");
-  if (resetQuizBtn) {
-    resetQuizBtn.addEventListener("click", () => {
-      correctCount = 0;
-      if (correctCountSpan) {
-        correctCountSpan.textContent = "0";
-      }
-      if (finalScoreDiv) {
-        finalScoreDiv.textContent = "";
-      }
-
-      questions.forEach((q) => {
-        q.classList.remove("answered", "sfo-question-answered");
-        const buttons = q.querySelectorAll("button[data-option]");
-        const feedback = q.querySelector(".sfo-feedback");
-
-        buttons.forEach((b) => {
-          b.classList.remove("sfo-correct", "sfo-incorrect");
+        questions.forEach((q) => {
+          q.dataset.answered = "";
+          const feedback = $(".sfo-feedback", q);
+          if (feedback) {
+            feedback.textContent = "";
+            feedback.classList.remove("is-correct", "is-wrong");
+          }
+          $$("button", q).forEach((b) => {
+            b.disabled = false;
+            b.classList.remove("is-correct", "is-wrong");
+          });
         });
 
-        if (feedback) {
-          feedback.textContent = "";
-          feedback.classList.remove("sfo-ok", "sfo-error");
-        }
+        TTS.stop();
       });
-    });
+    }
   }
 
-  /* ---------- ADJECTIVES / COMPARATIVES / SUPERLATIVES QUIZ ---------- */
-  const adjQuestions = module.querySelectorAll(".t101-adj-question");
-  const adjTotalSpan = module.querySelector("#t101-adj-total");
-  const adjCorrectSpan = module.querySelector("#t101-adj-correct");
-  const adjResetBtn = module.querySelector("#t101-adj-reset");
-  let adjCorrectCount = 0;
+  // -------------------------
+  // Adjective mini-quiz (select + check)
+  // -------------------------
+  function initAdjQuiz() {
+    const root = $(".t101-adj-quiz");
+    if (!root) return;
 
-  if (adjTotalSpan) {
-    adjTotalSpan.textContent = adjQuestions.length.toString();
-  }
+    const questions = $$(".t101-adj-question", root);
+    const totalEl = $("#t101-adj-total");
+    const scoreEl = $("#t101-adj-score");
+    const resetBtn = $("#t101-adj-reset");
 
-  adjQuestions.forEach((q) => {
-    const select = q.querySelector("select");
-    const checkBtn = q.querySelector(".t101-adj-check");
-    const feedback = q.querySelector(".t101-adj-feedback");
-    const correct = q.getAttribute("data-correct");
-    const hint = q.getAttribute("data-hint") || "";
+    const total = questions.length;
+    if (totalEl) totalEl.textContent = String(total);
 
-    if (!select || !checkBtn) return;
+    let score = 0;
+    const scored = new Set();
 
-    checkBtn.addEventListener("click", () => {
-      const value = select.value;
-      if (!value) {
-        if (feedback) {
-          feedback.textContent = "👉 Choose an option first.";
-          feedback.classList.remove("t101-adj-ok", "t101-adj-error");
+    const render = () => {
+      if (scoreEl) scoreEl.textContent = String(score);
+    };
+    render();
+
+    questions.forEach((q, idx) => {
+      const correct = q.getAttribute("data-correct");
+      const select = $("select", q);
+      const btn = $(".t101-adj-check", q);
+      const feedback = $(".t101-adj-feedback", q);
+
+      if (!select || !btn) return;
+
+      btn.addEventListener("click", () => {
+        const val = clean(select.value);
+        const ok = val === correct;
+
+        const key = String(idx);
+        if (!scored.has(key)) {
+          if (ok) score += 1;
+          scored.add(key);
+          render();
         }
-        return;
-      }
 
-      if (q.dataset.done === "true") {
-        // already counted in score; just show feedback again
-        if (value === correct) {
+        select.classList.remove("is-correct", "is-wrong");
+        if (feedback) feedback.classList.remove("is-correct", "is-wrong");
+
+        if (ok) {
+          select.classList.add("is-correct");
           if (feedback) {
-            feedback.textContent = "✅ Correct!";
-            feedback.classList.add("t101-adj-ok");
-            feedback.classList.remove("t101-adj-error");
+            feedback.textContent = "✅ Correct.";
+            feedback.classList.add("is-correct");
           }
         } else {
+          select.classList.add("is-wrong");
           if (feedback) {
-            feedback.textContent = "❌ Not quite. " + hint;
-            feedback.classList.add("t101-adj-error");
-            feedback.classList.remove("t101-adj-ok");
+            feedback.textContent = `❌ Try again. Hint: the best choice is “${correct.toUpperCase()}”.`;
+            feedback.classList.add("is-wrong");
           }
         }
-        return;
-      }
-
-      if (value === correct) {
-        if (feedback) {
-          feedback.textContent = "✅ Correct!";
-          feedback.classList.add("t101-adj-ok");
-          feedback.classList.remove("t101-adj-error");
-        }
-        adjCorrectCount++;
-        if (adjCorrectSpan) {
-          adjCorrectSpan.textContent = adjCorrectCount.toString();
-        }
-        q.dataset.done = "true";
-      } else {
-        if (feedback) {
-          feedback.textContent = "❌ Not quite. " + hint;
-          feedback.classList.add("t101-adj-error");
-          feedback.classList.remove("t101-adj-ok");
-        }
-      }
-    });
-  });
-
-  if (adjResetBtn) {
-    adjResetBtn.addEventListener("click", () => {
-      adjCorrectCount = 0;
-      if (adjCorrectSpan) {
-        adjCorrectSpan.textContent = "0";
-      }
-      adjQuestions.forEach((q) => {
-        const select = q.querySelector("select");
-        const feedback = q.querySelector(".t101-adj-feedback");
-        if (select) select.value = "";
-        if (feedback) {
-          feedback.textContent = "";
-          feedback.classList.remove("t101-adj-ok", "t101-adj-error");
-        }
-        delete q.dataset.done;
       });
     });
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        score = 0;
+        scored.clear();
+        render();
+
+        questions.forEach((q) => {
+          const select = $("select", q);
+          const feedback = $(".t101-adj-feedback", q);
+          if (select) {
+            select.selectedIndex = 0;
+            select.classList.remove("is-correct", "is-wrong");
+          }
+          if (feedback) {
+            feedback.textContent = "";
+            feedback.classList.remove("is-correct", "is-wrong");
+          }
+        });
+
+        TTS.stop();
+      });
+    }
   }
 
-  /* ---------- MINI ADJECTIVE BUILDER ---------- */
-  const adjBuildBtn = module.querySelector("#t101-adj-build");
-  const adjOutput = module.querySelector("#t101-adj-output");
-  const adjOverall = module.querySelector("#t101-adj-overall");
-  const adjFlight = module.querySelector("#t101-adj-flight");
-  const adjAirport = module.querySelector("#t101-adj-airport");
-  const adjHotel = module.querySelector("#t101-adj-hotel");
+  // -------------------------
+  // Adjective mini builder
+  // -------------------------
+  function initAdjBuilder() {
+    const btn = $("#t101-adj-build");
+    const reset = $("#t101-adj-builder-reset");
+    const out = $("#t101-adj-output");
 
-  const adjBuilderResetBtn = module.querySelector("#t101-adj-builder-reset");
+    if (!btn || !out) return;
 
-  function buildAdjParagraph() {
-    if (!adjOutput) return;
-    const overall = adjOverall && adjOverall.value ? adjOverall.value : "great overall";
-    const flight = adjFlight && adjFlight.value ? adjFlight.value : "quite long but comfortable";
-    const airport = adjAirport && adjAirport.value ? adjAirport.value : "busy but well-organised";
-    const hotel = adjHotel && adjHotel.value ? adjHotel.value : "very comfortable and convenient";
+    const get = (id) => clean($(id)?.value);
 
-    const text =
-      "My trip to San Francisco was " + overall + ". " +
-      "The flight was " + flight + ". " +
-      "The airport was " + airport + ". " +
-      "The hotel was " + hotel + ".";
+    function build() {
+      const hotel = get("#t101-adj-hotel");
+      const neighborhood = get("#t101-adj-neighborhood");
+      const transport = get("#t101-adj-transport");
+      const day = get("#t101-adj-day");
+      const activity = get("#t101-adj-activity");
 
-    adjOutput.value = text;
-  }
+      const lines = [
+        `Last weekend, I stayed in a ${hotel} hotel in a ${neighborhood} neighborhood.`,
+        `Getting around was ${transport}, so everything felt ${day}.`,
+        `The best part was ${activity}.`,
+        `Overall, it was a really enjoyable trip — and I’d love to do it again.`
+      ];
 
-  if (adjBuildBtn) {
-    adjBuildBtn.addEventListener("click", buildAdjParagraph);
-  }
-
-  if (adjBuilderResetBtn) {
-    adjBuilderResetBtn.addEventListener("click", () => {
-      if (adjOverall) adjOverall.selectedIndex = 0;
-      if (adjFlight) adjFlight.selectedIndex = 0;
-      if (adjAirport) adjAirport.selectedIndex = 0;
-      if (adjHotel) adjHotel.selectedIndex = 0;
-      if (adjOutput) adjOutput.value = "";
-    });
-  }
-
-  /* ---------- DIALOGUE BUILDERS (CHECK-IN / CAR RENTAL / CUSTOMS) ---------- */
-
-  function buildCheckinDialogue(data) {
-    const name = data.name || "the passenger";
-    const airline = data.airline || "Air France";
-    const destination = data.destination || "San Francisco";
-    const bags = data.bags || "one suitcase";
-    const seat = data.seat || "an aisle seat";
-    const extra = data.extra || "nothing else";
-
-    const bagsSentence =
-      bags.indexOf("no bags") === 0
-        ? "No, I only have a carry-on bag."
-        : "Yes, I have " + bags + ".";
-
-    const extraSentence =
-      extra === "nothing else"
-        ? "Passenger: No, thank you. I don’t need anything else."
-        : "Passenger: I’d also like " + extra + ", please.";
-
-    return (
-      "Agent: Good morning! Where are you flying today?\n" +
-      "Passenger (" + name + "): To " + destination + ", with " + airline + ".\n" +
-      "Agent: May I have your passport, please?\n" +
-      "Passenger: Sure, here you go.\n" +
-      "Agent: Do you have any bags to check in?\n" +
-      "Passenger: " + bagsSentence + "\n" +
-      "Agent: Would you like an aisle or a window seat?\n" +
-      "Passenger: I’d like " + seat + ", please.\n" +
-      extraSentence + "\n" +
-      "Agent: Perfect. Here is your boarding pass. Boarding at Gate B12.\n" +
-      "Passenger: Thank you."
-    );
-  }
-
-  function buildRentalDialogue(data) {
-    const name = data.name || "the driver";
-    const company = data.company || "Hertz";
-    const carType = data.carType || "compact car";
-    const length = data.length || "three days";
-    const insuranceChoice =
-      data.insurance ||
-      "take the basic coverage with CDW only, with a deductible of $2,000";
-    const gpsSentence = data.gps || "Yes, I’d like to add GPS, please.";
-
-    let insuranceSentence;
-    if (insuranceChoice.includes("Premium Protection")) {
-      insuranceSentence = "I’d like Premium Protection with zero deductible, please.";
-    } else if (insuranceChoice.includes("credit card")) {
-      insuranceSentence = "No, thank you. I’ll use my credit card insurance for CDW.";
-    } else {
-      insuranceSentence = "I’ll take the basic coverage with CDW only, please.";
+      out.value = lines.join(" ");
     }
 
-    return (
-      "Agent: Good afternoon. Welcome to " + company + ". How can I help you?\n" +
-      "Driver (" + name + "): Hello, I have a reservation for a " + carType +
-      " for " + length + ".\n" +
-      "Agent: Great. Would you like any extra insurance today?\n" +
-      "Driver: " + insuranceSentence + "\n" +
-      "Agent: Would you like to add GPS?\n" +
-      "Driver: " + gpsSentence + "\n" +
-      "Agent: Perfect. Please sign here. You can return the car at the airport.\n" +
-      "Driver: Thank you."
-    );
+    btn.addEventListener("click", build);
+
+    if (reset) {
+      reset.addEventListener("click", () => {
+        ["#t101-adj-hotel", "#t101-adj-neighborhood", "#t101-adj-transport", "#t101-adj-day", "#t101-adj-activity"].forEach((id) => {
+          const el = $(id);
+          if (el && "selectedIndex" in el) el.selectedIndex = 0;
+        });
+        out.value = "";
+      });
+    }
   }
 
-  function buildCustomsDialogue(data) {
-    const origin = data.origin || "Paris, France";
-    const purpose = data.purpose || "Vacation – I’m visiting family in California.";
-    const length = data.length || "two weeks";
-    const declare = data.declare || "No, I have nothing to declare.";
-    const securityLine =
-      data.security ||
-      "Please place your bags on the scanner and remove your laptop and liquids.";
+  // -------------------------
+  // Dialogue builders (forms)
+  // -------------------------
+  function initDialogueBuilders() {
+    const forms = $$(".sfo-builder-form");
+    if (!forms.length) return;
 
-    let officerReaction = "Officer: Enjoy your stay in San Francisco!";
-    if (declare.includes("cheese and chocolate")) {
-      officerReaction =
-        "Officer: You must declare food. I’ll register your cheese and chocolate. Enjoy your stay!";
-    } else if (declare.includes("medication")) {
-      officerReaction =
-        "Officer: That’s fine. You must keep your medication in its original packaging.";
-    } else if (declare.includes("ten thousand dollars")) {
-      officerReaction =
-        "Officer: You must declare any amount over ten thousand dollars. Please fill in this form.";
+    function readFormValues(form) {
+      const v = {};
+      $$("input, select, textarea", form).forEach((el) => {
+        const name = el.getAttribute("name");
+        if (!name) return;
+        v[name] = clean(el.value);
+      });
+      return v;
     }
 
-    return (
-      "Officer: Welcome to the United States. Where are you coming from?\n" +
-      "Passenger: From " + origin + ".\n" +
-      "Officer: What is the purpose of your trip?\n" +
-      "Passenger: " + purpose + "\n" +
-      "Officer: How long will you stay?\n" +
-      "Passenger: " + length + ".\n" +
-      "Officer: Do you have anything to declare?\n" +
-      "Passenger: " + declare + "\n" +
-      officerReaction + "\n" +
-      "Officer: " + securityLine + "\n" +
-      "Passenger: Sure, here you go."
-    );
-  }
+    function tmplCheckIn(v) {
+      const name = v.name || "Alex";
+      const airline = v.airline || "the airline";
+      const destination = v.destination || "my destination";
+      const luggage = v.luggage || "one suitcase";
+      const seat = v.seat || "an aisle seat";
 
-  const builderForms = module.querySelectorAll(".sfo-builder-form");
-  builderForms.forEach((form) => {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+      return [
+        "AIRLINE AGENT: Good morning. May I see your passport and ticket, please?",
+        `YOU: Sure. My name is ${name}. I'm flying to ${destination} with ${airline}.`,
+        "AIRLINE AGENT: Are you checking any bags today?",
+        `YOU: Yes — ${luggage}.`,
+        "AIRLINE AGENT: Any seat preference?",
+        `YOU: If possible, ${seat}.`,
+        "AIRLINE AGENT: Great. Here is your boarding pass. Your gate number is on the screen.",
+        "YOU: Thank you! What time does boarding begin?"
+      ].join("\n");
+    }
+
+    function tmplRental(v) {
+      const name = v.name || "Alex";
+      const company = v.company || "your company";
+      const carType = v.carType || "compact car";
+      const days = v.days || "3";
+      const insurance = v.insurance || "No, thanks";
+      const extras = v.extras || "No extras";
+
+      return [
+        "RENTAL AGENT: Hi! Welcome. Do you have a reservation?",
+        `YOU: Yes. It's under ${name}. I booked with ${company}.`,
+        "RENTAL AGENT: Great. What kind of car would you like?",
+        `YOU: A ${carType}, please — for ${days} day(s).`,
+        "RENTAL AGENT: Would you like to add insurance coverage?",
+        `YOU: ${insurance}.`,
+        "RENTAL AGENT: Any extras? GPS, child seat, or an additional driver?",
+        `YOU: ${extras}.`,
+        "RENTAL AGENT: Perfect. Please sign here. The car is in the lot outside.",
+        "YOU: Thanks. Could you quickly confirm the fuel policy and where I return the car?"
+      ].join("\n");
+    }
+
+    function tmplCustoms(v) {
+      const origin = v.origin || "France";
+      const purpose = v.purpose || "tourism";
+      const duration = v.duration || "a week";
+      const declare = v.declare || "No, I don't";
+      const question = v.question || "No, thank you.";
+
+      return [
+        "OFFICER: Hello. Where are you arriving from?",
+        `YOU: Hi. I'm arriving from ${origin}.`,
+        "OFFICER: What's the purpose of your trip?",
+        `YOU: I'm here for ${purpose}.`,
+        "OFFICER: How long are you staying?",
+        `YOU: ${duration}.`,
+        "OFFICER: Do you have anything to declare?",
+        `YOU: ${declare}.`,
+        "OFFICER: Any questions before you go?",
+        `YOU: ${question}`,
+        "OFFICER: Alright. Enjoy your stay."
+      ].join("\n");
+    }
+
+    forms.forEach((form) => {
       const outputId = form.getAttribute("data-output");
+      const output = outputId ? document.getElementById(outputId) : null;
       const type = form.getAttribute("data-type");
-      if (!outputId || !type) return;
-      const output = module.querySelector("#" + outputId);
+
       if (!output) return;
 
-      const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => {
-        data[key] = String(value);
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const v = readFormValues(form);
+
+        let text = "";
+        if (type === "checkin") text = tmplCheckIn(v);
+        else if (type === "rental") text = tmplRental(v);
+        else if (type === "customs") text = tmplCustoms(v);
+        else text = "Builder template not found.";
+
+        output.value = text;
       });
 
-      let dialogue = "";
-      if (type === "checkin") {
-        dialogue = buildCheckinDialogue(data);
-      } else if (type === "rental") {
-        dialogue = buildRentalDialogue(data);
-      } else if (type === "customs") {
-        dialogue = buildCustomsDialogue(data);
+      // Wire listen/pause/reset within the same builder block
+      const builder = form.closest(".sfo-builder");
+      if (!builder) return;
+
+      const listenBtn = $(".sfo-listen", builder);
+      const pauseBtn = $(".sfo-pause", builder);
+      const resetBtn = $(".sfo-reset", builder);
+
+      if (listenBtn) {
+        listenBtn.addEventListener("click", () => {
+          if (!output.value) form.dispatchEvent(new Event("submit", { cancelable: true }));
+          TTS.speak(output.value, { lang: "en-US" });
+          if (pauseBtn) pauseBtn.textContent = "⏸ Pause";
+        });
       }
 
-      output.value = dialogue;
-    });
-  });
+      if (pauseBtn) {
+        pauseBtn.addEventListener("click", () => {
+          if (!("speechSynthesis" in window)) return;
 
-  /* ---------- AUDIO: SPEAKER + PAUSE ---------- */
-function speakFromOutput(outputId) {
-  const textarea = document.querySelector("#" + outputId);
-  if (!textarea) return;
-  const text = textarea.value.trim();
-  if (!text) {
-    alert("Please build a text first.");
-    return;
+          if (window.speechSynthesis.paused) {
+            TTS.resume();
+            pauseBtn.textContent = "⏸ Pause";
+          } else if (window.speechSynthesis.speaking) {
+            TTS.pause();
+            pauseBtn.textContent = "▶️ Resume";
+          }
+        });
+      }
+
+      if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+          $$("input, textarea", form).forEach((el) => (el.value = ""));
+          $$("select", form).forEach((el) => (el.selectedIndex = 0));
+          output.value = "";
+          if (pauseBtn) pauseBtn.textContent = "⏸ Pause";
+          TTS.stop();
+        });
+      }
+    });
   }
 
-  if (!("speechSynthesis" in window)) {
-    alert("Sorry, your browser does not support text-to-speech.");
-    return;
-  }
-
-  window.speechSynthesis.cancel();
-  const utter = new SpeechSynthesisUtterance(text);
-
-  const usVoice = getAmericanEnglishVoice();
-  if (usVoice) {
-    utter.voice = usVoice;
-    utter.lang = usVoice.lang || "en-US";
-  } else {
-    // fallback – at least ask for English (US)
-    utter.lang = "en-US";
-  }
-
-  window.speechSynthesis.speak(utter);
-}
-
-function togglePause() {
-  if (!("speechSynthesis" in window)) return;
-  const synth = window.speechSynthesis;
-  if (!synth.speaking) return;
-  if (synth.paused) synth.resume();
-  else synth.pause();
-}
-
-  const listenButtons = module.querySelectorAll(".sfo-listen");
-  listenButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const outputId = btn.getAttribute("data-output");
-      if (!outputId) return;
-      speakFromOutput(outputId);
-    });
+  // -------------------------
+  // Boot
+  // -------------------------
+  document.addEventListener("DOMContentLoaded", () => {
+    initMcqQuiz();
+    initAdjQuiz();
+    initAdjBuilder();
+    initDialogueBuilders();
   });
-
-  const pauseButtons = module.querySelectorAll(".sfo-pause");
-  pauseButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      togglePause();
-    });
-  });
-
 })();
