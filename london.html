@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Your main site CSS -->
-  <link rel="stylesheet" href="/css/speakeasy.css">
+  <link rel="stylesheet" href="/css/speakeasy.css" />
+  <link rel="stylesheet" href="/css/nav.fixed.css" />
   <!-- Page-specific CSS -->
   <link rel="stylesheet" href="/css/london.css">
 </head>
@@ -1510,50 +1511,9 @@
 
   <!-- Page-specific JS -->
   <script src="/js/london.revised.js" defer></script>
-  <script src="/js/site-chrome.js" defer></script>
+  <script src="/js/site-chrome.fixed.js" defer></script>
 
 
-  <!-- 4️⃣ Nav JS – copy the SAME <script> ... </script> block from index.html
-       (mobile toggle + dropdown behaviour) and paste it here under the line above. -->
-  <!-- Simple JS for mobile nav toggle -->
-  <script>
-  (function () {
-    const toggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
 
-    // Mobile main menu toggle
-    if (toggle && navLinks) {
-      toggle.addEventListener('click', function () {
-        const isOpen = navLinks.classList.toggle('is-open');
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-    }
-
-    // Dropdowns: open/close on click
-    const dropdownParents = document.querySelectorAll('.has-dropdown');
-
-    dropdownParents.forEach(function (parent) {
-      const button = parent.querySelector('.nav-button');
-      if (!button) return;
-
-      button.addEventListener('click', function (event) {
-        // Don't let this click close things immediately
-        event.stopPropagation();
-
-        // Toggle only this dropdown
-        parent.classList.toggle('is-open');
-      });
-    });
-
-    // Close dropdowns when clicking outside (desktop)
-    document.addEventListener('click', function (event) {
-      document.querySelectorAll('.has-dropdown.is-open').forEach(function (parent) {
-        if (!parent.contains(event.target)) {
-          parent.classList.remove('is-open');
-        }
-      });
-    });
-  })();
-</script>
 </body>
 </html>
