@@ -44,14 +44,32 @@
       return v || null;
     }
 
+    
     function speak(text, { lang = "en-US", rate = 1, pitch = 1 } = {}) {
-      if (!("speechSynthesis" in window)) return false;
-      const t = clean(text);
-      if (!t) return false;
+      if (!("speechSynthesis" in window)) return;
 
-      window.speechSynthesis.cancel();
+      const raw = (text || "").toString().trim();
+      if (!raw) return;
 
-      const utter = new SpeechSynthesisUtterance(t);
+      const clean = raw.replace(/\s+/g, " ").trim();
+
+      // Some browsers (notably iOS/Safari) sometimes need a short delay until voices are ready.
+      const voicesNow = speechSynthesis.getVoices();
+      if (!voicesNow || voicesNow.length === 0) {
+        loadVoices();
+        // Try once more shortly after voices load
+        setTimeout(() => {
+          const again = speechSynthesis.getVoices();
+          if (again && again.length) {
+            speak(clean, { lang, rate, pitch });
+          }
+        }, 250);
+        return;
+      }
+
+      stop();
+
+      const utter = new SpeechSynthesisUtterance(clean);
       utter.lang = lang;
 
       const v = pickVoice(lang);
@@ -60,8 +78,11 @@
       utter.rate = rate;
       utter.pitch = pitch;
 
-      window.speechSynthesis.speak(utter);
-      return true;
+      utter.onend = () => {
+        // reset pause state in some browsers
+      };
+
+      speechSynthesis.speak(utter);
     }
 
     function pause() {
@@ -85,228 +106,231 @@
   // -------------------------
   // MCQ Quiz (buttons)
   // -------------------------
+  
   function initMcqQuiz() {
-    const root = $("#sfo-quiz-questions");
-    if (!root) return;
+    // Supports two markup variants:
+    // A) container .sfo-mcq with .sfo-question[data-answer] + buttons[data-option]
+    // B) #sfo-quiz-questions with .sfo-question[data-correct] + buttons[data-choice]
+    const quizContainers = $$(".sfo-mcq");
+    const legacyQuestions = $$("#sfo-quiz-questions .sfo-question");
 
-    const questions = $$(".sfo-question", root);
-    const totalEl = $("#sfo-total-count");
-    const correctEl = $("#sfo-correct-count");
-    const scoreBtn = $("#sfo-show-score");
-    const resetBtn = $("#sfo-reset-quiz");
-    const scoreOut = $("#sfo-final-score");
+    // If there's no container, we still run the "legacy" questions behavior.
+    if (!quizContainers.length && !legacyQuestions.length) return;
 
-    const total = questions.length;
-    if (totalEl) totalEl.textContent = String(total);
+    // Helper to wire a set of questions + a summary element
+    function wireQuestions(questions, summaryEl) {
+      const total = questions.length;
+      let correctCount = 0;
+      let answeredCount = 0;
 
-    let correct = 0;
+      const updateSummary = () => {
+        if (!summaryEl) return;
+        summaryEl.textContent = `Score: ${correctCount} / ${total}`;
+      };
 
-    const setCorrect = () => {
-      if (correctEl) correctEl.textContent = String(correct);
-    };
-    setCorrect();
+      updateSummary();
 
-    questions.forEach((q) => {
-      const correctOpt = q.getAttribute("data-correct");
-      const btns = $$("button", q);
-      const feedback = $(".sfo-feedback", q);
+      questions.forEach((q) => {
+        const correctKey = ((q.dataset.answer || q.dataset.correct || "") + "").trim().toLowerCase();
+        const explain = (q.dataset.explain || "").trim();
+        const feedback = $(".sfo-feedback", q) || $(".feedback", q);
 
-      btns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          if (q.dataset.answered === "1") return;
+        const btns = $$("button", q);
+        btns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            if (q.dataset.answered === "true") return;
 
-          const picked = btn.getAttribute("data-option");
-          const isCorrect = picked === correctOpt;
+            const choiceKey = ((btn.dataset.option || btn.dataset.choice || "") + "").trim().toLowerCase();
+            const isCorrect = correctKey && choiceKey === correctKey;
 
-          q.dataset.answered = "1";
-          btns.forEach((b) => (b.disabled = true));
+            q.dataset.answered = "true";
+            answeredCount += 1;
+            if (isCorrect) correctCount += 1;
 
-          if (isCorrect) {
-            correct += 1;
-            btn.classList.add("is-correct");
-            if (feedback) {
-              feedback.textContent = "✅ Correct!";
-              feedback.classList.remove("is-wrong");
-              feedback.classList.add("is-correct");
-            }
-          } else {
-            btn.classList.add("is-wrong");
-            const correctBtn = btns.find((b) => b.getAttribute("data-option") === correctOpt);
+            // Disable buttons and add visual state
+            btns.forEach((b) => {
+              b.disabled = true;
+              b.classList.remove("is-correct", "is-wrong");
+            });
+
+            // Mark chosen + correct answer
+            btn.classList.add(isCorrect ? "is-correct" : "is-wrong");
+            const correctBtn = btns.find((b) => {
+              const key = ((b.dataset.option || b.dataset.choice || "") + "").trim().toLowerCase();
+              return key === correctKey;
+            });
             if (correctBtn) correctBtn.classList.add("is-correct");
+
             if (feedback) {
-              feedback.textContent = "❌ Not quite. See the correct answer.";
-              feedback.classList.remove("is-correct");
-              feedback.classList.add("is-wrong");
+              const base = isCorrect ? "✅ Correct!" : "❌ Not quite.";
+              feedback.textContent = explain ? `${base} ${explain}` : base;
+              feedback.style.display = "block";
             }
-          }
 
-          setCorrect();
+            updateSummary();
+          });
         });
-      });
-    });
-
-    if (scoreBtn) {
-      scoreBtn.addEventListener("click", () => {
-        const answered = questions.filter((q) => q.dataset.answered === "1").length;
-        const pct = total ? Math.round((correct / total) * 100) : 0;
-        if (scoreOut) {
-          scoreOut.textContent =
-            answered < total
-              ? `You answered ${answered}/${total}. Current score: ${correct}/${total} (${pct}%).`
-              : `Final score: ${correct}/${total} (${pct}%).`;
-        }
       });
     }
 
-    if (resetBtn) {
-      resetBtn.addEventListener("click", () => {
-        correct = 0;
-        setCorrect();
-        if (scoreOut) scoreOut.textContent = "";
+    // Variant A: .sfo-mcq containers
+    quizContainers.forEach((quiz) => {
+      const questions = $$(".sfo-question", quiz);
+      if (!questions.length) return;
 
-        questions.forEach((q) => {
-          q.dataset.answered = "";
-          const feedback = $(".sfo-feedback", q);
-          if (feedback) {
-            feedback.textContent = "";
-            feedback.classList.remove("is-correct", "is-wrong");
-          }
-          $$("button", q).forEach((b) => {
-            b.disabled = false;
-            b.classList.remove("is-correct", "is-wrong");
-          });
-        });
+      const summary = $(".sfo-score", quiz) || $(".sfo-quiz-summary", quiz);
+      wireQuestions(questions, summary);
+    });
 
-        TTS.stop();
-      });
+    // Variant B: legacy (no container)
+    if (legacyQuestions.length) {
+      let summary = $(".sfo-quiz-summary");
+      if (!summary) {
+        const host = $("#sfo-quiz-questions");
+        if (host) {
+          summary = document.createElement("div");
+          summary.className = "sfo-quiz-summary";
+          summary.setAttribute("aria-live", "polite");
+          host.insertAdjacentElement("afterend", summary);
+        }
+      }
+      wireQuestions(legacyQuestions, summary);
     }
   }
 
   // -------------------------
   // Adjective mini-quiz (select + check)
   // -------------------------
+  
+  
   function initAdjQuiz() {
-    const root = $(".t101-adj-quiz");
-    if (!root) return;
+    // Travel101 adjective quiz (select + check button)
+    const quiz = $(".t101-adj-quiz");
+    if (!quiz) return;
 
-    const questions = $$(".t101-adj-question", root);
-    const totalEl = $("#t101-adj-total");
-    const scoreEl = $("#t101-adj-score");
-    const resetBtn = $("#t101-adj-reset");
+    const questions = $$(".t101-adj-question", quiz);
+    if (!questions.length) return;
+
+    // Inject a running score box
+    let summary = $(".t101-quiz-summary", quiz);
+    if (!summary) {
+      summary = document.createElement("div");
+      summary.className = "t101-quiz-summary";
+      summary.setAttribute("aria-live", "polite");
+      quiz.appendChild(summary);
+    }
 
     const total = questions.length;
-    if (totalEl) totalEl.textContent = String(total);
+    let correctCount = 0;
 
-    let score = 0;
-    const scored = new Set();
-
-    const render = () => {
-      if (scoreEl) scoreEl.textContent = String(score);
+    const update = () => {
+      summary.textContent = `Score: ${correctCount} / ${total}`;
     };
-    render();
+    update();
 
-    questions.forEach((q, idx) => {
-      const correct = q.getAttribute("data-correct");
+    questions.forEach((q) => {
+      const correctKey = ((q.dataset.correct || "") + "").trim().toLowerCase();
+      const explain = (q.dataset.explain || "").trim();
       const select = $("select", q);
-      const btn = $(".t101-adj-check", q);
+      const checkBtn = $(".t101-adj-check", q);
       const feedback = $(".t101-adj-feedback", q);
 
-      if (!select || !btn) return;
+      if (!select || !checkBtn || !feedback) return;
 
-      btn.addEventListener("click", () => {
-        const val = clean(select.value);
-        const ok = val === correct;
+      checkBtn.addEventListener("click", () => {
+        if (q.dataset.answered === "true") return;
 
-        const key = String(idx);
-        if (!scored.has(key)) {
-          if (ok) score += 1;
-          scored.add(key);
-          render();
-        }
+        const choice = ((select.value || "") + "").trim().toLowerCase();
+        if (!choice) return;
 
-        select.classList.remove("is-correct", "is-wrong");
-        if (feedback) feedback.classList.remove("is-correct", "is-wrong");
+        const isCorrect = correctKey && choice === correctKey;
 
-        if (ok) {
-          select.classList.add("is-correct");
-          if (feedback) {
-            feedback.textContent = "✅ Correct.";
-            feedback.classList.add("is-correct");
-          }
-        } else {
-          select.classList.add("is-wrong");
-          if (feedback) {
-            feedback.textContent = `❌ Try again. Hint: the best choice is “${correct.toUpperCase()}”.`;
-            feedback.classList.add("is-wrong");
-          }
-        }
+        q.dataset.answered = "true";
+        if (isCorrect) correctCount += 1;
+        update();
+
+        // Lock this question (exam-like)
+        select.disabled = true;
+        checkBtn.disabled = true;
+
+        feedback.classList.remove("is-correct", "is-wrong");
+        feedback.classList.add(isCorrect ? "is-correct" : "is-wrong");
+        const base = isCorrect ? "✅ Correct!" : "❌ Not quite.";
+        feedback.textContent = explain ? `${base} ${explain}` : base;
       });
     });
-
-    if (resetBtn) {
-      resetBtn.addEventListener("click", () => {
-        score = 0;
-        scored.clear();
-        render();
-
-        questions.forEach((q) => {
-          const select = $("select", q);
-          const feedback = $(".t101-adj-feedback", q);
-          if (select) {
-            select.selectedIndex = 0;
-            select.classList.remove("is-correct", "is-wrong");
-          }
-          if (feedback) {
-            feedback.textContent = "";
-            feedback.classList.remove("is-correct", "is-wrong");
-          }
-        });
-
-        TTS.stop();
-      });
-    }
   }
 
   // -------------------------
   // Adjective mini builder
   // -------------------------
+  
   function initAdjBuilder() {
-    const btn = $("#t101-adj-build");
-    const reset = $("#t101-adj-builder-reset");
-    const out = $("#t101-adj-output");
+    // Travel101 paragraph builder (t101-adj-builder)
+    const root = $(".t101-adj-builder");
+    if (root) {
+      const overall = $("#t101-adj-overall");
+      const flight = $("#t101-adj-flight");
+      const airport = $("#t101-adj-airport");
+      const hotel = $("#t101-adj-hotel");
 
-    if (!btn || !out) return;
+      const output = $("#t101-adj-output");
+      const btnGen = $("#t101-adj-generate");
+      const btnReset = $("#t101-adj-reset");
+      const btnListen = $("#t101-adj-listen");
+      const btnPause = $("#t101-adj-pause");
 
-    const get = (id) => clean($(id)?.value);
+      if (overall && flight && airport && hotel && output && btnGen && btnReset && btnListen && btnPause) {
+        const buildText = () => {
+          const o = overall.value;
+          const f = flight.value;
+          const a = airport.value;
+          const h = hotel.value;
 
-    function build() {
-      const hotel = get("#t101-adj-hotel");
-      const neighborhood = get("#t101-adj-neighborhood");
-      const transport = get("#t101-adj-transport");
-      const day = get("#t101-adj-day");
-      const activity = get("#t101-adj-activity");
+          const text =
+            `Overall, the trip was ${o}. ` +
+            `The flight itself was ${f}, and the airport experience felt ${a}. ` +
+            `As for accommodation, the hotel was ${h}. ` +
+            `If I had to sum it up in one sentence: a realistic journey with useful lessons for next time.`;
 
-      const lines = [
-        `Last weekend, I stayed in a ${hotel} hotel in a ${neighborhood} neighborhood.`,
-        `Getting around was ${transport}, so everything felt ${day}.`,
-        `The best part was ${activity}.`,
-        `Overall, it was a really enjoyable trip — and I’d love to do it again.`
-      ];
+          output.value = text;
+          return text;
+        };
 
-      out.value = lines.join(" ");
-    }
+        btnGen.addEventListener("click", () => buildText());
 
-    btn.addEventListener("click", build);
-
-    if (reset) {
-      reset.addEventListener("click", () => {
-        ["#t101-adj-hotel", "#t101-adj-neighborhood", "#t101-adj-transport", "#t101-adj-day", "#t101-adj-activity"].forEach((id) => {
-          const el = $(id);
-          if (el && "selectedIndex" in el) el.selectedIndex = 0;
+        btnReset.addEventListener("click", () => {
+          // reset selects to first real option (index 0 is placeholder)
+          [overall, flight, airport, hotel].forEach((sel) => {
+            sel.selectedIndex = 0;
+          });
+          output.value = "";
+          TTS.stop();
         });
-        out.value = "";
-      });
+
+        btnListen.addEventListener("click", () => {
+          const text = output.value.trim() ? output.value : buildText();
+          TTS.speak(text, { lang: "en-US" });
+        });
+
+        btnPause.addEventListener("click", () => {
+          if (TTS.isPaused()) {
+            TTS.resume();
+            btnPause.textContent = "Pause";
+          } else if (TTS.isSpeaking()) {
+            TTS.pause();
+            btnPause.textContent = "Resume";
+          }
+        });
+      }
     }
+
+    // Back-compat: older "sfo-adj-builder" IDs (if you reuse this JS elsewhere)
+    const legacyForm = $("#sfo-adj-builder");
+    if (!legacyForm) return;
+
+    // If it exists, keep the previous behavior (optional).
+    // (No-op here because this page uses the t101 builder.)
   }
 
   // -------------------------
@@ -326,68 +350,73 @@
       return v;
     }
 
-    function tmplCheckIn(v) {
-      const name = v.name || "Alex";
-      const airline = v.airline || "the airline";
-      const destination = v.destination || "my destination";
-      const luggage = v.luggage || "one suitcase";
-      const seat = v.seat || "an aisle seat";
+    
+  function tmplCheckIn(v) {
+    const name = v.name || "traveler";
+    const airline = v.airline || "United";
+    const destination = v.destination || "San Francisco";
+    const seat = v.seat || "an aisle seat";
+    const bags = v.bags || "one suitcase";
 
-      return [
-        "AIRLINE AGENT: Good morning. May I see your passport and ticket, please?",
-        `YOU: Sure. My name is ${name}. I'm flying to ${destination} with ${airline}.`,
-        "AIRLINE AGENT: Are you checking any bags today?",
-        `YOU: Yes — ${luggage}.`,
-        "AIRLINE AGENT: Any seat preference?",
-        `YOU: If possible, ${seat}.`,
-        "AIRLINE AGENT: Great. Here is your boarding pass. Your gate number is on the screen.",
-        "YOU: Thank you! What time does boarding begin?"
-      ].join("\n");
-    }
+    return (
+      `Check-in agent: Good morning. Where are you flying today?\n` +
+      `${name}: Hi! I'm flying to ${destination} with ${airline}.\n` +
+      `Check-in agent: Great. Do you have any bags to check?\n` +
+      `${name}: Yes, I have ${bags}.\n` +
+      `Check-in agent: Perfect. Would you like ${seat}?\n` +
+      `${name}: Yes, please.\n` +
+      `Check-in agent: All set—here’s your boarding pass. Have a great flight!\n` +
+      `${name}: Thank you!`
+    );
+  }
 
-    function tmplRental(v) {
-      const name = v.name || "Alex";
-      const company = v.company || "your company";
-      const carType = v.carType || "compact car";
-      const days = v.days || "3";
-      const insurance = v.insurance || "No, thanks";
-      const extras = v.extras || "No extras";
+    
+  function tmplRental(v) {
+    const name = v.name || "traveler";
+    const company = v.company || "Hertz";
+    const car = v.car || "a compact car";
+    const length = v.length || "3 days";
+    const insurance = v.insurance || "basic coverage";
+    const extras = v.extras || "no extras";
 
-      return [
-        "RENTAL AGENT: Hi! Welcome. Do you have a reservation?",
-        `YOU: Yes. It's under ${name}. I booked with ${company}.`,
-        "RENTAL AGENT: Great. What kind of car would you like?",
-        `YOU: A ${carType}, please — for ${days} day(s).`,
-        "RENTAL AGENT: Would you like to add insurance coverage?",
-        `YOU: ${insurance}.`,
-        "RENTAL AGENT: Any extras? GPS, child seat, or an additional driver?",
-        `YOU: ${extras}.`,
-        "RENTAL AGENT: Perfect. Please sign here. The car is in the lot outside.",
-        "YOU: Thanks. Could you quickly confirm the fuel policy and where I return the car?"
-      ].join("\n");
-    }
+    return (
+      `Agent: Welcome! Do you have a reservation?\n` +
+      `${name}: Yes—it's under ${name}.\n` +
+      `Agent: Great. You booked ${car} with ${company} for ${length}. Is that correct?\n` +
+      `${name}: Yes, that's right.\n` +
+      `Agent: Would you like to add ${insurance}?\n` +
+      `${name}: ${insurance === "no insurance" ? "No, thanks." : "Yes, please."}\n` +
+      `Agent: Any extras today—GPS, child seat?\n` +
+      `${name}: ${extras === "no extras" ? "No, thank you." : "Yes, I'd like " + extras + "."}\n` +
+      `Agent: Perfect. Here are the keys—your car is in row B.`
+    );
+  }
 
-    function tmplCustoms(v) {
-      const origin = v.origin || "France";
-      const purpose = v.purpose || "tourism";
-      const duration = v.duration || "a week";
-      const declare = v.declare || "No, I don't";
-      const question = v.question || "No, thank you.";
+    
+  function tmplCustoms(v) {
+    const name = v.name || "traveler";
+    const origin = v.origin || "France";
+    const purpose = v.purpose || "tourism";
+    const length = v.length || "a week";
+    const declare = v.declare || "nothing to declare";
+    const security = v.security || "No, thank you.";
 
-      return [
-        "OFFICER: Hello. Where are you arriving from?",
-        `YOU: Hi. I'm arriving from ${origin}.`,
-        "OFFICER: What's the purpose of your trip?",
-        `YOU: I'm here for ${purpose}.`,
-        "OFFICER: How long are you staying?",
-        `YOU: ${duration}.`,
-        "OFFICER: Do you have anything to declare?",
-        `YOU: ${declare}.`,
-        "OFFICER: Any questions before you go?",
-        `YOU: ${question}`,
-        "OFFICER: Alright. Enjoy your stay."
-      ].join("\n");
-    }
+    return (
+      `Officer: Next, please. Passport.\n` +
+      `${name}: Here you go.\n` +
+      `Officer: Where are you coming from?\n` +
+      `${name}: I'm coming from ${origin}.\n` +
+      `Officer: What's the purpose of your trip?\n` +
+      `${name}: ${purpose}.\n` +
+      `Officer: How long are you staying?\n` +
+      `${name}: ${length}.\n` +
+      `Officer: Do you have anything to declare?\n` +
+      `${name}: ${declare}.\n` +
+      `Officer: Any electronics or liquids in your carry-on?\n` +
+      `${name}: ${security}\n` +
+      `Officer: Alright. Enjoy your stay.`
+    );
+  }
 
     forms.forEach((form) => {
       const outputId = form.getAttribute("data-output");
