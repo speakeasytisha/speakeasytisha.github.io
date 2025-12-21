@@ -1,0 +1,166 @@
+/* =========================================================
+   nav.fixed.css
+   Navigation overrides + fixes (desktop hover dropdown + mobile scroll)
+   Load AFTER speakeasy.css
+   ========================================================= */
+
+/* 1) Remove any old underline pseudo-elements so you never get "double underline" */
+.nav-link::after,
+.nav-button::after {
+  display: none !important;
+}
+
+/* 2) Uppercase all navigation items */
+.nav-link,
+.nav-button,
+.dropdown-menu a,
+.dropdown-heading {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* 3) Underline ONLY the text (not the full row) */
+.nav-label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding-bottom: 0.1rem; /* keeps underline inside the button area */
+}
+
+.nav-label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.08rem;       /* keep it visible even when dropdown opens */
+  width: 0;
+  height: 2px;
+  background: var(--color-gold);
+  transition: width 0.25s ease;
+}
+
+/* underline on hover (desktop), focus (keyboard), active (touch), and when dropdown is open */
+.nav-link:hover .nav-label::after,
+.nav-button:hover .nav-label::after,
+.nav-link:focus-visible .nav-label::after,
+.nav-button:focus-visible .nav-label::after,
+.nav-link:active .nav-label::after,
+.nav-button:active .nav-label::after,
+.has-dropdown:hover > .nav-button .nav-label::after,
+.has-dropdown.is-open > .nav-button .nav-label::after {
+  width: 100%;
+}
+
+/* caret sits right after the text */
+.nav-caret {
+  font-size: 0.75rem;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+/* 4) Desktop: smooth dropdown open/close on hover (no sticky open) */
+@media (min-width: 901px) {
+  .dropdown-menu {
+    display: block;                 /* keep in flow for animation */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease,
+      visibility 0ms linear 220ms;  /* delay hiding until fade finishes */
+
+    top: calc(100% + 6px);          /* small gap so underline isn't covered */
+  }
+
+  /* invisible “hover bridge” so the gap doesn't cause flicker */
+  .dropdown-menu::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -8px;
+    height: 8px;
+  }
+
+  .has-dropdown:hover > .dropdown-menu,
+  .has-dropdown.is-open > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease,
+      visibility 0ms;               /* show immediately */
+  }
+}
+
+/* 5) Mobile: burger menu panel scroll + dropdown opens on click (JS adds .is-open) */
+@media (max-width: 900px) {
+  /* Make sure the panel is ABOVE page content and scrolls to the bottom */
+  .nav-links {
+    position: fixed;
+    z-index: 1001;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+
+    height: calc((var(--vh, 1vh) * 100) - var(--nav-height));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0.75rem 1.5rem 2.25rem;
+    background-color: #020617;
+
+    display: none; /* closed by default */
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  body.nav-open {
+    overflow: hidden; /* stop page scroll; menu itself scrolls */
+  }
+
+  /* Full-width tap targets */
+  .nav-item { width: 100%; }
+  .nav-link,
+  .nav-button {
+    width: 100%;
+    text-align: left;
+    padding: 0.55rem 0;
+  }
+
+  /* Dropdown list stays collapsed until .is-open is added on parent */
+  .has-dropdown > .dropdown-menu {
+    position: static;
+    display: none;
+    box-shadow: none;
+    background-color: transparent;
+    padding: 0.2rem 0 0.75rem;
+    margin: 0;
+  }
+
+  .has-dropdown.is-open > .dropdown-menu {
+    display: block;
+  }
+
+  /* Indent submenu items */
+  .dropdown-menu a {
+    padding: 0.35rem 0.9rem 0.35rem 1.2rem;
+    border-radius: 0.35rem;
+  }
+
+  /* Hover + touch feedback for submenu items */
+  .dropdown-menu a:hover,
+  .dropdown-menu a:active {
+    background-color: rgba(182, 168, 90, 0.14);
+    color: #ffffff;
+  }
+}
