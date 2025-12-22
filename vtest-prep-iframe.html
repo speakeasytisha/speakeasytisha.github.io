@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VTest Business English 4 Skills – Interactive Prep Lesson · SpeakEasyTisha</title>
+
+  <!-- Site CSS (keep if you use it) -->
+  <!-- <link rel="stylesheet" href="./css/speakeasy.css"> -->
+
+  <!-- This lesson CSS -->
+  <style>
+/* ===========================
+   VTest Prep Lesson Styles
+   =========================== */
+
+:root{
+  --bg: #0b1220;
+  --panel: rgba(255,255,255,0.06);
+  --text: #e5e7eb;
+  --muted: rgba(229,231,235,0.75);
+  --line: rgba(229,231,235,0.16);
+  --gold: #b6a85a;
+  --focus: rgba(182,168,90,0.35);
+  --radius: 16px;
+  --shadow: 0 18px 45px rgba(0,0,0,0.35);
+  --max: 1100px;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(182,168,90,0.18), transparent 55%),
+    radial-gradient(900px 500px at 90% 0%, rgba(56,189,248,0.10), transparent 60%),
+    linear-gradient(180deg, #070b13, #0b1220 40%, #070b13);
+}
+
+/* Layout */
+.vt-shell{ width:100%; }
+
+.vt-section{ padding: 3.5rem 1.25rem; }
+
+.vt-section-header{
+  max-width: var(--max);
+  margin: 0 auto 1.25rem;
+}
+.vt-section-header h2{
+  margin: 0 0 .35rem;
+  font-size: 1.6rem;
+  letter-spacing: .01em;
+}
+.vt-muted{ color: var(--muted); margin: .25rem 0 0; }
+
+.vt-grid-2{
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+
+.vt-card{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.1rem 1.1rem 1.2rem;
+}
+
+.vt-list{ margin: .6rem 0 0; padding-left: 1.1rem; }
+.vt-list li{ margin: .35rem 0; }
+
+.vt-tip{
+  margin-top: .9rem;
+  padding: .75rem .85rem;
+  border-radius: 14px;
+  border: 1px solid rgba(182,168,90,0.25);
+  background: rgba(182,168,90,0.10);
+}
+
+/* HERO */
+.vt-hero{
+  padding: 4.25rem 1.25rem 3.25rem;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, rgba(7,11,19,0.85), rgba(7,11,19,0.65)),
+    radial-gradient(900px 500px at 70% 20%, rgba(182,168,90,0.16), transparent 60%);
+}
+
+.vt-hero-inner{
+  max-width: var(--max);
+  margin: 0 auto;
+  display:grid;
+  grid-template-columns: 1.3fr .9fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.vt-kicker{
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-size: .85rem;
+  margin: 0 0 .6rem;
+}
+
+.vt-hero-text h1{ margin: 0 0 .5rem; font-size: 2.25rem; }
+
+.vt-sub{ margin: 0; color: var(--muted); max-width: 52ch; }
+
+.vt-hero-tools{
+  display:flex;
+  gap:.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.vt-pill{
+  border: 1px solid rgba(182,168,90,0.28);
+  background: rgba(182,168,90,0.10);
+  color: #f8fafc;
+  padding: .35rem .6rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  white-space: nowrap;
+}
+
+.vt-personalize{
+  margin-top: 1.1rem;
+  display: grid;
+  gap: .45rem;
+  max-width: 420px;
+}
+
+.vt-personalize input{
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,0.25);
+  color: var(--text);
+  padding: .55rem .65rem;
+  outline: none;
+}
+.vt-personalize input:focus{
+  box-shadow: 0 0 0 3px var(--focus);
+  border-color: rgba(182,168,90,0.45);
+}
+
+.vt-hero-cta{
+  margin-top: 1rem;
+  display:flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+
+.vt-hero-card h2{ margin: 0 0 .6rem; font-size: 1.25rem; }
+.vt-hero-card ul{ margin: .65rem 0 0; padding-left: 1.1rem; }
+.vt-hero-card-note{
+  margin-top: .9rem;
+  padding-top: .85rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+/* Buttons */
+.vt-btn{
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: .55rem .95rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: .95rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  transition: transform .15s ease, background-color .15s ease, border-color .15s ease, opacity .15s ease;
+  user-select: none;
+}
+.vt-btn:active{ transform: translateY(1px); }
+
+.vt-btn-primary{
+  background: var(--gold);
+  color: #0b1220;
+  border-color: var(--gold);
+}
+.vt-btn-primary:hover{ opacity: .95; }
+
+.vt-btn-secondary{
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  border-color: rgba(255,255,255,0.18);
+}
+.vt-btn-secondary:hover{ background: rgba(255,255,255,0.12); }
+
+.vt-btn-ghost{
+  background: transparent;
+  color: var(--text);
+  border-color: rgba(255,255,255,0.20);
+}
+.vt-btn-ghost:hover{ background: rgba(255,255,255,0.07); }
+
+.vt-actions{
+  display:flex;
+  gap:.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: .8rem;
+}
+
+.vt-label{ display:block; margin-top: .35rem; margin-bottom: .35rem; font-weight: 600; }
+
+/* Checklist */
+.vt-checklist{ display:grid; gap:.45rem; margin-top: .65rem; }
+.vt-checklist label{
+  display:flex;
+  gap:.55rem;
+  align-items: start;
+  background: rgba(0,0,0,0.16);
+  border: 1px solid rgba(255,255,255,0.10);
+  padding: .55rem .65rem;
+  border-radius: 12px;
+}
+.vt-progress{
+  margin-top: .85rem;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: .75rem;
+}
+.vt-progress-bar{
+  flex: 1;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.10);
+  overflow:hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+}
+#vt-progress-fill{ height: 100%; width: 0%; background: var(--gold); }
+
+/* Vocab */
+.vt-vocab-grid{
+  max-width: var(--max);
+  margin: 0 auto;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+.vt-vocab{
+  display:flex;
+  gap: .85rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.05rem 1.1rem;
+  box-shadow: var(--shadow);
+}
+.vt-ico{
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(182,168,90,0.14);
+  border: 1px solid rgba(182,168,90,0.30);
+  font-size: 1.2rem;
+  flex: 0 0 auto;
+}
+.vt-vocab h3{ margin: 0 0 .35rem; }
+.vt-vocab ul{ margin: 0; padding-left: 1.1rem; }
+.vt-vocab li{ margin: .25rem 0; }
+
+/* Reveal */
+.vt-mini{ max-width: var(--max); margin: 1.1rem auto 0; }
+.vt-reveal-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:.6rem;
+  margin-top: .75rem;
+}
+.vt-reveal{
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(0,0,0,0.16);
+  color: var(--text);
+  border-radius: 14px;
+  padding: .75rem .85rem;
+  text-align:left;
+  cursor:pointer;
+  font-weight: 600;
+}
+.vt-reveal:hover{ background: rgba(255,255,255,0.08); }
+.vt-reveal-output{
+  margin-top: .75rem;
+  padding: .85rem .9rem;
+  border-radius: 14px;
+  border: 1px solid rgba(182,168,90,0.25);
+  background: rgba(182,168,90,0.10);
+  min-height: 52px;
+}
+.vt-quote{
+  display:inline-block;
+  padding: .05rem .35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.18);
+}
+
+/* Quiz */
+.vt-quiz{
+  max-width: var(--max);
+  margin: 1.1rem auto 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.1rem 1.1rem 1.25rem;
+}
+.vt-q{
+  padding: .85rem .85rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.16);
+}
+.vt-q + .vt-q{ margin-top: .75rem; }
+.vt-q p{ margin: 0 0 .6rem; }
+.vt-opts{
+  display:flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.vt-opts button{
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  border-radius: 999px;
+  padding: .45rem .75rem;
+  cursor:pointer;
+  font-weight: 700;
+}
+.vt-opts button:hover{ background: rgba(255,255,255,0.10); }
+.vt-opts button[disabled]{ opacity: .65; cursor: not-allowed; }
+.vt-opts button.vt-right{ border-color: rgba(22,163,74,0.65); background: rgba(22,163,74,0.14); }
+.vt-opts button.vt-wrong{ border-color: rgba(239,68,68,0.70); background: rgba(239,68,68,0.14); }
+.vt-fb{ margin-top: .55rem; min-height: 1.25em; color: var(--muted); }
+.vt-fb strong{ color: #fff; }
+
+.vt-scoreline{
+  margin-top: .9rem;
+  display:flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  align-items:center;
+  justify-content: space-between;
+}
+.vt-q-inline{ margin-top: .8rem; }
+
+/* Email display */
+.vt-email{
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.18);
+  border-radius: 14px;
+  padding: .85rem .9rem;
+  line-height: 1.55;
+}
+.vt-email p{ margin: 0 0 .6rem; }
+.vt-email p:last-child{ margin-bottom: 0; }
+
+.vt-email-template{
+  margin-top: .8rem;
+  border-radius: 14px;
+  border: 1px solid rgba(182,168,90,0.22);
+  background: rgba(182,168,90,0.09);
+  padding: .75rem .85rem;
+}
+.vt-sample{ margin-top: .75rem; }
+
+/* Timers */
+.vt-timer-panel{
+  margin-top: .75rem;
+  padding: .75rem .85rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.18);
+  min-height: 44px;
+}
+.vt-prompt{
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.18);
+  border-radius: 14px;
+  padding: .85rem .9rem;
+  margin: .6rem 0 0;
+}
+
+/* Form + output */
+.vt-form{ margin-top: .65rem; display:grid; gap: .75rem; }
+.vt-form-row{ display:grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+.vt-form label{ display:block; font-weight: 700; margin-bottom: .25rem; }
+.vt-form select{
+  width:100%;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,0.25);
+  color: var(--text);
+  padding: .55rem .65rem;
+  outline:none;
+}
+.vt-output{
+  width: 100%;
+  min-height: 160px;
+  margin-top: .75rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.22);
+  color: var(--text);
+  padding: .75rem .85rem;
+  resize: vertical;
+}
+
+/* Writing */
+.vt-writing{
+  width:100%;
+  min-height: 240px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.22);
+  color: var(--text);
+  padding: .75rem .85rem;
+  resize: vertical;
+}
+.vt-rubric{
+  margin-top: .75rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.18);
+  padding: .75rem .85rem;
+}
+
+/* Drag & drop */
+.vt-draggables{ display:grid; gap: .55rem; margin-top: .75rem; }
+.vt-drag{
+  padding: .6rem .75rem;
+  border-radius: 12px;
+  border: 1px dashed rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.06);
+  cursor: grab;
+}
+.vt-drag:active{ cursor: grabbing; }
+
+.vt-dropzone-wrap{ display:grid; gap: .55rem; margin-top: .75rem; }
+.vt-dropzone{
+  border-radius: 12px;
+  border: 1px dashed rgba(182,168,90,0.35);
+  background: rgba(182,168,90,0.08);
+  padding: .75rem .75rem;
+  min-height: 56px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: .75rem;
+}
+.vt-dropzone span{ color: rgba(229,231,235,0.85); }
+.vt-dropzone.vt-over{ outline: 3px solid rgba(182,168,90,0.35); }
+.vt-dropzone .vt-chip{
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(0,0,0,0.20);
+  padding: .25rem .55rem;
+  font-weight: 700;
+}
+.vt-dd-feedback{ margin-top: .75rem; }
+
+/* Final */
+.vt-final{ border-top: 1px solid var(--line); }
+
+/* Responsive */
+@media (max-width: 980px){
+  .vt-hero-inner{ grid-template-columns: 1fr; }
+  .vt-grid-2{ grid-template-columns: 1fr; }
+  .vt-vocab-grid{ grid-template-columns: 1fr; }
+  .vt-form-row{ grid-template-columns: 1fr; }
+  .vt-reveal-grid{ grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- OPTIONAL: load your shared header/footer (GitHub Pages friendly) -->
+  <!-- If you already use header.html/footer.html on your site, keep these placeholders. -->
+    <main class="vt-shell" id="top">
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="vt-hero">
+      <div class="vt-hero-inner">
+        <div class="vt-hero-text">
+          <p class="vt-kicker">VTEST · Business English 4 Skills</p>
+          <h1>VTest Prep – Full Interactive Lesson</h1>
+          <p class="vt-sub">
+            Professional English practice for <strong>Listening</strong>, <strong>Reading</strong>,
+            <strong>Speaking</strong>, and <strong>Writing</strong> — with timers, live feedback, and realistic tasks.
+          </p>
+
+          <div class="vt-hero-tools">
+            <div class="vt-pill">⏱️ Timed practice</div>
+            <div class="vt-pill">🎧 Listening (US accent)</div>
+            <div class="vt-pill">🧩 Drag & drop</div>
+            <div class="vt-pill">✉️ Email writing</div>
+          </div>
+
+          <div class="vt-personalize">
+            <label for="vt-student-name"><strong>Student name</strong> (optional):</label>
+            <input id="vt-student-name" type="text" placeholder="Type a name (e.g., Alex)"/>
+            <button class="vt-btn vt-btn-secondary" id="vt-apply-name" type="button">Apply</button>
+            <small class="vt-muted">Tip: leave blank to keep the lesson generic.</small>
+          </div>
+
+          <div class="vt-hero-cta">
+            <a class="vt-btn vt-btn-primary" href="#vt-test-overview">Start the lesson</a>
+            <a class="vt-btn vt-btn-ghost" href="#vt-writing">Jump to email writing</a>
+          </div>
+        </div>
+
+        <div class="vt-hero-card" aria-label="Lesson summary card">
+          <h2>Today’s goal</h2>
+          <p>
+            Build confidence under exam conditions: understand instructions fast, choose accurately,
+            and communicate clearly in professional situations.
+          </p>
+          <ul>
+            <li>✅ Exam-style mini tasks</li>
+            <li>✅ Polite, natural business English</li>
+            <li>✅ Quick grammar upgrades (B2–C1)</li>
+          </ul>
+          <div class="vt-hero-card-note">
+            <strong>Audio note:</strong> Listening uses your browser’s speech engine (Web Speech API). If audio is blocked on your device, you can still do the questions by reading the transcript.
+            If your computer has multiple voices, choose a <em>US</em> voice automatically.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         TEST OVERVIEW + TECH CHECK
+    ========================== -->
+    <section class="vt-section" id="vt-test-overview">
+      <header class="vt-section-header">
+        <h2>1) What to expect on VTest</h2>
+        <p class="vt-muted">A clear map of the exam + the rules that can affect your score.</p>
+      </header>
+
+      <div class="vt-grid-2">
+        <div class="vt-card">
+          <h3>Core ideas</h3>
+          <ul class="vt-list">
+            <li><strong>Adaptive test</strong>: questions adjust to your level.</li>
+            <li><strong>4 skills</strong>: listening, reading, speaking, writing (depends on the version).</li>
+            <li><strong>Proctoring (sometimes)</strong>: depending on your session, you may need a webcam and microphone. Always follow the rules in your invitation email.</li>
+            <li><strong>Time pressure</strong>: short tasks; you must be concise and accurate.</li>
+          </ul>
+          <div class="vt-tip">
+            🇫🇷 <strong>Différence FR/EN:</strong> in English you can be concise <em>and</em> polite:
+            <span class="vt-quote">“Could you please…?”</span>, <span class="vt-quote">“Would you mind…?”</span>.
+          </div>
+        </div>
+
+        <div class="vt-card">
+          <h3>Tech checklist (interactive)</h3>
+          <p class="vt-muted">Tick everything before the exam.</p>
+
+          <div class="vt-checklist" id="vt-checklist">
+            <label><input type="checkbox" /> Webcam works (image is clear)</label>
+            <label><input type="checkbox" /> Microphone works (no echo)</label>
+            <label><input type="checkbox" /> Quiet room + stable internet</label>
+            <label><input type="checkbox" /> Phone on silent (or in another room)</label>
+            <label><input type="checkbox" /> Follow your test rules (headphones / notes / screen sharing)</label>
+            <label><input type="checkbox" /> Browser updated (Chrome/Edge recommended)</label>
+          </div>
+
+          <div class="vt-progress">
+            <div class="vt-progress-bar"><div id="vt-progress-fill"></div></div>
+            <p class="vt-muted"><span id="vt-progress-text">0</span>% ready</p>
+          </div>
+
+          <button class="vt-btn vt-btn-secondary" id="vt-checklist-reset" type="button">Reset checklist</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         VOCABULARY (icons)
+    ========================== -->
+    <section class="vt-section" id="vt-vocab">
+      <header class="vt-section-header">
+        <h2>2) Business vocabulary (high-frequency)</h2>
+        <p class="vt-muted">Use these chunks to sound natural and professional.</p>
+      </header>
+
+      <div class="vt-vocab-grid">
+        <div class="vt-vocab">
+          <div class="vt-ico">📅</div>
+          <div>
+            <h3>Scheduling</h3>
+            <ul>
+              <li><strong>reschedule</strong> – “Can we reschedule to Thursday?”</li>
+              <li><strong>availability</strong> – “What’s your availability?”</li>
+              <li><strong>time slot</strong> – “Do you have a 30‑minute slot?”</li>
+              <li><strong>to confirm</strong> – “Just to confirm, we’re meeting at 3.”</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="vt-vocab">
+          <div class="vt-ico">🧩</div>
+          <div>
+            <h3>Problem-solving</h3>
+            <ul>
+              <li><strong>root cause</strong> – “Let’s find the root cause.”</li>
+              <li><strong>workaround</strong> – “We have a workaround for now.”</li>
+              <li><strong>to escalate</strong> – “I’ll escalate this to IT.”</li>
+              <li><strong>next steps</strong> – “Here are the next steps.”</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="vt-vocab">
+          <div class="vt-ico">📈</div>
+          <div>
+            <h3>Meetings</h3>
+            <ul>
+              <li><strong>agenda</strong> – “Let’s stick to the agenda.”</li>
+              <li><strong>action items</strong> – “What are the action items?”</li>
+              <li><strong>to follow up</strong> – “I’ll follow up by email.”</li>
+              <li><strong>to clarify</strong> – “Could you clarify that point?”</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="vt-vocab">
+          <div class="vt-ico">✉️</div>
+          <div>
+            <h3>Email tone</h3>
+            <ul>
+              <li><strong>as discussed</strong> – “As discussed, please find…”</li>
+              <li><strong>I’m afraid…</strong> – “I’m afraid we can’t approve it.”</li>
+              <li><strong>Would you be able to…?</strong> – Polite request</li>
+              <li><strong>Thanks in advance</strong> – Friendly closing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="vt-mini">
+        <h3>Quick drill (click to reveal)</h3>
+        <p class="vt-muted">Turn these into complete sentences in your head.</p>
+
+        <div class="vt-reveal-grid">
+          <button class="vt-reveal" data-answer="Could we reschedule our call to Thursday at 3 p.m.?">📅 reschedule + Thursday</button>
+          <button class="vt-reveal" data-answer="I’ll escalate the issue and follow up by end of day.">🧩 escalate + follow up</button>
+          <button class="vt-reveal" data-answer="Could you clarify the timeline and the next steps?">📈 clarify + next steps</button>
+          <button class="vt-reveal" data-answer="As discussed, please find the updated document attached.">✉️ as discussed + attached</button>
+        </div>
+
+        <div class="vt-reveal-output" id="vt-reveal-output" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- =========================
+         GRAMMAR UPGRADE
+    ========================== -->
+    <section class="vt-section" id="vt-grammar">
+      <header class="vt-section-header">
+        <h2>3) Grammar upgrade (B2+)</h2>
+        <p class="vt-muted">Short rules that pay off in speaking and writing.</p>
+      </header>
+
+      <div class="vt-grid-2">
+        <div class="vt-card">
+          <h3>Will vs. be going to</h3>
+          <ul class="vt-list">
+            <li><strong>Going to</strong> = plan / intention: “I’m going to visit the client next week.”</li>
+            <li><strong>Will</strong> = instant decision / promise: “I’ll send the file now.”</li>
+            <li><strong>Will</strong> = prediction: “I think it’ll take longer.”</li>
+          </ul>
+          <div class="vt-tip">
+            🇫🇷 En français, on utilise souvent “je vais…” pour tout. En anglais, <strong>“I’m going to”</strong>
+            = plan déjà décidé. <strong>“I’ll”</strong> = décision sur le moment / promesse.
+          </div>
+        </div>
+
+        <div class="vt-card">
+          <h3>Polite requests (modals)</h3>
+          <ul class="vt-list">
+            <li><strong>Could you…?</strong> (neutral & polite)</li>
+            <li><strong>Would you mind + -ing…?</strong> (very polite)</li>
+            <li><strong>Can you…?</strong> (friendly, more direct)</li>
+          </ul>
+          <p class="vt-muted">
+            Avoid: “I want…” in emails. Prefer: “I’d like to…”, “Could you please…”.
+          </p>
+        </div>
+      </div>
+
+      <div class="vt-quiz" id="vt-grammar-mcq">
+        <h3>Mini quiz – Choose the best option</h3>
+        <p class="vt-muted">Click one answer. You’ll see feedback instantly.</p>
+
+        <div class="vt-q" data-correct="b" data-explain="A planned intention → ‘going to’.">
+          <p><strong>1)</strong> We ______ review the budget tomorrow morning. It’s already scheduled.</p>
+          <div class="vt-opts">
+            <button data-opt="a">will</button>
+            <button data-opt="b">are going to</button>
+            <button data-opt="c">go</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+
+        <div class="vt-q" data-correct="a" data-explain="Instant promise → ‘I’ll’.">
+          <p><strong>2)</strong> Don’t worry — I ______ call IT right now.</p>
+          <div class="vt-opts">
+            <button data-opt="a">’ll</button>
+            <button data-opt="b">’m going to</button>
+            <button data-opt="c">’m</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+
+        <div class="vt-q" data-correct="c" data-explain="Very polite request: ‘Would you mind + -ing…?’">
+          <p><strong>3)</strong> ______ sending the updated version by 5 p.m.?</p>
+          <div class="vt-opts">
+            <button data-opt="a">Do you want</button>
+            <button data-opt="b">Can you to</button>
+            <button data-opt="c">Would you mind</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+
+        <div class="vt-scoreline">
+          <span>✅ Correct: <strong id="vt-grammar-correct">0</strong> / <strong id="vt-grammar-total">0</strong></span>
+          <button class="vt-btn vt-btn-secondary" type="button" id="vt-grammar-reset">Reset quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         LISTENING (TTS)
+    ========================== -->
+    <section class="vt-section" id="vt-listening">
+      <header class="vt-section-header">
+        <h2>4) Listening – exam-style (timed)</h2>
+        <p class="vt-muted">Listen once or twice, then answer quickly.</p>
+      </header>
+
+      <div class="vt-card">
+        <div class="vt-audio-top">
+          <div>
+            <h3>Audio 1: Rescheduling a meeting</h3>
+            <p class="vt-muted">Tip: focus on time, reason, and next action.</p>
+          </div>
+          <div class="vt-audio-controls">
+            <button class="vt-btn vt-btn-primary vt-say" type="button"
+                    data-voice="us"
+                    data-text="Hi, this is Jordan from Operations. Unfortunately, I need to reschedule our meeting. Could we move it to Thursday at 3 p.m.? I’ll send an updated calendar invite right away. Thanks.">
+              ▶ Play (US voice)
+            </button>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-stop-tts">⏹ Stop</button>
+          </div>
+        </div>
+
+        <div class="vt-q vt-q-inline" data-correct="c" data-explain="The speaker proposes Thursday at 3 p.m.">
+          <p><strong>Question:</strong> When does the speaker propose the new meeting time?</p>
+          <div class="vt-opts">
+            <button data-opt="a">Today at 3 p.m.</button>
+            <button data-opt="b">Wednesday at 3 p.m.</button>
+            <button data-opt="c">Thursday at 3 p.m.</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+      </div>
+
+      <div class="vt-card">
+        <div class="vt-audio-top">
+          <div>
+            <h3>Audio 2: A delivery issue</h3>
+            <p class="vt-muted">Tip: identify the problem and the solution.</p>
+          </div>
+          <div class="vt-audio-controls">
+            <button class="vt-btn vt-btn-primary vt-say" type="button"
+                    data-voice="us"
+                    data-text="Good afternoon. I’m calling about the delivery scheduled for today. The truck is delayed due to severe weather. The earliest we can deliver is tomorrow morning between nine and eleven. Would that work for you?">
+              ▶ Play (US voice)
+            </button>
+            <button class="vt-btn vt-btn-secondary vt-timer" type="button" data-seconds="20">⏱️ 20s timer</button>
+          </div>
+        </div>
+
+        <div class="vt-q vt-q-inline" data-correct="b" data-explain="The earliest delivery is tomorrow morning between 9 and 11.">
+          <p><strong>Question:</strong> What is the earliest new delivery window?</p>
+          <div class="vt-opts">
+            <button data-opt="a">Today between 9 and 11</button>
+            <button data-opt="b">Tomorrow between 9 and 11</button>
+            <button data-opt="c">Tomorrow afternoon</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+      </div>
+
+      <div class="vt-scoreline">
+        <span>✅ Correct: <strong id="vt-listening-correct">0</strong> / <strong id="vt-listening-total">0</strong></span>
+        <button class="vt-btn vt-btn-secondary" type="button" id="vt-listening-reset">Reset listening questions</button>
+      </div>
+
+      <div class="vt-timer-panel" id="vt-timer-panel" aria-live="polite"></div>
+    </section>
+
+    <!-- =========================
+         READING
+    ========================== -->
+    <section class="vt-section" id="vt-reading">
+      <header class="vt-section-header">
+        <h2>5) Reading – professional email</h2>
+        <p class="vt-muted">Read fast. Answer what the text actually says.</p>
+      </header>
+
+      <div class="vt-card">
+        <h3>Email</h3>
+        <div class="vt-email">
+          <p><strong>Subject:</strong> Updated timeline – Client onboarding</p>
+          <p>Hello team,</p>
+          <p>
+            Due to a delay in legal review, the onboarding deadline is moving from <strong>March 12</strong> to
+            <strong>March 19</strong>. Please update your tasks accordingly and confirm by end of day whether
+            you foresee any risks. If needed, we can schedule a short call tomorrow morning.
+          </p>
+          <p>Thanks,<br>Sam</p>
+        </div>
+
+        <div class="vt-q vt-q-inline" data-correct="a" data-explain="The deadline moved from March 12 to March 19.">
+          <p><strong>1)</strong> What is the new onboarding deadline?</p>
+          <div class="vt-opts">
+            <button data-opt="a">March 19</button>
+            <button data-opt="b">March 12</button>
+            <button data-opt="c">Tomorrow morning</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+
+        <div class="vt-q vt-q-inline" data-correct="c" data-explain="They ask you to confirm whether you foresee risks by end of day.">
+          <p><strong>2)</strong> What does Sam ask the team to do today?</p>
+          <div class="vt-opts">
+            <button data-opt="a">Finish onboarding today</button>
+            <button data-opt="b">Call the client immediately</button>
+            <button data-opt="c">Confirm if there are risks by end of day</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+      </div>
+
+      <div class="vt-scoreline">
+        <span>✅ Correct: <strong id="vt-reading-correct">0</strong> / <strong id="vt-reading-total">0</strong></span>
+        <button class="vt-btn vt-btn-secondary" type="button" id="vt-reading-reset">Reset reading questions</button>
+      </div>
+    </section>
+
+    <!-- =========================
+         DRAG & DROP (email structure)
+    ========================== -->
+    <section class="vt-section" id="vt-dragdrop">
+      <header class="vt-section-header">
+        <h2>6) Drag & drop – Build a professional email</h2>
+        <p class="vt-muted">Put the email in a natural order. Then check.</p>
+      </header>
+
+      <div class="vt-grid-2">
+        <div class="vt-card">
+          <h3>Parts (drag these)</h3>
+          <p class="vt-muted">Drag each line into the email slots on the right.</p>
+
+          <div class="vt-draggables" id="vt-drag-source" aria-label="Draggable email parts">
+            <div class="vt-drag" draggable="true" data-key="closing">Best regards,</div>
+            <div class="vt-drag" draggable="true" data-key="ask">Could you please confirm your availability for a 20-minute call?</div>
+            <div class="vt-drag" draggable="true" data-key="subject">Subject: Quick follow-up – Next steps</div>
+            <div class="vt-drag" draggable="true" data-key="context">Following our conversation, I’m sharing the updated timeline.</div>
+            <div class="vt-drag" draggable="true" data-key="greeting">Hi Taylor,</div>
+            <div class="vt-drag" draggable="true" data-key="signature">Jordan Lee</div>
+          </div>
+
+          <div class="vt-actions">
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-dd-reset">Reset</button>
+          </div>
+        </div>
+
+        <div class="vt-card">
+          <h3>Email slots (drop here)</h3>
+
+          <div class="vt-dropzone-wrap" id="vt-dropzones">
+            <div class="vt-dropzone" data-accept="subject"><span>1) Subject line</span></div>
+            <div class="vt-dropzone" data-accept="greeting"><span>2) Greeting</span></div>
+            <div class="vt-dropzone" data-accept="context"><span>3) Context</span></div>
+            <div class="vt-dropzone" data-accept="ask"><span>4) Request / action</span></div>
+            <div class="vt-dropzone" data-accept="closing"><span>5) Closing</span></div>
+            <div class="vt-dropzone" data-accept="signature"><span>6) Signature</span></div>
+          </div>
+
+          <button class="vt-btn vt-btn-primary" type="button" id="vt-dd-check">Check my email</button>
+          <div class="vt-dd-feedback" id="vt-dd-feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         DIALOGUE BUILDER (professional scenario)
+    ========================== -->
+    <section class="vt-section" id="vt-dialogue">
+      <header class="vt-section-header">
+        <h2>7) Dialogue builder – workplace situation</h2>
+        <p class="vt-muted">Build a realistic mini-dialogue and practise it aloud.</p>
+      </header>
+
+      <div class="vt-card">
+        <form class="vt-form" id="vt-dialogue-form">
+          <div class="vt-form-row">
+            <div>
+              <label for="vt-scn">Scenario</label>
+              <select id="vt-scn" name="scenario">
+                <option value="meeting">Rescheduling a meeting</option>
+                <option value="issue">Reporting an issue</option>
+                <option value="client">Updating a client</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="vt-tone">Tone</label>
+              <select id="vt-tone" name="tone">
+                <option value="neutral">Neutral & professional</option>
+                <option value="warm">Warm & friendly</option>
+                <option value="firm">Firm but polite</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="vt-form-row">
+            <div>
+              <label for="vt-goal">Goal</label>
+              <select id="vt-goal" name="goal">
+                <option value="confirm">Confirm next steps</option>
+                <option value="apologize">Apologize + propose a solution</option>
+                <option value="clarify">Clarify details</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="vt-time">Time expression</label>
+              <select id="vt-time" name="time">
+                <option value="by end of day">by end of day</option>
+                <option value="tomorrow morning">tomorrow morning</option>
+                <option value="as soon as possible">as soon as possible</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="vt-actions">
+            <button class="vt-btn vt-btn-primary" type="submit">Build dialogue</button>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-dialogue-reset">Reset</button>
+          </div>
+        </form>
+
+        <textarea class="vt-output" id="vt-dialogue-output" readonly
+                  placeholder="Your dialogue will appear here…"></textarea>
+
+        <div class="vt-actions">
+          <button class="vt-btn vt-btn-ghost vt-say" type="button" data-voice="us" id="vt-dialogue-play"
+                  data-text="">
+            ▶ Listen (US voice)
+          </button>
+          <button class="vt-btn vt-btn-secondary" type="button" id="vt-dialogue-copy">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         SPEAKING (timer + optional recording)
+    ========================== -->
+    <section class="vt-section" id="vt-speaking">
+      <header class="vt-section-header">
+        <h2>8) Speaking – timed response</h2>
+        <p class="vt-muted">Practise the exam feeling: short preparation, then speak clearly.</p>
+      </header>
+
+      <div class="vt-grid-2">
+        <div class="vt-card">
+          <h3>Prompt (45–90 seconds)</h3>
+          <p class="vt-prompt" id="vt-speaking-prompt">
+            <strong>Question:</strong> What’s your opinion about flexible work (hybrid / remote)?
+            Give one advantage, one challenge, and one practical solution.
+          </p>
+
+          <div class="vt-actions">
+            <button class="vt-btn vt-btn-secondary vt-timer" type="button" data-seconds="15">⏱️ Prep 15s</button>
+            <button class="vt-btn vt-btn-primary vt-timer" type="button" data-seconds="75">🎙️ Speak 75s</button>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-speaking-new">New prompt</button>
+          </div>
+
+          <div class="vt-timer-panel" id="vt-speaking-timer" aria-live="polite"></div>
+
+          <div class="vt-tip">
+            <strong>Structure:</strong> opinion → example → solution → close.
+          </div>
+        </div>
+
+        <div class="vt-card">
+          <h3>Optional: record yourself (if supported)</h3>
+          <p class="vt-muted">
+            GitHub Pages is HTTPS, so recording usually works. If it doesn’t, just practise without recording.
+          </p>
+
+          <div class="vt-actions">
+            <button class="vt-btn vt-btn-primary" type="button" id="vt-rec-start">Start recording</button>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-rec-stop" disabled>Stop</button>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-rec-clear">Clear</button>
+          </div>
+
+          <audio id="vt-rec-playback" controls style="width:100%; display:none;"></audio>
+          <div class="vt-muted" id="vt-rec-status"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         WRITING (professional email)
+    ========================== -->
+    <section class="vt-section" id="vt-writing">
+      <header class="vt-section-header">
+        <h2>9) Writing – professional email task</h2>
+        <p class="vt-muted">Write like in the exam: clear, polite, with a goal.</p>
+      </header>
+
+      <div class="vt-grid-2">
+        <div class="vt-card">
+          <h3>Task</h3>
+          <p>
+            You need to email a client who is unhappy because a delivery is late.
+            Apologize, give a short explanation, propose a solution, and ask for confirmation.
+          </p>
+
+          <div class="vt-email-template">
+            <p><strong>Useful phrases:</strong></p>
+            <ul>
+              <li>“I’m sorry for the inconvenience.”</li>
+              <li>“Due to…, the delivery has been delayed.”</li>
+              <li>“We can offer…” / “We propose…”</li>
+              <li>“Could you please confirm…?”</li>
+            </ul>
+          </div>
+
+          <button class="vt-btn vt-btn-ghost" type="button" id="vt-writing-sample">Show sample answer</button>
+          <div class="vt-sample" id="vt-writing-sample-box" hidden>
+            <div class="vt-email">
+              <p><strong>Subject:</strong> Update on your delivery</p>
+              <p>Hello [Client Name],</p>
+              <p>
+                I’m sorry for the inconvenience caused by the delay. Due to severe weather affecting our carrier,
+                your delivery could not leave the warehouse as planned.
+              </p>
+              <p>
+                The earliest new delivery window is tomorrow between 9 and 11 a.m. If this doesn’t work, we can
+                arrange an alternative time or offer a priority shipment option.
+              </p>
+              <p>
+                Could you please confirm which option you prefer?
+              </p>
+              <p>Best regards,<br>[Your Name]</p>
+            </div>
+          </div>
+
+          <div class="vt-tip">
+            🇫🇷 <strong>Astuce:</strong> “I’m afraid…” = formule polie pour une mauvaise nouvelle.
+          </div>
+        </div>
+
+        <div class="vt-card">
+          <h3>Write your email</h3>
+          <label class="vt-label" for="vt-writing-input">Your email (8–12 lines)</label>
+          <textarea id="vt-writing-input" class="vt-writing" placeholder="Subject: ...&#10;Hello ...&#10;&#10;..."></textarea>
+
+          <div class="vt-actions">
+            <button class="vt-btn vt-btn-primary" type="button" id="vt-writing-check">Self-check</button>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-writing-reset">Reset</button>
+          </div>
+
+          <div class="vt-rubric" id="vt-writing-rubric" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         FINAL WRAP
+    ========================== -->
+    <section class="vt-section vt-final" id="vt-wrap">
+      <header class="vt-section-header">
+        <h2>Finish</h2>
+        <p class="vt-muted">If you do only 3 things before the exam…</p>
+      </header>
+
+      <div class="vt-card">
+        <ol class="vt-list">
+          <li>Practise <strong>timed listening</strong> and answer fast.</li>
+          <li>Write 2–3 <strong>business emails</strong> and reuse the same structure.</li>
+          <li>Speak out loud daily (even 5 minutes): <strong>clear + calm + structured</strong>.</li>
+        </ol>
+
+        <a class="vt-btn vt-btn-primary" href="#top">Back to top</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lesson JS -->
+  <script>
+/* ===========================
+   VTest Prep Lesson JS
+   =========================== */
+
+(function () {
+  const $ = (sel, root=document) => root.querySelector(sel);
+  const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+  // Personalization (name)
+  let studentName = "";
+  const nameInput = $("#vt-student-name");
+  const applyBtn = $("#vt-apply-name");
+  if (applyBtn && nameInput) {
+    applyBtn.addEventListener("click", () => {
+      studentName = (nameInput.value || "").trim();
+      alert(studentName ? `✅ Personalization on: “${studentName}”` : "✅ Using generic language (no name).");
+    });
+  }
+  function getNameOrFallback() { return studentName || "the candidate"; }
+
+  // Checklist progress
+  const checklist = $("#vt-checklist");
+  const progressFill = $("#vt-progress-fill");
+  const progressText = $("#vt-progress-text");
+  const checklistReset = $("#vt-checklist-reset");
+
+  function updateChecklistProgress() {
+    if (!checklist || !progressFill || !progressText) return;
+    const boxes = $$("input[type='checkbox']", checklist);
+    const checked = boxes.filter(b => b.checked).length;
+    const total = boxes.length || 1;
+    const pct = Math.round((checked / total) * 100);
+    progressFill.style.width = pct + "%";
+    progressText.textContent = String(pct);
+  }
+  if (checklist) {
+    checklist.addEventListener("change", updateChecklistProgress);
+    updateChecklistProgress();
+  }
+  if (checklistReset && checklist) {
+    checklistReset.addEventListener("click", () => {
+      $$("input[type='checkbox']", checklist).forEach(b => b.checked = false);
+      updateChecklistProgress();
+    });
+  }
+
+  // Reveal buttons
+  const revealOutput = $("#vt-reveal-output");
+  $$(".vt-reveal").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const ans = btn.getAttribute("data-answer") || "";
+      if (revealOutput) revealOutput.textContent = ans;
+    });
+  });
+
+  // MCQ scoring helper
+  function wireSimpleScore(questions, correctEl, totalEl, resetBtn) {
+    if (totalEl) totalEl.textContent = String(questions.length);
+    if (correctEl) correctEl.textContent = "0";
+    let correct = 0;
+
+    questions.forEach(q => {
+      const right = (q.getAttribute("data-correct") || "").trim();
+      const explain = (q.getAttribute("data-explain") || "").trim();
+      const fb = $(".vt-fb", q);
+
+      $$(".vt-opts button", q).forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (btn.disabled) return;
+          const chosen = (btn.getAttribute("data-opt") || "").trim();
+          const buttons = $$(".vt-opts button", q);
+          buttons.forEach(b => b.disabled = true);
+
+          if (chosen === right) {
+            btn.classList.add("vt-right");
+            correct += 1;
+            if (fb) fb.innerHTML = `<strong>Correct.</strong> ${explain}`;
+          } else {
+            btn.classList.add("vt-wrong");
+            const rightBtn = buttons.find(b => (b.getAttribute("data-opt") || "").trim() === right);
+            if (rightBtn) rightBtn.classList.add("vt-right");
+            if (fb) fb.innerHTML = `<strong>Not quite.</strong> ${explain}`;
+          }
+          if (correctEl) correctEl.textContent = String(correct);
+        });
+      });
+    });
+
+    function reset() {
+      correct = 0;
+      if (correctEl) correctEl.textContent = "0";
+      questions.forEach(q => {
+        const fb = $(".vt-fb", q);
+        if (fb) fb.textContent = "";
+        $$(".vt-opts button", q).forEach(b => {
+          b.disabled = false;
+          b.classList.remove("vt-right", "vt-wrong");
+        });
+      });
+    }
+
+    if (resetBtn) resetBtn.addEventListener("click", reset);
+    return { reset, getCorrect: () => correct };
+  }
+
+  // Grammar MCQ
+  const grammarContainer = $("#vt-grammar-mcq");
+  if (grammarContainer) {
+    const grammarQs = $$(".vt-q", grammarContainer);
+    wireSimpleScore(grammarQs, $("#vt-grammar-correct"), $("#vt-grammar-total"), $("#vt-grammar-reset"));
+  }
+
+  // Listening MCQ
+  const listeningContainer = $("#vt-listening");
+  if (listeningContainer) {
+    const listeningQs = $$(".vt-q", listeningContainer);
+    wireSimpleScore(listeningQs, $("#vt-listening-correct"), $("#vt-listening-total"), $("#vt-listening-reset"));
+  }
+
+  // Reading MCQ
+  const readingContainer = $("#vt-reading");
+  if (readingContainer) {
+    const readingQs = $$(".vt-q", readingContainer);
+    wireSimpleScore(readingQs, $("#vt-reading-correct"), $("#vt-reading-total"), $("#vt-reading-reset"));
+  }
+
+  // Timers
+  let activeTimer = null;
+  function startTimer(seconds, outputEl) {
+    const el = outputEl || $("#vt-timer-panel");
+    if (!el) return;
+    if (activeTimer) clearInterval(activeTimer);
+
+    let remain = seconds;
+    el.textContent = `⏱️ ${remain}s`;
+    activeTimer = setInterval(() => {
+      remain -= 1;
+      if (remain <= 0) {
+        clearInterval(activeTimer);
+        activeTimer = null;
+        el.textContent = "✅ Time!";
+        return;
+      }
+      el.textContent = `⏱️ ${remain}s`;
+    }, 1000);
+  }
+  $$(".vt-timer").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const s = parseInt(btn.getAttribute("data-seconds") || "0", 10);
+      if (!Number.isFinite(s) || s <= 0) return;
+      const target = btn.closest(".vt-card")?.querySelector(".vt-timer-panel") || $("#vt-timer-panel");
+      startTimer(s, target);
+    });
+  });
+
+  // TTS (US voice) using Web Speech API
+  const synth = window.speechSynthesis;
+  let voices = [];
+
+  function loadVoices() { voices = synth ? synth.getVoices() : []; }
+  function pickUSVoice() {
+    const v = voices || [];
+    return v.find(x => /en-US/i.test(x.lang) && /Google|Microsoft|Samantha|Alex|Jenny|Aria|Guy/i.test(x.name)) ||
+           v.find(x => /en-US/i.test(x.lang)) ||
+           v.find(x => /^en/i.test(x.lang)) ||
+           null;
+  }
+  function speak(text) {
+    if (!synth || !text) return;
+    synth.cancel();
+    loadVoices();
+    const u = new SpeechSynthesisUtterance(text);
+    const voice = pickUSVoice();
+    if (voice) u.voice = voice;
+    u.rate = 0.98;
+    u.pitch = 1.0;
+    synth.speak(u);
+  }
+  if (synth) {
+    loadVoices();
+    synth.onvoiceschanged = () => loadVoices();
+  }
+  $$(".vt-say").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const raw = btn.getAttribute("data-text") || "";
+      const name = getNameOrFallback();
+      speak(raw.replaceAll("[CANDIDATE]", name));
+    });
+  });
+  const stopTtsBtn = $("#vt-stop-tts");
+  if (stopTtsBtn && synth) stopTtsBtn.addEventListener("click", () => synth.cancel());
+
+  // Drag & drop (email structure)
+  const dragSource = $("#vt-drag-source");
+  const dropzonesWrap = $("#vt-dropzones");
+  const ddFeedback = $("#vt-dd-feedback");
+  const ddCheck = $("#vt-dd-check");
+  const ddReset = $("#vt-dd-reset");
+
+  function makeChip(text) {
+    const chip = document.createElement("span");
+    chip.className = "vt-chip";
+    chip.textContent = text;
+    return chip;
+  }
+
+  const labelMap = {
+    subject: "1) Subject line",
+    greeting: "2) Greeting",
+    context: "3) Context",
+    ask: "4) Request / action",
+    closing: "5) Closing",
+    signature: "6) Signature"
+  };
+
+  function clearDropzones() {
+    if (!dropzonesWrap) return;
+    $$(".vt-dropzone", dropzonesWrap).forEach(z => {
+      const accept = z.getAttribute("data-accept") || "";
+      z.dataset.filled = "";
+      z.innerHTML = `<span>${labelMap[accept] || "Drop here"}</span>`;
+    });
+  }
+  function resetDraggables() {
+    if (!dragSource) return;
+    $$(".vt-drag", dragSource).forEach(d => { d.style.display = ""; });
+  }
+  function ddResetAll() {
+    resetDraggables();
+    clearDropzones();
+    if (ddFeedback) ddFeedback.textContent = "";
+  }
+
+  if (dragSource) {
+    $$(".vt-drag", dragSource).forEach(el => {
+      el.addEventListener("dragstart", (e) => {
+        const key = el.getAttribute("data-key") || "";
+        const text = el.textContent || "";
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/plain", text);
+        e.dataTransfer.setData("application/x-vt-key", key);
+      });
+    });
+  }
+
+  if (dropzonesWrap) {
+    $$(".vt-dropzone", dropzonesWrap).forEach(zone => {
+      zone.addEventListener("dragover", (e) => { e.preventDefault(); zone.classList.add("vt-over"); });
+      zone.addEventListener("dragleave", () => zone.classList.remove("vt-over"));
+      zone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        zone.classList.remove("vt-over");
+        if (zone.dataset.filled) return;
+
+        const accept = (zone.getAttribute("data-accept") || "").trim();
+        const key = e.dataTransfer.getData("application/x-vt-key") || "";
+        const text = e.dataTransfer.getData("text/plain") || "";
+
+        zone.dataset.filled = key;
+        zone.innerHTML = "";
+        zone.appendChild(makeChip(text));
+
+        // Hide item from source list
+        const src = dragSource ? $(`.vt-drag[data-key="${CSS.escape(key)}"]`, dragSource) : null;
+        if (src) src.style.display = "none";
+      });
+    });
+  }
+
+  if (ddCheck && dropzonesWrap) {
+    ddCheck.addEventListener("click", () => {
+      const zones = $$(".vt-dropzone", dropzonesWrap);
+      const missing = zones.filter(z => !z.dataset.filled);
+      if (missing.length) {
+        if (ddFeedback) ddFeedback.textContent = "⚠️ Please fill all slots before checking.";
+        return;
+      }
+      const wrong = zones.filter(z => (z.dataset.filled || "") !== (z.getAttribute("data-accept") || ""));
+      if (wrong.length === 0) {
+        if (ddFeedback) ddFeedback.textContent = "✅ Perfect! Your email structure is natural and professional.";
+      } else {
+        if (ddFeedback) ddFeedback.textContent =
+          "❌ Some parts are in the wrong place. Tip: subject → greeting → context → request → closing → signature.";
+      }
+    });
+  }
+  if (ddReset) ddReset.addEventListener("click", ddResetAll);
+  ddResetAll();
+
+  // Dialogue builder
+  const dlgForm = $("#vt-dialogue-form");
+  const dlgOut = $("#vt-dialogue-output");
+  const dlgReset = $("#vt-dialogue-reset");
+  const dlgCopy = $("#vt-dialogue-copy");
+  const dlgPlay = $("#vt-dialogue-play");
+
+  function buildDialogue(scenario, tone, goal, time) {
+    const you = getNameOrFallback();
+    const other = "Colleague";
+
+    const toneMap = {
+      neutral: { greet: "Hi", thanks: "Thank you." },
+      warm: { greet: "Hi", thanks: "Thanks so much." },
+      firm: { greet: "Hello", thanks: "Thank you." }
+    };
+    const t = toneMap[tone] || toneMap.neutral;
+
+    if (scenario === "meeting") {
+      if (goal === "apologize") {
+        return `${other}: ${t.greet} ${you}. I’m sorry, but I need to reschedule our meeting.\n${you}: No problem. What time works for you?\n${other}: Could we move it to tomorrow afternoon?\n${you}: Yes — I’ll update the calendar invite ${time}.\n${other}: ${t.thanks}\n${you}: ${t.thanks}`;
+      }
+      if (goal === "clarify") {
+        return `${other}: ${t.greet} ${you}. Could you clarify the timeline?\n${you}: Absolutely. The key milestone is next week, and I’ll share the details ${time}.\n${other}: ${t.thanks}\n${you}: ${t.thanks}`;
+      }
+      return `${other}: ${t.greet} ${you}. I’d like to confirm our next steps and timing.\n${you}: Of course. I’ll send a short recap email ${time}.\n${other}: ${t.thanks}\n${you}: ${t.thanks}`;
+    }
+
+    if (scenario === "issue") {
+      if (goal === "apologize") {
+        return `${you}: I’m sorry for the disruption. We’re investigating the root cause.\n${other}: When can we expect an update?\n${you}: I’ll share a status update ${time}, and we’ll propose next steps.\n${other}: ${t.thanks}\n${you}: ${t.thanks}`;
+      }
+      if (goal === "clarify") {
+        return `${other}: ${t.greet} ${you}. Can you clarify who is impacted?\n${you}: Yes. It affects the finance team only. I’ll confirm the scope ${time}.\n${other}: ${t.thanks}\n${you}: ${t.thanks}`;
+      }
+      return `${other}: ${t.greet} ${you}. We need to confirm the workaround.\n${you}: Understood. Let’s document the workaround and I’ll escalate to IT ${time}.\n${other}: ${t.thanks}\n${you}: ${t.thanks}`;
+    }
+
+    // client
+    if (goal === "apologize") {
+      return `${other}: ${t.greet} ${you}. The client is unhappy about the delay.\n${you}: I’ll apologize and propose a new delivery window.\n${other}: Great. Ask them to confirm what works.\n${other}: ${t.thanks}\n${you}: ${t.thanks}`;
+    }
+    if (goal === "clarify") {
+      return `${other}: ${t.greet} ${you}. Could you clarify the delivery window?\n${you}: Yes — the earliest option is tomorrow morning. I’ll send the exact window ${time}.\n${other}: ${t.thanks}\n${you}: ${t.thanks}`;
+    }
+    return `${you}: I’ll confirm the timeline and the next steps with them ${time}.\n${other}: Great — please copy me on the email.\n${other}: ${t.thanks}\n${you}: ${t.thanks}`;
+  }
+
+  if (dlgForm && dlgOut) {
+    dlgForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const scenario = $("#vt-scn")?.value || "meeting";
+      const tone = $("#vt-tone")?.value || "neutral";
+      const goal = $("#vt-goal")?.value || "confirm";
+      const time = $("#vt-time")?.value || "by end of day";
+
+      const text = buildDialogue(scenario, tone, goal, time);
+      dlgOut.value = text;
+      if (dlgPlay) dlgPlay.setAttribute("data-text", text.replaceAll("\n", " "));
+    });
+  }
+  if (dlgReset && dlgOut) {
+    dlgReset.addEventListener("click", () => {
+      dlgOut.value = "";
+      if (dlgPlay) dlgPlay.setAttribute("data-text", "");
+      dlgForm?.reset();
+    });
+  }
+  if (dlgCopy && dlgOut) {
+    dlgCopy.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(dlgOut.value || ""); alert("Copied!"); }
+      catch { alert("Copy failed. You can manually select and copy the text."); }
+    });
+  }
+
+  // Speaking prompts
+  const promptEl = $("#vt-speaking-prompt");
+  const newPromptBtn = $("#vt-speaking-new");
+  const prompts = [
+    "What’s your opinion about flexible work (hybrid / remote)? Give one advantage, one challenge, and one practical solution.",
+    "Describe a recent challenge at work and how you solved it. Mention who was involved and the result.",
+    "Explain a process you know well (e.g., onboarding, safety checks, reporting). Give 3 clear steps.",
+    "Compare two options for a business decision (e.g., train vs. plane for a client visit). Explain your recommendation.",
+    "Give feedback to a colleague in a polite way: mention one positive point and one improvement suggestion."
+  ];
+  if (newPromptBtn && promptEl) {
+    newPromptBtn.addEventListener("click", () => {
+      const p = prompts[Math.floor(Math.random() * prompts.length)];
+      promptEl.innerHTML = `<strong>Question:</strong> ${p}`;
+      $("#vt-speaking-timer")?.textContent && ($("#vt-speaking-timer").textContent = "");
+    });
+  }
+
+  // Optional recording (MediaRecorder)
+  const recStart = $("#vt-rec-start");
+  const recStop = $("#vt-rec-stop");
+  const recClear = $("#vt-rec-clear");
+  const recStatus = $("#vt-rec-status");
+  const recPlayback = $("#vt-rec-playback");
+
+  let mediaRecorder = null;
+  let chunks = [];
+
+  async function startRecording() {
+    if (!navigator.mediaDevices?.getUserMedia) {
+      if (recStatus) recStatus.textContent = "Recording is not supported in this browser.";
+      return;
+    }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      chunks = [];
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
+      mediaRecorder.onstop = () => {
+        stream.getTracks().forEach(t => t.stop());
+        const blob = new Blob(chunks, { type: "audio/webm" });
+        if (recPlayback) {
+          recPlayback.src = URL.createObjectURL(blob);
+          recPlayback.style.display = "block";
+        }
+        if (recStatus) recStatus.textContent = "✅ Recording ready. Play it back above.";
+      };
+      mediaRecorder.start();
+      if (recStatus) recStatus.textContent = "⏺ Recording…";
+      if (recStart) recStart.disabled = true;
+      if (recStop) recStop.disabled = false;
+    } catch {
+      if (recStatus) recStatus.textContent = "Microphone permission denied or unavailable.";
+    }
+  }
+  function stopRecording() {
+    if (!mediaRecorder) return;
+    mediaRecorder.stop();
+    mediaRecorder = null;
+    if (recStart) recStart.disabled = false;
+    if (recStop) recStop.disabled = true;
+  }
+  function clearRecording() {
+    chunks = [];
+    if (recPlayback) {
+      recPlayback.pause();
+      recPlayback.removeAttribute("src");
+      recPlayback.style.display = "none";
+    }
+    if (recStatus) recStatus.textContent = "";
+  }
+  if (recStart) recStart.addEventListener("click", startRecording);
+  if (recStop) recStop.addEventListener("click", stopRecording);
+  if (recClear) recClear.addEventListener("click", clearRecording);
+
+  // Writing self-check
+  const writingInput = $("#vt-writing-input");
+  const writingCheck = $("#vt-writing-check");
+  const writingReset = $("#vt-writing-reset");
+  const writingRubric = $("#vt-writing-rubric");
+  const sampleBtn = $("#vt-writing-sample");
+  const sampleBox = $("#vt-writing-sample-box");
+
+  if (sampleBtn && sampleBox) {
+    sampleBtn.addEventListener("click", () => {
+      const open = !sampleBox.hasAttribute("hidden");
+      if (open) { sampleBox.setAttribute("hidden", ""); sampleBtn.textContent = "Show sample answer"; }
+      else { sampleBox.removeAttribute("hidden"); sampleBtn.textContent = "Hide sample answer"; }
+    });
+  }
+
+  function countMatches(text, patterns) {
+    const t = (text || "").toLowerCase();
+    return patterns.reduce((acc, p) => acc + (t.includes(p) ? 1 : 0), 0);
+  }
+
+  function selfCheckEmail(text) {
+    const t = (text || "").trim();
+    const lines = t.split(/\r?\n/).filter(l => l.trim().length > 0);
+    const hasSubject = /^subject\s*:/i.test(lines[0] || "");
+    const hasGreeting = /(hello|hi|dear)\b/i.test(t);
+    const hasApology = countMatches(t, ["sorry", "apolog"]) > 0;
+    const hasReason = countMatches(t, ["due to", "because", "as a result", "weather", "delay"]) > 0;
+    const hasSolution = countMatches(t, ["we can", "we could", "we propose", "offer", "alternative"]) > 0;
+    const hasAsk = /\b(could you|please confirm|would you|can you)\b/i.test(t);
+    const hasClosing = /(best regards|kind regards|warm regards|sincerely)/i.test(t);
+
+    const parts = [
+      ["Subject line", hasSubject],
+      ["Greeting", hasGreeting],
+      ["Apology", hasApology],
+      ["Short explanation", hasReason],
+      ["Solution / option", hasSolution],
+      ["Request for confirmation", hasAsk],
+      ["Professional closing", hasClosing]
+    ];
+    const points = parts.filter(p => p[1]).length;
+
+    const tips = [];
+    if (!hasSubject) tips.push("Add a clear subject line (e.g., “Subject: Update on your delivery”).");
+    if (!hasGreeting) tips.push("Add a greeting (Hello / Hi / Dear…).");
+    if (!hasApology) tips.push("Include an apology (“I’m sorry for the inconvenience…”).");
+    if (!hasReason) tips.push("Add a short reason (“Due to…, the delivery is delayed…”).");
+    if (!hasSolution) tips.push("Offer a solution or options (“We can offer… / We propose…”).");
+    if (!hasAsk) tips.push("Ask for confirmation (“Could you please confirm…?”).");
+    if (!hasClosing) tips.push("Close professionally (“Best regards,”).");
+
+    return { points, max: parts.length, parts, tips, linesCount: lines.length };
+  }
+
+  if (writingCheck && writingInput && writingRubric) {
+    writingCheck.addEventListener("click", () => {
+      const report = selfCheckEmail(writingInput.value || "");
+      const badge = report.points >= 6 ? "✅ Strong" : report.points >= 4 ? "⚠️ Good start" : "❌ Needs work";
+      const partsHtml = report.parts.map(([label, ok]) => `<li>${ok ? "✅" : "⬜"} ${label}</li>`).join("");
+      const tipsHtml = report.tips.length
+        ? `<p><strong>Next improvements:</strong></p><ul>${report.tips.map(t => `<li>${t}</li>`).join("")}</ul>`
+        : `<p><strong>Great!</strong> Your email has the key elements.</p>`;
+
+      writingRubric.innerHTML = `
+        <p><strong>${badge}</strong> — ${report.points}/${report.max} key elements · ${report.linesCount} non-empty lines</p>
+        <ul>${partsHtml}</ul>
+        ${tipsHtml}
+      `;
+    });
+  }
+  if (writingReset && writingInput && writingRubric) {
+    writingReset.addEventListener("click", () => { writingInput.value = ""; writingRubric.textContent = ""; });
+  }
+
+})();
+</script>
+</body>
+</html>

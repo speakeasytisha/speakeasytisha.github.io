@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VTest Business English 4 Skills — Exam Prep (Interactive)</title>
+
+  <!-- Site fonts (match your other pages) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Your global site styles -->
+  <link rel="stylesheet" href="css/speakeasy.css" />
+
+  <!-- Page styles -->
+  <link rel="stylesheet" href="css/vtest-prep.css" />
+
+  <!-- Header/Footer injection + page logic -->
+  <script defer src="js/site-chrome.js"></script>
+  <script defer src="js/vtest-prep.js"></script>
+</head>
+
+<body class="vtest-page" data-hero="img/hero-vtest.jpg">
+  <!-- HEADER injected by site-chrome.js -->
+  <div id="site-header"></div>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="vtest-hero" aria-label="VTest Exam Prep Hero">
+      <div class="vtest-hero-inner">
+        <div class="vtest-hero-text">
+          <span class="vtest-kicker">EXAM PREP • BUSINESS ENGLISH</span>
+          <h1 class="vtest-title">VTest Business English — 4 Skills</h1>
+          <p class="vtest-subtitle">
+            A realistic, interactive practice session (Listening • Reading • Speaking • Writing)
+            designed to feel like exam tasks — but reusable for any student.
+          </p>
+
+          <div class="vtest-profile">
+            <div class="vtest-profile-card">
+              <h2 class="vtest-h2">Personalize (optional)</h2>
+              <div class="vtest-profile-grid">
+                <label class="vtest-field">
+                  <span>Your name</span>
+                  <input id="studentName" type="text" placeholder="e.g., Alex" autocomplete="name" />
+                </label>
+
+                <label class="vtest-field">
+                  <span>Pronouns</span>
+                  <select id="studentPronouns">
+                    <option value="they">They/Them</option>
+                    <option value="she">She/Her</option>
+                    <option value="he">He/Him</option>
+                  </select>
+                </label>
+
+                <label class="vtest-field">
+                  <span>Work context</span>
+                  <select id="studentContext">
+                    <option value="general">General professional</option>
+                    <option value="hospitality">Hospitality</option>
+                    <option value="industry">Industry / Engineering</option>
+                    <option value="office">Office / Admin</option>
+                    <option value="sales">Sales / Customer service</option>
+                    <option value="transport">Transport / Tourism</option>
+                  </select>
+                </label>
+
+                <label class="vtest-field">
+                  <span>Voice accent (TTS)</span>
+                  <select id="studentAccent">
+                    <option value="en-GB">British (UK)</option>
+                    <option value="en-US">American (US)</option>
+                  </select>
+                </label>
+              </div>
+
+              <p class="vtest-muted">
+                This page will adapt the examples slightly (vocabulary + scenarios), but it never uses any student’s real name unless you type it.
+              </p>
+            </div>
+
+            <div class="vtest-quick-actions">
+              <a class="btn btn-gold" href="#overview">Start the lesson</a>
+              <a class="btn btn-outline" href="#mock">Jump to mock test</a>
+              <button class="btn btn-text" type="button" data-action="resetAll">Reset all</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="vtest-hero-panel" aria-label="Lesson at a glance">
+          <div class="vtest-panel-card">
+            <p class="vtest-panel-label">Session plan (≈60 minutes)</p>
+            <ol class="vtest-plan">
+              <li><a href="#overview">Exam overview + strategy</a></li>
+              <li><a href="#tech">Technical / proctoring checklist</a></li>
+              <li><a href="#listening">Listening mini-sim</a></li>
+              <li><a href="#reading">Reading mini-sim</a></li>
+              <li><a href="#speaking">Speaking mini-sim (record)</a></li>
+              <li><a href="#writing">Writing mini-sim (timer)</a></li>
+              <li><a href="#vocab">Business vocab with icons</a></li>
+              <li><a href="#mock">Adaptive mock test</a></li>
+            </ol>
+
+            <div class="vtest-progress" role="group" aria-label="Progress">
+              <div class="vtest-progress-top">
+                <span>Progress</span>
+                <span id="progressText">0%</span>
+              </div>
+              <div class="vtest-progress-bar" aria-hidden="true">
+                <div id="progressFill" class="vtest-progress-fill"></div>
+              </div>
+              <p class="vtest-muted" id="progressHint">Mark activities complete to increase your progress.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section id="overview" class="vtest-section">
+      <div class="vtest-container">
+        <h2 class="vtest-h2">1) What to expect on VTest (Business English — 4 skills)</h2>
+
+        <div class="vtest-grid two">
+          <div class="vtest-card">
+            <h3 class="vtest-h3">Key idea</h3>
+            <p>
+              VTest is designed to measure practical English in professional contexts across four skills:
+              <strong>Listening, Reading, Speaking, and Writing</strong>.
+              Many versions are <strong>adaptive</strong> (questions become easier/harder based on your answers),
+              so it can feel challenging — that’s normal.
+            </p>
+            <ul class="vtest-bullets">
+              <li>⏱️ <strong>Duration:</strong> can vary (often 45 minutes to 2 hours, depending on the version/level).</li>
+              <li>🎯 <strong>Outcome:</strong> a level report aligned with CEFR (A1–C2, depending on the version).</li>
+              <li>🧭 <strong>Best strategy:</strong> stay calm, keep moving, and answer every task.</li>
+            </ul>
+
+            <div class="vtest-callout">
+              <span class="vtest-callout-icon">✅</span>
+              <div>
+                <p class="vtest-callout-title">Mindset</p>
+                <p class="vtest-callout-text">
+                  The exam is built to “find your ceiling.” If it gets hard, you’re probably near your real level — keep going.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="vtest-card">
+            <h3 class="vtest-h3">Common task types</h3>
+            <div class="vtest-tasklist" role="list">
+              <div class="vtest-task" role="listitem">
+                <span class="vtest-ico">🎧</span>
+                <div>
+                  <p class="vtest-task-title">Listening</p>
+                  <p class="vtest-task-text">Short messages/dialogues + MCQ or fill-in.</p>
+                </div>
+              </div>
+              <div class="vtest-task" role="listitem">
+                <span class="vtest-ico">📄</span>
+                <div>
+                  <p class="vtest-task-title">Reading</p>
+                  <p class="vtest-task-text">Emails/announcements + comprehension questions.</p>
+                </div>
+              </div>
+              <div class="vtest-task" role="listitem">
+                <span class="vtest-ico">🗣️</span>
+                <div>
+                  <p class="vtest-task-title">Speaking</p>
+                  <p class="vtest-task-text">Read aloud, repeat, and answer an open question (timed).</p>
+                </div>
+              </div>
+              <div class="vtest-task" role="listitem">
+                <span class="vtest-ico">✍️</span>
+                <div>
+                  <p class="vtest-task-title">Writing</p>
+                  <p class="vtest-task-text">A structured response (often professional) under time pressure.</p>
+                </div>
+              </div>
+            </div>
+
+            <details class="vtest-details">
+              <summary>French → English quick tips (very useful under pressure)</summary>
+              <ul class="vtest-bullets">
+                <li>🧠 Don’t translate word-for-word. Focus on <strong>meaning</strong> + simple structure.</li>
+                <li>📅 Dates: British format often <strong>DD/MM/YYYY</strong>; American often <strong>MM/DD/YYYY</strong>. Follow the context.</li>
+                <li>🧷 “I’m agree” ❌ → <strong>“I agree”</strong> ✅</li>
+                <li>🧾 “Informations” ❌ → <strong>“information”</strong> ✅ (uncountable)</li>
+                <li>📌 “Since” + point in time; “for” + duration.</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+
+        <div class="vtest-actions-row">
+          <button class="vtest-complete" type="button" data-complete="overview">Mark section complete</button>
+          <span class="vtest-muted">Tip: Marking complete will update your progress.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH CHECKLIST -->
+    <section id="tech" class="vtest-section alt">
+      <div class="vtest-container">
+        <h2 class="vtest-h2">2) Technical & proctoring checklist (simulate test conditions)</h2>
+
+        <div class="vtest-grid two">
+          <div class="vtest-card">
+            <h3 class="vtest-h3">Checklist</h3>
+            <p class="vtest-muted">
+              Rules can vary by provider. Use your official invitation as the final reference.
+              This checklist helps you avoid “easy” stress.
+            </p>
+
+            <div class="vtest-checklist" role="group" aria-label="Technical checklist">
+              <label class="vtest-check"><input type="checkbox" data-check="device" /> 💻 I’m on a laptop/desktop (recommended)</label>
+              <label class="vtest-check"><input type="checkbox" data-check="browser" /> 🌐 Browser updated (Chrome/Edge recommended)</label>
+              <label class="vtest-check"><input type="checkbox" data-check="mic" /> 🎙️ Microphone works (test recording)</label>
+              <label class="vtest-check"><input type="checkbox" data-check="cam" /> 📷 Webcam works (if required)</label>
+              <label class="vtest-check"><input type="checkbox" data-check="quiet" /> 🤫 Quiet room + notifications off</label>
+              <label class="vtest-check"><input type="checkbox" data-check="time" /> ⏱️ I can finish without interruptions</label>
+            </div>
+
+            <div class="vtest-status" aria-live="polite">
+              <span class="vtest-status-dot" id="readyDot" aria-hidden="true"></span>
+              <span id="readyText">Not ready yet — tick the checklist.</span>
+            </div>
+
+            <div class="vtest-actions-row">
+              <button class="vtest-complete" type="button" data-complete="tech">Mark section complete</button>
+              <button class="vtest-secondary" type="button" data-action="checklistReset">Reset checklist</button>
+            </div>
+          </div>
+
+          <div class="vtest-card">
+            <h3 class="vtest-h3">Time management mini-drill</h3>
+            <p>
+              Practice working fast: read the instruction, then answer quickly.
+              Don’t aim for perfect — aim for <strong>finished</strong>.
+            </p>
+
+            <div class="vtest-timer-box" data-timer="micro">
+              <div class="vtest-timer-top">
+                <span class="vtest-ico">⏲️</span>
+                <strong>60-second focus sprint</strong>
+                <span class="vtest-timer" data-role="timerDisplay">01:00</span>
+              </div>
+              <p class="vtest-muted">
+                In 60 seconds, write 3 useful “polite” phrases you could use in any email:
+                (e.g., request, confirmation, apology).
+              </p>
+              <textarea class="vtest-textarea" rows="4" placeholder="Write your 3 phrases here..."></textarea>
+              <div class="vtest-actions-row">
+                <button class="vtest-secondary" type="button" data-action="timerStart" data-timer-id="micro">Start</button>
+                <button class="vtest-secondary" type="button" data-action="timerStop" data-timer-id="micro">Stop</button>
+                <button class="vtest-secondary" type="button" data-action="timerReset" data-timer-id="micro">Reset</button>
+              </div>
+              <p class="vtest-muted" data-role="timerFeedback"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LISTENING -->
+    <section id="listening" class="vtest-section">
+      <div class="vtest-container">
+        <h2 class="vtest-h2">3) Listening mini-simulation 🎧</h2>
+        <p class="vtest-muted">
+          Use the buttons to hear an audio prompt (text-to-speech). Answer quickly — like the exam.
+        </p>
+
+        <div class="vtest-card">
+          <div class="vtest-sim-head">
+            <h3 class="vtest-h3">Task A — Short message (MCQ)</h3>
+            <div class="vtest-pillrow">
+              <span class="vtest-pill">≈45s audio</span>
+              <span class="vtest-pill">1 question</span>
+              <span class="vtest-pill">strategy: keywords</span>
+            </div>
+          </div>
+
+          <div class="vtest-audio" data-tts="listeningA">
+            <p class="vtest-audio-label"><strong>Audio prompt</strong> (listen first, then answer)</p>
+            <div class="vtest-audio-actions">
+              <button class="vtest-secondary" type="button" data-action="ttsPlay" data-tts-id="listeningA">🔊 Play</button>
+              <button class="vtest-secondary" type="button" data-action="ttsPause">⏸️ Pause</button>
+              <button class="vtest-secondary" type="button" data-action="ttsStop">⏹️ Stop</button>
+              <button class="vtest-secondary" type="button" data-action="ttsReplay" data-tts-id="listeningA">↻ Replay</button>
+            </div>
+            <p class="vtest-muted">Tip: focus on <em>who, what, when, next step</em>.</p>
+          </div>
+
+          <div class="vtest-question" data-qid="L1">
+            <p class="vtest-q">
+              <strong>Question:</strong> What is the main purpose of the message?
+            </p>
+            <div class="vtest-answers">
+              <button type="button" class="vtest-answer" data-correct="true">To confirm a meeting time change</button>
+              <button type="button" class="vtest-answer">To complain about a late delivery</button>
+              <button type="button" class="vtest-answer">To request a refund</button>
+              <button type="button" class="vtest-answer">To announce a new product launch</button>
+            </div>
+            <p class="vtest-feedback" aria-live="polite"></p>
+            <details class="vtest-details">
+              <summary>Clue</summary>
+              <p class="vtest-muted">Listen for the new time, the reason, and the confirmation request.</p>
+            </details>
+          </div>
+
+          <div class="vtest-actions-row">
+            <button class="vtest-secondary" type="button" data-action="resetQuestion" data-qid="L1">Reset task A</button>
+          </div>
+        </div>
+
+        <div class="vtest-card">
+          <div class="vtest-sim-head">
+            <h3 class="vtest-h3">Task B — Dialogue (fill the blank)</h3>
+            <div class="vtest-pillrow">
+              <span class="vtest-pill">≈35s audio</span>
+              <span class="vtest-pill">1 blank</span>
+              <span class="vtest-pill">strategy: collocations</span>
+            </div>
+          </div>
+
+          <div class="vtest-audio" data-tts="listeningB">
+            <p class="vtest-audio-label"><strong>Audio prompt</strong></p>
+            <div class="vtest-audio-actions">
+              <button class="vtest-secondary" type="button" data-action="ttsPlay" data-tts-id="listeningB">🔊 Play</button>
+              <button class="vtest-secondary" type="button" data-action="ttsPause">⏸️ Pause</button>
+              <button class="vtest-secondary" type="button" data-action="ttsStop">⏹️ Stop</button>
+              <button class="vtest-secondary" type="button" data-action="ttsReplay" data-tts-id="listeningB">↻ Replay</button>
+            </div>
+          </div>
+
+          <div class="vtest-fill" data-fill-id="L2">
+            <p class="vtest-q"><strong>Complete the sentence:</strong></p>
+            <p class="vtest-sentence">“Could you please send me the updated <span class="blank">_____</span> by Friday?”</p>
+
+            <div class="vtest-answers">
+              <button type="button" class="vtest-answer" data-correct="true">schedule</button>
+              <button type="button" class="vtest-answer">salary</button>
+              <button type="button" class="vtest-answer">signal</button>
+              <button type="button" class="vtest-answer">signature</button>
+            </div>
+
+            <p class="vtest-feedback" aria-live="polite"></p>
+            <details class="vtest-details">
+              <summary>Why?</summary>
+              <p class="vtest-muted">“Updated schedule” is a common business collocation (planning + deadlines).</p>
+            </details>
+
+            <div class="vtest-actions-row">
+              <button class="vtest-secondary" type="button" data-action="resetFill" data-fill-id="L2">Reset task B</button>
+              <button class="vtest-complete" type="button" data-complete="listening">Mark Listening complete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- READING -->
+    <section id="reading" class="vtest-section alt">
+      <div class="vtest-container">
+        <h2 class="vtest-h2">4) Reading mini-simulation 📄</h2>
+
+        <div class="vtest-grid two">
+          <div class="vtest-card">
+            <h3 class="vtest-h3">Task A — Email comprehension (MCQ)</h3>
+
+            <article class="vtest-email" aria-label="Reading text">
+              <p class="vtest-email-meta"><strong>Subject:</strong> Updated delivery window — action required</p>
+              <p class="vtest-email-meta"><strong>From:</strong> Operations Team</p>
+              <hr />
+              <p>Hello,</p>
+              <p>
+                Due to an unexpected delay at the warehouse, tomorrow’s shipment will arrive between <strong>14:00 and 16:00</strong>.
+                Please confirm whether someone will be available to receive the goods.
+              </p>
+              <p>
+                If this window is not possible, reply with an alternative time <strong>before 11:00</strong> today so we can reschedule.
+              </p>
+              <p>Thank you,</p>
+              <p>Operations</p>
+            </article>
+
+            <div class="vtest-question" data-qid="R1">
+              <p class="vtest-q"><strong>Question:</strong> What should the recipient do?</p>
+              <div class="vtest-answers">
+                <button type="button" class="vtest-answer" data-correct="true">Confirm availability (or propose another time before 11:00)</button>
+                <button type="button" class="vtest-answer">Cancel the shipment</button>
+                <button type="button" class="vtest-answer">Pay the invoice immediately</button>
+                <button type="button" class="vtest-answer">Call the warehouse to complain</button>
+              </div>
+              <p class="vtest-feedback" aria-live="polite"></p>
+              <details class="vtest-details">
+                <summary>Clue</summary>
+                <p class="vtest-muted">Look for “Please confirm…” and “before 11:00”.</p>
+              </details>
+            </div>
+
+            <div class="vtest-actions-row">
+              <button class="vtest-secondary" type="button" data-action="resetQuestion" data-qid="R1">Reset task A</button>
+            </div>
+          </div>
+
+          <div class="vtest-card">
+            <h3 class="vtest-h3">Task B — Fix the “Franglais” (precision drill)</h3>
+            <p class="vtest-muted">
+              Choose the best option: professional, natural English.
+            </p>
+
+            <div class="vtest-question" data-qid="R2">
+              <p class="vtest-q">1) “I come back to you tomorrow.”</p>
+              <div class="vtest-answers">
+                <button class="vtest-answer" type="button" data-correct="true">I’ll get back to you tomorrow.</button>
+                <button class="vtest-answer" type="button">I return to you tomorrow.</button>
+                <button class="vtest-answer" type="button">I come again tomorrow.</button>
+              </div>
+              <p class="vtest-feedback" aria-live="polite"></p>
+            </div>
+
+            <div class="vtest-question" data-qid="R3">
+              <p class="vtest-q">2) “Please find attached the document.”</p>
+              <div class="vtest-answers">
+                <button class="vtest-answer" type="button" data-correct="true">Please find the document attached.</button>
+                <button class="vtest-answer" type="button">Please find attachedly the document.</button>
+                <button class="vtest-answer" type="button">Please find in attachment the document.</button>
+              </div>
+              <p class="vtest-feedback" aria-live="polite"></p>
+            </div>
+
+            <div class="vtest-actions-row">
+              <button class="vtest-secondary" type="button" data-action="resetQuestion" data-qid="R2">Reset 1</button>
+              <button class="vtest-secondary" type="button" data-action="resetQuestion" data-qid="R3">Reset 2</button>
+              <button class="vtest-complete" type="button" data-complete="reading">Mark Reading complete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPEAKING -->
+    <section id="speaking" class="vtest-section">
+      <div class="vtest-container">
+        <h2 class="vtest-h2">5) Speaking mini-simulation 🗣️</h2>
+
+        <div class="vtest-grid two">
+          <div class="vtest-card">
+            <h3 class="vtest-h3">Task A — Read aloud (fluency + clarity)</h3>
+            <p class="vtest-muted">
+              In some tests, you must read a short text clearly. Record yourself if you want (optional).
+            </p>
+
+            <div class="vtest-readbox">
+              <p class="vtest-readtext" id="readAloudText">
+                This week, our team is prioritising customer response time. If you receive a request, acknowledge it quickly,
+                give a realistic timeline, and follow up with the next steps.
+              </p>
+
+              <div class="vtest-audio-actions">
+                <button class="vtest-secondary" type="button" data-action="ttsPlayText" data-source="#readAloudText">🔊 Hear model</button>
+                <button class="vtest-secondary" type="button" data-action="ttsStop">⏹️ Stop</button>
+              </div>
+            </div>
+
+            <div class="vtest-recorder" data-recorder="read">
+              <p class="vtest-muted"><strong>Optional recorder</strong> (works on HTTPS pages like GitHub Pages).</p>
+              <div class="vtest-actions-row">
+                <button class="vtest-secondary" type="button" data-action="recStart" data-rec-id="read">⏺ Start</button>
+                <button class="vtest-secondary" type="button" data-action="recStop" data-rec-id="read" disabled>⏹ Stop</button>
+                <a class="vtest-secondary vtest-linkbtn" data-role="recDownload" href="#" download="speaking-read-aloud.webm" hidden>⬇ Download</a>
+              </div>
+              <p class="vtest-feedback" data-role="recStatus" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <div class="vtest-card">
+            <h3 class="vtest-h3">Task B — Open question (timed)</h3>
+            <p>
+              You have <strong>30 seconds</strong> to prepare, then <strong>60–90 seconds</strong> to answer.
+              Focus on: <strong>point → reason → example → conclusion</strong>.
+            </p>
+
+            <div class="vtest-speak-task" data-speak="S1">
+              <p class="vtest-q"><strong>Prompt:</strong> What are the advantages and disadvantages of flexible work for a team?</p>
+
+              <div class="vtest-speak-grid">
+                <div class="vtest-timer-box" data-timer="prepS1" data-seconds="30">
+                  <div class="vtest-timer-top">
+                    <span class="vtest-ico">📝</span>
+                    <strong>Prep</strong>
+                    <span class="vtest-timer" data-role="timerDisplay">00:30</span>
+                  </div>
+                  <textarea class="vtest-textarea" rows="3" placeholder="Write 3 bullet points..."></textarea>
+                  <div class="vtest-actions-row">
+                    <button class="vtest-secondary" type="button" data-action="timerStart" data-timer-id="prepS1">Start</button>
+                    <button class="vtest-secondary" type="button" data-action="timerReset" data-timer-id="prepS1">Reset</button>
+                  </div>
+                </div>
+
+                <div class="vtest-timer-box" data-timer="ansS1" data-seconds="75">
+                  <div class="vtest-timer-top">
+                    <span class="vtest-ico">🎤</span>
+                    <strong>Answer</strong>
+                    <span class="vtest-timer" data-role="timerDisplay">01:15</span>
+                  </div>
+                  <p class="vtest-muted">Speak without reading. Aim for clear structure and examples.</p>
+                  <div class="vtest-actions-row">
+                    <button class="vtest-secondary" type="button" data-action="timerStart" data-timer-id="ansS1">Start</button>
+                    <button class="vtest-secondary" type="button" data-action="timerReset" data-timer-id="ansS1">Reset</button>
+                  </div>
+                  <p class="vtest-muted" data-role="timerFeedback"></p>
+                </div>
+              </div>
+
+              <div class="vtest-actions-row">
+                <button class="vtest-complete" type="button" data-complete="speaking">Mark Speaking complete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WRITING -->
+    <section id="writing" class="vtest-section alt">
+      <div class="vtest-container">
+        <h2 class="vtest-h2">6) Writing mini-simulation ✍️</h2>
+
+        <div class="vtest-grid two">
+          <div class="vtest-card">
+            <h3 class="vtest-h3">Task A — Professional email (timed)</h3>
+            <p class="vtest-muted">
+              Write a short email. Keep it professional, clear, and structured.
+            </p>
+
+            <div class="vtest-prompt">
+              <p><strong>Situation:</strong> A client asks to postpone a meeting scheduled for tomorrow morning because a key colleague is unavailable.</p>
+              <p><strong>Your job:</strong> Suggest two alternative times, confirm what will be discussed, and stay polite.</p>
+            </div>
+
+            <div class="vtest-timer-box" data-timer="writeEmail" data-seconds="600">
+              <div class="vtest-timer-top">
+                <span class="vtest-ico">⏱️</span>
+                <strong>10-minute timer</strong>
+                <span class="vtest-timer" data-role="timerDisplay">10:00</span>
+              </div>
+
+              <textarea id="emailDraft" class="vtest-textarea" rows="10" placeholder="Write your email here..."></textarea>
+
+              <div class="vtest-actions-row">
+                <button class="vtest-secondary" type="button" data-action="timerStart" data-timer-id="writeEmail">Start</button>
+                <button class="vtest-secondary" type="button" data-action="timerStop" data-timer-id="writeEmail">Stop</button>
+                <button class="vtest-secondary" type="button" data-action="timerReset" data-timer-id="writeEmail">Reset</button>
+                <button class="vtest-secondary" type="button" data-action="writingCheck" data-target="#emailDraft">Self-check</button>
+              </div>
+
+              <div class="vtest-check-results" id="writingFeedback" aria-live="polite"></div>
+            </div>
+
+            <details class="vtest-details">
+              <summary>Model structure (no full model answer)</summary>
+              <ul class="vtest-bullets">
+                <li>Greeting + thanks</li>
+                <li>Confirm postponement</li>
+                <li>Offer 2 alternatives</li>
+                <li>Confirm agenda</li>
+                <li>Polite closing</li>
+              </ul>
+            </details>
+          </div>
+
+          <div class="vtest-card">
+            <h3 class="vtest-h3">Task B — Short opinion (advanced)</h3>
+            <p class="vtest-muted">
+              A stronger-level task: build an argument with connectors.
+            </p>
+
+            <div class="vtest-prompt">
+              <p><strong>Prompt:</strong> “Technology improves productivity, but it also increases stress.” Do you agree?</p>
+              <p><strong>Goal:</strong> 120–180 words. Use at least 6 connectors (however, therefore, whereas…).</p>
+            </div>
+
+            <div class="vtest-connectors">
+              <p class="vtest-muted"><strong>Connector bank</strong> (click to insert):</p>
+              <div class="vtest-chiprow" data-chip-target="#opinionDraft">
+                <button type="button" class="vtest-chip">However,</button>
+                <button type="button" class="vtest-chip">Therefore,</button>
+                <button type="button" class="vtest-chip">Whereas</button>
+                <button type="button" class="vtest-chip">In addition,</button>
+                <button type="button" class="vtest-chip">As a result,</button>
+                <button type="button" class="vtest-chip">On the other hand,</button>
+                <button type="button" class="vtest-chip">In my view,</button>
+                <button type="button" class="vtest-chip">Nevertheless,</button>
+              </div>
+            </div>
+
+            <textarea id="opinionDraft" class="vtest-textarea" rows="10" placeholder="Write your opinion here..."></textarea>
+
+            <div class="vtest-actions-row">
+              <button class="vtest-secondary" type="button" data-action="wordCount" data-target="#opinionDraft">Word count</button>
+              <button class="vtest-secondary" type="button" data-action="writingCheck" data-target="#opinionDraft">Self-check</button>
+              <button class="vtest-complete" type="button" data-complete="writing">Mark Writing complete</button>
+            </div>
+
+            <p class="vtest-muted" id="opinionStats"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VOCAB -->
+    <section id="vocab" class="vtest-section">
+      <div class="vtest-container">
+        <h2 class="vtest-h2">7) Business vocabulary with icons 🧠</h2>
+
+        <div class="vtest-grid two">
+          <div class="vtest-card">
+            <h3 class="vtest-h3">Icon glossary (core business words)</h3>
+            <div class="vtest-vocab-grid" id="vocabGrid" aria-label="Vocabulary list">
+              <!-- injected by JS -->
+            </div>
+
+            <div class="vtest-actions-row">
+              <button class="vtest-secondary" type="button" data-action="vocabShuffle">Shuffle</button>
+              <button class="vtest-secondary" type="button" data-action="vocabToggle">Show/Hide definitions</button>
+            </div>
+          </div>
+
+          <div class="vtest-card">
+            <h3 class="vtest-h3">Quick vocab quiz (MCQ)</h3>
+            <p class="vtest-muted">Choose the best definition. Explanations appear after each answer.</p>
+
+            <div id="vocabQuiz" class="vtest-quiz">
+              <!-- injected by JS -->
+            </div>
+
+            <div class="vtest-actions-row">
+              <button class="vtest-secondary" type="button" data-action="vocabQuizReset">Reset quiz</button>
+              <button class="vtest-complete" type="button" data-complete="vocab">Mark Vocab complete</button>
+            </div>
+
+            <p class="vtest-muted" id="vocabScore"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOCK TEST -->
+    <section id="mock" class="vtest-section alt">
+      <div class="vtest-container">
+        <h2 class="vtest-h2">8) Adaptive mock test (mini) 🎯</h2>
+        <p class="vtest-muted">
+          This is a compact simulation: it gets harder if you answer correctly. It’s not official — it’s training.
+        </p>
+
+        <div class="vtest-card">
+          <div class="vtest-mock-top">
+            <div>
+              <h3 class="vtest-h3">Mini test</h3>
+              <p class="vtest-muted">8 questions, mixed skills, timed feel.</p>
+            </div>
+            <div class="vtest-mock-controls">
+              <button class="vtest-secondary" type="button" data-action="mockStart">Start</button>
+              <button class="vtest-secondary" type="button" data-action="mockReset">Reset</button>
+            </div>
+          </div>
+
+          <div id="mockStage" class="vtest-mock-stage" aria-live="polite">
+            <p class="vtest-muted">Press <strong>Start</strong> to begin.</p>
+          </div>
+
+          <div class="vtest-actions-row">
+            <button class="vtest-complete" type="button" data-complete="mock">Mark Mock complete</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WRAP UP -->
+    <section class="vtest-section">
+      <div class="vtest-container">
+        <div class="vtest-card">
+          <h2 class="vtest-h2">Wrap-up</h2>
+          <p>
+            Great work, <span data-student-name>there</span> — your best results will come from repeating the timed tasks.
+            If you want, repeat the mock test and try to improve your clarity rather than your complexity.
+          </p>
+          <ul class="vtest-bullets">
+            <li>✅ Use simple, correct grammar under pressure.</li>
+            <li>✅ Keep answers structured (point → reason → example).</li>
+            <li>✅ In writing, be clear: short sentences + professional tone.</li>
+          </ul>
+
+          <div class="vtest-actions-row">
+            <a class="btn btn-gold" href="#top">Back to top</a>
+            <button class="btn btn-outline" type="button" data-action="print">Print / Save as PDF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER injected by site-chrome.js -->
+  <div id="site-footer"></div>
+</body>
+</html>

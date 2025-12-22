@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VTest Business English 4 Skills – Interactive Prep Lesson · SpeakEasyTisha</title>
+
+  <!-- Site CSS (keep if you use it) -->
+  <!-- <link rel="stylesheet" href="./css/speakeasy.css"> -->
+
+  <!-- This lesson CSS -->
+  <link rel="stylesheet" href="./css/vtest-prep-lesson.css" />
+</head>
+<body>
+
+  <!-- OPTIONAL: load your shared header/footer (GitHub Pages friendly) -->
+  <!-- If you already use header.html/footer.html on your site, keep these placeholders. -->
+  <div id="site-header" data-include="header.html"></div>
+
+  <main class="vt-shell" id="top">
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="vt-hero">
+      <div class="vt-hero-inner">
+        <div class="vt-hero-text">
+          <p class="vt-kicker">VTEST · Business English 4 Skills</p>
+          <h1>VTest Prep – Full Interactive Lesson</h1>
+          <p class="vt-sub">
+            Professional English practice for <strong>Listening</strong>, <strong>Reading</strong>,
+            <strong>Speaking</strong>, and <strong>Writing</strong> — with timers, live feedback, and realistic tasks.
+          </p>
+
+          <div class="vt-hero-tools">
+            <div class="vt-pill">⏱️ Timed practice</div>
+            <div class="vt-pill">🎧 Listening (US accent)</div>
+            <div class="vt-pill">🧩 Drag & drop</div>
+            <div class="vt-pill">✉️ Email writing</div>
+          </div>
+
+          <div class="vt-personalize">
+            <label for="vt-student-name"><strong>Student name</strong> (optional):</label>
+            <input id="vt-student-name" type="text" placeholder="Type a name (e.g., Alex)"/>
+            <button class="vt-btn vt-btn-secondary" id="vt-apply-name" type="button">Apply</button>
+            <small class="vt-muted">Tip: leave blank to keep the lesson generic.</small>
+          </div>
+
+          <div class="vt-hero-cta">
+            <a class="vt-btn vt-btn-primary" href="#vt-test-overview">Start the lesson</a>
+            <a class="vt-btn vt-btn-ghost" href="#vt-writing">Jump to email writing</a>
+          </div>
+        </div>
+
+        <div class="vt-hero-card" aria-label="Lesson summary card">
+          <h2>Today’s goal</h2>
+          <p>
+            Build confidence under exam conditions: understand instructions fast, choose accurately,
+            and communicate clearly in professional situations.
+          </p>
+          <ul>
+            <li>✅ Exam-style mini tasks</li>
+            <li>✅ Polite, natural business English</li>
+            <li>✅ Quick grammar upgrades (B2–C1)</li>
+          </ul>
+          <div class="vt-hero-card-note">
+            <strong>Audio note:</strong> Listening uses your browser’s speech engine (Web Speech API). If audio is blocked on your device, you can still do the questions by reading the transcript.
+            If your computer has multiple voices, choose a <em>US</em> voice automatically.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         TEST OVERVIEW + TECH CHECK
+    ========================== -->
+    <section class="vt-section" id="vt-test-overview">
+      <header class="vt-section-header">
+        <h2>1) What to expect on VTest</h2>
+        <p class="vt-muted">A clear map of the exam + the rules that can affect your score.</p>
+      </header>
+
+      <div class="vt-grid-2">
+        <div class="vt-card">
+          <h3>Core ideas</h3>
+          <ul class="vt-list">
+            <li><strong>Adaptive test</strong>: questions adjust to your level.</li>
+            <li><strong>4 skills</strong>: listening, reading, speaking, writing (depends on the version).</li>
+            <li><strong>Proctoring (sometimes)</strong>: depending on your session, you may need a webcam and microphone. Always follow the rules in your invitation email.</li>
+            <li><strong>Time pressure</strong>: short tasks; you must be concise and accurate.</li>
+          </ul>
+          <div class="vt-tip">
+            🇫🇷 <strong>Différence FR/EN:</strong> in English you can be concise <em>and</em> polite:
+            <span class="vt-quote">“Could you please…?”</span>, <span class="vt-quote">“Would you mind…?”</span>.
+          </div>
+        </div>
+
+        <div class="vt-card">
+          <h3>Tech checklist (interactive)</h3>
+          <p class="vt-muted">Tick everything before the exam.</p>
+
+          <div class="vt-checklist" id="vt-checklist">
+            <label><input type="checkbox" /> Webcam works (image is clear)</label>
+            <label><input type="checkbox" /> Microphone works (no echo)</label>
+            <label><input type="checkbox" /> Quiet room + stable internet</label>
+            <label><input type="checkbox" /> Phone on silent (or in another room)</label>
+            <label><input type="checkbox" /> Follow your test rules (headphones / notes / screen sharing)</label>
+            <label><input type="checkbox" /> Browser updated (Chrome/Edge recommended)</label>
+          </div>
+
+          <div class="vt-progress">
+            <div class="vt-progress-bar"><div id="vt-progress-fill"></div></div>
+            <p class="vt-muted"><span id="vt-progress-text">0</span>% ready</p>
+          </div>
+
+          <button class="vt-btn vt-btn-secondary" id="vt-checklist-reset" type="button">Reset checklist</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         VOCABULARY (icons)
+    ========================== -->
+    <section class="vt-section" id="vt-vocab">
+      <header class="vt-section-header">
+        <h2>2) Business vocabulary (high-frequency)</h2>
+        <p class="vt-muted">Use these chunks to sound natural and professional.</p>
+      </header>
+
+      <div class="vt-vocab-grid">
+        <div class="vt-vocab">
+          <div class="vt-ico">📅</div>
+          <div>
+            <h3>Scheduling</h3>
+            <ul>
+              <li><strong>reschedule</strong> – “Can we reschedule to Thursday?”</li>
+              <li><strong>availability</strong> – “What’s your availability?”</li>
+              <li><strong>time slot</strong> – “Do you have a 30‑minute slot?”</li>
+              <li><strong>to confirm</strong> – “Just to confirm, we’re meeting at 3.”</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="vt-vocab">
+          <div class="vt-ico">🧩</div>
+          <div>
+            <h3>Problem-solving</h3>
+            <ul>
+              <li><strong>root cause</strong> – “Let’s find the root cause.”</li>
+              <li><strong>workaround</strong> – “We have a workaround for now.”</li>
+              <li><strong>to escalate</strong> – “I’ll escalate this to IT.”</li>
+              <li><strong>next steps</strong> – “Here are the next steps.”</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="vt-vocab">
+          <div class="vt-ico">📈</div>
+          <div>
+            <h3>Meetings</h3>
+            <ul>
+              <li><strong>agenda</strong> – “Let’s stick to the agenda.”</li>
+              <li><strong>action items</strong> – “What are the action items?”</li>
+              <li><strong>to follow up</strong> – “I’ll follow up by email.”</li>
+              <li><strong>to clarify</strong> – “Could you clarify that point?”</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="vt-vocab">
+          <div class="vt-ico">✉️</div>
+          <div>
+            <h3>Email tone</h3>
+            <ul>
+              <li><strong>as discussed</strong> – “As discussed, please find…”</li>
+              <li><strong>I’m afraid…</strong> – “I’m afraid we can’t approve it.”</li>
+              <li><strong>Would you be able to…?</strong> – Polite request</li>
+              <li><strong>Thanks in advance</strong> – Friendly closing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="vt-mini">
+        <h3>Quick drill (click to reveal)</h3>
+        <p class="vt-muted">Turn these into complete sentences in your head.</p>
+
+        <div class="vt-reveal-grid">
+          <button class="vt-reveal" data-answer="Could we reschedule our call to Thursday at 3 p.m.?">📅 reschedule + Thursday</button>
+          <button class="vt-reveal" data-answer="I’ll escalate the issue and follow up by end of day.">🧩 escalate + follow up</button>
+          <button class="vt-reveal" data-answer="Could you clarify the timeline and the next steps?">📈 clarify + next steps</button>
+          <button class="vt-reveal" data-answer="As discussed, please find the updated document attached.">✉️ as discussed + attached</button>
+        </div>
+
+        <div class="vt-reveal-output" id="vt-reveal-output" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- =========================
+         GRAMMAR UPGRADE
+    ========================== -->
+    <section class="vt-section" id="vt-grammar">
+      <header class="vt-section-header">
+        <h2>3) Grammar upgrade (B2+)</h2>
+        <p class="vt-muted">Short rules that pay off in speaking and writing.</p>
+      </header>
+
+      <div class="vt-grid-2">
+        <div class="vt-card">
+          <h3>Will vs. be going to</h3>
+          <ul class="vt-list">
+            <li><strong>Going to</strong> = plan / intention: “I’m going to visit the client next week.”</li>
+            <li><strong>Will</strong> = instant decision / promise: “I’ll send the file now.”</li>
+            <li><strong>Will</strong> = prediction: “I think it’ll take longer.”</li>
+          </ul>
+          <div class="vt-tip">
+            🇫🇷 En français, on utilise souvent “je vais…” pour tout. En anglais, <strong>“I’m going to”</strong>
+            = plan déjà décidé. <strong>“I’ll”</strong> = décision sur le moment / promesse.
+          </div>
+        </div>
+
+        <div class="vt-card">
+          <h3>Polite requests (modals)</h3>
+          <ul class="vt-list">
+            <li><strong>Could you…?</strong> (neutral & polite)</li>
+            <li><strong>Would you mind + -ing…?</strong> (very polite)</li>
+            <li><strong>Can you…?</strong> (friendly, more direct)</li>
+          </ul>
+          <p class="vt-muted">
+            Avoid: “I want…” in emails. Prefer: “I’d like to…”, “Could you please…”.
+          </p>
+        </div>
+      </div>
+
+      <div class="vt-quiz" id="vt-grammar-mcq">
+        <h3>Mini quiz – Choose the best option</h3>
+        <p class="vt-muted">Click one answer. You’ll see feedback instantly.</p>
+
+        <div class="vt-q" data-correct="b" data-explain="A planned intention → ‘going to’.">
+          <p><strong>1)</strong> We ______ review the budget tomorrow morning. It’s already scheduled.</p>
+          <div class="vt-opts">
+            <button data-opt="a">will</button>
+            <button data-opt="b">are going to</button>
+            <button data-opt="c">go</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+
+        <div class="vt-q" data-correct="a" data-explain="Instant promise → ‘I’ll’.">
+          <p><strong>2)</strong> Don’t worry — I ______ call IT right now.</p>
+          <div class="vt-opts">
+            <button data-opt="a">’ll</button>
+            <button data-opt="b">’m going to</button>
+            <button data-opt="c">’m</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+
+        <div class="vt-q" data-correct="c" data-explain="Very polite request: ‘Would you mind + -ing…?’">
+          <p><strong>3)</strong> ______ sending the updated version by 5 p.m.?</p>
+          <div class="vt-opts">
+            <button data-opt="a">Do you want</button>
+            <button data-opt="b">Can you to</button>
+            <button data-opt="c">Would you mind</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+
+        <div class="vt-scoreline">
+          <span>✅ Correct: <strong id="vt-grammar-correct">0</strong> / <strong id="vt-grammar-total">0</strong></span>
+          <button class="vt-btn vt-btn-secondary" type="button" id="vt-grammar-reset">Reset quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         LISTENING (TTS)
+    ========================== -->
+    <section class="vt-section" id="vt-listening">
+      <header class="vt-section-header">
+        <h2>4) Listening – exam-style (timed)</h2>
+        <p class="vt-muted">Listen once or twice, then answer quickly.</p>
+      </header>
+
+      <div class="vt-card">
+        <div class="vt-audio-top">
+          <div>
+            <h3>Audio 1: Rescheduling a meeting</h3>
+            <p class="vt-muted">Tip: focus on time, reason, and next action.</p>
+          </div>
+          <div class="vt-audio-controls">
+            <button class="vt-btn vt-btn-primary vt-say" type="button"
+                    data-voice="us"
+                    data-text="Hi, this is Jordan from Operations. Unfortunately, I need to reschedule our meeting. Could we move it to Thursday at 3 p.m.? I’ll send an updated calendar invite right away. Thanks.">
+              ▶ Play (US voice)
+            </button>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-stop-tts">⏹ Stop</button>
+          </div>
+        </div>
+
+        <div class="vt-q vt-q-inline" data-correct="c" data-explain="The speaker proposes Thursday at 3 p.m.">
+          <p><strong>Question:</strong> When does the speaker propose the new meeting time?</p>
+          <div class="vt-opts">
+            <button data-opt="a">Today at 3 p.m.</button>
+            <button data-opt="b">Wednesday at 3 p.m.</button>
+            <button data-opt="c">Thursday at 3 p.m.</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+      </div>
+
+      <div class="vt-card">
+        <div class="vt-audio-top">
+          <div>
+            <h3>Audio 2: A delivery issue</h3>
+            <p class="vt-muted">Tip: identify the problem and the solution.</p>
+          </div>
+          <div class="vt-audio-controls">
+            <button class="vt-btn vt-btn-primary vt-say" type="button"
+                    data-voice="us"
+                    data-text="Good afternoon. I’m calling about the delivery scheduled for today. The truck is delayed due to severe weather. The earliest we can deliver is tomorrow morning between nine and eleven. Would that work for you?">
+              ▶ Play (US voice)
+            </button>
+            <button class="vt-btn vt-btn-secondary vt-timer" type="button" data-seconds="20">⏱️ 20s timer</button>
+          </div>
+        </div>
+
+        <div class="vt-q vt-q-inline" data-correct="b" data-explain="The earliest delivery is tomorrow morning between 9 and 11.">
+          <p><strong>Question:</strong> What is the earliest new delivery window?</p>
+          <div class="vt-opts">
+            <button data-opt="a">Today between 9 and 11</button>
+            <button data-opt="b">Tomorrow between 9 and 11</button>
+            <button data-opt="c">Tomorrow afternoon</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+      </div>
+
+      <div class="vt-scoreline">
+        <span>✅ Correct: <strong id="vt-listening-correct">0</strong> / <strong id="vt-listening-total">0</strong></span>
+        <button class="vt-btn vt-btn-secondary" type="button" id="vt-listening-reset">Reset listening questions</button>
+      </div>
+
+      <div class="vt-timer-panel" id="vt-timer-panel" aria-live="polite"></div>
+    </section>
+
+    <!-- =========================
+         READING
+    ========================== -->
+    <section class="vt-section" id="vt-reading">
+      <header class="vt-section-header">
+        <h2>5) Reading – professional email</h2>
+        <p class="vt-muted">Read fast. Answer what the text actually says.</p>
+      </header>
+
+      <div class="vt-card">
+        <h3>Email</h3>
+        <div class="vt-email">
+          <p><strong>Subject:</strong> Updated timeline – Client onboarding</p>
+          <p>Hello team,</p>
+          <p>
+            Due to a delay in legal review, the onboarding deadline is moving from <strong>March 12</strong> to
+            <strong>March 19</strong>. Please update your tasks accordingly and confirm by end of day whether
+            you foresee any risks. If needed, we can schedule a short call tomorrow morning.
+          </p>
+          <p>Thanks,<br>Sam</p>
+        </div>
+
+        <div class="vt-q vt-q-inline" data-correct="a" data-explain="The deadline moved from March 12 to March 19.">
+          <p><strong>1)</strong> What is the new onboarding deadline?</p>
+          <div class="vt-opts">
+            <button data-opt="a">March 19</button>
+            <button data-opt="b">March 12</button>
+            <button data-opt="c">Tomorrow morning</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+
+        <div class="vt-q vt-q-inline" data-correct="c" data-explain="They ask you to confirm whether you foresee risks by end of day.">
+          <p><strong>2)</strong> What does Sam ask the team to do today?</p>
+          <div class="vt-opts">
+            <button data-opt="a">Finish onboarding today</button>
+            <button data-opt="b">Call the client immediately</button>
+            <button data-opt="c">Confirm if there are risks by end of day</button>
+          </div>
+          <div class="vt-fb"></div>
+        </div>
+      </div>
+
+      <div class="vt-scoreline">
+        <span>✅ Correct: <strong id="vt-reading-correct">0</strong> / <strong id="vt-reading-total">0</strong></span>
+        <button class="vt-btn vt-btn-secondary" type="button" id="vt-reading-reset">Reset reading questions</button>
+      </div>
+    </section>
+
+    <!-- =========================
+         DRAG & DROP (email structure)
+    ========================== -->
+    <section class="vt-section" id="vt-dragdrop">
+      <header class="vt-section-header">
+        <h2>6) Drag & drop – Build a professional email</h2>
+        <p class="vt-muted">Put the email in a natural order. Then check.</p>
+      </header>
+
+      <div class="vt-grid-2">
+        <div class="vt-card">
+          <h3>Parts (drag these)</h3>
+          <p class="vt-muted">Drag each line into the email slots on the right.</p>
+
+          <div class="vt-draggables" id="vt-drag-source" aria-label="Draggable email parts">
+            <div class="vt-drag" draggable="true" data-key="closing">Best regards,</div>
+            <div class="vt-drag" draggable="true" data-key="ask">Could you please confirm your availability for a 20-minute call?</div>
+            <div class="vt-drag" draggable="true" data-key="subject">Subject: Quick follow-up – Next steps</div>
+            <div class="vt-drag" draggable="true" data-key="context">Following our conversation, I’m sharing the updated timeline.</div>
+            <div class="vt-drag" draggable="true" data-key="greeting">Hi Taylor,</div>
+            <div class="vt-drag" draggable="true" data-key="signature">Jordan Lee</div>
+          </div>
+
+          <div class="vt-actions">
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-dd-reset">Reset</button>
+          </div>
+        </div>
+
+        <div class="vt-card">
+          <h3>Email slots (drop here)</h3>
+
+          <div class="vt-dropzone-wrap" id="vt-dropzones">
+            <div class="vt-dropzone" data-accept="subject"><span>1) Subject line</span></div>
+            <div class="vt-dropzone" data-accept="greeting"><span>2) Greeting</span></div>
+            <div class="vt-dropzone" data-accept="context"><span>3) Context</span></div>
+            <div class="vt-dropzone" data-accept="ask"><span>4) Request / action</span></div>
+            <div class="vt-dropzone" data-accept="closing"><span>5) Closing</span></div>
+            <div class="vt-dropzone" data-accept="signature"><span>6) Signature</span></div>
+          </div>
+
+          <button class="vt-btn vt-btn-primary" type="button" id="vt-dd-check">Check my email</button>
+          <div class="vt-dd-feedback" id="vt-dd-feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         DIALOGUE BUILDER (professional scenario)
+    ========================== -->
+    <section class="vt-section" id="vt-dialogue">
+      <header class="vt-section-header">
+        <h2>7) Dialogue builder – workplace situation</h2>
+        <p class="vt-muted">Build a realistic mini-dialogue and practise it aloud.</p>
+      </header>
+
+      <div class="vt-card">
+        <form class="vt-form" id="vt-dialogue-form">
+          <div class="vt-form-row">
+            <div>
+              <label for="vt-scn">Scenario</label>
+              <select id="vt-scn" name="scenario">
+                <option value="meeting">Rescheduling a meeting</option>
+                <option value="issue">Reporting an issue</option>
+                <option value="client">Updating a client</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="vt-tone">Tone</label>
+              <select id="vt-tone" name="tone">
+                <option value="neutral">Neutral & professional</option>
+                <option value="warm">Warm & friendly</option>
+                <option value="firm">Firm but polite</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="vt-form-row">
+            <div>
+              <label for="vt-goal">Goal</label>
+              <select id="vt-goal" name="goal">
+                <option value="confirm">Confirm next steps</option>
+                <option value="apologize">Apologize + propose a solution</option>
+                <option value="clarify">Clarify details</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="vt-time">Time expression</label>
+              <select id="vt-time" name="time">
+                <option value="by end of day">by end of day</option>
+                <option value="tomorrow morning">tomorrow morning</option>
+                <option value="as soon as possible">as soon as possible</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="vt-actions">
+            <button class="vt-btn vt-btn-primary" type="submit">Build dialogue</button>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-dialogue-reset">Reset</button>
+          </div>
+        </form>
+
+        <textarea class="vt-output" id="vt-dialogue-output" readonly
+                  placeholder="Your dialogue will appear here…"></textarea>
+
+        <div class="vt-actions">
+          <button class="vt-btn vt-btn-ghost vt-say" type="button" data-voice="us" id="vt-dialogue-play"
+                  data-text="">
+            ▶ Listen (US voice)
+          </button>
+          <button class="vt-btn vt-btn-secondary" type="button" id="vt-dialogue-copy">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         SPEAKING (timer + optional recording)
+    ========================== -->
+    <section class="vt-section" id="vt-speaking">
+      <header class="vt-section-header">
+        <h2>8) Speaking – timed response</h2>
+        <p class="vt-muted">Practise the exam feeling: short preparation, then speak clearly.</p>
+      </header>
+
+      <div class="vt-grid-2">
+        <div class="vt-card">
+          <h3>Prompt (45–90 seconds)</h3>
+          <p class="vt-prompt" id="vt-speaking-prompt">
+            <strong>Question:</strong> What’s your opinion about flexible work (hybrid / remote)?
+            Give one advantage, one challenge, and one practical solution.
+          </p>
+
+          <div class="vt-actions">
+            <button class="vt-btn vt-btn-secondary vt-timer" type="button" data-seconds="15">⏱️ Prep 15s</button>
+            <button class="vt-btn vt-btn-primary vt-timer" type="button" data-seconds="75">🎙️ Speak 75s</button>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-speaking-new">New prompt</button>
+          </div>
+
+          <div class="vt-timer-panel" id="vt-speaking-timer" aria-live="polite"></div>
+
+          <div class="vt-tip">
+            <strong>Structure:</strong> opinion → example → solution → close.
+          </div>
+        </div>
+
+        <div class="vt-card">
+          <h3>Optional: record yourself (if supported)</h3>
+          <p class="vt-muted">
+            GitHub Pages is HTTPS, so recording usually works. If it doesn’t, just practise without recording.
+          </p>
+
+          <div class="vt-actions">
+            <button class="vt-btn vt-btn-primary" type="button" id="vt-rec-start">Start recording</button>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-rec-stop" disabled>Stop</button>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-rec-clear">Clear</button>
+          </div>
+
+          <audio id="vt-rec-playback" controls style="width:100%; display:none;"></audio>
+          <div class="vt-muted" id="vt-rec-status"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         WRITING (professional email)
+    ========================== -->
+    <section class="vt-section" id="vt-writing">
+      <header class="vt-section-header">
+        <h2>9) Writing – professional email task</h2>
+        <p class="vt-muted">Write like in the exam: clear, polite, with a goal.</p>
+      </header>
+
+      <div class="vt-grid-2">
+        <div class="vt-card">
+          <h3>Task</h3>
+          <p>
+            You need to email a client who is unhappy because a delivery is late.
+            Apologize, give a short explanation, propose a solution, and ask for confirmation.
+          </p>
+
+          <div class="vt-email-template">
+            <p><strong>Useful phrases:</strong></p>
+            <ul>
+              <li>“I’m sorry for the inconvenience.”</li>
+              <li>“Due to…, the delivery has been delayed.”</li>
+              <li>“We can offer…” / “We propose…”</li>
+              <li>“Could you please confirm…?”</li>
+            </ul>
+          </div>
+
+          <button class="vt-btn vt-btn-ghost" type="button" id="vt-writing-sample">Show sample answer</button>
+          <div class="vt-sample" id="vt-writing-sample-box" hidden>
+            <div class="vt-email">
+              <p><strong>Subject:</strong> Update on your delivery</p>
+              <p>Hello [Client Name],</p>
+              <p>
+                I’m sorry for the inconvenience caused by the delay. Due to severe weather affecting our carrier,
+                your delivery could not leave the warehouse as planned.
+              </p>
+              <p>
+                The earliest new delivery window is tomorrow between 9 and 11 a.m. If this doesn’t work, we can
+                arrange an alternative time or offer a priority shipment option.
+              </p>
+              <p>
+                Could you please confirm which option you prefer?
+              </p>
+              <p>Best regards,<br>[Your Name]</p>
+            </div>
+          </div>
+
+          <div class="vt-tip">
+            🇫🇷 <strong>Astuce:</strong> “I’m afraid…” = formule polie pour une mauvaise nouvelle.
+          </div>
+        </div>
+
+        <div class="vt-card">
+          <h3>Write your email</h3>
+          <label class="vt-label" for="vt-writing-input">Your email (8–12 lines)</label>
+          <textarea id="vt-writing-input" class="vt-writing" placeholder="Subject: ...&#10;Hello ...&#10;&#10;..."></textarea>
+
+          <div class="vt-actions">
+            <button class="vt-btn vt-btn-primary" type="button" id="vt-writing-check">Self-check</button>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-writing-reset">Reset</button>
+          </div>
+
+          <div class="vt-rubric" id="vt-writing-rubric" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         FINAL WRAP
+    ========================== -->
+    <section class="vt-section vt-final" id="vt-wrap">
+      <header class="vt-section-header">
+        <h2>Finish</h2>
+        <p class="vt-muted">If you do only 3 things before the exam…</p>
+      </header>
+
+      <div class="vt-card">
+        <ol class="vt-list">
+          <li>Practise <strong>timed listening</strong> and answer fast.</li>
+          <li>Write 2–3 <strong>business emails</strong> and reuse the same structure.</li>
+          <li>Speak out loud daily (even 5 minutes): <strong>clear + calm + structured</strong>.</li>
+        </ol>
+
+        <a class="vt-btn vt-btn-primary" href="#top">Back to top</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer" data-include="footer.html"></div>
+
+  <!-- Lesson JS -->
+  <script src="./js/vtest-prep-lesson.js" defer></script>
+
+  <!-- OPTIONAL: include loader for header/footer if you want shared files -->
+  <script>
+    (function () {
+      const includes = document.querySelectorAll('[data-include]');
+      includes.forEach(async (el) => {
+        const file = el.getAttribute('data-include');
+        if (!file) return;
+        try {
+          const res = await fetch(file, { cache: "no-cache" });
+          if (!res.ok) return;
+          el.innerHTML = await res.text();
+        } catch (e) {
+          // Silent fail: page still works without shared header/footer
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
