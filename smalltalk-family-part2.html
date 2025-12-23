@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Small Talk: Family, Jobs & Weekend Plans (Part 2)</title>
+
+  <!-- Fonts (optional; safe fallback if blocked) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Your global site CSS (optional) -->
+  <!-- <link rel="stylesheet" href="css/speakeasy.css" /> -->
+
+  <!-- Lesson CSS -->
+  <link rel="stylesheet" href="/css/smalltalk-family-part2.css" />
+</head>
+
+<body>
+  <!-- If you inject your shared header via JS, keep this placeholder -->
+  <div id="site-header"></div>
+
+  <main class="lesson" id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <span class="kicker">🗣️ SMALL TALK · PART 2</span>
+          <h1 class="hero-title"><span class="script">Family</span> · Jobs · Weekend Plans</h1>
+          <p class="hero-subtitle">
+            Advanced basics: speak naturally, ask follow-up questions, and sound confident.
+            Practice with vocabulary (icons), grammar, role-play dialogues, listening, drag & drop, reading,
+            and a professional email task.
+          </p>
+
+          <div class="controls">
+            <div class="control">
+              <label for="learnerName">👤 Your name (optional)</label>
+              <input id="learnerName" type="text" placeholder="Type your name…" autocomplete="given-name" />
+              <small class="muted">Used to personalize some examples (no fixed student name).</small>
+            </div>
+
+            <div class="control">
+              <label>🔊 Accent for listening</label>
+              <div class="accent-row" role="group" aria-label="Accent">
+                <label class="pill"><input type="radio" name="accent" value="en-GB" checked> 🇬🇧 British</label>
+                <label class="pill"><input type="radio" name="accent" value="en-US"> 🇺🇸 American</label>
+              </div>
+
+              <div class="accent-tools">
+                <button class="btn btn-outline" id="testVoice" type="button">Test voice</button>
+                <button class="btn btn-text" id="stopVoice" type="button">Stop</button>
+              </div>
+
+              <div class="sliders">
+                <label>Speed <input id="rate" type="range" min="0.7" max="1.2" step="0.05" value="1"></label>
+                <label>Pitch <input id="pitch" type="range" min="0.8" max="1.2" step="0.05" value="1"></label>
+              </div>
+
+              <small class="muted" id="voiceStatus">Voice: loading…</small>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#vocab">Start the lesson</a>
+            <a class="btn btn-outline" href="#roleplay">Role-play</a>
+            <a class="btn btn-outline" href="#email">Email task</a>
+          </div>
+
+          <p class="muted tiny">
+            Tip: On iPhone/iPad, voices may appear only after you press a listen button at least once.
+          </p>
+        </div>
+
+        <aside class="hero-right">
+          <div class="hero-card">
+            <p class="hero-card-label">Today’s goals ✅</p>
+            <ul class="checklist">
+              <li>Ask follow-up questions naturally</li>
+              <li>Use present simple vs present continuous for plans</li>
+              <li>Use “would like to / fancy / feel like” politely</li>
+              <li>Compare options (comparatives & intensifiers)</li>
+              <li>Write a short professional email</li>
+            </ul>
+
+            <div class="mini-audio">
+              <button class="btn btn-outline" data-say="Warm-up: small talk. Ask two follow-up questions. Smile. Speak slowly." type="button">▶ Listen: warm-up</button>
+              <button class="btn btn-text" data-say="Remember: be curious. Use follow-up questions like What do you mean? How come? and What was that like?" type="button">▶ Listen: tip</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- VOCAB -->
+    <section class="section" id="vocab">
+      <div class="section-inner">
+        <h2 class="section-title">📚 Vocabulary with icons</h2>
+        <p class="section-intro">
+          Learn “high-utility” small talk vocabulary (work, family, weekend). Click <strong>Listen</strong> to hear the word in British or American English.
+        </p>
+
+        <div class="tabs" role="tablist" aria-label="Vocabulary tabs">
+          <button class="tab is-active" type="button" data-tab="jobs" role="tab" aria-selected="true">💼 Jobs</button>
+          <button class="tab" type="button" data-tab="hobbies" role="tab" aria-selected="false">🎯 Hobbies</button>
+          <button class="tab" type="button" data-tab="weekend" role="tab" aria-selected="false">🗓️ Weekend</button>
+          <button class="tab" type="button" data-tab="smalltalk" role="tab" aria-selected="false">🗣️ Small-talk phrases</button>
+        </div>
+
+        <div class="tab-panels">
+          <div class="panel is-active" id="tab-jobs" data-panel="jobs" role="tabpanel">
+            <div class="vocab-grid" id="vocabJobs"></div>
+          </div>
+
+          <div class="panel" id="tab-hobbies" data-panel="hobbies" role="tabpanel">
+            <div class="vocab-grid" id="vocabHobbies"></div>
+          </div>
+
+          <div class="panel" id="tab-weekend" data-panel="weekend" role="tabpanel">
+            <div class="vocab-grid" id="vocabWeekend"></div>
+          </div>
+
+          <div class="panel" id="tab-smalltalk" data-panel="smalltalk" role="tabpanel">
+            <div class="vocab-grid" id="vocabSmalltalk"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRAMMAR -->
+    <section class="section section-grammar" id="grammar">
+      <div class="section-inner">
+        <h2 class="section-title">🧠 Grammar that makes you sound natural</h2>
+
+        <div class="grammar-grid">
+          <article class="card">
+            <h3>1) Present simple vs present continuous (plans)</h3>
+            <p><strong>Present simple</strong> = habits / routines</p>
+            <ul>
+              <li>“I <strong>work</strong> early shifts.”</li>
+              <li>“We <strong>usually visit</strong> family on Sundays.”</li>
+            </ul>
+            <p><strong>Present continuous</strong> = arranged plans (often with time)</p>
+            <ul>
+              <li>“I’<strong>m meeting</strong> friends on Saturday.”</li>
+              <li>“We’<strong>re having</strong> dinner at 8.”</li>
+            </ul>
+            <p class="note">🇫🇷 French often uses the present for future plans too. In English, the continuous sounds more “arranged”.</p>
+          </article>
+
+          <article class="card">
+            <h3>2) Polite invitations (stronger than “Do you want…?”)</h3>
+            <ul>
+              <li>“Would you like to…?” (polite)</li>
+              <li>“Do you fancy…?” (UK, friendly)</li>
+              <li>“Do you feel like…?” (informal)</li>
+              <li>“Are you up for…?” (informal)</li>
+            </ul>
+            <p class="note">Pro tip: add a softener → “Would you like to grab a coffee <em>sometime</em>?”</p>
+          </article>
+
+          <article class="card">
+            <h3>3) Comparatives + intensifiers</h3>
+            <p>Make your opinions richer:</p>
+            <ul>
+              <li>“This pub is <strong>quieter</strong> than the other one.”</li>
+              <li>“It’s <strong>a bit</strong> expensive, but <strong>way</strong> nicer.”</li>
+              <li>“The food is <strong>far</strong> better here.”</li>
+            </ul>
+            <p class="note">Avoid “more better” ❌ → “much better” ✅</p>
+          </article>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Quick grammar quiz -->
+        <div class="quiz card" id="grammarQuiz">
+          <div class="quiz-head">
+            <h3>✅ Quick grammar check</h3>
+            <div class="quiz-actions">
+              <button class="btn btn-outline quiz-reset" type="button" data-reset="#grammarQuiz">Reset</button>
+            </div>
+          </div>
+
+          <p class="muted">Click an answer. You’ll get instant feedback.</p>
+
+          <div class="mcq" data-quiz="grammar">
+            <!-- injected by JS -->
+          </div>
+
+          <div class="quiz-footer">
+            <span class="score" data-score="grammar">Score: 0 / 0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRAG & DROP -->
+    <section class="section" id="dragdrop">
+      <div class="section-inner">
+        <h2 class="section-title">🧩 Drag & Drop: match the job to the workplace</h2>
+        <p class="section-intro">
+          Drag each job onto the correct place. (Works on mobile too: tap-and-hold to drag.)
+        </p>
+
+        <div class="dd-wrap card" id="dd1">
+          <div class="dd-head">
+            <h3>Match them</h3>
+            <button class="btn btn-outline quiz-reset" type="button" data-reset="#dd1">Reset</button>
+          </div>
+
+          <div class="dd-grid">
+            <div class="dd-bank">
+              <h4>Jobs</h4>
+              <div class="dd-items" id="ddItems"></div>
+            </div>
+
+            <div class="dd-targets">
+              <h4>Workplaces</h4>
+              <div class="dd-target-list" id="ddTargets"></div>
+            </div>
+          </div>
+
+          <p class="muted" id="ddFeedback">Tip: say the full sentence out loud after each match.</p>
+          <div class="dd-say">
+            <button class="btn btn-text" type="button" id="ddListenSentence">▶ Listen to example sentence</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- READING -->
+    <section class="section section-reading" id="reading">
+      <div class="section-inner">
+        <h2 class="section-title">📖 Reading: small talk + inference</h2>
+        <p class="section-intro">Read the short text and answer the questions (some require inference).</p>
+
+        <div class="card reading-card" id="readingBlock">
+          <div class="reading-top">
+            <h3>Text</h3>
+            <div class="reading-actions">
+              <button class="btn btn-outline" type="button" data-say-target="#readingText">▶ Listen</button>
+              <button class="btn btn-text" type="button" data-say="Pause after each paragraph. Repeat key phrases with natural stress.">▶ Listening tip</button>
+            </div>
+          </div>
+
+          <div class="reading-text" id="readingText">
+            <p><strong>Friday evening</strong> was a bit chaotic. I finished late, so I skipped the gym and went straight home.
+            My sister was already there with her kids, and the place was noisy but warm. We ordered takeaway, caught up on family news,
+            and laughed about an old story that always comes back at Christmas.</p>
+
+            <p>On <strong>Saturday</strong>, we had two options: a busy city centre market or a quieter walk by the river.
+            We chose the walk because the weather looked uncertain and we didn’t want to get stuck in crowds. Afterwards, we popped into
+            a small café for hot chocolate. It was pricey, but honestly it was worth it.</p>
+
+            <p>On <strong>Sunday</strong>, I met a friend for lunch. We hadn’t seen each other in ages, so we talked for hours.
+            The best part wasn’t the food—it was the conversation. I went home feeling relaxed, even though my weekend was full.</p>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="quiz-head">
+            <h3>Questions</h3>
+            <button class="btn btn-outline quiz-reset" type="button" data-reset="#readingBlock">Reset</button>
+          </div>
+
+          <div class="mcq" data-quiz="reading">
+            <!-- injected by JS -->
+          </div>
+
+          <div class="quiz-footer">
+            <span class="score" data-score="reading">Score: 0 / 0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROLE-PLAY -->
+    <section class="section section-roleplay" id="roleplay">
+      <div class="section-inner">
+        <h2 class="section-title">🎭 Role-play: invite someone + keep the conversation going</h2>
+        <p class="section-intro">
+          Choose your replies. Aim for: friendly + clear + a follow-up question.
+        </p>
+
+        <div class="card role-card" id="roleplayCard">
+          <div class="role-top">
+            <div>
+              <h3>Scenario</h3>
+              <p class="muted">You meet a colleague/friend. You talk about work, family, and weekend plans, then make an invitation.</p>
+            </div>
+            <div class="role-actions">
+              <button class="btn btn-outline" type="button" id="roleReset">Reset</button>
+              <button class="btn btn-gold" type="button" id="roleListen">▶ Listen to full dialogue</button>
+              <button class="btn btn-text" type="button" id="roleStop">Stop</button>
+            </div>
+          </div>
+
+          <div class="role-body">
+            <div class="role-thread" id="roleThread"></div>
+            <div class="role-choices" id="roleChoices" aria-live="polite"></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="role-output">
+            <h4>Your completed dialogue</h4>
+            <div class="output-box" id="roleOutput" aria-live="polite"></div>
+            <p class="muted tiny">Try again and choose different tones (formal, casual, British “fancy”, etc.).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LISTENING: mini dialogues -->
+    <section class="section" id="listening">
+      <div class="section-inner">
+        <h2 class="section-title">🎧 Listening: mini-dialogues (repeat & shadow)</h2>
+        <p class="section-intro">Click each line to listen. Repeat it immediately (shadowing).</p>
+
+        <div class="dialogue-grid" id="dialogueGrid">
+          <!-- injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- EMAIL WRITING -->
+    <section class="section section-email" id="email">
+      <div class="section-inner">
+        <h2 class="section-title">✉️ Writing: a short professional email</h2>
+        <p class="section-intro">
+          VTest-style practice: write a clear message with a purpose, details, and a polite closing.
+        </p>
+
+        <div class="card email-card" id="emailCard">
+          <div class="email-top">
+            <h3>Task</h3>
+            <p class="muted">Write an email to a colleague to reschedule a meeting because of an unexpected issue.</p>
+          </div>
+
+          <div class="email-grid">
+            <div class="email-fields">
+              <label>To (name) <input id="emailTo" type="text" placeholder="e.g., Alex Martin"></label>
+              <label>Subject <input id="emailSubject" type="text" placeholder="e.g., Meeting reschedule"></label>
+
+              <label>Reason (choose one)
+                <select id="emailReason">
+                  <option value="A delivery has been delayed, and I need to be available.">📦 A delivery has been delayed.</option>
+                  <option value="A client has asked for an urgent call at the same time.">📞 Urgent client call.</option>
+                  <option value="There is an unexpected issue with the train schedule, so I will arrive late.">🚆 Transport disruption.</option>
+                  <option value="I’m not feeling well today, so I’d prefer to move our meeting.">🤒 Not feeling well.</option>
+                </select>
+              </label>
+
+              <label>Propose a new time
+                <select id="emailNewTime">
+                  <option value="tomorrow at 10:30">🗓️ tomorrow at 10:30</option>
+                  <option value="tomorrow at 15:00">🗓️ tomorrow at 15:00</option>
+                  <option value="Thursday at 09:00">🗓️ Thursday at 09:00</option>
+                  <option value="next Monday at 14:00">🗓️ next Monday at 14:00</option>
+                </select>
+              </label>
+
+              <label>Politeness level
+                <select id="emailTone">
+                  <option value="neutral">🙂 Neutral</option>
+                  <option value="formal">🧑‍💼 Formal</option>
+                  <option value="friendly">🤝 Friendly</option>
+                </select>
+              </label>
+
+              <div class="email-actions">
+                <button class="btn btn-gold" type="button" id="buildEmail">Build email</button>
+                <button class="btn btn-outline" type="button" id="checkEmail">Check my email</button>
+                <button class="btn btn-outline quiz-reset" type="button" data-reset="#emailCard">Reset</button>
+                <button class="btn btn-text" type="button" id="listenEmail">▶ Listen</button>
+              </div>
+
+              <p class="muted tiny">Then edit it to sound like you. Aim for 70–120 words.</p>
+            </div>
+
+            <div class="email-output">
+              <label>Your email draft</label>
+              <textarea id="emailDraft" class="output-area" rows="12" placeholder="Your email will appear here…"></textarea>
+
+              <div class="checklist-box" id="emailChecklist">
+                <h4>✅ Quick checklist</h4>
+                <ul>
+                  <li data-check="greeting">Greeting present</li>
+                  <li data-check="reason">Clear reason</li>
+                  <li data-check="proposal">New time proposed</li>
+                  <li data-check="question">Polite question / confirmation</li>
+                  <li data-check="closing">Closing line</li>
+                </ul>
+                <p class="muted tiny">This is automatic feedback (not perfect), but it helps.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WRAP-UP -->
+    <section class="section section-wrap" id="wrap">
+      <div class="section-inner">
+        <h2 class="section-title">🏁 Wrap-up: 2-minute challenge</h2>
+        <div class="card">
+          <ol class="challenge">
+            <li>Introduce yourself briefly (name, job, routine).</li>
+            <li>Ask 2 follow-up questions.</li>
+            <li>Describe your weekend plan using present continuous.</li>
+            <li>Make one invitation using “Would you like to…?” or “Do you fancy…?”</li>
+            <li>Compare two options with a comparative + intensifier (a bit / much / way / far).</li>
+          </ol>
+
+          <div class="wrap-actions">
+            <button class="btn btn-gold" type="button" data-say="Two-minute challenge. Speak naturally. Use follow-up questions. Keep it simple, but add details.">▶ Listen: instructions</button>
+            <a class="btn btn-outline" href="#top">Back to top</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- If you inject your shared footer via JS, keep this placeholder -->
+  <div id="site-footer"></div>
+
+  <script src="/js/smalltalk-family-part2.js"></script>
+</body>
+</html>
