@@ -92,6 +92,7 @@
   function speak(text){
     if (!text || !("speechSynthesis" in window)) return;
     stopSpeech();
+    try { window.speechSynthesis.resume(); } catch(e) {}
 
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang = state.accent;
@@ -265,6 +266,7 @@
 
   function initDD(dd){
     const tiles = qsa(".nm-dd-tile", dd);
+    tiles.forEach((t) => t.setAttribute("draggable", "true"));
     const slots = qsa(".nm-dd-slot", dd);
     const result = qs(".nm-dd-result", dd);
 
@@ -974,11 +976,25 @@
   // ---------------------------
   // Init
   // ---------------------------
-  async function init(){
+  function initTTSDataButtons() {
+  // Generic "Listen" buttons that carry their text in a data-tts attribute.
+  // (Used across multiple sections like discounts, phone numbers, etc.)
+  qsa("[data-tts]").forEach((el) => {
+    if (el.__nmTtsBound) return;
+    el.__nmTtsBound = true;
+    el.addEventListener("click", () => {
+      const txt = el.getAttribute("data-tts") || "";
+      speak(txt);
+    });
+  });
+}
+
+async function init(){
     await includeFragments();
 
     initControls();
     initVoices();
+  initTTSDataButtons();
     initMCQs();
     initDragOrTap();
     initDictations();
