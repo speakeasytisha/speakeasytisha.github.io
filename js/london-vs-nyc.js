@@ -260,16 +260,144 @@ Guest: ${cultureLine}`;
   bindBuilder("cvn-order-form", "cvn-order-output", buildOrder, "cvn-order");
 
   // TTS
+  // Accent switch (UK / US) + reliable English voice selection
+  const CVN_ACCENT_KEY = "cvnAccent";
+  const CVN_DEFAULT_ACCENT = "en-GB"; // default for London vs NYC page
+
+  function getAccent() {
+    try {
+      return localStorage.getItem(CVN_ACCENT_KEY) || CVN_DEFAULT_ACCENT;
+    } catch (e) {
+      return CVN_DEFAULT_ACCENT;
+    }
+  }
+
+  function setAccent(lang) {
+    try {
+      localStorage.setItem(CVN_ACCENT_KEY, lang);
+    } catch (e) {}
+    updateAccentUI();
+  }
+
+  let cvnVoices = [];
+
+  function loadVoices() {
+    if (!("speechSynthesis" in window)) return [];
+    cvnVoices = window.speechSynthesis.getVoices() || [];
+    return cvnVoices;
+  }
+
+  function pickVoice(targetLang) {
+    if (!("speechSynthesis" in window)) return null;
+
+    const voices = (cvnVoices && cvnVoices.length) ? cvnVoices : (window.speechSynthesis.getVoices() || []);
+    if (!voices.length) return null;
+
+    const target = String(targetLang || "").toLowerCase();
+
+    // 1) Exact match (best)
+    let v = voices.find(vo => String(vo.lang || "").toLowerCase() === target);
+    if (v) return v;
+
+    // 2) Same base language + same region if possible (e.g., prefer en-GB voices when target is en-GB)
+    const region = target.split("-")[1]; // "gb" or "us"
+    if (region) {
+      v = voices.find(vo => {
+        const lang = String(vo.lang || "").toLowerCase();
+        return lang.startsWith("en") && lang.includes(region);
+      });
+      if (v) return v;
+    }
+
+    // 3) Any English voice (avoid French defaults)
+    v = voices.find(vo => String(vo.lang || "").toLowerCase().startsWith("en-"));
+    if (v) return v;
+
+    v = voices.find(vo => String(vo.lang || "").toLowerCase().startsWith("en"));
+    return v || null;
+  }
+
+  function updateAccentUI() {
+    const current = getAccent();
+    document.querySelectorAll("[data-accent]").forEach(btn => {
+      btn.classList.toggle("is-active", btn.getAttribute("data-accent") === current);
+    });
+  }
+
+  function mountAccentSwitch() {
+    // Add a small switch in the hero (no HTML changes needed)
+    const heroText = document.querySelector(".cvn-hero .cvn-hero-text");
+    if (!heroText) return;
+    if (heroText.querySelector(".cvn-accent-switch")) return;
+
+    const wrap = document.createElement("div");
+    wrap.className = "cvn-accent-switch";
+    wrap.innerHTML = `
+      <span class="cvn-accent-label">Accent:</span>
+      <button type="button" class="cvn-accent-btn" data-accent="en-GB" aria-pressed="false">UK</button>
+      <button type="button" class="cvn-accent-btn" data-accent="en-US" aria-pressed="false">US</button>
+    `;
+
+    // Insert after the lead text if present
+    const lead = heroText.querySelector(".cvn-lead");
+    if (lead && lead.nextSibling) {
+      heroText.insertBefore(wrap, lead.nextSibling);
+    } else {
+      heroText.appendChild(wrap);
+    }
+
+    wrap.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-accent]");
+      if (!btn) return;
+      setAccent(btn.getAttribute("data-accent"));
+      // stop current speech so next play uses the new voice
+      stopTTS();
+    });
+
+    updateAccentUI();
+  }
+
+  if ("speechSynthesis" in window) {
+    loadVoices();
+    const onVoices = () => {
+      loadVoices();
+      updateAccentUI();
+    };
+    // Some browsers don't support addEventListener here
+    if (typeof window.speechSynthesis.addEventListener === "function") {
+      window.speechSynthesis.addEventListener("voiceschanged", onVoices);
+    } else {
+      window.speechSynthesis.onvoiceschanged = onVoices;
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", mountAccentSwitch);
+  } else {
+    mountAccentSwitch();
+  }
   function stopTTS() {
     try { if ("speechSynthesis" in window) window.speechSynthesis.cancel(); } catch (e) {}
   }
   function speakText(text) {
     stopTTS();
     if (!("speechSynthesis" in window)) return;
+
+    const accent = getAccent();
     const u = new SpeechSynthesisUtterance(text);
-    u.rate = 1.0;
-    u.pitch = 1.0;
+
+    // Force English (prevents FR voices on FR browsers)
+    u.lang = accent;
+
+    const v = pickVoice(accent);
+    if (v) u.voice = v;
+
+    // Optional: natural pacing
+    u.rate = 1;
+    u.pitch = 1;
+
     window.speechSynthesis.speak(u);
+    cvnCurrentUtterance = u;
   }
 
   document.addEventListener("click", (e) => {
