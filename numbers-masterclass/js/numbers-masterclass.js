@@ -423,9 +423,11 @@
   // Dictation engine
   // ---------------------------
   function initDictations(){
-    initDict("#dict-years", makeYearItems());
-    initDict("#dict-phone", makePhoneItems());
-    initDict("#dict-percent", makePercentItems());
+    // The HTML identifies dictation blocks with data-dict-id, not id.
+    // Example: <div class="nm-dict" data-dict-id="dict-years"> ...
+    initDict('[data-dict-id="dict-years"]', makeYearItems());
+    initDict('[data-dict-id="dict-phone"]', makePhoneItems());
+    initDict('[data-dict-id="dict-percent"]', makePercentItems());
   }
 
   function initDict(selector, items){
