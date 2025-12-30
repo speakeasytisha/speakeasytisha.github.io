@@ -90,27 +90,23 @@
   }
 
   function speak(text){
-    if(!hasSpeech()) { alert("Sorry, text-to-speech is not supported in this browser."); return; }
-
-    // Some browsers only populate voices after the first interaction.
-    try{ speechSynthesis.getVoices(); }catch(e){}
+    if (!text || !("speechSynthesis" in window)) return;
+    stopSpeech();
+    try { window.speechSynthesis.resume(); } catch(e) {}
 
     const utter = new SpeechSynthesisUtterance(text);
-    utter.rate = state.rate;
-    utter.pitch = state.pitch;
     utter.lang = state.accent;
+    utter.rate = state.slow ? 0.9 : 1.0;
+    utter.pitch = 1.0;
 
-    const v = pickVoice(state.voiceName, state.accent);
-    if(v) utter.voice = v;
+    const v = pickVoice(state.accent, state.voiceURI);
+    if (v) utter.voice = v;
 
-    try{
-      const s = speechSynthesis;
-      if(s.speaking || s.pending) s.cancel();
-    }catch(e){}
+    utter.onend = () => { state.speaking = false; };
+    utter.onerror = () => { state.speaking = false; };
 
-    try{ speechSynthesis.speak(utter); }catch(e){
-      alert("Your browser blocked speech playback. Try clicking again.");
-    }
+    state.speaking = true;
+    window.speechSynthesis.speak(utter);
   }
 
   function populateVoiceSelect(){
@@ -211,49 +207,59 @@
   }
 
   function initMCQs(){
-    // Initialize ALL scorebars present on the page (supports multiple sections)
-    qsa("[data-reset]").forEach(btn => {
-      const scoreId = btn.getAttribute("data-reset");
-      if(!scoreId) return;
-
-      const scope = btn.closest(".nm-card") || document;
-      const scoreEl = scope.querySelector(`#${scoreId}`) || document.querySelector(`#${scoreId}`);
-      const totalEl = scope.querySelector(`#${scoreId}-total`) || document.querySelector(`#${scoreId}-total`);
-      if(!scoreEl || !totalEl) return;
-
-      if(!scoreBuckets.has(scoreId)){
-        const total = Number((totalEl.textContent || "0").trim()) || 0;
-        scoreBuckets.set(scoreId, { correct: 0, total });
-        updateScore(scoreId);
-      }
-    });
-
-    qsa("[data-qtype='mcq']").forEach(qEl => {
-      const opts = qsa("button.nm-opt", qEl);
-      opts.forEach(btn => btn.addEventListener("click", () => markMCQ(qEl, btn)));
-    });
-
-    // Reset buttons (per score bucket)
-    qsa("[data-reset]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const scoreId = btn.getAttribute("data-reset");
-        if(scoreId) resetScore(scoreId);
-
-        // Only reset questions inside the same card/section as the button
-        const scope = btn.closest(".nm-card") || document;
-        qsa("[data-qtype='mcq']", scope).forEach(qEl => {
-          qsa("button.nm-opt", qEl).forEach(b => {
-            b.disabled = false;
-            b.classList.remove("is-correct","is-wrong");
-          });
-          const fb = qs(".nm-feedback", qEl);
-          if(fb){ fb.textContent = ""; fb.classList.remove("is-ok","is-bad"); }
-          qEl.classList.remove("is-answered");
-        });
+    qsa(".nm-q[data-qtype='mcq']").forEach(q => {
+      qsa("button[data-opt]", q).forEach(btn => {
+        btn.addEventListener("click", () => markMCQ(q, btn.getAttribute("data-opt")));
       });
+    });
+
+    // scorebars
+    const score1 = qs("#score-1");
+    const score1Total = qs("#score-1-total");
+    if (score1 && score1Total){
+      scoreBuckets.set("score-1", {correct:0, total: Number(score1Total.textContent || "0")});
+      updateScore("score-1");
+    }
+
+    qsa("[data-reset]").forEach(btn => {
+      btn.addEventListener("click", () => resetBucket(btn.getAttribute("data-reset")));
     });
   }
 
+  function resetBucket(id){
+    // Reset MCQs inside the same card as the scorebar
+    const resetBtn = document.querySelector(`[data-reset="${id}"]`);
+    if (!resetBtn) return;
+    const card = resetBtn.closest(".nm-card");
+    if (!card) return;
+
+    qsa(".nm-q[data-qtype='mcq']", card).forEach(q => {
+      q.dataset.answered = "0";
+      const fb = qs(".nm-feedback", q);
+      if (fb) { fb.textContent = ""; fb.classList.remove("good","bad"); }
+      qsa("button[data-opt]", q).forEach(b => {
+        b.disabled = false;
+        b.classList.remove("is-correct","is-wrong");
+      });
+    });
+
+    const bucket = scoreBuckets.get(id);
+    if (bucket){
+      bucket.correct = 0;
+      updateScore(id);
+    }
+  }
+
+  function updateScore(id){
+    const bucket = scoreBuckets.get(id);
+    if (!bucket) return;
+    const out = qs(`#${id}`);
+    if (out) out.textContent = String(bucket.correct);
+  }
+
+  // ---------------------------
+  // Drag or tap engine
+  // ---------------------------
   function initDragOrTap(){
     qsa(".nm-dd").forEach(dd => initDD(dd));
   }
@@ -417,7 +423,6 @@
   // Dictation engine
   // ---------------------------
   function initDictations(){
-    initDict("[data-dict-id=\"dict-beginner\"]", makeBeginnerItems());
     // The HTML identifies dictation blocks with data-dict-id, not id.
     // Example: <div class="nm-dict" data-dict-id="dict-years"> ...
     initDict('[data-dict-id="dict-years"]', makeYearItems());
@@ -505,19 +510,6 @@
         check();
       }
     });
-  }
-
-  function makeBeginnerItems(){
-    return [
-      { say: "zero", answer: "0" },
-      { say: "seven", answer: "7" },
-      { say: "twelve", answer: "12" },
-      { say: "nineteen", answer: "19" },
-      { say: "twenty-one", answer: "21" },
-      { say: "thirty", answer: "30" },
-      { say: "forty-two", answer: "42" },
-      { say: "one hundred", answer: "100" }
-    ];
   }
 
   function makeYearItems(){
