@@ -425,6 +425,7 @@
   function initDictations(){
     // The HTML identifies dictation blocks with data-dict-id, not id.
     // Example: <div class="nm-dict" data-dict-id="dict-years"> ...
+    initDict('[data-dict-id="dict-beginner"]', makeBeginnerItems());
     initDict('[data-dict-id="dict-years"]', makeYearItems());
     initDict('[data-dict-id="dict-phone"]', makePhoneItems());
     initDict('[data-dict-id="dict-percent"]', makePercentItems());
@@ -539,6 +540,25 @@
       { say: "twenty five percent", answer: "25" },
       { say: "ten percent", answer: "10" },
       { say: "thirty percent", answer: "30" }
+    ];
+  }
+
+  // Beginner (easy) number dictation: learner types digits they hear.
+  // A few classic confusions are included (13 vs 30, 15 vs 50).
+  function makeBeginnerItems(){
+    return [
+      { say: "seven", answer: "7" },
+      { say: "twelve", answer: "12" },
+      { say: "thirteen", answer: "13" },
+      { say: "thirty", answer: "30" },
+      { say: "fifteen", answer: "15" },
+      { say: "fifty", answer: "50" },
+      { say: "twenty", answer: "20" },
+      { say: "twenty-one", answer: "21" },
+      { say: "thirty-five", answer: "35" },
+      { say: "sixty", answer: "60" },
+      { say: "ninety-nine", answer: "99" },
+      { say: "one hundred", answer: "100" }
     ];
   }
 
@@ -757,7 +777,7 @@
     { q: "£3.50 is most naturally said as… (UK)", a: ["three pounds fifty","three pounds and fifty pence","three point five zero"], c: 0, say:"Three pounds fifty." },
     { q: "“Quarter to eight” means…", a: ["7:45","8:15","7:15"], c: 0, say:"Quarter to eight means seven forty-five." },
     { q: "In phone numbers, 0 can be…", a: ["oh or zero","null only","none"], c: 0, say:"In phone numbers, zero can be oh or zero." },
-    { q: "1999 is commonly…", a: ["nineteen ninety-nine","one thousand nine hundred ninety-nine","nineteen hundred ninety-nine"], c: 0, say:"Nineteen ninety-nine." },
+    { q: "For years, 1999 is commonly…", a: ["nineteen ninety-nine","one thousand nine hundred ninety-nine","nineteen hundred ninety-nine"], c: 0, say:"Nineteen ninety-nine." },
     { q: "3.07 is…", a: ["three point zero seven","three comma seven","three and seven"], c: 0, say:"Three point zero seven." },
     { q: "A “round” in a UK pub is…", a: ["one person buys drinks for the group","a circular table","a discount"], c: 0, say:"A round means one person buys drinks for the group." },
     { q: "US style spoken: 04/12 is often…", a: ["April twelfth","the twelfth of April","the fourth of December"], c: 0, say:"April twelfth." },
