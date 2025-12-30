@@ -39,99 +39,118 @@
     }
   }
 
-  // ---------------------------
-  // Speech synthesis
-  // ---------------------------
-  const state = {
-    accent: "en-US",
-    voiceURI: "",
-    slow: false,
-    autoReadFeedback: false,
-    showHints: true,
-    speaking: false
-  };
+  
+// ---------------------------
+// Speech synthesis (British / American)
+// ---------------------------
+const synth = ("speechSynthesis" in window) ? window.speechSynthesis : null;
 
-  const ui = {};
-  function qs(sel, root=document){ return root.querySelector(sel); }
-  function qsa(sel, root=document){ return Array.from(root.querySelectorAll(sel)); }
+function stopSpeech(){
+  if (!synth) return;
+  try { synth.cancel(); } catch (e) {}
+  state.speaking = false;
+  if (ui.testVoice) ui.testVoice.textContent = "▶️ Test voice";
+}
 
-  function stopSpeech(){
-    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
-    state.speaking = false;
+function canSpeak(){
+  return !!(synth && ("SpeechSynthesisUtterance" in window));
+}
+
+function getVoicesSafe(){
+  if (!synth) return [];
+  try { return synth.getVoices() || []; } catch (e) { return []; }
+}
+
+function norm(s){ return String(s || "").toLowerCase(); }
+
+function pickVoiceFor(lang, preferredURI){
+  const voices = getVoicesSafe();
+  if (!voices.length) return null;
+
+  const want = norm(lang);
+  const base = want.includes("-") ? want.split("-")[0] : want;
+  const pref = norm(preferredURI);
+
+  // 1) Exact / starts-with match (en-us, en-gb)
+  let candidates = want ? voices.filter(v => norm(v.lang).startsWith(want)) : [];
+
+  // 2) Base language fallback (en)
+  if (!candidates.length && base) {
+    candidates = voices.filter(v => norm(v.lang).startsWith(base));
   }
 
-  function getVoicesSafe(){
-    if (!("speechSynthesis" in window)) return [];
-    return window.speechSynthesis.getVoices ? window.speechSynthesis.getVoices() : [];
+  // 3) Any English
+  if (!candidates.length) {
+    candidates = voices.filter(v => norm(v.lang).startsWith("en"));
   }
 
-  function pickVoice(lang, preferredURI){
-    const voices = getVoicesSafe();
-    if (!voices.length) return null;
+  // 4) Preferred URI/name if user selected one
+  if (pref) {
+    const byPref = candidates.find(v => norm(v.voiceURI).includes(pref) || norm(v.name).includes(pref));
+    if (byPref) return byPref;
+  }
 
-    // If user selected a specific voice
-    if (preferredURI){
-      const v = voices.find(x => x.voiceURI === preferredURI);
-      if (v) return v;
+  return candidates.find(v => v.default) || candidates[0] || voices[0];
+}
+
+function speak(text, opts = {}){
+  if (!canSpeak()) return false;
+
+  const t = String(text || "").trim();
+  if (!t) return false;
+
+  const utter = new SpeechSynthesisUtterance(t);
+
+  const lang = opts.lang || state.accent || "en-US";
+  utter.lang = lang;
+
+  // Slow mode for learners
+  const rate = opts.rate ?? (state.slow ? 0.9 : 1);
+  const pitch = opts.pitch ?? 1;
+
+  utter.rate = Number.isFinite(+rate) ? +rate : 1;
+  utter.pitch = Number.isFinite(+pitch) ? +pitch : 1;
+
+  const voice = pickVoiceFor(lang, opts.voiceURI ?? state.voiceURI);
+  if (voice) utter.voice = voice;
+
+  stopSpeech(); // clear queue
+
+  // iOS/Safari sometimes needs a micro-delay after cancel()
+  setTimeout(() => {
+    try {
+      state.speaking = true;
+      synth.speak(utter);
+      utter.onend = () => {
+        state.speaking = false;
+        if (ui.testVoice) ui.testVoice.textContent = "▶️ Test voice";
+      };
+    } catch (e) {
+      state.speaking = false;
     }
+  }, 0);
 
-    // Prefer exact lang match
-    const exact = voices.filter(v => (v.lang || "").toLowerCase() === lang.toLowerCase());
-    if (exact.length) return exact[0];
+  return true;
+}
 
-    // Prefer prefix match (en-*)
-    const prefix = voices.filter(v => (v.lang || "").toLowerCase().startsWith(lang.toLowerCase().slice(0,2)));
-    if (prefix.length){
-      // Try to avoid French/other
-      const best = prefix.find(v => !/fr/i.test(v.lang) && !/français|french/i.test(v.name));
-      return best || prefix[0];
-    }
-    return voices[0];
-  }
+function populateVoiceSelect(){
+  if (!ui.voice) return;
 
-  function speak(text){
-    if (!text || !("speechSynthesis" in window)) return;
-    stopSpeech();
-    try { window.speechSynthesis.resume(); } catch(e) {}
+  const voices = getVoicesSafe();
+  const want = norm(state.accent);
+  const base = want.includes("-") ? want.split("-")[0] : want;
 
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = state.accent;
-    utter.rate = state.slow ? 0.9 : 1.0;
-    utter.pitch = 1.0;
+  const options = voices
+    .filter(v => !want || norm(v.lang).startsWith(want) || (base && norm(v.lang).startsWith(base)))
+    .sort((a,b) => String(a.name || "").localeCompare(String(b.name || "")));
 
-    const v = pickVoice(state.accent, state.voiceURI);
-    if (v) utter.voice = v;
+  ui.voice.innerHTML =
+    '<option value="">Auto voice</option>' +
+    options.map(v => `<option value="${v.voiceURI}">${v.name} (${v.lang})</option>`).join("");
 
-    utter.onend = () => { state.speaking = false; };
-    utter.onerror = () => { state.speaking = false; };
+  if (state.voiceURI) ui.voice.value = state.voiceURI;
+}
 
-    state.speaking = true;
-    window.speechSynthesis.speak(utter);
-  }
-
-  function populateVoiceSelect(){
-    const sel = ui.voice;
-    if (!sel) return;
-
-    const voices = getVoicesSafe();
-    const current = sel.value;
-
-    // Keep Auto option
-    sel.innerHTML = `<option value="">Auto (recommended)</option>`;
-
-    // Filter voices: show English-ish voices first, but keep everything in case user needs it
-    const sorted = voices.slice().sort((a,b) => {
-      const aEn = /^en/i.test(a.lang) ? 0 : 1;
-      const bEn = /^en/i.test(b.lang) ? 0 : 1;
-      return aEn - bEn || (a.lang || "").localeCompare(b.lang || "") || (a.name || "").localeCompare(b.name || "");
-    });
-
-    for (const v of sorted){
-      const opt = document.createElement("option");
-      opt.value = v.voiceURI;
-      opt.textContent = `${v.name} — ${v.lang}`;
-      sel.appendChild(opt);
-    }
 
     // Restore if still present
     if (current && sorted.some(v => v.voiceURI === current)) sel.value = current;
@@ -207,59 +226,49 @@
   }
 
   function initMCQs(){
-    qsa(".nm-q[data-qtype='mcq']").forEach(q => {
-      qsa("button[data-opt]", q).forEach(btn => {
-        btn.addEventListener("click", () => markMCQ(q, btn.getAttribute("data-opt")));
-      });
-    });
-
-    // scorebars
-    const score1 = qs("#score-1");
-    const score1Total = qs("#score-1-total");
-    if (score1 && score1Total){
-      scoreBuckets.set("score-1", {correct:0, total: Number(score1Total.textContent || "0")});
-      updateScore("score-1");
-    }
-
+    // Initialize ALL scorebars present on the page (supports multiple sections)
     qsa("[data-reset]").forEach(btn => {
-      btn.addEventListener("click", () => resetBucket(btn.getAttribute("data-reset")));
+      const scoreId = btn.getAttribute("data-reset");
+      if(!scoreId) return;
+
+      const scope = btn.closest(".nm-card") || document;
+      const scoreEl = scope.querySelector(`#${scoreId}`) || document.querySelector(`#${scoreId}`);
+      const totalEl = scope.querySelector(`#${scoreId}-total`) || document.querySelector(`#${scoreId}-total`);
+      if(!scoreEl || !totalEl) return;
+
+      if(!scoreBuckets.has(scoreId)){
+        const total = Number((totalEl.textContent || "0").trim()) || 0;
+        scoreBuckets.set(scoreId, { correct: 0, total });
+        updateScore(scoreId);
+      }
     });
-  }
 
-  function resetBucket(id){
-    // Reset MCQs inside the same card as the scorebar
-    const resetBtn = document.querySelector(`[data-reset="${id}"]`);
-    if (!resetBtn) return;
-    const card = resetBtn.closest(".nm-card");
-    if (!card) return;
+    qsa("[data-qtype='mcq']").forEach(qEl => {
+      const opts = qsa("button.nm-opt", qEl);
+      opts.forEach(btn => btn.addEventListener("click", () => markMCQ(qEl, btn)));
+    });
 
-    qsa(".nm-q[data-qtype='mcq']", card).forEach(q => {
-      q.dataset.answered = "0";
-      const fb = qs(".nm-feedback", q);
-      if (fb) { fb.textContent = ""; fb.classList.remove("good","bad"); }
-      qsa("button[data-opt]", q).forEach(b => {
-        b.disabled = false;
-        b.classList.remove("is-correct","is-wrong");
+    // Reset buttons (per score bucket)
+    qsa("[data-reset]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const scoreId = btn.getAttribute("data-reset");
+        if(scoreId) resetScore(scoreId);
+
+        // Only reset questions inside the same card/section as the button
+        const scope = btn.closest(".nm-card") || document;
+        qsa("[data-qtype='mcq']", scope).forEach(qEl => {
+          qsa("button.nm-opt", qEl).forEach(b => {
+            b.disabled = false;
+            b.classList.remove("is-correct","is-wrong");
+          });
+          const fb = qs(".nm-feedback", qEl);
+          if(fb){ fb.textContent = ""; fb.classList.remove("is-ok","is-bad"); }
+          qEl.classList.remove("is-answered");
+        });
       });
     });
-
-    const bucket = scoreBuckets.get(id);
-    if (bucket){
-      bucket.correct = 0;
-      updateScore(id);
-    }
   }
 
-  function updateScore(id){
-    const bucket = scoreBuckets.get(id);
-    if (!bucket) return;
-    const out = qs(`#${id}`);
-    if (out) out.textContent = String(bucket.correct);
-  }
-
-  // ---------------------------
-  // Drag or tap engine
-  // ---------------------------
   function initDragOrTap(){
     qsa(".nm-dd").forEach(dd => initDD(dd));
   }
@@ -423,9 +432,12 @@
   // Dictation engine
   // ---------------------------
   function initDictations(){
-    initDict("#dict-years", makeYearItems());
-    initDict("#dict-phone", makePhoneItems());
-    initDict("#dict-percent", makePercentItems());
+    initDict("[data-dict-id=\"dict-beginner\"]", makeBeginnerItems());
+    // The HTML identifies dictation blocks with data-dict-id, not id.
+    // Example: <div class="nm-dict" data-dict-id="dict-years"> ...
+    initDict('[data-dict-id="dict-years"]', makeYearItems());
+    initDict('[data-dict-id="dict-phone"]', makePhoneItems());
+    initDict('[data-dict-id="dict-percent"]', makePercentItems());
   }
 
   function initDict(selector, items){
@@ -508,6 +520,19 @@
         check();
       }
     });
+  }
+
+  function makeBeginnerItems(){
+    return [
+      { say: "zero", answer: "0" },
+      { say: "seven", answer: "7" },
+      { say: "twelve", answer: "12" },
+      { say: "nineteen", answer: "19" },
+      { say: "twenty-one", answer: "21" },
+      { say: "thirty", answer: "30" },
+      { say: "forty-two", answer: "42" },
+      { say: "one hundred", answer: "100" }
+    ];
   }
 
   function makeYearItems(){
@@ -990,7 +1015,7 @@
 }
 
 async function init(){
-    await includeFragments();
+    // Fragments are handled by /js/site-chrome.js
 
     initControls();
     initVoices();
