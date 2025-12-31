@@ -106,7 +106,10 @@
     utter.onerror = () => { state.speaking = false; };
 
     state.speaking = true;
-    window.speechSynthesis.speak(utter);
+    try { window.speechSynthesis.resume && window.speechSynthesis.resume(); } catch(e) {}
+    // Some browsers can drop the first utterance if we call cancel() right before speak().
+    // Scheduling speak on the next tick makes it more reliable.
+    setTimeout(() => window.speechSynthesis.speak(utter), 0);
   }
 
   function populateVoiceSelect(){
@@ -777,7 +780,7 @@
     { q: "£3.50 is most naturally said as… (UK)", a: ["three pounds fifty","three pounds and fifty pence","three point five zero"], c: 0, say:"Three pounds fifty." },
     { q: "“Quarter to eight” means…", a: ["7:45","8:15","7:15"], c: 0, say:"Quarter to eight means seven forty-five." },
     { q: "In phone numbers, 0 can be…", a: ["oh or zero","null only","none"], c: 0, say:"In phone numbers, zero can be oh or zero." },
-    { q: "For years, 1999 is commonly…", a: ["nineteen ninety-nine","one thousand nine hundred ninety-nine","nineteen hundred ninety-nine"], c: 0, say:"Nineteen ninety-nine." },
+    { q: "1999 is commonly…", a: ["nineteen ninety-nine","one thousand nine hundred ninety-nine","nineteen hundred ninety-nine"], c: 0, say:"Nineteen ninety-nine." },
     { q: "3.07 is…", a: ["three point zero seven","three comma seven","three and seven"], c: 0, say:"Three point zero seven." },
     { q: "A “round” in a UK pub is…", a: ["one person buys drinks for the group","a circular table","a discount"], c: 0, say:"A round means one person buys drinks for the group." },
     { q: "US style spoken: 04/12 is often…", a: ["April twelfth","the twelfth of April","the fourth of December"], c: 0, say:"April twelfth." },
