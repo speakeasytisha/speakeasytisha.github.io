@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CLOE Exam Prep · SpeakEasyTisha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts (same family as your site) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet" />
+
+  <!-- Global site styles -->
+  <link rel="stylesheet" href="/css/speakeasy.css" />
+  <link rel="stylesheet" href="/css/nav.fixed.css" />
+
+  <!-- Local page styles -->
+  <link rel="stylesheet" href="/css/cloe-prep.css" />
+
+  <!-- Site header/footer injection (your existing system) -->
+  <script src="/js/site-chrome.fixed.js" defer></script>
+
+  <!-- Page logic -->
+  <script src="/js/cloe-prep.js" defer></script>
+</head>
+
+<body class="page-cloe">
+
+  <div id="site-header"></div>
+
+  <div class="cloe-hero">
+    <span class="cloe-kicker">CERTIFICATION PREP</span>
+    <h1 class="cloe-title">CLOE English · realistic exam practice</h1>
+    <p class="cloe-subtitle">
+      Adaptive written simulation + skill builder for the 5 task types + oral interview practice (3 parts).
+      Choose your listening accent (UK / US) and practise under time pressure.
+    </p>
+  </div>
+
+  <main class="se-wrap">
+    <section class="se-card">
+
+      <div class="se-toolbar" aria-label="Controls">
+        <div class="se-toolbar__block">
+          <label class="se-label" for="tabSelect">Mode</label>
+          <select id="tabSelect" class="se-select">
+            <option value="exam">Exam simulation</option>
+            <option value="builder">Skill builder</option>
+            <option value="oral">Oral interview</option>
+            <option value="tech">Technical check</option>
+          </select>
+        </div>
+
+        <div class="se-toolbar__block">
+          <label class="se-label" for="targetSelect">Target</label>
+          <select id="targetSelect" class="se-select">
+            <option value="auto">Auto (adaptive)</option>
+            <option value="A1">A1</option>
+            <option value="A2">A2</option>
+            <option value="B1" selected>B1</option>
+            <option value="B2">B2</option>
+            <option value="C1">C1</option>
+            <option value="C2">C2</option>
+          </select>
+        </div>
+
+        <div class="se-toolbar__block" id="lengthBlock">
+          <label class="se-label" for="lengthSelect">Questions</label>
+          <select id="lengthSelect" class="se-select">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="50" selected>50</option>
+          </select>
+        </div>
+
+        <div class="se-toolbar__block">
+          <label class="se-label" for="scenarioSelect">Oral scenario</label>
+          <select id="scenarioSelect" class="se-select">
+            <option value="general" selected>General business</option>
+            <option value="hospitality">Hospitality</option>
+            <option value="it">IT / Support</option>
+            <option value="sales">Sales</option>
+            <option value="admin">Admin / Office</option>
+            <option value="health">Health / Care</option>
+          </select>
+        </div>
+
+        <div class="se-toolbar__block se-toolbar__block--wide">
+          <div class="se-label">Listening accent</div>
+          <div class="se-controls">
+            <span id="accentPill" class="se-pill">Accent: —</span>
+            <button id="changeAccentBtn" type="button" class="se-btn">Change</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="banner" class="se-banner" role="status" aria-live="polite"></div>
+
+      <div id="view" style="margin-top: .9rem;"></div>
+
+    </section>
+  </main>
+
+  <!-- HUD (shown only during timed questions) -->
+  <div id="hud" class="se-hud" hidden>
+    <div class="se-hud__row">
+      <div class="se-hud__stats">
+        <div class="se-hud__stat"><span>Progress</span> <b id="hudProgress">Question 0 / 0</b></div>
+        <div class="se-hud__stat"><span>Score</span> <b id="hudScore">Score: 0</b></div>
+        <div class="se-hud__stat"><span>Level</span> <b id="hudLevel">Difficulty: —</b></div>
+        <div class="se-hud__stat"><span>Estimate</span> <b id="hudEst">Estimate: —</b></div>
+      </div>
+
+      <div class="se-timebar" aria-label="Time remaining bar">
+        <div id="timebarFill"></div>
+      </div>
+
+      <div class="se-controls">
+        <span id="timeText" class="se-pill">00:00</span>
+        <button id="pauseBtn" type="button" class="se-btn">⏸ Pause</button>
+        <button id="quitBtn" type="button" class="se-btn">✖ Quit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accent modal -->
+  <div id="accentModal" class="se-modal" role="dialog" aria-modal="true" aria-labelledby="accentTitle">
+    <div class="se-modal__panel">
+      <h2 id="accentTitle" style="margin: 0 0 .5rem;">Choose your listening accent</h2>
+      <p class="se-note" style="margin-top:0;">
+        This controls the text-to-speech “listening” questions and sample audio prompts.
+        You can change it anytime.
+      </p>
+      <div class="se-controls" style="margin-top:.75rem;">
+        <button id="chooseUK" type="button" class="se-btn se-btn--primary">🇬🇧 British (UK)</button>
+        <button id="chooseUS" type="button" class="se-btn se-btn--primary">🇺🇸 American (US)</button>
+        <button id="closeAccentBtn" type="button" class="se-btn">Close</button>
+      </div>
+      <p class="se-note" style="margin:.75rem 0 0;">
+        If you can’t click anything, scroll a tiny bit and try again — this pop-up must be closed before you continue.
+      </p>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+
+</body>
+</html>

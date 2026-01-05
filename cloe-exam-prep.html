@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CLOE English · Exam Orientation + Interactive Task Types · SpeakEasyTisha</title>
+
+  <!-- Shared site CSS (matches your LEVELTEL page structure) -->
+  <link rel="stylesheet" href="/css/speakeasy.css" />
+  <link rel="stylesheet" href="/css/nav.fixed.css" />
+
+  <!-- This page CSS -->
+  <link rel="stylesheet" href="/css/cloe-exam-prep.css" />
+</head>
+
+<body data-hero-image="/img/hero-office.jpg">
+  <!-- Optional shared header/footer loader (GitHub Pages friendly) -->
+  <div id="site-header"></div>
+
+  <main class="ce-wrap" id="top">
+    <section class="ce-hero">
+      <div class="ce-hero-inner">
+        <div class="ce-hero-left">
+          <p class="ce-kicker">CLOE · English certification</p>
+          <h1 class="ce-h1">CLOE Exam — What to Expect + Interactive Task Types</h1>
+          <p class="ce-lead">
+            A realistic training page (unofficial) to help you understand the CLOE format and practise the kinds of tasks you’ll see:
+            <strong>MCQ</strong>, <strong>drag & drop</strong>, <strong>gap-fill</strong>, <strong>listening</strong>, <strong>reading</strong>, and <strong>oral interview prompts</strong>.
+          </p>
+
+          <div class="ce-pills" aria-label="Key features">
+            <span class="ce-pill">⏱️ ~1h15 total</span>
+            <span class="ce-pill">🧠 Adaptive written test</span>
+            <span class="ce-pill">🎧 Listening (US/UK)</span>
+            <span class="ce-pill">🧩 Drag & drop</span>
+            <span class="ce-pill">🎤 Oral interview trainer</span>
+          </div>
+
+          <div class="ce-cta">
+            <a class="ce-btn ce-btn-primary" href="#ce-format">Start here</a>
+            <a class="ce-btn ce-btn-ghost" href="#ce-mini">Mini mock exam</a>
+          </div>
+
+          <div class="ce-accent">
+            <div class="ce-accent-label">
+              <strong>Listening accent:</strong>
+              <span class="ce-muted">Used for all “Listen” buttons (Web Speech API).</span>
+            </div>
+            <div class="ce-seg" role="group" aria-label="Choose listening accent">
+              <button type="button" class="ce-seg-btn is-active" data-accent="us">🇺🇸 American</button>
+              <button type="button" class="ce-seg-btn" data-accent="uk">🇬🇧 British</button>
+            </div>
+            <div class="ce-accent-note ce-muted" id="ce-voice-note">
+              Tip: If you don’t hear audio, your browser/device may block speech. You can still do all tasks by reading.
+            </div>
+          </div>
+        </div>
+
+        <aside class="ce-hero-right">
+          <div class="ce-card">
+            <h3 class="ce-card-title">Quick navigation</h3>
+            <nav class="ce-inline-nav" aria-label="On-page navigation">
+              <a href="#ce-format">🧭 Exam format</a>
+              <a href="#ce-graded">📊 Scoring</a>
+              <a href="#ce-task-tour">🧪 Task type tour</a>
+              <a href="#ce-flashcards">🃏 Flashcards</a>
+              <a href="#ce-mini">🧩 Mini mock exam</a>
+              <a href="#ce-oral">🎤 Oral interview</a>
+              <a href="#ce-tech">🛠️ Tech check</a>
+            </nav>
+
+            <div class="ce-card-note">
+              <strong>Important:</strong> This is a training simulation to help you practise. It’s not the official CLOE platform.
+            </div>
+          </div>
+
+          <div class="ce-card ce-card-compact">
+            <h3 class="ce-card-title">Personalise (optional)</h3>
+            <label class="ce-label" for="ce-student-name">Your first name</label>
+            <div class="ce-row">
+              <input id="ce-student-name" class="ce-input" type="text" placeholder="e.g., Alex" />
+              <button class="ce-btn ce-btn-secondary" id="ce-apply-name" type="button">Apply</button>
+            </div>
+            <p class="ce-muted">We only use your name inside a few prompts (on this page only).</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="ce-error" id="ce-error" role="alert" aria-live="polite" hidden></div>
+
+    <!-- =========================
+         EXAM FORMAT
+    ========================== -->
+    <section class="ce-section" id="ce-format">
+      <h2 class="ce-h2">🧭 CLOE exam format (overview)</h2>
+
+      <div class="ce-grid-2">
+        <article class="ce-panel">
+          <h3 class="ce-h3">Part 1 — Written (adaptive) · ~50 minutes</h3>
+          <ul class="ce-bullets">
+            <li><strong>Adaptive test:</strong> questions get easier/harder based on your answers.</li>
+            <li><strong>Typical tasks:</strong> vocabulary, grammar, expressions, reading, listening.</li>
+            <li><strong>Time pressure:</strong> each question has a short timer (green → yellow → red).</li>
+          </ul>
+          <div class="ce-mini-badge">🧠 Your goal: accuracy + speed</div>
+        </article>
+
+        <article class="ce-panel">
+          <h3 class="ce-h3">Part 2 — Oral interview (video) · ~15 minutes</h3>
+          <ul class="ce-bullets">
+            <li><strong>3 steps:</strong> intro → professional situation → discussion.</li>
+            <li><strong>Interaction matters:</strong> clarify, ask questions, confirm understanding.</li>
+            <li><strong>Professional register:</strong> polite + clear + structured.</li>
+          </ul>
+          <div class="ce-mini-badge">🎤 Your goal: clear answers under pressure</div>
+        </article>
+      </div>
+
+      <div class="ce-callout">
+        <div class="ce-callout-icon">✅</div>
+        <div>
+          <p class="ce-callout-title">What examiners reward</p>
+          <p class="ce-callout-text">
+            Clear meaning, correct grammar, natural vocabulary, and professional interaction:
+            <em>“Could you confirm…?”</em> · <em>“Just to clarify…”</em> · <em>“Here are the next steps…”</em>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         SCORING / GRADING
+    ========================== -->
+    <section class="ce-section" id="ce-graded">
+      <div class="ce-callout" style="margin-top:0;">
+        <div class="ce-callout-icon">📝</div>
+        <div>
+          <p class="ce-callout-title">Results + validity (important nuance)</p>
+          <p class="ce-callout-text">
+            You receive a CEFR level result. In practice, candidates often receive results within <strong>24–72 hours</strong> after the oral interview is validated, and the final certificate is typically delivered as a secure digital credential.
+            Many CLOE documents mention a certificate “valid for life”, while the France Compétences RS listing can indicate a <strong>2‑year validity</strong> for certain uses (e.g., funding/administrative recognition).
+          </p>
+        </div>
+      </div>
+
+      <h2 class="ce-h2">📊 How you’re graded (what “good” looks like)</h2>
+
+      <div class="ce-grid-3">
+        <div class="ce-panel">
+          <h3 class="ce-h3">CEFR level output</h3>
+          <p class="ce-p">
+            Results are expressed as CEFR levels (A1 → C2), often with sub-levels (A1-, A1, A1+…).
+          </p>
+          <div class="ce-tagrow">
+            <span class="ce-tag">A1</span><span class="ce-tag">A2</span><span class="ce-tag">B1</span><span class="ce-tag">B2</span><span class="ce-tag">C1</span><span class="ce-tag">C2</span>
+          </div>
+        </div>
+
+        <div class="ce-panel">
+          <h3 class="ce-h3">Adaptive logic</h3>
+          <p class="ce-p">
+            It’s normal to miss some questions: the system tests your ceiling.
+            Getting harder items means you’re progressing.
+          </p>
+          <p class="ce-muted">Tip: don’t panic if difficulty increases.</p>
+        </div>
+
+        <div class="ce-panel">
+          <h3 class="ce-h3">Oral = interaction</h3>
+          <p class="ce-p">
+            The oral interview rewards professional behaviour:
+            ask questions, confirm, reformulate, propose solutions.
+          </p>
+          <p class="ce-muted">Structure: context → issue → impact → solution → next step.</p>
+        </div>
+      </div>
+
+      <details class="ce-details">
+        <summary><strong>Quick “upgrade” phrases</strong> (click to open)</summary>
+        <div class="ce-details-body">
+          <div class="ce-upgrade-grid">
+            <div class="ce-upgrade">
+              <div class="ce-upgrade-icon">🙏</div>
+              <div>
+                <strong>Polite request</strong>
+                <div class="ce-muted">Could you please… / Would it be possible to…</div>
+              </div>
+            </div>
+            <div class="ce-upgrade">
+              <div class="ce-upgrade-icon">🧭</div>
+              <div>
+                <strong>Clarify</strong>
+                <div class="ce-muted">Just to clarify… / Do you mean…?</div>
+              </div>
+            </div>
+            <div class="ce-upgrade">
+              <div class="ce-upgrade-icon">🧾</div>
+              <div>
+                <strong>Summarise</strong>
+                <div class="ce-muted">Let me summarise the key points…</div>
+              </div>
+            </div>
+            <div class="ce-upgrade">
+              <div class="ce-upgrade-icon">📌</div>
+              <div>
+                <strong>Next steps</strong>
+                <div class="ce-muted">The next step is… / I’ll follow up by…</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <div class="ce-grid-2" style="margin-top:14px;">
+        <div class="ce-panel">
+          <h3 class="ce-h3">Official ecosystem (what candidates use)</h3>
+          <ul class="ce-bullets">
+            <li><strong>Training platform:</strong> “Réussir CLOE” (varied tasks: MCQ, grammar, reformulation, reading, listening).</li>
+            <li><strong>Demo mini-test:</strong> a short technical/demo test to check compatibility and discover task types.</li>
+            <li><strong>Candidate portal + help center:</strong> access convocation, tech requirements (webcam/mic), and support.</li>
+          </ul>
+        </div>
+        <div class="ce-panel">
+          <h3 class="ce-h3">Your best preparation plan</h3>
+          <ul class="ce-bullets">
+            <li>One “platform familiarisation” session (mini-test + interface).</li>
+            <li>Timed practice on the 5 common task types (MCQ, drag & drop, gap-fill, ordering, listening MCQ).</li>
+            <li>At least one full oral mock: intro → role-play → discussion.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         TASK TYPE TOUR (Interactive)
+    ========================== -->
+    <section class="ce-section" id="ce-task-tour">
+      <h2 class="ce-h2">🧪 Task type tour (interactive samples)</h2>
+      <p class="ce-p">
+        Try each task type. You’ll get instant feedback — like the real exam pressure (but friendlier).
+      </p>
+
+      <div class="ce-task-grid">
+        <button class="ce-task-card" type="button" data-open-task="mcq">
+          <div class="ce-task-icon">✅</div>
+          <div>
+            <div class="ce-task-title">MCQ · Grammar</div>
+            <div class="ce-muted">Choose the best option.</div>
+          </div>
+          <div class="ce-task-cta">Try</div>
+        </button>
+
+        <button class="ce-task-card" type="button" data-open-task="cloze">
+          <div class="ce-task-icon">🧩</div>
+          <div>
+            <div class="ce-task-title">Gap-fill</div>
+            <div class="ce-muted">Type the missing word.</div>
+          </div>
+          <div class="ce-task-cta">Try</div>
+        </button>
+
+        <button class="ce-task-card" type="button" data-open-task="listening">
+          <div class="ce-task-icon">🎧</div>
+          <div>
+            <div class="ce-task-title">Listening + MCQ</div>
+            <div class="ce-muted">2 listens max (simulation).</div>
+          </div>
+          <div class="ce-task-cta">Try</div>
+        </button>
+
+        <button class="ce-task-card" type="button" data-open-task="reading">
+          <div class="ce-task-icon">📄</div>
+          <div>
+            <div class="ce-task-title">Reading comprehension</div>
+            <div class="ce-muted">Answer what the text says.</div>
+          </div>
+          <div class="ce-task-cta">Try</div>
+        </button>
+
+        <button class="ce-task-card" type="button" data-open-task="drag-email">
+          <div class="ce-task-icon">✉️</div>
+          <div>
+            <div class="ce-task-title">Drag & drop · Email order</div>
+            <div class="ce-muted">Put parts in a natural order.</div>
+          </div>
+          <div class="ce-task-cta">Try</div>
+        </button>
+
+        <button class="ce-task-card" type="button" data-open-task="order-sentence">
+          <div class="ce-task-icon">🔀</div>
+          <div>
+            <div class="ce-task-title">Sentence order</div>
+            <div class="ce-muted">Rebuild a correct sentence.</div>
+          </div>
+          <div class="ce-task-cta">Try</div>
+        </button>
+      </div>
+
+      <div class="ce-task-stage" id="ce-task-stage" aria-live="polite">
+        <div class="ce-stage-top">
+          <h3 class="ce-h3" id="ce-stage-title">Choose a task above</h3>
+          <div class="ce-stage-actions">
+            <button class="ce-btn ce-btn-secondary" type="button" id="ce-stage-reset" disabled>Reset</button>
+            <button class="ce-btn ce-btn-ghost" type="button" id="ce-stage-close" disabled>Close</button>
+          </div>
+        </div>
+
+        <div class="ce-stage-body" id="ce-stage-body">
+          <p class="ce-muted">Tip: Start with MCQ or listening to check your level.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         FLASHCARDS + US/UK DIFFERENCES
+    ========================== -->
+    <section class="ce-section" id="ce-flashcards">
+      <h2 class="ce-h2">🃏 Flashcards · Professional English + US/UK differences</h2>
+      <p class="ce-p">
+        CLOE is professional + general. These cards focus on high-frequency workplace language and common US/UK differences you may hear.
+      </p>
+
+      <div class="ce-flash">
+        <div class="ce-flash-head">
+          <div class="ce-flash-controls">
+            <button class="ce-btn ce-btn-secondary" type="button" id="ce-card-prev">← Prev</button>
+            <button class="ce-btn ce-btn-secondary" type="button" id="ce-card-flip">Flip</button>
+            <button class="ce-btn ce-btn-secondary" type="button" id="ce-card-next">Next →</button>
+            <button class="ce-btn ce-btn-ghost" type="button" id="ce-card-shuffle">Shuffle</button>
+          </div>
+          <div class="ce-flash-audio">
+            <button class="ce-btn ce-btn-primary" type="button" id="ce-card-listen">🔊 Listen</button>
+            <span class="ce-muted" id="ce-card-count">Card 1 / 12</span>
+          </div>
+        </div>
+
+        <div class="ce-cardbox" id="ce-cardbox" tabindex="0" role="button" aria-label="Flashcard (click to flip)">
+          <!-- JS fills -->
+        </div>
+
+        <div class="ce-flash-foot ce-muted">
+          Keyboard: ← / → to change card · Space to flip.
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         MINI MOCK EXAM
+    ========================== -->
+    <section class="ce-section" id="ce-mini">
+      <h2 class="ce-h2">🧩 Mini mock exam (realistic mix)</h2>
+      <p class="ce-p">
+        This section simulates the “feel” of the adaptive written test: quick instructions, limited time, mixed task types.
+      </p>
+
+      <div class="ce-mini-controls">
+        <div class="ce-mini-select">
+          <label class="ce-label" for="ce-mini-length">Number of questions</label>
+          <select class="ce-select" id="ce-mini-length">
+            <option value="10">10 (warm-up)</option>
+            <option value="20">20 (solid practice)</option>
+            <option value="30">30 (hard training)</option>
+          </select>
+        </div>
+
+        <div class="ce-mini-select">
+          <label class="ce-label" for="ce-mini-focus">Focus</label>
+          <select class="ce-select" id="ce-mini-focus">
+            <option value="mix">Mix (like the exam)</option>
+            <option value="grammar">Grammar + structures</option>
+            <option value="vocab">Vocabulary + expressions</option>
+            <option value="reading">Reading</option>
+            <option value="listening">Listening</option>
+          </select>
+        </div>
+
+        <div class="ce-mini-select">
+          <label class="ce-label" for="ce-mini-speed">Speed</label>
+          <select class="ce-select" id="ce-mini-speed">
+            <option value="normal">Normal</option>
+            <option value="fast">Fast (challenge)</option>
+          </select>
+        </div>
+
+        <div class="ce-mini-actions">
+          <button class="ce-btn ce-btn-primary" type="button" id="ce-mini-start">Start simulation</button>
+          <button class="ce-btn ce-btn-secondary" type="button" id="ce-mini-reset" disabled>Reset</button>
+        </div>
+      </div>
+
+      <div class="ce-sim" id="ce-sim" hidden>
+        <div class="ce-sim-top">
+          <div class="ce-sim-progress" aria-label="Progress">
+            <div class="ce-sim-bar"><div class="ce-sim-bar-fill" id="ce-sim-bar-fill"></div></div>
+            <div class="ce-sim-meta">
+              <span id="ce-sim-count">Question 1 / 10</span>
+              <span id="ce-sim-score">Score: 0</span>
+            </div>
+          </div>
+
+          <div class="ce-timer" aria-label="Timer">
+            <div class="ce-timer-label">Time</div>
+            <div class="ce-timer-pill" id="ce-timer-pill">00:25</div>
+          </div>
+        </div>
+
+        <div class="ce-sim-body" id="ce-sim-body"></div>
+
+        <div class="ce-sim-foot">
+          <button class="ce-btn ce-btn-secondary" type="button" id="ce-sim-skip">Skip</button>
+          <button class="ce-btn ce-btn-primary" type="button" id="ce-sim-next" disabled>Next</button>
+        </div>
+      </div>
+
+      <div class="ce-results" id="ce-results" hidden>
+        <h3 class="ce-h3">✅ Simulation complete</h3>
+        <p class="ce-p" id="ce-results-line"></p>
+        <div class="ce-results-grid">
+          <div class="ce-panel">
+            <h4 class="ce-h4">Your strengths</h4>
+            <ul class="ce-bullets" id="ce-results-strengths"></ul>
+          </div>
+          <div class="ce-panel">
+            <h4 class="ce-h4">Next priorities</h4>
+            <ul class="ce-bullets" id="ce-results-priorities"></ul>
+          </div>
+        </div>
+        <button class="ce-btn ce-btn-primary" type="button" id="ce-results-again">Run another simulation</button>
+      </div>
+    </section>
+
+    <!-- =========================
+         ORAL INTERVIEW TRAINER
+    ========================== -->
+    <section class="ce-section" id="ce-oral">
+      <h2 class="ce-h2">🎤 Oral interview trainer (3 steps)</h2>
+      <p class="ce-p">
+        Practise speaking under time pressure. Use the timers, record yourself (optional), and replay.
+      </p>
+
+      <div class="ce-oral-grid">
+        <div class="ce-panel">
+          <h3 class="ce-h3">Step 1 (about you)</h3>
+          <p class="ce-muted">~5 minutes in the real interview.</p>
+          <div class="ce-prompt" id="ce-oral-1"></div>
+          <div class="ce-oral-actions">
+            <button class="ce-btn ce-btn-secondary" type="button" data-oral-timer="60">Start 60s</button>
+            <button class="ce-btn ce-btn-ghost" type="button" data-oral-model="1">Show model outline</button>
+          </div>
+          <div class="ce-model" id="ce-model-1" hidden></div>
+        </div>
+
+        <div class="ce-panel">
+          <h3 class="ce-h3">Step 2 (role-play)</h3>
+          <p class="ce-muted">~5 minutes in the real interview.</p>
+          <div class="ce-prompt" id="ce-oral-2"></div>
+          <div class="ce-oral-actions">
+            <button class="ce-btn ce-btn-secondary" type="button" data-oral-timer="90">Start 90s</button>
+            <button class="ce-btn ce-btn-ghost" type="button" data-oral-model="2">Show model outline</button>
+          </div>
+          <div class="ce-model" id="ce-model-2" hidden></div>
+        </div>
+
+        <div class="ce-panel">
+          <h3 class="ce-h3">Step 3 (discussion)</h3>
+          <p class="ce-muted">~5 minutes in the real interview.</p>
+          <div class="ce-prompt" id="ce-oral-3"></div>
+          <div class="ce-oral-actions">
+            <button class="ce-btn ce-btn-secondary" type="button" data-oral-timer="90">Start 90s</button>
+            <button class="ce-btn ce-btn-ghost" type="button" data-oral-model="3">Show model outline</button>
+          </div>
+          <div class="ce-model" id="ce-model-3" hidden></div>
+        </div>
+      </div>
+
+      <div class="ce-rec">
+        <div class="ce-rec-top">
+          <h3 class="ce-h3">Optional recording (browser permission required)</h3>
+          <div class="ce-rec-status">
+            <span class="ce-tag" id="ce-mic-status">Status: not checked</span>
+            <span class="ce-muted" id="ce-mic-hint">Click “Check mic” first.</span>
+          </div>
+        </div>
+
+        <div class="ce-rec-actions">
+          <button class="ce-btn ce-btn-secondary" type="button" id="ce-mic-check">Check mic</button>
+          <button class="ce-btn ce-btn-primary" type="button" id="ce-rec-start" disabled>⏺ Start recording</button>
+          <button class="ce-btn ce-btn-secondary" type="button" id="ce-rec-stop" disabled>⏹ Stop</button>
+        </div>
+
+        <audio id="ce-rec-playback" controls hidden></audio>
+        <p class="ce-muted">
+          If you see “permission denied”: click the 🔒 icon in your browser address bar → Microphone → Allow → refresh.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================
+         TECH CHECK
+    ========================== -->
+    <section class="ce-section" id="ce-tech">
+      <h2 class="ce-h2">🛠️ Technical check (practice before exam day)</h2>
+      <p class="ce-p">Use this to reduce stress: check sound, mic permission, and camera preview.</p>
+
+      <div class="ce-grid-3">
+        <div class="ce-panel">
+          <h3 class="ce-h3">Speakers (sound)</h3>
+          <p class="ce-muted">Plays a short beep. If you can hear it, speakers are OK.</p>
+          <button class="ce-btn ce-btn-primary" type="button" id="ce-test-beep">▶ Test beep</button>
+          <div class="ce-muted" id="ce-beep-status"></div>
+        </div>
+
+        <div class="ce-panel">
+          <h3 class="ce-h3">Microphone</h3>
+          <p class="ce-muted">Requests mic permission and shows a small level meter.</p>
+          <button class="ce-btn ce-btn-primary" type="button" id="ce-test-mic">🎙️ Test microphone</button>
+          <div class="ce-meter" aria-label="Microphone level"><div class="ce-meter-fill" id="ce-meter-fill"></div></div>
+          <div class="ce-muted" id="ce-mic-status-2"></div>
+        </div>
+
+        <div class="ce-panel">
+          <h3 class="ce-h3">Camera (optional)</h3>
+          <p class="ce-muted">Shows a small preview (useful if your session requires webcam).</p>
+          <button class="ce-btn ce-btn-primary" type="button" id="ce-test-cam">📷 Test camera</button>
+          <video class="ce-cam" id="ce-cam" playsinline muted autoplay hidden></video>
+          <div class="ce-muted" id="ce-cam-status"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ce-footer">
+      <a href="#top" class="ce-back">Back to top ↑</a>
+      <p class="ce-muted">© SpeakEasyTisha · CLOE training simulation page (unofficial)</p>
+    </footer>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <!-- Shared header/footer loader -->
+  <script src="/js/site-chrome.fixed.js"></script>
+
+  <!-- This page JS -->
+  <script src="/js/cloe-exam-prep.js"></script>
+</body>
+</html>
