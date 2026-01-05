@@ -651,39 +651,96 @@ IT Support`;
   // ---------- MINI MOCK EXAM ----------
   // question types for the simulation
   const BANK = [
-    // grammar
-    {type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the best option.", q:"“I ____ send it by 4 p.m.” (promise)", a:["will","am going","sent","have"], correct:0, why:"Promise → will."},
-    {type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the best option.", q:"“Would you mind ____ the file again?”", a:["send","to send","sending","sent"], correct:2, why:"Would you mind + -ing."},
-    {type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the best option.", q:"“I’m responsible ____ coordinating the team.”", a:["for","to","of","with"], correct:0, why:"Responsible for."},
-
-    // vocab
-    {type:"cloze", focus:"vocab", skill:"Vocabulary", prompt:"Type the missing word.", q:"“Could you confirm your ______ for Tuesday?”", answer:"availability", why:"Availability = when you are free."},
-    {type:"cloze", focus:"vocab", skill:"Vocabulary", prompt:"Type the missing word.", q:"“I’ll ______ this to IT support.”", answer:"escalate", why:"Escalate = send the issue to a higher level."},
-
-    // reading
-    {type:"reading", focus:"reading", skill:"Reading", prompt:"Read and choose the best answer.",
-      text:"Subject: Delivery update\n\nHi,\nDue to a delay at customs, the shipment will arrive on Friday morning. Please inform the client and update the tracking notes.\n\nThanks.",
-      q:"When will the shipment arrive?",
-      a:["Thursday afternoon","Friday morning","Today","Next week"],
-      correct:1,
-      why:"It says: arrive on Friday morning."
-    },
-
-    // listening
-    {type:"listening", focus:"listening", skill:"Listening", prompt:"Listen and choose the best answer. (2 listens max)",
-      audio:"Hi, this is Sam. I can’t join the 9 a.m. call. Could we move it to eleven o’clock today?",
-      q:"What time is the new call?",
-      a:["9 a.m.","10 a.m.","11 a.m.","Tomorrow"],
-      correct:2,
-      why:"The speaker proposes eleven o’clock today."
-    },
-
-    // drag order (sentence builder)
-    {type:"order", focus:"grammar", skill:"Word order", prompt:"Put the words in order.",
-      tokens:["Could","you","please","confirm","the","deadline","?"],
-      target:"Could you please confirm the deadline ?",
-      why:"Polite question: Could you please + base verb."
-    },
+    {"id": "mcq1", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“I ____ send it by 4 p.m.” (promise)", "a": ["will", "am going", "sent", "have"], "correct": 0, "why": "Promise → <b>will</b>."},
+    {"id": "mcq2", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“Would you mind ____ the file again?”", "a": ["send", "to send", "sending", "sent"], "correct": 2, "why": "<b>Would you mind</b> + <b>-ing</b>."},
+    {"id": "mcq3", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“I’m responsible ____ coordinating the team.”", "a": ["for", "to", "of", "with"], "correct": 0, "why": "Responsible <b>for</b>."},
+    {"id": "mcq4", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“There ____ two meetings today.”", "a": ["is", "are", "am", "be"], "correct": 1, "why": "Plural → <b>there are</b>."},
+    {"id": "mcq5", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“Could you ____ a moment?”", "a": ["wait", "waiting", "to wait", "waits"], "correct": 0, "why": "Modal + base verb."},
+    {"id": "mcq6", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“Please find the report ____.”", "a": ["attached", "attaching", "attach", "attaches"], "correct": 0, "why": "Fixed phrase: Please find … <b>attached</b>."},
+    {"id": "mcq7", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“We’ve ____ the issue since Monday.”", "a": ["had", "have", "having", "has"], "correct": 0, "why": "Present perfect: <b>have had</b>."},
+    {"id": "mcq8", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“I ____ to the client yesterday.”", "a": ["spoke", "have spoken", "speak", "am speaking"], "correct": 0, "why": "Finished past time → past simple."},
+    {"id": "mcq9", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“We need it ____ Friday.”", "a": ["by", "until", "since", "for"], "correct": 0, "why": "Deadline → <b>by</b>."},
+    {"id": "mcq10", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“Let’s meet ____ 3 p.m.”", "a": ["at", "on", "in", "to"], "correct": 0, "why": "Times → <b>at</b>."},
+    {"id": "mcq11", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“I’ll call you when I ____ free.”", "a": ["am", "will be", "was", "be"], "correct": 0, "why": "Time clause → present: when I <b>am</b>."},
+    {"id": "mcq12", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“If I ____ time, I’ll finish today.”", "a": ["have", "had", "will have", "having"], "correct": 0, "why": "First conditional: If + present."},
+    {"id": "mcq13", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“We ____ consider other options.” (suggestion)", "a": ["should", "must", "can’t", "did"], "correct": 0, "why": "Suggestion → <b>should</b>."},
+    {"id": "mcq14", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“Could you ____ that, please?”", "a": ["repeat", "repeating", "repeated", "to repeating"], "correct": 0, "why": "Modal + base verb."},
+    {"id": "mcq15", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“I’d appreciate it if you could ____ receipt.”", "a": ["confirm", "confirmed", "confirming", "to confirm"], "correct": 0, "why": "Could + base verb."},
+    {"id": "mcq16", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "Choose the best connector: “We missed the deadline ____ the supplier delay.”", "a": ["because of", "although", "however", "despite of"], "correct": 0, "why": "Noun phrase → <b>because of</b>."},
+    {"id": "mcq17", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“Despite ____ late, the project succeeded.”", "a": ["being", "be", "to be", "was"], "correct": 0, "why": "Despite + <b>-ing</b>."},
+    {"id": "mcq18", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“I’ve sent the invoice. ____ you check it?”", "a": ["Could", "Did", "Must", "Shouldn’t"], "correct": 0, "why": "Polite request → <b>Could</b>."},
+    {"id": "mcq19", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“This solution is ____ than the previous one.”", "a": ["more efficient", "efficienter", "most efficient", "efficiency"], "correct": 0, "why": "Comparative: <b>more efficient</b>."},
+    {"id": "mcq20", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“I’m looking forward to ____ from you.”", "a": ["hear", "hearing", "to hear", "heard"], "correct": 1, "why": "Look forward to + <b>-ing</b>."},
+    {"id": "mcq21", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“Could you ____ me an update?”", "a": ["give", "giving", "gave", "to giving"], "correct": 0, "why": "Modal + base verb."},
+    {"id": "mcq22", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“We’ve ____ finished the first draft.”", "a": ["just", "yet", "already", "still"], "correct": 0, "why": "<b>Just</b> = very recently."},
+    {"id": "mcq23", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“I haven’t received it ____.”", "a": ["yet", "just", "already", "still"], "correct": 0, "why": "Negative + present perfect → <b>yet</b>."},
+    {"id": "mcq24", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“The report was completed ____ time.”", "a": ["on", "in", "at", "for"], "correct": 0, "why": "On time = not late."},
+    {"id": "mcq25", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“We’ll discuss it ____ the meeting.”", "a": ["during", "between", "among", "at"], "correct": 0, "why": "During + noun."},
+    {"id": "mcq26", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“Could you send it ____ email?”", "a": ["by", "with", "to", "on"], "correct": 0, "why": "By email."},
+    {"id": "mcq27", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "Choose the correct: “I’m available ____ Monday and Wednesday.”", "a": ["between", "from", "among", "during"], "correct": 1, "why": "From Monday and Wednesday (i.e., on those days)."},
+    {"id": "mcq28", "type": "mcq", "focus": "grammar", "skill": "Grammar", "prompt": "Choose the best option.", "q": "“I’ll be in a meeting, so I ____ answer right away.”", "a": ["may not", "must", "will", "can"], "correct": 0, "why": "Possibility/limitation → may not."},
+    {"id": "clz1", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“Could you confirm your ______ for Tuesday?”", "answer": "availability", "why": "Availability = when you are free."},
+    {"id": "clz2", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“I’ll ______ this to IT support.”", "answer": "escalate", "why": "Escalate = pass to a higher level/team."},
+    {"id": "clz3", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“Please send me the ______ (bill) today.”", "answer": "invoice", "why": "Invoice = bill for services/products."},
+    {"id": "clz4", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“Let’s set a ______ for Friday 5 p.m.”", "answer": "deadline", "why": "Deadline = latest time to finish."},
+    {"id": "clz5", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“I’ll ______ up by email tomorrow.”", "answer": "follow", "why": "Follow up = contact again for an update."},
+    {"id": "clz6", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“Could you share the meeting ______?”", "answer": "agenda", "why": "Agenda = list of meeting topics."},
+    {"id": "clz7", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“We need your ______ to proceed.”", "answer": "approval", "why": "Approval = permission/agreement."},
+    {"id": "clz8", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“Please ______ receipt of this email.”", "answer": "acknowledge", "why": "Acknowledge receipt = confirm you received it."},
+    {"id": "clz9", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“Could you ______ the file to the message?”", "answer": "attach", "why": "Attach = add a file."},
+    {"id": "clz10", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“Let’s ______ the meeting to next week.”", "answer": "reschedule", "why": "Reschedule = change date/time."},
+    {"id": "clz11", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“We need to ______ costs.”", "answer": "reduce", "why": "Reduce = lower."},
+    {"id": "clz12", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“Can you ______ the figures?”", "answer": "update", "why": "Update = make current."},
+    {"id": "clz13", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“Please ______ the form.”", "answer": "complete", "why": "Complete = fill in / finish."},
+    {"id": "clz14", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“I’m writing to ______ an issue.”", "answer": "report", "why": "Report an issue = tell officially."},
+    {"id": "clz15", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“Could you ______ the link?”", "answer": "share", "why": "Share = send access."},
+    {"id": "clz16", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“We need to meet our ______.”", "answer": "targets", "why": "Targets = goals."},
+    {"id": "clz17", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“Please ______ the meeting minutes.”", "answer": "review", "why": "Review = check carefully."},
+    {"id": "clz18", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“I’ll ______ you in later today.”", "answer": "call", "why": "Call you later today."},
+    {"id": "clz19", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“We need a quick ______ (decision).”", "answer": "decision", "why": "Decision = choice."},
+    {"id": "clz20", "type": "cloze", "focus": "vocab", "skill": "Vocabulary", "prompt": "Type the missing word (one word).", "q": "“Could you ______ the address?”", "answer": "confirm", "why": "Confirm = verify it’s correct."},
+    {"id": "rd1", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "From: HR\nSubject: Onboarding — first day\n\nPlease arrive at 9:00 and bring an ID. Your badge will be ready at reception.\n\nThanks.", "q": "What time should the person arrive?", "a": ["8:00", "9:00", "10:00", "After lunch"], "correct": 1, "why": "It says: arrive at 9:00."},
+    {"id": "rd2", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: Room change\n\nYour meeting has moved from Room B to Room D (4th floor).", "q": "Where is the new room?", "a": ["Room B", "Room D on the 4th floor", "Room D on the 2nd floor", "Reception"], "correct": 1, "why": "It says: Room D (4th floor)."},
+    {"id": "rd3", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: Delivery update\n\nDue to a delay at customs, the shipment will arrive on Friday morning.\nPlease inform the client and update tracking notes.", "q": "When will the shipment arrive?", "a": ["Thursday afternoon", "Friday morning", "Today", "Next week"], "correct": 1, "why": "It says: Friday morning."},
+    {"id": "rd4", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: Invoice question\n\nCould you confirm whether VAT is included on invoice #4821?", "q": "What does the sender want?", "a": ["A refund", "VAT confirmation", "A password reset", "A meeting invite"], "correct": 1, "why": "They ask if VAT is included."},
+    {"id": "rd5", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Notice\n\nFire drill at 2:00 p.m.\nUse the stairs. Do not use the lift/elevator.", "q": "What should you use during the drill?", "a": ["The lift/elevator", "The stairs", "Your car", "The cafeteria"], "correct": 1, "why": "The notice says: use the stairs."},
+    {"id": "rd6", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: Timesheet reminder\n\nPlease submit your timesheet by Wednesday 12:00. Late submissions may delay payment.", "q": "What is the deadline?", "a": ["Wednesday at noon", "Wednesday evening", "Friday", "No deadline"], "correct": 0, "why": "Submit by Wednesday 12:00."},
+    {"id": "rd7", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: Access approved\n\nYour request has been approved. Please enable MFA by 5 p.m. today.", "q": "What must the person do today?", "a": ["Enable MFA by 5 p.m.", "Request approval again", "Disable MFA", "Call tomorrow"], "correct": 0, "why": "Enable MFA by 5 p.m."},
+    {"id": "rd8", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: Apology\n\nI’m sorry for the delay. The report will be ready tomorrow morning.", "q": "When will the report be ready?", "a": ["Today", "Tomorrow morning", "Next week", "Never"], "correct": 1, "why": "Ready tomorrow morning."},
+    {"id": "rd9", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: Meeting cancellation\n\nI need to cancel today’s call. I’ll send new times shortly.", "q": "What will happen next?", "a": ["No more contact", "New times will be sent", "The call continues", "The project ends"], "correct": 1, "why": "They will send new times."},
+    {"id": "rd10", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: Visitor\n\nPlease meet the visitor at reception at 3:30 and escort them to Meeting Room 2.", "q": "What should you do?", "a": ["Meet at 3:30 and escort to Room 2", "Stay at your desk", "Go home early", "Call IT"], "correct": 0, "why": "Meet and escort."},
+    {"id": "rd11", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: Password reset\n\nClick the link to reset your password. The link expires in 30 minutes.", "q": "How long is the link valid?", "a": ["30 minutes", "30 days", "3 hours", "No expiry"], "correct": 0, "why": "Expires in 30 minutes."},
+    {"id": "rd12", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: Parking\n\nVisitor parking is full today. Please use the public car park next to the station.", "q": "Where should you park?", "a": ["Visitor parking", "Public car park next to the station", "On the sidewalk", "In the garage"], "correct": 1, "why": "Use the public car park next to the station."},
+    {"id": "rd13", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: Budget\n\nPlease keep the total under €500 and send your estimate by Friday.", "q": "What is the budget limit?", "a": ["€50", "€500", "€5,000", "No limit"], "correct": 1, "why": "Total under €500."},
+    {"id": "rd14", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: Training\n\nYour training session starts at 2 p.m. Please join five minutes early.", "q": "When should you join?", "a": ["At 1:55", "At 2:00 exactly", "At 2:10", "Tomorrow"], "correct": 0, "why": "Join five minutes early."},
+    {"id": "rd15", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: File name\n\nPlease rename the document to “Q1_Report_Final” and upload it to the shared folder.", "q": "What should you do?", "a": ["Print it", "Rename + upload to shared folder", "Delete it", "Email the password"], "correct": 1, "why": "Rename and upload."},
+    {"id": "rd16", "type": "reading", "focus": "reading", "skill": "Reading", "prompt": "Read and choose the best answer.", "text": "Subject: Request\n\nCould you send the updated price list and confirm the delivery date?", "q": "What are they asking for?", "a": ["Updated price list + delivery date", "A holiday request", "A complaint form", "A new phone"], "correct": 0, "why": "Price list + delivery date."},
+    {"id": "ls1", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Hi, this is Sam. I can’t join the 9 a.m. call. Could we move it to eleven o’clock today?", "q": "What time is the new call?", "a": ["9 a.m.", "10 a.m.", "11 a.m.", "Tomorrow"], "correct": 2, "why": "Eleven o’clock today."},
+    {"id": "ls2", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Good morning. The meeting starts in ten minutes in Room D on the fourth floor.", "q": "Where is the meeting?", "a": ["Room B, 2nd floor", "Room D, 4th floor", "Reception", "Online only"], "correct": 1, "why": "Room D on the fourth floor."},
+    {"id": "ls3", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Please submit your expense report by Friday at five p.m. to avoid delays.", "q": "When is the deadline?", "a": ["Friday 5 p.m.", "Thursday 5 p.m.", "Friday morning", "No deadline"], "correct": 0, "why": "Friday at five p.m."},
+    {"id": "ls4", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Hello, this is IT. Restart your laptop and try the Wi‑Fi again. If it still fails, call us back.", "q": "What is the first instruction?", "a": ["Call back immediately", "Restart the laptop", "Buy a new laptop", "Ignore Wi‑Fi"], "correct": 1, "why": "Restart the laptop."},
+    {"id": "ls5", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Hi, can you email me the updated invoice and confirm whether VAT is included?", "q": "What does the speaker ask for?", "a": ["A refund", "Updated invoice + VAT confirmation", "A hotel booking", "A passport"], "correct": 1, "why": "Updated invoice + VAT check."},
+    {"id": "ls6", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Attention please: the fire drill will begin at two p.m. Use the stairs, not the lift.", "q": "What should you use?", "a": ["The lift", "The stairs", "The taxi", "The cafeteria"], "correct": 1, "why": "Use the stairs."},
+    {"id": "ls7", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Hi, I’m running late. I’ll arrive at about three thirty instead of three.", "q": "When will the person arrive?", "a": ["3:00", "3:30", "4:00", "Tomorrow"], "correct": 1, "why": "Around 3:30."},
+    {"id": "ls8", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Please spell your email address slowly, letter by letter.", "q": "What do they want you to do?", "a": ["Say your password", "Spell your email address", "Pay now", "Leave the building"], "correct": 1, "why": "Spell the email address."},
+    {"id": "ls9", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Could you send me the agenda for tomorrow’s meeting before noon?", "q": "When do they want the agenda?", "a": ["Before noon", "After lunch", "Next week", "No rush"], "correct": 0, "why": "Before noon."},
+    {"id": "ls10", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Hi, the delivery has been delayed. The package should arrive on Friday morning.", "q": "When will the package arrive?", "a": ["Thursday morning", "Friday morning", "Friday evening", "Saturday"], "correct": 1, "why": "Friday morning."},
+    {"id": "ls11", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Hello, the training starts at two p.m. Please join five minutes early.", "q": "When should you join?", "a": ["At 1:55", "At 2:00", "At 2:10", "Tomorrow"], "correct": 0, "why": "Five minutes early."},
+    {"id": "ls12", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Please keep the total under five hundred euros and send your estimate by Friday.", "q": "What is the budget limit?", "a": ["€50", "€500", "€5,000", "No limit"], "correct": 1, "why": "Under €500."},
+    {"id": "ls13", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Hi, I’ve attached the report. Could you review it and share feedback today?", "q": "What does the speaker want?", "a": ["Feedback today", "A refund", "A phone call tomorrow", "Nothing"], "correct": 0, "why": "Review + feedback today."},
+    {"id": "ls14", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Could we reschedule our meeting to next Wednesday at 10 a.m.?", "q": "When is the proposed meeting?", "a": ["Next Wednesday at 10 a.m.", "This Wednesday at 10 a.m.", "Next Friday at 10 a.m.", "Tomorrow"], "correct": 0, "why": "Next Wednesday at 10 a.m."},
+    {"id": "ls15", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "Please meet the visitor at reception at three thirty and escort them to Meeting Room 2.", "q": "What should you do?", "a": ["Meet at reception at 3:30 and escort to Room 2", "Stay seated", "Call a taxi", "Cancel the meeting"], "correct": 0, "why": "Meet + escort."},
+    {"id": "ls16", "type": "listening", "focus": "listening", "skill": "Listening", "prompt": "Listen and choose the best answer. (2 listens max)", "audio": "The password reset link expires in thirty minutes.", "q": "How long is the link valid?", "a": ["30 minutes", "30 days", "3 hours", "No expiry"], "correct": 0, "why": "30 minutes."},
+    {"id": "ord1", "type": "order", "focus": "grammar", "skill": "Word order", "prompt": "Put the words in order.", "tokens": ["Could", "you", "please", "confirm", "the", "deadline", "?"], "target": "Could you please confirm the deadline ?", "why": "Polite request."},
+    {"id": "ord2", "type": "order", "focus": "grammar", "skill": "Word order", "prompt": "Put the words in order.", "tokens": ["I’d", "like", "to", "reschedule", "the", "meeting", "to", "Thursday", "."], "target": "I’d like to reschedule the meeting to Thursday .", "why": "I’d like to + verb."},
+    {"id": "ord3", "type": "order", "focus": "grammar", "skill": "Word order", "prompt": "Put the words in order.", "tokens": ["Please", "find", "the", "report", "attached", "."], "target": "Please find the report attached .", "why": "Email phrase."},
+    {"id": "ord4", "type": "order", "focus": "grammar", "skill": "Word order", "prompt": "Put the words in order.", "tokens": ["Can", "we", "move", "the", "call", "to", "11", "a.m.", "?"], "target": "Can we move the call to 11 a.m. ?", "why": "Auxiliary + subject + verb."},
+    {"id": "ord5", "type": "order", "focus": "grammar", "skill": "Word order", "prompt": "Put the words in order.", "tokens": ["I’m", "sorry", "for", "the", "delay", "."], "target": "I’m sorry for the delay .", "why": "Apology."},
+    {"id": "ord6", "type": "order", "focus": "grammar", "skill": "Word order", "prompt": "Put the words in order.", "tokens": ["Could", "you", "spell", "your", "last", "name", "please", "?"], "target": "Could you spell your last name please ?", "why": "Polite request."},
+    {"id": "ord7", "type": "order", "focus": "grammar", "skill": "Word order", "prompt": "Put the words in order.", "tokens": ["The", "next", "step", "is", "to", "update", "the", "file", "."], "target": "The next step is to update the file .", "why": "is to + verb."},
+    {"id": "ord8", "type": "order", "focus": "grammar", "skill": "Word order", "prompt": "Put the words in order.", "tokens": ["I", "haven’t", "received", "it", "yet", "."], "target": "I haven’t received it yet .", "why": "Yet at end."},
+    {"id": "ord9", "type": "order", "focus": "grammar", "skill": "Word order", "prompt": "Put the words in order.", "tokens": ["We", "need", "it", "by", "Friday", "."], "target": "We need it by Friday .", "why": "Deadline by Friday."},
+    {"id": "ord10", "type": "order", "focus": "grammar", "skill": "Word order", "prompt": "Put the words in order.", "tokens": ["Let’s", "meet", "at", "three", "p.m.", "."], "target": "Let’s meet at three p.m. .", "why": "Time at 3 p.m."}
   ];
 
   const sim = $("#ce-sim");
@@ -718,17 +775,47 @@ IT Support`;
     const focus = focusSel?.value || "mix";
     const speed = speedSel?.value || "normal";
 
-    const pool = pickPool(focus);
-    const chosen = [];
-    // sample with replacement if needed (but avoid same item too often)
-    while(chosen.length < n){
-      const item = pool[Math.floor(Math.random()*pool.length)];
-      // avoid immediate duplicates
-      if(chosen.length && chosen[chosen.length-1] === item) continue;
-      chosen.push(item);
-    }
+    const poolMain = pickPool(focus);
 
-    simState = {
+// Always have a full pool available (mix)
+const poolAll = pickPool("mix");
+
+// Safety: if focus pool is empty, fall back to mix
+const main = (poolMain && poolMain.length) ? poolMain.slice() : poolAll.slice();
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+const chosen = [];
+const used = new Set();
+
+// Prefer the selected focus first (no repeats)
+shuffle(main).forEach(item => {
+  if(chosen.length >= n) return;
+  if(!item || !item.id) return;
+  if(used.has(item.id)) return;
+  used.add(item.id);
+  chosen.push(item);
+});
+
+// Top up with other task types to reach N (still no repeats)
+if(chosen.length < n){
+  shuffle(poolAll).forEach(item => {
+    if(chosen.length >= n) return;
+    if(!item || !item.id) return;
+    if(used.has(item.id)) return;
+    used.add(item.id);
+    chosen.push(item);
+  });
+}
+
+simState = {
       idx: 0,
       total: n,
       score: 0,
@@ -737,6 +824,11 @@ IT Support`;
       speed,
       answered: false
     };
+    // If we had to top up with mixed questions, show a small note (once)
+    simState._note = "";
+    if((poolMain && poolMain.length) && n > poolMain.length){
+      simState._note = `Note: “${focus}” focus has ${poolMain.length} unique questions here. We added other task types to reach ${n} without repeating the same question.`;
+    }
 
     results && (results.hidden = true);
     sim && (sim.hidden = false);
@@ -800,7 +892,23 @@ IT Support`;
     if(simCount) simCount.textContent = `Question ${simState.idx+1} / ${simState.total}`;
     if(simScore) simScore.textContent = `Score: ${simState.score}`;
 
-    // render per type
+    // Optional note (only at question 1)
+    const existing = document.getElementById("ce-sim-note");
+    if(simState._note && simState.idx === 0){
+      if(!existing){
+        const note = document.createElement("div");
+        note.id = "ce-sim-note";
+        note.className = "ce-feedback";
+        note.style.marginTop = "10px";
+        note.innerHTML = "ℹ️ " + simState._note;
+        simBody.prepend(note);
+      }else{
+        existing.innerHTML = "ℹ️ " + simState._note;
+      }
+    }else if(existing){
+      existing.remove();
+    }
+// render per type
     if(q.type === "mcq"){
       simBody.innerHTML = `
         <div class="ce-q">
