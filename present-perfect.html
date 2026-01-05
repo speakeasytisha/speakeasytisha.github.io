@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Present Perfect · Full Interactive Lesson · SpeakEasyTisha</title>
+
+  <!-- SpeakEasyTisha global styles -->
+  <link rel="stylesheet" href="/css/nav.fixed.css" />
+  <link rel="stylesheet" href="/css/speakeasy.css" />
+
+  <!-- Lesson styles (local) -->
+  <link rel="stylesheet" href="/css/present-perfect.css" />
+
+  <!-- SpeakEasyTisha global chrome (nav/footer injection) -->
+  <script src="/js/site-chrome.fixed.js" defer></script>
+
+  <!-- Lesson JS -->
+  <script src="/js/present-perfect.js" defer></script>
+</head>
+
+<body>
+  <!-- Your site chrome placeholders -->
+  <div id="site-header"></div>
+
+  <main class="mr-shell se-wrap">
+    <section class="se-lesson se-card" id="top">
+      <header class="se-hero">
+        <div class="se-hero__text">
+          <h1 class="se-title">Present Perfect (Have/Has + Past Participle)</h1>
+          <p class="se-subtitle">
+            A complete, supportive lesson with <strong>clear explanations</strong>, <strong>icons</strong>,
+            <strong>flashcards</strong>, <strong>MCQ</strong>, <strong>drag &amp; drop</strong>,
+            <strong>fill‑in‑the‑blank</strong>, and <strong>oral practice</strong> (optional microphone).
+          </p>
+          <div class="se-hero__pills">
+            <span class="se-pill">✅ gentle feedback</span>
+            <span class="se-pill">🎧 US/UK accent</span>
+            <span class="se-pill">🃏 flip flashcards</span>
+            <span class="se-pill">🧩 drag &amp; drop</span>
+          </div>
+        </div>
+
+        <div class="se-hero__controls" aria-label="Lesson controls">
+          <div class="se-control">
+            <label class="se-label" for="ppAccent">Listening accent</label>
+            <select class="se-select" id="ppAccent">
+              <option value="us">American (US)</option>
+              <option value="uk">British (UK)</option>
+            </select>
+          </div>
+
+          <div class="se-control">
+            <label class="se-label" for="ppSpeed">Voice speed</label>
+            <select class="se-select" id="ppSpeed">
+              <option value="0.85">Slow</option>
+              <option value="0.95" selected>Normal</option>
+              <option value="1.05">Fast</option>
+            </select>
+          </div>
+
+          <div class="se-control">
+            <label class="se-label" for="ppMode">Support mode</label>
+            <select class="se-select" id="ppMode">
+              <option value="gentle" selected>Gentle (hints + explanations)</option>
+              <option value="exam">Exam‑ish (less help)</option>
+            </select>
+          </div>
+
+          <div class="se-control se-control--btn">
+            <button class="se-btn se-btn--primary" id="ppResetAll" type="button" title="Reset all progress on this page">
+              🔄 Reset page
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <nav class="se-inline-nav" aria-label="Present Perfect navigation">
+        <a href="#explain">📘 Explanation</a>
+        <a href="#form">🧱 Form</a>
+        <a href="#time">🗓️ Time words</a>
+        <a href="#vocab">🧾 Vocabulary</a>
+        <a href="#flashcards">🃏 Flashcards</a>
+        <a href="#mcq">✅ MCQ</a>
+        <a href="#cloze">✍️ Fill‑in‑the‑blank</a>
+        <a href="#dragdrop">🧩 Drag &amp; Drop</a>
+        <a href="#oral">🎤 Oral practice</a>
+        <a href="#minitest">⏱️ Mini test</a>
+      </nav>
+
+      <div class="se-alert" id="ppAlert" role="alert" hidden></div>
+
+      <!-- ========= EXPLANATION ========= -->
+      <section class="se-section" id="explain">
+        <h2 class="se-h2">📘 What is the Present Perfect?</h2>
+
+        <div class="se-grid-2">
+          <div class="se-panel">
+            <h3 class="se-h3">Use it when…</h3>
+            <ul class="se-bullets">
+              <li>✅ the <strong>past connects to now</strong>: <em>I’ve sent the email.</em> (result: it’s sent now)</li>
+              <li>✅ you talk about <strong>experience</strong>: <em>She’s worked in hospitality.</em></li>
+              <li>✅ you talk about <strong>unfinished time</strong>: <em>This week</em>, <em>today</em>, <em>so far</em></li>
+              <li>✅ you use: <strong>already</strong>, <strong>yet</strong>, <strong>just</strong>, <strong>ever</strong>, <strong>never</strong></li>
+              <li>✅ you use: <strong>for</strong> (duration) / <strong>since</strong> (start time)</li>
+            </ul>
+          </div>
+
+          <div class="se-panel">
+            <h3 class="se-h3">Compare with Past Simple</h3>
+            <div class="se-compare">
+              <div class="se-compare__row">
+                <div class="se-compare__tag">Past simple</div>
+                <div><strong>Finished time</strong> (yesterday, last week, in 2022)</div>
+                <div class="se-compare__ex">I <strong>called</strong> the client <strong>yesterday</strong>.</div>
+              </div>
+              <div class="se-compare__row">
+                <div class="se-compare__tag">Present perfect</div>
+                <div><strong>Connection to now</strong> / unfinished time</div>
+                <div class="se-compare__ex">I <strong>have called</strong> the client <strong>today</strong>.</div>
+              </div>
+            </div>
+
+            <div class="se-tip">
+              <div class="se-tip__title">Confidence tip</div>
+              <p>
+                If you’re not sure, look for a <strong>finished time word</strong> (yesterday, last…, in 2019).
+                If you see one → <strong>past simple</strong>. If you don’t → present perfect is often correct.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========= FORM ========= -->
+      <section class="se-section" id="form">
+        <h2 class="se-h2">🧱 Form (affirmative · negative · questions)</h2>
+
+        <div class="se-grid-2">
+          <div class="se-panel">
+            <h3 class="se-h3">Affirmative</h3>
+            <div class="se-formula">Subject + <strong>have/has</strong> + <strong>past participle</strong></div>
+            <div class="se-examples">
+              <div>✅ I <strong>have finished</strong> the report.</div>
+              <div>✅ She <strong>has sent</strong> the invoice.</div>
+              <div class="se-mini">Contractions: I’ve, you’ve, we’ve, they’ve, he’s, she’s, it’s</div>
+            </div>
+
+            <button class="se-btn" type="button" data-tts="I have finished the report. She has sent the invoice.">🔊 Listen</button>
+          </div>
+
+          <div class="se-panel">
+            <h3 class="se-h3">Negative + Questions</h3>
+            <div class="se-examples">
+              <div>❌ I <strong>haven’t</strong> received it <strong>yet</strong>.</div>
+              <div>❓ <strong>Have</strong> you <strong>checked</strong> the schedule?</div>
+              <div>❓ <strong>Has</strong> she <strong>called</strong> you <strong>today</strong>?</div>
+              <div class="se-mini">Short answers: Yes, I have. / No, I haven’t. / Yes, she has. / No, she hasn’t.</div>
+            </div>
+
+            <button class="se-btn" type="button" data-tts="I haven't received it yet. Have you checked the schedule? Has she called you today?">🔊 Listen</button>
+          </div>
+        </div>
+
+        <div class="se-panel se-panel--wide">
+          <h3 class="se-h3">Past participles (quick rules)</h3>
+          <div class="se-grid-3">
+            <div class="se-chip">
+              <div class="se-chip__icon">🧩</div>
+              <div>
+                <strong>Regular</strong><br>
+                usually <strong>-ed</strong>: work → worked, finish → finished
+              </div>
+            </div>
+            <div class="se-chip">
+              <div class="se-chip__icon">⚠️</div>
+              <div>
+                <strong>Irregular</strong><br>
+                learn the list: go → gone, do → done, write → written
+              </div>
+            </div>
+            <div class="se-chip">
+              <div class="se-chip__icon">🗣️</div>
+              <div>
+                <strong>Pronunciation</strong><br>
+                “I’ve” = /aɪv/ · “He’s” can mean “he is” or “he has”
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========= TIME WORDS ========= -->
+      <section class="se-section" id="time">
+        <h2 class="se-h2">🗓️ Time words you’ll see a lot</h2>
+
+        <div class="se-grid-3" id="ppTimeCards"></div>
+
+        <div class="se-panel se-panel--wide">
+          <h3 class="se-h3">For vs Since</h3>
+          <div class="se-compare">
+            <div class="se-compare__row">
+              <div class="se-compare__tag">for</div>
+              <div><strong>duration</strong> (how long)</div>
+              <div class="se-compare__ex">I’ve worked here <strong>for</strong> 2 years.</div>
+            </div>
+            <div class="se-compare__row">
+              <div class="se-compare__tag">since</div>
+              <div><strong>start time</strong> (from when)</div>
+              <div class="se-compare__ex">I’ve worked here <strong>since</strong> 2023.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========= VOCAB ========= -->
+      <section class="se-section" id="vocab">
+        <h2 class="se-h2">🧾 Vocabulary you need for Present Perfect</h2>
+        <p class="se-lead">
+          These are high-frequency words for professional English (CLOE-friendly). Every item has an icon and can be listened to.
+        </p>
+
+        <div class="se-toolbar se-toolbar--tight">
+          <div class="se-toolbar__left">
+            <label class="se-label" for="ppVocabTopic">Topic</label>
+            <select class="se-select" id="ppVocabTopic">
+              <option value="core" selected>Core verbs (most useful)</option>
+              <option value="email">Email & meetings</option>
+              <option value="hospitality">Hospitality</option>
+              <option value="it">IT / Helpdesk</option>
+              <option value="logistics">Logistics</option>
+            </select>
+          </div>
+          <div class="se-toolbar__right">
+            <button class="se-btn se-btn--primary" type="button" id="ppStartVocabFlash">🃏 Flashcards (this topic)</button>
+          </div>
+        </div>
+
+        <div class="se-grid" id="ppVocabGrid"></div>
+      </section>
+
+      <!-- ========= FLASHCARDS ========= -->
+      <section class="se-section" id="flashcards">
+        <h2 class="se-h2">🃏 Flashcards (flip + listen)</h2>
+
+        <div class="se-grid-2">
+          <div class="se-panel">
+            <h3 class="se-h3">Decks</h3>
+            <div class="se-actions">
+              <button class="se-btn" type="button" data-deck="irregulars">🧠 Irregular participles</button>
+              <button class="se-btn" type="button" data-deck="time">🗓️ Time expressions</button>
+              <button class="se-btn" type="button" data-deck="core">🧾 Core verbs</button>
+            </div>
+            <p class="se-mini">Tip: do 10 cards a day. Small wins = big progress.</p>
+          </div>
+
+          <div class="se-panel">
+            <h3 class="se-h3">Flashcard player</h3>
+            <div id="ppFlashMount"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========= MCQ ========= -->
+      <section class="se-section" id="mcq">
+        <h2 class="se-h2">✅ Multiple choice (choose the best option)</h2>
+
+        <div class="se-toolbar se-toolbar--tight">
+          <div class="se-toolbar__left">
+            <label class="se-label" for="ppMcqSet">Choose a set</label>
+            <select class="se-select" id="ppMcqSet">
+              <option value="tense" selected>Present perfect vs past simple</option>
+              <option value="participles">Past participles</option>
+              <option value="timewords">Time words (already / yet / since / for…)</option>
+              <option value="work">Workplace situations (CLOE-style)</option>
+            </select>
+          </div>
+          <div class="se-toolbar__right">
+            <button class="se-btn se-btn--primary" id="ppStartMcq" type="button">Start MCQ set</button>
+            <button class="se-btn" id="ppResetMcq" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div id="ppMcqMount"></div>
+      </section>
+
+      <!-- ========= CLOZE ========= -->
+      <section class="se-section" id="cloze">
+        <h2 class="se-h2">✍️ Fill‑in‑the‑blank (type the answer)</h2>
+
+        <div class="se-toolbar se-toolbar--tight">
+          <div class="se-toolbar__left">
+            <label class="se-label" for="ppClozeSet">Choose a set</label>
+            <select class="se-select" id="ppClozeSet">
+              <option value="havehas" selected>Have/has + participle</option>
+              <option value="sincefor">Since / for</option>
+              <option value="yetalready">Already / yet / just</option>
+            </select>
+          </div>
+          <div class="se-toolbar__right">
+            <button class="se-btn se-btn--primary" id="ppStartCloze" type="button">Start cloze set</button>
+            <button class="se-btn" id="ppResetCloze" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div id="ppClozeMount"></div>
+      </section>
+
+      <!-- ========= DRAG & DROP ========= -->
+      <section class="se-section" id="dragdrop">
+        <h2 class="se-h2">🧩 Drag &amp; Drop</h2>
+
+        <div class="se-grid-2">
+          <div class="se-panel">
+            <h3 class="se-h3">1) Match infinitive → past participle</h3>
+            <p class="se-mini">Drag the verb onto the correct participle. Then check.</p>
+            <div id="ppMatchMount"></div>
+          </div>
+
+          <div class="se-panel">
+            <h3 class="se-h3">2) Build a present perfect sentence</h3>
+            <p class="se-mini">Drag words into the box in the correct order.</p>
+            <div id="ppBuildMount"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========= ORAL ========= -->
+      <section class="se-section" id="oral">
+        <h2 class="se-h2">🎤 Oral practice (optional microphone)</h2>
+
+        <div class="se-grid-2">
+          <div class="se-panel">
+            <h3 class="se-h3">Repeat &amp; compare (pronunciation)</h3>
+            <p class="se-mini">
+              Click <strong>Listen</strong>, then click <strong>Speak</strong> and repeat. If your browser supports speech recognition,
+              you’ll see a transcript. If not, you can still practice by speaking out loud.
+            </p>
+
+            <div class="se-actions">
+              <button class="se-btn se-btn--primary" id="ppOralStart" type="button">Start oral practice</button>
+              <button class="se-btn" id="ppOralReset" type="button">Reset</button>
+            </div>
+
+            <div id="ppOralMount"></div>
+
+            <details class="se-details">
+              <summary>💡 If your microphone is blocked</summary>
+              <div class="se-tip">
+                <div class="se-tip__title">Quick fix</div>
+                <p>
+                  In Chrome: click the 🔒 icon in the address bar → allow microphone → refresh the page.
+                  If you prefer not to use a microphone, you can still do the oral tasks by repeating out loud.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="se-panel">
+            <h3 class="se-h3">Speak answers (CLOE-style)</h3>
+            <p class="se-mini">These prompts are realistic. Speak for 10–20 seconds. We’ll show helpful language.</p>
+            <div id="ppPromptMount"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========= MINI TEST ========= -->
+      <section class="se-section" id="minitest">
+        <h2 class="se-h2">⏱️ Mini test (realistic mix)</h2>
+
+        <div class="se-toolbar se-toolbar--tight">
+          <div class="se-toolbar__left">
+            <label class="se-label" for="ppMiniLen">Length</label>
+            <select class="se-select" id="ppMiniLen">
+              <option value="8">8 questions (quick)</option>
+              <option value="12" selected>12 questions (standard)</option>
+              <option value="20">20 questions (challenge)</option>
+            </select>
+          </div>
+          <div class="se-toolbar__right">
+            <button class="se-btn se-btn--primary" id="ppStartMini" type="button">Start mini test</button>
+            <button class="se-btn" id="ppResetMini" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div id="ppMiniMount"></div>
+      </section>
+
+      <footer class="se-footer">
+        <a class="se-back" href="/index.html#top">← Back to SpeakEasyTisha</a>
+        <span class="se-mini">Made for SpeakEasyTisha · Present Perfect</span>
+      </footer>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
