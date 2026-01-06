@@ -9,7 +9,7 @@
   <!-- <link rel="stylesheet" href="./css/speakeasy.css"> -->
 
   <!-- This lesson CSS -->
-  <link rel="stylesheet" href="./css/vtest-prep-lesson.css" />
+  <link rel="stylesheet" href="/css/vtest-prep-lesson.css" />
 </head>
 <body>
 
@@ -33,7 +33,7 @@
 
           <div class="vt-hero-tools">
             <div class="vt-pill">⏱️ Timed practice</div>
-            <div class="vt-pill">🎧 Listening (US accent)</div>
+            <div class="vt-pill">🎧 Listening (US/UK accents)</div>
             <div class="vt-pill">🧩 Drag & drop</div>
             <div class="vt-pill">✉️ Email writing</div>
           </div>
@@ -43,7 +43,15 @@
             <input id="vt-student-name" type="text" placeholder="Type a name (e.g., Alex)"/>
             <button class="vt-btn vt-btn-secondary" id="vt-apply-name" type="button">Apply</button>
             <small class="vt-muted">Tip: leave blank to keep the lesson generic.</small>
+          
+          <div class="vt-voice-picker" aria-label="Accent choice for listening">
+            <span class="vt-muted"><strong>Accent for listening:</strong></span>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-voice-us" aria-pressed="true">🇺🇸 American</button>
+            <button class="vt-btn vt-btn-secondary" type="button" id="vt-voice-uk" aria-pressed="false">🇬🇧 British</button>
+            <span class="vt-voice-status vt-muted" id="vt-voice-status">Current: American</span>
           </div>
+
+</div>
 
           <div class="vt-hero-cta">
             <a class="vt-btn vt-btn-primary" href="#vt-test-overview">Start the lesson</a>
@@ -64,7 +72,7 @@
           </ul>
           <div class="vt-hero-card-note">
             <strong>Audio note:</strong> Listening uses your browser’s speech engine (Web Speech API). If audio is blocked on your device, you can still do the questions by reading the transcript.
-            If your computer has multiple voices, choose a <em>US</em> voice automatically.
+            If your computer has multiple voices, use the accent buttons (🇺🇸/🇬🇧) to switch voices. If your device has limited voices installed, it will fall back to the closest English voice.
           </div>
         </div>
       </div>
@@ -289,9 +297,9 @@
           </div>
           <div class="vt-audio-controls">
             <button class="vt-btn vt-btn-primary vt-say" type="button"
-                    data-voice="us"
+                    data-voice="auto"
                     data-text="Hi, this is Jordan from Operations. Unfortunately, I need to reschedule our meeting. Could we move it to Thursday at 3 p.m.? I’ll send an updated calendar invite right away. Thanks.">
-              ▶ Play (US voice)
+              ▶ Play
             </button>
             <button class="vt-btn vt-btn-secondary" type="button" id="vt-stop-tts">⏹ Stop</button>
           </div>
@@ -316,9 +324,9 @@
           </div>
           <div class="vt-audio-controls">
             <button class="vt-btn vt-btn-primary vt-say" type="button"
-                    data-voice="us"
+                    data-voice="auto"
                     data-text="Good afternoon. I’m calling about the delivery scheduled for today. The truck is delayed due to severe weather. The earliest we can deliver is tomorrow morning between nine and eleven. Would that work for you?">
-              ▶ Play (US voice)
+              ▶ Play
             </button>
             <button class="vt-btn vt-btn-secondary vt-timer" type="button" data-seconds="20">⏱️ 20s timer</button>
           </div>
@@ -452,10 +460,10 @@
           <div class="vt-form-row">
             <div>
               <label for="vt-scn">Scenario</label>
-              <select id="vt-scn" name="scenario">
-                <option value="meeting">Rescheduling a meeting</option>
-                <option value="issue">Reporting an issue</option>
-                <option value="client">Updating a client</option>
+              <select class="vt-drop" id="vt-scn" name="scenario">
+                <option class="vt-drop" value="meeting">Rescheduling a meeting</option>
+                <option class="vt-drop" value="issue">Reporting an issue</option>
+                <option class="vt-drop" value="client">Updating a client</option>
               </select>
             </div>
 
@@ -499,9 +507,9 @@
                   placeholder="Your dialogue will appear here…"></textarea>
 
         <div class="vt-actions">
-          <button class="vt-btn vt-btn-ghost vt-say" type="button" data-voice="us" id="vt-dialogue-play"
+          <button class="vt-btn vt-btn-ghost vt-say" type="button" data-voice="auto" id="vt-dialogue-play"
                   data-text="">
-            ▶ Listen (US voice)
+            ▶ Listen
           </button>
           <button class="vt-btn vt-btn-secondary" type="button" id="vt-dialogue-copy">Copy</button>
         </div>
@@ -647,7 +655,7 @@
   <div id="site-footer" data-include="footer.html"></div>
 
   <!-- Lesson JS -->
-  <script src="./js/vtest-prep-lesson.js" defer></script>
+  <script src="/js/vtest-prep-lesson.js" defer></script>
 
   <!-- OPTIONAL: include loader for header/footer if you want shared files -->
   <script>
