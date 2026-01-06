@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>New Year Interactive Lesson · SpeakEasyTisha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Your site CSS (keep your current path/name) -->
+  <link rel="stylesheet" href="css/speakeasy.css" />
+
+  <!-- Lesson CSS -->
+  <link rel="stylesheet" href="/css/new-year.css" />
+</head>
+
+<body>
+
+  <!-- HEADER + NAV (keep/adjust your links as needed) -->
+  <header class="site-header">
+    <nav class="main-nav">
+      <div class="nav-inner">
+        <a href="index.html#top" class="nav-logo">
+          <span class="logo-script">SpeakEasy</span><span class="logo-sans">Tisha</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="lessons.html">Lessons</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="ny-page">
+
+    <!-- HERO -->
+    <section class="ny-hero">
+      <div class="ny-hero-inner">
+        <div class="ny-hero-text">
+          <h1>🎉 New Year: Resolutions, Wishes, Hopes & Dreams</h1>
+          <p class="ny-sub">
+            Vocabulary + key tenses + message writing — then create and “send” your New Year card.
+            All activities keep score and show right/wrong instantly.
+          </p>
+
+          <!-- Voice controls -->
+          <div class="ny-voicebar ny-card">
+            <div class="ny-voicebar-left">
+              <div class="ny-voice-title">🎧 Listening accent</div>
+              <div class="ny-voice-sub">Choose before using “Listen” buttons:</div>
+            </div>
+            <div class="ny-voicebar-right">
+              <button class="ny-btn ny-btn-ghost ny-voicebtn is-active" id="voiceUS" type="button">🇺🇸 American</button>
+              <button class="ny-btn ny-btn-ghost ny-voicebtn" id="voiceUK" type="button">🇬🇧 British</button>
+            </div>
+          </div>
+
+          <div class="ny-personalize">
+            <div class="ny-field">
+              <label for="studentName">Your name</label>
+              <input id="studentName" type="text" placeholder="e.g., Tisha" />
+            </div>
+
+            <div class="ny-field">
+              <label for="studentPronouns">Pronouns</label>
+              <select id="studentPronouns">
+                <option value="she">she / her</option>
+                <option value="he">he / him</option>
+                <option value="they">they / them</option>
+              </select>
+            </div>
+
+            <button class="ny-btn ny-btn-primary" id="applyPersonalization" type="button">Apply</button>
+          </div>
+
+          <div class="ny-scorebar" aria-live="polite">
+            <div class="ny-score">
+              <span class="ny-score-label">Lesson score</span>
+              <span class="ny-score-value"><strong id="totalScore">0</strong> pts</span>
+            </div>
+            <div class="ny-score">
+              <span class="ny-score-label">Accuracy</span>
+              <span class="ny-score-value"><strong id="accuracyPct">0%</strong></span>
+            </div>
+
+            <div class="ny-score">
+              <span class="ny-score-label">Time plan</span>
+              <span class="ny-score-value"><strong>~60 min</strong></span>
+            </div>
+
+            <button class="ny-btn ny-btn-ghost" id="reviewWrongBtn" type="button">Review mistakes</button>
+          </div>
+
+          <div class="ny-mini-note">
+            <strong>60-minute flow idea:</strong>
+            <span class="ny-chip">10 min vocab</span>
+            <span class="ny-chip">10 min grammar</span>
+            <span class="ny-chip">25 min exercises</span>
+            <span class="ny-chip">15 min message writing + sending</span>
+          </div>
+        </div>
+
+        <div class="ny-hero-card ny-card">
+          <h2 class="ny-h2">You will be able to…</h2>
+          <ul class="ny-list">
+            <li>✅ talk about last year (Past Simple)</li>
+            <li>✅ talk about experience (Present Perfect)</li>
+            <li>✅ talk about plans & goals (going to / plan to / intend to)</li>
+            <li>✅ talk about arrangements (Present Continuous)</li>
+            <li>✅ make predictions (will)</li>
+            <li>✅ express hopes & dreams (hope / wish / dream / would love to)</li>
+            <li>✅ write + send New Year wishes (cards, texts, emails)</li>
+          </ul>
+
+          <div class="ny-mini-note">
+            Translation used sparingly:
+            <span class="ny-chip">Wishing you…</span> = <em>Je te/vous souhaite…</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VOCAB -->
+    <section class="ny-section ny-card" id="vocab">
+      <div class="ny-section-head">
+        <h2 class="ny-h2">🧠 Vocabulary Flashcards (flip + listen)</h2>
+        <div class="ny-actions">
+          <button class="ny-btn" id="shuffleCards" type="button">Shuffle</button>
+          <button class="ny-btn ny-btn-ghost" id="resetVocab" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="ny-tabs" role="tablist" aria-label="Vocabulary categories">
+        <button class="ny-tab is-active" data-vtab="celebration" role="tab" type="button">🎆 Celebration</button>
+        <button class="ny-tab" data-vtab="resolutions" role="tab" type="button">🗓️ Resolutions</button>
+        <button class="ny-tab" data-vtab="wishes" role="tab" type="button">💌 Wishes</button>
+        <button class="ny-tab" data-vtab="hopesdreams" role="tab" type="button">🌟 Hopes & Dreams</button>
+        <button class="ny-tab" data-vtab="stationery" role="tab" type="button">✉️ Cards & Notes</button>
+      </div>
+
+      <div class="ny-vocab-wrap" id="vocabGrid"></div>
+
+      <div class="ny-footnote">
+        <strong>Tip:</strong> use the <span class="ny-chip">Listen</span> buttons to repeat the vocabulary in US or UK English.
+      </div>
+    </section>
+
+    <!-- GRAMMAR -->
+    <section class="ny-section ny-card" id="grammar">
+      <div class="ny-section-head">
+        <h2 class="ny-h2">📚 Grammar: Tenses + Hopes & Dreams</h2>
+        <div class="ny-actions">
+          <button class="ny-btn ny-btn-ghost" id="toggleGrammarCheatsheet" type="button">Show mini cheatsheet</button>
+          <button class="ny-btn ny-btn-ghost" id="listenGrammarUS" type="button">Listen (US)</button>
+          <button class="ny-btn ny-btn-ghost" id="listenGrammarUK" type="button">Listen (UK)</button>
+        </div>
+      </div>
+
+      <div class="ny-cheatsheet" id="grammarCheatsheet" hidden>
+        <div class="ny-grid2">
+          <div class="ny-mini">
+            <h3 class="ny-h3">Past Simple</h3>
+            <p><strong>Finished time:</strong> <em>last year, in 2025</em></p>
+            <p class="ny-ex">“Last year, I <strong>traveled</strong>.”</p>
+          </div>
+          <div class="ny-mini">
+            <h3 class="ny-h3">Present Perfect</h3>
+            <p><strong>Experience / result:</strong> <em>ever, never, already, yet</em></p>
+            <p class="ny-ex">“I’ve <strong>never tried</strong> skating.”</p>
+          </div>
+          <div class="ny-mini">
+            <h3 class="ny-h3">Going to / Plan to</h3>
+            <p><strong>Intention:</strong> a real plan</p>
+            <p class="ny-ex">“I’m <strong>going to</strong> study.”</p>
+          </div>
+          <div class="ny-mini">
+            <h3 class="ny-h3">Present Continuous</h3>
+            <p><strong>Arrangement:</strong> scheduled plan</p>
+            <p class="ny-ex">“I’m <strong>meeting</strong> friends on Saturday.”</p>
+          </div>
+          <div class="ny-mini">
+            <h3 class="ny-h3">Will</h3>
+            <p><strong>Prediction / instant decision</strong></p>
+            <p class="ny-ex">“I think it <strong>will be</strong> great.”</p>
+          </div>
+          <div class="ny-mini">
+            <h3 class="ny-h3">Hopes & Dreams</h3>
+            <p><strong>I hope (that)…</strong> + present/future</p>
+            <p class="ny-ex">“I hope you <strong>have</strong> a great year.”</p>
+            <p><strong>I wish…</strong> (more “dreamy/imagined”)</p>
+            <p class="ny-ex">“I wish I <strong>could</strong> travel more.”</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ny-grammar-cards ny-grid2" id="grammarCards"></div>
+
+      <div class="ny-divider"></div>
+
+      <div class="ny-note">
+        <strong>Useful frames:</strong><br/>
+        <span class="ny-chip">I hope you…</span>
+        <span class="ny-chip">I hope this year brings…</span>
+        <span class="ny-chip">My dream is to…</span>
+        <span class="ny-chip">I’d love to…</span>
+        <span class="ny-chip">I wish I could…</span>
+        <span class="ny-chip">I’m determined to…</span>
+      </div>
+    </section>
+
+    <!-- EXERCISES -->
+    <section class="ny-section ny-card" id="exercises">
+      <div class="ny-section-head">
+        <h2 class="ny-h2">✅ Interactive Exercises (instant right/wrong + score)</h2>
+        <div class="ny-actions">
+          <button class="ny-btn ny-btn-ghost" id="resetAllExercises" type="button">Reset all exercises</button>
+        </div>
+      </div>
+
+      <!-- 1) QCM -->
+      <div class="ny-exblock">
+        <div class="ny-exhead">
+          <h3 class="ny-h3">1) QCM — Choose the best option (instant feedback)</h3>
+          <div class="ny-exmeta">
+            <span class="ny-chip">2 pts first try</span>
+            <span class="ny-chip">1 pt after mistakes</span>
+          </div>
+        </div>
+        <div id="qcmMount"></div>
+        <div class="ny-exbuttons">
+          <button class="ny-btn ny-btn-ghost" id="resetQcm" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="ny-divider"></div>
+
+      <!-- 2) Fill blanks -->
+      <div class="ny-exblock">
+        <div class="ny-exhead">
+          <h3 class="ny-h3">2) Fill in the blanks — Tenses (instant feedback)</h3>
+          <div class="ny-exmeta">
+            <span class="ny-chip">2 pts first try</span>
+            <span class="ny-chip">1 pt after mistakes</span>
+          </div>
+        </div>
+
+        <div id="fibMount" class="ny-fib"></div>
+
+        <div class="ny-exbuttons">
+          <button class="ny-btn ny-btn-ghost" id="resetFib" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="ny-divider"></div>
+
+      <!-- 3) Drag & Drop -->
+      <div class="ny-exblock">
+        <div class="ny-exhead">
+          <h3 class="ny-h3">3) Drag & Drop — Sort the phrases</h3>
+          <div class="ny-exmeta">
+            <span class="ny-chip">+1 pt per correct chip</span>
+            <span class="ny-chip">Check anytime</span>
+          </div>
+        </div>
+
+        <div class="ny-dnd">
+          <div class="ny-dnd-bank">
+            <h4 class="ny-h4">Phrase bank</h4>
+            <div id="dndBank" class="ny-dnd-items"></div>
+            <div class="ny-dnd-tip">Drag the chips into the correct box.</div>
+          </div>
+
+          <div class="ny-dnd-zones">
+            <div class="ny-dropzone" data-zone="experience">
+              <h4 class="ny-h4">🌍 Experience (Present Perfect)</h4>
+              <div class="ny-droparea"></div>
+            </div>
+            <div class="ny-dropzone" data-zone="plan">
+              <h4 class="ny-h4">🧭 Plan / Intention (going to / plan to)</h4>
+              <div class="ny-droparea"></div>
+            </div>
+            <div class="ny-dropzone" data-zone="arrangement">
+              <h4 class="ny-h4">📅 Arrangement (Present Continuous)</h4>
+              <div class="ny-droparea"></div>
+            </div>
+            <div class="ny-dropzone" data-zone="prediction">
+              <h4 class="ny-h4">🔮 Prediction (will)</h4>
+              <div class="ny-droparea"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ny-exbuttons">
+          <button class="ny-btn" id="checkDnd" type="button">Check</button>
+          <button class="ny-btn ny-btn-ghost" id="resetDnd" type="button">Reset</button>
+        </div>
+        <p class="ny-feedback" id="dndFeedback" aria-live="polite"></p>
+      </div>
+
+      <div class="ny-divider"></div>
+
+      <!-- 4) Sentence Builder -->
+      <div class="ny-exblock">
+        <div class="ny-exhead">
+          <h3 class="ny-h3">4) Sentence Builder — Build a correct sentence</h3>
+          <div class="ny-exmeta">
+            <span class="ny-chip">3 pts first try</span>
+            <span class="ny-chip">2 pts after mistakes</span>
+          </div>
+        </div>
+
+        <div id="builderMount"></div>
+
+        <div class="ny-exbuttons">
+          <button class="ny-btn" id="checkBuilder" type="button">Check</button>
+          <button class="ny-btn ny-btn-ghost" id="resetBuilder" type="button">Reset</button>
+        </div>
+        <p class="ny-feedback" id="builderFeedback" aria-live="polite"></p>
+      </div>
+
+      <div class="ny-divider"></div>
+
+      <!-- 5) Hopes & Dreams: Wish Builder -->
+      <div class="ny-exblock">
+        <div class="ny-exhead">
+          <h3 class="ny-h3">5) Wish Builder — Build a perfect New Year wish</h3>
+          <div class="ny-exmeta">
+            <span class="ny-chip">Pick parts</span>
+            <span class="ny-chip">Instant check</span>
+            <span class="ny-chip">+ points</span>
+          </div>
+        </div>
+
+        <div class="ny-grid2">
+          <div class="ny-mini">
+            <h4 class="ny-h4">Build your wish</h4>
+
+            <div class="ny-field">
+              <label for="wishStarter">Starter</label>
+              <select id="wishStarter"></select>
+            </div>
+
+            <div class="ny-field">
+              <label for="wishTopic">Topic</label>
+              <select id="wishTopic"></select>
+            </div>
+
+            <div class="ny-field">
+              <label for="wishExtra">Extra (optional)</label>
+              <select id="wishExtra"></select>
+            </div>
+
+            <div class="ny-exbuttons">
+              <button class="ny-btn" id="checkWishBuilder" type="button">Check</button>
+              <button class="ny-btn ny-btn-ghost" id="resetWishBuilder" type="button">Reset</button>
+              <button class="ny-btn ny-btn-ghost" id="listenWish" type="button">Listen</button>
+            </div>
+
+            <p class="ny-feedback" id="wishFeedback" aria-live="polite"></p>
+          </div>
+
+          <div class="ny-mini">
+            <h4 class="ny-h4">Your wish</h4>
+            <div class="ny-preview-paper" id="wishOutput">Choose options to generate a wish.</div>
+
+            <div class="ny-mini-note">
+              <strong>Tip:</strong> “I hope you…” is very natural.
+              “May…” is more formal and elegant.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ny-divider"></div>
+
+      <!-- 6) Card structure drag/drop -->
+      <div class="ny-exblock">
+        <div class="ny-exhead">
+          <h3 class="ny-h3">6) Drag & Drop — Build the structure of a New Year message</h3>
+          <div class="ny-exmeta">
+            <span class="ny-chip">Greeting</span>
+            <span class="ny-chip">Wish</span>
+            <span class="ny-chip">Closing</span>
+            <span class="ny-chip">+1 pt each</span>
+          </div>
+        </div>
+
+        <div class="ny-structure">
+          <div class="ny-structure-bank">
+            <h4 class="ny-h4">Bank</h4>
+            <div id="structBank" class="ny-dnd-items"></div>
+            <div class="ny-dnd-tip">Drag each chip to the correct section.</div>
+          </div>
+
+          <div class="ny-structure-zones">
+            <div class="ny-dropzone ny-structzone" data-zone="greeting">
+              <h4 class="ny-h4">👋 Greeting</h4>
+              <div class="ny-droparea"></div>
+            </div>
+            <div class="ny-dropzone ny-structzone" data-zone="wish">
+              <h4 class="ny-h4">💌 Wish / Message</h4>
+              <div class="ny-droparea"></div>
+            </div>
+            <div class="ny-dropzone ny-structzone" data-zone="closing">
+              <h4 class="ny-h4">✍️ Closing / Signature</h4>
+              <div class="ny-droparea"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ny-exbuttons">
+          <button class="ny-btn" id="checkStruct" type="button">Check</button>
+          <button class="ny-btn ny-btn-ghost" id="resetStruct" type="button">Reset</button>
+        </div>
+        <p class="ny-feedback" id="structFeedback" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- CARDS / SENDING -->
+    <section class="ny-section ny-card" id="cards">
+      <div class="ny-section-head">
+        <h2 class="ny-h2">💌 Create + Send Your New Year Message</h2>
+        <div class="ny-actions">
+          <button class="ny-btn ny-btn-ghost" id="resetCard" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="ny-grid2">
+        <div class="ny-card-maker">
+          <h3 class="ny-h3">Message builder</h3>
+
+          <div class="ny-field">
+            <label for="recipientName">Recipient name</label>
+            <input id="recipientName" type="text" placeholder="e.g., Greg & Susan" />
+          </div>
+
+          <div class="ny-field">
+            <label for="relationship">Relationship</label>
+            <select id="relationship">
+              <option value="friend">Friend</option>
+              <option value="family">Family</option>
+              <option value="colleague">Colleague</option>
+              <option value="teacher">Teacher / Formal</option>
+            </select>
+          </div>
+
+          <div class="ny-field">
+            <label for="tone">Tone</label>
+            <select id="tone">
+              <option value="warm">Warm & friendly</option>
+              <option value="simple">Simple & short</option>
+              <option value="formal">Formal & elegant</option>
+              <option value="funny">Light & playful</option>
+            </select>
+          </div>
+
+          <div class="ny-field">
+            <label for="cardTopic">Theme</label>
+            <select id="cardTopic">
+              <option value="health">Health</option>
+              <option value="success">Success</option>
+              <option value="peace">Peace</option>
+              <option value="love">Love</option>
+              <option value="gratitude">Gratitude</option>
+              <option value="newbeginnings">New beginnings</option>
+              <option value="dreams">Hopes & dreams</option>
+            </select>
+          </div>
+
+          <div class="ny-field">
+            <label>
+              <input type="checkbox" id="includeResolution" />
+              Include a resolution / goal
+            </label>
+          </div>
+
+          <div class="ny-field">
+            <label for="templateQuick">Quick templates (insert)</label>
+            <select id="templateQuick"></select>
+          </div>
+
+          <div class="ny-exbuttons">
+            <button class="ny-btn ny-btn-primary" id="generateCard" type="button">Generate message</button>
+            <button class="ny-btn ny-btn-ghost" id="insertTemplate" type="button">Insert template</button>
+          </div>
+
+          <div class="ny-mini-note">
+            One-time translation:
+            <strong>Wishing you…</strong> = <em>Je te/vous souhaite…</em>
+          </div>
+
+          <div class="ny-mini">
+            <h4 class="ny-h4">✅ Message checklist (earns points)</h4>
+            <ul class="ny-list">
+              <li>Greeting (Hi / Dear…)</li>
+              <li>At least 1 wish (health / joy / peace…)</li>
+              <li>Optional: hope/dream sentence</li>
+              <li>Closing + your name</li>
+            </ul>
+            <button class="ny-btn" id="scoreMyMessage" type="button">Score my message</button>
+            <p class="ny-feedback" id="messageScoreFeedback" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="ny-card-preview">
+          <div class="ny-preview-top">
+            <h3 class="ny-h3">Preview</h3>
+            <div class="ny-actions">
+              <button class="ny-btn" id="copyCard" type="button">Copy</button>
+              <button class="ny-btn ny-btn-ghost" id="downloadCard" type="button">Download .txt</button>
+              <a class="ny-btn ny-btn-primary" id="emailCard" href="#" role="button">Send email</a>
+            </div>
+          </div>
+
+          <div class="ny-preview-top" style="margin-top:.5rem;">
+            <div class="ny-actions">
+              <button class="ny-btn ny-btn-ghost" id="listenCardUS" type="button">Listen (US)</button>
+              <button class="ny-btn ny-btn-ghost" id="listenCardUK" type="button">Listen (UK)</button>
+              <button class="ny-btn ny-btn-ghost" id="stopCardAudio" type="button">Stop</button>
+            </div>
+          </div>
+
+          <textarea class="ny-textarea" id="cardOutput" aria-label="Your message editor">Your message will appear here.</textarea>
+
+          <div class="ny-mini-note">
+            You can edit the message directly in the box above before copying/sending.
+          </div>
+        </div>
+      </div>
+
+      <div class="ny-divider"></div>
+
+      <div class="ny-note">
+        <strong>Extra wish ideas (use 1–2):</strong><br/>
+        <span class="ny-chip">Wishing you peace of mind.</span>
+        <span class="ny-chip">Wishing you confidence and clarity.</span>
+        <span class="ny-chip">May your dreams come true.</span>
+        <span class="ny-chip">I hope you feel proud of yourself this year.</span>
+        <span class="ny-chip">Here’s to a fresh start.</span>
+        <span class="ny-chip">May you find time for what matters most.</span>
+      </div>
+    </section>
+
+    <footer class="ny-footer">
+      <div class="ny-footer-inner">
+        <p>© SpeakEasyTisha · New Year Interactive Lesson</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Wrong answers modal -->
+  <div class="ny-modal" id="wrongModal" aria-hidden="true">
+    <div class="ny-modal-overlay" data-close="true"></div>
+    <div class="ny-modal-card" role="dialog" aria-modal="true" aria-labelledby="wrongTitle">
+      <div class="ny-modal-head">
+        <h3 class="ny-h3" id="wrongTitle">Review your mistakes</h3>
+        <button class="ny-btn ny-btn-ghost" id="closeWrongModal" type="button" aria-label="Close">✕</button>
+      </div>
+      <div class="ny-modal-body" id="wrongList"></div>
+      <div class="ny-modal-foot">
+        <button class="ny-btn ny-btn-primary" id="clearWrong" type="button">Clear list</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPORTANT: lesson JS must be in the same folder as this HTML -->
+  <script src="/js/new-year.js"></script>
+</body>
+</html>
