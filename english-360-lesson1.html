@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>English 360° – Lesson 1 (Skills Booster) · SpeakEasyTisha</title>
+  <meta name="description" content="English 360° – Lesson 1 : entraînement interactif complet (listening, reading, grammar, speaking, writing) avec score, feedback, chronomètres, et production."/>
+  <link rel="stylesheet" href="/css/speakeasy.css"/>
+  
+  <link rel="stylesheet" href="/css/english-360-lesson1.css" />
+  <script defer src="/js/english-360-lesson1.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <div class="brand-title">ENGLISH 360°</div>
+        <div class="brand-sub">Lesson 1 · Skills Booster (45–60 min)</div>
+      </div>
+
+      <div class="top-actions">
+        <div class="field compact">
+          <label for="studentName">Nom (optionnel)</label>
+          <input id="studentName" type="text" placeholder="Ex: Victorine" autocomplete="name"/>
+        </div>
+
+        <button class="btn" id="saveName" type="button">Enregistrer</button>
+        <button class="btn btn-ghost" id="resetAll" type="button">Reset tout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card intro">
+      <div class="intro-left">
+        <h1>English 360° — Entraînement “format examen”</h1>
+        <p class="muted">
+          Objectif : poursuivre après la page de préparation et automatiser les bons réflexes (vitesse, structure, précision).
+          Cette leçon suit les <strong>5 compétences</strong> (Listening, Reading, Grammar, Speaking, Writing) avec chronomètres, score, feedback instantané, et productions.
+        </p>
+
+        <div class="pill-row">
+          <span class="pill">⏱️ 45–60 min</span>
+          <span class="pill">💼 orientation pro</span>
+          <span class="pill">✅ score + corrections</span>
+          <span class="pill">🎧 Listening TTS</span>
+          <span class="pill">🎙️ Speaking (record)</span>
+        </div>
+      </div>
+
+      <div class="intro-right">
+        <div class="mini">
+          <div class="mini-title">Progression</div>
+          <div class="progress">
+            <div class="progress-bar" id="progressBar" style="width:0%"></div>
+          </div>
+          <div class="progress-meta">
+            <span id="progressPct">0%</span>
+            <span class="muted">·</span>
+            <span><strong id="globalScore">0</strong> pts</span>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="mini-title">🎧 Accent (TTS)</div>
+          <div class="btn-row">
+            <button class="btn btn-ghost is-active" id="voiceUS" type="button">🇺🇸 US</button>
+            <button class="btn btn-ghost" id="voiceUK" type="button">🇬🇧 UK</button>
+            <button class="btn btn-ghost" id="stopAudio" type="button">⏹ Stop</button>
+          </div>
+          <p class="muted tiny">Les audios “Listening” sont simulés via la voix du navigateur (TTS), comme sur ta page de préparation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Plan (pour tenir 1 heure)</h2>
+      <div class="grid2">
+        <div class="checklist">
+          <label class="check"><input type="checkbox" data-plan /> 8–10 min — Vocabulaire pro (flashcards + quiz)</label>
+          <label class="check"><input type="checkbox" data-plan /> 10–12 min — Listening (2 audios + QCM)</label>
+          <label class="check"><input type="checkbox" data-plan /> 10–12 min — Reading (email + post + drag&drop)</label>
+          <label class="check"><input type="checkbox" data-plan /> 10–12 min — Grammar (temps, prépositions, erreurs)</label>
+          <label class="check"><input type="checkbox" data-plan /> 10–12 min — Speaking + Writing (record + email + story)</label>
+          <label class="check"><input type="checkbox" data-plan /> 6–8 min — Mini mock (résultat final + CECRL indicatif)</label>
+        </div>
+
+        <div class="note">
+          <div class="note-title">Stratégie gagnante (rappel)</div>
+          <ul class="muted">
+            <li><strong>Réponses riches</strong> (oral + écrit) = mieux valorisées.</li>
+            <li><strong>Structure</strong> : contexte → action → résultat → prochaine étape.</li>
+            <li><strong>Chronomètre</strong> : concis + précis.</li>
+            <li><strong>Email</strong> : 2 options concrètes + question de confirmation + formule de clôture.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 0) VOCAB -->
+    <section class="card" id="vocab">
+      <div class="section-head">
+        <h2>0) Vocabulaire pro (flashcards + quiz) 🧠</h2>
+        <div class="btn-row">
+          <button class="btn" id="shuffleCards" type="button">🔀 Shuffle</button>
+          <button class="btn btn-ghost" id="resetVocab" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Catégories vocabulaire">
+        <button class="tab is-active" data-tab="meetings" type="button">📅 Meetings</button>
+        <button class="tab" data-tab="customer" type="button">🤝 Client</button>
+        <button class="tab" data-tab="email" type="button">✉️ Email</button>
+        <button class="tab" data-tab="it" type="button">💻 IT</button>
+        <button class="tab" data-tab="logistics" type="button">📦 Logistics</button>
+      </div>
+
+      <div class="cards" id="flashcards"></div>
+
+      <div class="divider"></div>
+
+      <div class="mini">
+        <div class="mini-title">Vocab Quiz (10 QCM)</div>
+        <p class="muted">Choisis la meilleure définition. Feedback instantané + score.</p>
+        <div id="vocabQuiz"></div>
+        <div class="btn-row">
+          <button class="btn btn-ghost" id="resetVocabQuiz" type="button">Reset quiz</button>
+        </div>
+        <p class="scoreline" id="vocabQuizScore">Score: 0/0</p>
+      </div>
+    </section>
+
+    <!-- 1) LISTENING -->
+    <section class="card" id="listening">
+      <h2>1) Listening (format QCM + chronomètre) 🎧</h2>
+      <p class="muted">Objectif : repérer l’information <strong>vite</strong> (qui / quoi / quand / action attendue). Dans l’examen, ce sont de vrais audios.</p>
+
+      <div class="audio-block" data-audio="A">
+        <div class="audio-head">
+          <h3>Audio A — Service client (retour / remboursement)</h3>
+          <div class="btn-row">
+            <button class="btn" data-play type="button">▶️ Play</button>
+            <button class="btn btn-ghost" data-timer-start type="button">⏱️ 00:50 Start</button>
+            <button class="btn btn-ghost" data-timer-reset type="button">Reset</button>
+          </div>
+        </div>
+        <div class="script muted" data-script>
+          “Hello, this is Dana from Accounts. We received the wrong quantity on the last delivery: we ordered 50 units but only 35 arrived. Could you check the shipment and confirm when the remaining 15 will be delivered? Also, please send an updated delivery note to our warehouse team today.”
+        </div>
+
+        <div class="qcm" data-qcm="listA"></div>
+
+        <div class="row">
+          <p class="scoreline" data-scoreline>Score: 0/0</p>
+          <div class="btn-row">
+            <button class="btn" data-check type="button">✅ Check</button>
+            <button class="btn btn-ghost" data-reset type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="audio-block" data-audio="B">
+        <div class="audio-head">
+          <h3>Audio B — Annonce interne (procédure sécurité)</h3>
+          <div class="btn-row">
+            <button class="btn" data-play type="button">▶️ Play</button>
+            <button class="btn btn-ghost" data-timer-start type="button">⏱️ 00:40 Start</button>
+            <button class="btn btn-ghost" data-timer-reset type="button">Reset</button>
+          </div>
+        </div>
+        <div class="script muted" data-script>
+          “Reminder: starting next Monday, all visitors must sign in at reception and wear a badge at all times. If you invite a guest, please notify reception in advance and meet them at the entrance. This policy applies to contractors as well.”
+        </div>
+
+        <div class="qcm" data-qcm="listB"></div>
+
+        <div class="row">
+          <p class="scoreline" data-scoreline>Score: 0/0</p>
+          <div class="btn-row">
+            <button class="btn" data-check type="button">✅ Check</button>
+            <button class="btn btn-ghost" data-reset type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2) READING -->
+    <section class="card" id="reading">
+      <h2>2) Reading (email + post + tâche interactive) 📖</h2>
+      <div class="grid2">
+        <div class="mini">
+          <div class="mini-title">Reading A — Email professionnel</div>
+          <div class="email-box">
+            <div class="email-subject"><strong>Subject:</strong> Clarification needed on invoice reference</div>
+            <div class="email-body">
+              Hi,<br/><br/>
+              Thanks for your message. I can confirm we received your invoice, but the purchase order number is missing.
+              Could you please resend the invoice with the PO reference included? We need it to process payment this week.
+              If you have any questions, feel free to call me.<br/><br/>
+              Kind regards,<br/>
+              Morgan Lee<br/>
+              Procurement
+            </div>
+          </div>
+
+          <div class="qcm" data-qcm="readA"></div>
+          <div class="row">
+            <p class="scoreline" data-scoreline>Score: 0/0</p>
+            <div class="btn-row">
+              <button class="btn" data-check type="button">✅ Check</button>
+              <button class="btn btn-ghost" data-reset type="button">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="mini-title">Reading B — Post pro (style LinkedIn)</div>
+          <div class="email-box">
+            <div class="email-body">
+              Today we launched a small change that reduced ticket resolution time by 18%.
+              The key was clarifying ownership: one person closes the loop with the customer, while the team shares technical updates.
+              Next month, we’ll test a new template to make responses shorter and clearer.
+            </div>
+          </div>
+
+          <div class="qcm" data-qcm="readB"></div>
+          <div class="row">
+            <p class="scoreline" data-scoreline>Score: 0/0</p>
+            <div class="btn-row">
+              <button class="btn" data-check type="button">✅ Check</button>
+              <button class="btn btn-ghost" data-reset type="button">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="mini">
+        <div class="mini-title">Tâche interactive — Compléter une réponse email (glisser-déposer)</div>
+        <p class="muted">Glisse les expressions dans les bons emplacements. Puis clique <strong>Check</strong>.</p>
+
+        <div class="dnd">
+          <div class="dnd-bank">
+            <div class="bank-title">Banque</div>
+            <div class="bank-items" id="emailBank"></div>
+            <p class="tiny muted">Astuce : expressions pro = “I can confirm… / Please let me know… / Kind regards…”</p>
+          </div>
+
+          <div class="dnd-target">
+            <div class="email-box">
+              <div class="email-body">
+                Hi Alex,<br/><br/>
+                <span class="slot" data-slot="1">[1]</span> we can reschedule your session.<br/>
+                <span class="slot" data-slot="2">[2]</span> Friday at 3 p.m. work for you?<br/>
+                If that doesn’t suit you, <span class="slot" data-slot="3">[3]</span> next Tuesday at 10 a.m.<br/><br/>
+                <span class="slot" data-slot="4">[4]</span><br/>
+                Training Team
+              </div>
+            </div>
+
+            <div class="row">
+              <p class="scoreline" id="dndScore">Score: 0/4</p>
+              <div class="btn-row">
+                <button class="btn" id="dndCheck" type="button">✅ Check</button>
+                <button class="btn btn-ghost" id="dndReset" type="button">Reset</button>
+              </div>
+            </div>
+            <p class="feedback" id="dndFeedback" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3) GRAMMAR -->
+    <section class="card" id="grammar">
+      <h2>3) Grammar (temps, prépositions, erreurs) 🧩</h2>
+      <p class="muted">Objectif : choisir vite la bonne structure. Feedback instantané + score. (Tu peux activer un timer si tu veux.)</p>
+
+      <div class="mini">
+        <div class="mini-title">Mini rappel (FR → EN)</div>
+        <div class="grid2">
+          <div class="tip">
+            <strong>Plan déjà décidé</strong><br/>
+            <span class="chip">I’m going to…</span> (intention)
+          </div>
+          <div class="tip">
+            <strong>Décision spontanée / promesse</strong><br/>
+            <span class="chip">I’ll…</span>
+          </div>
+          <div class="tip">
+            <strong>Rendez-vous confirmé</strong><br/>
+            <span class="chip">I’m meeting…</span> (arrangement)
+          </div>
+          <div class="tip">
+            <strong>Expérience / résultat</strong><br/>
+            <span class="chip">I’ve already…</span> (present perfect)
+          </div>
+        </div>
+      </div>
+
+      <div class="mini">
+        <div class="mini-title">Questions (12)</div>
+        <div id="grammarItems"></div>
+        <div class="row">
+          <p class="scoreline" id="grammarScore">Score: 0/12</p>
+          <div class="btn-row">
+            <button class="btn btn-ghost" id="grammarReset" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) SPEAKING -->
+    <section class="card" id="speaking">
+      <h2>4) Speaking (interaction + production) 🎙️</h2>
+      <p class="muted">
+        Objectif : faire une réponse “en une prise” avec une structure claire.
+        <strong>Tu peux t’enregistrer</strong> et télécharger le fichier.
+      </p>
+
+      <div class="grid2">
+        <div class="mini">
+          <div class="mini-title">Interaction — Réagir à une situation (45 sec)</div>
+
+          <div class="field">
+            <label for="speakScenario">Choisis un scénario</label>
+            <select id="speakScenario">
+              <option value="noise">Client mécontent (bruit dans la chambre)</option>
+              <option value="lateReport">Relance collègue (rapport en retard)</option>
+              <option value="supplierDelay">Fournisseur (livraison décalée)</option>
+              <option value="itDown">Système en panne (impact clients)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="speakTone">Ton</label>
+            <select id="speakTone">
+              <option value="neutral">Professionnel neutre</option>
+              <option value="warm">Calme + empathique</option>
+              <option value="firm">Ferme mais poli</option>
+            </select>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn" id="genSpeakingPlan" type="button">✨ Générer un plan</button>
+            <button class="btn btn-ghost" id="speakListenPlan" type="button">🔊 Listen</button>
+          </div>
+
+          <div class="planbox" id="speakingPlan" aria-live="polite">Clique “Générer un plan”.</div>
+
+          <div class="divider"></div>
+
+          <div class="row">
+            <div class="timer">
+              <div class="timer-label">⏱️ Timer</div>
+              <div class="timer-time" id="speakTimer">00:45</div>
+            </div>
+
+            <div class="btn-row">
+              <button class="btn btn-ghost" id="speakStartTimer" type="button">Start</button>
+              <button class="btn btn-ghost" id="speakResetTimer" type="button">Reset</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="btn-row">
+              <button class="btn" id="recStart" type="button">⏺ Record</button>
+              <button class="btn btn-ghost" id="recStop" type="button" disabled>⏹ Stop</button>
+              <button class="btn btn-ghost" id="recDownload" type="button" disabled>⬇️ Télécharger</button>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="checklist">
+            <div class="note-title">Checklist (interaction)</div>
+            <label class="check"><input type="checkbox" data-speak-check /> 1 phrase d’empathie / excuse</label>
+            <label class="check"><input type="checkbox" data-speak-check /> 2 questions de clarification</label>
+            <label class="check"><input type="checkbox" data-speak-check /> 2 solutions + prochaine étape</label>
+            <label class="check"><input type="checkbox" data-speak-check /> ton professionnel, phrases courtes</label>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn" id="speakSelfScore" type="button">✅ Auto-évaluer</button>
+            <button class="btn btn-ghost" id="speakResetAll" type="button">Reset</button>
+          </div>
+          <p class="feedback" id="speakFeedback" aria-live="polite"></p>
+        </div>
+
+        <div class="mini">
+          <div class="mini-title">Production — 1 minute (sans support)</div>
+          <p class="muted">Structure en 4 étapes : <strong>situation → action → résultat → leçon</strong>.</p>
+
+          <div class="field">
+            <label for="prodTopic">Choisis un sujet</label>
+            <select id="prodTopic">
+              <option value="role">Présenter son poste</option>
+              <option value="problem">Problème & solution</option>
+              <option value="opinion">Donner un avis pro</option>
+            </select>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn" id="genProdPrompts" type="button">✨ Générer prompts</button>
+            <button class="btn btn-ghost" id="prodListenPrompts" type="button">🔊 Listen</button>
+          </div>
+
+          <div class="planbox" id="prodPrompts">Clique “Générer prompts”.</div>
+
+          <div class="divider"></div>
+
+          <div class="row">
+            <div class="timer">
+              <div class="timer-label">⏱️ Timer</div>
+              <div class="timer-time" id="prodTimer">01:00</div>
+            </div>
+            <div class="btn-row">
+              <button class="btn btn-ghost" id="prodStartTimer" type="button">Start</button>
+              <button class="btn btn-ghost" id="prodResetTimer" type="button">Reset</button>
+            </div>
+          </div>
+
+          <div class="note">
+            <div class="note-title">Connecteurs utiles</div>
+            <div class="chiprow">
+              <span class="chip">First</span><span class="chip">Then</span><span class="chip">However</span>
+              <span class="chip">As a result</span><span class="chip">Overall</span><span class="chip">In my view</span>
+              <span class="chip">The key point is…</span>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn" id="prodDone" type="button">✅ J’ai fait ma production</button>
+            <button class="btn btn-ghost" id="prodReset" type="button">Reset</button>
+          </div>
+          <p class="feedback" id="prodFeedback" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) WRITING -->
+    <section class="card" id="writing">
+      <h2>5) Writing (email + brief) ✍️</h2>
+      <p class="muted">Objectif : être clair, précis, et pro. Auto-évaluation + modèles.</p>
+
+      <div class="grid2">
+        <div class="mini">
+          <div class="mini-title">Task 1 — Reply to an email (8 min)</div>
+          <p class="muted">
+            Consigne : répondre à un client qui demande un report + proposer <strong>2 créneaux</strong> + question de confirmation + clôture pro.
+          </p>
+
+          <div class="row">
+            <div class="timer">
+              <div class="timer-label">⏱️ Timer</div>
+              <div class="timer-time" id="writeTimer">08:00</div>
+            </div>
+            <div class="btn-row">
+              <button class="btn btn-ghost" id="writeStartTimer" type="button">Start</button>
+              <button class="btn btn-ghost" id="writeResetTimer" type="button">Reset</button>
+            </div>
+          </div>
+
+          <textarea id="emailDraft" class="textbox" placeholder="Write your email here…"></textarea>
+          <div class="row space">
+            <div class="muted tiny">Words: <strong id="emailWords">0</strong></div>
+            <div class="btn-row">
+              <button class="btn" id="emailCopy" type="button">Copier</button>
+              <button class="btn btn-ghost" id="emailDownload" type="button">⬇️ Télécharger</button>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <details class="accordion">
+            <summary>✅ Checklist (email)</summary>
+            <div class="checklist">
+              <label class="check"><input type="checkbox" data-write-check /> Objet clair + formule d’ouverture</label>
+              <label class="check"><input type="checkbox" data-write-check /> Reformulation de la demande</label>
+              <label class="check"><input type="checkbox" data-write-check /> 2 options concrètes (date/heure)</label>
+              <label class="check"><input type="checkbox" data-write-check /> Question de confirmation</label>
+              <label class="check"><input type="checkbox" data-write-check /> Clôture (Best regards / Kind regards)</label>
+            </div>
+          </details>
+
+          <details class="accordion">
+            <summary>Sample answer (model)</summary>
+            <pre class="model" id="emailModel">Subject: Rescheduling your session
+
+Hi Alex,
+
+Thanks for your message. I can confirm we can reschedule your session. Would Friday at 3 p.m. work for you? If that doesn’t suit you, we can offer next Tuesday at 10 a.m. Please let me know which option you prefer, and I’ll send a calendar invite.
+
+Kind regards,
+Training Team</pre>
+            <div class="btn-row">
+              <button class="btn btn-ghost" id="emailModelListen" type="button">🔊 Listen</button>
+              <button class="btn btn-ghost" id="emailModelCopy" type="button">Copier</button>
+            </div>
+          </details>
+
+          <div class="btn-row">
+            <button class="btn" id="emailSelfScore" type="button">✅ Auto-évaluer</button>
+            <button class="btn btn-ghost" id="emailReset" type="button">Reset</button>
+          </div>
+          <p class="feedback" id="emailFeedback" aria-live="polite"></p>
+        </div>
+
+        <div class="mini">
+          <div class="mini-title">Task 2 — Short story from a brief (6–8 min)</div>
+          <p class="muted">Brief : “You arrive at work and discover the system is down. Describe what happened and what you did.”</p>
+
+          <textarea id="storyDraft" class="textbox" placeholder="Write your short story here…"></textarea>
+          <div class="row space">
+            <div class="muted tiny">Words: <strong id="storyWords">0</strong></div>
+            <div class="btn-row">
+              <button class="btn" id="storyCopy" type="button">Copier</button>
+              <button class="btn btn-ghost" id="storyDownload" type="button">⬇️ Télécharger</button>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="mini">
+            <div class="mini-title">Quick grammar check</div>
+            <p class="muted">Which sentence is best?</p>
+            <div class="qcm" data-qcm="storyQ"></div>
+            <div class="row">
+              <p class="scoreline" data-scoreline>Score: 0/0</p>
+              <div class="btn-row">
+                <button class="btn" data-check type="button">✅ Check</button>
+                <button class="btn btn-ghost" data-reset type="button">Reset</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="note">
+            <div class="note-title">Astuce “richesse”</div>
+            <p class="muted">
+              Ajoute 2–3 détails pro (impact, priorité, action) :<br/>
+              <em>“This delayed check-ins, so I informed the team and offered manual alternatives.”</em>
+            </p>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn" id="storySelfScore" type="button">✅ Auto-évaluer</button>
+            <button class="btn btn-ghost" id="storyReset" type="button">Reset</button>
+          </div>
+          <p class="feedback" id="storyFeedback" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6) MINI MOCK -->
+    <section class="card" id="mock">
+      <div class="section-head">
+        <h2>Mini mock (6–8 min) — mix des 5 compétences 🧪</h2>
+        <div class="btn-row">
+          <button class="btn btn-ghost" id="mockStartTimer" type="button">⏱️ 07:00 Start</button>
+          <button class="btn btn-ghost" id="mockResetTimer" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="timer">
+          <div class="timer-label">⏱️ Timer</div>
+          <div class="timer-time" id="mockTimer">07:00</div>
+        </div>
+        <div class="note tight">
+          <div class="note-title">Barème indicatif (repère rapide)</div>
+          <div class="muted tiny">
+            0–30% A1 · 31–50% A2 · 51–65% B1 · 66–80% B2 · 81–90% C1 · 91–100% C2
+          </div>
+        </div>
+      </div>
+
+      <div id="mockQuiz"></div>
+
+      <div class="row">
+        <p class="scoreline" id="mockScore">Score: 0/12</p>
+        <div class="btn-row">
+          <button class="btn" id="mockCheck" type="button">✅ Check</button>
+          <button class="btn btn-ghost" id="mockReset" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="result" id="mockResult" aria-live="polite"></div>
+    </section>
+
+    <footer class="footer">
+      <div class="muted tiny">
+        © SpeakEasyTisha · English 360° Lesson 1 — Skills Booster · (LocalStorage + TTS + MediaRecorder)
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
