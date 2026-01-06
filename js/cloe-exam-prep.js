@@ -375,7 +375,31 @@ IT Support`;
     const check = $("#ce-dnd-check");
     if(!bank || !slotsBox || !fb || !reset || !check) return;
 
-    const state = { items: [...parts], slotValues: Array(slots.length).fill("") };
+    // Shuffle parts so they are NOT already in the correct order.
+    // (We also guard against the rare case where a random shuffle returns the original order.)
+    function shuffledParts(){
+      const original = [...parts];
+
+      function fisherYates(a){
+        for(let i = a.length - 1; i > 0; i--){
+          const j = Math.floor(Math.random() * (i + 1));
+          const tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+        }
+        return a;
+      }
+
+      for(let tries = 0; tries < 6; tries++){
+        const a = fisherYates([...parts]);
+        let same = true;
+        for(let i = 0; i < a.length; i++){
+          if(a[i] !== original[i]){ same = false; break; }
+        }
+        if(!same) return a;
+      }
+      return fisherYates([...parts]);
+    }
+
+    const state = { items: shuffledParts(), slotValues: Array(slots.length).fill("") };
     let dragValue = "";
 
     function render(){
@@ -449,7 +473,7 @@ IT Support`;
     }
 
     reset.addEventListener("click", () => {
-      state.items = [...parts];
+      state.items = shuffledParts();
       state.slotValues = Array(slots.length).fill("");
       fb.textContent = "Build your email, then check.";
       render();
