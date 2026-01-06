@@ -153,42 +153,115 @@
     });
   });
 
-  // TTS (US voice) using Web Speech API
+    // TTS (US/UK) using Web Speech API
   const synth = window.speechSynthesis;
   let voices = [];
 
-  function loadVoices() { voices = synth ? synth.getVoices() : []; }
-  function pickUSVoice() {
-    const v = voices || [];
-    return v.find(x => /en-US/i.test(x.lang) && /Google|Microsoft|Samantha|Alex|Jenny|Aria|Guy/i.test(x.name)) ||
-           v.find(x => /en-US/i.test(x.lang)) ||
-           v.find(x => /^en/i.test(x.lang)) ||
-           null;
+  // Accent preference: "us" (American) or "uk" (British)
+  let voicePref = (localStorage.getItem("vt_voice_pref") || "us").toLowerCase();
+  const voiceBtnUS = $("#vt-voice-us");
+  const voiceBtnUK = $("#vt-voice-uk");
+  const voiceStatus = $("#vt-voice-status");
+
+  function normalizePref(p){
+    const x = (p || "").toLowerCase();
+    return (x === "uk" || x === "gb" || x === "british") ? "uk" : "us";
   }
-  function speak(text) {
+
+  function loadVoices() { voices = synth ? synth.getVoices() : []; }
+
+  function pickVoice(pref){
+    const p = normalizePref(pref);
+    const v = voices || [];
+
+    const wantLang = p === "uk" ? /^en-GB/i : /^en-US/i;
+    const preferredName = /Google|Microsoft|Samantha|Alex|Jenny|Aria|Guy|Daniel|Serena|Olivia|Ryan|Natasha|George/i;
+
+    const match = v.filter(x => wantLang.test(x.lang));
+    return (
+      match.find(x => preferredName.test(x.name)) ||
+      match[0] ||
+      v.find(x => /^en/i.test(x.lang) && preferredName.test(x.name)) ||
+      v.find(x => /^en/i.test(x.lang)) ||
+      null
+    );
+  }
+
+  function updateVoiceUI(){
+    const p = normalizePref(voicePref);
+
+    if (voiceBtnUS){
+      voiceBtnUS.classList.toggle("is-active", p === "us");
+      voiceBtnUS.setAttribute("aria-pressed", p === "us" ? "true" : "false");
+    }
+    if (voiceBtnUK){
+      voiceBtnUK.classList.toggle("is-active", p === "uk");
+      voiceBtnUK.setAttribute("aria-pressed", p === "uk" ? "true" : "false");
+    }
+
+    // Small status message + fallback hint
+    if (voiceStatus){
+      const chosen = p === "uk" ? "British" : "American";
+      loadVoices();
+      const voice = pickVoice(p);
+      const nativeOk = voice ? ((p === "uk" && /^en-GB/i.test(voice.lang)) || (p === "us" && /^en-US/i.test(voice.lang))) : false;
+      voiceStatus.textContent = voice
+        ? `Current: ${chosen}${nativeOk ? "" : " (closest English voice available)"}`
+        : `Current: ${chosen} (no speech voices found)`;
+    }
+  }
+
+  function setVoicePref(p){
+    voicePref = normalizePref(p);
+    try { localStorage.setItem("vt_voice_pref", voicePref); } catch {}
+    updateVoiceUI();
+  }
+
+  function speak(text, prefOverride){
     if (!synth || !text) return;
+
+    // Stop anything currently speaking so buttons feel responsive
     synth.cancel();
+
     loadVoices();
+    const pref = normalizePref(prefOverride || voicePref);
     const u = new SpeechSynthesisUtterance(text);
-    const voice = pickUSVoice();
+
+    const voice = pickVoice(pref);
     if (voice) u.voice = voice;
+    u.lang = pref === "uk" ? "en-GB" : "en-US";
     u.rate = 0.98;
     u.pitch = 1.0;
+
     synth.speak(u);
   }
+
   if (synth) {
     loadVoices();
-    synth.onvoiceschanged = () => loadVoices();
+    synth.onvoiceschanged = () => { loadVoices(); updateVoiceUI(); };
   }
+
+  // Accent picker buttons
+  if (voiceBtnUS) voiceBtnUS.addEventListener("click", () => setVoicePref("us"));
+  if (voiceBtnUK) voiceBtnUK.addEventListener("click", () => setVoicePref("uk"));
+  updateVoiceUI();
+
+  // Any button with .vt-say can optionally set data-voice="us" or "uk"
+  // If data-voice="auto" (or missing), it follows the global accent choice.
   $$(".vt-say").forEach(btn => {
     btn.addEventListener("click", () => {
       const raw = btn.getAttribute("data-text") || "";
+      const override = (btn.getAttribute("data-voice") || "auto").toLowerCase();
       const name = getNameOrFallback();
-      speak(raw.replaceAll("[CANDIDATE]", name));
+      const txt = raw.replaceAll("[CANDIDATE]", name);
+
+      speak(txt, override === "auto" ? null : override);
     });
   });
+
   const stopTtsBtn = $("#vt-stop-tts");
   if (stopTtsBtn && synth) stopTtsBtn.addEventListener("click", () => synth.cancel());
+
 
   // Drag & drop (email structure)
   const dragSource = $("#vt-drag-source");
