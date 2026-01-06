@@ -932,115 +932,167 @@
       }
     }
   }
+// --------------------
+// Exercise 6: Structure DnD (Greeting / Wish / Closing)
+// --------------------
+// Pedagogical note:
+// Some lines can logically fit in more than one section (ex: “Happy New Year!”).
+// To avoid “unfair” scoring, each chip can have one OR several acceptable zones.
+const structItems = [
+  { text: "Hi Emma,", zones: ["greeting"], why: "Greeting: informal name + comma." },
+  { text: "Dear Mr. Smith,", zones: ["greeting"], why: "Greeting: formal title + name + comma." },
 
-  // --------------------
-  // Exercise 6: Structure DnD
-  // --------------------
-  const structItems = [
-    { text: "Hi Emma,", zone: "greeting" },
-    { text: "Dear Mr. Smith,", zone: "greeting" },
-    { text: "Happy New Year!", zone: "wish" },
-    { text: "Wishing you health and happiness.", zone: "wish" },
-    { text: "I hope your year brings you new opportunities.", zone: "wish" },
-    { text: "With love, Tisha", zone: "closing" },
-    { text: "Best regards, Tisha", zone: "closing" },
-    { text: "Sincerely, Tisha", zone: "closing" }
-  ];
+  // Ambiguous but correct in real life:
+  { text: "Happy New Year!", zones: ["greeting", "wish"], why: "Can be an opener OR the main wish." },
 
-  const structAwarded = new Set();
+  { text: "Wishing you health and happiness.", zones: ["wish"], why: "Wish: expresses hopes for the person." },
+  { text: "I hope your year brings you new opportunities.", zones: ["wish"], why: "Wish: “I hope…” + present." },
 
-  function renderStruct() {
-    const bank = $("#structBank");
-    $$(".ny-structzone .ny-droparea").forEach(a => a.innerHTML = "");
-    bank.innerHTML = shuffleArray(structItems).map((it, i) => `
-      <div class="ny-dnd-chip" draggable="true" data-zone="${it.zone}" data-id="s_${i}">
-        ${escapeHTML(it.text)}
-      </div>
-    `).join("");
+  { text: "With love, Tisha", zones: ["closing"], why: "Closing: sign‑off + your name." },
+  { text: "Best regards, Tisha", zones: ["closing"], why: "Closing: polite sign‑off + your name." },
+  { text: "Sincerely, Tisha", zones: ["closing"], why: "Closing: formal sign‑off + your name." }
+];
 
-    structAwarded.clear();
-    $("#structFeedback").textContent = "";
-    $("#structFeedback").classList.remove("good","bad");
+const structAwarded = new Set();
 
-    let dragged = null;
+function structZoneLabel(z) {
+  return ({
+    greeting: "Greeting",
+    wish: "Wish / Message",
+    closing: "Closing / Signature"
+  }[z] || z);
+}
 
-    $$(".ny-dnd-chip", bank).forEach(chip => {
-      chip.addEventListener("dragstart", (e) => {
-        dragged = chip;
-        e.dataTransfer.effectAllowed = "move";
-      });
+function renderStruct() {
+  const bank = $("#structBank");
+  $$(".ny-structzone .ny-droparea").forEach(a => a.innerHTML = "");
+  bank.innerHTML = shuffleArray(structItems).map((it, i) => `
+    <div class="ny-dnd-chip" draggable="true"
+         data-zones="${it.zones.join("|")}"
+         data-why="${escapeHTML(it.why || "")}"
+         data-id="s_${i}">
+      ${escapeHTML(it.text)}
+    </div>
+  `).join("");
+
+  structAwarded.clear();
+  $("#structFeedback").textContent = "";
+  $("#structFeedback").classList.remove("good","bad");
+
+  let dragged = null;
+
+  // NOTE: Listeners stay on the element even after moving it into a drop zone.
+  $$(".ny-dnd-chip", bank).forEach(chip => {
+    chip.addEventListener("dragstart", (e) => {
+      dragged = chip;
+      e.dataTransfer.effectAllowed = "move";
     });
+  });
 
-    $$(".ny-structzone").forEach(zoneEl => {
-      const area = $(".ny-droparea", zoneEl);
+  $$(".ny-structzone").forEach(zoneEl => {
+    const area = $(".ny-droparea", zoneEl);
 
-      zoneEl.addEventListener("dragover", (e) => { e.preventDefault(); zoneEl.classList.add("is-over"); });
-      zoneEl.addEventListener("dragleave", () => zoneEl.classList.remove("is-over"));
-      zoneEl.addEventListener("drop", (e) => {
-        e.preventDefault();
-        zoneEl.classList.remove("is-over");
-        if (!dragged) return;
-        area.appendChild(dragged);
-        dragged = null;
-      });
-    });
-
-    bank.addEventListener("dragover", (e) => e.preventDefault());
-    bank.addEventListener("drop", (e) => {
+    zoneEl.addEventListener("dragover", (e) => { e.preventDefault(); zoneEl.classList.add("is-over"); });
+    zoneEl.addEventListener("dragleave", () => zoneEl.classList.remove("is-over"));
+    zoneEl.addEventListener("drop", (e) => {
       e.preventDefault();
+      zoneEl.classList.remove("is-over");
       if (!dragged) return;
-      bank.appendChild(dragged);
+      area.appendChild(dragged);
       dragged = null;
     });
+  });
 
-    [...state.awarded].forEach(k => { if (k.startsWith("struct:")) state.awarded.delete(k); });
-  }
+  bank.addEventListener("dragover", (e) => e.preventDefault());
+  bank.addEventListener("drop", (e) => {
+    e.preventDefault();
+    if (!dragged) return;
+    bank.appendChild(dragged);
+    dragged = null;
+  });
 
-  function checkStruct() {
-    let gained = 0;
-    let correctNow = 0;
-    let total = structItems.length;
+  // Reset this section's “already-awarded” locks (so the learner can re-try after Reset).
+  [...state.awarded].forEach(k => { if (k.startsWith("struct:")) state.awarded.delete(k); });
+}
 
-    $$(".ny-structzone").forEach(zoneEl => {
-      const zone = zoneEl.getAttribute("data-zone");
-      const chips = $$(".ny-dnd-chip", zoneEl);
+function checkStruct() {
+  let gained = 0;
+  let correctNow = 0;
+  const total = structItems.length;
 
-      chips.forEach(chip => {
-        const expected = chip.getAttribute("data-zone");
-        const ok = expected === zone;
-        addAttempt(ok);
+  const wrong = [];
 
-        if (ok) {
-          chip.style.borderColor = "rgba(27,127,75,.45)";
-          chip.style.background = "rgba(27,127,75,.06)";
-          correctNow++;
+  $$(".ny-structzone").forEach(zoneEl => {
+    const zone = zoneEl.getAttribute("data-zone");
+    const chips = $$(".ny-dnd-chip", zoneEl);
 
-          const key = `struct:${chip.getAttribute("data-id")}`;
-          if (!structAwarded.has(key)) {
-            structAwarded.add(key);
-            gained += 1;
-            award(key, 1);
-          }
-        } else {
-          chip.style.borderColor = "rgba(180,35,24,.45)";
-          chip.style.background = "rgba(180,35,24,.06)";
-          logWrong("Message Structure", "Place each part into Greeting/Wish/Closing", chip.textContent.trim(), zone, "Check what each part is doing.");
+    chips.forEach(chip => {
+      const acceptable = (chip.getAttribute("data-zones") || "").split("|").map(s => s.trim()).filter(Boolean);
+      const ok = acceptable.includes(zone);
+      addAttempt(ok);
+
+      if (ok) {
+        chip.style.borderColor = "rgba(27,127,75,45)";
+        chip.style.background = "rgba(27,127,75,06)";
+        correctNow++;
+
+        const key = `struct:${chip.getAttribute("data-id")}`;
+        if (!structAwarded.has(key)) {
+          structAwarded.add(key);
+          gained += 1;
+          award(key, 1);
         }
-      });
+      } else {
+        chip.style.borderColor = "rgba(180,35,24,45)";
+        chip.style.background = "rgba(180,35,24,06)";
+        const expectedLabel = acceptable.length
+          ? acceptable.map(structZoneLabel).join(" or ")
+          : "—";
+        const why = chip.getAttribute("data-why") || "Tip: Greeting = name/title. Wish = positive hope. Closing = sign-off + name.";
+        wrong.push({ text: chip.textContent.trim(), expectedLabel, actualLabel: structZoneLabel(zone), why });
+
+        // This is what learners see in “Review mistakes”
+        logWrong(
+          "Message Structure",
+          "Place each part into Greeting / Wish / Closing",
+          chip.textContent.trim(),
+          expectedLabel,
+          why
+        );
+      }
     });
+  });
 
-    const remaining = $$(".ny-dnd-chip", $("#structBank")).length;
-    const ok = correctNow >= Math.ceil(total * 0.7) && remaining === 0;
-    toastFeedback($("#structFeedback"), ok, `Structure: ${correctNow}/${total} correct. +${gained} pts (earned this check).`);
+  const remainingChips = $$(".ny-dnd-chip", $("#structBank")).map(c => c.textContent.trim());
+  const remaining = remainingChips.length;
+
+  // “Full credit / complete” means: everything placed AND at least 70% correct.
+  // (Points are still awarded per correctly placed chip.)
+  const isComplete = remaining === 0;
+  const ok = correctNow >= Math.ceil(total * 0.7) && isComplete;
+
+  // Build an explanatory feedback message (this answers “why didn’t I get full credit?”)
+  let msg = `Structure: ${correctNow}/${total} correct. +${gained} pt(s) (earned this check).`;
+
+  if (!isComplete) {
+    msg += `  Still in the Bank: ${remaining}. (To get full credit, move ALL chips out of the Bank.)`;
+  }
+  if (wrong.length) {
+    const preview = wrong.slice(0, 3).map(w => `“${w.text}” → ${w.expectedLabel}`).join("  •  ");
+    msg += `  Fix: ${preview}${wrong.length > 3 ? "  •  …" : ""}`;
   }
 
-  function resetStruct() {
-    [...state.awarded].forEach(k => { if (k.startsWith("struct:")) state.awarded.delete(k); });
-    renderStruct();
-  }
+  toastFeedback($("#structFeedback"), ok, msg);
+}
 
-  // --------------------
-  // Card generator + sending
+function resetStruct() {
+  [...state.awarded].forEach(k => { if (k.startsWith("struct:")) state.awarded.delete(k); });
+  renderStruct();
+}
+
+// --------------------
+// Card generator + sending
+
   // --------------------
   const templateList = [
     {
