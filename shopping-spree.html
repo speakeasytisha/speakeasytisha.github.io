@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="teal">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shopping Spree · SpeakEasyTisha</title>
+    <link rel="stylesheet" href="/css/speakeasy.css" />
+  <link rel="stylesheet" href="/css/nav.fixed.css" />
+  <link rel="stylesheet" href="css/shopping-spree.css" />
+</head>
+
+<body>
+  <!-- Top Bar (Voice only — no background theme switch) -->
+  <div class="se-accentbar on-dark" role="region" aria-label="Voice controls">
+    <div class="se-accentbar__inner">
+      <div class="se-brand">
+        <span class="se-brand__mark">SpeakEasyTisha</span>
+        <span class="se-brand__sep">·</span>
+        <span class="se-brand__page">Shopping Spree</span>
+      </div>
+
+      <div class="se-accentbar__controls">
+        <div class="pill" aria-label="Voice accent toggle">
+          <button class="pill__btn is-active" data-voice="US" type="button" aria-pressed="true">🇺🇸 US voice</button>
+          <button class="pill__btn" data-voice="UK" type="button" aria-pressed="false">🇬🇧 UK voice</button>
+        </div>
+
+        <button class="btn btn--ghost" id="btnPauseSpeak" type="button" title="Pause/Resume speech">⏸️ Pause</button>
+        <button class="btn btn--ghost" id="btnStopSpeak" type="button" title="Stop speech">⏹️ Stop</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero on-dark" id="top">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <h1>Shopping Spree</h1>
+        <p class="lead">
+          Vocabulary + grammar + dialogues + culture tips — with interactive quizzes, drag & drop, and speaking practice.
+        </p>
+
+        <div class="hero__stats">
+          <div class="stat">
+            <div class="stat__label">Score</div>
+            <div class="stat__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+          </div>
+          <div class="stat">
+            <div class="stat__label">Goal</div>
+            <div class="stat__value">Speak politely + shop confidently</div>
+          </div>
+          <div class="stat">
+            <div class="stat__label">Tip</div>
+            <div class="stat__value">Use 🇺🇸/🇬🇧 voice toggle for listening</div>
+          </div>
+        </div>
+
+        <div class="hero__actions">
+          <a class="btn" href="#vocab">Start with vocabulary</a>
+          <a class="btn btn--ghost" href="#dialogues">Jump to dialogues</a>
+          <button class="btn btn--ghost" id="btnResetAll" type="button">Reset lesson</button>
+        </div>
+      </div>
+
+      <div class="hero__card">
+        <div class="mini-card">
+          <div class="mini-card__title">Today’s mission</div>
+          <ul class="mini-card__list">
+            <li>✅ Ask for sizes, prices, and help</li>
+            <li>✅ Use <strong>how much / how many</strong></li>
+            <li>✅ Use polite requests (<em>Could I…?</em>)</li>
+            <li>✅ Understand UK/US differences</li>
+          </ul>
+          <button class="btn btn--small" id="btnSpeakMission" type="button">🔊 Listen</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ===================== VOCAB ===================== -->
+    <section class="section on-dark" id="vocab">
+      <div class="section__head">
+        <h2>💬 Vocabulary Flashcards (with icons)</h2>
+        <p class="muted-on-dark">
+          Choose a theme, click a card to flip, and use 🔊 to hear pronunciation.
+        </p>
+      </div>
+
+      <div class="toolbar">
+        <div class="tabs on-dark" id="vocabTabs" role="tablist" aria-label="Vocabulary themes">
+          <!-- JS renders tabs -->
+        </div>
+
+        <div class="toolbar__right">
+          <label class="switch">
+            <input type="checkbox" id="toggleExamples" checked />
+            <span class="switch__track"></span>
+            <span class="switch__label">Show examples</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="grid" id="flashcardGrid" aria-live="polite"></div>
+    </section>
+
+    <!-- ===================== GRAMMAR ===================== -->
+    <section class="section on-dark" id="grammar">
+      <div class="section__head">
+        <h2>🧠 Grammar Mini-Lessons + Interactive Practice</h2>
+        <p class="muted-on-dark">
+          Each activity gives points. You can reset a section anytime.
+        </p>
+      </div>
+
+      <!-- How much / How many -->
+      <div class="card" id="secHowMuchMany">
+        <div class="card__head">
+          <h3>1) How much / How many</h3>
+          <div class="card__actions">
+            <button class="btn btn--ghost btn--small" data-speak="#hmhmSpeak" type="button">🔊 Listen</button>
+            <button class="btn btn--ghost btn--small" data-reset-section="hmhm" type="button">Reset section</button>
+          </div>
+        </div>
+
+        <p id="hmhmSpeak" class="note">
+          Use <strong>how much</strong> for <em>uncountable</em> things (money, water, rice) and
+          <strong>how many</strong> for <em>countable</em> things (shoes, bags, batteries).
+        </p>
+
+        <div class="two-col">
+          <div class="subcard">
+            <h4>Drag & drop: classify</h4>
+            <p class="muted">Drag each card into the correct box.</p>
+
+            <div class="dd-row">
+              <div class="dd-bank" id="ddHMHM_bank" aria-label="Draggable phrases bank"></div>
+
+              <div class="dd-targets">
+                <div class="dd-target" data-dd-target="howmuch" aria-label="How much target">
+                  <div class="dd-target__title">How much…?</div>
+                  <div class="dd-target__zone" id="ddHMHM_much"></div>
+                </div>
+
+                <div class="dd-target" data-dd-target="howmany" aria-label="How many target">
+                  <div class="dd-target__title">How many…?</div>
+                  <div class="dd-target__zone" id="ddHMHM_many"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <button class="btn btn--small" id="btnCheckHMHM" type="button">Check</button>
+              <button class="btn btn--ghost btn--small" id="btnResetHMHM" type="button">Reset drag & drop</button>
+              <span class="feedback" id="fbHMHM" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <div class="subcard">
+            <h4>Quick quiz (MCQ)</h4>
+            <div class="quiz" id="quizHMHM"></div>
+            <div class="row">
+              <button class="btn btn--ghost btn--small" data-reset-quiz="quizHMHM" type="button">Reset quiz</button>
+              <span class="feedback" id="fbQuizHMHM" aria-live="polite"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prepositions -->
+      <div class="card" id="secPrepositions">
+        <div class="card__head">
+          <h3>2) Prepositions (in the shop / on sale / at the counter…)</h3>
+          <div class="card__actions">
+            <button class="btn btn--ghost btn--small" data-speak="#prepSpeak" type="button">🔊 Listen</button>
+            <button class="btn btn--ghost btn--small" data-reset-section="prep" type="button">Reset section</button>
+          </div>
+        </div>
+
+        <p id="prepSpeak" class="note">
+          Common shopping prepositions: <strong>in</strong> the store, <strong>at</strong> the counter,
+          <strong>on</strong> sale, <strong>in</strong> stock, <strong>by</strong> card, <strong>for</strong> €20,
+          <strong>between</strong> sizes, <strong>next to</strong> the fitting rooms.
+        </p>
+
+        <div class="two-col">
+          <div class="subcard">
+            <h4>Drag words into the sentence</h4>
+            <p class="muted">Build the sentence by dragging the preposition chips.</p>
+
+            <div class="chips" id="chipsPrep"></div>
+
+            <div class="builder" aria-label="Sentence builder">
+              <div class="builder__line">
+                The sneakers are <span class="slot" data-slot="0">_____</span> sale and you can pay
+                <span class="slot" data-slot="1">_____</span> card <span class="slot" data-slot="2">_____</span> the counter.
+              </div>
+              <div class="row">
+                <button class="btn btn--small" id="btnCheckPrep" type="button">Check</button>
+                <button class="btn btn--ghost btn--small" id="btnResetPrepBuilder" type="button">Reset</button>
+                <span class="feedback" id="fbPrepBuilder" aria-live="polite"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="subcard">
+            <h4>MCQ: choose the best preposition</h4>
+            <div class="quiz" id="quizPrep"></div>
+            <div class="row">
+              <button class="btn btn--ghost btn--small" data-reset-quiz="quizPrep" type="button">Reset quiz</button>
+              <span class="feedback" id="fbQuizPrep" aria-live="polite"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Present Simple / Continuous -->
+      <div class="card" id="secTenses">
+        <div class="card__head">
+          <h3>3) Present simple vs present continuous (shopping situations)</h3>
+          <div class="card__actions">
+            <button class="btn btn--ghost btn--small" data-speak="#tenseSpeak" type="button">🔊 Listen</button>
+            <button class="btn btn--ghost btn--small" data-reset-section="tenses" type="button">Reset section</button>
+          </div>
+        </div>
+
+        <p id="tenseSpeak" class="note">
+          Use <strong>present simple</strong> for habits and general facts: “I usually pay by card.”
+          Use <strong>present continuous</strong> for what’s happening now: “I’m looking for a jacket.”
+        </p>
+
+        <div class="two-col">
+          <div class="subcard">
+            <h4>Sentence order (drag & drop)</h4>
+            <p class="muted">Drag chunks from the bank into the answer line (in the correct order).</p>
+
+            <div class="order" id="orderTense"></div>
+
+            <div class="row">
+              <button class="btn btn--small" id="btnCheckOrderTense" type="button">Check</button>
+              <button class="btn btn--ghost btn--small" id="btnResetOrderTense" type="button">Reset</button>
+              <span class="feedback" id="fbOrderTense" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <div class="subcard">
+            <h4>MCQ: simple or continuous?</h4>
+            <div class="quiz" id="quizTenses"></div>
+            <div class="row">
+              <button class="btn btn--ghost btn--small" data-reset-quiz="quizTenses" type="button">Reset quiz</button>
+              <span class="feedback" id="fbQuizTenses" aria-live="polite"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Polite requests -->
+      <div class="card" id="secPolite">
+        <div class="card__head">
+          <h3>4) Polite requests (Could I try…? I’d like… May I see…?)</h3>
+          <div class="card__actions">
+            <button class="btn btn--ghost btn--small" data-speak="#politeSpeak" type="button">🔊 Listen</button>
+            <button class="btn btn--ghost btn--small" data-reset-section="polite" type="button">Reset section</button>
+          </div>
+        </div>
+
+        <p id="politeSpeak" class="note">
+          Polite shopping English often uses <strong>could</strong>, <strong>would</strong>, and <strong>may</strong>:
+          “Could I try this on?” “I’d like to return this.” “May I see a smaller size?”
+        </p>
+
+        <div class="two-col">
+          <div class="subcard">
+            <h4>Make it more polite</h4>
+            <p class="muted">Choose the most polite option.</p>
+            <div class="quiz" id="quizPolite"></div>
+            <div class="row">
+              <button class="btn btn--ghost btn--small" data-reset-quiz="quizPolite" type="button">Reset quiz</button>
+              <span class="feedback" id="fbQuizPolite" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <div class="subcard">
+            <h4>Sentence builder</h4>
+            <p class="muted">Build a polite request.</p>
+
+            <div class="builder">
+              <div class="builder__prompt">Goal: Ask to try on the jacket (politely).</div>
+              <div class="chips" id="chipsPolite"></div>
+
+              <div class="builder__line" id="politeLine" aria-label="Drop words here"></div>
+
+              <div class="row">
+                <button class="btn btn--small" id="btnCheckPoliteBuilder" type="button">Check</button>
+                <button class="btn btn--ghost btn--small" id="btnResetPoliteBuilder" type="button">Reset</button>
+                <button class="btn btn--ghost btn--small" id="btnSpeakPoliteBuilt" type="button">🔊 Listen</button>
+                <span class="feedback" id="fbPoliteBuilder" aria-live="polite"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DIALOGUES ===================== -->
+    <section class="section on-dark" id="dialogues">
+      <div class="section__head">
+        <h2>💳 Interactive Dialogues (polite vs casual)</h2>
+        <p class="muted-on-dark">
+          Pick a scene. Choose your replies (polite or casual). Listen with 🔊.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="toolbar">
+          <div class="tabs" id="dialogueTabs" role="tablist" aria-label="Dialogue scenes"></div>
+
+          <div class="toolbar__right">
+            <div class="pill" aria-label="Register toggle">
+              <button class="pill__btn is-active" data-register="polite" type="button" aria-pressed="true">Polite</button>
+              <button class="pill__btn" data-register="casual" type="button" aria-pressed="false">Casual</button>
+            </div>
+            <button class="btn btn--ghost btn--small" id="btnRestartDialogue" type="button">Restart</button>
+          </div>
+        </div>
+
+        <div class="dialogue" id="dialogueBox" aria-live="polite"></div>
+        <div class="choices" id="dialogueChoices" aria-label="Your reply choices"></div>
+
+        <div class="row">
+          <button class="btn btn--ghost btn--small" id="btnSpeakDialogue" type="button">🔊 Read last line</button>
+          <span class="feedback" id="fbDialogue" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CULTURE ===================== -->
+    <section class="section on-dark" id="culture">
+      <div class="section__head">
+        <h2>🇬🇧🇺🇸 Cultural Contrast + 🇫🇷 French Comparison</h2>
+        <p class="muted-on-dark">
+          Mini-cards with practical differences: sizes, money, payment, opening hours, receipts, etiquette.
+        </p>
+      </div>
+
+      <div class="grid grid--2" id="cultureGrid"></div>
+    </section>
+
+    <!-- ===================== STORES MATCH ===================== -->
+    <section class="section on-dark" id="stores">
+      <div class="section__head">
+        <h2>🏪 Drag & Drop: Match items to stores</h2>
+        <p class="muted-on-dark">Drag each item into the correct store.</p>
+      </div>
+
+      <div class="card">
+        <div class="dd-row">
+          <div class="dd-bank" id="ddStore_bank" aria-label="Items bank"></div>
+
+          <div class="dd-targets dd-targets--3">
+            <div class="dd-target" data-store="clothing">
+              <div class="dd-target__title">👗 Clothing store</div>
+              <div class="dd-target__zone" id="ddStore_clothing"></div>
+            </div>
+            <div class="dd-target" data-store="electronics">
+              <div class="dd-target__title">📱 Electronics shop</div>
+              <div class="dd-target__zone" id="ddStore_electronics"></div>
+            </div>
+            <div class="dd-target" data-store="souvenir">
+              <div class="dd-target__title">🧸 Souvenir stand</div>
+              <div class="dd-target__zone" id="ddStore_souvenir"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn btn--small" id="btnCheckStores" type="button">Check</button>
+          <button class="btn btn--ghost btn--small" id="btnResetStores" type="button">Reset</button>
+          <span class="feedback" id="fbStores" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== OPEN HOURS ===================== -->
+    <section class="section on-dark" id="hours">
+      <div class="section__head">
+        <h2>⏰ Interactive Open-Hours Sign (listen + answer)</h2>
+        <p class="muted-on-dark">Click 🔊 to listen, then answer: open or closed?</p>
+      </div>
+
+      <div class="card">
+        <div class="hours">
+          <div class="hours__sign">
+            <div class="hours__title">🪧 SPEAKEASY SHOP · OPENING HOURS</div>
+            <table class="hours__table" aria-label="Opening hours table">
+              <tbody id="hoursTableBody"></tbody>
+            </table>
+            <div class="row">
+              <button class="btn btn--small" id="btnSpeakHours" type="button">🔊 Listen to the sign</button>
+            </div>
+          </div>
+
+          <div class="hours__quiz">
+            <h3>Quick quiz</h3>
+            <div class="quiz" id="quizHours"></div>
+            <div class="row">
+              <button class="btn btn--ghost btn--small" data-reset-quiz="quizHours" type="button">Reset quiz</button>
+              <span class="feedback" id="fbQuizHours" aria-live="polite"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WRAP UP ===================== -->
+    <section class="section on-dark" id="wrap">
+      <div class="card">
+        <div class="card__head">
+          <h2>🎯 Wrap-up</h2>
+          <div class="card__actions">
+            <a class="btn btn--ghost btn--small" href="#top">Back to top</a>
+          </div>
+        </div>
+
+        <p class="note">
+          Try to do the dialogues twice: once in <strong>casual</strong> mode, then again in <strong>polite</strong> mode.
+          Your goal is to sound friendly, clear, and confident.
+        </p>
+
+        <div class="row">
+          <button class="btn" id="btnSpeakWrap" type="button">🔊 Speak this</button>
+          <button class="btn btn--ghost" id="btnShowCorrections" type="button">Show “French pitfalls” tips</button>
+        </div>
+
+        <div class="collapse" id="pitfalls" hidden>
+          <div class="subcard">
+            <h3>🇫🇷 French pitfalls (quick fixes)</h3>
+            <ul class="list">
+              <li><strong>“I want…”</strong> can sound abrupt in shops → prefer <strong>“I’d like…”</strong></li>
+              <li>In the US/UK, staff often ask <strong>“How are you?”</strong> (small talk) — a short friendly answer is normal.</li>
+              <li>Receipts: you may hear <strong>“Would you like a receipt?”</strong> (US) / <strong>“Do you need a receipt?”</strong> (UK).</li>
+              <li>Opening hours can be longer (US malls) but depend a lot on the city and day.</li>
+              <li>Sizes differ (UK/US/EU) — ask: <strong>“Do you have this in a size …?”</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer on-dark">
+    <div class="container footer__inner">
+      <div class="muted-on-dark">© SpeakEasyTisha · Interactive lesson module</div>
+      <div class="muted-on-dark">Tip: Use Chrome for the best speechSynthesis voice selection.</div>
+    </div>
+  </footer>
+  <!-- Site chrome -->
+  <script src="/js/site-chrome.fixed.js" defer></script>
+  <script src="/js/shopping-spree.js"></script>
+</body>
+</html>
