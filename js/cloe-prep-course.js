@@ -85,6 +85,53 @@
     }
     return a;
   }
+
+  // ---------- TEXT HELPERS ----------
+  // Many prompts/text blocks are stored with escaped line breaks (\n). Convert them for display.
+  function decodeNL(str){
+    return String(str ?? "").replace(/\\n/g, "\n");
+  }
+  // Clean up spacing for punctuation so learners see natural English.
+  function prettySentence(str){
+    return decodeNL(str)
+      .replace(/\s+/g, " ")
+      .replace(/\s+([.,!?;:])/g, "$1")
+      .trim();
+  }
+  // Normalize for comparisons (word order) — forgiving about punctuation spacing/case.
+  function normalizeSentence(str){
+    return prettySentence(str).toLowerCase();
+  }
+
+  function labelType(type){
+    const t = String(type || "").toLowerCase();
+    if(t === "mcq") return "MCQ";
+    if(t === "cloze") return "CLOZE";
+    if(t === "match") return "MATCH";
+    if(t === "order") return "ORDER";
+    if(t === "reading") return "TASK";
+    if(t === "listening") return "TASK";
+    return t ? t.toUpperCase() : "TASK";
+  }
+
+  function isPunctToken(tok){
+    return /^[.,!?;:]$/.test(String(tok || "").trim());
+  }
+  // Shuffle word-order tokens so they are not already in the correct order.
+  // Keep punctuation tokens at the end (., ?, !, etc.) so the task feels natural.
+  function shuffleOrderTokens(tokens){
+    const all = (tokens || []).slice();
+    const punct = all.filter(isPunctToken);
+    const words = all.filter(t => !isPunctToken(t));
+    let sh = shuffle(words);
+    // avoid returning the exact original order
+    for(let k=0;k<8;k++){
+      if(sh.join("|") !== words.join("|")) break;
+      sh = shuffle(words);
+    }
+    return sh.concat(punct);
+  }
+
   function pickUnique(pool, n, usedSet){
     const out = [];
     for(const item of shuffle(pool)){
@@ -289,7 +336,7 @@
     {id:"g10", type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the correct tense.", q:"I ____ the client yesterday.", a:["have called","called","call","am calling"], correct:1, why:"Finished time (yesterday) → past simple."},
     {id:"g11", type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the best option.", q:"We’ve been in contact ____ Monday.", a:["for","since","by","until"], correct:1, why:"Start point → <b>since</b>."},
     {id:"g12", type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the best option.", q:"I’ll be away ____ two days.", a:["since","for","by","at"], correct:1, why:"Duration → <b>for</b>."},
-    {id:"g13", type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the correct article.", q:"Could you send me ____ invoice again?", a:["a","an","the","—"], correct:0, why:"First mention → <b>a</b>."},
+    {id:"g13", type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the correct article.", q:"Could you send me ____ invoice, please? (first mention)", a:["a","an","the","—"], correct:1, why:"<b>Invoice</b> starts with a vowel sound (/ɪ/), so we use <b>an</b> for first mention."},
     {id:"g14", type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the correct article.", q:"I’ve reviewed ____ invoice you sent yesterday.", a:["a","an","the","—"], correct:2, why:"Specific (the one you sent) → <b>the</b>."},
     {id:"g15", type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the best option.", q:"Could you give me ____ information about the schedule?", a:["an","some","a","the"], correct:1, why:"Information is uncountable → <b>some</b>."},
     {id:"g16", type:"cloze", focus:"grammar", skill:"Grammar", prompt:"Type ONE word.", q:"I’m afraid I can’t make it ____ 3 p.m.", answer:"until", why:"Until = up to that time."},
@@ -366,6 +413,17 @@
     {id:"o3", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["I’m","afraid","we’re","running","late","."], target:"I’m afraid we’re running late .", why:"Natural professional phrasing."},
     {id:"o4", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["Please","find","the","file","attached","."], target:"Please find the file attached .", why:"Common email phrase."},
     {id:"o5", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["Can","we","move","it","to","next","week","?"], target:"Can we move it to next week ?", why:"Simple rescheduling question."}
+,
+    {id:"o6", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["I","am","writing","to","confirm","our","appointment","tomorrow","."], target:"I am writing to confirm our appointment tomorrow.", why:"Common confirmation sentence."},
+    {id:"o7", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["Could","you","please","send","the","updated","quote","?"], target:"Could you please send the updated quote?", why:"Polite request + object."},
+    {id:"o8", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["Thank","you","for","your","email","."], target:"Thank you for your email.", why:"Short professional reply opener."},
+    {id:"o9", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["I","have","attached","the","signed","contract","."], target:"I have attached the signed contract.", why:"Present perfect for a recent action relevant now."},
+    {id:"o10", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["We","received","your","payment","yesterday","."], target:"We received your payment yesterday.", why:"Past simple with a finished time (yesterday)."},
+    {id:"o11", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["Please","let","me","know","if","you","have","any","questions","."], target:"Please let me know if you have any questions.", why:"Helpful closing line."},
+    {id:"o12", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["Would","it","be","possible","to","postpone","the","delivery","?"], target:"Would it be possible to postpone the delivery?", why:"Very polite request."},
+    {id:"o13", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["I","will","get","back","to","you","by","end","of","day","."], target:"I will get back to you by end of day.", why:"Promise with a deadline."},
+    {id:"o14", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["Sorry","for","the","inconvenience","caused","."], target:"Sorry for the inconvenience caused.", why:"Simple apology."},
+    {id:"o15", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["Can","you","join","the","call","at","3","p.m.","?"], target:"Can you join the call at 3 p.m.?", why:"Meeting coordination sentence."},
   ];
 
   // ---------- MINI MOCK MIX (uses BANK + track add-ons) ----------
@@ -386,7 +444,24 @@
       {id:"th2", type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the most polite option.", q:"You want to ask for the guest’s ID.", a:["Give me your ID.","Could I see your ID, please?","You must show ID.","Show ID now."], correct:1, why:"Could I see… please? is polite."},
       {id:"th3", type:"listening", focus:"listening", skill:"Listening", prompt:"Listen and choose the best answer. (2 listens max)",
         audio:"Good evening. Your room is on the third floor, opposite the lift.", q:"Where is the room?", a:["Third floor, opposite the lift","Second floor, near reception","Ground floor, near the bar","Fourth floor, next to the stairs"], correct:0, why:"Third floor, opposite the lift."},
-      {id:"th4", type:"mcq", focus:"vocab", skill:"Vocabulary", prompt:"Choose the best word.", q:"A guest can ask for “extra towels” at the ____.", a:["front desk","warehouse","customs","parking meter"], correct:0, why:"Front desk = reception."}
+      {id:"th4", type:"mcq", focus:"vocab", skill:"Vocabulary", prompt:"Choose the best word.", q:"A guest can ask for “extra towels” at the ____.", a:["front desk","warehouse","customs","parking meter"], correct:0, why:"Front desk = reception."},
+      {id:"th5", type:"reading", focus:"reading", skill:"Reading", prompt:"Read and choose the best answer.",
+        text:"Subject: Restaurant booking\n\nYour table is confirmed for 7:30 p.m. Please arrive 10 minutes early.",
+        q:"What time is the reservation?", a:["7:30 p.m.","6:30 p.m.","8:30 p.m.","7:00 p.m."], correct:0, why:"Confirmed for 7:30 p.m."},
+      {id:"th6", type:"listening", focus:"listening", skill:"Listening", prompt:"Listen and choose the best answer. (2 listens max)",
+        audio:"Housekeeping can bring extra towels in ten minutes.",
+        q:"When will housekeeping arrive?", a:["In 10 minutes","In 1 hour","Tomorrow morning","Right now"], correct:0, why:"In ten minutes."},
+      {id:"th7", type:"mcq", focus:"vocab", skill:"Vocabulary", prompt:"Choose the best word.", q:"A hotel extra like breakfast or Wi‑Fi is an ____.", a:["amenity","invoice","shipment","bug"], correct:0, why:"Amenity = extra service/facility."},
+      {id:"th8", type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the most polite option.", q:"____ I see your passport, please?", a:["Can","May","Do","Will"], correct:1, why:"<b>May I…?</b> is very polite."},
+      {id:"th9", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["Would","you","like","a","wake‑up","call","at","6","a.m.","?"], target:"Would you like a wake‑up call at 6 a.m.?", why:"Offer + service + time."},
+      {id:"th10", type:"reading", focus:"reading", skill:"Reading", prompt:"Read and choose the best answer.",
+        text:"Front Desk Note\n\nPlease prepare an invoice for room 214: two nights + minibar.",
+        q:"What do you need to prepare?", a:["An invoice","A room key","A new password","A delivery label"], correct:0, why:"Prepare an invoice."},
+      {id:"th11", type:"listening", focus:"listening", skill:"Listening", prompt:"Listen and choose the best answer. (2 listens max)",
+        audio:"Breakfast is served from six to ten in the restaurant on the ground floor.",
+        q:"Where is breakfast served?", a:["In the restaurant on the ground floor","In the lobby","In the gym","In the parking lot"], correct:0, why:"Restaurant on the ground floor."},
+      {id:"th12", type:"mcq", focus:"vocab", skill:"Vocabulary", prompt:"Choose the best word.", q:"A request to leave later than normal is a late ____.", a:["check‑out","check‑in","shipment","refund"], correct:0, why:"Late check‑out = leaving later."},
+
     ],
 
     customer: [
@@ -400,7 +475,24 @@
         "I don’t care."
       ], correct:2, why:"Professional + helpful + polite request."},
       {id:"tc3", type:"mcq", focus:"vocab", skill:"Vocabulary", prompt:"Choose the best word.", q:"A “refund” is when the company ____ the money.", a:["returns","borrows","prints","forgets"], correct:0, why:"Refund = return money."},
-      {id:"tc4", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["We","apologise","for","the","inconvenience","."], target:"We apologise for the inconvenience .", why:"Common customer-service sentence."}
+      {id:"tc4", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["We","apologise","for","the","inconvenience","."], target:"We apologise for the inconvenience .", why:"Common customer-service sentence."},
+      {id:"tc5", type:"listening", focus:"listening", skill:"Listening", prompt:"Listen and choose the best answer. (2 listens max)",
+        audio:"I’m sorry about the issue. We can offer a refund or a replacement.",
+        q:"What are the options offered?", a:["Refund or replacement","Free holiday","New password","Later delivery only"], correct:0, why:"Refund or replacement."},
+      {id:"tc6", type:"reading", focus:"reading", skill:"Reading", prompt:"Read and choose the best answer.",
+        text:"Subject: Return label\n\nWe have created a prepaid return label. Please print it and attach it to the box.",
+        q:"What should you do with the label?", a:["Print it and attach it to the box","Delete it","Send it to HR","Pay again"], correct:0, why:"Print + attach."},
+      {id:"tc7", type:"mcq", focus:"vocab", skill:"Vocabulary", prompt:"Choose the best word.", q:"A new item sent to replace the old one is a ____.", a:["replacement","delay","amenity","minutes"], correct:0, why:"Replacement = new item instead."},
+      {id:"tc8", type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the best reply.", q:"“Could you provide your order number?”", a:["Sure — it’s 78451.","No.","I don’t care.","Maybe later."], correct:0, why:"Professional + cooperative answer."},
+      {id:"tc9", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["We","apologize","for","the","delay","."], target:"We apologize for the delay.", why:"Standard customer-service apology."},
+      {id:"tc10", type:"reading", focus:"reading", skill:"Reading", prompt:"Read and choose the best answer.",
+        text:"Chat\n\nAgent: I can look into this now.\nCustomer: Thank you.\nAgent: Please share a photo of the damage.",
+        q:"What does the agent ask for?", a:["A photo","A refund immediately","A meeting","A room key"], correct:0, why:"A photo of the damage."},
+      {id:"tc11", type:"mcq", focus:"vocab", skill:"Vocabulary", prompt:"Choose the best word.", q:"A guarantee that a product will work is a ____.", a:["warranty","queue","invoice","lift"], correct:0, why:"Warranty = guarantee."},
+      {id:"tc12", type:"listening", focus:"listening", skill:"Listening", prompt:"Listen and choose the best answer. (2 listens max)",
+        audio:"Please allow three to five business days for the refund to appear on your account.",
+        q:"How long can the refund take?", a:["3–5 business days","3–5 minutes","One month","Same day always"], correct:0, why:"Three to five business days."},
+
     ],
 
     it: [
@@ -411,7 +503,24 @@
       {id:"ti3", type:"reading", focus:"reading", skill:"Reading", prompt:"Read and choose the best answer.",
         text:"IT Ticket\\n\\nIssue: Password reset\\nAction: Send a reset link to the user.",
         q:"What should you send?", a:["A reset link","An invoice","A room key","A schedule"], correct:0, why:"Send a reset link."},
-      {id:"ti4", type:"mcq", focus:"vocab", skill:"Vocabulary", prompt:"Choose the best word.", q:"A “bug” is a ____.", a:["software problem","meeting agenda","hotel room","parking lot"], correct:0, why:"Bug = software problem."}
+      {id:"ti4", type:"mcq", focus:"vocab", skill:"Vocabulary", prompt:"Choose the best word.", q:"A “bug” is a ____.", a:["software problem","meeting agenda","hotel room","parking lot"], correct:0, why:"Bug = software problem."},
+      {id:"ti5", type:"reading", focus:"reading", skill:"Reading", prompt:"Read and choose the best answer.",
+        text:"Subject: System outage\n\nWe are investigating a Teams outage. Next update at 2 p.m.",
+        q:"When is the next update?", a:["2 p.m.","Tomorrow","5 p.m.","No update"], correct:0, why:"Next update at 2 p.m."},
+      {id:"ti6", type:"listening", focus:"listening", skill:"Listening", prompt:"Listen and choose the best answer. (2 listens max)",
+        audio:"Please clear your browser cache and restart the application.",
+        q:"What should you do first?", a:["Clear the browser cache","Buy a new PC","Call the client","Ignore it"], correct:0, why:"Clear the cache first."},
+      {id:"ti7", type:"mcq", focus:"vocab", skill:"Vocabulary", prompt:"Choose the best word.", q:"A temporary loss of service is an ____.", a:["outage","amenity","refund","invoice"], correct:0, why:"Outage = service is down."},
+      {id:"ti8", type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the best option.", q:"We ____ resolved the issue. You can try again now.", a:["have","has","had","having"], correct:0, why:"Present perfect: action completed, result now."},
+      {id:"ti9", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["Please","reset","your","password","using","this","link","."], target:"Please reset your password using this link.", why:"Clear IT instruction."},
+      {id:"ti10", type:"reading", focus:"reading", skill:"Reading", prompt:"Read and choose the best answer.",
+        text:"IT Ticket\n\nUser cannot connect to VPN. Please confirm their username and location.",
+        q:"What information do you need?", a:["Username and location","Room number","Delivery date","Invoice total"], correct:0, why:"Username + location."},
+      {id:"ti11", type:"mcq", focus:"vocab", skill:"Vocabulary", prompt:"Choose the best word.", q:"To put software on a computer is to ____ it.", a:["install","invoice","ship","refund"], correct:0, why:"Install software."},
+      {id:"ti12", type:"listening", focus:"listening", skill:"Listening", prompt:"Listen and choose the best answer. (2 listens max)",
+        audio:"Your password expires today. Please change it before five p.m.",
+        q:"When must you change the password?", a:["Before 5 p.m.","Before 5 a.m.","Next week","No deadline"], correct:0, why:"Before five p.m."},
+
     ],
 
     logistics: [
@@ -424,7 +533,24 @@
         q:"Where should you store the boxes?", a:["Shelf B12","Reception","Room D","Online"], correct:0, why:"On shelf B12."},
       {id:"tl4", type:"listening", focus:"listening", skill:"Listening", prompt:"Listen and choose the best answer. (2 listens max)",
         audio:"The delivery is scheduled for Monday at nine a.m. Please be ready to unload.",
-        q:"When is the delivery scheduled?", a:["Monday 9 a.m.","Tuesday 9 a.m.","Monday 9 p.m.","Friday 9 a.m."], correct:0, why:"Monday at nine a.m."}
+        q:"When is the delivery scheduled?", a:["Monday 9 a.m.","Tuesday 9 a.m.","Monday 9 p.m.","Friday 9 a.m."], correct:0, why:"Monday at nine a.m."},
+      {id:"tl5", type:"mcq", focus:"vocab", skill:"Vocabulary", prompt:"Choose the best word.", q:"A large flat platform used to move boxes is a ____.", a:["pallet","amenity","bug","warranty"], correct:0, why:"Pallet for shipping/storage."},
+      {id:"tl6", type:"reading", focus:"reading", skill:"Reading", prompt:"Read and choose the best answer.",
+        text:"Subject: Packing list missing\n\nThe pallet arrived but the packing list is missing. Please send it ASAP.",
+        q:"What document is missing?", a:["The packing list","The room key","The contract","The menu"], correct:0, why:"Packing list is missing."},
+      {id:"tl7", type:"listening", focus:"listening", skill:"Listening", prompt:"Listen and choose the best answer. (2 listens max)",
+        audio:"The pickup is scheduled for Thursday at two p.m. Please be ready at the warehouse gate.",
+        q:"When is the pickup scheduled?", a:["Thursday 2 p.m.","Wednesday 2 p.m.","Thursday 2 a.m.","Friday 2 p.m."], correct:0, why:"Thursday at 2 p.m."},
+      {id:"tl8", type:"mcq", focus:"grammar", skill:"Grammar", prompt:"Choose the best option.", q:"The goods ____ shipped yesterday.", a:["were","was","is","are"], correct:0, why:"Plural goods → <b>were shipped</b> (passive)."},
+      {id:"tl9", type:"order", focus:"order", skill:"Word order", prompt:"Put the words in order.", tokens:["Please","confirm","the","delivery","address","."], target:"Please confirm the delivery address.", why:"Logistics confirmation sentence."},
+      {id:"tl10", type:"mcq", focus:"vocab", skill:"Vocabulary", prompt:"Choose the best word.", q:"The process of checking goods at the border is customs ____.", a:["clearance","holiday","queue","minutes"], correct:0, why:"Customs clearance."},
+      {id:"tl11", type:"reading", focus:"reading", skill:"Reading", prompt:"Read and choose the best answer.",
+        text:"Warehouse note\n\nPlease move the damaged boxes to the returns area and report the quantity.",
+        q:"Where should you move the damaged boxes?", a:["To the returns area","To the lobby","To the client","To the lift"], correct:0, why:"Move to returns area."},
+      {id:"tl12", type:"listening", focus:"listening", skill:"Listening", prompt:"Listen and choose the best answer. (2 listens max)",
+        audio:"The container will arrive at the port on Monday morning. Please arrange transport to the warehouse.",
+        q:"What should you arrange?", a:["Transport to the warehouse","A hotel booking","A refund","A password reset"], correct:0, why:"Arrange transport."},
+
     ]
   };
 
@@ -973,14 +1099,8 @@
 
     if(focus === "mix") return poolAll;
 
-    // "More reading/listening/grammar" = include all, but we'll weight by duplicating focus items
-    if(["reading","listening","grammar"].includes(focus)){
-      const focusItems = poolAll.filter(x => x.focus === focus);
-      return poolAll.concat(focusItems).concat(focusItems); // weight x3 total
-    }
-
-    // direct filter for "vocab" or "order"
-    return poolAll.filter(x => x.focus === focus).concat(poolAll); // ensure enough, but unique selection prevents repeats
+    // Strict focus: only return items from the selected category
+    return poolAll.filter(x => x.focus === focus);
   }
 
   function startSession(opts, mount){
@@ -1254,8 +1374,9 @@
     mount.innerHTML = "";
     const wrap = document.createElement("div");
     wrap.className = "cp-q";
+    const tLabel = labelType(q.type);
     wrap.innerHTML = `
-      <div class="cp-mini"><strong>${escapeHtml(q.skill || "Task")}</strong> · ${escapeHtml((q.type||"").toUpperCase())}</div>
+      <div class="cp-mini"><strong>${escapeHtml(q.skill || "Task")}</strong> · ${escapeHtml(tLabel)}</div>
       <h3>${escapeHtml(q.q || q.title || "Question")}</h3>
       <p class="cp-prompt">${q.prompt ? q.prompt : ""}</p>
     `;
@@ -1267,7 +1388,7 @@
       h3.textContent = q.q || "Reading question";
       const text = document.createElement("div");
       text.className = "cp-reading";
-      text.textContent = q.text || "";
+      text.textContent = decodeNL(q.text || "");
       wrap.insertBefore(text, h3);
     }
     if(q.type === "listening"){
@@ -1435,12 +1556,14 @@
     const built = [];
 
     function updateDrop(){
-      drop.textContent = built.join(" ");
+      drop.textContent = built.length ? prettySentence(built.join(" ")) : "Drop here";
       drop.classList.toggle("filled", built.length>0);
     }
+    updateDrop();
 
     // Drag tokens
-    (q.tokens || []).forEach(tok => {
+    const toks = shuffleOrderTokens(q.tokens || []);
+    toks.forEach(tok => {
       const t = document.createElement("div");
       t.className = "cp-tile";
       t.textContent = tok;
@@ -1483,8 +1606,8 @@
 
     check.addEventListener("click", () => {
       // Normalize spaces
-      const user = built.join(" ").replace(/\s+/g," ").trim();
-      const ok = user === target.replace(/\s+/g," ").trim();
+      const user = built.join(" ");
+      const ok = normalizeSentence(user) === normalizeSentence(target);
 
       recordAnswer(state, q, ok, false);
 
@@ -1494,7 +1617,7 @@
       fb.className = "cp-feedback";
       fb.innerHTML = ok
         ? `✅ <strong>Great.</strong> ${q.why || ""}`
-        : `🧭 <strong>Keep going.</strong> One correct option is:<br><strong>${escapeHtml(target)}</strong><br>${q.why || ""}`;
+        : `🧭 <strong>Keep going.</strong> One correct option is:<br><strong>${escapeHtml(prettySentence(target))}</strong><br>${q.why || ""}`;
       wrap.appendChild(fb);
       enableNext(wrap);
       check.disabled = true;
