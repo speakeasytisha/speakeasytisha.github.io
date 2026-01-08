@@ -4,6 +4,21 @@
   const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
   // -----------------------------
+  // Compat helpers (Safari/iPad)
+  // -----------------------------
+  if (!window.CSS) window.CSS = {};
+  if (!CSS.escape) {
+    CSS.escape = function(value){
+      return String(value).replace(/[^a-zA-Z0-9_\u00A0-\uFFFF-]/g, function(ch){
+        return "\\"
+          + ch;
+      });
+    };
+  }
+
+
+
+  // -----------------------------
   // Safe localStorage helpers
   // -----------------------------
   const store = {
@@ -102,6 +117,7 @@
     });
 
     function reset(){
+      clearSelected();
       score = 0;
       if (scoreEl) scoreEl.textContent = "0";
       if (finalEl) finalEl.textContent = "";
@@ -172,6 +188,7 @@
     });
 
     function reset(){
+      clearSelected();
       score = 0;
       if (scoreEl) scoreEl.textContent = "0";
       if (finalEl) finalEl.textContent = "";
@@ -219,10 +236,27 @@
     };
 
     let draggingToken = null;
+    // Tap-to-fill fallback (iPad/iPhone): tap a chip, then tap a blank.
+    let selectedToken = null;
+    let selectedChip = null;
+    function clearSelected(){
+      if (selectedChip) selectedChip.classList.remove('is-selected');
+      selectedChip = null;
+      selectedToken = null;
+    }
     chips.forEach(chip=>{
       chip.addEventListener("dragstart", (e)=>{
         draggingToken = chip.getAttribute("data-token");
-        e.dataTransfer.setData("text/plain", draggingToken || "");
+        if (e.dataTransfer) e.dataTransfer.setData("text/plain", draggingToken || "");
+      });
+      chip.addEventListener("click", ()=>{
+        const token = chip.getAttribute("data-token") || "";
+        if (!token) return;
+        if (selectedChip === chip){ clearSelected(); return; }
+        clearSelected();
+        selectedChip = chip;
+        selectedToken = token;
+        chip.classList.add("is-selected");
       });
     });
 
@@ -232,14 +266,21 @@
       d.addEventListener("drop", (e)=>{
         e.preventDefault();
         d.classList.remove("over");
-        const token = e.dataTransfer.getData("text/plain") || draggingToken;
+        const token = (e.dataTransfer ? e.dataTransfer.getData("text/plain") : "") || draggingToken;
         if (!token) return;
         d.textContent = token;
         d.classList.add("filled");
         d.setAttribute("data-value", token);
       });
-      // allow click to clear
+      // Tap-to-fill (mobile) OR click to clear
       d.addEventListener("click", ()=>{
+        if (selectedToken){
+          d.textContent = selectedToken;
+          d.classList.add("filled");
+          d.setAttribute("data-value", selectedToken);
+          clearSelected();
+          return;
+        }
         d.textContent = "[" + d.getAttribute("data-blank") + "]";
         d.removeAttribute("data-value");
         d.classList.remove("filled");
@@ -247,6 +288,7 @@
     });
 
     function check(){
+      clearSelected();
       let score = 0;
       let filled = 0;
       drops.forEach(d=>{
@@ -269,6 +311,7 @@
     }
 
     function reset(){
+      clearSelected();
       drops.forEach(d=>{
         d.textContent = "[" + d.getAttribute("data-blank") + "]";
         d.removeAttribute("data-value");
@@ -356,6 +399,7 @@
       }, 1000);
     }
     function reset(){
+      clearSelected();
       if (interval){ clearInterval(interval); interval=null; }
       remaining = seconds;
       render();
@@ -435,22 +479,50 @@
 
   let mediaRecorder = null;
   let recChunks = [];
+  let currentRecMime = "audio/webm";
 
   async function startRecording(){
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
       alert("Recording is not supported in this browser.");
       return;
     }
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    if (!("MediaRecorder" in window)) {
+      alert("Recording is not supported on this device/browser. You can still practise speaking without recording.");
+      return;
+    }
+    let stream;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch(e){
+      alert("Microphone access was not granted or is blocked on this device.");
+      return;
+    }
     recChunks = [];
-    mediaRecorder = new MediaRecorder(stream);
+    // pick a supported mime type (Safari may prefer audio/mp4)
+    currentRecMime = "audio/webm";
+    const tryTypes = ["audio/webm;codecs=opus","audio/webm","audio/mp4","audio/aac"];
+    if (window.MediaRecorder && typeof MediaRecorder.isTypeSupported === "function"){
+      for (const t of tryTypes){
+        if (MediaRecorder.isTypeSupported(t)) { currentRecMime = t; break; }
+      }
+    }
+    try {
+      mediaRecorder = currentRecMime ? new MediaRecorder(stream, { mimeType: currentRecMime }) : new MediaRecorder(stream);
+    } catch(e){
+      alert("Recording is not supported in this browser (MediaRecorder). You can still practise without recording.");
+      stream.getTracks().forEach(t=>t.stop());
+      return;
+    }
     mediaRecorder.ondataavailable = (e)=> { if (e.data && e.data.size) recChunks.push(e.data); };
     mediaRecorder.onstop = ()=>{
-      const blob = new Blob(recChunks, { type: "audio/webm" });
+      const blob = new Blob(recChunks, { type: currentRecMime || "audio/webm" });
       const url = URL.createObjectURL(blob);
       if (recAudio) recAudio.src = url;
       if (recDl){
         recDl.href = url;
+        // filename hint (Safari/iOS)
+        if ((currentRecMime || "").includes("mp4") || (currentRecMime || "").includes("aac")) recDl.download = "speaking-practice.m4a";
+        else recDl.download = "speaking-practice.webm";
         recDl.style.display = "inline-flex";
       }
       // stop tracks
