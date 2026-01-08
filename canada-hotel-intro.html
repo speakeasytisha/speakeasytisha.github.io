@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel in Canada – Intro (Banff + Québec) · SpeakEasyTisha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/canada-hotel-intro.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__logo">
+          <span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span>
+        </div>
+        <div class="brand__tag">Interactive Lesson · Beginner-friendly</div>
+      </div>
+
+      <div class="controls">
+        <div class="pill">
+          <span class="pill__label">Voice</span>
+          <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+          <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+        </div>
+
+        <div class="pill">
+          <span class="pill__label">Audio</span>
+          <button class="btn btn--ghost" id="btnPause" type="button">⏸ Pause</button>
+          <button class="btn btn--ghost" id="btnResume" type="button">▶️ Resume</button>
+          <button class="btn btn--ghost" id="btnStop" type="button">⏹ Stop</button>
+        </div>
+
+        <div class="scorebox" aria-live="polite">
+          <div class="scorebox__label">Score</div>
+          <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        </div>
+
+        <button class="btn btn--danger" id="btnResetAll" type="button" title="Reset all activities">↺ Reset all</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__inner">
+      <div class="hero__text">
+        <h1>Hotel in Canada: First Day at a Famous Hotel ✨</h1>
+        <p class="lead">
+          You will visit <strong>two real luxury hotels</strong> in Canada:
+          <span class="chip">🏔️ Fairmont Banff Springs (Banff, Alberta)</span>
+          and <span class="chip">🏰 Fairmont Le Château Frontenac (Québec City)</span>.
+        </p>
+        <div class="hero__cta">
+          <button class="btn" id="btnStartTour" type="button">▶️ Start the lesson</button>
+          <button class="btn btn--ghost" id="btnHowTo" type="button">ℹ️ How it works</button>
+        </div>
+
+        <div class="minirow">
+          <div class="minicard">
+            <div class="minicard__t">🎧 Listen</div>
+            <div class="minicard__p">Every text has a “Listen” button (US/UK).</div>
+          </div>
+          <div class="minicard">
+            <div class="minicard__t">🎯 Score</div>
+            <div class="minicard__p">All activities keep score + show instant feedback.</div>
+          </div>
+          <div class="minicard">
+            <div class="minicard__t">🧩 Drag or click</div>
+            <div class="minicard__p">If drag is hard, click words to move them.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__panel">
+        <div class="panelcard">
+          <div class="panelcard__title">Today’s mission</div>
+          <ol class="panelcard__list">
+            <li>Learn key hotel words (flashcards).</li>
+            <li>Read about each hotel + answer questions.</li>
+            <li>Choose a room type.</li>
+            <li>Book by phone (polite phrases).</li>
+            <li>Confirm arrival (call + email).</li>
+            <li>Check in + find places inside the hotel.</li>
+          </ol>
+          <div class="progress">
+            <div class="progress__bar" id="progressBar" style="width: 0%"></div>
+          </div>
+          <div class="muted tiny">Tip: try to get a ⭐ “Perfect” in each activity.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main" class="shell">
+
+    <!-- SECTION 1 -->
+    <section class="section" id="sec1">
+      <div class="section__head">
+        <h2>1) Vocabulary Flashcards (for the reading)</h2>
+        <p class="muted">Click a card to flip. Use 🔊 to listen. These words help you understand the hotel texts.</p>
+      </div>
+
+      <div class="toolrow">
+        <div class="pill">
+          <span class="pill__label">Group</span>
+          <select id="vocabGroup" class="select">
+            <option value="all">All</option>
+            <option value="basics">Hotel basics</option>
+            <option value="rooms">Rooms</option>
+            <option value="services">Services</option>
+            <option value="people">People & titles</option>
+            <option value="booking">Booking & time</option>
+          </select>
+        </div>
+
+        <button class="btn btn--ghost" id="btnVocabShuffle" type="button">🔀 Shuffle</button>
+        <button class="btn btn--ghost" id="btnVocabMiniQuiz" type="button">🧠 Mini-quiz</button>
+      </div>
+
+      <div id="flashcards" class="grid grid--cards"></div>
+
+      <div id="vocabMiniQuiz" class="card hidden">
+        <div class="card__head">
+          <h3>Mini-quiz: Match the word</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnVocabMiniReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Choose the best meaning. Instant feedback + score.</p>
+        <div id="vocabMiniQuizHost"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="section" id="sec2">
+      <div class="section__head">
+        <h2>2) Reading: Two Famous Hotels in Canada</h2>
+        <p class="muted">Beginner reading. Short sentences. Use “Listen” to hear the text.</p>
+      </div>
+
+      <div class="two">
+        <article class="card">
+          <div class="card__head">
+            <h3>🏔️ Fairmont Banff Springs (Banff, Alberta)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" data-say="banffReading" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div id="banffReading" class="reading"></div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <h3>🏰 Fairmont Le Château Frontenac (Québec City)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" data-say="frontenacReading" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div id="frontenacReading" class="reading"></div>
+        </article>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Comprehension quiz (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnReadQuizReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Choose the best answer. If you are wrong, you will see the correct answer.</p>
+        <div id="readQuizHost"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="section" id="sec3">
+      <div class="section__head">
+        <h2>3) Choose a Room Type</h2>
+        <p class="muted">Read the room descriptions, then pick the best room for each guest.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Room types (with icons)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" data-say="roomTypeText" type="button">🔊 Listen</button>
+          </div>
+        </div>
+        <div id="roomTypeText" class="reading"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Room picker challenge (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnRoomQuizReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="roomQuizHost"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Your booking summary</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnBookingListen" type="button">🔊 Listen</button>
+          </div>
+        </div>
+
+        <div class="formgrid">
+          <label class="field">
+            <span class="field__label">Hotel</span>
+            <select id="bkHotel" class="select">
+              <option value="Banff Springs">🏔️ Banff Springs (Banff)</option>
+              <option value="Château Frontenac">🏰 Château Frontenac (Québec City)</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Room type</span>
+            <select id="bkRoom" class="select">
+              <option>Standard Room</option>
+              <option>Deluxe Room</option>
+              <option>View Room</option>
+              <option>Suite</option>
+              <option>Fairmont Gold</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Guests</span>
+            <select id="bkGuests" class="select">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Nights</span>
+            <select id="bkNights" class="select">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Arrival time</span>
+            <select id="bkTime" class="select">
+              <option>15:00</option>
+              <option>16:00</option>
+              <option selected>18:30</option>
+              <option>20:15</option>
+              <option>22:00</option>
+            </select>
+          </label>
+
+          <div class="field">
+            <span class="field__label">Actions</span>
+            <div class="btnrow">
+              <button class="btn" id="btnMakeSummary" type="button">✨ Build summary</button>
+              <button class="btn btn--ghost" id="btnSummaryReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="result" id="bookingSummary" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="section" id="sec4">
+      <div class="section__head">
+        <h2>4) Book a Room by Phone (polite English)</h2>
+        <p class="muted">Grammar + vocabulary + practice. Learn how to speak politely on the phone.</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Mini-lesson: polite requests + tenses</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" data-say="phoneLessonText" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div id="phoneLessonText" class="reading"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Titles and greetings</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" data-say="titlesText" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div id="titlesText" class="reading"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Fill in the blanks (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnPhoneFillReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Choose the best word for each blank.</p>
+        <div id="phoneFillHost"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Build the sentence (drag OR click) (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnSentenceBuildReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Drag words into the line. If drag is hard, just click words to move them.</p>
+        <div id="sentenceBuildHost">
+      <div class="card">
+        <div class="card__head">
+          <h3>Oral practice: Listen & repeat (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnOralReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Listen, repeat out loud, then click “I said it”.</p>
+        <div id="oralHost"></div>
+      </div>
+
+</div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section class="section" id="sec5">
+      <div class="section__head">
+        <h2>5) Confirm Arrival Time (Call + Email)</h2>
+        <p class="muted">You already booked your room. Now you confirm your arrival time.</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Email builder (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnEmailListen" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div class="formgrid">
+            <label class="field">
+              <span class="field__label">Your name</span>
+              <input id="emName" class="input" placeholder="Your name" />
+            </label>
+            <label class="field">
+              <span class="field__label">Hotel</span>
+              <select id="emHotel" class="select">
+                <option value="Banff Springs">🏔️ Banff Springs</option>
+                <option value="Château Frontenac">🏰 Château Frontenac</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field__label">Arrival date</span>
+              <input id="emDate" class="input" placeholder="e.g., March 10" />
+            </label>
+            <label class="field">
+              <span class="field__label">Arrival time</span>
+              <select id="emTime" class="select">
+                <option>15:00</option>
+                <option selected>18:30</option>
+                <option>20:15</option>
+                <option>22:00</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field__label">Politeness</span>
+              <select id="emTone" class="select">
+                <option value="polite" selected>Very polite</option>
+                <option value="neutral">Neutral</option>
+              </select>
+            </label>
+            <div class="field">
+              <span class="field__label">Actions</span>
+              <div class="btnrow">
+                <button class="btn" id="btnBuildEmail" type="button">✉️ Build email</button>
+                <button class="btn btn--ghost" id="btnEmailReset" type="button">↺ Reset</button>
+              </div>
+            </div>
+          </div>
+          <div class="result" id="emailOut" aria-live="polite"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Listening dictation (numbers only) (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnDictReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <p class="muted">Listen and type ONLY the numbers (digits). You can type spaces or dashes—no problem.</p>
+          <div id="dictationHost"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section class="section" id="sec6">
+      <div class="section__head">
+        <h2>6) Inside the Hotel: Places + Prepositions</h2>
+        <p class="muted">Learn locations in the hotel, then practice easy prepositions.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Hotel map: Where are things?</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" data-say="hotelMapText" type="button">🔊 Listen</button>
+          </div>
+        </div>
+        <p class="muted">Read this first. It gives you the clues for the matching activity.</p>
+        <div id="hotelMapText" class="reading"></div>
+      </div>
+
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Match: item ➜ place (drag OR click) (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnPlaceMatchReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <p class="muted">First read the “Hotel map” card above. Then match each item to the correct place. Tip: if dragging is hard, click an item first, then click a box.</p>
+          <div id="placeMatchHost"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Easy prepositions (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnPrepReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <p class="muted">Choose the best preposition. (Simple and logical.)</p>
+          <div id="prepositionsHost"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section class="section" id="sec7">
+      <div class="section__head">
+        <h2>7) Check-in Scenario (magical practice)</h2>
+        <p class="muted">Choose responses, fill blanks, and practice a realistic check-in conversation.</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Choose your reply (polite / casual) (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnDialogueReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="dialogueHost"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Check-in fill-in-the-blank (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnCheckinFillReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="checkinFillHost"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Finish line</h3>
+          <div class="righttools">
+            <button class="btn" id="btnCelebrate" type="button">✨ Celebrate!</button>
+          </div>
+        </div>
+        <div class="result" id="finalMsg">
+          When you finish, click “Celebrate!” 🎉
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="muted">
+          SpeakEasyTisha · Interactive lesson for beginners · US/UK voice toggle included
+        </div>
+        <a class="backtop" href="#top">↑ Back to top</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <div class="modal hidden" id="modal">
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal__head">
+        <div class="modal__title" id="modalTitle">How it works</div>
+        <button class="btn btn--ghost" id="modalClose" type="button">✖</button>
+      </div>
+      <div class="modal__body">
+        <ul class="bullets">
+          <li>Use the 🇺🇸/🇬🇧 toggle to change the voice.</li>
+          <li>Click 🔊 to listen to a text (reading, dialogue, vocab).</li>
+          <li>Activities give instant feedback and keep score.</li>
+          <li>If dragging is hard, you can usually <strong>click</strong> items instead.</li>
+        </ul>
+      </div>
+      <div class="modal__foot">
+        <button class="btn" id="modalOk" type="button">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+  <script src="js/canada-hotel-intro.js"></script>
+</body>
+</html>
