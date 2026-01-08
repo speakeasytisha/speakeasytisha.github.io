@@ -22,6 +22,88 @@
     return a;
   }
 
+
+  // --------------------
+  // iPad/tablet support: Tap-to-move fallback for Drag & Drop
+  // (iOS Safari drag/drop can be unreliable. This keeps the lesson usable everywhere.)
+  // How it works: tap a chip to select (highlight), then tap a drop area (or the bank) to move it.
+  // --------------------
+  function enableTapDnD(bankEl, dropAreas, chipSelector){
+    if (!bankEl) return;
+    chipSelector = chipSelector || ".ny-dnd-chip";
+
+    // prevent wiring twice
+    if (bankEl.dataset.tapdndWired === "1") return;
+    bankEl.dataset.tapdndWired = "1";
+
+    let selected = null;
+
+    function clearSelected(){
+      if (selected) selected.classList.remove("is-selected");
+      selected = null;
+    }
+
+    function selectChip(chip){
+      if (!chip) return;
+      if (selected === chip){
+        clearSelected();
+        return;
+      }
+      clearSelected();
+      selected = chip;
+      selected.classList.add("is-selected");
+    }
+
+    // Tap chip to select
+    bankEl.addEventListener("click", (e) => {
+      const chip = e.target.closest(chipSelector);
+      if (chip) {
+        selectChip(chip);
+        return;
+      }
+      // Tap bank empty space to return selected chip to bank
+      if (selected) {
+        bankEl.appendChild(selected);
+        clearSelected();
+      }
+    });
+
+    // Tap zones to drop
+    (dropAreas || []).forEach(area => {
+      if (!area || area.dataset.tapdndWired === "1") return;
+      area.dataset.tapdndWired = "1";
+
+      area.addEventListener("click", (e) => {
+        const chip = e.target.closest(chipSelector);
+        if (chip) { // selecting a chip inside a zone
+          selectChip(chip);
+          return;
+        }
+        if (selected) {
+          area.appendChild(selected);
+          clearSelected();
+        }
+      });
+
+      // also allow tapping the zone header/container
+      const zone = area.closest(".ny-dropzone");
+      if (zone && zone.dataset.tapdndWired !== "1") {
+        zone.dataset.tapdndWired = "1";
+        zone.addEventListener("click", (e) => {
+          if (e.target.closest(chipSelector) || e.target.closest(".ny-droparea")) return;
+          if (selected) {
+            area.appendChild(selected);
+            clearSelected();
+          }
+        });
+      }
+    });
+
+    // Tap outside clears selection (nice UX on mobile)
+    document.addEventListener("scroll", clearSelected, { passive: true });
+  }
+
+
   // --------------------
   // State + scoring
   // --------------------
@@ -644,6 +726,10 @@
       bank.appendChild(dragged);
       dragged = null;
     });
+
+    // Tap-to-move fallback (iPad/tablet)
+    enableTapDnD(bank, $$(".ny-dropzone .ny-droparea"), ".ny-dnd-chip");
+
   }
 
   function zoneLabel(z) {
@@ -1013,6 +1099,10 @@ function renderStruct() {
 
   // Reset this section's “already-awarded” locks (so the learner can re-try after Reset).
   [...state.awarded].forEach(k => { if (k.startsWith("struct:")) state.awarded.delete(k); });
+
+  // Tap-to-move fallback (iPad/tablet)
+  enableTapDnD(bank, $$(".ny-structzone .ny-droparea"), ".ny-dnd-chip");
+
 }
 
 function checkStruct() {
