@@ -1506,13 +1506,24 @@
       updateWorkshopProgress(topic);
     }
 
-    function start() {
+    function start(forceRepeat) {
       var mode = modeSel ? modeSel.value : "mix";
       if (["mix","mcq","cloze","order","match","listen"].indexOf(mode) < 0) mode = "mix";
+
       var pool = filterTasks(topic, mode);
       pool = shuffle(pool);
 
-      practiceState = { topicId: topic.id, mode: mode, pool: pool, done: 0 };
+      practiceState = {
+        topicId: topic.id,
+        mode: mode,
+        pool: pool,
+        done: 0,
+        // NEW:
+        repeat: !!forceRepeat,
+        // pointer for repeat mode
+        ptr: 0
+      };
+
       updateScore();
       next();
     }
@@ -1521,11 +1532,32 @@
       if (!practiceState) return;
       if (nextBtn) nextBtn.disabled = true;
 
-      var task = nextUnmastered(practiceState.pool, practiceState.topicId);
+      var task = null;
+
+      // NEW: if repeat mode, just cycle through pool forever
+      if (practiceState.repeat) {
+        if (!practiceState.pool.length) return;
+        task = practiceState.pool[practiceState.ptr % practiceState.pool.length];
+        practiceState.ptr += 1;
+      } else {
+        task = nextUnmastered(practiceState.pool, practiceState.topicId);
+      }
+
+      // If all mastered in normal mode → show completion + enable replay
       if (!task) {
-        stage.innerHTML = "<div class='tt-feedback good'>✅ Deck complete! You mastered all tasks in this mode.</div>";
+        stage.innerHTML =
+          "<div class='tt-feedback good'>✅ Deck complete! You mastered all tasks in this mode.</div>" +
+          "<div class='tt-row' style='flex-wrap:wrap; margin-top:10px;'>" +
+            "<button class='ce-btn ce-btn-primary' type='button' id='p-replay'>Practice again (repeat mode)</button>" +
+          "</div>";
+
         fb.className = "tt-feedback good";
-        fb.textContent = "Great job. Choose another mode or another topic.";
+        fb.textContent = "Great job. Replay for speed/fluency, or reset progress to start from zero.";
+
+        var replayBtn = qs("#p-replay", box);
+        if (replayBtn) replayBtn.onclick = function () { start(true); };
+
+        if (nextBtn) nextBtn.disabled = true;
         return;
       }
 
@@ -1534,19 +1566,27 @@
 
       renderTask(stage, fb, task, function (ok) {
         if (nextBtn) nextBtn.disabled = false;
-        if (ok) {
+
+        // Only mark mastered in normal mode (NOT in repeat mode)
+        if (!practiceState.repeat && ok) {
           markMastered(practiceState.topicId, task.id);
+          practiceState.done += 1;
+          updateScore();
+        } else if (practiceState.repeat) {
+          // In repeat mode, count attempts as "done" if you want
           practiceState.done += 1;
           updateScore();
         }
       });
     }
 
-    if (startBtn) startBtn.onclick = start;
+    if (startBtn) startBtn.onclick = function () { start(false); };
     if (nextBtn) nextBtn.onclick = next;
-    if (resetBtn) resetBtn.onclick = start;
 
-    start();
+    // Reset session = replay (repeat mode)
+    if (resetBtn) resetBtn.onclick = function () { start(true); };
+
+    start(false);
   }
 
   // ---- Render one task (MCQ/Cloze/Order/Match/Listen)
