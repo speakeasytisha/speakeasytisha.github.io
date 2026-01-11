@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CLOE Topic Trainer · Targeted Practice + Timed Games · SpeakEasyTisha</title>
+
+  <!-- Shared site CSS (matches your existing pages) -->
+  
+  <link rel="stylesheet" href="/css/speakeasy.css" />
+  <link rel="stylesheet" href="/css/nav.fixed.css" />
+<link rel="stylesheet" href="/css/cloe-exam-prep.css" />
+  <!-- This page CSS -->
+  <link rel="stylesheet" href="/css/cloe-topic-trainer.css" />
+</head>
+
+<body data-hero-image="/img/hero-office.jpg">
+  <div id="site-header"></div>
+
+  <main class="ce-wrap" id="top">
+    <section class="ce-hero">
+      <div class="ce-hero-inner">
+        <div class="ce-hero-left">
+          <p class="ce-kicker">CLOE · Targeted training</p>
+          <h1 class="ce-h1">CLOE Topic Trainer — Grammar + Vocab Workshops, Listening, Speaking & Timed Games</h1>
+          <p class="ce-lead">
+            Choose a category, open a workshop, and practise with <strong>instant feedback</strong> (why + hint).
+            Includes <strong>flashcards with icons</strong>, <strong>QCM</strong>, <strong>gap-fills</strong>, <strong>word-order builders</strong>,
+            <strong>matching</strong>, <strong>listening comprehension</strong> (US/UK), and <strong>timed speaking</strong> with optional recording.
+          </p>
+
+          <div class="ce-hero-actions">
+            <a class="ce-btn ce-btn-primary" href="#map">Start with the scenario map</a>
+            <a class="ce-btn ce-btn-secondary" href="#games">Jump to timed games</a>
+            <a class="ce-btn ce-btn-ghost" href="#simulations">Mixed simulations</a>
+          </div>
+
+          <div class="tt-accent">
+            <span class="ce-muted">Accent for listening:</span>
+            <button type="button" class="tt-accent-btn" data-accent="us" aria-pressed="true">US</button>
+            <button type="button" class="tt-accent-btn" data-accent="uk" aria-pressed="false">UK</button>
+            <span class="ce-muted" id="tt-voice-note"></span>
+          </div>
+        </div>
+
+        <div class="ce-hero-right">
+          <div class="ce-card ce-card-glow">
+            <h3 class="ce-h3">How to use this page</h3>
+            <ol class="ce-bullets">
+              <li>Pick a <strong>category</strong> in the Scenario Map.</li>
+              <li>Open a topic workshop and study the <strong>grammar + vocab</strong>.</li>
+              <li>Do Practice tasks (mix or by type). You’ll see <strong>why</strong> it’s right/wrong.</li>
+              <li>Try Listening + Speaking. Then test yourself with Timed Games + Mixed Simulations.</li>
+            </ol>
+            <p class="ce-muted">Touch-friendly: everything works with taps (no mouse drag required).</p>
+          </div>
+
+          <div id="tt-error" class="tt-error" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scenario map -->
+    <section class="ce-section" id="map">
+      <div class="ce-section-head">
+        <h2 class="ce-h2">Scenario Map — choose what you want to train</h2>
+        <p class="ce-muted">Filter by category or search keywords (email, meeting, invoice, travel…). Tap a card to open its workshop.</p>
+      </div>
+
+      <div class="tt-controls">
+        <label class="tt-label">
+          <span class="ce-muted">Category</span>
+          <select id="tt-cat" class="tt-select" aria-label="Category"></select>
+        </label>
+
+        <label class="tt-label tt-grow">
+          <span class="ce-muted">Search</span>
+          <input id="tt-search" class="tt-input" type="search" placeholder="Try: reschedule, refund, invoice, directions…" />
+        </label>
+
+        <button class="ce-btn ce-btn-secondary" type="button" id="tt-clear">Clear</button>
+      </div>
+
+      <div class="tt-hint ce-muted" id="tt-hint"></div>
+      <div class="tt-grid" id="tt-list" aria-label="Scenario map results"></div>
+    </section>
+
+    <!-- Workshop -->
+    <section class="ce-section" id="workshop">
+      <div class="ce-section-head">
+        <h2 class="ce-h2">Workshop</h2>
+        <p class="ce-muted">Grammar explanations + vocab flashcards + practice drills with immediate correction.</p>
+      </div>
+
+      <div class="tt-workshop" id="tt-workshop">
+        <div class="tt-w-head">
+          <div>
+            <div class="tt-w-title" id="tt-w-title">Select a topic from the map</div>
+            <div class="tt-w-meta" id="tt-w-meta"></div>
+          </div>
+
+          <div class="tt-w-actions">
+            <span class="tt-pill" id="tt-w-progress">Progress: 0/0 mastered</span>
+            <button class="ce-btn ce-btn-secondary" type="button" id="tt-w-reset" disabled>Reset topic progress</button>
+          </div>
+        </div>
+
+        <div class="tt-tabs" role="tablist">
+          <button class="tt-tab is-active" data-tab="grammar" role="tab" aria-selected="true">Grammar</button>
+          <button class="tt-tab" data-tab="vocab" role="tab" aria-selected="false">Vocab (flashcards)</button>
+          <button class="tt-tab" data-tab="practice" role="tab" aria-selected="false">Practice</button>
+          <button class="tt-tab" data-tab="builder" role="tab" aria-selected="false">Builder</button>
+          <button class="tt-tab" data-tab="listening" role="tab" aria-selected="false">Listening</button>
+          <button class="tt-tab" data-tab="speaking" role="tab" aria-selected="false">Speaking</button>
+        </div>
+
+        <div class="tt-panel" id="tt-tab-grammar"></div>
+        <div class="tt-panel" id="tt-tab-vocab" hidden></div>
+        <div class="tt-panel" id="tt-tab-practice" hidden></div>
+        <div class="tt-panel" id="tt-tab-builder" hidden></div>
+        <div class="tt-panel" id="tt-tab-listening" hidden></div>
+        <div class="tt-panel" id="tt-tab-speaking" hidden></div>
+      </div>
+    </section>
+
+    <!-- Timed games -->
+    <section class="ce-section" id="games">
+      <div class="ce-section-head">
+        <h2 class="ce-h2">Timed Games — CLOE-style speed</h2>
+        <p class="ce-muted">Fast drills with lots of unique questions (no repeating the same 3 items). Instant feedback + score.</p>
+      </div>
+
+      <div class="tt-games-grid">
+        <!-- GAME 1 -->
+        <div class="tt-game ce-card">
+          <div class="tt-game-head">
+            <h3 class="ce-h3">Game 1 — Word Order Sprint</h3>
+            <div class="tt-pill" id="g1-clock">00:00</div>
+          </div>
+          <div class="tt-row">
+            <select class="tt-select" id="g1-topic"></select>
+            <button class="ce-btn ce-btn-primary" type="button" id="g1-start">Start (60s)</button>
+            <button class="ce-btn ce-btn-secondary" type="button" id="g1-stop" disabled>Stop</button>
+          </div>
+          <div class="tt-game-stage" id="g1-stage"></div>
+          <div class="tt-feedback" id="g1-fb"></div>
+          <div class="tt-row tt-space">
+            <span class="tt-pill" id="g1-score">Score: 0</span>
+            <span class="ce-muted" id="g1-done"></span>
+          </div>
+        </div>
+
+        <!-- GAME 2 -->
+        <div class="tt-game ce-card">
+          <div class="tt-game-head">
+            <h3 class="ce-h3">Game 2 — Connectors Speed-Run</h3>
+            <div class="tt-pill" id="g2-clock">00:00</div>
+          </div>
+          <div class="tt-row">
+            <select class="tt-select" id="g2-topic"></select>
+            <button class="ce-btn ce-btn-primary" type="button" id="g2-start">Start (45s)</button>
+            <button class="ce-btn ce-btn-secondary" type="button" id="g2-stop" disabled>Stop</button>
+          </div>
+          <div class="tt-game-stage" id="g2-stage"></div>
+          <div class="tt-feedback" id="g2-fb"></div>
+          <div class="tt-row tt-space">
+            <span class="tt-pill" id="g2-score">Score: 0</span>
+            <span class="ce-muted" id="g2-done"></span>
+          </div>
+        </div>
+
+        <!-- GAME 3 -->
+        <div class="tt-game ce-card">
+          <div class="tt-game-head">
+            <h3 class="ce-h3">Game 3 — Prepositions Blitz</h3>
+            <div class="tt-pill" id="g3-clock">00:00</div>
+          </div>
+          <div class="tt-row">
+            <select class="tt-select" id="g3-topic"></select>
+            <button class="ce-btn ce-btn-primary" type="button" id="g3-start">Start (45s)</button>
+            <button class="ce-btn ce-btn-secondary" type="button" id="g3-stop" disabled>Stop</button>
+          </div>
+          <div class="tt-game-stage" id="g3-stage"></div>
+          <div class="tt-feedback" id="g3-fb"></div>
+          <div class="tt-row tt-space">
+            <span class="tt-pill" id="g3-score">Score: 0</span>
+            <span class="ce-muted" id="g3-done"></span>
+          </div>
+        </div>
+
+        <!-- GAME 4 -->
+        <div class="tt-game ce-card">
+          <div class="tt-game-head">
+            <h3 class="ce-h3">Game 4 — Polite Professional Choice</h3>
+            <div class="tt-pill" id="g4-clock">00:00</div>
+          </div>
+          <div class="tt-row">
+            <select class="tt-select" id="g4-topic"></select>
+            <button class="ce-btn ce-btn-primary" type="button" id="g4-start">Start (45s)</button>
+            <button class="ce-btn ce-btn-secondary" type="button" id="g4-stop" disabled>Stop</button>
+          </div>
+          <div class="tt-game-stage" id="g4-stage"></div>
+          <div class="tt-feedback" id="g4-fb"></div>
+          <div class="tt-row tt-space">
+            <span class="tt-pill" id="g4-score">Score: 0</span>
+            <span class="ce-muted" id="g4-done"></span>
+          </div>
+        </div>
+
+        <!-- GAME 5 -->
+        <div class="tt-game ce-card tt-game-wide">
+          <div class="tt-game-head">
+            <h3 class="ce-h3">Game 5 — Mixed Rapid-Fire</h3>
+            <div class="tt-pill" id="g5-clock">00:00</div>
+          </div>
+          <div class="tt-row">
+            <select class="tt-select" id="g5-topic"></select>
+            <button class="ce-btn ce-btn-primary" type="button" id="g5-start">Start (75s)</button>
+            <button class="ce-btn ce-btn-secondary" type="button" id="g5-stop" disabled>Stop</button>
+          </div>
+          <div class="tt-game-stage" id="g5-stage"></div>
+          <div class="tt-feedback" id="g5-fb"></div>
+          <div class="tt-row tt-space">
+            <span class="tt-pill" id="g5-score">Score: 0</span>
+            <span class="ce-muted" id="g5-done"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mixed simulations -->
+    <section class="ce-section" id="simulations">
+      <div class="ce-section-head">
+        <h2 class="ce-h2">Mixed Simulations — realistic mini-tests</h2>
+        <p class="ce-muted">A short scenario + a few CLOE-style tasks (comprehension, grammar, word order, speaking prompt).</p>
+      </div>
+
+      <div class="ce-card">
+        <div class="tt-row" style="flex-wrap:wrap;">
+          <label class="tt-label">
+            <span class="ce-muted">Focus topic</span>
+            <select id="sim-topic" class="tt-select"></select>
+          </label>
+          <button class="ce-btn ce-btn-primary" type="button" id="sim-start">Start a simulation</button>
+          <button class="ce-btn ce-btn-secondary" type="button" id="sim-next" disabled>Next</button>
+          <span class="tt-pill" id="sim-score">Score: 0</span>
+        </div>
+
+        <div class="tt-sim-stage" id="sim-stage"></div>
+        <div class="tt-feedback" id="sim-fb"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+<script src="js/site-chrome.fixed.js"></script>
+  <script defer src="/js/cloe-topic-trainer.js"></script>
+</body>
+</html>
