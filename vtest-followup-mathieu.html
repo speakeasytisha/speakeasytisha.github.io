@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VTEST Follow-up – Rescheduling Email (Mathieu) · SpeakEasyTisha</title>
+  <link rel="stylesheet" href="css/vtest-followup-mathieu.css" />
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="hero__inner">
+      <div class="badge">VTEST · Follow-up Lesson</div>
+      <h1>Rescheduling a Meeting · Email, Tone & Exam Skills</h1>
+      <p class="sub">
+        Based on Mathieu’s homework + typical VTEST tasks: vocabulary, grammar, listening, speaking and writing —
+        fully interactive (drag & drop + iPad tap mode), US/UK audio, and score tracking.
+      </p>
+
+      <div class="topbar">
+        <div class="accentbar" role="group" aria-label="Accent selection">
+          <span class="accentbar__label">Accent:</span>
+          <button class="btn btn--ghost" id="accentUS" type="button">🇺🇸 American</button>
+          <button class="btn btn--ghost" id="accentUK" type="button">🇬🇧 British</button>
+          <span class="accentbar__current">Current: <strong id="accentLabel">American</strong></span>
+          <button class="btn btn--ghost" id="btnStopAudio" type="button">⏹ Stop audio</button>
+        </div>
+
+        <div class="scorepill" aria-live="polite">
+          <span>Score</span>
+          <strong id="scoreNow">0</strong>
+          <span class="muted">/</span>
+          <strong id="scoreMax">0</strong>
+          <button class="btn btn--ghost" id="resetAll" type="button">↺ Reset all</button>
+        </div>
+      </div>
+
+      <div class="chiprow" aria-label="Lesson features">
+        <span class="chip">🃏 Flashcards + timed game</span>
+        <span class="chip">🧩 Drag & drop + iPad tap mode</span>
+        <span class="chip">🎧 Listening (US/UK)</span>
+        <span class="chip">✅ Instant feedback</span>
+        <span class="chip">✍️ Writing builder</span>
+      </div>
+
+      <div class="cta">
+        <a class="btn" href="#s1">Start</a>
+        <a class="btn btn--ghost" href="#s6">Jump to Email Builder</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- iPad / Touch mini box -->
+    <div class="ipadBox hidden" id="ipadBox" role="note" aria-label="iPad instructions">
+      <div class="ipadBox__title">📱 iPad / tablet mode</div>
+      <ul>
+        <li><strong>Drag & drop alternative:</strong> tap a chip/line to select (it highlights), then tap the target to place it.</li>
+        <li>Tap a filled target again (with nothing selected) to <strong>clear</strong> it.</li>
+        <li>Audio works best after you press one “Listen” button once (browser permission).</li>
+      </ul>
+    </div>
+
+    <!-- SECTION 1 -->
+    <section class="sec" id="s1">
+      <h2>1) Objectives (VTEST style)</h2>
+      <div class="card">
+        <p><strong>Today:</strong> write and say a professional message to reschedule a meeting. You will practise:</p>
+        <div class="grid3">
+          <div class="mini">
+            <div class="mini__title">Vocabulary</div>
+            <p class="muted">schedule, availability, inconvenience, reschedule, postpone…</p>
+          </div>
+          <div class="mini">
+            <div class="mini__title">Polite grammar</div>
+            <p class="muted">Could / Would / Would you mind…?</p>
+          </div>
+          <div class="mini">
+            <div class="mini__title">Exam speed</div>
+            <p class="muted">Timed choices + speaking timer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="sec" id="s2">
+      <h2>2) Vocabulary (flashcards + timed game)</h2>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="card__head">
+            <h3>Flashcards (tap to flip)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="fcShuffle" type="button">🔀 Shuffle</button>
+              <button class="btn btn--ghost" id="fcReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <p class="muted">Front = word + icon. Back = definition + example sentence. Use 🔊 to listen (US/UK).</p>
+          <div id="flashGrid" class="flashGrid"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Timed game (60 seconds)</h3>
+            <div class="righttools">
+              <button class="btn" id="gameStart" type="button">▶ Start</button>
+              <button class="btn btn--ghost" id="gameStop" type="button">⏹ Stop</button>
+              <button class="btn btn--ghost" id="gameReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+
+          <div class="gamebox">
+            <div class="gamebox__top">
+              <div class="pill">⏱️ <strong id="gameTime">60</strong>s</div>
+              <div class="pill">🎯 <strong id="gamePts">0</strong> pts</div>
+            </div>
+            <div class="prompt" id="gamePrompt">Press Start.</div>
+            <div class="choices" id="gameChoices"></div>
+            <div class="feedback hidden" id="gameFb" aria-live="polite"></div>
+            <p class="muted small">Goal: choose the best word for the definition.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="sec" id="s3">
+      <h2>3) Grammar: polite requests + clean business style</h2>
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Mini lesson</h3>
+
+          <div class="rule">
+            <div class="rule__title">A strong reschedule sentence</div>
+            <p class="muted">Pattern: <strong>apology</strong> + <strong>request</strong> + <strong>short reason</strong> + <strong>question</strong>.</p>
+            <p class="example">“I’m sorry for the inconvenience, but would it be possible to reschedule? I need to handle an urgent issue first. Could you share your availability?”</p>
+          </div>
+
+          <div class="rule">
+            <div class="rule__title">Small details that matter</div>
+            <ul class="list">
+              <li>No extra space before punctuation: <strong>availability?</strong> (not “availability ?”)</li>
+              <li>More natural: “follow up <strong>on</strong> our meeting” OR “I’m writing <strong>regarding</strong> our meeting”</li>
+              <li>Neutral reason: “an urgent issue” / “a time-sensitive matter” (safer than “complaint”)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Mini quiz (MCQ)</h3>
+            <div class="righttools">
+              <span class="pill">✅ <strong id="gScore">0</strong> / <strong id="gMax">0</strong></span>
+              <button class="btn btn--ghost" id="gReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="grammarQuiz"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="sec" id="s4">
+      <h2>4) Reading: Mathieu’s email (listen + comprehension)</h2>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="card__head">
+            <h3>Student email</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="readListen" type="button">🔊 Listen</button>
+            </div>
+          </div>
+
+<pre class="mail" id="mathieuEmail">Subject: request to postpone our meeting
+
+Dear Frank,
+
+I hope you are well.
+
+I am writing to follow up regarding our scheduled meeting. Sorry for the inconvenience, but I would like to ask if we could please postpone it to a later date.
+
+The reason is that I have a complaint that needs to be escalated to the manager, and I would like to address this matter properly before our meeting.
+
+Could you please let me know your availability ?
+
+Thank you for your understanding.
+
+Best regards,
+Mathieu N. Tandu</pre>
+
+          <p class="muted">Tip: answer using the information in the email. No extra inventions.</p>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Comprehension quiz</h3>
+            <div class="righttools">
+              <span class="pill">✅ <strong id="rScore">0</strong> / <strong id="rMax">0</strong></span>
+              <button class="btn btn--ghost" id="rReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="readingQuiz"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section class="sec" id="s5">
+      <h2>5) Listening dictation: numbers only (VTEST-friendly)</h2>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Play → type the numbers only</h3>
+          <div class="righttools">
+            <button class="btn" id="dPlay" type="button">▶ Play</button>
+            <button class="btn btn--ghost" id="dStop" type="button">⏹ Stop</button>
+            <button class="btn btn--ghost" id="dNew" type="button">🎲 New</button>
+            <button class="btn btn--ghost" id="dReset" type="button">↺ Reset</button>
+            <span class="pill">✅ <strong id="dScore">0</strong> / <strong id="dMax">0</strong></span>
+          </div>
+        </div>
+
+        <div class="dictbox">
+          <div class="prompt" id="dPrompt">Press Play.</div>
+
+          <label class="field">
+            <span class="field__label">Your answer (numbers only):</span>
+            <input id="dInput" type="text" inputmode="numeric" placeholder="e.g., 3:15 or 19 or 20" />
+          </label>
+
+          <div class="row">
+            <button class="btn" id="dCheck" type="button">Check</button>
+            <div class="feedback hidden" id="dFb" aria-live="polite"></div>
+          </div>
+
+          <details class="transcript">
+            <summary>Show transcript</summary>
+            <div class="muted" id="dTranscript"></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section class="sec" id="s6">
+      <h2>6) Drag & drop: build a rescheduling email (iPad tap mode)</h2>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="card__head">
+            <h3>Lines bank (drag OR tap)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="ddReset" type="button">↺ Reset</button>
+              <span class="pill">✅ <strong id="ddScore">0</strong> / <strong id="ddMax">0</strong></span>
+            </div>
+          </div>
+          <p class="muted">Desktop: drag into slots. iPad/tablet: tap a line to select, then tap a slot.</p>
+          <div id="ddBank" class="ddBank"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Email slots</h3>
+            <div class="righttools">
+              <button class="btn" id="ddCheck" type="button">Check</button>
+            </div>
+          </div>
+          <div class="ddSlots" id="ddSlots"></div>
+          <div class="feedback hidden" id="ddFb" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section class="sec" id="s7">
+      <h2>7) Fill in the blanks: choose the best polite options</h2>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Dropdown builder (readable on VTEST theme)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="fbReset" type="button">↺ Reset</button>
+            <button class="btn" id="fbCheck" type="button">Check</button>
+            <span class="pill">✅ <strong id="fbScore">0</strong> / <strong id="fbMax">0</strong></span>
+          </div>
+        </div>
+
+        <p class="muted">Choose the most natural business-English options.</p>
+        <div class="fbText" id="fbText"></div>
+        <div class="feedback hidden" id="fbFb" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 8 -->
+    <section class="sec" id="s8">
+      <h2>8) Sentence builder: upgrade weak phrases</h2>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Tap chips → tap blanks</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="sbReset" type="button">↺ Reset</button>
+            <button class="btn" id="sbCheck" type="button">Check</button>
+            <span class="pill">✅ <strong id="sbScore">0</strong> / <strong id="sbMax">0</strong></span>
+          </div>
+        </div>
+
+        <p class="muted">Build the improved sentence (business style).</p>
+        <div class="sb">
+          <div class="sb__line" id="sbLine"></div>
+          <div class="sb__bank" id="sbBank"></div>
+          <div class="feedback hidden" id="sbFb" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9 -->
+    <section class="sec" id="s9">
+      <h2>9) Speaking timer (exam feeling)</h2>
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Prompt</h3>
+          <div class="prompt" id="spPrompt"></div>
+
+          <div class="timerbar">
+            <div class="pill">Prep: <strong id="prepNow">15</strong>s</div>
+            <div class="pill">Speak: <strong id="speakNow">60</strong>s</div>
+          </div>
+
+          <div class="row">
+            <button class="btn" id="spStart" type="button">Start</button>
+            <button class="btn btn--ghost" id="spNew" type="button">New prompt</button>
+            <button class="btn btn--ghost" id="spReset" type="button">Reset</button>
+          </div>
+          <div class="feedback hidden" id="spFb" aria-live="polite"></div>
+        </div>
+
+        <div class="card">
+          <h3>Optional: record (if supported)</h3>
+          <p class="muted">If your device doesn’t support recording in the browser, practise speaking without recording.</p>
+          <div class="row">
+            <button class="btn" id="recStart" type="button">Start recording</button>
+            <button class="btn btn--ghost" id="recStop" type="button">Stop</button>
+            <button class="btn btn--ghost" id="recClear" type="button">Clear</button>
+          </div>
+          <audio id="recAudio" controls class="audio hidden"></audio>
+          <a id="recDl" class="btn btn--ghost hidden" download="speaking-practice.webm">Download recording</a>
+          <div class="feedback hidden" id="recFb" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10 -->
+    <section class="sec" id="s10">
+      <h2>10) Writing task (guided) + listen</h2>
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Task</h3>
+          <p>Write an email to Frank to reschedule. Aim for <strong>8–12 lines</strong>.</p>
+          <ul class="list">
+            <li>Short apology</li>
+            <li>Clear reason (neutral)</li>
+            <li>Propose new time/date</li>
+            <li>Ask for availability / confirmation</li>
+          </ul>
+
+          <details class="sample">
+            <summary>Show a model answer</summary>
+<pre class="mail">Subject: Request to reschedule our meeting
+
+Dear Frank,
+
+I hope you are doing well.
+
+I’m writing about our scheduled meeting. I’m sorry for the inconvenience, but would it be possible to reschedule to a later date?
+
+I need to handle an urgent issue and discuss it with my manager first. Could you please let me know your availability next week?
+
+Thank you for your understanding.
+
+Best regards,
+Mathieu N. Tandu</pre>
+          </details>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Write + self-check</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="wReset" type="button">↺ Reset</button>
+              <button class="btn btn--ghost" id="wListen" type="button">🔊 Listen</button>
+            </div>
+          </div>
+
+          <label class="field">
+            <span class="field__label">Your email:</span>
+            <textarea id="wText" rows="12" placeholder="Write here..."></textarea>
+          </label>
+
+          <div class="row">
+            <button class="btn" id="wCheck" type="button">Self-check</button>
+            <div class="feedback hidden" id="wFb" aria-live="polite"></div>
+          </div>
+
+          <div class="checklist">
+            <div class="checklist__title">Checklist</div>
+            <ul>
+              <li id="cApology">⬜ Includes an apology</li>
+              <li id="cRequest">⬜ Includes the reschedule request</li>
+              <li id="cReason">⬜ Includes a reason</li>
+              <li id="cAvail">⬜ Asks for availability / proposes a time</li>
+              <li id="cClose">⬜ Has a polite close</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <a class="btn btn--ghost" href="#top">↑ Back to top</a>
+      <div class="muted">SpeakEasyTisha · VTEST Follow-up (Mathieu)</div>
+    </footer>
+  </main>
+
+  <script src="js/vtest-followup-mathieu.js"></script>
+</body>
+</html>
