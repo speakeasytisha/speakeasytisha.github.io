@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel in Canada – Follow-up (Check-in → Check-out) · SpeakEasyTisha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/canada-hotel-followup.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__logo">
+          <span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span>
+        </div>
+        <div class="brand__tag">Follow-up Lesson · Step-by-step Hotel Scenarios</div>
+      </div>
+
+      <div class="controls">
+        <div class="pill">
+          <span class="pill__label">Voice</span>
+          <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+          <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+        </div>
+
+        <div class="pill">
+          <span class="pill__label">Audio</span>
+          <button class="btn btn--ghost" id="btnPause" type="button">⏸ Pause</button>
+          <button class="btn btn--ghost" id="btnResume" type="button">▶️ Resume</button>
+          <button class="btn btn--ghost" id="btnStop" type="button">⏹ Stop</button>
+        </div>
+
+        <div class="scorebox" aria-live="polite">
+          <div class="scorebox__label">Score</div>
+          <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        </div>
+
+        <button class="btn btn--danger" id="btnResetAll" type="button" title="Reset all activities">↺ Reset all</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__inner">
+      <div class="hero__text">
+        <h1>Hotel in Canada: Day 2 — Check-in to Check-out ✨</h1>
+        <p class="lead">
+          Follow-up lesson: realistic hotel tasks, <strong>more grammar</strong>, <strong>more scenarios</strong>, and <strong>more practice</strong>.
+          Choose your accent (US/UK) above and use 🔊 to listen.
+        </p>
+
+        <div class="hero__cta">
+          <button class="btn" id="btnStartTour" type="button">▶️ Start the lesson</button>
+          <button class="btn btn--ghost" id="btnHowTo" type="button">ℹ️ How it works</button>
+        </div>
+
+        <div class="minirow">
+          <div class="minicard">
+            <div class="minicard__t">🎧 Listening</div>
+            <div class="minicard__p">Every activity has “Listen” with US/UK voices.</div>
+          </div>
+          <div class="minicard">
+            <div class="minicard__t">✅ Instant feedback</div>
+            <div class="minicard__p">You see right/wrong immediately + you can ask for a hint.</div>
+          </div>
+          <div class="minicard">
+            <div class="minicard__t">🧩 Drag OR click</div>
+            <div class="minicard__p">Drag-and-drop always has a click alternative (iPad-friendly).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__panel">
+        <div class="panelcard">
+          <div class="panelcard__title">Today’s mission (≈ 1 hour)</div>
+          <ol class="panelcard__list">
+            <li>Hotel vocabulary for check-in, directions, problems, checkout.</li>
+            <li>Grammar lab: polite requests + verb tenses + imperatives.</li>
+            <li>Check-in simulation: ID, deposit, key card, directions.</li>
+            <li>Inside the hotel: ask for directions + prepositions.</li>
+            <li>Problem-solving: listening + best responses.</li>
+            <li>Checkout: bill, payment, complaint, and goodbye.</li>
+          </ol>
+          <div class="progress">
+            <div class="progress__bar" id="progressBar" style="width: 0%"></div>
+          </div>
+          <div class="muted tiny">Tip: aim for ⭐ Perfect in each activity.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main" class="shell">
+
+    <!-- SECTION 1 -->
+    <section class="section" id="sec1">
+      <div class="section__head">
+        <h2>1) Vocabulary Flashcards — Day 2</h2>
+        <p class="muted">Click a card to flip. Use 🔊 to listen. These words help you for check-in, directions, problems, and checkout.</p>
+      </div>
+
+      <div class="toolrow">
+        <div class="pill">
+          <span class="pill__label">Group</span>
+          <select id="vocabGroup" class="select">
+            <option value="all">All</option>
+            <option value="checkin">Check-in</option>
+            <option value="directions">Directions</option>
+            <option value="problems">Problems</option>
+            <option value="checkout">Check-out</option>
+          </select>
+        </div>
+
+        <button class="btn btn--ghost" id="btnVocabShuffle" type="button">🔀 Shuffle</button>
+        <button class="btn btn--ghost" id="btnVocabMiniQuiz" type="button">🧠 Mini-quiz</button>
+      </div>
+
+      <div id="flashcards" class="grid grid--cards"></div>
+
+      <div id="vocabMiniQuiz" class="card hidden">
+        <div class="card__head">
+          <h3>Mini-quiz: Match the word</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnVocabMiniReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Choose the best meaning. Instant feedback + score.</p>
+        <div id="vocabMiniQuizHost"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="section" id="sec2">
+      <div class="section__head">
+        <h2>2) Grammar Lab (Polite English + Verb Tenses)</h2>
+        <p class="muted">Practice the grammar you REALLY need at a hotel: polite requests, verb tenses, and imperatives for directions.</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Mini-lesson: Polite requests (Can / Could / Would / May)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" data-say="politeLesson" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div id="politeLesson" class="reading"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Mini-lesson: Verb tenses for hotel situations</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" data-say="tenseLesson" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div id="tenseLesson" class="reading"></div>
+        </div>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Polite requests — MCQ (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnPoliteReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="politeQuizHost"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Verb tenses — MCQ (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnTenseReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="tenseQuizHost"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Word order: build polite sentences (drag OR click) (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnWordOrderReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Build the sentence. Drag tokens into the line, or click tokens to move them.</p>
+        <div id="wordOrderHost"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="section" id="sec3">
+      <div class="section__head">
+        <h2>3) Check-in Simulation (Step-by-step)</h2>
+        <p class="muted">Realistic check-in: greeting, reservation name, ID, deposit, key card, directions.</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Listening + response (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnCheckinListenReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <p class="muted">Click 🔊 to hear the receptionist. Choose the best reply.</p>
+          <div id="checkinListenHost"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Fill in the blanks: check-in details (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnCheckinFillReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <p class="muted">Pick a word from the bank, then click a blank. You get instant feedback.</p>
+          <div id="checkinFillHost"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Dialogue choices: check-in conversation (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnDialogueReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Choose your lines. If you are wrong, you see the better (polite) answer immediately.</p>
+        <div id="dialogueHost"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Dictation (numbers): room + times + amount (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnDictReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Click 🔊, type what you hear (digits). Instant feedback.</p>
+        <div id="dictHost"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="section" id="sec4">
+      <div class="section__head">
+        <h2>4) Inside the Hotel: Directions + Prepositions</h2>
+        <p class="muted">Ask for directions and understand the answer: in / on / next to / across from / between.</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Mini-lesson: hotel map (Listen)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" data-say="mapLesson" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div id="mapLesson" class="reading"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Prepositions — MCQ (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnPrepReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="prepQuizHost"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Drag OR click matching: Places → Location (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnPlaceReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Move each place into the correct box. (Drag or click.) Instant feedback + hints.</p>
+        <div id="placeMatchHost"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Imperatives for giving directions — quick practice (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnImpReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="impQuizHost"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section class="section" id="sec5">
+      <div class="section__head">
+        <h2>5) Problems at the Hotel (Listening + Best Response)</h2>
+        <p class="muted">Real problems: noisy room, missing towels, wrong bill, late check-out, broken AC.</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Listening comprehension (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnProblemListenReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <p class="muted">Hear the guest. Choose the best helpful reply (polite + realistic).</p>
+          <div id="problemListenHost"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Fill-in: complaint email (Word bank) (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnEmailFillReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <p class="muted">Fill the blanks in a short email to the hotel.</p>
+          <div id="emailFillHost"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section class="section" id="sec6">
+      <div class="section__head">
+        <h2>6) Check-out & Billing (Reading + Practice)</h2>
+        <p class="muted">Understand the bill, ask for changes, pay, and say goodbye politely.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Reading: The bill at check-out</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" data-say="checkoutReading" type="button">🔊 Listen</button>
+          </div>
+        </div>
+        <div id="checkoutReading" class="reading"></div>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Reading quiz — MCQ (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnCheckoutMCQReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="checkoutMCQHost"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Reading quiz — True/False (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnCheckoutTFReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="checkoutTFHost"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Word order: checkout lines (drag OR click) (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnCheckoutOrderReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="checkoutOrderHost"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section class="section" id="sec7">
+      <div class="section__head">
+        <h2>7) Final Role-play: Your Hotel Day (Choose your path)</h2>
+        <p class="muted">A complete mini-simulation: check in → ask directions → solve a problem → check out.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Role-play choices (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnRoleplayReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Choose the best line. Listen to practice speaking too.</p>
+        <div id="roleplayHost"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Oral practice: Listen & repeat (self-check) (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnOralReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Listen, repeat out loud, then click “I said it”.</p>
+        <div id="oralHost"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="muted tiny">© SpeakEasyTisha — Follow-up lesson. iPad/Mac friendly. Drag activities also work by click.</div>
+        <div class="footer__links">
+          <a href="#top" class="iconbtn">↑ Back to top</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="js/canada-hotel-followup.js"></script>
+</body>
+</html>
