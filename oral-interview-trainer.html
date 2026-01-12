@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🎤 Oral Interview Trainer (3 Steps) | SpeakEasyTisha</title>
+
+  <!-- SpeakEasyTisha: place CSS in /css/oral-interview-trainer.css on GitHub -->
+  <link rel="stylesheet" href="/css/oral-interview-trainer.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="se-header">
+    <div class="se-header__inner">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true">SpeakEasy<span>Tisha</span></div>
+        <div class="brand__tag">CLOE • Oral Interview • Fluency Trainer</div>
+      </div>
+
+      <div class="scorebar" aria-label="Score">
+        <div class="scorebar__left">
+          <span class="pill">🎯 Global score</span>
+          <strong id="globalScoreTop">0</strong>
+          <span class="muted">/</span>
+          <span id="globalMaxTop">0</span>
+        </div>
+        <div class="scorebar__right">
+          <button class="btn btn--ghost" id="btnResetAll" type="button" title="Reset lesson progress">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="se-nav" aria-label="Lesson sections">
+      <button class="navchip" data-scroll="#steps" type="button">3-step method</button>
+      <button class="navchip" data-scroll="#scenarios" type="button">Scenarios</button>
+      <button class="navchip" data-scroll="#vocab" type="button">Flashcards</button>
+      <button class="navchip" data-scroll="#builder" type="button">Build an answer</button>
+      <button class="navchip" data-scroll="#blanks" type="button">Fill-in interview</button>
+      <button class="navchip" data-scroll="#checklist" type="button">Self-check</button>
+    </nav>
+  </header>
+
+  <main id="main" class="se-main">
+    <section class="card hero">
+      <h1>🎤 Oral Interview Trainer <span class="sub">(3 Steps to sound fluent)</span></h1>
+      <p class="lead">
+        This lesson trains the exact kind of structured, fluent answers expected in the <strong>CLOE oral interview</strong>:
+        clear structure, natural connectors, and a polite closing. You will <strong>listen</strong>, <strong>repeat</strong>,
+        and <strong>build</strong> model responses.
+      </p>
+
+      <div class="toolrow">
+        <div class="tool">
+          <label for="accent">Accent (Text-to-Speech)</label>
+          <select id="accent" class="select">
+            <option value="en-GB">🇬🇧 British (en-GB)</option>
+            <option value="en-US">🇺🇸 American (en-US)</option>
+          </select>
+          <p class="tiny muted">Tip: if a voice is missing, your device will use a close match automatically.</p>
+        </div>
+
+        <div class="tool">
+          <label for="speechRate">Speed</label>
+          <input id="speechRate" class="range" type="range" min="0.75" max="1.15" step="0.05" value="0.95" />
+          <div class="rangehint"><span>Slow</span><span>Natural</span><span>Fast</span></div>
+        </div>
+
+        <div class="tool">
+          <label for="speechPitch">Pitch</label>
+          <input id="speechPitch" class="range" type="range" min="0.8" max="1.2" step="0.05" value="1.0" />
+          <div class="rangehint"><span>Low</span><span>Neutral</span><span>High</span></div>
+        </div>
+      </div>
+
+      <div class="notice">
+        <strong>How to use this page:</strong>
+        <ol>
+          <li>Choose an accent (🇬🇧 / 🇺🇸), then click <em>Listen</em> on model answers.</li>
+          <li>Use <em>Practice Mode</em> to speak out loud (with a timer + prompts).</li>
+          <li>Complete the interactive exercises to build automatic fluency.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 3 STEPS ============ -->
+    <section id="steps" class="card">
+      <h2>✅ The 3-step answer method</h2>
+
+      <div class="grid3">
+        <article class="step">
+          <h3><span class="badge">Step 1</span> Direct answer + 2 details</h3>
+          <p>
+            Start with a clear answer in the first sentence. Then add <strong>two supporting details</strong>
+            (reason, frequency, preference, or context).
+          </p>
+          <div class="mini">
+            <div class="mini__title">Sentence frame</div>
+            <div class="mini__body">
+              <code>Yes / No / It depends…</code> + <code>because…</code> + <code>For example…</code>
+            </div>
+          </div>
+        </article>
+
+        <article class="step">
+          <h3><span class="badge">Step 2</span> Sound fluent (connectors + softeners)</h3>
+          <p>
+            Add 2–3 natural connectors and polite softeners. Aim for <strong>smooth</strong>, not “perfect”.
+          </p>
+          <ul class="chips" aria-label="Fluency boosters">
+            <li>Actually</li><li>To be honest</li><li>In my experience</li><li>Overall</li>
+            <li>First of all</li><li>That said</li><li>As a result</li><li>For instance</li>
+          </ul>
+        </article>
+
+        <article class="step">
+          <h3><span class="badge">Step 3</span> Close politely + extend</h3>
+          <p>
+            End with a short closing sentence. If appropriate, add a question back
+            (shows interaction skills).
+          </p>
+          <div class="mini">
+            <div class="mini__title">Closing frame</div>
+            <div class="mini__body">
+              <code>So that’s why…</code> + <code>Would you like me to…?</code>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <details class="details">
+        <summary>Fluency tip: what to do if you panic</summary>
+        <div class="details__body">
+          <p><strong>Do this:</strong> pause (1 second), breathe, then restart with a safe connector:</p>
+          <ul>
+            <li><em>Let me think for a second…</em></li>
+            <li><em>That’s an interesting question…</em></li>
+            <li><em>In general, I’d say…</em></li>
+          </ul>
+          <p class="muted tiny">A calm pause sounds natural. Fast panic sounds less fluent.</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============ SCENARIOS ============ -->
+    <section id="scenarios" class="card">
+      <div class="row">
+        <div>
+          <h2>🎧 Scenarios (CLOE-style)</h2>
+          <p class="muted">
+            Choose a topic, listen to a model answer, then use Practice Mode to produce your own response.
+          </p>
+        </div>
+        <div class="right">
+          <label class="sr-only" for="scenarioSelect">Scenario</label>
+          <select id="scenarioSelect" class="select"></select>
+        </div>
+      </div>
+
+      <div class="scenario">
+        <div class="scenario__left">
+          <div class="scenario__q">
+            <div class="pill">Question</div>
+            <h3 id="scenarioQuestion">—</h3>
+            <p class="tiny muted" id="scenarioContext">—</p>
+          </div>
+
+          <div class="scenario__controls">
+            <button class="btn" id="btnListenModel" type="button">🔊 Listen (model)</button>
+            <button class="btn btn--ghost" id="btnShowModel" type="button">👀 Show / Hide model text</button>
+            <button class="btn btn--ghost" id="btnStopSpeech" type="button">⏹ Stop</button>
+          </div>
+
+          <div class="modelbox" id="modelBox" hidden>
+            <div class="modelbox__head">
+              <span class="pill">Model answer (3 steps)</span>
+              <span class="tiny muted">Try to copy rhythm + connectors, not every word.</span>
+            </div>
+            <p id="scenarioModelText" class="modeltext">—</p>
+
+            <div class="hintgrid">
+              <div class="hint">
+                <div class="hint__t">Step 1</div>
+                <div class="hint__b" id="hintStep1">—</div>
+              </div>
+              <div class="hint">
+                <div class="hint__t">Step 2</div>
+                <div class="hint__b" id="hintStep2">—</div>
+              </div>
+              <div class="hint">
+                <div class="hint__t">Step 3</div>
+                <div class="hint__b" id="hintStep3">—</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="scenario__right">
+          <h3>🗣 Practice Mode</h3>
+          <p class="muted tiny">
+            Speak out loud. Use the timer + prompts. When time ends, read the checklist to self-correct.
+          </p>
+
+          <div class="practice">
+            <div class="practice__top">
+              <label for="practiceTime">Time</label>
+              <select id="practiceTime" class="select">
+                <option value="30">30 sec (easy)</option>
+                <option value="45" selected>45 sec (exam-style)</option>
+                <option value="60">60 sec (advanced)</option>
+              </select>
+            </div>
+
+            <div class="timer" aria-live="polite">
+              <div class="timer__num" id="timerNum">45</div>
+              <div class="timer__label">seconds</div>
+            </div>
+
+            <div class="practice__buttons">
+              <button class="btn" id="btnStartTimer" type="button">▶ Start</button>
+              <button class="btn btn--ghost" id="btnResetTimer" type="button">↺ Reset</button>
+            </div>
+
+            <div class="prompts" aria-label="Prompts">
+              <div class="prompt"><span class="badge">Step 1</span> <span id="p1">Direct answer + 2 details</span></div>
+              <div class="prompt"><span class="badge">Step 2</span> <span id="p2">Add connectors (Actually, Overall, For example…)</span></div>
+              <div class="prompt"><span class="badge">Step 3</span> <span id="p3">Close politely + extend (Would you like me to…?)</span></div>
+            </div>
+          </div>
+
+          <div class="mini mini--tight">
+            <div class="mini__title">Quick fluency bank</div>
+            <div class="mini__body">
+              <div class="bank" id="fluencyBank"></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ VOCAB FLASHCARDS ============ -->
+    <section id="vocab" class="card">
+      <div class="row">
+        <div>
+          <h2>🃏 Vocabulary flashcards (icons)</h2>
+          <p class="muted">Tap a card to flip. Use “Listen” to hear the word in 🇬🇧 or 🇺🇸.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnShuffleVocab" type="button">🔀 Shuffle</button>
+        </div>
+      </div>
+
+      <div class="flashgrid" id="flashGrid" aria-label="Vocabulary flashcards"></div>
+    </section>
+
+    <!-- ============ RESPONSE BUILDER ============ -->
+    <section id="builder" class="card">
+      <h2>🧩 Build an ideal response (order + structure)</h2>
+      <p class="muted">
+        Select the blocks in a good order (Step 1 → Step 2 → Step 3). On desktop you can also drag blocks.
+        On touch devices, use <strong>Tap to add</strong> + <strong>↑ ↓</strong> to reorder.
+      </p>
+
+      <div class="builder">
+        <div class="builder__col">
+          <div class="builder__head">
+            <h3>Blocks (tap or drag)</h3>
+            <button class="btn btn--ghost" id="btnBuilderListenFull" type="button">🔊 Listen full model</button>
+          </div>
+          <div id="blockPool" class="blockpool" aria-label="Available blocks"></div>
+          <p class="tiny muted">Hint: look for a clear first sentence, then details, then closing.</p>
+        </div>
+
+        <div class="builder__col">
+          <div class="builder__head">
+            <h3>Your answer</h3>
+            <div class="builder__actions">
+              <button class="btn" id="btnCheckBuilder" type="button">✅ Check</button>
+              <button class="btn btn--ghost" id="btnResetBuilder" type="button">↺ Reset</button>
+            </div>
+          </div>
+
+          <ol id="answerLane" class="answerlane" aria-label="Your ordered blocks"></ol>
+
+          <div class="feedback" id="builderFeedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FILL IN THE BLANKS ============ -->
+    <section id="blanks" class="card">
+      <h2>📝 Interview paragraph (dropdown fill-in)</h2>
+      <p class="muted">
+        Complete the paragraph with natural interview language. Then check your score and listen to the full paragraph.
+      </p>
+
+      <div class="blankbox" aria-label="Fill in the blanks exercise">
+        <div class="blankbox__controls">
+          <button class="btn" id="btnCheckBlanks" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="btnResetBlanks" type="button">↺ Reset</button>
+          <button class="btn btn--ghost" id="btnListenBlanks" type="button">🔊 Listen</button>
+        </div>
+
+        <p class="blanktext" id="blankText"></p>
+
+        <div class="feedback" id="blanksFeedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ============ SELF CHECK ============ -->
+    <section id="checklist" class="card">
+      <h2>📋 CLOE oral self-check (fast)</h2>
+      <p class="muted">After you speak, tick what you did. Your goal is consistency, not perfection.</p>
+
+      <div class="checkgrid" id="checkGrid" aria-label="Self-check checklist"></div>
+
+      <div class="scorebar scorebar--bottom" aria-label="Score bottom">
+        <div class="scorebar__left">
+          <span class="pill">🎯 Global score</span>
+          <strong id="globalScoreBottom">0</strong>
+          <span class="muted">/</span>
+          <span id="globalMaxBottom">0</span>
+        </div>
+        <div class="scorebar__right">
+          <button class="btn btn--ghost" id="btnExportNotes" type="button">🗒 Copy notes</button>
+        </div>
+      </div>
+
+      <div class="mini">
+        <div class="mini__title">Notes (copy/paste)</div>
+        <textarea id="notesBox" class="textarea" rows="7" placeholder="Write your own model phrases, mistakes you repeat, and your best connectors…"></textarea>
+        <p class="tiny muted">Saved locally in your browser (localStorage).</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p class="tiny muted">
+        SpeakEasyTisha • Oral trainer • Works on desktop + iPad (touch-friendly). Uses your browser’s text-to-speech (speechSynthesis).
+      </p>
+    </footer>
+  </main>
+
+  <script src="/js/oral-interview-trainer.js"></script>
+</body>
+</html>
