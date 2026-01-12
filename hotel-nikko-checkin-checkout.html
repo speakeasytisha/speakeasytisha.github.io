@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Nikko SF — Check-in to Check-out (Interactive) · SpeakEasyTisha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/css/hotel-nikko-checkin-checkout.css" onerror="this.onerror=null;this.href='css/hotel-nikko-checkin-checkout.css';" />
+
+  </head>
+<body>
+  <!-- Simple header compatible with a GitHub static site. Replace links to match your navbar if needed. -->
+  <header class="se-header" id="top">
+    <div class="se-header__inner">
+      <a class="se-logo" href="index.html#top" aria-label="SpeakEasyTisha home">
+        <span class="se-logo__script">SpeakEasy</span><span class="se-logo__bold">Tisha</span>
+      </a>
+
+      <nav class="se-nav" aria-label="Lesson navigation">
+        <a href="index.html#lessons">Lessons</a>
+        <a href="cloe-exam-prep.html">CLOE</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="se-wrap">
+    <div id="jsError" class="js-error" hidden></div>
+
+    <section class="hero card">
+      <div class="hero__left">
+        <p class="kicker">Hotel English · San Francisco</p>
+        <h1>Hotel Nikko SF: Check‑in to Check‑out</h1>
+        <p class="fly">
+          Vocabulary with icons + essential grammar + realistic scenarios (reservation → arrival → room requests → problems → restaurant/concierge → checkout).
+          Works on Mac/PC (and touch devices): every “drag” activity also works with tap‑to‑build.
+        </p>
+
+        <div class="hero__row">
+          <div class="pill">⏱️ 60–90 min</div>
+          <div class="pill">🎧 US/UK listening</div>
+          <div class="pill">🗣️ speaking prompts</div>
+        </div>
+      </div>
+
+      <div class="hero__right">
+        <div class="tts card-soft">
+          <h2 class="h2">Listening settings</h2>
+          <div class="tts__grid">
+            <label class="field">
+              <span class="field__label">Accent</span>
+              <select id="accentSelect" class="control">
+                <option value="en-US">American (en‑US)</option>
+                <option value="en-GB">British (en‑GB)</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="field__label">Voice</span>
+              <select id="voiceSelect" class="control"></select>
+            </label>
+
+            <label class="field">
+              <span class="field__label">Speed</span>
+              <input id="rateRange" class="control" type="range" min="0.7" max="1.2" step="0.05" value="1" />
+            </label>
+
+            <button class="btn" id="testVoiceBtn" type="button">🔊 Test voice</button>
+          </div>
+
+          <p class="tiny">
+            Tip: on Safari, voices load a second after the page. If the list is empty, tap “Test voice” once.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <h2 class="h2">Menu</h2>
+        <p class="muted">Jump to any part. Your scores stay visible per activity.</p>
+      </div>
+
+      <div class="grid menu-grid">
+        <a class="menu-item" href="#vocab"><span>🗂️ Vocabulary Flashcards</span><span class="muted">icons · examples · flip cards</span></a>
+        <a class="menu-item" href="#greetings"><span>👋 Greetings & Politeness</span><span class="muted">can / could / may / would like</span></a>
+        <a class="menu-item" href="#time"><span>🕒 Time & Schedules</span><span class="muted">a.m./p.m. · prepositions</span></a>
+        <a class="menu-item" href="#place"><span>🧭 Prepositions & Directions</span><span class="muted">hotel map · floors US/UK</span></a>
+        <a class="menu-item" href="#room"><span>🛏️ Rooms & Requests</span><span class="muted">there is/are · have/has got</span></a>
+        <a class="menu-item" href="#problems"><span>🚿 Problems & Solutions</span><span class="muted">complaints · apologies · will</span></a>
+        <a class="menu-item" href="#food"><span>🍽️ Restaurant & Room Service</span><span class="muted">countable/uncountable · ordering</span></a>
+        <a class="menu-item" href="#compare"><span>⚖️ Comparatives & Superlatives</span><span class="muted">rooms · food · recommendations</span></a>
+        <a class="menu-item" href="#adverbs"><span>✨ Adverbs</span><span class="muted">slowly · politely · quietly</span></a>
+        <a class="menu-item" href="#dialogue"><span>🎭 Dialogue Builder</span><span class="muted">all scenarios · check-in → checkout</span></a>
+      </div>
+    </section>
+
+    <!-- VOCAB -->
+    <section id="vocab" class="card">
+      <div class="section-head">
+        <h2 class="h2">🗂️ Vocabulary flashcards (flip)</h2>
+        <p class="muted">Tap/click a card to flip. Use the filters to focus on one hotel moment.</p>
+      </div>
+
+      <div class="toolbar">
+        <label class="field">
+          <span class="field__label">Category</span>
+          <select class="control" id="vocabCategory"></select>
+        </label>
+        <label class="field">
+          <span class="field__label">Search</span>
+          <input class="control" id="vocabSearch" type="search" placeholder="Type: key card, towels, reservation…" />
+        </label>
+        <button class="btn btn-ghost" id="vocabResetBtn" type="button">Reset</button>
+      </div>
+
+      <div id="vocabGrid" class="grid vocab-grid" aria-live="polite"></div>
+
+      <div class="note">
+        <strong>Speaking tip:</strong> click 🔊 on a card to listen (American or British). Then repeat aloud.
+      </div>
+    </section>
+
+    <!-- GREETINGS + POLITE LANGUAGE -->
+    <section id="greetings" class="card">
+      <div class="section-head">
+        <h2 class="h2">👋 Greetings & polite requests</h2>
+        <p class="muted">Hotel language: friendly, professional, clear.</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card-soft">
+          <h3 class="h3">Useful phrases (tap 🔊)</h3>
+          <ul class="phrase-list" id="phraseListGreetings"></ul>
+        </div>
+
+        <div class="card-soft">
+          <h3 class="h3">Mini‑grammar</h3>
+          <div class="mini-grammar">
+            <p><strong>“I’d like…”</strong> (polite “I want”): <em>I’d like to book a room, please.</em></p>
+            <p><strong>Can I…?</strong> (friendly permission): <em>Can I pay by card?</em></p>
+            <p><strong>Could I…?</strong> (softer / more polite): <em>Could I have a quiet room, please?</em></p>
+            <p><strong>May I…?</strong> (formal service English): <em>May I see your passport, please?</em></p>
+          </div>
+          <div class="tiny muted">From the Nikko lesson: reservation calls, front-desk check-in, and polite questions.</div>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div class="card-soft">
+          <div class="exercise-head">
+            <h3 class="h3">QCM — Choose the best polite option</h3>
+            <div class="score" id="score_qcm_polite">Score: 0/0</div>
+          </div>
+          <div id="qcm_polite" class="quiz"></div>
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="qcm_polite" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="qcm_polite" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div class="card-soft">
+          <div class="exercise-head">
+            <h3 class="h3">Word order — Build a polite sentence</h3>
+            <div class="score" id="score_order_polite">Score: 0/0</div>
+          </div>
+
+          <div class="order" id="order_polite"></div>
+
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="order_polite" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="order_polite" type="button">Reset</button>
+          </div>
+
+          <p class="tiny muted">Tip: drag tokens OR tap them to add/remove.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIME -->
+    <section id="time" class="card">
+      <div class="section-head">
+        <h2 class="h2">🕒 Time, schedules & prepositions of time</h2>
+        <p class="muted">At / on / in · from…to… · for + duration · a.m./p.m.</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card-soft">
+          <h3 class="h3">Mini‑lesson</h3>
+          <ul class="bullets">
+            <li><strong>at</strong> + time: <em>at 2 p.m.</em></li>
+            <li><strong>on</strong> + day/date: <em>on Tuesday / on May 12th</em></li>
+            <li><strong>in</strong> + month/season: <em>in November / in winter</em></li>
+            <li><strong>from…to…</strong> (dates or times): <em>from 7 to 10 a.m.</em></li>
+            <li><strong>for</strong> + duration: <em>for two nights</em></li>
+          </ul>
+
+          <div class="tts-bar">
+            <button class="btn btn-ghost" type="button" data-say="Breakfast is from seven to ten a.m.">🔊 Listen</button>
+            <button class="btn btn-ghost" type="button" data-say="Check-in starts at two p.m. Check-out is by eleven a.m.">🔊 Listen</button>
+          </div>
+        </div>
+
+        <div class="card-soft">
+          <div class="exercise-head">
+            <h3 class="h3">Fill in the blanks — at / on / in / from / to / for</h3>
+            <div class="score" id="score_fill_time">Score: 0/0</div>
+          </div>
+          <div id="fill_time" class="fill"></div>
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="fill_time" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="fill_time" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-soft">
+        <div class="exercise-head">
+          <h3 class="h3">Listening — What time is it?</h3>
+          <div class="muted tiny">Tap play, listen, then choose the correct time.</div>
+          <div class="score" id="score_qcm_time">Score: 0/0</div>
+        </div>
+        <div id="qcm_time" class="quiz"></div>
+        <div class="quiz-actions">
+          <button class="btn" data-action="check" data-quiz="qcm_time" type="button">Check</button>
+          <button class="btn btn-ghost" data-action="reset" data-quiz="qcm_time" type="button">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLACE -->
+    <section id="place" class="card">
+      <div class="section-head">
+        <h2 class="h2">🧭 Prepositions of place & directions</h2>
+        <p class="muted">next to · between · across from · on the left/right · down the hall · on the (first/ground) floor</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card-soft">
+          <h3 class="h3">US vs UK floors</h3>
+          <p><strong>UK/IE:</strong> <em>ground floor</em> = street level.</p>
+          <p><strong>US:</strong> <em>first floor</em> = street level.</p>
+          <div class="note tiny">In a hotel, ask: “Is the gym on the ground floor or the first floor?”</div>
+
+          <div class="exercise-head" style="margin-top: 1rem;">
+            <h3 class="h3">Tap‑to‑match — Preposition → example</h3>
+            <div class="score" id="score_match_place">Score: 0/0</div>
+          </div>
+          <div id="match_place" class="match"></div>
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="match_place" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="match_place" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div class="card-soft">
+          <h3 class="h3">Hotel mini‑map (practice)</h3>
+          <div class="map" aria-label="Simple hotel map for directions practice">
+            <div class="map__cell map__label">Entrance</div>
+            <div class="map__cell">🛎️ Reception</div>
+            <div class="map__cell">🛗 Elevators</div>
+            <div class="map__cell">🍸 Lobby bar</div>
+            <div class="map__cell">🍽️ Anzu</div>
+            <div class="map__cell">🏊 Pool</div>
+            <div class="map__cell">💪 Gym</div>
+            <div class="map__cell">🧖 Spa</div>
+            <div class="map__cell map__label">Hallway</div>
+          </div>
+
+          <div class="exercise-head" style="margin-top: 1rem;">
+            <h3 class="h3">QCM — Where is it?</h3>
+            <div class="score" id="score_qcm_place">Score: 0/0</div>
+          </div>
+          <div id="qcm_place" class="quiz"></div>
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="qcm_place" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="qcm_place" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-soft">
+        <div class="exercise-head">
+          <h3 class="h3">Word order — Directions (imperatives)</h3>
+          <div class="score" id="score_order_directions">Score: 0/0</div>
+        </div>
+        <div id="order_directions" class="order"></div>
+        <div class="quiz-actions">
+          <button class="btn" data-action="check" data-quiz="order_directions" type="button">Check</button>
+          <button class="btn btn-ghost" data-action="reset" data-quiz="order_directions" type="button">Reset</button>
+        </div>
+        <p class="tiny muted">Examples from the lesson: “Take the elevator to the third floor. The gym is on your right.”</p>
+      </div>
+    </section>
+
+    <!-- ROOM -->
+    <section id="room" class="card">
+      <div class="section-head">
+        <h2 class="h2">🛏️ Rooms, amenities & requests</h2>
+        <p class="muted">There is / There are · (has got) · polite requests</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card-soft">
+          <h3 class="h3">Mini‑grammar: describing a room</h3>
+          <div class="mini-grammar">
+            <p><strong>There is</strong> + singular: <em>There is a balcony.</em></p>
+            <p><strong>There are</strong> + plural: <em>There are two beds.</em></p>
+            <p><strong>Have/has got</strong> (UK) / <strong>has</strong> (US): <em>The room has got a city view.</em></p>
+          </div>
+          <div class="tts-bar">
+            <button class="btn btn-ghost" type="button" data-say="There is a balcony. There are two beds. The room has a city view.">🔊 Listen</button>
+          </div>
+        </div>
+
+        <div class="card-soft">
+          <div class="exercise-head">
+            <h3 class="h3">Fill in — there is / there are / isn’t / aren’t / has / has got</h3>
+            <div class="score" id="score_fill_room">Score: 0/0</div>
+          </div>
+          <div id="fill_room" class="fill"></div>
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="fill_room" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="fill_room" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div class="card-soft">
+          <div class="exercise-head">
+            <h3 class="h3">Tap‑to‑build — Request builder</h3>
+            <div class="score" id="score_builder_requests">Score: 0/0</div>
+          </div>
+
+          <div class="builder" id="builder_requests"></div>
+
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="builder_requests" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="builder_requests" type="button">Reset</button>
+          </div>
+
+          <p class="tiny muted">Build a correct request (then listen, then repeat).</p>
+        </div>
+
+        <div class="card-soft">
+          <div class="exercise-head">
+            <h3 class="h3">Listening QCM — Reception understands you</h3>
+            <div class="score" id="score_qcm_requests">Score: 0/0</div>
+          </div>
+          <div id="qcm_requests" class="quiz"></div>
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="qcm_requests" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="qcm_requests" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEMS -->
+    <section id="problems" class="card">
+      <div class="section-head">
+        <h2 class="h2">🚿 Problems, apologies & solutions</h2>
+        <p class="muted">There’s a problem with… · I’m sorry · I’ll send… right away · would you like another room?</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card-soft">
+          <h3 class="h3">Model dialogue (tap 🔊)</h3>
+          <div class="dialogue">
+            <p><strong>Guest:</strong> Excuse me, there’s a problem with my room.</p>
+            <p><strong>Receptionist:</strong> I’m sorry to hear that. What seems to be the problem?</p>
+            <p><strong>Guest:</strong> There’s no hot water in the shower.</p>
+            <p><strong>Receptionist:</strong> I apologize — I’ll send maintenance right away. Would you like another room?</p>
+          </div>
+          <button class="btn btn-ghost" type="button" data-say="Excuse me, there’s a problem with my room. I’m sorry to hear that. What seems to be the problem? There’s no hot water in the shower. I apologize. I’ll send maintenance right away. Would you like another room?">🔊 Listen</button>
+        </div>
+
+        <div class="card-soft">
+          <div class="exercise-head">
+            <h3 class="h3">Drag or tap — Match problem → solution</h3>
+            <div class="score" id="score_drag_problems">Score: 0/0</div>
+          </div>
+          <div id="drag_problems" class="drag"></div>
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="drag_problems" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="drag_problems" type="button">Reset</button>
+          </div>
+          <p class="tiny muted">Touch‑friendly: if dragging is annoying, tap one item on the left, then tap its match on the right.</p>
+        </div>
+      </div>
+
+      <div class="card-soft">
+        <div class="exercise-head">
+          <h3 class="h3">Fill in the blanks — complaint language</h3>
+          <div class="score" id="score_fill_problems">Score: 0/0</div>
+        </div>
+        <div id="fill_problems" class="fill"></div>
+        <div class="quiz-actions">
+          <button class="btn" data-action="check" data-quiz="fill_problems" type="button">Check</button>
+          <button class="btn btn-ghost" data-action="reset" data-quiz="fill_problems" type="button">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOD -->
+    <section id="food" class="card">
+      <div class="section-head">
+        <h2 class="h2">🍽️ Restaurant & room service</h2>
+        <p class="muted">Ordering politely · clarification · bill/check · countable/uncountable</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card-soft">
+          <h3 class="h3">Key phrases</h3>
+          <ul class="phrase-list" id="phraseListFood"></ul>
+        </div>
+
+        <div class="card-soft">
+          <h3 class="h3">Mini‑grammar: some / a / an</h3>
+          <ul class="bullets">
+            <li><strong>a/an</strong> for one item: <em>a salad, an appetizer</em></li>
+            <li><strong>some</strong> for uncountable/plural: <em>some water, some vegetables</em></li>
+            <li>US: <strong>check</strong> · UK: <strong>bill</strong> (both understood)</li>
+          </ul>
+          <div class="note tiny">From the Nikko lesson: ordering at Anzu + room service calls.</div>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div class="card-soft">
+          <div class="exercise-head">
+            <h3 class="h3">QCM — Restaurant situations</h3>
+            <div class="score" id="score_qcm_food">Score: 0/0</div>
+          </div>
+          <div id="qcm_food" class="quiz"></div>
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="qcm_food" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="qcm_food" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div class="card-soft">
+          <div class="exercise-head">
+            <h3 class="h3">Word order — Ordering politely</h3>
+            <div class="score" id="score_order_food">Score: 0/0</div>
+          </div>
+          <div id="order_food" class="order"></div>
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="order_food" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="order_food" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-soft">
+        <div class="exercise-head">
+          <h3 class="h3">Fill in — menu / recommend / ready / bill / minute</h3>
+          <div class="score" id="score_fill_food">Score: 0/0</div>
+        </div>
+        <div id="fill_food" class="fill"></div>
+        <div class="quiz-actions">
+          <button class="btn" data-action="check" data-quiz="fill_food" type="button">Check</button>
+          <button class="btn btn-ghost" data-action="reset" data-quiz="fill_food" type="button">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARATIVES / SUPERLATIVES -->
+    <section id="compare" class="card">
+      <div class="section-head">
+        <h2 class="h2">⚖️ Comparatives & superlatives</h2>
+        <p class="muted">cheaper than · more comfortable than · the best / the most luxurious</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card-soft">
+          <h3 class="h3">Mini‑grammar</h3>
+          <div class="mini-grammar">
+            <p><strong>Comparative:</strong> X is <em>cheaper than</em> Y. / X is <em>more comfortable than</em> Y.</p>
+            <p><strong>Superlative:</strong> X is <em>the best</em>. / X is <em>the most delicious</em> dish.</p>
+            <p><strong>Prefer:</strong> I prefer sushi <em>to</em> pizza. (not “prefer … than”)</p>
+          </div>
+          <button class="btn btn-ghost" type="button" data-say="I prefer sushi to pizza. The Imperial Room is more luxurious than the Petite Queen Room. The Junior Suite is the most spacious.">🔊 Listen</button>
+        </div>
+
+        <div class="card-soft">
+          <div class="exercise-head">
+            <h3 class="h3">QCM — Comparatives</h3>
+            <div class="score" id="score_qcm_compare">Score: 0/0</div>
+          </div>
+          <div id="qcm_compare" class="quiz"></div>
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="qcm_compare" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="qcm_compare" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div class="card-soft">
+          <div class="exercise-head">
+            <h3 class="h3">Fill in — than / the / more / most / better</h3>
+            <div class="score" id="score_fill_compare">Score: 0/0</div>
+          </div>
+          <div id="fill_compare" class="fill"></div>
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="fill_compare" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="fill_compare" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div class="card-soft">
+          <div class="exercise-head">
+            <h3 class="h3">Speaking prompts — recommendations</h3>
+            <p class="muted tiny">Listen, then answer aloud using “should / could / I recommend…”.</p>
+            <div class="speak-cards" id="speak_reco"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADVERBS -->
+    <section id="adverbs" class="card">
+      <div class="section-head">
+        <h2 class="h2">✨ Adverbs for hotel English</h2>
+        <p class="muted">Adverbs describe <strong>how</strong> you do something: slowly, politely, quietly, clearly…</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card-soft">
+          <h3 class="h3">Mini‑lesson</h3>
+          <ul class="bullets">
+            <li>Speak <strong>slowly</strong>, please.</li>
+            <li>Could you repeat that <strong>clearly</strong>?</li>
+            <li>Please close the door <strong>quietly</strong>.</li>
+            <li>Go <strong>straight</strong> / walk <strong>quickly</strong> / wait <strong>patiently</strong>.</li>
+          </ul>
+          <button class="btn btn-ghost" type="button" data-say="Could you repeat that slowly, please? Please speak clearly. Please close the door quietly.">🔊 Listen</button>
+        </div>
+
+        <div class="card-soft">
+          <div class="exercise-head">
+            <h3 class="h3">Word order — Put the adverb in the best place</h3>
+            <div class="score" id="score_order_adverbs">Score: 0/0</div>
+          </div>
+          <div id="order_adverbs" class="order"></div>
+          <div class="quiz-actions">
+            <button class="btn" data-action="check" data-quiz="order_adverbs" type="button">Check</button>
+            <button class="btn btn-ghost" data-action="reset" data-quiz="order_adverbs" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIALOGUE BUILDER -->
+    <section id="dialogue" class="card">
+      <div class="section-head">
+        <h2 class="h2">🎭 Dialogue builder — all scenarios (check‑in → check‑out)</h2>
+        <p class="muted">Build a realistic conversation using blocks. Then check what’s missing (politeness, key info, correct phrases).</p>
+      </div>
+
+      <div class="dialogue-builder card-soft">
+        <div class="toolbar">
+          <label class="field">
+            <span class="field__label">Scenario</span>
+            <select class="control" id="scenarioSelect"></select>
+          </label>
+          <button class="btn" id="addLineBtn" type="button">➕ Add a line</button>
+          <button class="btn btn-ghost" id="clearDialogueBtn" type="button">Clear</button>
+          <button class="btn" id="checkDialogueBtn" type="button">Check my dialogue</button>
+        </div>
+
+        <div class="grid two">
+          <div>
+            <h3 class="h3">Line picker</h3>
+            <div class="picker-grid">
+              <label class="field">
+                <span class="field__label">Role</span>
+                <select class="control" id="roleSelect">
+                  <option value="Guest">Guest</option>
+                  <option value="Receptionist">Receptionist</option>
+                  <option value="Staff">Staff</option>
+                  <option value="Concierge">Concierge</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span class="field__label">Choose a line</span>
+                <select class="control" id="lineSelect"></select>
+              </label>
+              <button class="btn btn-ghost" id="sayLineBtn" type="button">🔊 Listen to selected line</button>
+            </div>
+
+            <p class="tiny muted">
+              Tip: after you add lines, click 🔊 on each line and repeat aloud.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="h3">Your dialogue</h3>
+            <ol class="dialogue-lines" id="dialogueLines" aria-live="polite"></ol>
+          </div>
+        </div>
+
+        <div class="feedback" id="dialogueFeedback" hidden></div>
+      </div>
+
+      <div class="note">
+        <strong>Teacher mode:</strong> for a new run, choose a scenario (e.g., “Checkout & payment”), click “Clear,” then rebuild with different phrases.
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a class="btn btn-ghost" href="#top">Back to top ↑</a>
+      <p class="tiny muted">SpeakEasyTisha · Hotel Nikko SF interactive lesson</p>
+    </footer>
+  </main>
+<script>
+(function(){
+  // Try common paths so the page works whether this HTML is in root or a subfolder.
+  var candidates = [
+    "/js/hotel-nikko-checkin-checkout.js",
+    "js/hotel-nikko-checkin-checkout.js",
+    "../js/hotel-nikko-checkin-checkout.js",
+    "../../js/hotel-nikko-checkin-checkout.js"
+  ];
+  function load(i){
+    if(i >= candidates.length){
+      var box = document.getElementById("jsError");
+      if(box){
+        box.hidden = false;
+        box.textContent = "Activities didn’t load because the JS file wasn’t found. Expected: /js/hotel-nikko-checkin-checkout.js (or a relative js/ folder). Tried: " + candidates.join(" , ");
+      }
+      return;
+    }
+    var s = document.createElement("script");
+    s.src = candidates[i];
+    s.defer = true;
+    s.onload = function(){ /* loaded */ };
+    s.onerror = function(){ load(i+1); };
+    document.body.appendChild(s);
+  }
+  load(0);
+})();
+</script>
+
+</body>
+</html>
