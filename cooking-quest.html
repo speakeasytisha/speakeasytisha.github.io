@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>SpeakEasyTisha · Cooking Quest (Recipe → Grocery Store → Checkout)</title>
+  <meta name="description" content="Fully interactive cooking + grocery store lesson: recipe choice, shopping list, aisles, directions, discounts, checkout, grammar, listening (US/UK), and touch-friendly games."/>
+  <link rel="stylesheet" href="css/cooking-quest.css" />
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Top utility bar -->
+  <header class="topbar" role="banner">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__mark">SpeakEasyTisha</div>
+        <div class="brand__tag">Interactive lesson module</div>
+      </div>
+
+      <div class="voice">
+        <div class="voice__label">Voice</div>
+        <div class="seg" role="group" aria-label="Choose accent">
+          <button id="voiceUS" class="seg__btn" type="button" aria-pressed="true">US voice</button>
+          <button id="voiceUK" class="seg__btn" type="button" aria-pressed="false">UK voice</button>
+        </div>
+        <div class="voice__meta" id="voiceMeta" aria-live="polite">Tap any <span class="pill">Listen</span> button.</div>
+      </div>
+
+      <div class="speechCtl" aria-label="Speech controls">
+        <button id="btnPause" class="btn btn--ghost" type="button" title="Pause speech">⏸️ Pause</button>
+        <button id="btnStop" class="btn btn--ghost" type="button" title="Stop speech">⏹️ Stop</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" aria-label="Lesson header">
+    <div class="hero__inner">
+      <div class="hero__left">
+        <h1>Cooking Quest — from recipe to checkout</h1>
+        <p class="lead">
+          Choose a recipe, build a shopping list, plan the best store, find items by aisle, read discounts,
+          and pay at the checkout — with vocabulary, grammar, and realistic dialogues.
+        </p>
+        <div class="hero__actions">
+          <a class="btn" href="#vocab">Start with vocabulary</a>
+          <a class="btn btn--ghost" href="#grammar">Jump to grammar</a>
+          <a class="btn btn--ghost" href="#activities">Jump to activities</a>
+          <a class="btn btn--ghost" href="#reading">Jump to reading</a>
+          <button id="resetAllTop" class="btn btn--danger" type="button">Reset lesson</button>
+        </div>
+      </div>
+
+      <aside class="hero__right" aria-label="Progress">
+        <div class="card card--score">
+          <div class="card__title">Today’s mission</div>
+          <ul class="check">
+            <li>✅ Pick a recipe and plan your store route</li>
+            <li>✅ Ask where items are & follow directions</li>
+            <li>✅ Talk about aisles, sections, offers, coupons</li>
+            <li>✅ Use connectors (first, then…), comparisons, and polite requests</li>
+            <li>✅ Complete listening + speaking practice (US/UK)</li>
+          </ul>
+
+          <div class="scorebox" aria-label="Score">
+            <div class="scorebox__label">Score</div>
+            <div class="scorebox__value" id="scoreTop">0 / 0</div>
+            <div class="scorebox__meta">
+              <span class="pill" id="levelPill">Level: Starter</span>
+              <span class="pill pill--muted" id="tapModePill">Tap mode: ON</span>
+            </div>
+          </div>
+
+          <div class="tip">
+            <div class="tip__title">Tip</div>
+            <div class="tip__text">
+              On iPad/tablet: every drag-and-drop game has a tap mode (tap a tile, then tap a target).
+              You can also type answers on any device.
+            </div>
+            <div class="tip__row">
+              <button class="btn btn--ghost listenBtn" type="button" data-say="Welcome to Cooking Quest. Choose a recipe, build a shopping list, then go to the grocery store and check out.">Listen to today’s mission</button>
+              <button id="btnHelp" class="btn btn--ghost" type="button">⌨️ Keyboard & touch help</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main id="main" class="main" role="main">
+
+    <!-- Recipe -->
+    <section class="section" id="recipe">
+      <div class="section__head">
+        <h2>Step 1 — Choose a recipe</h2>
+        <p class="sub">
+          Pick one recipe. Your shopping list and activities will adapt to your choice.
+          (You can change recipe anytime.)
+        </p>
+      </div>
+
+      <div class="grid grid--3" id="recipeGrid" aria-label="Recipe choices"></div>
+
+      <div class="card">
+        <div class="card__title">Your shopping list</div>
+        <div class="card__sub">Tap items to hear them. Add your own items too.</div>
+
+        <div class="listControls">
+          <button id="btnCopyList" class="btn btn--ghost" type="button">Copy list</button>
+          <button id="btnPrintList" class="btn btn--ghost" type="button">Print</button>
+          <button id="btnResetList" class="btn btn--ghost" type="button">Reset list</button>
+        </div>
+
+        <div class="shopping">
+          <div class="shopping__left">
+            <div id="shoppingList" class="shoppingList" aria-label="Shopping list"></div>
+
+            <div class="addItem">
+              <label class="sr" for="customItem">Add an item</label>
+              <input id="customItem" class="input" placeholder="Add your own item… (e.g., parsley)" />
+              <button id="btnAddItem" class="btn" type="button">Add</button>
+            </div>
+          </div>
+
+          <div class="shopping__right">
+            <div class="miniCard">
+              <div class="miniCard__title">Where should you shop?</div>
+              <p class="miniCard__text">
+                Some ingredients are easier to find in specific stores (bakery, butcher, farmers’ market, Asian market…).
+              </p>
+              <div id="storeHint" class="callout callout--info" aria-live="polite"></div>
+              <button id="btnPlanStore" class="btn btn--ghost" type="button">Plan my store route</button>
+            </div>
+
+            <div class="miniCard">
+              <div class="miniCard__title">Speaking mini-practice</div>
+              <p class="miniCard__text">Say it out loud, then click “✅ I said it”. (No microphone needed.)</p>
+              <div class="speakBox">
+                <div id="speakPrompt1" class="speakPrompt">“Excuse me, where can I find ___?”</div>
+                <div class="speakBtns">
+                  <button class="btn btn--ghost listenBtn" type="button" id="btnSpeakModel1">Listen model</button>
+                  <button class="btn" type="button" id="btnSaid1">✅ I said it</button>
+                </div>
+                <div id="speakFb1" class="fb" aria-live="polite"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="section" id="vocab">
+      <div class="section__head">
+        <h2>Vocabulary Flashcards (Cooking + Grocery Store)</h2>
+        <p class="sub">Choose a theme, tap a card to flip, then tap <span class="pill">Listen</span>.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar__group">
+          <label class="label" for="vocabTheme">Theme</label>
+          <select id="vocabTheme" class="select">
+            <option value="all">Mixed review</option>
+            <option value="ingredients">Ingredients</option>
+            <option value="aisles">Aisles & sections</option>
+            <option value="tools">Tools & cooking verbs</option>
+            <option value="checkout">Checkout & discounts</option>
+            <option value="ukus">UK/US differences</option>
+          </select>
+        </div>
+
+        <div class="toolbar__group">
+          <span class="label">Study mode</span>
+          <div class="seg" role="group" aria-label="Study mode">
+            <button id="modeEN" class="seg__btn" type="button" aria-pressed="true">Front: English → Back: meaning + example</button>
+            <button id="modeUKUS" class="seg__btn" type="button" aria-pressed="false">Front: UK/US word → Back: other version</button>
+          </div>
+        </div>
+
+        <div class="toolbar__group">
+          <label class="toggle">
+            <input id="showExamples" type="checkbox" checked />
+            <span>Show examples on back</span>
+          </label>
+        </div>
+
+        <div class="toolbar__group toolbar__group--right">
+          <button id="listenVocabSet" class="btn btn--ghost listenBtn" type="button" data-say="Let's review cooking and grocery store vocabulary. Tap a card to flip it and listen.">Listen</button>
+          <button id="resetVocab" class="btn btn--ghost" type="button">Reset vocab</button>
+        </div>
+      </div>
+
+      <div id="vocabGrid" class="grid grid--cards" aria-label="Vocabulary flashcards"></div>
+
+      <div class="callout callout--success">
+        <strong>Mini goal:</strong> Learn 10 new words. Then do the activities below to win points.
+      </div>
+    </section>
+
+    <!-- Grammar -->
+    <section class="section" id="grammar">
+      <div class="section__head">
+        <h2>Grammar + Useful Phrases</h2>
+        <p class="sub">Short, clear explanations + interactive practice (keeps score).</p>
+      </div>
+
+      <div class="card">
+        <div class="card__row">
+          <button class="btn btn--ghost listenBtn" type="button" data-say="Now let's review essential grammar for grocery shopping: connectors, prepositions, verb tenses, adverbs, comparatives, and superlatives.">Listen</button>
+          <button id="resetGrammar" class="btn btn--ghost" type="button">Reset section</button>
+        </div>
+
+        <h3>1) Connectors for steps (sequence)</h3>
+        <ul class="bullets">
+          <li><strong>First</strong>, choose a recipe. <strong>Then</strong>, make a list.</li>
+          <li><strong>After that</strong>, go to the store. <strong>Finally</strong>, pay at the checkout.</li>
+          <li><strong>While</strong> you’re shopping, compare prices.</li>
+          <li><strong>Because</strong> / <strong>so</strong>: I used a coupon <em>because</em> it was cheaper, <em>so</em> I saved money.</li>
+        </ul>
+
+        <div class="miniGame" id="connQuiz"></div>
+
+        <hr class="sep" />
+
+        <h3>2) Prepositions + directions in a store</h3>
+        <ul class="bullets">
+          <li><strong>in</strong> aisle 6, <strong>on</strong> the left, <strong>at</strong> the end of the aisle</li>
+          <li><strong>next to</strong> the dairy section, <strong>between</strong> bread and pastries</li>
+          <li><strong>across from</strong> the frozen section, <strong>in front of</strong> the checkout</li>
+        </ul>
+
+        <div class="miniGame" id="prepBuilder"></div>
+
+        <hr class="sep" />
+
+        <h3>3) Verb tenses for shopping + cooking</h3>
+        <ul class="bullets">
+          <li><strong>Present simple</strong> (routine): I <em>buy</em> vegetables every week.</li>
+          <li><strong>Present continuous</strong> (right now): I’m <em>looking</em> for oregano.</li>
+          <li><strong>Imperative</strong> (instructions): <em>Chop</em> the onions. <em>Stir</em> the sauce.</li>
+          <li><strong>Future</strong> (plan): I’m going to <em>make</em> tacos tonight.</li>
+        </ul>
+
+        <div class="miniGame" id="tenseFill"></div>
+
+        <hr class="sep" />
+
+        <h3>4) Adjectives + adverbs</h3>
+        <ul class="bullets">
+          <li>Adjective = describes a noun: <em>a quick meal</em>, <em>fresh bread</em></li>
+          <li>Adverb = describes a verb: <em>cook slowly</em>, <em>cut carefully</em></li>
+          <li>Common store adverbs: <strong>usually</strong>, <strong>often</strong>, <strong>rarely</strong></li>
+        </ul>
+
+        <div class="miniGame" id="adjAdvMCQ"></div>
+
+        <hr class="sep" />
+
+        <h3>5) Comparatives & superlatives</h3>
+        <ul class="bullets">
+          <li>Comparative: <strong>cheaper</strong>, <strong>more expensive</strong>, <strong>healthier</strong>, <strong>better</strong></li>
+          <li>Superlative: <strong>the cheapest</strong>, <strong>the most expensive</strong>, <strong>the healthiest</strong>, <strong>the best</strong></li>
+          <li>Use <strong>than</strong> for comparisons: This brand is cheaper <strong>than</strong> that one.</li>
+        </ul>
+
+        <div class="miniGame" id="compOrder"></div>
+
+      </div>
+    </section>
+
+    <!-- Activities -->
+    <section class="section" id="activities">
+      <div class="section__head">
+        <h2>Store Skills (Recipe → Grocery Store)</h2>
+        <p class="sub">Touch-friendly games: drag OR tap mode, instant feedback, hints, and points.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__row">
+          <button class="btn btn--ghost listenBtn" type="button" data-say="Now let's practice grocery store skills: planning stores, aisles, asking for help, discounts, and checkout conversations.">Listen</button>
+          <button id="resetActivities" class="btn btn--ghost" type="button">Reset section</button>
+        </div>
+
+        <div class="activity" id="storeChooser"></div>
+
+        <div class="activity" id="aisleMatch"></div>
+
+        <div class="activity" id="directionOrder"></div>
+
+        <div class="activity" id="discountSign"></div>
+
+        <div class="activity" id="dialogueFill"></div>
+
+        <div class="activity" id="checkoutRoleplay"></div>
+      </div>
+    </section>
+
+    <!-- Dialogues -->
+    <section class="section" id="dialogues">
+      <div class="section__head">
+        <h2>Interactive Dialogues</h2>
+        <p class="sub">Pick a scene and choose your replies. (Polite vs casual.)</p>
+      </div>
+
+      <div class="card">
+        <div class="card__row">
+          <button class="btn btn--ghost listenBtn" type="button" data-say="Interactive dialogues. Choose a scene and pick your replies. Say your lines out loud.">Listen</button>
+          <button id="resetDialogues" class="btn btn--ghost" type="button">Reset dialogues</button>
+        </div>
+
+        <div class="toolbar">
+          <div class="toolbar__group">
+            <span class="label">Style</span>
+            <div class="seg" role="group" aria-label="Dialogue style">
+              <button id="dlgPolite" class="seg__btn" type="button" aria-pressed="true">Polite</button>
+              <button id="dlgCasual" class="seg__btn" type="button" aria-pressed="false">Casual</button>
+            </div>
+          </div>
+
+          <div class="toolbar__group">
+            <label class="label" for="dlgScene">Scene</label>
+            <select id="dlgScene" class="select"></select>
+          </div>
+
+          <div class="toolbar__group toolbar__group--right">
+            <button id="dlgRestart" class="btn btn--ghost" type="button">Restart</button>
+          </div>
+        </div>
+
+        <div class="dialogue">
+          <div class="dialogue__log" id="dlgLog" aria-live="polite"></div>
+
+          <div class="dialogue__controls">
+            <div class="dialogue__prompt" id="dlgPrompt">Choose your reply…</div>
+            <div class="dialogue__choices" id="dlgChoices"></div>
+            <div class="dialogue__row">
+              <button id="dlgReadLast" class="btn btn--ghost" type="button">Read last line</button>
+              <div class="points" id="dlgPts">0 pts</div>
+            </div>
+
+            <div class="callout callout--info">
+              <strong>Speaking practice:</strong> after each customer line, say it out loud. Then click “Next”.
+              <div class="speakBtns" style="margin-top:.5rem">
+                <button id="dlgPromptBtn" class="btn btn--ghost" type="button">Give me a speaking prompt</button>
+                <button id="dlgSaidBtn" class="btn" type="button">✅ I said it out loud</button>
+              </div>
+              <div id="dlgSpeakFb" class="fb" aria-live="polite"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reading -->
+    <section class="section" id="reading">
+      <div class="section__head">
+        <h2>Reading + Comprehension (keeps score)</h2>
+        <p class="sub">Store flyer + questions (MCQ + True/False) + listening.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__row">
+          <button class="btn btn--ghost listenBtn" type="button" data-say="Read the store flyer and answer the questions. You can listen to the flyer, too.">Listen</button>
+          <button id="resetReading" class="btn btn--ghost" type="button">Reset section</button>
+        </div>
+
+        <div class="poster" id="flyerPoster" aria-label="Store flyer"></div>
+
+        <div class="toolbar" style="margin-top:.75rem">
+          <button class="btn btn--ghost listenBtn" type="button" id="btnListenFlyer">Listen to the flyer</button>
+          <button class="btn btn--ghost" type="button" id="btnFlyerHint">Hint</button>
+          <div id="flyerHint" class="hint" aria-live="polite"></div>
+        </div>
+
+        <div class="activity" id="flyerMCQ"></div>
+        <div class="activity" id="flyerTF"></div>
+      </div>
+    </section>
+
+    <!-- Wrap -->
+    <section class="section" id="wrap">
+      <div class="section__head">
+        <h2>Wrap‑up</h2>
+        <p class="sub">Mini challenge + extra speaking prompts.</p>
+      </div>
+
+      <div class="card">
+        <button class="btn btn--ghost listenBtn" type="button"
+          data-say="Wrap-up: Imagine your shopping trip. Ask three questions, follow directions, and check out politely.">
+          Listen
+        </button>
+
+        <div class="callout callout--success">
+          <strong>Mini‑challenge:</strong> Go to a grocery store (in your head). For each step, say <strong>3</strong> sentences:
+          <ul class="bullets" style="margin:.5rem 0 0">
+            <li>Recipe step: “I’m going to make ___ tonight.”</li>
+            <li>Store step: “Excuse me, where can I find ___?”</li>
+            <li>Checkout step: “Could I pay by card, please?”</li>
+          </ul>
+        </div>
+
+        <div class="grid grid--2">
+          <div class="miniCard">
+            <div class="miniCard__title">Get 12 speaking questions</div>
+            <p class="miniCard__text">Tap to generate questions you can use in real stores.</p>
+            <button id="btnSpeakPack" class="btn" type="button">Generate</button>
+            <div id="speakPack" class="speakPack" aria-live="polite"></div>
+          </div>
+
+          <div class="miniCard">
+            <div class="miniCard__title">Total score</div>
+            <div class="totalScore" id="scoreBottom">0 / 0</div>
+            <p class="miniCard__text">Your score is saved on this device (local storage). Reset clears it.</p>
+            <div class="hero__actions" style="gap:.5rem;justify-content:flex-start">
+              <button id="resetAllBottom" class="btn btn--danger" type="button">Reset lesson</button>
+              <a class="btn btn--ghost" href="#recipe">Back to top</a>
+            </div>
+          </div>
+        </div>
+
+        <footer class="foot">
+          © SpeakEasyTisha · Cooking Quest module · Built for Mac + iPad (Safari) with touch‑friendly alternatives.
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Help modal -->
+  <dialog id="helpDialog" class="modal">
+    <div class="modal__head">
+      <div class="modal__title">Keyboard & touch help</div>
+      <button id="closeHelp" class="btn btn--ghost" type="button">Close</button>
+    </div>
+    <div class="modal__body">
+      <ul class="bullets">
+        <li><strong>Tap mode (recommended on iPad):</strong> tap a tile, then tap a target (blank, box, or definition).</li>
+        <li><strong>Desktop drag:</strong> drag tiles into boxes; you can still use tap mode if you prefer.</li>
+        <li><strong>Flashcards:</strong> click / tap to flip; press <kbd>Enter</kbd> on a focused card.</li>
+        <li><strong>Speech:</strong> choose US/UK voice, then tap any <span class="pill">Listen</span> button.</li>
+      </ul>
+    </div>
+  </dialog>
+
+  <script src="js/cooking-quest.js"></script>
+</body>
+</html>
