@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SpeakEasyTisha — Shopping Spree (Shoes · Clothes · Décor)</title>
+  <link rel="stylesheet" href="css/shopping-spree-followup.css" />
+</head>
+<body>
+  <header class="siteHeader">
+    <div class="brand">
+      <div class="logoMark" aria-hidden="true">SE</div>
+      <div>
+        <div class="brandName">SpeakEasyTisha</div>
+        <div class="brandTag">Shopping Spree — Shoes · Clothes · Décor</div>
+      </div>
+    </div>
+
+    <nav class="tools" aria-label="Lesson tools">
+      <div class="tool">
+        <label for="accentSelect">Accent</label>
+        <select id="accentSelect" class="select">
+          <option value="en-US">American (en-US)</option>
+          <option value="en-GB">British (en-GB)</option>
+        </select>
+      </div>
+
+      <div class="tool">
+        <label class="toggle">
+          <input type="checkbox" id="tapModeToggle" />
+          <span>Tap mode (iPad-friendly)</span>
+        </label>
+      </div>
+
+      <button class="btn btnGhost" id="resetAllBtn" type="button" title="Reset all activities">Reset</button>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="scoreBar" aria-label="Global score">
+      <div class="scoreLeft">
+        <strong>Global score:</strong>
+        <span id="scoreTop">0 / 0</span>
+        <span class="pill" id="scorePillTop">Start</span>
+      </div>
+      <div class="scoreRight">
+        <button class="btn" id="reviewWrongTop" type="button">Review wrong answers</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>1) Vocabulary Flashcards</h2>
+      <p class="sub">Tap a card to flip. Use the 🔊 button to listen (American/British).</p>
+      <div class="grid" id="flashcards"></div>
+    </section>
+
+    <section class="card">
+      <h2>2) Quick Quiz (MCQ)</h2>
+      <p class="sub">Choose the best answer. You get feedback + a hint if needed.</p>
+      <div id="mcq"></div>
+    </section>
+
+    <section class="card">
+      <h2>3) Matching (Words ↔ Meanings)</h2>
+      <p class="sub">Match each word to its meaning (drag or tap).</p>
+      <div class="matchWrap">
+        <div class="matchCol">
+          <h3>Words</h3>
+          <ul class="matchList" id="matchLeft"></ul>
+        </div>
+        <div class="matchCol">
+          <h3>Meanings</h3>
+          <ul class="matchList" id="matchRight"></ul>
+        </div>
+      </div>
+      <div class="actionsRow">
+        <button class="btn" id="matchCheck" type="button">Check</button>
+        <button class="btn btnGhost" id="matchHint" type="button">Hint</button>
+        <button class="btn btnGhost" id="matchReset" type="button">Reset</button>
+        <div class="feedback" id="matchFb" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4) Sort It! (Shoes · Clothes · Décor)</h2>
+      <p class="sub">Drag tiles into the correct box — or use Tap mode: tap a tile, then tap a box.</p>
+      <div class="tileBank" id="sortTiles"></div>
+
+      <div class="dropGrid" id="sortTargets">
+        <div class="dropZone" data-cat="shoes" tabindex="0" role="button" aria-label="Shoes box">
+          <h3>👟 Shoes</h3>
+          <div class="dropInner" data-cat="shoes"></div>
+        </div>
+        <div class="dropZone" data-cat="clothes" tabindex="0" role="button" aria-label="Clothes box">
+          <h3>👗 Clothes</h3>
+          <div class="dropInner" data-cat="clothes"></div>
+        </div>
+        <div class="dropZone" data-cat="decor" tabindex="0" role="button" aria-label="Décor box">
+          <h3>🕯️ Décor</h3>
+          <div class="dropInner" data-cat="decor"></div>
+        </div>
+      </div>
+
+      <div class="actionsRow">
+        <button class="btn" id="sortCheck" type="button">Check</button>
+        <button class="btn btnGhost" id="sortHint" type="button">Hint</button>
+        <button class="btn btnGhost" id="sortReset" type="button">Reset</button>
+        <div class="feedback" id="sortFb" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5) Sentence Builder (Word Order)</h2>
+      <p class="sub">Tap words to build the sentence. (No dragging needed.)</p>
+      <div id="order"></div>
+    </section>
+
+    <section class="card">
+      <h2>6) Fill-in-the-Blank (Word Bank)</h2>
+      <p class="sub">Tap a word from the bank, then tap a blank.</p>
+      <div id="fill"></div>
+    </section>
+
+    <section class="card">
+      <h2>7) Interactive Dialogues (Store Scenarios)</h2>
+      <p class="sub">Choose your lines to complete the conversation. Listen + practice.</p>
+      <div id="dialogue"></div>
+    </section>
+
+    <section class="card">
+      <h2>8) Reading + Comprehension</h2>
+      <p class="sub">Read, then answer the questions.</p>
+      <div id="reading"></div>
+    </section>
+
+    <section class="scoreBar scoreBarBottom" aria-label="Global score (bottom)">
+      <div class="scoreLeft">
+        <strong>Global score:</strong>
+        <span id="scoreBottom">0 / 0</span>
+        <span class="pill" id="scorePillBottom">Start</span>
+      </div>
+      <div class="scoreRight">
+        <button class="btn" id="reviewWrongBottom" type="button">Review wrong answers</button>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div>© SpeakEasyTisha — iPad/Mac friendly. Drag activities include Tap mode.</div>
+    </footer>
+  </main>
+
+  <script src="js/shopping-spree-followup.js"></script>
+</body>
+</html>
