@@ -19,6 +19,21 @@
     });
   }
 
+
+  // Normalize text for comparisons (case/spacing/punctuation tolerant)
+  function normalize(s) {
+    return String(s == null ? "" : s)
+      .toLowerCase()
+      .replace(/\u00a0/g, " ")
+      .replace(/[’]/g, "'")
+      .replace(/\s+/g, " ")
+      .replace(/\s+([,?.!])/g, "$1")
+      .replace(/[“”"]/g, "")
+      .replace(/[^a-z0-9' ,?.!\-]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
   function shuffle(a) {
     var arr = a.slice();
     for (var i = arr.length - 1; i > 0; i--) {
@@ -27,6 +42,27 @@
     }
     return arr;
   }
+
+  // Shuffle a bank, but try to avoid showing it in the same order as the answers
+  function scrambleBank(bank, avoidSeq) {
+    var base = (bank || []).slice();
+    var avoid = (avoidSeq || []).map(function (x) { return normalize(String(x || "")); });
+
+    function samePrefix(arr) {
+      var n = Math.min(arr.length, avoid.length);
+      for (var i = 0; i < n; i++) {
+        if (normalize(String(arr[i] || "")) !== avoid[i]) return false;
+      }
+      return true;
+    }
+
+    for (var tries = 0; tries < 35; tries++) {
+      var s = shuffle(base);
+      if (!samePrefix(s)) return s;
+    }
+    return base.reverse();
+  }
+
 
   function clamp(n, min, max) {
     return Math.max(min, Math.min(max, n));
@@ -747,9 +783,12 @@
   function makeDraggable(tile) {
     tile.setAttribute("draggable", "true");
     tile.addEventListener("dragstart", function (e) {
-      if (!e.dataTransfer) return;
-      e.dataTransfer.setData("text/plain", tile.dataset.value || "");
-      e.dataTransfer.effectAllowed = "move";
+      // Keep a reference to the dragged element (helps multi-drop zones + Safari)
+      window.__dragEl = tile;
+      try { if (e.dataTransfer) { e.dataTransfer.setData("text/plain", tile.dataset.value || ""); e.dataTransfer.effectAllowed = "move"; } } catch (err) {}
+    });
+    tile.addEventListener("dragend", function () {
+      try { window.__dragEl = null; } catch (e) {}
     });
   }
 
@@ -898,7 +937,7 @@
       }
     }
 
-    cfg.bank.forEach(function (w) {
+    scrambleBank(cfg.bank, (cfg.items || []).map(function(it){ return it.answer; })).forEach(function (w) {
       var bw = document.createElement("button");
       bw.className = "bankWord";
       bw.type = "button";
@@ -994,7 +1033,7 @@
     var pts = cfg.pts || 3;
     state.possible += pts;
 
-    var order = shuffle(cfg.chunks);
+    var order = shuffle((cfg.chunks || []).slice());
 
     box.innerHTML =
       '<h4>' + esc(cfg.title) + "</h4>" +
@@ -1002,7 +1041,7 @@
       '<div class="tileTray" id="' + esc(containerId) + '_tiles"></div>' +
       '<div class="dropZone" style="margin-top:.7rem">' +
         '<div class="dzLabel">Answer</div>' +
-        '<div class="dzSlot" id="' + esc(containerId) + '_slot" aria-label="Answer slot"></div>' +
+        '<div class="dzSlot" id="' + esc(containerId) + '_slot" aria-label="Answer area (drop multiple tiles)"></div>' +
         '<button class="iconBtn" type="button" id="' + esc(containerId) + '_clear" title="Clear">↩</button>' +
       "</div>" +
       '<div class="card__row" style="margin-top:.65rem">' +
@@ -1033,50 +1072,104 @@
       tile.textContent = c;
       tile.dataset.value = c;
       makeDraggable(tile);
-      tile.addEventListener("click", function () { enableTapPick(tile); });
+
+      // Tap mode:
+      // - tap a tile in the tray to pick it
+      // - tap the answer area to add it
+      // - tap a tile in the answer area to remove it
+      tile.addEventListener("click", function () {
+        if (tile.parentNode === slot) {
+          tray.appendChild(tile);
+          tile.classList.remove("good", "bad");
+          clearPicked();
+          return;
+        }
+        enableTapPick(tile);
+      });
+
       tray.appendChild(tile);
     });
 
-    makeDroppable(slot);
-    slot.addEventListener("click", function () { tryTapDrop(slot); });
+    // Make tray + slot droppable for multiple tiles
+    function handleDrop(targetEl, e) {
+      e.preventDefault();
+      var dragged = window.__dragEl || null;
+      if (!dragged) return;
 
-    if (clearBtn) {
-      clearBtn.addEventListener("click", function () {
-        slot.textContent = "";
-        slot.dataset.value = "";
-        slot.classList.remove("good","bad");
-        clearPicked();
-      });
+      // Only handle our tiles
+      if (!dragged.classList || !dragged.classList.contains("tile")) return;
+
+      // Insert before a tile if dropping on one (supports reordering in the answer area)
+      var before = null;
+      var t = e.target;
+      if (t && t.closest) {
+        var hit = t.closest(".tile");
+        if (hit && hit.parentNode === targetEl && hit !== dragged) before = hit;
+      }
+
+      if (before) targetEl.insertBefore(dragged, before);
+      else targetEl.appendChild(dragged);
+    }
+
+    [tray, slot].forEach(function (el) {
+      el.addEventListener("dragover", function (e) { e.preventDefault(); });
+      el.addEventListener("drop", function (e) { handleDrop(el, e); });
+    });
+
+    // Tap: place picked tile into the answer area
+    slot.addEventListener("click", function () {
+      if (!tapPicked) return;
+      if (tapPicked.parentNode !== tray) return;
+      slot.appendChild(tapPicked);
+      clearPicked();
+    });
+
+    function clearAll() {
+      var tiles = slot.querySelectorAll(".tile");
+      for (var i = 0; i < tiles.length; i++) {
+        tray.appendChild(tiles[i]);
+        tiles[i].classList.remove("good", "bad");
+      }
+      slot.classList.remove("good", "bad");
+      fb.className = "fb";
+      fb.textContent = "";
+      clearPicked();
+    }
+
+    if (clearBtn) clearBtn.addEventListener("click", clearAll);
+
+    function buildAnswer() {
+      var parts = [];
+      var tiles = slot.querySelectorAll(".tile");
+      for (var i = 0; i < tiles.length; i++) parts.push(String(tiles[i].dataset.value || "").trim());
+      var ans = parts.join(" ").replace(/\s+([,?.!])/g, "$1").replace(/\s+/g, " ").trim();
+      return ans;
     }
 
     function hint() {
-      if (!fb) return;
       fb.className = "fb";
-      fb.textContent = cfg.hint || "Tip: start with a connector (First/Then/After that), then a verb.";
+      fb.textContent = cfg.hint || "Tip: start with a verb (Go / Turn / Take), then add the details.";
     }
 
     function check() {
-      var ans = String(slot.textContent || "").trim().replace(/\s+/g, " ");
-      var target = String(cfg.answer).trim().replace(/\s+/g, " ");
-      if (!ans) {
-        fb.className = "fb";
-        fb.textContent = "Add chunks to the answer line first.";
-        return;
-      }
-      if (ans === target) {
-        slot.classList.remove("bad");
-        slot.classList.add("good");
-        var got = award(prefix + "ok", pts);
+      var ans = buildAnswer();
+      var target = String(cfg.answer || "").trim();
+      var good = normalize(ans) === normalize(target);
+
+      slot.classList.remove("good", "bad");
+      slot.classList.add(good ? "good" : "bad");
+
+      if (good) {
+        award(prefix + "ok", pts);
         fb.className = "fb good";
-        fb.textContent = got ? ("✅ Perfect! +" + pts + " pts.") : "✅ Correct — already counted.";
-        if (ptsEl) ptsEl.textContent = pts + " pts";
+        fb.textContent = "✅ Correct! Great sentence.";
       } else {
-        slot.classList.remove("good");
-        slot.classList.add("bad");
         fb.className = "fb bad";
-        fb.textContent = "❌ Not yet. Hint: " + (cfg.hint || "Check word order.");
+        fb.textContent = "❌ Not yet. Try moving the tiles into the right order.";
       }
+
       renderScore();
+      if (ptsEl) ptsEl.textContent = state.earned[prefix + "ok"] ? (pts + " pts") : "0 pts";
     }
 
     function reset() {
@@ -1088,8 +1181,7 @@
     if (checkBtn) checkBtn.addEventListener("click", check);
     if (hintBtn) hintBtn.addEventListener("click", hint);
     if (resetBtn) resetBtn.addEventListener("click", reset);
-    if (listenBtn) listenBtn.setAttribute("data-say", cfg.listenText || cfg.answer);
-
+    if (listenBtn) listenBtn.setAttribute("data-say", cfg.listenText || cfg.answer || "");
     if (ptsEl) ptsEl.textContent = state.earned[prefix + "ok"] ? (pts + " pts") : "0 pts";
   }
 
@@ -1101,11 +1193,17 @@
     var pts = cfg.pts || 5;
     state.possible += pts;
 
-    var tiles = shuffle(cfg.items.map(function (it) { return it.left; }));
+    // Unique categories (right side)
+    var cats = [];
+    var seen = {};
+    cfg.items.forEach(function (it) {
+      var c = String(it.right || "").trim();
+      if (!seen[c]) { seen[c] = true; cats.push(c); }
+    });
 
     box.innerHTML =
       '<h3>' + esc(cfg.title) + "</h3>" +
-      '<p class="subline">' + esc(cfg.subtitle || "") + "</p>" +
+      '<p class="subline">' + esc(cfg.subtitle || "Tap a tile, then tap a category box.") + "</p>" +
       '<div class="tileTray" id="' + esc(containerId) + '_tiles"></div>' +
       '<div class="dropGrid" style="margin-top:.8rem" id="' + esc(containerId) + '_grid"></div>' +
       '<div class="card__row" style="margin-top:.65rem">' +
@@ -1126,29 +1224,68 @@
     var resetBtn = $(containerId + "_reset");
     var ptsEl = $(containerId + "_pts");
 
-    // Build tiles
-    tiles.forEach(function (t) {
+    // Build tiles (each tile knows its correct category)
+    var tilesData = shuffle(cfg.items.slice());
+    tilesData.forEach(function (it, idx) {
       var tile = document.createElement("div");
       tile.className = "tile";
-      tile.dataset.value = t;
-      tile.innerHTML = '<span aria-hidden="true">🧩</span>' + esc(t);
+      tile.dataset.value = String(it.left || "").trim();
+      tile.dataset.correct = String(it.right || "").trim();
+      tile.innerHTML = '<span aria-hidden="true">🧩</span>' + esc(tile.dataset.value);
       makeDraggable(tile);
-      tile.addEventListener("click", function () { enableTapPick(tile); });
+
+      tile.addEventListener("click", function () {
+        // If already placed in a category, tap to return it to the tray
+        if (tile.parentNode && tile.parentNode !== tray) {
+          tray.appendChild(tile);
+          tile.classList.remove("good", "bad", "is-picked");
+          clearPicked();
+          return;
+        }
+        enableTapPick(tile);
+      });
+
       tray.appendChild(tile);
     });
 
-    // Build targets
-    cfg.items.forEach(function (it) {
+    // Build one category box per unique category
+    cats.forEach(function (cat) {
       var dz = document.createElement("div");
       dz.className = "dropZone";
       dz.innerHTML =
-        '<div class="dzLabel">' + esc(it.right) + '</div>' +
-        '<div class="dzSlot" data-target="' + esc(it.left) + '" aria-label="Drop here"></div>';
+        '<div class="dzLabel">' + esc(cat) + "</div>" +
+        '<div class="dzSlot" data-cat="' + esc(cat) + '" aria-label="Drop items into ' + esc(cat) + '"></div>';
       grid.appendChild(dz);
 
-      var slot = dz.querySelector(".dzSlot");
-      makeDroppable(slot);
-      slot.addEventListener("click", function () { tryTapDrop(slot); });
+      var bin = dz.querySelector(".dzSlot");
+
+      // DnD: drop tile into bin (multiple allowed)
+      bin.addEventListener("dragover", function (e) { e.preventDefault(); });
+      bin.addEventListener("drop", function (e) {
+        e.preventDefault();
+        var dragged = window.__dragEl;
+        if (!dragged || !dragged.classList || !dragged.classList.contains("tile")) return;
+        bin.appendChild(dragged);
+      });
+
+      // Tap mode: if a tile is picked, place it into this bin
+      dz.addEventListener("click", function (e) {
+        if (e.target && e.target.closest && e.target.closest(".tile")) return;
+        if (!tapPicked) return;
+        if (tapPicked.parentNode !== tray) return;
+        bin.appendChild(tapPicked);
+        clearPicked();
+      });
+    });
+
+    // Allow dragging back to the tray
+    tray.addEventListener("dragover", function (e) { e.preventDefault(); });
+    tray.addEventListener("drop", function (e) {
+      e.preventDefault();
+      var dragged = window.__dragEl;
+      if (!dragged || !dragged.classList || !dragged.classList.contains("tile")) return;
+      tray.appendChild(dragged);
+      dragged.classList.remove("good","bad");
     });
 
     function hint() {
@@ -1157,28 +1294,33 @@
     }
 
     function check() {
-      var slots = grid.querySelectorAll(".dzSlot");
-      var ok = 0;
-      for (var i = 0; i < slots.length; i++) {
-        var s = slots[i];
-        var target = s.dataset.target;
-        var val = String(s.dataset.value || "").trim();
-        var good = val === target;
-        if (good) ok++;
-        s.classList.remove("good","bad");
-        s.classList.add(good ? "good" : "bad");
+      // Mark each tile based on the category it is currently in
+      var allTiles = box.querySelectorAll(".tile");
+      var correct = 0;
+      for (var i = 0; i < allTiles.length; i++) {
+        var t = allTiles[i];
+        var bin = t.parentNode && t.parentNode.classList && t.parentNode.classList.contains("dzSlot") ? t.parentNode : null;
+        var placed = bin ? String(bin.dataset.cat || "").trim() : "";
+        var good = placed && normalize(placed) === normalize(t.dataset.correct || "");
+        t.classList.remove("good","bad");
+        t.classList.add(good ? "good" : "bad");
+        if (good) correct++;
       }
 
-      if (ok === cfg.items.length) {
-        var got = award(prefix + "ok", pts);
+      var placedAll = tray.querySelectorAll(".tile").length === 0;
+      var okAll = placedAll && correct === cfg.items.length;
+
+      if (okAll) {
+        award(prefix + "ok", pts);
         fb.className = "fb good";
-        fb.textContent = got ? ("✅ All correct! +" + pts + " pts.") : "✅ Correct — already counted.";
-        if (ptsEl) ptsEl.textContent = pts + " pts";
+        fb.textContent = "✅ Great! Everything is in the correct section.";
       } else {
         fb.className = "fb bad";
-        fb.textContent = "Not yet: " + ok + " / " + cfg.items.length + " correct. Fix the red boxes.";
+        fb.textContent = "❌ Not quite. Make sure each item is in the right department (and that all items are placed).";
       }
+
       renderScore();
+      if (ptsEl) ptsEl.textContent = state.earned[prefix + "ok"] ? (pts + " pts") : "0 pts";
     }
 
     function reset() {
@@ -1554,16 +1696,15 @@
 
   function renderAllActivities() {
     // reset possible before rebuilding entire page points once
-    // But we call this multiple times; we need to recompute possible from scratch.
-    // We'll compute possible anew in renderAll() later. For activities alone, we won't.
-    // Here, we only rebuild activities section UI; possible will be recomputed in initAll().
     state.possible = 0;
     renderScore();
-    renderVocab();       // vocab doesn't add points
-    renderGrammar();     // adds points
-    renderActivities();  // adds points
-    renderDialogues();   // adds points
-    renderReading();     // adds points
+
+    try { renderVocab(); } catch(e) { console.error("renderVocab failed", e); }
+    try { renderGrammar(); } catch(e) { console.error("renderGrammar failed", e); }
+    try { renderActivities(); } catch(e) { console.error("renderActivities failed", e); }
+    try { renderDialogues(); } catch(e) { console.error("renderDialogues failed", e); }
+    try { renderReading(); } catch(e) { console.error("renderReading failed", e); }
+
     renderScore();
   }
 
