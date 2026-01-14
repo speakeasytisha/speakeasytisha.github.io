@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>SpeakEasyTisha — Introduction Session (Interactive)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/intro-session.css" />
+</head>
+<body>
+  <!-- Sticky score / controls -->
+  <div class="scorebar" role="region" aria-label="Lesson controls">
+    <div class="scorebar__left">
+      <span class="brandMini">SpeakEasyTisha</span>
+      <span class="pill">Introduction Session</span>
+      <span class="pill pill--ghost" id="progressPill">Slide 1 / 19</span>
+    </div>
+
+    <div class="scorebar__right">
+      <button class="btn btn--ghost" id="btnGuided" type="button" aria-haspopup="dialog">Guided Mode</button>
+      <div class="seg" role="group" aria-label="Accent toggle">
+        <button class="seg__btn is-active" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="seg__btn" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+      <span class="score" aria-live="polite">Score: <strong id="scoreTop">0</strong></span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">Reset</button>
+    </div>
+  </div>
+
+  <!-- Header / nav -->
+  <header class="siteHeader">
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="brand__script">SpeakEasyTisha</span>
+        <span class="brand__tag">Interactive First Session</span>
+      </a>
+      <div class="nav__links">
+        <a href="#about">About</a>
+        <a href="#method">Method</a>
+        <a href="#tech">Tech & Survival</a>
+        <a href="#intro">Self Intro</a>
+        <a href="#greetings">Greetings</a>
+        <a href="#diagnostic">Diagnostic</a>
+        <a href="#wrap">Wrap‑Up</a>
+      </div>
+    </nav>
+
+    <section class="hero" id="top">
+      <div class="hero__content">
+        <div class="hero__kicker">– GETTING TO KNOW EACH OTHER –</div>
+        <h1 class="hero__title">Introduction<br><span class="hero__title2">English Lesson</span></h1>
+        <p class="hero__meta" id="metaLine">
+          <span class="metaItem">Learner: <strong id="learnerNameInline">—</strong></span>
+          <span class="dot">•</span>
+          <span class="metaItem">Duration: <strong>60 min</strong></span>
+          <span class="dot">•</span>
+          <span class="metaItem">Focus: <strong>Introductions · Greetings · Communication needs</strong></span>
+        </p>
+
+        <div class="hero__actions">
+          <button class="btn btn--primary" id="btnStart" type="button">▶ Start Session</button>
+          <button class="btn" id="btnSpeakHero" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="btnPrint" type="button">🖨️ Print Survival Sheet</button>
+        </div>
+
+        <div class="hero__mini">
+          <div class="miniCard">
+            <div class="miniCard__title">Session Timer</div>
+            <div class="timer">
+              <span class="timer__time" id="timerDisplay">60:00</span>
+              <button class="btn btn--ghost" id="timerStart" type="button">Start</button>
+              <button class="btn btn--ghost" id="timerPause" type="button">Pause</button>
+              <button class="btn btn--ghost" id="timerReset" type="button">Reset</button>
+            </div>
+          </div>
+          <div class="miniCard">
+            <div class="miniCard__title">Quick Setup</div>
+            <div class="fieldRow">
+              <label class="field">
+                <span>Learner name</span>
+                <input id="learnerName" type="text" value="" placeholder="Your name (optional)" autocomplete="name" />
+              </label>
+              <button class="btn btn--ghost" id="btnSaveLearner" type="button">Save</button>
+            </div>
+            <p class="small muted">Tip: Use Guided Mode to follow the slides step‑by‑step.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__art" aria-hidden="true">
+        <div class="floatIcon">🏨</div>
+        <div class="floatIcon">🧳</div>
+        <div class="floatIcon">✈️</div>
+        <div class="floatIcon">🗺️</div>
+        <div class="floatIcon">📞</div>
+      </div>
+    </section>
+  </header>
+
+  <main class="main">
+    <!-- ABOUT -->
+    <section class="section reveal" id="about">
+      <div class="section__head">
+        <h2>👩‍🏫 About Me</h2>
+        <p class="lead">A warm, human first impression — with real listening + speaking right away.</p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="card__head">
+            <h3>My story</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" data-say="#aboutStory" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div class="card__body" id="aboutStory">
+            <!-- Filled from slides -->
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <h3>Objectives (today)</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnObjAll" type="button">✓ Check all</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <ul class="checklist" id="objectivesList" aria-label="Objectives checklist"></ul>
+            <p class="small muted">Checking an objective gives points — your learner sees progress immediately.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section class="section reveal" id="method">
+      <div class="section__head">
+        <h2>🎯 Method: English with Tisha</h2>
+        <p class="lead">We repeat, we play — practice becomes automatic.</p>
+      </div>
+
+      <div class="grid3" id="methodCards"></div>
+
+      <div class="card reveal">
+        <div class="card__head">
+          <h3>Learning styles (quick reflection)</h3>
+          <div class="card__actions">
+            <button class="btn btn--ghost" data-say="#learningStyles" type="button">🔊 Listen</button>
+          </div>
+        </div>
+        <div class="card__body" id="learningStyles"></div>
+        <div class="card__foot">
+          <div class="pillGroup" id="learningPick" role="group" aria-label="Choose learning styles">
+            <button class="pillBtn" type="button" data-style="looking">LOOKING 👁️</button>
+            <button class="pillBtn" type="button" data-style="listening">LISTENING 👂</button>
+            <button class="pillBtn" type="button" data-style="reading">READING/WRITING ✍️</button>
+            <button class="pillBtn" type="button" data-style="speaking">SPEAKING/REPEATING 🗣️</button>
+            <button class="pillBtn" type="button" data-style="doing">DOING/PRACTICING 👐</button>
+          </div>
+          <p class="small muted">Tap what feels true for you. (Points included.)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH -->
+    <section class="section reveal" id="tech">
+      <div class="section__head">
+        <h2>🧩 Tech & Survival Sheet (Google Meet / Visio)</h2>
+        <p class="lead">Vocabulary + survival sentences with instant listening in US/UK English.</p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="card__head">
+            <h3>Key vocabulary</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnVocabShuffle" type="button">🔀 Shuffle</button>
+              <button class="btn btn--ghost" id="btnVocabSpeakAll" type="button">🔊 Listen all</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <div class="flashGrid" id="vocabFlashcards" aria-label="Vocabulary flashcards"></div>
+            <p class="small muted">Tap a card to flip. Tap 🔊 to listen.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <h3>Survival sentences</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnSurvivalSpeakAll" type="button">🔊 Listen all</button>
+              <button class="btn btn--ghost" id="btnSurvivalToggle" type="button" aria-pressed="false">Show French</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <div class="survivalList" id="survivalList"></div>
+            <hr class="hr" />
+            <h4 class="h4">Matching game (tap mode friendly)</h4>
+            <p class="small muted">Match the English sentence with the French meaning.</p>
+            <div class="match" id="survivalMatch" aria-label="Survival matching game"></div>
+            <div class="actionsRow">
+              <button class="btn btn--ghost" id="btnSurvivalHint" type="button">💡 Hint</button>
+              <button class="btn" id="btnSurvivalReset" type="button">Reset</button>
+              <span class="small" id="survivalStatus" aria-live="polite"></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SELF INTRO -->
+    <section class="section reveal" id="intro">
+      <div class="section__head">
+        <h2>🧑‍💬 Self‑Introduction Builder</h2>
+        <p class="lead">The learner leaves the first session with a confident “About me” in English.</p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="card__head">
+            <h3>Build your introduction</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnIntroExample" type="button">✨ Example</button>
+            </div>
+          </div>
+
+          <div class="card__body">
+            <div class="formGrid">
+              <label class="field"><span>Name</span><input id="fName" type="text" placeholder="Your name" /></label>
+              <label class="field"><span>From</span><input id="fFrom" type="text" placeholder="France / the US / ..." /></label>
+              <label class="field"><span>Lives in</span><input id="fLive" type="text" placeholder="Nantes / Paris / ..." /></label>
+              <label class="field"><span>Job / studies</span><input id="fJob" type="text" placeholder="work as a… / study… (no “I”) " /></label>
+              <label class="field">
+  <span>English need</span>
+  <select id="fNeed">
+    <option value="">Choose one…</option>
+    <option value="meetings">meetings</option>
+    <option value="emails">emails</option>
+    <option value="presentations">presentations</option>
+    <option value="phone calls">phone calls</option>
+    <option value="travel">travel</option>
+    <option value="studies">studies</option>
+    <option value="an exam">an exam</option>
+    <option value="moving abroad">moving abroad</option>
+    <option value="other">other (type below)</option>
+  </select>
+  <div class="hint">Tip: we’ll build a correct sentence automatically (“I need it for …”).</div>
+</label>
+<label class="field" id="fNeedOtherWrap" style="display:none">
+  <span>Other need</span>
+  <input id="fNeedOther" type="text" placeholder="e.g., customer service, negotiations, networking…" />
+</label>
+              <label class="field"><span>Free time</span><input id="fHobby" type="text" placeholder="tennis, music..." /></label>
+              <label class="field"><span>Travel</span><input id="fTravel" type="text" placeholder="travelling to… / visiting… (no “I”) " /></label>
+              <label class="field"><span>Feeling today</span><input id="fFeel" type="text" placeholder="motivated / tired / happy..." /></label>
+              <label class="field field--full">
+  <span>One goal for this course</span>
+  <select id="fGoal">
+    <option value="">Choose one…</option>
+    <option value="feel comfortable speaking in English">feel comfortable speaking in English</option>
+    <option value="participate confidently in meetings">participate confidently in meetings</option>
+    <option value="write clearer professional emails">write clearer professional emails</option>
+    <option value="improve my pronunciation and fluency">improve my pronunciation and fluency</option>
+    <option value="make small talk more naturally">make small talk more naturally</option>
+    <option value="prepare for an exam">prepare for an exam</option>
+    <option value="other">other (type below)</option>
+  </select>
+  <div class="hint">Choose a phrase (no “to / I want to”). We’ll add “to …” for you.</div>
+</label>
+<label class="field field--full" id="fGoalOtherWrap" style="display:none">
+  <span>Other goal</span>
+  <input id="fGoalOther" type="text" placeholder="e.g., feel confident speaking on the phone" />
+</label>
+            </div>
+
+            <div class="actionsRow">
+              <button class="btn btn--primary" id="btnBuildIntro" type="button">Build my paragraph</button>
+              <button class="btn" id="btnSpeakIntro" type="button">🔊 Read it</button>
+              <button class="btn btn--ghost" id="btnCopyIntro" type="button">📋 Copy</button>
+              <button class="btn btn--ghost" id="btnIntroReset" type="button">Reset</button>
+            </div>
+
+            <div class="output" id="introOutput" aria-live="polite"></div>
+            <p class="small muted">Points: build + listen + copy = full win.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <h3>Conversation prompts (tap + answer)</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnPromptsShuffle" type="button">🔀 Shuffle</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <div class="promptList" id="promptList"></div>
+            <p class="small muted">Learners can type, then tap 🔊 to practice speaking with the chosen accent.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="card reveal" id="travelCard">
+        <div class="card__head">
+          <h3>✈️ Travel & holidays mini‑story</h3>
+          <div class="card__actions">
+            <button class="btn btn--ghost" id="btnTravelNew" type="button">↻ New</button>
+            <button class="btn btn--ghost" id="btnTravelSpeak" type="button">🔊 Listen</button>
+          </div>
+        </div>
+        <div class="card__body">
+          <p class="muted" style="margin-top:0">Choose how you travel + with whom, then practice a short story.</p>
+
+          <div class="pillGroup" id="travelTransport" aria-label="Travel transport choices"></div>
+          <div style="height:10px"></div>
+          <div class="pillGroup" id="travelCompany" aria-label="Travel company choices"></div>
+
+          <div class="actionsRow">
+            <button class="btn btn--primary" id="btnTravelBuild" type="button">Build my travel story</button>
+            <button class="btn btn--ghost" id="btnTravelCopy" type="button">📋 Copy</button>
+          </div>
+
+          <div class="output" id="travelOutput"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GREETINGS -->
+    <section class="section reveal" id="greetings">
+      <div class="section__head">
+        <h2>👋 Greetings & Culture</h2>
+        <p class="lead">Formal vs informal + country variations — then practice in context.</p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="card__head">
+            <h3>Time‑of‑day practice</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnGreetingNew" type="button">↻ New</button>
+              <button class="btn btn--ghost" id="btnGreetingHint" type="button">💡 Hint</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <p class="big" id="greetPrompt">🌅 Morning — what do you say?</p>
+            <div class="choices" id="greetChoices"></div>
+            <p class="status" id="greetStatus" aria-live="polite"></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <h3>Country greeting explorer</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnCountrySpeak" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <label class="field">
+              <span>Choose a country</span>
+              <select id="countrySelect"></select>
+            </label>
+            <div class="countryBox" id="countryBox"></div>
+            <div class="callout" id="culturalReminder"></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="card__head">
+            <h3>How to address people</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnAddressNew" type="button">↻ New</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <p class="big" id="addressPrompt">Situation: …</p>
+            <div class="choices" id="addressChoices"></div>
+            <p class="status" id="addressStatus" aria-live="polite"></p>
+            <div class="miniTable" id="addressTable"></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <h3>Introduce yourself in context</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnContextSpeak" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <label class="field">
+              <span>Context</span>
+              <select id="contextSelect">
+                <option value="hotel">🏨 At the hotel (formal)</option>
+                <option value="email">✉️ In an email (formal / neutral)</option>
+                <option value="conference">🎤 At a conference (neutral)</option>
+                <option value="street">🚶 In the street (informal)</option>
+              </select>
+            </label>
+            <div class="output" id="contextOutput"></div>
+            <div class="actionsRow">
+              <button class="btn btn--primary" id="btnContextBuild" type="button">Build my version</button>
+              <button class="btn btn--ghost" id="btnContextCopy" type="button">📋 Copy</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="card__head">
+            <h3>👋 Saying goodbye (practice)</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnByeNew" type="button">↻ New</button>
+              <button class="btn btn--ghost" id="btnByeHint" type="button">💡 Hint</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <p class="big" id="byePrompt">Situation: …</p>
+            <div class="choices" id="byeChoices"></div>
+            <p class="status" id="byeStatus" aria-live="polite"></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <h3>Formal vs informal (quick sorting)</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnSortReset" type="button">Reset</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <p class="muted" style="margin-top:0">Tap an expression, then tap the category. (Touch‑friendly — no drag needed.)</p>
+            <div class="pillGroup" id="sortPool"></div>
+            <div class="grid2" style="margin-top:12px">
+              <div class="output" id="sortFormal"><strong>Formal / neutral</strong><br><span class="muted small">Tap here to place</span></div>
+              <div class="output" id="sortCasual"><strong>Casual / slang</strong><br><span class="muted small">Tap here to place</span></div>
+            </div>
+            <div class="actionsRow">
+              <button class="btn btn--primary" id="btnSortCheck" type="button">Check</button>
+              <span class="small" id="sortStatus" aria-live="polite"></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- DIAGNOSTIC -->
+    <section class="section reveal" id="diagnostic">
+      <div class="section__head">
+        <h2>🧪 Diagnostic Quiz</h2>
+        <p class="lead">Quick, fun, and revealing — vocabulary + register + survival phrases + introductions.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Ready?</h3>
+          <div class="card__actions">
+            <button class="btn btn--primary" id="btnStartDiag" type="button">Start diagnostic</button>
+            <button class="btn" id="btnDiagReset" type="button">Reset</button>
+          </div>
+        </div>
+        <div class="card__body">
+          <div id="diagArea"></div>
+          <p class="small muted" id="diagNote">Instant feedback + points. Great for the first impression.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WRAP UP -->
+    <section class="section reveal" id="wrap">
+      <div class="section__head">
+        <h2>🧭 Wrap‑Up & Next Steps</h2>
+        <p class="lead">Confirm topics, comfort level, and what to practice next.</p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="card__head">
+            <h3>What we confirmed today</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnWrapSpeak" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <ul class="checklist" id="wrapChecklist"></ul>
+            <div class="actionsRow">
+              <button class="btn btn--primary" id="btnPlanNext" type="button">Generate next‑session plan</button>
+              <button class="btn btn--ghost" id="btnCopyPlan" type="button">📋 Copy plan</button>
+            </div>
+            <div class="output" id="planOutput"></div>
+          </div>
+        </article>
+
+        </div>
+    </section>
+
+    <!-- Bottom score -->
+    <div class="scorebar scorebar--bottom" role="region" aria-label="Lesson score">
+      <div class="scorebar__left">
+        <span class="pill pill--ghost">Score</span>
+        <span class="score" aria-live="polite"><strong id="scoreBottom">0</strong></span>
+      </div>
+      <div class="scorebar__right">
+        <button class="btn btn--ghost" id="btnToTop" type="button">↑ Top</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Guided mode dialog -->
+  <div class="modal" id="guidedModal" role="dialog" aria-modal="true" aria-label="Guided Mode" hidden>
+    <div class="modal__overlay" data-close="1"></div>
+    <div class="modal__panel">
+      <div class="modal__head">
+        <h3 class="modal__title">Guided Mode — Follow the slides</h3>
+        <div class="modal__actions">
+          <button class="btn btn--ghost" id="btnGuidedSpeak" type="button">🔊 Listen</button>
+          <button class="btn btn--danger" data-close="1" type="button">Close</button>
+        </div>
+      </div>
+
+      <div class="modal__body">
+        <div class="guided">
+          <div class="guided__nav">
+            <button class="btn" id="btnPrevSlide" type="button">← Prev</button>
+            <button class="btn btn--primary" id="btnNextSlide" type="button">Next →</button>
+          </div>
+          <div class="guided__slide">
+            <div class="guided__badge" id="guidedBadge">Slide 1 / 19</div>
+            <h4 class="guided__title" id="guidedTitle"></h4>
+            <ul class="guided__list" id="guidedList"></ul>
+          </div>
+          <div class="guided__jump">
+            <span class="small muted">Quick jump:</span>
+            <button class="pillBtn" type="button" data-jump="#tech">Tech</button>
+            <button class="pillBtn" type="button" data-jump="#intro">Self‑intro</button>
+            <button class="pillBtn" type="button" data-jump="#greetings">Greetings</button>
+            <button class="pillBtn" type="button" data-jump="#diagnostic">Diagnostic</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>window.__INTRO_DATA__ = {"keyVocab":[{"term":"Microphone","icon":"🎤"},{"term":"Camera","icon":"📷"},{"term":"Chat","icon":"💬"},{"term":"Participants","icon":"👥"},{"term":"Share screen","icon":"🖥"},{"term":"Leave the meeting","icon":"❌"},{"term":"Connection","icon":"🌐"},{"term":"Audio / Video quality","icon":"🎧"}],"survival":[{"icon":"🎧","en":"Can you hear me?","fr":"Est-ce que tu m’entends ?"},{"icon":"👀","en":"I can’t see you.","fr":"Je ne te vois pas."},{"icon":"📷","en":"Please turn on your camera.","fr":"Active ta caméra, s’il te plaît."},{"icon":"🎤","en":"Let’s check the microphone.","fr":"Vérifions le micro."},{"icon":"🖥","en":"I am going to share my screen.","fr":"Je vais partager mon écran."},{"icon":"🔊","en":"The sound is not good.","fr":"Le son n’est pas bon."},{"icon":"❄️","en":"The video is frozen.","fr":"L’image est bloquée."},{"icon":"🔁","en":"Can you repeat, please?","fr":"Peux-tu répéter, s’il te plaît ?"},{"icon":"✅","en":"Everything is OK now.","fr":"Tout va bien maintenant."},{"icon":"🔌","en":"I will reconnect.","fr":"Je vais me reconnecter."},{"icon":"📶","en":"The connection is weak.","fr":"La connexion est faible."},{"icon":"🐢","en":"Please speak slowly.","fr":"Parle lentement, s’il te plaît."}],"greetingCountries":[{"country":"🇬🇧 United Kingdom (England)","formal":"Hello! / Good morning!","slang":"Alright, mate? / Hiya!","notes":"“Alright, mate?” = “How are you?” (common among friends, especially men)"},{"country":"🇮🇪 Ireland","formal":"Hello! / How are you?","slang":"What’s the craic?","notes":"“Craic” = fun or good times; “What’s the craic?” means “What’s up?”"},{"country":"🇺🇸 United States","formal":"Hi! / Hello! / How are you?","slang":"Hey! / What’s up? / How’s it going?","notes":"“Hey” is friendly but neutral; “What’s up?” = casual greeting, not a real question"},{"country":"🇨🇦 Canada","formal":"Hello! / Hi there!","slang":"Hey, how’s it going, eh?","notes":"Canadians often add “eh?” at the end of a sentence for friendliness"},{"country":"🇦🇺 Australia","formal":"Hello! / Good day! (→ G’day!)","slang":"How ya goin’?","notes":"“G’day” = “Good day” (typical Aussie); “How ya goin’?” means “How are you?”"},{"country":"🇳🇿 New Zealand","formal":"Kia ora!","slang":"","notes":"“Kia ora” comes from Māori — used by everyone to say hello or thank you"},{"country":"🇿🇦 South Africa","formal":"Hello! / Good day!","slang":"Howzit!","notes":"“Howzit” = “How is it?” (friendly informal hello)"}],"slides":[{"n":1,"lines":["🏨","▶ Start Lesson","– GETTING TO KNOW EACH OTHER–","🧳","✈️","🗺️","INTRODUCTION","– ENGLISH LESSON –","📞","LEARNER: MATT BROWN | DURATION: 60 MIN | FOCUS: INTRODUCTIONS, GREETINGS, COMMUNICATION NEEDS"]},{"n":2,"lines":["FRANKIE","“Hello Tisha! Nice to meet you!”","💬","How are you today?","😊😴😄 to say how you feel today.","👶 Do you have children?","🏠 How many people are in your family?","🐶🐱 Do you have any pets?","🗓️ What do you do on weekends?","🎨🎵🏃‍♀️ What do you do in your free time?"]},{"n":3,"lines":["👩‍🏫 About Me –","Hello Tisha, my name is Tisha.","I’m originally from the United States, but I’ve been living in France for over twenty years.","I have four children, and they are all completely bilingual — they speak both English and French perfectly!","I’m passionate about languages, culture, and helping people feel confident when they speak English.","My goal is to make English simple, natural, and fun for you.","I know what it’s like to learn a new language — I came to France when I was sixteen to learn French, so I really understand what it feels like to be in your shoes! 👣","💬"]},{"n":4,"lines":["A WARM WELCOME: OBJECTIVES","– “GETTING TO KNOW EACH OTHER” –","FRIENDLY, RELAXED ATMOSPHERE 😊","START USING ENGLISH NATURALLY AND CONFIDENTLY 🗣️","SIMPLE INTRODUCTIONS AND GREETINGS 🤝","UNDERSTAND, REACT, AND PRONOUNCE 👂","FEEL COMFORTABLE SPEAKING💬","CONFIRM COURSE TOPICS 🧭"]},{"n":5,"lines":["METHOD: ENGLISH WITH TISHA","WE REPEAT, WE PLAY.","— MY PHILOSOPHY is: “PRACTICE MAKES PERFECT” — until English becomes automatic.”","Everyone learns differently: some people learn by","LOOKING, 👁️","LISTENING, 👂","READING/WRITING, ✍️","SPEAKING/REPEATING, 🗣️","DOING/PRACTICING. 👐","MATERIALS:","PICTURES,","SHORT TEXTS,","AUDIO,","WHATEVER I CAN FIND!","WE PRACTICE","GRAMMAR,","VOCABULARY,","PRONUNCIATION AND EXPRESSIONS,","Dialogues","Role-Play"]},{"n":6,"lines":["KEY VOCABULARY",".","Microphone","🎤","Camera","📷","Chat","💬","Participants","👥","Share screen","🖥","Leave the meeting","❌","Connection","🌐","Audio / Video quality","🎧"]},{"n":7,"lines":["GOOGLE MEET SURVIVAL SHEET"]},{"n":8,"lines":["🗣 SURVIVAL SENTENCES","🎧 Can you hear me? → Est-ce que tu m’entends ?","👀 I can’t see you. → Je ne te vois pas.","📷 Please turn on your camera. → Active ta caméra, s’il te plaît.","🎤 Let’s check the microphone. → Vérifions le micro.","🖥 I am going to share my screen. → Je vais partager mon écran.","🔊 The sound is not good. → Le son n’est pas bon.","❄️ The video is frozen. → L’image est bloquée.","🔁 Can you repeat, please? → Peux-tu répéter, s’il te plaît ?","✅ Everything is OK now. → Tout va bien maintenant.","🔌 I will reconnect. → Je vais me reconnecter.","📶 The connection is weak. → La connexion est faible.","🐢 Please speak slowly. → Parle lentement, s’il te plaît."]},{"n":9,"lines":["TRAVEL & HOLIDAYS","How do you travel?","🛫 Have you travelled by plane before?","🚆 Have you travelled by train?","🚗 Do you like travelling by car?","💺 Which do you prefer — plane, train, or car?","🏖️ What’s your favorite place for holidays?","🧳 Do you travel alone or with family/friends?","🗣️ Do you speak English when you travel?","🛫 PLANE","🚆 TRAIN","🚗 CAR","🧳👫","WITH FRIENDS","💬","🧳👩‍🦰 ALONE","🧳👨‍👩‍👧‍👦 WITH FAMILY","🧳💑 WITH MY HUSBAND","🌍 DO YOU LIKE TO TRAVEL?"]},{"n":10,"lines":["Where are you from?","Where do you live?","Where have you travelled in France?","Where did you study?","Where is your family?","Do you travel on weekends?"]},{"n":11,"lines":["Have you travelled to an English-speaking country?","Where have you travelled?","✈️ TRAVEL & CULTURE","DO YOU LIKE TRAVELLING?","HAVE YOU EVER BEEN TO AN ENGLISH-SPEAKING COUNTRY?","WHERE WOULD YOU LIKE TO TRAVEL IN THE FUTURE?","WHAT WAS YOUR FAVORITE TRIP?"]},{"n":12,"lines":["💼 WORK / STUDIES","👩‍💼 Do you work?","💻 What do you do?","🏢 Where do you work?","🗣️ Do you use English at work?","🌍 Is English important for your job?","💬 Questions:"]},{"n":13,"lines":["GREETINGS","🌅","🌞","🌙","GOOD MORNING, GOOD AFTERNOON, GOOD EVENING, GOODBYE","👋"]},{"n":14,"lines":["Greetings in English-Speaking Countries","Country","🗣️ Formal / Everyday Greeting","😎 Slang or Informal","💡 Notes / Context","🇬🇧 United Kingdom (England)","Hello! / Good morning!","Alright, mate? / Hiya!","“Alright, mate?” = “How are you?” (common among friends, especially men)","🇮🇪 Ireland","Hello! / How are you?","What’s the craic?","“Craic” = fun or good times; “What’s the craic?” means “What’s up?”","🇺🇸 United States","Hi! / Hello! / How are you?","Hey! / What’s up? / How’s it going?","“Hey” is friendly but neutral; “What’s up?” = casual greeting, not a real question","🇨🇦 Canada","Hello! / Hi there!","Hey, how’s it going, eh?","Canadians often add “eh?” at the end of a sentence for friendliness","🇦🇺 Australia","Hello! / Good day! (→ G’day!)","How ya goin’?","“G’day” = “Good day” (typical Aussie); “How ya goin’?” means “How are you?”","🇳🇿 New Zealand","Kia ora!","“Kia ora” comes from Māori — used by everyone to say hello or thank you","🇿🇦 South Africa","Hello! / Good day!","Howzit!","“Howzit” = “How is it?” (friendly informal hello)"]},{"n":15,"lines":["💡 Cultural Reminder","✅ Start formal or neutral (Hello, Good morning, Goodbye, Take care).","😄 Use casual forms (Hi, Hey, See ya!) with friends or in relaxed situations.","🙅 Avoid slang in professional settings unless you know it’s appropriate."]},{"n":16,"lines":["Greetings and Addressing People","Context","Formal","Casual / Slang","Workplace / Hotel","Good morning, Good evening, How are you?","Hi, Hey","On the phone","Hello, this is Tisha.","Hi, it’s me!","In the street / with friends","Hello! / Nice to see you!","Hey! / What’s up?","FORMAL VS. INFORMAL GREETINGS"]},{"n":17,"lines":["HOW TO ADDRESS PEOPLE IN ENGLISH","Situation","Title","Example","Register","Man","Mr + last name","Mr Smith","Formal","Married woman","Mrs + last name","Mrs Johnson","Unmarried woman","Miss + last name","Miss Brown","Any woman (neutral)","Ms + last name","Ms Clark","Formal / neutral","Child / Teen","First name only","Hi Tom!","Casual","Group / Plural","Ladies and gentlemen / everyone / guys","Hello everyone!","Varies by context"]},{"n":18,"lines":["INTRODUCING YOURSELF IN CONTEXT","🏨 At the hotel (formal)","Hello, my name is Tisha.","I have a reservation for two nights.","📞 On the phone (formal)","Good morning, this is Tisha. I’m calling to confirm my booking.","🛍 In a shop (neutral)","Hi! Can I have two bottles of water, please?","🚶‍♀️ In the street (informal)","Hi, excuse me! Can you help me, please?"]},{"n":19,"lines":["👋 SAYING GOODBYE","🌇 Situation","👄 English Expression","🇫🇷 Translation","💡 Register","At work / polite","Goodbye","Au revoir","Formal","Neutral","Have a nice day / evening!","Bonne journée / soirée !","Polite","On the phone / leaving class","Talk to you soon","À bientôt","Very casual","See you later / See ya / Catch you later","À plus tard","Informal / slang"]}],"introQuestions":["How are you today?","😊😴😄 Describe how you feel today.","👶 Do you have children?","🏠 How many people are in your family?","🐶🐱 Do you have any pets?","🗓️ What do you do on weekends?","🎨🎵🏃‍♀️ What do you do in your free time?","Where are you from?","Where do you live?","Where have you travelled in France?","Where did you study?","Where is your family?","Do you travel on weekends?","💼 WORK / STUDIES","👩‍💼 Do you work?","💻 What do you do?","🏢 Where do you work?","🗣️ Do you use English at work?","🌍 Is English important for your job?","Have you travelled to an English-speaking country?","Where have you travelled?","DO YOU LIKE TRAVELLING?","HAVE YOU EVER BEEN TO AN ENGLISH-SPEAKING COUNTRY?","WHERE WOULD YOU LIKE TO TRAVEL IN THE FUTURE?","WHAT WAS YOUR FAVORITE TRIP?"]};</script>
+  <script src="js/intro-session.js"></script>
+</body>
+</html>
