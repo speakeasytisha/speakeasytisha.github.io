@@ -710,3 +710,60 @@ section#hours {
   outline: 3px solid rgba(8,179,199,.45);
   box-shadow: 0 0 0 4px rgba(8,179,199,.18);
 }
+
+/* --------------------
+   Print: Grammar only
+   (Triggered by body class .se-print-grammar)
+---------------------*/
+@media print {
+  /* Hide top UI */
+  body.se-print-grammar .se-accentbar,
+  body.se-print-grammar header.hero {
+    display: none !important;
+  }
+
+  /* Hide all main sections except Grammar */
+  body.se-print-grammar main.container > section:not(#grammar) {
+    display: none !important;
+  }
+
+  /* Keep layout simple */
+  body.se-print-grammar main.container{
+    width: auto !important;
+    margin: 0 !important;
+  }
+
+  body.se-print-grammar #grammar{
+    display: block !important;
+    margin: 0 !important;
+  }
+
+  /* Remove “card” effects for print */
+  body.se-print-grammar .card,
+  body.se-print-grammar .subcard{
+    box-shadow: none !important;
+    border: 1px solid #000 !important;
+    background: transparent !important;
+  }
+
+  /* Hide interactive controls inside Grammar (keep the lesson notes) */
+  body.se-print-grammar #grammar .card__actions,
+  body.se-print-grammar #grammar .two-col,
+  body.se-print-grammar #grammar .row,
+  body.se-print-grammar #grammar button,
+  body.se-print-grammar #grammar .feedback {
+    display: none !important;
+  }
+
+  /* Ensure readable print */
+  body.se-print-grammar,
+  body.se-print-grammar *{
+    color: #000 !important;
+    background: transparent !important;
+    text-shadow: none !important;
+  }
+
+  body.se-print-grammar #grammar .note{
+    border: 1px solid #000 !important;
+  }
+}
