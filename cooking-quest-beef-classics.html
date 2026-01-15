@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>SpeakEasyTisha — Cooking Quest 2: Beef Classics (Recipe → Grocery Store)</title>
+  <link rel="stylesheet" href="css/cooking-quest-beef-classics.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">SpeakEasyTisha</div>
+      <div class="tag">Cooking Quest • Recipe → Grocery Store • iPad/Mac friendly</div>
+    </div>
+
+    <div class="controls">
+      <div class="control">
+        <label for="voiceMode">Accent</label>
+        <select id="voiceMode">
+          <option value="us" selected>American (US)</option>
+          <option value="uk">British (UK)</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label for="speechRate">Speed</label>
+        <select id="speechRate">
+          <option value="0.9">Slow</option>
+          <option value="1" selected>Normal</option>
+          <option value="1.1">Fast</option>
+        </select>
+      </div>
+
+      <button class="btn btn--ghost" id="btnResetAll" type="button" title="Reset all points & progress">Reset All</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero__text">
+        <h1>Beef Classics: Connecticut Beef Supper • Meatloaf • Corned Beef Hash</h1>
+        <p class="lead">Choose a recipe, build a shopping list, find ingredients in the right store sections, follow directions, and check out — with <strong>drag OR tap</strong>, instant feedback, hints, and points.</p>
+
+        <div class="scorebar" aria-label="Global score">
+          <div class="scorebar__left">
+            <div class="pill"><span>Score</span> <strong id="scoreNow">0</strong> / <span id="scorePossible">0</span></div>
+            <div class="pill pill--mini">Tap mode works on iPad. Drag works on desktop.</div>
+          </div>
+          <div class="scorebar__right">
+            <button class="btn btn--primary listenBtn" type="button" data-say="Welcome to Cooking Quest. Choose a recipe to begin.">▶ Listen</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__card">
+        <h2 class="h2">Step map</h2>
+        <ol class="steps">
+          <li><strong>Pick</strong> a recipe</li>
+          <li><strong>Learn</strong> quick history + key vocab</li>
+          <li><strong>Plan</strong> your shopping list</li>
+          <li><strong>Find</strong> aisles + sections</li>
+          <li><strong>Speak</strong> polite questions + directions</li>
+          <li><strong>Pay</strong> (coupons, discounts, bagging)</li>
+        </ol>
+        <div class="callout callout--info">
+          <strong>Teacher tip:</strong> Use the Listen buttons, repeat out loud, then do the mini-dialogues.
+        </div>
+      </div>
+    </section>
+
+    <!-- 1) Recipe choice -->
+    <section class="card">
+      <div class="card__head">
+        <h2>1) Choose your recipe</h2>
+        <p class="subline">Tap a recipe card. Then explore ingredients, steps, and history.</p>
+      </div>
+
+      <div class="grid3" id="recipeGrid" aria-label="Recipe choices"></div>
+
+      <div class="split">
+        <div class="panel">
+          <h3 id="recipeTitle">Choose a recipe above</h3>
+          <p id="recipeDesc" class="subline"></p>
+
+          <div class="minirow">
+            <button class="btn btn--ghost listenBtn" type="button" id="btnListenRecipe" data-say="">▶ Listen summary</button>
+            <button class="btn btn--ghost" type="button" id="btnSelectAllIngredients">Select all ingredients</button>
+            <button class="btn btn--ghost" type="button" id="btnClearIngredients">Clear ingredient selection</button>
+          </div>
+
+          <div class="callout callout--soft">
+            <strong>Goal:</strong> Make a list, then find each ingredient in the store.
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Ingredients (tap to select)</h3>
+          <div id="ingredientsPicker" class="picker" aria-label="Ingredients picker"></div>
+        </div>
+      </div>
+
+      <div class="split" style="margin-top: 1rem;">
+        <div class="panel">
+          <h3>Steps</h3>
+          <ol id="recipeSteps" class="steps2"></ol>
+        </div>
+
+        <div class="panel">
+          <h3>Quick history</h3>
+          <div id="recipeHistory" class="history"></div>
+          <div class="minirow" style="margin-top:.65rem;">
+            <button class="btn btn--ghost listenBtn" id="btnListenHistory" type="button" data-say="">▶ Listen history</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2) Vocabulary -->
+    <section class="card">
+      <div class="card__head">
+        <h2>2) Vocabulary flashcards (with icons)</h2>
+        <p class="subline">Flip the card (tap anywhere). Use theme filters. Ingredients theme adapts to your chosen recipe.</p>
+      </div>
+
+      <div class="minirow">
+        <div class="control">
+          <label for="vocabTheme">Theme</label>
+          <select id="vocabTheme">
+            <option value="ingredients" selected>Ingredients (your recipe)</option>
+            <option value="aisles">Aisles & sections</option>
+            <option value="actions">Cooking actions</option>
+            <option value="checkout">Checkout & payment</option>
+            <option value="describing">Adjectives & adverbs</option>
+            <option value="connectors">Connectors</option>
+            <option value="ukus">UK/US pairs</option>
+            <option value="all">Mixed review</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label for="vocabMode">Card mode</label>
+          <select id="vocabMode">
+            <option value="en" selected>English → Definition</option>
+            <option value="ukus">UK ↔ US</option>
+          </select>
+        </div>
+
+        <button class="btn btn--ghost" type="button" id="btnShuffleCards">Shuffle cards</button>
+      </div>
+
+      <div id="vocabGrid" class="vgrid" aria-label="Vocabulary flashcards"></div>
+    </section>
+
+    <!-- 3) Shopping list -->
+    <section class="card">
+      <div class="card__head">
+        <h2>3) Make your shopping list</h2>
+        <p class="subline">Add selected ingredients + your own items. Then practice asking where they are in the store.</p>
+      </div>
+
+      <div class="split">
+        <div class="panel">
+          <h3>Your list</h3>
+          <div id="shoppingList" class="shoppingList" aria-label="Shopping list"></div>
+
+          <div class="minirow">
+            <input id="customItem" class="input" type="text" placeholder="Add a custom item (e.g., aluminum foil)" />
+            <button class="btn btn--primary" type="button" id="btnAddCustom">Add</button>
+          </div>
+
+          <div class="minirow">
+            <button class="btn btn--ghost listenBtn" type="button"
+              data-say="Excuse me, where can I find this item? Which aisle is it in?">▶ Listen (ask for help)</button>
+            <button class="btn btn--ghost" type="button" id="btnClearList">Clear list</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Pick the right store</h3>
+          <p class="subline">Match the item to the best place to buy it (tap or drag).</p>
+          <div id="storeMatch" class="activity"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) Store skills -->
+    <section class="card">
+      <div class="card__head">
+        <h2>4) Store Skills (Recipe → Grocery Store)</h2>
+        <p class="subline">Touch-friendly games: drag OR tap mode, instant feedback, hints, and points.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <div id="aisleSort" class="activity"></div>
+        </div>
+
+        <div class="panel">
+          <div id="directionsOrder" class="activity"></div>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top:1rem;">
+        <div class="panel">
+          <div id="discountSign" class="activity"></div>
+        </div>
+
+        <div class="panel">
+          <div id="checkoutMCQ" class="activity"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) Grammar -->
+    <section class="card">
+      <div class="card__head">
+        <h2>5) Grammar mini-lessons + exercises</h2>
+        <p class="subline">Each section has a quick explanation + an interactive exercise with hints and points.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <div id="gPrepositions" class="activity"></div>
+        </div>
+        <div class="panel">
+          <div id="gVerbTenses" class="activity"></div>
+        </div>
+        <div class="panel">
+          <div id="gAdjAdv" class="activity"></div>
+        </div>
+        <div class="panel">
+          <div id="gComparatives" class="activity"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6) Dialogues + reading -->
+    <section class="card">
+      <div class="card__head">
+        <h2>6) Dialogues + reading (history & culture)</h2>
+        <p class="subline">Listen, repeat, then choose the best response.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <div id="dialogues" class="activity"></div>
+        </div>
+        <div class="panel">
+          <div id="reading" class="activity"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footerScore" aria-label="Bottom score">
+      <div class="pill"><span>Score</span> <strong id="scoreNow2">0</strong> / <span id="scorePossible2">0</span></div>
+      <div class="pill pill--mini">SpeakEasyTisha • Cooking Quest 2 • Beef Classics</div>
+    </footer>
+  </main>
+
+  <script defer src="js/cooking-quest-beef-classics.js"></script>
+</body>
+</html>
