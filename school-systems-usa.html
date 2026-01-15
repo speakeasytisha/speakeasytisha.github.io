@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <title>SpeakEasyTisha · US School Systems (MA & NH) — Interactive Lesson</title>
+  <meta name="description" content="Interactive lesson for French families moving to Massachusetts or New Hampshire: grades, enrollment, school types, ELL support, dialogues, and games."/>
+  <link rel="stylesheet" href="css/school-systems-usa.css"/>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true">✦</div>
+        <div class="brand__text">
+          <div class="brand__name">SpeakEasyTisha</div>
+          <div class="brand__tag">Interactive lesson · School systems in the USA (Massachusetts & New Hampshire)</div>
+        </div>
+      </div>
+
+      <div class="controls" aria-label="Lesson controls">
+        <label class="ctrl">
+          <span class="ctrl__label">Accent</span>
+          <select id="accentSelect" class="ctrl__select" aria-label="Accent">
+            <option value="us" selected>American (US)</option>
+            <option value="uk">British (UK)</option>
+          </select>
+        </label>
+
+        <label class="ctrl">
+          <span class="ctrl__label">French help</span>
+          <select id="frHelpSelect" class="ctrl__select" aria-label="French help">
+            <option value="off" selected>Off</option>
+            <option value="on">On (tips + vocab)</option>
+          </select>
+        </label>
+
+        <button id="btnSpeakTest" class="btn btn--ghost" type="button" title="Test Text-to-Speech">
+          🔊 Test voice
+        </button>
+
+        <div class="scorebox" role="status" aria-live="polite">
+          <div class="scorebox__label">Score</div>
+          <div class="scorebox__value"><span id="scoreNow">0</span> pts</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero card">
+      <div class="hero__left">
+        <h1>Moving from France to the USA with kids?</h1>
+        <p class="lead">
+          This “one-stop” interactive lesson helps you understand US school levels (and the French equivalents),
+          choose schools in <b>Massachusetts</b> and <b>New Hampshire</b>, and prepare the <b>enrollment steps</b> —
+          with fun games, useful dialogues, and vocabulary flashcards.
+        </p>
+
+        <div class="pillrow">
+          <span class="pill">✅ iPad/Mac/PC/Phone friendly</span>
+          <span class="pill">🎯 Instant feedback + hints</span>
+          <span class="pill">🧩 Drag OR Tap mode</span>
+          <span class="pill">🗣 Text-to-Speech (US/UK)</span>
+        </div>
+
+        <div class="note note--soft">
+          <b>Real-life note:</b> Rules can vary by district (âge d’entrée, documents, deadlines). This lesson teaches the
+          “typical” process + what’s legally required, and shows you where to verify official info.
+        </div>
+      </div>
+
+      <div class="hero__right">
+        <div class="childTabs" role="tablist" aria-label="Choose a child profile">
+          <button class="tab active" data-child="13" role="tab" aria-selected="true">👧 13-year-old</button>
+          <button class="tab" data-child="10" role="tab" aria-selected="false">🧒 10-year-old</button>
+          <button class="tab" data-child="2" role="tab" aria-selected="false">👶 2-year-old</button>
+        </div>
+
+        <div class="childCard">
+          <div id="childProfileTitle" class="childCard__title">Likely level: Middle School (Collège)</div>
+          <div id="childProfileBody" class="childCard__body">
+            <ul class="clean">
+              <li><b>Typical grades:</b> 7th–8th (sometimes 6th–8th)</li>
+              <li><b>French equivalent:</b> 5e–4e (approx.)</li>
+              <li><b>What to focus on:</b> course schedule, electives, guidance counselor, sports/after-school, language support.</li>
+            </ul>
+            <button id="childSpeak" class="btn btn--primary" type="button">🔊 Listen (summary)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 1) US vs France map   -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>1) The US school ladder (and French equivalents)</h2>
+        <p class="muted">
+          In the US, “grade” means the year level (1st grade, 2nd grade…). Schools are often grouped by building:
+          <b>Elementary</b>, <b>Middle</b>, <b>High School</b>. The exact cutoffs can vary.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <div class="miniTitle">Quick mapping table</div>
+          <div class="tableWrap" role="region" aria-label="US vs France mapping table" tabindex="0">
+            <table class="mapTable">
+              <thead>
+                <tr>
+                  <th>USA (typical)</th>
+                  <th>Ages</th>
+                  <th>France (approx.)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Pre-K / Preschool</td><td>3–4</td><td>Petite / Moyenne / Grande section (maternelle)</td></tr>
+                <tr><td>Kindergarten (K)</td><td>5–6</td><td>Grande section (sometimes CP depends on cutoff)</td></tr>
+                <tr><td>1st–5th Grade (Elementary)</td><td>6–11</td><td>CP → CM2</td></tr>
+                <tr><td>6th–8th Grade (Middle School)</td><td>11–14</td><td>6e → 4e (sometimes 3e)</td></tr>
+                <tr><td>9th–12th Grade (High School)</td><td>14–18</td><td>Lycée (Seconde → Terminale)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="note">
+            <b>Tip:</b> In Massachusetts, entry cutoffs for kindergarten can differ by district (many use late Aug / early Sept). In NH, many districts use Sept 30.
+            See the official references at the bottom of this page.
+          </div>
+        </div>
+
+        <div>
+          <div class="miniTitle">Game: Match the levels (Drag or Tap)</div>
+          <p class="muted small">
+            On touch devices: <b>Tap a card</b> → <b>tap a target</b>. On desktop: drag & drop.
+          </p>
+
+          <div class="match" id="matchLevels">
+            <div class="match__pool" aria-label="Cards to place">
+              <!-- injected -->
+            </div>
+            <div class="match__targets" aria-label="Targets">
+              <!-- injected -->
+            </div>
+
+            <div class="row row--right">
+              <button class="btn btn--ghost" type="button" data-hint="matchLevels">💡 Hint</button>
+              <button class="btn btn--primary" type="button" data-check="matchLevels">✅ Check</button>
+              <button class="btn" type="button" data-reset="matchLevels">↺ Reset</button>
+            </div>
+
+            <div class="feedback" id="fb_matchLevels" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 2) School types MA/NH -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>2) What types of schools exist in Massachusetts & New Hampshire?</h2>
+        <p class="muted">
+          Both states have <b>public</b> and <b>private</b> options. Public schools are usually assigned by where you live (“district”).
+          Some options are “choice-based” (charter, vocational/technical, magnet, etc.).
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <div class="miniTitle">Vocabulary flashcards (with icons)</div>
+          <div class="flashControls">
+            <label class="ctrl ctrl--inline">
+              <span class="ctrl__label">Theme</span>
+              <select id="fcTheme" class="ctrl__select" aria-label="Flashcard theme"></select>
+            </label>
+            <button id="fcShuffle" class="btn btn--ghost" type="button">🔀 Shuffle</button>
+          </div>
+
+          <div class="flashWrap">
+            <button id="fcPrev" class="btn btn--ghost" type="button" aria-label="Previous card">◀</button>
+
+            <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="Flashcard (tap to flip)">
+              <div class="flashcard__inner">
+                <div class="flashcard__face flashcard__front">
+                  <div class="fcIcon" id="fcIcon">🏫</div>
+                  <div class="fcTerm" id="fcTerm">Public school</div>
+                  <div class="fcMini" id="fcMini">Tap to flip</div>
+                </div>
+                <div class="flashcard__face flashcard__back">
+                  <div class="fcDef" id="fcDef">A tuition-free school funded by the government, usually assigned by district.</div>
+                  <div class="fcExample" id="fcExample">Example: “We are assigned to the Lincoln Elementary School.”</div>
+                  <div class="fcFR" id="fcFR"></div>
+                  <div class="fcMini">Tap to flip back</div>
+                </div>
+              </div>
+            </div>
+
+            <button id="fcNext" class="btn btn--ghost" type="button" aria-label="Next card">▶</button>
+          </div>
+
+          <div class="row row--right">
+            <button id="fcSpeak" class="btn btn--primary" type="button">🔊 Listen</button>
+          </div>
+
+          <div class="note note--soft small">
+            <b>French help (optional):</b> toggle <b>French help</b> at the top to show French tips and translations on card backs.
+          </div>
+        </div>
+
+        <div>
+          <div class="miniTitle">Game: Sort school types (Drag or Tap)</div>
+          <p class="muted small">
+            Drag/tap each card into the best category. (Some are possible in both states, but the goal is to learn the words.)
+          </p>
+
+          <div class="sort" id="sortTypes">
+            <div class="sort__pool" aria-label="Cards to sort"></div>
+
+            <div class="sort__bins" aria-label="Categories">
+              <div class="bin" data-bin="public">
+                <div class="bin__title">Public (tuition-free)</div>
+                <div class="bin__drop" data-drop="public" aria-label="Drop area: Public"></div>
+              </div>
+              <div class="bin" data-bin="choice">
+                <div class="bin__title">Public choice / specialized</div>
+                <div class="bin__drop" data-drop="choice" aria-label="Drop area: Choice"></div>
+              </div>
+              <div class="bin" data-bin="private">
+                <div class="bin__title">Private / Independent</div>
+                <div class="bin__drop" data-drop="private" aria-label="Drop area: Private"></div>
+              </div>
+            </div>
+
+            <div class="row row--right">
+              <button class="btn btn--ghost" type="button" data-hint="sortTypes">💡 Hint</button>
+              <button class="btn btn--primary" type="button" data-check="sortTypes">✅ Check</button>
+              <button class="btn" type="button" data-reset="sortTypes">↺ Reset</button>
+            </div>
+            <div class="feedback" id="fb_sortTypes" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 3) How schools are "graded" -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>3) How do you know which schools are “best”?</h2>
+        <p class="muted">
+          In the US, families often look at multiple indicators: state report cards & test results, student growth,
+          programs offered, school climate, and practical factors like commute and after-school care.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div class="callout">
+          <div class="callout__title">Massachusetts (official)</div>
+          <ul class="clean">
+            <li><b>School & District Profiles</b>: enrollment, programs, and performance (including MCAS). </li>
+            <li><b>State Report Cards</b>: accountability indicators for districts and schools.</li>
+          </ul>
+          <div class="small muted">
+            Use the official MA DESE “Profiles” and Report Cards first — then use private sites as a secondary check.
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="callout__title">New Hampshire (official)</div>
+          <ul class="clean">
+            <li><b>State Report Card (iReport)</b>: accountability and performance data.</li>
+            <li><b>Office of Accountability</b>: explains the accountability system.</li>
+          </ul>
+          <div class="small muted">
+            Look for multiple years, not only one year’s results.
+          </div>
+        </div>
+      </div>
+
+      <div class="miniTitle">Mini-quiz (instant feedback)</div>
+      <div class="quiz" id="quizChoice">
+        <!-- injected -->
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 4) Enrollment steps -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>4) Enrolling a child when you arrive from France (step-by-step)</h2>
+        <p class="muted">
+          Most families enroll through the local <b>school district</b> (public) or directly with the school (private/charter, depending on rules).
+          Start with your address: it determines your assigned public school.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <div class="miniTitle">Interactive checklist (saveable)</div>
+          <p class="muted small">Your selections are saved in your browser (localStorage). Use “Print” in the footer to keep a paper copy.</p>
+
+          <div class="checklist" id="arrivalChecklist">
+            <!-- injected -->
+          </div>
+
+          <div class="row row--right">
+            <button class="btn btn--ghost" type="button" data-reset="arrivalChecklist">↺ Reset checklist</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="miniTitle">Fill-in: What documents do you need?</div>
+          <p class="muted small">Choose the best word for each blank. Instant feedback.</p>
+
+          <div class="fill" id="fillDocs">
+            <!-- injected -->
+          </div>
+
+          <div class="note note--soft">
+            <b>Common documents:</b> proof of residency (lease/utility), child ID (birth certificate/passport), immunization/health records,
+            prior school records, IEP/504 if applicable, custody documents if applicable.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 5) English Learners (ELL) support -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>5) Language support for foreign students (ELL / ML learners)</h2>
+        <p class="muted">
+          Public schools must take action to help English learners access education. Districts decide the exact program model,
+          but core civil-rights protections apply.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div class="callout">
+          <div class="callout__title">What’s generally required (federal)</div>
+          <ul class="clean">
+            <li>Identify English learners and provide an effective language program.</li>
+            <li>Communicate meaningfully with families (interpretation/translation as needed).</li>
+            <li>Avoid discrimination based on national origin / language barriers.</li>
+          </ul>
+          <div class="small muted">See official references in the “Sources” section at the bottom.</div>
+        </div>
+
+        <div class="callout">
+          <div class="callout__title">What can vary by school/district</div>
+          <ul class="clean">
+            <li>Program type (ESL pull-out, co-teaching, sheltered instruction, dual language where available).</li>
+            <li>How quickly supports start and what staffing exists.</li>
+            <li>Extra services: newcomer orientation, peer buddy program, after-school tutoring.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="miniTitle">Sentence order (Drag or Tap)</div>
+      <p class="muted small">
+        Put the words in the correct order to make a polite sentence you could say to the school.
+      </p>
+
+      <div class="order" id="orderPolite">
+        <!-- injected -->
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 6) Dialogue builder -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>6) Dialogue builder: calling the school (real scenarios)</h2>
+        <p class="muted">
+          Choose a scenario, fill in your details, and generate a ready-to-use dialogue (Parent ↔ School Office).
+          You can copy it, or listen with the selected accent.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div class="form card--inner">
+          <div class="miniTitle">Your details</div>
+
+          <div class="formRow">
+            <label class="field">
+              <span>Scenario</span>
+              <select id="dlgScenario">
+                <option value="enroll" selected>Enroll a child (new family)</option>
+                <option value="appointment">Make an appointment / school tour</option>
+                <option value="records">Transfer records from France</option>
+                <option value="ell">Ask about English Learner (ELL) support</option>
+                <option value="special">Ask about IEP / learning support</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>State</span>
+              <select id="dlgState">
+                <option value="MA" selected>MA</option>
+                <option value="NH">NH</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="formRow">
+            <label class="field">
+              <span>Parent name</span>
+              <input id="dlgParent" type="text" placeholder="e.g., Tisha"/>
+            </label>
+            <label class="field">
+              <span>Child name</span>
+              <input id="dlgChild" type="text" placeholder="e.g., Victorine"/>
+            </label>
+          </div>
+
+          <div class="formRow">
+            <label class="field">
+              <span>Child age</span>
+              <select id="dlgAge">
+                <option>2</option><option>3</option><option>4</option><option>5</option>
+                <option>6</option><option>7</option><option>8</option><option>9</option>
+                <option>10</option><option>11</option><option>12</option><option selected>13</option>
+                <option>14</option><option>15</option><option>16</option><option>17</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Requested grade (typical)</span>
+              <select id="dlgGrade">
+                <option>Pre-K</option><option>Kindergarten</option>
+                <option>1st grade</option><option>2nd grade</option><option>3rd grade</option><option>4th grade</option><option>5th grade</option>
+                <option>6th grade</option><option selected>7th grade</option><option>8th grade</option>
+                <option>9th grade</option><option>10th grade</option><option>11th grade</option><option>12th grade</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="formRow">
+            <label class="field">
+              <span>City / town</span>
+              <input id="dlgTown" type="text" placeholder="e.g., Portsmouth / Cambridge"/>
+            </label>
+            <label class="field">
+              <span>When are you arriving?</span>
+              <input id="dlgArrive" type="text" placeholder="e.g., March 2026"/>
+            </label>
+          </div>
+
+          <div class="row row--right">
+            <button id="dlgGenerate" class="btn btn--primary" type="button">✨ Generate dialogue</button>
+          </div>
+
+          <div id="dlgFR" class="note note--soft small" hidden>
+            <b>Aide en français:</b> Si vous ne comprenez pas un mot, utilisez les flashcards et les phrases modèles. Vous pouvez aussi demander “Do you have an interpreter available?”
+          </div>
+        </div>
+
+        <div class="card--inner">
+          <div class="miniTitle">Generated dialogue</div>
+          <div class="row row--right">
+            <button id="dlgCopy" class="btn btn--ghost" type="button">📋 Copy</button>
+            <button id="dlgSpeak" class="btn btn--primary" type="button">🔊 Listen</button>
+          </div>
+
+          <div id="dlgOutput" class="dialogue" aria-live="polite">
+            <div class="muted">Fill the form and click “Generate dialogue”.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 7) Sources -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>Sources & official places to verify</h2>
+        <p class="muted">Links are included inside this page for convenience. Always check your local district website for the latest registration steps.</p>
+      </div>
+
+      <div class="sources" id="sourcesList">
+        <ul class="clean">
+          <li><b>Massachusetts School & District Profiles</b> (MCAS, accountability, enrollment by grade): <a href="https://profiles.doe.mass.edu/" target="_blank" rel="noopener">profiles.doe.mass.edu</a></li>
+          <li><b>MA Report Cards</b> (district & school accountability): <a href="https://www.doe.mass.edu/accountability/report-cards/default.html" target="_blank" rel="noopener">doe.mass.edu</a></li>
+          <li><b>MA Accountability Report</b>: <a href="https://profiles.doe.mass.edu/statereport/accountability.aspx" target="_blank" rel="noopener">profiles.doe.mass.edu</a></li>
+          <li><b>MA Kindergarten entry age by district</b>: <a href="https://www.doe.mass.edu/sfs/earlylearning/resources/entry.aspx" target="_blank" rel="noopener">doe.mass.edu</a></li>
+          <li><b>MA immunization requirements</b>: <a href="https://www.mass.gov/info-details/school-immunizations" target="_blank" rel="noopener">mass.gov</a></li>
+          <li><b>MA law (school attendance)</b>: <a href="https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXII/Chapter76/section1" target="_blank" rel="noopener">malegislature.gov</a></li>
+
+          <li><b>NH compulsory attendance (RSA 193:1)</b>: <a href="https://law.justia.com/codes/new-hampshire/title-xv/chapter-193/section-193-1/" target="_blank" rel="noopener">law.justia.com</a></li>
+          <li><b>NH Kindergarten FAQ (example document)</b>: <a href="https://www.education.nh.gov/sites/g/files/ehbemt326/files/inline-documents/sonh/example-2022-2023-kindergarten-faq.pdf" target="_blank" rel="noopener">education.nh.gov</a></li>
+          <li><b>NH immunization requirements (PDF)</b>: <a href="https://www.dhhs.nh.gov/sites/g/files/ehbemt476/files/documents2/imm-req-schools22-23.pdf" target="_blank" rel="noopener">dhhs.nh.gov</a></li>
+          <li><b>NH accountability system overview</b>: <a href="https://www.education.nh.gov/sites/g/files/ehbemt326/files/inline-documents/sonh/ta_federal-accountability-system-in-new-hampshire.pdf" target="_blank" rel="noopener">education.nh.gov</a></li>
+
+          <li><b>English learner rights (Title VI & language barriers)</b>: <a href="https://www.ed.gov/laws-and-policy/civil-rights-laws/race-color-and-national-origin-discrimination/race-color-and-national-origin-discrimination-key-issues/equal-education-opportunities-english" target="_blank" rel="noopener">ed.gov</a></li>
+          <li><b>DOJ/ED joint guidance (2015) — English learner students</b>: <a href="https://www.justice.gov/archives/opa/pr/united-states-departments-justice-and-education-release-joint-guidance-ensure-english-learner" target="_blank" rel="noopener">justice.gov</a></li>
+          <li><b>MA LOOK Act (ELL program flexibility)</b>: <a href="https://www.doe.mass.edu/ele/look-act.html" target="_blank" rel="noopener">doe.mass.edu</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="footer card">
+      <div class="footer__left">
+        <div class="miniTitle">Your score</div>
+        <div class="bigScore"><span id="scoreNow2">0</span> pts</div>
+        <div class="muted small">Tip: score is saved in your browser.</div>
+      </div>
+
+      <div class="footer__right">
+        <button id="btnResetAll" class="btn btn--ghost" type="button">↺ Reset lesson</button>
+        <button id="btnPrint" class="btn btn--primary" type="button">🖨 Print checklist</button>
+      </div>
+    </section>
+  </main>
+
+  <button id="toTop" class="toTop" type="button" aria-label="Back to top">↑</button>
+
+  <script src="js/school-systems-usa.js"></script>
+</body>
+</html>

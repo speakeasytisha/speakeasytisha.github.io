@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <title>SpeakEasyTisha · School Support in the USA — ELL/ML/ESL, IEP & 504</title>
+  <meta name="description" content="Interactive lesson for families moving to the USA: English learner support (ELL/ML/ESL), interpreters, IEP/504, school types, choosing schools in MA & NH, portals, and enrollment steps."/>
+  <link rel="stylesheet" href="css/school-support-ell-iep.css"/>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true">✦</div>
+        <div class="brand__text">
+          <div class="brand__name">SpeakEasyTisha</div>
+          <div class="brand__tag">Interactive follow‑up · School support in the USA (ELL/ML/ESL · IEP · 504 · MA & NH)</div>
+        </div>
+      </div>
+
+      <div class="controls" aria-label="Lesson controls">
+        <label class="ctrl">
+          <span class="ctrl__label">Accent</span>
+          <select id="accentSelect" class="ctrl__select" aria-label="Accent">
+            <option value="us" selected>American (US)</option>
+            <option value="uk">British (UK)</option>
+          </select>
+        </label>
+
+        <label class="ctrl">
+          <span class="ctrl__label">French help</span>
+          <select id="frHelpSelect" class="ctrl__select" aria-label="French help">
+            <option value="off" selected>Off</option>
+            <option value="on">On (tips + vocab)</option>
+          </select>
+        </label>
+
+        <button id="btnSpeakTest" class="btn btn--ghost" type="button" title="Test Text-to-Speech">
+          🔊 Test voice
+        </button>
+
+        <div class="scorebox" role="status" aria-live="polite">
+          <div class="scorebox__label">Score</div>
+          <div class="scorebox__value"><span id="scoreNow">0</span> pts</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero card">
+      <div class="hero__left">
+        <h1>ELL / ML / ESL · IEP · 504 — what are they, and how do you get them?</h1>
+        <p class="lead">
+          This follow‑up lesson explains how language and learning supports work in US schools — <b>what they mean</b>,
+          <b>when they happen</b>, <b>how to request them</b>, and whether you pay (usually <b>no</b> in public schools).
+          It also expands on <b>school types</b>, <b>how to choose “good” schools</b> in <b>Massachusetts</b> and <b>New Hampshire</b>,
+          and practical tools like <b>registrars</b> and <b>parent portals</b>.
+        </p>
+
+        <div class="pillrow">
+          <span class="pill">✅ Instant feedback + hints</span>
+          <span class="pill">🧩 Drag OR Tap mode</span>
+          <span class="pill">🗣 Listen (US/UK)</span>
+          <span class="pill">💾 Saves progress</span>
+        </div>
+
+        <div class="note note--soft">
+          <b>Important:</b> District rules vary. This page teaches the typical process and gives you phrases + checklists
+          to ask the right questions.
+        </div>
+      </div>
+
+      <div class="hero__right">
+        <div class="miniTitle">Quick definitions (tap to reveal)</div>
+        <div class="revealList" id="revealQuick"></div>
+
+        <div class="row row--right">
+          <button id="btnQuickSpeak" class="btn btn--primary" type="button">🔊 Listen (summary)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 1) Flashcards -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>1) Vocabulary flashcards (icons + definitions)</h2>
+        <p class="muted">
+          Learn the key terms families see on forms and in emails: ELL/ML, ESL, Home Language Survey, screening tests,
+          IEP, 504, MTSS/RTI, interpreters, portals, and school types.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <div class="flashControls">
+            <label class="ctrl ctrl--inline">
+              <span class="ctrl__label">Theme</span>
+              <select id="fcTheme" class="ctrl__select" aria-label="Flashcard theme"></select>
+            </label>
+            <button id="fcShuffle" class="btn btn--ghost" type="button">🔀 Shuffle</button>
+          </div>
+
+          <div class="flashWrap">
+            <button id="fcPrev" class="btn btn--ghost" type="button" aria-label="Previous card">◀</button>
+
+            <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="Flashcard (tap to flip)">
+              <div class="flashcard__inner">
+                <div class="flashcard__face flashcard__front">
+                  <div class="fcIcon" id="fcIcon">🗣️</div>
+                  <div class="fcTerm" id="fcTerm">English learner (EL / ELL)</div>
+                  <div class="fcMini" id="fcMini">Tap to flip</div>
+                </div>
+                <div class="flashcard__face flashcard__back">
+                  <div class="fcDef" id="fcDef"></div>
+                  <div class="fcExample" id="fcExample"></div>
+                  <div class="fcFR" id="fcFR"></div>
+                  <div class="fcMini">Tap to flip back</div>
+                </div>
+              </div>
+            </div>
+
+            <button id="fcNext" class="btn btn--ghost" type="button" aria-label="Next card">▶</button>
+          </div>
+
+          <div class="row row--right">
+            <button id="fcSpeak" class="btn btn--primary" type="button">🔊 Listen</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="miniTitle">Mini game: Sort support types (Drag or Tap)</div>
+          <p class="muted small">
+            Drag/tap each card into the correct support category: <b>ELL/ML</b>, <b>IEP</b>, <b>504</b>, or <b>MTSS/RTI</b>.
+          </p>
+
+          <div class="sort" id="sortSupports">
+            <div class="sort__pool" aria-label="Cards to sort"></div>
+
+            <div class="sort__bins" aria-label="Categories">
+              <div class="bin">
+                <div class="bin__title">ELL / ML support</div>
+                <div class="bin__drop" data-drop="ell" aria-label="Drop area: ELL"></div>
+              </div>
+              <div class="bin">
+                <div class="bin__title">IEP (IDEA)</div>
+                <div class="bin__drop" data-drop="iep" aria-label="Drop area: IEP"></div>
+              </div>
+              <div class="bin">
+                <div class="bin__title">504 Plan</div>
+                <div class="bin__drop" data-drop="p504" aria-label="Drop area: 504"></div>
+              </div>
+              <div class="bin">
+                <div class="bin__title">MTSS / RTI</div>
+                <div class="bin__drop" data-drop="mtss" aria-label="Drop area: MTSS"></div>
+              </div>
+            </div>
+
+            <div class="row row--right">
+              <button class="btn btn--ghost" type="button" data-hint="sortSupports">💡 Hint</button>
+              <button class="btn btn--primary" type="button" data-check="sortSupports">✅ Check</button>
+              <button class="btn" type="button" data-reset="sortSupports">↺ Reset</button>
+            </div>
+            <div class="feedback" id="fb_sortSupports" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 2) Do we need ELL/ML? -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>2) Do we need ELL/ML support?</h2>
+        <p class="muted">
+          You don’t “sign up” the same way you sign up for a club. In public schools, families usually complete a
+          <b>Home Language Survey</b> during enrollment. If a language other than English is used at home, the school may
+          do an English proficiency <b>screening</b> to decide whether support is needed.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div class="card--inner">
+          <div class="miniTitle">Self‑check (interactive)</div>
+          <p class="muted small">Answer the questions. You’ll get a suggestion for what to ask the school next.</p>
+
+          <div class="formRow">
+            <label class="field">
+              <span>Language spoken most at home</span>
+              <select id="need_lang">
+                <option value="english">Mostly English</option>
+                <option value="mixed">Mixed (English + another language)</option>
+                <option value="other" selected>Mostly not English</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Child’s confidence in English (speaking/understanding)</span>
+              <select id="need_conf">
+                <option value="high">High</option>
+                <option value="medium" selected>Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="formRow">
+            <label class="field">
+              <span>Grade level</span>
+              <select id="need_grade">
+                <option value="prek">Pre‑K / K</option>
+                <option value="elem" selected>Elementary</option>
+                <option value="mid">Middle</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Has the child attended an English‑medium school before?</span>
+              <select id="need_prev">
+                <option value="yes">Yes</option>
+                <option value="no" selected>No</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="row row--right">
+            <button id="needCheck" class="btn btn--primary" type="button">✅ Get suggestion</button>
+            <button class="btn" type="button" id="needReset">↺ Reset</button>
+          </div>
+
+          <div id="needOut" class="note" aria-live="polite"></div>
+        </div>
+
+        <div class="card--inner">
+          <div class="miniTitle">Where does support happen?</div>
+          <div class="infoGrid" id="whereCards"></div>
+
+          <div class="miniTitle" style="margin-top:12px">Quiz: pay or free?</div>
+          <div class="quiz" id="quizCost"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 3) The ELL process -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>3) How ELL/ML support usually works (step‑by‑step)</h2>
+        <p class="muted">
+          Put the steps in order. (On touch devices: tap a card → tap the timeline.)
+        </p>
+      </div>
+
+      <div class="sequence" id="seqELL">
+        <div class="sequence__pool" aria-label="Steps to place"></div>
+        <div class="sequence__target" aria-label="Timeline to fill"></div>
+
+        <div class="row row--right">
+          <button class="btn btn--ghost" type="button" data-hint="seqELL">💡 Hint</button>
+          <button class="btn btn--primary" type="button" data-check="seqELL">✅ Check</button>
+          <button class="btn" type="button" data-reset="seqELL">↺ Reset</button>
+        </div>
+        <div class="feedback" id="fb_seqELL" aria-live="polite"></div>
+      </div>
+
+      <div class="note note--soft">
+        <b>Key idea:</b> ELL/ML support is not “special education.” It’s language support so the student can access the curriculum.
+        A student can be both <b>ELL</b> and have an <b>IEP/504</b>, but they are different processes.
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 4) IEP vs 504 vs MTSS -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>4) IEP vs 504 vs MTSS/RTI — what’s the difference?</h2>
+        <p class="muted">
+          This is one of the most confusing parts for families. Use the interactive guide below, then practice the phrases you would say to the school.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div class="callout">
+          <div class="callout__title">IEP (IDEA)</div>
+          <ul class="clean">
+            <li>For eligible students with a disability who need <b>special education</b>.</li>
+            <li>Includes goals, services, and accommodations; reviewed regularly.</li>
+            <li>Starts with a formal <b>evaluation</b> (with parent consent).</li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          <div class="callout__title">504 Plan</div>
+          <ul class="clean">
+            <li>For students with a disability who need <b>accommodations</b> to access school.</li>
+            <li>No “special education” requirement (different law).</li>
+            <li>Often used for medical needs, ADHD, anxiety, etc. (depends on needs).</li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          <div class="callout__title">MTSS / RTI</div>
+          <ul class="clean">
+            <li>A support system for <b>any student</b> who needs extra help (reading, math, behavior).</li>
+            <li>Often short cycles of small‑group support and progress monitoring.</li>
+            <li>Can happen before or alongside evaluations.</li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          <div class="callout__title">ELL/ML support</div>
+          <ul class="clean">
+            <li>Language program (ESL, co‑teaching, sheltered instruction, etc.).</li>
+            <li>Based on language screening and proficiency levels.</li>
+            <li>Goal: access content + build English proficiency.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="miniTitle">Sentence order: request support (Drag or Tap)</div>
+      <p class="muted small">Build polite sentences you can use in real life.</p>
+      <div class="order" id="orderRequests"></div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 5) Choosing a “good” school MA & NH -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>5) Choosing a “good” school in Massachusetts & New Hampshire (deeper)</h2>
+        <p class="muted">
+          Official report cards matter, but “best” depends on your child’s needs. Use this interactive rubric to build a smart shortlist.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div class="card--inner">
+          <div class="miniTitle">Interactive rubric</div>
+          <p class="muted small">Move sliders from 0 to 5. You’ll get a checklist + a “priority score.”</p>
+
+          <div class="rubric" id="rubric"></div>
+
+          <div class="row row--right">
+            <button id="rubricReset" class="btn" type="button">↺ Reset</button>
+          </div>
+
+          <div id="rubricOut" class="note note--soft" aria-live="polite"></div>
+        </div>
+
+        <div class="card--inner">
+          <div class="miniTitle">Where to check official data</div>
+          <div class="sourcesBox">
+            <div class="srcItem">
+              <div class="srcTitle">Massachusetts</div>
+              <ul class="clean">
+                <li>MA School & District Profiles (enrollment, programs, performance)</li>
+                <li>MA accountability report cards</li>
+              </ul>
+              <div class="small muted">Links are in “Sources” at the bottom.</div>
+            </div>
+            <div class="srcItem">
+              <div class="srcTitle">New Hampshire</div>
+              <ul class="clean">
+                <li>NH iReport (state report card: district & school)</li>
+                <li>NH accountability overview (explains indicators)</li>
+              </ul>
+              <div class="small muted">Links are in “Sources” at the bottom.</div>
+            </div>
+          </div>
+
+          <div class="miniTitle" style="margin-top:12px">Mini-quiz: what matters?</div>
+          <div class="quiz" id="quizQuality"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 6) Finding registrar + portals -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>6) Finding the registrar, school finder, and parent portals</h2>
+        <p class="muted">
+          Every district website looks different. Use this tool to generate search phrases, an email, and a phone script.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div class="form card--inner">
+          <div class="miniTitle">Locator tool</div>
+
+          <div class="formRow">
+            <label class="field">
+              <span>State</span>
+              <select id="locState">
+                <option value="MA" selected>MA</option>
+                <option value="NH">NH</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Town / city</span>
+              <input id="locTown" type="text" placeholder="e.g., Cambridge / Portsmouth"/>
+            </label>
+          </div>
+
+          <div class="formRow">
+            <label class="field">
+              <span>What do you need?</span>
+              <select id="locNeed">
+                <option value="register" selected>Registration / enrollment</option>
+                <option value="ell">ELL / ESL support</option>
+                <option value="iep">IEP / evaluation</option>
+                <option value="portal">Parent portal login</option>
+                <option value="tour">School tour / appointment</option>
+                <option value="interpreter">Interpreter / translation</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Child grade</span>
+              <select id="locGrade">
+                <option>Kindergarten</option>
+                <option>1st grade</option><option>2nd grade</option><option>3rd grade</option><option>4th grade</option><option>5th grade</option>
+                <option>6th grade</option><option>7th grade</option><option>8th grade</option>
+                <option>9th grade</option><option>10th grade</option><option>11th grade</option><option>12th grade</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="row row--right">
+            <button id="locGenerate" class="btn btn--primary" type="button">✨ Generate</button>
+          </div>
+
+          <div id="locFR" class="note note--soft small" hidden>
+            <b>Aide en français:</b> “Registrar” = service d’inscription. “School finder” = outil pour trouver l’école selon l’adresse.
+            Vous pouvez demander un interprète: “Do you have an interpreter available for meetings?”
+          </div>
+        </div>
+
+        <div class="card--inner">
+          <div class="miniTitle">Results</div>
+          <div class="row row--right">
+            <button id="locCopy" class="btn btn--ghost" type="button">📋 Copy</button>
+            <button id="locSpeak" class="btn btn--primary" type="button">🔊 Listen</button>
+          </div>
+          <div id="locOut" class="dialogue" aria-live="polite">
+            <div class="muted">Fill the form and click “Generate”.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="miniTitle">Portals game: what is it?</div>
+      <p class="muted small">Match the platform to its category (SIS / LMS / Communication). Drag OR tap.</p>
+
+      <div class="match" id="matchPortals">
+        <div class="match__pool" aria-label="Cards to place"></div>
+        <div class="match__targets" aria-label="Targets"></div>
+
+        <div class="row row--right">
+          <button class="btn btn--ghost" type="button" data-hint="matchPortals">💡 Hint</button>
+          <button class="btn btn--primary" type="button" data-check="matchPortals">✅ Check</button>
+          <button class="btn" type="button" data-reset="matchPortals">↺ Reset</button>
+        </div>
+
+        <div class="feedback" id="fb_matchPortals" aria-live="polite"></div>
+      </div>
+
+      <div class="note">
+        <b>Portal reality:</b> There isn’t one universal US portal. Districts choose their own system(s).
+        Many use a <b>Student Information System</b> (SIS) such as Infinite Campus or PowerSchool, plus an LMS
+        (Canvas/Schoology/Google Classroom) and a communication tool (ParentSquare/Remind).
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 7) Dialogue builder (interpreters & support) -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>7) Dialogue builder: interpreter + supports</h2>
+        <p class="muted">
+          Create a realistic call/email script: requesting an interpreter, asking for ELL screening, or requesting an evaluation for IEP/504.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div class="form card--inner">
+          <div class="miniTitle">Your details</div>
+
+          <div class="formRow">
+            <label class="field">
+              <span>Scenario</span>
+              <select id="dlgScenario">
+                <option value="interpreter" selected>Request an interpreter</option>
+                <option value="ell">Ask for ELL/ESL screening</option>
+                <option value="iep">Request an evaluation (IEP/504)</option>
+                <option value="records">Ask about transferring records</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>State</span>
+              <select id="dlgState">
+                <option value="MA" selected>MA</option>
+                <option value="NH">NH</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="formRow">
+            <label class="field">
+              <span>Parent name</span>
+              <input id="dlgParent" type="text" placeholder="e.g., Tisha"/>
+            </label>
+            <label class="field">
+              <span>Child name</span>
+              <input id="dlgChild" type="text" placeholder="e.g., Victorine"/>
+            </label>
+          </div>
+
+          <div class="formRow">
+            <label class="field">
+              <span>Preferred language for meetings</span>
+              <input id="dlgLang" type="text" placeholder="e.g., French"/>
+            </label>
+            <label class="field">
+              <span>Concern (if any)</span>
+              <input id="dlgConcern" type="text" placeholder="e.g., reading difficulties / anxiety / new to English"/>
+            </label>
+          </div>
+
+          <div class="row row--right">
+            <button id="dlgGenerate" class="btn btn--primary" type="button">✨ Generate script</button>
+          </div>
+
+          <div id="dlgFR" class="note note--soft small" hidden>
+            <b>Aide en français:</b> Dans une école publique, les services ELL et l’interprétariat pour communiquer avec les familles sont généralement fournis sans frais.
+          </div>
+        </div>
+
+        <div class="card--inner">
+          <div class="miniTitle">Generated script</div>
+          <div class="row row--right">
+            <button id="dlgCopy" class="btn btn--ghost" type="button">📋 Copy</button>
+            <button id="dlgSpeak" class="btn btn--primary" type="button">🔊 Listen</button>
+          </div>
+
+          <div id="dlgOut" class="dialogue" aria-live="polite">
+            <div class="muted">Fill the form and click “Generate script”.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- Sources -->
+    <!-- ===================== -->
+    <section class="card">
+      <div class="sectionHead">
+        <h2>Sources & official places to verify</h2>
+        <p class="muted">Always check your local district website for current procedures. These links are starting points.</p>
+      </div>
+
+      <div class="sources">
+        <ul class="clean">
+          <li><b>Meaningful communication with limited English proficient (LEP) parents — OCR fact sheet</b>: <a href="https://www.ed.gov/sites/ed/files/about/offices/list/ocr/docs/dcl-factsheet-el-students-201501.pdf" target="_blank" rel="noopener">ed.gov (PDF)</a></li>
+          <li><b>IDEA overview (IEP, FAPE)</b>: <a href="https://www.ed.gov/laws-and-policy/individuals-disabilities/idea" target="_blank" rel="noopener">ed.gov</a></li>
+          <li><b>Section 504 overview</b>: <a href="https://www.ed.gov/laws-and-policy/individuals-disabilities/section-504" target="_blank" rel="noopener">ed.gov</a></li>
+          <li><b>Section 504 FAPE FAQ</b>: <a href="https://www.ed.gov/laws-and-policy/civil-rights-laws/disability-discrimination/frequently-asked-questions-section-504-free-appropriate-public-education-fape" target="_blank" rel="noopener">ed.gov</a></li>
+
+          <li><b>Massachusetts LOOK Act (ELL programs)</b>: <a href="https://www.doe.mass.edu/ele/look-act.html" target="_blank" rel="noopener">doe.mass.edu</a></li>
+          <li><b>Massachusetts Sheltered English Immersion (SEI)</b>: <a href="https://www.doe.mass.edu/ele/programs/sei.html" target="_blank" rel="noopener">doe.mass.edu</a></li>
+          <li><b>Massachusetts School & District Profiles</b>: <a href="https://profiles.doe.mass.edu/" target="_blank" rel="noopener">profiles.doe.mass.edu</a></li>
+          <li><b>MA Report Cards</b>: <a href="https://www.doe.mass.edu/accountability/report-cards/default.html" target="_blank" rel="noopener">doe.mass.edu</a></li>
+
+          <li><b>New Hampshire federal accountability overview (mentions iReport)</b>: <a href="https://www.education.nh.gov/sites/g/files/ehbemt326/files/inline-documents/sonh/ta_federal-accountability-system-in-new-hampshire.pdf" target="_blank" rel="noopener">education.nh.gov (PDF)</a></li>
+          <li><b>NH accountability 101 (mentions iReport)</b>: <a href="https://www.education.nh.gov/sites/g/files/ehbemt326/files/inline-documents/sonh/accountability-101-for-districts_final.pdf" target="_blank" rel="noopener">education.nh.gov (PDF)</a></li>
+
+          <li><b>WIDA Screener (English proficiency screening)</b>: <a href="https://wida.wisc.edu/assess/screener" target="_blank" rel="noopener">wida.wisc.edu</a></li>
+          <li><b>Infinite Campus parent & student portal</b>: <a href="https://www.infinitecampus.com/parents-and-students" target="_blank" rel="noopener">infinitecampus.com</a></li>
+          <li><b>PowerSchool parent & student resources</b>: <a href="https://www.powerschool.com/community-support/parent-student-resource-center/" target="_blank" rel="noopener">powerschool.com</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="footer card">
+      <div class="footer__left">
+        <div class="miniTitle">Your score</div>
+        <div class="bigScore"><span id="scoreNow2">0</span> pts</div>
+        <div class="muted small">Score and progress are saved in your browser.</div>
+      </div>
+
+      <div class="footer__right">
+        <button id="btnResetAll" class="btn btn--ghost" type="button">↺ Reset lesson</button>
+        <button id="btnPrint" class="btn btn--primary" type="button">🖨 Print</button>
+      </div>
+    </section>
+  </main>
+
+  <button id="toTop" class="toTop" type="button" aria-label="Back to top">↑</button>
+
+  <script src="js/school-support-ell-iep.js"></script>
+</body>
+</html>
