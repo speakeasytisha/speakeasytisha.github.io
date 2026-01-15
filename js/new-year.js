@@ -1435,6 +1435,48 @@ Warm wishes,
     });
   }
 
+  // --------------------
+  // Print: Grammar section only
+  // --------------------
+  function printGrammarSection() {
+    const sheet = $("#grammarCheatsheet");
+    const toggleBtn = $("#toggleGrammarCheatsheet");
+
+    const wasHidden = !!(sheet && sheet.hasAttribute("hidden"));
+    const prevToggleText = toggleBtn ? toggleBtn.textContent : "";
+
+    // Show cheatsheet for printing (even if it was hidden)
+    if (sheet && wasHidden) {
+      sheet.removeAttribute("hidden");
+      if (toggleBtn) toggleBtn.textContent = "Hide mini cheatsheet";
+    }
+
+    document.body.classList.add("ny-print-grammar");
+
+    const cleanup = () => {
+      document.body.classList.remove("ny-print-grammar");
+
+      // Restore cheatsheet state
+      if (sheet && wasHidden) {
+        sheet.setAttribute("hidden", "");
+        if (toggleBtn) toggleBtn.textContent = prevToggleText || "Show mini cheatsheet";
+      }
+
+      window.removeEventListener("afterprint", cleanup);
+    };
+
+    window.addEventListener("afterprint", cleanup);
+
+    // Print (browser dialog)
+    window.print();
+
+    // Fallback cleanup (some browsers don't always fire afterprint)
+    setTimeout(() => {
+      try { cleanup(); } catch (_) {}
+    }, 1200);
+  }
+
+
   function bindEvents() {
     $("#applyPersonalization").addEventListener("click", () => {
       applyPersonalization();
@@ -1471,6 +1513,11 @@ Warm wishes,
     // Grammar listen
     $("#listenGrammarUS").addEventListener("click", () => speak(grammarReadoutText(), "us"));
     $("#listenGrammarUK").addEventListener("click", () => speak(grammarReadoutText(), "uk"));
+
+
+    // Print grammar
+    const pg = $("#printGrammar");
+    if (pg) pg.addEventListener("click", printGrammarSection);
 
     // Wish builder
     $("#wishStarter").addEventListener("change", updateWishOutput);
