@@ -165,6 +165,29 @@
     refreshVoice();
   }
 
+  // --------------------
+  // Print: Grammar section only
+  // --------------------
+  function printGrammarSection() {
+    document.body.classList.add("se-print-grammar");
+
+    const cleanup = () => {
+      document.body.classList.remove("se-print-grammar");
+      window.removeEventListener("afterprint", cleanup);
+    };
+
+    window.addEventListener("afterprint", cleanup);
+
+    // Print (browser dialog)
+    window.print();
+
+    // Fallback cleanup (some browsers don't always fire afterprint)
+    setTimeout(() => {
+      try { cleanup(); } catch (_) {}
+    }, 1200);
+  }
+
+
   function bindTopBar() {
     $$(".pill__btn[data-voice]").forEach(btn => {
       btn.addEventListener("click", () => setVoice(btn.dataset.voice));
@@ -537,7 +560,20 @@
     const chips = $("#chipsPrep");
     const slots = $$(".slot");
     chips.innerHTML = "";
-    slots.forEach(s => (s.textContent = "_____"));
+    slots.forEach(s => {
+      s.textContent = "_____";
+      s.classList.remove("is-target");
+      s.style.boxShadow = "";
+    });
+
+    // Tap-to-fill fallback (iPad/tablet): tap a chip -> tap a blank
+    let selected = null;
+
+    function clearSelected(){
+      selected = null;
+      $$(".chip", chips).forEach(c => c.classList.remove("is-selected"));
+      slots.forEach(s => s.classList.remove("is-target"));
+    }
 
     shuffle(prepChips).forEach((t) => {
       const ch = document.createElement("div");
@@ -545,23 +581,57 @@
       ch.textContent = t;
       ch.draggable = true;
       ch.dataset.word = t;
+
+      // Drag for desktop
       ch.addEventListener("dragstart", (e) => {
-        e.dataTransfer.setData("text/plain", t);
-        e.dataTransfer.effectAllowed = "move";
+        if (e.dataTransfer) {
+          e.dataTransfer.setData("text/plain", t);
+          e.dataTransfer.effectAllowed = "move";
+        }
       });
+
+      // Tap select for iPad/tablet
+      ch.addEventListener("click", () => {
+        if (selected === t) { clearSelected(); return; }
+        clearSelected();
+        selected = t;
+        ch.classList.add("is-selected");
+        slots.forEach(s => s.classList.add("is-target"));
+      });
+
       chips.appendChild(ch);
     });
 
     slots.forEach(slot => {
+      // Drag/drop for desktop
       slot.addEventListener("dragover", (e) => { e.preventDefault(); slot.style.boxShadow = "var(--focus)"; });
       slot.addEventListener("dragleave", () => { slot.style.boxShadow = ""; });
       slot.addEventListener("drop", (e) => {
         e.preventDefault();
         slot.style.boxShadow = "";
-        const w = e.dataTransfer.getData("text/plain");
+        const w = e.dataTransfer ? e.dataTransfer.getData("text/plain") : "";
         if (w) slot.textContent = w;
+        clearSelected();
+      });
+
+      // Tap-to-fill for iPad/tablet
+      slot.addEventListener("click", () => {
+        if (selected) {
+          slot.textContent = selected;
+          clearSelected();
+          return;
+        }
+        // no selection: tap clears
+        slot.textContent = "_____";
       });
     });
+
+    // Tap outside clears selection (prevents “stuck” selection)
+    document.addEventListener("click", (e) => {
+      if (e.target.closest("#chipsPrep")) return;
+      if (e.target.closest(".slot")) return;
+      clearSelected();
+    }, { passive: true });
   }
 
   function checkPrepBuilder() {
