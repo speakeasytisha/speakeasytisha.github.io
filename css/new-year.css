@@ -255,3 +255,69 @@
   outline:3px solid rgba(18,32,40,.28);
   box-shadow:0 0 0 4px rgba(18,32,40,.10);
 }
+
+/* --------------------
+   Print: Grammar only
+   (Triggered by body class .ny-print-grammar)
+---------------------*/
+@media print {
+  /* Hide everything except grammar when printing via the button */
+  body.ny-print-grammar #site-header,
+  body.ny-print-grammar .ny-hero,
+  body.ny-print-grammar #vocab,
+  body.ny-print-grammar #exercises,
+  body.ny-print-grammar #cards,
+  body.ny-print-grammar .ny-footer,
+  body.ny-print-grammar #wrongModal {
+    display: none !important;
+  }
+
+  body.ny-print-grammar main.ny-page {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  body.ny-print-grammar #grammar {
+    display: block !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    page-break-before: auto;
+  }
+
+  /* Hide interactive controls in the printed output */
+  body.ny-print-grammar #grammar .ny-section-head .ny-actions,
+  body.ny-print-grammar #grammar button,
+  body.ny-print-grammar #grammar a {
+    display: none !important;
+  }
+
+  /* Make the printed page clean */
+  body.ny-print-grammar .ny-card {
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  body.ny-print-grammar .ny-mini,
+  body.ny-print-grammar .ny-note {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  body.ny-print-grammar .ny-divider {
+    margin: .6rem 0 !important;
+  }
+
+  /* Ensure text is readable */
+  body.ny-print-grammar,
+  body.ny-print-grammar * {
+    color: #000 !important;
+    background: transparent !important;
+    text-shadow: none !important;
+  }
+
+  /* Remove pill-chip borders for cleaner print */
+  body.ny-print-grammar .ny-chip {
+    border: 1px solid #000 !important;
+  }
+}
