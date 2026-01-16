@@ -212,7 +212,12 @@
     });
 
     $("#btnResetAll").addEventListener("click", resetAll);
-  }
+  
+
+    // Print grammar (prints only the Grammar section)
+    const btnPrintGrammar = document.getElementById("btnPrintGrammar");
+    if (btnPrintGrammar) btnPrintGrammar.addEventListener("click", printGrammarSection);
+}
 
   /* =========================================================
      Vocabulary Flashcards (FIXED BACK CONTENT)
