@@ -423,6 +423,7 @@
       initRecipeUI();
       renderShoppingList();
       renderAllActivities(); // activities depend on recipe
+      renderVocab(); // refresh ingredient flashcards for the new recipe
       setStoreHint();
       speak("Great. You chose " + currentRecipe().title + ". Let's build your list.");
     });
@@ -585,8 +586,28 @@
   var vocabMode = "en"; // en or ukus
   var vocabTheme = "all";
 
+  // Build ingredient flashcards dynamically from the selected recipe
+  function ingredientVocabForCurrentRecipe() {
+    var r = currentRecipe();
+    var items = (r && r.ingredients) ? r.ingredients : [];
+    return items.map(function (it) {
+      var where = it.note ? ("Where to find it: " + it.note) : "";
+      return {
+        id: "ing_" + state.recipeId + "_" + it.key,
+        theme: "ingredients",
+        icon: it.emoji || "🥘",
+        front: it.name,
+        back: where || "Ingredient",
+        ex: "I need " + it.name + "."
+      };
+    });
+  }
+
   function vocabForTheme() {
-    var list = VOCAB.slice();
+    var list = VOCAB.filter(function (v) { return v.theme !== "ingredients"; });
+
+    // Add dynamic ingredients for the currently selected recipe
+    list = list.concat(ingredientVocabForCurrentRecipe());
 
     if (vocabTheme !== "all") {
       list = list.filter(function (v) { return v.theme === vocabTheme; });
@@ -668,6 +689,9 @@
     });
 
     // Flip behavior
+
+    // Bind flip handlers once (prevents double-toggle after changing dropdown)
+    if (!grid.dataset.vocabBound) {
     grid.addEventListener("click", function (e) {
       var t = e.target;
       if (!t) return;
@@ -683,12 +707,17 @@
       }
     });
 
+    
+
     grid.addEventListener("keydown", function (e) {
       if (e.key !== "Enter") return;
       var card = e.target && e.target.classList && e.target.classList.contains("vcard") ? e.target : null;
       if (card) card.classList.toggle("is-flipped");
     });
-  }
+  
+      grid.dataset.vocabBound = "1";
+    }
+}
 
   function bindVocabControls() {
     var themeSel = $("vocabTheme");
@@ -1894,25 +1923,33 @@
         b.type = "button";
         b.textContent = opt;
         b.addEventListener("click", function () {
-          // record customer line
-          var log = $("dlgLog");
-          addLine(log, "You", opt, "cust");
+          // Prevent rapid double-clicks (keeps the dialogue order clean)
+          var all = choicesBox.querySelectorAll("button.choiceBtn");
+          for (var k = 0; k < all.length; k++) all[k].disabled = true;
 
           if (opt === p.good) {
+            // Record customer line only when correct (avoids confusing log order)
+            var log = $("dlgLog");
+            if (log) addLine(log, "You", opt, "cust");
+
             b.classList.add("good");
             var got = award("dlg_" + DIALOGUES[dlgIdx].id + "_r" + dlgPos, 1);
             if (got) dlgPts += 1;
+
             // Move forward: next clerk line
             dlgPos += 1;
             renderDialogueLog(false);
             renderDialogueChoices();
           } else {
+            // Wrong attempt: show feedback but DON'T add to the log
             b.classList.add("bad");
             var fb = $("dlgSpeakFb");
             if (fb) {
               fb.className = "fb bad";
               fb.textContent = "Try a more polite / natural phrase.";
             }
+            // Let them try again
+            for (var k2 = 0; k2 < all.length; k2++) all[k2].disabled = false;
           }
           updateDlgPts();
         });
@@ -2180,6 +2217,27 @@
   }
 
   /* ---------------------------
+     Print: Grammar only
+  ----------------------------*/
+  function printGrammarSection() {
+    document.body.classList.add("cq-print-grammar");
+
+    function cleanup() {
+      document.body.classList.remove("cq-print-grammar");
+      window.removeEventListener("afterprint", cleanup);
+    }
+
+    window.addEventListener("afterprint", cleanup);
+
+    window.print();
+
+    // Fallback cleanup (some browsers don't always fire afterprint)
+    setTimeout(function () {
+      try { cleanup(); } catch (e) {}
+    }, 1200);
+  }
+
+  /* ---------------------------
      Init
   ----------------------------*/
   function init() {
@@ -2202,6 +2260,10 @@
 
     bindSpeechButtons();
     bindGlobalControls();
+
+    // Print grammar
+    var btnPrintGrammar = document.getElementById("btnPrintGrammar");
+    if (btnPrintGrammar) btnPrintGrammar.addEventListener("click", printGrammarSection);
 
     initRecipeUI();
     renderShoppingList();

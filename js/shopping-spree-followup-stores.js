@@ -1739,6 +1739,10 @@
 
     // Grammar section
     if (has($("grammarListen"))) $("grammarListen").addEventListener("click", listenGrammar);
+    // Print grammar
+    const btnPrintGrammar = $("btnPrintGrammar");
+    if (btnPrintGrammar) btnPrintGrammar.addEventListener("click", printGrammarSection);
+
     if (has($("grammarReset"))) $("grammarReset").addEventListener("click", function () {
       if (!confirmReset("Reset grammar section activities?")) return;
       resetPoliteMcq();
@@ -1855,6 +1859,28 @@
   /* ---------------------------
      Init all modules
   ----------------------------*/
+
+  // --------------------
+  // Print: Grammar section only
+  // --------------------
+  function printGrammarSection() {
+    document.body.classList.add("ssfs-print-grammar");
+
+    const cleanup = () => {
+      document.body.classList.remove("ssfs-print-grammar");
+      window.removeEventListener("afterprint", cleanup);
+    };
+
+    window.addEventListener("afterprint", cleanup);
+
+    window.print();
+
+    setTimeout(() => {
+      try { cleanup(); } catch (_) {}
+    }, 1200);
+  }
+
+
   function initAll(fromReset) {
     // apply saved UI selections
     if (has($("vocabTheme"))) $("vocabTheme").value = state.vocabTheme || "shoe";
