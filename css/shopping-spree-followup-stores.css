@@ -492,3 +492,62 @@ a{color:inherit}
 .modal::backdrop{background: rgba(0,0,0,.62);}
 .modal__inner{padding:16px;}
 .modal ul{margin:10px 0 0 18px; color:var(--muted); line-height:1.6;}
+
+/* --------------------
+   Print: Grammar only
+   (Triggered by body class .ssfs-print-grammar)
+---------------------*/
+@media print {
+  body.ssfs-print-grammar .topbar,
+  body.ssfs-print-grammar .hero {
+    display: none !important;
+  }
+
+  body.ssfs-print-grammar main.wrap > section.card:not(#grammar) {
+    display: none !important;
+  }
+
+  body.ssfs-print-grammar main.wrap {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  body.ssfs-print-grammar #grammar {
+    display: block !important;
+    margin: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  body.ssfs-print-grammar #grammar .card__actions,
+  body.ssfs-print-grammar #grammar button,
+  body.ssfs-print-grammar #grammar .activity,
+  body.ssfs-print-grammar #grammar .row,
+  body.ssfs-print-grammar #grammar .feedback,
+  body.ssfs-print-grammar #grammar .pill {
+    display: none !important;
+  }
+
+  body.ssfs-print-grammar,
+  body.ssfs-print-grammar * {
+    color: #000 !important;
+    background: transparent !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  body.ssfs-print-grammar #grammar .miniLesson,
+  body.ssfs-print-grammar #grammar .note,
+  body.ssfs-print-grammar #grammar ul {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  body.ssfs-print-grammar #grammar .miniLesson {
+    border: 1px solid #000 !important;
+  }
+
+  body.ssfs-print-grammar #grammar .sep {
+    border-top: 1px solid #000 !important;
+  }
+}
