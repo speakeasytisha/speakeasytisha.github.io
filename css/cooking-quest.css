@@ -429,7 +429,7 @@ hr.sep{border:0; border-top:1px solid var(--line); margin:1rem 0}
   padding:.35rem .6rem;
   border-radius:999px;
   border:1px solid var(--line2);
-  background: rgba(255,255,255,.06);
+  background: rgb(136 135 218 / 64%);
   cursor:pointer;
   font-weight:900;
 }
@@ -597,3 +597,51 @@ kbd{
 }
 .modal__title{font-weight:900}
 .modal__body{padding:.85rem .9rem 1rem}
+
+
+/* --------------------
+   Print: Grammar only
+   (Triggered by body class .cq-print-grammar)
+---------------------*/
+@media print {
+  body.cq-print-grammar .topbar,
+  body.cq-print-grammar .hero {
+    display: none !important;
+  }
+
+  body.cq-print-grammar main.main > section.section:not(#grammar) {
+    display: none !important;
+  }
+
+  body.cq-print-grammar main.main {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  body.cq-print-grammar #grammar {
+    display: block !important;
+    margin: 0 !important;
+  }
+
+  body.cq-print-grammar #grammar .card__row,
+  body.cq-print-grammar #grammar button,
+  body.cq-print-grammar #grammar .miniGame,
+  body.cq-print-grammar #grammar .activity,
+  body.cq-print-grammar #grammar .fb,
+  body.cq-print-grammar #grammar .points {
+    display: none !important;
+  }
+
+  body.cq-print-grammar,
+  body.cq-print-grammar * {
+    color: #000 !important;
+    background: transparent !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  body.cq-print-grammar hr.sep {
+    border-top: 1px solid #000 !important;
+  }
+}
