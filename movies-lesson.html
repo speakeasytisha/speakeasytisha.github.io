@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Movies & Cinema (Interactive)</title>
+  <link rel="stylesheet" href="/css/movies-lesson.css" />
+</head>
+<body>
+  <header class="topbar" id="top">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__mark">🎬</div>
+        <div class="brand__text">
+          <div class="brand__title">SpeakEasyTisha</div>
+          <div class="brand__sub">Movies & Cinema • Interactive Lesson</div>
+        </div>
+      </div>
+
+      <div class="topbar__controls">
+        <div class="toggle" role="group" aria-label="Accent toggle">
+          <button class="toggle__btn is-on" id="accentUS" type="button" aria-pressed="true">US</button>
+          <button class="toggle__btn" id="accentUK" type="button" aria-pressed="false">UK</button>
+        </div>
+
+        <div class="score" aria-live="polite">
+          <div class="score__label">Score</div>
+          <div class="score__value" id="scoreTop">0</div>
+        </div>
+
+        <button class="btn btn--ghost" id="resetAll" type="button">Reset all</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero card">
+      <div class="hero__left">
+        <h1>🎥 Talk about movies like a pro</h1>
+        <p class="muted">
+          History, genres, filmmaking, Universal Studios, and a <b>French vs American cinema</b> comparison — with
+          vocabulary flashcards, grammar practice (connectors + comparatives + superlatives), and interactive exercises.
+        </p>
+
+        <div class="hero__chips">
+          <span class="chip">Touch-friendly (Mac + iPad Safari)</span>
+          <span class="chip">Instant feedback + hints</span>
+          <span class="chip">Listen (US/UK)</span>
+          <span class="chip">Global score + section resets</span>
+        </div>
+
+        <div class="hero__actions">
+          <button class="btn" type="button" id="btnSpeakIntro">🔊 Listen to lesson intro</button>
+          <button class="btn btn--ghost" type="button" id="btnPrintGrammar">🖨 Print grammar</button>
+        </div>
+      </div>
+
+      <div class="hero__right">
+        <div class="miniCard">
+          <h3>Today you can…</h3>
+          <ul class="check">
+            <li>Describe a movie (plot, actors, scenes) using connectors</li>
+            <li>Compare movies with comparatives & superlatives</li>
+            <li>Talk about filmmaking (director, cinematography, editing)</li>
+            <li>Discuss French vs American cinema styles</li>
+          </ul>
+        </div>
+
+        <div class="miniCard">
+          <h3>Speaking frames</h3>
+          <p class="muted small">
+            “The story is about…”, “The main character…”, “What I liked most was…”, “Compared to…”, “The best scene is…”
+          </p>
+          <button class="btn btn--small" type="button" id="btnSpeakFrames">🔊 Listen</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="history">
+      <div class="card__head">
+        <h2>🕰️ A quick history of movies</h2>
+        <div class="card__actions">
+          <button class="btn btn--small" type="button" id="historyListen">🔊 Listen</button>
+          <button class="btn btn--ghost btn--small" type="button" id="historyReset">Reset section</button>
+        </div>
+      </div>
+
+      <p class="muted">Tap each era to expand. (Great for reading + listening practice.)</p>
+      <div class="accordion" id="historyAcc" aria-label="Movie history timeline"></div>
+    </section>
+
+    <section class="card" id="vocab">
+      <div class="card__head">
+        <h2>🧩 Vocabulary flashcards</h2>
+        <div class="card__actions">
+          <div class="pillRow" id="vocabFilters" aria-label="Vocabulary filters"></div>
+          <button class="btn btn--ghost btn--small" type="button" id="vocabReset">Reset section</button>
+        </div>
+      </div>
+
+      <p class="muted">
+        Tap a card to flip. Use <b>🔊</b> to listen. Filters are buttons (no dropdown visibility issues).
+      </p>
+
+      <div class="grid cards" id="vocabGrid" aria-label="Vocabulary flashcards"></div>
+    </section>
+
+    <section class="card" id="grammar">
+      <div class="card__head">
+        <h2>🧠 Grammar to describe & compare movies</h2>
+        <div class="card__actions">
+          <button class="btn btn--small" type="button" id="grammarListen">🔊 Listen</button>
+          <button class="btn btn--ghost btn--small" type="button" id="grammarReset">Reset section</button>
+        </div>
+      </div>
+
+      <div class="twoCol">
+        <div class="miniCard">
+          <h3>1) Connectors (make your speech flow)</h3>
+          <p class="muted small">Use these to add detail and sound natural.</p>
+          <div class="tableLite">
+            <div class="rowLite"><b>Sequence</b><span>First… then… finally…</span></div>
+            <div class="rowLite"><b>Cause</b><span>because / since / so</span></div>
+            <div class="rowLite"><b>Contrast</b><span>however / although / while</span></div>
+            <div class="rowLite"><b>Adding</b><span>also / in addition / moreover</span></div>
+            <div class="rowLite"><b>Opinion</b><span>in my opinion / I’d say / what I liked was…</span></div>
+          </div>
+        </div>
+
+        <div class="miniCard">
+          <h3>2) Comparatives & superlatives</h3>
+          <p class="muted small">Compare actors, scenes, and films.</p>
+          <div class="tableLite">
+            <div class="rowLite"><b>Comparative</b><span>more exciting than / better than / less predictable than</span></div>
+            <div class="rowLite"><b>Superlative</b><span>the most moving / the best / the least convincing</span></div>
+          </div>
+          <div class="note">
+            <b>Tip:</b> Use <span class="kbd">far</span>, <span class="kbd">a bit</span>, <span class="kbd">much</span>:
+            “much better”, “far more intense”, “a bit slower”.
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise" id="exConnectors">
+        <div class="exercise__head">
+          <h3>✅ Exercise A — Connectors (tap-to-fill)</h3>
+          <div class="exercise__actions">
+            <button class="btn btn--small" type="button" id="conHint">Hint</button>
+            <button class="btn btn--ghost btn--small" type="button" id="conReset">Reset</button>
+          </div>
+        </div>
+        <p class="muted small">Tap a blank, then tap a connector from the word bank.</p>
+        <div class="wordBank" id="conBank" aria-label="Connector word bank"></div>
+        <div class="blanks" id="conBlanks" aria-label="Connector blanks"></div>
+        <div class="fb" id="conFb" aria-live="polite"></div>
+      </div>
+
+      <div class="exercise" id="exComparatives">
+        <div class="exercise__head">
+          <h3>✅ Exercise B — Comparatives & Superlatives (instant check)</h3>
+          <div class="exercise__actions">
+            <button class="btn btn--small" type="button" id="compHint">Hint</button>
+            <button class="btn btn--ghost btn--small" type="button" id="compReset">Reset</button>
+          </div>
+        </div>
+        <div class="mcq" id="compMCQ"></div>
+        <div class="fb" id="compFb" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="card" id="universal">
+      <div class="card__head">
+        <h2>🌎 Universal Studios (mini reading + quiz)</h2>
+        <div class="card__actions">
+          <button class="btn btn--small" type="button" id="uniListen">🔊 Listen</button>
+          <button class="btn btn--ghost btn--small" type="button" id="uniReset">Reset section</button>
+        </div>
+      </div>
+
+      <div class="twoCol">
+        <div class="miniCard">
+          <h3>Reading</h3>
+          <p class="muted small" id="uniText">
+            Universal is one of the oldest and most influential film studios. It became famous for classic “monster” movies
+            in the early 20th century, then expanded into blockbusters, animation, and theme parks. Today, Universal is part of
+            a larger media group and continues to produce major films while also creating immersive experiences for audiences.
+          </p>
+        </div>
+        <div class="miniCard">
+          <h3>Quiz (True / False)</h3>
+          <div class="tf" id="uniTF"></div>
+          <div class="fb" id="uniFb" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="compareCultures">
+      <div class="card__head">
+        <h2>🇫🇷 vs 🇺🇸 French films & American films</h2>
+        <div class="card__actions">
+          <button class="btn btn--small" type="button" id="cultListen">🔊 Listen</button>
+          <button class="btn btn--ghost btn--small" type="button" id="cultReset">Reset section</button>
+        </div>
+      </div>
+
+      <p class="muted">
+        General tendencies (not rules). Sort the cards into the best category.
+        <b>Tap mode:</b> tap a statement, then tap a box.
+      </p>
+
+      <div class="sorter" id="cultSorter" aria-label="French vs American cinema sorting"></div>
+      <div class="fb" id="cultFb" aria-live="polite"></div>
+    </section>
+
+    <section class="card" id="builder">
+      <div class="card__head">
+        <h2>🧱 Sentence builder (words are NOT in order)</h2>
+        <div class="card__actions">
+          <button class="btn btn--small" type="button" id="buildHint">Hint</button>
+          <button class="btn btn--ghost btn--small" type="button" id="buildReset">Reset section</button>
+        </div>
+      </div>
+
+      <p class="muted small">
+        Tap words to build the sentence in the correct order. Tap a word in your answer to remove it.
+      </p>
+
+      <div class="builder" id="sentenceBuilder"></div>
+      <div class="fb" id="buildFb" aria-live="polite"></div>
+    </section>
+
+    <section class="card" id="paragraph">
+      <div class="card__head">
+        <h2>📝 Build a detailed movie description</h2>
+        <div class="card__actions">
+          <button class="btn btn--small" type="button" id="paraListen">🔊 Listen template</button>
+          <button class="btn btn--ghost btn--small" type="button" id="paraReset">Reset section</button>
+        </div>
+      </div>
+
+      <div class="twoCol">
+        <div class="miniCard">
+          <h3>Template (use connectors!)</h3>
+          <ol class="muted small" id="paraTemplate">
+            <li><b>First</b>, introduce the movie (title, genre, where/when it happens).</li>
+            <li><b>Then</b>, describe the main character and the goal.</li>
+            <li><b>After that</b>, mention a key conflict (without spoilers).</li>
+            <li><b>In addition</b>, describe acting + cinematography + music.</li>
+            <li><b>Finally</b>, give your opinion and a recommendation.</li>
+          </ol>
+          <div class="note">
+            <b>Connectors:</b> first, then, after that, however, therefore, in addition, finally…
+          </div>
+        </div>
+
+        <div class="miniCard">
+          <h3>Paragraph builder</h3>
+          <div class="paraBuilder" id="paraBuilder"></div>
+          <div class="row">
+            <button class="btn btn--small" type="button" id="paraCheck">Check</button>
+            <button class="btn btn--ghost btn--small" type="button" id="paraHint">Hint</button>
+            <button class="btn btn--ghost btn--small" type="button" id="paraSpeak">🔊 Listen</button>
+          </div>
+          <div class="fb" id="paraFb" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer card">
+      <div class="footer__left">
+        <b>Score</b>
+        <div class="scoreBig" id="scoreBottom">0</div>
+        <div class="muted small">Your score updates instantly. Use section resets to practice again.</div>
+      </div>
+      <div class="footer__right">
+        <a class="link" href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="/js/movies-lesson.js"></script>
+</body>
+</html>

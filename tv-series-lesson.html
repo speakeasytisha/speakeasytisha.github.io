@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • TV Series Lesson</title>
+  <link rel="stylesheet" href="/css/tv-series-lesson.css" />
+</head>
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">📺</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">TV Series • History • Vocabulary • Grammar</div>
+      </div>
+    </div>
+
+    <div class="topbar__controls">
+      <div class="toggle" role="group" aria-label="Accent toggle">
+        <button class="toggle__btn is-on" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="toggle__btn" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+
+      <div class="score" aria-live="polite">
+        <div class="score__label">Score</div>
+        <div class="score__value" id="scoreTop">0</div>
+      </div>
+
+      <button class="btn btn--ghost" id="resetAll" type="button">Reset all</button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <section class="hero card">
+    <div class="hero__left">
+      <h1>📺 TV Series — Speak like a critic!</h1>
+      <p class="muted">
+        Learn how to talk about TV series: genres, characters, episodes, plot twists, and why a show works.
+        Practice <b>present perfect vs past simple</b>, <b>connectors</b>, <b>comparatives & superlatives</b>,
+        and <b>recommendation language</b>.
+      </p>
+
+      <div class="hero__chips">
+        <span class="chip">Touch-friendly (Mac + iPad Safari)</span>
+        <span class="chip">Instant feedback + hints</span>
+        <span class="chip">Listen (US/UK)</span>
+        <span class="chip">Global score + section resets</span>
+      </div>
+
+      <div class="hero__actions">
+        <button class="btn" id="btnSpeakIntro" type="button">🔊 Listen to intro</button>
+        <button class="btn btn--ghost" id="btnPrintGrammar" type="button">🖨 Print grammar</button>
+      </div>
+    </div>
+
+    <div class="hero__right">
+      <div class="miniCard">
+        <h3>Speaking frames</h3>
+        <p class="muted small">
+          <span class="kbd">It’s about…</span>
+          <span class="kbd">What I loved was…</span>
+          <span class="kbd">The main character is…</span><br/>
+          <span class="kbd">In episode…,</span>
+          <span class="kbd">However,</span>
+          <span class="kbd">Therefore,</span>
+          <span class="kbd">Overall,</span>
+        </p>
+        <button class="btn btn--small" id="btnSpeakFrames" type="button">🔊 Listen frames</button>
+      </div>
+
+      <div class="miniCard">
+        <h3>Quick goal</h3>
+        <ul class="check">
+          <li>Describe a show without spoilers</li>
+          <li>Explain why it’s binge-worthy</li>
+          <li>Compare two series naturally</li>
+          <li>Give a clear recommendation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="history">
+    <div class="card__head">
+      <h2>🕰️ History of TV series (mini timeline)</h2>
+      <div class="card__actions">
+        <button class="btn btn--small" id="historyListen" type="button">🔊 Listen</button>
+        <button class="btn btn--ghost btn--small" id="historyReset" type="button">Reset section</button>
+      </div>
+    </div>
+
+    <p class="muted">
+      Tap each card to reveal details. Then answer the quick quiz.
+    </p>
+
+    <div class="timeline" id="timeline"></div>
+
+    <div class="exercise">
+      <div class="exercise__head">
+        <h3>✅ Timeline quiz (MCQ)</h3>
+        <div class="exercise__actions">
+          <button class="btn btn--small" id="histHint" type="button">Hint</button>
+          <button class="btn btn--ghost btn--small" id="histQuizReset" type="button">Reset</button>
+        </div>
+      </div>
+      <div class="mcq" id="histMCQ"></div>
+      <div class="fb" id="histFb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card" id="vocab">
+    <div class="card__head">
+      <h2>🧩 Vocabulary flashcards: TV series</h2>
+      <div class="card__actions">
+        <div class="pillRow" id="vocabFilters" aria-label="Vocabulary filters"></div>
+        <button class="btn btn--ghost btn--small" id="vocabReset" type="button">Reset section</button>
+      </div>
+    </div>
+
+    <p class="muted">Tap a card to flip. Use 🔊 to listen. (No dropdowns.)</p>
+    <div class="grid cards" id="vocabGrid" aria-label="Vocabulary flashcards"></div>
+
+    <div class="exercise" id="exVocabMatch">
+      <div class="exercise__head">
+        <h3>✅ Vocabulary match (tap to pair)</h3>
+        <div class="exercise__actions">
+          <button class="btn btn--small" id="vmHint" type="button">Hint</button>
+          <button class="btn btn--ghost btn--small" id="vmReset" type="button">Reset</button>
+        </div>
+      </div>
+      <p class="muted small">Tap a word, then tap its definition. (Pairs lock when correct.)</p>
+      <div class="match" id="vmGrid"></div>
+      <div class="fb" id="vmFb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card" id="grammar">
+    <div class="card__head">
+      <h2>🧠 Grammar for TV talk</h2>
+      <div class="card__actions">
+        <button class="btn btn--small" id="grammarListen" type="button">🔊 Listen</button>
+        <button class="btn btn--ghost btn--small" id="grammarReset" type="button">Reset section</button>
+      </div>
+    </div>
+
+    <div class="twoCol">
+      <div class="miniCard">
+        <h3>1) Present Perfect vs Past Simple</h3>
+        <div class="tableLite">
+          <div class="rowLite"><b>Present Perfect</b><span>experience/result (no finished time): “I’ve watched it.”</span></div>
+          <div class="rowLite"><b>Past Simple</b><span>finished time: “I watched it last weekend.”</span></div>
+          <div class="rowLite"><b>Useful</b><span>already / yet / ever / never / just</span></div>
+        </div>
+        <div class="note"><b>Tip:</b> Use present perfect to talk about your viewing experience in general.</div>
+      </div>
+
+      <div class="miniCard">
+        <h3>2) Connectors + comparisons</h3>
+        <div class="tableLite">
+          <div class="rowLite"><b>Connectors</b><span>first, then, however, therefore, in addition, overall</span></div>
+          <div class="rowLite"><b>Comparatives</b><span>more gripping than / less predictable than</span></div>
+          <div class="rowLite"><b>Superlatives</b><span>the most binge-worthy / the best episode</span></div>
+        </div>
+        <div class="note"><b>Recommendation</b>: “You should watch it.” “You might like it if…”</div>
+      </div>
+    </div>
+
+    <div class="exercise" id="exTenseMCQ">
+      <div class="exercise__head">
+        <h3>✅ Exercise A — Choose the tense (instant)</h3>
+        <div class="exercise__actions">
+          <button class="btn btn--small" id="tenseHint" type="button">Hint</button>
+          <button class="btn btn--ghost btn--small" id="tenseReset" type="button">Reset</button>
+        </div>
+      </div>
+      <div class="mcq" id="tenseMCQ"></div>
+      <div class="fb" id="tenseFb" aria-live="polite"></div>
+    </div>
+
+    <div class="exercise" id="exConnectors">
+      <div class="exercise__head">
+        <h3>✅ Exercise B — Connectors (tap to fill)</h3>
+        <div class="exercise__actions">
+          <button class="btn btn--small" id="connHint" type="button">Hint</button>
+          <button class="btn btn--ghost btn--small" id="connReset" type="button">Reset</button>
+        </div>
+      </div>
+      <p class="muted small">Tap a connector to complete each sentence.</p>
+      <div class="connector" id="connBox"></div>
+      <div class="fb" id="connFb" aria-live="polite"></div>
+    </div>
+
+    <div class="exercise" id="exSentenceOrder">
+      <div class="exercise__head">
+        <h3>✅ Exercise C — Put the words in order (tap-to-build)</h3>
+        <div class="exercise__actions">
+          <button class="btn btn--small" id="ordHint" type="button">Hint</button>
+          <button class="btn btn--ghost btn--small" id="ordReset" type="button">Reset</button>
+        </div>
+      </div>
+      <p class="muted small">Words are NOT in the right order.</p>
+      <div class="builder" id="ordBuilder"></div>
+      <div class="fb" id="ordFb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card" id="dialogue">
+    <div class="card__head">
+      <h2>🗣️ Dialogue: recommend a series (choose the best line)</h2>
+      <div class="card__actions">
+        <button class="btn btn--small" id="dlgListen" type="button">🔊 Listen model</button>
+        <button class="btn btn--ghost btn--small" id="dlgReset" type="button">Reset section</button>
+      </div>
+    </div>
+
+    <p class="muted small">
+      Choose the most natural reply. Wrong answers don’t add to the log (order stays clean).
+    </p>
+
+    <div class="dialogue">
+      <div class="dialogue__log" id="dlgLog" aria-label="Dialogue log"></div>
+      <div class="dialogue__choices" id="dlgChoices" aria-label="Dialogue choices"></div>
+      <div class="fb" id="dlgFb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card" id="speaking">
+    <div class="card__head">
+      <h2>🎤 Final task: write + speak your series review</h2>
+      <div class="card__actions">
+        <button class="btn btn--small" id="spkListen" type="button">🔊 Listen template</button>
+        <button class="btn btn--ghost btn--small" id="spkReset" type="button">Reset section</button>
+      </div>
+    </div>
+
+    <div class="twoCol">
+      <div class="miniCard">
+        <h3>Pick a genre</h3>
+        <div class="pillRow" id="genrePills"></div>
+        <div class="note small" id="genreNote"></div>
+      </div>
+
+      <div class="miniCard">
+        <h3>Build your paragraph</h3>
+        <div class="paraBuilder" id="spkBuilder"></div>
+
+        <div class="row">
+          <button class="btn btn--small" id="spkCheck" type="button">Check</button>
+          <button class="btn btn--ghost btn--small" id="spkHint" type="button">Hint</button>
+          <button class="btn btn--ghost btn--small" id="spkSpeak" type="button">🔊 Listen</button>
+        </div>
+
+        <div class="fb" id="spkFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer card">
+    <div class="footer__left">
+      <b>Score</b>
+      <div class="scoreBig" id="scoreBottom">0</div>
+      <div class="muted small">Instant updates. Use section resets to practice again.</div>
+    </div>
+    <div class="footer__right">
+      <a class="link" href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+</main>
+
+<script src="/js/tv-series-lesson.js"></script>
+</body>
+</html>
