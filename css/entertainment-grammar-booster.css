@@ -1,0 +1,371 @@
+/* SpeakEasyTisha — Entertainment Grammar Booster (Add-on)
+   Touch-friendly, iPad Safari friendly, minimal contrast-safe UI.
+*/
+
+:root{
+  --bg:#0b1220;
+  --panel:#0f172a;
+  --panel2:#111c33;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --line:#24324b;
+  --good:#22c55e;
+  --bad:#ef4444;
+  --warn:#f59e0b;
+  --btn:#2563eb;
+  --btn2:#334155;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+  --radius:18px;
+  --radius2:26px;
+  --max:1100px;
+  --font: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--font);
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(37,99,235,.22), transparent),
+              radial-gradient(900px 500px at 95% 10%, rgba(34,197,94,.18), transparent),
+              var(--bg);
+  color:var(--text);
+}
+
+a{color:inherit}
+.wrap{max-width:var(--max); margin:20px auto 60px; padding:0 14px}
+
+.topbar{
+  position:sticky; top:0; z-index:10;
+  background: rgba(15,23,42,.92);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.topbar__inner{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 12px 14px;
+  display:flex;
+  gap:14px;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{display:flex; gap:12px; align-items:center; min-width:260px}
+.brand__mark{
+  width:44px; height:44px; display:grid; place-items:center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(37,99,235,.35), rgba(34,197,94,.22));
+  border:1px solid rgba(255,255,255,.08);
+}
+.brand__title{font-weight:800; letter-spacing:.3px}
+.brand__sub{font-size:.85rem; color:var(--muted)}
+
+.controls{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+.pill{
+  display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden;
+  background:rgba(0,0,0,.18);
+}
+.pill__btn{
+  padding:8px 12px;
+  background:transparent;
+  border:0;
+  color:var(--text);
+  cursor:pointer;
+  font-weight:700;
+}
+.pill__btn[aria-pressed="true"]{background:rgba(37,99,235,.35)}
+
+.btn{
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(37,99,235,.9);
+  color: #fff;
+  padding:10px 12px;
+  border-radius:14px;
+  cursor:pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,.20);
+  font-weight:700;
+}
+.btn:hover{filter:brightness(1.03)}
+.btn:active{transform:translateY(1px)}
+.btn--ghost{
+  background: rgba(0,0,0,.18);
+}
+.btn--danger{
+  background: rgba(239,68,68,.85);
+}
+.scoreBox{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  width:76px;
+  background: rgba(0,0,0,.18);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:6px 10px;
+}
+.scoreBox__label{font-size:.78rem; color:var(--muted)}
+.scoreBox__value{font-size:1.2rem; font-weight:900}
+
+.statusRow{
+  max-width: var(--max);
+  margin:0 auto;
+  padding: 0 14px 10px;
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+}
+.statusChip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(0,0,0,.18);
+  font-size:.92rem;
+}
+.statusHint{color:var(--muted); font-size:.9rem}
+
+.card{
+  background: rgba(15,23,42,.70);
+  border:1px solid var(--line);
+  border-radius: var(--radius2);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin: 16px 0;
+}
+.card.soft{background: rgba(0,0,0,.16)}
+.card__head{
+  display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
+  padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,.06);
+}
+.card__head h2{margin:0}
+.headBtns{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+
+.hero{
+  display:grid;
+  grid-template-columns: 1.35fr .9fr;
+  gap:16px;
+}
+.hero__right{display:flex; flex-direction:column; gap:16px}
+h1{margin:6px 0 8px; font-size:1.8rem}
+.lead{color:var(--text); opacity:.95; line-height:1.45}
+.tag{
+  display:inline-flex;
+  padding:2px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.18);
+  font-size:.86rem;
+  margin:0 4px;
+}
+.hero__grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:12px;
+  margin-top:10px;
+}
+.mini{
+  padding:12px;
+  border-radius: var(--radius);
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.16);
+}
+.mini__k{font-weight:800; margin-bottom:6px}
+.mini__list{margin:0; padding-left:18px; color:var(--muted)}
+.hero__actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+
+.teacherNotes{
+  margin-top:10px;
+  padding:12px;
+  border-radius: var(--radius);
+  border:1px dashed rgba(255,255,255,.18);
+  background: rgba(0,0,0,.14);
+}
+.noteGrid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+.note{padding:10px; border-radius: 14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.14)}
+.note__title{font-weight:900}
+
+.frames{display:grid; gap:10px}
+.frame{
+  text-align:left;
+  padding:10px 12px;
+  border-radius: 16px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.14);
+  cursor:pointer;
+  color:var(--text);
+  font-weight:700;
+}
+.frame:hover{filter:brightness(1.03)}
+
+.row{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:10px}
+
+.timer{margin-top:10px}
+.timer__title{font-weight:900; margin-bottom:6px}
+.timer__bar{height:12px; border-radius:999px; border:1px solid var(--line); background: rgba(0,0,0,.18); overflow:hidden}
+.timer__fill{height:100%; width:0% ; background: rgba(37,99,235,.85)}
+
+.steps{margin:8px 0 0; padding-left:18px; color:var(--muted)}
+.small{font-size:.88rem}
+.muted{color:var(--muted)}
+.grid2{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:14px;
+  margin-top:12px;
+}
+.rule{
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.14);
+  border-radius: var(--radius);
+  padding:12px;
+  margin-bottom:10px;
+}
+.rule__title{font-weight:900; margin-bottom:6px}
+
+.exercise{
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.14);
+  border-radius: var(--radius);
+  padding:12px;
+}
+.qBlock{padding:10px; border:1px solid rgba(255,255,255,.08); border-radius: 16px; margin-top:10px; background: rgba(255,255,255,.03)}
+.q{font-weight:900}
+.opts{display:grid; gap:8px; margin-top:8px}
+.opt{
+  text-align:left;
+  padding:10px 12px;
+  border-radius: 16px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.16);
+  cursor:pointer;
+  color:var(--text);
+  font-weight:700;
+}
+.opt:hover{filter:brightness(1.03)}
+.fb{margin-top:8px; font-weight:800}
+.fb.good{color: var(--good)}
+.fb.bad{color: var(--bad)}
+
+.hint{
+  margin-top:10px;
+  padding:10px 12px;
+  border-radius: 16px;
+  background: rgba(245,158,11,.10);
+  border:1px solid rgba(245,158,11,.22);
+}
+
+.build{margin-top:12px; padding:10px; border:1px solid rgba(255,255,255,.08); border-radius:16px; background: rgba(255,255,255,.03)}
+.tiles{display:flex; flex-wrap:wrap; gap:8px}
+.tile{
+  padding:8px 10px;
+  border-radius: 999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+  cursor:pointer;
+  user-select:none;
+  font-weight:700;
+}
+.tile:active{transform:translateY(1px)}
+.answer{
+  min-height:44px;
+  margin-top:10px;
+  border-radius: 16px;
+  border:1px dashed rgba(255,255,255,.16);
+  padding:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  background: rgba(0,0,0,.12);
+}
+
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chip{
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.14);
+  cursor:pointer;
+  font-weight:700;
+}
+
+.fill{margin-top:12px; padding:10px; border:1px solid rgba(255,255,255,.08); border-radius:16px; background: rgba(255,255,255,.03)}
+.fill__line{font-weight:900; line-height:1.5}
+.blank{
+  display:inline-flex;
+  min-width:140px;
+  padding:6px 10px;
+  border-radius: 999px;
+  border:1px dashed rgba(255,255,255,.18);
+  background: rgba(0,0,0,.14);
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+}
+.blank.filled{border-style:solid}
+.wordbank{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+
+.builder{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+label{display:grid; gap:6px; font-weight:800}
+select,input{
+  border-radius: 14px;
+  padding:10px 12px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.18);
+  color: var(--text);
+  font-weight:700;
+}
+input::placeholder{color: rgba(229,231,235,.55)}
+.outBox{
+  margin-top:10px;
+  padding:12px;
+  border-radius: 16px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.14);
+  font-weight:800;
+  line-height:1.5;
+}
+
+.upgrade{margin-top:10px; padding:10px; border:1px solid rgba(255,255,255,.08); border-radius:16px; background: rgba(255,255,255,.03)}
+.upgrade__cols{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px}
+.cardBtn{
+  padding:10px 12px;
+  border-radius: 16px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.16);
+  cursor:pointer;
+  font-weight:900;
+  color:var(--text);
+}
+.upgrade__out{margin-top:10px; font-weight:900; padding:10px; border-radius: 16px; background: rgba(0,0,0,.14); border:1px dashed rgba(255,255,255,.14)}
+
+.plan{margin:8px 0 0; padding-left:18px; color:var(--muted)}
+.foot{display:flex; justify-content:center; padding:18px 0}
+.backTop{color:var(--muted); text-decoration:none}
+.backTop:hover{text-decoration:underline}
+
+/* Responsive */
+@media (max-width: 980px){
+  .hero{grid-template-columns: 1fr}
+  .hero__grid{grid-template-columns: 1fr}
+  .grid2{grid-template-columns: 1fr}
+  .builder{grid-template-columns: 1fr}
+  .upgrade__cols{grid-template-columns: 1fr}
+  .brand{min-width:0}
+}
+
+/* Print: grammar only */
+@media print{
+  body{background:#fff; color:#000}
+  .topbar, .hero__right, .hero__actions, .statusRow, .foot, .headBtns, .timer, .frames, .exercise{display:none !important}
+  .card{box-shadow:none; border:1px solid #ddd; background:#fff}
+  .muted{color:#333}
+  .rule{border:1px solid #ddd; background:#fff}
+  .teacherNotes{display:block !important}
+}
