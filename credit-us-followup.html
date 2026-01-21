@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Credit in the USA • Follow-up (Renting MA & NH)</title>
+
+  <!-- Prefer your GitHub root structure -->
+  <link id="pageCss" rel="stylesheet" href="/css/credit-us-followup.css" />
+  <script>
+    (function(){
+      var link=document.getElementById('pageCss');
+      if(!link) return;
+      link.addEventListener('error', function(){
+        link.href='css/credit-us-followup.css'; /* local/subfolder fallback */
+      });
+    })();
+  </script>
+</head>
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">💳</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Credit in the USA • Follow‑up to Renting (MA & NH)</div>
+      </div>
+    </div>
+
+    <div class="controls" role="group" aria-label="Lesson controls">
+      <div class="pill" role="group" aria-label="Language">
+        <span class="pill__label">Language</span>
+        <button class="pill__btn" id="langEN" type="button" aria-pressed="true">EN</button>
+        <button class="pill__btn" id="langFR" type="button" aria-pressed="false">FR</button>
+      </div>
+
+      <div class="pill" role="group" aria-label="Accent">
+        <span class="pill__label">Voice</span>
+        <button class="pill__btn" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="pill__btn" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+
+      <div class="pill" role="group" aria-label="Drag or tap mode">
+        <span class="pill__label">Mode</span>
+        <button class="pill__btn" id="modeDrag" type="button" aria-pressed="true">Drag</button>
+        <button class="pill__btn" id="modeTap" type="button" aria-pressed="false">Tap</button>
+      </div>
+
+      <button class="btn btn--primary" id="btnEnableVoice" type="button" title="Required on some devices (iPad/iPhone)">Enable voice</button>
+      <button class="btn btn--ghost" id="btnResetAll" type="button" title="Reset score + all activities">Reset</button>
+    </div>
+  </div>
+
+  <div class="scorebar" role="status" aria-live="polite">
+    <div class="scorebar__left">
+      <span class="badge" id="scoreBadge">Score: 0</span>
+      <span class="badge" id="streakBadge">Streak: 0</span>
+      <span class="badge" id="savedBadge">Saved ✓</span>
+      <span class="badge badge--muted" id="voiceBadge">Voice: …</span>
+    </div>
+    <div class="scorebar__right">
+      <a class="link" href="#quickstart">Quickstart</a>
+      <a class="link" href="#vocab">Vocab</a>
+      <a class="link" href="#grammar">Grammar</a>
+      <a class="link" href="#exercises">Exercises</a>
+      <a class="link" href="#speaking">Speaking</a>
+      <a class="link" href="#templates">Templates</a>
+      <a class="link" href="#sources">Sources</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero__card">
+      <h1>Credit in the USA (MA & NH) — a practical guide for a family moving from France</h1>
+      <p class="muted" data-i18n="hero_p">
+        Learn the words, the rules, and the “pro” phrases you need for rentals, utilities, and everyday life.
+        This page is designed for <strong>maximum speaking</strong> with short, confident scripts.
+      </p>
+
+      <div class="hero__cta">
+        <button class="btn btn--primary" id="btnStartTour" type="button">Start the 10‑minute tour</button>
+        <button class="btn" id="btnTestVoice" type="button">Test voice 🔊</button>
+        <span class="mini" id="tourHint" data-i18n="tour_hint">Tip: click Enable voice once (iPad/iPhone), then use 🔊 buttons.</span>
+      </div>
+    </div>
+
+    <div class="hero__card">
+      <h2 data-i18n="big_idea_h">The big idea</h2>
+      <ul class="bullets" data-i18n="big_idea_ul">
+        <li><strong>Credit report</strong> = your history (accounts, payments, addresses).</li>
+        <li><strong>Credit score</strong> = a number that summarizes that history.</li>
+        <li>In the U.S., you often need credit for <strong>rentals, utilities, phones, cars</strong>.</li>
+      </ul>
+      <div class="note">
+        <strong data-i18n="note_h">Good news:</strong>
+        <span data-i18n="note_p">you can start building credit step‑by‑step with the right tools and habits.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="quickstart" class="section">
+    <div class="section__head">
+      <h2>✅ Quickstart: your credit setup plan</h2>
+      <p class="muted" data-i18n="qs_p">
+        Follow this simple roadmap. Check items off as you go — the page saves your progress.
+      </p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Week 1 — get “credit‑ready”</h3>
+        <div class="checklist" id="checklistWeek1" aria-label="Week 1 checklist"></div>
+      </div>
+
+      <div class="card">
+        <h3>Weeks 2–6 — build your first history</h3>
+        <div class="checklist" id="checklistWeeks2to6" aria-label="Weeks 2-6 checklist"></div>
+      </div>
+
+      <div class="card">
+        <h3>Month 2–6 — upgrade</h3>
+        <div class="checklist" id="checklistMonths2to6" aria-label="Month 2-6 checklist"></div>
+      </div>
+
+      <div class="card">
+        <h3>Renting + credit checks</h3>
+        <p class="muted" data-i18n="rentbridge_p">
+          When a landlord runs a screening, they want proof you pay on time. If your U.S. history is new, you can
+          add stronger documents and the right polite explanation.
+        </p>
+        <div class="chips" id="rentBridgeChips"></div>
+        <div class="row">
+          <button class="btn btn--primary" id="btnSpeakBridge" type="button">Practice these lines 🔊</button>
+          <button class="btn" id="btnBridgeRoleplay" type="button">Role‑play (landlord) ▶</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vocab" class="section">
+    <div class="section__head">
+      <h2>🧠 Vocabulary deck (tap cards)</h2>
+      <p class="muted" data-i18n="vocab_p">
+        Tap a card to flip. Use 🔊 to hear it. Filter by theme.
+      </p>
+    </div>
+
+    <div class="toolbar">
+      <label class="sr" for="vocabSearch">Search</label>
+      <input class="input" id="vocabSearch" type="search" placeholder="Search… (credit score, due date, deposit…)" />
+
+      <label class="sr" for="vocabFilter">Filter</label>
+      <select class="select" id="vocabFilter" aria-label="Filter vocab">
+        <option value="all">All themes</option>
+      </select>
+
+      <button class="btn" id="btnShuffleCards" type="button">Shuffle</button>
+      <button class="btn" id="btnQuizMe" type="button">Quick quiz</button>
+    </div>
+
+    <div class="cards" id="vocabCards" aria-live="polite"></div>
+  </section>
+
+  <section id="grammar" class="section">
+    <div class="section__head">
+      <h2>📚 Mini grammar: sound professional (fast)</h2>
+      <p class="muted" data-i18n="grammar_p">
+        Use these patterns to sound polite and clear on the phone or by email.
+      </p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>1) Polite requests (bank / landlord / utilities)</h3>
+        <div class="rulebox">
+          <p><strong>Could / Would</strong> + subject + verb…</p>
+          <p class="muted">“Could you explain the requirements?” • “Would it be possible to…?”</p>
+        </div>
+
+        <div class="row">
+          <button class="btn" data-speak="Could you please explain the requirements?" type="button">🔊 Example</button>
+          <button class="btn" data-speak="Would it be possible to use my French bank statements?" type="button">🔊 Example</button>
+        </div>
+
+        <div class="miniTask">
+          <p class="muted">Upgrade the sentence (more polite):</p>
+          <div class="upgrade" id="upgradeTask"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>2) Dates & time (U.S. style)</h3>
+        <div class="rulebox">
+          <p><strong>U.S. format:</strong> month/day/year → <span class="mono">03/12/2026</span> = March 12, 2026</p>
+          <p><strong>Prepositions:</strong> <span class="mono">on</span> Monday • <span class="mono">at</span> 3:00 p.m. • <span class="mono">in</span> March</p>
+        </div>
+
+        <div class="row">
+          <button class="btn" data-speak="My appointment is on Monday at three p.m." type="button">🔊 Example</button>
+          <button class="btn" data-speak="Can we schedule a call on March twelfth at ten a.m.?" type="button">🔊 Example</button>
+        </div>
+
+        <div class="miniTask">
+          <p class="muted">Build the sentence (tap words):</p>
+          <div class="builder" id="dateBuilder"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>3) Numbers (phone, ZIP, SSN)</h3>
+        <p class="muted" data-i18n="numbers_p">
+          In the U.S., you often say numbers digit‑by‑digit: 617‑555‑0123 → “six one seven…”
+        </p>
+        <div class="row">
+          <button class="btn" id="btnNumberDrill" type="button">Start number drill ▶</button>
+          <button class="btn" id="btnStopSpeaking" type="button">Stop voice</button>
+        </div>
+        <div class="well" id="numberDrillBox" aria-live="polite"></div>
+      </div>
+
+      <div class="card">
+        <h3>4) “Credit words” you’ll hear</h3>
+        <div class="twoCol" id="creditWords"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="exercises" class="section">
+    <div class="section__head">
+      <h2>🎯 Exercises (drag or tap)</h2>
+      <p class="muted" data-i18n="ex_p">Instant feedback • hints • score.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Exercise A — Credit basics (MCQ)</h3>
+        <div id="mcqBasics"></div>
+      </div>
+
+      <div class="card">
+        <h3>Exercise B — Match the term to the meaning</h3>
+        <p class="muted">Tip: switch to <strong>Tap</strong> mode on iPad.</p>
+        <div class="match" id="matchTerms"></div>
+      </div>
+
+      <div class="card">
+        <h3>Exercise C — Fill the blank (word bank)</h3>
+        <div id="fillBank"></div>
+      </div>
+
+      <div class="card">
+        <h3>Exercise D — Sentence order (phone call)</h3>
+        <div id="orderCall"></div>
+      </div>
+
+      <div class="card">
+        <h3>Exercise E — True / False (myths)</h3>
+        <div id="tfMyths"></div>
+      </div>
+
+      <div class="card">
+        <h3>Exercise F — Document pack (drag to the right bucket)</h3>
+        <div id="docPack"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="speaking" class="section">
+    <div class="section__head">
+      <h2>🗣 Speaking Studio (role‑plays)</h2>
+      <p class="muted" data-i18n="speak_p">
+        You will sound confident because you’re using short, professional scripts.
+      </p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Role‑play 1 — Bank (secured credit card)</h3>
+        <div class="dialogue" id="rpBank"></div>
+      </div>
+
+      <div class="card">
+        <h3>Role‑play 2 — Utility company (deposit + autopay)</h3>
+        <div class="dialogue" id="rpUtility"></div>
+      </div>
+
+      <div class="card">
+        <h3>Role‑play 3 — Landlord (credit check + alternatives)</h3>
+        <div class="dialogue" id="rpLandlord"></div>
+      </div>
+
+      <div class="card">
+        <h3>Shadow mode (speak like a pro)</h3>
+        <p class="muted">Listen → repeat → 30‑second challenge.</p>
+        <div class="shadow" id="shadowMode"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="templates" class="section">
+    <div class="section__head">
+      <h2>✍️ Email + message templates (interactive)</h2>
+      <p class="muted" data-i18n="temp_p">
+        Build a message fast, then copy it. Great for rentals and banks.
+      </p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Template 1 — Ask a landlord about screening</h3>
+        <div class="composer" id="tplLandlord"></div>
+      </div>
+
+      <div class="card">
+        <h3>Template 2 — Ask a bank about a secured card</h3>
+        <div class="composer" id="tplBank"></div>
+      </div>
+
+      <div class="card">
+        <h3>Template 3 — Ask about rent reporting</h3>
+        <div class="composer" id="tplRentReport"></div>
+      </div>
+
+      <div class="card">
+        <h3>Credit checklist (print / review)</h3>
+        <div class="printbox" id="printChecklist"></div>
+        <button class="btn" id="btnPrint" type="button">Print</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="sources" class="section">
+    <div class="section__head">
+      <h2>🔎 Sources (reliable)</h2>
+      <p class="muted">
+        This lesson uses public guidance from consumer authorities and official sites. (Links open online.)
+      </p>
+    </div>
+
+    <div class="card">
+      <ul class="bullets">
+        <li><span class="mono">consumerfinance.gov</span> — Credit score basics</li>
+        <li><span class="mono">annualcreditreport.com</span> — Free credit reports</li>
+        <li><span class="mono">consumer.ftc.gov</span> — Credit freezes & fraud alerts</li>
+        <li><span class="mono">usa.gov</span> — How to place/lift a freeze</li>
+      </ul>
+      <p class="muted small">
+        Note: Credit is federal/national. Massachusetts and New Hampshire share the same nationwide credit bureaus.
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="scorebar scorebar--bottom" role="status" aria-live="polite">
+      <div class="scorebar__left">
+        <span class="badge" id="scoreBadge2">Score: 0</span>
+        <span class="badge" id="streakBadge2">Streak: 0</span>
+        <span class="badge" id="savedBadge2">Saved ✓</span>
+        <span class="badge badge--muted" id="voiceBadge2">Voice: …</span>
+      </div>
+      <div class="scorebar__right">
+        <a class="link" href="#top">Back to top ↑</a>
+      </div>
+    </div>
+
+    <p class="tiny muted">© SpeakEasyTisha • Interactive lesson • Works on Mac + iPad Safari (drag OR tap).</p>
+  </footer>
+</main>
+
+<!-- JS loader with /js/ fallback to local js/ -->
+<script>
+(function(){
+  function loadPrimaryThenFallback(primary, fallback){
+    var s=document.createElement('script');
+    s.src=primary;
+    s.defer=true;
+    s.onerror=function(){
+      var s2=document.createElement('script');
+      s2.src=fallback;
+      s2.defer=true;
+      document.body.appendChild(s2);
+    };
+    document.body.appendChild(s);
+  }
+  loadPrimaryThenFallback('/js/credit-us-followup.js','js/credit-us-followup.js');
+})();
+</script>
+</body>
+</html>

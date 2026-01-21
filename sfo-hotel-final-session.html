@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • SFO Airport + Hotel Check‑in/Check‑out • Final Speaking Session</title>
+  <meta name="description" content="Final speaking session: SFO airport arrival + hotel check-in/check-out. Polite English, dates/time, role-plays, flashcards, and pro mission." />
+  <link rel="stylesheet" href="/css/speakeasy.css" />
+  <link rel="stylesheet" href="/css/sfo-hotel-final-session.css" />
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to lesson</a>
+
+<header class="topbar" role="banner">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">✈️🏨</div>
+      <div class="brand__text">
+        <div class="brand__title">SFO Airport → Hotel • Final Speaking Session</div>
+        <div class="brand__subtitle">Polite English • Dates & Time • Check‑in/Check‑out • “Travel Pro” role‑plays</div>
+      </div>
+    </div>
+
+    <div class="toolbar" role="region" aria-label="Lesson tools">
+      <label class="tool">
+        <span class="tool__label">Accent</span>
+        <select id="accentSelect" class="tool__select" aria-label="Choose accent">
+          <option value="auto">Auto</option>
+          <option value="en-US">US</option>
+          <option value="en-GB">UK</option>
+        </select>
+      </label>
+
+      <button class="btn btn--ghost" id="enableVoiceBtn" type="button" title="Required on some devices">Enable voice</button>
+      <button class="btn btn--ghost" id="resetBtn" type="button">Reset</button>
+
+      <div class="score" aria-live="polite">
+        <div class="score__pill">Score: <strong id="scoreValue">0</strong></div>
+        <div class="score__pill">Completed: <strong id="doneValue">0</strong>/<span id="totalValue">0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice">
+    <div class="notice__inner">
+      <strong>Goal (≈45–60 min):</strong>
+      sound confident in <em>real travel situations</em> — SFO arrival, directions, hotel check‑in, requests during the stay, and a smooth check‑out.
+      You’ll practise <em>polite requests</em> (could / would / may), <em>dates & time</em>, and do <em>speaking role‑plays</em>.
+      <span class="muted">Tip:</span> click <strong>Enable voice</strong> once, then use 🔊 everywhere.
+      <span class="ttsStatus" id="ttsStatus" role="status" aria-live="polite">Voice: loading…</span>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+
+  <section class="panel panel--hero">
+    <div class="grid2">
+      <div>
+        <h1 class="h1">Your “Travel Pro” toolkit</h1>
+        <p class="lead">Short, powerful phrases + guided speaking so you can handle the full trip calmly and politely.</p>
+
+        <div class="pillrow" role="list" aria-label="Quick wins">
+          <div class="pill" role="listitem">✅ 10 power phrases</div>
+          <div class="pill" role="listitem">✅ Dates & time mini‑drills</div>
+          <div class="pill" role="listitem">✅ Airport + hotel role‑plays</div>
+          <div class="pill" role="listitem">✅ Final “Pro Mission” email + call</div>
+        </div>
+
+        <div class="actions">
+          <button class="btn" type="button" data-scroll="#powerPhrases">Start here</button>
+          <button class="btn btn--ghost" type="button" data-scroll="#roleplayStudio">Go to role‑plays</button>
+        </div>
+      </div>
+
+      <div class="heroCard">
+        <h2 class="h2">How to use this page (speaking-first)</h2>
+        <ol class="steps">
+          <li><strong>Listen</strong> (🔊) → <strong>repeat</strong> → <strong>say it fast</strong> (timer).</li>
+          <li>Choose the best sentence (quick wins).</li>
+          <li>Do a role‑play: you speak every turn.</li>
+          <li>Finish with the Pro Mission: call + email.</li>
+        </ol>
+
+        <div class="miniControls">
+          <button class="btn btn--small" type="button" id="testVoiceBtn">Test voice</button>
+          <button class="btn btn--small btn--ghost" type="button" id="beepBtn">Test beep</button>
+        </div>
+        <p class="tiny muted">If you hear nothing on iPad/iPhone: silent mode OFF + media volume up.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1) Power phrases -->
+  <section id="powerPhrases" class="panel">
+    <div class="panel__head">
+      <h2 class="h2">1) Power phrases (Airport + Hotel)</h2>
+      <p class="muted">Click a card to flip. Use 🔊 then speak with the timer.</p>
+    </div>
+
+    <div class="deck" id="phraseDeck" aria-label="Power phrase flashcards"></div>
+
+    <div class="drill">
+      <h3 class="h3">Speaking drill: “Say it like a pro”</h3>
+      <div class="row">
+        <label class="tool grow">
+          <span class="tool__label">Choose a phrase</span>
+          <select id="drillSelect" class="tool__select"></select>
+        </label>
+        <button class="btn" type="button" id="drillListenBtn">🔊 Listen</button>
+        <button class="btn btn--ghost" type="button" id="drillTimerBtn">🎙️ 20‑sec speaking timer</button>
+      </div>
+      <div class="feedback" id="drillFeedback" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- 2) Dates & time -->
+  <section id="datesTime" class="panel">
+    <div class="panel__head">
+      <h2 class="h2">2) Dates, days & time (travel‑ready)</h2>
+      <p class="muted">US formats, writing dates, and polite scheduling.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3 class="h3">Mini rules</h3>
+        <ul class="bullets">
+          <li><strong>US date:</strong> <span class="mono">01/21/2026</span> = <em>January 21, 2026</em>.</li>
+          <li><strong>Write it:</strong> <em>Wednesday, January 21st</em> (in formal emails).</li>
+          <li><strong>At / on / in:</strong> <em>at 3:15</em>, <em>on Monday</em>, <em>in July</em>.</li>
+          <li><strong>a.m./p.m.:</strong> <em>7:00 a.m.</em> (morning), <em>7:00 p.m.</em> (evening).</li>
+          <li><strong>Polite scheduling:</strong> “Would 3 p.m. work for you?”</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" type="button" data-say="Would 3 p.m. work for you?">🔊 Listen</button>
+          <button class="btn btn--ghost" type="button" data-say="I arrive on Monday, January twenty-sixth at 7:10 p.m.">🔊 Example</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="h3">Quick practice (tap to build)</h3>
+        <div class="builder" data-builder="dates1"></div>
+        <div class="builder" data-builder="dates2"></div>
+        <div class="builder" data-builder="dates3"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) Polite requests -->
+  <section id="polite" class="panel">
+    <div class="panel__head">
+      <h2 class="h2">3) Asking politely (airport + hotel)</h2>
+      <p class="muted">Choose the best sentence. Instant feedback + retry.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3 class="h3">Key patterns</h3>
+        <div class="pattern">
+          <div class="pattern__row"><span class="tag">Request</span> <span class="mono">Could I + base verb…?</span> <button class="iconbtn" type="button" data-say="Could I have a room with a quiet view, please?">🔊</button></div>
+          <div class="pattern__row"><span class="tag">Very polite</span> <span class="mono">Would it be possible to…?</span> <button class="iconbtn" type="button" data-say="Would it be possible to check in early?">🔊</button></div>
+          <div class="pattern__row"><span class="tag">Softener</span> <span class="mono">Just / actually / a quick question…</span> <button class="iconbtn" type="button" data-say="Hi, I just have a quick question about the deposit.">🔊</button></div>
+          <div class="pattern__row"><span class="tag">Follow‑up</span> <span class="mono">If possible / when you have a moment…</span> <button class="iconbtn" type="button" data-say="When you have a moment, could you confirm the total?">🔊</button></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="h3">Polite choice quiz</h3>
+        <div id="politeQuiz"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) Airport flow -->
+  <section id="airportFlow" class="panel">
+    <div class="panel__head">
+      <h2 class="h2">4) SFO airport flow (mini‑situations)</h2>
+      <p class="muted">Immigration → baggage → directions → ride to hotel.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3 class="h3">Vocabulary (tap/flip)</h3>
+        <div class="deck deck--small" id="airportVocab"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="h3">Matching (Drag or Tap mode)</h3>
+        <div class="match" data-match="airportMatch"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="h3">Mini dialogue (fast speaking)</h3>
+      <div class="dialogue" id="airportMini"></div>
+    </div>
+  </section>
+
+  <!-- 5) Hotel flow -->
+  <section id="hotelFlow" class="panel">
+    <div class="panel__head">
+      <h2 class="h2">5) Hotel check‑in + requests + check‑out</h2>
+      <p class="muted">You’ll practise the whole stay in short chunks.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3 class="h3">Vocabulary (room & payments)</h3>
+        <div class="deck deck--small" id="hotelVocab"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="h3">Sentence order (tap tiles)</h3>
+        <div class="builder" data-builder="hotel1"></div>
+        <div class="builder" data-builder="hotel2"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="h3">Check‑out micro‑quiz</h3>
+      <div id="checkoutQuiz"></div>
+    </div>
+  </section>
+
+  <!-- 6) Roleplay Studio -->
+  <section id="roleplayStudio" class="panel panel--studio">
+    <div class="panel__head">
+      <h2 class="h2">6) Role‑play Studio (speaking mode)</h2>
+      <p class="muted">Click “Start scene”. You speak every turn. Use “Model answer” if needed.</p>
+    </div>
+
+    <div class="studioControls">
+      <label class="tool">
+        <span class="tool__label">Scene</span>
+        <select id="sceneSelect" class="tool__select"></select>
+      </label>
+      <button class="btn" type="button" id="startSceneBtn">Start scene</button>
+      <button class="btn btn--ghost" type="button" id="repeatModeBtn">Shadowing mode (listen → beep → you speak)</button>
+    </div>
+
+    <div class="scene" id="sceneBox" aria-live="polite"></div>
+  </section>
+
+  <!-- 7) Pro Mission -->
+  <section id="proMission" class="panel panel--mission">
+    <div class="panel__head">
+      <h2 class="h2">7) Pro Mission (finish strong)</h2>
+      <p class="muted">One confident call + one clean email. Your final “I’ve got this” moment.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3 class="h3">Call plan (you speak)</h3>
+        <ol class="steps">
+          <li>Greet + identify yourself.</li>
+          <li>Give dates/times clearly.</li>
+          <li>Make 2 polite requests (early check‑in / quiet room / late check‑out).</li>
+          <li>Confirm price + deposit.</li>
+          <li>Close politely.</li>
+        </ol>
+
+        <div class="row">
+          <button class="btn" type="button" id="callTimerBtn">🎙️ 60‑sec call timer</button>
+          <button class="btn btn--ghost" type="button" id="callModelBtn">Show model call</button>
+        </div>
+        <div class="callModel" id="callModel" hidden></div>
+      </div>
+
+      <div class="card">
+        <h3 class="h3">Email generator (copy/paste)</h3>
+        <div class="form">
+          <div class="row">
+            <label class="tool grow"><span class="tool__label">Your name</span><input id="fName" class="tool__input" type="text" placeholder="First + Last" /></label>
+            <label class="tool grow"><span class="tool__label">Hotel</span><input id="fHotel" class="tool__input" type="text" placeholder="Hotel name" /></label>
+          </div>
+          <div class="row">
+            <label class="tool grow"><span class="tool__label">Check‑in date</span><input id="fIn" class="tool__input" type="text" placeholder="Mon, Jan 26" /></label>
+            <label class="tool grow"><span class="tool__label">Check‑out date</span><input id="fOut" class="tool__input" type="text" placeholder="Thu, Jan 29" /></label>
+          </div>
+          <div class="row">
+            <label class="tool grow"><span class="tool__label">Arrival time</span><input id="fArr" class="tool__input" type="text" placeholder="around 7:10 p.m." /></label>
+            <label class="tool grow"><span class="tool__label">Requests</span><input id="fReq" class="tool__input" type="text" placeholder="early check‑in, quiet room, late check‑out" /></label>
+          </div>
+
+          <button class="btn" type="button" id="genEmailBtn">Generate email</button>
+          <button class="btn btn--ghost" type="button" id="copyEmailBtn" disabled>Copy</button>
+
+          <textarea id="emailOut" class="textarea" rows="10" placeholder="Your email will appear here…"></textarea>
+          <p class="tiny muted">Tip: click 🔊 to practise your email out loud.</p>
+          <button class="btn btn--small btn--ghost" type="button" id="emailSpeakBtn">🔊 Read my email</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="certificate" id="certificate" hidden>
+      <h3 class="h3">✅ Travel Pro: session complete</h3>
+      <p>You completed the key travel steps: airport arrival → hotel check‑in → requests → check‑out.</p>
+      <p class="muted tiny">Nice work. Save this page and reuse the role‑plays any time.</p>
+    </div>
+  </section>
+
+  <footer class="footerScore">
+    <div class="score score--bottom" aria-live="polite">
+      <div class="score__pill">Score: <strong id="scoreValue2">0</strong></div>
+      <div class="score__pill">Completed: <strong id="doneValue2">0</strong>/<span id="totalValue2">0</span></div>
+    </div>
+    <p class="tiny muted">SpeakEasyTisha • Works on Mac + iPad Safari • Drag OR Tap mode for games</p>
+  </footer>
+
+</main>
+
+<!-- Script loader with fallback for local testing -->
+<script>
+(function(){
+  function load(src, fallback){
+    var s=document.createElement('script');
+    s.src=src;
+    s.defer=true;
+    s.onerror=function(){
+      if(!fallback) return;
+      var s2=document.createElement('script');
+      s2.src=fallback;
+      s2.defer=true;
+      document.body.appendChild(s2);
+    };
+    document.body.appendChild(s);
+  }
+  load('/js/sfo-hotel-final-session.js','js/sfo-hotel-final-session.js');
+})();
+</script>
+</body>
+</html>
