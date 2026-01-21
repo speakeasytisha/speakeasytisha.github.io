@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Hotel Nikko SF • Present Simple & Present Continuous</title>
+  <meta name="description" content="Interactive lesson: Present Simple vs Present Continuous (Hotel Nikko San Francisco). Touch-friendly (Mac + iPad Safari)." />
+  <link rel="stylesheet" href="/css/nikko-present-simple-continuous.css" />
+  <link rel="stylesheet" href="css/nikko-present-simple-continuous.css" />
+</head>
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand" aria-label="SpeakEasyTisha">
+      <div class="brand__mark" aria-hidden="true">🏨</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Hotel Nikko SF • Present Simple & Present Continuous</div>
+      </div>
+    </div>
+
+    <div class="toolbar" role="group" aria-label="Lesson settings">
+      <label class="select">
+        <span class="select__label" data-i18n="accent">Accent</span>
+        <select id="accentSelect" aria-label="Accent">
+          <option value="us">US</option>
+          <option value="uk">UK</option>
+        </select>
+      </label>
+
+      <label class="select">
+        <span class="select__label" data-i18n="ui">UI</span>
+        <select id="uiLangSelect" aria-label="Interface language">
+          <option value="en">EN</option>
+          <option value="fr">FR</option>
+        </select>
+      </label>
+
+      <button class="btn btn--ghost" id="btnVoice" type="button" title="Test voice">🔊 <span data-i18n="testVoice">Test</span></button>
+      <button class="btn btn--danger" id="btnResetAll" type="button">⟲ <span data-i18n="reset">Reset</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero__left">
+      <h1>Present Simple vs Present Continuous</h1>
+      <p class="lead" data-i18n="heroLead">Learn the difference, then practice with hotel check‑in / concierge / housekeeping situations at Hotel Nikko (San Francisco).</p>
+
+      <div class="scorebar" aria-live="polite">
+        <div class="scorebar__row">
+          <div class="scorebar__label"><span data-i18n="score">Score</span>: <strong id="scoreTop">0</strong> / <span id="scoreMaxTop">0</span></div>
+          <div class="scorebar__label"><span data-i18n="streak">Streak</span>: <strong id="streakTop">0</strong></div>
+        </div>
+        <div class="progress" aria-hidden="true"><div class="progress__bar" id="progressTop"></div></div>
+      </div>
+
+      <div class="chips" aria-label="Quick tips">
+        <span class="chip">✅ <span data-i18n="chip1">Habits & facts → Present Simple</span></span>
+        <span class="chip">⏳ <span data-i18n="chip2">Right now / temporary → Present Continuous</span></span>
+        <span class="chip">📅 <span data-i18n="chip3">Schedules → Present Simple</span></span>
+      </div>
+    </div>
+
+    <div class="hero__right">
+      <div class="card">
+        <h2 class="card__title" data-i18n="howToUse">How to use this page</h2>
+        <ul class="bullets">
+          <li data-i18n="how1">Tap answers (or type) → then press <b>Check</b>.</li>
+          <li data-i18n="how2">You can retry until correct (best for learning).</li>
+          <li data-i18n="how3">Every activity is touch‑friendly for iPad Safari.</li>
+          <li data-i18n="how4">Use 🔊 to listen (US/UK). You can also copy the model sentences.</li>
+        </ul>
+        <div class="card__actions">
+          <a class="btn" href="#lesson" data-i18n="start">Start</a>
+          <a class="btn btn--ghost" href="#practice" data-i18n="jump">Jump to practice</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lesson" class="section">
+    <h2>1) Mini‑lesson</h2>
+
+    <div class="grid2">
+      <article class="card">
+        <h3 class="card__title">Present Simple</h3>
+        <p class="muted" data-i18n="psUse">Use it for habits, repeated actions, facts, and timetables.</p>
+        <div class="example">
+          <div class="example__title" data-i18n="examples">Examples</div>
+          <ul>
+            <li><button class="speak" type="button" data-say="The concierge works until 10 p.m.">🔊</button> The concierge <b>works</b> until 10 p.m.</li>
+            <li><button class="speak" type="button" data-say="Guests usually check out at noon.">🔊</button> Guests usually <b>check out</b> at noon.</li>
+            <li><button class="speak" type="button" data-say="Room service starts at 6 a.m.">🔊</button> Room service <b>starts</b> at 6 a.m.</li>
+          </ul>
+        </div>
+        <details>
+          <summary data-i18n="form">Form</summary>
+          <div class="note">
+            <p><b>I/You/We/They</b> + base verb: <i>I check</i></p>
+            <p><b>He/She/It</b> + <i>-s</i>: <i>She checks</i></p>
+            <p>Negative: <i>don’t / doesn’t</i> + base verb • Question: <i>Do / Does</i> + subject + base verb?</p>
+          </div>
+        </details>
+      </article>
+
+      <article class="card">
+        <h3 class="card__title">Present Continuous</h3>
+        <p class="muted" data-i18n="pcUse">Use it for actions happening now, temporary situations, or changing trends.</p>
+        <div class="example">
+          <div class="example__title" data-i18n="examples">Examples</div>
+          <ul>
+            <li><button class="speak" type="button" data-say="I am waiting at the front desk.">🔊</button> I <b>am waiting</b> at the front desk.</li>
+            <li><button class="speak" type="button" data-say="They are preparing your room now.">🔊</button> They <b>are preparing</b> your room now.</li>
+            <li><button class="speak" type="button" data-say="The hotel is renovating the lobby this week.">🔊</button> The hotel <b>is renovating</b> the lobby this week.</li>
+          </ul>
+        </div>
+        <details>
+          <summary data-i18n="form">Form</summary>
+          <div class="note">
+            <p><b>am / is / are</b> + verb‑ing: <i>She is checking in</i></p>
+            <p>Negative: <i>am not / isn’t / aren’t</i> + verb‑ing</p>
+            <p>Question: <i>Am / Is / Are</i> + subject + verb‑ing?</p>
+          </div>
+        </details>
+      </article>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3 class="card__title" data-i18n="pitfalls">Common pitfalls</h3>
+      <div class="grid3">
+        <div class="mini">
+          <div class="mini__title">⏱ Time expressions</div>
+          <p class="mini__text" data-i18n="timeExp">Often / usually / every day → Simple • Now / right now / this week → Continuous</p>
+        </div>
+        <div class="mini">
+          <div class="mini__title">🧠 Stative verbs</div>
+          <p class="mini__text" data-i18n="stative">Some verbs don’t normally use -ing (know, believe, like, need). Example: “I <b>need</b> a towel.”</p>
+        </div>
+        <div class="mini">
+          <div class="mini__title">📅 Schedules</div>
+          <p class="mini__text" data-i18n="schedule">For timetables: “The shuttle <b>leaves</b> at 7.” (Simple). For “arrangements”: “I’m <b>meeting</b> a client at 7.”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="practice" class="section">
+    <h2>2) Practice</h2>
+
+    <!-- Exercise 1: Choose the tense -->
+    <article class="card exercise" data-ex="mcq" id="ex1">
+      <div class="exercise__head">
+        <div>
+          <h3 class="exercise__title">A) Choose the correct tense</h3>
+          <p class="muted" data-i18n="mcqIntro">Tap the best option. You can retry until correct.</p>
+        </div>
+        <div class="exercise__actions">
+          <button class="btn btn--ghost" type="button" data-action="hint" data-target="ex1">💡 <span data-i18n="hint">Hint</span></button>
+          <button class="btn" type="button" data-action="check" data-target="ex1">✓ <span data-i18n="check">Check</span></button>
+          <button class="btn btn--ghost" type="button" data-action="reset" data-target="ex1">⟲ <span data-i18n="resetSmall">Reset</span></button>
+        </div>
+      </div>
+
+      <div class="exercise__body" id="mcqWrap" aria-label="Multiple choice questions">
+        <!-- JS injects questions -->
+      </div>
+
+      <div class="feedback" id="ex1Feedback" aria-live="polite"></div>
+      <div class="hint" id="ex1Hint" hidden></div>
+    </article>
+
+    <!-- Exercise 2: Word bank fill -->
+    <article class="card exercise" data-ex="bank" id="ex2">
+      <div class="exercise__head">
+        <div>
+          <h3 class="exercise__title">B) Fill the blanks (word bank)</h3>
+          <p class="muted" data-i18n="bankIntro">Tap a word, then tap a blank. Tap a filled blank to clear it.</p>
+        </div>
+        <div class="exercise__actions">
+          <button class="btn btn--ghost" type="button" data-action="hint" data-target="ex2">💡 <span data-i18n="hint">Hint</span></button>
+          <button class="btn" type="button" data-action="check" data-target="ex2">✓ <span data-i18n="check">Check</span></button>
+          <button class="btn btn--ghost" type="button" data-action="reset" data-target="ex2">⟲ <span data-i18n="resetSmall">Reset</span></button>
+        </div>
+      </div>
+
+      <div class="bank" aria-label="Word bank" id="bankWords"></div>
+      <div class="exercise__body" id="bankWrap"></div>
+      <div class="feedback" id="ex2Feedback" aria-live="polite"></div>
+      <div class="hint" id="ex2Hint" hidden></div>
+    </article>
+
+    <!-- Exercise 3: Sentence builder -->
+    <article class="card exercise" data-ex="builder" id="ex3">
+      <div class="exercise__head">
+        <div>
+          <h3 class="exercise__title">C) Sentence builder (tap to build)</h3>
+          <p class="muted" data-i18n="builderIntro">Tap tiles to build the sentence in order. Tap a tile in your sentence to remove it.</p>
+        </div>
+        <div class="exercise__actions">
+          <button class="btn btn--ghost" type="button" data-action="hint" data-target="ex3">💡 <span data-i18n="hint">Hint</span></button>
+          <button class="btn" type="button" data-action="check" data-target="ex3">✓ <span data-i18n="check">Check</span></button>
+          <button class="btn btn--ghost" type="button" data-action="reset" data-target="ex3">⟲ <span data-i18n="resetSmall">Reset</span></button>
+        </div>
+      </div>
+
+      <div class="exercise__body" id="builderWrap"></div>
+      <div class="feedback" id="ex3Feedback" aria-live="polite"></div>
+      <div class="hint" id="ex3Hint" hidden></div>
+    </article>
+
+    <!-- Exercise 4: Dialogue builder -->
+    <article class="card exercise" data-ex="dialogue" id="ex4">
+      <div class="exercise__head">
+        <div>
+          <h3 class="exercise__title">D) Mini dialogue (front desk)</h3>
+          <p class="muted" data-i18n="dialogueIntro">Complete the dialogue with the correct tense. Then listen and practice aloud.</p>
+        </div>
+        <div class="exercise__actions">
+          <button class="btn btn--ghost" type="button" data-action="hint" data-target="ex4">💡 <span data-i18n="hint">Hint</span></button>
+          <button class="btn" type="button" data-action="check" data-target="ex4">✓ <span data-i18n="check">Check</span></button>
+          <button class="btn btn--ghost" type="button" data-action="reset" data-target="ex4">⟲ <span data-i18n="resetSmall">Reset</span></button>
+        </div>
+      </div>
+
+      <div class="exercise__body" id="dialogueWrap"></div>
+      <div class="feedback" id="ex4Feedback" aria-live="polite"></div>
+      <div class="hint" id="ex4Hint" hidden></div>
+    </article>
+
+    <!-- Speaking prompts -->
+    <article class="card" id="speakPractice">
+      <div class="exercise__head">
+        <div>
+          <h3 class="exercise__title">E) Speaking practice (no score)</h3>
+          <p class="muted" data-i18n="speakingIntro">Use the prompts. Press 🔊 to hear a model sentence, then repeat.</p>
+        </div>
+        <div class="exercise__actions">
+          <button class="btn btn--ghost" type="button" id="btnShufflePrompts">🔀 <span data-i18n="shuffle">Shuffle</span></button>
+        </div>
+      </div>
+
+      <div class="promptGrid" id="promptGrid"></div>
+    </article>
+
+    <!-- Vocabulary flashcards -->
+    <article class="card" id="vocabSection">
+      <div class="exercise__head">
+        <div>
+          <h3 class="exercise__title" data-i18n="vocabTitle">F) Hotel vocabulary flashcards (tap to flip)</h3>
+          <p class="muted" data-i18n="vocabIntro">Use the filters (Room / Hotel / Amenities / Prepositions / Floors). Tap a card to flip. Tap 🔊 to listen.</p>
+        </div>
+        <div class="exercise__actions">
+          <button class="btn btn--ghost" type="button" id="btnVocabReset">⟲ <span data-i18n="resetCards">Reset cards</span></button>
+        </div>
+      </div>
+      <div class="vocabFilters" id="vocabFilters" aria-label="Vocabulary filters"></div>
+      <div class="vocabGrid" id="vocabGrid" aria-label="Vocabulary flashcards"></div>
+    </article>
+
+
+  </section>
+
+  <section class="section">
+    <div class="scorebar" aria-live="polite">
+      <div class="scorebar__row">
+        <div class="scorebar__label"><span data-i18n="score">Score</span>: <strong id="scoreBottom">0</strong> / <span id="scoreMaxBottom">0</span></div>
+        <div class="scorebar__label"><span data-i18n="streak">Streak</span>: <strong id="streakBottom">0</strong></div>
+      </div>
+      <div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBottom"></div></div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2 class="card__title" data-i18n="wrapUp">Wrap‑up</h2>
+      <ol class="bullets">
+        <li data-i18n="wrap1">Use Present Simple for habits/facts/timetables.</li>
+        <li data-i18n="wrap2">Use Present Continuous for now/temporary/change.</li>
+        <li data-i18n="wrap3">When in doubt, add a time expression (usually / right now) to clarify.</li>
+      </ol>
+      <div class="card__actions">
+        <a class="btn" href="#top">↑ <span data-i18n="backTop">Back to top</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <span>© SpeakEasyTisha</span>
+    <span class="sep" aria-hidden="true">•</span>
+    <span data-i18n="footer">Touch‑friendly • Mac & iPad Safari</span>
+  </div>
+</footer>
+
+<noscript>
+  <div class="noscript">This lesson needs JavaScript enabled.</div>
+</noscript>
+
+<script src="/js/nikko-present-simple-continuous.js" onerror="this.onerror=null;this.src='js/nikko-present-simple-continuous.js';"></script>
+</body>
+</html>

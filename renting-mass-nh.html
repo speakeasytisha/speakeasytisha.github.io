@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Renting a Home (MA & NH) • Step-by-step + Grammar + Writing</title>
+  <link rel="stylesheet" href="/css/renting-mass-nh.css" />
+  <link rel="stylesheet" href="css/renting-mass-nh.css" />
+</head>
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">🏠</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Renting a Home in Massachusetts & New Hampshire</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Language</span>
+        <button class="pill__btn" id="langEn" type="button" aria-pressed="true">EN</button>
+        <button class="pill__btn" id="langFr" type="button" aria-pressed="false">FR</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="pill__btn" id="voiceUS" type="button" aria-pressed="true">US</button>
+        <button class="pill__btn" id="voiceUK" type="button" aria-pressed="false">UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Mode</span>
+        <button class="pill__btn" id="modeDrag" type="button" aria-pressed="true">Drag</button>
+        <button class="pill__btn" id="modeTap" type="button" aria-pressed="false">Tap</button>
+      </div>
+
+      <button class="btn btn--ghost" id="btnResetAll" type="button" title="Reset score + all activities">Reset</button>
+    </div>
+  </div>
+
+  <div class="scorebar" role="status" aria-live="polite">
+    <div class="scorebar__left">
+      <span class="badge" id="scoreBadge">Score: 0</span>
+      <span class="badge" id="streakBadge">Streak: 0</span>
+      <span class="badge" id="savedBadge">Saved ✓</span>
+    </div>
+    <div class="scorebar__right">
+      <a class="link" href="#steps">Steps</a>
+      <a class="link" href="#vocab">Vocab</a>
+      <a class="link" href="#grammar">Grammar</a>
+      <a class="link" href="#writing">Writing</a>
+      <a class="link" href="#practice">Practice</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="hero__card">
+      <h1 id="t_title">Renting a Home in MA & NH (for a French family moving to the USA)</h1>
+      <p class="lead" id="t_lead">
+        Step-by-step setup, key vocabulary, polite communication, dates & times, and realistic rental scenarios.
+        Everything here works with <strong>drag OR tap</strong> so it’s iPad-friendly.
+      </p>
+      <div class="notice" role="note">
+        <strong id="t_disclaimerTitle">Note</strong>
+        <span id="t_disclaimer">
+          This is educational language practice, not legal advice. Rules can change and local policies vary.
+        </span>
+      </div>
+      <div class="hero__actions">
+        <button class="btn" id="btnQuickStart" type="button">Start the checklist</button>
+        <button class="btn btn--ghost" id="btnTestVoice" type="button">Test voice</button>
+        <span class="ttsStatus" id="ttsStatus" role="status" aria-live="polite">Voice: loading…</span>
+        <button class="btn btn--ghost" id="btnPrint" type="button">Print</button>
+      </div>
+    </div>
+
+    <div class="hero__card hero__side">
+      <h2 id="t_fastFactsTitle">Fast facts (MA vs NH)</h2>
+      <ul class="bullets" id="fastFacts">
+        <!-- filled by JS -->
+      </ul>
+      <div class="mini" id="t_fastFactsFoot">(Always verify the latest rules for your city/town.)</div>
+    </div>
+  </section>
+
+  <section class="grid2" id="steps">
+    <div class="card">
+      <div class="card__head">
+        <h2 id="t_stepsTitle">1) Step-by-step guide (checklist)</h2>
+        <div class="chiprow">
+          <span class="chip">✅ check</span>
+          <span class="chip">🧾 documents</span>
+          <span class="chip">📅 dates & time</span>
+          <span class="chip">✉️ emails</span>
+        </div>
+      </div>
+      <p class="muted" id="t_stepsIntro">Tap each phase to reveal tasks. Your progress saves automatically.</p>
+
+      <div class="tabs" role="tablist" aria-label="Steps">
+        <button class="tab" id="tab_pre" role="tab" aria-selected="true" type="button">Pre-arrival</button>
+        <button class="tab" id="tab_search" role="tab" aria-selected="false" type="button">Search</button>
+        <button class="tab" id="tab_apply" role="tab" aria-selected="false" type="button">Apply</button>
+        <button class="tab" id="tab_lease" role="tab" aria-selected="false" type="button">Lease</button>
+        <button class="tab" id="tab_move" role="tab" aria-selected="false" type="button">Move-in</button>
+        <button class="tab" id="tab_after" role="tab" aria-selected="false" type="button">After</button>
+      </div>
+
+      <div class="panel" id="stepsPanel" role="tabpanel" aria-labelledby="tab_pre">
+        <!-- filled by JS -->
+      </div>
+
+      <div class="row">
+        <button class="btn btn--ghost" id="btnExportChecklist" type="button">Copy checklist</button>
+        <button class="btn btn--ghost" id="btnResetChecklist" type="button">Reset checklist</button>
+      </div>
+      <div class="feedback" id="checklistMsg" aria-live="polite"></div>
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h2 id="t_toolsTitle">2) Tools & safety</h2>
+      </div>
+
+      <div class="callouts">
+        <div class="callout">
+          <h3>🧠 <span id="t_docsTitle">Documents you may need</span></h3>
+          <ul class="bullets" id="docsList"></ul>
+        </div>
+        <div class="callout">
+          <h3>🛡️ <span id="t_scamsTitle">Avoid scams</span></h3>
+          <ul class="bullets" id="scamsList"></ul>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <h3 id="t_timeTitle">Dates & time quick reference</h3>
+      <div class="mini-grid">
+        <div class="miniCard">
+          <div class="miniCard__title" id="t_dateFormat">US date format</div>
+          <div class="miniCard__body">
+            <div class="mono">MM/DD/YYYY</div>
+            <div class="muted" id="t_dateExample">Example: 02/01/2026 = February 1, 2026</div>
+          </div>
+        </div>
+        <div class="miniCard">
+          <div class="miniCard__title" id="t_timeFormat">Time format</div>
+          <div class="miniCard__body">
+            <div class="mono">9:30 a.m. / 6:15 p.m.</div>
+            <div class="muted" id="t_timeExample">You’ll see 12-hour time a lot in the US.</div>
+          </div>
+        </div>
+        <div class="miniCard">
+          <div class="miniCard__title" id="t_prepositions">Prepositions</div>
+          <div class="miniCard__body">
+            <div class="mono">on Monday • at 3 p.m. • in March</div>
+            <div class="muted" id="t_prepoExample">Useful for scheduling viewings.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <h3 id="t_microLessonTitle">Mini lesson: polite renting phrases</h3>
+      <p class="muted" id="t_microLessonIntro">Use softeners to sound friendly and professional.</p>
+      <div class="phrasebox" id="phraseBox"></div>
+    </div>
+  </section>
+
+  <section class="card" id="vocab">
+    <div class="card__head">
+      <h2 id="t_vocabTitle">3) Vocabulary flashcards (with icons + audio)</h2>
+      <div class="row row--tight">
+        <label class="field">
+          <span class="field__label" id="t_category">Category</span>
+          <select id="vocabCategory" class="select"></select>
+        </label>
+        <button class="btn btn--ghost" id="btnVocabShuffle" type="button">Shuffle</button>
+      </div>
+    </div>
+
+    <div class="flash">
+      <div class="flash__card" id="flashCard" tabindex="0" role="button" aria-label="Flashcard (tap to flip)">
+        <div class="flash__face flash__front" id="flashFront"></div>
+        <div class="flash__face flash__back" id="flashBack"></div>
+      </div>
+
+      <div class="flash__controls">
+        <button class="btn" id="btnPrev" type="button">◀ Prev</button>
+        <button class="btn" id="btnFlip" type="button">Flip</button>
+        <button class="btn" id="btnNext" type="button">Next ▶</button>
+        <button class="btn btn--ghost" id="btnSpeakFront" type="button">🔊 Front</button>
+        <button class="btn btn--ghost" id="btnSpeakBack" type="button">🔊 Back</button>
+      </div>
+
+      <div class="mini" id="flashMeta">Card 1 / 1</div>
+    </div>
+  </section>
+
+  <section class="grid2" id="grammar">
+
+    <div class="card">
+      <div class="card__head">
+        <h2 id="t_grammarTitle">4) Grammar you need for renting</h2>
+      </div>
+
+      <div class="accordion">
+        <button class="acc" type="button" aria-expanded="true" aria-controls="g1">A) Polite requests (Could/Would/Can/May)</button>
+        <div class="acc__panel" id="g1">
+          <div class="rule">
+            <h3 id="t_politeRuleTitle">Rules</h3>
+            <ul class="bullets" id="politeRules"></ul>
+          </div>
+          <div class="examples" id="politeExamples"></div>
+        </div>
+
+        <button class="acc" type="button" aria-expanded="false" aria-controls="g2">B) Dates, days, time + prepositions (on / at / in)</button>
+        <div class="acc__panel" id="g2" hidden>
+          <div class="rule">
+            <ul class="bullets" id="dateRules"></ul>
+          </div>
+          <div class="examples" id="dateExamples"></div>
+        </div>
+
+        <button class="acc" type="button" aria-expanded="false" aria-controls="g3">C) Asking questions (Do you…? Is… included? How much…?)</button>
+        <div class="acc__panel" id="g3" hidden>
+          <div class="rule">
+            <ul class="bullets" id="questionRules"></ul>
+          </div>
+          <div class="examples" id="questionExamples"></div>
+        </div>
+
+        <button class="acc" type="button" aria-expanded="false" aria-controls="g4">D) Comparatives (cheaper, more expensive, closer)</button>
+        <div class="acc__panel" id="g4" hidden>
+          <div class="rule">
+            <ul class="bullets" id="compRules"></ul>
+          </div>
+          <div class="examples" id="compExamples"></div>
+        </div>
+
+        <button class="acc" type="button" aria-expanded="false" aria-controls="g5">E) Must / have to / allowed to (rules & buildings)</button>
+        <div class="acc__panel" id="g5" hidden>
+          <div class="rule">
+            <ul class="bullets" id="modalRules"></ul>
+          </div>
+          <div class="examples" id="modalExamples"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="practice">
+      <div class="card__head">
+        <h2 id="t_practiceTitle">5) Practice zone (interactive exercises)</h2>
+        <div class="mini" id="t_practiceIntro">Each activity gives hints + instant feedback + points.</div>
+      </div>
+
+      <div class="exercise" id="ex_mcq_polite">
+        <h3>🎯 <span id="t_mcqPolite">Choose the most polite option</span></h3>
+        <div class="muted" id="t_mcqPoliteInstr">Select the best sentence for a landlord/agent email.</div>
+        <div id="mcqPolite"></div>
+        <div class="row row--tight">
+          <button class="btn" id="btnCheckMcqPolite" type="button">Check</button>
+          <button class="btn btn--ghost" id="btnHintMcqPolite" type="button">Hint</button>
+          <button class="btn btn--ghost" id="btnResetMcqPolite" type="button">Reset</button>
+        </div>
+        <div class="feedback" id="msgMcqPolite" aria-live="polite"></div>
+      </div>
+
+      <div class="exercise" id="ex_match_fees">
+        <h3>🧾 <span id="t_matchFees">Match the money terms</span></h3>
+        <div class="muted" id="t_matchFeesInstr">Drag or tap a term onto the correct meaning.</div>
+        <div class="match" id="matchFees"></div>
+        <div class="row row--tight">
+          <button class="btn" id="btnCheckMatchFees" type="button">Check</button>
+          <button class="btn btn--ghost" id="btnHintMatchFees" type="button">Hint</button>
+          <button class="btn btn--ghost" id="btnResetMatchFees" type="button">Reset</button>
+        </div>
+        <div class="feedback" id="msgMatchFees" aria-live="polite"></div>
+      </div>
+
+      <div class="exercise" id="ex_fill_dates">
+        <h3>📅 <span id="t_fillDates">Fill in: dates & time</span></h3>
+        <div class="muted" id="t_fillDatesInstr">Use the word bank. Example: “on Tuesday”, “at 4 p.m.”</div>
+        <div class="wordbank" id="bankDates"></div>
+        <div class="fill" id="fillDates"></div>
+        <div class="row row--tight">
+          <button class="btn" id="btnCheckFillDates" type="button">Check</button>
+          <button class="btn btn--ghost" id="btnHintFillDates" type="button">Hint</button>
+          <button class="btn btn--ghost" id="btnResetFillDates" type="button">Reset</button>
+        </div>
+        <div class="feedback" id="msgFillDates" aria-live="polite"></div>
+      </div>
+
+      <div class="exercise" id="ex_sentence_builder">
+        <h3>🧩 <span id="t_sentenceBuilder">Sentence builder (word order)</span></h3>
+        <div class="muted" id="t_sentenceBuilderInstr">Tap words to build the sentence in order.</div>
+        <div class="builder" id="builder"></div>
+        <div class="row row--tight">
+          <button class="btn" id="btnCheckBuilder" type="button">Check</button>
+          <button class="btn btn--ghost" id="btnHintBuilder" type="button">Hint</button>
+          <button class="btn btn--ghost" id="btnResetBuilder" type="button">Reset</button>
+        </div>
+        <div class="feedback" id="msgBuilder" aria-live="polite"></div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="grid2" id="writing">
+    <div class="card">
+      <div class="card__head">
+        <h2 id="t_writingTitle">6) Writing: rental emails & letters</h2>
+      </div>
+
+      <div class="exercise" id="ex_letter_parts">
+        <h3>✉️ <span id="t_letterParts">Parts of an email (reorder)</span></h3>
+        <div class="muted" id="t_letterPartsInstr">Drag to reorder (or use ↑ ↓ buttons). Then check.</div>
+        <div id="letterParts"></div>
+        <div class="row row--tight">
+          <button class="btn" id="btnCheckLetterParts" type="button">Check</button>
+          <button class="btn btn--ghost" id="btnHintLetterParts" type="button">Hint</button>
+          <button class="btn btn--ghost" id="btnResetLetterParts" type="button">Reset</button>
+        </div>
+        <div class="feedback" id="msgLetterParts" aria-live="polite"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="exercise" id="ex_email_builder">
+        <h3>📝 <span id="t_emailBuilder">Email builder (copy/paste)</span></h3>
+        <div class="muted" id="t_emailBuilderInstr">Choose a scenario, fill your details, and generate a polished email.</div>
+
+        <div class="form">
+          <label class="field">
+            <span class="field__label" id="t_scenario">Scenario</span>
+            <select id="emailScenario" class="select"></select>
+          </label>
+
+          <div class="form__grid">
+            <label class="field"><span class="field__label" id="t_name">Name</span><input id="f_name" class="input" placeholder="Marie Dupont" /></label>
+            <label class="field"><span class="field__label" id="t_phone">Phone</span><input id="f_phone" class="input" placeholder="+33 … / US number" /></label>
+            <label class="field"><span class="field__label" id="t_moveIn">Move-in date</span><input id="f_movein" class="input" placeholder="02/01/2026" /></label>
+            <label class="field"><span class="field__label" id="t_budget">Budget</span><input id="f_budget" class="input" placeholder="$2,800 / month" /></label>
+            <label class="field"><span class="field__label" id="t_location">Area</span><input id="f_area" class="input" placeholder="Cambridge, MA / Nashua, NH" /></label>
+            <label class="field"><span class="field__label" id="t_questions">Your questions (optional)</span><input id="f_questions" class="input" placeholder="pets, parking, utilities…" /></label>
+          </div>
+
+          <div class="row">
+            <button class="btn" id="btnBuildEmail" type="button">Generate</button>
+            <button class="btn btn--ghost" id="btnCopyEmail" type="button">Copy</button>
+            <button class="btn btn--ghost" id="btnSpeakEmail" type="button">🔊 Read aloud</button>
+          </div>
+
+          <textarea id="emailOutput" class="textarea" rows="10" spellcheck="false"></textarea>
+          <div class="feedback" id="msgEmail" aria-live="polite"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h2 id="t_dialogueTitle">7) Dialogue practice (realistic scenarios)</h2>
+      </div>
+
+      <div class="exercise" id="ex_dialogue">
+        <div class="muted" id="t_dialogueIntro">Choose the best next line. You can listen to each line.</div>
+        <div class="dialogue" id="dialogue"></div>
+        <div class="row row--tight">
+          <button class="btn" id="btnNextDialogue" type="button">Next</button>
+          <button class="btn btn--ghost" id="btnResetDialogue" type="button">Reset</button>
+        </div>
+        <div class="feedback" id="msgDialogue" aria-live="polite"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <h3 id="t_readingTitle">Reading: sample listing</h3>
+      <div class="reading" id="reading"></div>
+      <div class="row row--tight">
+        <button class="btn" id="btnCheckReading" type="button">Check</button>
+        <button class="btn btn--ghost" id="btnResetReading" type="button">Reset</button>
+      </div>
+      <div class="feedback" id="msgReading" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card" id="bottomScore">
+    <div class="card__head">
+      <h2 id="t_wrapTitle">Wrap-up</h2>
+    </div>
+    <p class="muted" id="t_wrapText">Repeat activities until you can write and speak confidently with landlords, property managers, and brokers.</p>
+    <div class="row">
+      <span class="badge" id="scoreBadgeBottom">Score: 0</span>
+      <span class="badge" id="streakBadgeBottom">Streak: 0</span>
+      <a class="btn btn--ghost" href="#top">Back to top</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="mini">© SpeakEasyTisha • Interactive lesson • Works on Mac + iPad Safari (drag OR tap)</div>
+  </div>
+</footer>
+
+<script src="/js/renting-mass-nh.js" onerror="this.onerror=null;this.src='js/renting-mass-nh.js';"></script>
+</body>
+</html>

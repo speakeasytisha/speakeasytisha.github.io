@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • School Communication Grammar (Polite requests • Dates • Time • Letters)</title>
+  <link rel="stylesheet" href="/css/school-communication-grammar.css" />
+  <link rel="stylesheet" href="css/school-communication-grammar.css" />
+</head>
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">✦</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">School communication grammar · Polite requests · Dates · Time · Letters</div>
+      </div>
+    </div>
+
+    <div class="controls" role="group" aria-label="Lesson controls">
+      <div class="pill">
+        <span class="pill__label">Accent</span>
+        <button class="seg" id="accentUS" type="button" aria-pressed="true">American (US)</button>
+        <button class="seg" id="accentUK" type="button" aria-pressed="false">British (UK)</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">French help</span>
+        <button class="seg" id="helpOff" type="button" aria-pressed="true">Off</button>
+        <button class="seg" id="helpOn" type="button" aria-pressed="false">On (tips + vocab)</button>
+      </div>
+
+      <button class="btn" id="testVoice" type="button">Test voice</button>
+      <div class="ttsStatus" id="ttsStatus" role="status" aria-live="polite">Voice: loading…</div>
+    </div>
+  </div>
+
+  <div class="scorebar" aria-live="polite">
+    <div class="scorebar__label">Score</div>
+    <div class="scorebar__value"><span id="scoreTop">0</span> pts</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero card">
+    <h1>Talk to US schools confidently (and politely)</h1>
+    <p>
+      This interactive grammar + writing lesson is a companion to:
+      <a href="https://speakeasytisha.github.io/school-systems-usa" target="_blank" rel="noopener">US School Systems (MA & NH)</a>
+      and
+      <a href="https://speakeasytisha.github.io/school-support-ell-iep" target="_blank" rel="noopener">School Support (ELL/IEP/504)</a>.
+      It focuses on the language families need most: <strong>polite requests</strong>, <strong>dates</strong>, <strong>days</strong>, <strong>time</strong>, and <strong>emails/letters</strong>.
+    </p>
+    <ul class="checks">
+      <li>Works on iPad/Mac/PC/Phone</li>
+      <li>Instant feedback + hints</li>
+      <li>Drag <em>or</em> Tap mode for all drag activities</li>
+      <li>Text-to-Speech (US/UK)</li>
+      <li>Global score saved in your browser</li>
+    </ul>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#polite">Start: Asking politely</a>
+      <button class="btn" id="resetAllTop" type="button">Reset lesson</button>
+      <button class="btn" id="printBtnTop" type="button">Print</button>
+    </div>
+
+    <div class="notice" role="note">
+      <strong>Real-life note:</strong> District rules vary. This lesson gives you the language patterns and a practical writing toolkit.
+    </div>
+  </section>
+
+  <nav class="toc card" aria-label="Lesson navigation">
+    <a href="#polite">1) Asking politely</a>
+    <a href="#dates">2) Dates, days & time</a>
+    <a href="#letters">3) Emails & letters</a>
+    <a href="#practice">4) Mini practice kit (real scenarios)</a>
+  </nav>
+
+  <!-- 1) Polite requests -->
+  <section id="polite" class="card">
+    <div class="sectionHead">
+      <h2>1) Asking politely (school office English)</h2>
+      <div class="sectionHead__right">
+        <button class="btn btn--small" data-say="politeSummary" type="button">Listen (summary)</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <h3>Key rules</h3>
+        <ul class="bullets">
+          <li><strong>Use modals</strong> for polite requests: <em>Could / Would / May</em> + subject + base verb.</li>
+          <li><strong>Use softeners</strong>: <em>please</em>, <em>just</em>, <em>a quick</em>, <em>when you have a moment</em>.</li>
+          <li><strong>Use indirect questions</strong> to sound calmer: <em>I was wondering if…</em>, <em>Could you tell me…</em></li>
+          <li><strong>Say why</strong> (briefly): <em>because we’re moving from France</em>, <em>to register my child</em>.</li>
+        </ul>
+
+        <div class="examples">
+          <div class="exRow">
+            <span class="tag">Very polite</span>
+            <div class="exText">Would it be possible to schedule an enrollment appointment for next week?</div>
+            <button class="iconBtn" data-say="Would it be possible to schedule an enrollment appointment for next week?" aria-label="Listen" type="button">🔊</button>
+          </div>
+          <div class="exRow">
+            <span class="tag">Polite</span>
+            <div class="exText">Could you please tell me which documents we need to register?</div>
+            <button class="iconBtn" data-say="Could you please tell me which documents we need to register?" aria-label="Listen" type="button">🔊</button>
+          </div>
+          <div class="exRow">
+            <span class="tag">Simple</span>
+            <div class="exText">Can I make an appointment with the registrar?</div>
+            <button class="iconBtn" data-say="Can I make an appointment with the registrar?" aria-label="Listen" type="button">🔊</button>
+          </div>
+          <p class="help help--fr" data-help>
+            <strong>Aide (FR):</strong> <em>Could/Would</em> = plus poli que <em>Can</em>. <em>May</em> est très formel.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Mini lesson: Can / Could / Would / May</h3>
+        <div class="tableWrap">
+          <table class="miniTable" aria-label="Modals for polite requests">
+            <thead>
+              <tr><th>Form</th><th>When to use</th><th>Example</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Can I…?</strong></td>
+                <td>Friendly / direct</td>
+                <td>Can I speak to the registrar?</td>
+              </tr>
+              <tr>
+                <td><strong>Could I…?</strong></td>
+                <td>More polite / softer</td>
+                <td>Could I schedule a school tour?</td>
+              </tr>
+              <tr>
+                <td><strong>Would you…?</strong></td>
+                <td>Polite request to someone</td>
+                <td>Would you email me the registration forms?</td>
+              </tr>
+              <tr>
+                <td><strong>May I…?</strong></td>
+                <td>Very formal</td>
+                <td>May I request an interpreter for meetings?</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="exercise" id="ex_polite_mcq">
+          <div class="exercise__head">
+            <h4>Exercise A · Choose the most polite option</h4>
+            <div class="exercise__meta">Instant feedback · <span class="pts">+2 pts</span> each</div>
+          </div>
+          <div class="exercise__body">
+            <div class="mcq" id="politeMcq"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" id="ex_polite_builder">
+      <div class="exercise__head">
+        <h4>Exercise B · Sentence builder (Drag or Tap)</h4>
+        <div class="exercise__meta">Build a polite request you could say to a school · <span class="pts">+5 pts</span></div>
+      </div>
+      <div class="exercise__body">
+        <p class="muted">On touch devices: tap a tile → tap the sentence box. On desktop: drag & drop.</p>
+        <div class="builder" data-builder>
+          <div class="tiles" id="politeTiles" aria-label="Word tiles"></div>
+          <div class="dropzone" id="politeSentence" aria-label="Sentence box" role="group"></div>
+          <div class="builder__actions">
+            <button class="btn btn--small" data-hint="politeHint" type="button">Hint</button>
+            <button class="btn btn--small btn--primary" data-check="politeCheck" type="button">Check</button>
+            <button class="btn btn--small" data-reset="politeReset" type="button">Reset</button>
+            <button class="btn btn--small" data-say="politePlay" type="button">Listen</button>
+          </div>
+          <div class="hint" id="politeHint" hidden></div>
+          <div class="feedback" id="politeFeedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 2) Dates, days & time -->
+  <section id="dates" class="card">
+    <div class="sectionHead">
+      <h2>2) Dates, days & time (US vs France)</h2>
+      <div class="sectionHead__right">
+        <button class="btn btn--small" data-say="datesSummary" type="button">Listen (summary)</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <h3>Rules you will use in emails</h3>
+        <ul class="bullets">
+          <li><strong>US numeric dates:</strong> <em>month/day/year</em> → 01/20/2026.</li>
+          <li><strong>Write dates clearly:</strong> <em>January 20, 2026</em> (recommended in emails).</li>
+          <li><strong>Prepositions:</strong> <em>on</em> + day/date, <em>in</em> + month/season/year, <em>at</em> + time.</li>
+          <li><strong>Time:</strong> 12-hour (a.m./p.m.) is common. Schools often write <em>8:30 a.m.</em></li>
+        </ul>
+        <div class="examples">
+          <div class="exRow">
+            <span class="tag">On</span>
+            <div class="exText">on Monday · on January 20 · on the first day of school</div>
+            <button class="iconBtn" data-say="We can meet on Monday." aria-label="Listen" type="button">🔊</button>
+          </div>
+          <div class="exRow">
+            <span class="tag">In</span>
+            <div class="exText">in September · in 2026 · in the morning</div>
+            <button class="iconBtn" data-say="We are arriving in September." aria-label="Listen" type="button">🔊</button>
+          </div>
+          <div class="exRow">
+            <span class="tag">At</span>
+            <div class="exText">at 9:00 a.m. · at noon · at lunchtime</div>
+            <button class="iconBtn" data-say="Could we meet at nine o'clock?" aria-label="Listen" type="button">🔊</button>
+          </div>
+          <p class="help help--fr" data-help>
+            <strong>Aide (FR):</strong> <em>on</em> = jour/date ; <em>in</em> = mois/annee/periode ; <em>at</em> = heure.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Quick formatter (practice)</h3>
+        <div class="exercise" id="ex_date_format">
+          <div class="exercise__head">
+            <h4>Exercise C · Format a date for a US email</h4>
+            <div class="exercise__meta"><span class="pts">+6 pts</span></div>
+          </div>
+          <div class="exercise__body">
+            <label class="field">
+              <span>Enter a date (French style: <strong>dd/mm/yyyy</strong>)</span>
+              <input id="dateInput" type="text" inputmode="numeric" placeholder="e.g., 20/01/2026" />
+            </label>
+            <div class="row">
+              <button class="btn btn--primary" id="dateConvert" type="button">Convert</button>
+              <button class="btn" id="dateReset" type="button">Reset</button>
+              <button class="btn" id="dateListen" type="button">Listen</button>
+            </div>
+            <div class="result" id="dateResult" aria-live="polite"></div>
+            <div class="hint" id="dateHint" hidden>
+              Tip: In US emails, write it in words: <em>January 20, 2026</em>.
+            </div>
+            <button class="btn btn--small" id="dateShowHint" type="button">Hint</button>
+          </div>
+        </div>
+
+        <div class="exercise" id="ex_time_mcq">
+          <div class="exercise__head">
+            <h4>Exercise D · Choose the correct preposition</h4>
+            <div class="exercise__meta">on / in / at · <span class="pts">+2 pts</span> each</div>
+          </div>
+          <div class="exercise__body">
+            <div class="mcq" id="timeMcq"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="exercise" id="ex_schedule">
+      <div class="exercise__head">
+        <h4>Exercise E · Schedule an appointment (realistic)</h4>
+        <div class="exercise__meta">Build a polite email line with day + time · <span class="pts">+8 pts</span></div>
+      </div>
+      <div class="exercise__body">
+        <div class="grid2">
+          <div>
+            <label class="field">
+              <span>Choose a day</span>
+              <select id="daySelect">
+                <option value="">Select…</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Choose a time</span>
+              <select id="timeSelect">
+                <option value="">Select…</option>
+                <option value="9:00 a.m.">9:00 a.m.</option>
+                <option value="10:30 a.m.">10:30 a.m.</option>
+                <option value="1:00 p.m.">1:00 p.m.</option>
+                <option value="3:15 p.m.">3:15 p.m.</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Choose a polite structure</span>
+              <select id="structureSelect">
+                <option value="">Select…</option>
+                <option value="Could we schedule an appointment">Could we schedule an appointment</option>
+                <option value="Would it be possible to meet">Would it be possible to meet</option>
+                <option value="Could you please confirm a meeting">Could you please confirm a meeting</option>
+              </select>
+            </label>
+            <div class="row">
+              <button class="btn btn--primary" id="scheduleBuild" type="button">Build sentence</button>
+              <button class="btn" id="scheduleReset" type="button">Reset</button>
+              <button class="btn" id="scheduleListen" type="button">Listen</button>
+            </div>
+          </div>
+          <div>
+            <div class="result" id="scheduleResult" aria-live="polite">Pick options, then build your sentence.</div>
+            <p class="help help--fr" data-help>
+              <strong>Aide (FR):</strong> Le plus naturel est: <em>on Monday at 10:30 a.m.</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 3) Emails & letters -->
+  <section id="letters" class="card">
+    <div class="sectionHead">
+      <h2>3) Emails & letters (structure + practice)</h2>
+      <div class="sectionHead__right">
+        <button class="btn btn--small" data-say="lettersSummary" type="button">Listen (summary)</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <h3>Typical structure (formal / school office)</h3>
+        <ol class="steps">
+          <li><strong>Subject</strong> (clear): <em>Enrollment appointment request</em></li>
+          <li><strong>Greeting</strong>: <em>Dear Registrar,</em> / <em>Hello,</em></li>
+          <li><strong>Opening line</strong>: <em>I hope you are well.</em> (optional)</li>
+          <li><strong>Purpose</strong>: <em>I am writing to request…</em></li>
+          <li><strong>Details</strong>: child age/grade, arrival date, documents</li>
+          <li><strong>Request</strong>: appointment, interpreter, screening, evaluation</li>
+          <li><strong>Closing</strong>: <em>Thank you for your help.</em></li>
+          <li><strong>Sign-off</strong>: <em>Kind regards,</em> + name + phone</li>
+        </ol>
+        <p class="help help--fr" data-help>
+          <strong>Aide (FR):</strong> Pour l'ecrit, on prefere des phrases completes et un objectif clair. "I am writing to..." est parfait.
+        </p>
+      </div>
+
+      <div>
+        <div class="exercise" id="ex_letter_parts">
+          <div class="exercise__head">
+            <h4>Exercise F · Parts of a letter (Drag or Tap)</h4>
+            <div class="exercise__meta">Place labels on the correct part · <span class="pts">+10 pts</span></div>
+          </div>
+          <div class="exercise__body">
+            <p class="muted">Tap mode works on iPad/iPhone. You can also drag on desktop.</p>
+            <div class="dnd" data-dnd id="letterDnD">
+              <div class="dnd__tiles" aria-label="Labels">
+                <button class="tile" type="button" data-tile="subject">Subject line</button>
+                <button class="tile" type="button" data-tile="greeting">Greeting</button>
+                <button class="tile" type="button" data-tile="purpose">Purpose / reason</button>
+                <button class="tile" type="button" data-tile="details">Details</button>
+                <button class="tile" type="button" data-tile="request">Specific request</button>
+                <button class="tile" type="button" data-tile="closing">Closing line</button>
+                <button class="tile" type="button" data-tile="signoff">Sign-off + signature</button>
+              </div>
+
+              <div class="letterMock" aria-label="Letter template">
+                <div class="slot" data-slot="subject" role="button" tabindex="0" aria-label="Drop zone: subject">
+                  <div class="slot__label">[ Subject ]</div>
+                  <div class="slot__drop"></div>
+                </div>
+                <div class="slot" data-slot="greeting" role="button" tabindex="0" aria-label="Drop zone: greeting">
+                  <div class="slot__label">[ Greeting ]</div>
+                  <div class="slot__drop"></div>
+                </div>
+                <div class="slot" data-slot="purpose" role="button" tabindex="0" aria-label="Drop zone: purpose">
+                  <div class="slot__label">[ Purpose ]</div>
+                  <div class="slot__drop"></div>
+                </div>
+                <div class="slot" data-slot="details" role="button" tabindex="0" aria-label="Drop zone: details">
+                  <div class="slot__label">[ Details ]</div>
+                  <div class="slot__drop"></div>
+                </div>
+                <div class="slot" data-slot="request" role="button" tabindex="0" aria-label="Drop zone: request">
+                  <div class="slot__label">[ Request ]</div>
+                  <div class="slot__drop"></div>
+                </div>
+                <div class="slot" data-slot="closing" role="button" tabindex="0" aria-label="Drop zone: closing">
+                  <div class="slot__label">[ Closing ]</div>
+                  <div class="slot__drop"></div>
+                </div>
+                <div class="slot" data-slot="signoff" role="button" tabindex="0" aria-label="Drop zone: signoff">
+                  <div class="slot__label">[ Sign-off ]</div>
+                  <div class="slot__drop"></div>
+                </div>
+              </div>
+
+              <div class="builder__actions">
+                <button class="btn btn--small" data-hint="letterHint" type="button">Hint</button>
+                <button class="btn btn--small btn--primary" data-check="letterCheck" type="button">Check</button>
+                <button class="btn btn--small" data-reset="letterReset" type="button">Reset</button>
+              </div>
+              <div class="hint" id="letterHint" hidden></div>
+              <div class="feedback" id="letterFeedback" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="exercise" id="ex_email_fill">
+      <div class="exercise__head">
+        <h4>Exercise G · Fill-in email (word bank)</h4>
+        <div class="exercise__meta">Complete the email with the best phrases · <span class="pts">+12 pts</span></div>
+      </div>
+      <div class="exercise__body">
+        <p class="muted">Goal: write a short, clear email to the registrar.</p>
+
+        <div class="wordbank" id="emailWordbank" aria-label="Word bank"></div>
+
+        <div class="emailBox" aria-label="Email draft">
+          <div class="emailLine"><strong>Subject:</strong> <span class="blank" data-blank="subject"></span></div>
+          <div class="emailLine"><span class="blank" data-blank="greeting"></span></div>
+          <div class="emailLine">I am writing to <span class="blank" data-blank="purpose"></span>.</div>
+          <div class="emailLine">We are moving from France and we will arrive <span class="blank" data-blank="arrival"></span>.</div>
+          <div class="emailLine">My child is <span class="blank" data-blank="age"></span> and we would like to enroll in <span class="blank" data-blank="grade"></span>.</div>
+          <div class="emailLine"><span class="blank" data-blank="request"></span></div>
+          <div class="emailLine">Thank you for your help.</div>
+          <div class="emailLine"><span class="blank" data-blank="signoff"></span>,</div>
+          <div class="emailLine">Your Name</div>
+        </div>
+
+        <div class="builder__actions">
+          <button class="btn btn--small" id="emailHintBtn" type="button">Hint</button>
+          <button class="btn btn--small btn--primary" id="emailCheckBtn" type="button">Check</button>
+          <button class="btn btn--small" id="emailResetBtn" type="button">Reset</button>
+          <button class="btn btn--small" id="emailListenBtn" type="button">Listen</button>
+        </div>
+        <div class="hint" id="emailHint" hidden></div>
+        <div class="feedback" id="emailFeedback" aria-live="polite"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 4) Practice kit -->
+  <section id="practice" class="card">
+    <div class="sectionHead">
+      <h2>4) Mini practice kit (real scenarios)</h2>
+      <div class="sectionHead__right">
+        <button class="btn btn--small" data-say="practiceSummary" type="button">Listen (summary)</button>
+      </div>
+    </div>
+
+    <p>
+      Use this generator to produce a ready-to-send <strong>email or phone script</strong> for common school tasks:
+      registration, interpreter requests, ELL screening, evaluation for IEP/504, transferring records.
+    </p>
+
+    <div class="grid2">
+      <div>
+        <label class="field">
+          <span>Scenario</span>
+          <select id="genScenario">
+            <option value="">Select…</option>
+            <option value="enroll">Enrollment appointment (new family)</option>
+            <option value="interpreter">Request an interpreter</option>
+            <option value="ell">Ask for ELL/ESL screening</option>
+            <option value="eval">Request an evaluation (IEP/504)</option>
+            <option value="records">Transfer records from France</option>
+          </select>
+        </label>
+
+        <div class="grid2">
+          <label class="field">
+            <span>State</span>
+            <select id="genState">
+              <option value="MA">MA</option>
+              <option value="NH">NH</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Town / city</span>
+            <input id="genTown" type="text" placeholder="e.g., Nashua" />
+          </label>
+        </div>
+
+        <div class="grid2">
+          <label class="field">
+            <span>Parent name</span>
+            <input id="genParent" type="text" placeholder="e.g., Marie Dupont" />
+          </label>
+          <label class="field">
+            <span>Child name</span>
+            <input id="genChild" type="text" placeholder="e.g., Victorine" />
+          </label>
+        </div>
+
+        <div class="grid2">
+          <label class="field">
+            <span>Child age</span>
+            <select id="genAge">
+              <option value="">Select…</option>
+              <option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Grade (typical)</span>
+            <select id="genGrade">
+              <option value="">Select…</option>
+              <option>Pre-K</option>
+              <option>Kindergarten</option>
+              <option>1st grade</option>
+              <option>2nd grade</option>
+              <option>3rd grade</option>
+              <option>4th grade</option>
+              <option>5th grade</option>
+              <option>6th grade</option>
+              <option>7th grade</option>
+              <option>8th grade</option>
+              <option>9th grade</option>
+              <option>10th grade</option>
+              <option>11th grade</option>
+              <option>12th grade</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="field">
+          <span>Date you arrive (optional)</span>
+          <input id="genArrive" type="text" placeholder="e.g., January 20, 2026" />
+        </label>
+
+        <label class="field" id="genConcernWrap">
+          <span>Extra detail (optional)</span>
+          <input id="genConcern" type="text" placeholder="e.g., preferred language: French" />
+        </label>
+
+        <div class="row">
+          <button class="btn btn--primary" id="genBtn" type="button">Generate</button>
+          <button class="btn" id="genReset" type="button">Reset</button>
+          <button class="btn" id="genCopy" type="button" disabled>Copy</button>
+          <button class="btn" id="genListen" type="button" disabled>Listen</button>
+        </div>
+
+        <p class="help help--fr" data-help>
+          <strong>Aide (FR):</strong> Vous pouvez ajouter: "Do you have an interpreter available for meetings?" ou "Could you tell me which documents are required?"
+        </p>
+      </div>
+
+      <div>
+        <div class="result" id="genOut" aria-live="polite">Choose a scenario and click Generate.</div>
+        <div class="exercise" id="ex_gen_quiz">
+          <div class="exercise__head">
+            <h4>Quick check · Which line is best?</h4>
+            <div class="exercise__meta">Polite writing choices · <span class="pts">+2 pts</span> each</div>
+          </div>
+          <div class="exercise__body">
+            <div class="mcq" id="genMcq"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="card footer">
+    <div class="scoreFooter" aria-live="polite">
+      <div class="scoreFooter__label">Your score</div>
+      <div class="scoreFooter__value"><span id="scoreBottom">0</span> pts</div>
+      <div class="scoreFooter__meta">Tip: score is saved in your browser.</div>
+    </div>
+
+    <div class="footer__actions">
+      <button class="btn" id="resetAll" type="button">Reset lesson</button>
+      <button class="btn" id="printBtn" type="button">Print</button>
+      <a class="btn" href="#top">↑ Back to top</a>
+    </div>
+  </section>
+</main>
+
+<script src="/js/school-communication-grammar.js" onerror="this.onerror=null;this.src='js/school-communication-grammar.js';"></script>
+</body>
+</html>
