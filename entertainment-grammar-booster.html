@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Entertainment Grammar Booster</title>
+
+  <!-- Prefer /css + /js on GitHub Pages, but allow local tests too -->
+  <link rel="stylesheet" href="/css/entertainment-grammar-booster.css">
+  <link rel="stylesheet" href="css/entertainment-grammar-booster.css">
+  <link rel="stylesheet" href="entertainment-grammar-booster.css">
+
+  <meta name="theme-color" content="#111827">
+</head>
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">🎬</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">Entertainment Grammar Booster • Likes/Dislikes • Adding info • Comparing</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="pill">
+        <button class="pill__btn" id="accentUS" aria-pressed="true" title="US accent">US</button>
+        <button class="pill__btn" id="accentUK" aria-pressed="false" title="UK accent">UK</button>
+      </div>
+
+      <button class="btn btn--ghost" id="enableVoiceBtn" title="Enable speech on Safari/iPad">Enable voice</button>
+      <button class="btn btn--ghost" id="testVoiceBtn" title="Test voice">Test 🔊</button>
+
+      <div class="scoreBox" aria-live="polite">
+        <div class="scoreBox__label">Score</div>
+        <div class="scoreBox__value" id="globalScore">0</div>
+      </div>
+
+      <button class="btn btn--danger" id="resetAllBtn">Reset all</button>
+    </div>
+  </div>
+
+  <div class="statusRow">
+    <div class="statusChip" id="ttsStatus" role="status" aria-live="polite">Voice: loading…</div>
+    <div class="statusHint" id="loadStatus">Tip: if voice stays silent, click <b>Enable voice</b>, then <b>Test 🔊</b>.</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero card">
+    <div class="hero__left">
+      <h1>Talk about movies & TV like a pro (step by step)</h1>
+      <p class="lead">
+        This add‑on page helps you succeed in the speaking tasks from:
+        <span class="tag">movies-lesson</span> <span class="tag">movies-part2-jaws</span> <span class="tag">tv-series-lesson</span>.
+        We start easy and build up to a full, natural review with connectors and comparisons.
+      </p>
+
+      <div class="hero__grid">
+        <div class="mini">
+          <div class="mini__k">You will practice</div>
+          <ul class="mini__list">
+            <li>Expressing <b>likes & dislikes</b> naturally</li>
+            <li>Adding information with <b>also / because / however</b></li>
+            <li>Comparing movies/series with <b>comparatives</b></li>
+            <li>A final <b>speaking review</b> you can reuse anywhere</li>
+          </ul>
+        </div>
+        <div class="mini">
+          <div class="mini__k">How to use</div>
+          <ul class="mini__list">
+            <li>Click <b>Listen 🔊</b> to hear a model.</li>
+            <li>Do the exercises from Level 1 → Level 4.</li>
+            <li>Finish with the <b>Pro Review Builder</b>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hero__actions">
+        <button class="btn" id="introListenBtn">Listen to mini‑intro 🔊</button>
+        <button class="btn btn--ghost" id="printGrammarBtn">Print grammar</button>
+        <button class="btn btn--ghost" id="teacherNotesToggle" aria-expanded="false">Teacher notes</button>
+      </div>
+
+      <div class="teacherNotes" id="teacherNotes" hidden>
+        <h3>Teacher notes (how to explain it)</h3>
+        <div class="noteGrid">
+          <div class="note">
+            <div class="note__title">1) Model first</div>
+            <p><b>Say it</b>: “Listen. Repeat. Then choose your option.”</p>
+            <p class="muted">FR: “Écoute. Répète. Puis choisis ton option.”</p>
+          </div>
+          <div class="note">
+            <div class="note__title">2) One rule + one example</div>
+            <p><b>Say it</b>: “I like + noun / I enjoy + -ing.”</p>
+            <p class="muted">FR: “I like + nom / I enjoy + verbe‑ing.”</p>
+          </div>
+          <div class="note">
+            <div class="note__title">3) Upgrade with a connector</div>
+            <p><b>Say it</b>: “Add <i>because</i> + a reason.”</p>
+            <p class="muted">FR: “Ajoute <i>because</i> + une raison.”</p>
+          </div>
+          <div class="note">
+            <div class="note__title">4) Keep it easy</div>
+            <p><b>Say it</b>: “Choose A or B. Both are correct.”</p>
+            <p class="muted">FR: “Choisis A ou B. Les deux sont corrects.”</p>
+          </div>
+        </div>
+        <p class="muted">Tip: Correct only 1–2 things (polite frame + clarity). Keep the flow and confidence.</p>
+      </div>
+    </div>
+
+    <div class="hero__right">
+      <div class="card soft">
+        <h3>Speaking frames (reuse anywhere)</h3>
+        <div class="frames">
+          <button class="frame" data-say="I really liked it because it was funny and well-paced.">I really liked it because…</button>
+          <button class="frame" data-say="I didn't like it very much, but the acting was good.">I didn't like it very much, but…</button>
+          <button class="frame" data-say="Compared to the last episode, this one was more intense.">Compared to…, it was more…</button>
+          <button class="frame" data-say="Overall, I would recommend it to people who enjoy thrillers.">Overall, I would recommend…</button>
+        </div>
+        <div class="row">
+          <button class="btn btn--ghost" id="framesListenBtn">Listen 🔊</button>
+          <button class="btn btn--ghost" id="framesPracticeBtn">1‑minute speaking timer</button>
+        </div>
+        <div class="timer" id="speakingTimer" hidden>
+          <div class="timer__title">Speak for <span id="timerSecs">60</span>s</div>
+          <div class="timer__bar"><div class="timer__fill" id="timerFill"></div></div>
+          <div class="row">
+            <button class="btn btn--ghost" id="timerStopBtn">Stop</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card soft">
+        <h3>Progress</h3>
+        <ol class="steps">
+          <li><b>Level 1</b> Likes & dislikes (easy)</li>
+          <li><b>Level 2</b> Add a reason (because)</li>
+          <li><b>Level 3</b> Add info + contrast (also / however)</li>
+          <li><b>Level 4</b> Compare & recommend (comparatives)</li>
+        </ol>
+        <div class="muted small">Your score is saved in this browser.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEVEL 1 -->
+  <section class="card" id="lvl1">
+    <div class="card__head">
+      <h2>Level 1 — Likes & dislikes (easy)</h2>
+      <div class="headBtns">
+        <button class="btn btn--ghost" data-section-listen="lvl1">Listen 🔊</button>
+        <button class="btn btn--ghost" data-section-reset="lvl1">Reset section</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <h3>Rules + examples</h3>
+        <div class="rule">
+          <div class="rule__title">A) Like/Love/Hate + noun</div>
+          <p><b>I like</b> action movies. • <b>I hate</b> spoilers.</p>
+          <p class="muted">FR: J’aime les films d’action. • Je déteste les spoilers.</p>
+        </div>
+        <div class="rule">
+          <div class="rule__title">B) Enjoy / Like + verb‑ing</div>
+          <p><b>I enjoy watching</b> series. • <b>I like reading</b> reviews.</p>
+          <p class="muted">FR: J’aime regarder des séries. • J’aime lire des critiques.</p>
+        </div>
+        <div class="rule">
+          <div class="rule__title">C) Soft negatives</div>
+          <p><b>I don’t mind</b> slow movies. • <b>I’m not a fan of</b> horror.</p>
+          <p class="muted">FR: Ça ne me dérange pas… • Je ne suis pas fan de…</p>
+        </div>
+        <div class="rule">
+          <div class="rule__title">D) Preferences</div>
+          <p><b>I prefer</b> comedies <b>to</b> dramas. • <b>I’d rather</b> watch a movie tonight.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Exercise 1 — Choose the natural sentence</h3>
+        <div class="exercise" id="ex1">
+          <div class="muted">Tap an option. Instant feedback.</div>
+          <div class="qBlock" data-qid="ex1q1">
+            <div class="q">1) Choose the best sentence:</div>
+            <div class="opts">
+              <button class="opt" data-correct="0">I enjoy to watch series.</button>
+              <button class="opt" data-correct="1">I enjoy watching series.</button>
+              <button class="opt" data-correct="0">I enjoy watch series.</button>
+            </div>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="qBlock" data-qid="ex1q2">
+            <div class="q">2) Choose the best sentence:</div>
+            <div class="opts">
+              <button class="opt" data-correct="1">I’m not a fan of horror movies.</button>
+              <button class="opt" data-correct="0">I’m not fan of horror movies.</button>
+              <button class="opt" data-correct="0">I’m not a fan horror movies.</button>
+            </div>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="qBlock" data-qid="ex1q3">
+            <div class="q">3) Choose the best sentence:</div>
+            <div class="opts">
+              <button class="opt" data-correct="0">I prefer comedies than dramas.</button>
+              <button class="opt" data-correct="1">I prefer comedies to dramas.</button>
+              <button class="opt" data-correct="0">I prefer to comedies dramas.</button>
+            </div>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="row">
+            <button class="btn btn--ghost" data-hint="ex1">Hint</button>
+            <button class="btn btn--ghost" data-reset="ex1">Reset</button>
+          </div>
+          <div class="hint" id="hint-ex1" hidden>
+            Remember: <b>enjoy + -ing</b>. And <b>prefer A to B</b>.
+          </div>
+        </div>
+
+        <h3 style="margin-top:16px;">Exercise 2 — Tap-to-build (not in order)</h3>
+        <div class="exercise" id="ex2">
+          <div class="muted">Tap words to build the correct sentence. Tap your answer to remove.</div>
+          <div class="build" data-build-id="ex2b1" data-answer="I like action movies">
+            <div class="tiles"></div>
+            <div class="answer" tabindex="0" role="group" aria-label="Your answer"></div>
+            <div class="row">
+              <button class="btn btn--ghost" data-check-build>Check</button>
+              <button class="btn btn--ghost" data-say-build>Listen 🔊</button>
+              <button class="btn btn--ghost" data-reset-build>Reset</button>
+            </div>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="build" data-build-id="ex2b2" data-answer="I am not a fan of spoilers">
+            <div class="tiles"></div>
+            <div class="answer" tabindex="0" role="group" aria-label="Your answer"></div>
+            <div class="row">
+              <button class="btn btn--ghost" data-check-build>Check</button>
+              <button class="btn btn--ghost" data-say-build>Listen 🔊</button>
+              <button class="btn btn--ghost" data-reset-build>Reset</button>
+            </div>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEVEL 2 -->
+  <section class="card" id="lvl2">
+    <div class="card__head">
+      <h2>Level 2 — Add a reason (because)</h2>
+      <div class="headBtns">
+        <button class="btn btn--ghost" data-section-listen="lvl2">Listen 🔊</button>
+        <button class="btn btn--ghost" data-section-reset="lvl2">Reset section</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <h3>Rule</h3>
+        <div class="rule">
+          <p><b>Opinion + because + reason</b></p>
+          <p>I liked it <b>because</b> it was funny.</p>
+          <p>I didn’t like it <b>because</b> it was too long.</p>
+          <p class="muted">FR: … parce que …</p>
+        </div>
+
+        <h3>Useful reasons (simple)</h3>
+        <div class="chips" id="reasonsChips"></div>
+      </div>
+
+      <div>
+        <h3>Exercise 3 — Tap-to-fill (because)</h3>
+        <div class="exercise" id="ex3">
+          <div class="muted">Tap a blank, then tap a reason.</div>
+
+          <div class="fill" data-fill-id="f1" data-sentence="I liked it because ____.">
+            <div class="fill__line"></div>
+            <div class="wordbank" data-bank="reasons"></div>
+            <div class="row">
+              <button class="btn btn--ghost" data-check-fill>Check</button>
+              <button class="btn btn--ghost" data-say-fill>Listen 🔊</button>
+              <button class="btn btn--ghost" data-reset-fill>Reset</button>
+            </div>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="fill" data-fill-id="f2" data-sentence="I didn't like it because ____.">
+            <div class="fill__line"></div>
+            <div class="wordbank" data-bank="reasons"></div>
+            <div class="row">
+              <button class="btn btn--ghost" data-check-fill>Check</button>
+              <button class="btn btn--ghost" data-say-fill>Listen 🔊</button>
+              <button class="btn btn--ghost" data-reset-fill>Reset</button>
+            </div>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="row">
+            <button class="btn btn--ghost" data-hint="ex3">Hint</button>
+            <button class="btn btn--ghost" data-reset="ex3">Reset all</button>
+          </div>
+          <div class="hint" id="hint-ex3" hidden>
+            Use a simple adjective phrase: <b>it was exciting / boring / too long</b>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEVEL 3 -->
+  <section class="card" id="lvl3">
+    <div class="card__head">
+      <h2>Level 3 — Add info + contrast (also / however)</h2>
+      <div class="headBtns">
+        <button class="btn btn--ghost" data-section-listen="lvl3">Listen 🔊</button>
+        <button class="btn btn--ghost" data-section-reset="lvl3">Reset section</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <h3>Connector ladder (simple → pro)</h3>
+        <div class="rule">
+          <p><b>Add</b>: and → also → in addition</p>
+          <p><b>Contrast</b>: but → however → although</p>
+          <p><b>Opinion</b>: I think → in my opinion → overall</p>
+        </div>
+
+        <h3>Examples</h3>
+        <div class="rule">
+          <p>I liked the story. <b>Also</b>, the music was great.</p>
+          <p>I didn’t like the ending. <b>However</b>, the acting was excellent.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Exercise 4 — Choose the best connector</h3>
+        <div class="exercise" id="ex4">
+          <div class="qBlock" data-qid="ex4q1">
+            <div class="q">1) I liked the plot. ____ the soundtrack was amazing.</div>
+            <div class="opts">
+              <button class="opt" data-correct="1">Also,</button>
+              <button class="opt" data-correct="0">However,</button>
+              <button class="opt" data-correct="0">Because</button>
+            </div>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="qBlock" data-qid="ex4q2">
+            <div class="q">2) The episode was slow. ____ the last scene was very intense.</div>
+            <div class="opts">
+              <button class="opt" data-correct="0">Also,</button>
+              <button class="opt" data-correct="1">However,</button>
+              <button class="opt" data-correct="0">Therefore,</button>
+            </div>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="qBlock" data-qid="ex4q3">
+            <div class="q">3) I recommend it ____ it is funny and easy to watch.</div>
+            <div class="opts">
+              <button class="opt" data-correct="0">however</button>
+              <button class="opt" data-correct="1">because</button>
+              <button class="opt" data-correct="0">overall</button>
+            </div>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="row">
+            <button class="btn btn--ghost" data-hint="ex4">Hint</button>
+            <button class="btn btn--ghost" data-reset="ex4">Reset</button>
+          </div>
+          <div class="hint" id="hint-ex4" hidden>
+            <b>Also</b> adds information. <b>However</b> shows contrast. <b>Because</b> gives a reason.
+          </div>
+        </div>
+
+        <h3 style="margin-top:16px;">Exercise 5 — Mini “upgrade” practice</h3>
+        <div class="exercise" id="ex5">
+          <div class="muted">Start simple → upgrade with a connector.</div>
+
+          <div class="upgrade" data-up="u1" data-a="I liked it." data-b="I liked it because it was funny." data-c="I liked it because it was funny. Also, the acting was great.">
+            <div class="upgrade__cols">
+              <button class="cardBtn" data-step="a">A) Simple</button>
+              <button class="cardBtn" data-step="b">B) + because</button>
+              <button class="cardBtn" data-step="c">C) + also</button>
+            </div>
+            <div class="upgrade__out" aria-live="polite"></div>
+            <div class="row">
+              <button class="btn btn--ghost" data-up-listen>Listen 🔊</button>
+              <button class="btn btn--ghost" data-up-score>+2 points</button>
+            </div>
+          </div>
+
+          <div class="upgrade" data-up="u2" data-a="I didn't like it." data-b="I didn't like it because it was too long." data-c="I didn't like it because it was too long. However, the music was excellent.">
+            <div class="upgrade__cols">
+              <button class="cardBtn" data-step="a">A) Simple</button>
+              <button class="cardBtn" data-step="b">B) + because</button>
+              <button class="cardBtn" data-step="c">C) + however</button>
+            </div>
+            <div class="upgrade__out" aria-live="polite"></div>
+            <div class="row">
+              <button class="btn btn--ghost" data-up-listen>Listen 🔊</button>
+              <button class="btn btn--ghost" data-up-score>+2 points</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <button class="btn btn--ghost" data-reset="ex5">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEVEL 4 -->
+  <section class="card" id="lvl4">
+    <div class="card__head">
+      <h2>Level 4 — Compare & recommend (comparatives)</h2>
+      <div class="headBtns">
+        <button class="btn btn--ghost" data-section-listen="lvl4">Listen 🔊</button>
+        <button class="btn btn--ghost" data-section-reset="lvl4">Reset section</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <h3>Rules (simple)</h3>
+        <div class="rule">
+          <p><b>Short adjective</b>: cold → colder, fast → faster</p>
+          <p><b>Long adjective</b>: exciting → more exciting</p>
+          <p><b>Irregular</b>: good → better, bad → worse</p>
+          <p><b>As…as</b>: as funny as, not as good as</p>
+        </div>
+        <div class="rule">
+          <p>Episode B was <b>more intense than</b> episode A.</p>
+          <p>This movie is <b>better than</b> the last one.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Exercise 6 — Choose the correct comparative</h3>
+        <div class="exercise" id="ex6">
+          <div class="qBlock" data-qid="ex6q1">
+            <div class="q">1) This film is ____ than the last one. (exciting)</div>
+            <div class="opts">
+              <button class="opt" data-correct="0">excitinger</button>
+              <button class="opt" data-correct="1">more exciting</button>
+              <button class="opt" data-correct="0">most exciting</button>
+            </div>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="qBlock" data-qid="ex6q2">
+            <div class="q">2) The acting is ____ than before. (good)</div>
+            <div class="opts">
+              <button class="opt" data-correct="0">gooder</button>
+              <button class="opt" data-correct="1">better</button>
+              <button class="opt" data-correct="0">more good</button>
+            </div>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="qBlock" data-qid="ex6q3">
+            <div class="q">3) This episode is ____ as the pilot. (not / funny)</div>
+            <div class="opts">
+              <button class="opt" data-correct="1">not as funny</button>
+              <button class="opt" data-correct="0">not so funnier</button>
+              <button class="opt" data-correct="0">not as funnier</button>
+            </div>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="row">
+            <button class="btn btn--ghost" data-hint="ex6">Hint</button>
+            <button class="btn btn--ghost" data-reset="ex6">Reset</button>
+          </div>
+          <div class="hint" id="hint-ex6" hidden>
+            Long adjectives → <b>more</b>. Irregular: good → <b>better</b>. Use <b>as…as</b>.
+          </div>
+        </div>
+
+        <h3 style="margin-top:16px;">Exercise 7 — Compare two things (builder)</h3>
+        <div class="exercise" id="ex7">
+          <div class="muted">Pick options to build a correct comparison sentence.</div>
+          <div class="builder">
+            <label>
+              Thing A
+              <select id="cmpA">
+                <option value="This movie">This movie</option>
+                <option value="This episode">This episode</option>
+                <option value="The soundtrack">The soundtrack</option>
+                <option value="The acting">The acting</option>
+              </select>
+            </label>
+
+            <label>
+              Comparative
+              <select id="cmpComp">
+                <option value="is more exciting than">is more exciting than</option>
+                <option value="is less predictable than">is less predictable than</option>
+                <option value="is better than">is better than</option>
+                <option value="is not as good as">is not as good as</option>
+              </select>
+            </label>
+
+            <label>
+              Thing B
+              <select id="cmpB">
+                <option value="the last one.">the last one.</option>
+                <option value="the pilot.">the pilot.</option>
+                <option value="most films in this genre.">most films in this genre.</option>
+                <option value="the previous episode.">the previous episode.</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="outBox" id="cmpOut" aria-live="polite"></div>
+          <div class="row">
+            <button class="btn btn--ghost" id="cmpBuildBtn">Build</button>
+            <button class="btn btn--ghost" id="cmpListenBtn">Listen 🔊</button>
+            <button class="btn btn--ghost" id="cmpScoreBtn">+2 points</button>
+            <button class="btn btn--ghost" id="cmpResetBtn">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRO REVIEW BUILDER -->
+  <section class="card" id="final">
+    <div class="card__head">
+      <h2>Pro Review Builder — speaking + writing</h2>
+      <div class="headBtns">
+        <button class="btn btn--ghost" data-section-listen="final">Listen 🔊</button>
+        <button class="btn btn--ghost" data-section-reset="final">Reset section</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <h3>Step‑by‑step plan</h3>
+        <ol class="plan">
+          <li>Say what it is: title + type + genre</li>
+          <li>Say what you liked/disliked</li>
+          <li>Add a reason (because)</li>
+          <li>Add extra info (also / however)</li>
+          <li>Compare to something</li>
+          <li>Recommend (should / might)</li>
+        </ol>
+
+        <div class="muted">No spoilers. Keep sentences short and clear.</div>
+      </div>
+
+      <div>
+        <h3>Build your review</h3>
+        <div class="exercise" id="review">
+          <div class="builder">
+            <label>Title
+              <input id="rvTitle" placeholder="e.g., Jaws / The Bear / Friends" />
+            </label>
+            <label>Type
+              <select id="rvType">
+                <option value="movie">movie</option>
+                <option value="TV series">TV series</option>
+                <option value="episode">episode</option>
+              </select>
+            </label>
+            <label>Genre
+              <select id="rvGenre">
+                <option value="thriller">thriller</option>
+                <option value="comedy">comedy</option>
+                <option value="drama">drama</option>
+                <option value="action">action</option>
+                <option value="horror">horror</option>
+                <option value="sci-fi">sci‑fi</option>
+              </select>
+            </label>
+            <label>Opinion
+              <select id="rvOpinion">
+                <option value="I really liked it">I really liked it</option>
+                <option value="I liked it">I liked it</option>
+                <option value="I didn't like it very much">I didn't like it very much</option>
+                <option value="I couldn't get into it">I couldn't get into it</option>
+              </select>
+            </label>
+            <label>Because…
+              <select id="rvReason">
+                <option value="it was exciting">it was exciting</option>
+                <option value="the story was clear">the story was clear</option>
+                <option value="the acting was strong">the acting was strong</option>
+                <option value="it was too slow">it was too slow</option>
+                <option value="it was too long">it was too long</option>
+                <option value="the ending was surprising">the ending was surprising</option>
+              </select>
+            </label>
+            <label>Add info
+              <select id="rvAdd">
+                <option value="Also, the music was great.">Also, the music was great.</option>
+                <option value="In addition, the visuals were beautiful.">In addition, the visuals were beautiful.</option>
+                <option value="However, the ending was a bit weak.">However, the ending was a bit weak.</option>
+                <option value="However, the pacing was slow.">However, the pacing was slow.</option>
+              </select>
+            </label>
+            <label>Comparison
+              <select id="rvCmp">
+                <option value="Compared to similar movies, it was more intense.">Compared to similar movies, it was more intense.</option>
+                <option value="It was better than the last one I watched.">It was better than the last one I watched.</option>
+                <option value="It was not as funny as the pilot, but still good.">It was not as funny as the pilot, but still good.</option>
+              </select>
+            </label>
+            <label>Recommendation
+              <select id="rvRec">
+                <option value="Overall, I would recommend it.">Overall, I would recommend it.</option>
+                <option value="You should watch it if you enjoy this genre.">You should watch it if you enjoy this genre.</option>
+                <option value="You might like it if you want something easy to watch.">You might like it if you want something easy to watch.</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="outBox" id="rvOut" aria-live="polite"></div>
+
+          <div class="row">
+            <button class="btn" id="rvBuildBtn">Build my review</button>
+            <button class="btn btn--ghost" id="rvListenBtn">Listen 🔊</button>
+            <button class="btn btn--ghost" id="rvTimerBtn">60s speaking timer</button>
+            <button class="btn btn--ghost" id="rvCopyBtn">Copy</button>
+            <button class="btn btn--ghost" id="rvScoreBtn">+5 points</button>
+          </div>
+
+          <div class="row">
+            <button class="btn btn--ghost" id="rvResetBtn">Reset</button>
+          </div>
+
+          <div class="muted small">
+            Goal: speak your review from the text, then try again without reading.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <a class="backTop" href="#top">Back to top ↑</a>
+  </footer>
+</main>
+
+<!-- Script load: prefer /js, fallback to local -->
+<script src="/js/entertainment-grammar-booster.js" onerror="(function(){var s=document.createElement('script');s.src='js/entertainment-grammar-booster.js';s.onerror=function(){var s2=document.createElement('script');s2.src='entertainment-grammar-booster.js';document.body.appendChild(s2);};document.body.appendChild(s);})();"></script>
+</body>
+</html>
