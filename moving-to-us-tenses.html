@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Moving to the USA • Present Simple, Continuous & Present Perfect</title>
+  <link rel="stylesheet" href="/css/moving-to-us-tenses.css" />
+</head>
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">✦</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Interactive lesson · Moving to the USA with 3 kids</div>
+      </div>
+    </div>
+
+    <div class="controls" role="group" aria-label="Lesson controls">
+      <div class="control">
+        <div class="control__label">Accent</div>
+        <div class="seg" role="radiogroup" aria-label="Accent">
+          <button class="seg__btn" id="accentUS" type="button" aria-pressed="true">American (US)</button>
+          <button class="seg__btn" id="accentUK" type="button" aria-pressed="false">British (UK)</button>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="control__label">French help</div>
+        <div class="seg" role="group" aria-label="French help toggle">
+          <button class="seg__btn" id="frOff" type="button" aria-pressed="true">Off</button>
+          <button class="seg__btn" id="frOn" type="button" aria-pressed="false">On <span class="muted">(tips + vocab)</span></button>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="control__label">Test voice</div>
+        <button class="btn" id="btnTestVoice" type="button">Test voice</button>
+        <div class="tiny muted" id="voiceStatus" aria-live="polite">Voice: loading…</div>
+      </div>
+
+      <div class="scorebox" aria-label="Score">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreTop">0</span> pts</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero card">
+    <h1>Present Simple vs Present Continuous (and Present Perfect) — real life for a family moving to the US</h1>
+    <p class="lead">
+      This “one-stop” lesson helps French native speakers avoid the most common tense mistakes when moving to the USA:
+      daily routines vs right now, future arrangements (“We’re meeting the school tomorrow”), and describing your life experience and background.
+    </p>
+    <ul class="checks">
+      <li>✅ iPad/Mac/PC/Phone friendly</li>
+      <li>✅ Instant feedback + hints</li>
+      <li>✅ Drag <strong>or</strong> Tap mode for all drag activities</li>
+      <li>✅ Text-to-Speech (US/UK)</li>
+      <li>✅ Global score saved in your browser</li>
+    </ul>
+
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#pspc">Start: Present Simple vs Continuous</a>
+      <button class="btn" id="btnResetAll" type="button">Reset lesson</button>
+      <button class="btn" id="btnPrint" type="button">Print</button>
+    </div>
+
+    <div class="note">
+      <strong>Real-life note:</strong> Some rules depend on context and meaning. This lesson teaches the <em>most natural choice</em> in typical situations you’ll face:
+      school enrollment, housing, doctors, neighbors, schedules, and describing your background.
+    </div>
+  </section>
+
+  <nav class="chipnav" aria-label="Lesson sections">
+    <a class="chip" href="#pspc">1) Present Simple vs Continuous</a>
+    <a class="chip" href="#future">2) Present Continuous for the Future</a>
+    <a class="chip" href="#pp">3) Present Perfect (French mistakes)</a>
+    <a class="chip" href="#builder">4) Background builder</a>
+    <a class="chip" href="#practice">5) Practice kit (real scenarios)</a>
+  </nav>
+
+  <!-- 1) Present Simple vs Present Continuous -->
+  <section class="card section" id="pspc">
+    <div class="section__head">
+      <h2>1) Present Simple vs Present Continuous</h2>
+      <div class="section__tools">
+        <button class="btn btn--ghost" data-tts="pspcSummary" type="button">Listen (summary)</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <h3>Key rules</h3>
+        <ul class="rules">
+          <li><strong>Present simple</strong> = habits, routines, general truths, timetables: <em>My kids go to school at 8:15.</em></li>
+          <li><strong>Present continuous</strong> = “right now”, temporary situations, changing trends: <em>I’m filling out school forms right now.</em></li>
+          <li>Some verbs are often <strong>not</strong> continuous (state verbs): <em>know, like, want, need, believe…</em> → <em>I know the address.</em></li>
+        </ul>
+        <div class="fr tip" data-fr>
+          <strong>Aide (FR):</strong> Le présent simple = habitudes / généralités. Le présent continu = “en ce moment” / situation temporaire.
+          Attention aux <em>state verbs</em> (know, like, want, need…) : on dit plutôt “I need…” (pas “I’m needing…”).
+        </div>
+        <div class="ttsText" id="pspcSummary">
+          Present simple is for routines, habits, facts, and schedules. Present continuous is for actions happening now and temporary situations.
+          Use the meaning: routine versus right now. Be careful with state verbs like know, like, want, and need.
+        </div>
+      </div>
+
+      <div>
+        <h3>Vocabulary flashcards (moving + school + daily life)</h3>
+        <div class="flashcardBar">
+          <label class="label">Theme
+            <select id="fcTheme" class="select">
+              <option value="moving">Moving & housing</option>
+              <option value="school">School routine</option>
+              <option value="appointments">Appointments & forms</option>
+            </select>
+          </label>
+          <button class="btn btn--ghost" id="fcShuffle" type="button">Shuffle</button>
+        </div>
+
+        <div class="flashcardWrap" aria-live="polite">
+          <button class="fcNav" id="fcPrev" type="button" aria-label="Previous card">◀</button>
+
+          <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="Flashcard. Tap to flip.">
+            <div class="flashcard__inner" id="flashcardInner">
+              <div class="flashcard__face flashcard__front" id="fcFront"></div>
+              <div class="flashcard__face flashcard__back" id="fcBack"></div>
+            </div>
+          </div>
+
+          <button class="fcNav" id="fcNext" type="button" aria-label="Next card">▶</button>
+        </div>
+
+        <div class="flashcardMeta">
+          <button class="btn btn--ghost" id="fcListen" type="button">Listen</button>
+          <span class="tiny muted">Tap to flip · Press Enter/Space · French help shows translations on the back</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="sep" />
+
+    <h3>Exercise A · Choose the best tense (instant feedback)</h3>
+    <p class="muted">+2 pts each · You can retry until correct</p>
+    <div id="mcq_pspc" class="mcq"></div>
+
+    <hr class="sep" />
+
+    <h3>Exercise B · Mini “state verb” challenge</h3>
+    <p class="muted">Choose the natural sentence · +2 pts each</p>
+    <div id="mcq_stateverbs" class="mcq"></div>
+
+    <hr class="sep" />
+
+    <h3>Exercise C · Sentence builder (Drag or Tap)</h3>
+    <p class="muted">Build a useful question you might ask in the US · +5 pts each</p>
+    <div id="builder_pspc" class="builders"></div>
+  </section>
+
+  <!-- 2) Present Continuous for the Future -->
+  <section class="card section" id="future">
+    <div class="section__head">
+      <h2>2) Present Continuous for the Future (arranged plans)</h2>
+      <div class="section__tools">
+        <button class="btn btn--ghost" data-tts="futureSummary" type="button">Listen (summary)</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <h3>When to use it</h3>
+        <ul class="rules">
+          <li>Use <strong>present continuous</strong> for <strong>personal arrangements</strong> (often already planned): <em>We’re meeting the school counselor on Tuesday.</em></li>
+          <li>It usually includes a <strong>future time</strong>: <em>tomorrow, next week, on Friday…</em></li>
+          <li>Contrast:
+            <ul>
+              <li><strong>Will</strong> = spontaneous decision / prediction: <em>OK, I’ll call them now.</em></li>
+              <li><strong>Going to</strong> = intention or evidence: <em>I’m going to apply for a driver’s license soon.</em></li>
+              <li><strong>Present simple</strong> = timetables: <em>The flight leaves at 7:10.</em></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="fr tip" data-fr>
+          <strong>Aide (FR):</strong> Present continuous pour un plan <em>déjà organisé</em> (RDV, réservation, planning).
+          “Will” = décision sur le moment (“OK, I’ll…”). Present simple = horaires officiels (train/vol/école).
+        </div>
+
+        <div class="ttsText" id="futureSummary">
+          Use the present continuous for arranged plans: meetings, appointments, and scheduled personal plans.
+          Use will for decisions made now, going to for intentions, and present simple for official timetables.
+        </div>
+      </div>
+
+      <div>
+        <h3>Concrete examples (moving with kids)</h3>
+        <div class="exampleGrid">
+          <div class="exCard">
+            <div class="exTitle">Arranged plan</div>
+            <div class="exLine">We’re touring the school <strong>tomorrow</strong>.</div>
+          </div>
+          <div class="exCard">
+            <div class="exTitle">Timetable</div>
+            <div class="exLine">The school bus <strong>arrives</strong> at 7:55.</div>
+          </div>
+          <div class="exCard">
+            <div class="exTitle">Decision now</div>
+            <div class="exLine">I forgot the form — I’<strong>ll</strong> email them.</div>
+          </div>
+          <div class="exCard">
+            <div class="exTitle">Intention</div>
+            <div class="exLine">We’re <strong>going to</strong> look for a pediatrician.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="sep" />
+
+    <h3>Exercise D · Choose the best future form</h3>
+    <p class="muted">present continuous / going to / will / present simple · +2 pts each</p>
+    <div id="mcq_future" class="mcq"></div>
+
+    <hr class="sep" />
+
+    <h3>Exercise E · Fill-in (appointments + schedules)</h3>
+    <p class="muted">Choose the correct verb form · +2 pts each</p>
+    <div id="fill_future" class="fills"></div>
+  </section>
+
+  <!-- 3) Present Perfect -->
+  <section class="card section" id="pp">
+    <div class="section__head">
+      <h2>3) Present Perfect (and common French-native errors)</h2>
+      <div class="section__tools">
+        <button class="btn btn--ghost" data-tts="ppSummary" type="button">Listen (summary)</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <h3>How it works</h3>
+        <ul class="rules">
+          <li><strong>Form:</strong> have/has + past participle → <em>I have lived</em>, <em>She has worked</em></li>
+          <li><strong>Use it</strong> when the past connects to now:
+            <ul>
+              <li><strong>Life experience:</strong> <em>I’ve visited Boston.</em></li>
+              <li><strong>Unfinished time:</strong> <em>This week, we’ve met two neighbors.</em></li>
+              <li><strong>Started in the past and still true:</strong> <em>I’ve lived in France for 20 years.</em></li>
+              <li><strong>Recent result:</strong> <em>We’ve just received the school email.</em></li>
+            </ul>
+          </li>
+          <li><strong>Past simple</strong> is for a finished time (yesterday, in 2019, last week): <em>We moved in 2019.</em></li>
+        </ul>
+
+        <div class="fr tip" data-fr>
+          <strong>Aide (FR):</strong> Present perfect = passé relié au présent (expérience, “depuis”, “ce matin/aujourd’hui”, résultat récent).
+          <strong>Erreur fréquente :</strong> “I am here since…” → “I have been here since…”
+          et “Yesterday I have…” → “Yesterday I …” (past simple).
+        </div>
+
+        <div class="ttsText" id="ppSummary">
+          Present perfect is have or has plus past participle. Use it for experience, unfinished time, actions that started in the past and continue now,
+          and recent results. Use past simple with finished time expressions like yesterday, last week, or in 2019.
+        </div>
+      </div>
+
+      <div>
+        <h3>Common French-native mistakes</h3>
+        <div class="mistakes">
+          <div class="mistake">
+            <div class="mistake__bad">❌ I am here since 2010.</div>
+            <div class="mistake__good">✅ I have been here since 2010.</div>
+          </div>
+          <div class="mistake">
+            <div class="mistake__bad">❌ Yesterday, we have met the principal.</div>
+            <div class="mistake__good">✅ Yesterday, we met the principal.</div>
+          </div>
+          <div class="mistake">
+            <div class="mistake__bad">❌ I know her since three years.</div>
+            <div class="mistake__good">✅ I have known her for three years.</div>
+          </div>
+          <div class="mistake">
+            <div class="mistake__bad">❌ I live in France for 20 years.</div>
+            <div class="mistake__good">✅ I have lived in France for 20 years.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="sep" />
+
+    <h3>Exercise F · Past simple or present perfect?</h3>
+    <p class="muted">+2 pts each · Retry until correct</p>
+    <div id="mcq_pp_vs_past" class="mcq"></div>
+
+    <hr class="sep" />
+
+    <h3>Exercise G · Fix the “French mistake”</h3>
+    <p class="muted">Choose the best correction · +2 pts each</p>
+    <div id="mcq_fix_mistake" class="mcq"></div>
+
+    <hr class="sep" />
+
+    <h3>Mini tool · Self-check “since / for / yesterday”</h3>
+    <p class="muted">Type a sentence and get a quick warning if it looks like a common French-native tense error.</p>
+    <div class="toolRow">
+      <input class="input" id="selfCheckInput" type="text" placeholder="Example: I am here since 2020." />
+      <button class="btn" id="btnSelfCheck" type="button">Check</button>
+      <button class="btn btn--ghost" id="btnSelfCheckClear" type="button">Clear</button>
+    </div>
+    <div id="selfCheckOut" class="feedback" aria-live="polite"></div>
+  </section>
+
+  <!-- 4) Background builder -->
+  <section class="card section" id="builder">
+    <div class="section__head">
+      <h2>4) Background builder: talk about your past → now → next steps</h2>
+      <div class="section__tools">
+        <button class="btn btn--ghost" data-tts="builderSummary" type="button">Listen (summary)</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <h3>Your details</h3>
+        <div class="formGrid">
+          <label class="label">Your name
+            <input class="input" id="b_name" type="text" placeholder="Tisha" />
+          </label>
+          <label class="label">You’re from
+            <input class="input" id="b_from" type="text" placeholder="France / Paris" />
+          </label>
+          <label class="label">How long have you lived in France?
+            <input class="input" id="b_years_fr" type="number" min="0" step="1" placeholder="20" />
+          </label>
+          <label class="label">Your job (now)
+            <input class="input" id="b_job" type="text" placeholder="English trainer" />
+          </label>
+          <label class="label">Your children (ages)
+            <input class="input" id="b_kids" type="text" placeholder="13, 10, 2" />
+          </label>
+          <label class="label">Where are you moving (state/city)?
+            <input class="input" id="b_to" type="text" placeholder="Massachusetts / New Hampshire" />
+          </label>
+          <label class="label">Arrival date (optional)
+            <input class="input" id="b_arrival" type="text" placeholder="in March / on August 15" />
+          </label>
+          <label class="label">One arranged plan (optional)
+            <input class="input" id="b_plan" type="text" placeholder="meet the school counselor next Tuesday" />
+          </label>
+        </div>
+
+        <div class="btnRow">
+          <button class="btn btn--primary" id="btnBuild" type="button">✨ Generate intro</button>
+          <button class="btn" id="btnBuildCopy" type="button">Copy</button>
+          <button class="btn btn--ghost" id="btnBuildListen" type="button">Listen</button>
+          <button class="btn btn--ghost" id="btnBuildReset" type="button">Reset</button>
+        </div>
+
+        <div class="fr tip" data-fr>
+          <strong>Aide (FR):</strong> Le générateur mélange les temps :
+          <em>present perfect</em> (durée “depuis”), <em>present simple</em> (habitudes), <em>present continuous</em> (plan déjà organisé).
+        </div>
+
+        <div class="ttsText" id="builderSummary">
+          Fill your details and generate a natural introduction using present perfect, present simple, and present continuous for an arranged plan.
+          You can copy it or listen.
+        </div>
+      </div>
+
+      <div>
+        <h3>Generated introduction</h3>
+        <div class="output" id="builderOut">
+          Fill the form and click “Generate intro”.
+        </div>
+
+        <h3 class="mt">Tense labels (learning mode)</h3>
+        <div class="output output--small" id="builderExplain">
+          After generating, you’ll see a quick breakdown of why each tense is used.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) Practice kit -->
+  <section class="card section" id="practice">
+    <div class="section__head">
+      <h2>5) Practice kit: real scenarios for a family moving to the US</h2>
+      <div class="section__tools">
+        <button class="btn btn--ghost" data-tts="practiceSummary" type="button">Listen (summary)</button>
+      </div>
+    </div>
+
+    <p>
+      Choose a scenario and generate a short dialogue. It automatically uses the tense patterns from this lesson
+      (routines, “right now”, arranged future plans, and present perfect for background).
+    </p>
+
+    <div class="practiceGrid">
+      <label class="label">Scenario
+        <select id="p_scenario" class="select">
+          <option value="school">Call the school (enrollment)</option>
+          <option value="doctor">Find a pediatrician (appointment)</option>
+          <option value="housing">Talk to a landlord (lease + move-in)</option>
+          <option value="neighbor">Meet a neighbor (small talk)</option>
+          <option value="dmv">At the DMV (driver’s license)</option>
+        </select>
+      </label>
+
+      <label class="label">Your name
+        <input class="input" id="p_name" type="text" placeholder="Your name" />
+      </label>
+
+      <label class="label">City / town
+        <input class="input" id="p_city" type="text" placeholder="Concord / Boston / Portsmouth..." />
+      </label>
+
+      <label class="label">Arranged plan (optional)
+        <input class="input" id="p_plan" type="text" placeholder="tour the school on Friday / meet the doctor tomorrow" />
+      </label>
+
+      <div class="btnRow">
+        <button class="btn btn--primary" id="btnPractice" type="button">✨ Generate dialogue</button>
+        <button class="btn" id="btnPracticeCopy" type="button">Copy</button>
+        <button class="btn btn--ghost" id="btnPracticeListen" type="button">Listen</button>
+        <button class="btn btn--ghost" id="btnPracticeReset" type="button">Reset</button>
+      </div>
+    </div>
+
+    <div class="output" id="practiceOut">Choose a scenario and click “Generate dialogue”.</div>
+
+    <div class="ttsText" id="practiceSummary">
+      Use this generator to practice real conversations you will have after moving to the United States:
+      calling a school, making a doctor’s appointment, talking to a landlord, meeting a neighbor, or visiting the DMV.
+    </div>
+
+    <hr class="sep" />
+
+    <h3>Quick check · Pick the best line</h3>
+    <p class="muted">Polite + correct tense · +2 pts each</p>
+    <div id="mcq_quickcheck" class="mcq"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__left">
+      <strong>Your score:</strong> <span id="scoreBottom">0</span> pts <span class="tiny muted">· saved in your browser</span>
+    </div>
+    <div class="footer__right">
+      <button class="btn btn--ghost" id="btnResetAll2" type="button">↺ Reset lesson</button>
+      <button class="btn btn--ghost" id="btnPrint2" type="button">Print</button>
+      <a class="btn btn--ghost" href="#top">↑</a>
+    </div>
+  </footer>
+</main>
+
+<script src="/js/moving-to-us-tenses.js"></script>
+</body>
+</html>
