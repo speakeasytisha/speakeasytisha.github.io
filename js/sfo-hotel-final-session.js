@@ -1134,38 +1134,143 @@
   ----------------------------*/
   function bindTopbar(){
     var accentSel=$("accentSelect");
-    accentSel.value = state.accent || "auto";
-    accentSel.addEventListener("change", function(){
-      state.accent = accentSel.value;
-      TTS.setAccent(state.accent);
+    var enableBtn=$("enableVoiceBtn");
+    var testBtn=$("testVoiceBtn");
+    var beepBtn=$("beepBtn");
+    var resetBtn=$("resetBtn");
+
+    // Optional segmented voice buttons (Canada-style)
+    var voiceAuto=$("voiceAuto");
+    var voiceUS=$("voiceUS");
+    var voiceUK=$("voiceUK");
+
+    function setSeg(){
+      if(!accentSel) return;
+      var v = accentSel.value || "auto";
+      if(voiceAuto){ voiceAuto.classList.toggle("is-on", v==="auto"); voiceAuto.setAttribute("aria-pressed", v==="auto" ? "true":"false"); }
+      if(voiceUS){ voiceUS.classList.toggle("is-on", v==="en-US"); voiceUS.setAttribute("aria-pressed", v==="en-US" ? "true":"false"); }
+      if(voiceUK){ voiceUK.classList.toggle("is-on", v==="en-GB"); voiceUK.setAttribute("aria-pressed", v==="en-GB" ? "true":"false"); }
+    }
+
+    function setAccent(v){
+      if(!accentSel) return;
+      accentSel.value = v;
+      state.accent = v;
+      try{ TTS.setAccent(state.accent); }catch(e){}
       save();
-    });
+      setSeg();
+    }
 
-    $("enableVoiceBtn").addEventListener("click", function(){
-      TTS.unlock();
-      // also wake audio
-      AudioFX.beep(880, 120);
-    });
-
-    $("testVoiceBtn").addEventListener("click", function(){
-      TTS.speak("Hello. Let’s practise airport and hotel English.");
-    });
-
-    $("beepBtn").addEventListener("click", function(){
-      var ok=AudioFX.beep(880, 140);
-      if(!ok) alert("Beep not supported on this browser.");
-    });
-
-    $("resetBtn").addEventListener("click", function(){
-      if(confirm("Reset score and progress for this page?")){
-        state.score=0; state.done={}; state.shadow=false;
+    if(accentSel){
+      accentSel.value = state.accent || "auto";
+      accentSel.addEventListener("change", function(){
+        state.accent = accentSel.value || "auto";
+        TTS.setAccent(state.accent);
         save();
-        updateScoreUI();
-        // re-render scene to reset UI (optional)
-        var box=$("sceneBox"); if(box) box.innerHTML="";
+        setSeg();
+      });
+      setSeg();
+    }
+
+    if(voiceAuto) voiceAuto.addEventListener("click", function(){ setAccent("auto"); });
+    if(voiceUS) voiceUS.addEventListener("click", function(){ setAccent("en-US"); });
+    if(voiceUK) voiceUK.addEventListener("click", function(){ setAccent("en-GB"); });
+
+    if(enableBtn){
+      enableBtn.addEventListener("click", function(){
+        TTS.unlock();
+        // also wake audio
+        AudioFX.beep(880, 120);
+      });
+    }
+
+    // Optional speech controls
+    var btnPause=$("btnPause");
+    var btnResume=$("btnResume");
+    var btnStop=$("btnStop");
+    if(btnPause) btnPause.addEventListener("click", function(){ try{ window.speechSynthesis && window.speechSynthesis.pause(); }catch(e){} });
+    if(btnResume) btnResume.addEventListener("click", function(){ try{ window.speechSynthesis && window.speechSynthesis.resume(); }catch(e){} });
+    if(btnStop) btnStop.addEventListener("click", function(){ try{ window.speechSynthesis && window.speechSynthesis.cancel(); }catch(e){} });
+
+    if(testBtn){
+      testBtn.addEventListener("click", function(){
+        TTS.speak("Hello. Let’s practise airport and hotel English.");
+      });
+    }
+
+    if(beepBtn){
+      beepBtn.addEventListener("click", function(){
+        var ok=AudioFX.beep(880, 140);
+        if(!ok) alert("Beep not supported on this browser.");
+      });
+    }
+
+    if(resetBtn){
+      resetBtn.addEventListener("click", function(){
+        if(confirm("Reset score and progress for this page?")){
+          state.score=0; state.done={}; state.shadow=false;
+          save();
+          updateScoreUI();
+          var box=$("sceneBox"); if(box) box.innerHTML="";
+          setSeg();
+        }
+      });
+    }
+  }
+
+
+  function bindModals(){
+    function openModal(id){
+      var m=$(id);
+      if(!m) return;
+      m.classList.add("is-open");
+      m.setAttribute("aria-hidden","false");
+      // focus first button for accessibility
+      var b = m.querySelector("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
+      if(b) { try{ b.focus(); }catch(e){} }
+    }
+    function closeModal(id){
+      var m=$(id);
+      if(!m) return;
+      m.classList.remove("is-open");
+      m.setAttribute("aria-hidden","true");
+    }
+
+    document.addEventListener("click", function(ev){
+      var t = ev.target;
+      // open
+      var opener = t.closest ? t.closest("[data-modal]") : null;
+      if(opener){
+        ev.preventDefault();
+        openModal(opener.getAttribute("data-modal"));
+        return;
+      }
+      // close
+      var closer = t.closest ? t.closest("[data-close]") : null;
+      if(closer){
+        ev.preventDefault();
+        closeModal(closer.getAttribute("data-close"));
+        return;
+      }
+      // optional scroll inside modal button
+      var sc = t.closest ? t.closest("[data-scroll]") : null;
+      if(sc && t.closest(".modal__actions")){
+        // close any open modal first
+        var mm = t.closest(".modal");
+        if(mm && mm.id) closeModal(mm.id);
+      }
+    });
+
+    document.addEventListener("keydown", function(ev){
+      if(ev.key === "Escape"){
+        qsa(".modal.is-open").forEach(function(m){
+          m.classList.remove("is-open");
+          m.setAttribute("aria-hidden","true");
+        });
       }
     });
   }
+
 
   function initRoleplay(){
     fillSceneSelect();
@@ -1199,6 +1304,7 @@
     load();
     bindScrollButtons();
     bindTopbar();
+    bindModals();
 
     // TTS
     TTS.init();
