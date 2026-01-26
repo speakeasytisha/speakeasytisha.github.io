@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Describe Famous People</title>
+  <link rel="stylesheet" href="/css/famous-people-describe.css" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">🎬</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Describe Famous People (Actor + Actress)</div>
+      </div>
+    </div>
+
+    <div class="topbar__controls">
+      <button class="btn btn--ghost" id="btnReset" title="Reset score & progress">Reset</button>
+      <button class="btn btn--ghost" id="btnPrint" title="Print grammar + vocabulary">Print</button>
+    </div>
+  </div>
+
+  <div class="prefs">
+    <div class="prefs__group">
+      <label class="label" for="accent">Accent</label>
+      <select id="accent" class="select">
+        <option value="en-US">US (en-US)</option>
+        <option value="en-GB">UK (en-GB)</option>
+      </select>
+    </div>
+
+    <div class="prefs__group">
+      <label class="label" for="rate">Speed</label>
+      <input id="rate" class="range" type="range" min="0.7" max="1.15" step="0.05" value="0.95" />
+      <span class="pill" id="rateLabel">0.95×</span>
+    </div>
+
+    <div class="prefs__group">
+      <label class="label" for="level">Level</label>
+      <select id="level" class="select">
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+      </select>
+    </div>
+
+    <div class="prefs__group prefs__score">
+      <div class="score">
+        <span class="score__label">Score</span>
+        <span class="score__value" id="score">0</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero card">
+    <div class="hero__left">
+      <h1>Describe people: looks, personality, and your opinion</h1>
+      <p class="muted">
+        Practice with two famous people: <strong>one actor</strong> and <strong>one actress</strong>.
+        This lesson focuses on <strong>physical description</strong>, <strong>personality</strong>, and
+        <strong>likes/dislikes + reasons</strong>.
+      </p>
+      <div class="note">
+        <strong>Note:</strong> This is a language practice lesson. For the famous people, you can choose the traits you see in photos.
+        We are not writing a factual biography.
+      </div>
+
+      <div class="hero__actions">
+        <a class="btn" href="#vocab">Start: Flashcards</a>
+        <a class="btn btn--ghost" href="#grammar">Grammar</a>
+        <a class="btn btn--ghost" href="#exercises">Exercises</a>
+        <a class="btn btn--ghost" href="#builder">Paragraph Builder</a>
+      </div>
+    </div>
+
+    <div class="hero__right">
+      <div class="chooser" aria-label="Choose a person">
+        <div class="chooser__title">Choose your person</div>
+        <div class="segmented" role="tablist" aria-label="Person choice">
+          <button class="segmented__btn is-active" id="personActor" data-person="actor" role="tab" aria-selected="true">
+            Actor
+          </button>
+          <button class="segmented__btn" id="personActress" data-person="actress" role="tab" aria-selected="false">
+            Actress
+          </button>
+        </div>
+
+        <div class="profile" id="profileBox">
+          <!-- Filled by JS -->
+        </div>
+
+        <div class="mini">
+          <div class="mini__row">
+            <span class="pill" id="pronounPill">he / him / his</span>
+            <button class="btn btn--tiny" id="btnSayName" title="Listen">🔊 Listen</button>
+          </div>
+          <div class="mini__row muted">
+            Tip: use <strong>He is…</strong>, <strong>He has…</strong>, <strong>He seems…</strong> / <strong>She seems…</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section id="vocab" class="section">
+    <div class="section__head">
+      <h2>1) Vocabulary flashcards (EN → FR + definition)</h2>
+      <p class="muted">Tap a card to flip. Use the category buttons to focus.</p>
+      <div class="filters" id="vocabFilters" aria-label="Vocabulary filters"></div>
+    </div>
+
+    <div class="grid" id="flashcards"></div>
+
+    <div class="card pad" id="vocabCheat">
+      <div class="row row--between row--wrap">
+        <div>
+          <h3 class="h3">Quick sentence patterns</h3>
+          <ul class="bullets">
+            <li><strong>He/She is + adjective</strong> → <em>She is friendly.</em></li>
+            <li><strong>He/She has + (adjective) + noun</strong> → <em>He has short hair.</em></li>
+            <li><strong>He/She seems / looks + adjective</strong> → <em>He seems confident.</em></li>
+            <li><strong>I like / don’t like + noun / that… because…</strong> → <em>I like her because she is inspiring.</em></li>
+          </ul>
+        </div>
+        <div class="actions">
+          <button class="btn btn--ghost" id="btnListenPatterns">🔊 Listen to examples</button>
+          <button class="btn btn--ghost" id="btnVocabList">Show printable vocab list</button>
+        </div>
+      </div>
+
+      <div id="vocabListBox" class="hidden">
+        <div class="divider"></div>
+        <div class="tableWrap" id="vocabTable"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRAMMAR -->
+  <section id="grammar" class="section">
+    <div class="section__head">
+      <h2>2) Grammar: how to structure descriptions</h2>
+      <p class="muted">Open each card. Tap 🔊 to listen (US/UK). Then do the exercises.</p>
+    </div>
+
+    <div class="grid2">
+      <article class="card pad">
+        <h3 class="h3">A) Physical description: <span class="mono">be</span> vs <span class="mono">have</span></h3>
+        <div class="accordion">
+          <button class="accordion__btn" data-acc="a1">
+            Sentence structures
+            <span class="accordion__icon">▾</span>
+          </button>
+          <div class="accordion__panel" id="a1">
+            <ul class="bullets">
+              <li><strong>He/She is + adjective</strong> (height, build, general look): <em>She is tall.</em> / <em>He is slim.</em></li>
+              <li><strong>He/She has + (adjective) + noun</strong> (features): <em>He has short hair.</em> / <em>She has blue eyes.</em></li>
+              <li><strong>He/She wears + noun</strong> (clothes/accessories): <em>She wears glasses.</em></li>
+            </ul>
+            <div class="examples" id="exPhysical"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card pad">
+        <h3 class="h3">B) Personality: <span class="mono">be</span>, <span class="mono">seem</span>, <span class="mono">come across as</span></h3>
+        <div class="accordion">
+          <button class="accordion__btn" data-acc="b1">
+            Sentence structures
+            <span class="accordion__icon">▾</span>
+          </button>
+          <div class="accordion__panel" id="b1">
+            <ul class="bullets">
+              <li><strong>He/She is + adjective</strong>: <em>He is generous.</em></li>
+              <li><strong>He/She seems + adjective</strong>: <em>She seems confident.</em> (your impression)</li>
+              <li><strong>He/She comes across as + adjective</strong>: <em>He comes across as calm.</em> (how they appear)</li>
+            </ul>
+            <div class="examples" id="exPersonality"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card pad">
+        <h3 class="h3">C) Opinions: like/dislike + reasons</h3>
+        <div class="accordion">
+          <button class="accordion__btn" data-acc="c1">
+            Sentence structures
+            <span class="accordion__icon">▾</span>
+          </button>
+          <div class="accordion__panel" id="c1">
+            <ul class="bullets">
+              <li><strong>I like + object + because + clause</strong>: <em>I like him because he is funny.</em></li>
+              <li><strong>I don’t like + some of + noun + because…</strong>: <em>I don’t like some of her roles because they are too intense for me.</em></li>
+              <li><strong>In my opinion, …</strong> / <strong>I think that …</strong> / <strong>To me, …</strong></li>
+              <li><strong>Reason nouns</strong>: <em>talent, charisma, voice, style, choices, values</em></li>
+            </ul>
+            <div class="examples" id="exOpinion"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card pad">
+        <h3 class="h3">D) Adjective order (simple)</h3>
+        <div class="accordion">
+          <button class="accordion__btn" data-acc="d1">
+            Basic order
+            <span class="accordion__icon">▾</span>
+          </button>
+          <div class="accordion__panel" id="d1">
+            <p class="muted">
+              In English, we often put adjectives in this order:
+              <span class="pill">opinion</span> → <span class="pill">size</span> → <span class="pill">age</span> → <span class="pill">color</span> → <span class="pill">noun</span>
+            </p>
+            <ul class="bullets">
+              <li><em>a talented young actor</em></li>
+              <li><em>long brown hair</em></li>
+              <li><em>a kind, funny person</em></li>
+            </ul>
+            <div class="examples" id="exAdjOrder"></div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="card pad">
+      <div class="row row--between row--wrap">
+        <div>
+          <h3 class="h3">Connector bank (EN → FR)</h3>
+          <p class="muted">Use these to add information and explain reasons.</p>
+        </div>
+        <button class="btn btn--ghost" id="btnConnectorListen">🔊 Listen to connectors</button>
+      </div>
+      <div class="chips" id="connectorChips"></div>
+    </div>
+  </section>
+
+  <!-- EXERCISES -->
+  <section id="exercises" class="section">
+    <div class="section__head">
+      <h2>3) Interactive exercises</h2>
+      <p class="muted">Works on Mac + iPad Safari (drag OR tap-to-place). Immediate feedback + hints.</p>
+    </div>
+
+    <div class="tabs card pad">
+      <div class="tabs__bar" role="tablist">
+        <button class="tabs__btn is-active" data-tab="mcq" role="tab" aria-selected="true">QCM</button>
+        <button class="tabs__btn" data-tab="fill" role="tab" aria-selected="false">Fill in</button>
+        <button class="tabs__btn" data-tab="sort" role="tab" aria-selected="false">Drag / Tap sorting</button>
+        <button class="tabs__btn" data-tab="build" role="tab" aria-selected="false">Sentence builder</button>
+      </div>
+
+      <!-- MCQ -->
+      <div class="tabs__panel" id="tab-mcq">
+        <h3 class="h3">A) QCM — Choose the best answer</h3>
+        <div id="mcqBox"></div>
+      </div>
+
+      <!-- Fill -->
+      <div class="tabs__panel hidden" id="tab-fill">
+        <h3 class="h3">B) Fill in — Complete the sentence</h3>
+        <div class="row row--wrap">
+          <div class="pill">Tip: use <strong>is</strong> for adjectives, <strong>has</strong> for features.</div>
+          <button class="btn btn--ghost" id="btnFillNew">New sentence</button>
+          <button class="btn btn--ghost" id="btnFillHint">Hint</button>
+          <button class="btn" id="btnFillCheck">Check</button>
+        </div>
+        <div class="fill card subtle pad" id="fillCard"></div>
+        <div class="feedback" id="fillFeedback"></div>
+      </div>
+
+      <!-- Sort -->
+      <div class="tabs__panel hidden" id="tab-sort">
+        <h3 class="h3">C) Sorting — Physical vs Personality vs Opinion words</h3>
+        <p class="muted">Drag words into the correct box (desktop) or tap a word then tap a box (touch).</p>
+
+        <div class="sorter" id="sorter">
+          <div class="sorter__bank">
+            <div class="sorter__title">Word bank</div>
+            <div class="chips chips--bank" id="sortBank" aria-label="Word bank"></div>
+            <div class="row row--wrap">
+              <button class="btn btn--ghost" id="btnSortReset">Reset words</button>
+              <button class="btn" id="btnSortCheck">Check</button>
+            </div>
+            <div class="feedback" id="sortFeedback"></div>
+          </div>
+
+          <div class="sorter__bins">
+            <div class="bin" data-bin="physical" aria-label="Physical description">
+              <div class="bin__title">Physical</div>
+              <div class="bin__drop" id="binPhysical"></div>
+            </div>
+            <div class="bin" data-bin="personality" aria-label="Personality">
+              <div class="bin__title">Personality</div>
+              <div class="bin__drop" id="binPersonality"></div>
+            </div>
+            <div class="bin" data-bin="opinion" aria-label="Opinion / reasons">
+              <div class="bin__title">Opinion</div>
+              <div class="bin__drop" id="binOpinion"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sentence builder -->
+      <div class="tabs__panel hidden" id="tab-build">
+        <h3 class="h3">D) Sentence builder — Put the words in order</h3>
+        <p class="muted">Drag OR tap words into the slots. Tap a placed word to remove it.</p>
+
+        <div class="row row--wrap">
+          <button class="btn btn--ghost" id="btnBuildNew">New sentence</button>
+          <button class="btn btn--ghost" id="btnBuildHint">Hint</button>
+          <button class="btn" id="btnBuildCheck">Check</button>
+        </div>
+
+        <div class="builder">
+          <div class="builder__bank" id="buildBank" aria-label="Word tiles bank"></div>
+          <div class="builder__slots" id="buildSlots" aria-label="Sentence slots"></div>
+        </div>
+
+        <div class="feedback" id="buildFeedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARAGRAPH BUILDER -->
+  <section id="builder" class="section">
+    <div class="section__head">
+      <h2>4) Paragraph builder (your perfect description)</h2>
+      <p class="muted">Choose options → generate a paragraph → listen → copy.</p>
+    </div>
+
+    <div class="card pad">
+      <div class="grid3">
+        <div class="field">
+          <label class="label" for="bPerson">Person</label>
+          <select id="bPerson" class="select"></select>
+        </div>
+
+        <div class="field">
+          <label class="label" for="bHair">Hair</label>
+          <select id="bHair" class="select"></select>
+        </div>
+
+        <div class="field">
+          <label class="label" for="bEyes">Eye color</label>
+          <select id="bEyes" class="select"></select>
+        </div>
+
+        <div class="field">
+          <label class="label" for="bHeight">Height / build</label>
+          <select id="bHeight" class="select"></select>
+        </div>
+
+        <div class="field">
+          <label class="label" for="bPersonality">Personality</label>
+          <select id="bPersonality" class="select"></select>
+        </div>
+
+        <div class="field">
+          <label class="label" for="bOpinion">Your opinion</label>
+          <select id="bOpinion" class="select"></select>
+        </div>
+
+        <div class="field">
+          <label class="label" for="bReason">Reason connector</label>
+          <select id="bReason" class="select"></select>
+        </div>
+
+        <div class="field">
+          <label class="label" for="bReasonNoun">Reason noun</label>
+          <select id="bReasonNoun" class="select"></select>
+        </div>
+
+        <div class="field">
+          <label class="label" for="bExtra">Extra connector</label>
+          <select id="bExtra" class="select"></select>
+        </div>
+      </div>
+
+      <div class="row row--wrap">
+        <button class="btn" id="btnBuildParagraph">Generate paragraph</button>
+        <button class="btn btn--ghost" id="btnParagraphListen">🔊 Listen</button>
+        <button class="btn btn--ghost" id="btnParagraphCopy">Copy</button>
+      </div>
+
+      <div class="output" id="paragraphOut" aria-live="polite"></div>
+
+      <div class="divider"></div>
+
+      <h3 class="h3">Bonus: Describe anyone (not famous)</h3>
+      <p class="muted">Use the same structures for friends, family, colleagues, characters…</p>
+      <div class="row row--wrap">
+        <input class="input" id="customName" placeholder="Name (e.g., My friend Alex)" />
+        <select class="select" id="customPronoun">
+          <option value="he">he / him / his</option>
+          <option value="she">she / her / her</option>
+          <option value="they">they / them / their</option>
+        </select>
+        <button class="btn btn--ghost" id="btnCustomInsert">Use this name</button>
+      </div>
+      <div class="muted small">Tip: for <strong>they</strong>, use <strong>are</strong> and <strong>have</strong> (e.g., “They are friendly.”).</div>
+    </div>
+
+    <div class="card pad">
+      <h3 class="h3">Self-check mini rubric</h3>
+      <ul class="bullets">
+        <li>Did you include <strong>hair</strong> + <strong>eye color</strong>?</li>
+        <li>Did you include <strong>1–2 personality adjectives</strong>?</li>
+        <li>Did you include your <strong>opinion + reason</strong> (because / since / although / however)?</li>
+        <li>Did you use at least <strong>one connector</strong> to add information?</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>© SpeakEasyTisha</span>
+      <span class="muted">Made for Mac + iPad Safari • Touch-friendly exercises • US/UK TTS</span>
+      <a href="#top" class="link">Back to top ↑</a>
+    </div>
+  </footer>
+</main>
+
+<script src="/js/famous-people-describe.js"></script>
+</body>
+</html>
+
