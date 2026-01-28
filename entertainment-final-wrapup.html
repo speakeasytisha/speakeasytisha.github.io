@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Entertainment Final Wrap-Up</title>
+  <link rel="stylesheet" href="/css/entertainment-final-wrapup.css" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand" role="banner" aria-label="SpeakEasyTisha">
+      <div class="brand__mark" aria-hidden="true">🎬</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Entertainment Final • Movie + Series Review Mastery</div>
+      </div>
+    </div>
+
+    <div class="controls" role="group" aria-label="Lesson controls">
+      <div class="toggle" role="group" aria-label="Accent toggle">
+        <button class="pill is-active" id="btnUS" type="button" aria-pressed="true">US</button>
+        <button class="pill" id="btnUK" type="button" aria-pressed="false">UK</button>
+      </div>
+
+      <div class="voice">
+        <button class="btn btn--ghost" id="btnEnableVoice" type="button">Enable voice</button>
+        <button class="btn btn--ghost" id="btnTestVoice" type="button">Test</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value" id="score">0</div>
+      </div>
+
+      <button class="btn btn--danger" id="btnResetAll" type="button" title="Reset everything">Reset all</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero card">
+    <div class="hero__grid">
+      <div>
+        <h1>Entertainment Final — Speak like a critic 🏆</h1>
+        <p class="lead">
+          This is your <b>capstone lesson</b>. By the end, learners can talk confidently about a movie or TV series:
+          opinions, reasons, connectors, tenses, comparisons, and “favorite/worst actor” — <b>naturally</b>.
+        </p>
+        <div class="hero__badges" id="badgeRow" aria-label="Badges">
+          <span class="badge" data-badge="warmup">🎟️ Warm-up</span>
+          <span class="badge" data-badge="vocab">🧠 Vocab</span>
+          <span class="badge" data-badge="grammar">⏱️ Tenses</span>
+          <span class="badge" data-badge="critic">⭐ Critic</span>
+          <span class="badge" data-badge="final">🏁 Final review</span>
+        </div>
+
+        <div class="hero__actions">
+          <button class="btn" id="btnIntro" type="button">Listen to mini-intro</button>
+          <button class="btn btn--ghost" id="btnPrintGrammar" type="button">Print grammar</button>
+          <a class="btn btn--ghost" href="#final" type="button">Jump to Final Task ↓</a>
+        </div>
+
+        <p class="hintline" id="voiceStatus">Voice: loading… Tip: if voice stays silent, click <b>Enable voice</b>, then <b>Test</b>.</p>
+      </div>
+
+      <div class="hero__side">
+        <div class="mini card card--soft">
+          <h3 class="mini__title">Speaking frames (quick)</h3>
+          <ul class="frames">
+            <li><span class="dot">💬</span> <b>It’s about…</b> / The story follows…</li>
+            <li><span class="dot">😍</span> <b>I loved…</b> because…</li>
+            <li><span class="dot">🤔</span> <b>However</b>, … / <b>Overall</b>, …</li>
+            <li><span class="dot">⚖️</span> It’s <b>better than</b>… / not as… as…</li>
+            <li><span class="dot">✅</span> You <b>should</b> watch it if… / You <b>might</b> like it if…</li>
+          </ul>
+          <div class="mini__actions">
+            <button class="btn btn--ghost" id="btnFrames" type="button">Listen frames</button>
+            <button class="btn btn--ghost" id="btnTimer60" type="button">1-minute speaking timer</button>
+          </div>
+          <div class="timer" id="timer" hidden>
+            <div class="timer__row">
+              <div class="timer__num" id="timerNum">60</div>
+              <div class="timer__label">Speak for 60 seconds</div>
+            </div>
+            <div class="timer__actions">
+              <button class="btn" id="btnStartTimer" type="button">Start</button>
+              <button class="btn btn--danger" id="btnStopTimer" type="button">Stop</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini card card--soft">
+          <h3 class="mini__title">Progress</h3>
+          <ol class="progress">
+            <li><a href="#warmup">🎛️ Warm-up & choices</a></li>
+            <li><a href="#vocab">🧩 Vocab flashcards + match</a></li>
+            <li><a href="#grammar">⏱️ Tenses + connectors + comparisons</a></li>
+            <li><a href="#actor">🎭 Favorite/Worst actor & ratings</a></li>
+            <li><a href="#dialogue">🗣️ Dialogue: recommend like a pro</a></li>
+            <li><a href="#final">🏁 Final: write + speak your review</a></li>
+          </ol>
+          <p class="tiny">Touch-friendly (Mac + iPad Safari). Instant feedback + hints. Score saved in this browser.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARMUP -->
+  <section class="card section" id="warmup" data-section="warmup">
+    <div class="section__head">
+      <h2>🎛️ Warm-up — Choose your critic vibe</h2>
+      <div class="section__actions">
+        <button class="btn btn--ghost" data-say="warmupModel" type="button">Listen</button>
+        <button class="btn btn--ghost" data-reset-section="warmup" type="button">Reset section</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card card--soft">
+        <h3>Pick your “review voice”</h3>
+        <p class="tiny">Tap 1 option in each line. This helps learners “own” their style.</p>
+
+        <div class="picker" id="warmupPickers" aria-label="Warm-up pickers"></div>
+
+        <div class="row">
+          <button class="btn" id="btnWarmupCheck" type="button">Lock choices (+3 pts)</button>
+          <button class="btn btn--ghost" id="btnWarmupListen" type="button">Listen my choices</button>
+        </div>
+        <div class="feedback" id="warmupFb" aria-live="polite"></div>
+      </div>
+
+      <div class="card card--soft">
+        <h3>Mini task: Say it without spoilers 🚫</h3>
+        <p class="tiny">Build 1 safe sentence (no spoilers!) using the tiles.</p>
+
+        <div class="builder" data-builder="spoilerSafe">
+          <div class="builder__prompt">Tap tiles to build a natural sentence:</div>
+          <div class="builder__bank" id="bank_spoilerSafe" aria-label="Tile bank"></div>
+          <div class="builder__answer" id="ans_spoilerSafe" aria-label="Your sentence"></div>
+          <div class="row">
+            <button class="btn" data-check-builder="spoilerSafe" type="button">Check</button>
+            <button class="btn btn--ghost" data-listen-builder="spoilerSafe" type="button">Listen</button>
+            <button class="btn btn--ghost" data-reset-builder="spoilerSafe" type="button">Reset</button>
+          </div>
+          <div class="feedback" id="fb_spoilerSafe" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section class="card section" id="vocab" data-section="vocab">
+    <div class="section__head">
+      <h2>🧩 Vocab — Critic words (EN + FR)</h2>
+      <div class="section__actions">
+        <button class="btn btn--ghost" data-say="vocabModel" type="button">Listen</button>
+        <button class="btn btn--ghost" data-reset-section="vocab" type="button">Reset section</button>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Vocab categories">
+      <button class="tab is-active" data-tab="plot" type="button" role="tab" aria-selected="true">Plot & Story</button>
+      <button class="tab" data-tab="acting" type="button" role="tab" aria-selected="false">Acting & Characters</button>
+      <button class="tab" data-tab="visual" type="button" role="tab" aria-selected="false">Visuals & Sound</button>
+      <button class="tab" data-tab="overall" type="button" role="tab" aria-selected="false">Overall Opinion</button>
+    </div>
+
+    <div class="flashgrid" id="flashgrid" aria-label="Flashcards"></div>
+
+    <div class="card card--soft">
+      <h3>✅ Vocab Match (tap to pair)</h3>
+      <p class="tiny">Tap a word, then tap its definition. Pairs lock when correct.</p>
+      <div class="pair" id="pairGame" aria-label="Pairing game"></div>
+      <div class="row">
+        <button class="btn btn--ghost" data-hint="pair" type="button">Hint</button>
+        <button class="btn btn--ghost" data-reset-pair type="button">Reset</button>
+      </div>
+      <div class="feedback" id="pairFb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- GRAMMAR -->
+  <section class="card section" id="grammar" data-section="grammar">
+    <div class="section__head">
+      <h2>⏱️ Grammar wrap-up — tenses + connectors + comparisons</h2>
+      <div class="section__actions">
+        <button class="btn btn--ghost" data-say="grammarModel" type="button">Listen</button>
+        <button class="btn btn--ghost" data-reset-section="grammar" type="button">Reset section</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card card--soft">
+        <h3>1) Tenses for reviews (quick map)</h3>
+        <ul class="bullets">
+          <li><b>Plot summary</b> → Present Simple: “The series follows…”</li>
+          <li><b>Finished time</b> → Past Simple: “I watched it last weekend.”</li>
+          <li><b>Experience / no time</b> → Present Perfect: “I’ve watched it.”</li>
+          <li><b>Now</b> → Present Continuous: “I’m watching season 2.”</li>
+        </ul>
+
+        <div class="quiz" id="tenseQuiz" aria-label="Tense quiz"></div>
+        <div class="row">
+          <button class="btn btn--ghost" data-hint="tenseQuiz" type="button">Hint</button>
+          <button class="btn btn--ghost" data-reset-quiz="tenseQuiz" type="button">Reset</button>
+        </div>
+        <div class="feedback" id="tenseQuizFb" aria-live="polite"></div>
+      </div>
+
+      <div class="card card--soft">
+        <h3>2) Connectors — tap to fill</h3>
+        <p class="tiny">Tap a blank, then tap a connector. Then check.</p>
+
+        <div class="fill" id="connectorFill" aria-label="Connector fill"></div>
+
+        <div class="chips" id="connectorChips" aria-label="Connector choices"></div>
+
+        <div class="row">
+          <button class="btn" id="btnCheckConnectors" type="button">Check</button>
+          <button class="btn btn--ghost" id="btnListenConnectors" type="button">Listen model</button>
+          <button class="btn btn--ghost" data-hint="connectorFill" type="button">Hint</button>
+          <button class="btn btn--ghost" id="btnResetConnectors" type="button">Reset</button>
+        </div>
+        <div class="feedback" id="connectorFb" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="card card--soft">
+      <h3>3) Comparisons — build a critic sentence (dropdown builder)</h3>
+      <p class="tiny">Careful: dropdowns are forced to high-contrast colors for readability ✅</p>
+
+      <div class="selectrow" id="compareBuilder" aria-label="Comparison builder"></div>
+
+      <div class="row">
+        <button class="btn" id="btnBuildCompare" type="button">Build</button>
+        <button class="btn btn--ghost" id="btnListenCompare" type="button">Listen</button>
+        <button class="btn btn--ghost" id="btnResetCompare" type="button">Reset</button>
+      </div>
+      <div class="output" id="compareOut" aria-live="polite"></div>
+      <div class="feedback" id="compareFb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ACTOR -->
+  <section class="card section" id="actor" data-section="actor">
+    <div class="section__head">
+      <h2>🎭 Favorite vs Worst actor — say it politely (but clearly)</h2>
+      <div class="section__actions">
+        <button class="btn btn--ghost" data-say="actorModel" type="button">Listen</button>
+        <button class="btn btn--ghost" data-reset-section="actor" type="button">Reset section</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card card--soft">
+        <h3>Star rating + adjective</h3>
+        <p class="tiny">Pick a rating and a description. Then generate a natural sentence.</p>
+
+        <div class="stars" id="stars" aria-label="Star rating">
+          <button class="star" type="button" data-star="1" aria-label="1 star">★</button>
+          <button class="star" type="button" data-star="2" aria-label="2 stars">★</button>
+          <button class="star" type="button" data-star="3" aria-label="3 stars">★</button>
+          <button class="star" type="button" data-star="4" aria-label="4 stars">★</button>
+          <button class="star" type="button" data-star="5" aria-label="5 stars">★</button>
+        </div>
+
+        <div class="selectrow" id="actorBuilder" aria-label="Actor sentence builder"></div>
+
+        <div class="row">
+          <button class="btn" id="btnBuildActor" type="button">Build</button>
+          <button class="btn btn--ghost" id="btnListenActor" type="button">Listen</button>
+          <button class="btn btn--ghost" id="btnResetActor" type="button">Reset</button>
+        </div>
+
+        <div class="output" id="actorOut" aria-live="polite"></div>
+        <div class="feedback" id="actorFb" aria-live="polite"></div>
+      </div>
+
+      <div class="card card--soft">
+        <h3>✅ Choose the best “polite critique”</h3>
+        <div class="quiz" id="politeQuiz" aria-label="Polite critique quiz"></div>
+        <div class="row">
+          <button class="btn btn--ghost" data-hint="politeQuiz" type="button">Hint</button>
+          <button class="btn btn--ghost" data-reset-quiz="politeQuiz" type="button">Reset</button>
+        </div>
+        <div class="feedback" id="politeQuizFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIALOGUE -->
+  <section class="card section" id="dialogue" data-section="dialogue">
+    <div class="section__head">
+      <h2>🗣️ Dialogue — recommend a movie/series like a pro</h2>
+      <div class="section__actions">
+        <button class="btn btn--ghost" data-say="dialogueModel" type="button">Listen model</button>
+        <button class="btn btn--ghost" data-reset-section="dialogue" type="button">Reset section</button>
+      </div>
+    </div>
+
+    <div class="card card--soft">
+      <p class="tiny">Choose the most natural reply. Points are awarded once per line.</p>
+      <div class="dialogue" id="dialogueGame" aria-label="Dialogue game"></div>
+      <div class="row">
+        <button class="btn btn--ghost" data-hint="dialogueGame" type="button">Hint</button>
+        <button class="btn btn--ghost" id="btnResetDialogue" type="button">Reset</button>
+      </div>
+      <div class="feedback" id="dialogueFb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="card section" id="final" data-section="final">
+    <div class="section__head">
+      <h2>🏁 Final Task — your critic review (write + speak)</h2>
+      <div class="section__actions">
+        <button class="btn btn--ghost" data-say="finalModel" type="button">Listen template</button>
+        <button class="btn btn--ghost" data-reset-section="final" type="button">Reset section</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card card--soft">
+        <h3>Step-by-step Review Builder (no spoilers)</h3>
+
+        <div class="builder2" id="proBuilder" aria-label="Pro builder"></div>
+
+        <div class="row">
+          <button class="btn" id="btnBuildPro" type="button">Build my review</button>
+          <button class="btn btn--ghost" id="btnListenPro" type="button">Listen</button>
+          <button class="btn btn--ghost" id="btnCopyPro" type="button">Copy</button>
+        </div>
+
+        <div class="output" id="proOut" aria-live="polite"></div>
+        <div class="feedback" id="proFb" aria-live="polite"></div>
+      </div>
+
+      <div class="card card--soft">
+        <h3>Write YOUR review ✍️ (then “Check my review”)</h3>
+        <p class="tiny">
+          Goal: <b>80+ words</b>, at least <b>2 connectors</b>, <b>3 adjectives</b>, <b>1 comparison</b>, and <b>1 recommendation</b>.
+        </p>
+
+        <label class="field">
+          <span class="field__label">Your review</span>
+          <textarea id="reviewText" rows="8" placeholder="Example start: This movie is a thriller. The story follows… Overall, I would recommend it because…"></textarea>
+        </label>
+
+        <div class="row">
+          <button class="btn" id="btnCheckReview" type="button">Check my review</button>
+          <button class="btn btn--ghost" id="btnListenReview" type="button">Listen</button>
+          <button class="btn btn--ghost" id="btnCopyReview" type="button">Copy</button>
+          <button class="btn btn--ghost" id="btnPrintReview" type="button">Print</button>
+        </div>
+
+        <div class="checklist" id="reviewChecklist" aria-label="Checklist"></div>
+        <div class="output" id="reviewPreview" aria-live="polite"></div>
+        <div class="feedback" id="reviewFb" aria-live="polite"></div>
+
+        <p class="tiny">
+          Tip (FR): Utilise <b>however</b> pour l’opposition, <b>overall</b> pour conclure, et <b>present simple</b> pour résumer l’histoire.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a class="back" href="#top">↑ Back to top</a>
+    <span class="sep">•</span>
+    <span class="tiny">SpeakEasyTisha — Entertainment Final Wrap-Up • Touch-friendly • Instant feedback • Score saved locally</span>
+  </footer>
+</main>
+
+<script src="/js/entertainment-final-wrapup.js"></script>
+</body>
+</html>
+
