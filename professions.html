@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha — Professions & Company Titles (Interactive Lesson)</title>
+  <link rel="stylesheet" href="css/professions.css" />
+</head>
+
+<body>
+  <header class="siteHeader">
+    <div class="brand">
+      <div class="logoMark" aria-hidden="true">🗣️</div>
+      <div class="brandText">
+        <div class="brandName">SpeakEasyTisha</div>
+        <div class="brandTag" data-i18n="tagline">Interactive English • Mac/iPad friendly</div>
+      </div>
+    </div>
+
+    <nav class="topNav" aria-label="Main">
+      <a href="#" class="navLink" data-i18n="nav_home">Home</a>
+      <a href="#" class="navLink" data-i18n="nav_lessons">Lessons</a>
+      <a href="#" class="navLink" data-i18n="nav_contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero card">
+      <div class="heroTop">
+        <h1 class="h1" data-i18n="title">Professions • Verbs • Company Org Chart</h1>
+
+        <div class="heroControls">
+          <label class="pill">
+            <span data-i18n="ui_language">UI</span>
+            <select id="uiLang" aria-label="UI language">
+              <option value="en" selected>EN</option>
+              <option value="fr">FR</option>
+            </select>
+          </label>
+
+          <label class="pill">
+            <span data-i18n="accent">Accent</span>
+            <select id="accent" aria-label="Accent">
+              <option value="us" selected>US</option>
+              <option value="uk">UK</option>
+            </select>
+          </label>
+
+          <label class="pill">
+            <span data-i18n="interaction_mode">Mode</span>
+            <select id="mode" aria-label="Interaction mode">
+              <option value="auto" selected data-i18n="mode_auto">Auto</option>
+              <option value="drag" data-i18n="mode_drag">Drag</option>
+              <option value="tap" data-i18n="mode_tap">Tap</option>
+            </select>
+          </label>
+
+          <button class="btn ghost" id="resetAll" type="button" data-i18n="reset_all">Reset all</button>
+        </div>
+      </div>
+
+      <div class="scoreBar" role="status" aria-live="polite">
+        <div class="scoreItem"><span data-i18n="score">Score</span>: <strong id="scoreTop">0</strong></div>
+        <div class="scoreItem"><span data-i18n="streak">Streak</span>: <strong id="streakTop">0</strong></div>
+        <div class="scoreItem small" id="modeHint"></div>
+      </div>
+
+      <div class="heroDesc">
+        <p class="lead" data-i18n="intro">
+          Build realistic sentences about jobs, daily tasks, and company roles — then practice with sorting, word order,
+          dialogues, and a paragraph builder.
+        </p>
+
+        <div class="callouts">
+          <div class="callout">
+            <div class="calloutTitle" data-i18n="callout_1_title">Goal</div>
+            <div class="calloutText" data-i18n="callout_1_text">Talk about people’s jobs with clear details: title, workplace, tasks, tools, and purpose.</div>
+          </div>
+          <div class="callout">
+            <div class="calloutTitle" data-i18n="callout_2_title">Tip</div>
+            <div class="calloutText" data-i18n="callout_2_text">On iPad/Safari, use Tap mode: tap a tile → tap a target.</div>
+          </div>
+          <div class="callout">
+            <div class="calloutTitle" data-i18n="callout_3_title">Pronunciation</div>
+            <div class="calloutText" data-i18n="callout_3_text">Every example can be read aloud with US or UK voices (browser Text‑to‑Speech).</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 1) Vocabulary Flashcards ---------- -->
+    <section class="card" id="secFlashcards">
+      <div class="sectionHead">
+        <h2 class="h2">1) <span data-i18n="flashcards">Vocabulary Flashcards</span></h2>
+        <div class="sectionTools">
+          <label class="pill">
+            <span data-i18n="filter_industry">Industry</span>
+            <select id="industryFilter" aria-label="Industry filter"></select>
+          </label>
+          <label class="pill">
+            <input type="checkbox" id="showFrench" />
+            <span data-i18n="show_french">Show French help</span>
+          </label>
+          <button class="btn" id="shuffleCards" type="button" data-i18n="shuffle">Shuffle</button>
+          <button class="btn ghost" id="speakWord" type="button" data-i18n="listen_word">Listen: word</button>
+          <button class="btn ghost" id="speakExample" type="button" data-i18n="listen_example">Listen: example</button>
+        </div>
+      </div>
+
+      <p class="muted" data-i18n="flashcards_tip">
+        Tap/click a card to flip. Use the filter to study by industry.
+      </p>
+
+      <div class="flashWrap">
+        <div class="flashStage">
+          <div id="flashcard" class="flashcard" tabindex="0" aria-label="Flashcard">
+            <div class="flashInner">
+              <div class="flashFace flashFront">
+                <div class="flashIcon" id="flashIcon" aria-hidden="true">💼</div>
+                <div class="flashWord" id="flashWord">doctor</div>
+                <div class="flashMeta" id="flashMeta">Healthcare</div>
+              </div>
+              <div class="flashFace flashBack">
+                <div class="flashDef" id="flashDef"></div>
+                <div class="flashEx" id="flashEx"></div>
+                <div class="flashFr" id="flashFr"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flashNav">
+            <button class="btn" id="prevCard" type="button" aria-label="Previous">←</button>
+            <div class="flashCount"><span id="cardIndex">1</span>/<span id="cardTotal">1</span></div>
+            <button class="btn" id="nextCard" type="button" aria-label="Next">→</button>
+          </div>
+
+          <div class="mini">
+            <div class="miniTitle" data-i18n="verbs_focus">Verbs you often use with this job</div>
+            <div id="verbChips" class="chips" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <aside class="flashNotes">
+          <h3 class="h3" data-i18n="sentence_structures">Useful sentence structures</h3>
+          <div class="note">
+            <div class="noteLine"><strong>Title + workplace:</strong> <span class="mono">A/An [job] works at/in [place].</span></div>
+            <div class="noteLine"><strong>Main tasks:</strong> <span class="mono">They [verb] + [object].</span></div>
+            <div class="noteLine"><strong>When / why:</strong> <span class="mono">We go to see them when... / because...</span></div>
+          </div>
+
+          <div class="note">
+            <div class="noteLine"><strong>Example:</strong></div>
+            <div class="mono" id="structureExample">
+              A doctor works at a doctor’s office. We go to see a doctor when we are sick with a cold.
+            </div>
+            <div class="noteBtns">
+              <button class="btn ghost" id="speakStructure" type="button" data-i18n="listen_example">Listen: example</button>
+              <button class="btn ghost" id="copyStructure" type="button" data-i18n="copy">Copy</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ---------- 2) Industry Sorting ---------- -->
+    <section class="card" id="secSorting">
+      <div class="sectionHead">
+        <h2 class="h2">2) <span data-i18n="sorting">Sort Jobs by Industry</span></h2>
+        <div class="sectionTools">
+          <button class="btn" id="checkSorting" type="button" data-i18n="check">Check</button>
+          <button class="btn ghost" id="resetSorting" type="button" data-i18n="reset">Reset</button>
+        </div>
+      </div>
+
+      <p class="muted" data-i18n="sorting_tip">
+        Drag or tap job tiles into the correct industry box. (Tap mode: tap a tile → tap a box.)
+      </p>
+
+      <div class="grid2">
+        <div class="tileBank">
+          <h3 class="h3" data-i18n="job_tiles">Job tiles</h3>
+          <div id="jobTiles" class="tiles" aria-label="Job tiles"></div>
+        </div>
+
+        <div class="targets">
+          <h3 class="h3" data-i18n="industries">Industries</h3>
+          <div id="industryTargets" class="targetGrid" aria-label="Industry targets"></div>
+          <div class="feedbackRow">
+            <div id="sortingFeedback" class="feedback" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 3) Company Organigram ---------- -->
+    <section class="card" id="secOrg">
+      <div class="sectionHead">
+        <h2 class="h2">3) <span data-i18n="org_chart">Company Org Chart (Organigram)</span></h2>
+        <div class="sectionTools">
+          <button class="btn" id="checkOrg" type="button" data-i18n="check">Check</button>
+          <button class="btn ghost" id="resetOrg" type="button" data-i18n="reset">Reset</button>
+        </div>
+      </div>
+
+      <div class="lessonBox">
+        <h3 class="h3" data-i18n="titles_mini_lesson">Mini‑lesson: titles & reporting</h3>
+        <ul class="bullets">
+          <li><span class="mono">I report to…</span> / <span class="mono">She manages…</span></li>
+          <li><span class="mono">He is in charge of…</span> / <span class="mono">She leads the team.</span></li>
+          <li><span class="mono">The CTO oversees engineering.</span></li>
+        </ul>
+        <div class="noteBtns">
+          <button class="btn ghost" id="speakOrgLesson" type="button" data-i18n="listen">Listen</button>
+        </div>
+      </div>
+
+      <p class="muted" data-i18n="org_tip">
+        Put the correct title into each box. Some titles belong at the same level.
+      </p>
+
+      <div class="grid2">
+        <div class="tileBank">
+          <h3 class="h3" data-i18n="titles_bank">Title bank</h3>
+          <div id="titleTiles" class="tiles" aria-label="Title tiles"></div>
+        </div>
+
+        <div class="orgWrap">
+          <div id="orgChart" class="orgChart" aria-label="Org chart"></div>
+          <div class="feedbackRow">
+            <div id="orgFeedback" class="feedback" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 4) Word Order: Sentence Builder ---------- -->
+    <section class="card" id="secWordOrder">
+      <div class="sectionHead">
+        <h2 class="h2">4) <span data-i18n="word_order">Word Order: Build the Sentence</span></h2>
+        <div class="sectionTools">
+          <button class="btn" id="newSentence" type="button" data-i18n="new_sentence">New sentence</button>
+          <button class="btn" id="checkSentence" type="button" data-i18n="check">Check</button>
+          <button class="btn ghost" id="hintSentence" type="button" data-i18n="hint">Hint</button>
+          <button class="btn ghost" id="resetSentence" type="button" data-i18n="reset">Reset</button>
+          <button class="btn ghost" id="listenSentence" type="button" data-i18n="listen">Listen</button>
+        </div>
+      </div>
+
+      <p class="muted" data-i18n="word_order_tip">
+        Put the words in the correct order. Tap a word to select it, then tap a slot.
+      </p>
+
+      <div class="sentenceArea">
+        <div class="sentencePrompt" id="sentencePrompt"></div>
+        <div class="slots" id="sentenceSlots" aria-label="Sentence slots"></div>
+        <div class="bank" id="sentenceBank" aria-label="Word bank"></div>
+        <div id="sentenceFeedback" class="feedback" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ---------- 5) Fill in the blank with Word Bank ---------- -->
+    <section class="card" id="secFillBlank">
+      <div class="sectionHead">
+        <h2 class="h2">5) <span data-i18n="fill_blank">Fill in the Blank (Word Bank)</span></h2>
+        <div class="sectionTools">
+          <button class="btn" id="newBlank" type="button" data-i18n="new_item">New</button>
+          <button class="btn" id="checkBlank" type="button" data-i18n="check">Check</button>
+          <button class="btn ghost" id="hintBlank" type="button" data-i18n="hint">Hint</button>
+          <button class="btn ghost" id="resetBlank" type="button" data-i18n="reset">Reset</button>
+          <button class="btn ghost" id="listenBlank" type="button" data-i18n="listen">Listen</button>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="lessonBox">
+          <h3 class="h3" data-i18n="verbs_mini_lesson">Mini‑lesson: job verbs</h3>
+          <p class="muted" data-i18n="verbs_mini_text">
+            Use present simple for routines: “A nurse checks vital signs.” Use “can/could” for polite requests.
+          </p>
+          <div class="noteBtns">
+            <button class="btn ghost" id="speakVerbLesson" type="button" data-i18n="listen">Listen</button>
+          </div>
+        </div>
+
+        <div class="fillArea">
+          <div class="fillSentence" id="blankSentence"></div>
+          <div class="bank" id="blankBank" aria-label="Blank word bank"></div>
+          <div id="blankFeedback" class="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 6) QCM ---------- -->
+    <section class="card" id="secQcm">
+      <div class="sectionHead">
+        <h2 class="h2">6) <span data-i18n="mcq">Multiple Choice (QCM)</span></h2>
+        <div class="sectionTools">
+          <button class="btn" id="newQcm" type="button" data-i18n="new_item">New</button>
+          <button class="btn" id="checkQcm" type="button" data-i18n="check">Check</button>
+          <button class="btn ghost" id="hintQcm" type="button" data-i18n="hint">Hint</button>
+        </div>
+      </div>
+
+      <div class="qcmBox">
+        <div class="qcmQ" id="qcmQuestion"></div>
+        <div class="qcmChoices" id="qcmChoices"></div>
+        <div id="qcmFeedback" class="feedback" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ---------- 7) Dialogues ---------- -->
+    <section class="card" id="secDialogues">
+      <div class="sectionHead">
+        <h2 class="h2">7) <span data-i18n="dialogues">Realistic Dialogues</span></h2>
+        <div class="sectionTools">
+          <label class="pill">
+            <span data-i18n="scenario">Scenario</span>
+            <select id="dialogueScenario"></select>
+          </label>
+          <button class="btn" id="checkDialogue" type="button" data-i18n="check">Check</button>
+          <button class="btn ghost" id="hintDialogue" type="button" data-i18n="hint">Hint</button>
+          <button class="btn ghost" id="resetDialogue" type="button" data-i18n="reset">Reset</button>
+          <button class="btn ghost" id="listenDialogue" type="button" data-i18n="listen">Listen</button>
+        </div>
+      </div>
+
+      <p class="muted" data-i18n="dialogue_tip">
+        Complete the dialogue line by line. Choose the most realistic option.
+      </p>
+
+      <div class="dialogueWrap" id="dialogueWrap"></div>
+      <div id="dialogueFeedback" class="feedback" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- ---------- 8) Paragraph Builder ---------- -->
+    <section class="card" id="secParagraph">
+      <div class="sectionHead">
+        <h2 class="h2">8) <span data-i18n="paragraph_builder">Paragraph Builder</span></h2>
+        <div class="sectionTools">
+          <button class="btn" id="buildParagraph" type="button" data-i18n="build">Build</button>
+          <button class="btn ghost" id="checkParagraph" type="button" data-i18n="check">Check</button>
+          <button class="btn ghost" id="hintParagraph" type="button" data-i18n="hint">Hint</button>
+          <button class="btn ghost" id="listenParagraph" type="button" data-i18n="listen">Listen</button>
+          <button class="btn ghost" id="resetParagraph" type="button" data-i18n="reset">Reset</button>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <form class="builder" id="paraForm">
+          <div class="row">
+            <label>
+              <span data-i18n="name">Name</span>
+              <input id="pName" type="text" placeholder="Emma / Paul / ..." />
+            </label>
+            <label>
+              <span data-i18n="job_title">Job title</span>
+              <select id="pJob"></select>
+            </label>
+          </div>
+
+          <div class="row">
+            <label>
+              <span data-i18n="industry">Industry</span>
+              <select id="pIndustry"></select>
+            </label>
+            <label>
+              <span data-i18n="workplace">Workplace</span>
+              <select id="pPlace">
+                <option value="a hospital" selected>a hospital</option>
+                <option value="a doctor’s office">a doctor’s office</option>
+                <option value="a school">a school</option>
+                <option value="a construction site">a construction site</option>
+                <option value="an office">an office</option>
+                <option value="a law firm">a law firm</option>
+                <option value="a bank">a bank</option>
+                <option value="a laboratory">a laboratory</option>
+                <option value="a software company">a software company</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="row">
+            <label class="full">
+              <span data-i18n="main_tasks">Main tasks (choose 2–3)</span>
+              <div id="taskChips" class="chips pickChips" aria-label="Task chips"></div>
+            </label>
+          </div>
+
+          <div class="row">
+            <label>
+              <span data-i18n="tools">Tools / software</span>
+              <input id="pTools" type="text" placeholder="Excel, CAD, a stethoscope..." />
+            </label>
+            <label>
+              <span data-i18n="purpose">Purpose</span>
+              <select id="pPurpose">
+                <option value="help people stay healthy" selected>help people stay healthy</option>
+                <option value="teach students and support learning">teach students and support learning</option>
+                <option value="build safe structures">build safe structures</option>
+                <option value="solve technical problems">solve technical problems</option>
+                <option value="protect clients and defend rights">protect clients and defend rights</option>
+                <option value="manage money and reduce risk">manage money and reduce risk</option>
+                <option value="discover new knowledge">discover new knowledge</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="row">
+            <label class="full">
+              <span data-i18n="extra_detail">Extra detail (optional)</span>
+              <input id="pDetail" type="text" placeholder="e.g., 'She sees 15 patients a day' / 'He works on renewable energy projects'…" />
+            </label>
+          </div>
+
+          <div class="checklist">
+            <div class="checkTitle" data-i18n="clarity_check">Clarity checklist (self‑check)</div>
+            <label class="checkLine"><input type="checkbox" id="cTitle" /> <span data-i18n="ck_title">Title is clear</span></label>
+            <label class="checkLine"><input type="checkbox" id="cPlace" /> <span data-i18n="ck_place">Workplace is clear</span></label>
+            <label class="checkLine"><input type="checkbox" id="cTasks" /> <span data-i18n="ck_tasks">Tasks are specific</span></label>
+            <label class="checkLine"><input type="checkbox" id="cPurpose" /> <span data-i18n="ck_purpose">Purpose is included</span></label>
+            <label class="checkLine"><input type="checkbox" id="cExample" /> <span data-i18n="ck_example">Extra detail / example is included</span></label>
+          </div>
+        </form>
+
+        <div class="paraOut">
+          <h3 class="h3" data-i18n="your_paragraph">Your paragraph</h3>
+          <div class="output" id="paraOutput" aria-live="polite"></div>
+
+          <div class="improveBox">
+            <div class="improveTitle" data-i18n="upgrade_title">Upgrade your paragraph (step by step)</div>
+            <ol class="steps" id="upgradeSteps"></ol>
+          </div>
+
+          <div id="paraFeedback" class="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 9) Opinion / Troubleshooting ---------- -->
+    <section class="card" id="secOpinion">
+      <div class="sectionHead">
+        <h2 class="h2">9) <span data-i18n="opinion">Opinion & Troubleshooting</span></h2>
+        <div class="sectionTools">
+          <button class="btn" id="checkOpinion" type="button" data-i18n="check">Check</button>
+          <button class="btn ghost" id="hintOpinion" type="button" data-i18n="hint">Hint</button>
+          <button class="btn ghost" id="listenOpinion" type="button" data-i18n="listen">Listen</button>
+          <button class="btn ghost" id="resetOpinion" type="button" data-i18n="reset">Reset</button>
+        </div>
+      </div>
+
+      <div class="lessonBox">
+        <h3 class="h3" data-i18n="connectors">Useful connectors</h3>
+        <div class="chips">
+          <span class="chip">because</span><span class="chip">however</span><span class="chip">therefore</span>
+          <span class="chip">in my opinion</span><span class="chip">on the other hand</span><span class="chip">for example</span>
+        </div>
+        <p class="muted" data-i18n="connectors_tip">
+          Use 1 connector + 1 example to sound more professional.
+        </p>
+      </div>
+
+      <div class="opinionBox">
+        <div class="opinionPrompt" id="opinionPrompt"></div>
+
+        <label class="field">
+          <span data-i18n="choose_position">Choose a position</span>
+          <select id="opinionPosition">
+            <option value="" selected data-i18n="choose">Choose…</option>
+            <option value="agree" data-i18n="agree">I agree</option>
+            <option value="disagree" data-i18n="disagree">I disagree</option>
+            <option value="mixed" data-i18n="mixed">I partly agree</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span data-i18n="write_answer">Write 2–4 sentences</span>
+          <textarea id="opinionText" rows="5" placeholder="Use: In my opinion… because… For example… However…"></textarea>
+        </label>
+
+        <div id="opinionFeedback" class="feedback" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Bottom Score -->
+    <section class="card footerScore">
+      <div class="scoreBar" role="status" aria-live="polite">
+        <div class="scoreItem"><span data-i18n="score">Score</span>: <strong id="scoreBottom">0</strong></div>
+        <div class="scoreItem"><span data-i18n="streak">Streak</span>: <strong id="streakBottom">0</strong></div>
+        <div class="scoreItem small" data-i18n="save_tip">Tip: You can screenshot your score for your portfolio.</div>
+      </div>
+    </section>
+
+    <footer class="siteFooter">
+      <div class="footRow">
+        <div class="muted">© <span id="year"></span> SpeakEasyTisha</div>
+        <div class="muted" data-i18n="footer_note">Text‑to‑Speech depends on your browser’s installed voices.</div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="tapToast" id="tapToast" role="status" aria-live="polite"></div>
+
+  <script src="js/professions.js"></script>
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Moving to the USA • Phone Setup (One-Stop Lesson)</title>
+  <link rel="stylesheet" href="/css/usa-phone-setup.css" />
+  <meta name="color-scheme" content="light" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">📱</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Moving to the USA • Phone Setup (one-stop lesson)</div>
+      </div>
+    </div>
+
+    <div class="controls" role="group" aria-label="Lesson controls">
+      <div class="control">
+        <div class="control__label">Accent</div>
+        <div class="seg">
+          <button class="seg__btn" id="voiceUS" type="button" aria-pressed="true">American (US)</button>
+          <button class="seg__btn" id="voiceUK" type="button" aria-pressed="false">British (UK)</button>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="control__label">French help</div>
+        <div class="seg">
+          <button class="seg__btn" id="frOff" type="button" aria-pressed="false">Off</button>
+          <button class="seg__btn" id="frOn" type="button" aria-pressed="true">On</button>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="control__label">Mode</div>
+        <div class="seg">
+          <button class="seg__btn seg__btn--solo" id="modeTap" type="button" aria-pressed="true">Tap-friendly ✅</button>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="control__label">Tools</div>
+        <div class="seg">
+          <button class="seg__btn" id="btnTestVoice" type="button">Test voice</button>
+          <button class="seg__btn" id="btnPrint" type="button">Print</button>
+          <button class="seg__btn" id="btnResetAll" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="scorepill" aria-live="polite">
+        <div class="scorepill__row">
+          <span class="scorepill__label">Score:</span>
+          <span class="scorepill__value" id="scoreVal">0</span>
+          <span class="scorepill__dot">•</span>
+          <span class="scorepill__label">Streak:</span>
+          <span class="scorepill__value" id="streakVal">0</span>
+        </div>
+        <div class="scorepill__save" id="saveVal">Saved ✓</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="Lesson sections">
+    <button class="tab" data-scroll="#steps">Steps</button>
+    <button class="tab" data-scroll="#vocab">Vocab</button>
+    <button class="tab" data-scroll="#grammar">Grammar</button>
+    <button class="tab" data-scroll="#practice">Practice</button>
+    <button class="tab" data-scroll="#dialogues">Dialogues</button>
+    <button class="tab" data-scroll="#troubleshooting">Troubleshooting</button>
+    <button class="tab" data-scroll="#sources">Sources</button>
+  </nav>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>📱 Phone Setup in the USA (for a French person moving to the United States)</h1>
+    <p class="lead">
+      A step-by-step “one-stop shop” lesson: choose the right option (keep your phone / buy a new phone / prepaid / postpaid / eSIM),
+      activate service, transfer your number, and speak confidently with a carrier or store — with vocabulary, grammar, and interactive practice.
+    </p>
+    <div class="note">
+      <strong>Note:</strong> This is language + practical guidance (not legal or carrier-specific advice). Rules, compatibility, prices, and promotions change often.
+      Always verify details with your carrier.
+    </div>
+
+    <div class="hero__actions">
+      <button class="btn btn--primary" id="btnStartChecklist" type="button">Start the checklist</button>
+      <button class="btn" id="btnCopyChecklist" type="button">Copy checklist</button>
+      <button class="btn" id="btnResetChecklist" type="button">Reset checklist</button>
+    </div>
+
+    <div class="grid grid--3">
+      <div class="card">
+        <h3>Fast facts</h3>
+        <ul class="bullets">
+          <li><strong>SIM</strong>: Physical nano-SIM or <strong>eSIM</strong> (digital).</li>
+          <li><strong>Unlocked</strong> phone = can work on other networks (if compatible).</li>
+          <li><strong>Porting</strong> = transferring your phone number to a new provider.</li>
+          <li><strong>MVNO</strong> = smaller carrier using a big network (often cheaper).</li>
+        </ul>
+        <div class="frhelp">
+          <strong>Aide FR:</strong> SIM (carte SIM) • eSIM (SIM intégrée) • unlocked (désimlocké) • porting (portabilité du numéro) • MVNO (opérateur virtuel)
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Choose your path</h3>
+        <div class="mini">
+          <label class="mini__label" for="pathSelect">Scenario</label>
+          <select id="pathSelect" class="select">
+            <option value="keep_fr_phone">I keep my French phone (moving to the US)</option>
+            <option value="buy_us_phone">I buy a new phone in the US</option>
+            <option value="keep_fr_number">I want to keep my French number (as well)</option>
+            <option value="need_temp">I need a temporary solution (first week)</option>
+          </select>
+        </div>
+        <button class="btn btn--small" id="btnShowPath" type="button">Show my steps</button>
+        <div class="pathResult" id="pathResult" aria-live="polite">Select a scenario and click “Show my steps”.</div>
+      </div>
+
+      <div class="card">
+        <h3>Quick speaking</h3>
+        <div class="phrasebox">
+          <div class="phrase">
+            <span class="phrase__en">“Hi! I just moved from France. I need to set up a US phone plan.”</span>
+            <button class="iconbtn" type="button" data-say="Hi! I just moved from France. I need to set up a US phone plan.">🔊</button>
+          </div>
+          <div class="phrase frhelp">
+            “Bonjour ! Je viens d’arriver de France. J’ai besoin d’un forfait US.”
+          </div>
+
+          <div class="phrase">
+            <span class="phrase__en">“Is my phone compatible and unlocked?”</span>
+            <button class="iconbtn" type="button" data-say="Is my phone compatible and unlocked?">🔊</button>
+          </div>
+          <div class="phrase frhelp">“Mon téléphone est-il compatible et désimlocké ?”</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section id="steps" class="section">
+    <div class="section__head">
+      <h2>✅ 1) Step-by-step guide (interactive checklist)</h2>
+      <p class="muted">Tap each phase to reveal tasks. Your progress is saved automatically.</p>
+    </div>
+
+    <div class="accordion" id="checklist"></div>
+
+    <div class="row row--wrap">
+      <button class="btn" id="btnChecklistProgress" type="button">Show progress</button>
+      <div class="pill" id="progressPill" aria-live="polite">Progress: 0%</div>
+    </div>
+
+    <div class="card">
+      <h3>What to bring / know before you go to a store</h3>
+      <ul class="bullets">
+        <li>Your phone (charged) + cable.</li>
+        <li>Passport / ID (sometimes needed for postpaid plans).</li>
+        <li>Your current carrier info (for number transfer): account number / transfer PIN if required.</li>
+        <li>Your US address (often needed), and ZIP code.</li>
+      </ul>
+      <div class="frhelp">
+        <strong>Aide FR:</strong> pièce d’identité • adresse + code postal • numéro de compte • code/“transfer PIN”
+      </div>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section id="vocab" class="section">
+    <div class="section__head">
+      <h2>📚 2) Vocabulary flashcards (icons + audio)</h2>
+      <p class="muted">Tap to flip. Use categories. Shuffle if you want a challenge.</p>
+    </div>
+
+    <div class="row row--wrap">
+      <label class="mini__label" for="vocabCat">Category</label>
+      <select id="vocabCat" class="select"></select>
+      <button class="btn btn--small" id="btnVocabShuffle" type="button">Shuffle</button>
+      <button class="btn btn--small" id="btnVocabListen" type="button">Listen</button>
+    </div>
+
+    <div class="flashwrap">
+      <button class="btn" id="btnPrevCard" type="button">◀ Prev</button>
+
+      <div class="flash" id="flashCard" tabindex="0" role="button" aria-label="Vocabulary card. Tap to flip.">
+        <div class="flash__inner" id="flashInner">
+          <div class="flash__face flash__front">
+            <div class="flash__top">
+              <div class="flash__icon" id="cardIcon" aria-hidden="true">📱</div>
+              <div>
+                <div class="flash__title" id="cardFront">SIM card</div>
+                <div class="flash__hint">Tap to flip</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flash__face flash__back">
+            <div class="flash__backTitle">Meaning + example</div>
+            <div class="flash__text" id="cardBackEn"></div>
+            <div class="flash__example" id="cardExampleEn"></div>
+
+            <div class="frhelp">
+              <div class="flash__backTitle">Aide FR</div>
+              <div class="flash__text" id="cardBackFr"></div>
+              <div class="flash__example" id="cardExampleFr"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flash__meta" id="cardMeta">Card 1 / 1</div>
+      </div>
+
+      <button class="btn" id="btnNextCard" type="button">Next ▶</button>
+    </div>
+  </section>
+
+  <!-- GRAMMAR -->
+  <section id="grammar" class="section">
+    <div class="section__head">
+      <h2>🧠 3) Grammar you need for phone setup</h2>
+      <p class="muted">Short rules + real examples you can reuse in stores and support calls.</p>
+    </div>
+
+    <div class="grid grid--2">
+      <article class="card">
+        <h3>A) Polite requests (Could / Would / Can)</h3>
+        <div class="rule">
+          <p><strong>Pattern:</strong> <em>Could you…?</em> / <em>Would you mind…?</em> / <em>Can I…?</em></p>
+          <p class="frhelp"><strong>FR:</strong> Pour demander poliment: “Pourriez-vous… ? / Est-ce que je peux… ?”</p>
+        </div>
+
+        <div class="examples">
+          <div class="ex">
+            <span>Could you help me activate this eSIM?</span>
+            <button class="iconbtn" type="button" data-say="Could you help me activate this eSIM?">🔊</button>
+          </div>
+          <div class="ex frhelp">Pourriez-vous m’aider à activer cette eSIM ?</div>
+
+          <div class="ex">
+            <span>Would you mind checking if my phone is unlocked?</span>
+            <button class="iconbtn" type="button" data-say="Would you mind checking if my phone is unlocked?">🔊</button>
+          </div>
+          <div class="ex frhelp">Ça ne vous dérange pas de vérifier si mon téléphone est désimlocké ?</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>B) Must / have to / need to</h3>
+        <div class="rule">
+          <p><strong>Must</strong> = strong rule. <strong>Have to</strong> = required. <strong>Need to</strong> = necessary.</p>
+          <p class="frhelp"><strong>FR:</strong> must / have to = obligation • need to = “avoir besoin de”</p>
+        </div>
+        <div class="examples">
+          <div class="ex">
+            <span>I have to keep my old line active to transfer my number.</span>
+            <button class="iconbtn" type="button" data-say="I have to keep my old line active to transfer my number.">🔊</button>
+          </div>
+          <div class="ex frhelp">Je dois garder mon ancienne ligne active pour transférer mon numéro.</div>
+
+          <div class="ex">
+            <span>I need to scan a QR code to add the eSIM.</span>
+            <button class="iconbtn" type="button" data-say="I need to scan a QR code to add the eSIM.">🔊</button>
+          </div>
+          <div class="ex frhelp">J’ai besoin de scanner un QR code pour ajouter l’eSIM.</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>C) Questions you will ask</h3>
+        <div class="rule">
+          <p><strong>Do I need…?</strong> • <strong>Can you…?</strong> • <strong>How much is…?</strong> • <strong>Is … included?</strong></p>
+          <p class="frhelp"><strong>FR:</strong> “Est-ce que j’ai besoin de… ?” • “Pouvez-vous… ?”</p>
+        </div>
+        <div class="chips" id="questionChips"></div>
+      </article>
+
+      <article class="card">
+        <h3>D) Sequencing connectors (step-by-step)</h3>
+        <div class="rule">
+          <p><strong>First</strong>, <strong>then</strong>, <strong>after that</strong>, <strong>finally</strong>.</p>
+          <p class="frhelp"><strong>FR:</strong> d’abord • ensuite • après ça • finalement</p>
+        </div>
+        <div class="examples">
+          <div class="ex">
+            <span>First, I’ll choose a plan. Then, I’ll activate the SIM.</span>
+            <button class="iconbtn" type="button" data-say="First, I’ll choose a plan. Then, I’ll activate the SIM.">🔊</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PRACTICE -->
+  <section id="practice" class="section">
+    <div class="section__head">
+      <h2>🎯 4) Practice zone (interactive exercises)</h2>
+      <p class="muted">Instant feedback + hints + points.</p>
+    </div>
+
+    <div class="grid grid--2">
+      <article class="card">
+        <h3>1) Choose the most polite option</h3>
+        <p class="muted">Select the best sentence for a store / carrier support.</p>
+        <div id="politeQuiz"></div>
+        <div class="row">
+          <button class="btn btn--small" id="btnPoliteCheck" type="button">Check</button>
+          <button class="btn btn--small" id="btnPoliteHint" type="button">Hint</button>
+          <button class="btn btn--small" id="btnPoliteReset" type="button">Reset</button>
+        </div>
+        <div class="feedback" id="politeFeedback" aria-live="polite"></div>
+      </article>
+
+      <article class="card">
+        <h3>2) Match: plan vocabulary</h3>
+        <p class="muted">Tap a term, then tap its meaning.</p>
+        <div class="match">
+          <div>
+            <div class="match__title">Terms</div>
+            <div class="match__list" id="matchTerms"></div>
+          </div>
+          <div>
+            <div class="match__title">Meanings</div>
+            <div class="match__list" id="matchDefs"></div>
+          </div>
+        </div>
+        <div class="row">
+          <button class="btn btn--small" id="btnMatchHint" type="button">Hint</button>
+          <button class="btn btn--small" id="btnMatchReset" type="button">Reset</button>
+        </div>
+        <div class="feedback" id="matchFeedback" aria-live="polite"></div>
+      </article>
+
+      <article class="card">
+        <h3>3) Fill-in: connectors</h3>
+        <p class="muted">Choose the best word for each blank.</p>
+        <div id="fillIn"></div>
+        <div class="row">
+          <button class="btn btn--small" id="btnFillCheck" type="button">Check</button>
+          <button class="btn btn--small" id="btnFillHint" type="button">Hint</button>
+          <button class="btn btn--small" id="btnFillReset" type="button">Reset</button>
+        </div>
+        <div class="feedback" id="fillFeedback" aria-live="polite"></div>
+      </article>
+
+      <article class="card">
+        <h3>4) Sentence builder (word order)</h3>
+        <p class="muted">Tap words to build the sentence in order.</p>
+
+        <div class="builder">
+          <div class="builder__prompt" id="builderPrompt">Build: “Could you help me transfer my number?”</div>
+          <div class="builder__bank" id="builderBank"></div>
+          <div class="builder__answer" id="builderAnswer" aria-live="polite"></div>
+          <div class="row">
+            <button class="btn btn--small" id="btnBuilderCheck" type="button">Check</button>
+            <button class="btn btn--small" id="btnBuilderHint" type="button">Hint</button>
+            <button class="btn btn--small" id="btnBuilderReset" type="button">Reset</button>
+          </div>
+          <div class="feedback" id="builderFeedback" aria-live="polite"></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- DIALOGUES -->
+  <section id="dialogues" class="section">
+    <div class="section__head">
+      <h2>🗣️ 5) Dialogue builder (store / carrier / support)</h2>
+      <p class="muted">Fill your details and generate a ready-to-use dialogue. Copy it or listen with US/UK voice.</p>
+    </div>
+
+    <div class="grid grid--2">
+      <div class="card">
+        <h3>Your details</h3>
+
+        <div class="formgrid">
+          <label class="field">
+            <span>Name</span>
+            <input id="dlgName" class="input" placeholder="Tisha" />
+          </label>
+
+          <label class="field">
+            <span>Phone type</span>
+            <select id="dlgPhoneType" class="select">
+              <option value="iphone">iPhone</option>
+              <option value="android">Android</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>State</span>
+            <select id="dlgState" class="select">
+              <option value="MA">MA</option>
+              <option value="NH">NH</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>City / town</span>
+            <input id="dlgCity" class="input" placeholder="Boston / Manchester / ..." />
+          </label>
+
+          <label class="field field--full">
+            <span>Scenario</span>
+            <select id="dlgScenario" class="select">
+              <option value="activate">Activate a SIM/eSIM (new plan)</option>
+              <option value="bring">Bring my own phone (from France)</option>
+              <option value="port">Transfer my number to a new carrier</option>
+              <option value="prepaid">Ask about prepaid options</option>
+              <option value="no_service">Troubleshoot: No service / No data</option>
+            </select>
+          </label>
+
+          <label class="field field--full">
+            <span>Your needs (short)</span>
+            <input id="dlgNeeds" class="input" placeholder="Lots of data, hotspot, budget plan, family lines…" />
+          </label>
+        </div>
+
+        <div class="row row--wrap">
+          <button class="btn btn--primary" id="btnGenDialogue" type="button">✨ Generate dialogue</button>
+          <button class="btn" id="btnCopyDialogue" type="button">Copy</button>
+          <button class="btn" id="btnListenDialogue" type="button">Listen</button>
+        </div>
+
+        <div class="frhelp">
+          <strong>Aide FR:</strong> si tu bloques, tu peux dire: “Could you repeat that more slowly?” / “Do you have support in French?”
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Generated dialogue</h3>
+        <div class="dialogue" id="dlgOut">Fill the form and click “Generate dialogue”.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TROUBLESHOOTING -->
+  <section id="troubleshooting" class="section">
+    <div class="section__head">
+      <h2>🧰 6) Troubleshooting (decision helper)</h2>
+      <p class="muted">Tap a problem → get the most common next steps + useful phrases to say.</p>
+    </div>
+
+    <div class="row row--wrap">
+      <button class="btn" data-issue="no_signal" type="button">📡 No signal</button>
+      <button class="btn" data-issue="no_data" type="button">🌐 No data</button>
+      <button class="btn" data-issue="sms" type="button">💬 SMS not working</button>
+      <button class="btn" data-issue="esim" type="button">🧾 eSIM trouble</button>
+      <button class="btn" data-issue="billing" type="button">💳 Billing / payment</button>
+    </div>
+
+    <div class="card">
+      <h3>What to do</h3>
+      <div id="issueOut" class="issueOut">Choose a problem above.</div>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources" class="section">
+    <div class="section__head">
+      <h2>🔎 Sources & official places to verify</h2>
+      <p class="muted">Links are included for convenience. Always verify with your carrier and your phone maker.</p>
+    </div>
+
+    <div class="card">
+      <ul class="bullets">
+        <li><strong>Apple:</strong> Set up eSIM on iPhone (EN/FR)</li>
+        <li><strong>Google Pixel:</strong> SIM / eSIM basics</li>
+        <li><strong>Carrier examples:</strong> Number transfer requirements (transfer PIN / account number / ZIP)</li>
+        <li><strong>FCC (official US regulator):</strong> Consumer guides on porting and unlocking (may change)</li>
+      </ul>
+
+      <div class="links">
+        <a href="https://support.apple.com/en-us/118669" target="_blank" rel="noopener">Apple eSIM (EN)</a>
+        <a href="https://support.apple.com/fr-fr/118669" target="_blank" rel="noopener">Apple eSIM (FR)</a>
+        <a href="https://support.google.com/pixelphone/answer/7086887" target="_blank" rel="noopener">Pixel: SIM / eSIM</a>
+        <a href="https://www.t-mobile.com/support/account/transfer-your-phone-number" target="_blank" rel="noopener">T-Mobile: transfer number</a>
+        <a href="https://www.fcc.gov/consumers/guides/cell-phone-unlocking" target="_blank" rel="noopener">FCC: unlocking (official)</a>
+        <a href="https://www.fcc.gov/consumers/guides/porting-keeping-your-phone-number-when-you-change-providers" target="_blank" rel="noopener">FCC: porting (official)</a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer__left">
+        © SpeakEasyTisha • Interactive lesson • Works on Mac + iPad Safari (tap-friendly)
+      </div>
+      <div class="footer__right">
+        <button class="btn btn--small" data-scroll="#top" type="button">↑ Back to top</button>
+      </div>
+    </footer>
+  </section>
+</main>
+
+<script src="/js/usa-phone-setup.js"></script>
+</body>
+</html>
+
