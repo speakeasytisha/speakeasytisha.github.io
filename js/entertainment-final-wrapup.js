@@ -370,6 +370,8 @@
   };
   var builderAns = { spoilerSafe: [] };
 
+  var builderBankOrder = {}; // stable shuffled order per mini task
+
   function renderBuilder(name){
     var cfg = builder[name];
     if(!cfg) return;
@@ -380,7 +382,13 @@
     bank.innerHTML = "";
     ans.innerHTML = "";
 
-    cfg.tiles.forEach(function(t){
+    var order = builderBankOrder[name];
+    if(!order || order.length !== cfg.tiles.length){
+      order = shuffle(cfg.tiles);
+      builderBankOrder[name] = order;
+    }
+
+    order.forEach(function(t){
       var used = chosen.indexOf(t) !== -1;
       var btn = document.createElement("button");
       btn.type = "button";
@@ -447,6 +455,7 @@
 
   function resetBuilder(name){
     builderAns[name] = [];
+    delete builderBankOrder[name];
     renderBuilder(name);
     var fb = $(builder[name].fbId);
     setFb(fb, "", "");
@@ -1285,12 +1294,23 @@
       return;
     }
 
-    var first = "This " + type + " is a " + genre + ". The story follows a main character who faces a challenge.";
+    var typePlural = (type === "series") ? "series" : "movies";
+    var art = (genre === "action") ? "an" : "a";
+
+    var first = "\"" + title + "\" is " + art + " " + genre + " " + type + ". The story follows a main character who faces a challenge.";
     var second = "The atmosphere is " + mood + ", and the pace is generally good.";
     var third = "I thought it was " + adj1 + " and " + adj2 + ".";
     var fourth = (conn.charAt(0).toUpperCase()+conn.slice(1)) + ", it may not be for everyone.";
-    var fifth = "In my opinion, it is " + comp + " many " + genre + "s, especially because the acting is convincing.";
-    var sixth = "Overall, " + (rec.replace("…","")) + " thriller fans.";
+    var fifth = "In my opinion, it is " + comp + " many other " + genre + " " + typePlural + ", especially because the acting is convincing.";
+
+    var sixth;
+    if(rec.indexOf("You should watch it if") === 0){
+      sixth = "Overall, you should watch it if you like " + genre + " " + typePlural + ".";
+    }else if(rec.indexOf("You might like it if") === 0){
+      sixth = "Overall, you might like it if you enjoy " + genre + " " + typePlural + ".";
+    }else{
+      sixth = "Overall, I would recommend it to fans of " + genre + " " + typePlural + ".";
+    }
 
     var text = [first, second, third, fourth, fifth, sixth].join(" ");
     out.textContent = text;
