@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Numbers Masterclass • Add-On (0/O • Spelling • Money)</title>
+  <link rel="stylesheet" href="/css/numbers-masterclass-addon.css" />
+</head>
+
+<body>
+  <header class="topbar" id="top">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__mark">🔢</div>
+        <div class="brand__text">
+          <div class="brand__title">SpeakEasyTisha</div>
+          <div class="brand__subtitle">Numbers Masterclass • Add-On</div>
+        </div>
+      </div>
+
+      <nav class="topnav" aria-label="Page sections">
+        <a href="#zero">0 / “O”</a>
+        <a href="#phone">Phone</a>
+        <a href="#rooms">Rooms</a>
+        <a href="#big">Big numbers</a>
+        <a href="#spelling">Spelling</a>
+        <a href="#money">Money</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card intro">
+      <div class="intro__grid">
+        <div>
+          <h1>0 vs “O”, spelling, and money — <span class="nowrap">US 🇺🇸 vs UK 🇬🇧</span></h1>
+          <p class="muted">
+            Practice how native speakers say digits in real life: <strong>phone numbers</strong>, <strong>room numbers</strong>,
+            <strong>codes</strong>, <strong>emails</strong>, <strong>names</strong>, <strong>addresses</strong>, and <strong>cash</strong>.
+            See differences between <strong>American</strong> and <strong>British</strong> usage — and listen with TTS.
+          </p>
+
+          <div class="cheats">
+            <div class="pill">📌 US: “Z” = <strong>zee</strong></div>
+            <div class="pill">📌 UK: “Z” = <strong>zed</strong></div>
+            <div class="pill">📌 0 often said: <strong>oh</strong> (esp. phone/room/codes)</div>
+            <div class="pill">📌 UK often uses <strong>and</strong>: “one hundred <strong>and</strong> five”</div>
+          </div>
+        </div>
+
+        <div class="controls" aria-label="Audio controls">
+          <div class="controls__row">
+            <label class="label" for="accent">Accent</label>
+            <select id="accent" class="select">
+              <option value="us">🇺🇸 American (en-US)</option>
+              <option value="uk">🇬🇧 British (en-GB)</option>
+            </select>
+          </div>
+
+          <div class="controls__row">
+            <label class="label" for="zeroStyle">How to say “0”</label>
+            <select id="zeroStyle" class="select" title="Used in TTS for phone/room/code dictations">
+              <option value="oh">“oh” (O)</option>
+              <option value="zero">“zero”</option>
+              <option value="nought">“nought” (UK contexts)</option>
+            </select>
+          </div>
+
+          <div class="controls__row">
+            <label class="label" for="rate">Voice speed</label>
+            <input id="rate" class="range" type="range" min="0.8" max="1.15" step="0.05" value="1" />
+            <div class="range__value"><span id="rateVal">1.00</span>x</div>
+          </div>
+
+          <div class="controls__row">
+            <button class="btn btn--ghost" id="testVoice" type="button">🔊 Test voice</button>
+            <button class="btn btn--ghost" id="stopVoice" type="button">⏹ Stop</button>
+          </div>
+
+          <div class="scorebox" aria-label="Score">
+            <div class="scorebox__label">Score</div>
+            <div class="scorebox__value"><span id="score">0</span> / <span id="total">0</span></div>
+            <div class="scorebox__hint" id="miniHint">Tip: Tap an answer — instant feedback ✅</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 0 / “O” -->
+    <section class="card" id="zero">
+      <div class="card__head">
+        <h2>🟡 1) 0 vs “O” in real life</h2>
+        <p class="muted">Americans often say <strong>“oh”</strong> for 0 in phone numbers, room numbers, codes, etc.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3 class="panel__title">A) Choose the most natural way to say it</h3>
+          <div class="qbox">
+            <div class="qbox__top">
+              <div class="qnum">Question <span id="zeroQn">1</span></div>
+              <div class="qdigits" id="zeroDigits">—</div>
+            </div>
+
+            <div class="qbox__actions">
+              <button class="btn" id="zeroNew" type="button">🔁 New question</button>
+              <button class="btn btn--ghost" id="zeroSpeak" type="button">🔊 Listen</button>
+            </div>
+
+            <div class="options" id="zeroOptions" aria-label="Answer choices"></div>
+            <div class="feedback" id="zeroFeedback" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel__title">B) Quick cheat sheet</h3>
+          <ul class="list">
+            <li><strong>204</strong> (room) → “two <strong>oh</strong> four” is very common 🇺🇸</li>
+            <li><strong>1005</strong> (code) → “one <strong>oh</strong> oh five” / “one zero zero five”</li>
+            <li>In 🇬🇧 you may also hear <strong>nought</strong> in some contexts (math/sports), but for phones: “oh” is common too.</li>
+            <li>For clarity, people sometimes switch to “zero” (security codes, serial numbers).</li>
+          </ul>
+
+          <div class="callout">
+            <div class="callout__title">Mini practice</div>
+            <p class="muted">Try saying these out loud:</p>
+            <div class="chips" id="zeroChips"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phone -->
+    <section class="card" id="phone">
+      <div class="card__head">
+        <h2>📞 2) Phone numbers (dictation + chunking)</h2>
+        <p class="muted">Listen → type the digits. Learn chunking: <strong>US</strong> (3-3-4) vs <strong>UK</strong> (often 5-6 or 4-3-4 patterns).</p>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3 class="panel__title">A) Dictation (listen → type)</h3>
+
+          <div class="row">
+            <button class="btn" id="phoneNew" type="button">🧾 New number</button>
+            <button class="btn btn--ghost" id="phoneSpeak" type="button">🔊 Listen</button>
+            <button class="btn btn--ghost" id="phoneReveal" type="button">👀 Reveal</button>
+          </div>
+
+          <div class="bigdigits" id="phoneFormat">—</div>
+
+          <label class="label" for="phoneInput">Type the digits (you can include spaces/dashes)</label>
+          <input class="input" id="phoneInput" inputmode="numeric" autocomplete="off" placeholder="e.g., 415-555-0123" />
+
+          <div class="row">
+            <button class="btn" id="phoneCheck" type="button">✅ Check</button>
+            <button class="btn btn--ghost" id="phoneClear" type="button">🧽 Clear</button>
+          </div>
+
+          <div class="feedback" id="phoneFeedback" aria-live="polite"></div>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel__title">B) Chunking trainer (tap to build)</h3>
+          <p class="muted">Tap chunks to build the phone number in the right order (touch-friendly).</p>
+
+          <div class="build">
+            <div class="build__target" id="chunkTarget">—</div>
+            <div class="build__bank" id="chunkBank" aria-label="Chunk bank"></div>
+
+            <div class="build__result" aria-label="Your answer">
+              <div id="chunkAnswer" class="build__answer">Tap chunks above…</div>
+              <div class="row">
+                <button class="btn" id="chunkCheck" type="button">✅ Check</button>
+                <button class="btn btn--ghost" id="chunkReset" type="button">↩ Reset</button>
+                <button class="btn btn--ghost" id="chunkSpeak" type="button">🔊 Listen</button>
+              </div>
+            </div>
+
+            <div class="feedback" id="chunkFeedback" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rooms -->
+    <section class="card" id="rooms">
+      <div class="card__head">
+        <h2>🏨 3) Room numbers & hotel practicality</h2>
+        <p class="muted">Listen to the receptionist → pick the correct room number (with “oh” for 0).</p>
+      </div>
+
+      <div class="panel">
+        <div class="row">
+          <button class="btn" id="roomNew" type="button">🗝 New room</button>
+          <button class="btn btn--ghost" id="roomSpeak" type="button">🔊 Listen</button>
+        </div>
+
+        <div class="qbox">
+          <div class="qbox__top">
+            <div class="qnum">Room</div>
+            <div class="qdigits" id="roomPrompt">—</div>
+          </div>
+
+          <div class="options" id="roomOptions"></div>
+          <div class="feedback" id="roomFeedback" aria-live="polite"></div>
+        </div>
+
+        <div class="mini">
+          <div class="mini__title">Useful phrases</div>
+          <div class="chips" id="roomPhrases"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Big numbers -->
+    <section class="card" id="big">
+      <div class="card__head">
+        <h2>🧠 4) Big numbers & the “and” rule (US vs UK)</h2>
+        <p class="muted">In 🇬🇧 it’s common to say “one hundred <strong>and</strong> five.” In 🇺🇸, often “one hundred five.”</p>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3 class="panel__title">A) Choose the best option (US/UK)</h3>
+
+          <div class="qbox">
+            <div class="qbox__top">
+              <div class="qnum">Number</div>
+              <div class="qdigits" id="bigDigits">—</div>
+            </div>
+
+            <div class="row">
+              <button class="btn" id="bigNew" type="button">🔁 New</button>
+              <button class="btn btn--ghost" id="bigSpeak" type="button">🔊 Listen</button>
+            </div>
+
+            <div class="options" id="bigOptions"></div>
+            <div class="feedback" id="bigFeedback" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel__title">B) Read it like a pro</h3>
+          <div class="callout">
+            <div class="callout__title">Practice list</div>
+            <div class="chips" id="bigChips"></div>
+          </div>
+
+          <div class="hintbox">
+            <div class="hintbox__title">Common pitfalls</div>
+            <ul class="list">
+              <li>🇺🇸 “two thousand <strong>twenty-six</strong>” (year) is common; “twenty twenty-six” also exists, but less common for 2026.</li>
+              <li>Comma reading: <strong>1,250</strong> = “one thousand two hundred (and) fifty.”</li>
+              <li>For prices: “$1.50” = “one fifty” (common) or “one dollar fifty.”</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spelling -->
+    <section class="card" id="spelling">
+      <div class="card__head">
+        <h2>✉️ 5) Spelling for emails, names, addresses</h2>
+        <p class="muted">Learn how to say symbols + letters, and the key differences: <strong>zed/zee</strong>, <strong>postcode/zip code</strong>, <strong>full stop/dot</strong>.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3 class="panel__title">A) Spell my email / name / address</h3>
+
+          <div class="form">
+            <div class="form__row">
+              <div>
+                <label class="label" for="spellName">Name</label>
+                <input class="input" id="spellName" placeholder="e.g., Tisha Douty" autocomplete="off" />
+              </div>
+              <div>
+                <label class="label" for="spellEmail">Email</label>
+                <input class="input" id="spellEmail" placeholder="e.g., tisha.kaye_02@gmail.com" autocomplete="off" />
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div>
+                <label class="label" for="spellStreet">Street</label>
+                <input class="input" id="spellStreet" placeholder="e.g., 15 Oak St Apt 2B" autocomplete="off" />
+              </div>
+              <div>
+                <label class="label" for="spellCity">City</label>
+                <input class="input" id="spellCity" placeholder="e.g., Boston" autocomplete="off" />
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div>
+                <label class="label" for="spellRegion">State/Province (or County)</label>
+                <input class="input" id="spellRegion" placeholder="e.g., MA / Devon" autocomplete="off" />
+              </div>
+              <div>
+                <label class="label" for="spellZip">ZIP / Postcode</label>
+                <input class="input" id="spellZip" placeholder="e.g., 02108 / SW1A 1AA" autocomplete="off" />
+              </div>
+            </div>
+
+            <div class="row">
+              <button class="btn" id="spellGenerate" type="button">✨ Generate spoken version</button>
+              <button class="btn btn--ghost" id="spellSpeak" type="button">🔊 Speak it</button>
+              <button class="btn btn--ghost" id="spellCopy" type="button">📋 Copy</button>
+            </div>
+          </div>
+
+          <div class="output" id="spellOutput" aria-live="polite">
+            Fill the fields above, then click <strong>Generate</strong>.
+          </div>
+
+          <div class="feedback" id="spellFeedback" aria-live="polite"></div>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel__title">B) Listening quiz: choose the correct email</h3>
+
+          <div class="row">
+            <button class="btn" id="emailNew" type="button">🔁 New email</button>
+            <button class="btn btn--ghost" id="emailSpeak" type="button">🔊 Listen</button>
+          </div>
+
+          <div class="qbox">
+            <div class="qbox__top">
+              <div class="qnum">Email</div>
+              <div class="qdigits" id="emailPrompt">—</div>
+            </div>
+
+            <div class="options" id="emailOptions"></div>
+            <div class="feedback" id="emailFeedback" aria-live="polite"></div>
+          </div>
+
+          <div class="hintbox">
+            <div class="hintbox__title">Symbol vocabulary</div>
+            <div class="chips" id="symbolChips"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 class="panel__title">C) Alphabet flashcards (US vs UK)</h3>
+        <p class="muted">Tap a card to flip. Use “Listen” to hear the letter name in your selected accent.</p>
+
+        <div class="row">
+          <button class="btn btn--ghost" id="alphaShuffle" type="button">🔀 Shuffle</button>
+          <button class="btn btn--ghost" id="alphaListen" type="button">🔊 Listen (random)</button>
+        </div>
+
+        <div class="flashgrid" id="alphaGrid" aria-label="Alphabet flashcards"></div>
+      </div>
+    </section>
+
+    <!-- Money -->
+    <section class="card" id="money">
+      <div class="card__head">
+        <h2>💵 6) Money handling (US dollars / UK pounds)</h2>
+        <p class="muted">Build amounts with coins (touch-friendly). Then do quick “make change” mental math.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3 class="panel__title">A) Build the amount (coins)</h3>
+
+          <div class="controls__row">
+            <label class="label" for="currency">Currency</label>
+            <select id="currency" class="select">
+              <option value="usd">🇺🇸 USD ($)</option>
+              <option value="gbp">🇬🇧 GBP (£)</option>
+            </select>
+          </div>
+
+          <div class="moneybox">
+            <div class="moneybox__top">
+              <div class="moneyTarget">Target: <span id="moneyTarget">—</span></div>
+              <div class="moneyTotal">Your total: <span id="moneyTotal">—</span></div>
+            </div>
+
+            <div class="row">
+              <button class="btn" id="moneyNew" type="button">🎯 New target</button>
+              <button class="btn btn--ghost" id="moneySpeak" type="button">🔊 Say the target</button>
+              <button class="btn btn--ghost" id="moneyUndo" type="button">↩ Undo</button>
+              <button class="btn btn--ghost" id="moneyClear" type="button">🧽 Clear</button>
+            </div>
+
+            <div class="coinbank" id="coinBank" aria-label="Coin buttons"></div>
+
+            <div class="row">
+              <button class="btn" id="moneyCheck" type="button">✅ Check</button>
+            </div>
+
+            <div class="feedback" id="moneyFeedback" aria-live="polite"></div>
+
+            <div class="mini">
+              <div class="mini__title">Vocabulary</div>
+              <div class="chips" id="moneyVocab"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel__title">B) Make change (quick mental math)</h3>
+          <p class="muted">Scenario: price + cash given → type the change.</p>
+
+          <div class="changebox">
+            <div class="changeLine">
+              <div>Price:</div>
+              <div class="mono" id="chgPrice">—</div>
+            </div>
+            <div class="changeLine">
+              <div>Cash given:</div>
+              <div class="mono" id="chgCash">—</div>
+            </div>
+
+            <div class="row">
+              <button class="btn" id="chgNew" type="button">🧾 New scenario</button>
+              <button class="btn btn--ghost" id="chgSpeak" type="button">🔊 Listen</button>
+            </div>
+
+            <label class="label" for="chgInput">Change amount</label>
+            <input class="input" id="chgInput" inputmode="decimal" placeholder="e.g., 3.75" />
+
+            <div class="row">
+              <button class="btn" id="chgCheck" type="button">✅ Check</button>
+              <button class="btn btn--ghost" id="chgReveal" type="button">👀 Reveal</button>
+            </div>
+
+            <div class="feedback" id="chgFeedback" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__title">✅ Ready to publish</div>
+          <p class="muted">
+            Upload these 3 files to the same folder as your other lessons, then link to this page from
+            your <span class="mono">numbers-masterclass</span> navigation.
+          </p>
+        </div>
+        <div class="footer__right">
+          <a class="btn btn--ghost" href="#top">⬆ Back to top</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="/js/numbers-masterclass-addon.js"></script>
+</body>
+</html>
+
