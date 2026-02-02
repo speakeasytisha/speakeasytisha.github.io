@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SpeakEasyTisha • CLOE General Simulator</title>
+  <link rel="stylesheet" href="/css/cloe-exam-simulator-general.css" />
+  <meta name="color-scheme" content="light" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">🧠</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">CLOE • General Exam Simulator (training)</div>
+      </div>
+    </div>
+
+    <nav class="topnav" aria-label="Page">
+      <a class="pill" href="#warmup">Warm-up</a>
+      <a class="pill" href="#grammar">Grammar</a>
+      <a class="pill" href="#vocab">Vocab</a>
+      <a class="pill" href="#reading">Reading</a>
+      <a class="pill" href="#listening">Listening</a>
+      <a class="pill" href="#speaking">Speaking</a>
+      <a class="pill" href="#writing">Writing</a>
+      <a class="pill pill--strong" href="#mock">Mini Mock</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero card">
+    <div class="hero__left">
+      <h1>🎯 CLOE General — Guided Mock + Mastery Lab</h1>
+      <p class="muted">
+        Unofficial training simulation. Exam feel + friendly support: <b>instant correction</b>, <b>hints</b>, and <b>why it works</b>.
+        Touch-friendly (Mac/iPad Safari).
+      </p>
+      <div class="row row--wrap">
+        <a class="btn btn--ghost" href="https://speakeasytisha.github.io/cloe-prep-course">↩︎ CLOE Prep Course</a>
+        <a class="btn btn--ghost" href="https://speakeasytisha.github.io/cloe-exam-prep">↩︎ CLOE Exam Prep</a>
+        <a class="btn btn--ghost" href="https://speakeasytisha.github.io/cloe-topic-trainer">↩︎ CLOE Topic Trainer</a>
+      </div>
+    </div>
+
+    <div class="hero__right">
+      <div class="settings">
+        <div class="setting">
+          <div class="setting__label">Mode</div>
+          <div class="seg" role="group" aria-label="Mode">
+            <button class="seg__btn is-on" id="modeTrain" type="button">Training</button>
+            <button class="seg__btn" id="modeExam" type="button">Exam</button>
+          </div>
+          <div class="hintline" id="modeHint">Training shows hints + explanations. Exam hides hints (still shows right/wrong).</div>
+        </div>
+
+        <div class="setting">
+          <div class="setting__label">Listening accent (for “Listen” buttons)</div>
+          <div class="seg" role="group" aria-label="Accent">
+            <button class="seg__btn is-on" id="accentUS" type="button">US</button>
+            <button class="seg__btn" id="accentUK" type="button">UK</button>
+          </div>
+          <div class="hintline">Tip: some devices require you to tap “Listen” twice the first time.</div>
+        </div>
+
+        <div class="setting">
+          <div class="setting__label">Progress</div>
+          <div class="progress">
+            <div class="progress__bar" id="progressBar" style="width:0%"></div>
+          </div>
+          <div class="row row--space">
+            <div class="score" id="scoreBox">Score: 0 • Mastered: 0</div>
+            <button class="btn btn--danger" id="resetAll" type="button">Reset all</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARMUP -->
+  <section id="warmup" class="section">
+    <div class="section__head">
+      <h2>🔥 Part 0 — Warm-up (exam reflexes)</h2>
+      <p class="muted">Quick wins to enter “exam mode”: everyday grammar + micro-vocab.</p>
+    </div>
+    <div class="grid" id="warmupGrid" aria-live="polite"></div>
+  </section>
+
+  <!-- GRAMMAR -->
+  <section id="grammar" class="section">
+    <div class="section__head">
+      <h2>🧩 Part 1 — Grammar Mastery (CLOE core)</h2>
+      <p class="muted">Tenses, modals, question forms, connectors, word order — with instant correction.</p>
+    </div>
+    <div class="grid" id="grammarGrid"></div>
+  </section>
+
+  <!-- VOCAB -->
+  <section id="vocab" class="section">
+    <div class="section__head">
+      <h2>🧠 Part 2 — Vocabulary in context (general English)</h2>
+      <p class="muted">High-frequency vocabulary that actually shows up in daily life + exam tasks.</p>
+    </div>
+    <div class="grid" id="vocabGrid"></div>
+  </section>
+
+  <!-- READING -->
+  <section id="reading" class="section">
+    <div class="section__head">
+      <h2>📖 Part 3 — Reading comprehension</h2>
+      <p class="muted">Answer what the text says (no guessing). Fast but accurate.</p>
+    </div>
+    <div class="card">
+      <div class="reading">
+        <div class="reading__text" id="readingText"></div>
+        <div class="reading__tasks" id="readingGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTENING -->
+  <section id="listening" class="section">
+    <div class="section__head">
+      <h2>🎧 Part 4 — Listening (2 plays simulation)</h2>
+      <p class="muted">Tap “Listen”. In Training, you can replay; in Exam you get 2 plays.</p>
+    </div>
+    <div class="card">
+      <div class="row row--space row--wrap">
+        <div>
+          <div class="kicker">Audio prompt</div>
+          <div class="title">Short message (delivery update)</div>
+          <div class="muted">Answer the questions below.</div>
+        </div>
+        <div class="row row--wrap">
+          <button class="btn btn--primary" id="listenBtn" type="button">▶ Listen</button>
+          <div class="badge" id="listenCount">Plays: 0</div>
+        </div>
+      </div>
+      <hr class="sep"/>
+      <div class="muted small" id="listeningTip"></div>
+      <div class="grid" id="listeningGrid"></div>
+    </div>
+  </section>
+
+  <!-- SPEAKING -->
+  <section id="speaking" class="section">
+    <div class="section__head">
+      <h2>🗣️ Part 5 — Speaking (oral interview trainer)</h2>
+      <p class="muted">Timers + structure + phrase bank. Optional recording if your browser allows it.</p>
+    </div>
+    <div class="grid" id="speakingGrid"></div>
+  </section>
+
+  <!-- WRITING -->
+  <section id="writing" class="section">
+    <div class="section__head">
+      <h2>✍️ Part 6 — Writing (mini tasks)</h2>
+      <p class="muted">Clarity + structure. You’ll get an automatic checklist (connectors, politeness, tense markers).</p>
+    </div>
+    <div class="grid" id="writingGrid"></div>
+  </section>
+
+  <!-- MINI MOCK -->
+  <section id="mock" class="section">
+    <div class="section__head">
+      <h2>⏱️ Part 7 — Mini Mock Exam (mixed, timed)</h2>
+      <p class="muted">A realistic mix: grammar + vocab + word order + reading/listening style tasks.</p>
+    </div>
+
+    <div class="card">
+      <div class="row row--space row--wrap">
+        <div>
+          <div class="kicker">Simulation controls</div>
+          <div class="row row--wrap">
+            <label class="field">
+              <span>Questions</span>
+              <select id="mockCount" class="select">
+                <option value="10">10 (warm-up)</option>
+                <option value="15" selected>15 (solid practice)</option>
+                <option value="20">20 (hard training)</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Speed</span>
+              <select id="mockSpeed" class="select">
+                <option value="normal" selected>Normal</option>
+                <option value="fast">Fast</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="row row--wrap">
+          <button class="btn btn--primary" id="startMock" type="button">Start simulation</button>
+          <button class="btn" id="resetMock" type="button">Reset</button>
+          <button class="btn btn--ghost" id="printBtn" type="button">🖨️ Print</button>
+        </div>
+      </div>
+
+      <hr class="sep"/>
+
+      <div class="mock">
+        <div class="row row--space">
+          <div class="badge" id="mockMeta">Question 0/0 • Score 0</div>
+          <div class="timer" id="mockTimer">00:00</div>
+        </div>
+        <div id="mockStage" class="mock__stage">
+          <div class="muted">Tap “Start simulation” to begin.</div>
+        </div>
+
+        <div class="row row--space row--wrap">
+          <button class="btn" id="mockSkip" type="button" disabled>Skip</button>
+          <button class="btn btn--primary" id="mockNext" type="button" disabled>Next</button>
+        </div>
+
+        <div class="result" id="mockResult" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a class="pill" href="#top">Back to top ↑</a>
+    <div class="muted small">© SpeakEasyTisha • CLOE training simulation (unofficial)</div>
+  </footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script defer src="/js/cloe-exam-simulator-general.js"></script>
+</body>
+</html>
