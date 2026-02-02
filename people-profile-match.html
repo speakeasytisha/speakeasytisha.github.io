@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • People Profiles • Match the Description</title>
+  <link rel="stylesheet" href="/css/people-profile-match.css" />
+  <meta name="description" content="Interactive follow‑up lesson: read a description (physical + professional + personality) and match it to the correct person. Daily-use grammar practice included."/>
+</head>
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand" role="banner" aria-label="SpeakEasyTisha">
+      <div class="brand__mark" aria-hidden="true">🧩</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">People Profiles • Match the Description</div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Lesson navigation">
+      <a class="nav__link" href="#plan">⏱️ Plan</a>
+      <a class="nav__link" href="#vocab">🧠 Vocab</a>
+      <a class="nav__link" href="#match">🔎 Match</a>
+      <a class="nav__link" href="#grammar">🧩 Grammar</a>
+      <a class="nav__link" href="#create">✍️ Create</a>
+      <button class="btn btn--ghost" id="btnPrint" type="button" title="Print this lesson">🖨️ Print</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero card">
+    <div class="hero__left">
+      <h1>Read ➜ Imagine ➜ Match ✅</h1>
+      <p class="muted">
+        You will read short profiles (appearance + job + personality) and choose the correct person.
+        Then you’ll practice <strong>daily-use grammar</strong> for describing people you meet at work and in real life.
+      </p>
+
+      <div class="chips" role="list" aria-label="Quick tools">
+        <button class="chip" id="btnShuffleAll" type="button">🔀 Shuffle</button>
+        <button class="chip" id="btnResetAll" type="button">♻️ Reset</button>
+        <button class="chip" id="btnRevealAll" type="button">👀 Reveal answers</button>
+      </div>
+
+      <div class="toolbar">
+        <div class="tool">
+          <label for="levelSel">Difficulty</label>
+          <select id="levelSel">
+            <option value="easy">Everyday (A2–B1)</option>
+            <option value="pro">Pro (B1–B2)</option>
+          </select>
+        </div>
+
+        <div class="tool">
+          <label for="accentSel">Voice</label>
+          <select id="accentSel" title="Text-to-speech accent">
+            <option value="auto">Auto</option>
+            <option value="en-US">American</option>
+            <option value="en-GB">British</option>
+          </select>
+        </div>
+
+        <div class="tool tool--wide">
+          <label for="speedRange">Speech speed</label>
+          <input id="speedRange" type="range" min="0.8" max="1.2" step="0.05" value="1" />
+        </div>
+
+        <div class="tool tool--wide">
+          <label class="toggle">
+            <input id="ttsAuto" type="checkbox" />
+            <span>Auto‑read profiles</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__right">
+      <div class="scorebox" aria-label="Score">
+        <div class="scorebox__row">
+          <div class="scorebox__label">Score</div>
+          <div class="scorebox__value" id="scoreNow">0</div>
+        </div>
+        <div class="scorebox__row">
+          <div class="scorebox__label">Streak</div>
+          <div class="scorebox__value" id="streakNow">0</div>
+        </div>
+        <div class="scorebox__row">
+          <div class="scorebox__label">Progress</div>
+          <div class="scorebox__value"><span id="progNow">0</span>/<span id="progTotal">0</span></div>
+        </div>
+        <div class="scorebox__bar" aria-hidden="true">
+          <div class="scorebox__fill" id="progFill"></div>
+        </div>
+
+        <div class="scorebox__actions">
+          <button class="btn" id="btnNext" type="button">Next ➜</button>
+          <button class="btn btn--ghost" id="btnRepeat" type="button">🔁 Repeat audio</button>
+        </div>
+        <p class="tiny muted">
+          Tip: focus on <strong>be vs have</strong> (He <em>is</em> tall / He <em>has</em> blue eyes), and on <strong>who/which</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="plan" class="card">
+    <h2>⏱️ One‑hour lesson plan</h2>
+    <div class="grid2">
+      <div>
+        <ol class="timeline">
+          <li><strong>0–8 min</strong> Warm‑up: daily questions + mini‑vocab</li>
+          <li><strong>8–20 min</strong> Vocabulary flashcards + pronunciation</li>
+          <li><strong>20–40 min</strong> Match the profile game (10 rounds)</li>
+          <li><strong>40–55 min</strong> Grammar workout (be/have, relative clauses, connectors)</li>
+          <li><strong>55–60 min</strong> Create your own profile + quick review</li>
+        </ol>
+      </div>
+      <div class="callout">
+        <h3>Daily‑use goals 🎯</h3>
+        <ul>
+          <li>Describe people you meet: coworkers, clients, staff</li>
+          <li>Ask polite follow‑up questions</li>
+          <li>Compare two people (similar / different)</li>
+          <li>Sound natural: <em>rather, quite, a bit, really</em></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="vocab" class="card">
+    <h2>🧠 Vocabulary: Appearance + Personality + Work</h2>
+    <p class="muted">Tap a card to flip. Use 🔊 to listen (American/British).</p>
+
+    <div class="vocabTools">
+      <input class="input" id="vocabSearch" type="search" placeholder="Search vocab (e.g., curly, reliable, manager)..." />
+      <button class="btn btn--ghost" id="btnVocabShuffle" type="button">🔀 Shuffle cards</button>
+    </div>
+
+    <div class="flashgrid" id="vocabGrid" aria-label="Vocabulary flashcards"></div>
+  </section>
+
+  <section id="match" class="card">
+    <h2>🔎 Match the description</h2>
+    <p class="muted">Read the profile. Then choose the correct person. (No photos needed—train your imagination!)</p>
+
+    <div class="matchbox">
+      <div class="profile card card--inner">
+        <div class="profile__top">
+          <div class="badge" id="profileTag">Profile</div>
+          <div class="profile__meta">
+            <span class="pill" id="profileCat">—</span>
+            <span class="pill" id="profileLevel">—</span>
+          </div>
+        </div>
+
+        <div class="profile__text" id="profileText" aria-live="polite"></div>
+
+        <div class="profile__actions">
+          <button class="btn" id="btnRead" type="button">🔊 Read profile</button>
+          <button class="btn btn--ghost" id="btnHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="btnSkip" type="button">⏭️ Skip</button>
+        </div>
+
+        <div class="hint" id="hintBox" hidden></div>
+        <div class="feedback" id="matchFeedback" aria-live="polite"></div>
+      </div>
+
+      <div class="choices card card--inner" aria-label="Choices">
+        <h3>Choose the person</h3>
+        <div class="choices__grid" id="choiceGrid"></div>
+
+        <div class="choices__footer">
+          <button class="btn btn--ghost" id="btnShowList" type="button">📋 See full list</button>
+          <button class="btn btn--ghost" id="btnExplain" type="button">🧠 Explain the clues</button>
+        </div>
+
+        <div class="listbox" id="listBox" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="grammar" class="card">
+    <h2>🧩 Grammar you will actually use every day</h2>
+
+    <div class="accordion" id="grammarAcc">
+      <!-- injected by JS -->
+    </div>
+  </section>
+
+  <section id="create" class="card">
+    <h2>✍️ Create your own profile (work + personality + appearance)</h2>
+    <p class="muted">
+      Use this when you meet someone new, or for a short introduction in a meeting.
+      Click “Generate” to create a natural paragraph, then copy it.
+    </p>
+
+    <div class="grid2">
+      <form class="form card card--inner" id="createForm">
+        <div class="form__row">
+          <div class="tool">
+            <label for="yourPron">Pronouns</label>
+            <select id="yourPron">
+              <option value="she">she / her</option>
+              <option value="he">he / him</option>
+              <option value="they">they / them</option>
+            </select>
+          </div>
+          <div class="tool">
+            <label for="yourRole">Role</label>
+            <input class="input" id="yourRole" placeholder="project manager / teacher / nurse..." />
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="tool">
+            <label for="yourLook">Appearance (2–3 words)</label>
+            <input class="input" id="yourLook" placeholder="tall, curly hair, glasses..." />
+          </div>
+          <div class="tool">
+            <label for="yourTraits">Personality (2–3 words)</label>
+            <input class="input" id="yourTraits" placeholder="friendly, reliable, calm..." />
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="tool tool--wide">
+            <label for="yourFacts">Professional facts (short)</label>
+            <textarea class="input" id="yourFacts" rows="3" placeholder="works with international clients; enjoys solving problems; speaks French and English..."></textarea>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <button class="btn" id="btnGenerate" type="button">✨ Generate</button>
+          <button class="btn btn--ghost" id="btnSpeakGen" type="button">🔊 Read</button>
+          <button class="btn btn--ghost" id="btnCopyGen" type="button">📎 Copy</button>
+        </div>
+        <p class="tiny muted">Grammar used: <strong>be/have</strong>, <strong>present simple</strong>, <strong>relative clause</strong>, <strong>connector</strong>.</p>
+      </form>
+
+      <div class="card card--inner">
+        <h3>Your paragraph</h3>
+        <div class="output" id="genOut" aria-live="polite">Your generated text will appear here…</div>
+        <div class="tiny muted">Try swapping connectors: <em>However / While / Although</em>.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__left">
+      <a href="#top" class="link">⬆️ Back to top</a>
+      <span class="dot">•</span>
+      <button class="linklike" id="btnStopVoice" type="button">🛑 Stop voice</button>
+    </div>
+    <div class="footer__right muted tiny">
+      Offline-friendly • Touch-friendly • No drag-and-drop required
+    </div>
+  </footer>
+</main>
+
+<script src="js/people-profile-match.js"></script>
+</body>
+</html>
