@@ -321,12 +321,34 @@
     var box = $("listBox");
     var open = !box.hidden;
     if(open){ box.hidden = true; return; }
-    var html = "<div class='tiny muted'>All people in this lesson:</div>";
+
+    var html = "<div class='tiny muted'>Tap a name to practice that person’s profile:</div>";
     PEOPLE.forEach(function(p){
-      html += "<div class='row'><div><strong>"+esc(p.name)+"</strong> <span class='tag'>"+esc(p.tagline)+"</span></div><div class='tag'>"+esc(p.cat)+"</div></div>";
+      html += "<button type='button' class='listpick' data-pick='"+esc(p.id)+"'>"+
+                "<div><strong>"+esc(p.name)+"</strong> <span class='tag'>"+esc(p.tagline)+"</span></div>"+
+                "<div class='tag'>"+esc(p.cat)+"</div>"+
+              "</button>";
     });
     box.innerHTML = html;
     box.hidden = false;
+
+    // Jump-to-profile (uses current order so progress stays meaningful)
+    var picks = box.querySelectorAll("button.listpick");
+    for(var i=0;i<picks.length;i++){
+      picks[i].addEventListener("click", function(){
+        var pid = this.getAttribute("data-pick");
+        var pos = order.indexOf(pid);
+        if(pos >= 0){ idx = pos; }
+        else{
+          // If order was modified and id missing (shouldn't happen), fallback:
+          order = PEOPLE.map(function(pp){ return pp.id; });
+          idx = order.indexOf(pid);
+        }
+        renderProfile();
+        // Close list after choosing
+        box.hidden = true;
+      });
+    }
   }
 
   function renderProfile(){
@@ -355,7 +377,6 @@
     $("profileText").innerHTML = toParagraphs(lines);
 
     makeChoiceButtons(p.id);
-    applyReveal();
     setScoreUI();
 
     if($("ttsAuto").checked){
@@ -406,18 +427,19 @@
     lockChoices();
   }
 
-  function safeScrollToMatch(){
-    try{
-      var y = $("match").getBoundingClientRect().top + window.scrollY - 90;
-      try{ window.scrollTo({top: y, behavior: "smooth"}); }
-      catch(err){ window.scrollTo(0, y); }
-    }catch(e){}
-  }
-
   function nextProfile(){
     if(idx < order.length) idx += 1;
     renderProfile();
-    safeScrollToMatch();
+
+    // Safari-safe smooth scroll to the Match section
+    try{
+      var y = $("match").getBoundingClientRect().top + window.scrollY - 90;
+      try{
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }catch(e){
+        window.scrollTo(0, y);
+      }
+    }catch(err){}
   }
 
   function skipProfile(){
@@ -452,30 +474,10 @@
     $("matchFeedback").innerHTML = "<div style='white-space:pre-wrap'>"+esc(exp.join("\n"))+"</div>";
   }
 
-  function applyReveal(){
-    if(!revealedAll) return;
-    if(idx >= order.length) return;
-    var p = currentPerson();
-    var btns = $("choiceGrid").querySelectorAll(".choice");
-    for(var i=0;i<btns.length;i++){
-      if(btns[i].getAttribute("data-id") === p.id){
-        btns[i].classList.add("correct");
-        break;
-      }
-    }
-    $("matchFeedback").className = "feedback";
-    $("matchFeedback").innerHTML = "👀 <strong>Reveal mode ON</strong> — Answer: <strong>"+esc(p.name)+"</strong>.";
-  }
-
   function revealAnswers(){
-    revealedAll = !revealedAll;
-    if(revealedAll){
-      applyReveal();
-    }else{
-      $("matchFeedback").className = "feedback";
-      $("matchFeedback").textContent = "✅ Reveal mode OFF — keep guessing!";
-      renderProfile();
-    }
+    revealedAll = true;
+    $("matchFeedback").className = "feedback";
+    $("matchFeedback").innerHTML = "👀 Answers revealed: the correct choice is highlighted in green when you click any option.";
   }
 
   function resetAll(){
@@ -576,15 +578,29 @@
   }
 
   function mcq(id, prompt, options, answer, explain){
+    // Backward-compatible: accept either an array of options OR individual option strings.
+    // Usage A: mcq(id, prompt, ["A","B","C"], answerIdx, explain)
+    // Usage B: mcq(id, prompt, "A","B","C", answerIdx, explain)
+    var opts, exp;
+    if(Array.isArray(options)){
+      opts = options.slice();
+      exp = explain || "";
+    }else{
+      var args = Array.prototype.slice.call(arguments, 2);
+      // last two args are answerIdx + explain string
+      exp = String(args[args.length-1] || "");
+      opts = args.slice(0, Math.max(0, args.length-2)).map(function(x){ return String(x); });
+    }
+
     var html = "<div class='q' id='"+esc(id)+"'>"+
       "<div class='q__prompt'>"+esc(prompt)+"</div>"+
       "<div class='q__row'>"+
-        options.map(function(o,i){
+        opts.map(function(o,i){
           return "<button class='pillbtn' type='button' data-i='"+i+"'>"+esc(o)+"</button>";
         }).join("")+
       "</div>"+
       "<div class='q__row'><div class='q__status' aria-live='polite'></div></div>"+
-      "<div class='tiny muted'>"+esc(explain||"")+"</div>"+
+      "<div class='tiny muted'>"+esc(exp)+"</div>"+
     "</div>";
     return html;
   }
