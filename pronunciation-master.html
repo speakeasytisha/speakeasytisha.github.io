@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pronunciation Mastery V3 — SpeakEasyTisha</title>
+  <link rel="stylesheet" href="/css/pronunciation-master.css" />
+</head>
+<body>
+<header class="topbar">
+  <h1>Pronunciation Mastery — V3</h1>
+  <div class="controls">
+    <label for="accentSelect">Accent:</label>
+    <select id="accentSelect">
+      <option value="us">🇺🇸 US</option>
+      <option value="uk">🇬🇧 UK</option>
+    </select>
+    <button id="resetAll">Reset All</button>
+    <div class="score">Score: <span id="scoreNow">0</span>/<span id="scoreMax">0</span></div>
+  </div>
+</header>
+
+<section class="grammar" id="grammar-alphabet">
+  <h2>Alphabet — Letter Names</h2>
+  <p>Tap a card to flip. Tap again to flip back. Every tap also plays the letter name.</p>
+  <button class="printBtn" data-print="grammar-alphabet">Print</button>
+</section>
+
+<section>
+  <div class="row">
+    <h3>Alphabet Flashcards</h3>
+    <button class="ghost" data-reset="alphabet">Reset section</button>
+  </div>
+  <div class="cards" id="alphabetCards"></div>
+</section>
+
+<section class="grammar" id="grammar-consonants">
+  <h2>Consonant Focus — TH vs S/Z</h2>
+  <p><b>TH /θ/</b> is unvoiced (air only). <b>TH /ð/</b> is voiced (vibration). French speakers often replace TH with <b>S</b> or <b>Z</b>.</p>
+  <button class="printBtn" data-print="grammar-consonants">Print</button>
+</section>
+
+<section>
+  <div class="row">
+    <h3>Minimal Pairs — TH vs S/Z (listening)</h3>
+    <button class="ghost" id="thNext">New question</button>
+    <button class="ghost" data-reset="th">Reset section</button>
+  </div>
+  <div class="quiz" id="thQuiz"></div>
+</section>
+
+<section class="grammar" id="grammar-vowels">
+  <h2>Vowels — French Traps</h2>
+  <p>Key contrasts: <b>/ɪ/ vs /iː/</b> (ship/sheep), <b>/æ/ vs /ʌ/</b> (cap/cup), <b>/uː/ vs /ʊ/</b> (pool/pull).</p>
+  <button class="printBtn" data-print="grammar-vowels">Print</button>
+</section>
+
+<section>
+  <div class="row">
+    <h3>Minimal Pairs — Vowels (listening)</h3>
+    <button class="ghost" id="vowelNext">New question</button>
+    <button class="ghost" data-reset="vowels">Reset section</button>
+  </div>
+  <div class="quiz" id="vowelQuiz"></div>
+</section>
+
+<section class="grammar" id="grammar-spelling">
+  <h2>Spelling Patterns — Use Context</h2>
+  <p>Listen + use the sentence meaning to choose the correct spelling (see/sea, here/hear, their/there…).</p>
+  <button class="printBtn" data-print="grammar-spelling">Print</button>
+</section>
+
+<section>
+  <div class="row">
+    <h3>Spelling in Context (listen → choose)</h3>
+    <button class="ghost" id="spellNext">New question</button>
+    <button class="ghost" data-reset="spelling">Reset section</button>
+  </div>
+  <div class="quiz" id="spellingQuiz"></div>
+</section>
+
+<section class="grammar" id="grammar-dictation">
+  <h2>Dictation — Train Ear + Spelling</h2>
+  <p>Type exactly what you hear. Start with words, then short phrases, then sentences.</p>
+  <button class="printBtn" data-print="grammar-dictation">Print</button>
+</section>
+
+<section>
+  <div class="row">
+    <h3>⌨️ Dictation (type what you hear)</h3>
+    <button class="ghost" id="dictNext">New item</button>
+    <button class="ghost" data-reset="dictation">Reset section</button>
+  </div>
+  <div class="quiz" id="dictation"></div>
+</section>
+
+<section class="grammar" id="grammar-builder">
+  <h2>Sentence Builder — Word Order + Rhythm</h2>
+  <p>Tap words to build the sentence. Then listen and repeat.</p>
+  <button class="printBtn" data-print="grammar-builder">Print</button>
+</section>
+
+<section>
+  <div class="row">
+    <h3>Sentence Builder</h3>
+    <button class="ghost" id="builderNext">New sentence</button>
+    <button class="ghost" data-reset="builder">Reset section</button>
+  </div>
+  <div class="quiz" id="sentenceBuilder"></div>
+</section>
+
+<section class="grammar" id="grammar-vocab">
+  <h2>Pronunciation Vocabulary — Common French Mistakes</h2>
+  <p>Flip to see IPA + the “French trap”. Tap to hear the word.</p>
+  <button class="printBtn" data-print="grammar-vocab">Print</button>
+</section>
+
+<section>
+  <div class="row">
+    <h3>Pronunciation Vocabulary Flashcards</h3>
+    <button class="ghost" data-reset="vocab">Reset section</button>
+  </div>
+  <div class="cards" id="vocabCards"></div>
+</section>
+
+<footer>
+  <div class="score">Score: <span id="scoreNow2">0</span>/<span id="scoreMax2">0</span></div>
+</footer>
+
+<script src="/js/pronunciation-master.js"></script>
+</body>
+</html>
