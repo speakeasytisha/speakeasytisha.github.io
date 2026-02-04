@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Pronunciation Masterclass PRO (French Learners)</title>
+  <link rel="stylesheet" href="/css/pronunciation-sounds-masterclass-pro.css" />
+</head>
+
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">🗣️</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">Pronunciation Masterclass • PRO • French Learner Focus</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="control">
+        <label class="label" for="accent">Accent</label>
+        <select id="accent" class="select">
+          <option value="en-US">American (en-US)</option>
+          <option value="en-GB">British (en-GB)</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label class="label" for="rate">Voice speed</label>
+        <input id="rate" class="range" type="range" min="0.75" max="1.25" step="0.05" value="1.00" />
+        <div class="tiny" id="rateLabel">1.00×</div>
+      </div>
+
+      <div class="control control--buttons">
+        <button class="btn" id="btnTest">Test voice</button>
+        <button class="btn btn--ghost" id="btnStop">⏹ Stop</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__title">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        <div class="tiny">Instant feedback ✅ • Touch-friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="Lesson sections">
+    <a class="tab" href="#plan">⏱️ Plan</a>
+    <a class="tab" href="#iSounds">I / IE / EI</a>
+    <a class="tab" href="#ySounds">Y</a>
+    <a class="tab" href="#zSounds">Z & S</a>
+    <a class="tab" href="#sEs">S / ES</a>
+    <a class="tab" href="#th">TH</a>
+    <a class="tab" href="#tion">-TION / -SION</a>
+    <a class="tab" href="#ed">-ED</a>
+    <a class="tab" href="#rl">R / L</a>
+    <a class="tab" href="#h">H (silent)</a>
+    <a class="tab" href="#silent">Silent letters</a>
+    <a class="tab" href="#chjvw">CH / J / V-W</a>
+    <a class="tab" href="#schwa">Schwa & reductions</a>
+    <a class="tab" href="#rhythm">Rhythm & linking</a>
+    <a class="tab" href="#cheatsheet">🖨️ Cheat sheet</a>
+  </nav>
+</header>
+
+<main id="content" class="wrap">
+
+  <section class="hero">
+    <h1>Pronunciation Masterclass — PRO (French speaker “problem zones”)</h1>
+    <p class="lead">
+      Full interactive lesson: rules + typical French errors + many exercise types
+      (flashcards, QCM, drag & drop, tap-to-move, fill-in, listening choices, scenarios)
+      with <strong>US/UK TTS</strong>.
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h2>Core sounds + PRO add-ons</h2>
+        <ul class="bullets">
+          <li>I /ɪ/ vs /iː/ • IE/EI • Y • Z vs S</li>
+          <li>Final -S / -ES • TH • -TION/-SION • -ED</li>
+          <li><strong>PRO:</strong> R/L • H (silent) • silent letters • CH • J • V/W • schwa + reductions</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Ship. Sheep. Friend. Receive. My. Happy. Easy. Watches. Think. This. Decision. Worked.">Listen key examples</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Timer</h2>
+        <p class="muted">
+          Suggested structure: <strong>60 minutes</strong> core + <strong>20 minutes</strong> PRO extras (or pick your extras).
+        </p>
+        <div class="row">
+          <button class="btn" id="btnStart60">Start 60-min timer</button>
+          <button class="btn btn--ghost" id="btnStart80">Start 80-min timer</button>
+          <button class="btn btn--ghost" id="btnResetTimer">Reset</button>
+          <div class="timer" aria-live="polite">⏳ <span id="timerText">60:00</span></div>
+        </div>
+        <p class="tiny muted">iPad Safari: click “Test voice” once to unlock speech.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN -->
+  <section id="plan" class="section">
+    <h2>⏱️ Lesson plan (core 60 + optional PRO)</h2>
+    <div class="card">
+      <div class="planGrid">
+        <div class="planItem"><div class="planTime">5 min</div><div class="planText">Warm-up flashcards (mouth tips + listening)</div></div>
+        <div class="planItem"><div class="planTime">10 min</div><div class="planText">I /ɪ/ vs /iː/ sorting + minimal pairs</div></div>
+        <div class="planItem"><div class="planTime">8 min</div><div class="planText">IE/EI quiz</div></div>
+        <div class="planItem"><div class="planTime">7 min</div><div class="planText">Y quiz</div></div>
+        <div class="planItem"><div class="planTime">7 min</div><div class="planText">Z & /z/ sound spotting</div></div>
+        <div class="planItem"><div class="planTime">8 min</div><div class="planText">Final -S/-ES: /s/ /z/ /ɪz/</div></div>
+        <div class="planItem"><div class="planTime">6 min</div><div class="planText">TH /θ/ vs /ð/</div></div>
+        <div class="planItem"><div class="planTime">5 min</div><div class="planText">-TION/-SION sorting</div></div>
+        <div class="planItem"><div class="planTime">6 min</div><div class="planText">-ED endings</div></div>
+        <div class="planItem"><div class="planTime">8 min</div><div class="planText">Scenarios + rhythm/linking</div></div>
+
+        <div class="planItem"><div class="planTime">+6</div><div class="planText">PRO: R/L minimal pairs + listening choice</div></div>
+        <div class="planItem"><div class="planTime">+4</div><div class="planText">PRO: H silent vs pronounced</div></div>
+        <div class="planItem"><div class="planTime">+4</div><div class="planText">PRO: Silent letters QCM</div></div>
+        <div class="planItem"><div class="planTime">+6</div><div class="planText">PRO: CH / J / V-W drills</div></div>
+        <div class="planItem"><div class="planTime">+6</div><div class="planText">PRO: Schwa + reductions (weak words)</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE SECTIONS (same structure as your first version) -->
+  <section id="iSounds" class="section">
+    <h2>I / IE / EI — common French problems</h2>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Rule mini-guide (EN/FR)</h3>
+        <ul class="bullets">
+          <li><strong>/ɪ/</strong> short/relaxed: <em>sit, ship, live, busy</em></li>
+          <li><strong>/iː/</strong> long/tense: <em>see, sheep, leave, beach</em></li>
+          <li>French trap: <strong>beach</strong> vs <strong>bitch</strong></li>
+          <li><strong>IE</strong> can be /iː/ (<em>piece</em>), /aɪ/ (<em>pie</em>), or /e/ (<em>friend</em>)</li>
+          <li><strong>EI</strong> often /iː/ after <strong>c</strong>: <em>receive, ceiling</em> (but exceptions exist)</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Ship. Sheep. Sit. Seat. Live. Leave.">Listen minimal pairs</button>
+          <button class="btn btn--ghost" data-say="Beach. Bitch. Sheet. Shit.">Listen dangerous pairs</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Warm-up flashcards (tap to flip)</h3>
+        <div class="row">
+          <button class="btn" id="fcShuffle1">Shuffle</button>
+          <button class="btn btn--ghost" id="fcListenRandom1">Listen (random)</button>
+        </div>
+        <div id="flashcards1" class="flashgrid" aria-label="Flashcards"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Activity 1: Sort by sound /ɪ/ or /iː/ (drag or tap-to-move)</h3>
+      <p class="muted">iPad: tap a word → then tap the target box.</p>
+
+      <div class="sorter">
+        <div class="bank">
+          <div class="bank__title">Word bank</div>
+          <div id="iBank" class="chipwrap"></div>
+          <div class="row">
+            <button class="btn" id="iNew">New set</button>
+            <button class="btn btn--ghost" id="iListen">Listen words</button>
+            <button class="btn btn--ghost" id="iReset">Reset</button>
+            <button class="btn" id="iCheck">✅ Check</button>
+          </div>
+          <div id="iFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+
+        <div class="targets">
+          <div class="target">
+            <div class="target__title">/ɪ/ short (ship)</div>
+            <div id="iShort" class="dropzone"></div>
+          </div>
+          <div class="target">
+            <div class="target__title">/iː/ long (sheep)</div>
+            <div id="iLong" class="dropzone"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Activity 2: IE/EI quick quiz</h3>
+      <div class="quiz">
+        <div class="quiz__top">
+          <div class="quiz__q">
+            <div class="tiny muted">Question <span id="ieNum">1</span></div>
+            <div class="big" id="ieWord">—</div>
+            <div class="row">
+              <button class="btn btn--ghost" id="ieListen">Listen</button>
+              <button class="btn" id="ieNew">New question</button>
+            </div>
+          </div>
+          <div class="quiz__choices" id="ieChoices"></div>
+        </div>
+        <div id="ieExplain" class="explain" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ySounds" class="section">
+    <h2>Y — 4 common pronunciations</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Rule mini-guide</h3>
+        <ul class="bullets">
+          <li><strong>/aɪ/</strong>: my, try, sky</li>
+          <li><strong>/iː/</strong>: happy, baby, party</li>
+          <li><strong>/ɪ/</strong>: system, symbol, mystery</li>
+          <li><strong>/j/</strong>: yes, yellow, yesterday</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="My. Happy. System. Yes.">Listen 4 sounds</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Activity 3: Y sound quiz</h3>
+        <div class="quiz">
+          <div class="quiz__top">
+            <div class="quiz__q">
+              <div class="tiny muted">Question <span id="yNum">1</span></div>
+              <div class="big" id="yWord">—</div>
+              <div class="row">
+                <button class="btn btn--ghost" id="yListen">Listen</button>
+                <button class="btn" id="yNew">New question</button>
+              </div>
+            </div>
+            <div class="quiz__choices" id="yChoices"></div>
+          </div>
+          <div id="yExplain" class="explain" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="zSounds" class="section">
+    <h2>Z & S — spot the /z/ sound</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Rule mini-guide</h3>
+        <ul class="bullets">
+          <li><strong>Z</strong> is usually /z/: zoo, zero, amazing</li>
+          <li><strong>S</strong> can be /z/: easy, music, is, was, roses</li>
+          <li>Tip: /z/ is <strong>voiced</strong> (vibration)</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Zoo. Zero. Easy. Music. Roses.">Listen examples</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Activity 4: Spot /z/ (tap the words)</h3>
+        <div class="row">
+          <button class="btn" id="zNew">New set</button>
+          <button class="btn btn--ghost" id="zListen">Listen set</button>
+          <button class="btn" id="zCheck">✅ Check</button>
+          <button class="btn btn--ghost" id="zClear">Clear</button>
+        </div>
+        <div id="zSet" class="chipwrap chipwrap--select"></div>
+        <div id="zFeedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sEs" class="section">
+    <h2>Final -S / -ES — /s/ vs /z/ vs /ɪz/</h2>
+
+    <div class="card">
+      <h3>Rule mini-guide</h3>
+      <div class="rulegrid">
+        <div class="rule">
+          <div class="rule__title">/s/</div>
+          <div class="rule__body">cats, books, laughs</div>
+        </div>
+        <div class="rule">
+          <div class="rule__title">/z/</div>
+          <div class="rule__body">dogs, rooms, plays</div>
+        </div>
+        <div class="rule">
+          <div class="rule__title">/ɪz/</div>
+          <div class="rule__body">watches, buses, boxes</div>
+        </div>
+      </div>
+      <div class="row">
+        <button class="btn btn--ghost" data-say="Cats. Dogs. Watches. Rooms. Boxes.">Listen</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Activity 5: Choose the ending sound</h3>
+        <div class="row">
+          <button class="btn" id="esNew">New list</button>
+          <button class="btn btn--ghost" id="esListen">Listen list</button>
+          <button class="btn" id="esCheck">✅ Check</button>
+          <button class="btn btn--ghost" id="esReset">Reset</button>
+        </div>
+        <div id="esList" class="tableLike"></div>
+        <div id="esFeedback" class="feedback" aria-live="polite"></div>
+      </div>
+
+      <div class="card">
+        <h3>Mini transfer: write the right form</h3>
+        <div class="row">
+          <button class="btn" id="sNew">New sentence</button>
+          <button class="btn btn--ghost" id="sListen">Listen</button>
+        </div>
+        <div class="sentenceBox">
+          <div class="big" id="sSentence">—</div>
+          <div class="row">
+            <input id="sInput" class="input" placeholder="Type the correct form (e.g., watches)" />
+            <button class="btn" id="sCheck">✅ Check</button>
+            <button class="btn btn--ghost" id="sReveal">Reveal</button>
+          </div>
+          <div id="sFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="th" class="section">
+    <h2>TH — /θ/ vs /ð/ (think vs this)</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Mouth tip</h3>
+        <ul class="bullets">
+          <li>Tongue slightly between teeth</li>
+          <li>/θ/ unvoiced: think, three, thanks</li>
+          <li>/ð/ voiced: this, that, there</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Think. Three. Thanks. This. That. There.">Listen</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Activity 6: TH listening quiz</h3>
+        <div class="quiz">
+          <div class="quiz__top">
+            <div class="quiz__q">
+              <div class="tiny muted">Question <span id="thNum">1</span></div>
+              <div class="big" id="thWord">—</div>
+              <div class="row">
+                <button class="btn btn--ghost" id="thListen">Listen</button>
+                <button class="btn" id="thNew">New question</button>
+              </div>
+            </div>
+            <div class="quiz__choices" id="thChoices"></div>
+          </div>
+          <div id="thExplain" class="explain" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tion" class="section">
+    <h2>-TION / -SION — /ʃən/ and /ʒən/</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Rule mini-guide</h3>
+        <ul class="bullets">
+          <li>-tion → usually /ʃən/ (nation, information)</li>
+          <li>-sion → often /ʒən/ (decision, television)</li>
+          <li>Stress matters: in-for-MA-tion, de-CI-sion</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Nation. Information. Decision. Television. Confusion.">Listen examples</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Activity 7: Sort /ʃən/ vs /ʒən/</h3>
+        <div class="row">
+          <button class="btn" id="tionNew">New set</button>
+          <button class="btn btn--ghost" id="tionListen">Listen words</button>
+          <button class="btn btn--ghost" id="tionReset">Reset</button>
+          <button class="btn" id="tionCheck">✅ Check</button>
+        </div>
+
+        <div class="sorter sorter--small">
+          <div class="bank">
+            <div class="bank__title">Word bank</div>
+            <div id="tionBank" class="chipwrap"></div>
+            <div id="tionFeedback" class="feedback" aria-live="polite"></div>
+          </div>
+
+          <div class="targets">
+            <div class="target">
+              <div class="target__title">/ʃən/ (“shun”)</div>
+              <div id="tionShun" class="dropzone"></div>
+            </div>
+            <div class="target">
+              <div class="target__title">/ʒən/ (“zhun”)</div>
+              <div id="tionZhun" class="dropzone"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tiny muted">Tip: listen, then clap the stressed syllable.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ed" class="section">
+    <h2>-ED endings — /t/ /d/ /ɪd/</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Rule mini-guide</h3>
+        <ul class="bullets">
+          <li>/t/ worked, helped</li>
+          <li>/d/ played, cleaned</li>
+          <li>/ɪd/ wanted, needed (after t/d)</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Worked. Played. Wanted. Helped. Cleaned. Needed.">Listen</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Activity 8: Choose the ED sound</h3>
+        <div class="row">
+          <button class="btn" id="edNew">New list</button>
+          <button class="btn btn--ghost" id="edListen">Listen list</button>
+          <button class="btn" id="edCheck">✅ Check</button>
+          <button class="btn btn--ghost" id="edReset">Reset</button>
+        </div>
+        <div id="edList" class="tableLike"></div>
+        <div id="edFeedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRO SECTIONS ===================== -->
+
+  <section id="rl" class="section">
+    <h2>PRO: R / L — French accent “classic”</h2>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Mouth tips (simple + effective)</h3>
+        <ul class="bullets">
+          <li><strong>L</strong>: tongue touches the ridge behind the teeth (clear contact)</li>
+          <li><strong>R</strong>: tongue does <em>not</em> touch; lips slightly rounded, sound goes “back”</li>
+          <li>French trap: using a French “R” or turning R into L (or vice versa)</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Light. Right. Glass. Grass. Fly. Fry. Collect. Correct.">Listen minimal pairs</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Activity PRO-1: Listening choice (R or L?)</h3>
+        <p class="muted">Listen → choose what you hear. Repeat it out loud 3×.</p>
+        <div class="row">
+          <button class="btn btn--ghost" id="rlListen">Listen</button>
+          <button class="btn" id="rlNew">New</button>
+        </div>
+        <div class="big" id="rlPrompt">—</div>
+        <div class="row">
+          <button class="choice" id="rlA">—</button>
+          <button class="choice" id="rlB">—</button>
+        </div>
+        <div id="rlFeedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="h" class="section">
+    <h2>PRO: H — silent vs pronounced</h2>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Rule mini-guide</h3>
+        <ul class="bullets">
+          <li>Some words have <strong>silent H</strong>: hour, honest, heir, honor/honour</li>
+          <li>Most words: <strong>H is pronounced</strong>: hotel, history, help, home</li>
+          <li>French trap: saying a strong H everywhere or dropping it everywhere</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Hour. Honest. Heir. Honor. Hotel. History. Help. Home.">Listen examples</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Activity PRO-2: Is H silent?</h3>
+        <div class="row">
+          <button class="btn btn--ghost" id="hListen">Listen</button>
+          <button class="btn" id="hNew">New question</button>
+        </div>
+        <div class="big" id="hWord">—</div>
+        <div class="row">
+          <button class="choice" id="hSilent">Silent H</button>
+          <button class="choice" id="hSound">Pronounced H</button>
+        </div>
+        <div id="hFeedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="silent" class="section">
+    <h2>PRO: Silent letters — don’t pronounce everything</h2>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Typical silent-letter patterns</h3>
+        <ul class="bullets">
+          <li><strong>K</strong> + n: know, knee, knife</li>
+          <li><strong>W</strong> + r: write, wrong</li>
+          <li><strong>B</strong> after m: lamb, comb, climb</li>
+          <li><strong>T</strong>: listen, castle</li>
+          <li><strong>P</strong> in some words: receipt, psychology</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Activity PRO-3: Spot the silent letter (QCM)</h3>
+        <div class="row">
+          <button class="btn" id="slNew">New question</button>
+          <button class="btn btn--ghost" id="slListen">Listen</button>
+        </div>
+        <div class="big" id="slWord">—</div>
+        <div id="slChoices" class="quiz__choices"></div>
+        <div id="slFeedback" class="explain" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="chjvw" class="section">
+    <h2>PRO: CH / J / V-W</h2>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>CH: 3 main sounds</h3>
+        <ul class="bullets">
+          <li><strong>/tʃ/</strong>: chair, cheese, choose</li>
+          <li><strong>/k/</strong>: chemistry, chorus, school (not ch, but similar trap)</li>
+          <li><strong>/ʃ/</strong> in some words: chef, machine</li>
+        </ul>
+
+        <h3 style="margin-top:14px;">J: usually /dʒ/ (French speakers often do /ʒ/)</h3>
+        <ul class="bullets">
+          <li><strong>/dʒ/</strong>: job, just, jam, major</li>
+          <li><strong>/ʒ/</strong> mostly in loanwords (rare): genre (often /ʒ/), some speakers vary</li>
+        </ul>
+
+        <h3 style="margin-top:14px;">V vs W</h3>
+        <ul class="bullets">
+          <li><strong>V</strong>: teeth on lip + vibration (vine)</li>
+          <li><strong>W</strong>: rounded lips, no teeth contact (wine)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Activity PRO-4: CH sound quiz</h3>
+        <div class="row">
+          <button class="btn" id="chNew">New</button>
+          <button class="btn btn--ghost" id="chListen">Listen</button>
+        </div>
+        <div class="big" id="chWord">—</div>
+        <div id="chChoices" class="quiz__choices"></div>
+        <div id="chFeedback" class="explain" aria-live="polite"></div>
+
+        <hr class="hr">
+
+        <h3>Activity PRO-5: V/W listening choice</h3>
+        <div class="row">
+          <button class="btn btn--ghost" id="vwListen">Listen</button>
+          <button class="btn" id="vwNew">New</button>
+        </div>
+        <div class="big" id="vwPrompt">—</div>
+        <div class="row">
+          <button class="choice" id="vwA">—</button>
+          <button class="choice" id="vwB">—</button>
+        </div>
+        <div id="vwFeedback" class="feedback" aria-live="polite"></div>
+
+        <hr class="hr">
+
+        <h3>Bonus: J quick check (/dʒ/ or /ʒ/?)</h3>
+        <div class="row">
+          <button class="btn" id="jNew">New</button>
+          <button class="btn btn--ghost" id="jListen">Listen</button>
+        </div>
+        <div class="big" id="jWord">—</div>
+        <div id="jChoices" class="quiz__choices"></div>
+        <div id="jFeedback" class="explain" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="schwa" class="section">
+    <h2>PRO: Schwa /ə/ + reductions (sound more natural)</h2>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>What is schwa?</h3>
+        <ul class="bullets">
+          <li>Schwa /ə/ = the “neutral” weak vowel (like a very quick “uh”)</li>
+          <li>English rhythm uses weak words: <em>to, for, of, a, an, the, and, can</em></li>
+          <li>French trap: saying every syllable strongly (French rhythm)</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="I can do it in a minute. Do you want to go to the station?">Listen reductions</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Activity PRO-6: Mark the weak words</h3>
+        <p class="muted">Tap the words you think should be weak/reduced. Then check + listen.</p>
+        <div class="row">
+          <button class="btn" id="swNew">New drill</button>
+          <button class="btn btn--ghost" id="swListen">Listen sentence</button>
+          <button class="btn" id="swCheck">✅ Check</button>
+          <button class="btn btn--ghost" id="swClear">Clear</button>
+        </div>
+        <div class="schwaBox">
+          <div class="schwaSentence" id="swSentence"></div>
+          <div id="swFeedback" class="feedback" aria-live="polite"></div>
+          <div class="tiny muted" id="swHint"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rhythm" class="section">
+    <h2>Rhythm & linking — scenarios</h2>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Mini guide</h3>
+        <ul class="bullets">
+          <li>Stress-timed rhythm: strong beats + weak vowels</li>
+          <li>Linking: consonant → vowel: “pick it up”</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Pick it up. Turn it off. Put it on. Can I have it?">Listen linking</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Activity: Scenario drills</h3>
+        <div class="row">
+          <button class="btn" id="scNew">New scenario</button>
+          <button class="btn btn--ghost" id="scListen">Listen</button>
+        </div>
+        <div class="scenario">
+          <div class="scenario__title" id="scTitle">—</div>
+          <div class="scenario__prompt" id="scPrompt">—</div>
+          <div class="scenario__choices" id="scChoices"></div>
+          <div id="scFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+
+        <hr class="hr">
+
+        <h3>Bonus: Stress (tap the stressed syllable)</h3>
+        <div class="row">
+          <button class="btn" id="stNew">New word</button>
+          <button class="btn btn--ghost" id="stListen">Listen</button>
+        </div>
+        <div class="stressBox">
+          <div class="big" id="stWord">—</div>
+          <div class="syllables" id="stSyllables"></div>
+          <div id="stFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cheatsheet" class="section">
+    <h2>🖨️ Printable cheat sheet (core + PRO)</h2>
+    <div class="card printCard">
+      <div class="row">
+        <button class="btn" id="btnPrint">Print</button>
+        <button class="btn btn--ghost" id="btnCheatListen">Listen key examples</button>
+      </div>
+
+      <div class="cheat">
+        <div class="cheatGrid">
+          <div class="cheatItem"><h4>I: /ɪ/ vs /iː/</h4><p>sit/ship vs see/sheep; live vs leave; beach vs bitch</p></div>
+          <div class="cheatItem"><h4>IE/EI</h4><p>piece /iː/, pie /aɪ/, friend /e/, receive /iː/</p></div>
+          <div class="cheatItem"><h4>Y</h4><p>my /aɪ/, happy /iː/, system /ɪ/, yes /j/</p></div>
+          <div class="cheatItem"><h4>Z + /z/</h4><p>zoo /z/; easy, music, is /z/</p></div>
+          <div class="cheatItem"><h4>-S/-ES</h4><p>cats /s/, dogs /z/, watches /ɪz/</p></div>
+          <div class="cheatItem"><h4>TH</h4><p>think /θ/ vs this /ð/</p></div>
+          <div class="cheatItem"><h4>-TION/-SION</h4><p>nation /ʃən/, decision /ʒən/</p></div>
+          <div class="cheatItem"><h4>-ED</h4><p>worked /t/, played /d/, wanted /ɪd/</p></div>
+          <div class="cheatItem"><h4>PRO: R/L</h4><p>right/light; grass/glass; fry/fly</p></div>
+          <div class="cheatItem"><h4>PRO: Silent H</h4><p>hour, honest, heir (silent) vs hotel, help (spoken)</p></div>
+          <div class="cheatItem"><h4>PRO: Silent letters</h4><p>know (k), write (w), lamb (b), listen (t), receipt (p)</p></div>
+          <div class="cheatItem"><h4>PRO: CH / V-W</h4><p>chair /tʃ/, chemistry /k/, chef /ʃ/; vine vs wine</p></div>
+          <div class="cheatItem"><h4>PRO: Schwa</h4><p>weak words: to /tə/, can /kən/, the /ðə/</p></div>
+        </div>
+      </div>
+
+      <p class="tiny muted" style="margin-top:10px;">Upload these 3 files and open <strong>pronunciation-sounds-masterclass-pro.html</strong>.</p>
+      <p><a class="backtop" href="#top">⬆ Back to top</a></p>
+    </div>
+  </section>
+
+</main>
+
+<script src="/js/pronunciation-sounds-masterclass-pro.js"></script>
+</body>
+</html>
+
