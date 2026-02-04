@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Pronunciation Masterclass 2 (Native Flow) • 60 min</title>
+  <link rel="stylesheet" href="/css/pronunciation-french-traps-2.css" />
+</head>
+
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">🎧</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">Pronunciation Masterclass 2 • Native Flow (French Traps) • 60-minute lesson</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="control">
+        <label class="label" for="accent">Accent</label>
+        <select id="accent" class="select">
+          <option value="en-US">American (en-US)</option>
+          <option value="en-GB">British (en-GB)</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label class="label" for="rate">Voice speed</label>
+        <input id="rate" class="range" type="range" min="0.75" max="1.25" step="0.05" value="1.00" />
+        <div class="tiny" id="rateLabel">1.00×</div>
+      </div>
+
+      <div class="control control--buttons">
+        <button class="btn" id="btnTest">Test voice</button>
+        <button class="btn btn--ghost" id="btnStop">⏹ Stop</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__title">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        <div class="tiny">Instant feedback ✅ • Hints 💡 • Tap-friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="Lesson sections">
+    <a class="tab" href="#plan">⏱️ Plan</a>
+    <a class="tab" href="#warmup">Warm-up</a>
+    <a class="tab" href="#flashcards">Rules flashcards</a>
+    <a class="tab" href="#rl">R vs L</a>
+    <a class="tab" href="#h">H (silent / pronounced)</a>
+    <a class="tab" href="#silent">Silent letters</a>
+    <a class="tab" href="#stress">Word stress</a>
+    <a class="tab" href="#connected">Connected speech</a>
+    <a class="tab" href="#shadow">Shadowing</a>
+    <a class="tab" href="#mission">Final mission</a>
+    <a class="tab" href="#cheatsheet">🖨️ Cheat sheet</a>
+  </nav>
+</header>
+
+<main id="content" class="wrap">
+
+  <section class="hero">
+    <h1>Pronunciation Masterclass 2 — Native Flow (1 hour)</h1>
+    <p class="lead">
+      Sound more natural fast: <strong>R/L</strong>, <strong>H</strong>, <strong>silent letters</strong>,
+      <strong>word stress</strong>, and <strong>connected speech</strong> (linking + reductions).
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h2>How to use</h2>
+        <ul class="bullets">
+          <li>Click <b>Test voice</b> once (needed on iPad Safari).</li>
+          <li>For each exercise: <b>listen → repeat twice → use in a sentence</b>.</li>
+          <li>Drag works, but everything also works by <b>tap-to-move</b>.</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Repeat after me: right, light. really, little. hotel, hour. Could you help me?">Quick demo</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Timer</h2>
+        <p class="muted">Run it like a real 60-minute class.</p>
+        <div class="row">
+          <button class="btn" id="btnStart60">Start 60-min timer</button>
+          <button class="btn btn--ghost" id="btnResetTimer">Reset</button>
+          <div class="timer" aria-live="polite">⏳ <span id="timerText">60:00</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN -->
+  <section id="plan" class="section">
+    <h2>⏱️ One-hour plan</h2>
+    <div class="card">
+      <div class="planGrid">
+        <div class="planItem"><div class="planTime">6 min</div><div class="planText">Warm-up: listen & choose (R/L, H)</div></div>
+        <div class="planItem"><div class="planTime">7 min</div><div class="planText">Rules flashcards (FR tips)</div></div>
+        <div class="planItem"><div class="planTime">10 min</div><div class="planText">R vs L: minimal pairs + QCM + speaking prompts</div></div>
+        <div class="planItem"><div class="planTime">8 min</div><div class="planText">H: silent vs pronounced + fill-in</div></div>
+        <div class="planItem"><div class="planTime">10 min</div><div class="planText">Silent letters sorting (k, w, b, t, gh)</div></div>
+        <div class="planItem"><div class="planTime">8 min</div><div class="planText">Word stress: choose stress pattern + practice</div></div>
+        <div class="planItem"><div class="planTime">7 min</div><div class="planText">Connected speech: linking + reductions game</div></div>
+        <div class="planItem"><div class="planTime">4 min</div><div class="planText">Shadowing drill + final mission</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARMUP -->
+  <section id="warmup" class="section">
+    <h2>Warm-up — Hear the difference (fast)</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Instructions</h3>
+        <ul class="bullets">
+          <li>Click <b>New</b></li>
+          <li>Listen (1–2×)</li>
+          <li>Choose what you heard</li>
+        </ul>
+        <div class="row">
+          <button class="btn" id="wNew">New</button>
+          <button class="btn btn--ghost" id="wListen">Listen</button>
+          <button class="btn btn--ghost" id="wHintBtn">💡 Hint</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Question</h3>
+        <div class="scenario">
+          <div class="scenario__title" id="wTitle">—</div>
+          <div class="scenario__prompt" id="wPrompt">Click “New”.</div>
+          <div class="scenario__choices" id="wChoices"></div>
+          <div id="wHint" class="hint" aria-live="polite"></div>
+          <div id="wFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLASHCARDS -->
+  <section id="flashcards" class="section">
+    <h2>Rules flashcards (tap to flip)</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Use</h3>
+        <ul class="bullets">
+          <li>Tap → flip</li>
+          <li>Listen → repeat 2×</li>
+          <li>Say a travel sentence using the example</li>
+        </ul>
+        <div class="row">
+          <button class="btn" id="fcShuffle">Shuffle</button>
+          <button class="btn btn--ghost" id="fcListenRand">Listen random</button>
+          <button class="btn btn--ghost" id="fcSetRL">R/L</button>
+          <button class="btn btn--ghost" id="fcSetH">H</button>
+          <button class="btn btn--ghost" id="fcSetSilent">Silent letters</button>
+          <button class="btn btn--ghost" id="fcSetStress">Stress</button>
+          <button class="btn btn--ghost" id="fcSetConn">Connected speech</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Flashcards</h3>
+        <div id="fcGrid" class="flashgrid" aria-label="Flashcards"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- R/L -->
+  <section id="rl" class="section">
+    <h2>R vs L — the “right / light” zone</h2>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>How to place the tongue (simple)</h3>
+        <ul class="bullets">
+          <li><b>L</b>: tongue tip <b>touches</b> behind upper teeth: <b>l</b>ight, <b>l</b>ittle</li>
+          <li><b>R</b>: tongue tip <b>does NOT touch</b>. Lips slightly rounded: <b>r</b>ight, <b>r</b>eally</li>
+          <li>French trap: don’t roll the R like French, and don’t replace R with L.</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="right. light. really. little.">Listen examples</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>QCM: What did you hear?</h3>
+        <div class="row">
+          <button class="btn" id="rlNew">New</button>
+          <button class="btn btn--ghost" id="rlListen">Listen</button>
+          <button class="btn btn--ghost" id="rlHintBtn">💡 Hint</button>
+        </div>
+        <div class="scenario">
+          <div class="scenario__title" id="rlTitle">—</div>
+          <div class="scenario__prompt" id="rlPrompt">—</div>
+          <div class="scenario__choices" id="rlChoices"></div>
+          <div id="rlHint" class="hint" aria-live="polite"></div>
+          <div id="rlFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>Speaking prompts (quick)</h3>
+      <p class="muted">Say each sentence twice. Make the R/L super clear.</p>
+      <div class="row">
+        <button class="btn btn--ghost" id="rlPromptsNew">New prompts</button>
+        <button class="btn btn--ghost" id="rlPromptsListen">Listen one</button>
+      </div>
+      <div id="rlPrompts" class="promptList"></div>
+    </div>
+  </section>
+
+  <!-- H -->
+  <section id="h" class="section">
+    <h2>H — pronounced or silent?</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Rule (practical)</h3>
+        <ul class="bullets">
+          <li><b>H pronounced</b>: hotel, history, help, ahead</li>
+          <li><b>H silent</b> (common): hour, honest, heir, honor</li>
+          <li>French trap: don’t add an “h” where it doesn’t exist (e.g., “’appy” in French).</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="hotel. history. help. hour. honest. heir. honor.">Listen</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>QCM: Choose the word</h3>
+        <div class="row">
+          <button class="btn" id="hNew">New</button>
+          <button class="btn btn--ghost" id="hListen">Listen</button>
+          <button class="btn btn--ghost" id="hHintBtn">💡 Hint</button>
+        </div>
+        <div class="scenario">
+          <div class="scenario__title" id="hTitle">—</div>
+          <div class="scenario__prompt" id="hPrompt">—</div>
+          <div class="scenario__choices" id="hChoices"></div>
+          <div id="hHint" class="hint" aria-live="polite"></div>
+          <div id="hFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>Fill-in (fast): choose “a” or “an”</h3>
+      <p class="muted">Use <b>an</b> before a <b>vowel sound</b> (not vowel letter!).</p>
+      <div class="row">
+        <button class="btn" id="haNew">New</button>
+        <button class="btn btn--ghost" id="haListen">Listen</button>
+        <button class="btn btn--ghost" id="haHintBtn">💡 Hint</button>
+      </div>
+
+      <div class="sentenceBox">
+        <div class="big" id="haSentence">—</div>
+        <div class="row">
+          <input id="haInput" class="input" placeholder="Type: a or an" />
+          <button class="btn" id="haCheck">✅ Check</button>
+          <button class="btn btn--ghost" id="haReveal">Reveal</button>
+        </div>
+        <div id="haHint" class="hint" aria-live="polite"></div>
+        <div id="haFeedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SILENT LETTERS -->
+  <section id="silent" class="section">
+    <h2>Silent letters — stop pronouncing ghosts 👻</h2>
+    <div class="card">
+      <p class="muted">Sort each word by the silent letter type. Tap a word then tap a box (or drag).</p>
+      <div class="row">
+        <button class="btn" id="slNew">New set</button>
+        <button class="btn btn--ghost" id="slListen">Listen words</button>
+        <button class="btn btn--ghost" id="slHintBtn">💡 Hint</button>
+        <button class="btn" id="slCheck">✅ Check</button>
+        <button class="btn btn--ghost" id="slReset">Reset</button>
+      </div>
+
+      <div class="sorter">
+        <div class="bank">
+          <div class="bank__title">Word bank</div>
+          <div id="slBank" class="chipwrap"></div>
+          <div id="slFeedback" class="feedback" aria-live="polite"></div>
+          <div id="slHint" class="hint" aria-live="polite"></div>
+        </div>
+
+        <div class="targets">
+          <div class="target">
+            <div class="target__title">Silent K (kn-)</div>
+            <div class="tiny muted">know • knife • knee</div>
+            <div id="slK" class="dropzone"></div>
+          </div>
+          <div class="target">
+            <div class="target__title">Silent W (wr-)</div>
+            <div class="tiny muted">write • wrong • wrap</div>
+            <div id="slW" class="dropzone"></div>
+          </div>
+          <div class="target">
+            <div class="target__title">Silent B (mb/ bt)</div>
+            <div class="tiny muted">doubt • comb • thumb</div>
+            <div id="slB" class="dropzone"></div>
+          </div>
+          <div class="target">
+            <div class="target__title">Silent T</div>
+            <div class="tiny muted">listen • castle • often</div>
+            <div id="slT" class="dropzone"></div>
+          </div>
+          <div class="target">
+            <div class="target__title">Silent GH</div>
+            <div class="tiny muted">though • night • light</div>
+            <div id="slGH" class="dropzone"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRESS -->
+  <section id="stress" class="section">
+    <h2>Word stress — PHOtograph vs phoTOgrapher</h2>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Rule (useful)</h3>
+        <ul class="bullets">
+          <li>Stress changes the rhythm and the vowel quality (unstressed vowels become <b>schwa</b> /ə/).</li>
+          <li>Many suffixes change stress: -graphy, -grapher, -tion, -ic, -ity, -ee.</li>
+          <li>French trap: pronouncing every syllable equally.</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="PHOtograph. phoTOgraphy. phoTOgrapher. inforMAtion. eLECtric.">Listen examples</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>QCM: Which stress pattern matches?</h3>
+        <div class="row">
+          <button class="btn" id="stNew">New</button>
+          <button class="btn btn--ghost" id="stListen">Listen</button>
+          <button class="btn btn--ghost" id="stHintBtn">💡 Hint</button>
+        </div>
+        <div class="scenario">
+          <div class="scenario__title" id="stTitle">—</div>
+          <div class="scenario__prompt" id="stPrompt">—</div>
+          <div class="scenario__choices" id="stChoices"></div>
+          <div id="stHint" class="hint" aria-live="polite"></div>
+          <div id="stFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>Phrase builder (stress + rhythm)</h3>
+      <p class="muted">Build a natural sentence. Tap/drag words into the line, then check.</p>
+      <div class="row">
+        <button class="btn" id="pbNew">New</button>
+        <button class="btn btn--ghost" id="pbListen">Listen target</button>
+        <button class="btn btn--ghost" id="pbHintBtn">💡 Hint</button>
+        <button class="btn" id="pbCheck">✅ Check</button>
+        <button class="btn btn--ghost" id="pbReset">Reset</button>
+      </div>
+
+      <div class="builder">
+        <div class="bank">
+          <div class="bank__title">Word bank</div>
+          <div id="pbBank" class="chipwrap"></div>
+        </div>
+        <div class="target">
+          <div class="target__title">Your sentence</div>
+          <div id="pbLine" class="dropzone"></div>
+        </div>
+      </div>
+      <div id="pbHint" class="hint" aria-live="polite"></div>
+      <div id="pbFeedback" class="feedback" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- CONNECTED SPEECH -->
+  <section id="connected" class="section">
+    <h2>Connected speech — linking + reductions</h2>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Key rules (native flow)</h3>
+        <ul class="bullets">
+          <li><b>Linking</b>: consonant + vowel → “pick it up” sounds like “pick-it-up”.</li>
+          <li><b>Reductions</b>: want to → wanna, going to → gonna, did you → didja, could you → couldja.</li>
+          <li>Goal: keep it smooth, not robotic.</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Pick it up. Put it on. Did you eat yet? Could you help me? I'm gonna head out.">Listen</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>QCM: choose the most natural version</h3>
+        <div class="row">
+          <button class="btn" id="csNew">New</button>
+          <button class="btn btn--ghost" id="csListen">Listen</button>
+          <button class="btn btn--ghost" id="csHintBtn">💡 Hint</button>
+        </div>
+        <div class="scenario">
+          <div class="scenario__title" id="csTitle">—</div>
+          <div class="scenario__prompt" id="csPrompt">—</div>
+          <div class="scenario__choices" id="csChoices"></div>
+          <div id="csHint" class="hint" aria-live="polite"></div>
+          <div id="csFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>Fill-in: type the reduced phrase</h3>
+      <div class="row">
+        <button class="btn" id="cfNew">New</button>
+        <button class="btn btn--ghost" id="cfListen">Listen</button>
+        <button class="btn btn--ghost" id="cfHintBtn">💡 Hint</button>
+      </div>
+
+      <div class="sentenceBox">
+        <div class="big" id="cfSentence">—</div>
+        <div class="row">
+          <input id="cfInput" class="input" placeholder="Type: gonna / wanna / didja / couldja / gotta" />
+          <button class="btn" id="cfCheck">✅ Check</button>
+          <button class="btn btn--ghost" id="cfReveal">Reveal</button>
+        </div>
+        <div id="cfHint" class="hint" aria-live="polite"></div>
+        <div id="cfFeedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHADOWING -->
+  <section id="shadow" class="section">
+    <h2>Shadowing drill — copy the rhythm (2–3 minutes)</h2>
+    <div class="card">
+      <p class="muted">Click a phrase → listen → repeat immediately (no pause). Do it 2×.</p>
+
+      <div class="row">
+        <button class="btn btn--ghost" id="shNew">New set</button>
+        <button class="btn btn--ghost" id="shPlay">Play one</button>
+        <button class="btn btn--ghost" id="shPlayAll">Play all</button>
+      </div>
+
+      <div id="shList" class="promptList"></div>
+      <div id="shFeedback" class="feedback" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- FINAL MISSION -->
+  <section id="mission" class="section">
+    <h2>Final mission — “Talk like a native for 45 seconds”</h2>
+    <div class="card">
+      <p class="muted">Generate a mini “day in the life” script packed with R/L + H + silent letters + linking.</p>
+
+      <div class="grid2">
+        <div class="card inner">
+          <h3>Inputs</h3>
+          <div class="formGrid">
+            <div>
+              <label class="label" for="mName">Name</label>
+              <input id="mName" class="input" placeholder="e.g., Claire" />
+            </div>
+            <div>
+              <label class="label" for="mCity">City</label>
+              <input id="mCity" class="input" placeholder="e.g., Chicago" />
+            </div>
+            <div>
+              <label class="label" for="mDay">Situation</label>
+              <select id="mDay" class="select">
+                <option value="travel">Travel day</option>
+                <option value="work">Work day</option>
+                <option value="weekend">Weekend day</option>
+              </select>
+            </div>
+            <div>
+              <label class="label" for="mSpeed">Mode</label>
+              <select id="mSpeed" class="select">
+                <option value="slow">Slow + clear</option>
+                <option value="normal">Normal flow</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <button class="btn" id="genBtn">Generate script</button>
+            <button class="btn btn--ghost" id="genListen">Listen</button>
+            <button class="btn btn--ghost" id="genCopy">Copy</button>
+          </div>
+          <div id="genFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+
+        <div class="card inner">
+          <h3>Your script</h3>
+          <div class="scriptBox" id="scriptBox">Click “Generate script”.</div>
+          <p class="tiny muted">Say it twice: (1) slow + clear, (2) normal flow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHEAT SHEET -->
+  <section id="cheatsheet" class="section">
+    <h2>🖨️ Printable cheat sheet</h2>
+    <div class="card printCard">
+      <div class="row">
+        <button class="btn" id="btnPrint">Print</button>
+        <button class="btn btn--ghost" id="btnCheatListen">Listen key examples</button>
+      </div>
+
+      <div class="cheat">
+        <div class="cheatGrid" id="cheatGrid"></div>
+      </div>
+
+      <p class="tiny muted" style="margin-top:10px;">
+        Open <strong>pronunciation-french-traps-2.html</strong>.
+      </p>
+      <p><a class="backtop" href="#top">⬆ Back to top</a></p>
+    </div>
+  </section>
+
+</main>
+
+<script src="/js/pronunciation-french-traps-2.js"></script>
+</body>
+</html>

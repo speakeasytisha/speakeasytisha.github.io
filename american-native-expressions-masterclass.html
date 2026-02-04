@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Talk Like an American (Daily Expressions) • 60 min</title>
+  <link rel="stylesheet" href="/css/american-native-expressions-masterclass.css" />
+</head>
+
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">🇺🇸</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">Talk Like an American • Daily Expressions • 60-minute interactive lesson</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="control">
+        <label class="label" for="accent">Accent</label>
+        <select id="accent" class="select">
+          <option value="en-US">American (en-US)</option>
+          <option value="en-GB">British (en-GB)</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label class="label" for="rate">Voice speed</label>
+        <input id="rate" class="range" type="range" min="0.75" max="1.25" step="0.05" value="1.00" />
+        <div class="tiny" id="rateLabel">1.00×</div>
+      </div>
+
+      <div class="control control--buttons">
+        <button class="btn" id="btnTest">Test voice</button>
+        <button class="btn btn--ghost" id="btnStop">⏹ Stop</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__title">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        <div class="tiny">Instant feedback ✅ • Hints 💡 • Tap-friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="Lesson sections">
+    <a class="tab" href="#plan">⏱️ Plan</a>
+    <a class="tab" href="#warmup">Warm-up</a>
+    <a class="tab" href="#flashcards">Expression flashcards</a>
+    <a class="tab" href="#upgrade">Polite-casual upgrades</a>
+    <a class="tab" href="#smalltalk">Small talk</a>
+    <a class="tab" href="#travel">Travel scenes</a>
+    <a class="tab" href="#sorting">Sort by situation</a>
+    <a class="tab" href="#intonation">Intonation + stress</a>
+    <a class="tab" href="#shadow">Shadowing</a>
+    <a class="tab" href="#mission">Final mission</a>
+    <a class="tab" href="#cheatsheet">🖨️ Cheat sheet</a>
+  </nav>
+</header>
+
+<main id="content" class="wrap">
+
+  <section class="hero">
+    <h1>Talk Like an American — Daily Expressions (1 hour)</h1>
+    <p class="lead">
+      Learn the phrases Americans actually use daily: greetings, small talk, polite requests,
+      reactions, texting-style casual, and natural rhythm (contractions + intonation).
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h2>How to run this lesson</h2>
+        <ul class="bullets">
+          <li>Click <b>Test voice</b> once (iPad Safari needs it).</li>
+          <li>Each activity: <b>listen → repeat 2× → use it in a mini sentence</b>.</li>
+          <li>Drag works, but you can also <b>tap a chip then tap a box</b>.</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Quick demo: How's it going? I'm good. No worries. Sounds good. Could you help me real quick?">
+            Quick demo
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Timer</h2>
+        <p class="muted">Run it like a real 60-minute class.</p>
+        <div class="row">
+          <button class="btn" id="btnStart60">Start 60-min timer</button>
+          <button class="btn btn--ghost" id="btnResetTimer">Reset</button>
+          <div class="timer" aria-live="polite">⏳ <span id="timerText">60:00</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN -->
+  <section id="plan" class="section">
+    <h2>⏱️ One-hour plan</h2>
+    <div class="card">
+      <div class="planGrid">
+        <div class="planItem"><div class="planTime">6 min</div><div class="planText">Warm-up QCM: the most natural phrase</div></div>
+        <div class="planItem"><div class="planTime">10 min</div><div class="planText">Expression flashcards (listen + repeat)</div></div>
+        <div class="planItem"><div class="planTime">10 min</div><div class="planText">Polite-casual upgrades (make it sound native)</div></div>
+        <div class="planItem"><div class="planTime">8 min</div><div class="planText">Small talk builder + QCM</div></div>
+        <div class="planItem"><div class="planTime">10 min</div><div class="planText">Travel scenes (hotel/coffee/airport/uber)</div></div>
+        <div class="planItem"><div class="planTime">6 min</div><div class="planText">Sorting game by situation (tap/drag)</div></div>
+        <div class="planItem"><div class="planTime">6 min</div><div class="planText">Intonation + stress quick drill</div></div>
+        <div class="planItem"><div class="planTime">4 min</div><div class="planText">Shadowing + final mission speaking</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARMUP -->
+  <section id="warmup" class="section">
+    <h2>Warm-up — Choose the most natural American phrase</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Instructions</h3>
+        <ul class="bullets">
+          <li>Click <b>New</b></li>
+          <li>Listen (optional)</li>
+          <li>Choose the most natural sentence</li>
+        </ul>
+        <div class="row">
+          <button class="btn" id="wNew">New</button>
+          <button class="btn btn--ghost" id="wListen">Listen</button>
+          <button class="btn btn--ghost" id="wHintBtn">💡 Hint</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Question</h3>
+        <div class="scenario">
+          <div class="scenario__title" id="wTitle">—</div>
+          <div class="scenario__prompt" id="wPrompt">Click “New”.</div>
+          <div class="scenario__choices" id="wChoices"></div>
+          <div id="wHint" class="hint" aria-live="polite"></div>
+          <div id="wFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLASHCARDS -->
+  <section id="flashcards" class="section">
+    <h2>Expression flashcards (tap to flip)</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Pick a theme</h3>
+        <div class="row">
+          <button class="btn" id="fcShuffle">Shuffle</button>
+          <button class="btn btn--ghost" id="fcListenRand">Listen random</button>
+          <button class="btn btn--ghost" id="fcSetGreetings">Greetings</button>
+          <button class="btn btn--ghost" id="fcSetRequests">Requests</button>
+          <button class="btn btn--ghost" id="fcSetReactions">Reactions</button>
+          <button class="btn btn--ghost" id="fcSetSmalltalk">Small talk</button>
+          <button class="btn btn--ghost" id="fcSetTravel">Travel</button>
+          <button class="btn btn--ghost" id="fcSetTexting">Texting/casual</button>
+        </div>
+        <p class="tiny muted">Tip: after each card, say a 1-sentence mini story using it.</p>
+      </div>
+
+      <div class="card">
+        <h3>Flashcards</h3>
+        <div id="fcGrid" class="flashgrid" aria-label="Flashcards"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPGRADE -->
+  <section id="upgrade" class="section">
+    <h2>Polite-casual upgrades — “Sound native, not rude”</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Goal</h3>
+        <ul class="bullets">
+          <li>French trap: too direct (“I want…”, “Give me…”)</li>
+          <li>Upgrade with: <b>Could you…</b> / <b>Do you happen to…</b> / <b>I was wondering if…</b></li>
+          <li>Add softeners: <b>real quick</b>, <b>a bit</b>, <b>maybe</b>, <b>actually</b>, <b>just</b></li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Could you help me real quick? I was wondering if you could check that for me.">
+            Listen examples
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>QCM: Best upgrade</h3>
+        <div class="row">
+          <button class="btn" id="uNew">New</button>
+          <button class="btn btn--ghost" id="uListen">Listen target</button>
+          <button class="btn btn--ghost" id="uHintBtn">💡 Hint</button>
+        </div>
+        <div class="scenario">
+          <div class="scenario__title" id="uTitle">—</div>
+          <div class="scenario__prompt" id="uPrompt">—</div>
+          <div class="scenario__choices" id="uChoices"></div>
+          <div id="uHint" class="hint" aria-live="polite"></div>
+          <div id="uFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>Phrase builder (tap/drag) — build the native request</h3>
+      <div class="row">
+        <button class="btn" id="pbNew">New</button>
+        <button class="btn btn--ghost" id="pbListen">Listen target</button>
+        <button class="btn btn--ghost" id="pbHintBtn">💡 Hint</button>
+        <button class="btn" id="pbCheck">✅ Check</button>
+        <button class="btn btn--ghost" id="pbReset">Reset</button>
+      </div>
+
+      <div class="builder">
+        <div class="bank">
+          <div class="bank__title">Word bank</div>
+          <div id="pbBank" class="chipwrap"></div>
+        </div>
+        <div class="target">
+          <div class="target__title">Your sentence</div>
+          <div id="pbLine" class="dropzone"></div>
+        </div>
+      </div>
+      <div id="pbHint" class="hint" aria-live="polite"></div>
+      <div id="pbFeedback" class="feedback" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- SMALL TALK -->
+  <section id="smalltalk" class="section">
+    <h2>Small talk — quick, friendly, natural</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Mini rules</h3>
+        <ul class="bullets">
+          <li>Keep it short: 1–2 sentences.</li>
+          <li>Use easy starters: <b>How’s it going?</b> / <b>How’s your day?</b></li>
+          <li>Natural reactions: <b>Nice!</b> <b>Oh wow.</b> <b>That’s awesome.</b></li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="How's it going? Pretty good. Just running a few errands. How about you?">
+            Listen model
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>QCM: Best reply</h3>
+        <div class="row">
+          <button class="btn" id="stNew">New</button>
+          <button class="btn btn--ghost" id="stListen">Listen</button>
+          <button class="btn btn--ghost" id="stHintBtn">💡 Hint</button>
+        </div>
+        <div class="scenario">
+          <div class="scenario__title" id="stTitle">—</div>
+          <div class="scenario__prompt" id="stPrompt">—</div>
+          <div class="scenario__choices" id="stChoices"></div>
+          <div id="stHint" class="hint" aria-live="polite"></div>
+          <div id="stFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>Fill-in (type the missing expression)</h3>
+      <div class="row">
+        <button class="btn" id="sfNew">New</button>
+        <button class="btn btn--ghost" id="sfListen">Listen</button>
+        <button class="btn btn--ghost" id="sfHintBtn">💡 Hint</button>
+      </div>
+
+      <div class="sentenceBox">
+        <div class="big" id="sfSentence">—</div>
+        <div class="row">
+          <input id="sfInput" class="input" placeholder="Type the missing phrase (e.g., no worries / sounds good / I'm good)" />
+          <button class="btn" id="sfCheck">✅ Check</button>
+          <button class="btn btn--ghost" id="sfReveal">Reveal</button>
+        </div>
+        <div id="sfHint" class="hint" aria-live="polite"></div>
+        <div id="sfFeedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAVEL -->
+  <section id="travel" class="section">
+    <h2>Travel scenes — hotel, coffee, airport, Uber</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Pick a scene</h3>
+        <div class="row">
+          <button class="btn" data-scene="coffee" id="trCoffee">☕ Coffee shop</button>
+          <button class="btn" data-scene="hotel" id="trHotel">🏨 Hotel</button>
+          <button class="btn" data-scene="airport" id="trAirport">✈️ Airport</button>
+          <button class="btn" data-scene="uber" id="trUber">🚗 Uber / ride</button>
+        </div>
+        <div class="row">
+          <button class="btn btn--ghost" id="trNew">New dialogue</button>
+          <button class="btn btn--ghost" id="trListen">Listen</button>
+          <button class="btn btn--ghost" id="trHintBtn">💡 Hint</button>
+        </div>
+        <div id="trHint" class="hint" aria-live="polite"></div>
+      </div>
+
+      <div class="card">
+        <h3>Roleplay</h3>
+        <div class="scenario">
+          <div class="scenario__title" id="trTitle">—</div>
+          <div class="scenario__prompt" id="trPrompt">Choose a scene, then “New dialogue”.</div>
+          <div class="scenario__choices" id="trChoices"></div>
+          <div id="trFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SORTING -->
+  <section id="sorting" class="section">
+    <h2>Sorting game — Where would you use it?</h2>
+    <div class="card">
+      <p class="muted">Tap a phrase, then tap a box (or drag). Sort by situation.</p>
+      <div class="row">
+        <button class="btn" id="soNew">New set</button>
+        <button class="btn btn--ghost" id="soListen">Listen phrases</button>
+        <button class="btn btn--ghost" id="soHintBtn">💡 Hint</button>
+        <button class="btn" id="soCheck">✅ Check</button>
+        <button class="btn btn--ghost" id="soReset">Reset</button>
+      </div>
+
+      <div class="sorter">
+        <div class="bank">
+          <div class="bank__title">Phrase bank</div>
+          <div id="soBank" class="chipwrap"></div>
+          <div id="soFeedback" class="feedback" aria-live="polite"></div>
+          <div id="soHint" class="hint" aria-live="polite"></div>
+        </div>
+
+        <div class="targets">
+          <div class="target">
+            <div class="target__title">Greeting / Small talk</div>
+            <div id="soGreet" class="dropzone"></div>
+          </div>
+          <div class="target">
+            <div class="target__title">Polite request</div>
+            <div id="soReq" class="dropzone"></div>
+          </div>
+          <div class="target">
+            <div class="target__title">Reaction / Agreement</div>
+            <div id="soReact" class="dropzone"></div>
+          </div>
+          <div class="target">
+            <div class="target__title">Travel / Service</div>
+            <div id="soTravel" class="dropzone"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTONATION -->
+  <section id="intonation" class="section">
+    <h2>Intonation + stress — sound confident (not robotic)</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Rules (simple)</h3>
+        <ul class="bullets">
+          <li><b>Yes/No questions</b> often rise at the end: “You good?” ↗</li>
+          <li><b>Wh- questions</b> often fall: “Where is it?” ↘</li>
+          <li>Stress content words: <b>I</b> was <b>WONDERING</b> if you could <b>HELP</b> me.</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="You good? Where is it? I was wondering if you could help me.">
+            Listen
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>QCM: Choose the best intonation</h3>
+        <div class="row">
+          <button class="btn" id="inNew">New</button>
+          <button class="btn btn--ghost" id="inListen">Listen</button>
+          <button class="btn btn--ghost" id="inHintBtn">💡 Hint</button>
+        </div>
+        <div class="scenario">
+          <div class="scenario__title" id="inTitle">—</div>
+          <div class="scenario__prompt" id="inPrompt">—</div>
+          <div class="scenario__choices" id="inChoices"></div>
+          <div id="inHint" class="hint" aria-live="polite"></div>
+          <div id="inFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHADOWING -->
+  <section id="shadow" class="section">
+    <h2>Shadowing — copy the rhythm (2–3 minutes)</h2>
+    <div class="card">
+      <p class="muted">Click a phrase → listen → repeat immediately (no pause). Do it twice.</p>
+      <div class="row">
+        <button class="btn btn--ghost" id="shNew">New set</button>
+        <button class="btn btn--ghost" id="shPlay">Play one</button>
+        <button class="btn btn--ghost" id="shPlayAll">Play all</button>
+      </div>
+      <div id="shList" class="promptList"></div>
+      <div id="shFeedback" class="feedback" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- FINAL MISSION -->
+  <section id="mission" class="section">
+    <h2>Final mission — “A day in the life” (45–60 seconds)</h2>
+    <div class="card">
+      <p class="muted">Generate a mini script packed with expressions. Say it slow+clear, then normal flow.</p>
+
+      <div class="grid2">
+        <div class="card inner">
+          <h3>Inputs</h3>
+          <div class="formGrid">
+            <div>
+              <label class="label" for="mName">Name</label>
+              <input id="mName" class="input" placeholder="e.g., Claire" />
+            </div>
+            <div>
+              <label class="label" for="mCity">City</label>
+              <input id="mCity" class="input" placeholder="e.g., Los Angeles" />
+            </div>
+            <div>
+              <label class="label" for="mDay">Scenario</label>
+              <select id="mDay" class="select">
+                <option value="travel">Travel day</option>
+                <option value="work">Work day</option>
+                <option value="weekend">Weekend day</option>
+              </select>
+            </div>
+            <div>
+              <label class="label" for="mMode">Mode</label>
+              <select id="mMode" class="select">
+                <option value="slow">Slow + clear</option>
+                <option value="normal">Normal native flow</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <button class="btn" id="genBtn">Generate script</button>
+            <button class="btn btn--ghost" id="genListen">Listen</button>
+            <button class="btn btn--ghost" id="genCopy">Copy</button>
+          </div>
+          <div id="genFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+
+        <div class="card inner">
+          <h3>Your script</h3>
+          <div class="scriptBox" id="scriptBox">Click “Generate script”.</div>
+          <p class="tiny muted">Goal: sound friendly + natural, not perfect.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHEAT SHEET -->
+  <section id="cheatsheet" class="section">
+    <h2>🖨️ Printable cheat sheet</h2>
+    <div class="card printCard">
+      <div class="row">
+        <button class="btn" id="btnPrint">Print</button>
+        <button class="btn btn--ghost" id="btnCheatListen">Listen key phrases</button>
+      </div>
+
+      <div class="cheat">
+        <div class="cheatGrid" id="cheatGrid"></div>
+      </div>
+
+      <p class="tiny muted" style="margin-top:10px;">
+        Open <strong>american-native-expressions-masterclass.html</strong>.
+      </p>
+      <p><a class="backtop" href="#top">⬆ Back to top</a></p>
+    </div>
+  </section>
+
+</main>
+
+<script src="/js/american-native-expressions-masterclass.js"></script>
+</body>
+</html>
+
