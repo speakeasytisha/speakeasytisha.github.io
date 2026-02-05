@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • American Conversation Survival • 60 min</title>
+  <link rel="stylesheet" href="/css/american-conversation-survival-masterclass.css" />
+</head>
+
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">🗣️</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">American Conversation Survival • 60-minute interactive lesson</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="control">
+        <label class="label" for="accent">Accent</label>
+        <select id="accent" class="select">
+          <option value="en-US">American (en-US)</option>
+          <option value="en-GB">British (en-GB)</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label class="label" for="rate">Voice speed</label>
+        <input id="rate" class="range" type="range" min="0.75" max="1.25" step="0.05" value="1.00" />
+        <div class="tiny" id="rateLabel">1.00×</div>
+      </div>
+
+      <div class="control control--buttons">
+        <button class="btn" id="btnTest">Test voice</button>
+        <button class="btn btn--ghost" id="btnStop">⏹ Stop</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__title">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        <div class="tiny">Instant feedback ✅ • Hints 💡 • Tap-friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="Lesson sections">
+    <a class="tab" href="#plan">⏱️ Plan</a>
+    <a class="tab" href="#warmup">Warm-up</a>
+    <a class="tab" href="#flashcards">Survival flashcards</a>
+    <a class="tab" href="#start">Start a convo</a>
+    <a class="tab" href="#keep">Keep it going</a>
+    <a class="tab" href="#interrupt">Interrupt politely</a>
+    <a class="tab" href="#disagree">Disagree softly</a>
+    <a class="tab" href="#humor">Light humor</a>
+    <a class="tab" href="#phone">Phone calls</a>
+    <a class="tab" href="#roleplays">Real roleplays</a>
+    <a class="tab" href="#game">Sorting game</a>
+    <a class="tab" href="#shadow">Shadowing</a>
+    <a class="tab" href="#mission">Final mission</a>
+    <a class="tab" href="#cheatsheet">🖨️ Cheat sheet</a>
+  </nav>
+</header>
+
+<main id="content" class="wrap">
+
+  <section class="hero">
+    <h1>American Conversation Survival (1 hour)</h1>
+    <p class="lead">
+      The “daily native” skills French speakers struggle with most:
+      <b>starting</b>, <b>keeping flow</b>, <b>interrupting politely</b>, <b>disagreeing softly</b>,
+      <b>light humor</b>, and <b>phone calls</b>.
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h2>How to use</h2>
+        <ul class="bullets">
+          <li>Click <b>Test voice</b> once (iPad Safari needs it).</li>
+          <li>Routine: <b>listen → repeat 2× → use it in a mini sentence</b>.</li>
+          <li>Drag works, but you can also <b>tap a chip then tap a box</b>.</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Quick demo: Hey! How's it going? Pretty good. By the way, quick question—could you help me for a sec? Totally. No worries.">
+            Quick demo
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Timer</h2>
+        <p class="muted">Run it like a real 60-minute class.</p>
+        <div class="row">
+          <button class="btn" id="btnStart60">Start 60-min timer</button>
+          <button class="btn btn--ghost" id="btnResetTimer">Reset</button>
+          <div class="timer" aria-live="polite">⏳ <span id="timerText">60:00</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN -->
+  <section id="plan" class="section">
+    <h2>⏱️ One-hour plan</h2>
+    <div class="card">
+      <div class="planGrid">
+        <div class="planItem"><div class="planTime">6 min</div><div class="planText">Warm-up: pick the most natural line</div></div>
+        <div class="planItem"><div class="planTime">8 min</div><div class="planText">Flashcards (survival expressions)</div></div>
+        <div class="planItem"><div class="planTime">8 min</div><div class="planText">Start a conversation (safe openers)</div></div>
+        <div class="planItem"><div class="planTime">8 min</div><div class="planText">Keep it going (follow-up questions)</div></div>
+        <div class="planItem"><div class="planTime">7 min</div><div class="planText">Interrupt politely (builder + QCM)</div></div>
+        <div class="planItem"><div class="planTime">7 min</div><div class="planText">Disagree softly (upgrade direct → polite)</div></div>
+        <div class="planItem"><div class="planTime">6 min</div><div class="planText">Phone call survival (step-by-step)</div></div>
+        <div class="planItem"><div class="planTime">6 min</div><div class="planText">Real roleplays + sorting game + shadowing</div></div>
+        <div class="planItem"><div class="planTime">4 min</div><div class="planText">Final mission speaking (45–60s)</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARMUP -->
+  <section id="warmup" class="section">
+    <h2>Warm-up — Choose the most natural line</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Instructions</h3>
+        <ul class="bullets">
+          <li>Click <b>New</b></li>
+          <li>Listen (optional)</li>
+          <li>Choose the best line (friendly + natural)</li>
+        </ul>
+        <div class="row">
+          <button class="btn" id="wNew">New</button>
+          <button class="btn btn--ghost" id="wListen">Listen</button>
+          <button class="btn btn--ghost" id="wHintBtn">💡 Hint</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Question</h3>
+        <div class="scenario">
+          <div class="scenario__title" id="wTitle">—</div>
+          <div class="scenario__prompt" id="wPrompt">Click “New”.</div>
+          <div class="scenario__choices" id="wChoices"></div>
+          <div id="wHint" class="hint" aria-live="polite"></div>
+          <div id="wFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLASHCARDS -->
+  <section id="flashcards" class="section">
+    <h2>Survival flashcards (tap to flip)</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Pick a theme</h3>
+        <div class="row">
+          <button class="btn" id="fcShuffle">Shuffle</button>
+          <button class="btn btn--ghost" id="fcListenRand">Listen random</button>
+          <button class="btn btn--ghost" id="fcSetStart">Start</button>
+          <button class="btn btn--ghost" id="fcSetKeep">Keep going</button>
+          <button class="btn btn--ghost" id="fcSetInterrupt">Interrupt</button>
+          <button class="btn btn--ghost" id="fcSetDisagree">Disagree</button>
+          <button class="btn btn--ghost" id="fcSetPhone">Phone</button>
+          <button class="btn btn--ghost" id="fcSetService">Service/travel</button>
+        </div>
+        <p class="tiny muted">Tip: after each card, say a 1-sentence mini story using it.</p>
+      </div>
+
+      <div class="card">
+        <h3>Flashcards</h3>
+        <div id="fcGrid" class="flashgrid" aria-label="Flashcards"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- START -->
+  <section id="start" class="section">
+    <h2>Start a conversation — safe openers Americans love</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Mini rules</h3>
+        <ul class="bullets">
+          <li>Start light: location, weather, waiting line, travel situation.</li>
+          <li>Friendly opener + 1 follow-up question.</li>
+          <li>Use: <b>Hey!</b> <b>Quick question…</b> <b>Do you know if…?</b></li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Hey! Quick question—do you know if this line is for security?">
+            Listen model
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>QCM: Best opener</h3>
+        <div class="row">
+          <button class="btn" id="sNew">New</button>
+          <button class="btn btn--ghost" id="sListen">Listen</button>
+          <button class="btn btn--ghost" id="sHintBtn">💡 Hint</button>
+        </div>
+        <div class="scenario">
+          <div class="scenario__title" id="sTitle">—</div>
+          <div class="scenario__prompt" id="sPrompt">—</div>
+          <div class="scenario__choices" id="sChoices"></div>
+          <div id="sHint" class="hint" aria-live="polite"></div>
+          <div id="sFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>Fill-in starter (type the missing phrase)</h3>
+      <div class="row">
+        <button class="btn" id="sfNew">New</button>
+        <button class="btn btn--ghost" id="sfListen">Listen</button>
+        <button class="btn btn--ghost" id="sfHintBtn">💡 Hint</button>
+      </div>
+      <div class="sentenceBox">
+        <div class="big" id="sfSentence">—</div>
+        <div class="row">
+          <input id="sfInput" class="input" placeholder="Type the missing phrase (e.g., quick question / by the way / do you know if)" />
+          <button class="btn" id="sfCheck">✅ Check</button>
+          <button class="btn btn--ghost" id="sfReveal">Reveal</button>
+        </div>
+        <div id="sfHint" class="hint" aria-live="polite"></div>
+        <div id="sfFeedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEEP GOING -->
+  <section id="keep" class="section">
+    <h2>Keep it going — follow-up questions that feel native</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Follow-up formulas</h3>
+        <ul class="bullets">
+          <li><b>Oh nice!</b> + <b>How long…?</b></li>
+          <li><b>No way!</b> + <b>What was it like?</b></li>
+          <li><b>Gotcha.</b> + <b>So what’s the plan?</b></li>
+          <li><b>That makes sense.</b> + <b>How come?</b></li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Oh nice! How long are you in town for? No way! What was it like?">
+            Listen examples
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>QCM: Best follow-up</h3>
+        <div class="row">
+          <button class="btn" id="kNew">New</button>
+          <button class="btn btn--ghost" id="kListen">Listen</button>
+          <button class="btn btn--ghost" id="kHintBtn">💡 Hint</button>
+        </div>
+        <div class="scenario">
+          <div class="scenario__title" id="kTitle">—</div>
+          <div class="scenario__prompt" id="kPrompt">—</div>
+          <div class="scenario__choices" id="kChoices"></div>
+          <div id="kHint" class="hint" aria-live="polite"></div>
+          <div id="kFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERRUPT -->
+  <section id="interrupt" class="section">
+    <h2>Interrupt politely — without sounding rude</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Native interruption lines</h3>
+        <ul class="bullets">
+          <li><b>Sorry to interrupt, but…</b></li>
+          <li><b>Can I jump in for a sec?</b></li>
+          <li><b>Quick question—</b></li>
+          <li><b>Just to clarify…</b></li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Sorry to interrupt, but can I jump in for a sec? Just to clarify—what time is check-in?">
+            Listen examples
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>QCM: Best polite interruption</h3>
+        <div class="row">
+          <button class="btn" id="iNew">New</button>
+          <button class="btn btn--ghost" id="iListen">Listen target</button>
+          <button class="btn btn--ghost" id="iHintBtn">💡 Hint</button>
+        </div>
+        <div class="scenario">
+          <div class="scenario__title" id="iTitle">—</div>
+          <div class="scenario__prompt" id="iPrompt">—</div>
+          <div class="scenario__choices" id="iChoices"></div>
+          <div id="iHint" class="hint" aria-live="polite"></div>
+          <div id="iFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>Phrase builder (tap/drag) — build the interruption</h3>
+      <div class="row">
+        <button class="btn" id="pbNew">New</button>
+        <button class="btn btn--ghost" id="pbListen">Listen target</button>
+        <button class="btn btn--ghost" id="pbHintBtn">💡 Hint</button>
+        <button class="btn" id="pbCheck">✅ Check</button>
+        <button class="btn btn--ghost" id="pbReset">Reset</button>
+      </div>
+      <div class="builder">
+        <div class="bank">
+          <div class="bank__title">Word bank</div>
+          <div id="pbBank" class="chipwrap"></div>
+        </div>
+        <div class="target">
+          <div class="target__title">Your sentence</div>
+          <div id="pbLine" class="dropzone"></div>
+        </div>
+      </div>
+      <div id="pbHint" class="hint" aria-live="polite"></div>
+      <div id="pbFeedback" class="feedback" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- DISAGREE -->
+  <section id="disagree" class="section">
+    <h2>Disagree softly — American “polite disagreement”</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Soft disagreement patterns</h3>
+        <ul class="bullets">
+          <li><b>I see what you mean, but…</b></li>
+          <li><b>I’m not sure that’s the best idea.</b></li>
+          <li><b>Maybe, but what about…?</b></li>
+          <li><b>That’s fair. Another option is…</b></li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="I see what you mean, but maybe we should double-check. That's fair. Another option is to do it tomorrow.">
+            Listen examples
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>QCM: Best soft version</h3>
+        <div class="row">
+          <button class="btn" id="dNew">New</button>
+          <button class="btn btn--ghost" id="dListen">Listen target</button>
+          <button class="btn btn--ghost" id="dHintBtn">💡 Hint</button>
+        </div>
+        <div class="scenario">
+          <div class="scenario__title" id="dTitle">—</div>
+          <div class="scenario__prompt" id="dPrompt">—</div>
+          <div class="scenario__choices" id="dChoices"></div>
+          <div id="dHint" class="hint" aria-live="polite"></div>
+          <div id="dFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HUMOR -->
+  <section id="humor" class="section">
+    <h2>Light humor — safe, friendly, natural</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Safe “American humor” tools</h3>
+        <ul class="bullets">
+          <li><b>I’m just kidding.</b> (I’m joking)</li>
+          <li><b>Long story short…</b> (summary)</li>
+          <li><b>Don’t quote me on that.</b> (not 100% sure)</li>
+          <li><b>Story of my life.</b> (relatable)</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--ghost" data-say="Long story short, we missed the train. Story of my life. I'm just kidding.">
+            Listen examples
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>QCM: Best line (safe + natural)</h3>
+        <div class="row">
+          <button class="btn" id="hNew">New</button>
+          <button class="btn btn--ghost" id="hListen">Listen</button>
+          <button class="btn btn--ghost" id="hHintBtn">💡 Hint</button>
+        </div>
+        <div class="scenario">
+          <div class="scenario__title" id="hTitle">—</div>
+          <div class="scenario__prompt" id="hPrompt">—</div>
+          <div class="scenario__choices" id="hChoices"></div>
+          <div id="hHint" class="hint" aria-live="polite"></div>
+          <div id="hFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHONE -->
+  <section id="phone" class="section">
+    <h2>Phone calls — survival script (step-by-step)</h2>
+    <div class="card">
+      <p class="muted">Click <b>Start call</b>. Pick the best line for each step.</p>
+      <div class="row">
+        <button class="btn" id="pStart">Start call</button>
+        <button class="btn btn--ghost" id="pListen">Listen</button>
+        <button class="btn btn--ghost" id="pHintBtn">💡 Hint</button>
+        <button class="btn btn--ghost" id="pNext">Next step</button>
+      </div>
+
+      <div class="scenario" style="margin-top:12px;">
+        <div class="scenario__title" id="pTitle">—</div>
+        <div class="scenario__prompt" id="pPrompt">Click “Start call”.</div>
+        <div class="scenario__choices" id="pChoices"></div>
+        <div id="pHint" class="hint" aria-live="polite"></div>
+        <div id="pFeedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLEPLAYS -->
+  <section id="roleplays" class="section">
+    <h2>Real roleplays — airport • hotel • restaurant • shopping</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Select a scene</h3>
+        <div class="row">
+          <button class="btn" id="rpAirport">✈️ Airport</button>
+          <button class="btn" id="rpHotel">🏨 Hotel</button>
+          <button class="btn" id="rpRestaurant">🍽️ Restaurant</button>
+          <button class="btn" id="rpShopping">🛍️ Shopping</button>
+        </div>
+
+        <div class="row">
+          <button class="btn btn--ghost" id="rpNew">New task</button>
+          <button class="btn btn--ghost" id="rpListen">Listen</button>
+          <button class="btn btn--ghost" id="rpHintBtn">💡 Hint</button>
+        </div>
+        <div id="rpHint" class="hint" aria-live="polite"></div>
+      </div>
+
+      <div class="card">
+        <h3>Choose your line</h3>
+        <div class="scenario">
+          <div class="scenario__title" id="rpTitle">—</div>
+          <div class="scenario__prompt" id="rpPrompt">Pick a scene, then “New task”.</div>
+          <div class="scenario__choices" id="rpChoices"></div>
+          <div id="rpFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SORTING GAME -->
+  <section id="game" class="section">
+    <h2>Sorting game — What’s the function?</h2>
+    <div class="card">
+      <p class="muted">Tap a phrase then tap a box (or drag). Sort by function.</p>
+      <div class="row">
+        <button class="btn" id="soNew">New set</button>
+        <button class="btn btn--ghost" id="soListen">Listen phrases</button>
+        <button class="btn btn--ghost" id="soHintBtn">💡 Hint</button>
+        <button class="btn" id="soCheck">✅ Check</button>
+        <button class="btn btn--ghost" id="soReset">Reset</button>
+      </div>
+
+      <div class="sorter">
+        <div class="bank">
+          <div class="bank__title">Phrase bank</div>
+          <div id="soBank" class="chipwrap"></div>
+          <div id="soFeedback" class="feedback" aria-live="polite"></div>
+          <div id="soHint" class="hint" aria-live="polite"></div>
+        </div>
+
+        <div class="targets">
+          <div class="target">
+            <div class="target__title">Start / Small talk</div>
+            <div id="soStart" class="dropzone"></div>
+          </div>
+          <div class="target">
+            <div class="target__title">Keep going (follow-up)</div>
+            <div id="soKeep" class="dropzone"></div>
+          </div>
+          <div class="target">
+            <div class="target__title">Interrupt / Clarify</div>
+            <div id="soInt" class="dropzone"></div>
+          </div>
+          <div class="target">
+            <div class="target__title">Disagree / Suggest</div>
+            <div id="soDis" class="dropzone"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHADOWING -->
+  <section id="shadow" class="section">
+    <h2>Shadowing — copy rhythm (2–3 minutes)</h2>
+    <div class="card">
+      <p class="muted">Listen → repeat immediately (no pause). Do it twice.</p>
+      <div class="row">
+        <button class="btn btn--ghost" id="shNew">New set</button>
+        <button class="btn btn--ghost" id="shPlay">Play one</button>
+        <button class="btn btn--ghost" id="shPlayAll">Play all</button>
+      </div>
+      <div id="shList" class="promptList"></div>
+      <div id="shFeedback" class="feedback" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- FINAL MISSION -->
+  <section id="mission" class="section">
+    <h2>Final mission — 45–60 seconds: “Conversation survival”</h2>
+    <div class="card">
+      <p class="muted">Generate a short script packed with openers + follow-ups + polite interruption + soft disagreement.</p>
+
+      <div class="grid2">
+        <div class="card inner">
+          <h3>Inputs</h3>
+          <div class="formGrid">
+            <div>
+              <label class="label" for="mName">Name</label>
+              <input id="mName" class="input" placeholder="e.g., Claire" />
+            </div>
+            <div>
+              <label class="label" for="mCity">City</label>
+              <input id="mCity" class="input" placeholder="e.g., Boston" />
+            </div>
+            <div>
+              <label class="label" for="mScene">Scenario</label>
+              <select id="mScene" class="select">
+                <option value="airport">Airport line</option>
+                <option value="hotel">Hotel check-in</option>
+                <option value="restaurant">Restaurant</option>
+                <option value="shopping">Shopping</option>
+                <option value="phone">Phone call</option>
+              </select>
+            </div>
+            <div>
+              <label class="label" for="mMode">Mode</label>
+              <select id="mMode" class="select">
+                <option value="slow">Slow + clear</option>
+                <option value="normal">Normal native flow</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <button class="btn" id="genBtn">Generate script</button>
+            <button class="btn btn--ghost" id="genListen">Listen</button>
+            <button class="btn btn--ghost" id="genCopy">Copy</button>
+          </div>
+          <div id="genFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+
+        <div class="card inner">
+          <h3>Your script</h3>
+          <div class="scriptBox" id="scriptBox">Click “Generate script”.</div>
+          <p class="tiny muted">Say it 2×: (1) slow+clear, (2) normal flow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHEAT SHEET -->
+  <section id="cheatsheet" class="section">
+    <h2>🖨️ Printable cheat sheet</h2>
+    <div class="card printCard">
+      <div class="row">
+        <button class="btn" id="btnPrint">Print</button>
+        <button class="btn btn--ghost" id="btnCheatListen">Listen key lines</button>
+      </div>
+
+      <div class="cheat">
+        <div class="cheatGrid" id="cheatGrid"></div>
+      </div>
+
+      <p class="tiny muted" style="margin-top:10px;">
+        Open <strong>american-conversation-survival-masterclass.html</strong>.
+      </p>
+      <p><a class="backtop" href="#top">⬆ Back to top</a></p>
+    </div>
+  </section>
+
+</main>
+
+<script src="/js/american-conversation-survival-masterclass.js"></script>
+</body>
+</html>
+
