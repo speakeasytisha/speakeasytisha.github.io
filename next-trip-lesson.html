@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Next Trip Planner (Interactive)</title>
+  <link rel="stylesheet" href="/css/next-trip-lesson.css" />
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">✈️</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Next Trip Planner • Grammar + Vocab • Interactive</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="control">
+        <div class="control__label">Level</div>
+        <div class="seg" role="group" aria-label="Level">
+          <button class="seg__btn is-on" type="button" data-level="A2">A2</button>
+          <button class="seg__btn" type="button" data-level="B1">B1</button>
+          <button class="seg__btn" type="button" data-level="B2">B2</button>
+        </div>
+        <div class="tiny muted">A2 = simple • B2 = richer + more natural</div>
+      </div>
+
+      <div class="control">
+        <div class="control__label">French helper</div>
+        <div class="seg" role="group" aria-label="French helper">
+          <button class="seg__btn is-on" type="button" data-fr="on">ON</button>
+          <button class="seg__btn" type="button" data-fr="off">OFF</button>
+        </div>
+        <div class="tiny muted">Shows quick FR translations & tips.</div>
+      </div>
+
+      <div class="control">
+        <div class="control__label">Accent (TTS)</div>
+        <div class="seg" role="group" aria-label="Accent">
+          <button class="seg__btn is-on" type="button" data-accent="en-US">American</button>
+          <button class="seg__btn" type="button" data-accent="en-GB">British</button>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="control__label">Voice speed</div>
+        <div class="range">
+          <input id="rate" type="range" min="0.75" max="1.25" value="1" step="0.05" />
+          <div class="pill"><span id="rateVal">1.00×</span></div>
+        </div>
+        <div class="tiny muted">Tap “Test voice” once on iPad.</div>
+      </div>
+
+      <div class="control">
+        <div class="control__label">Quick voice</div>
+        <div class="btnrow">
+          <button class="btn" id="testVoice" type="button">Test voice</button>
+          <button class="btn btn--ghost" id="stopVoice" type="button">⏹ Stop</button>
+        </div>
+      </div>
+
+      <div class="control scorebox" aria-live="polite">
+        <div class="control__label">Score</div>
+        <div class="score"><span id="scoreNow">0</span> / <span id="scoreTotal">0</span></div>
+        <div class="tiny muted">Instant feedback ✅ + hints 💡</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="#warmup">🎯 Warm-up</a>
+    <a href="#vocab">🧳 Vocab</a>
+    <a href="#grammar">🧠 Grammar</a>
+    <a href="#practice">✅ Practice</a>
+    <a href="#builder">🧩 Trip Builder</a>
+    <a href="#speak">🗣 Speak</a>
+    <a href="#final">🏁 Final Task</a>
+    <a href="#print">🖨 Cheat sheet</a>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+
+  <section class="hero">
+    <h1>Plan your next trip (and explain why!)</h1>
+    <p class="lead">
+      You’ll practice: <b>would like to</b>, <b>want to</b>, <b>don’t want to</b>, <b>prefer / would rather</b>,
+      plus reasons using <b>because / so / but / however</b>.
+    </p>
+    <div class="hero__grid">
+      <div class="panel">
+        <div class="panel__title">⏳ 60-minute flow</div>
+        <ol class="flow">
+          <li><b>4 min</b> 🎤 Trip Rap warm-up</li>
+          <li><b>6 min</b> Warm-up sentence maker</li>
+          <li><b>10 min</b> Vocab cards + quick check</li>
+          <li><b>10 min</b> Grammar mini-lessons</li>
+          <li><b>15 min</b> Practice (instant feedback)</li>
+          <li><b>10 min</b> Trip Builder (generate your paragraph)</li>
+          <li><b>5 min</b> Final pitch</li>
+        </ol>
+      </div>
+      <div class="panel">
+        <div class="panel__title">⏲ Mini timer</div>
+        <div class="timerRow">
+          <button class="btn" id="start10" type="button">Start 10-min</button>
+          <button class="btn btn--ghost" id="start5" type="button">Start 5-min</button>
+          <button class="btn btn--ghost" id="resetTimer" type="button">Reset</button>
+          <div class="pill pill--big">⏳ <span id="time">10:00</span></div>
+        </div>
+        <div class="tiny muted">Use it for Practice or Final Task.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warm-up -->
+  <section id="warmup" class="card">
+    <div class="card__head">
+      <h2>🎯 Warm-up: Dream trip vibe + rhythm</h2>
+      <div class="tiny muted">Start with the rap game (super fun) then build sentences.</div>
+    </div>
+
+    <!-- NEW: Trip Rap -->
+    <div class="subcard">
+      <div class="subcard__head">
+        <h3>🎤 Trip Rap Warm-up (tap-to-rhyme)</h3>
+        <div class="tiny muted">A2 = simple rhymes • B2 = however / would rather / prefer</div>
+      </div>
+
+      <div class="grid2">
+        <div class="box">
+          <div class="box__title">Rap Chant (call & response)</div>
+          <div class="tiny muted frhelp" data-fr>FR: répète avec le rythme (mots importants = plus forts).</div>
+          <div id="rapChant" class="output output--big">Press “Play chant”.</div>
+          <div class="btnrow">
+            <button class="btn" id="rapPlay" type="button">Play chant</button>
+            <button class="btn btn--ghost" id="rapStop" type="button">Stop</button>
+            <button class="btn btn--ghost" id="rapSlower" type="button">Slower</button>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="box__title">Tap-to-Rhyme Game</div>
+          <div class="pill">🔥 Streak: <span id="rapStreak">0</span></div>
+          <div id="rapPrompt" class="rapPrompt" aria-live="polite">Press “Start game”.</div>
+
+          <div id="rapChoices" class="q__choices" aria-label="Rap choices"></div>
+
+          <div class="btnrow">
+            <button class="btn" id="rapStart" type="button">Start game</button>
+            <button class="btn btn--ghost" id="rapNext" type="button" disabled>Next</button>
+            <button class="btn btn--ghost" id="rapReset" type="button">Reset</button>
+            <button class="btn btn--ghost" id="rapListen" type="button">🔊 Listen</button>
+          </div>
+
+          <div id="rapFeedback" class="feedback" aria-live="polite">Tip: answer fast — feel the rhythm.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Original warm-up -->
+    <div class="grid2" style="margin-top:12px">
+      <div class="box">
+        <div class="box__title">1) Pick your vibe</div>
+        <div id="vibeChips" class="chips" aria-label="Vibe chips"></div>
+        <div id="vibeOut" class="feedback" aria-live="polite">Choose a vibe to get sentence ideas.</div>
+      </div>
+
+      <div class="box">
+        <div class="box__title">2) Quick sentence maker</div>
+        <div class="tiny muted frhelp" data-fr>FR: “J’aimerais…” / “Je voudrais…”</div>
+        <div class="maker">
+          <label class="lbl">Start</label>
+          <select id="starter" class="sel">
+            <option value="I'd like to">I'd like to</option>
+            <option value="I would love to">I would love to</option>
+            <option value="I want to">I want to</option>
+            <option value="I don't want to">I don't want to</option>
+            <option value="I prefer to">I prefer to</option>
+            <option value="I'd rather">I'd rather</option>
+          </select>
+
+          <label class="lbl">Action</label>
+          <select id="action" class="sel"></select>
+
+          <label class="lbl">Because…</label>
+          <select id="reason" class="sel"></select>
+
+          <div class="btnrow">
+            <button class="btn" id="makeSentence" type="button">Build sentence</button>
+            <button class="btn btn--ghost" id="saySentence" type="button">🔊 Speak</button>
+          </div>
+
+          <div class="output" id="sentenceOut" aria-live="polite">Your sentence appears here.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vocab -->
+  <section id="vocab" class="card">
+    <div class="card__head">
+      <h2>🧳 Travel vocab (tap cards)</h2>
+      <div class="tiny muted">Tap a card to flip. Use 🔊 to hear it.</div>
+    </div>
+
+    <div class="btnrow">
+      <button class="btn" id="shuffleVocab" type="button">Shuffle</button>
+      <button class="btn btn--ghost" id="vocabListen" type="button">🔊 Listen (set)</button>
+    </div>
+
+    <div id="vocabCards" class="cards"></div>
+
+    <div class="subcard">
+      <div class="subcard__head">
+        <h3>Mini-check (A2→B2)</h3>
+        <div class="tiny muted">Pick the best option.</div>
+      </div>
+      <div id="vocabQuiz" class="quiz"></div>
+      <div id="vocabFeedback" class="feedback" aria-live="polite">Answer to see feedback.</div>
+    </div>
+  </section>
+
+  <!-- Grammar -->
+  <section id="grammar" class="card">
+    <div class="card__head">
+      <h2>🧠 Grammar: talk about what you want / don’t want</h2>
+      <div class="tiny muted">Short rules + examples you can reuse.</div>
+    </div>
+
+    <div id="grammarAcc" class="accordion" aria-label="Grammar accordion"></div>
+
+    <div class="subcard">
+      <div class="subcard__head">
+        <h3>Sentence builder (tap order)</h3>
+        <div class="tiny muted">Tap chunks to build a natural sentence.</div>
+      </div>
+      <div class="tiny muted frhelp" data-fr>FR: attention à l’ordre + “would rather” = base verb (no “to”).</div>
+      <div class="chips" id="builderChips"></div>
+      <div class="btnrow">
+        <button class="btn btn--ghost" id="builderUndo" type="button">Undo</button>
+        <button class="btn btn--ghost" id="builderReset" type="button">Reset</button>
+        <button class="btn" id="builderCheck" type="button">Check</button>
+      </div>
+      <div class="output" id="builderOut" aria-live="polite">Tap chips to build your sentence.</div>
+    </div>
+  </section>
+
+  <!-- Practice -->
+  <section id="practice" class="card">
+    <div class="card__head">
+      <h2>✅ Practice zone (instant feedback)</h2>
+      <div class="tiny muted">Polite (would like) vs direct (want) + negatives + reasons.</div>
+    </div>
+
+    <div id="practiceQuiz" class="quiz"></div>
+    <div class="btnrow">
+      <button class="btn btn--ghost" id="practiceReset" type="button">Reset</button>
+      <button class="btn" id="practiceReview" type="button">Show corrections</button>
+    </div>
+    <div id="practiceFeedback" class="feedback" aria-live="polite">Answer to get feedback.</div>
+  </section>
+
+  <!-- Trip Builder -->
+  <section id="builder" class="card">
+    <div class="card__head">
+      <h2>🧩 Trip Builder: create “the best next trip ever”</h2>
+      <div class="tiny muted">Choose options → generate a paragraph → speak it.</div>
+    </div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box__title">Your plan</div>
+
+        <label class="lbl">Where would you like to go?</label>
+        <select id="dest" class="sel"></select>
+
+        <label class="lbl">How would you like to get there?</label>
+        <select id="transport" class="sel"></select>
+
+        <label class="lbl">Where would you like to stay?</label>
+        <select id="stay" class="sel"></select>
+
+        <label class="lbl">Choose 3 things you’d like to do</label>
+        <div id="actChips" class="chips" aria-label="Activity chips"></div>
+        <div class="tiny muted">Pick exactly 3 (tap to toggle).</div>
+
+        <label class="lbl">One thing you don’t want to do</label>
+        <select id="avoid" class="sel"></select>
+
+        <label class="lbl">Why?</label>
+        <select id="avoidWhy" class="sel"></select>
+
+        <div class="btnrow">
+          <button class="btn" id="genTrip" type="button">Generate</button>
+          <button class="btn btn--ghost" id="genTripB2" type="button">B2 Upgrade</button>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="box__title">Your paragraph</div>
+        <div class="btnrow">
+          <button class="btn btn--ghost" id="tripSpeak" type="button">🔊 Speak</button>
+          <button class="btn btn--ghost" id="tripCopy" type="button">Copy</button>
+        </div>
+        <div id="tripOut" class="output output--big" aria-live="polite">Generate your trip paragraph here.</div>
+        <div id="tripChecklist" class="checklist muted"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Speaking -->
+  <section id="speak" class="card">
+    <div class="card__head">
+      <h2>🗣 Speak: prompts + model answers</h2>
+      <div class="tiny muted">Student speaks first → then reveal model.</div>
+    </div>
+    <div id="speakList" class="speaklist"></div>
+  </section>
+
+  <!-- Final Task -->
+  <section id="final" class="card">
+    <div class="card__head">
+      <h2>🏁 Final Task: “The best next trip ever” pitch (60 seconds)</h2>
+      <div class="tiny muted">Structure + timer + optional model.</div>
+    </div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box__title">Pitch structure</div>
+        <ol class="flow">
+          <li><b>Where</b> you’d like to go</li>
+          <li><b>How</b> you’d like to get there</li>
+          <li><b>3 activities</b> you’d like to do</li>
+          <li><b>What you don’t want</b> + why</li>
+          <li><b>Best ever because…</b> (2 reasons)</li>
+        </ol>
+
+        <div class="btnrow">
+          <button class="btn" id="start60" type="button">Start 60s</button>
+          <button class="btn btn--ghost" id="stop60" type="button">Stop</button>
+          <div class="pill">⏱ <span id="pitchTime">60</span>s</div>
+        </div>
+
+        <div class="btnrow">
+          <button class="btn btn--ghost" id="showModelPitch" type="button">Show model pitch</button>
+          <button class="btn btn--ghost" id="sayModelPitch" type="button">🔊 Listen model</button>
+        </div>
+        <div id="modelPitch" class="output" style="display:none"></div>
+      </div>
+
+      <div class="box">
+        <div class="box__title">Quick “don’t want / don’t like” bank</div>
+        <div id="noBank" class="bank"></div>
+        <div class="tiny muted frhelp" data-fr>FR: “Je n’ai pas envie de…” / “Je n’aime pas…” + because…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Print -->
+  <section id="print" class="card">
+    <div class="card__head">
+      <h2>🖨 Cheat sheet</h2>
+      <div class="tiny muted">Print-friendly summary.</div>
+    </div>
+    <div class="btnrow">
+      <button class="btn btn--ghost" id="printBtn" type="button">Print</button>
+    </div>
+    <div id="cheat" class="cheat"></div>
+  </section>
+
+  <footer class="foot">
+    <div class="tiny muted">Files: next-trip-lesson.html / .css / .js</div>
+  </footer>
+
+</main>
+
+<script src="/js/next-trip-lesson.js"></script>
+</body>
+</html>

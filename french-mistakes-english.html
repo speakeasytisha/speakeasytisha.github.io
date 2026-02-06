@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Biggest French Mistakes in English (A2–B2)</title>
+  <link rel="stylesheet" href="/css/french-mistakes-english.css" />
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">🇫🇷➡️🇬🇧</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Biggest French Mistakes in English • A2 / B2 • Interactive</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="control">
+        <div class="control__label">Level</div>
+        <div class="seg" role="group" aria-label="Level">
+          <button class="seg__btn is-on" type="button" data-level="A2">A2</button>
+          <button class="seg__btn" type="button" data-level="B2">B2</button>
+          <button class="seg__btn" type="button" data-level="MIX">Mixed</button>
+        </div>
+        <div class="tiny muted">Switch anytime (all activities refresh).</div>
+      </div>
+
+      <div class="control">
+        <div class="control__label">Accent (TTS)</div>
+        <div class="seg" role="group" aria-label="Accent">
+          <button class="seg__btn is-on" type="button" data-accent="en-US">American</button>
+          <button class="seg__btn" type="button" data-accent="en-GB">British</button>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="control__label">Voice speed</div>
+        <div class="range">
+          <input id="rate" type="range" min="0.75" max="1.25" value="1" step="0.05" />
+          <div class="pill"><span id="rateVal">1.00×</span></div>
+        </div>
+        <div class="tiny muted">Tap “Test voice” once on iPad to unlock speech.</div>
+      </div>
+
+      <div class="control">
+        <div class="control__label">Quick voice</div>
+        <div class="btnrow">
+          <button class="btn" id="testVoice" type="button">Test voice</button>
+          <button class="btn btn--ghost" id="stopVoice" type="button">⏹ Stop</button>
+        </div>
+      </div>
+
+      <div class="control scorebox" aria-live="polite">
+        <div class="control__label">Score</div>
+        <div class="score"><span id="scoreNow">0</span> / <span id="scoreTotal">0</span></div>
+        <div class="tiny muted">Instant feedback ✅ + hints 💡</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="#plan">🧭 Plan</a>
+    <a href="#diagnostic">⚡ Diagnostic</a>
+    <a href="#mistakes">💥 Top mistakes</a>
+    <a href="#fixit">🛠 Fix it</a>
+    <a href="#traps">🎭 False friends</a>
+    <a href="#speak">🗣 Speak</a>
+    <a href="#boss">🏁 Boss fight</a>
+    <a href="#print">🧾 Cheat sheet</a>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <h1>The Biggest Mistakes French Speakers Make in English (A2–B2)</h1>
+    <p class="lead">
+      Choose <b>A2</b> for core survival errors, <b>B2</b> for “sounds good but still wrong”, or <b>Mixed</b> for a full challenge.
+    </p>
+
+    <div class="hero__grid">
+      <div class="panel">
+        <div class="panel__title">⏳ Suggested 60-min flow</div>
+        <ol class="flow">
+          <li><b>5–8 min</b> Diagnostic quiz</li>
+          <li><b>12 min</b> “Top mistakes” cards (read + listen)</li>
+          <li><b>18 min</b> Fix-it workshop (typing)</li>
+          <li><b>10 min</b> False friends game</li>
+          <li><b>7 min</b> Speaking prompts (model answers)</li>
+          <li><b>5 min</b> Boss fight speed round</li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <div class="panel__title">⏲ Mini timer</div>
+        <div class="timerRow">
+          <button class="btn" id="start15" type="button">Start 15-min</button>
+          <button class="btn btn--ghost" id="start8" type="button">Start 8-min</button>
+          <button class="btn btn--ghost" id="resetTimer" type="button">Reset</button>
+          <div class="pill pill--big">⏳ <span id="time">15:00</span></div>
+        </div>
+        <div class="tiny muted">Use it for Fix-it or Boss Fight for “fun pressure”.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plan" class="card">
+    <div class="card__head">
+      <h2>🧭 What French learners usually do (and what we’ll fix)</h2>
+      <div class="tiny muted">Tap to reveal (changes with level).</div>
+    </div>
+    <div id="planAcc" class="accordion" aria-label="Lesson plan accordion"></div>
+  </section>
+
+  <section id="diagnostic" class="card">
+    <div class="card__head">
+      <h2>⚡ Diagnostic (10 quick questions)</h2>
+      <div class="tiny muted">Changes with level. One tap = one answer.</div>
+    </div>
+    <div id="diagQuiz" class="quiz"></div>
+    <div class="btnrow">
+      <button class="btn btn--ghost" id="diagReset" type="button">Reset diagnostic</button>
+      <button class="btn" id="diagReview" type="button">Show corrections</button>
+    </div>
+    <div id="diagFeedback" class="feedback" aria-live="polite">Answer to see feedback here.</div>
+  </section>
+
+  <section id="mistakes" class="card">
+    <div class="card__head">
+      <h2>💥 Top mistakes (tap cards)</h2>
+      <div class="tiny muted">Level-based + shuffle. Each card: FR trap → correct English → why + tip.</div>
+    </div>
+    <div class="btnrow">
+      <button class="btn" id="mistakesSpeak" type="button">🔊 Listen to examples</button>
+      <button class="btn btn--ghost" id="mistakesShuffle" type="button">Shuffle cards</button>
+    </div>
+    <div id="mistakeCards" class="cards"></div>
+  </section>
+
+  <section id="fixit" class="card">
+    <div class="card__head">
+      <h2>🛠 Fix-it Workshop (typing)</h2>
+      <div class="tiny muted">Type the correction. Instant check + hint. Tap “Show” if stuck.</div>
+    </div>
+    <div id="fixList" class="fixlist"></div>
+    <div class="btnrow">
+      <button class="btn btn--ghost" id="fixReset" type="button">Reset Fix-it</button>
+      <button class="btn" id="fixScore" type="button">Check all</button>
+    </div>
+    <div id="fixFeedback" class="feedback" aria-live="polite">Tip: keep it short and natural.</div>
+  </section>
+
+  <section id="traps" class="card">
+    <div class="card__head">
+      <h2>🎭 False Friends Game</h2>
+      <div class="tiny muted">A2 = essentials • B2 = sneaky academic/work words</div>
+    </div>
+    <div id="falseQuiz" class="quiz"></div>
+    <div class="btnrow">
+      <button class="btn btn--ghost" id="falseReset" type="button">Reset</button>
+    </div>
+    <div id="falseFeedback" class="feedback" aria-live="polite">Pick an answer to get feedback.</div>
+  </section>
+
+  <section id="speak" class="card">
+    <div class="card__head">
+      <h2>🗣 Speaking Prompts (model answers)</h2>
+      <div class="tiny muted">Learner speaks first → then taps “Model” to compare.</div>
+    </div>
+    <div id="speakList" class="speaklist"></div>
+  </section>
+
+  <section id="boss" class="card">
+    <div class="card__head">
+      <h2>🏁 Boss Fight (speed round)</h2>
+      <div class="tiny muted">12 questions. Level-based. Aim for a streak 🔥</div>
+    </div>
+
+    <div class="boss">
+      <div class="boss__top">
+        <div class="pill">Question <span id="bossNum">1</span>/12</div>
+        <div class="pill">Streak: <span id="bossStreak">0</span></div>
+      </div>
+
+      <div id="bossPrompt" class="boss__prompt">Press Start.</div>
+      <div class="btnrow">
+        <button class="btn" id="bossStart" type="button">Start</button>
+        <button class="btn btn--ghost" id="bossListen" type="button">🔊 Listen</button>
+        <button class="btn btn--ghost" id="bossSkip" type="button">Skip</button>
+      </div>
+
+      <div id="bossChoices" class="choices" aria-label="Boss fight choices"></div>
+      <div id="bossFeedback" class="feedback" aria-live="polite">Tip: listen once, answer fast.</div>
+    </div>
+  </section>
+
+  <section id="print" class="card">
+    <div class="card__head">
+      <h2>🧾 Cheat Sheet (changes with level)</h2>
+      <div class="tiny muted">Print-friendly summary for learners.</div>
+    </div>
+
+    <div class="cheat">
+      <div class="btnrow">
+        <button class="btn btn--ghost" id="printBtn" type="button">🖨 Print</button>
+      </div>
+      <div id="cheatContent" class="cheat__content"></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="tiny muted">Upload these 3 files and link to <b>french-mistakes-english.html</b>.</div>
+  </footer>
+</main>
+
+<script src="/js/french-mistakes-english.js"></script>
+</body>
+</html>
