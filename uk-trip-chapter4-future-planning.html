@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • UK Trip Chapter 4: Future Planning</title>
+  <link rel="stylesheet" href="/css/uk-trip-chapter4-future-planning.css" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">🗓️</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">UK Trip • Chapter 4 • Future Planning (going to / will / arrangements)</div>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn btn--ghost" id="btnPrint" type="button" title="Print">🖨️ Print</button>
+      <div class="pill" title="Choose accent for audio">
+        <span class="pill__label">Accent</span>
+        <select id="accentSelect" class="select" aria-label="Accent">
+          <option value="us">US</option>
+          <option value="uk">UK</option>
+        </select>
+      </div>
+      <button class="btn" id="btnReset" type="button" title="Reset progress">↻ Reset</button>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="Lesson sections">
+    <a class="tab is-active" href="#start" data-jump="start">1) Start</a>
+    <a class="tab" href="#tools" data-jump="tools">2) Tools</a>
+    <a class="tab" href="#vocab" data-jump="vocab">3) Vocab</a>
+    <a class="tab" href="#errors" data-jump="errors">4) Errors</a>
+    <a class="tab" href="#practice" data-jump="practice">5) Practice</a>
+    <a class="tab" href="#build" data-jump="build">6) Build</a>
+    <a class="tab" href="#bank" data-jump="bank">7) Toolkit</a>
+    <a class="tab" href="#speak" data-jump="speak">8) Speak</a>
+    <a class="tab" href="#wrap" data-jump="wrap">9) Wrap-up</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div>
+      <h1>UK Trip Chapter 4: Future Planning</h1>
+      <p class="lead">
+        Plan the trip like a pro with the three key future forms:
+        <strong>going to</strong> (plans), <strong>present continuous</strong> (arrangements),
+        and <strong>will</strong> (decisions now / offers / predictions).
+      </p>
+
+      <div class="meta">
+        <div class="meta__item">⏱️ <strong>~45–60 min</strong></div>
+        <div class="meta__item">✅ Instant feedback • Hints • Score</div>
+        <div class="meta__item">🔊 US/UK audio</div>
+        <div class="meta__item">📱 Touch-friendly</div>
+      </div>
+
+      <details class="deep">
+        <summary>Key rules at a glance</summary>
+        <div class="timelineGrid">
+          <div class="timeCard">
+            <h4>Plan (already decided)</h4>
+            <p class="ex"><span class="miniCode">We’re going to</span> book the hotel tonight.</p>
+          </div>
+          <div class="timeCard">
+            <h4>Arrangement (time/place fixed)</h4>
+            <p class="ex"><span class="miniCode">We’re meeting</span> at 10 on Friday.</p>
+          </div>
+          <div class="timeCard">
+            <h4>Decision now / offer / prediction</h4>
+            <p class="ex"><span class="miniCode">I’ll</span> call them now. / It <span class="miniCode">will</span> probably rain.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="progressCard" aria-label="Progress">
+      <div class="progressRow">
+        <div class="progressLabel">Progress</div>
+        <div class="progressValue"><span id="progressPct">0%</span></div>
+      </div>
+      <div class="bar" aria-hidden="true"><div class="bar__fill" id="progressBar"></div></div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat__k">Score</div>
+          <div class="stat__v"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat__k">Streak</div>
+          <div class="stat__v"><span id="streakNow">0</span></div>
+        </div>
+      </div>
+
+      <div class="hintBox" id="globalHint" hidden>
+        <div class="hintBox__title">Hint</div>
+        <div class="hintBox__body" id="globalHintBody"></div>
+      </div>
+
+      <div class="quickActions">
+        <button class="btn btn--ghost" id="btnShowHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="btnSpeakSelection" type="button">🔊 Speak selection</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1) START -->
+  <section id="start" class="card">
+    <div class="card__head">
+      <h2>1) Start — which future form?</h2>
+      <p class="muted">Plan vs arrangement vs decision now.</p>
+    </div>
+    <div class="quizBox" id="starterQuiz"></div>
+  </section>
+
+  <!-- 2) TOOLS -->
+  <section id="tools" class="card">
+    <div class="card__head">
+      <h2>2) Tools — the future forms</h2>
+      <p class="muted">going to • present continuous • will • time prepositions.</p>
+    </div>
+    <div class="quizBox" id="rulesQuick"></div>
+  </section>
+
+  <!-- 3) VOCAB -->
+  <section id="vocab" class="card">
+    <div class="card__head">
+      <h2>3) Vocab — planning verbs</h2>
+      <p class="muted">Book, arrange, reschedule, forecast, flexible…</p>
+    </div>
+    <div class="quizBox" id="meaningQuiz"></div>
+  </section>
+
+  <!-- 4) ERRORS -->
+  <section id="errors" class="card">
+    <div class="card__head">
+      <h2>4) Errors — fix the sentence</h2>
+      <p class="muted">Most common future mistakes (French traps included).</p>
+    </div>
+    <div class="quizBox" id="errorFix"></div>
+  </section>
+
+  <!-- 5) PRACTICE -->
+  <section id="practice" class="card">
+    <div class="card__head">
+      <h2>5) Practice — plans, offers, predictions</h2>
+      <p class="muted">Choose the best tense and time expression.</p>
+    </div>
+    <div class="quizBox" id="practiceAQuiz"></div>
+  </section>
+
+  <!-- 6) BUILD -->
+  <section id="build" class="card">
+    <div class="card__head">
+      <h2>6) Build — send a clear plan message</h2>
+      <p class="muted">Write like a real traveller (plan + arrangement).</p>
+    </div>
+    <div class="grid2">
+      <div class="builder" id="builderA"></div>
+      <div class="builder" id="transformA"></div>
+    </div>
+  </section>
+
+  <!-- 7) TOOLKIT -->
+  <section id="bank" class="card">
+    <div class="card__head">
+      <h2>7) Toolkit — time expressions + roadmap</h2>
+      <p class="muted">Keep this as your reference.</p>
+    </div>
+    <div class="accordion" id="extrasAcc"></div>
+    <div class="quizBox" id="extrasQuiz" style="margin-top:12px;"></div>
+  </section>
+
+  <!-- 8) SPEAK -->
+  <section id="speak" class="card">
+    <div class="card__head">
+      <h2>8) Speak — plan it out loud</h2>
+      <p class="muted">Tap “Model answer” then personalize.</p>
+    </div>
+    <div class="speakGrid" id="speakGrid"></div>
+  </section>
+
+  <!-- 9) WRAP -->
+  <section id="wrap" class="card">
+    <div class="card__head">
+      <h2>9) Wrap-up — final check</h2>
+      <p class="muted">If you can do this, you can organize any trip smoothly.</p>
+    </div>
+    <div class="quizBox" id="finalQuiz"></div>
+
+    <div class="cheatSheet" id="cheatSheet">
+      <h3>Final mission (speaking)</h3>
+      <p class="ex"><strong>60 seconds:</strong> Present your plan: 2 plans (going to), 2 arrangements (present continuous), 1 offer (will), 1 prediction (will/might) + 3 time expressions (on/in/at/by).</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a class="btn btn--ghost" href="#top">↑ Back to top</a>
+    <p class="muted">SpeakEasyTisha • UK Trip Chapter 4 • future planning</p>
+  </footer>
+</main>
+
+<script src="/js/uk-trip-chapter4-future-planning.js"></script>
+</body>
+</html>
