@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • I like to do vs I like doing (French speakers)</title>
+  <link rel="stylesheet" href="/css/like-to-vs-like-doing_FR.css" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">💬</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">Special French speakers edition • pièges 🇫🇷</div>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn btn--ghost" id="btnPrint" type="button" title="Print cheat sheet + practice">
+        🖨️ Print
+      </button>
+      <div class="pill" title="Choose accent for audio">
+        <span class="pill__label">Accent</span>
+        <select id="accentSelect" class="select" aria-label="Accent">
+          <option value="us">US</option>
+          <option value="uk">UK</option>
+        </select>
+      </div>
+      <button class="btn" id="btnReset" type="button" title="Reset progress">↻ Reset</button>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="Lesson sections">
+    <a class="tab is-active" href="#start" data-jump="start">1) Start</a>
+    <a class="tab" href="#rules" data-jump="rules">2) Rules</a>
+    <a class="tab" href="#meaning" data-jump="meaning">3) Meaning</a>
+    <a class="tab" href="#errors" data-jump="errors">4) Typical errors</a>
+    <a class="tab" href="#practiceA" data-jump="practiceA">5) Practice A</a>
+    <a class="tab" href="#practiceB" data-jump="practiceB">6) Practice B</a>
+    <a class="tab" href="#extras" data-jump="extras">7) Extra patterns</a>
+    <a class="tab" href="#speak" data-jump="speak">8) Speak</a>
+    <a class="tab" href="#wrap" data-jump="wrap">9) Wrap-up</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div>
+      <h1>I like to do vs I like doing</h1>
+      <p class="lead">
+        Learn <strong>when to use</strong> <em>to + verb</em> and <em>verb + -ing</em> after <strong>like</strong>,
+        with real-life examples, typical mistakes, and short speaking tasks.
+        <br><span class="muted">🇫🇷 Focus: “J’aime faire…” → which English form sounds natural?</span>
+      </p>
+
+      <div class="meta">
+        <div class="meta__item">⏱️ <strong>~60 min</strong> (guided pacing below)</div>
+        <div class="meta__item">✅ Instant feedback • Hints • Score</div>
+        <div class="meta__item">🔊 US/UK audio</div>
+        <div class="meta__item">📱 iPad / touch-friendly</div>
+      </div>
+    </div>
+
+    <div class="progressCard" aria-label="Progress">
+      <div class="progressRow">
+        <div class="progressLabel">Progress</div>
+        <div class="progressValue"><span id="progressPct">0%</span></div>
+      </div>
+      <div class="bar" aria-hidden="true"><div class="bar__fill" id="progressBar"></div></div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat__k">Score</div>
+          <div class="stat__v"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat__k">Streak</div>
+          <div class="stat__v"><span id="streakNow">0</span></div>
+        </div>
+      </div>
+
+      <div class="hintBox" id="globalHint" hidden>
+        <div class="hintBox__title">Hint</div>
+        <div class="hintBox__body" id="globalHintBody"></div>
+      </div>
+
+      <div class="quickActions">
+        <button class="btn btn--ghost" id="btnShowHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="btnSpeakSelection" type="button">🔊 Speak selection</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="timeline">
+    <h2>Suggested pacing (1 hour)</h2>
+    <div class="timelineGrid">
+      <div class="timeCard"><div class="timeCard__t">0–8 min</div><div class="timeCard__b">Warm-up + quick wins</div></div>
+      <div class="timeCard"><div class="timeCard__t">8–18 min</div><div class="timeCard__b">Rules (clear + simple)</div></div>
+      <div class="timeCard"><div class="timeCard__t">18–30 min</div><div class="timeCard__b">Meaning & nuance</div></div>
+      <div class="timeCard"><div class="timeCard__t">30–42 min</div><div class="timeCard__b">Typical errors + fixes</div></div>
+      <div class="timeCard"><div class="timeCard__t">42–55 min</div><div class="timeCard__b">Practice A + B</div></div>
+      <div class="timeCard"><div class="timeCard__t">55–60 min</div><div class="timeCard__b">Speaking + wrap-up</div></div>
+    </div>
+  </section>
+
+  <!-- 1) START -->
+  <section id="start" class="card">
+    <div class="card__head">
+      <h2>1) Start — spot the difference</h2>
+      <p class="muted">Choose the best meaning. Then check the explanation.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="mini">
+        <div class="mini__title">A</div>
+        <p class="big">I like to go to bed early.</p>
+        <div class="mini__actions">
+          <button class="btn btn--ghost js-say" data-say="I like to go to bed early." type="button">🔊</button>
+        </div>
+      </div>
+      <div class="mini">
+        <div class="mini__title">B</div>
+        <p class="big">I like going to bed early.</p>
+        <div class="mini__actions">
+          <button class="btn btn--ghost js-say" data-say="I like going to bed early." type="button">🔊</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="quizBox" id="starterQuiz" aria-label="Starter quiz"></div>
+  </section>
+
+  <!-- 2) RULES -->
+  <section id="rules" class="card">
+    <div class="card__head">
+      <h2>2) Rules — the short version</h2>
+      <p class="muted">
+        Both forms can be correct, but they often communicate a <strong>different focus</strong>.
+      </p>
+    </div>
+
+    <div class="ruleGrid">
+      <article class="rule">
+        <h3>LIKE + <span class="badge">-ing</span></h3>
+        <p><strong>Meaning:</strong> you <em>enjoy</em> the activity. It’s pleasant or fun.</p>
+        <ul>
+          <li>I like <strong>cooking</strong>.</li>
+          <li>She likes <strong>meeting</strong> new people.</li>
+          <li>We like <strong>watching</strong> documentaries.</li>
+        </ul>
+        <details class="fr">
+          <summary>🇫🇷 Note (French trap)</summary>
+          <p>“J’aime faire …” is a trap: English often prefers <strong>-ing</strong> for hobbies/pleasure. Example: <strong>J’aime faire du sport</strong> → <strong>I like doing sports</strong> / <strong>I like playing sports</strong>.</p>
+        </details>
+      </article>
+
+      <article class="rule">
+        <h3>LIKE + <span class="badge">to + verb</span></h3>
+        <p><strong>Meaning:</strong> preference, habit, or a “good idea” (routine / choice / reasons).</p>
+        <ul>
+          <li>I like <strong>to drink</strong> water in the morning. (healthy habit)</li>
+          <li>He likes <strong>to arrive</strong> early. (preference / routine)</li>
+          <li>They like <strong>to plan</strong> ahead. (style / strategy)</li>
+        </ul>
+        <details class="fr">
+          <summary>🇫🇷 Note (French trap)</summary>
+          <p>This form often sounds like a <strong>routine</strong> or a <strong>good habit</strong>. Example: <strong>J’aime faire du sport pour rester en forme</strong> → <strong>I like to exercise</strong> / <strong>I like to work out</strong>.</p>
+        </details>
+      </article>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Very important</div>
+      <div class="callout__body">
+        <p><strong>Would like</strong> is different: it means <strong>polite desire</strong> (now / future).</p>
+        <p class="ex">
+          ✅ I’d like <strong>to</strong> order a coffee. <br>
+          ❌ I’d like ordering a coffee.
+        </p>
+      </div>
+    </div>
+
+    <div class="quizBox" id="rulesQuick" aria-label="Rules quick check"></div>
+  </section>
+
+  <!-- 3) MEANING -->
+  <section id="meaning" class="card">
+    <div class="card__head">
+      <h2>3) Meaning — choose the best option for the situation</h2>
+      <p class="muted">Sometimes both work — but one sounds more natural.</p>
+    </div>
+
+    <div class="quizBox" id="meaningQuiz" aria-label="Meaning quiz"></div>
+
+    <details class="deep">
+      <summary>Extra nuance (advanced but useful)</summary>
+      <ul>
+        <li><strong>I like to + verb</strong> can sound more “structured” (habits, rules, advice).</li>
+        <li><strong>I like + -ing</strong> feels more emotional (enjoyment, pleasure).</li>
+        <li>In many contexts, both are acceptable. The key is the <strong>speaker’s focus</strong>.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- 4) TYPICAL ERRORS -->
+  <section id="errors" class="card">
+    <div class="card__head">
+      <h2>4) Typical errors — fix the sentence</h2>
+      <p class="muted">These are very common mistakes for French speakers and other learners.</p>
+    </div>
+
+    <div class="quizBox" id="errorFix" aria-label="Error correction"></div>
+
+    <div class="callout callout--soft">
+      <div class="callout__title">Quick checklist</div>
+      <div class="callout__body">
+        <ul>
+          <li>After <strong>like</strong> you need <strong>to + verb</strong> or <strong>verb + -ing</strong> (not both).</li>
+          <li><strong>Would like</strong> → always <strong>to + verb</strong>.</li>
+          <li>Don’t add <strong>to</strong> after gerund-only verbs like <strong>enjoy</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) PRACTICE A -->
+  <section id="practiceA" class="card">
+    <div class="card__head">
+      <h2>5) Practice A — choose the correct form</h2>
+      <p class="muted">Pick the best choice, then read the explanation.</p>
+    </div>
+
+    <div class="quizBox" id="practiceAQuiz" aria-label="Practice A"></div>
+  </section>
+
+  <!-- 6) PRACTICE B -->
+  <section id="practiceB" class="card">
+    <div class="card__head">
+      <h2>6) Practice B — build & transform</h2>
+      <p class="muted">Tap words to build a correct sentence. Then do quick transformations.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="builder" id="builderA" aria-label="Sentence builder"></div>
+      <div class="builder" id="transformA" aria-label="Transform practice"></div>
+    </div>
+  </section>
+
+  <!-- 7) EXTRAS -->
+  <section id="extras" class="card">
+    <div class="card__head">
+      <h2>7) Extra patterns that matter</h2>
+      <p class="muted">These help you avoid “almost correct” sentences.</p>
+    </div>
+
+    <div class="accordion" id="extrasAcc" aria-label="Extra patterns accordion"></div>
+
+    <div class="quizBox" id="extrasQuiz" aria-label="Extra patterns quiz"></div>
+  </section>
+
+  <!-- 8) SPEAK -->
+  <section id="speak" class="card">
+    <div class="card__head">
+      <h2>8) Speak — short guided answers</h2>
+      <p class="muted">Tap “Model answer” to hear a natural sentence. Then repeat it aloud.</p>
+    </div>
+
+    <div class="speakGrid" id="speakGrid" aria-label="Speaking prompts"></div>
+  </section>
+
+  <!-- 9) WRAP -->
+  <section id="wrap" class="card">
+    <div class="card__head">
+      <h2>9) Wrap-up — mini test + cheat sheet</h2>
+      <p class="muted">Do the final check. Then print or screenshot the cheat sheet.</p>
+    </div>
+
+    <div class="quizBox" id="finalQuiz" aria-label="Final quiz"></div>
+
+    <div class="cheatSheet" id="cheatSheet" aria-label="Cheat sheet">
+      <h3>Cheat sheet</h3>
+
+      <div class="cheatGrid">
+        <div class="cheat">
+          <h4>Enjoyment</h4>
+          <p><strong>I like doing…</strong></p>
+          <p class="muted">Focus = the activity is pleasant.</p>
+          <p class="ex">I like <strong>reading</strong> in the evening.</p>
+        </div>
+
+        <div class="cheat">
+          <h4>Habit / preference / “good idea”</h4>
+          <p><strong>I like to do…</strong></p>
+          <p class="muted">Focus = routine / choice / reasons.</p>
+          <p class="ex">I like <strong>to check</strong> my emails early.</p>
+        </div>
+
+        <div class="cheat">
+          <h4>Polite desire (NOT the same)</h4>
+          <p><strong>I’d like to…</strong></p>
+          <p class="muted">Focus = what you want now / soon.</p>
+          <p class="ex">I’d like <strong>to book</strong> a room.</p>
+        </div>
+
+        <div class="cheat">
+          <h4>Common traps</h4>
+          <ul>
+            <li>❌ I like to <strong>doing</strong>… → ✅ I like <strong>doing</strong>…</li>
+            <li>❌ I’d like <strong>going</strong>… → ✅ I’d like <strong>to go</strong>…</li>
+            <li>❌ I enjoy <strong>to cook</strong> → ✅ I enjoy <strong>cooking</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="endNote">
+      <strong>Goal sentence:</strong> “I like <em>doing</em> it because it’s fun, but I like <em>to do</em> it because it’s a good habit.”
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a class="btn btn--ghost" href="#top">↑ Back to top</a>
+    <p class="muted">SpeakEasyTisha • Grammar booster • “I like to do / I like doing”</p>
+  </footer>
+</main>
+
+<script src="/js/like-to-vs-like-doing_FR.js"></script>
+</body>
+</html>

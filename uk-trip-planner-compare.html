@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • UK Trip Planner (Partner/Friend)</title>
+  <link rel="stylesheet" href="/css/uk-trip-planner-compare.css" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">🇬🇧</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">Interactive lesson • Plan an amazing UK trip • compare best vs “depends” vs tourist‑trappy</div>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn btn--ghost" id="btnPrint" type="button" title="Print">🖨️ Print</button>
+      <div class="pill" title="Choose accent for audio">
+        <span class="pill__label">Accent</span>
+        <select id="accentSelect" class="select" aria-label="Accent">
+          <option value="us">US</option>
+          <option value="uk">UK</option>
+        </select>
+      </div>
+      <button class="btn" id="btnReset" type="button" title="Reset progress">↻ Reset</button>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="Lesson sections">
+    <a class="tab is-active" href="#start" data-jump="start">1) Start</a>
+    <a class="tab" href="#board" data-jump="board">2) UK Places</a>
+    <a class="tab" href="#rules" data-jump="rules">3) Grammar tools</a>
+    <a class="tab" href="#meaning" data-jump="meaning">4) Verbs</a>
+    <a class="tab" href="#practiceA" data-jump="practiceA">5) Situations</a>
+    <a class="tab" href="#practiceB" data-jump="practiceB">6) Negotiate</a>
+    <a class="tab" href="#errors" data-jump="errors">7) Errors</a>
+    <a class="tab" href="#extras" data-jump="extras">8) Phrase bank</a>
+    <a class="tab" href="#speak" data-jump="speak">9) Speak</a>
+    <a class="tab" href="#wrap" data-jump="wrap">10) Wrap-up</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div>
+      <h1>Plan an Amazing UK Trip (with a partner or friend)</h1>
+      <p class="lead">
+        You’ll compare destinations (best vs depends vs tourist‑trappy), build an itinerary,
+        and practise <strong>debating</strong>, <strong>requests</strong>, <strong>suggestions</strong>, and <strong>obligations</strong>.
+      </p>
+
+      <div class="meta">
+        <div class="meta__item">⏱️ <strong>~60–75 min</strong></div>
+        <div class="meta__item">✅ Instant feedback • Hints • Score</div>
+        <div class="meta__item">🔊 US/UK audio</div>
+        <div class="meta__item">📱 Touch-friendly</div>
+      </div>
+
+      <details class="deep">
+        <summary>What you will be able to do</summary>
+        <ul>
+          <li>Compare places using pros/cons + connectors (however, moreover, therefore…)</li>
+          <li>Negotiate with a partner (compromise, polite disagreement)</li>
+          <li>Use correct travel English for requests (Could you…? Would you mind…?)</li>
+          <li>Use obligations correctly (have to / must / don’t have to / mustn’t)</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="progressCard" aria-label="Progress">
+      <div class="progressRow">
+        <div class="progressLabel">Progress</div>
+        <div class="progressValue"><span id="progressPct">0%</span></div>
+      </div>
+      <div class="bar" aria-hidden="true"><div class="bar__fill" id="progressBar"></div></div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat__k">Score</div>
+          <div class="stat__v"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat__k">Streak</div>
+          <div class="stat__v"><span id="streakNow">0</span></div>
+        </div>
+      </div>
+
+      <div class="hintBox" id="globalHint" hidden>
+        <div class="hintBox__title">Hint</div>
+        <div class="hintBox__body" id="globalHintBody"></div>
+      </div>
+
+      <div class="quickActions">
+        <button class="btn btn--ghost" id="btnShowHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="btnSpeakSelection" type="button">🔊 Speak selection</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1) START -->
+  <section id="start" class="card">
+    <div class="card__head">
+      <h2>1) Start — plan the discussion</h2>
+      <p class="muted">Goal: compare calmly, then decide.</p>
+    </div>
+    <div class="quizBox" id="starterQuiz" aria-label="Starter quiz"></div>
+
+    <div class="outputBox" style="margin-top:12px">
+      <p><strong>Mini mission (pair work)</strong></p>
+      <ul class="listClean">
+        <li>Pick 2–3 places from the board.</li>
+        <li>For each place: 2 advantages + 1 drawback.</li>
+        <li>Decide a 3–5 day plan and explain why.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2) UK PLACES -->
+  <section id="board" class="card">
+    <div class="card__head">
+      <h2>2) UK Places — best vs depends vs tourist‑trappy</h2>
+      <p class="muted">Filter, compare, and add places to your plan.</p>
+    </div>
+
+    <div class="placeControls">
+      <div class="chips" aria-label="Tier filter">
+        <button class="chip" id="tierAll" type="button" aria-pressed="true">All</button>
+        <button class="chip" id="tierAmazing" type="button" aria-pressed="false">⭐ Amazing</button>
+        <button class="chip" id="tierDepends" type="button" aria-pressed="false">🙂 Depends</button>
+        <button class="chip" id="tierTrap" type="button" aria-pressed="false">⚠️ Tourist‑trappy</button>
+      </div>
+    </div>
+
+    <div class="smallNote">Tap tags to filter. (Tip: choose 2–4 tags maximum.)</div>
+    <div class="chips" id="tagChips" aria-label="Tag filter"></div>
+
+    <div class="placeGrid" id="placeGrid" aria-label="Places grid"></div>
+
+    <div class="compareWrap">
+      <div id="comparePanel" aria-label="Compare panel"></div>
+    </div>
+
+    <details class="deep">
+      <summary>🇫🇷 French traps to watch</summary>
+      <ul>
+        <li><strong>I propose you to…</strong> ❌ → <strong>I suggest + -ing</strong> ✅</li>
+        <li><strong>I am agree</strong> ❌ → <strong>I agree</strong> ✅</li>
+        <li><strong>In the contrary</strong> ❌ → <strong>On the contrary</strong> ✅</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- 3) TOOLS -->
+  <section id="rules" class="card">
+    <div class="card__head">
+      <h2>3) Grammar tools — compare, suggest, oblige</h2>
+      <p class="muted">The formulas you’ll reuse all lesson.</p>
+    </div>
+    <div class="quizBox" id="rulesQuick" aria-label="Grammar tools quiz"></div>
+  </section>
+
+  <!-- 4) VERBS -->
+  <section id="meaning" class="card">
+    <div class="card__head">
+      <h2>4) Verbs — travel + debate</h2>
+      <p class="muted">Book, suggest, argue, hedge…</p>
+    </div>
+    <div class="quizBox" id="meaningQuiz" aria-label="Meaning quiz"></div>
+  </section>
+
+  <!-- 5) SITUATIONS -->
+  <section id="practiceA" class="card">
+    <div class="card__head">
+      <h2>5) Situations — real travel scenarios</h2>
+      <p class="muted">Station • hotel • restaurant • disagreement.</p>
+    </div>
+    <div class="quizBox" id="practiceAQuiz" aria-label="Practice A"></div>
+  </section>
+
+  <!-- 6) NEGOTIATE -->
+  <section id="practiceB" class="card">
+    <div class="card__head">
+      <h2>6) Negotiate — compromise + polite tone</h2>
+      <p class="muted">Build a compromise sentence, then soften your tone.</p>
+    </div>
+    <div class="grid2">
+      <div class="builder" id="builderA" aria-label="Sentence builder"></div>
+      <div class="builder" id="transformA" aria-label="Transform practice"></div>
+    </div>
+  </section>
+
+  <!-- 7) ERRORS -->
+  <section id="errors" class="card">
+    <div class="card__head">
+      <h2>7) Errors — fix the sentence</h2>
+      <p class="muted">Typical French mistakes in travel planning.</p>
+    </div>
+    <div class="quizBox" id="errorFix" aria-label="Error correction"></div>
+  </section>
+
+  <!-- 8) PHRASE BANK + ITINERARY -->
+  <section id="extras" class="card">
+    <div class="card__head">
+      <h2>8) Phrase bank + itinerary builder</h2>
+      <p class="muted">Use the accordion + build a real plan.</p>
+    </div>
+
+    <div class="accordion" id="extrasAcc" aria-label="Phrase bank"></div>
+    <div class="quizBox" id="extrasQuiz" aria-label="Extra quiz"></div>
+
+    <hr class="sep"/>
+
+    <h3>🧳 Your plan (places you chose)</h3>
+    <div id="planList"></div>
+
+    <h3 style="margin-top:14px">🗺️ Build an itinerary</h3>
+    <form id="itineraryForm" class="outputBox" aria-label="Itinerary builder form">
+      <div class="formRow">
+        <label><strong>Days</strong>
+          <select id="tripDays" class="select">
+            <option value="3">3 days</option>
+            <option value="4">4 days</option>
+            <option value="5">5 days</option>
+            <option value="7">7 days</option>
+          </select>
+        </label>
+
+        <label><strong>Style</strong>
+          <select id="tripVibe" class="select">
+            <option value="balanced">Balanced</option>
+            <option value="romantic">Romantic</option>
+            <option value="nature">Nature</option>
+            <option value="culture">Culture</option>
+          </select>
+        </label>
+
+        <label><strong>Companion</strong>
+          <select id="tripCompanion" class="select">
+            <option value="partner">Partner</option>
+            <option value="friend">Friend</option>
+          </select>
+        </label>
+
+        <button class="btn" id="btnBuildItinerary" type="button">Build</button>
+      </div>
+    </form>
+
+    <div id="itineraryOutput" aria-label="Itinerary output"></div>
+
+    <hr class="sep"/>
+
+    <h3>🎲 Scenario generator (roleplay)</h3>
+    <p class="smallNote">Click “New scenario”, then speak together. Try to use the required phrases.</p>
+    <div class="placeActions">
+      <button class="btn btn--ghost" type="button" id="btnNewScenario">🎲 New scenario</button>
+    </div>
+    <div id="scenarioBox" aria-label="Scenario box"></div>
+  </section>
+
+  <!-- 9) SPEAK -->
+  <section id="speak" class="card">
+    <div class="card__head">
+      <h2>9) Speak — short guided answers</h2>
+      <p class="muted">Tap “Model answer” then personalize.</p>
+    </div>
+    <div class="speakGrid" id="speakGrid" aria-label="Speaking prompts"></div>
+  </section>
+
+  <!-- 10) WRAP -->
+  <section id="wrap" class="card">
+    <div class="card__head">
+      <h2>10) Wrap-up — final check + templates</h2>
+      <p class="muted">Finish the mini test and keep the templates.</p>
+    </div>
+
+    <div class="quizBox" id="finalQuiz" aria-label="Final quiz"></div>
+
+    <div class="cheatSheet" id="cheatSheet" aria-label="Cheat sheet">
+      <h3>Cheat sheet (copy/paste)</h3>
+
+      <div class="cheatGrid">
+        <div class="cheat">
+          <h4>Compare</h4>
+          <p class="ex">On the one hand…, on the other hand…</p>
+        </div>
+
+        <div class="cheat">
+          <h4>Pros/cons</h4>
+          <p class="ex">One advantage is <strong>that</strong>… / One drawback is <strong>that</strong>…</p>
+        </div>
+
+        <div class="cheat">
+          <h4>Suggest</h4>
+          <p class="ex">How about <strong>+ -ing</strong>? / We could… / Why don’t we…?</p>
+        </div>
+
+        <div class="cheat">
+          <h4>Obligation</h4>
+          <p class="ex">have to • must • don’t have to • mustn’t</p>
+        </div>
+
+        <div class="cheat">
+          <h4>Polite request</h4>
+          <p class="ex">Could you…? / Would you mind <strong>+ -ing</strong>? / Is it possible to…?</p>
+        </div>
+
+        <div class="cheat">
+          <h4>Conclusion</h4>
+          <p class="ex">Overall, I think… because…</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="endNote">
+      <strong>Final task:</strong> Present your itinerary (60–90 seconds) and justify it with 2 advantages + 1 drawback.
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a class="btn btn--ghost" href="#top">↑ Back to top</a>
+    <p class="muted">SpeakEasyTisha • UK Trip Planner • compare + debate + travel scenarios</p>
+  </footer>
+</main>
+
+<script src="/js/uk-trip-planner-compare.js"></script>
+</body>
+</html>

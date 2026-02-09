@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • UK Trip Chapter 3: Itinerary Storytelling</title>
+  <link rel="stylesheet" href="/css/uk-trip-chapter3-itinerary-storytelling.css" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">🎥</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">UK Trip • Chapter 3 • Itinerary Storytelling (travel vlog)</div>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn btn--ghost" id="btnPrint" type="button" title="Print">🖨️ Print</button>
+      <div class="pill" title="Choose accent for audio">
+        <span class="pill__label">Accent</span>
+        <select id="accentSelect" class="select" aria-label="Accent">
+          <option value="us">US</option>
+          <option value="uk">UK</option>
+        </select>
+      </div>
+      <button class="btn" id="btnReset" type="button" title="Reset progress">↻ Reset</button>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="Lesson sections">
+    <a class="tab is-active" href="#start" data-jump="start">1) Start</a>
+    <a class="tab" href="#tools" data-jump="tools">2) Tenses</a>
+    <a class="tab" href="#vocab" data-jump="vocab">3) Vocab</a>
+    <a class="tab" href="#errors" data-jump="errors">4) Errors</a>
+    <a class="tab" href="#practice" data-jump="practice">5) Practice</a>
+    <a class="tab" href="#build" data-jump="build">6) Build</a>
+    <a class="tab" href="#bank" data-jump="bank">7) Toolkit</a>
+    <a class="tab" href="#speak" data-jump="speak">8) Speak</a>
+    <a class="tab" href="#wrap" data-jump="wrap">9) Wrap-up</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div>
+      <h1>UK Trip Chapter 3: Itinerary Storytelling</h1>
+      <p class="lead">
+        This chapter helps students <strong>tell the trip story</strong> day-by-day like a mini travel vlog:
+        correct <strong>verb tenses</strong>, natural <strong>connectors</strong>, and a short <strong>review</strong>.
+      </p>
+
+      <div class="meta">
+        <div class="meta__item">⏱️ <strong>~45–60 min</strong></div>
+        <div class="meta__item">✅ Instant feedback • Hints • Score</div>
+        <div class="meta__item">🔊 US/UK audio</div>
+        <div class="meta__item">📱 Touch-friendly</div>
+      </div>
+
+      <details class="deep">
+        <summary>What you’ll master</summary>
+        <ul>
+          <li>Past simple for finished time (yesterday / last weekend / in 2023)</li>
+          <li>Present perfect for experience or recent actions (ever / just / already / yet)</li>
+          <li>Past continuous to set the scene (we were walking… when…)</li>
+          <li>Story connectors + review language</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="progressCard" aria-label="Progress">
+      <div class="progressRow">
+        <div class="progressLabel">Progress</div>
+        <div class="progressValue"><span id="progressPct">0%</span></div>
+      </div>
+      <div class="bar" aria-hidden="true"><div class="bar__fill" id="progressBar"></div></div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat__k">Score</div>
+          <div class="stat__v"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat__k">Streak</div>
+          <div class="stat__v"><span id="streakNow">0</span></div>
+        </div>
+      </div>
+
+      <div class="hintBox" id="globalHint" hidden>
+        <div class="hintBox__title">Hint</div>
+        <div class="hintBox__body" id="globalHintBody"></div>
+      </div>
+
+      <div class="quickActions">
+        <button class="btn btn--ghost" id="btnShowHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="btnSpeakSelection" type="button">🔊 Speak selection</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1) START -->
+  <section id="start" class="card">
+    <div class="card__head">
+      <h2>1) Start — pick the right tense</h2>
+      <p class="muted">Finished time vs experience.</p>
+    </div>
+    <div class="quizBox" id="starterQuiz"></div>
+
+    <div class="storyGrid">
+      <div class="storyCard">
+        <h4>Mini story pattern (copy)</h4>
+        <p class="ex"><strong>First</strong>… <strong>Then</strong>… <strong>After that</strong>… <strong>In the end</strong>…</p>
+        <p class="muted">Add: because / so / although / however</p>
+      </div>
+      <div class="storyCard">
+        <h4>Vlog pattern (copy)</h4>
+        <p class="ex">Yesterday we… It was…, so we… While we were…, … happened.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) TOOLS -->
+  <section id="tools" class="card">
+    <div class="card__head">
+      <h2>2) Tenses — the storytelling toolkit</h2>
+      <p class="muted">Past simple • present perfect • past continuous.</p>
+    </div>
+    <div class="quizBox" id="rulesQuick"></div>
+  </section>
+
+  <!-- 3) VOCAB -->
+  <section id="vocab" class="card">
+    <div class="card__head">
+      <h2>3) Vocab — travel + review language</h2>
+      <p class="muted">Convenient, stunning, great value for money…</p>
+    </div>
+    <div class="quizBox" id="meaningQuiz"></div>
+  </section>
+
+  <!-- 4) ERRORS -->
+  <section id="errors" class="card">
+    <div class="card__head">
+      <h2>4) Errors — fix the sentence</h2>
+      <p class="muted">Most common tense mistakes.</p>
+    </div>
+    <div class="quizBox" id="errorFix"></div>
+  </section>
+
+  <!-- 5) PRACTICE -->
+  <section id="practice" class="card">
+    <div class="card__head">
+      <h2>5) Practice — day-by-day choices</h2>
+      <p class="muted">Choose the best tense and connector.</p>
+    </div>
+    <div class="quizBox" id="practiceAQuiz"></div>
+  </section>
+
+  <!-- 6) BUILD -->
+  <section id="build" class="card">
+    <div class="card__head">
+      <h2>6) Build — your vlog sentence</h2>
+      <p class="muted">Then transform basic English into rich storytelling.</p>
+    </div>
+    <div class="grid2">
+      <div class="builder" id="builderA"></div>
+      <div class="builder" id="transformA"></div>
+    </div>
+  </section>
+
+  <!-- 7) TOOLKIT -->
+  <section id="bank" class="card">
+    <div class="card__head">
+      <h2>7) Toolkit — connectors + tense rules + next tenses roadmap</h2>
+      <p class="muted">Keep this as your reference.</p>
+    </div>
+    <div class="accordion" id="extrasAcc"></div>
+    <div class="quizBox" id="extrasQuiz" style="margin-top:12px;"></div>
+  </section>
+
+  <!-- 8) SPEAK -->
+  <section id="speak" class="card">
+    <div class="card__head">
+      <h2>8) Speak — travel vlog tasks</h2>
+      <p class="muted">Tap “Model answer” then personalize (names, places, feelings).</p>
+    </div>
+    <div class="speakGrid" id="speakGrid"></div>
+  </section>
+
+  <!-- 9) WRAP -->
+  <section id="wrap" class="card">
+    <div class="card__head">
+      <h2>9) Wrap-up — final check</h2>
+      <p class="muted">If you can do this, you can tell any travel story.</p>
+    </div>
+    <div class="quizBox" id="finalQuiz"></div>
+
+    <div class="cheatSheet" id="cheatSheet">
+      <h3>Final mission (speaking)</h3>
+      <p class="ex"><strong>60–90 seconds:</strong> Tell your 3-day UK story using: past simple + present perfect + one past continuous sentence + 5 connectors.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a class="btn btn--ghost" href="#top">↑ Back to top</a>
+    <p class="muted">SpeakEasyTisha • UK Trip Chapter 3 • itinerary storytelling</p>
+  </footer>
+</main>
+
+<script src="/js/uk-trip-chapter3-itinerary-storytelling.js"></script>
+</body>
+</html>
