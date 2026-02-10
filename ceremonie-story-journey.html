@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Ceremonie Story Journey (A2→B2)</title>
+  <link rel="stylesheet" href="/css/ceremonie-story-journey.css" />
+  <meta name="description" content="Interactive English lesson (A2–B2): describe a wedding & event team’s client journey, workplace, mission, goals, functions. Inspired by Ceremonie Story." />
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">🌿</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Ceremonie Story • Page 2: Client Journey + Workplace (A2→B2)</div>
+      </div>
+    </div>
+
+    <div class="topbar__actions">
+      <button class="chip" id="toggleFR" type="button" aria-pressed="false" title="Show French help">FR help</button>
+      <div class="accent" aria-label="Accent">
+        <button class="chip chip--on" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="chip" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+      <button class="chip" id="btnReset" type="button" title="Reset score">Reset</button>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Lesson sections">
+    <a class="nav__link" href="#journey">Client Journey</a>
+    <a class="nav__link" href="#workplace">Workplace English</a>
+    <a class="nav__link" href="#dialogues">Dialogue Studio</a>
+    <a class="nav__link" href="#builder">Pitch Builder</a>
+    <a class="nav__link" href="#final">Final Task</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero__content">
+      <p class="tag">💍 Process • People • Place • Professional</p>
+      <h1>Describe the client journey — step by step</h1>
+      <p class="lead">
+        On this page, you will explain <strong>how the team works</strong>: from the first contact to the wedding day.
+        You will practise <strong>process language</strong>, <strong>workplace prepositions</strong>, and <strong>responsibilities</strong>.
+      </p>
+
+      <div class="hero__row">
+        <div class="mini">
+          <div class="mini__k">Time</div>
+          <div class="mini__v">45–75 min</div>
+        </div>
+        <div class="mini">
+          <div class="mini__k">Level</div>
+          <div class="mini__v">A2 → B2</div>
+        </div>
+        <div class="mini">
+          <div class="mini__k">Goal</div>
+          <div class="mini__v">Explain a process</div>
+        </div>
+        <button class="btn btn--primary" id="btnStart" type="button">Start + Step 1</button>
+      </div>
+
+      <div class="progress" aria-label="Progress">
+        <div class="progress__bar" id="progressBar" style="width:0%"></div>
+      </div>
+      <div class="score" id="scoreLine">Score: <strong id="score">0</strong> • Checked: <strong id="checked">0</strong></div>
+
+      <p class="note fr fr-hide" data-fr="Astuce : active « FR help » pour voir l’aide en français, puis repasse en anglais pour parler.">
+        Tip: turn on “FR help” to see French help, then switch back to English for speaking.
+      </p>
+    </div>
+
+    <div class="hero__art" aria-hidden="true">
+      <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+      <div class="petal p4"></div><div class="petal p5"></div><div class="petal p6"></div>
+      <div class="stem"></div>
+      <div class="spark s1"></div><div class="spark s2"></div><div class="spark s3"></div>
+    </div>
+  </section>
+</header>
+
+<main id="main" class="wrap">
+
+  <!-- 1) JOURNEY -->
+  <section id="journey" class="card">
+    <div class="card__head">
+      <h2>1) Client Journey (interactive)</h2>
+      <p class="sub">Tap a step. Choose your level. Then do the ordering challenge.</p>
+      <p class="sub fr fr-hide" data-fr="Clique une étape. Choisis ton niveau. Ensuite, fais le défi « ordre des étapes ».">
+        Tap a step. Choose your level. Then do the ordering challenge.
+      </p>
+    </div>
+
+    <div class="stepper">
+      <div class="stepList" id="stepList" aria-label="Journey steps"></div>
+
+      <div class="stepPanel" id="stepPanel" aria-live="polite">
+        <div class="levelRow">
+          <span class="badge">Level</span>
+          <button class="chip chip--on" id="lvlA2" type="button" aria-pressed="true">A2</button>
+          <button class="chip" id="lvlB1" type="button" aria-pressed="false">B1</button>
+          <button class="chip" id="lvlB2" type="button" aria-pressed="false">B2</button>
+          <span class="badge">Listen</span>
+          <button class="btn btn--ghost" id="btnSayStep" type="button">🔊 Say this</button>
+        </div>
+
+        <h3 class="h3" id="stepTitle">Step</h3>
+        <p class="sub" id="stepText">Choose a step on the left.</p>
+
+        <div class="kpi" id="kpiRow"></div>
+
+        <div class="phraseGrid" id="phraseGrid"></div>
+      </div>
+    </div>
+
+    <hr class="sep"/>
+
+    <h3 class="h3">Ordering challenge (tap)</h3>
+    <p class="sub">Tap the chips to build the correct sequence. Then check.</p>
+
+    <div class="panel">
+      <div class="chipWrap" id="orderPool" aria-label="Steps to choose"></div>
+      <p class="sub" style="margin-top:10px;">Your sequence:</p>
+      <div class="chipWrap" id="orderBuild" aria-label="Your chosen order"></div>
+
+      <div class="checkRow">
+        <button class="btn" id="btnOrderUndo" type="button">Undo</button>
+        <button class="btn" id="btnOrderReset" type="button">Reset</button>
+        <button class="btn btn--primary" id="btnOrderCheck" type="button">Check</button>
+        <span class="fine" id="orderFeedback" aria-live="polite"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) WORKPLACE -->
+  <section id="workplace" class="card">
+    <div class="card__head">
+      <h2>2) Workplace English: where do they work?</h2>
+      <p class="sub">Prepositions + venue language (in / at / on / across / on site).</p>
+      <p class="fine">Hint: <strong>in</strong> = city/region • <strong>at</strong> = specific place • <strong>on</strong> = day/date • <strong>on site</strong> = in person • <strong>across</strong> = area/region.</p>
+    </div>
+
+    <div class="quizRow">
+      <div class="panel">
+        <h3 class="h3">Tap match: preposition → place</h3>
+        <div class="quiz" id="prepMatch"></div>
+      </div>
+      <div class="panel">
+        <h3 class="h3">Quick MCQ</h3>
+        <div class="quiz" id="prepMCQ"></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__icon" aria-hidden="true">📍</div>
+      <div class="callout__body">
+        <h4>Micro‑speaking</h4>
+        <p>Say 3 sentences: <strong>in the city</strong> + <strong>at the venue</strong> + <strong>on the wedding day</strong>.</p>
+        <button class="btn btn--ghost" data-say="We work in Strasbourg, at the venue, and on the wedding day we coordinate everything on site.">Try speaking 🔊</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) DIALOGUES -->
+  <section id="dialogues" class="card">
+    <div class="card__head">
+      <h2>3) Dialogue Studio: the first meeting</h2>
+      <p class="sub">Reorder the lines (tap ↑ ↓). Then read it out loud.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <h3 class="h3">Reorder the conversation</h3>
+        <div class="reorderList" id="dialogReorder"></div>
+        <div class="checkRow">
+          <button class="btn" id="btnDialogShuffle" type="button">Shuffle</button>
+          <button class="btn btn--primary" id="btnDialogCheck" type="button">Check</button>
+          <button class="btn btn--ghost" id="btnDialogHint" type="button">Hint 💡</button>
+          <span class="fine" id="dialogFeedback" aria-live="polite"></span>
+          <span class="fine" id="dialogHint" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 class="h3">Speaking mode</h3>
+        <p class="sub">When it is correct, click 🔊 to practise. (Use US/UK buttons at the top.)</p>
+        <button class="btn" id="btnDialogSay" type="button">🔊 Read the dialogue</button>
+        <div class="sep"></div>
+        <h4 class="h3">Grammar focus (tap)</h4>
+        <div class="quiz" id="respMCQ"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) BUILDER -->
+  <section id="builder" class="card">
+    <div class="card__head">
+      <h2>4) Pitch Builder: explain the process (A2/B1/B2)</h2>
+      <p class="sub">Fill the form. Choose a level. Generate your “how we work” pitch.</p>
+    </div>
+
+    <div class="builder">
+      <div class="builder__form">
+        <label class="lbl">Your name
+          <input class="input" id="bName" type="text" placeholder="Tisha / Alex / …" />
+        </label>
+        <label class="lbl">Your title
+          <input class="input" id="bTitle" type="text" placeholder="wedding planner / ceremony officiant / event coordinator" />
+        </label>
+        <label class="lbl">Company / team
+          <input class="input" id="bTeam" type="text" placeholder="Ceremonie Story / our team" />
+        </label>
+        <label class="lbl">City / area
+          <input class="input" id="bCity" type="text" placeholder="Strasbourg / Alsace" />
+        </label>
+        <label class="lbl">Example venue
+          <input class="input" id="bVenue" type="text" placeholder="Château de Pourtalès" />
+        </label>
+        <label class="lbl">Mission (verb)
+          <select class="input" id="bMission">
+            <option value="create">create</option>
+            <option value="design">design</option>
+            <option value="organise">organise</option>
+            <option value="coordinate">coordinate</option>
+            <option value="support">support</option>
+          </select>
+        </label>
+        <label class="lbl">Goal 1
+          <input class="input" id="bGoal1" type="text" placeholder="a stress‑free day" />
+        </label>
+        <label class="lbl">Goal 2
+          <input class="input" id="bGoal2" type="text" placeholder="a ceremony that tells your story" />
+        </label>
+
+        <div class="levelRow">
+          <span class="badge">Output level</span>
+          <button class="chip chip--on" id="outA2" type="button" aria-pressed="true">A2</button>
+          <button class="chip" id="outB1" type="button" aria-pressed="false">B1</button>
+          <button class="chip" id="outB2" type="button" aria-pressed="false">B2</button>
+        </div>
+
+        <div class="checkRow">
+          <button class="btn btn--primary" id="btnBuild" type="button">Generate</button>
+          <button class="btn" id="btnCopy" type="button">Copy</button>
+          <button class="btn" id="btnSave" type="button">Save</button>
+          <button class="btn btn--ghost" id="btnSpeak" type="button">🔊 Speak</button>
+          <span class="fine" id="saveMsg" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="builder__out">
+        <div class="outHead">
+          <h3 class="h3">Your pitch</h3>
+          <p class="sub">Edit freely. Then read it out loud.</p>
+        </div>
+        <textarea class="input big" id="outText" placeholder="Your generated pitch will appear here..."></textarea>
+        <p class="fine fr fr-hide" data-fr="Conseil : ajoute 1 connecteur (first / then / after that / finally) pour monter en niveau.">
+          Tip: add one connector (first / then / after that / finally) to level up.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) FINAL -->
+  <section id="final" class="card">
+    <div class="card__head">
+      <h2>5) Final Task: 60‑second “How we work” presentation</h2>
+      <p class="sub">Use your pitch. Add 2 details about place + 2 details about responsibilities.</p>
+    </div>
+
+    <div class="panel">
+      <h3 class="h3">Checklist</h3>
+      <div class="checks">
+        <label class="check"><input type="checkbox" /> I said who I am (title + team).</label>
+        <label class="check"><input type="checkbox" /> I explained the steps (first → finally).</label>
+        <label class="check"><input type="checkbox" /> I used 3 workplace phrases (in/at/on site).</label>
+        <label class="check"><input type="checkbox" /> I used responsibility language (responsible for / coordinate / manage).</label>
+        <label class="check"><input type="checkbox" /> I spoke clearly (US or UK).</label>
+      </div>
+
+      <div class="checkRow">
+        <button class="btn btn--primary" id="btnCelebrate" type="button">🎉 Finish</button>
+        <span class="fine" id="finalMsg" aria-live="polite"></span>
+      </div>
+
+      <p class="fine" style="margin-top:10px;">
+        Educational page inspired by a real company website — not an official Ceremonie Story page.
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a class="toplink" href="#top">↑ Back to top</a>
+    <p class="fine">SpeakEasyTisha • Page 2 • Built for Mac + iPad Safari • Tap‑friendly interactions</p>
+  </footer>
+
+</main>
+
+<script src="/js/ceremonie-story-journey.js"></script>
+</body>
+</html>

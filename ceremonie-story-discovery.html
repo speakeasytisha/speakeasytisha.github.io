@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Ceremonie Story Discovery (A2→B2)</title>
+  <link rel="stylesheet" href="/css/ceremonie-story-discovery.css" />
+  <meta name="description" content="Interactive English lesson (A2–B2): describe who they are, what they do, where they work. Inspired by Ceremonie Story." />
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">💍</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Ceremonie Story • Discovery Lesson (A2→B2)</div>
+      </div>
+    </div>
+
+    <div class="topbar__actions">
+      <button class="chip" id="toggleFR" type="button" aria-pressed="false" title="Show French help">FR help</button>
+      <div class="accent">
+        <button class="chip chip--on" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="chip" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+      <button class="chip" id="btnReset" type="button" title="Reset score & answers">Reset</button>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Lesson sections">
+    <a href="#discover">Discovery</a>
+    <a href="#vocab">Vocabulary</a>
+    <a href="#grammar">Grammar</a>
+    <a href="#reading">Level texts</a>
+    <a href="#practice">Practice</a>
+    <a href="#final">Final task</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero__content">
+      <p class="tag">🌿 Elegant • Human • Creative • Rigorous</p>
+      <h1>Who are they? What do they do? Where do they work?</h1>
+      <p class="lead">
+        This lesson helps you describe a wedding & event team (like Ceremonie Story): your title, mission, goals, and functions.
+        You will practise <strong>introductions</strong>, <strong>presenting a service</strong>, and <strong>explaining where a team works</strong>.
+      </p>
+
+      <div class="hero__row">
+        <div class="mini">
+          <div class="mini__k">Time</div>
+          <div class="mini__v">45–70 min</div>
+        </div>
+        <div class="mini">
+          <div class="mini__k">Level</div>
+          <div class="mini__v">A2 → B2</div>
+        </div>
+        <div class="mini">
+          <div class="mini__k">Skills</div>
+          <div class="mini__v">Describe • Compare • Speak</div>
+        </div>
+        <button class="btn btn--primary" id="btnStart" type="button">Start + Warm‑up</button>
+      </div>
+
+      <div class="progress" aria-label="Progress">
+        <div class="progress__bar" id="progressBar" style="width:0%"></div>
+      </div>
+      <div class="score" id="scoreLine">Score: <strong id="score">0</strong> • Checked: <strong id="checked">0</strong></div>
+
+      <p class="note fr fr-hide" data-fr="Astuce : active « FR help » pour voir les traductions, puis repasse en anglais pour t’entraîner.">
+        Tip: turn on “FR help” to see translations, then switch back to English to train.
+      </p>
+    </div>
+
+    <div class="hero__art" aria-hidden="true">
+      <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+      <div class="petal p4"></div><div class="petal p5"></div><div class="petal p6"></div>
+      <div class="stem"></div>
+      <div class="spark s1"></div><div class="spark s2"></div><div class="spark s3"></div>
+    </div>
+  </section>
+</header>
+
+<main id="main" class="wrap">
+
+  <!-- 1) DISCOVERY -->
+  <section id="discover" class="card">
+    <div class="card__head">
+      <h2>1) Discovery: What is Ceremonie Story?</h2>
+      <p class="sub">Explore the roles and services. Then test your understanding.</p>
+      <p class="sub fr fr-hide" data-fr="Découvre les rôles (wedding planner, officiant, designer, etc.). Ensuite, fais les mini‑quiz.">
+        Discover the roles (wedding planner, officiant, designer, etc.). Then do the mini‑quizzes.
+      </p>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <h3 class="h3">Quick facts (for your speaking)</h3>
+        <ul class="bullets">
+          <li><strong>Place:</strong> Strasbourg (Alsace–Lorraine)</li>
+          <li><strong>Services:</strong> wedding planning, ceremony officiant, decoration & flowers, training/coaching, professional events</li>
+          <li><strong>Example venue:</strong> Château de Pourtalès (Strasbourg)</li>
+        </ul>
+        <div class="miniBtns">
+          <button class="btn" data-say="Ceremonie Story is a wedding and event team based in Strasbourg.">🔊 Who are they?</button>
+          <p>Ceremonie Story is a wedding and event team based in Strasbourg.</p>
+          <button class="btn" data-say="They can plan the wedding, design the decor, and officiate the ceremony.">🔊 What do they do?</button>
+          <p>They can plan the wedding, design the decor, and officiate the ceremony.</p>
+          <button class="btn" data-say="They sometimes work in beautiful venues such as the Château de Pourtalès.">🔊 Where do they work?</button>
+          <p>They sometimes work in beautiful venues such as the Château de Pourtalès.</p>
+        </div>
+        <p class="fine fr fr-hide" data-fr="Note: c’est une page pédagogique inspirée d’un site réel, pas une page officielle.">
+          Note: this is an educational page inspired by a real website, not an official page.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3 class="h3">Warm‑up (tap)</h3>
+        <div class="quiz" id="warmupQuiz" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <hr class="sep"/>
+
+    <h3 class="h3">Services & Roles (tap to reveal)</h3>
+    <div class="serviceGrid" id="serviceGrid" aria-live="polite"></div>
+
+    <div class="callout">
+      <div class="callout__icon" aria-hidden="true">🎯</div>
+      <div class="callout__body">
+        <h4>Speaking goal</h4>
+        <p>In 30 seconds, present the team: <strong>who they are</strong>, <strong>what they do</strong>, and <strong>where they work</strong>.</p>
+        <p class="fr fr-hide" data-fr="Objectif : en 30 secondes, présente l’équipe : qui ils sont, ce qu’ils font, et où ils travaillent.">
+          Goal: in 30 seconds, present the team: who they are, what they do, and where they work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) VOCAB -->
+  <section id="vocab" class="card">
+    <div class="card__head">
+      <h2>2) Vocabulary (with icons)</h2>
+      <p class="sub">Tap a card to flip. Use 🔊 to listen. Search to filter.</p>
+    </div>
+
+    <div class="toolbar">
+      <input id="vocabSearch" class="input" type="search" placeholder="Search: ceremony, planner, venue, schedule..." autocomplete="off" />
+      <div class="toolbar__right">
+        <button class="btn" id="btnVocabShuffle" type="button">Shuffle</button>
+        <button class="btn" id="btnVocabQuiz" type="button">Quick quiz</button>
+      </div>
+    </div>
+
+    <div class="vocabGrid" id="vocabGrid" aria-live="polite"></div>
+
+    <div class="quizRow">
+      <div class="panel">
+        <h3 class="h3">Mini‑quiz: Match the meaning</h3>
+        <div id="vocabMatch" class="quiz"></div>
+      </div>
+      <div class="panel">
+        <h3 class="h3">Mini‑quiz: Choose the best word</h3>
+        <div id="vocabMCQ" class="quiz"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) GRAMMAR -->
+  <section id="grammar" class="card">
+    <div class="card__head">
+      <h2>3) Grammar: introduce yourself + your mission</h2>
+      <p class="sub">A2 → B2 structures to present a job/title, mission, goals, and functions.</p>
+    </div>
+
+    <div class="grid3">
+      <article class="gcard">
+        <h3 class="h3">A2: simple present</h3>
+        <ul class="bullets">
+          <li>I am a <strong>wedding planner</strong>.</li>
+          <li>I work <strong>in Strasbourg</strong> / <strong>in Alsace</strong>.</li>
+          <li>We help couples <strong>plan</strong> their wedding.</li>
+        </ul>
+        <p class="fr fr-hide" data-fr="Présent simple : I am…, I work…, We help…">
+          Present simple: I am…, I work…, We help…
+        </p>
+        <button class="btn btn--ghost" data-say="Hello, I am a wedding planner. I work in Strasbourg. We help couples plan their wedding.">Try speaking 🔊</button>
+      </article>
+
+      <article class="gcard">
+        <h3 class="h3">B1: purpose + connectors</h3>
+        <ul class="bullets">
+          <li>Our mission is <strong>to create</strong> an event that fits your style.</li>
+          <li>We organise the day <strong>so you can</strong> enjoy every moment.</li>
+          <li>We coordinate suppliers <strong>because</strong> timing matters.</li>
+        </ul>
+        <button class="btn btn--ghost" data-say="Our mission is to create an event that fits your style, so you can enjoy every moment.">Try speaking 🔊</button>
+      </article>
+
+      <article class="gcard">
+        <h3 class="h3">B2: nuance + passive</h3>
+        <ul class="bullets">
+          <li>Each celebration is <strong>designed</strong> around the couple’s story.</li>
+          <li>We have <strong>been supporting</strong> clients from the first meeting to the last dance.</li>
+          <li>We aim to deliver elegance <strong>without</strong> losing authenticity.</li>
+        </ul>
+        <button class="btn btn--ghost" data-say="Each celebration is designed around the couple’s story. We have been supporting clients from the first meeting to the last dance.">Try speaking 🔊</button>
+      </article>
+    </div>
+
+    <hr class="sep"/>
+
+    <h3 class="h3">Builder: Your “professional introduction” (3 levels)</h3>
+    <p class="sub">Fill in the form, choose your level, then build your pitch.</p>
+
+    <div class="builder">
+      <div class="builder__form">
+        <label class="lbl">Your name
+          <input class="input" id="bName" type="text" placeholder="Tisha / Alex / …" />
+        </label>
+        <label class="lbl">Your title
+          <input class="input" id="bTitle" type="text" placeholder="wedding planner / event coordinator / …" />
+        </label>
+        <label class="lbl">Your place of work
+          <input class="input" id="bPlace" type="text" placeholder="Strasbourg / at the Château de Pourtalès / …" />
+        </label>
+        <label class="lbl">Your mission (keywords)
+          <input class="input" id="bMission" type="text" placeholder="create elegant weddings • reduce stress • coordinate suppliers" />
+        </label>
+
+        <div class="lvlRow">
+          <button class="chip chip--on" id="lvlA2" type="button" aria-pressed="true">A2</button>
+          <button class="chip" id="lvlB1" type="button" aria-pressed="false">B1</button>
+          <button class="chip" id="lvlB2" type="button" aria-pressed="false">B2</button>
+        </div>
+
+        <div class="builder__actions">
+          <button class="btn btn--primary" id="btnBuild" type="button">Build my pitch</button>
+          <button class="btn" id="btnRandom" type="button">Surprise me</button>
+        </div>
+      </div>
+
+      <div class="builder__out">
+        <div class="outHead">
+          <h4>Your pitch</h4>
+          <div class="outBtns">
+            <button class="btn" id="btnSpeakPitch" type="button">🔊 Speak</button>
+            <button class="btn" id="btnCopyPitch" type="button">Copy</button>
+          </div>
+        </div>
+        <textarea id="pitchBox" class="textarea" rows="8" placeholder="Your pitch will appear here…"></textarea>
+        <div class="hint fr fr-hide" data-fr="Conseil : parle à voix haute, puis enregistre-toi sur ton téléphone.">
+          Tip: speak out loud, then record yourself on your phone.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) READING -->
+  <section id="reading" class="card">
+    <div class="card__head">
+      <h2>4) Level texts: same idea, different level</h2>
+      <p class="sub">Read the 3 versions. Notice what changes (length, connectors, grammar).</p>
+    </div>
+
+    <div class="lvlRow lvlRow--wide">
+      <button class="chip chip--on" id="txtA2" type="button" aria-pressed="true">Text A2</button>
+      <button class="chip" id="txtB1" type="button" aria-pressed="false">Text B1</button>
+      <button class="chip" id="txtB2" type="button" aria-pressed="false">Text B2</button>
+      <button class="chip" id="btnCompare" type="button" aria-pressed="false">Compare A2 ↔ B2</button>
+    </div>
+
+    <div class="readingWrap" id="readingWrap" aria-live="polite"></div>
+
+    <hr class="sep"/>
+
+    <div class="grid2">
+      <div class="panel">
+        <h3 class="h3">Check 1: Find the key info</h3>
+        <div class="quiz" id="readingCheck"></div>
+      </div>
+
+      <div class="panel">
+        <h3 class="h3">Check 2: Choose the best connector</h3>
+        <div class="quiz" id="connectorCheck"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) PRACTICE -->
+  <section id="practice" class="card">
+    <div class="card__head">
+      <h2>5) Practice zone (interactive)</h2>
+      <p class="sub">Mission / goals / functions • word order • role matching • email mini‑task</p>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <h3 class="h3">A) Gap‑fill: mission & goals</h3>
+        <p class="fine">Type the missing words. Then check.</p>
+
+        <div class="gapBox" id="gapBox"></div>
+        <div class="row">
+          <button class="btn btn--primary" id="btnCheckGaps" type="button">Check</button>
+          <button class="btn" id="btnShowGaps" type="button">Show answers</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 class="h3">B) Word order (tap)</h3>
+        <p class="fine">Tap the words to build the sentence. Tap a chosen word to remove it.</p>
+        <div class="wo" id="wordOrder"></div>
+      </div>
+    </div>
+
+    <hr class="sep"/>
+
+    <div class="grid2">
+      <div class="panel">
+        <h3 class="h3">C) Match the role to the function</h3>
+        <div class="quiz" id="roleMatch"></div>
+      </div>
+
+      <div class="panel">
+        <h3 class="h3">D) Mini email (polite & professional)</h3>
+        <p class="fine">Goal: introduce the team to a client in 4–6 lines.</p>
+        <div class="emailTask">
+          <label class="lbl">Client name
+            <input class="input" id="clientName" type="text" placeholder="Marie / Paul / …" />
+          </label>
+          <label class="lbl">Event
+            <input class="input" id="clientEvent" type="text" placeholder="wedding / engagement ceremony / corporate event" />
+          </label>
+          <label class="lbl">Venue (optional)
+            <input class="input" id="clientVenue" type="text" placeholder="Château de Pourtalès / …" />
+          </label>
+          <button class="btn btn--primary" id="btnMakeEmail" type="button">Generate email</button>
+          <textarea id="emailOut" class="textarea" rows="8" placeholder="Your email will appear here…"></textarea>
+          <div class="row">
+            <button class="btn" id="btnSpeakEmail" type="button">🔊 Speak</button>
+            <button class="btn" id="btnCopyEmail" type="button">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6) FINAL -->
+  <section id="final" class="card">
+    <div class="card__head">
+      <h2>6) Final task: the 30‑second pitch + role‑play</h2>
+      <p class="sub">Choose your level and deliver your pitch. Then do a short client call simulation.</p>
+    </div>
+
+    <div class="finalGrid">
+      <div class="panel">
+        <h3 class="h3">30‑second pitch (timer)</h3>
+        <p class="fine">Press start, speak, then stop. Try again with a higher level.</p>
+
+        <div class="timer">
+          <div class="timer__num" id="timerNum">00:30</div>
+          <div class="timer__btns">
+            <button class="btn btn--primary" id="timerStart" type="button">Start</button>
+            <button class="btn" id="timerStop" type="button">Stop</button>
+            <button class="btn" id="timerReset" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div class="scriptBox">
+          <h4 class="h4">Suggested structure</h4>
+          <ol class="steps">
+            <li>Who you are (name + title)</li>
+            <li>Where you work (city / region / venue)</li>
+            <li>What you do (3 services)</li>
+            <li>Mission + promise (stress‑free, elegant, on‑time)</li>
+          </ol>
+          <p class="fr fr-hide" data-fr="Structure : qui tu es, où tu travailles, ce que tu fais, mission/promesse.">
+            Structure: who you are, where you work, what you do, mission/promise.
+          </p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 class="h3">Client call: choose your reply</h3>
+        <div class="quiz" id="rolePlay"></div>
+      </div>
+    </div>
+
+    <div class="footerNote">
+      <p><strong>Note:</strong> You can reuse this page for any company/team profile: replace roles, mission, and place of work.</p>
+      <p class="fine">Not affiliated with Ceremonie Story. Educational use only.</p>
+    </div>
+  </section>
+
+  <footer class="siteFooter">
+    <div class="siteFooter__left">
+      <div class="smallBrand">💍 SpeakEasyTisha</div>
+      <div class="fine">Interactive lesson page • A2→B2 • Touch‑friendly (iPad/Mac)</div>
+    </div>
+    <div class="siteFooter__right">
+      <a href="#top" class="topLink">↑ Back to top</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="/js/ceremonie-story-discovery.js"></script>
+</body>
+</html>
