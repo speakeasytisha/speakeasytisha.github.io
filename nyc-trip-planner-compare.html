@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • NYC Trip Planner (Compare + Speak)</title>
+  <link rel="stylesheet" href="/css/nyc-trip-planner-compare.css" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">🗽</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">Interactive lesson • Plan an amazing NYC trip • compare “to die for” vs “depends” vs “tourist‑trappy”</div>
+      </div>
+    </div>
+
+    <div class="topbar__actions">
+      <button class="btn btn--ghost" id="btnPrint" type="button" title="Print">🖨️ Print</button>
+
+      <div class="pill" role="group" aria-label="Accent selection">
+        <span class="pill__label">Accent</span>
+        <label class="pill__opt"><input type="radio" name="accent" value="us" checked> US</label>
+        <label class="pill__opt"><input type="radio" name="accent" value="uk"> UK</label>
+      </div>
+
+      <button class="btn btn--ghost" id="btnReset" type="button" title="Reset">↻ Reset</button>
+    </div>
+  </div>
+
+  <nav class="navchips" aria-label="Lesson navigation">
+    <a class="chip" href="#s1">1) Start</a>
+    <a class="chip" href="#s2">2) NYC Places</a>
+    <a class="chip" href="#s25">3) NYC vibe + “accent”</a>
+    <a class="chip" href="#s3">4) Grammar tools</a>
+    <a class="chip" href="#s4">5) Verbs</a>
+    <a class="chip" href="#s5">6) Situations</a>
+    <a class="chip" href="#s6">7) Negotiate</a>
+    <a class="chip" href="#s7">8) Errors</a>
+    <a class="chip" href="#s8">9) Phrase bank</a>
+    <a class="chip" href="#s9">10) Speak</a>
+    <a class="chip" href="#s10">11) Wrap‑up</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Plan an Amazing NYC Trip (with a partner or friend)</h1>
+    <p class="lead">You’ll compare attractions using <b>pros/cons</b>, build a simple itinerary, and practise <b>requests</b>, <b>suggestions</b>, <b>obligation</b>, and <b>polite disagreement</b> — with NYC‑specific vocabulary and “New York vibe” language.</p>
+
+    <div class="meta">
+      <span class="tag">⏱️ ~60–75 min</span>
+      <span class="tag">✅ Instant feedback • Hints • Score</span>
+      <span class="tag">🔊 US/UK audio</span>
+      <span class="tag">📱 Touch‑friendly</span>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h2>What you will be able to do</h2>
+        <ul>
+          <li>Compare places using pros/cons + connectors (<b>however</b>, <b>moreover</b>, <b>therefore</b>…)</li>
+          <li>Negotiate politely: compromise, soften, and disagree nicely</li>
+          <li>Use travel English for requests: <b>Could you…?</b> <b>Would you mind + -ing?</b></li>
+          <li>Use obligation correctly: <b>have to / must / don’t have to / mustn’t</b></li>
+          <li>Describe what makes NYC special (culture, neighborhoods, food, energy)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Progress</h2>
+        <div class="prog">
+          <div class="prog__row">
+            <div class="prog__label">Progress</div>
+            <div class="prog__bar" aria-label="Progress bar"><div id="barProgress" class="prog__fill" style="width:0%"></div></div>
+            <div class="prog__pct" id="pctProgress">0%</div>
+          </div>
+          <div class="prog__row">
+            <div class="prog__label">Score</div>
+            <div class="score"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+          </div>
+          <div class="prog__row">
+            <div class="prog__label">Streak</div>
+            <div class="streak" id="streakNow">0</div>
+          </div>
+        </div>
+
+        <div class="hintbox" id="globalHint" aria-live="polite">
+          <div class="hintbox__head">
+            <div class="hintbox__title">Hint</div>
+            <div class="hintbox__actions">
+              <button class="btn btn--tiny btn--ghost" id="btnSpeakSelection" type="button">🔊 Speak selection</button>
+            </div>
+          </div>
+          <div class="hintbox__body" id="hintText">Use 💡 inside an activity for a local hint.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1) START -->
+  <section class="section card" id="s1">
+    <h2>1) Start — plan the discussion</h2>
+    <p class="sub">Goal: compare calmly, then decide.</p>
+
+    <div class="grid2">
+      <div class="box">
+        <h3>Mini mission (pair work)</h3>
+        <ol class="ol">
+          <li>Pick <b>2–3 places</b> from the board.</li>
+          <li>For each place: <b>2 advantages</b> + <b>1 drawback</b>.</li>
+          <li>Decide a <b>3–5 day plan</b> and explain why.</li>
+        </ol>
+        <div class="row">
+          <button class="btn" id="btnStartDone" type="button">✅ Done</button>
+          <button class="btn btn--ghost" id="btnStartHint" type="button">💡 Helpful connectors</button>
+        </div>
+        <div class="hint hint--mini" id="hintStart" hidden><strong>Hint</strong><div class="t"></div></div>
+      </div>
+
+      <div class="box">
+        <h3>Why NYC is so great (quick brainstorming)</h3>
+        <p class="small muted">Tap ideas to build a strong “NYC is great because…” answer.</p>
+        <div class="chips" id="nycGreatChips"></div>
+        <div class="out">
+          <div class="out__head">Your sentence</div>
+          <textarea id="nycGreatOut" class="ta" rows="4" placeholder="NYC is great because…"></textarea>
+          <div class="row">
+            <button class="btn btn--ghost" id="btnNYCGreatSpeak" type="button">🔊 Speak it</button>
+            <button class="btn btn--ghost" id="btnNYCGreatCopy" type="button">📋 Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) NYC PLACES -->
+  <section class="section card" id="s2">
+    <h2>2) NYC Places — to die for vs depends vs tourist‑trappy</h2>
+    <p class="sub">Filter, compare, and add places to your plan. (Tap a place to read the description.)</p>
+
+    <div class="toolbar">
+      <div class="pill">
+        <span class="pill__label">Filter</span>
+        <select class="select" id="placeFilter">
+          <option value="all" selected>All</option>
+          <option value="amazing">⭐ To die for</option>
+          <option value="depends">⚠️ Depends</option>
+          <option value="tourist">🧨 Tourist‑trappy</option>
+        </select>
+      </div>
+
+      <div class="tagsbar">
+        <span class="muted2 small">Tap tags:</span>
+        <div class="tagchips" id="tagChips"></div>
+      </div>
+
+      <div class="toolbar__actions">
+        <button class="btn btn--ghost" id="btnPlacesHint" type="button">💡 How to compare</button>
+        <button class="btn btn--ghost" id="btnPlacesCheck" type="button">✅ Check board</button>
+      </div>
+    </div>
+
+    <div class="hint" id="hintPlaces" hidden><strong>Hint</strong><div class="t"></div></div>
+
+    <div class="board">
+      <div class="col">
+        <div class="col__head">⭐ To die for</div>
+        <div class="col__sub">High value: iconic + enjoyable.</div>
+        <div class="col__body" id="colAmazing"></div>
+      </div>
+
+      <div class="col">
+        <div class="col__head">⚠️ Depends</div>
+        <div class="col__sub">Good, but pricey / crowded / niche.</div>
+        <div class="col__body" id="colDepends"></div>
+      </div>
+
+      <div class="col">
+        <div class="col__head">🧨 Tourist‑trappy</div>
+        <div class="col__sub">Often overpriced / stressful / scammy.</div>
+        <div class="col__body" id="colTourist"></div>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="grid2">
+      <div class="box">
+        <h3>French traps to watch</h3>
+        <ul class="ul">
+          <li><span class="kbd">I propose you to…</span> ❌ → <span class="kbd">I suggest + -ing</span> ✅</li>
+          <li><span class="kbd">I am agree</span> ❌ → <span class="kbd">I agree</span> ✅</li>
+          <li><span class="kbd">In the contrary</span> ❌ → <span class="kbd">On the contrary</span> ✅</li>
+          <li><span class="kbd">In the subway</span> (ok) but NYC often says <span class="kbd">on the subway</span> in casual speech</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h3>Your plan (places you chose)</h3>
+        <div class="planList" id="planList"></div>
+
+        <div class="row" style="margin-top:10px;">
+          <button class="btn" id="btnPlanBuild" type="button">🧩 Build itinerary</button>
+          <button class="btn btn--ghost" id="btnPlanClear" type="button">🗑️ Clear</button>
+        </div>
+
+        <div class="out" style="margin-top:10px;">
+          <div class="out__head">Itinerary draft (copy/paste)</div>
+          <textarea id="planOut" class="ta" rows="9" placeholder="Your itinerary will appear here…"></textarea>
+          <div class="row">
+            <button class="btn btn--ghost" id="btnPlanCopy" type="button">📋 Copy</button>
+            <button class="btn btn--ghost" id="btnPlanSpeak" type="button">🔊 Speak it</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lessonBox" id="placesExplain" hidden></div>
+  </section>
+
+  <!-- 3) NYC VIBE / "ACCENT" -->
+  <section class="section card" id="s25">
+    <h2>3) NYC vibe + “accent” (street English)</h2>
+    <p class="sub">You won’t sound “fake New York” — you’ll sound <b>natural</b>: rhythm, shortcuts, and NYC vocabulary.</p>
+
+    <div class="grid2">
+      <div class="box">
+        <h3>NYC vocabulary that makes you sound local</h3>
+        <div class="vocabGrid" id="nycVocabGrid"></div>
+        <div class="row">
+          <button class="btn btn--ghost" id="btnVocabQuiz" type="button">🧠 Quick quiz</button>
+          <button class="btn btn--ghost" id="btnVocabHint" type="button">💡 Tip</button>
+        </div>
+        <div class="hint hint--mini" id="hintVocab" hidden><strong>Hint</strong><div class="t"></div></div>
+        <div class="quizBox" id="vocabQuiz" hidden></div>
+      </div>
+
+      <div class="box">
+        <h3>NYC rhythm (not a real accent tool, but super useful)</h3>
+        <p class="small muted">Tap a line to hear it. Notice: shorter words, strong stress, friendly speed.</p>
+        <div class="lines" id="nycLines"></div>
+        <div class="row">
+          <button class="btn btn--ghost" id="btnNYCLineHint" type="button">💡 How to sound natural</button>
+          <button class="btn btn--ghost" id="btnNYCLinePractice" type="button">🎤 Practice script</button>
+        </div>
+        <div class="hint hint--mini" id="hintNYCLine" hidden><strong>Hint</strong><div class="t"></div></div>
+        <div class="out" style="margin-top:10px;">
+          <div class="out__head">Mini script (repeat + personalize)</div>
+          <textarea id="nycScriptOut" class="ta" rows="6"></textarea>
+          <div class="row">
+            <button class="btn btn--ghost" id="btnNYCScriptSpeak" type="button">🔊 Speak</button>
+            <button class="btn btn--ghost" id="btnNYCScriptCopy" type="button">📋 Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) GRAMMAR TOOLS -->
+  <section class="section card" id="s3">
+    <h2>4) Grammar tools — compare, suggest, request, oblige</h2>
+    <p class="sub">The formulas you’ll reuse all lesson. Do the mini exercises for instant feedback.</p>
+
+    <div class="grid2">
+      <div class="box">
+        <h3>A) Suggest (natural English)</h3>
+        <p class="small">Choose the best option.</p>
+
+        <div class="q">
+          <div class="q__prompt">1) I suggest ____ to Brooklyn early.</div>
+          <div class="opts" data-qid="g_suggest_1">
+            <button class="opt" data-ans="wrong">to go</button>
+            <button class="opt" data-ans="right">going</button>
+            <button class="opt" data-ans="wrong">go</button>
+          </div>
+          <div class="fb" data-fb="g_suggest_1"></div>
+        </div>
+
+        <div class="q">
+          <div class="q__prompt">2) ____ trying a bodega breakfast?</div>
+          <div class="opts" data-qid="g_suggest_2">
+            <button class="opt" data-ans="wrong">Why we don’t</button>
+            <button class="opt" data-ans="right">How about</button>
+            <button class="opt" data-ans="wrong">I propose you</button>
+          </div>
+          <div class="fb" data-fb="g_suggest_2"></div>
+        </div>
+
+        <div class="row">
+          <button class="btn btn--ghost" id="btnSuggestHint" type="button">💡 Hint</button>
+          <button class="btn" id="btnSuggestDone" type="button">✅ Mark complete</button>
+        </div>
+        <div class="hint hint--mini" id="hintSuggest" hidden><strong>Hint</strong><div class="t"></div></div>
+      </div>
+
+      <div class="box">
+        <h3>B) Obligations (must / have to / don’t have to / mustn’t)</h3>
+
+        <div class="q">
+          <div class="q__prompt">1) You ____ tap your MetroCard/phone before you enter.</div>
+          <div class="opts" data-qid="g_ob_1">
+            <button class="opt" data-ans="wrong">don’t have to</button>
+            <button class="opt" data-ans="right">have to</button>
+            <button class="opt" data-ans="wrong">mustn’t</button>
+          </div>
+          <div class="fb" data-fb="g_ob_1"></div>
+        </div>
+
+        <div class="q">
+          <div class="q__prompt">2) You ____ smoke in the subway. (rule)</div>
+          <div class="opts" data-qid="g_ob_2">
+            <button class="opt" data-ans="wrong">don’t have to</button>
+            <button class="opt" data-ans="wrong">must</button>
+            <button class="opt" data-ans="right">mustn’t</button>
+          </div>
+          <div class="fb" data-fb="g_ob_2"></div>
+        </div>
+
+        <div class="row">
+          <button class="btn btn--ghost" id="btnObHint" type="button">💡 Hint</button>
+          <button class="btn" id="btnObDone" type="button">✅ Mark complete</button>
+        </div>
+        <div class="hint hint--mini" id="hintOb" hidden><strong>Hint</strong><div class="t"></div></div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:12px;">
+      <div class="box">
+        <h3>C) Compare (better/worse + because / whereas / however)</h3>
+        <p class="small">Complete the sentence (tap the best connector).</p>
+
+        <div class="q">
+          <div class="q__prompt">Central Park is better than Times Square ____ it’s calmer.</div>
+          <div class="opts" data-qid="g_comp_1">
+            <button class="opt" data-ans="wrong">however</button>
+            <button class="opt" data-ans="right">because</button>
+            <button class="opt" data-ans="wrong">whereas</button>
+          </div>
+          <div class="fb" data-fb="g_comp_1"></div>
+        </div>
+
+        <div class="q">
+          <div class="q__prompt">The ferry is free, ____ the observation deck is expensive.</div>
+          <div class="opts" data-qid="g_comp_2">
+            <button class="opt" data-ans="wrong">therefore</button>
+            <button class="opt" data-ans="right">whereas</button>
+            <button class="opt" data-ans="wrong">because</button>
+          </div>
+          <div class="fb" data-fb="g_comp_2"></div>
+        </div>
+
+        <div class="row">
+          <button class="btn btn--ghost" id="btnCompHint" type="button">💡 Hint</button>
+          <button class="btn" id="btnCompDone" type="button">✅ Mark complete</button>
+        </div>
+        <div class="hint hint--mini" id="hintComp" hidden><strong>Hint</strong><div class="t"></div></div>
+      </div>
+
+      <div class="box">
+        <h3>D) Polite requests (hotel + restaurant)</h3>
+        <p class="small">Put the words in order (tap to build a sentence).</p>
+
+        <div class="builder" data-builder="req1">
+          <div class="builder__prompt">1) Ask politely for a later check‑out.</div>
+          <div class="builder__bank" id="bank_req1"></div>
+          <div class="builder__out" id="out_req1"></div>
+          <div class="row">
+            <button class="btn" data-check="req1" type="button">✅ Check</button>
+            <button class="btn btn--ghost" data-reset="req1" type="button">↻ Reset</button>
+            <button class="btn btn--ghost" data-hint="req1" type="button">💡 Hint</button>
+            <button class="btn btn--ghost" data-reveal="req1" type="button">👀 Reveal</button>
+          </div>
+          <div class="fb" id="fb_req1"></div>
+          <div class="hint hint--mini" id="hint_req1" hidden><strong>Hint</strong><div class="t"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) VERBS -->
+  <section class="section card" id="s4">
+    <h2>5) Verbs — travel + debate</h2>
+    <p class="sub">Book, suggest, argue, hedge… Tap the correct verb.</p>
+
+    <div class="grid2">
+      <div class="box">
+        <h3>Verb chooser</h3>
+        <div id="verbQuiz"></div>
+        <div class="row">
+          <button class="btn btn--ghost" id="btnVerbHint" type="button">💡 Hint</button>
+          <button class="btn" id="btnVerbDone" type="button">✅ Mark complete</button>
+        </div>
+        <div class="hint hint--mini" id="hintVerb" hidden><strong>Hint</strong><div class="t"></div></div>
+      </div>
+
+      <div class="box">
+        <h3>Mini speaking task</h3>
+        <p class="small muted">Choose 3 verbs and make 3 sentences about NYC.</p>
+        <div class="chips" id="verbChips"></div>
+        <textarea class="ta" id="verbSpeakOut" rows="5" placeholder="Use your verbs here…"></textarea>
+        <div class="row">
+          <button class="btn btn--ghost" id="btnVerbSpeak" type="button">🔊 Speak</button>
+          <button class="btn btn--ghost" id="btnVerbCopy" type="button">📋 Copy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6) SITUATIONS -->
+  <section class="section card" id="s5">
+    <h2>6) Situations — real travel scenarios</h2>
+    <p class="sub">Subway • hotel • restaurant • disagreement. Click “New scenario”, then speak together.</p>
+
+    <div class="grid2">
+      <div class="box">
+        <h3>Scenario generator (roleplay)</h3>
+        <div class="row">
+          <button class="btn" id="btnScenario" type="button">🎲 New scenario</button>
+          <button class="btn btn--ghost" id="btnScenarioHint" type="button">💡 Required phrases</button>
+        </div>
+        <div class="hint hint--mini" id="hintScenario" hidden><strong>Hint</strong><div class="t"></div></div>
+
+        <div class="scenario" id="scenarioOut" aria-live="polite"></div>
+
+        <div class="small muted2" style="margin-top:10px;">
+          Try to include: <span class="kbd">Could you…?</span> <span class="kbd">We could…</span> <span class="kbd">One drawback is…</span> <span class="kbd">Overall…</span>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Quick “what would you say?”</h3>
+        <div id="sayQuiz"></div>
+        <div class="row">
+          <button class="btn btn--ghost" id="btnSayHint" type="button">💡 Hint</button>
+          <button class="btn" id="btnSayDone" type="button">✅ Mark complete</button>
+        </div>
+        <div class="hint hint--mini" id="hintSay" hidden><strong>Hint</strong><div class="t"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7) NEGOTIATE -->
+  <section class="section card" id="s6">
+    <h2>7) Negotiate — compromise + polite tone</h2>
+    <p class="sub">Build a compromise sentence, then soften your tone.</p>
+
+    <div class="grid2">
+      <div class="box">
+        <h3>Compromise builder</h3>
+
+        <div class="pill" style="margin-bottom:10px;">
+          <span class="pill__label">Choose</span>
+          <select class="select" id="negTopic">
+            <option value="deck">Observation deck vs budget</option>
+            <option value="broadway">Broadway vs free activities</option>
+            <option value="museum">Museum vs outdoor day</option>
+          </select>
+        </div>
+
+        <div class="negGrid">
+          <label class="pill">
+            <span class="pill__label">Starter</span>
+            <select class="select" id="negA"></select>
+          </label>
+          <label class="pill">
+            <span class="pill__label">Concession</span>
+            <select class="select" id="negB"></select>
+          </label>
+          <label class="pill">
+            <span class="pill__label">Compromise</span>
+            <select class="select" id="negC"></select>
+          </label>
+        </div>
+
+        <div class="out">
+          <div class="out__head">Your compromise</div>
+          <textarea class="ta" id="negOut" rows="4"></textarea>
+          <div class="row">
+            <button class="btn" id="btnNegCheck" type="button">✅ Check</button>
+            <button class="btn btn--ghost" id="btnNegReveal" type="button">👀 Reveal model</button>
+            <button class="btn btn--ghost" id="btnNegHint" type="button">💡 Hint</button>
+          </div>
+          <div class="fb" id="fbNeg"></div>
+          <div class="hint hint--mini" id="hintNeg" hidden><strong>Hint</strong><div class="t"></div></div>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Soften the tone</h3>
+        <p class="small muted">Make it polite: add “maybe”, “I feel”, “Would you be okay with…?”</p>
+
+        <div class="toneRow">
+          <textarea class="ta" id="toneIn" rows="3" placeholder="Write a direct sentence (a bit too strong)…"></textarea>
+          <div class="row">
+            <button class="btn" id="btnToneSoften" type="button">✨ Soften</button>
+            <button class="btn btn--ghost" id="btnToneHint" type="button">💡 Hint</button>
+          </div>
+          <div class="hint hint--mini" id="hintTone" hidden><strong>Hint</strong><div class="t"></div></div>
+
+          <div class="out" style="margin-top:10px;">
+            <div class="out__head">Polite version</div>
+            <textarea class="ta" id="toneOut" rows="4"></textarea>
+            <div class="row">
+              <button class="btn btn--ghost" id="btnToneSpeak" type="button">🔊 Speak</button>
+              <button class="btn btn--ghost" id="btnToneCopy" type="button">📋 Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8) ERRORS -->
+  <section class="section card" id="s7">
+    <h2>8) Errors — fix the sentence</h2>
+    <p class="sub">Typical mistakes (especially for French speakers) in travel planning + debate.</p>
+
+    <div class="errors" id="errorsBox"></div>
+
+    <div class="row" style="margin-top:10px;">
+      <button class="btn btn--ghost" id="btnErrorsHint" type="button">💡 Hint</button>
+      <button class="btn" id="btnErrorsDone" type="button">✅ Mark complete</button>
+    </div>
+    <div class="hint hint--mini" id="hintErrors" hidden><strong>Hint</strong><div class="t"></div></div>
+  </section>
+
+  <!-- 9) PHRASE BANK -->
+  <section class="section card" id="s8">
+    <h2>9) Phrase bank + itinerary builder</h2>
+    <p class="sub">Use the accordion + build a real plan.</p>
+
+    <div class="grid2">
+      <div class="box">
+        <h3>Phrase bank (tap to copy)</h3>
+        <div class="accordion" id="phraseAcc"></div>
+      </div>
+
+      <div class="box">
+        <h3>Build an itinerary</h3>
+
+        <div class="builderRow">
+          <label class="pill">
+            <span class="pill__label">Days</span>
+            <select class="select" id="itDays">
+              <option>3</option><option>4</option><option selected>5</option><option>7</option>
+            </select>
+          </label>
+
+          <label class="pill">
+            <span class="pill__label">Style</span>
+            <select class="select" id="itStyle">
+              <option selected>Balanced</option>
+              <option>Romantic</option>
+              <option>Nature + parks</option>
+              <option>Culture + museums</option>
+              <option>Foodie</option>
+              <option>Budget</option>
+            </select>
+          </label>
+
+          <label class="pill">
+            <span class="pill__label">Companion</span>
+            <select class="select" id="itComp">
+              <option selected>Partner</option>
+              <option>Friend</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="row">
+          <button class="btn" id="btnItBuild" type="button">🧱 Build</button>
+          <button class="btn btn--ghost" id="btnItHint" type="button">💡 Hint</button>
+        </div>
+        <div class="hint hint--mini" id="hintIt" hidden><strong>Hint</strong><div class="t"></div></div>
+
+        <div class="out" style="margin-top:10px;">
+          <div class="out__head">Your itinerary</div>
+          <textarea class="ta" id="itOut" rows="10"></textarea>
+          <div class="row">
+            <button class="btn btn--ghost" id="btnItCopy" type="button">📋 Copy</button>
+            <button class="btn btn--ghost" id="btnItSpeak" type="button">🔊 Speak</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10) SPEAK -->
+  <section class="section card" id="s9">
+    <h2>10) Speak — short guided answers</h2>
+    <p class="sub">Tap “Model answer” then personalize.</p>
+
+    <div class="speakGrid" id="speakGrid"></div>
+  </section>
+
+  <!-- 11) WRAP-UP -->
+  <section class="section card" id="s10">
+    <h2>11) Wrap‑up — final check + templates</h2>
+    <p class="sub">Finish the mini test and keep the templates.</p>
+
+    <div class="grid2">
+      <div class="box">
+        <h3>Mini check</h3>
+        <div id="wrapQuiz"></div>
+        <div class="row">
+          <button class="btn" id="btnWrapDone" type="button">✅ Mark complete</button>
+          <button class="btn btn--ghost" id="btnWrapHint" type="button">💡 Hint</button>
+        </div>
+        <div class="hint hint--mini" id="hintWrap" hidden><strong>Hint</strong><div class="t"></div></div>
+      </div>
+
+      <div class="box">
+        <h3>Cheat sheet (copy/paste)</h3>
+        <div class="cheat">
+          <h4>Compare</h4>
+          <p><span class="kbd">On the one hand…</span> <span class="kbd">on the other hand…</span></p>
+
+          <h4>Pros/cons</h4>
+          <p><span class="kbd">One advantage is that…</span> <span class="kbd">One drawback is that…</span></p>
+
+          <h4>Suggest</h4>
+          <p><span class="kbd">How about + -ing?</span> <span class="kbd">We could…</span> <span class="kbd">Why don’t we…?</span></p>
+
+          <h4>Obligation</h4>
+          <p><span class="kbd">have to</span> • <span class="kbd">must</span> • <span class="kbd">don’t have to</span> • <span class="kbd">mustn’t</span></p>
+
+          <h4>Polite request</h4>
+          <p><span class="kbd">Could you…?</span> <span class="kbd">Would you mind + -ing?</span> <span class="kbd">Is it possible to…?</span></p>
+
+          <h4>Conclusion</h4>
+          <p><span class="kbd">Overall, I think… because…</span></p>
+
+          <div class="row" style="margin-top:10px;">
+            <button class="btn btn--ghost" id="btnCheatCopy" type="button">📋 Copy</button>
+            <button class="btn btn--ghost" id="btnCheatSpeak" type="button">🔊 Speak</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="finalTask">
+      <strong>Final task:</strong> Present your itinerary (60–90 seconds) and justify it with <b>2 advantages</b> + <b>1 drawback</b>.
+      <div class="small muted2">Tip: Use <span class="kbd">however</span>, <span class="kbd">whereas</span>, <span class="kbd">overall</span> to sound advanced.</div>
+    </div>
+
+    <div class="backTop"><a class="chip" href="#top">↑ Back to top</a></div>
+  </section>
+</main>
+
+<footer class="footer">
+  SpeakEasyTisha • NYC Trip Planner • compare + debate + travel scenarios
+</footer>
+
+<script src="/js/nyc-trip-planner-compare.js"></script>
+</body>
+</html>
