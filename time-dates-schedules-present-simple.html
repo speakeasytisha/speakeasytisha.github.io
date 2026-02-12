@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Time, Dates, Numbers & Schedules (Present Simple)</title>
+  <link rel="stylesheet" href="/css/time-dates-schedules-present-simple.css" />
+  <meta name="theme-color" content="#0f766e" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand" role="banner">
+      <div class="brand__mark" aria-hidden="true">🗓️</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Time • Dates • Numbers • Schedules (Present Simple)</div>
+      </div>
+    </div>
+
+    <nav class="tabs" aria-label="Lesson sections">
+      <button class="tab is-active" data-tab="vocab" type="button">1) Vocabulary</button>
+      <button class="tab" data-tab="grammar" type="button">2) Present Simple</button>
+      <button class="tab" data-tab="practice" type="button">3) Practice</button>
+      <button class="tab" data-tab="planner" type="button">4) Planner</button>
+    </nav>
+
+    <div class="topbar__actions">
+      <div class="chipgroup" role="group" aria-label="Accent">
+        <button class="chip is-active" id="accentUS" type="button" title="American accent">US</button>
+        <button class="chip" id="accentUK" type="button" title="British accent">UK</button>
+      </div>
+      <button class="btn btn--ghost" id="btnPrint" type="button" title="Print this lesson">🖨️ Print</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero" aria-label="Lesson overview">
+    <div class="hero__card">
+      <h1>Tell the time. Say the date. Plan a schedule.</h1>
+      <p class="lead">
+        Learn to talk about <strong>routines & timetables</strong> using the <strong>present simple</strong>.
+        Tap cards, listen, answer quizzes, and build your weekly plan.
+      </p>
+
+      <div class="hero__grid">
+        <div class="mini">
+          <div class="mini__icon" aria-hidden="true">⏰</div>
+          <div class="mini__title">Time</div>
+          <div class="mini__text">o’clock • half past • quarter to • at 7:15</div>
+        </div>
+        <div class="mini">
+          <div class="mini__icon" aria-hidden="true">📅</div>
+          <div class="mini__title">Dates</div>
+          <div class="mini__text">months • ordinals • US/UK formats</div>
+        </div>
+        <div class="mini">
+          <div class="mini__icon" aria-hidden="true">🔢</div>
+          <div class="mini__title">Numbers</div>
+          <div class="mini__text">0–100 dictation • phone • prices • years</div>
+        </div>
+        <div class="mini">
+          <div class="mini__icon" aria-hidden="true">❓</div>
+          <div class="mini__title">WH Questions</div>
+          <div class="mini__text">what • when • where • why • how… (EN→FR)</div>
+        </div>
+      </div>
+
+      <div class="hero__row">
+        <div class="chipgroup" role="group" aria-label="Level">
+          <button class="chip is-active" id="lvlA1" type="button">A1</button>
+          <button class="chip" id="lvlA2" type="button">A2</button>
+        </div>
+        <div class="muted small">Tip: A1 gives more hints; A2 gives faster drills + fewer clues.</div>
+      </div>
+    </div>
+
+    <div class="hero__art" aria-hidden="true">
+      <div class="petal p1"></div>
+      <div class="petal p2"></div>
+      <div class="petal p3"></div>
+      <div class="petal p4"></div>
+      <div class="petal p5"></div>
+      <div class="petal p6"></div>
+    </div>
+  </section>
+
+  <!-- ===================== VOCAB ===================== -->
+  <section class="panel is-active" id="tab-vocab">
+    <div class="panel__head">
+      <h2>1) Vocabulary (tap cards + listen)</h2>
+      <p class="muted">Tap a card to flip EN ⇄ FR. Use search + filters. Hit 🔊 to listen (US/UK).</p>
+    </div>
+
+    <div class="controls">
+      <div class="field">
+        <label for="vocabSearch">Search</label>
+        <input id="vocabSearch" type="search" placeholder="Type: quarter, Monday, when, schedule..." autocomplete="off" />
+      </div>
+
+      <div class="field">
+        <label for="vocabCat">Category</label>
+        <select id="vocabCat">
+          <option value="all">All</option>
+          <option value="time">⏰ Time</option>
+          <option value="days">📆 Days</option>
+          <option value="months">🗓️ Months</option>
+          <option value="dates">📅 Dates & Ordinals</option>
+          <option value="numbers">🔢 Numbers & Years</option>
+          <option value="planning">🧩 Planning & organizing</option>
+          <option value="wh">❓ WH words</option>
+        </select>
+      </div>
+
+      <div class="field field--row">
+        <button class="btn" id="btnShuffleVocab" type="button">🔀 Shuffle</button>
+        <button class="btn btn--ghost" id="btnResetVocab" type="button">↩︎ Reset</button>
+      </div>
+    </div>
+
+    <div class="vocabGrid" id="vocabGrid" aria-live="polite"></div>
+
+    <div class="subcard">
+      <h3>WH words (EN → FR)</h3>
+      <p class="muted">Ask questions in the present simple. Tap 🔊 to listen.</p>
+      <div class="tableWrap">
+        <table class="table" aria-label="WH words table">
+          <thead>
+            <tr>
+              <th>WH word</th>
+              <th>French</th>
+              <th>Example (present simple)</th>
+              <th>🔊</th>
+            </tr>
+          </thead>
+          <tbody id="whTable"></tbody>
+        </table>
+      </div>
+
+      <div class="miniGame">
+        <div class="miniGame__head">
+          <h4>Mini game: Match (tap)</h4>
+          <div class="miniGame__actions">
+            <button class="btn btn--ghost" id="whHint" type="button">💡 Hint</button>
+            <button class="btn" id="whNew" type="button">🔄 New</button>
+          </div>
+        </div>
+        <p class="muted">Tap an English WH word, then tap the French translation.</p>
+        <div class="matchGrid">
+          <div class="matchCol" id="whEN"></div>
+          <div class="matchCol" id="whFR"></div>
+        </div>
+        <div class="feedback" id="whFb" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GRAMMAR ===================== -->
+  <section class="panel" id="tab-grammar">
+    <div class="panel__head">
+      <h2>2) Present Simple (routines & schedules)</h2>
+      <p class="muted">Only present simple on this page. Practice: affirmative, negative, questions + WH words.</p>
+    </div>
+
+    <div class="grid2">
+      <article class="card">
+        <h3>Form</h3>
+        <ul class="bullets">
+          <li><strong>Affirmative:</strong> I/You/We/They <em>work</em>. He/She/It <em>works</em>.</li>
+          <li><strong>Negative:</strong> I/You/We/They <em>do not (don’t)</em> work. He/She/It <em>does not (doesn’t)</em> work.</li>
+          <li><strong>Questions:</strong> <em>Do</em> you work? <em>Does</em> she work? + WH: <em>Where</em> do you work?</li>
+          <li><strong>Time phrases:</strong> <em>at</em> 7:15 • <em>on</em> Monday • <em>in</em> March • <em>every</em> day</li>
+        </ul>
+        <div class="chipline" id="timeChips" aria-label="Useful schedule phrases"></div>
+      </article>
+
+      <article class="card">
+        <h3>Question builder (tap)</h3>
+        <p class="muted">Tap words to build a correct question.</p>
+
+        <div class="builder">
+          <div class="builder__row" id="qBuildBank" aria-label="Tap words to build a question"></div>
+          <div class="builder__out">
+            <div class="builder__label">Your question</div>
+            <div class="builder__sentence" id="qBuildOut" aria-live="polite"></div>
+          </div>
+
+          <div class="builder__actions">
+            <button class="btn" id="qBuildCheck" type="button">✅ Check</button>
+            <button class="btn btn--ghost" id="qBuildHint" type="button">💡 Hint</button>
+            <button class="btn btn--ghost" id="qBuildClear" type="button">🧽 Clear</button>
+            <button class="btn btn--ghost" id="qBuildSpeak" type="button">🔊 Listen</button>
+          </div>
+
+          <div class="feedback" id="qBuildFb" role="status" aria-live="polite"></div>
+        </div>
+      </article>
+    </div>
+
+    <article class="subcard">
+      <h3>Mini drill: do / does (tap)</h3>
+      <p class="muted">Tap the correct auxiliary for each question. Use Hint if needed.</p>
+
+      <div class="drill" id="doDoesDrill"></div>
+
+      <div class="row">
+        <button class="btn" id="doDoesCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="doDoesHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="doDoesNew" type="button">🔄 New</button>
+      </div>
+      <div class="feedback" id="doDoesFb" role="status" aria-live="polite"></div>
+    </article>
+  </section>
+
+  <!-- ===================== PRACTICE ===================== -->
+  <section class="panel" id="tab-practice">
+    <div class="panel__head">
+      <h2>3) Practice zone (interactive)</h2>
+      <p class="muted">Time • dates • numbers • schedules — with hints and instant feedback.</p>
+    </div>
+
+    <div class="grid2">
+      <article class="card">
+        <h3>⏰ Time trainer</h3>
+        <p class="muted">Choose the correct answer. Tap 🔊 to hear it.</p>
+
+        <div class="quiz">
+          <div class="quiz__prompt">
+            <div class="big" id="timePrompt">—</div>
+            <div class="quiz__row">
+              <button class="btn btn--ghost" id="timeSpeak" type="button">🔊 Hear</button>
+              <button class="btn btn--ghost" id="timeHint" type="button">💡 Hint</button>
+              <button class="btn" id="timeNew" type="button">🔄 New</button>
+            </div>
+          </div>
+
+          <div class="options" id="timeOptions"></div>
+          <div class="feedback" id="timeFb" role="status" aria-live="polite"></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>📅 Date trainer (US/UK)</h3>
+        <p class="muted">Read and choose the correct spoken date.</p>
+
+        <div class="row row--wrap">
+          <label class="toggle">
+            <input type="checkbox" id="dateUS" />
+            <span>US format (month/day)</span>
+          </label>
+        </div>
+
+        <div class="quiz">
+          <div class="quiz__prompt">
+            <div class="big" id="datePrompt">—</div>
+            <div class="quiz__row">
+              <button class="btn btn--ghost" id="dateSpeak" type="button">🔊 Hear</button>
+              <button class="btn btn--ghost" id="dateHint" type="button">💡 Hint</button>
+              <button class="btn" id="dateNew" type="button">🔄 New</button>
+            </div>
+          </div>
+
+          <div class="options" id="dateOptions"></div>
+          <div class="feedback" id="dateFb" role="status" aria-live="polite"></div>
+        </div>
+      </article>
+    </div>
+
+    <article class="subcard">
+      <h3>🔢 Numbers Lab (0–100 intensive mode)</h3>
+      <p class="muted">Dictation: click 🔊 and type the number you hear (digits). Then check.</p>
+
+      <div class="grid3">
+        <div class="card card--soft">
+          <h4>0–100 dictation</h4>
+          <div class="quiz">
+            <div class="quiz__prompt">
+              <div class="big" id="nPrompt">Listen → type</div>
+              <div class="quiz__row">
+                <button class="btn btn--ghost" id="nSpeak" type="button">🔊 Play</button>
+                <button class="btn btn--ghost" id="nHint" type="button">💡 Hint</button>
+                <button class="btn" id="nNew" type="button">🔄 New</button>
+              </div>
+            </div>
+
+            <div class="row row--wrap">
+              <input class="input" id="nInput" inputmode="numeric" placeholder="Type digits (0–100)" />
+              <button class="btn" id="nCheck" type="button">✅ Check</button>
+            </div>
+
+            <div class="feedback" id="nFb" role="status" aria-live="polite"></div>
+            <div class="muted small" id="nReveal"></div>
+          </div>
+        </div>
+
+        <div class="card card--soft">
+          <h4>📞 Phone numbers</h4>
+          <p class="muted small">Listen and type the 10 digits (spaces/dashes ok).</p>
+
+          <div class="quiz">
+            <div class="big" id="phPrompt">—</div>
+            <div class="quiz__row">
+              <button class="btn btn--ghost" id="phSpeak" type="button">🔊 Play</button>
+              <button class="btn btn--ghost" id="phHint" type="button">💡 Hint</button>
+              <button class="btn" id="phNew" type="button">🔄 New</button>
+            </div>
+
+            <div class="row row--wrap">
+              <input class="input" id="phInput" inputmode="numeric" placeholder="Type the phone number" />
+              <button class="btn" id="phCheck" type="button">✅ Check</button>
+            </div>
+
+            <div class="feedback" id="phFb" role="status" aria-live="polite"></div>
+            <div class="muted small" id="phReveal"></div>
+          </div>
+        </div>
+
+        <div class="card card--soft">
+          <h4>💲 Prices</h4>
+          <p class="muted small">Listen and type the price (digits, decimal ok).</p>
+
+          <div class="row row--wrap">
+            <label class="toggle">
+              <input type="checkbox" id="eurMode" />
+              <span>€ mode</span>
+            </label>
+          </div>
+
+          <div class="quiz">
+            <div class="big" id="prPrompt">—</div>
+            <div class="quiz__row">
+              <button class="btn btn--ghost" id="prSpeak" type="button">🔊 Play</button>
+              <button class="btn btn--ghost" id="prHint" type="button">💡 Hint</button>
+              <button class="btn" id="prNew" type="button">🔄 New</button>
+            </div>
+
+            <div class="row row--wrap">
+              <input class="input" id="prInput" inputmode="decimal" placeholder="Type: 12.50" />
+              <button class="btn" id="prCheck" type="button">✅ Check</button>
+            </div>
+
+            <div class="feedback" id="prFb" role="status" aria-live="polite"></div>
+            <div class="muted small" id="prReveal"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="card card--soft">
+          <h4>📆 Years</h4>
+          <p class="muted small">Listen and type the year (digits).</p>
+
+          <div class="quiz">
+            <div class="big" id="yrPrompt">—</div>
+            <div class="quiz__row">
+              <button class="btn btn--ghost" id="yrSpeak" type="button">🔊 Play</button>
+              <button class="btn btn--ghost" id="yrHint" type="button">💡 Hint</button>
+              <button class="btn" id="yrNew" type="button">🔄 New</button>
+            </div>
+
+            <div class="row row--wrap">
+              <input class="input" id="yrInput" inputmode="numeric" placeholder="Type: 1998" />
+              <button class="btn" id="yrCheck" type="button">✅ Check</button>
+            </div>
+
+            <div class="feedback" id="yrFb" role="status" aria-live="polite"></div>
+            <div class="muted small" id="yrReveal"></div>
+          </div>
+        </div>
+
+        <div class="card card--soft">
+          <h4>🗣️ Role-play dialogues (present simple)</h4>
+          <p class="muted small">Fill the blanks (tap). Then listen to the full dialogue.</p>
+
+          <div class="role" id="roleWrap"></div>
+
+          <div class="row">
+            <button class="btn" id="roleCheck" type="button">✅ Check</button>
+            <button class="btn btn--ghost" id="roleHint" type="button">💡 Hint</button>
+            <button class="btn btn--ghost" id="roleSpeak" type="button">🔊 Listen</button>
+            <button class="btn btn--ghost" id="roleNew" type="button">🔄 New</button>
+          </div>
+          <div class="feedback" id="roleFb" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================== PLANNER ===================== -->
+  <section class="panel" id="tab-planner">
+    <div class="panel__head">
+      <h2>4) Weekly planner (plan + speak)</h2>
+      <p class="muted">Tap an activity, then tap a slot. Generate a present simple schedule + WH questions.</p>
+    </div>
+
+    <div class="grid2">
+      <article class="card">
+        <h3>Activities</h3>
+        <p class="muted">Tap to select an activity.</p>
+        <div class="chipline" id="actChips"></div>
+
+        <div class="row row--wrap">
+          <input class="input" id="customAct" placeholder="Add your activity (e.g., study English)" />
+          <button class="btn" id="addAct" type="button">➕ Add</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Planner grid</h3>
+        <p class="muted">Tap a cell to add the selected activity.</p>
+        <div class="planner" id="plannerGrid" role="grid" aria-label="Weekly planner grid"></div>
+
+        <div class="row">
+          <button class="btn btn--ghost" id="plannerClear" type="button">🧽 Clear</button>
+          <button class="btn" id="plannerGenerate" type="button">✨ Generate text</button>
+        </div>
+      </article>
+    </div>
+
+    <article class="subcard">
+      <h3>Your schedule (present simple)</h3>
+      <div class="output">
+        <div class="output__head">
+          <div class="output__title">Text</div>
+          <div class="output__actions">
+            <button class="btn btn--ghost" id="schedSpeak" type="button">🔊 Listen</button>
+            <button class="btn btn--ghost" id="schedCopy" type="button">📋 Copy</button>
+          </div>
+        </div>
+        <div class="output__body" id="schedText" aria-live="polite">Tap “Generate text”.</div>
+      </div>
+
+      <div class="output">
+        <div class="output__head">
+          <div class="output__title">WH questions you can ask</div>
+          <div class="output__actions">
+            <button class="btn btn--ghost" id="qsSpeak" type="button">🔊 Listen</button>
+          </div>
+        </div>
+        <div class="output__body" id="schedQs" aria-live="polite">—</div>
+      </div>
+    </article>
+  </section>
+
+  <footer class="foot">
+    <div class="muted small">
+      SpeakEasyTisha • Tap-friendly (iPad Safari) • Present Simple only • US/UK listening built-in
+    </div>
+    <a class="toTop" href="#top">↑ Back to top</a>
+  </footer>
+</main>
+
+<script src="/js/time-dates-schedules-present-simple.js"></script>
+</body>
+</html>
