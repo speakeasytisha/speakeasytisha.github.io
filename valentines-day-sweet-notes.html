@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Valentine’s Day — Sweet Notes & Love Lines</title>
+  <meta name="description" content="Fully interactive English lesson for Valentine’s Day: vocabulary, culture, grammar, dialogues, and sweet note builders (US/UK voice)." />
+  <link rel="stylesheet" href="/css/valentines-day-sweet-notes.css" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">💘💌</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Valentine’s Day — Sweet Notes & Love Lines</div>
+      </div>
+    </div>
+
+    <div class="topbar__controls">
+      <div class="voiceToggle" role="group" aria-label="Voice">
+        <button class="chip chip--toggle is-active" id="voiceUS" type="button" aria-pressed="true">US voice</button>
+        <button class="chip chip--toggle" id="voiceUK" type="button" aria-pressed="false">UK voice</button>
+      </div>
+      <div class="player">
+        <button class="chip" id="btnPause" type="button" title="Pause / resume">⏸️ Pause</button>
+        <button class="chip" id="btnStop" type="button" title="Stop">⏹️ Stop</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero__left">
+      <h1>Valentine’s Day 💘</h1>
+      <p class="lead">A fun, romantic English lesson to help learners <strong>wish their partner a Happy Valentine’s Day</strong>, speak naturally, and <strong>write sweet notes</strong> (texts + cards) with confidence.</p>
+
+      <div class="hero__stats">
+        <div class="statCard">
+          <div class="statLabel">Score</div>
+          <div class="statValue"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        </div>
+        <div class="statCard">
+          <div class="statLabel">Level</div>
+          <div class="statValue small">A2 → B2 (choose simple or elegant options)</div>
+        </div>
+        <div class="statCard">
+          <div class="statLabel">Best feature</div>
+          <div class="statValue small">Sweet note builder + print‑ready card</div>
+        </div>
+      </div>
+
+      <div class="hero__actions">
+        <a class="btn" href="#warmup">⚡ Warm‑up</a>
+        <a class="btn btn--ghost" href="#notes">💌 Build a love note</a>
+        <button class="btn btn--danger" id="btnResetAll" type="button">Reset lesson</button>
+      </div>
+
+      <div class="note">
+        <strong>Touch-friendly tip:</strong> whenever you see “drag & drop”, you can also <strong>tap a chip</strong> then tap the target.
+        <div class="chips">
+          <button class="chip speak" data-say="Happy Valentine’s Day!" type="button">🔊 Happy Valentine’s Day!</button>
+          <button class="chip speak" data-say="I’m so grateful for you." type="button">🔊 grateful</button>
+          <button class="chip speak" data-say="You make my life better every day." type="button">🔊 better every day</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__right">
+      <div class="missionCard">
+        <div class="missionTitle">Today’s mission</div>
+        <ul class="missionList">
+          <li>✅ Say sweet, natural Valentine’s wishes</li>
+          <li>✅ Use compliments + intensifiers: <em>so, really, absolutely</em></li>
+          <li>✅ Write notes: short text → elegant card</li>
+          <li>✅ Make polite romantic suggestions: <em>Would you like…?</em></li>
+          <li>✅ Sound warm (not too direct) in English</li>
+        </ul>
+
+        <div class="miniRow">
+          <button class="chip" id="btnListenMission" type="button">🔊 Listen</button>
+          <button class="chip" id="btnLoveRapid" type="button">💘 45‑sec love lines</button>
+        </div>
+
+        <p class="tiny muted">Works on Mac + iPad (Safari). Voice availability may vary by device.</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="nav">
+    <a class="nav__item" href="#warmup">Warm‑up</a>
+    <a class="nav__item" href="#vocab">Vocabulary</a>
+    <a class="nav__item" href="#grammar">Grammar</a>
+    <a class="nav__item" href="#expressions">Expressions</a>
+    <a class="nav__item" href="#dialogues">Dialogues</a>
+    <a class="nav__item" href="#notes">Sweet notes</a>
+    <a class="nav__item" href="#final">Final challenge</a>
+  </nav>
+
+  <section class="section" id="warmup">
+    <div class="sectionHead">
+      <h2>⚡ Warm‑up (tap + speak)</h2>
+      <p class="muted">Pick a vibe: cute, romantic, funny, or classy. Then repeat out loud.</p>
+    </div>
+
+    <div class="toolbar">
+      <label class="field">
+        <span class="field__label">Vibe</span>
+        <select class="select" id="warmVibe"></select>
+      </label>
+      <button class="btn" id="warmPlay" type="button">🔊 Play 6 lines</button>
+      <button class="btn btn--ghost" id="warmShuffle" type="button">🎲 Shuffle</button>
+      <div class="pill" id="warmMsg" aria-live="polite"></div>
+    </div>
+
+    <div class="grid grid--two" id="warmCards" aria-live="polite"></div>
+  </section>
+
+  <section class="section" id="vocab">
+    <div class="sectionHead">
+      <h2>🧠 Valentine’s Vocabulary Flashcards (icons + FR)</h2>
+      <p class="muted">Choose a theme, search, flip cards, and listen. (Optional: show examples + French help.)</p>
+    </div>
+
+    <div class="toolbar">
+      <label class="field">
+        <span class="field__label">Theme</span>
+        <select id="vocabTheme" class="select">
+          <option value="all">All themes</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span class="field__label">Search</span>
+        <input id="vocabSearch" class="input" placeholder="Try: thoughtful, crush, bouquet, date night..." />
+      </label>
+
+      <label class="toggle">
+        <input type="checkbox" id="vocabExamples" />
+        <span>Show examples + FR</span>
+      </label>
+
+      <button class="chip" id="btnVocabRandom" type="button">🎲 Random 6</button>
+      <button class="chip" id="btnVocabReset" type="button">Reset</button>
+    </div>
+
+    <div id="vocabGrid" class="grid grid--cards" aria-live="polite"></div>
+  </section>
+
+  <section class="section" id="grammar">
+    <div class="sectionHead">
+      <div class="rowBetween">
+        <div>
+          <h2>📚 Grammar for Romance (short + useful)</h2>
+          <p class="muted">Practice the grammar you actually need for sweet messages and date plans.</p>
+        </div>
+        <button class="chip" id="btnPrintNotes" type="button">🖨️ Print notes</button>
+      </div>
+    </div>
+
+    <article class="panel" data-section="g1">
+      <header class="panel__head">
+        <h3>1) Polite romantic invitations (Would you like…? / How about…?)</h3>
+        <div class="panel__actions">
+          <button class="chip" data-listen="g1" type="button">🔊 Listen</button>
+          <button class="chip" data-reset="g1" type="button">Reset section</button>
+        </div>
+      </header>
+      <div class="panel__body">
+        <p><strong>Quick guide:</strong> English can be softer than French. Instead of “I want…”, try <em>I’d like…</em>, <em>Would you like…?</em>, <em>How about…?</em>, <em>Could we…?</em></p>
+
+        <div class="twoCol">
+          <div class="quiz" id="quiz-invite">
+            <div class="quiz__head">
+              <div class="miniTitle">Make it sweeter (MCQ)</div>
+              <button class="chip" data-quiz-reset="quiz-invite" type="button">Reset quiz</button>
+            </div>
+            <div class="quiz__body" aria-live="polite"></div>
+          </div>
+
+          <div class="builder" id="builder-invite">
+            <div class="miniTitle">Invitation builder (tap chips)</div>
+            <p class="muted small">Build one invitation + one gentle suggestion.</p>
+
+            <div class="builder__prompt">
+              <strong>Prompt:</strong> “____ you like to go out for dinner ____ Friday? How ____ a movie after?”
+            </div>
+
+            <div class="builder__blanks" data-blanks="3">
+              <button class="blank" data-blank="0" type="button">_____</button>
+              <button class="blank" data-blank="1" type="button">_____</button>
+              <button class="blank" data-blank="2" type="button">_____</button>
+            </div>
+
+            <div class="chipBank"></div>
+
+            <div class="miniRow">
+              <button class="btn" id="builder-invite-check" type="button">Check</button>
+              <button class="btn btn--ghost" id="builder-invite-reset" type="button">Reset</button>
+              <button class="chip" id="builder-invite-say" type="button">🔊 Speak</button>
+              <div class="pill" id="builder-invite-msg" aria-live="polite"></div>
+            </div>
+
+            <div class="note">
+              <strong>Ready-to-use lines</strong>
+              <div class="chips">
+                <button class="chip speak" data-say="Would you like to do something special tonight?" type="button">🔊 special tonight</button>
+                <button class="chip speak" data-say="How about a cozy dinner at home?" type="button">🔊 cozy</button>
+                <button class="chip speak" data-say="Could we go for a walk and grab dessert?" type="button">🔊 grab dessert</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel" data-section="g2">
+      <header class="panel__head">
+        <h3>2) Compliments + intensifiers (so / really / absolutely)</h3>
+        <div class="panel__actions">
+          <button class="chip" data-listen="g2" type="button">🔊 Listen</button>
+          <button class="chip" data-reset="g2" type="button">Reset section</button>
+        </div>
+      </header>
+      <div class="panel__body">
+        <p><strong>Formula:</strong> <em>You’re</em> + adjective → add an intensifier: <em>really</em>, <em>so</em>, <em>absolutely</em>. Add a reason with <em>because</em>.</p>
+
+        <div class="dd" id="dd-compliments">
+          <div class="miniTitle">Tap-friendly drag & drop: match</div>
+          <p class="muted small">Tap a compliment, then tap the best “reason”.</p>
+
+          <div class="dd__bank" aria-label="Compliment bank"></div>
+          <div class="dd__zones">
+            <div class="dropzone" data-zone="reasons">
+              <div class="dropzone__title">Reasons</div>
+              <div class="dropzone__hint">because…</div>
+              <div class="dropzone__items"></div>
+            </div>
+          </div>
+
+          <div class="miniRow">
+            <button class="btn" id="dd-compliments-check" type="button">Check</button>
+            <button class="btn btn--ghost" id="dd-compliments-reset" type="button">Reset</button>
+            <div class="pill" id="dd-compliments-msg" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="builder" id="builder-compliment">
+          <div class="miniTitle">Compliment builder (dropdown)</div>
+          <div class="opGrid opGrid--3">
+            <label class="field">
+              <span class="field__label">Intensifier</span>
+              <select class="select" id="cb-int"></select>
+            </label>
+            <label class="field">
+              <span class="field__label">Adjective</span>
+              <select class="select" id="cb-adj"></select>
+            </label>
+            <label class="field">
+              <span class="field__label">Reason</span>
+              <select class="select" id="cb-reason"></select>
+            </label>
+          </div>
+
+          <div class="output" id="cb-out" aria-live="polite"></div>
+
+          <div class="miniRow">
+            <button class="btn" id="cb-generate" type="button">Generate</button>
+            <button class="btn btn--ghost" id="cb-copy" type="button">Copy</button>
+            <button class="chip" id="cb-say" type="button">🔊 Speak</button>
+            <div class="pill" id="cb-msg"></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel" data-section="g3">
+      <header class="panel__head">
+        <h3>3) “I’m grateful” language + present perfect (since/for)</h3>
+        <div class="panel__actions">
+          <button class="chip" data-listen="g3" type="button">🔊 Listen</button>
+          <button class="chip" data-reset="g3" type="button">Reset section</button>
+        </div>
+      </header>
+      <div class="panel__body">
+        <p><strong>Sweet structure:</strong> “I’m grateful for you because…” + <em>present perfect</em> with <em>since/for</em>: “We’ve been together for…” “I’ve loved you since…”</p>
+
+        <div class="quiz" id="quiz-grateful">
+          <div class="quiz__head">
+            <div class="miniTitle">Choose the best sentence</div>
+            <button class="chip" data-quiz-reset="quiz-grateful" type="button">Reset quiz</button>
+          </div>
+          <div class="quiz__body" aria-live="polite"></div>
+        </div>
+
+        <details class="details">
+          <summary>🇫🇷 French pitfalls (quick fixes)</summary>
+          <ul class="bullets">
+            <li>“I love you” is strong (romantic/serious). For friends, use <strong>I really care about you</strong> or <strong>I adore you</strong>.</li>
+            <li>“I’m agree” ❌ → <strong>I agree</strong> ✅</li>
+            <li>“Since 3 years” ❌ → <strong>for 3 years</strong> ✅</li>
+          </ul>
+        </details>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="expressions">
+    <div class="sectionHead">
+      <h2>✨ Expressions that sound natural (text vs card)</h2>
+      <p class="muted">Pick a situation. Upgrade a “basic” line into something warmer and more natural.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel__body">
+        <div class="twoCol">
+          <div class="panelMini">
+            <div class="miniTitle">Upgrade machine</div>
+            <label class="field">
+              <span class="field__label">Choose a basic message</span>
+              <select class="select" id="up-basic"></select>
+            </label>
+            <label class="field">
+              <span class="field__label">Style</span>
+              <select class="select" id="up-style"></select>
+            </label>
+
+            <div class="output" id="up-out" aria-live="polite"></div>
+
+            <div class="miniRow">
+              <button class="btn" id="up-generate" type="button">Upgrade</button>
+              <button class="btn btn--ghost" id="up-copy" type="button">Copy</button>
+              <button class="chip" id="up-say" type="button">🔊 Speak</button>
+              <div class="pill" id="up-msg"></div>
+            </div>
+          </div>
+
+          <div class="panelMini">
+            <div class="miniTitle">Micro-quiz: What’s appropriate?</div>
+            <p class="muted small">Choose the best line for each situation.</p>
+            <div class="quiz__body" id="quiz-appropriate" aria-live="polite"></div>
+            <div class="miniRow">
+              <button class="chip" data-quiz-reset="quiz-appropriate" type="button">Reset quiz</button>
+              <div class="pill" id="app-msg"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          <strong>Super sweet closings</strong>
+          <div class="chips">
+            <button class="chip speak" data-say="Forever yours," type="button">🔊 Forever yours</button>
+            <button class="chip speak" data-say="With all my love," type="button">🔊 With all my love</button>
+            <button class="chip speak" data-say="Love always," type="button">🔊 Love always</button>
+            <button class="chip speak" data-say="Yours," type="button">🔊 Yours</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="dialogues">
+    <div class="sectionHead">
+      <h2>🎭 Interactive Dialogues (cute vs classy)</h2>
+      <p class="muted">Pick a scene. Choose your replies. Listen + speak. Great for couples practice.</p>
+    </div>
+
+    <div class="dialogueBar">
+      <label class="field">
+        <span class="field__label">Scene</span>
+        <select id="dlgScene" class="select"></select>
+      </label>
+
+      <div class="modeToggle" role="group" aria-label="Dialogue mode">
+        <button class="chip chip--toggle is-active" id="dlgCute" type="button" aria-pressed="true">Cute</button>
+        <button class="chip chip--toggle" id="dlgClassy" type="button" aria-pressed="false">Classy</button>
+      </div>
+
+      <button class="btn" id="dlgRestart" type="button">Restart</button>
+      <button class="chip" id="dlgReadLast" type="button">🔊 Read last line</button>
+    </div>
+
+    <div class="dialogue">
+      <div id="dlgLog" class="dialogue__log" aria-live="polite"></div>
+      <div id="dlgChoices" class="dialogue__choices" aria-label="Reply choices"></div>
+      <div class="dialogue__footer">
+        <div class="pill" id="dlgMsg" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="notes">
+    <div class="sectionHead">
+      <h2>💌 Sweet Note Builder (text → card)</h2>
+      <p class="muted">Create messages at different levels. Copy, speak, save, and print a card.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel__body">
+        <div class="opGrid opGrid--5">
+          <label class="field">
+            <span class="field__label">Tone</span>
+            <select class="select" id="note-tone"></select>
+          </label>
+          <label class="field">
+            <span class="field__label">Length</span>
+            <select class="select" id="note-length"></select>
+          </label>
+          <label class="field">
+            <span class="field__label">Compliment focus</span>
+            <select class="select" id="note-focus"></select>
+          </label>
+          <label class="field">
+            <span class="field__label">Memory / reason</span>
+            <select class="select" id="note-reason"></select>
+          </label>
+          <label class="field">
+            <span class="field__label">Plan</span>
+            <select class="select" id="note-plan"></select>
+          </label>
+        </div>
+
+        <div class="miniRow">
+          <label class="toggle">
+            <input type="checkbox" id="note-name-on" />
+            <span>Include partner’s name</span>
+          </label>
+          <input class="input" id="note-name" placeholder="Name (optional)" />
+          <button class="btn" id="note-generate" type="button">Generate note</button>
+          <button class="btn btn--ghost" id="note-clear" type="button">Clear</button>
+        </div>
+
+        <div class="cardPreview" id="cardPreview">
+          <div class="cardPreview__top">
+            <div class="badge">Valentine’s Card</div>
+            <div class="miniRow">
+              <button class="chip" id="note-say" type="button">🔊 Speak</button>
+              <button class="chip" id="note-copy" type="button">Copy</button>
+              <button class="chip" id="note-save" type="button">⭐ Save</button>
+              <button class="chip" id="note-print" type="button">🖨️ Print card</button>
+            </div>
+          </div>
+          <div class="cardPreview__body">
+            <div class="cardText" id="note-out" aria-live="polite"></div>
+          </div>
+          <div class="cardPreview__footer">
+            <div class="pill" id="note-msg"></div>
+          </div>
+        </div>
+
+        <div class="savedBox">
+          <div class="savedTitle">Saved notes</div>
+          <div id="savedNotes" class="savedPills"></div>
+        </div>
+
+        <details class="details">
+          <summary>❤️ Mini cheat sheet (A2 / B1 / B2)</summary>
+          <ul class="bullets">
+            <li><strong>A2:</strong> You are kind. I love you. Happy Valentine’s Day!</li>
+            <li><strong>B1:</strong> I’m so grateful for you because you always support me.</li>
+            <li><strong>B2:</strong> You make my life brighter, and I genuinely admire your strength and kindness.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="final">
+    <div class="sectionHead">
+      <h2>🏁 Final Challenge — Write + say it (couples activity)</h2>
+      <p class="muted">Create a message with 5 ingredients. Then practice speaking it out loud.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel__body">
+        <ol class="bullets">
+          <li>Greeting: <em>Happy Valentine’s Day…</em></li>
+          <li>Compliment: <em>You’re so…</em></li>
+          <li>Reason: <em>because…</em></li>
+          <li>Plan: <em>Would you like to…?</em></li>
+          <li>Closing: <em>With all my love…</em></li>
+        </ol>
+
+        <div class="twoCol">
+          <div class="panelMini">
+            <div class="miniTitle">Build your final message</div>
+            <textarea class="input textarea" id="final-text" rows="7" placeholder="Write your message here…"></textarea>
+            <div class="miniRow">
+              <button class="btn" id="final-check" type="button">✅ Check points</button>
+              <button class="btn btn--ghost" id="final-clear" type="button">Clear</button>
+              <button class="chip" id="final-say" type="button">🔊 Speak</button>
+              <button class="chip" id="final-copy" type="button">Copy</button>
+              <div class="pill" id="final-msg"></div>
+            </div>
+          </div>
+
+          <div class="panelMini">
+            <div class="miniTitle">Partner game: “Make it sweeter”</div>
+            <p class="muted small">Partner A writes a basic line. Partner B upgrades it using the chips.</p>
+            <div class="chips" id="sweetChips"></div>
+            <div class="output" id="sweetOut"></div>
+            <div class="miniRow">
+              <button class="btn" id="sweetGen" type="button">Generate upgrade</button>
+              <button class="chip" id="sweetSay" type="button">🔊 Speak</button>
+              <div class="pill" id="sweetMsg"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wrapup">
+          <a class="btn btn--ghost" href="#top">⬆️ Back to top</a>
+          <button class="btn" id="btnSaveProgress" type="button">💾 Save progress</button>
+          <button class="btn btn--ghost" id="btnLoadProgress" type="button">↩️ Load</button>
+          <button class="btn btn--danger" id="btnClearProgress" type="button">🧹 Clear saved</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>© SpeakEasyTisha · Valentine’s Day interactive module</div>
+      <div class="tiny muted">Tip: You can print your card from the note builder.</div>
+    </div>
+  </footer>
+</main>
+
+<script src="/js/valentines-day-sweet-notes.js" defer></script>
+</body>
+</html>
