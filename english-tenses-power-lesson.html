@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • English Tenses Power Lesson (Not Boring!)</title>
+  <meta name="description" content="Interactive lesson on the most common English tenses (plus less frequent ones). Quizzes, builders, story mode, US/UK voice, and progress saving." />
+  <link rel="stylesheet" href="/css/english-tenses-power-lesson.css" />
+</head>
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">⏳📚</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">English Tenses Power Lesson — clear, useful, fun</div>
+      </div>
+    </div>
+
+    <div class="topbar__controls">
+      <div class="voiceToggle" role="group" aria-label="Voice">
+        <button class="chip chip--toggle is-active" id="voiceUS" type="button" aria-pressed="true">US voice</button>
+        <button class="chip chip--toggle" id="voiceUK" type="button" aria-pressed="false">UK voice</button>
+      </div>
+      <div class="player">
+        <button class="chip" id="btnPause" type="button" title="Pause / resume">⏸️ Pause</button>
+        <button class="chip" id="btnStop" type="button" title="Stop">⏹️ Stop</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero__left">
+      <h1>English Tenses (the ones you actually use)</h1>
+      <p class="lead">
+        A practical, interactive lesson for A2 → B2 learners: learn <strong>when</strong> and <strong>why</strong> we use the most common tenses,
+        then explore <strong>less frequent</strong> ones with examples and context. Includes quizzes, “tense coach” builders,
+        a story mode, and US/UK voice.
+      </p>
+
+      <div class="hero__stats">
+        <div class="statCard">
+          <div class="statLabel">Score</div>
+          <div class="statValue"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        </div>
+        <div class="statCard">
+          <div class="statLabel">Goal</div>
+          <div class="statValue small">Speak & write naturally (not “grammar for grammar”)</div>
+        </div>
+        <div class="statCard">
+          <div class="statLabel">Mode</div>
+          <div class="statValue small">Tap-friendly · Mac/iPad Safari</div>
+        </div>
+      </div>
+
+      <div class="hero__actions">
+        <a class="btn" href="#map">🗺️ Tense map</a>
+        <a class="btn btn--ghost" href="#core">🔥 Core tenses</a>
+        <a class="btn btn--ghost" href="#practice">🎯 Practice zone</a>
+        <button class="btn btn--danger" id="btnResetAll" type="button">Reset lesson</button>
+      </div>
+
+      <div class="note">
+        <strong>Mini‑rule:</strong> in English we choose tenses mainly for <strong>time</strong> (past/present/future) + <strong>aspect</strong> (simple / continuous / perfect).
+        <div class="chips">
+          <button class="chip speak" data-say="Aspect means the speaker's view of time: simple, continuous, or perfect." type="button">🔊 aspect</button>
+          <button class="chip speak" data-say="Most daily English uses about eight tenses and a few modal forms." type="button">🔊 daily English</button>
+          <button class="chip speak" data-say="Signal words help, but meaning and context matter more." type="button">🔊 signal words</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__right">
+      <div class="missionCard">
+        <div class="missionTitle">Today’s mission</div>
+        <ul class="missionList">
+          <li>✅ Master the <strong>8 core</strong> tenses (most used)</li>
+          <li>✅ Understand <strong>why</strong> we choose a tense (meaning)</li>
+          <li>✅ Stop common French mistakes (since/for, present perfect, etc.)</li>
+          <li>✅ Discover less frequent tenses: <em>future perfect</em>, <em>past perfect continuous</em>…</li>
+          <li>✅ Explain your choices: “I used X because…”</li>
+        </ul>
+
+        <div class="miniRow">
+          <button class="chip" id="btnListenMission" type="button">🔊 Listen</button>
+          <button class="chip" id="btnQuickDrill" type="button">⚡ 45‑sec drill</button>
+          <button class="chip" id="btnPrintCheat" type="button">🖨️ Print cheat sheet</button>
+        </div>
+
+        <p class="tiny muted">Voice availability depends on device/browser.</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="nav">
+    <a class="nav__item" href="#map">Tense map</a>
+    <a class="nav__item" href="#core">Core tenses</a>
+    <a class="nav__item" href="#rare">Less frequent</a>
+    <a class="nav__item" href="#why">Why some changed</a>
+    <a class="nav__item" href="#practice">Practice zone</a>
+    <a class="nav__item" href="#final">Final challenge</a>
+  </nav>
+
+  <section class="section" id="map">
+    <div class="sectionHead">
+      <h2>🗺️ Tense Map (time + aspect)</h2>
+      <p class="muted">Tap any card to open the tense. Use this like a GPS: choose time, then choose aspect.</p>
+    </div>
+
+    <div class="toolbar">
+      <label class="field">
+        <span class="field__label">Show</span>
+        <select class="select" id="mapFilter">
+          <option value="core">Core (most common)</option>
+          <option value="all">All (core + less frequent)</option>
+        </select>
+      </label>
+
+      <label class="toggle">
+        <input type="checkbox" id="mapFR" />
+        <span>Show quick FR help</span>
+      </label>
+
+      <button class="btn" id="mapListen" type="button">🔊 Explain the map</button>
+      <button class="btn btn--ghost" id="mapShuffle" type="button">🎲 Shuffle</button>
+      <div class="pill" id="mapMsg" aria-live="polite"></div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline__track" aria-hidden="true"></div>
+      <div class="timeline__labels">
+        <span class="tl">Past</span>
+        <span class="tc">Now</span>
+        <span class="tr">Future</span>
+      </div>
+      <div class="timeline__legend">
+        <span class="badge badge--simple">Simple</span>
+        <span class="badge badge--cont">Continuous</span>
+        <span class="badge badge--perf">Perfect</span>
+        <span class="badge badge--mix">Perfect continuous</span>
+      </div>
+    </div>
+
+    <div class="grid grid--cards" id="mapGrid" aria-live="polite"></div>
+  </section>
+
+  <section class="section" id="core">
+    <div class="sectionHead">
+      <h2>🔥 Core Tenses (the ones you will use the most)</h2>
+      <p class="muted">Pick a tense. Learn: meaning → form → quick exercises. Not boring, promise.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel__body">
+        <div class="toolbar">
+          <label class="field">
+            <span class="field__label">Choose a tense</span>
+            <select class="select" id="tenseSelect"></select>
+          </label>
+
+          <label class="toggle">
+            <input type="checkbox" id="showFR" />
+            <span>Show FR explanations (optional)</span>
+          </label>
+
+          <button class="btn" id="btnTenseListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="btnTenseRandom" type="button">🎲 Random tense</button>
+          <div class="pill" id="tenseMsg" aria-live="polite"></div>
+        </div>
+
+        <div class="tenseView" id="tenseView" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="rare">
+    <div class="sectionHead">
+      <h2>🧩 Less frequent tenses & forms (with reasons)</h2>
+      <p class="muted">These exist — but you use them less often. Learn what they do, and when they are worth using.</p>
+    </div>
+
+    <div class="grid grid--two" id="rareGrid"></div>
+  </section>
+
+  <section class="section" id="why">
+    <div class="sectionHead">
+      <h2>🧠 Why we use some tenses more (and others less)</h2>
+      <p class="muted">Language changes. English prefers efficient, flexible structures (and modals do a lot of work).</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel__body">
+        <div class="twoCol">
+          <div class="panelMini">
+            <div class="miniTitle">Big reasons (simple explanations)</div>
+            <ul class="bullets" id="whyList"></ul>
+            <div class="note">
+              <strong>Useful takeaway:</strong> English often prefers <em>modals</em> (can, could, would, might) and <em>context</em> over long tense forms.
+            </div>
+          </div>
+
+          <div class="panelMini">
+            <div class="miniTitle">Mini quiz: what changed?</div>
+            <div id="whyQuiz" class="quiz__body" aria-live="polite"></div>
+            <div class="miniRow">
+              <button class="chip" id="whyQuizReset" type="button">Reset</button>
+              <div class="pill" id="whyMsg"></div>
+            </div>
+
+            <details class="details">
+              <summary>Example: “shall” vs “will” (UK vs US)</summary>
+              <ul class="bullets">
+                <li><strong>Will</strong> is dominant globally: “I’ll call you.”</li>
+                <li><strong>Shall</strong> survives in offers/suggestions (more UK/formal): “Shall we go?”</li>
+                <li>Many learners can safely focus on <strong>will</strong> + “<strong>shall we…?</strong>” as a set phrase.</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="practice">
+    <div class="sectionHead">
+      <h2>🎯 Practice Zone (games + real-life)</h2>
+      <p class="muted">Choose exercises. Every correct answer adds to your score.</p>
+    </div>
+
+    <div class="grid grid--two">
+      <div class="panel">
+        <div class="panel__head">
+          <h3>1) Choose the tense (fast quiz)</h3>
+          <div class="panel__actions">
+            <button class="chip" id="mixQuizReset" type="button">Reset</button>
+            <button class="chip" id="mixQuizListen" type="button">🔊 Read question</button>
+          </div>
+        </div>
+        <div class="panel__body">
+          <div class="quiz__body" id="mixQuiz"></div>
+          <div class="pill" id="mixMsg" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__head">
+          <h3>2) Fix the sentence (common mistakes)</h3>
+          <div class="panel__actions">
+            <button class="chip" id="fixNext" type="button">Next</button>
+            <button class="chip" id="fixReset" type="button">Reset</button>
+          </div>
+        </div>
+        <div class="panel__body">
+          <div class="fixBox">
+            <div class="fixPrompt" id="fixPrompt"></div>
+            <div class="opGrid opGrid--2">
+              <label class="field">
+                <span class="field__label">Correct sentence</span>
+                <input class="input" id="fixInput" placeholder="Type the corrected sentence…" />
+              </label>
+              <div class="hintBox">
+                <div class="field__label">Hint</div>
+                <div class="hintText" id="fixHint"></div>
+              </div>
+            </div>
+            <div class="miniRow">
+              <button class="btn" id="fixCheck" type="button">Check</button>
+              <button class="btn btn--ghost" id="fixReveal" type="button">Reveal</button>
+              <button class="chip" id="fixSpeak" type="button">🔊 Speak correct</button>
+              <div class="pill" id="fixMsg" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__head">
+          <h3>3) Tense Transformer</h3>
+          <div class="panel__actions">
+            <button class="chip" id="transReset" type="button">Reset</button>
+          </div>
+        </div>
+        <div class="panel__body">
+          <p class="muted small">Take a base sentence and transform it (present → past → present perfect → future). Learn what changes and why.</p>
+
+          <div class="toolbar">
+            <label class="field">
+              <span class="field__label">Base sentence</span>
+              <select class="select" id="transBase"></select>
+            </label>
+            <label class="field">
+              <span class="field__label">Target tense</span>
+              <select class="select" id="transTarget"></select>
+            </label>
+            <button class="btn" id="transGenerate" type="button">Generate</button>
+            <button class="chip" id="transSpeak" type="button">🔊 Speak</button>
+            <button class="chip" id="transCopy" type="button">Copy</button>
+          </div>
+
+          <div class="output" id="transOut"></div>
+          <div class="pill" id="transMsg" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__head">
+          <h3>4) Story Mode (choose the right tense)</h3>
+          <div class="panel__actions">
+            <button class="chip" id="storyRestart" type="button">Restart</button>
+            <button class="chip" id="storyRead" type="button">🔊 Read last</button>
+          </div>
+        </div>
+        <div class="panel__body">
+          <div class="story">
+            <div class="story__log" id="storyLog" aria-live="polite"></div>
+            <div class="story__choices" id="storyChoices" aria-label="Story choices"></div>
+            <div class="pill" id="storyMsg" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapup">
+      <button class="btn" id="btnSaveProgress" type="button">💾 Save progress</button>
+      <button class="btn btn--ghost" id="btnLoadProgress" type="button">↩️ Load</button>
+      <button class="btn btn--danger" id="btnClearProgress" type="button">🧹 Clear saved</button>
+      <a class="btn btn--ghost" href="#top">⬆️ Back to top</a>
+    </div>
+  </section>
+
+  <section class="section" id="final">
+    <div class="sectionHead">
+      <h2>🏁 Final Challenge — explain your tense choice</h2>
+      <p class="muted">Write 6 sentences about your day. Use 4 different tenses and explain why you chose them.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel__body">
+        <div class="twoCol">
+          <div class="panelMini">
+            <div class="miniTitle">Write</div>
+            <textarea class="input textarea" id="finalText" rows="8" placeholder="Example:
+1) I usually get up at 7. (present simple — routine)
+2) Right now, I’m studying English. (present continuous — now)
+3) I’ve lived here for 10 years. (present perfect — life experience / duration)
+4) Yesterday I worked late. (past simple — finished past)
+5) I’m going to cook tonight. (going to — plan)
+6) By next month, I’ll have finished this book. (future perfect — deadline)"></textarea>
+            <div class="miniRow">
+              <button class="btn" id="finalCheck" type="button">✅ Check ingredients</button>
+              <button class="btn btn--ghost" id="finalClear" type="button">Clear</button>
+              <button class="chip" id="finalSpeak" type="button">🔊 Speak</button>
+              <button class="chip" id="finalCopy" type="button">Copy</button>
+              <div class="pill" id="finalMsg"></div>
+            </div>
+          </div>
+
+          <div class="panelMini">
+            <div class="miniTitle">Tense cheat prompts (tap to insert)</div>
+            <p class="muted small">Tap a chip to insert a structure into your text.</p>
+            <div class="chips" id="finalChips"></div>
+            <details class="details">
+              <summary>Teacher note: why this works</summary>
+              <ul class="bullets">
+                <li>Learners learn best when grammar is attached to meaning: routine, now, finished past, experience, plans, and deadlines.</li>
+                <li>They also practice explaining choices (“I used X because…”), which builds real fluency.</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div>© SpeakEasyTisha · English Tenses Power Lesson</div>
+        <div class="tiny muted">Print cheat sheet from the top right. Progress saves locally in your browser.</div>
+      </div>
+    </footer>
+  </section>
+</main>
+
+<script src="/js/english-tenses-power-lesson.v3%20(1).js" defer></script>
+</body>
+</html>

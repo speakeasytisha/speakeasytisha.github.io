@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • CLOE Exam Prep (Step-by-Step)</title>
+  <link rel="stylesheet" href="/css/cloe-exam-prep-step-by-step.css" />
+  <meta name="color-scheme" content="light dark">
+</head>
+<body>
+  <a class="skiplink" href="#main">Skip to content</a>
+
+  <header class="topbar" id="top">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__mark" aria-hidden="true">🎯</div>
+        <div class="brand__text">
+          <div class="brand__title">SpeakEasyTisha</div>
+          <div class="brand__subtitle">CLOE English • Step-by-step interactive prep</div>
+        </div>
+      </div>
+
+      <div class="topbar__actions">
+        <button class="btn btn--ghost" id="btnToggleFR" type="button" aria-pressed="false" title="French help (toggle)">FR help</button>
+        <button class="btn btn--ghost" id="btnToggleMode" type="button" aria-pressed="false" title="Light / Dark">☀️/🌙</button>
+        <button class="btn" id="btnPrint" type="button" title="Print / Save as PDF">Print</button>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Page sections">
+      <div class="nav__inner" id="navLinks">
+        <!-- filled by JS -->
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="page">
+    <section class="hero" id="s0">
+      <div class="hero__grid">
+        <div class="hero__card">
+          <div class="pill">CLOE • Written + Oral</div>
+          <h1>Get exam-ready (A2 → B2) with real CLOE-style tasks</h1>
+          <p class="lead">
+            This page trains the <strong>exact task types</strong> you’ll see in the CLOE written test:
+            MCQs, gap-fills, word bank, sentence order, and short reading/listening.
+          </p>
+
+          <div class="hero__cta">
+            <button class="btn btn--primary" id="btnStartDiagnostic" type="button">Start diagnostic</button>
+            <button class="btn" data-jump="#s2" type="button">Jump to Verb Tenses</button>
+            <button class="btn" data-jump="#s6" type="button">Mini mock test</button>
+          </div>
+
+          <div class="notice">
+            <div class="notice__icon" aria-hidden="true">🧠</div>
+            <div class="notice__body">
+              <strong>Teacher tip:</strong> open this file on Mac/iPad Safari. All tasks are tap-friendly (no drag & drop needed).
+              Use “FR help” to show French scaffolding for instructions and key grammar notes.
+            </div>
+          </div>
+
+          <div class="meta">
+            <div class="meta__item"><span class="dot"></span> Progress saved in your browser</div>
+            <div class="meta__item"><span class="dot"></span> Works offline</div>
+            <div class="meta__item"><span class="dot"></span> US/UK listening via SpeechSynthesis</div>
+          </div>
+        </div>
+
+        <div class="hero__side">
+          <div class="card">
+            <h2 class="card__title">Your CLOE roadmap</h2>
+            <ol class="steps">
+              <li><strong>Diagnostic</strong> → choose your target level</li>
+              <li><strong>Verb Tense Ladder</strong> (core tenses + exam traps)</li>
+              <li><strong>Vocabulary + Expressions</strong> (everyday + professional)</li>
+              <li><strong>Reading + Listening</strong> (short, timed, practical)</li>
+              <li><strong>Mini mock test</strong> (timed, mixed skills)</li>
+              <li><strong>Oral prep</strong> (intro → role-play → discussion)</li>
+            </ol>
+
+            <div class="divider"></div>
+
+            <div class="kpiGrid">
+              <div class="kpi">
+                <div class="kpi__num">7</div>
+                <div class="kpi__label">practice modules</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi__num">120+</div>
+                <div class="kpi__label">auto-corrected items</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi__num">∞</div>
+                <div class="kpi__label">retries</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card--soft">
+            <h3 class="card__title">Quick settings</h3>
+            <div class="formRow">
+              <label class="label" for="selAccent">Listening accent</label>
+              <select id="selAccent" class="select">
+                <option value="en-US">US (en‑US)</option>
+                <option value="en-GB">UK (en‑GB)</option>
+              </select>
+            </div>
+            <div class="formRow">
+              <label class="label" for="selLevel">Target level</label>
+              <select id="selLevel" class="select">
+                <option value="auto">Auto (from diagnostic)</option>
+                <option value="A2">A2 (core survival)</option>
+                <option value="B1">B1 (work + routines)</option>
+                <option value="B2">B2 (precision + nuance)</option>
+              </select>
+            </div>
+
+            <div class="formRow">
+              <label class="switch">
+                <input type="checkbox" id="chkTimer" checked />
+                <span class="switch__track"></span>
+                <span class="switch__label">Use timers (CLOE-style)</span>
+              </label>
+            </div>
+
+            <div class="formRow">
+              <button class="btn btn--ghost" id="btnResetProgress" type="button">Reset progress</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. Diagnostic -->
+    <section class="section" id="s1">
+      <div class="section__head">
+        <h2>1) Diagnostic (10 minutes)</h2>
+        <p class="muted frhelp">FR: Mini test pour choisir le niveau (A2 / B1 / B2) + les points à travailler.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h3 class="card__title">Mini diagnostic</h3>
+          <p class="muted">Answer 12 quick questions (mixed grammar + vocabulary). Then you’ll get a recommended track.</p>
+          <div id="diagMount"></div>
+        </div>
+
+        <div class="card card--soft">
+          <h3 class="card__title">Your plan</h3>
+          <div id="planMount" class="plan">
+            <div class="plan__empty">Start the diagnostic to see your plan.</div>
+          </div>
+          <div class="divider"></div>
+          <div class="small">
+            <strong>Exam tip:</strong> focus on <em>accuracy under time pressure</em> (short questions, quick decisions).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Verb Tense Ladder -->
+    <section class="section" id="s2">
+      <div class="section__head">
+        <h2>2) Verb Tense Ladder (CLOE core)</h2>
+        <p class="muted">Short lessons + CLOE-style questions. Do them in order.</p>
+        <p class="muted frhelp">FR: Le plus important = choisir le bon temps avec les indices (yesterday / since / now / tomorrow…).</p>
+      </div>
+      <div id="tensesMount"></div>
+    </section>
+
+    <!-- 3. Modals + Key Grammar -->
+    <section class="section" id="s3">
+      <div class="section__head">
+        <h2>3) Modals & Key Grammar (must / have to / should…)</h2>
+        <p class="muted frhelp">FR: Focus sur l’obligation, le conseil, la possibilité, la politesse.</p>
+      </div>
+      <div id="modalsMount"></div>
+    </section>
+
+    <!-- 4. Vocabulary -->
+    <section class="section" id="s4">
+      <div class="section__head">
+        <h2>4) Vocabulary (everyday + professional)</h2>
+        <p class="muted">Tap a word → see definition, French, example. Use “Listen” for pronunciation.</p>
+        <p class="muted frhelp">FR: Vocabulaire utile pour l’écrit et l’oral (emails, réunions, problèmes, voyages, services…).</p>
+      </div>
+      <div id="vocabMount"></div>
+    </section>
+
+    <!-- 5. Expressions + Email chunks -->
+    <section class="section" id="s5">
+      <div class="section__head">
+        <h2>5) Expressions & Email chunks</h2>
+        <p class="muted frhelp">FR: Formules prêtes à l’emploi (demander, proposer, s’excuser, relancer…).</p>
+      </div>
+      <div id="exprMount"></div>
+    </section>
+
+    <!-- 6. Reading + Listening -->
+    <section class="section" id="s6">
+      <div class="section__head">
+        <h2>6) Reading & Listening (short + timed)</h2>
+        <p class="muted frhelp">FR: Compréhension écrite et orale avec questions rapides.</p>
+      </div>
+      <div id="rlMount"></div>
+    </section>
+
+    <!-- 7. Mini Mock Test -->
+    <section class="section" id="s7">
+      <div class="section__head">
+        <h2>7) Mini mock test (20 questions)</h2>
+        <p class="muted">Mixed skills. Timed (optional). Auto score per skill.</p>
+        <p class="muted frhelp">FR: Simulation rapide (type CLOE) : vocabulaire, grammaire, expressions, lecture, écoute.</p>
+      </div>
+      <div id="mockMount"></div>
+    </section>
+
+    <!-- 8. Oral interview prep -->
+    <section class="section" id="s8">
+      <div class="section__head">
+        <h2>8) Oral interview prep (15–20 minutes)</h2>
+        <p class="muted">Intro Qs → role-play → discussion (CLOE-style). Use the prompt generator.</p>
+        <p class="muted frhelp">FR: Préparation à l’oral : questions d’introduction, mise en situation, discussion.</p>
+      </div>
+      <div id="oralMount"></div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="small">
+          <strong>SpeakEasyTisha</strong> • CLOE Exam Prep • Built for Mac + iPad Safari
+        </div>
+        <div class="footer__links">
+          <button class="btn btn--ghost" data-jump="#top" type="button">Back to top</button>
+          <button class="btn btn--ghost" id="btnExportProgress" type="button">Export progress</button>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/js/cloe-exam-prep-step-by-step.js"></script>
+</body>
+</html>
