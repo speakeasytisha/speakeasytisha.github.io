@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • VTest Full Mock (Pack 4)</title>
+  <link rel="stylesheet" href="/css/vtest-full-mock-pack4.css" />
+  <meta name="color-scheme" content="dark light" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand" role="banner">
+      <div class="brand__mark" aria-hidden="true">🧪</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">VTest Prep • Full Mock Test (Pack 4)</div>
+      </div>
+    </div>
+
+    <div class="topbar__tools">
+      <div class="pill" title="Accent for text-to-speech">
+        <span class="pill__label">Accent</span>
+        <button class="btn btn--tiny" id="accentUS" type="button" aria-pressed="true">American</button>
+        <button class="btn btn--tiny" id="accentUK" type="button" aria-pressed="false">British</button>
+      </div>
+
+      <div class="pill" title="Tap chips to insert text (iPad friendly)">
+        <span class="pill__label">iPad mode</span>
+        <button class="btn btn--tiny" id="tapMode" type="button" aria-pressed="true">On</button>
+      </div>
+
+      <div class="pill pill--score" title="Score across auto-check tasks">
+        <span class="pill__label">Score</span>
+        <span class="pill__value" id="scoreTxt">0 / 0</span>
+        <button class="btn btn--tiny btn--ghost" id="resetAll" type="button" title="Reset all">↺</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero card">
+    <div class="hero__grid">
+      <div>
+        <h1 class="h1">Full VTest Mock (realistic + timed)</h1>
+        <p class="lead">
+          This page runs a <strong>complete exam-style flow</strong> in one place:
+          <strong>Listening → Reading → Speaking → Writing</strong>.
+          It’s designed for fast improvement in <strong>speaking + writing</strong>, while still training listening and reading.
+        </p>
+
+        <div class="hero__row">
+          <div class="field">
+            <label for="studentName">Student name (optional)</label>
+            <input id="studentName" class="input" placeholder="Leave blank to keep generic" />
+          </div>
+          <div class="field">
+            <label for="level">Target level</label>
+            <select id="level" class="select">
+              <option value="b1">B1→B2 (clear + simple)</option>
+              <option value="b2" selected>B2→C1 (natural + precise)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="context">Work context</label>
+            <select id="context" class="select">
+              <option value="general">General professional</option>
+              <option value="hospitality">Hospitality / Hotel</option>
+              <option value="engineering">Industry / Engineering</option>
+              <option value="admin">Office / Admin</option>
+              <option value="sales">Sales / Customer service</option>
+              <option value="transport">Transport / Tourism</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="hero__btns">
+          <button class="btn btn--primary" id="startFullMock" type="button">Start Full Mock (timed)</button>
+          <a class="btn" href="#listen">Go to Listening</a>
+          <a class="btn" href="#report">Go to Report</a>
+          <button class="btn btn--ghost" id="copyOverview" type="button">Copy exam checklist</button>
+        </div>
+
+        <p class="note">
+          Audio is generated with your browser’s <strong>Text‑to‑Speech</strong> (US/UK). If audio is blocked, read aloud.
+          Everything is <strong>Mac + iPad Safari</strong> friendly (tap-first controls, no drag-only tasks).
+        </p>
+      </div>
+
+      <div class="hero__panel">
+        <div class="progress">
+          <div class="progress__top">
+            <span class="kicker">Progress</span>
+            <span class="kicker" id="progressTxt">0%</span>
+          </div>
+          <div class="progress__bar" aria-hidden="true"><div class="progress__fill" id="progressFill"></div></div>
+
+          <div class="progress__checks" id="progressChecks" aria-label="Mock sections"></div>
+
+          <div class="mini card card--soft">
+            <div class="mini__title">Time targets (suggested)</div>
+            <ul class="mini__list">
+              <li><strong>Listening:</strong> ~6 min</li>
+              <li><strong>Reading:</strong> ~6 min</li>
+              <li><strong>Speaking:</strong> 15s prep + 75s speak</li>
+              <li><strong>Writing:</strong> 10 min email (8–12 lines)</li>
+            </ul>
+            <div class="row">
+              <button class="btn btn--tiny" id="saveProgress" type="button">Save</button>
+              <button class="btn btn--tiny btn--ghost" id="loadProgress" type="button">Load</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTENING -->
+  <section class="card" id="listen">
+    <div class="section__head">
+      <h2 class="h2">1) Listening (TTS + questions)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny" id="markListen" type="button">Mark complete</button>
+        <div class="pill"><span class="pill__label">Timer</span><span class="pill__value" id="listenTimer">06:00</span></div>
+        <button class="btn btn--tiny" id="startListenTimer" type="button">Start</button>
+        <button class="btn btn--tiny btn--ghost" id="resetListenTimer" type="button">Reset</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="callout">
+        <div class="callout__title">Audio 1 — voicemail update</div>
+        <p class="muted small">Listen 2 times max (exam habit). Answer the questions.</p>
+        <div class="row">
+          <button class="btn btn--tiny btn--primary" id="playAudio1" type="button">▶ Play</button>
+          <button class="btn btn--tiny btn--ghost" id="playAudio1Slow" type="button">▶ Slow</button>
+          <button class="btn btn--tiny btn--ghost" id="showT1" type="button">Show transcript</button>
+        </div>
+        <div class="transcript" id="t1" hidden></div>
+        <div class="quiz" id="listenQ1"></div>
+
+        <div class="miniTask">
+          <h3 class="h3">Numbers dictation (from Audio 1)</h3>
+          <p class="muted small">Type the reference number (digits only).</p>
+          <div class="row">
+            <button class="btn btn--tiny" id="playDigits1" type="button">▶ Play digits</button>
+            <button class="btn btn--tiny btn--ghost" id="playDigits1Slow" type="button">▶ Slow digits</button>
+            <input class="input input--small" id="digits1" placeholder="e.g., 50821" inputmode="numeric" />
+            <button class="btn btn--tiny btn--primary" id="checkDigits1" type="button">Check</button>
+          </div>
+          <div class="feedback" id="digits1Fb" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout__title">Audio 2 — meeting summary</div>
+        <p class="muted small">Listen 2 times max. Answer the questions.</p>
+        <div class="row">
+          <button class="btn btn--tiny btn--primary" id="playAudio2" type="button">▶ Play</button>
+          <button class="btn btn--tiny btn--ghost" id="playAudio2Slow" type="button">▶ Slow</button>
+          <button class="btn btn--tiny btn--ghost" id="showT2" type="button">Show transcript</button>
+        </div>
+        <div class="transcript" id="t2" hidden></div>
+        <div class="quiz" id="listenQ2"></div>
+
+        <div class="miniTask">
+          <h3 class="h3">Quick phrase check</h3>
+          <p class="muted small">Choose the most professional follow‑up line.</p>
+          <div class="quiz" id="listenPolite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- READING -->
+  <section class="card" id="read">
+    <div class="section__head">
+      <h2 class="h2">2) Reading (email chain + tasks)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny" id="markRead" type="button">Mark complete</button>
+        <div class="pill"><span class="pill__label">Timer</span><span class="pill__value" id="readTimer">06:00</span></div>
+        <button class="btn btn--tiny" id="startReadTimer" type="button">Start</button>
+        <button class="btn btn--tiny btn--ghost" id="resetReadTimer" type="button">Reset</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="callout">
+        <div class="callout__title">Email chain</div>
+        <p class="muted small">Read quickly. Look for: purpose, dates, actions, responsibilities.</p>
+        <div class="mailbox" id="mailbox"></div>
+        <div class="row">
+          <button class="btn btn--tiny btn--ghost" id="copyEmails" type="button">Copy emails</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="miniTask">
+          <h3 class="h3">Comprehension (MCQ)</h3>
+          <div class="quiz" id="readQuiz"></div>
+        </div>
+
+        <div class="miniTask">
+          <h3 class="h3">Order the steps (tap up/down)</h3>
+          <p class="muted small">Put the action plan in the correct order.</p>
+          <div class="order" id="orderBox"></div>
+          <div class="row row--end">
+            <button class="btn btn--tiny btn--primary" id="checkOrder" type="button">Check order</button>
+            <button class="btn btn--tiny btn--ghost" id="resetOrder" type="button">Reset</button>
+          </div>
+          <div class="feedback" id="orderFb" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKING -->
+  <section class="card" id="speak">
+    <div class="section__head">
+      <h2 class="h2">3) Speaking (15s prep + 75s speak)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny" id="markSpeak" type="button">Mark complete</button>
+        <button class="btn btn--tiny btn--ghost" id="listenSpeakPrompt" type="button">▶ Listen prompt</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="speakBox">
+        <div class="speakPrompt" id="speakPrompt"></div>
+
+        <div class="row">
+          <button class="btn btn--tiny" id="newSpeak" type="button">New prompt</button>
+          <button class="btn btn--tiny btn--ghost" id="copySpeakPrompt" type="button">Copy prompt</button>
+          <button class="btn btn--tiny btn--ghost" id="showStarters" type="button" aria-expanded="false">Show starters</button>
+        </div>
+
+        <div class="timers">
+          <div class="timerCard">
+            <div class="kicker">Prep</div>
+            <div class="timerNum" id="prepNum">15</div>
+            <button class="btn btn--tiny" id="startPrep" type="button">Start</button>
+          </div>
+
+          <div class="timerCard">
+            <div class="kicker">Speak</div>
+            <div class="timerNum" id="speakNum">75</div>
+            <button class="btn btn--tiny" id="startSpeak" type="button">Start</button>
+          </div>
+
+          <div class="timerCard">
+            <div class="kicker">Reset</div>
+            <button class="btn btn--tiny btn--ghost" id="resetSpeakTimers" type="button">↺</button>
+          </div>
+        </div>
+
+        <div class="callout" id="startersBox" hidden>
+          <div class="callout__title">Starters (tap to insert)</div>
+          <div class="chips" id="speakStarters"></div>
+        </div>
+
+        <div class="miniTask">
+          <h3 class="h3">Outline (4 lines)</h3>
+          <p class="muted small">Opinion / Example / Solution / Close. (Tap chips if you want.)</p>
+          <div class="chips" id="outlineChips"></div>
+          <textarea class="textarea" id="outline" rows="6" placeholder="Type your outline here…"></textarea>
+          <div class="row row--end">
+            <button class="btn btn--tiny btn--ghost" id="clearOutline" type="button">Clear</button>
+            <button class="btn btn--tiny btn--primary" id="checkOutline" type="button">Auto-check</button>
+          </div>
+          <div class="feedback" id="outlineFb" aria-live="polite"></div>
+        </div>
+
+        <details class="details">
+          <summary>Optional: record yourself (if supported)</summary>
+          <div class="row">
+            <button class="btn btn--tiny" id="recStart" type="button">Start recording</button>
+            <button class="btn btn--tiny btn--ghost" id="recStop" type="button" disabled>Stop</button>
+            <button class="btn btn--tiny btn--ghost" id="recClear" type="button">Clear</button>
+          </div>
+          <audio class="player" id="recAudio" controls></audio>
+          <a class="btn btn--tiny btn--ghost" id="recDownload" download="vtest-speaking.webm" href="#" hidden>Download recording</a>
+        </details>
+      </div>
+
+      <div class="mini card card--soft">
+        <div class="mini__title">Speaking examiner checklist</div>
+        <div class="checklist" id="speakChecklist"></div>
+        <div class="row row--end">
+          <button class="btn btn--tiny btn--primary" id="scoreSpeaking" type="button">Score my speaking</button>
+        </div>
+        <div class="feedback" id="speakFb" aria-live="polite"></div>
+        <p class="muted small">This is self‑evaluation (very realistic for exam prep).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITING -->
+  <section class="card" id="write">
+    <div class="section__head">
+      <h2 class="h2">4) Writing (timed email)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny" id="markWrite" type="button">Mark complete</button>
+        <div class="pill"><span class="pill__label">Timer</span><span class="pill__value" id="writeTimer">10:00</span></div>
+        <button class="btn btn--tiny" id="startWrite" type="button">Start</button>
+        <button class="btn btn--tiny btn--ghost" id="resetWrite" type="button">Reset</button>
+        <button class="btn btn--tiny btn--ghost" id="newWriteTask" type="button">New task</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="callout">
+        <div class="callout__title">Task</div>
+        <p class="muted" id="writeTask"></p>
+        <div class="row">
+          <label class="muted small" for="tone">Tone</label>
+          <select id="tone" class="select select--small">
+            <option value="neutral">Neutral & professional</option>
+            <option value="warm">Warm & friendly</option>
+            <option value="firm">Firm but polite</option>
+          </select>
+          <button class="btn btn--tiny btn--ghost" id="showModel" type="button">Show model</button>
+          <button class="btn btn--tiny btn--ghost" id="listenModel" type="button">▶ Listen model</button>
+        </div>
+        <div class="model" id="model" hidden></div>
+
+        <div class="miniTask">
+          <h3 class="h3">Phrase bank (tap to insert)</h3>
+          <div class="chips" id="phraseBank"></div>
+          <div class="row">
+            <button class="btn btn--tiny btn--ghost" id="copyPhrases" type="button">Copy phrases</button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <textarea class="textarea" id="draft" rows="12" placeholder="Write your email here (8–12 lines)…"></textarea>
+
+        <div class="row row--end">
+          <button class="btn btn--tiny btn--primary" id="checkWriting" type="button">Self-check</button>
+          <button class="btn btn--tiny btn--ghost" id="clearDraft" type="button">Clear</button>
+        </div>
+
+        <div class="checklist" id="writeChecklist"></div>
+        <div class="feedback" id="writeFb" aria-live="polite"></div>
+
+        <div class="miniTask">
+          <h3 class="h3">Upgrade (one click)</h3>
+          <p class="muted small">Pick a function → insert an exam-ready sentence.</p>
+          <div class="row">
+            <select class="select select--small" id="upgradePick">
+              <option value="purpose">Purpose</option>
+              <option value="apology">Apology</option>
+              <option value="reason">Reason</option>
+              <option value="solution">Solution</option>
+              <option value="request">Request</option>
+              <option value="deadline">Deadline</option>
+            </select>
+            <button class="btn btn--tiny" id="makeUpgrade" type="button">Generate</button>
+            <button class="btn btn--tiny btn--ghost" id="insertUpgrade" type="button">Insert</button>
+          </div>
+          <div class="model" id="upgradeOut"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPORT -->
+  <section class="card" id="report">
+    <div class="section__head">
+      <h2 class="h2">5) Final report (copy/paste)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny btn--primary" id="copyReport" type="button">Copy report</button>
+        <button class="btn btn--tiny btn--ghost" id="printReport" type="button">Print</button>
+        <a class="btn btn--tiny btn--ghost" href="#top">Back to top</a>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="callout">
+        <div class="callout__title">Teacher quick feedback (suggested)</div>
+        <ul class="mini__list">
+          <li><strong>Speaking:</strong> structure + connectors + clear close</li>
+          <li><strong>Writing:</strong> purpose / context / action / request + polite tone</li>
+          <li><strong>Listening:</strong> numbers + key actions</li>
+          <li><strong>Reading:</strong> dates / responsibilities / next steps</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--tiny btn--ghost" id="regenAll" type="button">New full mock set</button>
+        </div>
+      </div>
+
+      <div>
+        <pre class="report" id="reportPreview"></pre>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>SpeakEasyTisha · VTest Full Mock (Pack 4)</span>
+      <span class="muted">No external assets · Mac/iPad Safari friendly</span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="/js/vtest-full-mock-pack4.js"></script>
+</body>
+</html>
