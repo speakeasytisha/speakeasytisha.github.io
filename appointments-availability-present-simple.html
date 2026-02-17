@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Appointments & Availability (Present Simple)</title>
+  <link rel="stylesheet" href="/css/appointments-availability-present-simple.css" />
+  <meta name="theme-color" content="#0f766e" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand" role="banner">
+      <div class="brand__mark" aria-hidden="true">📞</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Appointments • Availability • Confirmations (Present Simple)</div>
+      </div>
+    </div>
+
+    <nav class="tabs" aria-label="Lesson sections">
+      <button class="tab is-active" data-tab="home" type="button">0) Start</button>
+      <button class="tab" data-tab="vocab" type="button">1) Vocabulary</button>
+      <button class="tab" data-tab="dialogs" type="button">2) Dialog Studio</button>
+      <button class="tab" data-tab="slots" type="button">3) Time Slots</button>
+      <button class="tab" data-tab="builder" type="button">4) Builder</button>
+    </nav>
+
+    <div class="topbar__actions">
+      <div class="chipgroup" role="group" aria-label="Accent">
+        <button class="chip is-active" id="accentUS" type="button" title="American accent">US</button>
+        <button class="chip" id="accentUK" type="button" title="British accent">UK</button>
+      </div>
+      <div class="chipgroup" role="group" aria-label="Level">
+        <button class="chip is-active" id="lvlA1" type="button">A1</button>
+        <button class="chip" id="lvlA2" type="button">A2</button>
+      </div>
+      <button class="btn btn--ghost" id="btnPrint" type="button" title="Print this lesson">🖨️ Print</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero" aria-label="Lesson overview">
+    <div class="hero__card">
+      <h1>Book. Reschedule. Confirm.</h1>
+      <p class="lead">
+        Universal English for appointments and planning — useful for <strong>moving</strong>, <strong>hobbies</strong>,
+        <strong>volunteering</strong>, <strong>events</strong>, and <strong>daily life</strong>.
+        We use the <strong>present simple only</strong>.
+      </p>
+
+      <div class="hero__row">
+        <div class="label">Choose a scenario (changes examples, not the grammar):</div>
+        <div class="chipline" id="scenarioChips" role="group" aria-label="Scenario selector"></div>
+      </div>
+
+      <div class="hero__grid">
+        <div class="mini">
+          <div class="mini__icon" aria-hidden="true">🗓️</div>
+          <div class="mini__title">Availability</div>
+          <div class="mini__text">I’m available on… at… / I’m not available…</div>
+        </div>
+        <div class="mini">
+          <div class="mini__icon" aria-hidden="true">📞</div>
+          <div class="mini__title">Phone scripts</div>
+          <div class="mini__text">Hello • I’d like… • Does Tuesday work?</div>
+        </div>
+        <div class="mini">
+          <div class="mini__icon" aria-hidden="true">✅</div>
+          <div class="mini__title">Confirm</div>
+          <div class="mini__text">So it’s on… at… • Perfect, thank you.</div>
+        </div>
+        <div class="mini">
+          <div class="mini__icon" aria-hidden="true">❓</div>
+          <div class="mini__title">WH questions</div>
+          <div class="mini__text">When / Where / What time / How much…</div>
+        </div>
+      </div>
+
+      <div class="hero__row">
+        <button class="btn" id="btnStart" type="button">✨ Start the lesson</button>
+        <button class="btn btn--ghost" id="btnWarmupSpeak" type="button">🔊 Warm‑up</button>
+      </div>
+      <div class="feedback" id="homeFb" role="status" aria-live="polite">Tip: Use A1 for more hints and slower audio.</div>
+    </div>
+
+    <div class="hero__art" aria-hidden="true">
+      <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+      <div class="petal p4"></div><div class="petal p5"></div><div class="petal p6"></div>
+    </div>
+  </section>
+
+  <!-- ===================== HOME ===================== -->
+  <section class="panel is-active" id="tab-home">
+    <div class="panel__head">
+      <h2>0) Quick warm-up</h2>
+      <p class="muted">Tap a useful sentence. Then go to Vocabulary → Dialog Studio → Time Slots → Builder.</p>
+    </div>
+
+    <div class="subcard">
+      <h3>Tap & listen (present simple)</h3>
+      <div class="chipline" id="warmupChips"></div>
+      <div class="row">
+        <button class="btn btn--ghost" id="warmupNew" type="button">🔄 New set</button>
+      </div>
+    </div>
+
+    <div class="subcard">
+      <h3>Key patterns (EN → FR)</h3>
+      <div class="tableWrap">
+        <table class="table" aria-label="Key patterns table">
+          <thead>
+            <tr><th>English</th><th>Français</th><th>🔊</th></tr>
+          </thead>
+          <tbody id="patternTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VOCAB ===================== -->
+  <section class="panel" id="tab-vocab">
+    <div class="panel__head">
+      <h2>1) Vocabulary (tap cards + listen)</h2>
+      <p class="muted">Tap a card to flip EN ⇄ FR. Use search + category filters. Tap 🔊 to listen.</p>
+    </div>
+
+    <div class="controls">
+      <div class="field">
+        <label for="vocabSearch">Search</label>
+        <input id="vocabSearch" type="search" placeholder="appointment, available, reschedule, price..." autocomplete="off" />
+      </div>
+
+      <div class="field">
+        <label for="vocabCat">Category</label>
+        <select id="vocabCat">
+          <option value="all">All</option>
+          <option value="core">📌 Core</option>
+          <option value="time">⏰ Time & dates</option>
+          <option value="questions">❓ Questions</option>
+          <option value="polite">🤝 Polite phrases</option>
+        </select>
+      </div>
+
+      <div class="field field--row">
+        <button class="btn" id="btnShuffleVocab" type="button">🔀 Shuffle</button>
+        <button class="btn btn--ghost" id="btnResetVocab" type="button">↩︎ Reset</button>
+      </div>
+    </div>
+
+    <div class="vocabGrid" id="vocabGrid" aria-live="polite"></div>
+
+    <div class="subcard">
+      <h3>WH words (EN → FR) for appointment questions</h3>
+      <p class="muted">Tap 🔊 to listen. These are super reusable.</p>
+      <div class="tableWrap">
+        <table class="table" aria-label="WH words table">
+          <thead>
+            <tr><th>Word</th><th>French</th><th>Example</th><th>🔊</th></tr>
+          </thead>
+          <tbody id="whTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DIALOGS ===================== -->
+  <section class="panel" id="tab-dialogs">
+    <div class="panel__head">
+      <h2>2) Dialog Studio (book • reschedule • confirm)</h2>
+      <p class="muted">Fill the blanks (tap). Use Hint. Then listen to the full dialogue.</p>
+    </div>
+
+    <div class="grid2">
+      <article class="card">
+        <div class="card__head">
+          <h3>Dialogue A: Phone call (introduce + book / reserve / sign up)</h3>
+          <div class="pill" id="dlgALabel">Scenario</div>
+        </div>
+        <div class="role" id="dlgA"></div>
+        <div class="row">
+          <button class="btn" id="dlgACheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="dlgAHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="dlgASpeak" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="dlgANew" type="button">🔄 New</button>
+        </div>
+        <div class="feedback" id="dlgAFb" role="status" aria-live="polite"></div>
+      </article>
+
+      <article class="card">
+        <div class="card__head">
+          <h3>Dialogue B: Rescheduling</h3>
+          <div class="pill" id="dlgBLabel">Scenario</div>
+        </div>
+        <div class="role" id="dlgB"></div>
+        <div class="row">
+          <button class="btn" id="dlgBCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="dlgBHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="dlgBSpeak" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="dlgBNew" type="button">🔄 New</button>
+        </div>
+        <div class="feedback" id="dlgBFb" role="status" aria-live="polite"></div>
+      </article>
+    </div>
+
+    <article class="subcard">
+      <div class="card__head">
+        <h3>Dialogue C: Confirmation (phone or email)</h3>
+        <div class="pill" id="dlgCLabel">Scenario</div>
+      </div>
+      <div class="role" id="dlgC"></div>
+      <div class="row">
+        <button class="btn" id="dlgCCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="dlgCHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="dlgCSpeak" type="button">🔊 Listen</button>
+        <button class="btn btn--ghost" id="dlgCNew" type="button">🔄 New</button>
+      </div>
+      <div class="feedback" id="dlgCFb" role="status" aria-live="polite"></div>
+    </article>
+  </section>
+
+  <!-- ===================== TIME SLOTS ===================== -->
+  <section class="panel" id="tab-slots">
+    <div class="panel__head">
+      <h2>3) Time Slots (choose + speak)</h2>
+      <p class="muted">Tap a slot to choose it. Then build a correct sentence in the present simple.</p>
+    </div>
+
+    <div class="grid2">
+      <article class="card">
+        <h3>Availability board</h3>
+        <p class="muted">Green = available. Gray = not available. Tap one green slot.</p>
+
+        <div class="slotBoard" id="slotBoard" role="grid" aria-label="Availability board"></div>
+
+        <div class="row">
+          <button class="btn btn--ghost" id="slotNew" type="button">🔄 New board</button>
+          <button class="btn btn--ghost" id="slotHint" type="button">💡 Hint</button>
+        </div>
+        <div class="feedback" id="slotFb" role="status" aria-live="polite"></div>
+      </article>
+
+      <article class="card">
+        <h3>Sentence builder (tap)</h3>
+        <p class="muted">Tap chips to build your sentence. Then check.</p>
+
+        <div class="builder">
+          <div class="chipline" id="sentChips"></div>
+          <div class="builder__out">
+            <div class="builder__label">Your sentence</div>
+            <div class="builder__sentence" id="sentOut" aria-live="polite">—</div>
+          </div>
+          <div class="row">
+            <button class="btn" id="sentCheck" type="button">✅ Check</button>
+            <button class="btn btn--ghost" id="sentClear" type="button">🧽 Clear</button>
+            <button class="btn btn--ghost" id="sentSpeak" type="button">🔊 Listen</button>
+          </div>
+          <div class="feedback" id="sentFb" role="status" aria-live="polite"></div>
+        </div>
+      </article>
+    </div>
+
+    <article class="subcard">
+      <h3>Mini missions (choose the best time)</h3>
+      <p class="muted">Read the mission and tap the best slot. (Present simple only.)</p>
+      <div class="mission" id="missionBox"></div>
+      <div class="row">
+        <button class="btn" id="missionCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="missionHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="missionSpeak" type="button">🔊 Listen</button>
+        <button class="btn btn--ghost" id="missionNew" type="button">🔄 New mission</button>
+      </div>
+      <div class="feedback" id="missionFb" role="status" aria-live="polite"></div>
+    </article>
+  </section>
+
+  <!-- ===================== BUILDER ===================== -->
+  <section class="panel" id="tab-builder">
+    <div class="panel__head">
+      <h2>4) Builder (A1/A2 versions)</h2>
+      <p class="muted">Create a short message + questions. The same info becomes A1 and A2.</p>
+    </div>
+
+    <div class="grid2">
+      <article class="card">
+        <h3>Your info</h3>
+        <div class="form">
+          <div class="field">
+            <label for="bName">Name (optional)</label>
+            <input id="bName" placeholder="e.g., Marie" />
+          </div>
+
+          <div class="field">
+            <label for="bRole">Role (neutral)</label>
+            <select id="bRole">
+              <option value="a student">student</option>
+              <option value="a beginner">beginner</option>
+              <option value="a volunteer">volunteer</option>
+              <option value="an event planner">event planner</option>
+              <option value="a retiree">retiree</option>
+              <option value="a visitor">visitor</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="bPlace">Place (optional)</label>
+            <input id="bPlace" placeholder="e.g., in town / in the US / at home" />
+          </div>
+
+          <div class="field">
+            <label for="bGoal">Goal</label>
+            <select id="bGoal">
+              <option value="book an appointment">book an appointment</option>
+              <option value="make a reservation">make a reservation</option>
+              <option value="reserve a table">reserve a table</option>
+              <option value="sign up for a class">sign up for a class</option>
+              <option value="ask for information">ask for information</option>
+              <option value="confirm a time">confirm a time</option>
+              <option value="reschedule a meeting">reschedule a meeting</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="bDay">Preferred day</label>
+            <select id="bDay">
+              <option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="bTime">Preferred time</label>
+            <select id="bTime">
+              <option value="in the morning">in the morning</option>
+              <option value="in the afternoon">in the afternoon</option>
+              <option value="in the evening">in the evening</option>
+              <option value="at 9:00 AM">at 9:00 AM</option>
+              <option value="at 10:30 AM">at 10:30 AM</option>
+              <option value="at 11:00 AM">at 11:00 AM</option>
+              <option value="at 2:00 PM">at 2:00 PM</option>
+              <option value="at 2:30 PM">at 2:30 PM</option>
+              <option value="at 4:00 PM">at 4:00 PM</option>
+              <option value="at 4:15 PM">at 4:15 PM</option>
+              <option value="at 7:00 PM">at 7:00 PM</option>
+            </select>
+          </div>
+
+          <div class="row row--wrap">
+            <button class="btn" id="bGenerate" type="button">✨ Generate</button>
+            <button class="btn btn--ghost" id="bSpeak" type="button">🔊 Listen</button>
+            <button class="btn btn--ghost" id="bCopy" type="button">📋 Copy</button>
+            <button class="btn btn--ghost" id="bHint" type="button">💡 Hint</button>
+          </div>
+          <div class="feedback" id="bFb" role="status" aria-live="polite"></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Output (A1 and A2)</h3>
+
+        <div class="output">
+          <div class="output__head">
+            <div class="output__title">A1 text</div>
+            <button class="sbtn" id="a1Speak" type="button">🔊</button>
+          </div>
+          <div class="output__body" id="outA1">Tap “Generate”.</div>
+        </div>
+
+        <div class="output">
+          <div class="output__head">
+            <div class="output__title">A2 text</div>
+            <button class="sbtn" id="a2Speak" type="button">🔊</button>
+          </div>
+          <div class="output__body" id="outA2">—</div>
+        </div>
+
+        <div class="output">
+          <div class="output__head">
+            <div class="output__title">Questions (WH)</div>
+            <button class="sbtn" id="qSpeak" type="button">🔊</button>
+          </div>
+          <div class="output__body" id="outQs">—</div>
+        </div>
+      </article>
+    </div>
+
+    <article class="subcard">
+      <h3>Micro practice: email subject lines (tap)</h3>
+      <p class="muted">Choose the best subject line for each situation.</p>
+      <div class="drill" id="subjDrill"></div>
+      <div class="row">
+        <button class="btn" id="subjCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="subjNew" type="button">🔄 New</button>
+      </div>
+      <div class="feedback" id="subjFb" role="status" aria-live="polite"></div>
+    </article>
+  </section>
+
+  <footer class="foot">
+    <div class="muted small">SpeakEasyTisha • Tap-friendly (iPad Safari) • Present Simple only • US/UK listening</div>
+    <a class="toTop" href="#top">↑ Back to top</a>
+  </footer>
+</main>
+
+<script src="/js/appointments-availability-present-simple.js"></script>
+</body>
+</html>
