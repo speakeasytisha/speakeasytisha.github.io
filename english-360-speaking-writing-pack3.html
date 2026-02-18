@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • English 360° • Speaking & Writing Clinic (A2→B2)</title>
+  <link rel="stylesheet" href="/css/english-360-speaking-writing-pack3.css" />
+  <meta name="color-scheme" content="dark light" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand" role="banner">
+      <div class="brand__mark" aria-hidden="true">🗣️✍️</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">English 360° • Speaking & Writing Clinic (Pack 3 • A2→B2)</div>
+      </div>
+    </div>
+
+    <div class="topbar__tools">
+      <div class="pill">
+        <span class="pill__label">Accent (TTS)</span>
+        <button class="btn btn--tiny" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="btn btn--tiny" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Mode iPad</span>
+        <button class="btn btn--tiny" id="tapMode" type="button" aria-pressed="true">On</button>
+      </div>
+
+      <div class="pill pill--score" title="Score sur les parties auto-corrigées">
+        <span class="pill__label">Score</span>
+        <span class="pill__value" id="scoreTxt">0 / 0</span>
+        <button class="btn btn--tiny btn--ghost" id="resetAll" type="button" title="Reset">↺</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero card">
+    <div class="hero__grid">
+      <div>
+        <h1 class="h1">Speaking & Writing Clinic (A2→B2)</h1>
+        <p class="lead">
+          Cette page sert à <strong>faire monter la performance</strong> sur les 2 parties les plus difficiles :
+          <strong>Speaking + Writing</strong>. Tout est <strong>réaliste</strong> (contextes pro) et
+          <strong>tap‑friendly</strong> (Mac / iPad Safari).
+        </p>
+
+        <div class="hero__row">
+          <div class="field">
+            <label for="studentName">Nom (optionnel)</label>
+            <input id="studentName" class="input" placeholder="ex: Sabine / Fabrice / …" />
+          </div>
+          <div class="field">
+            <label for="level">Niveau</label>
+            <select id="level" class="select">
+              <option value="a2">A2 (simple + clair)</option>
+              <option value="b1" selected>B1 (structuré + naturel)</option>
+              <option value="b2">B2 (précis + pro)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="context">Contexte</label>
+            <select id="context" class="select">
+              <option value="general" selected>Général pro</option>
+              <option value="hospitality">Hôtellerie / réception</option>
+              <option value="engineering">Industrie / qualité / supply</option>
+              <option value="admin">Administration / office</option>
+              <option value="sales">Vente / customer success</option>
+              <option value="transport">Tourisme / transport</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="hero__btns">
+          <a class="btn btn--primary" href="#speak">▶ Speaking</a>
+          <a class="btn" href="#write">▶ Writing</a>
+          <a class="btn" href="#drills">⚡ Micro‑drills</a>
+          <a class="btn" href="#report">📄 Rapport</a>
+          <button class="btn btn--ghost" id="saveProgress" type="button">Enregistrer</button>
+          <button class="btn btn--ghost" id="loadProgress" type="button">Charger</button>
+        </div>
+
+        <div class="note">
+          <strong>Règle d’or examen :</strong> structure + détails + politesse.
+          Tu vas t’entraîner avec :
+          <span class="tag">4‑line plan</span>
+          <span class="tag">phrase bank</span>
+          <span class="tag">upgrade 1‑clic</span>
+          <span class="tag">self‑rubric</span>
+        </div>
+      </div>
+
+      <aside class="hero__panel">
+        <div class="progress">
+          <div class="progress__top">
+            <span class="kicker">Progression</span>
+            <span class="kicker" id="progressTxt">0%</span>
+          </div>
+          <div class="progress__bar" aria-hidden="true"><div class="progress__fill" id="progressFill"></div></div>
+          <div class="progress__checks" id="progressChecks" aria-label="Sections"></div>
+
+          <div class="mini card card--soft">
+            <div class="mini__title">Routine (10–12 min)</div>
+            <ul class="mini__list">
+              <li><strong>Speaking:</strong> 1 prompt + 4 lignes + 1 enregistrement</li>
+              <li><strong>Writing:</strong> 1 email (8–12 lignes) + self‑check</li>
+              <li><strong>Drills:</strong> 6 questions (pièges)</li>
+            </ul>
+            <div class="row">
+              <button class="btn btn--tiny" id="copyRoutine" type="button">Copier</button>
+              <button class="btn btn--tiny btn--ghost" id="regenAll" type="button">Nouveau set</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="card" id="speak">
+    <div class="section__head">
+      <h2 class="h2">1) Speaking — One take (réaliste)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny" id="markSpeak" type="button">✔︎ Terminé</button>
+        <button class="btn btn--tiny btn--ghost" id="listenSpeakPrompt" type="button">▶ Écouter</button>
+        <button class="btn btn--tiny btn--ghost" id="newSpeak" type="button">New</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel__title">Prompt</div>
+        <div class="prompt" id="speakPrompt"></div>
+
+        <div class="row">
+          <button class="btn btn--tiny btn--primary" id="startPrep" type="button">Prep</button>
+          <button class="btn btn--tiny btn--primary" id="startSpeak" type="button">Speak</button>
+          <button class="btn btn--tiny btn--ghost" id="resetSpeak" type="button">↺</button>
+
+          <div class="pill pill--time">
+            <span class="pill__label">Prep</span>
+            <span class="pill__value" id="prepNum">15</span>
+          </div>
+          <div class="pill pill--time">
+            <span class="pill__label">Speak</span>
+            <span class="pill__value" id="speakNum">75</span>
+          </div>
+        </div>
+
+        <div class="miniTask">
+          <h3 class="h3">4-line Plan Builder (tap)</h3>
+          <p class="muted small">Context → Action → Options → Close (polite question).</p>
+
+          <div class="chips" id="speakChips"></div>
+          <textarea class="textarea" id="speakOutline" rows="7" placeholder="Write 4 short lines…"></textarea>
+
+          <div class="row row--end">
+            <button class="btn btn--tiny btn--ghost" id="clearOutline" type="button">Clear</button>
+            <button class="btn btn--tiny btn--primary" id="checkOutline" type="button">Auto-check</button>
+          </div>
+          <div class="feedback" id="outlineFb" aria-live="polite"></div>
+        </div>
+
+        <details class="details">
+          <summary>Option : enregistrer (si supporté)</summary>
+          <div class="row">
+            <button class="btn btn--tiny" id="recStart" type="button">Record</button>
+            <button class="btn btn--tiny btn--ghost" id="recStop" type="button" disabled>Stop</button>
+            <button class="btn btn--tiny btn--ghost" id="recClear" type="button">Clear</button>
+          </div>
+          <audio class="player" id="recAudio" controls></audio>
+          <a class="btn btn--tiny btn--ghost" id="recDownload" download="english360-speaking.webm" href="#" hidden>Télécharger</a>
+          <div class="muted small">Si l’enregistrement ne marche pas (certaines configs Safari), fais l’exercice sans.</div>
+        </details>
+
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panel__title">Rubric (self‑scoring)</div>
+
+        <div class="rubric" id="speakRubric"></div>
+        <div class="row row--end">
+          <button class="btn btn--tiny btn--primary" id="scoreSpeaking" type="button">Score</button>
+        </div>
+        <div class="feedback" id="speakFb" aria-live="polite"></div>
+
+        <div class="miniTask">
+          <h3 class="h3">Upgrade 1‑clic (A2→B2)</h3>
+          <p class="muted small">Choisis une fonction → récupère 1 phrase “exam‑ready”.</p>
+          <div class="row">
+            <select class="select select--small" id="speakUpgradePick">
+              <option value="apology">Apology</option>
+              <option value="clarify">Clarify</option>
+              <option value="options">Options</option>
+              <option value="deadline">Deadline</option>
+              <option value="close">Close</option>
+            </select>
+            <button class="btn btn--tiny" id="makeSpeakUpgrade" type="button">Generate</button>
+            <button class="btn btn--tiny btn--ghost" id="insertSpeakUpgrade" type="button">Insert</button>
+            <button class="btn btn--tiny btn--ghost" id="ttsSpeakUpgrade" type="button">▶ Listen</button>
+          </div>
+          <div class="model" id="speakUpgradeOut"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="write">
+    <div class="section__head">
+      <h2 class="h2">2) Writing — Email exam style (A2→B2)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny" id="markWrite" type="button">✔︎ Terminé</button>
+        <div class="pill"><span class="pill__label">Timer</span><span class="pill__value" id="writeTimer">10:00</span></div>
+        <button class="btn btn--tiny" id="startWriteTimer" type="button">Start</button>
+        <button class="btn btn--tiny btn--ghost" id="resetWriteTimer" type="button">Reset</button>
+        <button class="btn btn--tiny btn--ghost" id="newWrite" type="button">New</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel__title">Task</div>
+        <p class="muted" id="writeTask"></p>
+
+        <div class="row">
+          <label class="muted small" for="tone">Ton</label>
+          <select id="tone" class="select select--small">
+            <option value="neutral" selected>Neutre & pro</option>
+            <option value="warm">Chaleureux</option>
+            <option value="firm">Ferm(e) mais poli(e)</option>
+          </select>
+          <button class="btn btn--tiny btn--ghost" id="toggleModel" type="button">Model</button>
+          <button class="btn btn--tiny btn--ghost" id="listenModel" type="button">▶ Listen</button>
+        </div>
+
+        <div class="model" id="writeModel" hidden></div>
+
+        <div class="miniTask">
+          <h3 class="h3">Phrase bank (tap to insert)</h3>
+          <div class="chips" id="writeChips"></div>
+          <div class="row">
+            <button class="btn btn--tiny btn--ghost" id="copyPhrases" type="button">Copier</button>
+          </div>
+        </div>
+
+        <div class="miniTask">
+          <h3 class="h3">Upgrade 1‑clic</h3>
+          <p class="muted small">Ajoute 1 phrase plus pro (purpose / request / deadline…).</p>
+          <div class="row">
+            <select class="select select--small" id="writeUpgradePick">
+              <option value="purpose">Purpose</option>
+              <option value="apology">Apology</option>
+              <option value="reason">Reason</option>
+              <option value="request">Request</option>
+              <option value="deadline">Deadline</option>
+              <option value="close">Close</option>
+            </select>
+            <button class="btn btn--tiny" id="makeWriteUpgrade" type="button">Generate</button>
+            <button class="btn btn--tiny btn--ghost" id="insertWriteUpgrade" type="button">Insert</button>
+          </div>
+          <div class="model" id="writeUpgradeOut"></div>
+        </div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panel__title">Draft (8–12 lignes)</div>
+
+        <textarea class="textarea" id="draft" rows="13" placeholder="Write your email here… (include a Subject line)"></textarea>
+
+        <div class="row row--end">
+          <button class="btn btn--tiny btn--primary" id="checkWriting" type="button">Self-check</button>
+          <button class="btn btn--tiny btn--ghost" id="clearDraft" type="button">Clear</button>
+        </div>
+
+        <div class="checklist" id="writeChecklist"></div>
+        <div class="feedback" id="writeFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="drills">
+    <div class="section__head">
+      <h2 class="h2">3) Micro‑drills — “pièges” (très utile)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny" id="markDrills" type="button">✔︎ Terminé</button>
+        <button class="btn btn--tiny btn--ghost" id="newDrills" type="button">New set</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel__title">Grammar + Politeness (auto‑corrigé)</div>
+        <div class="quiz" id="drillQuiz"></div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panel__title">French mistakes → English fixes</div>
+        <p class="muted small">Choisis la correction la plus naturelle.</p>
+        <div class="quiz" id="mistakeQuiz"></div>
+
+        <div class="miniTask">
+          <h3 class="h3">Quick Rewrite (self‑check)</h3>
+          <div class="prompt" id="rewritePrompt"></div>
+          <textarea class="textarea" id="rewriteInput" rows="6" placeholder="Rewrite it in correct, professional English…"></textarea>
+          <div class="row row--end">
+            <button class="btn btn--tiny btn--primary" id="checkRewrite" type="button">Self-check</button>
+            <button class="btn btn--tiny btn--ghost" id="newRewrite" type="button">New</button>
+          </div>
+          <div class="feedback" id="rewriteFb" aria-live="polite"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="report">
+    <div class="section__head">
+      <h2 class="h2">4) Rapport (copier / imprimer)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny btn--primary" id="copyReport" type="button">Copier</button>
+        <button class="btn btn--tiny btn--ghost" id="printReport" type="button">Print</button>
+        <a class="btn btn--tiny btn--ghost" href="#top">Haut</a>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel__title">Plan “next session”</div>
+        <ul class="mini__list">
+          <li><strong>Speaking:</strong> 4‑line plan + 2 connecteurs + close</li>
+          <li><strong>Writing:</strong> Subject + purpose + 2 détails + question + closing</li>
+          <li><strong>Drills:</strong> since/for • despite/although • would you mind</li>
+        </ul>
+        <div class="row">
+          <button class="btn btn--tiny btn--ghost" id="copyChecklist" type="button">Copier checklist</button>
+        </div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panel__title">Report output</div>
+        <pre class="report" id="reportPreview"></pre>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>SpeakEasyTisha · English 360° Pack 3 (A2→B2)</span>
+      <span class="muted">No external assets · Mac/iPad Safari friendly</span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="/js/english-360-speaking-writing-pack3.js"></script>
+</body>
+</html>
