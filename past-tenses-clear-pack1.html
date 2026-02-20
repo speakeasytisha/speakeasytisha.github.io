@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Past Tenses Made Clear (A2→B2)</title>
+  <link rel="stylesheet" href="/css/past-tenses-clear-pack1.css" />
+  <meta name="color-scheme" content="dark light" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand" role="banner">
+      <div class="brand__mark" aria-hidden="true">🕰️</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">Past Tenses Made Clear • situations → tense choice • A2→B2</div>
+      </div>
+    </div>
+
+    <div class="topbar__tools">
+      <div class="pill">
+        <span class="pill__label">Level</span>
+        <select id="level" class="select select--tiny" aria-label="Level">
+          <option value="a2">A2</option>
+          <option value="b1" selected>B1</option>
+          <option value="b2">B2</option>
+        </select>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Accent (TTS)</span>
+        <button class="btn btn--tiny" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="btn btn--tiny" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Tap mode</span>
+        <button class="btn btn--tiny" id="tapMode" type="button" aria-pressed="true">On</button>
+      </div>
+
+      <div class="pill pill--score" title="Score on auto-corrected tasks">
+        <span class="pill__label">Score</span>
+        <span class="pill__value" id="scoreTxt">0 / 0</span>
+        <button class="btn btn--tiny btn--ghost" id="resetAll" type="button" title="Reset">↺</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero card">
+    <div class="hero__grid">
+      <div>
+        <h1 class="h1">Past tenses — super clear (situations + scenarios)</h1>
+        <p class="lead">
+          This is the <strong>easy bridge lesson</strong> before Passive/Reported Speech.
+          Your students learn to choose the right tense by answering <strong>one simple question</strong>:
+          <em>“Finished event? Background action? Result now? Earlier past?”</em>
+        </p>
+        <!-- ✅ Next step: Drill packs -->
+<section class="card" id="next-drills">
+  <h2 class="h2">Next steps: Drill Packs (Past Tenses)</h2>
+  <p class="muted">Start with the Bridge diagnostic, then drill to 80%+.</p>
+  <div class="row" style="margin-top:10px; flex-wrap:wrap;">
+    <a class="btn btn--primary" href="past-tenses-bridge-to-drills-pack2.html">🧭 Bridge + Diagnostic</a>
+    <a class="btn" href="tense-drill-past-simple-pack1-fixed.html">✅ Pack 1: Past Simple</a>
+    <a class="btn" href="tense-drill-present-perfect-pack2-fixed.html">📌 Pack 2: Present Perfect</a>
+    <a class="btn" href="tense-drill-past-continuous-pack3-fixed.html">⏳ Pack 3: Past Continuous</a>
+    <a class="btn" href="tense-drill-past-perfect-pack4-fixed.html">🧩 Pack 4: Past Perfect</a>
+  </div>
+</section>
+
+        <div class="hero__row">
+          <div class="field">
+            <label for="studentName">Student (optional)</label>
+            <input id="studentName" class="input" placeholder="e.g., Sabine / Mathieu / …" />
+          </div>
+          <div class="field">
+            <label for="scenario">Scenario</label>
+            <select id="scenario" class="select">
+              <option value="shipping" selected>Shipping delay (email update)</option>
+              <option value="it">IT problem (ticket + follow-up)</option>
+              <option value="meeting">Meeting recap (actions + timing)</option>
+              <option value="hotel">Hotel complaint (service recovery)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="focus">Focus</label>
+            <select id="focus" class="select">
+              <option value="balanced" selected>Balanced</option>
+              <option value="simple">Past Simple focus</option>
+              <option value="continuous">Past Continuous focus</option>
+              <option value="perfect">Present Perfect focus</option>
+              <option value="pastperfect">Past Perfect (B2)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="hero__btns">
+          <button class="btn btn--primary" id="newSet" type="button">✨ New set</button>
+          <a class="btn" href="#map">Tense map</a>
+          <a class="btn" href="#choice">Choose the tense</a>
+          <a class="btn" href="#timeline">Timeline order</a>
+          <a class="btn" href="#story">Mini story</a>
+          <a class="btn" href="#speakwrite">Speak + Write</a>
+          <button class="btn btn--ghost" id="printPage" type="button">Print</button>
+        </div>
+
+        <div class="note">
+          <strong>Key idea:</strong>
+          <span class="tag">Past Simple = finished</span>
+          <span class="tag">Past Continuous = background</span>
+          <span class="tag">Present Perfect = result now</span>
+          <span class="tag">Past Perfect = earlier past</span>
+        </div>
+      </div>
+
+      <aside class="hero__panel">
+        <div class="progress">
+          <div class="progress__top">
+            <span class="kicker">One-question decision</span>
+            <span class="kicker" id="decisionTxt">—</span>
+          </div>
+          <div class="model" id="decisionOut"></div>
+
+          <div class="mini card card--soft">
+            <div class="mini__title">Quick routine (10–12 min)</div>
+            <ol class="mini__list">
+              <li><strong>Map:</strong> choose a situation → see tense + example</li>
+              <li><strong>Choice:</strong> 6 questions (auto-correct)</li>
+              <li><strong>Timeline:</strong> order events (tap arrows)</li>
+              <li><strong>Mini story:</strong> fill blanks (check)</li>
+              <li><strong>Speaking:</strong> 60–90s summary</li>
+            </ol>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- TENSE MAP -->
+  <section class="card" id="map">
+    <div class="section__head">
+      <h2 class="h2">1) Tense map (name + when to use + example)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny btn--ghost" id="mapListen" type="button">▶ Listen</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel__title">Pick a situation</div>
+
+        <div class="row">
+          <select class="select" id="mapSituation" aria-label="Situation">
+            <option value="finished">Finished action (yesterday / last week)</option>
+            <option value="background">Background action (while / when)</option>
+            <option value="result">Result now (update/status)</option>
+            <option value="experience">Life experience (no time)</option>
+            <option value="earlier">Earlier past (before another past event) — B2</option>
+          </select>
+          <button class="btn btn--tiny btn--primary" id="mapShow" type="button">Show</button>
+        </div>
+
+        <div class="chips" id="signalChips"></div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panel__title">Output (super clear)</div>
+        <div class="model" id="mapOut" aria-live="polite"></div>
+
+        <details class="details">
+          <summary>Mini decision tree</summary>
+          <div class="model" id="treeOut"></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHOOSE THE TENSE -->
+  <section class="card" id="choice">
+    <div class="section__head">
+      <h2 class="h2">2) Choose the tense (realistic exam-style)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny btn--ghost" id="newChoice" type="button">New questions</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <p class="muted small"><strong>Tip:</strong> Look at the time cue: <em>yesterday / while / already / since / before</em>.</p>
+      <div class="quiz" id="choiceQuiz"></div>
+    </div>
+  </section>
+
+  <!-- TIMELINE ORDER -->
+  <section class="card" id="timeline">
+    <div class="section__head">
+      <h2 class="h2">3) Timeline order (tap arrows)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny btn--ghost" id="newTimeline" type="button">New timeline</button>
+        <button class="btn btn--tiny btn--primary" id="checkTimeline" type="button">Check</button>
+        <button class="btn btn--tiny btn--ghost" id="timelineHint" type="button">Hint</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel__title">How to do it</div>
+        <ol class="mini__list">
+          <li>Use <strong>↑</strong> / <strong>↓</strong> to reorder events.</li>
+          <li>Click <strong>Check</strong> to see what is correct.</li>
+          <li>Then read the model sentence with the right tense.</li>
+        </ol>
+
+        <details class="details">
+          <summary>Show model sentences</summary>
+          <div class="model" id="timelineModel"></div>
+        </details>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panel__title">Order the events</div>
+        <div class="sortList" id="timelineList" aria-label="Timeline list"></div>
+        <div class="feedback" id="timelineFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINI STORY -->
+  <section class="card" id="story">
+    <div class="section__head">
+      <h2 class="h2">4) Mini story (fill blanks + check)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny btn--ghost" id="newStory" type="button">New story</button>
+        <button class="btn btn--tiny btn--primary" id="checkStory" type="button">Check</button>
+        <button class="btn btn--tiny btn--ghost" id="storyHint" type="button">Hint</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel__title">Story (scenario-based)</div>
+        <div class="prompt" id="storyPrompt"></div>
+
+        <div class="miniTask">
+          <h3 class="h3">Fill the blanks (choose the correct tense)</h3>
+          <div class="story" id="storyBlanks"></div>
+        </div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panel__title">Feedback</div>
+        <div class="feedback" id="storyFb" aria-live="polite"></div>
+
+        <details class="details">
+          <summary>Show answers (teacher)</summary>
+          <div class="model" id="storyAnswer"></div>
+        </details>
+
+        <div class="miniTask">
+          <h3 class="h3">Say it better (optional)</h3>
+          <p class="muted small">Turn 2 lines into an exam-ready update (2–3 sentences).</p>
+          <textarea class="textarea" id="upgradeOut" rows="7" placeholder="Write here…"></textarea>
+          <div class="row row--end">
+            <button class="btn btn--tiny btn--ghost" id="upgradeListen" type="button">▶ Listen</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAK + WRITE -->
+  <section class="card" id="speakwrite">
+    <div class="section__head">
+      <h2 class="h2">5) Speak + Write (simple + realistic)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny btn--ghost" id="newSW" type="button">New prompt</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel__title">Speaking prompt (60–90 seconds)</div>
+        <div class="prompt" id="speakPrompt"></div>
+
+        <div class="row">
+          <button class="btn btn--tiny btn--primary" id="startTimer" type="button">Start 60s</button>
+          <button class="btn btn--tiny btn--ghost" id="stopTimer" type="button">Stop</button>
+          <div class="badge" id="timerTxt">00:00</div>
+          <button class="btn btn--tiny btn--ghost" id="speakListen" type="button">▶ Listen prompt</button>
+        </div>
+
+        <details class="details">
+          <summary>Speaking frame (easy)</summary>
+          <div class="model" id="speakFrame"></div>
+        </details>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panel__title">Writing (8–10 lines)</div>
+        <div class="prompt" id="writePrompt"></div>
+
+        <div class="miniTask">
+          <h3 class="h3">One-click helpers</h3>
+          <div class="chips" id="writeChips"></div>
+        </div>
+
+        <textarea class="textarea" id="writeOut" rows="12" placeholder="Write your email here… (include a Subject line)"></textarea>
+
+        <div class="row row--end">
+          <button class="btn btn--tiny btn--primary" id="writeCheck" type="button">Self-check</button>
+          <button class="btn btn--tiny btn--ghost" id="writeClear" type="button">Clear</button>
+          <button class="btn btn--tiny btn--ghost" id="writeListen" type="button">▶ Listen</button>
+        </div>
+
+        <div class="checklist" id="writeChecklist"></div>
+        <div class="feedback" id="writeFb" aria-live="polite"></div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>SpeakEasyTisha · Past Tenses Clear · Pack 1</span>
+      <span class="muted">Tap-friendly · Mac/iPad Safari · No external assets</span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="/js/past-tenses-clear-pack1.js"></script>
+</body>
+</html>

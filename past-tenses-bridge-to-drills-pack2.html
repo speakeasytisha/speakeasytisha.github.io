@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Past Tenses Bridge → Drill Packs</title>
+  <link rel="stylesheet" href="/css/past-tenses-bridge-to-drills-pack2.css" />
+  <meta name="color-scheme" content="dark light" />
+</head>
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">🧭</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">Past Tenses Bridge → Drill Packs • A2→B2 • realistic scenarios</div>
+      </div>
+    </div>
+    <div class="tools">
+      <div class="pill">
+        <span class="pill__label">Scenario</span>
+        <select id="scenario" class="select select--tiny" aria-label="Scenario">
+          <option value="shipping" selected>Shipping delay</option>
+          <option value="it">IT problem</option>
+          <option value="meeting">Meeting recap</option>
+          <option value="hotel">Hotel complaint</option>
+        </select>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Accent (TTS)</span>
+        <button class="btn btn--tiny" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="btn btn--tiny" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Progress</span>
+        <span class="pill__value" id="progTxt">—</span>
+        <button class="btn btn--tiny btn--ghost" id="resetProg" type="button" title="Clear progress">↺</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <div class="heroGrid">
+      <div>
+        <h1 class="h1">Past Tenses → Drill Packs (Bridge Lesson)</h1>
+        <p class="lead">
+          This page connects your <strong>past-tenses-clear-pack1.html</strong> lesson to the <strong>3 drill packs</strong>.
+          Students do a quick diagnostic, get a recommendation, then drill the correct tense with realistic exam-style tasks.
+        </p>
+
+        <div class="row noPrint">
+          <a class="btn btn--primary" href="#diagnostic">Start diagnostic</a>
+          <a class="btn" href="#vocab">Scenario vocab</a>
+          
+        </div>
+
+        <div class="panel panel--soft" style="margin-top:14px;">
+          <div class="panelTitle">What students should know (clear summary)</div>
+          <div class="model" id="summaryBox"></div>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <div class="panelTitle">Drill packs (fixed)</div>
+        <div class="tableLike" id="packCards"></div>
+        <div class="fb" id="packHint" aria-live="polite"></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="card" id="diagnostic">
+    <div class="sectionHead">
+      <h2 class="h2">1) Diagnostic (12 quick questions)</h2>
+      <div class="row noPrint">
+        <button class="btn btn--tiny btn--ghost" id="newDiag" type="button">New diagnostic</button>
+        <button class="btn btn--tiny btn--ghost" id="listenQ" type="button">▶ Listen question</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Question <span class="badge" id="qNum">1/12</span></div>
+        <div class="model" id="qText"></div>
+        <div class="opt" id="qOptions" style="margin-top:10px;"></div>
+        <div class="fb" id="qFb" aria-live="polite"></div>
+        <div class="row row--end noPrint" style="margin-top:10px;">
+          <button class="btn btn--tiny btn--ghost" id="skipQ" type="button">Skip</button>
+          <button class="btn btn--tiny btn--primary" id="nextQ" type="button">Next</button>
+        </div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">Results (by tense)</div>
+
+        <div class="kpiGrid">
+          <div class="kpi">
+            <div class="muted small">Past Simple</div>
+            <strong id="rPS">0/0</strong>
+            <div class="progress" style="margin-top:8px;"><div id="barPS"></div></div>
+          </div>
+          <div class="kpi">
+            <div class="muted small">Present Perfect</div>
+            <strong id="rPP">0/0</strong>
+            <div class="progress" style="margin-top:8px;"><div id="barPP"></div></div>
+          </div>
+          <div class="kpi">
+            <div class="muted small">Past Continuous</div>
+            <strong id="rPC">0/0</strong>
+            <div class="progress" style="margin-top:8px;"><div id="barPC"></div></div>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+        <div class="panelTitle">Recommendation</div>
+        <div class="model" id="recoBox"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <a class="btn btn--primary" id="recoBtn" href="#">Open recommended pack</a>
+          <button class="btn" id="saveReco" type="button">Save recommendation</button>
+        </div>
+        <div class="fb" id="recoFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="vocab">
+    <div class="sectionHead">
+      <h2 class="h2">2) Scenario vocabulary (click to say)</h2>
+      <div class="row noPrint">
+        <button class="btn btn--tiny btn--ghost" id="listenVocab" type="button">▶ Listen selection</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Vocabulary bank</div>
+        <div class="muted small">Tap a chip to hear it (US/UK). Then use it in speaking + writing.</div>
+        <div class="chips" id="vocabChips"></div>
+      </div>
+      <div class="panel panel--soft">
+        <div class="panelTitle">Mini speaking prompt</div>
+        <div class="model" id="miniSpeak"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--tiny btn--primary" id="start60" type="button">Start 60s</button>
+          <button class="btn btn--tiny btn--ghost" id="stopTimer" type="button">Stop</button>
+          <span class="badge" id="timerTxt">00:00</span>
+          <button class="btn btn--tiny btn--ghost" id="listenMiniSpeak" type="button">▶ Listen prompt</button>
+        </div>
+        <div class="panel panel--soft" style="margin-top:12px;">
+          <div class="panelTitle">Mini writing task (6–8 lines)</div>
+          <div class="model" id="miniWrite"></div>
+          <textarea class="textarea" id="miniOut" placeholder="Write here… (include Subject:)"></textarea>
+          <div class="row row--end noPrint" style="margin-top:10px;">
+            <button class="btn btn--tiny btn--primary" id="miniCheck" type="button">Self-check</button>
+            <button class="btn btn--tiny btn--ghost" id="miniClear" type="button">Clear</button>
+            <button class="btn btn--tiny btn--ghost" id="listenMiniOut" type="button">▶ Listen</button>
+          </div>
+          <div class="fb" id="miniFb" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer class="footer">
+    <div class="footerInner">
+      <span>SpeakEasyTisha · Past Tenses Bridge → Drill Packs</span>
+      <span class="muted">Tap-friendly · Mac/iPad Safari · Saves progress in browser</span>
+    </div>
+  </footer>
+</main>
+
+<script src="/js/past-tenses-bridge-to-drills-pack2.js"></script>
+</body>
+</html>

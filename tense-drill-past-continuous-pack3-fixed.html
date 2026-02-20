@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Past Continuous — Drill Pack (Background / When)</title>
+  <link rel="stylesheet" href="/css/tense-drill-past-continuous-pack3-fixed.css" />
+  <meta name="color-scheme" content="dark light" />
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">⏳</div>
+      <div class="brand__text">
+        <div class="brand__title" id="packTitle">SpeakEasyTisha</div>
+        <div class="brand__sub" id="packSub">Background actions + interruptions (was/were V-ing … when …). A2→B2.</div>
+      </div>
+    </div>
+    <div class="tools">
+      <div class="pill">
+        <span class="pill__label">Level</span>
+        <select id="level" class="select select--tiny" aria-label="Level">
+          <option value="a2">A2</option>
+          <option value="b1" selected>B1</option>
+          <option value="b2">B2</option>
+        </select>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Scenario</span>
+        <select id="scenario" class="select select--tiny" aria-label="Scenario">
+          <option value="shipping" selected>Shipping delay</option>
+          <option value="it">IT problem</option>
+          <option value="meeting">Meeting recap</option>
+          <option value="hotel">Hotel complaint</option>
+        </select>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Accent (TTS)</span>
+        <button class="btn btn--tiny" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="btn btn--tiny" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+      <div class="pill" title="Score on auto-corrected tasks">
+        <span class="pill__label">Score</span>
+        <span class="pill__value" id="scoreTxt">0 / 0</span>
+        <button class="btn btn--tiny btn--ghost" id="resetAll" type="button" title="Reset">↺</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <div class="heroGrid">
+      <div>
+        <h1 class="h1">Past Continuous — Drill Pack (Background / When)</h1>
+        <p class="lead">Background actions + interruptions (was/were V-ing … when …). A2→B2.</p>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--primary" id="newSet" type="button">✨ New set</button>
+          <a class="btn" href="past-tenses-bridge-to-drills-pack2.html">🧭 Bridge</a>
+          <a class="btn" href="past-tenses-clear-pack1.html">🕰️ Past Tenses Clear</a>
+          <a class="btn" href="#map">Map</a>
+          <a class="btn" href="#choice">Speed choice</a>
+          <a class="btn" href="#fix">Fix it</a>
+          <a class="btn" href="#sw">Speak + Write</a>
+          <button class="btn btn--ghost" id="printPage" type="button">Print</button>
+        </div>
+
+        <div class="panel panel--soft" style="margin-top:14px;">
+          <div class="panelTitle">Rules (very clear)</div>
+          <div class="model" id="rulesOut"></div>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <div class="panelTitle">Teacher routine (15–20 min)</div>
+        <ol class="muted small" style="margin:0; padding-left:18px;">
+          <li><strong>Map</strong> (2 min)</li>
+          <li><strong>Speed choice</strong> (6–8 min)</li>
+          <li><strong>Fix it</strong> (5–6 min)</li>
+          <li><strong>Speak + Write</strong> (5–8 min)</li>
+        </ol>
+
+        <div class="panel panel--soft" style="margin-top:12px;">
+          <div class="panelTitle">Progress (this session)</div>
+          <div class="row" style="justify-content:space-between;">
+            <span class="badge">Best: <span id="bestScore">0 / 0</span></span>
+            <span class="badge">Accuracy: <span id="progressPct">0%</span></span>
+            <span class="badge" id="completeBadge">—</span>
+          </div>
+          <div class="progress" style="margin-top:10px;"><div id="progressBar"></div></div>
+          <div class="row noPrint" style="margin-top:10px;">
+            <button class="btn btn--tiny btn--primary" id="markComplete" type="button">Mark complete (80%+)</button>
+          </div>
+          <div class="fb" id="completeFb" aria-live="polite"></div>
+        </div>
+
+        <div class="panel panel--soft" style="margin-top:12px;">
+          <div class="panelTitle">Success signals (click to say)</div>
+          <div class="chips" id="successChips"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="card" id="map">
+    <div class="sectionHead">
+      <h2 class="h2">1) Situation → tense choice (map)</h2>
+      <div class="row noPrint">
+        <button class="btn btn--tiny btn--ghost" id="mapListen" type="button">▶ Listen</button>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Pick a situation</div>
+        <div class="row">
+          <select class="select" id="mapSituation" aria-label="Situation"></select>
+          <button class="btn btn--tiny btn--primary" id="mapShow" type="button">Show</button>
+        </div>
+        <div class="chips" id="signalChips"></div>
+      </div>
+      <div class="panel panel--soft">
+        <div class="panelTitle">Output</div>
+        <div class="model" id="mapOut" aria-live="polite"></div>
+        <div class="muted small" style="margin-top:10px;">Currently: <strong id="mapListenTxt">—</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="choice">
+    <div class="sectionHead">
+      <h2 class="h2">2) Speed choice (10 questions)</h2>
+      <div class="row noPrint">
+        <button class="btn btn--tiny btn--ghost" id="newChoice" type="button">New questions</button>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="muted small"><strong>Tip:</strong> read the time cue / signal word first.</div>
+      <div class="quiz" id="choiceQuiz"></div>
+    </div>
+  </section>
+
+  <section class="card" id="fix">
+    <div class="sectionHead">
+      <h2 class="h2">3) Fix it (common mistakes)</h2>
+      <div class="row noPrint">
+        <button class="btn btn--tiny btn--ghost" id="newFix" type="button">New set</button>
+      </div>
+    </div>
+    <div class="list" id="fixList"></div>
+  </section>
+
+  <section class="card" id="sw">
+    <div class="sectionHead">
+      <h2 class="h2">4) Speak + Write (exam style)</h2>
+      <div class="row noPrint">
+        <button class="btn btn--tiny btn--ghost" id="newSW" type="button">New prompt</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Speaking prompt</div>
+        <div class="model" id="speakPrompt"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--tiny btn--primary" id="start60" type="button">Start 60s</button>
+          <button class="btn btn--tiny btn--primary" id="start90" type="button">Start 90s</button>
+          <button class="btn btn--tiny btn--ghost" id="stopTimer" type="button">Stop</button>
+          <span class="badge" id="timerTxt">00:00</span>
+          <button class="btn btn--tiny btn--ghost" id="speakListen" type="button">▶ Listen prompt</button>
+        </div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">Writing task (8–10 lines)</div>
+        <div class="model" id="writePrompt"></div>
+        <div class="panel panel--soft" style="margin-top:12px;">
+          <div class="panelTitle">Useful phrases (click to insert)</div>
+          <div class="chips" id="writeChips"></div>
+        </div>
+        <textarea class="textarea" id="writeOut" rows="12" placeholder="Write here… (include a Subject line)"></textarea>
+        <div class="row row--end noPrint" style="margin-top:10px;">
+          <button class="btn btn--tiny btn--primary" id="writeCheck" type="button">Self-check</button>
+          <button class="btn btn--tiny btn--ghost" id="writeClear" type="button">Clear</button>
+          <button class="btn btn--tiny btn--ghost" id="writeListen" type="button">▶ Listen</button>
+        </div>
+        <div class="list" id="writeChecklist" style="margin-top:12px;"></div>
+        <div class="fb" id="writeFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footerInner">
+      <span>SpeakEasyTisha · Past Continuous — Drill Pack (Background / When) · Drill Pack</span>
+      <span class="muted">Mac/iPad Safari · Tap-friendly · No external assets</span>
+    </div>
+  </footer>
+</main>
+
+<script src="/js/tense-drill-past-continuous-pack3-fixed.js"></script>
+</body>
+</html>
