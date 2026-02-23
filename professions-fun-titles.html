@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Professions + Company Titles (Fun Edition)</title>
+  <link rel="stylesheet" href="/css/professions-fun-titles.css" />
+  <meta name="color-scheme" content="light" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">🧑‍💼</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Professions • Company Titles • Org Chart (Fun + CLOE‑ready)</div>
+      </div>
+    </div>
+
+    <div class="controls" role="group" aria-label="Lesson controls">
+      <label class="ctl">
+        <span class="ctl__label">Help</span>
+        <select id="langHelp" class="ctl__select" aria-label="Help language">
+          <option value="EN" selected>EN</option>
+          <option value="FR">FR</option>
+        </select>
+      </label>
+
+      <label class="ctl">
+        <span class="ctl__label">Voice</span>
+        <select id="voice" class="ctl__select" aria-label="Voice accent">
+          <option value="en-US" selected>US</option>
+          <option value="en-GB">UK</option>
+        </select>
+      </label>
+
+      <label class="ctl">
+        <span class="ctl__label">Mode</span>
+        <select id="mode" class="ctl__select" aria-label="Interaction mode">
+          <option value="tap" selected>Tap</option>
+          <option value="drag">Drag</option>
+        </select>
+      </label>
+
+      <button class="btn btn--ghost" id="btnReset" type="button" title="Reset all">↺ Reset</button>
+      <button class="btn btn--ghost" id="btnPrint" type="button" title="Print">🖨️ Print</button>
+    </div>
+
+    <div class="hud" role="status" aria-live="polite">
+      <div class="pill"><span aria-hidden="true">🎯</span> Score <strong id="score">0</strong></div>
+      <div class="pill"><span aria-hidden="true">🔥</span> Streak <strong id="streak">0</strong></div>
+      <div class="pill"><span aria-hidden="true">🔓</span> Keys <strong id="keys">0</strong>/3</div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="hero__card">
+      <div class="badge">Mac/iPad Safari friendly • Tap mode first • Instant feedback</div>
+      <h1>Professions + Company Titles: “Unlock the Org Chart”</h1>
+      <p class="muted">
+        You said the <strong>Title bank</strong> is hard, so this version adds a <strong>Title Vocabulary Toolkit</strong>
+        before the Org Chart challenge—plus mini games to make it feel like an “office mission”.
+      </p>
+
+      <div class="hero__grid">
+        <div class="miniCard">
+          <div class="miniCard__t">Mission path</div>
+          <ol class="muted">
+            <li>Warm‑up: Job emoji quiz (easy win)</li>
+            <li>Job vocab flashcards (optional)</li>
+            <li><strong>Title Toolkit (NEW)</strong> → earn Key #1</li>
+            <li><strong>Org Chart Challenge</strong> → earn Key #2</li>
+            <li>Sentence Builder + mini test → earn Key #3</li>
+          </ol>
+        </div>
+        <div class="miniCard">
+          <div class="miniCard__t">Goal (CLOE style)</div>
+          <ul class="muted">
+            <li>Say someone’s <strong>title</strong>, <strong>department</strong>, and <strong>responsibility</strong></li>
+            <li>Use reporting verbs: <em>reports to / manages / oversees / is in charge of</em></li>
+            <li>Describe a simple company structure (org chart)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hero__actions">
+        <button class="btn" id="btnStart" type="button">Start mission →</button>
+        <button class="btn btn--ghost" id="btnHow" type="button">How to play</button>
+      </div>
+
+      <div class="callout" id="how" hidden>
+        <ul class="muted">
+          <li><strong>Tap mode:</strong> tap a tile → tap a target.</li>
+          <li><strong>Drag mode:</strong> drag a tile onto a target.</li>
+          <li>Tap <strong>💡 Hint</strong> when stuck. Use <strong>🔊 Listen</strong> to repeat aloud.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hero__side">
+      <div class="sideCard">
+        <div class="sideCard__t">Quick language</div>
+        <div class="sideCard__b muted">
+          <div><strong>I report to</strong> the CEO.</div>
+          <div><strong>She manages</strong> the team.</div>
+          <div><strong>He oversees</strong> finance.</div>
+          <div><strong>She is in charge of</strong> operations.</div>
+        </div>
+        <div class="sideCard__actions">
+          <button class="btn btn--ghost" data-say="#quickLang" type="button">🔊 Listen</button>
+          <div id="quickLang" class="srOnly">I report to the CEO. She manages the team. He oversees finance. She is in charge of operations.</div>
+        </div>
+      </div>
+
+      <div class="sideCard">
+        <div class="sideCard__t">Progress</div>
+        <div class="progress" aria-hidden="true"><div class="progress__bar" id="bar"></div></div>
+        <div class="muted small" id="progressText">Earn 3 keys to finish the mission.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1) Warm-up -->
+  <section class="panel" id="warmup">
+    <header class="panel__head">
+      <h2>1) Warm‑up • Job Emoji Quiz (30 seconds)</h2>
+      <p class="muted">A quick, fun start. Get 3 correct answers → bonus streak!</p>
+    </header>
+    <div class="panel__body">
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="label">Who am I?</div>
+            <div class="big" id="emojiQ">🩺</div>
+            <div class="muted" id="emojiClue">Clue: I help sick people.</div>
+          </div>
+          <div class="row__actions">
+            <button class="btn btn--ghost" id="btnEmojiNew" type="button">New</button>
+            <button class="btn btn--ghost" id="btnEmojiHint" type="button">💡 Hint</button>
+            <button class="btn btn--ghost" id="btnEmojiListen" type="button">🔊 Listen</button>
+          </div>
+        </div>
+
+        <div class="choices" id="emojiChoices"></div>
+        <div class="result" id="emojiResult">Choose an answer to get instant feedback.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) Job vocab flashcards -->
+  <section class="panel" id="jobs">
+    <header class="panel__head">
+      <h2>2) Job Vocabulary Flashcards (optional)</h2>
+      <p class="muted">Flip cards + filter by industry. (This mirrors your original structure.)</p>
+    </header>
+    <div class="panel__body">
+      <div class="card">
+        <div class="row">
+          <div class="row__left">
+            <label class="ctl inline">
+              <span class="ctl__label">Industry</span>
+              <select id="jobFilter" class="ctl__select">
+                <option value="all">All</option>
+              </select>
+            </label>
+            <button class="btn btn--ghost" id="btnJobShuffle" type="button">🔀 Shuffle</button>
+          </div>
+          <div class="row__actions">
+            <button class="btn btn--ghost" id="btnJobListenWord" type="button">🔊 Listen: word</button>
+            <button class="btn btn--ghost" id="btnJobListenEx" type="button">🔊 Listen: example</button>
+          </div>
+        </div>
+
+        <div class="flashWrap">
+          <button class="navBtn" id="jobPrev" type="button" aria-label="Previous card">←</button>
+          <div class="flash" id="jobCard" role="button" tabindex="0" aria-label="Flashcard (tap to flip)">
+            <div class="flash__front">
+              <div class="flash__emoji" id="jobEmoji">👩‍⚕️</div>
+              <div class="flash__term" id="jobTerm">doctor</div>
+              <div class="flash__meta" id="jobIndustry">Healthcare</div>
+            </div>
+            <div class="flash__back">
+              <div class="flash__title">Example</div>
+              <div class="flash__ex" id="jobExample">A doctor works at a doctor’s office. We go to see a doctor when we are sick.</div>
+              <div class="flash__fr" id="jobFR" hidden>🇫🇷 Un médecin travaille…</div>
+            </div>
+          </div>
+          <button class="navBtn" id="jobNext" type="button" aria-label="Next card">→</button>
+        </div>
+
+        <div class="result" id="jobResult">Tip: Tap the card to flip.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) Title Toolkit (NEW) -->
+  <section class="panel" id="titles">
+    <header class="panel__head">
+      <h2>3) Title Vocabulary Toolkit (NEW) • Before the Title Bank</h2>
+      <p class="muted">Learn the titles first → then the Org Chart feels easy.</p>
+    </header>
+    <div class="panel__body">
+      <div class="grid2">
+        <div class="card">
+          <div class="row">
+            <h3 class="h3">3A) Title Cards (flip + listen)</h3>
+            <div class="row__actions">
+              <button class="btn btn--ghost" id="btnTitleShuffle" type="button">🔀 Shuffle</button>
+              <button class="btn btn--ghost" id="btnTitleListen" type="button">🔊 Listen</button>
+            </div>
+          </div>
+
+          <div class="flashWrap">
+            <button class="navBtn" id="titlePrev" type="button" aria-label="Previous title">←</button>
+            <div class="flash flash--title" id="titleCard" role="button" tabindex="0" aria-label="Title card (tap to flip)">
+              <div class="flash__front">
+                <div class="flash__emoji" id="titleEmoji">👑</div>
+                <div class="flash__term" id="titleTerm">CEO</div>
+                <div class="flash__meta" id="titleMeta">Top leader • strategy</div>
+              </div>
+              <div class="flash__back">
+                <div class="flash__title">Meaning</div>
+                <div class="flash__ex" id="titleDef">The CEO is the overall leader of the company.</div>
+                <div class="flash__fr" id="titleFR" hidden>🇫🇷 Le/La PDG dirige l’entreprise.</div>
+                <div class="chipRow" id="titleTags"></div>
+              </div>
+            </div>
+            <button class="navBtn" id="titleNext" type="button" aria-label="Next title">→</button>
+          </div>
+
+          <div class="result" id="titleResult">Tap to flip. Learn 6 titles → earn Key #1.</div>
+        </div>
+
+        <div class="card">
+          <div class="row">
+            <h3 class="h3">3B) “Who am I?” (titles)</h3>
+            <div class="row__actions">
+              <button class="btn btn--ghost" id="btnWhoNew" type="button">New</button>
+              <button class="btn btn--ghost" id="btnWhoHint" type="button">💡 Hint</button>
+              <button class="btn btn--ghost" id="btnWhoListen" type="button">🔊 Listen</button>
+            </div>
+          </div>
+
+          <div class="note">
+            <div class="label">Clue</div>
+            <div class="big2" id="whoClue">I manage the company’s money and budget.</div>
+            <div class="muted small" id="whoFR" hidden>🇫🇷 Je gère l’argent et le budget de l’entreprise.</div>
+          </div>
+
+          <div class="choices" id="whoChoices"></div>
+          <div class="result" id="whoResult">Choose an answer to get instant feedback.</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <div class="row">
+          <h3 class="h3">3C) Reporting verbs (mini‑game)</h3>
+          <div class="row__actions">
+            <button class="btn btn--ghost" id="btnVerbNew" type="button">New</button>
+            <button class="btn btn--ghost" id="btnVerbHint" type="button">💡 Hint</button>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div>
+            <div class="note">
+              <div class="label">Build the sentence</div>
+              <div class="big2" id="verbPrompt">The CFO ____ finance.</div>
+              <div class="muted small" id="verbPromptFR" hidden>🇫🇷 Le CFO ____ la finance.</div>
+            </div>
+            <div class="choices" id="verbChoices"></div>
+          </div>
+          <div>
+            <div class="note">
+              <div class="label">Quick rule</div>
+              <div class="muted" id="verbRule">
+                <strong>oversees</strong> = supervises / controls • <strong>manages</strong> = runs daily work •
+                <strong>reports to</strong> = has a boss • <strong>is in charge of</strong> = responsible for.
+              </div>
+              <div class="muted small" id="verbRuleFR" hidden>
+                🇫🇷 oversees = supervise • manages = gère au quotidien • reports to = dépend de • in charge of = responsable de.
+              </div>
+            </div>
+            <div class="result" id="verbResult">Choose a verb.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) Org chart challenge -->
+  <section class="panel" id="org">
+    <header class="panel__head">
+      <h2>4) Company Org Chart Challenge (with clues)</h2>
+      <p class="muted">Now the Title Bank should feel easier: you just learned the titles.</p>
+    </header>
+    <div class="panel__body">
+      <div class="grid2">
+        <div class="card">
+          <div class="row">
+            <h3 class="h3">Org chart</h3>
+            <div class="row__actions">
+              <button class="btn btn--ghost" id="btnOrgHint" type="button">💡 Hint</button>
+              <button class="btn btn--ghost" id="btnOrgReveal" type="button">📚 Title glossary</button>
+            </div>
+          </div>
+
+          <div class="orgChart" id="orgChart">
+            <!-- injected by JS -->
+          </div>
+
+          <div class="inlineActions">
+            <button class="btn" id="btnOrgCheck" type="button">Check</button>
+            <button class="btn btn--ghost" id="btnOrgReset" type="button">Reset</button>
+          </div>
+
+          <div class="result" id="orgResult">Place titles in the correct boxes.</div>
+        </div>
+
+        <div class="card">
+          <div class="row">
+            <h3 class="h3">Title bank</h3>
+            <div class="row__actions">
+              <button class="btn btn--ghost" id="btnBankShuffle" type="button">🔀 Shuffle</button>
+            </div>
+          </div>
+          <div class="muted small" id="bankTip">Tap a title → tap a box. (Or drag if Mode = Drag.)</div>
+          <div class="bank" id="titleBank" aria-label="Title bank"></div>
+
+          <div class="note">
+            <div class="label">Mini‑dialogue tip</div>
+            <div class="muted" id="orgDialogTip">
+              “Who do you report to?” → “I report to the CTO.”<br>
+              “What are you in charge of?” → “I’m in charge of IT support.”
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) Sentence Builder -->
+  <section class="panel" id="builder">
+    <header class="panel__head">
+      <h2>5) Sentence Builder • Sound professional</h2>
+      <p class="muted">Build 3 correct sentences → earn Key #3.</p>
+    </header>
+    <div class="panel__body">
+      <div class="card">
+        <div class="row">
+          <h3 class="h3">Build + check (instant)</h3>
+          <div class="row__actions">
+            <button class="btn btn--ghost" id="btnBuildNew" type="button">New</button>
+            <button class="btn btn--ghost" id="btnBuildListen" type="button">🔊 Listen</button>
+            <button class="btn btn--ghost" id="btnBuildHint" type="button">💡 Hint</button>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <label class="ctl">
+            <span class="ctl__label">Subject</span>
+            <select id="bSub" class="ctl__select"></select>
+          </label>
+          <label class="ctl">
+            <span class="ctl__label">Verb</span>
+            <select id="bVerb" class="ctl__select"></select>
+          </label>
+          <label class="ctl">
+            <span class="ctl__label">Object</span>
+            <select id="bObj" class="ctl__select"></select>
+          </label>
+        </div>
+
+        <div class="output" id="buildOut">Choose options…</div>
+        <div class="inlineActions">
+          <button class="btn" id="btnBuildCheck" type="button">Check</button>
+        </div>
+        <div class="result" id="buildRes">Tip: “reports to” needs a person/title (boss). “in charge of” needs a thing/team.</div>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h3 class="h3">Mini test (CLOE style)</h3>
+        <div class="muted">Choose the best option. Instant feedback.</div>
+        <div class="miniTest" id="miniTest"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="muted">© SpeakEasyTisha • Fun professions + titles • Tap-friendly</div>
+      <a class="footer__link" href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+</main>
+
+<!-- Modal -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden>
+  <div class="modal__panel">
+    <div class="modal__head">
+      <h3 class="modal__title" id="mTitle">Message</h3>
+      <button class="btn btn--ghost" id="mClose" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="modal__body" id="mBody"></div>
+    <div class="modal__foot">
+      <button class="btn" id="mOk" type="button">OK</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/professions-fun-titles.js"></script>
+</body>
+</html>
