@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • US Health Care for French Expats • Interactive Lesson</title>
+  <meta name="description" content="A fully interactive lesson for French people moving to the United States: CFE, employer plans, HMO vs PPO, deductibles, reimbursement, and practical survival language." />
+  <link rel="stylesheet" href="/css/healthcare-usa-expats.css" />
+</head>
+
+<body>
+<a class="skip" href="#plan">Skip to content</a>
+
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">🩺</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">US Health Care for French Expats • 60–75 min interactive lesson</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="pillgroup" role="group" aria-label="Accent">
+        <span class="pillgroup__label">Accent</span>
+        <button class="pill is-on" data-accent="en-US" type="button">American (en-US)</button>
+        <button class="pill" data-accent="en-GB" type="button">British (en-GB)</button>
+      </div>
+
+      <div class="speed" aria-label="Voice speed">
+        <span class="speed__label">Voice speed</span>
+        <input id="speed" class="speed__range" type="range" min="0.75" max="1.25" step="0.05" value="1.00" />
+        <span class="speed__value" id="speedVal">1.00×</span>
+      </div>
+
+      <div class="tts">
+        <button class="btn btn--ghost" id="ttsTest" type="button" title="iPad Safari needs a first click">Test voice</button>
+        <button class="btn btn--ghost" id="ttsStop" type="button">⏹ Stop</button>
+      </div>
+
+      <div class="score" aria-label="Score">
+        <div class="score__label">Score</div>
+        <div class="score__value"><span id="scoreNow">0</span> / <span id="scoreTotal">0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Lesson navigation">
+    <a class="nav__link" href="#plan">⏱️ Plan</a>
+    <a class="nav__link" href="#warmup">Warm‑up</a>
+    <a class="nav__link" href="#vocab">Vocabulary</a>
+    <a class="nav__link" href="#cfe">CFE (Caisse des Expatriés)</a>
+    <a class="nav__link" href="#us-basics">US basics</a>
+    <a class="nav__link" href="#hmo-ppo">HMO vs PPO</a>
+    <a class="nav__link" href="#costs">Costs</a>
+    <a class="nav__link" href="#dialogs">Dialogues</a>
+    <a class="nav__link" href="#grammar">Grammar</a>
+    <a class="nav__link" href="#final">Final mission</a>
+    <a class="nav__link" href="#cheatsheet">Cheat sheet</a>
+  </nav>
+</header>
+
+<main class="main">
+
+  <section class="hero">
+    <div class="hero__card">
+      <h1>US Health Care (for French families moving to the U.S.)</h1>
+      <p class="lead">
+        A practical, tap‑friendly lesson: understand <strong>CFE</strong> (“Caisse des Français de l’Étranger”),
+        employer insurance, <strong>HMO/PPO</strong>, deductibles, networks, reimbursement… and learn the exact English you’ll need.
+      </p>
+
+      <div class="notice">
+        <strong>Important:</strong> This lesson is educational (not medical or legal advice). Always verify details with your insurer / HR.
+      </div>
+
+      <div class="chips">
+        <span class="chip">✅ Instant feedback</span>
+        <span class="chip">💡 Hints</span>
+        <span class="chip">📱 Tap‑friendly (iPad Safari)</span>
+        <span class="chip">🗣️ Optional voice</span>
+      </div>
+    </div>
+
+    <div class="hero__side">
+      <div class="mini">
+        <h3>Quick start</h3>
+        <ol>
+          <li>Click <strong>Test voice</strong> once (Safari requirement).</li>
+          <li>Do the Warm‑up → Vocabulary → CFE → HMO/PPO.</li>
+          <li>Finish with <strong>Final mission</strong> (speaking + writing).</li>
+        </ol>
+        <div class="mini__row">
+          <button class="btn" id="resetAll" type="button">Reset lesson</button>
+          <button class="btn btn--ghost" id="listenKey" type="button">Listen key lines</button>
+        </div>
+      </div>
+
+      <div class="timer">
+        <h3>Timer</h3>
+        <p class="muted">Run it like a real class.</p>
+        <div class="timer__row">
+          <button class="btn" id="startTimer" type="button">Start 60‑min timer</button>
+          <button class="btn btn--ghost" id="resetTimer" type="button">Reset</button>
+        </div>
+        <div class="timer__display" id="timerDisplay">⏳ 60:00</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="plan">
+    <h2>⏱️ One‑hour plan</h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>Suggested timing</h3>
+        <ul class="plan">
+          <li><span>6 min</span> Warm‑up: myth buster</li>
+          <li><span>10 min</span> Vocabulary + “French traps”</li>
+          <li><span>10 min</span> CFE: what it is + reimbursement logic</li>
+          <li><span>10 min</span> US basics: premium, deductible, copay, coinsurance, networks</li>
+          <li><span>10 min</span> HMO vs PPO decision helper + mini scenarios</li>
+          <li><span>10–15 min</span> Grammar + dialogues + final mission</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Goal</h3>
+        <p>
+          By the end, learners can:
+        </p>
+        <ul class="ticks">
+          <li>Explain their coverage clearly (CFE + employer plan).</li>
+          <li>Compare plans using comparatives & superlatives.</li>
+          <li>Use modals to sound natural: <em>should / have to / might / can</em>.</li>
+          <li>Handle real calls: appointments, ER, pharmacy, billing.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="warmup">
+    <div class="section__head">
+      <h2>Warm‑up — Myth buster (True / False)</h2>
+      <p class="muted">Click a statement → choose True or False → instant feedback.</p>
+      <div class="row">
+        <button class="btn btn--ghost" data-action="new-myth" type="button">New</button>
+        <button class="btn btn--ghost" data-action="hint-myth" type="button">Hint</button>
+        <button class="btn btn--ghost" data-action="listen-myth" type="button">Listen</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="q">
+        <div class="q__label">Statement</div>
+        <div class="q__text" id="mythText">Click “New”.</div>
+      </div>
+
+      <div class="choices">
+        <button class="choice" data-choice="true" type="button">True</button>
+        <button class="choice" data-choice="false" type="button">False</button>
+      </div>
+
+      <div class="feedback" id="mythFeedback" aria-live="polite"></div>
+      <div class="hint" id="mythHint"></div>
+    </div>
+  </section>
+
+  <section class="section" id="vocab">
+    <div class="section__head">
+      <h2>Vocabulary — the 25 words you’ll hear on Day 1</h2>
+      <p class="muted">Tap a card to flip. Use “French help” if needed.</p>
+
+      <div class="row wrap">
+        <button class="btn btn--ghost" data-vtheme="all" type="button">All</button>
+        <button class="btn btn--ghost" data-vtheme="plan" type="button">Plan</button>
+        <button class="btn btn--ghost" data-vtheme="money" type="button">Money</button>
+        <button class="btn btn--ghost" data-vtheme="network" type="button">Network</button>
+        <button class="btn btn--ghost" data-vtheme="paperwork" type="button">Paperwork</button>
+        <label class="toggle">
+          <input id="frHelp" type="checkbox" />
+          <span>French help</span>
+        </label>
+        <button class="btn" id="shuffleVocab" type="button">Shuffle</button>
+        <button class="btn btn--ghost" id="listenVocab" type="button">Listen 8 random</button>
+      </div>
+    </div>
+
+    <div class="cards" id="vocabCards" aria-label="Vocabulary flashcards"></div>
+
+    <div class="card">
+      <h3>Quick check — definitions (QCM)</h3>
+      <p class="muted">Choose the best definition. Immediate ✅/❌.</p>
+      <div class="qcm" id="vocabQcm"></div>
+      <div class="row">
+        <button class="btn btn--ghost" id="newVocabQcm" type="button">New</button>
+        <button class="btn btn--ghost" id="hintVocabQcm" type="button">Hint</button>
+      </div>
+      <div class="hint" id="vocabQcmHint"></div>
+    </div>
+  </section>
+
+  <section class="section" id="cfe">
+    <div class="section__head">
+      <h2>CFE — “Caisse des Français de l’Étranger” (what it is, what it isn’t)</h2>
+      <p class="muted">Your learners mentioned “get CFE before leaving.” Let’s decode it.</p>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3>In simple English</h3>
+        <p>
+          The CFE is an optional French social‑security style coverage for French people living abroad.
+          It can help you keep continuity with the French system, but reimbursement is often based on French rates
+          (so U.S. bills can still be very expensive without additional coverage).
+        </p>
+
+        <div class="callout">
+          <strong>Key idea:</strong> CFE = “base coverage” logic. Many expats pair it with an additional plan (or a local plan).
+        </div>
+
+        <details class="details">
+          <summary>What could it include? (tap)</summary>
+          <ul>
+            <li>Health & maternity reimbursements (rules depend on your option and situation).</li>
+            <li>Paperwork: invoices, itemized bills, and claim forms can matter.</li>
+            <li>Some offers emphasize coverage worldwide and during short stays in France.</li>
+          </ul>
+          <p class="muted small">
+            Always verify with CFE directly because offers and conditions can change.
+          </p>
+        </details>
+
+        <div class="row">
+          <button class="btn btn--ghost" data-action="listen-cfe" type="button">Listen key explanation</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Mini scenario — “Before leaving France…”</h3>
+        <p class="muted">Pick the situation. The lesson generates a realistic recommendation sentence (modals + nuance).</p>
+
+        <div class="form">
+          <label>
+            When will the employer plan start?
+            <select id="startCoverage">
+              <option value="immediately">Immediately (week 1)</option>
+              <option value="1month">After 1 month</option>
+              <option value="3months">After 3 months</option>
+              <option value="unknown">Not sure yet</option>
+            </select>
+          </label>
+
+          <label>
+            Biggest worry:
+            <select id="bigWorry">
+              <option value="er">Emergency / ER risk</option>
+              <option value="pregnancy">Pregnancy / maternity</option>
+              <option value="chronic">Chronic condition</option>
+              <option value="kids">Kids’ routine care</option>
+              <option value="france">Going back to France soon</option>
+            </select>
+          </label>
+
+          <label class="toggle">
+            <input id="doubleCover" type="checkbox" />
+            <span>I want double coverage (CFE + US plan)</span>
+          </label>
+
+          <button class="btn" id="genCfeLine" type="button">Generate</button>
+        </div>
+
+        <div class="output" id="cfeLine" aria-live="polite">Click “Generate”.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Check your understanding — reimbursement logic</h3>
+      <p class="muted">Choose the best completion (focus on meaning, not politics).</p>
+
+      <div class="quiz" id="cfeQuiz"></div>
+      <div class="row">
+        <button class="btn btn--ghost" id="newCfeQuiz" type="button">New</button>
+        <button class="btn btn--ghost" id="hintCfeQuiz" type="button">Hint</button>
+      </div>
+      <div class="hint" id="cfeQuizHint"></div>
+    </div>
+  </section>
+
+  <section class="section" id="us-basics">
+    <div class="section__head">
+      <h2>US basics — what your spouse’s employer plan will talk about</h2>
+      <p class="muted">Premium, deductible, copay, coinsurance, out‑of‑pocket max, networks, prior authorization.</p>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3>Tap glossary — with French “trap” notes</h3>
+        <div class="glossary" id="glossary"></div>
+      </div>
+
+      <div class="card">
+        <h3>Sorting game — “monthly / when you get care / paperwork”</h3>
+        <p class="muted">Tap a chip → tap a box. (No drag needed.)</p>
+
+        <div class="sort">
+          <div class="sort__bank">
+            <h4>Chip bank</h4>
+            <div class="chipbank" id="sortBank"></div>
+          </div>
+
+          <div class="sort__bins">
+            <div class="bin" data-bin="monthly">
+              <div class="bin__title">Paid every month</div>
+              <div class="bin__drop" id="binMonthly"></div>
+            </div>
+            <div class="bin" data-bin="care">
+              <div class="bin__title">Paid when you get care</div>
+              <div class="bin__drop" id="binCare"></div>
+            </div>
+            <div class="bin" data-bin="paperwork">
+              <div class="bin__title">Paperwork / rules</div>
+              <div class="bin__drop" id="binPaper"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn btn--ghost" id="newSort" type="button">New set</button>
+          <button class="btn" id="checkSort" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="resetSort" type="button">Reset</button>
+        </div>
+        <div class="feedback" id="sortFeedback" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Sentence order — build the “smart” sentence (tap‑to‑build)</h3>
+      <p class="muted">Tap words in order → Check → instant feedback.</p>
+
+      <div class="builder" id="order1">
+        <div class="builder__bank" aria-label="Word bank"></div>
+        <div class="builder__out" aria-label="Your sentence"></div>
+        <div class="row">
+          <button class="btn" data-bcheck type="button">✅ Check</button>
+          <button class="btn btn--ghost" data-breset type="button">Reset</button>
+          <button class="btn btn--ghost" data-blisten type="button">Listen</button>
+          <button class="btn btn--ghost" data-bhint type="button">Hint</button>
+        </div>
+        <div class="feedback" data-bfb aria-live="polite"></div>
+        <div class="hint" data-bhintbox></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="hmo-ppo">
+    <div class="section__head">
+      <h2>HMO vs PPO — the difference (and what French people usually misunderstand)</h2>
+      <p class="muted">Use this when they say: “My husband’s job gives insurance. That’s it, right?”</p>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3>Mini comparison</h3>
+        <div class="compare" id="compareCards"></div>
+        <div class="row">
+          <button class="btn btn--ghost" id="listenHmoPpo" type="button">Listen summary</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Decision helper — choose the best plan for the scenario</h3>
+        <p class="muted">Pick a scenario → choose HMO or PPO → explain with comparatives + modals.</p>
+
+        <div class="row wrap">
+          <button class="btn btn--ghost" data-scn="kids" type="button">Kids + pediatrician</button>
+          <button class="btn btn--ghost" data-scn="specialist" type="button">Needs specialist quickly</button>
+          <button class="btn btn--ghost" data-scn="travel" type="button">Travels a lot / out of state</button>
+          <button class="btn btn--ghost" data-scn="budget" type="button">Tight budget</button>
+        </div>
+
+        <div class="scenario">
+          <div class="scenario__text" id="scnText">Pick a scenario.</div>
+          <div class="choices">
+            <button class="choice" id="pickHmo" type="button">Choose HMO</button>
+            <button class="choice" id="pickPpo" type="button">Choose PPO</button>
+          </div>
+          <div class="feedback" id="scnFeedback" aria-live="polite"></div>
+
+          <div class="output" id="scnModel">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Grammar micro‑drill — comparatives & superlatives (instant check)</h3>
+      <p class="muted">Type the missing word(s). Example: “A PPO is usually <em>more flexible</em> than an HMO.”</p>
+
+      <div class="gapgrid" id="compGaps"></div>
+      <div class="row">
+        <button class="btn btn--ghost" id="resetComp" type="button">Reset</button>
+        <button class="btn btn--ghost" id="showComp" type="button">Reveal answers</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="costs">
+    <div class="section__head">
+      <h2>Costs — deductible, copay, coinsurance, out‑of‑pocket max (OOP max)</h2>
+      <p class="muted">Interactive simulator. It’s not a quote — it’s to understand the logic.</p>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3>Cost simulator</h3>
+        <div class="form">
+          <div class="form__row">
+            <label>Plan deductible ($)
+              <input id="deductible" type="number" min="0" step="50" value="1500" />
+            </label>
+            <label>Coinsurance (% you pay after deductible)
+              <input id="coins" type="number" min="0" max="100" step="1" value="20" />
+            </label>
+          </div>
+
+          <div class="form__row">
+            <label>Out‑of‑pocket max ($)
+              <input id="oop" type="number" min="0" step="100" value="5000" />
+            </label>
+            <label>Medical bill (allowed amount) ($)
+              <input id="bill" type="number" min="0" step="50" value="3500" />
+            </label>
+          </div>
+
+          <label class="toggle">
+            <input id="alreadyMetDed" type="checkbox" />
+            <span>Deductible already met this year</span>
+          </label>
+
+          <button class="btn" id="calcCost" type="button">Calculate</button>
+        </div>
+
+        <div class="output" id="costOut" aria-live="polite">Click “Calculate”.</div>
+        <p class="muted small">Assumes in‑network, covered service, no copay. Real plans may differ.</p>
+      </div>
+
+      <div class="card">
+        <h3>Quick QCM — “What counts toward OOP max?”</h3>
+        <div class="qcm" id="oopQcm"></div>
+        <div class="row">
+          <button class="btn btn--ghost" id="newOopQcm" type="button">New</button>
+          <button class="btn btn--ghost" id="hintOopQcm" type="button">Hint</button>
+        </div>
+        <div class="hint" id="oopHint"></div>
+
+        <hr class="sep" />
+
+        <h3>EOB decoder (Explanation of Benefits)</h3>
+        <p class="muted">Read the short “EOB line” and pick the meaning.</p>
+        <div class="quiz" id="eobQuiz"></div>
+        <div class="row">
+          <button class="btn btn--ghost" id="newEob" type="button">New</button>
+          <button class="btn btn--ghost" id="hintEob" type="button">Hint</button>
+        </div>
+        <div class="hint" id="eobHint"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="dialogs">
+    <div class="section__head">
+      <h2>Dialogues — real calls & real problems</h2>
+      <p class="muted">Pick the best line. You’ll practice modals + polite questions.</p>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3>Phone call: Doctor’s office (new patient)</h3>
+        <p class="muted">Click <strong>Start</strong> and choose your line at each step.</p>
+        <div class="row">
+          <button class="btn" id="startCall" type="button">Start</button>
+          <button class="btn btn--ghost" id="nextCall" type="button">Next step</button>
+          <button class="btn btn--ghost" id="listenCall" type="button">Listen</button>
+          <button class="btn btn--ghost" id="hintCall" type="button">Hint</button>
+        </div>
+
+        <div class="dialog">
+          <div class="dialog__step" id="callStep">Click “Start”.</div>
+          <div class="dialog__choices" id="callChoices"></div>
+          <div class="feedback" id="callFb" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Emergency vs Urgent Care — choose wisely</h3>
+        <p class="muted">Pick where to go and explain (comparatives + modals).</p>
+        <div class="quiz" id="erQuiz"></div>
+        <div class="row">
+          <button class="btn btn--ghost" id="newEr" type="button">New</button>
+          <button class="btn btn--ghost" id="hintEr" type="button">Hint</button>
+          <button class="btn btn--ghost" id="listenEr" type="button">Listen model</button>
+        </div>
+        <div class="hint" id="erHint"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="grammar">
+    <div class="section__head">
+      <h2>Grammar booster — comparatives, superlatives, modals (should / have to / might / can)</h2>
+      <p class="muted">Short explanations + lots of quick drills with instant feedback.</p>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3>Comparatives & superlatives — mini rules</h3>
+        <ul class="bullets">
+          <li><strong>Short adjectives:</strong> cheap → cheaper → the cheapest</li>
+          <li><strong>Long adjectives:</strong> expensive → more expensive → the most expensive</li>
+          <li><strong>Irregular:</strong> good → better → the best / bad → worse → the worst</li>
+          <li><strong>Structures:</strong> <em>…than…</em> / <em>one of the + superlative + plural noun</em></li>
+        </ul>
+
+        <div class="mini-ex" id="superQcm"></div>
+        <div class="row">
+          <button class="btn btn--ghost" id="newSuper" type="button">New</button>
+          <button class="btn btn--ghost" id="hintSuper" type="button">Hint</button>
+        </div>
+        <div class="hint" id="superHint"></div>
+      </div>
+
+      <div class="card">
+        <h3>Modals — mini rules</h3>
+        <ul class="bullets">
+          <li><strong>should</strong> = advice (soft)</li>
+          <li><strong>have to / need to</strong> = obligation</li>
+          <li><strong>can</strong> = ability/permission</li>
+          <li><strong>might</strong> = possibility (uncertain)</li>
+        </ul>
+
+        <div class="gapgrid" id="modalGaps"></div>
+        <div class="row">
+          <button class="btn btn--ghost" id="resetModals" type="button">Reset</button>
+          <button class="btn btn--ghost" id="revealModals" type="button">Reveal answers</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Everyday practice — make it sound natural (upgrade)</h3>
+      <p class="muted">Turn direct French‑style sentences into polite U.S. style.</p>
+      <div class="upgrade" id="upgrade"></div>
+      <div class="row">
+        <button class="btn btn--ghost" id="newUpgrade" type="button">New</button>
+        <button class="btn btn--ghost" id="hintUpgrade" type="button">Hint</button>
+        <button class="btn btn--ghost" id="listenUpgrade" type="button">Listen target</button>
+      </div>
+      <div class="hint" id="upgradeHint"></div>
+    </div>
+  </section>
+
+  <section class="section" id="final">
+    <div class="section__head">
+      <h2>Final mission — “We just moved. Help us choose and explain.” (45–60 seconds)</h2>
+      <p class="muted">Generate a short script using: comparatives + superlatives + modals + key vocabulary.</p>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3>Inputs</h3>
+        <div class="form">
+          <label>Name(s)
+            <input id="fName" type="text" placeholder="Claire & Julien" />
+          </label>
+          <label>City / State
+            <input id="fCity" type="text" placeholder="Boston, MA" />
+          </label>
+
+          <label>Main situation
+            <select id="fScenario">
+              <option value="first-week">First week in the U.S. (new doctors)</option>
+              <option value="kids">Kids + school vaccines + pediatrician</option>
+              <option value="pregnancy">Pregnancy plan</option>
+              <option value="chronic">Chronic condition + specialist</option>
+              <option value="budget">Budget stress + fear of bills</option>
+            </select>
+          </label>
+
+          <label>Plan preference
+            <select id="fPlan">
+              <option value="hmo">HMO (lower cost, more rules)</option>
+              <option value="ppo">PPO (more freedom, often higher cost)</option>
+              <option value="not-sure">Not sure yet</option>
+            </select>
+          </label>
+
+          <label>Mode
+            <select id="fMode">
+              <option value="slow">Slow + clear</option>
+              <option value="native">Normal native flow</option>
+            </select>
+          </label>
+
+          <div class="row">
+            <button class="btn" id="genFinal" type="button">Generate script</button>
+            <button class="btn btn--ghost" id="listenFinal" type="button">Listen</button>
+            <button class="btn btn--ghost" id="copyFinal" type="button">Copy</button>
+          </div>
+        </div>
+
+        <div class="output" id="finalOut" aria-live="polite">Click “Generate script”.</div>
+      </div>
+
+      <div class="card">
+        <h3>Mini rubric (teacher)</h3>
+        <ul class="ticks">
+          <li>Uses at least <strong>3 modals</strong> (should/have to/can/might).</li>
+          <li>Uses at least <strong>3 comparisons</strong> (cheaper/more expensive/better/worse).</li>
+          <li>Mentions <strong>network</strong>, <strong>deductible</strong>, <strong>OOP max</strong> correctly.</li>
+          <li>Ends with a polite question to HR / insurer.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Speaking tip:</strong> Smile and slow down. Americans read “stress” as “rudeness” on the phone.
+        </div>
+
+        <details class="details">
+          <summary>Optional: “Email to HR” template (tap)</summary>
+          <div class="output" id="hrEmail">
+            Click “Generate script” first.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cheatsheet">
+    <div class="section__head">
+      <h2>🧾 Printable cheat sheet</h2>
+      <p class="muted">One page of “what to say” and “what it means”.</p>
+      <div class="row">
+        <button class="btn" id="printCheat" type="button">Print</button>
+        <button class="btn btn--ghost" id="listenCheat" type="button">Listen key lines</button>
+      </div>
+    </div>
+
+    <div class="card cheat" id="cheat">
+      <h3>Top survival lines</h3>
+      <ul>
+        <li><strong>Are you in‑network?</strong> (Êtes‑vous dans le réseau ?)</li>
+        <li><strong>Do I need a referral to see a specialist?</strong> (Ai‑je besoin d’une lettre d’orientation ?)</li>
+        <li><strong>What’s my deductible and out‑of‑pocket maximum?</strong> (Franchise + plafond)</li>
+        <li><strong>Is this covered, and what will I pay?</strong> (Pris en charge ? combien je paie ?)</li>
+        <li><strong>Can you send me an itemized bill?</strong> (Facture détaillée)</li>
+        <li><strong>Please code it as preventive care, if appropriate.</strong> (si c’est pertinent)</li>
+      </ul>
+
+      <h3>French “false friends”</h3>
+      <ul>
+        <li><strong>Coverage</strong> ≠ “couverture” (it’s insurance benefits).</li>
+        <li><strong>Reimbursement</strong> is not automatic: there’s often a claim, an EOB, and timing.</li>
+        <li><strong>Free</strong> = “no cost to you” (not “gratuit for society”).</li>
+      </ul>
+
+      <h3>Sources (official)</h3>
+      <p class="muted small">
+        These links are included for learner verification:
+      </p>
+      <ul class="small">
+        <li><a href="https://www.cfe.fr/" target="_blank" rel="noreferrer">CFE official site</a></li>
+        <li><a href="https://www.cfe.fr/offre-francexpat" target="_blank" rel="noreferrer">CFE offer page (example)</a></li>
+        <li><a href="https://www.healthcare.gov/choose-a-plan/plan-types/" target="_blank" rel="noreferrer">Healthcare.gov: HMO/PPO plan types</a></li>
+        <li><a href="https://www.healthcare.gov/glossary/out-of-pocket-maximum-limit/" target="_blank" rel="noreferrer">Healthcare.gov: out‑of‑pocket maximum glossary</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a class="btn btn--ghost" href="#top">⬆ Back to top</a>
+    <p class="muted small">Open <strong>healthcare-usa-expats.html</strong> (with the matching CSS + JS files in the same folder).</p>
+  </footer>
+
+</main>
+
+<script src="/js/healthcare-usa-expats.js"></script>
+</body>
+</html>

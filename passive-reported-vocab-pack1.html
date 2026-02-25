@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Passive Voice + Reported Speech (A2→B2)</title>
+  <link rel="stylesheet" href="/css/passive-reported-vocab-pack1.css" />
+  <meta name="color-scheme" content="dark light" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand" role="banner">
+      <div class="brand__mark" aria-hidden="true">🧪</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">Passive Voice (processes/problems) + Reported Speech (summaries) • A2→B2</div>
+      </div>
+    </div>
+
+    <div class="topbar__tools">
+      <div class="pill">
+        <span class="pill__label">Level</span>
+        <select id="level" class="select select--tiny" aria-label="Level">
+          <option value="a2">A2</option>
+          <option value="b1" selected>B1</option>
+          <option value="b2">B2</option>
+        </select>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Accent (TTS)</span>
+        <button class="btn btn--tiny" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="btn btn--tiny" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Tap mode</span>
+        <button class="btn btn--tiny" id="tapMode" type="button" aria-pressed="true">On</button>
+      </div>
+
+      <div class="pill pill--score" title="Score on auto-corrected tasks">
+        <span class="pill__label">Score</span>
+        <span class="pill__value" id="scoreTxt">0 / 0</span>
+        <button class="btn btn--tiny btn--ghost" id="resetAll" type="button" title="Reset">↺</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Teacher</span>
+        <button class="btn btn--tiny btn--ghost" id="teacherMode" type="button" aria-pressed="false">Off</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero card">
+    <div class="hero__grid">
+      <div>
+        <h1 class="h1">Passive Voice + Reported Speech</h1>
+        <p class="lead">
+          A realistic, exam-style lesson (A2→B2) to help students describe <strong>processes & problems</strong> using the
+          <strong>passive voice</strong> and summarise meetings/calls using <strong>reported speech</strong>.
+          Everything is <strong>interactive</strong>, <strong>tap-friendly</strong>, and works on <strong>Mac/iPad Safari</strong>.
+        </p>
+
+        <div class="hero__row">
+          <div class="field">
+            <label for="studentName">Student (optional)</label>
+            <input id="studentName" class="input" placeholder="e.g., Sabine / Mathieu / …" />
+          </div>
+          <div class="field">
+            <label for="context">Scenario style</label>
+            <select id="context" class="select">
+              <option value="general" selected>General professional</option>
+              <option value="hospitality">Hospitality / front desk</option>
+              <option value="engineering">Industry / supplier quality</option>
+              <option value="admin">Office / admin</option>
+              <option value="sales">Sales / customer success</option>
+              <option value="transport">Tourism / transport</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="goal">Goal today</label>
+            <select id="goal" class="select">
+              <option value="balanced" selected>Balanced</option>
+              <option value="passive">Passive priority</option>
+              <option value="reported">Reported speech priority</option>
+              <option value="writing">Writing priority</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="hero__btns">
+          <button class="btn btn--primary" id="newSet" type="button">✨ New realistic set</button>
+          <a class="btn" href="#vocab">Vocabulary</a>
+          <a class="btn" href="#passive">Passive</a>
+          <a class="btn" href="#reported">Reported speech</a>
+          <a class="btn" href="#mock">Mini mock</a>
+          <a class="btn" href="#report">Report</a>
+          <button class="btn btn--ghost" id="saveProgress" type="button">Save</button>
+          <button class="btn btn--ghost" id="loadProgress" type="button">Load</button>
+          <button class="btn btn--ghost" id="printPage" type="button">Print</button>
+        </div>
+
+        <div class="note">
+          <strong>Reflex:</strong>
+          <span class="tag">Passive for impact</span>
+          <span class="tag">Has been + due to…</span>
+          <span class="tag">Client said they needed…</span>
+          <span class="tag">Action items</span>
+          <span class="tag">Polite close</span>
+        </div>
+      </div>
+
+      <aside class="hero__panel">
+        <div class="progress">
+          <div class="progress__top">
+            <span class="kicker">Progress</span>
+            <span class="kicker" id="progressTxt">0%</span>
+          </div>
+          <div class="progress__bar" aria-hidden="true"><div class="progress__fill" id="progressFill"></div></div>
+          <div class="progress__checks" id="progressChecks" aria-label="Sections"></div>
+
+          <div class="mini card card--soft">
+            <div class="mini__title">12–15 min loop</div>
+            <ol class="mini__list">
+              <li><strong>Vocab:</strong> 8 items (tap + listen)</li>
+              <li><strong>Passive:</strong> transform + process steps</li>
+              <li><strong>Reported:</strong> meeting summary</li>
+              <li><strong>Mock:</strong> mini email + checklist</li>
+            </ol>
+            <div class="row">
+              <button class="btn btn--tiny" id="copyRoutine" type="button">Copy</button>
+              <button class="btn btn--tiny btn--ghost" id="markAllDone" type="button">✔︎ All done</button>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section class="card" id="vocab">
+    <div class="section__head">
+      <h2 class="h2">1) Vocabulary (realistic + useful)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny" id="markVocab" type="button">✔︎ Done</button>
+        <button class="btn btn--tiny btn--ghost" id="listenVocab" type="button">▶ Listen all</button>
+        <button class="btn btn--tiny btn--ghost" id="newVocab" type="button">New</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel__title">Passive / Process & Problems</div>
+        <div class="vocab" id="vocabPassive"></div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panel__title">Reported speech verbs + meeting language</div>
+        <div class="vocab" id="vocabReported"></div>
+      </div>
+    </div>
+
+    <div class="miniTask">
+      <h3 class="h3">Quick vocab check (tap)</h3>
+      <p class="muted small">Choose the best meaning / use.</p>
+      <div class="quiz" id="vocabQuiz"></div>
+    </div>
+  </section>
+
+  <!-- PASSIVE -->
+  <section class="card" id="passive">
+    <div class="section__head">
+      <h2 class="h2">2) Passive voice (processes & problems)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny" id="markPassive" type="button">✔︎ Done</button>
+        <button class="btn btn--tiny btn--ghost" id="newPassive" type="button">New tasks</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel__title">Form (fast)</div>
+        <div class="cards" id="passiveCards"></div>
+
+        <div class="miniTask" id="passiveTenseMap">
+          <h3 class="h3">Passive tense map (name + when to use)</h3>
+          <p class="muted small">Choose a situation → get the best passive tense + form + example.</p>
+
+          <div class="row">
+            <select class="select" id="ptSituation" aria-label="Passive situation">
+              <option value="process">Process / how something works (general)</option>
+              <option value="badnews">Bad news update (a specific incident)</option>
+              <option value="ongoing">Ongoing action now (in progress)</option>
+              <option value="recent">Recent result (relevant now)</option>
+              <option value="future">Future action (what will happen next)</option>
+            </select>
+            <button class="btn btn--tiny btn--primary" id="ptShow" type="button">Show</button>
+            <button class="btn btn--tiny btn--ghost" id="ptListen" type="button">▶ Listen</button>
+          </div>
+
+          <div class="model" id="ptOut" aria-live="polite"></div>
+
+          <details class="details">
+            <summary>Quick “when do I use it?” rules</summary>
+            <div class="model" id="ptRules"></div>
+          </details>
+        </div>
+
+        <div class="miniTask">
+          <h3 class="h3">Active → Passive transformer</h3>
+          <p class="muted small">Write the passive version. Use the hint if needed.</p>
+
+          <div class="prompt" id="apPrompt"></div>
+
+          <div class="row">
+            <input class="input" id="apInput" placeholder="Type the passive sentence…" />
+            <button class="btn btn--tiny btn--primary" id="apCheck" type="button">Check</button>
+            <button class="btn btn--tiny btn--ghost" id="apHint" type="button">Hint</button>
+            <button class="btn btn--tiny btn--ghost" id="apListen" type="button">▶ Listen</button>
+          </div>
+          <div class="feedback" id="apFb" aria-live="polite"></div>
+
+          <details class="details">
+            <summary>Show answer (teacher)</summary>
+            <div class="model" id="apAnswer"></div>
+          </details>
+        </div>
+
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panel__title">Process steps (order + describe in passive)</div>
+
+        <p class="muted small"><strong>Goal:</strong> put the steps in the correct order, then generate a passive paragraph.</p>
+
+        <div class="miniTask howto">
+          <h3 class="h3">How to reorder (very simple)</h3>
+          <ol class="mini__list">
+            <li>Use <strong>↑</strong> / <strong>↓</strong> to move a step up/down.</li>
+            <li>Or use <strong>↔</strong>: tap it on step A → tap it on step B to swap.</li>
+            <li>Then click <strong>Check order</strong> → click <strong>Generate paragraph</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="row">
+          <button class="btn btn--tiny btn--ghost" id="shuffleSteps" type="button">New process</button>
+          <button class="btn btn--tiny btn--primary" id="checkSteps" type="button">Check order</button>
+          <button class="btn btn--tiny btn--ghost" id="stepsHint" type="button">Hint</button>
+          <button class="btn btn--tiny btn--ghost" id="makeProcess" type="button">Generate paragraph</button>
+          <button class="btn btn--tiny btn--ghost" id="listenProcess" type="button">▶ Listen</button>
+        </div>
+
+        <div class="sortWrap">
+          <div class="sortList" id="processSteps" aria-label="Process steps list"></div>
+        </div>
+
+        <div class="feedback" id="stepsFb" aria-live="polite"></div>
+
+        <div class="miniTask">
+          <details class="details">
+            <summary>Show correct order (teacher)</summary>
+            <div class="model" id="stepsAnswer"></div>
+          </details>
+        </div>
+
+        <div class="miniTask">
+          <h3 class="h3">Your passive paragraph</h3>
+          <textarea class="textarea" id="processOut" rows="7" placeholder="Generated paragraph will appear here…"></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="miniTask">
+      <h3 class="h3">Passive for problems: choose the best sentence</h3>
+      <div class="quiz" id="passiveQuiz"></div>
+    </div>
+  </section>
+
+  <!-- REPORTED SPEECH -->
+  <section class="card" id="reported">
+    <div class="section__head">
+      <h2 class="h2">3) Reported speech (summaries of calls/meetings)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny" id="markReported" type="button">✔︎ Done</button>
+        <button class="btn btn--tiny btn--ghost" id="newReported" type="button">New tasks</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel__title">Backshift & changes (fast)</div>
+        <div class="cards" id="reportedCards"></div>
+
+        <div class="miniTask">
+          <h3 class="h3">Direct → Reported transformer</h3>
+          <p class="muted small">Rewrite in reported speech using a reporting verb (said / explained / asked / confirmed / suggested).</p>
+
+          <div class="prompt" id="rsPrompt"></div>
+
+          <div class="row">
+            <input class="input" id="rsInput" placeholder="Type the reported sentence…" />
+            <button class="btn btn--tiny btn--primary" id="rsCheck" type="button">Check</button>
+            <button class="btn btn--tiny btn--ghost" id="rsHint" type="button">Hint</button>
+            <button class="btn btn--tiny btn--ghost" id="rsListen" type="button">▶ Listen</button>
+          </div>
+          <div class="feedback" id="rsFb" aria-live="polite"></div>
+
+          <details class="details">
+            <summary>Show answer (teacher)</summary>
+            <div class="model" id="rsAnswer"></div>
+          </details>
+        </div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panel__title">Meeting summary builder (tap categorisation)</div>
+        <p class="muted small">Tap an item → tap a box to place it. Then generate a summary (reported speech).</p>
+
+        <div class="row">
+          <button class="btn btn--tiny btn--ghost" id="resetMeeting" type="button">Reset</button>
+          <button class="btn btn--tiny btn--primary" id="makeSummary" type="button">Generate summary</button>
+          <button class="btn btn--tiny btn--ghost" id="listenSummary" type="button">▶ Listen</button>
+        </div>
+
+        <div class="bank" id="meetingBank" aria-label="Statements bank"></div>
+
+        <div class="boxes">
+          <div class="box" data-box="deadline">
+            <div class="box__title">🕒 Deadline</div>
+            <div class="box__drop" id="boxDeadline"></div>
+          </div>
+          <div class="box" data-box="problem">
+            <div class="box__title">⚠️ Problem</div>
+            <div class="box__drop" id="boxProblem"></div>
+          </div>
+          <div class="box" data-box="solution">
+            <div class="box__title">🛠️ Solution</div>
+            <div class="box__drop" id="boxSolution"></div>
+          </div>
+          <div class="box" data-box="next">
+            <div class="box__title">✅ Next steps</div>
+            <div class="box__drop" id="boxNext"></div>
+          </div>
+        </div>
+
+        <div class="miniTask">
+          <h3 class="h3">Summary output</h3>
+          <textarea class="textarea" id="summaryOut" rows="8" placeholder="Your meeting summary will appear here…"></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="miniTask">
+      <h3 class="h3">Reported speech: choose the correct option</h3>
+      <div class="quiz" id="reportedQuiz"></div>
+    </div>
+  </section>
+
+  <!-- MINI MOCK -->
+  <section class="card" id="mock">
+    <div class="section__head">
+      <h2 class="h2">4) Mini mock (Writing + exam reflexes)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny" id="markMock" type="button">✔︎ Done</button>
+        <button class="btn btn--tiny btn--ghost" id="newMock" type="button">New prompt</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel__title">Prompt (realistic)</div>
+        <div class="prompt" id="mockPrompt"></div>
+
+        <div class="miniTask">
+          <h3 class="h3">Insert helpers (one-click)</h3>
+          <p class="muted small">Tap to insert exam-ready lines into the email.</p>
+          <div class="chips" id="mockChips"></div>
+        </div>
+
+        <details class="details">
+          <summary>Model answers (A2 / B1 / B2)</summary>
+          <div class="model" id="mockModel"></div>
+        </details>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panel__title">Your email (8–12 lines)</div>
+
+        <textarea class="textarea" id="mockDraft" rows="13" placeholder="Write your email here… (include a Subject line)"></textarea>
+
+        <div class="row row--end">
+          <button class="btn btn--tiny btn--primary" id="mockCheck" type="button">Self-check</button>
+          <button class="btn btn--tiny btn--ghost" id="mockClear" type="button">Clear</button>
+          <button class="btn btn--tiny btn--ghost" id="mockListen" type="button">▶ Listen</button>
+        </div>
+
+        <div class="checklist" id="mockChecklist"></div>
+        <div class="feedback" id="mockFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPORT -->
+  <section class="card" id="report">
+    <div class="section__head">
+      <h2 class="h2">5) Report (copy / track progress)</h2>
+      <div class="section__actions">
+        <button class="btn btn--tiny btn--primary" id="copyReport" type="button">Copy</button>
+        <button class="btn btn--tiny btn--ghost" id="refreshReport" type="button">Refresh</button>
+        <a class="btn btn--tiny btn--ghost" href="#top">Top</a>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel__title">Teacher notes</div>
+        <ul class="mini__list">
+          <li><strong>Passive:</strong> be + past participle • by + agent (optional)</li>
+          <li><strong>Bonus:</strong> has been + past participle + due to…</li>
+          <li><strong>Reported:</strong> said/explained/asked/confirmed/suggested</li>
+          <li><strong>Goal:</strong> summary with deadlines + action items</li>
+        </ul>
+
+        <div class="row">
+          <button class="btn btn--tiny btn--ghost" id="copyChecklist" type="button">Copy checklist</button>
+        </div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panel__title">Report output</div>
+        <pre class="report" id="reportOut"></pre>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>SpeakEasyTisha · Passive + Reported Speech · Pack 1</span>
+      <span class="muted">No external assets · Tap-friendly · Mac/iPad Safari</span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="/js/passive-reported-vocab-pack1.js"></script>
+</body>
+</html>
