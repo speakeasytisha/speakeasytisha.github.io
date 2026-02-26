@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Wedding Castle English (Strasbourg)</title>
+  <link rel="stylesheet" href="/css/wedding-castle-english-strasbourg.css" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">💍</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__sub">Wedding Planner / Decor / Officiant • Castle weddings near Strasbourg</div>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn btn--ghost" id="btnPrint" type="button" title="Print">🖨️ Print</button>
+      <div class="pill" title="Choose accent for audio">
+        <span class="pill__label">Accent</span>
+        <select id="accentSelect" class="select" aria-label="Accent">
+          <option value="us">US</option>
+          <option value="uk">UK</option>
+        </select>
+      </div>
+      <button class="btn" id="btnReset" type="button" title="Reset progress">↻ Reset</button>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="Lesson sections">
+    <a class="tab is-active" href="#start" data-jump="start">1) Start</a>
+    <a class="tab" href="#rules" data-jump="rules">2) Grammar</a>
+    <a class="tab" href="#spin" data-jump="spin">3) Spinner</a>
+    <a class="tab" href="#errors" data-jump="errors">4) Errors</a>
+    <a class="tab" href="#practice" data-jump="practice">5) Scenarios</a>
+    <a class="tab" href="#build" data-jump="build">6) Build</a>
+    <a class="tab" href="#toolkit" data-jump="toolkit">7) Toolkit</a>
+    <a class="tab" href="#emails" data-jump="emails">8) Emails</a>
+    <a class="tab" href="#speak" data-jump="speak">9) Speak</a>
+    <a class="tab" href="#wrap" data-jump="wrap">10) Wrap-up</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div>
+      <h1>Wedding Castle English (Strasbourg)</h1>
+      <p class="lead">
+        A complete one-hour lesson for a wedding planner / decorator / officiant who works in a castle venue near Strasbourg.
+        Learn <strong>core vocabulary</strong>, <strong>polite client language</strong>, <strong>planning grammar</strong>,
+        <strong>emails</strong>, and <strong>problem‑solving</strong> with international clients.
+      </p>
+
+      <div class="meta">
+        <div class="meta__item">⏱️ <strong>~45–60 min</strong></div>
+        <div class="meta__item">✅ Instant feedback • Hints • Score</div>
+        <div class="meta__item">🔊 US/UK audio</div>
+        <div class="meta__item">📱 Touch-friendly</div>
+      </div>
+
+      <details class="deep">
+        <summary>What the learner will be able to do</summary>
+        <ul>
+          <li>Run a discovery call: vision, budget, guests, timeline, traditions</li>
+          <li>Coordinate vendors: access, unloading, sound check, timing</li>
+          <li>Explain décor + mise en place professionally (set up, styling, table plan)</li>
+          <li>Officiant lines for a ceremony</li>
+          <li>Handle problems calmly (rain, delays, allergies, tech issues)</li>
+          <li>Write quick, professional emails</li>
+        </ul>
+      </details>
+
+      <div class="tagRow">
+        <span class="tag">🎯 Client calls</span>
+        <span class="tag">🏰 Castle venue</span>
+        <span class="tag">🌸 Flowers + décor</span>
+        <span class="tag">🗓️ Timeline</span>
+        <span class="tag">🧩 French traps</span>
+      </div>
+    </div>
+
+    <div class="progressCard" aria-label="Progress">
+      <div class="progressRow">
+        <div class="progressLabel">Progress</div>
+        <div class="progressValue"><span id="progressPct">0%</span></div>
+      </div>
+      <div class="bar" aria-hidden="true"><div class="bar__fill" id="progressBar"></div></div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat__k">Score</div>
+          <div class="stat__v"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat__k">Streak</div>
+          <div class="stat__v"><span id="streakNow">0</span></div>
+        </div>
+      </div>
+
+      <div class="hintBox" id="globalHint" hidden>
+        <div class="hintBox__title">Hint</div>
+        <div class="hintBox__body" id="globalHintBody"></div>
+      </div>
+
+      <div class="quickActions">
+        <button class="btn btn--ghost" id="btnShowHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="btnSpeakSelection" type="button">🔊 Speak selection</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="start" class="card">
+    <div class="card__head">
+      <h2>1) Start — professional tone</h2>
+      <p class="muted">Quick warm‑up.</p>
+    </div>
+    <div class="quizBox" id="starterQuiz"></div>
+  </section>
+
+  <section id="rules" class="card">
+    <div class="card__head">
+      <h2>2) Grammar that wedding pros use all the time</h2>
+      <p class="muted">Polite requests • planning • arrangements • conditionals • passive voice.</p>
+    </div>
+    <div class="quizBox" id="rulesQuick"></div>
+    <div class="quizBox" id="meaningQuiz"></div>
+  </section>
+
+  <section id="spin" class="card">
+    <div class="card__head">
+      <h2>3) Wedding Situation Spinner (fun!)</h2>
+      <p class="muted">Spin a real problem and choose the best response.</p>
+    </div>
+
+    <div class="spinWrap" id="weddingSpin">
+      <div class="spinTop">
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <span class="spinBadge">🎲 Situation</span>
+          <select class="select" id="wedSpinSelect" aria-label="Choose situation"></select>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn" id="btnWedSpin" type="button">🎲 Spin</button>
+          <button class="btn btn--ghost" id="btnWedHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="btnWedSpeak" type="button">🔊 Speak model</button>
+        </div>
+      </div>
+
+      <div class="spinCard">
+        <div class="spinBadge" id="wedSpinTitle">—</div>
+        <div class="muted" id="wedSpinClue" style="margin-top:8px;">—</div>
+
+        <div class="spinLine">Pick the best professional response:</div>
+        <div class="spinOpts" id="wedSpinOptions"></div>
+
+        <div class="spinSmall muted" id="wedSpinAnswer" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="errors" class="card">
+    <div class="card__head">
+      <h2>4) Typical mistakes (French traps) — fix them</h2>
+      <p class="muted">Confirm me • Would you mind to… • will after IF • set up.</p>
+    </div>
+    <div class="quizBox" id="errorFix"></div>
+  </section>
+
+  <section id="practice" class="card">
+    <div class="card__head">
+      <h2>5) Scenarios — weddings at a castle</h2>
+      <p class="muted">Venue tour • décor set‑up • vendors • allergies • officiant lines.</p>
+    </div>
+    <div class="quizBox" id="practiceAQuiz"></div>
+  </section>
+
+  <section id="build" class="card">
+    <div class="card__head">
+      <h2>6) Build + upgrade</h2>
+      <p class="muted">Build a sentence, then make it diplomatic.</p>
+    </div>
+    <div class="grid2">
+      <div class="builder" id="builderA"></div>
+      <div class="tagRow" style="margin-top:10px;">
+        <button class="btn btn--ghost" id="btnRevealBuild" type="button">👀 Reveal answer</button>
+      </div>
+
+      <div class="builder" id="transformA"></div>
+    </div>
+  </section>
+
+  <section id="toolkit" class="card">
+    <div class="card__head">
+      <h2>7) Toolkit — vocab + frames + templates</h2>
+      <p class="muted">Quick reference for real work.</p>
+    </div>
+    <div class="accordion" id="extrasAcc"></div>
+    <div class="quizBox" id="extrasQuiz" style="margin-top:12px;"></div>
+  </section>
+
+  <section id="emails" class="card">
+    <div class="card__head">
+      <h2>8) Email Generator (edit + copy/paste)</h2>
+      <p class="muted">Pick a template, fill the fields, generate the email.</p>
+    </div>
+
+    <div class="templateBox" id="emailGen">
+      <div class="grid2">
+        <div>
+          <label class="pill" style="display:flex; justify-content:space-between; gap:10px;">
+            <span class="pill__label">Template</span>
+            <select class="select" id="emailTemplateSelect" aria-label="Email template"></select>
+          </label>
+
+          <div class="grid2" style="margin-top:10px;">
+            <label class="pill"><span class="pill__label">Client name</span><input class="input" id="fName" value="Maria" /></label>
+            <label class="pill"><span class="pill__label">Date</span><input class="input" id="fDate" value="June 12" /></label>
+            <label class="pill"><span class="pill__label">Venue</span><input class="input" id="fVenue" value="Castle Venue" /></label>
+            <label class="pill"><span class="pill__label">Signature</span><input class="input" id="fSignature" value="Your Name" /></label>
+          </div>
+
+          <details class="deep" style="margin-top:10px;">
+            <summary>More fields</summary>
+            <div class="grid2" style="margin-top:10px;">
+              <label class="pill"><span class="pill__label">Ceremony</span><input class="input" id="fCeremony" value="3:30 pm" /></label>
+              <label class="pill"><span class="pill__label">Cocktail</span><input class="input" id="fCocktail" value="4:15 pm" /></label>
+              <label class="pill"><span class="pill__label">Dinner</span><input class="input" id="fDinner" value="7:00 pm" /></label>
+              <label class="pill"><span class="pill__label">Deadline</span><input class="input" id="fDeadline" value="Friday" /></label>
+              <label class="pill"><span class="pill__label">Access</span><input class="input" id="fAccess" value="9:00 am" /></label>
+              <label class="pill"><span class="pill__label">Unloading</span><input class="input" id="fUnload" value="main courtyard (Gate A)" /></label>
+              <label class="pill"><span class="pill__label">Power</span><input class="input" id="fPower" value="2 sockets near the band area" /></label>
+              <label class="pill"><span class="pill__label">Sound check</span><input class="input" id="fSound" value="4:00 pm" /></label>
+            </div>
+          </details>
+
+          <div class="tagRow" style="margin-top:10px;">
+            <button class="btn" id="btnEmailBuild" type="button">✨ Generate</button>
+            <button class="btn btn--ghost" id="btnEmailSpeak" type="button">🔊 Speak</button>
+            <button class="btn btn--ghost" id="btnEmailClear" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="muted">Output (copy/paste):</div>
+          <div class="templateOut" id="emailOut">—</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="speak" class="card">
+    <div class="card__head">
+      <h2>9) Speak — roleplays (real life)</h2>
+      <p class="muted">Tap “Model answer” then personalize.</p>
+    </div>
+    <div class="speakGrid" id="speakGrid"></div>
+  </section>
+
+  <section id="wrap" class="card">
+    <div class="card__head">
+      <h2>10) Wrap‑up — final check</h2>
+      <p class="muted">If you can do this, you can work confidently with international clients.</p>
+    </div>
+    <div class="quizBox" id="finalQuiz"></div>
+
+    <div class="cheatSheet" id="cheatSheet">
+      <h3>Final mission (speaking)</h3>
+      <p class="ex">
+        60–90 seconds: Explain the plan for a castle wedding day (set‑up + ceremony + cocktail + reception) and add a rain plan (If it rains…).
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a class="btn btn--ghost" href="#top">↑ Back to top</a>
+    <p class="muted">SpeakEasyTisha • Wedding Castle English (Strasbourg)</p>
+  </footer>
+</main>
+
+<script src="/js/wedding-castle-english-strasbourg.js"></script>
+</body>
+</html>
