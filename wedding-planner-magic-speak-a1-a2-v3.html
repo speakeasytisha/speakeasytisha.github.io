@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SpeakEasyTisha • Wedding Planner Magic • Speak Unlock (A1→A2) • v3</title>
+  <link rel="stylesheet" href="/css/wedding-planner-magic-speak-a1-a2-v3.css" />
+  <meta name="theme-color" content="#2c6e6a" />
+</head>
+
+<body>
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand" role="banner">
+      <div class="brand__mark" aria-hidden="true">💍</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Wedding Planner Magic • A1 → A2 • “Speak Unlock” journey (tap‑friendly) • v3</div>
+      </div>
+    </div>
+
+    <nav class="tabs" aria-label="Lesson sections">
+      <button class="tab is-active" data-tab="start" type="button">0) Lesson + Start</button>
+      <button class="tab" data-tab="key1" type="button">1) Key 1 • Words</button>
+      <button class="tab" data-tab="key2" type="button">2) Key 2 • Schedules</button>
+      <button class="tab" data-tab="key3" type="button">3) Key 3 • Questions</button>
+      <button class="tab" data-tab="key4" type="button">4) Key 4 • Dialogues</button>
+      <button class="tab" data-tab="key5" type="button">5) Key 5 • Speak!</button>
+    </nav>
+
+    <div class="topbar__actions">
+      <div class="chipgroup" role="group" aria-label="Accent">
+        <button class="chip is-active" id="accentUS" type="button">US</button>
+        <button class="chip" id="accentUK" type="button">UK</button>
+      </div>
+
+      <div class="chipgroup" role="group" aria-label="Level">
+        <button class="chip is-active" id="lvlA1" type="button">A1</button>
+        <button class="chip" id="lvlA2" type="button">A2</button>
+      </div>
+
+      <button class="btn btn--ghost" id="btnFrench" type="button" aria-pressed="false">🇫🇷 FR help: ON</button>
+      <button class="btn btn--ghost" id="btnPrint" type="button">🖨️ Print</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="notice" id="notice" role="status" aria-live="polite" style="display:none"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__card">
+      <div class="badge">✨ Magical speaking journey</div>
+      <h1>Wedding Planner English (A1 → A2): <span class="grad">débloquer la parole</span></h1>
+      <p class="lead">
+        You collect <b>5 keys</b>. Each key unlocks the next step.
+        No pressure: you start in <b>silent mode</b>, then <b>whisper</b>, then <b>shadow</b>, and finally <b>role‑play</b>.
+        <span class="fr">(Tu progresses sans stress : tu commences sans parler, puis tu parles doucement, puis tu répètes, puis tu improvises.)</span>
+      </p>
+
+      <div class="hero__row">
+        <button class="btn" id="btnStart" type="button">🗝️ Start the journey</button>
+        <button class="btn btn--ghost" id="btnModel" type="button">🔊 Listen: model intro</button>
+        <button class="btn btn--ghost" id="btnUnlockAll" type="button" title="For testing / teacher use">🔓 Teacher unlock</button>
+        <button class="btn btn--ghost" id="btnReset" type="button">🧽 Reset</button>
+      </div>
+
+      <div class="progress">
+        <div class="progress__top">
+          <div class="progress__label">Keys collected</div>
+          <div class="progress__pct" id="keysPct">0/5</div>
+        </div>
+        <div class="bar"><div class="bar__fill" id="barFill" style="width:0%"></div></div>
+        <div class="muted small" id="progressHint">Tip: read the lesson (0), save your profile, then do Key 1.</div>
+      </div>
+
+      <div class="keys" aria-label="Keys">
+        <div class="key" id="k1"><span aria-hidden="true">🗝️</span><span class="kTxt">Key 1</span></div>
+        <div class="key" id="k2"><span aria-hidden="true">🗝️</span><span class="kTxt">Key 2</span></div>
+        <div class="key" id="k3"><span aria-hidden="true">🗝️</span><span class="kTxt">Key 3</span></div>
+        <div class="key" id="k4"><span aria-hidden="true">🗝️</span><span class="kTxt">Key 4</span></div>
+        <div class="key" id="k5"><span aria-hidden="true">🗝️</span><span class="kTxt">Key 5</span></div>
+      </div>
+    </div>
+
+    <div class="hero__art" aria-hidden="true">
+      <div class="petals"></div>
+      <div class="artCard">
+        <div class="artTitle">How it works (super simple)</div>
+        <div class="artRow"><div class="pill">①</div><div class="artText">Read the mini lesson</div></div>
+        <div class="artRow"><div class="pill">②</div><div class="artText">Do 1 small exercise</div></div>
+        <div class="artRow"><div class="pill">③</div><div class="artText">Win a key → unlock next</div></div>
+        <div class="artRow"><div class="pill">🛟</div><div class="artText">Use panic phrases anytime</div></div>
+        <div class="artLine"></div>
+        <div class="artMini"><span class="miniTag">A1</span><span class="miniText">short + clear</span></div>
+        <div class="artMini"><span class="miniTag">A2</span><span class="miniText">more natural + questions</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- START -->
+  <section class="panel is-active" id="tab-start">
+    <div class="panel__head">
+      <h2>0) Mini lesson first (then practice)</h2>
+      <p class="muted">Complete lesson first. Then we do interactive practice.</p>
+    </div>
+
+    <div class="grid2">
+      <article class="card">
+        <h3>Mini lesson: what wedding planners say (present simple)</h3>
+
+        <div class="subcard">
+          <h4>Present simple = habits / facts / routines</h4>
+          <p class="muted">
+            Use it for your job tasks: what you do every day / every week.
+            <span class="fr">FR: présent simple = ce que tu fais d’habitude.</span>
+          </p>
+          <div class="rule">
+            <div><b>I</b> plan / I send / I call ✅</div>
+            <div class="muted small">He/She: plans / sends / calls (we will use it later)</div>
+          </div>
+          <div class="subnote">
+            <div class="subnote__title">Magic trick</div>
+            <div class="muted">Speak in <b>tiny blocks</b>: “Hello.” / “I’m Anaïs.” / “I plan weddings.”</div>
+            <div class="fr small">FR: parle en petites phrases.</div>
+          </div>
+        </div>
+
+        <div class="subcard">
+          <h4>A1 model (short)</h4>
+          <div class="model" id="modelA1"></div>
+          <div class="row row--wrap">
+            <button class="btn btn--ghost" id="listenA1" type="button">🔊 Listen A1</button>
+            <button class="btn btn--ghost" id="copyA1" type="button">📋 Copy</button>
+          </div>
+        </div>
+
+        <div class="subcard">
+          <h4>A2 model (more natural)</h4>
+          <div class="model" id="modelA2"></div>
+          <div class="row row--wrap">
+            <button class="btn btn--ghost" id="listenA2" type="button">🔊 Listen A2</button>
+            <button class="btn btn--ghost" id="copyA2" type="button">📋 Copy</button>
+          </div>
+        </div>
+
+        <div class="subcard">
+          <h4>WH questions you MUST know</h4>
+          <p class="muted small">These unlock client conversations.</p>
+          <ul class="bullets">
+            <li><b>What time</b> is the ceremony? <span class="fr">(À quelle heure…?)</span></li>
+            <li><b>When</b> is the meeting? <span class="fr">(Quand…?)</span></li>
+            <li><b>Where</b> is the venue? <span class="fr">(Où…?)</span></li>
+          </ul>
+          <div class="row row--wrap">
+            <button class="btn btn--ghost" id="listen3Q" type="button">🔊 Listen questions</button>
+          </div>
+        </div>
+
+      </article>
+
+      <article class="card">
+        <h3>Your profile (dropdown = no spelling errors)</h3>
+        <p class="muted small">Keep it general: it works for any wedding planner.</p>
+
+        <div class="form">
+          <div class="field">
+            <label for="pName">Name (optional)</label>
+            <input id="pName" inputmode="text" placeholder="Anaïs / Tisha / …" />
+            <div class="fr small">FR: tu peux mettre ton prénom (facultatif)</div>
+          </div>
+
+          <div class="grid2">
+            <div class="field">
+              <label for="pRole">Role (job)</label>
+              <select id="pRole"></select>
+              <div class="fr small">FR: métier</div>
+            </div>
+            <div class="field">
+              <label for="pWorkplace">Workplace</label>
+              <select id="pWorkplace"></select>
+              <div class="fr small">FR: lieu de travail</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Choose 1–3 traits (tap)</label>
+            <div class="chips" id="traitChips"></div>
+            <div class="fr small">FR: choisis 1 à 3 qualités</div>
+          </div>
+
+          <div class="field">
+            <label for="pGoal">Goal (simple)</label>
+            <select id="pGoal"></select>
+            <div class="fr small">FR: objectif</div>
+          </div>
+
+          <div class="row row--wrap">
+            <button class="btn" id="saveProfile" type="button">💾 Save (prepares Key 1)</button>
+            <button class="btn btn--ghost" id="listenProfile" type="button">🔊 Listen</button>
+            <button class="btn btn--ghost" id="panicBtn" type="button">🛟 Panic phrase</button>
+          </div>
+          <div class="feedback" id="profileFb" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="subcard">
+          <h4>Safe sentence (when you block)</h4>
+          <div class="safe" id="safeSentence">Could you repeat that, please?</div>
+          <div class="row row--wrap">
+            <button class="btn btn--ghost" id="safeNew" type="button">🔄 New</button>
+            <button class="btn btn--ghost" id="safeListen" type="button">🔊 Listen</button>
+          </div>
+          <div class="fr small">FR: phrase de secours</div>
+        </div>
+
+        <div class="subcard">
+          <h4>Confidence meter</h4>
+          <p class="muted small">Tap now, then after Key 5.</p>
+          <div class="meter" id="meter"></div>
+          <div class="feedback" id="meterFb" role="status" aria-live="polite"></div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- KEY 1 -->
+  <section class="panel" id="tab-key1">
+    <div class="panel__head">
+      <h2>1) Key 1 • Wedding planner words (learn → quiz)</h2>
+      <p class="muted">We learn first, then we do the mini quiz. Unlock Key 2.</p>
+    </div>
+
+    <div class="subcard">
+      <h3>Mini lesson: the 4 wedding areas</h3>
+      <p class="muted">
+        A wedding planner talks about: <b>core</b> tasks, the <b>venue</b>, the <b>people</b>, and <b>actions</b>.
+        <span class="fr">FR: tâches, lieu, personnes, actions.</span>
+      </p>
+      <p class="muted small">Tap cards to hear the English.</p>
+    </div>
+
+    <div class="row row--wrap">
+      <div class="chipgroup">
+        <button class="chip is-active" data-vcat="core" type="button">Core</button>
+        <button class="chip" data-vcat="venue" type="button">Venue</button>
+        <button class="chip" data-vcat="people" type="button">People</button>
+        <button class="chip" data-vcat="actions" type="button">Actions</button>
+      </div>
+      <button class="btn btn--ghost" id="vMix" type="button">🔄 New mix</button>
+    </div>
+
+    <div class="vgrid" id="vgrid" aria-label="Vocabulary cards"></div>
+
+    <div class="grid2" style="margin-top:14px">
+      <article class="card">
+        <h3>Mini quiz (tap) ✅</h3>
+
+        <div class="howto">
+          <div class="howto__title">How to play (instructions)</div>
+          <ol class="howto__list">
+            <li>Look at the <b>clue</b> (a word + a small hint).</li>
+            <li>Tap <b>one</b> option.</li>
+            <li>When all 5 are selected → tap <b>✅ Check</b>.</li>
+            <li>You need <b>4/5</b> to claim Key 1.</li>
+          </ol>
+          <div class="fr small">FR: choisis une réponse par question, puis “Check”.</div>
+        </div>
+
+        <div class="quiz" id="vQuiz"></div>
+        <div class="row row--wrap">
+          <button class="btn" id="vCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="vHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="vNew" type="button">🔄 New</button>
+          <button class="btn btn--ghost" id="vListen" type="button">🔊 Listen list</button>
+        </div>
+        <div class="feedback" id="vFb" role="status" aria-live="polite"></div>
+      </article>
+
+      <article class="card">
+        <h3>Grammar mini lesson: a / an (DETAILED)</h3>
+
+        <div class="subcard">
+          <h4>Rule (sound, not spelling)</h4>
+          <p class="muted">
+            Use <b>an</b> before a <b>vowel sound</b> (a, e, i, o, u). Use <b>a</b> before a <b>consonant sound</b>.
+            <span class="fr">FR: c’est le SON qui compte, pas la lettre.</span>
+          </p>
+          <div class="rule">
+            <div><b>an</b> event ✅ • <b>an</b> hour ✅ (silent “h”)</div>
+            <div><b>a</b> wedding ✅ • <b>a</b> university ✅ (you‑ sound)</div>
+          </div>
+
+          <div class="subnote">
+            <div class="subnote__title">Common traps</div>
+            <ul class="bullets">
+              <li><b>an</b> honest person (silent h)</li>
+              <li><b>a</b> one‑day event (w sound)</li>
+              <li><b>a</b> European venue (y sound)</li>
+            </ul>
+          </div>
+
+          <div class="row row--wrap">
+            <button class="btn btn--ghost" id="anListenExamples" type="button">🔊 Listen examples</button>
+            <button class="btn btn--ghost" id="anCheat" type="button">🧾 Cheat sentence</button>
+          </div>
+          <div class="feedback" id="anCheatFb" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="howto">
+          <div class="howto__title">Mini practice</div>
+          <div class="muted small">Tap a/an for each sentence, then Check.</div>
+        </div>
+
+        <div class="quiz" id="anQuiz"></div>
+        <div class="row row--wrap">
+          <button class="btn" id="anCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="anHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="anNew" type="button">🔄 New</button>
+        </div>
+        <div class="feedback" id="anFb" role="status" aria-live="polite"></div>
+      </article>
+    </div>
+
+    <div class="unlock">
+      <button class="btn" id="unlock2" type="button">🗝️ Claim Key 1 (unlock Key 2)</button>
+      <div class="muted small">Requirement: <b>4/5</b> on the vocab quiz.</div>
+    </div>
+  </section>
+
+  <!-- KEY 2 -->
+  <section class="panel" id="tab-key2">
+    <div class="panel__head">
+      <h2>2) Key 2 • Schedules (AM/PM) + appointments</h2>
+      <p class="muted">Lesson first → builder → drill.</p>
+    </div>
+
+    <div class="subcard">
+      <h3>Mini lesson: American time</h3>
+      <p class="muted">
+        Americans often say <b>2:00 PM</b> (not 14:00).
+        AM = morning • PM = afternoon/evening.
+        <span class="fr">FR: on utilise AM/PM.</span>
+      </p>
+      <ul class="bullets">
+        <li>9:00 AM = morning</li>
+        <li>12:00 PM = noon</li>
+        <li>7:00 PM = evening</li>
+      </ul>
+    </div>
+
+    <div class="grid2">
+      <article class="card">
+        <h3>Time builder (dropdown)</h3>
+        <div class="howto">
+          <div class="howto__title">Instructions</div>
+          <div class="muted small">Choose day + time + action + place → the sentence appears.</div>
+        </div>
+
+        <div class="builder" id="timeBuilder"></div>
+        <div class="row row--wrap">
+          <button class="btn btn--ghost" id="timeListen" type="button">🔊 Listen</button>
+          <button class="btn" id="timeCopy" type="button">📋 Copy</button>
+        </div>
+        <div class="feedback" id="timeFb" role="status" aria-live="polite"></div>
+
+        <div class="subcard">
+          <h4>Mini drill: choose the correct time</h4>
+          <div class="quiz" id="timeQuiz"></div>
+          <div class="row row--wrap">
+            <button class="btn" id="timeCheck" type="button">✅ Check</button>
+            <button class="btn btn--ghost" id="timeNew" type="button">🔄 New</button>
+          </div>
+          <div class="feedback" id="timeQuizFb" role="status" aria-live="polite"></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Present simple drill (A1/A2)</h3>
+        <div class="howto">
+          <div class="howto__title">Instructions</div>
+          <div class="muted small">Tap the best sentence → Check. Goal: 4/5.</div>
+        </div>
+
+        <div class="quiz" id="planQuiz"></div>
+        <div class="row row--wrap">
+          <button class="btn" id="planCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="planHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="planNew" type="button">🔄 New</button>
+        </div>
+        <div class="feedback" id="planFb" role="status" aria-live="polite"></div>
+
+        <div class="unlockBox">
+          <div class="lockTitle">Unlock Key 3</div>
+          <div class="muted small">Get <b>4/5</b> on one drill.</div>
+          <button class="btn" id="unlock3" type="button">🗝️ Claim Key 2</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- KEY 3 -->
+  <section class="panel" id="tab-key3">
+    <div class="panel__head">
+      <h2>3) Key 3 • Client questions (WH words)</h2>
+      <p class="muted">Lesson first → builder → 3 missions.</p>
+    </div>
+
+    <div class="grid2">
+      <article class="card">
+        <h3>WH words (tap cards)</h3>
+        <div class="howto">
+          <div class="howto__title">Instructions</div>
+          <div class="muted small">Tap a card to hear the example question.</div>
+        </div>
+        <div class="whGrid" id="whGrid"></div>
+      </article>
+
+      <article class="card">
+        <h3>Question builder (dropdown)</h3>
+        <div class="howto">
+          <div class="howto__title">Instructions</div>
+          <div class="muted small">Build the mission sentence exactly (3 correct = Key 3).</div>
+        </div>
+        <div class="builder" id="qBuilder"></div>
+        <div class="row row--wrap">
+          <button class="btn btn--ghost" id="qListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="qHint" type="button">💡 Hint</button>
+          <button class="btn" id="qCheck" type="button">✅ Check</button>
+        </div>
+        <div class="feedback" id="qFb" role="status" aria-live="polite"></div>
+
+        <div class="unlockBox">
+          <div class="lockTitle">Unlock Key 4</div>
+          <div class="muted small">Build <b>3 correct</b> mission questions.</div>
+          <button class="btn" id="unlock4" type="button">🗝️ Claim Key 3</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- KEY 4 -->
+  <section class="panel" id="tab-key4">
+    <div class="panel__head">
+      <h2>4) Key 4 • Dialogue Studio</h2>
+      <p class="muted">Now it is guided: if there is no choice, tap <b>▶ Continue</b>.</p>
+    </div>
+
+    <div class="grid2">
+      <article class="card">
+        <h3>Role‑play 1: First meeting (at the venue)</h3>
+        <div class="howto">
+          <div class="howto__title">Instructions</div>
+          <div class="muted small">Read the line → choose your answer → continue.</div>
+        </div>
+        <div class="dialogue" id="dlg1"></div>
+        <div class="row row--wrap">
+          <button class="btn btn--ghost" id="dlg1Hint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="dlg1Listen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="dlg1Reset" type="button">🧽 Reset</button>
+        </div>
+        <div class="feedback" id="dlg1Fb" role="status" aria-live="polite"></div>
+      </article>
+
+      <article class="card">
+        <h3>Role‑play 2: Phone call (book / sign up / appointment)</h3>
+        <div class="howto">
+          <div class="howto__title">Instructions</div>
+          <div class="muted small">Be polite + name + reason + time (AM/PM).</div>
+        </div>
+        <div class="dialogue" id="dlg2"></div>
+        <div class="row row--wrap">
+          <button class="btn btn--ghost" id="dlg2Hint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="dlg2Listen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="dlg2Reset" type="button">🧽 Reset</button>
+        </div>
+        <div class="feedback" id="dlg2Fb" role="status" aria-live="polite"></div>
+
+        <div class="unlockBox">
+          <div class="lockTitle">Unlock Key 5</div>
+          <div class="muted small">Finish <b>one</b> role‑play.</div>
+          <button class="btn" id="unlock5" type="button">🗝️ Claim Key 4</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- KEY 5 -->
+  <section class="panel" id="tab-key5">
+    <div class="panel__head">
+      <h2>5) Key 5 • Speak Unlock (tiny steps)</h2>
+      <p class="muted">No failure. Only practice. This is the win.</p>
+    </div>
+
+    <div class="grid2">
+      <article class="card">
+        <h3>Shadow mode (repeat after me)</h3>
+        <div class="howto">
+          <div class="howto__title">Instructions</div>
+          <div class="muted small">Tap Play → repeat → tap “I did it”. Goal: 2 lines.</div>
+        </div>
+
+        <div class="shadow" id="shadowBox"></div>
+
+        <div class="row row--wrap">
+          <button class="btn" id="shadowPlay" type="button">▶️ Play line</button>
+          <button class="btn btn--ghost" id="shadowSlow" type="button">🐢 Slow</button>
+          <button class="btn btn--ghost" id="shadowNext" type="button">➡️ Next</button>
+          <button class="btn" id="shadowDone" type="button">✅ I did it</button>
+        </div>
+        <div class="feedback" id="shadowFb" role="status" aria-live="polite"></div>
+      </article>
+
+      <article class="card">
+        <h3>Mini freestyle (20 seconds)</h3>
+        <div class="howto">
+          <div class="howto__title">Instructions</div>
+          <div class="muted small">Press 20s → speak until it ends. Use safe sentence if you block.</div>
+        </div>
+
+        <div class="timer">
+          <div class="clock" id="clock">00:20</div>
+          <div class="row row--wrap">
+            <button class="btn" id="t20" type="button">20s</button>
+            <button class="btn btn--ghost" id="t40" type="button">40s</button>
+            <button class="btn btn--ghost" id="tStop" type="button">Stop</button>
+            <button class="btn btn--ghost" id="promptNew" type="button">🎴 New prompt</button>
+            <button class="btn btn--ghost" id="promptListen" type="button">🔊 Listen prompt</button>
+          </div>
+          <div class="promptCard" id="promptCard">Introduce yourself as a wedding planner.</div>
+          <div class="fr small">FR: parle 20 secondes, même doucement.</div>
+        </div>
+
+        <div class="unlockBox">
+          <div class="lockTitle">Finish the journey</div>
+          <div class="muted small">Do <b>2 shadow lines</b> + <b>one</b> freestyle timer.</div>
+          <button class="btn" id="finishJourney" type="button">🌟 Claim Key 5</button>
+        </div>
+
+        <div class="feedback" id="finishFb" role="status" aria-live="polite"></div>
+      </article>
+    </div>
+
+    <footer class="foot">
+      <div class="muted small">SpeakEasyTisha • Wedding Planner Magic • A1→A2 • Tap-friendly for iPad Safari • v3</div>
+      <a class="toTop" href="#top">↑ Back to top</a>
+    </footer>
+  </section>
+
+</main>
+
+<!-- fallback error panel (only visible if something crashes) -->
+<div class="errPanel" id="errPanel" aria-live="polite"></div>
+
+<script src="/js/wedding-planner-magic-speak-a1-a2-v3.js"></script>
+</body>
+</html>
