@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SpeakEasyTisha • Renault Quality Mission</title>
+  <link rel="stylesheet" href="/css/renault-quality-mission.css" />
+  <meta name="color-scheme" content="light" />
+</head>
+<body>
+
+<header class="topbar" id="top">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">🏭</div>
+      <div class="brand__text">
+        <div class="brand__title">SpeakEasyTisha</div>
+        <div class="brand__subtitle">Renault Quality Mission • Mini‑Intros • Vocabulary • Emails • Phone Calls</div>
+      </div>
+    </div>
+
+    <div class="controls" role="group" aria-label="Lesson controls">
+      <label class="ctl">
+        <span class="ctl__label">UI</span>
+        <select id="uiLang" class="ctl__select" aria-label="Help language">
+          <option value="EN" selected>EN</option>
+          <option value="FR">FR</option>
+        </select>
+      </label>
+
+      <label class="ctl">
+        <span class="ctl__label">Accent</span>
+        <select id="voice" class="ctl__select" aria-label="Voice accent">
+          <option value="en-US" selected>US</option>
+          <option value="en-GB">UK</option>
+        </select>
+      </label>
+
+      <label class="ctl">
+        <span class="ctl__label">Mode</span>
+        <select id="mode" class="ctl__select" aria-label="Interaction mode">
+          <option value="tap" selected>Tap</option>
+          <option value="drag">Drag</option>
+        </select>
+      </label>
+
+      <button class="btn btn--ghost" id="btnReset" type="button">↺ Reset</button>
+      <button class="btn btn--ghost" id="btnPrint" type="button">🖨️ Print</button>
+    </div>
+
+    <div class="hud" role="status" aria-live="polite">
+      <div class="pill"><span aria-hidden="true">🎯</span> Score <strong id="score">0</strong></div>
+      <div class="pill"><span aria-hidden="true">🔥</span> Streak <strong id="streak">0</strong></div>
+      <div class="pill"><span aria-hidden="true">🔓</span> Keys <strong id="keys">0</strong>/3</div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="hero__card">
+      <div class="badge">No learner name shown unless typed • Tap‑friendly • Instant feedback</div>
+      <h1>Renault Quality Mission</h1>
+      <p class="muted">
+        A fun, step‑by‑step professional lesson: daily routine connectors, clean mini‑introductions, supplier/quality vocabulary,
+        and practical email + phone call language.
+      </p>
+
+      <div class="hero__grid">
+        <div class="miniCard">
+          <div class="miniCard__t">Mission path</div>
+          <ol class="muted">
+            <li>Warm‑up: order the day + connectors</li>
+            <li>Mini‑intros: title + department + at/for + a/an</li>
+            <li>Quality/supplier vocabulary</li>
+            <li>Email + phone call simulator</li>
+          </ol>
+        </div>
+        <div class="miniCard">
+          <div class="miniCard__t">Speaking tip</div>
+          <ul class="muted">
+            <li>Press 🔊 Listen → repeat once</li>
+            <li>Then read your built sentence out loud</li>
+            <li>Start A1 → upgrade to A2/B1</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hero__actions">
+        <button class="btn" id="btnStart" type="button">Start →</button>
+        <button class="btn btn--ghost" id="btnHow" type="button">How to play</button>
+      </div>
+
+      <div class="callout" id="how" hidden>
+        <ul class="muted">
+          <li><strong>Tap mode:</strong> tap a tile → tap a slot/target.</li>
+          <li><strong>Drag mode:</strong> drag a tile onto a slot/target.</li>
+          <li>Every activity gives <strong>instant feedback</strong> + a short hint.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hero__side">
+      <div class="sideCard">
+        <div class="sideCard__t">Quick useful lines</div>
+        <div class="muted" id="quickLines">
+          <div>✅ I work <strong>at</strong> Renault in Quality.</div>
+          <div>🔎 I review and validate technical documents.</div>
+          <div>🤝 I work with suppliers <strong>and</strong> engineers.</div>
+          <div>📩 I’m following up on the latest parts.</div>
+        </div>
+        <div class="sideCard__actions">
+          <button class="btn btn--ghost" data-say="#quickSpeak" type="button">🔊 Listen</button>
+          <div id="quickSpeak" class="srOnly">I work at Renault in Quality. I review and validate technical documents. I work with suppliers and engineers. I’m following up on the latest parts.</div>
+        </div>
+      </div>
+
+      <div class="sideCard">
+        <div class="sideCard__t">Progress</div>
+        <div class="progress" aria-hidden="true"><div class="progress__bar" id="bar"></div></div>
+        <div class="muted small" id="progressText">Earn 3 keys to finish the mission.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="warmup">
+    <header class="panel__head">
+      <h2>1) Warm‑up • Order the Day + Connectors</h2>
+      <p class="muted">Put the routine steps in order. Then choose the best connector (First/Then/Next/After that/Finally).</p>
+    </header>
+    <div class="panel__body">
+      <div class="grid2">
+        <div class="card">
+          <div class="row">
+            <h3 class="h3">1A) Daily routine — order the steps</h3>
+            <div class="row__actions">
+              <button class="btn btn--ghost" id="btnSeqShuffle" type="button">🔀 Shuffle</button>
+              <button class="btn btn--ghost" id="btnSeqHint" type="button">💡 Hint</button>
+              <button class="btn btn--ghost" id="btnSeqListen" type="button">🔊 Listen</button>
+            </div>
+          </div>
+
+          <div class="muted small" id="seqTip">Tap a step → tap a slot (or drag).</div>
+
+          <div class="bank" id="seqBank" aria-label="Step tiles"></div>
+          <div class="targets" id="seqSlots" aria-label="Order slots"></div>
+
+          <div class="inlineActions">
+            <button class="btn" id="btnSeqCheck" type="button">Check</button>
+            <button class="btn btn--ghost" id="btnSeqReset" type="button">Reset</button>
+          </div>
+
+          <div class="result" id="seqResult">Put the steps in order.</div>
+        </div>
+
+        <div class="card">
+          <div class="row">
+            <h3 class="h3">1B) Connectors — choose the best one</h3>
+            <div class="row__actions">
+              <button class="btn btn--ghost" id="btnConnNew" type="button">New</button>
+              <button class="btn btn--ghost" id="btnConnHint" type="button">💡 Hint</button>
+              <button class="btn btn--ghost" id="btnConnListen" type="button">🔊 Listen</button>
+            </div>
+          </div>
+
+          <div class="note">
+            <div class="label">Sentence</div>
+            <div class="big2" id="connSentence">____, I arrive at Renault at 8:30 and badge in.</div>
+            <div class="muted small" id="connSentenceFR" hidden>🇫🇷 ____, j’arrive à 8h30 et je badge.</div>
+          </div>
+
+          <div class="choices" id="connChoices"></div>
+          <div class="result" id="connResult">Choose a connector.</div>
+
+          <div class="note">
+            <div class="label">Mini‑rule</div>
+            <div class="muted" id="connRule">
+              Use <strong>First</strong> to start. Use <strong>Finally</strong> for the last step.
+              Use <strong>Then/Next/After that</strong> for the middle.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="intros">
+    <header class="panel__head">
+      <h2>2) Introducing a colleague • Mini‑Intros (Name optional)</h2>
+      <p class="muted">Build a correct intro (article + word order + at/for). Then fix common mistakes (CLOE style).</p>
+    </header>
+    <div class="panel__body">
+      <div class="grid2">
+        <div class="card">
+          <div class="row">
+            <h3 class="h3">2A) Intro Builder</h3>
+            <div class="row__actions">
+              <button class="btn btn--ghost" id="btnIntroListen" type="button">🔊 Listen</button>
+              <button class="btn btn--ghost" id="btnIntroHint" type="button">💡 Hint</button>
+            </div>
+          </div>
+
+          <div class="grid3">
+            <label class="ctl">
+              <span class="ctl__label">Name (optional)</span>
+              <input id="iName" class="ctl__input" placeholder="Type a name (optional)" autocomplete="off" />
+            </label>
+
+            <label class="ctl">
+              <span class="ctl__label">Job title</span>
+              <input id="iTitle" class="ctl__input" value="Supplier Development Specialist" autocomplete="off" />
+            </label>
+
+            <label class="ctl">
+              <span class="ctl__label">Department</span>
+              <select id="iDept" class="ctl__select">
+                <option value="Quality" selected>Quality</option>
+                <option value="Supplier Quality">Supplier Quality</option>
+                <option value="Production">Production</option>
+                <option value="Engineering">Engineering</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="grid3" style="margin-top:10px">
+            <label class="ctl">
+              <span class="ctl__label">Employee or contractor?</span>
+              <select id="iStatus" class="ctl__select">
+                <option value="employee" selected>Employee</option>
+                <option value="contractor">Contractor</option>
+              </select>
+            </label>
+
+            <label class="ctl">
+              <span class="ctl__label">Company</span>
+              <select id="iCompany" class="ctl__select">
+                <option value="Renault" selected>Renault</option>
+              </select>
+            </label>
+
+            <label class="ctl">
+              <span class="ctl__label">Level</span>
+              <select id="iLevel" class="ctl__select">
+                <option value="A1">A1 (simple)</option>
+                <option value="A2" selected>A2 (normal)</option>
+                <option value="B1">B1 (upgrade)</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="inlineActions">
+            <button class="btn" id="btnIntroBuild" type="button">Build</button>
+            <button class="btn btn--ghost" id="btnIntroCheck" type="button">Check</button>
+            <button class="btn btn--ghost" id="btnIntroCopy" type="button">Copy</button>
+          </div>
+
+          <div class="output" id="introOut">Build your intro…</div>
+          <div class="result" id="introRes">Tip: Use <strong>a</strong> before a job title. Most employees say <strong>at Renault</strong>.</div>
+        </div>
+
+        <div class="card">
+          <div class="row">
+            <h3 class="h3">2B) Fix common mistakes (CLOE style)</h3>
+            <div class="row__actions">
+              <button class="btn btn--ghost" id="btnFixNew" type="button">New</button>
+              <button class="btn btn--ghost" id="btnFixHint" type="button">💡 Hint</button>
+              <button class="btn btn--ghost" id="btnFixListen" type="button">🔊 Listen</button>
+            </div>
+          </div>
+
+          <div class="note">
+            <div class="label">Choose the best corrected sentence</div>
+            <div class="big2" id="fixPrompt">…</div>
+            <div class="muted small" id="fixPromptFR" hidden>🇫🇷 …</div>
+          </div>
+
+          <div class="choices" id="fixChoices"></div>
+          <div class="result" id="fixResult">Choose an option.</div>
+
+          <div class="note">
+            <div class="label">Mini‑lesson (quick)</div>
+            <ul class="muted" id="miniRules">
+              <li><strong>Word order:</strong> Supplier Development Specialist (not “Development Specialist Supplier”).</li>
+              <li><strong>Preposition:</strong> employees usually say <strong>at Renault</strong>; contractors can say <strong>for Renault</strong>.</li>
+              <li><strong>Article:</strong> use <strong>a</strong> before the job title.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <div class="row">
+          <h3 class="h3">2C) “And” connectors — combine tasks</h3>
+          <div class="row__actions">
+            <button class="btn btn--ghost" id="btnAndNew" type="button">New</button>
+            <button class="btn btn--ghost" id="btnAndHint" type="button">💡 Hint</button>
+            <button class="btn btn--ghost" id="btnAndListen" type="button">🔊 Listen</button>
+          </div>
+        </div>
+
+        <div class="note">
+          <div class="label">Combine into ONE sentence (use “and”)</div>
+          <div class="big2" id="andPrompt">I review supplier documents. / I check emails.</div>
+          <div class="muted small" id="andPromptFR" hidden>🇫🇷 Je relis les documents fournisseur. / Je vérifie mes emails.</div>
+        </div>
+
+        <div class="choices" id="andChoices"></div>
+        <div class="result" id="andResult">Choose the best combined sentence.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="vocab">
+    <header class="panel__head">
+      <h2>3) Vocabulary • Quality + Suppliers</h2>
+      <p class="muted">Tap a card to flip. Listen. Then do the quick matching.</p>
+    </header>
+    <div class="panel__body">
+      <div class="grid2">
+        <div class="card">
+          <div class="row">
+            <h3 class="h3">3A) Task flashcards</h3>
+            <div class="row__actions">
+              <button class="btn btn--ghost" id="btnVocabPrev" type="button">←</button>
+              <button class="btn btn--ghost" id="btnVocabNext" type="button">→</button>
+              <button class="btn btn--ghost" id="btnVocabListen" type="button">🔊 Listen</button>
+            </div>
+          </div>
+
+          <div class="flash" id="vocabCard" role="button" tabindex="0" aria-label="Vocabulary card (tap to flip)">
+            <div class="flash__front">
+              <div class="flash__emoji" id="vEmoji">🔎</div>
+              <div class="flash__term" id="vTerm">review and validate technical documents</div>
+              <div class="flash__meta" id="vMeta">Daily task</div>
+            </div>
+            <div class="flash__back">
+              <div class="flash__title">Example</div>
+              <div class="flash__ex" id="vExample">I review and validate technical documents for Renault projects.</div>
+              <div class="flash__fr" id="vFR" hidden>🇫🇷 Je relis et je valide des documents techniques.</div>
+            </div>
+          </div>
+
+          <div class="result" id="vocabResult">Tip: Tap the card to flip.</div>
+        </div>
+
+        <div class="card">
+          <div class="row">
+            <h3 class="h3">3B) Match the goal (tap or drag)</h3>
+            <div class="row__actions">
+              <button class="btn btn--ghost" id="btnGoalShuffle" type="button">🔀 Shuffle</button>
+              <button class="btn btn--ghost" id="btnGoalHint" type="button">💡 Hint</button>
+            </div>
+          </div>
+
+          <div class="muted small">Match each verb phrase to its meaning.</div>
+
+          <div class="bank" id="goalBank"></div>
+          <div class="targets" id="goalTargets"></div>
+
+          <div class="inlineActions">
+            <button class="btn" id="btnGoalCheck" type="button">Check</button>
+            <button class="btn btn--ghost" id="btnGoalReset" type="button">Reset</button>
+          </div>
+
+          <div class="result" id="goalResult">Match the phrases.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="comms">
+    <header class="panel__head">
+      <h2>4) Emails & Phone Calls • Short, Real, Useful</h2>
+      <p class="muted">Build a follow‑up email, then practice a quick phone call script.</p>
+    </header>
+    <div class="panel__body">
+
+      <div class="grid2">
+        <div class="card">
+          <div class="row">
+            <h3 class="h3">4A) Email Builder (follow‑up)</h3>
+            <div class="row__actions">
+              <button class="btn btn--ghost" id="btnEmailBuild" type="button">Build</button>
+              <button class="btn btn--ghost" id="btnEmailListen" type="button">🔊 Listen</button>
+              <button class="btn btn--ghost" id="btnEmailHint" type="button">💡 Hint</button>
+            </div>
+          </div>
+
+          <div class="grid3">
+            <label class="ctl">
+              <span class="ctl__label">Subject</span>
+              <select id="eSubj" class="ctl__select"></select>
+            </label>
+            <label class="ctl">
+              <span class="ctl__label">Goal</span>
+              <select id="eGoal" class="ctl__select"></select>
+            </label>
+            <label class="ctl">
+              <span class="ctl__label">Tone</span>
+              <select id="eTone" class="ctl__select">
+                <option value="neutral" selected>Neutral</option>
+                <option value="polite">Very polite</option>
+                <option value="urgent">Urgent (still polite)</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="grid3" style="margin-top:10px">
+            <label class="ctl">
+              <span class="ctl__label">Greeting</span>
+              <select id="eGreet" class="ctl__select"></select>
+            </label>
+            <label class="ctl">
+              <span class="ctl__label">Request</span>
+              <select id="eReq" class="ctl__select"></select>
+            </label>
+            <label class="ctl">
+              <span class="ctl__label">Closing</span>
+              <select id="eClose" class="ctl__select"></select>
+            </label>
+          </div>
+
+          <div class="output email" id="emailOut">Build an email…</div>
+
+          <div class="inlineActions">
+            <button class="btn" id="btnEmailCheck" type="button">Check</button>
+            <button class="btn btn--ghost" id="btnEmailCopy" type="button">Copy</button>
+          </div>
+
+          <div class="result" id="emailRes">Tip: “I’m following up on…” is perfect for a supplier email.</div>
+        </div>
+
+        <div class="card">
+          <div class="row">
+            <h3 class="h3">4B) Phone call (tap‑order)</h3>
+            <div class="row__actions">
+              <button class="btn btn--ghost" id="btnCallNew" type="button">New</button>
+              <button class="btn btn--ghost" id="btnCallHint" type="button">💡 Hint</button>
+              <button class="btn btn--ghost" id="btnCallListen" type="button">🔊 Listen</button>
+            </div>
+          </div>
+
+          <div class="muted small" id="callTip">Tap the lines in the correct order to build a short call.</div>
+
+          <div class="bank" id="callBank"></div>
+          <div class="targets" id="callSlots"></div>
+
+          <div class="inlineActions">
+            <button class="btn" id="btnCallCheck" type="button">Check</button>
+            <button class="btn btn--ghost" id="btnCallReset" type="button">Reset</button>
+          </div>
+
+          <div class="result" id="callRes">Build the call in order.</div>
+
+          <div class="note">
+            <div class="label">Bonus (upgrade)</div>
+            <div class="muted" id="callBonus">
+              Add one of these: <strong>Could you please…</strong> / <strong>Would it be possible to…</strong> / <strong>Thanks for your help.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <div class="row">
+          <h3 class="h3">4C) Mini quiz (CLOE style)</h3>
+          <div class="row__actions">
+            <button class="btn btn--ghost" id="btnQuizNew" type="button">New</button>
+            <button class="btn btn--ghost" id="btnQuizHint" type="button">💡 Hint</button>
+          </div>
+        </div>
+        <div class="miniTest" id="quiz"></div>
+        <div class="result" id="quizRes">Answer to get instant feedback.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="muted">© SpeakEasyTisha • Renault Quality Mission • Tap-friendly</div>
+      <a class="footer__link" href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden>
+  <div class="modal__panel">
+    <div class="modal__head">
+      <h3 class="modal__title" id="mTitle">Message</h3>
+      <button class="btn btn--ghost" id="mClose" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="modal__body" id="mBody"></div>
+    <div class="modal__foot">
+      <button class="btn" id="mOk" type="button">OK</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/renault-quality-mission.js"></script>
+</body>
+</html>
