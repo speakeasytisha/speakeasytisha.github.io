@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wildlife Volunteer English</title>
+<link rel="stylesheet" href="/css/speakeasy-wildlife-volunteer-A2.css"/>
+</head>
+<body>
+<header class="topbar" role="banner">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo" aria-hidden="true">🐾</div>
+      <div class="brand__text">
+        <div class="brand__title">Wildlife Volunteer English</div>
+        <div class="brand__subtitle">Veterinary clinic • A2 → A2.2 • progressive + interactive</div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn btn--ghost" id="btnPrint" type="button">🖨️ Print</button>
+      <button class="btn btn--ghost" id="btnReset" type="button">↻ Reset</button>
+      <div class="pillgroup" role="group" aria-label="Audio accent">
+        <span class="pillgroup__label">Accent</span>
+        <button class="pill is-active" id="accentUS" type="button">US</button>
+        <button class="pill" id="accentUK" type="button">UK</button>
+      </div>
+      <div class="pillgroup" role="group" aria-label="Hints">
+        <span class="pillgroup__label">Hints</span>
+        <button class="pill is-active" id="hintsOn" type="button">On</button>
+        <button class="pill" id="hintsOff" type="button">Off</button>
+      </div>
+    </div>
+  </div>
+  <nav class="nav" aria-label="Lesson sections">
+    <a href="#start">1) Start</a>
+<a href="#lesson">2) Lesson</a>
+<a href="#vocab">3) Vocabulary</a>
+<a href="#dialogue">4) Dialogue</a>
+<a href="#practice">5) Practice</a>
+  </nav>
+  <section class="status" aria-label="Progress and score">
+    <div class="status__item">
+      <div class="status__label">Progress</div>
+      <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+      <div class="status__value" id="progressPct">0%</div>
+    </div>
+    <div class="status__item">
+      <div class="status__label">Score</div>
+      <div class="status__value"><span id="scoreNow">0</span> / <span id="scoreTotal">0</span></div>
+    </div>
+    <div class="status__item">
+      <div class="status__label">Streak</div>
+      <div class="status__value" id="streakNow">0</div>
+    </div>
+    <div class="status__item status__hint">
+      <div class="status__label">Hint</div>
+      <div class="status__value" id="hintBox">Hints are on. Use Hint buttons inside activities.</div>
+    </div>
+  </section>
+</header>
+
+<main class="page" id="top">
+  <section class="card" id="start">
+    <h1>1) Start</h1>
+    <p class="lede">You will describe your volunteer work with injured wild animals: animals, injuries, tasks, and a simple procedure (arrival → care → transfer → release).</p>
+  </section>
+
+  <section class="card" id="lesson">
+    <h1>2) Lesson — vocabulary + grammar BEFORE practice</h1>
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">A) The basic procedure (simple English)</h2>
+<div class="lessonBox">
+<p><span class="kbd">Step 1</span> Arrival: someone brings an injured animal.</p>
+<p><span class="kbd">Step 2</span> Record info: species, location, symptoms.</p>
+<p><span class="kbd">Step 3</span> First care: keep warm, hydrate, treat wounds.</p>
+<p><span class="kbd">Step 4</span> Monitor: food, breathing, stress.</p>
+<p><span class="kbd">Step 5</span> Transfer (sometimes): to a wildlife rescue center.</p>
+<p><span class="kbd">Step 6</span> Release: when it can survive in nature.</p>
+</div>
+<div class="callout small">Useful sentence: <strong>“If it’s urgent, I alert the vet.”</strong></div>
+        <h3 class="h3">Mini check (QCM)</h3>
+        <div class="quiz" id="mcqLesson1"></div>
+      </div>
+      <div class="mini">
+        <h2 class="h2">B) Grammar tools you need (A2)</h2>
+<div class="lessonBox">
+<p><strong>Routine:</strong> <span class="kbd">I clean cages.</span> <span class="kbd">I monitor recovery.</span></p>
+<p><strong>Frequency:</strong> <span class="kbd">once a week</span> • <span class="kbd">on weekends</span></p>
+<p><strong>Ability / rule:</strong> <span class="kbd">I can handle basic tasks.</span> <span class="kbd">I can’t treat serious cases alone.</span></p>
+<p><strong>Comparative:</strong> <span class="kbd">more urgent than</span> • <span class="kbd">bigger than</span></p>
+<p><strong>Superlative:</strong> <span class="kbd">the most rewarding</span> • <span class="kbd">the best</span></p>
+<p><strong>Time clause:</strong> <span class="kbd">When it is ready, we release it.</span></p>
+</div>
+        <h3 class="h3">Mini check (QCM)</h3>
+        <div class="quiz" id="mcqLesson2"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="vocab">
+    <h1>3) Vocabulary (with French) — categories + search</h1>
+    <p class="lede">Tap a card to flip. FR translation is included. Use Search to find a word fast.</p>
+    <div class="searchRow">
+      <input id="vSearch" type="text" placeholder="Search..." autocomplete="off"/>
+      <button class="btn" id="btnVocabListen" type="button">🔊 Listen to all</button>
+      <button class="btn btn--ghost" id="btnVocabStop" type="button">⏹ Stop</button>
+    </div>
+    <div class="tabs" id="vTabs" aria-label="Vocabulary categories"></div>
+    <div class="vocabGrid" id="vocabGrid" aria-label="Vocabulary cards"></div>
+  </section>
+
+  <section class="card" id="dialogue">
+    <h1>4) Dialogue trainer — choose the correct reply</h1>
+    <p class="lede">Progressive: correct answer unlocks the next line. Use Hint if needed.</p>
+    <div class="dlgBox">
+      <div id="dlgNpc"></div>
+      <div class="dlgChoices" id="dlgChoices"></div>
+      <div class="dlgHud">
+        <div class="muted">Step: <strong id="dlgCount">1 / 1</strong></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn btn--ghost" id="btnDlgListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="btnDlgStop" type="button">⏹ Stop</button>
+          <button class="btn btn--ghost" id="btnDlgHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="btnDlgRestart" type="button">↺ Restart</button>
+        </div>
+      </div>
+      <div class="fb" id="dlgFb" aria-live="polite"></div>
+      <div class="explain" id="dlgWhy" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card" id="practice">
+    <h1>5) Practice — immediate feedback + hints</h1>
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">A) QCM practice (with “Why?”)</h2>
+        <div class="quiz" id="mcqPractice"></div>
+      </div>
+      <div class="mini">
+        <h2 class="h2">B) Fill in the blank (instant check)</h2>
+        <div class="fibRow">
+  <div class="fib__sent">1) I <span class="blank"><input data-id="fib1" data-answer="volunteer" autocomplete="off"/></span> at a veterinary clinic.</div>
+  <button class="btn btn--ghost hintBtn" type="button" data-hint="Verb: do unpaid work to help.">Hint</button>
+  <div class="fb" aria-live="polite"></div>
+</div>
+<div class="fibRow">
+  <div class="fib__sent">2) If it’s urgent, I <span class="blank"><input data-id="fib2" data-answer="alert the vet" autocomplete="off"/></span> .</div>
+  <button class="btn btn--ghost hintBtn" type="button" data-hint="Two words + article: alert the ___.">Hint</button>
+  <div class="fb" aria-live="polite"></div>
+</div>
+<div class="fibRow">
+  <div class="fib__sent">3) I <span class="blank"><input data-id="fib3" data-answer="monitor" autocomplete="off"/></span> recovery.</div>
+  <button class="btn btn--ghost hintBtn" type="button" data-hint="Verb: watch carefully over time.">Hint</button>
+  <div class="fb" aria-live="polite"></div>
+</div>
+<div class="fibRow">
+  <div class="fib__sent">4) A groundhog is <span class="blank"><input data-id="fib4" data-answer="bigger than" autocomplete="off"/></span> a squirrel.</div>
+  <button class="btn btn--ghost hintBtn" type="button" data-hint="Comparative: big → bigger than.">Hint</button>
+  <div class="fb" aria-live="polite"></div>
+</div>
+<div class="fibRow">
+  <div class="fib__sent">5) Release is the <span class="blank"><input data-id="fib5" data-answer="most rewarding" autocomplete="off"/></span> moment.</div>
+  <button class="btn btn--ghost hintBtn" type="button" data-hint="Superlative: the most + adjective.">Hint</button>
+  <div class="fb" aria-live="polite"></div>
+</div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">C) Drag & Drop (or Tap mode) — categories</h2>
+        <p class="muted">Immediate feedback. On iPad: tap a token → tap a box.</p>
+        <div class="dnd__bank" id="tokenBank"></div>
+        <div class="dnd__zones">
+          <div class="zone" tabindex="0"><div class="zone__title">🐾 Animals</div><div class="zone__drop" data-cat="Animals"></div></div>
+<div class="zone" tabindex="0"><div class="zone__title">🩹 Injuries</div><div class="zone__drop" data-cat="Injuries"></div></div>
+<div class="zone" tabindex="0"><div class="zone__title">🩺 Actions</div><div class="zone__drop" data-cat="Actions"></div></div>
+<div class="zone" tabindex="0"><div class="zone__title">🏥 Places / items</div><div class="zone__drop" data-cat="Places"></div></div>
+<div class="zone" tabindex="0"><div class="zone__title">✨ Qualities</div><div class="zone__drop" data-cat="Qualities"></div></div>
+        </div>
+        <div class="dndFeedback" id="dndFeedback" aria-live="polite"></div>
+      </div>
+      <div class="mini">
+        <h2 class="h2">D) Speaking prompts (quick)</h2>
+        <div class="lessonBox"><p><span class='kbd'>Prompt 1</span> What animals do you treat most often?</p><p><span class='kbd'>Prompt 2</span> What do you do first in an urgent case?</p><p><span class='kbd'>Prompt 3</span> Why do you volunteer?</p><p><span class='kbd'>Prompt 4</span> What is the most rewarding moment?</p></div>
+        <div class="callout small">Tip: short sentences + clear verbs. (CLOE speaking style.)</div>
+      </div>
+    </div>
+  </section>
+
+  <p class="footer"><a href="#top">↑ Back to top</a></p>
+</main>
+
+<script>
+window.__SE_STORE_KEY__ = "SET_wildlife_volunteer_A2_v4";
+window.__SE_DATA__ = {"vocab": [{"cat": "Animals (small mammals)", "icon": "🐿️", "en": "squirrel", "fr": "écureuil", "def": "a small wild animal with a bushy tail", "ex": "I treat an injured squirrel."}, {"cat": "Animals (small mammals)", "icon": "🦫", "en": "groundhog", "fr": "marmotte / siffleux", "def": "a large rodent (woodchuck)", "ex": "A groundhog is bigger than a squirrel."}, {"cat": "Animals (small mammals)", "icon": "🦔", "en": "hedgehog", "fr": "hérisson", "def": "a small animal with spines", "ex": "A hedgehog can be dehydrated."}, {"cat": "Animals (small mammals)", "icon": "🦇", "en": "bat", "fr": "chauve-souris", "def": "a flying mammal active at night", "ex": "We handle a bat carefully."}, {"cat": "Animals (small mammals)", "icon": "🐇", "en": "wild rabbit", "fr": "lapin sauvage", "def": "a rabbit living in nature", "ex": "A wild rabbit can be very stressed."}, {"cat": "Animals (small mammals)", "icon": "🐭", "en": "field mouse", "fr": "mulot / souris des champs", "def": "a small wild mouse", "ex": "We keep the field mouse warm."}, {"cat": "Animals (birds & others)", "icon": "🪽", "en": "bird", "fr": "oiseau", "def": "an animal with feathers and wings", "ex": "We monitor a bird’s breathing."}, {"cat": "Animals (birds & others)", "icon": "🦉", "en": "owl", "fr": "hibou / chouette", "def": "a nocturnal bird of prey", "ex": "An owl can have a wing injury."}, {"cat": "Animals (birds & others)", "icon": "🕊️", "en": "pigeon", "fr": "pigeon", "def": "a common city bird", "ex": "We clean the cage and give water."}, {"cat": "Animals (birds & others)", "icon": "🐢", "en": "turtle", "fr": "tortue", "def": "an animal with a hard shell", "ex": "A turtle can be injured by a car."}, {"cat": "Injuries & conditions", "icon": "🩹", "en": "wound", "fr": "blessure", "def": "an injury (cut, bite, bleeding)", "ex": "The wound is small but urgent."}, {"cat": "Injuries & conditions", "icon": "🩸", "en": "bleeding", "fr": "saignement", "def": "blood coming out of the body", "ex": "It is bleeding. I alert the vet."}, {"cat": "Injuries & conditions", "icon": "🌡️", "en": "dehydrated", "fr": "déshydraté(e)", "def": "needing water", "ex": "The animal is dehydrated."}, {"cat": "Injuries & conditions", "icon": "🤒", "en": "infected", "fr": "infecté(e)", "def": "with germs causing illness", "ex": "The wound looks infected."}, {"cat": "Injuries & conditions", "icon": "🫁", "en": "breathing difficulty", "fr": "difficulté à respirer", "def": "trouble breathing", "ex": "Breathing difficulty is very urgent."}, {"cat": "Injuries & conditions", "icon": "😰", "en": "stressed", "fr": "stressé(e)", "def": "anxious / afraid", "ex": "Wild animals are often stressed."}, {"cat": "Actions", "icon": "🩺", "en": "treat", "fr": "soigner", "def": "to give medical care", "ex": "I treat minor wounds."}, {"cat": "Actions", "icon": "👀", "en": "monitor", "fr": "surveiller", "def": "to watch carefully over time", "ex": "I monitor recovery."}, {"cat": "Actions", "icon": "🥜", "en": "feed", "fr": "nourrir", "def": "to give food", "ex": "I feed the animal."}, {"cat": "Actions", "icon": "🧼", "en": "clean and disinfect", "fr": "nettoyer et désinfecter", "def": "to make clean to prevent infection", "ex": "I clean and disinfect the cage."}, {"cat": "Actions", "icon": "📋", "en": "record information", "fr": "noter / enregistrer", "def": "to write down important details", "ex": "I record weight and symptoms."}, {"cat": "Actions", "icon": "🚨", "en": "alert the vet", "fr": "alerter le vétérinaire", "def": "to call the professional for urgent help", "ex": "If it’s urgent, I alert the vet."}, {"cat": "Actions", "icon": "🌿", "en": "release", "fr": "relâcher", "def": "to let the animal go back into nature", "ex": "When it is ready, we release it."}, {"cat": "Actions", "icon": "🚑", "en": "transfer to a rescue center", "fr": "transférer vers un centre de soins", "def": "to send the animal to a specialist center", "ex": "We transfer the animal for rehab."}, {"cat": "Places & items", "icon": "🏥", "en": "veterinary clinic", "fr": "cabinet / clinique vétérinaire", "def": "a place where vets treat animals", "ex": "I volunteer at a veterinary clinic."}, {"cat": "Places & items", "icon": "🏞️", "en": "wildlife rescue center", "fr": "centre de soins faune sauvage", "def": "a center that rehabilitates wild animals", "ex": "The rescue center prepares release."}, {"cat": "Places & items", "icon": "🧤", "en": "gloves", "fr": "gants", "def": "hand protection", "ex": "I wear gloves to handle animals."}, {"cat": "Places & items", "icon": "🧺", "en": "carrier / box", "fr": "caisse / boîte de transport", "def": "a safe box to transport an animal", "ex": "We put the animal in a carrier."}, {"cat": "Qualities", "icon": "🧘", "en": "calm", "fr": "calme", "def": "not stressed", "ex": "I stay calm in urgent cases."}, {"cat": "Qualities", "icon": "🧠", "en": "careful", "fr": "prudent(e)", "def": "paying attention to avoid mistakes", "ex": "We are careful with stressed animals."}, {"cat": "Qualities", "icon": "🕒", "en": "urgent", "fr": "urgent", "def": "needs fast action", "ex": "Breathing problems are urgent."}, {"cat": "Qualities", "icon": "✨", "en": "rewarding", "fr": "gratifiant(e)", "def": "makes you feel proud and happy", "ex": "Release is the most rewarding moment."}], "dnd": [{"t": "squirrel", "cat": "Animals"}, {"t": "hedgehog", "cat": "Animals"}, {"t": "bat", "cat": "Animals"}, {"t": "owl", "cat": "Animals"}, {"t": "wound", "cat": "Injuries"}, {"t": "bleeding", "cat": "Injuries"}, {"t": "dehydrated", "cat": "Injuries"}, {"t": "stressed", "cat": "Injuries"}, {"t": "treat", "cat": "Actions"}, {"t": "monitor", "cat": "Actions"}, {"t": "clean and disinfect", "cat": "Actions"}, {"t": "release", "cat": "Actions"}, {"t": "veterinary clinic", "cat": "Places"}, {"t": "wildlife rescue center", "cat": "Places"}, {"t": "gloves", "cat": "Places"}, {"t": "carrier / box", "cat": "Places"}, {"t": "calm", "cat": "Qualities"}, {"t": "careful", "cat": "Qualities"}, {"t": "urgent", "cat": "Qualities"}, {"t": "rewarding", "cat": "Qualities"}], "dialogue": [{"npcWho": "Colleague", "npc": "Hi! Can you tell me what you do here?", "choices": ["I volunteer at the clinic. I help care for injured wild animals.", "I am volunteer in the clinic for help animals.", "I assist to animals every day."], "correct": 0, "hint": "Use: I volunteer… / I help…", "why": "In English we say “I volunteer at…” + “I help…”. Clean A2."}, {"npcWho": "Colleague", "npc": "What animals do you treat most often?", "choices": ["Mostly squirrels. Sometimes groundhogs or birds.", "I treat the squirrels most of times.", "Mostly I am treating squirrel."], "correct": 0, "hint": "Use: mostly + plural noun", "why": "Natural A2: “Mostly squirrels… Sometimes…”"}, {"npcWho": "Colleague", "npc": "What are your tasks today?", "choices": ["I clean cages, prepare food, and monitor recovery.", "I make the cages clean and I monitoring.", "I do to clean cages and feed."], "correct": 0, "hint": "Use a list with base verbs", "why": "List base verbs: clean / prepare / monitor."}, {"npcWho": "Colleague", "npc": "This animal is bleeding. What do you do?", "choices": ["I alert the vet. It’s urgent.", "I wait because maybe it stops.", "I release it quickly outside."], "correct": 0, "hint": "Urgent → alert the vet", "why": "For safety, alert the professional (vet)."}, {"npcWho": "Rescue center", "npc": "Hello. Can you describe the animal’s condition?", "choices": ["It’s dehydrated and stressed, but the wound is small.", "It is dehydration and stress.", "He is very stress and have wound."], "correct": 0, "hint": "Use: It’s + adjectives", "why": "A2 pattern: It’s + adjective(s)."}, {"npcWho": "Rescue center", "npc": "Is it more urgent than yesterday’s case?", "choices": ["Yes, it’s more urgent because of breathing difficulty.", "Yes, it is the most urgent than yesterday.", "Yes, it’s urgentest."], "correct": 0, "hint": "Comparative: more + adj + than", "why": "Comparative: more urgent than."}, {"npcWho": "Rescue center", "npc": "When can we release it?", "choices": ["When it is strong enough and can survive in nature.", "When it will be strong and survive.", "When it is more strong to survive."], "correct": 0, "hint": "When + present simple", "why": "Time clause uses present: when it is…"}], "mcq": {"lesson1": [{"q": "Present simple (routine): choose the best sentence.", "opts": ["I monitor recovery every day.", "I am monitoring recovery every day (routine).", "I monitored recovery every day (now)."], "a": "I monitor recovery every day.", "hint": "Routine = present simple.", "why": "For routines we use present simple: I monitor / I clean / I feed."}, {"q": "Frequency: choose the best option.", "opts": ["I volunteer once a week.", "I volunteer one time by week.", "I do volunteer once by week."], "a": "I volunteer once a week.", "hint": "Use “once/twice a week”.", "why": "Correct phrase: once a week / twice a week."}, {"q": "Urgent situation: choose the best action.", "opts": ["I alert the vet.", "I release the animal immediately.", "I ignore the problem."], "a": "I alert the vet.", "hint": "Safety first.", "why": "A2: “I alert the vet” is clear + correct."}, {"q": "Procedure order: what comes first?", "opts": ["Record information.", "Release.", "Forget the animal."], "a": "Record information.", "hint": "Think of a clinic file.", "why": "First steps: record details then follow protocol."}], "lesson2": [{"q": "Comparatives: choose the correct form.", "opts": ["more careful than", "carefuller than", "the most careful than"], "a": "more careful than", "hint": "more + adjective + than.", "why": "Careful is long → more careful than."}, {"q": "Superlatives: choose the correct form.", "opts": ["the most rewarding", "more rewarding than", "rewardingest"], "a": "the most rewarding", "hint": "the most + adjective.", "why": "Rewarding is long → the most rewarding."}, {"q": "Can / can’t: choose the best sentence.", "opts": ["I can handle basic tasks.", "I can to handle basic tasks.", "I am can handle basic tasks."], "a": "I can handle basic tasks.", "hint": "can + base verb.", "why": "Structure: can + base verb (no “to”)."}, {"q": "Time clause: choose the best sentence.", "opts": ["When it is ready, we release it.", "When it will be ready, we release it.", "When it ready, we release it."], "a": "When it is ready, we release it.", "hint": "When + present.", "why": "With when (future meaning) use present: when it is ready."}], "practice": [{"q": "Choose the best translation of “déshydraté(e)”.", "opts": ["dehydrated", "dead", "delighted"], "a": "dehydrated", "hint": "Needs water.", "why": "Dehydrated = needs water."}, {"q": "Best sentence:", "opts": ["I clean and disinfect the cage.", "I disinfected the cage every day.", "I am clean the cage."], "a": "I clean and disinfect the cage.", "hint": "Routine = present.", "why": "Routine action → present simple."}, {"q": "Correct question:", "opts": ["Do you treat birds too?", "Treat you birds too?", "Are you treat birds too?"], "a": "Do you treat birds too?", "hint": "Do + subject + base verb.", "why": "A2 question pattern."}, {"q": "Choose the best comparative:", "opts": ["A groundhog is bigger than a squirrel.", "A groundhog is more big than a squirrel.", "A groundhog is the biggest than a squirrel."], "a": "A groundhog is bigger than a squirrel.", "hint": "big → bigger.", "why": "Short adjective: big → bigger than."}, {"q": "Connector for reason:", "opts": ["because", "however", "but"], "a": "because", "hint": "Reason connector.", "why": "Because introduces the reason."}, {"q": "Best response:", "opts": ["It’s urgent. I’ll alert the vet.", "It’s urgent. I alerting the vet.", "It’s urgent. I will to alert the vet."], "a": "It’s urgent. I’ll alert the vet.", "hint": "I’ll = I will.", "why": "Natural spoken English uses contractions: I’ll."}, {"q": "Choose the best sentence:", "opts": ["I transfer it to a rescue center.", "I transfer it at a rescue center.", "I transfer to a rescue center it."], "a": "I transfer it to a rescue center.", "hint": "Verb + object + to.", "why": "Transfer it to… is correct word order."}, {"q": "Which is the superlative?", "opts": ["the best moment", "better moment", "more good moment"], "a": "the best moment", "hint": "good → better → the best.", "why": "Irregular: the best."}]}};
+</script>
+<script defer src="/js/speakeasy-wildlife-volunteer-A2.js"></script>
+</body>
+</html>
