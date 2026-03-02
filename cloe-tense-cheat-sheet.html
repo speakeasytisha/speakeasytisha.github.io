@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CLOE Verb Tense Decoder — One‑Stop Cheat Sheet (A1→B1) — TOP MAP</title>
+  <link rel="stylesheet" href="/css/cloe-tense-cheat-sheet.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🧭</div>
+        <div>
+          <h1>CLOE Verb Tense Decoder</h1>
+          <p class="sub">A1→B1 • Learn → Decide → Practice → Mixed finale • iPad/Mac friendly</p>
+        </div>
+      </div>
+
+      <div class="controls card">
+        <div class="controls__grid">
+          <label class="field">
+            <span>Level</span>
+            <select id="level">
+              <option value="A1">A1</option>
+              <option value="A2" selected>A2</option>
+              <option value="B1">B1</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Mode</span>
+            <select id="mode">
+              <option value="tap" selected>Tap mode (best on iPad)</option>
+              <option value="drag">Drag mode (desktop)</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Search a keyword</span>
+            <input id="search" type="text" placeholder="yesterday • already • now • next week • would…" />
+          </label>
+
+          <div class="field">
+            <span>Quick actions</span>
+            <div class="btnrow">
+              <button class="btn" id="btnStart" type="button">Start</button>
+              <button class="btn btn--ghost" id="btnHow" type="button">How it works</button>
+              <button class="btn btn--ghost" id="btnPrint" type="button">Print</button>
+              <button class="btn btn--danger" id="btnResetAll" type="button">Reset all</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hud">
+          <div class="pill">Score: <strong id="score">0</strong></div>
+          <div class="pill">Streak: <strong id="streak">0</strong></div>
+          <div class="pill">Mastery: <strong id="mastery">0</strong>%</div>
+          <div class="pill tip" id="tipBox">Tip: choose a tense in the Map, then practice.</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card how" id="how" hidden>
+      <h2>How to use this page (CLOE style)</h2>
+      <ol>
+        <li><strong>Choose your level</strong> (A1/A2/B1). The lesson adapts automatically.</li>
+        <li>Use the <strong>Map</strong> to open a tense, then learn <strong>keywords + form</strong>.</li>
+        <li>Do the <strong>Practice</strong> tabs. Answers show only if you click <strong>Show</strong>.</li>
+        <li>Train fast reflexes with the <strong>Mini Tense Decoder</strong>.</li>
+        <li>Finish with the <strong>Mixed Finale</strong> (20 questions).</li>
+        <li>Complete the <strong>Writing + Speaking mission</strong> (model answers are step‑by‑step panels).</li>
+      </ol>
+      <p class="muted">No pop‑up modals are used on this page (so nothing can cover your exercises).</p>
+    </section>
+
+    <section class="card mapTop" id="mapTop">
+      <div class="row">
+        <h2>🗺️ Map</h2>
+        <div class="small muted">Tap a tense to open it • Scroll sideways on mobile</div>
+      </div>
+      <nav id="navTop" class="navTop" aria-label="Tense map"></nav>
+    </section>
+
+    <section class="card content" id="cheat">
+      <h2>Cheat sheet + practice</h2>
+      <div id="tenseList"></div>
+    </section>
+
+    <section class="card mini" id="decoder">
+      <div class="row">
+        <h2>🎯 Mini Tense Decoder</h2>
+        <div class="btnrow">
+          <button class="btn btn--ghost" id="btnMiniNew" type="button">New</button>
+          <button class="btn btn--ghost" id="btnMiniHint" type="button">Hint</button>
+        </div>
+      </div>
+      <p class="muted">Read the sentence and choose the tense.</p>
+      <div class="miniBox">
+        <div class="miniPrompt" id="miniPrompt">…</div>
+        <div class="choices" id="miniChoices"></div>
+        <div class="result" id="miniResult">Choose the tense.</div>
+      </div>
+    </section>
+
+    <section class="card" id="mission">
+      <div class="row">
+        <h2>🗣️ Speaking + ✉️ Writing Mission (CLOE)</h2>
+        <div class="btnrow">
+          <button class="btn btn--ghost" id="btnMissionNew" type="button">New scenario</button>
+          <button class="btn btn--ghost" id="btnModelEmail" type="button">Toggle model email</button>
+          <button class="btn btn--ghost" id="btnModelSpeech" type="button">Toggle model speaking</button>
+        </div>
+      </div>
+
+      <div class="note">
+        <div class="label">Scenario</div>
+        <div id="missionScenario" class="scenario">…</div>
+        <div class="small muted">Goal: use <strong>at least 3 tenses</strong>. At B1, add <strong>If…, I would…</strong>.</div>
+      </div>
+
+      <div class="grid2">
+        <div class="card inner">
+          <h3>✉️ Writing task</h3>
+          <p class="muted">Write a short email. Keep it polite, clear, and professional.</p>
+          <textarea id="missionEmail" rows="10" placeholder="Write your email here… (subject + greeting + purpose + request + deadline + closing)"></textarea>
+          <div class="btnrow">
+            <button class="btn" id="btnEmailCheck" type="button">Check tense variety</button>
+            <button class="btn btn--ghost" id="btnEmailCopy" type="button">Copy</button>
+          </div>
+          <div class="result" id="emailResult">Tip: mix past + present perfect + future. At B1, add “If…, I would…”.</div>
+        </div>
+
+        <div class="card inner">
+          <h3>🗣️ Speaking task</h3>
+          <p class="muted">Speak for 30–60 seconds. Use connectors: <em>first, then, because, so, however</em>.</p>
+          <ul class="speakList" id="speakPrompts"></ul>
+          <div class="note small">
+            <div class="label">Pro tips</div>
+            <ul class="muted">
+              <li>Say what happened (past), what you have done (present perfect), and what you will do (future).</li>
+              <li>At B1: add a “what‑if” sentence: <code>If…, I would…</code></li>
+              <li>Keep it structured: <strong>context → issue → action → next steps</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="modelGrid">
+        <details class="modelCard" id="modelEmailDetails">
+          <summary>✅ Model email (step‑by‑step)</summary>
+          <div id="modelEmailBox" class="modelBox"></div>
+        </details>
+
+        <details class="modelCard" id="modelSpeechDetails">
+          <summary>✅ Model speaking (step‑by‑step)</summary>
+          <div id="modelSpeechBox" class="modelBox"></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="card" id="finale">
+      <div class="row">
+        <h2>🏁 Mixed Finale (20 questions)</h2>
+        <div class="btnrow">
+          <button class="btn" id="btnFinalNew" type="button">New mix</button>
+          <button class="btn btn--ghost" id="btnFinalReset" type="button">Reset</button>
+        </div>
+      </div>
+      <p class="muted">Answer once. You’ll get feedback + hints. Use “Show answer” only if needed.</p>
+      <div id="finalList"></div>
+      <div class="result" id="finalResult">Progress: <strong>0/20</strong> • Correct: <strong>0</strong></div>
+    </section>
+
+  </main>
+
+  <script src="/js/cloe-tense-cheat-sheet.js"></script>
+</body>
+</html>
