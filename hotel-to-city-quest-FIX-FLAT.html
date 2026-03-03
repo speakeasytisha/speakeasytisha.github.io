@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel → City Quest (A1+) · SpeakEasyTisha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/hotel-to-city-quest.css" />
+</head>
+<body>
+<noscript><div style="padding:12px;margin:12px;border:2px solid #c62828;border-radius:12px;">This lesson needs JavaScript to work. Please enable JavaScript.</div></noscript>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__logo">
+          <span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span>
+        </div>
+        <div class="brand__tag">Welcome back! · Hotel → City Quest (A1+) · 1 hour</div>
+      </div>
+
+      <div class="controls">
+        <div class="pill">
+          <span class="pill__label">Voice</span>
+          <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+          <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+        </div>
+
+        <div class="pill">
+          <span class="pill__label">Audio</span>
+          <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+          <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+          <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+        </div>
+
+        <div class="scorebox" aria-live="polite">
+          <div class="scorebox__label">Score</div>
+          <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        </div>
+
+        <button class="btn btn--danger" id="btnResetAll" type="button" title="Reset all activities">↺ Reset all</button>
+      </div>
+    </div>
+  
+  <div class="pillTag" id="jsStatus" style="margin:0 1rem 1rem;">JS: loading…</div>
+</header>
+
+  <section class="hero" id="top">
+    <div class="hero__inner">
+      <div class="hero__text">
+        <h1>Hotel → City Quest 🗺️</h1>
+        <p class="lead">
+          You checked in at the hotel. Now you need to go out! Complete 5 missions:
+          <strong>Transit</strong>, <strong>Directions</strong>, <strong>Grocery</strong>, <strong>Café</strong>, <strong>Back to hotel</strong>.
+        </p>
+
+        <div class="hero__cta">
+          <button class="btn" id="btnStart" type="button">▶️ Start (Mission 1)</button>
+          <button class="btn btn--ghost" id="btnHow" type="button">ℹ️ How it works</button>
+        </div>
+
+        <div class="minirow">
+          <div class="minicard">
+            <div class="minicard__t">✅ Instant feedback</div>
+            <div class="minicard__p">Every answer tells you right/wrong immediately.</div>
+          </div>
+          <div class="minicard">
+            <div class="minicard__t">💡 Hints</div>
+            <div class="minicard__p">Stuck? Tap “Hint” to help.</div>
+          </div>
+          <div class="minicard">
+            <div class="minicard__t">🧩 Drag OR tap</div>
+            <div class="minicard__p">All drag games have a tap alternative (iPad friendly).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__panel">
+        <div class="panelcard">
+          <div class="panelcard__title">Today’s plan (≈ 1 hour)</div>
+          <ol class="panelcard__list">
+            <li>Warm-up vocabulary (icons + audio)</li>
+            <li>Directions & prepositions (practice + sentence builder)</li>
+            <li>Transit ticket mini-scenario (listening)</li>
+            <li>Grocery store essentials (dialogues + numbers)</li>
+            <li>Café stop (menu + ordering)</li>
+            <li>Final role-play spinner</li>
+          </ol>
+          <div class="progress">
+            <div class="progress__bar" id="progressBar" style="width:0%"></div>
+          </div>
+          <div class="muted tiny">Tip: aim for ⭐ Perfect in each mission.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main" class="shell">
+
+    <section class="section" id="sec1">
+      <div class="section__head">
+        <h2>1) Vocabulary Warm‑up (icons + audio)</h2>
+        <p class="muted">Click a card to flip. Use 🔊 to listen. Then do the mini-quiz.</p>
+      </div>
+
+      <div class="toolrow">
+        <div class="pill">
+          <span class="pill__label">Set</span>
+          <select id="vocabSet" class="select">
+            <option value="all">All</option>
+            <option value="transit">Transit</option>
+            <option value="directions">Directions</option>
+            <option value="grocery">Grocery</option>
+            <option value="cafe">Café</option>
+          </select>
+        </div>
+        <button class="btn btn--ghost" id="btnVocabShuffle" type="button">🔀 Shuffle</button>
+        <button class="btn btn--ghost" id="btnVocabQuiz" type="button">🧠 Mini-quiz</button>
+      </div>
+
+      <div id="flashcards" class="grid grid--cards"></div>
+
+      <div id="vocabQuizPanel" class="card hidden">
+        <div class="card__head">
+          <h3>Mini‑quiz: match the meaning (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnVocabQuizReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="vocabQuizHost"></div>
+      </div>
+    </section>
+
+    <section class="section" id="sec2">
+      <div class="section__head">
+        <h2>2) Directions & Prepositions (near / next to / across from / between)</h2>
+        <p class="muted">Practice simple directions you need in a city. Then build sentences (drag OR tap).</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Quick MCQ (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnPrepReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="prepMCQHost"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Sorting game: phrases → preposition (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnSortReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <p class="muted">Only 4 boxes. Put many items in each box. Drag OR tap.</p>
+          <div id="sortHost"></div>
+        </div>
+      </div>
+
+      
+      <div class="card" id="dirGrammarCard">
+        <div class="card__head">
+          <h3>Grammar + Sentence Structure: Giving Directions</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" type="button" data-speak="Excuse me, where is the metro station, please?">🔊 Example</button>
+            <button class="btn btn--ghost" type="button" data-speak="Go straight, then turn left at the traffic lights.">🔊 Example</button>
+          </div>
+        </div>
+
+        <div class="reading">
+          <div class="line">
+            <div class="ico">🧠</div>
+            <div>
+              <strong>1) Ask politely</strong><br/>
+              <span class="muted">Starter + question + please</span><br/>
+              <span class="pillTag">Frame</span> <code>Excuse me, where is the + place + please?</code><br/>
+              <div class="smallrow" style="margin-top:.35rem;">
+                <button class="iconbtn" type="button" data-speak="Excuse me, where is the grocery store, please?">🔊</button>
+                <button class="iconbtn" type="button" data-speak="How do I get to the bus stop, please?">🔊</button>
+                <button class="iconbtn" type="button" data-speak="Is the café near here, please?">🔊</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="line">
+            <div class="ico">🧱</div>
+            <div>
+              <strong>2) Give directions (imperatives)</strong><br/>
+              <span class="muted">Use the base verb (no “to”)</span><br/>
+              <span class="pillTag">Verbs</span> go / turn / take / cross / stop<br/>
+              <div class="smallrow" style="margin-top:.35rem;">
+                <button class="iconbtn" type="button" data-speak="Go straight.">🔊 Go straight</button>
+                <button class="iconbtn" type="button" data-speak="Turn left at the corner.">🔊 Turn left</button>
+                <button class="iconbtn" type="button" data-speak="Take the first right.">🔊 Take the first right</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="line">
+            <div class="ico">🧭</div>
+            <div>
+              <strong>3) Add a landmark + preposition</strong><br/>
+              <span class="muted">at / next to / across from / between / past</span><br/>
+              <div class="smallrow" style="margin-top:.35rem;">
+                <button class="iconbtn" type="button" data-speak="Turn right at the bank.">🔊 at the bank</button>
+                <button class="iconbtn" type="button" data-speak="The pharmacy is next to the café.">🔊 next to</button>
+                <button class="iconbtn" type="button" data-speak="The station is across from the park.">🔊 across from</button>
+                <button class="iconbtn" type="button" data-speak="It is between the café and the bank.">🔊 between</button>
+                <button class="iconbtn" type="button" data-speak="Go past the hotel.">🔊 past</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="line">
+            <div class="ico">🔁</div>
+            <div>
+              <strong>4) Use connectors (order)</strong><br/>
+              <span class="pillTag">Connectors</span> first / then / after that / finally<br/>
+              <div class="smallrow" style="margin-top:.35rem;">
+                <button class="iconbtn" type="button" data-speak="First, go straight. Then, turn left.">🔊 First… then…</button>
+                <button class="iconbtn" type="button" data-speak="After that, cross the street.">🔊 After that…</button>
+                <button class="iconbtn" type="button" data-speak="Finally, the café is on your right.">🔊 Finally…</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="line">
+            <div class="ico">💬</div>
+            <div>
+              <strong>Mini‑dialogue (realistic)</strong><br/>
+              <span class="muted">Tap to listen, then repeat.</span>
+              <div class="smallrow" style="margin-top:.35rem;">
+                <button class="btn btn--ghost" type="button" data-speak="Excuse me, where is the metro station, please?">🔊 You</button>
+                <button class="btn btn--ghost" type="button" data-speak="Go straight. Turn right at the bank. The station is next to the café.">🔊 Local</button>
+                <button class="btn btn--ghost" type="button" data-speak="Thank you very much.">🔊 You</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="muted tiny">Tip: keep it simple → <strong>Action + Landmark</strong>. Example: “Turn left at the corner.”</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Sentence Builder (drag OR tap) (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnBuilderReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Build the full sentence. Tap tokens (iPad), or drag. Tap a token in the sentence to remove it.</p>
+        <div id="builderHost"></div>
+      </div>
+    </section>
+
+    <section class="section" id="sec3">
+      <div class="section__head">
+        <h2>3) Transit Mission: Buy a ticket (Listening + answers)</h2>
+        <p class="muted">Listen to the clerk. Choose the best response. Then complete the short form.</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Listening: choose the best reply (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnTransitListenReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="transitListenHost"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Fill‑in: ticket details (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnTransitFillReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <p class="muted">Pick a word, then click a blank. The word bank is scrambled.</p>
+          <div id="transitFillHost"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec4">
+      <div class="section__head">
+        <h2>4) Grocery Mission: buy essentials (dialogues + numbers)</h2>
+        <p class="muted">Choose your essentials, then practice a short store dialogue and prices.</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Essentials picker (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnEssentialsReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <p class="muted">Pick 6 essentials. Then click “Check my list”.</p>
+          <div id="essentialsHost"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Store dialogue: choose the best reply (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnStoreDialogueReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="storeDialogueHost"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Numbers dictation (prices) (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnPricesReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Click 🔊 and type the price you hear (digits). Then check.</p>
+        <div id="pricesHost"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Some / Any (quick quiz) (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnSomeAnyReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="someAnyHost"></div>
+      </div>
+    </section>
+
+    <section class="section" id="sec5">
+      <div class="section__head">
+        <h2>5) Café Mission: order politely (reading + listening)</h2>
+        <p class="muted">Read a mini menu, answer questions, then build your order.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Mini menu (reading)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnMenuListen" type="button">🔊 Listen</button>
+          </div>
+        </div>
+        <div id="menuCard" class="reading"></div>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Reading comprehension (MCQ) (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnMenuMCQReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="menuMCQHost"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Listening: “For here or to go?” (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnCafeListenReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="cafeListenHost"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Order Builder (drag OR tap) (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnOrderBuilderReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="orderBuilderHost"></div>
+      </div>
+    </section>
+
+    <section class="section" id="sec6">
+      <div class="section__head">
+        <h2>6) Final Role‑play Spinner (fun recap)</h2>
+        <p class="muted">Spin a situation. Choose the best 2 lines: (1) the problem (2) the request.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Spin & choose (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnSpinnerReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="spinnerHost"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Oral practice: listen & repeat (self-check) (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnOralReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="oralHost"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="muted tiny">© SpeakEasyTisha · Hotel → City Quest · iPad/Mac friendly (drag OR tap)</div>
+        <a class="iconbtn" href="#top">↑ Back to top</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="/js/hotel-to-city-quest.js"></script>
+
+  <pre id="debugBox" class="hidden" style="white-space:pre-wrap;margin:1rem;padding:1rem;border:1px dashed rgba(14,31,36,.35);border-radius:14px;background:#fff;max-width:1100px;">Debug log</pre>
+</body>
+</html>
