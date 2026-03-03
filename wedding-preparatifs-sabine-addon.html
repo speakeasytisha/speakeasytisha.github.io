@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SpeakEasyTisha • Wedding Planner Preparatifs (A1→A2+) • Add‑on</title>
+  <link rel="stylesheet" href="/css/wedding-preparatifs-sabine-addon.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logoMark" aria-hidden="true">✦</div>
+      <div>
+        <div class="brandTitle">Wedding Planner • Preparatifs</div>
+        <div class="brandSub">Present simple • Present continuous • Future (going to / will) • Add‑on lesson</div>
+      </div>
+    </div>
+
+    <div class="topbarRight">
+      <label class="pill" title="Choose your level">
+        <span class="pillIcon" aria-hidden="true">🎚️</span>
+        <span>Level</span>
+        <select id="levelSelect" aria-label="Level">
+          <option value="A1">A1 (gentle)</option>
+          <option value="A2" selected>A2 (strong)</option>
+          <option value="B1">B1 (boost)</option>
+        </select>
+      </label>
+
+      <button class="pill" id="toggleFR" aria-pressed="true" title="Show French help">
+        <span class="pillIcon" aria-hidden="true">🇫🇷</span>
+        <span>FR help</span>
+        <span class="pillMeta" id="frState">ON</span>
+      </button>
+
+      <button class="pill" id="btnReset" title="Reset everything">
+        <span class="pillIcon" aria-hidden="true">↺</span>
+        <span>Reset</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="heroGrid">
+        <div class="heroText">
+          <div class="badge">Add‑on for your previous pages</div>
+          <h1>Sabine’s wedding preparatifs — speak with confidence</h1>
+          <p class="lead" data-fr="On parle des préparatifs : routine, actions en cours et prochaines étapes. Feedback immédiat + indices.">
+            We focus on preparatifs: routines, actions in progress, and next steps. Instant feedback + hints.
+          </p>
+
+          <div class="quickLinks">
+            <a class="softLink" href="https://speakeasytisha.github.io/wedding-planner-magic-speak-a1-a2-v3.html" target="_blank" rel="noreferrer">
+              ↗ Previous: Magic Speak
+            </a>
+            <a class="softLink" href="https://speakeasytisha.github.io/ceremonie-story-journey.html" target="_blank" rel="noreferrer">
+              ↗ Previous: Cérémonie Story Journey
+            </a>
+          </div>
+
+          <div class="heroCards">
+            <div class="card mini">
+              <div class="cardTitle">Your mission</div>
+              <div class="cardText" data-fr="Présenter tes tâches + rassurer tes clients : aujourd’hui / en ce moment / bientôt.">
+                Present your tasks + reassure clients: today / right now / soon.
+              </div>
+            </div>
+            <div class="card mini">
+              <div class="cardTitle">Tense map</div>
+              <div class="chipRow">
+                <span class="chip">Routine → present simple</span>
+                <span class="chip">Now → present continuous</span>
+                <span class="chip">Next → future</span>
+              </div>
+            </div>
+            <div class="card mini">
+              <div class="cardTitle">Instant help</div>
+              <div class="cardText" data-fr="Indices, exemples, et 'Why?' à chaque exercice.">
+                Hints, examples, and “Why?” on every task.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Responsive decorative petals: pure CSS+SVG, scales safely -->
+        <div class="heroArt" aria-hidden="true">
+          <svg viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet" class="petals">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="rgba(195,159,97,0.55)"/>
+                <stop offset="1" stop-color="rgba(240,221,186,0.35)"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="rgba(139,152,111,0.35)"/>
+                <stop offset="1" stop-color="rgba(245,241,230,0.05)"/>
+              </linearGradient>
+              <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2"/>
+              </filter>
+            </defs>
+            <g filter="url(#soft)" opacity="0.9">
+              <path d="M190 230c60-70 150-70 190 0-40 80-150 130-190 0z" fill="url(#g1)"/>
+              <path d="M580 190c50-60 130-55 160 10-35 70-130 110-160-20z" fill="url(#g2)"/>
+              <path d="M300 470c65-70 160-60 190 15-60 80-170 120-190-15z" fill="url(#g2)"/>
+              <path d="M650 470c55-65 140-55 165 10-45 70-140 110-165-20z" fill="url(#g1)"/>
+              <path d="M430 310c45-55 115-45 140 5-35 60-120 95-140-10z" fill="url(#g1)"/>
+              <circle cx="720" cy="260" r="70" fill="rgba(195,159,97,0.12)"/>
+              <circle cx="250" cy="330" r="90" fill="rgba(139,152,111,0.10)"/>
+              <circle cx="500" cy="520" r="110" fill="rgba(240,221,186,0.15)"/>
+            </g>
+          </svg>
+          <div class="artCaption">
+            <div class="artTitle">Sabine • Wedding Planner & Designer</div>
+            <div class="artSub" data-fr="Créativité + organisation + bonne humeur.">
+              Creativity + organisation + good vibes.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="Lesson sections">
+      <button class="tab active" data-tab="overview">0) Lesson</button>
+      <button class="tab" data-tab="vocab">1) Vocabulary</button>
+      <button class="tab" data-tab="grammar">2) Grammar</button>
+      <button class="tab" data-tab="practice">3) Practice (instant)</button>
+      <button class="tab" data-tab="dialogue">4) Dialogue builder</button>
+      <button class="tab" data-tab="text">5) Text builder</button>
+      <button class="tab" data-tab="planner">6) Planning simulator</button>
+    </nav>
+
+    <section class="panel show" id="tab-overview">
+      <div class="panelHead">
+        <h2>0) The lesson (before exercises)</h2>
+        <p class="muted" data-fr="Mini‑cours : qui est Sabine, ses missions, et comment parler des préparatifs avec 3 temps.">
+          Mini lesson: who Sabine is, her mission, and how to talk about preparatifs using 3 tenses.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="cardTitle">Sabine’s profile (English)</div>
+          <p class="cardText">
+            Sabine brings wedding dreams to life. She is a <b>wedding planner & designer</b> and a <b>florist</b>.
+            She creates elegant, personalised atmospheres. She plans every detail, keeps the timeline smooth,
+            and supports clients with a smile.
+          </p>
+          <p class="cardText fr" data-fr="FR résumé : wedding planner & designer + fleuriste. Ambiances élégantes, organisation, accompagnement.">
+            FR résumé : wedding planner & designer + fleuriste. Ambiances élégantes, organisation, accompagnement.
+          </p>
+
+          <div class="callout">
+            <div class="calloutTitle">Key language</div>
+            <div class="calloutText">
+              <b>Present simple</b> = routine • <b>Present continuous</b> = now/around now • <b>Future</b> = plans/next steps
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">Tense cheat‑sheet (tap)</div>
+          <div class="tenseCards" id="tenseCards"></div>
+          <div class="note">
+            <b>Tip:</b> If you are nervous, start with a simple structure:
+            <span class="kbd">I usually…</span> / <span class="kbd">I’m currently…</span> / <span class="kbd">I’m going to…</span>
+          </div>
+        </article>
+      </div>
+
+      <article class="card">
+        <div class="cardTitle">Micro speaking warm‑up (safe)</div>
+        <p class="cardText" data-fr="Réponds à l’oral avec 1 phrase. Clique sur un bouton pour afficher une phrase modèle.">
+          Answer aloud with 1 sentence. Tap a button to reveal a model sentence.
+        </p>
+        <div class="btnRow">
+          <button class="btn" data-warm="routine">Routine</button>
+          <button class="btn" data-warm="now">Now</button>
+          <button class="btn" data-warm="next">Next step</button>
+          <button class="btn ghost" id="btnWarmSpeak">🔊 Listen</button>
+        </div>
+        <div class="warmOut" id="warmOut" aria-live="polite"></div>
+      </article>
+    </section>
+
+    <section class="panel" id="tab-vocab">
+      <div class="panelHead">
+        <h2>1) Vocabulary (icons + French)</h2>
+        <p class="muted" data-fr="Clique sur une carte pour voir la traduction + un exemple.">
+          Tap a card to see the translation + an example.
+        </p>
+      </div>
+
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Vocab filters">
+          <button class="segBtn active" data-vfilter="all">All</button>
+          <button class="segBtn" data-vfilter="clients">Clients</button>
+          <button class="segBtn" data-vfilter="design">Design & flowers</button>
+          <button class="segBtn" data-vfilter="logistics">Logistics</button>
+          <button class="segBtn" data-vfilter="dayof">Wedding day</button>
+        </div>
+        <div class="searchWrap">
+          <input id="vocabSearch" type="search" placeholder="Search vocabulary…" aria-label="Search vocabulary"/>
+        </div>
+      </div>
+
+      <div class="vocabGrid" id="vocabGrid"></div>
+      <div class="miniFooter muted">
+        <span data-fr="Astuce : ajoute 3 mots à ton carnet après le cours.">Tip: add 3 words to your notebook after class.</span>
+      </div>
+    </section>
+
+    <section class="panel" id="tab-grammar">
+      <div class="panelHead">
+        <h2>2) Grammar reminders</h2>
+        <p class="muted" data-fr="Mini leçons + pièges fréquents + indices pour choisir le bon temps.">
+          Mini lessons + common traps + hints to choose the right tense.
+        </p>
+      </div>
+
+      <div class="grid3">
+        <article class="card">
+          <div class="cardTitle">Present simple (routine)</div>
+          <p class="cardText">
+            Use it for habits, routines, facts:
+            <span class="ex">I answer emails every morning.</span>
+          </p>
+          <ul class="bullets">
+            <li><b>He/She/It:</b> add <b>-s</b> → She <b>calls</b> clients.</li>
+            <li>Negatives: <b>don’t / doesn’t</b> → She <b>doesn’t forget</b> details.</li>
+            <li>Questions: <b>Do / Does</b> → <b>Do</b> you need help?</li>
+          </ul>
+          <div class="hintBox">
+            <div class="hintTitle">Hint words</div>
+            <div class="hintText">usually • always • often • every day • on Mondays</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">Present continuous (now)</div>
+          <p class="cardText">
+            Use it for actions in progress / around now:
+            <span class="ex">I’m preparing the seating plan.</span>
+          </p>
+          <ul class="bullets">
+            <li>Form: <b>am/is/are + -ing</b></li>
+            <li>Spelling: make → <b>making</b>, plan → <b>planning</b></li>
+            <li>Temporary actions: We’re working with a new florist.</li>
+          </ul>
+          <div class="hintBox">
+            <div class="hintTitle">Hint words</div>
+            <div class="hintText">right now • today • this week • at the moment</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">Future (plans + promises)</div>
+          <p class="cardText">
+            Use <b>going to</b> for plans:
+            <span class="ex">I’m going to send the schedule tomorrow.</span>
+          </p>
+          <p class="cardText">
+            Use <b>will</b> for offers / quick promises:
+            <span class="ex">I’ll call you back this afternoon.</span>
+          </p>
+          <div class="hintBox">
+            <div class="hintTitle">Hint words</div>
+            <div class="hintText">tomorrow • next week • soon • later • in two days</div>
+          </div>
+        </article>
+      </div>
+
+      <article class="card">
+        <div class="cardTitle">Tense decision helper (tap)</div>
+        <p class="cardText" data-fr="Choisis la situation → le site te dit quel temps utiliser + un exemple.">
+          Choose the situation → you get the best tense + an example.
+        </p>
+        <div class="decisionGrid" id="decisionGrid"></div>
+        <div class="decisionOut" id="decisionOut" aria-live="polite"></div>
+      </article>
+    </section>
+
+    <section class="panel" id="tab-practice">
+      <div class="panelHead">
+        <h2>3) Practice zone — instant feedback + “Why?”</h2>
+        <p class="muted" data-fr="Chaque clic est corrigé tout de suite. Clique sur 💡 pour un indice.">
+          Every tap is corrected instantly. Tap 💡 for a hint.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="cardTitle">A) Tense Picker (instant)</div>
+          <div class="enonce">
+            <div class="enonce__title">ÉNONCÉ</div>
+            <div class="enonce__text"><b>EN:</b> Read the sentence. Tap the <b>best tense</b>.</div>
+            <div class="enonce__text fr" data-fr="<b>FR:</b> Lis la phrase. Clique sur le <b>bon temps</b>."></div>
+          </div>
+          <div id="tensePicker"></div>
+          <div class="btnRow">
+            <button class="btn ghost" id="btnTenseMore">+ New question</button>
+            <button class="btn ghost" id="btnTenseWhy">Why?</button>
+          </div>
+          <div class="feedback" id="tenseFeedback" aria-live="polite"></div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">B) Form Builder (dropdown)</div>
+          <div class="enonce">
+            <div class="enonce__title">ÉNONCÉ</div>
+            <div class="enonce__text"><b>EN:</b> Choose the correct forms. You get feedback immediately.</div>
+            <div class="enonce__text fr" data-fr="<b>FR:</b> Choisis les bonnes formes. Correction immédiate."></div>
+          </div>
+
+          <div class="gapList" id="gapList"></div>
+          <div class="btnRow">
+            <button class="btn ghost" id="btnGapNew">Shuffle</button>
+            <button class="btn ghost" id="btnGapHint">Hint</button>
+          </div>
+          <div class="feedback" id="gapFeedback" aria-live="polite"></div>
+        </article>
+      </div>
+
+      <article class="card">
+        <div class="cardTitle">C) Preparatifs checklist (tap order)</div>
+        <div class="enonce">
+          <div class="enonce__title">ÉNONCÉ</div>
+          <div class="enonce__text"><b>EN:</b> Tap steps in the correct order to build a timeline.</div>
+          <div class="enonce__text fr" data-fr="<b>FR:</b> Clique sur les étapes dans le bon ordre pour construire une timeline."></div>
+        </div>
+
+        <div class="orderWrap">
+          <div>
+            <div class="subTitle" data-fr="Étapes (à sélectionner)">Steps (tap to add)</div>
+            <div class="orderBank" id="orderBank"></div>
+          </div>
+          <div>
+            <div class="subTitle" data-fr="Ta timeline">Your timeline</div>
+            <ol class="orderOut" id="orderOut"></ol>
+            <div class="btnRow">
+              <button class="btn" id="btnOrderCheck">✅ Check</button>
+              <button class="btn ghost" id="btnOrderReset">Reset</button>
+              <button class="btn ghost" id="btnOrderHint">💡 Hint</button>
+            </div>
+            <div class="feedback" id="orderFeedback" aria-live="polite"></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel" id="tab-dialogue">
+      <div class="panelHead">
+        <h2>4) Dialogue builder — client exchange (present + future)</h2>
+        <p class="muted" data-fr="Dialogue en étapes. Choisis la meilleure réponse. Correction immédiate.">
+          Step-by-step dialogue. Choose the best reply. Instant feedback.
+        </p>
+      </div>
+
+      <article class="card">
+        <div class="cardTitle">Scenario: First check‑in call + next steps</div>
+        <div class="dialogueMeta">
+          <span class="chip">phone call</span>
+          <span class="chip">polite + warm</span>
+          <span class="chip">plans (going to / will)</span>
+        </div>
+
+        <div class="dialogueBox" id="dialogueBox">
+          <div class="dialogueLine bot" id="dlgBot"></div>
+          <div class="dialogueOpts" id="dlgOpts"></div>
+          <div class="dialogueControls">
+            <button class="btn ghost" id="dlgHint">💡 Hint</button>
+            <button class="btn ghost" id="dlgListen">🔊 Listen</button>
+            <button class="btn ghost" id="dlgRestart">Restart</button>
+          </div>
+          <div class="feedback" id="dlgFeedback" aria-live="polite"></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cardTitle">Mini email follow‑up (tap choices)</div>
+        <p class="cardText" data-fr="Construis un email pro en choisissant les bonnes phrases (simple / continuous / future).">
+          Build a professional email by choosing the best sentences (simple / continuous / future).
+        </p>
+        <div class="emailBuilder" id="emailBuilder"></div>
+        <div class="btnRow">
+          <button class="btn" id="emailCopy">Copy</button>
+          <button class="btn ghost" id="emailListen">🔊 Listen</button>
+          <button class="btn ghost" id="emailReset">Reset</button>
+        </div>
+        <div class="feedback" id="emailFeedback" aria-live="polite"></div>
+      </article>
+    </section>
+
+    <section class="panel" id="tab-text">
+      <div class="panelHead">
+        <h2>5) Text builder — your “preparatifs update” (dropdown)</h2>
+        <p class="muted" data-fr="Objectif : écrire un paragraphe clair (routine + en cours + prochaine étape).">
+          Goal: write a clear paragraph (routine + in progress + next step).
+        </p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="cardTitle">A) Build your text</div>
+          <div class="builderGrid" id="textBuilder"></div>
+          <div class="btnRow">
+            <button class="btn" id="txtCopy">Copy</button>
+            <button class="btn ghost" id="txtListen">🔊 Listen</button>
+            <button class="btn ghost" id="txtModel">Show model</button>
+          </div>
+          <div class="feedback" id="txtFeedback" aria-live="polite"></div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">B) Level upgrade (A1 → A2 → B1)</div>
+          <p class="cardText" data-fr="Clique sur un bouton pour obtenir une version plus riche (sans changer l’idée).">
+            Tap a button to get a richer version (same meaning).
+          </p>
+          <div class="upgradeBox">
+            <button class="btn" data-up="A1">A1 version</button>
+            <button class="btn" data-up="A2">A2 version</button>
+            <button class="btn" data-up="B1">B1 version</button>
+            <button class="btn ghost" id="upListen">🔊 Listen</button>
+          </div>
+          <div class="warmOut" id="upgradeOut"></div>
+          <div class="note">
+            <b>Confidence rule:</b> Read your A1 version aloud first. Then replace <i>one</i> sentence with A2.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="tab-planner">
+      <div class="panelHead">
+        <h2>6) Planning simulator — schedule + client reassurance</h2>
+        <p class="muted" data-fr="Choisis une date/heure et une tâche. Le site génère une phrase correcte + une question client.">
+          Choose a date/time and a task. The page generates a correct sentence + a client question.
+        </p>
+      </div>
+
+      <article class="card">
+        <div class="plannerGrid">
+          <label class="field">
+            <span class="fieldLbl">Time</span>
+            <select id="plTime"></select>
+          </label>
+          <label class="field">
+            <span class="fieldLbl">Day</span>
+            <select id="plDay"></select>
+          </label>
+          <label class="field">
+            <span class="fieldLbl">Task</span>
+            <select id="plTask"></select>
+          </label>
+          <label class="field">
+            <span class="fieldLbl">Mode</span>
+            <select id="plMode">
+              <option value="routine">Routine (present simple)</option>
+              <option value="now">Today/now (present continuous)</option>
+              <option value="next">Next step (future)</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="btnRow">
+          <button class="btn" id="plGenerate">Generate</button>
+          <button class="btn ghost" id="plHint">💡 Hint</button>
+          <button class="btn ghost" id="plListen">🔊 Listen</button>
+        </div>
+
+        <div class="plannerOut" id="plannerOut" aria-live="polite"></div>
+
+        <div class="callout">
+          <div class="calloutTitle" data-fr="Mini défi oral">Mini speaking challenge</div>
+          <div class="calloutText" data-fr="Répète la phrase, puis réponds à la question client en 1 phrase.">
+            Repeat the sentence, then answer the client question in 1 sentence.
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cardTitle">Quick question bank (WH‑questions)</div>
+        <p class="cardText" data-fr="Pour entraîner les questions client (Do/Does + What/When/Where/How…).">
+          Train client questions (Do/Does + What/When/Where/How…).
+        </p>
+        <div id="whBank"></div>
+      </article>
+    </section>
+
+    <footer class="foot">
+      <div class="footLeft">
+        <div class="muted">SpeakEasyTisha • Wedding planner add‑on • touch‑friendly • Safari/iPad ready</div>
+      </div>
+      <div class="footRight">
+        <span class="muted" id="saveState">Saved ✓</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="/js/wedding-preparatifs-sabine-addon.js"></script>
+</body>
+</html>
