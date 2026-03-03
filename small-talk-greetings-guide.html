@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SpeakEasyTisha • Small Talk & Greetings — Complete Guide</title>
+  <link rel="stylesheet" href="/css/small-talk-greetings-guide.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">💬</div>
+      <div>
+        <div class="brandTitle">Small Talk & Greetings</div>
+        <div class="brandSub">Street • Phone • Work • Hotel • Friends — vocab, grammar & instant practice</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <label class="pill" title="Choose difficulty (changes vocab density + quiz options)">
+        <span aria-hidden="true">🎚️</span><span>Level</span>
+        <select id="levelSelect" aria-label="Level">
+          <option value="A1">A1 (safe basics)</option>
+          <option value="A2" selected>A2 (everyday + work)</option>
+          <option value="B1">B1 (polished + natural)</option>
+        </select>
+      </label>
+
+      <label class="pill" title="Choose context (changes scripts + examples)">
+        <span aria-hidden="true">🧭</span><span>Context</span>
+        <select id="contextSelect" aria-label="Context">
+          <option value="street">Street / casual</option>
+          <option value="phone">Phone call</option>
+          <option value="work" selected>Work</option>
+          <option value="hotel">Hotel / service</option>
+          <option value="friend">Friend</option>
+        </select>
+      </label>
+
+      <button class="pill" id="toggleFR" aria-pressed="true" title="Show French help">
+        <span aria-hidden="true">🇫🇷</span><span>FR help</span>
+        <span class="pillMeta" id="frState">ON</span>
+      </button>
+
+      <button class="pill" id="btnPrint" title="Print"><span aria-hidden="true">🖨️</span><span>Print</span></button>
+      <button class="pill" id="btnReset" title="Reset progress"><span aria-hidden="true">↺</span><span>Reset</span></button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="heroGrid">
+        <div class="heroText">
+          <div class="badge">Safe topics + real answers (not “Hello, I’m fine.”)</div>
+          <h1>Complete guide to greeting people</h1>
+          <p class="lead" data-fr="Objectif : dire bonjour + créer un lien + répondre correctement selon le contexte (travail / rue / hôtel / téléphone / amis).">
+            Goal: greet, build connection, and respond correctly depending on context (work / street / hotel / phone / friends).
+          </p>
+
+          <div class="tileRow">
+            <div class="tile"><div class="tileTop">✅ ABC method</div><div class="tileText"><b>A</b>cknowledge • <b>B</b>ridge • <b>C</b>lose</div></div>
+            <div class="tile"><div class="tileTop">✅ Safe small talk</div><div class="tileText">weather • traffic • weekend • plans • local events</div></div>
+            <div class="tile"><div class="tileTop">✅ Tenses</div><div class="tileText">present simple • continuous • <b>present perfect</b></div></div>
+          </div>
+
+          <div class="quick">
+            <div class="quickLabel" data-fr="Raccourcis">Quick buttons</div>
+            <div class="btnRow">
+              <button class="btn ghost" data-jump="guide">ABC guide</button>
+              <button class="btn ghost" data-jump="vocab">Vocab</button>
+              <button class="btn ghost" data-jump="grammar">Grammar</button>
+              <button class="btn ghost" data-jump="dialogues">Dialogues</button>
+              <button class="btn" data-jump="practice">Practice</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="heroCard">
+          <div class="cardTitle">Your “3‑line” greeting formula</div>
+          <div class="miniMap" id="formulaBox"></div>
+
+          <div class="callout">
+            <div class="calloutTitle">Golden note</div>
+            <div class="calloutText" data-fr="“How are you?” est souvent une formule. Réponse courte + question retour.">
+              “How are you?” is often a formula. Short answer + ask back.
+            </div>
+          </div>
+
+          <div class="btnRow">
+            <button class="btn ghost" id="formulaNew">+ New example</button>
+            <button class="btn ghost" id="formulaListen">🔊 Listen</button>
+            <button class="btn" id="formulaCopy">Copy</button>
+          </div>
+
+          <div class="feedback" id="formulaFeedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="Sections">
+      <button class="tab active" data-tab="guide">1) ABC guide</button>
+      <button class="tab" data-tab="vocab">2) Vocabulary</button>
+      <button class="tab" data-tab="grammar">3) Grammar</button>
+      <button class="tab" data-tab="dialogues">4) Dialogues & builders</button>
+      <button class="tab" data-tab="practice">5) Practice (instant)</button>
+      <button class="tab" data-tab="printable">6) Printable</button>
+    </nav>
+
+    <section class="panel show" id="tab-guide">
+      <div class="panelHead">
+        <h2>1) ABC of greetings (works everywhere)</h2>
+        <p class="muted" data-fr="A = salut + nom (si besoin). B = petite phrase safe. C = question ou fin polie.">
+          A = greeting (+ name if needed). B = a safe bridge line. C = a question or a polite close.
+        </p>
+      </div>
+
+      <div class="grid3">
+        <article class="card">
+          <div class="cardTitle">A) Acknowledge (start)</div>
+          <div class="enonce">
+            <div class="enonce__title">WHAT TO DO</div>
+            <div class="enonce__text"><b>EN:</b> Choose a greeting that matches the context.</div>
+            <div class="enonce__text fr" data-fr="<b>FR:</b> Choisis une salutation adaptée au contexte."></div>
+          </div>
+          <div class="phraseGrid" id="ackGrid"></div>
+          <div class="note" data-fr="Astuce : au travail/hôtel → plus formel. Avec un ami → plus court.">
+            Tip: work/hotel = more formal. Friends = shorter.
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">B) Bridge (safe small talk)</div>
+          <div class="enonce">
+            <div class="enonce__title">SAFE TOPICS</div>
+            <div class="enonce__text"><b>EN:</b> Pick a safe topic (weather, traffic, weekend, plans).</div>
+            <div class="enonce__text fr" data-fr="<b>FR:</b> Choisis un sujet “safe” (météo, trafic, week-end, plans)."></div>
+          </div>
+          <div class="phraseGrid" id="bridgeGrid"></div>
+          <div class="btnRow">
+            <button class="btn ghost" id="topicSpin">🎲 Topic spinner</button>
+            <button class="btn ghost" id="topicListen">🔊 Listen</button>
+          </div>
+          <div class="plannerOut" id="topicOut" aria-live="polite"></div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">C) Close (ask back / exit)</div>
+          <div class="enonce">
+            <div class="enonce__title">POLITE ENDING</div>
+            <div class="enonce__text"><b>EN:</b> Ask a short question or close politely.</div>
+            <div class="enonce__text fr" data-fr="<b>FR:</b> Pose une petite question ou termine poliment."></div>
+          </div>
+          <div class="phraseGrid" id="closeGrid"></div>
+          <div class="hintBox">
+            <div class="hintTitle">Fast hint</div>
+            <div class="hintText" data-fr="Toujours ajouter une question retour : And you? / How about you?">
+              Add a return question: And you? / How about you?
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="cardTitle">Context rules</div>
+          <div class="rules" id="contextRules"></div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">Mini “do / don’t” list</div>
+          <ul class="bullets" id="doDont"></ul>
+          <div class="note" data-fr="On évite : argent, politique, religion, santé intime, sujets personnels avec un inconnu.">
+            Avoid: money, politics, religion, intimate health, very personal topics with strangers.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="tab-vocab">
+      <div class="panelHead">
+        <h2>2) Vocabulary with icons (FR→EN)</h2>
+        <p class="muted" data-fr="Clique une carte : tu vois la traduction + exemple. Ajoute ⭐ pour tes favoris.">
+          Tap a card to reveal FR + example. Star ⭐ your favorites.
+        </p>
+      </div>
+
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Categories">
+          <button class="segBtn active" data-cat="all">All</button>
+          <button class="segBtn" data-cat="greetings">Greetings</button>
+          <button class="segBtn" data-cat="smalltalk">Small talk</button>
+          <button class="segBtn" data-cat="responses">Responses</button>
+          <button class="segBtn" data-cat="phone">Phone</button>
+          <button class="segBtn" data-cat="work">Work</button>
+          <button class="segBtn" data-cat="hotel">Hotel</button>
+          <button class="segBtn" data-cat="fav">⭐ Favorites</button>
+        </div>
+
+        <div class="searchWrap">
+          <input id="searchVocab" type="search" placeholder="Search (English or French)..." aria-label="Search vocabulary"/>
+        </div>
+      </div>
+
+      <div class="vocabGrid" id="vocabGrid"></div>
+
+      <div class="note">
+        <b>Micro tip:</b> “I’m good” = casual. “I’m doing well” = more careful/formal.
+        <span class="fr" data-fr="“I’m good” = familier. “I’m doing well” = plus formel." style="display:inline"></span>
+      </div>
+    </section>
+
+    <section class="panel" id="tab-grammar">
+      <div class="panelHead">
+        <h2>3) Grammar that makes you sound natural</h2>
+        <p class="muted" data-fr="Présent simple (habitude) • présent continu (maintenant) • present perfect (depuis/dernier contact).">
+          Present simple (routine) • Present continuous (now) • Present perfect (since/last time).
+        </p>
+      </div>
+
+      <div class="grid3">
+        <article class="card">
+          <div class="cardTitle">Present simple (routine)</div>
+          <p class="cardText">Habits / routines: <span class="ex">I work in customer service.</span> <span class="ex">I usually take the subway.</span></p>
+          <div class="hintBox"><div class="hintTitle">Useful adverbs</div><div class="hintText">usually • often • sometimes • always • never</div></div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">Present continuous (now / temporary)</div>
+          <p class="cardText">Now/temporary: <span class="ex">I’m heading to a meeting.</span> <span class="ex">I’m working on a project this week.</span></p>
+          <div class="hintBox"><div class="hintTitle">Signals</div><div class="hintText">right now • today • this week • at the moment</div></div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">Present perfect (connection)</div>
+          <p class="cardText">Since last time: <span class="ex">I’ve been busy lately.</span> <span class="ex">I’ve just started a new job.</span></p>
+          <div class="hintBox"><div class="hintTitle">Signals</div><div class="hintText">lately • recently • since • for • just • already</div></div>
+        </article>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="cardTitle">How are you? vs How have you been?</div>
+          <ul class="bullets" id="howAreYouList"></ul>
+          <div class="note" data-fr="Si tu n’as pas vu la personne depuis longtemps → “How have you been?”">If you haven’t seen them for a while → “How have you been?”</div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">Question forms (fast)</div>
+          <ul class="bullets" id="questionForms"></ul>
+          <div class="hintBox">
+            <div class="hintTitle">Fast formula</div>
+            <div class="hintText" data-fr="Do/Does + sujet + verbe? / Am-Is-Are + sujet + -ing? / Have/Has + sujet + V3?">
+              Do/Does + subject + verb? / Am-Is-Are + subject + -ing? / Have/Has + subject + V3?
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <article class="card">
+        <div class="cardTitle">Grammar mini drills (instant feedback)</div>
+        <div class="enonce">
+          <div class="enonce__title">ÉNONCÉ</div>
+          <div class="enonce__text"><b>EN:</b> Choose the best tense / structure for the situation.</div>
+          <div class="enonce__text fr" data-fr="<b>FR:</b> Choisis le meilleur temps / structure selon la situation."></div>
+        </div>
+
+        <div id="grammarDrill"></div>
+        <div class="btnRow">
+          <button class="btn ghost" id="drillNew">+ New</button>
+          <button class="btn ghost" id="drillHint">💡 Hint</button>
+          <button class="btn ghost" id="drillListen">🔊 Listen</button>
+        </div>
+        <div class="feedback" id="drillFeedback" aria-live="polite"></div>
+      </article>
+    </section>
+
+    <section class="panel" id="tab-dialogues">
+      <div class="panelHead">
+        <h2>4) Dialogues & builders (real life)</h2>
+        <p class="muted" data-fr="Choisis des blocs pour construire un mini‑dialogue complet (3–6 lignes).">
+          Choose blocks to build a complete mini-dialogue (3–6 lines).
+        </p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="cardTitle">A) Dialogue Builder (dropdown = no mistakes)</div>
+          <div class="enonce">
+            <div class="enonce__title">INSTRUCTIONS</div>
+            <div class="enonce__text"><b>EN:</b> Pick one line per block, then listen or copy.</div>
+            <div class="enonce__text fr" data-fr="<b>FR:</b> Choisis une phrase par bloc, puis écoute ou copie."></div>
+          </div>
+
+          <div class="builder" id="dialogueBuilder"></div>
+          <div class="btnRow">
+            <button class="btn" id="dlgCopy">Copy</button>
+            <button class="btn ghost" id="dlgListen">🔊 Listen</button>
+            <button class="btn ghost" id="dlgNew">+ New (random)</button>
+          </div>
+          <div class="feedback" id="dlgFeedback" aria-live="polite"></div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">B) Phone opening script (professional)</div>
+          <p class="cardText" data-fr="Nom + raison de l’appel + question + prochaine étape.">
+            Name + reason + check time + next step.
+          </p>
+
+          <div class="builder" id="phoneBuilder"></div>
+          <div class="btnRow">
+            <button class="btn" id="phoneCopy">Copy</button>
+            <button class="btn ghost" id="phoneListen">🔊 Listen</button>
+            <button class="btn ghost" id="phoneModel">Show model</button>
+          </div>
+          <div class="feedback" id="phoneFeedback" aria-live="polite"></div>
+        </article>
+      </div>
+
+      <article class="card">
+        <div class="cardTitle">C) Role‑play cards (safe topics)</div>
+        <div class="enonce">
+          <div class="enonce__title">ÉNONCÉ</div>
+          <div class="enonce__text"><b>EN:</b> Choose a card. Speak for 20 seconds using the prompts.</div>
+          <div class="enonce__text fr" data-fr="<b>FR:</b> Choisis une carte. Parle 20 secondes avec les aides."></div>
+        </div>
+
+        <div class="roleGrid" id="roleGrid"></div>
+        <div class="plannerOut" id="roleOut" aria-live="polite"></div>
+        <div class="btnRow">
+          <button class="btn ghost" id="roleListen">🔊 Listen prompts</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel" id="tab-practice">
+      <div class="panelHead">
+        <h2>5) Practice zone — instant feedback + hints</h2>
+        <p class="muted" data-fr="Tout est corrigé immédiatement. Tu vois pourquoi c’est juste/faux.">
+          Everything is corrected instantly. You also see “why.”
+        </p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="cardTitle">A) “Best greeting” quiz (context)</div>
+          <div class="enonce">
+            <div class="enonce__title">ÉNONCÉ</div>
+            <div class="enonce__text"><b>EN:</b> Choose the best opening line for the situation.</div>
+            <div class="enonce__text fr" data-fr="<b>FR:</b> Choisis la meilleure phrase de départ."></div>
+          </div>
+
+          <div id="contextQuiz"></div>
+          <div class="btnRow">
+            <button class="btn ghost" id="cqNew">+ New</button>
+            <button class="btn ghost" id="cqHint">💡 Hint</button>
+          </div>
+          <div class="feedback" id="cqFeedback" aria-live="polite"></div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">B) “Best answer” quiz (How are you?)</div>
+          <div class="enonce">
+            <div class="enonce__title">ÉNONCÉ</div>
+            <div class="enonce__text"><b>EN:</b> Pick the best answer (short + friendly + ask back).</div>
+            <div class="enonce__text fr" data-fr="<b>FR:</b> Choisis la meilleure réponse (courte + sympa + question retour)."></div>
+          </div>
+
+          <div id="answerQuiz"></div>
+          <div class="btnRow">
+            <button class="btn ghost" id="aqNew">+ New</button>
+            <button class="btn ghost" id="aqHint">💡 Hint</button>
+          </div>
+          <div class="feedback" id="aqFeedback" aria-live="polite"></div>
+        </article>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="cardTitle">C) Fill‑in mini dialogue (instant check)</div>
+          <div class="enonce">
+            <div class="enonce__title">ÉNONCÉ</div>
+            <div class="enonce__text"><b>EN:</b> Type the missing words. Instant feedback.</div>
+            <div class="enonce__text fr" data-fr="<b>FR:</b> Écris les mots manquants. Correction immédiate."></div>
+          </div>
+
+          <div id="fillDialog"></div>
+          <div class="btnRow">
+            <button class="btn ghost" id="fdNew">+ New</button>
+            <button class="btn ghost" id="fdHint">💡 Hint</button>
+            <button class="btn ghost" id="fdReset">Reset inputs</button>
+          </div>
+          <div class="feedback" id="fdFeedback" aria-live="polite"></div>
+        </article>
+
+        <article class="card">
+          <div class="cardTitle">D) Tap‑order dialogue (easy hints)</div>
+          <div class="enonce">
+            <div class="enonce__title">ÉNONCÉ</div>
+            <div class="enonce__text"><b>EN:</b> Tap the lines in the correct order.</div>
+            <div class="enonce__text fr" data-fr="<b>FR:</b> Clique les lignes dans le bon ordre."></div>
+          </div>
+
+          <div id="tapOrder"></div>
+          <div class="btnRow">
+            <button class="btn ghost" id="toNew">+ New</button>
+            <button class="btn ghost" id="toHint">💡 Hint</button>
+            <button class="btn ghost" id="toReset">Reset</button>
+          </div>
+          <div class="feedback" id="toFeedback" aria-live="polite"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="tab-printable">
+      <div class="panelHead">
+        <h2>6) Printable — Greeting & small talk cheat sheet</h2>
+        <p class="muted" data-fr="Clique Print en haut. Cette page est optimisée pour l’impression.">
+          Tap Print in the top bar. This section is optimized for printing.
+        </p>
+      </div>
+
+      <article class="card printable" id="printArea"></article>
+    </section>
+
+    <footer class="foot">
+      <div class="muted">Touch‑friendly • Safari/iPad ready • Saved locally</div>
+      <div class="muted" id="saveState">Saved ✓</div>
+    </footer>
+  </main>
+
+  <script src="/js/small-talk-greetings-guide.js"></script>
+</body>
+</html>
