@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Advanced Future Tenses — Deadline & Planning Masterclass</title>
+  <link rel="stylesheet" href="advanced-future-tenses-masterclass.css"/>
+  <link rel="stylesheet" href="css/advanced-future-tenses-masterclass.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🚀</div>
+      <div class="title">
+        <h1>Advanced Future Tenses — Deadline & Planning Masterclass</h1>
+        <div class="sub">Future continuous • future perfect • future perfect continuous • “be about to / due to / set to”</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <div class="pill" id="jsStatus" aria-live="polite">JS: not loaded</div>
+      <div class="pill"><span>Voice</span><b id="voicePill">US</b></div>
+      <div class="pill"><span>Score</span><b id="scorePill">0</b></div>
+      <button class="btn ghost" id="btnTeacher">Teacher: OFF</button>
+      <button class="btn ghost" id="btnReset">Reset</button>
+      <button class="btn" id="btnPrint">Print</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="grid2">
+        <div>
+          <h2>Today’s mission (advanced, but practical)</h2>
+          <p class="muted">This page is an <strong>add-on</strong> to your Future Tenses Power Lesson: it goes deeper into the “advanced” section with clearer rules, more scenarios, and more practice.</p>
+
+          <div class="note">
+            <strong>Big idea:</strong> Advanced future tenses are about <strong>focus</strong>:
+            <span class="kbd">in progress</span> vs <span class="kbd">completed by a deadline</span> vs <span class="kbd">duration up to a deadline</span>.
+          </div>
+
+          <div class="toc" style="margin-top:12px">
+            <a href="#s1">1) Toolkit cards</a>
+            <a href="#s2">2) Keyword detector</a>
+            <a href="#s3">3) Scenario Arena</a>
+            <a href="#s4">4) Sentence Forge</a>
+            <a href="#s5">5) Tap‑Order</a>
+            <a href="#s6">6) Dialogue</a>
+            <a href="#s7">7) Mini test</a>
+            <a href="#top">⬆ Back to top</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="row">
+            <div style="flex:1">
+              <div class="label">Level switch (changes scenario bank + mission)</div>
+              <div class="seg" role="tablist" aria-label="Level switch">
+                <button class="segbtn active" data-level="B1" role="tab" aria-selected="true">B1+</button>
+                <button class="segbtn" data-level="B2" role="tab" aria-selected="false">B2</button>
+                <button class="segbtn" data-level="C1" role="tab" aria-selected="false">C1</button>
+              </div>
+            </div>
+            <div style="flex:1">
+              <div class="label">Voice (speaking buttons)</div>
+              <div class="seg" role="tablist" aria-label="Voice switch">
+                <button class="segbtn active" data-voice="US" role="tab" aria-selected="true">US</button>
+                <button class="segbtn" data-voice="UK" role="tab" aria-selected="false">UK</button>
+              </div>
+            </div>
+          </div>
+
+          <hr class="sep"/>
+
+          <div class="row">
+            <div style="flex:1">
+              <div class="label">Mission target</div>
+              <div class="result" id="missionBox">Loading…</div>
+            </div>
+          </div>
+
+          <div class="warn" style="margin-top:10px">
+            <strong>French traps:</strong> <span class="kbd">I will to</span> ❌ • <span class="kbd">I have finished tomorrow</span> ❌ •
+            For deadlines, think: <span class="kbd">By + time → will have + past participle</span>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="s1">
+      <div class="row" style="justify-content:space-between">
+        <div>
+          <h2>1) Advanced toolkit cards (tap to open)</h2>
+          <div class="muted">Form • meaning • keywords • 2 model sentences • mini “French tip”</div>
+        </div>
+        <button class="btn small ghost" id="btnCollapseCards">Collapse all</button>
+      </div>
+
+      <div class="cards" id="toolkitCards"></div>
+    </section>
+
+    <section class="card" id="s2">
+      <div class="grid2">
+        <div class="panel">
+          <h2>2) Keyword detector (the “how to know” engine)</h2>
+          <p class="muted">Pick a keyword/time phrase → get the best tense + reason + model sentence.</p>
+
+          <div class="chips" id="keywordChips"></div>
+
+          <div class="row" style="margin-top:12px">
+            <div style="flex:1">
+              <div class="label">Your situation (optional)</div>
+              <select id="situationSel">
+                <option value="work">Work deadline / deliverable</option>
+                <option value="travel">Travel plan / logistics</option>
+                <option value="family">Family schedule</option>
+                <option value="study">Study / exam prep</option>
+                <option value="health">Healthcare appointment</option>
+              </select>
+            </div>
+            <div style="flex:1">
+              <div class="label">Register</div>
+              <select id="registerSel">
+                <option value="neutral">Neutral</option>
+                <option value="polite">Polite (customer service)</option>
+                <option value="formal">Formal (email / meeting)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:10px">
+            <button class="btn" id="btnDetect">Detect</button>
+            <button class="btn ghost" id="btnSayDetect">Say</button>
+            <button class="btn ghost" id="btnCopyDetect">Copy</button>
+          </div>
+
+          <div class="result" id="detectOut" aria-live="polite">Choose a keyword chip, then click Detect.</div>
+
+          <div class="note" style="margin-top:10px">
+            <strong>Simple rule:</strong>
+            <span class="kbd">at this time tomorrow</span> → future continuous •
+            <span class="kbd">by Friday</span> → future perfect •
+            <span class="kbd">for 2 hours by 6 pm</span> → future perfect continuous.
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Micro cheatsheet (printable)</h2>
+          <div class="muted">Tap to copy a “mini chart” for learners.</div>
+
+          <div class="row" style="margin-top:10px">
+            <button class="btn" id="btnCopyCheat">Copy cheatsheet</button>
+            <button class="btn ghost" id="btnShowCheat">Show</button>
+          </div>
+
+          <textarea class="textarea hide" id="cheatBox" aria-label="Cheatsheet"></textarea>
+
+          <div class="result" id="cheatResult" style="margin-top:10px">Ready.</div>
+
+          <hr class="sep"/>
+
+          <div class="muted2">
+            Teaching tip: make learners say the time phrase first (“By Friday…”) then choose the tense.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="s3">
+      <div class="grid2">
+        <div class="panel">
+          <h2>3) Scenario Arena (instant right/wrong + hints)</h2>
+          <p class="muted">Real-life situations: deadlines, planning, polite questions, predictions.</p>
+          <div class="row">
+            <button class="btn ghost" id="btnNewSet">New set</button>
+            <button class="btn ghost" id="btnResetArena">Reset arena</button>
+          </div>
+          <div class="quiz" id="arenaQuiz"></div>
+        </div>
+
+        <div class="panel">
+          <h2>Fast gap-fill (instant check)</h2>
+          <p class="muted">Type the missing words. Spelling matters a little (we normalize).</p>
+          <div class="gap" id="gapBox"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="s4">
+      <div class="grid2">
+        <div class="panel">
+          <h2>4) Sentence Forge (build • say • copy)</h2>
+          <p class="muted">Choose a structure and generate 3 forms: affirmative / negative / question.</p>
+
+          <div class="row">
+            <div style="flex:1">
+              <div class="label">Tense</div>
+              <select id="forgeTense"></select>
+            </div>
+            <div style="flex:1">
+              <div class="label">Subject</div>
+              <select id="forgeSubj">
+                <option>I</option><option>You</option><option>He</option><option>She</option><option>We</option><option>They</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:10px">
+            <div style="flex:1">
+              <div class="label">Verb</div>
+              <select id="forgeVerb"></select>
+            </div>
+            <div style="flex:1">
+              <div class="label">Object / extra</div>
+              <select id="forgeObj"></select>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:10px">
+            <div style="flex:1">
+              <div class="label">Time phrase</div>
+              <select id="forgeTime"></select>
+            </div>
+            <div style="flex:1">
+              <div class="label">Style</div>
+              <select id="forgeStyle">
+                <option value="neutral">Neutral</option>
+                <option value="friendly">Friendly (contractions)</option>
+                <option value="formal">Formal</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:10px">
+            <button class="btn" id="btnForge">Generate</button>
+            <button class="btn ghost" id="btnForgeSay">Say</button>
+            <button class="btn ghost" id="btnForgeCopy">Copy</button>
+          </div>
+
+          <div class="result" id="forgeOut" aria-live="polite">Ready.</div>
+        </div>
+
+        <div class="panel">
+          <h2>Quick “choose the best” (micro drill)</h2>
+          <p class="muted">Tap an option → instant feedback.</p>
+          <div class="quiz" id="microQuiz"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="s5">
+      <div class="panel">
+        <div class="row" style="justify-content:space-between">
+          <div>
+            <h2>5) Tap‑Order Challenge (not pre‑ordered ✅)</h2>
+            <div class="muted">Tap tokens to build the sentence → Check. Tap a token in your built sentence to remove it.</div>
+          </div>
+          <div class="row">
+            <button class="btn ghost" id="btnNewTap">New sentences</button>
+            <button class="btn ghost" id="btnResetTap">Reset</button>
+          </div>
+        </div>
+        <div class="taporder" id="tapBox"></div>
+      </div>
+    </section>
+
+    <section class="card" id="s6">
+      <div class="panel">
+        <h2>6) Dialogue (choose your reply)</h2>
+        <p class="muted">Deadline + planning + polite questions. Your reply choices change by level.</p>
+        <div class="dialogue" id="dialogueBox"></div>
+      </div>
+    </section>
+
+    <section class="card" id="s7">
+      <div class="panel">
+        <div class="row" style="justify-content:space-between">
+          <div>
+            <h2>7) Mini test (mixed)</h2>
+            <div class="muted">Instant feedback + hint. After 2 tries, the explanation opens.</div>
+          </div>
+          <button class="btn ghost" id="btnResetTest">Reset test</button>
+        </div>
+        <div class="quiz" id="testQuiz"></div>
+      </div>
+    </section>
+
+    <div class="footer">SpeakEasyTisha • Advanced Future Tenses Masterclass • Tap-friendly (Mac/iPad Safari)</div>
+  </main>
+
+  <script src="advanced-future-tenses-masterclass.js"></script>
+  <script src="js/advanced-future-tenses-masterclass.js"></script>
+</body>
+</html>
