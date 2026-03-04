@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>USA Benefits Email Decoder — Health Insurance + Family Questions</title>
+  <link rel="stylesheet" href="benefits-email-decoder-usa.css"/>
+  <link rel="stylesheet" href="css/benefits-email-decoder-usa.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🏥</div>
+      <div>
+        <h1>USA Benefits Email Decoder</h1>
+        <p class="sub">Decode a real benefits summary • choose smart questions • compare plans for a family of 5</p>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <div class="pill" id="jsStatus" aria-live="polite">JS: not loaded</div>
+      <div class="pill" id="progressPill" aria-live="polite">Progress: 0%</div>
+      <button class="btn ghost" id="btnTeacher">Teacher Mode: OFF</button>
+      <button class="btn ghost" id="btnReset">Reset</button>
+      <button class="btn" id="btnPrint">Print</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card intro">
+      <div class="grid2">
+        <div>
+          <h2>Today’s mission</h2>
+          <ul class="checklist">
+            <li>Understand the key vocabulary in a benefits email.</li>
+            <li>Compare plan types (Surest vs traditional UHC Choice plans).</li>
+            <li>Estimate costs for a <strong>family of 5</strong> using weekly payroll deductions.</li>
+            <li>Ask the right questions before choosing a plan.</li>
+          </ul>
+          <div class="note">
+            <strong>Important:</strong> This lesson teaches how to <em>read</em> and <em>question</em> a benefits offer.
+            Exact deductibles/copays/out‑of‑pocket limits depend on your employer’s official plan documents (SBC/SPD).
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="row">
+            <label class="label">Level</label>
+            <div class="seg" role="tablist" aria-label="Level switch">
+              <button class="seg-btn active" data-level="A2" role="tab" aria-selected="true">A2</button>
+              <button class="seg-btn" data-level="B2" role="tab" aria-selected="false">B2</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="label">Language</label>
+            <div class="seg" role="tablist" aria-label="Language toggle">
+              <button class="seg-btn active" data-lang="EN" role="tab" aria-selected="true">EN</button>
+              <button class="seg-btn" data-lang="FR" role="tab" aria-selected="false">FR</button>
+            </div>
+          </div>
+
+          <div class="row tiny">
+            <span class="muted">Tap-friendly • instant feedback • no drag-and-drop</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="toc card">
+      <h2>Sections</h2>
+      <div class="toc-grid">
+        <a class="toc-item" href="#s1">1) Decode the email</a>
+        <a class="toc-item" href="#s2">2) Vocabulary bank (EN/FR)</a>
+        <a class="toc-item" href="#s3">3) Eligibility timeline</a>
+        <a class="toc-item" href="#s4">4) Plan comparison + family cost calculator</a>
+        <a class="toc-item" href="#s5">5) Questions to ask (family of 5)</a>
+        <a class="toc-item" href="#s6">6) Practice zone (QCM, gap-fill, sentence order)</a>
+        <a class="toc-item" href="#s7">7) Dialogue trainer</a>
+        <a class="toc-item" href="#s8">8) Final mission: choose + justify</a>
+      </div>
+    </nav>
+
+    <!-- SECTION 1 -->
+    <section class="card" id="s1">
+      <div class="head">
+        <h2>1) Decode the email</h2>
+        <p class="muted">Tap highlighted terms to see meaning (and French help if you switch to FR).</p>
+      </div>
+
+      <div class="emailbox" aria-label="Benefits email excerpt">
+        <p><strong>All benefit enrollment</strong> is done through your <span class="hl term" data-term="portal">portal login</span>. Assistance is available by contacting the <span class="hl term" data-term="benefits_specialist">Benefits Specialist</span>.</p>
+
+        <h3 class="emailh">2026 Benefits Summary</h3>
+        <p><span class="hl term" data-term="eligibility">Benefit eligibility</span> starts on the <span class="hl term" data-term="first_of_month">1st of the month</span> following <span class="hl term" data-term="waiting_period">30 days</span> of <span class="hl term" data-term="full_time">full‑time employment</span>.</p>
+
+        <p><strong>Health plan option A: Surest</strong> — choose an <span class="hl term" data-term="in_network">in‑network provider</span> and see what you will pay for each service <em>before</em> care. Company pays <span class="hl term" data-term="premium">100% of employee premium</span>. <span class="hl term" data-term="dependents">Spouse/children/family</span> can be added with an extra cost.</p>
+
+        <p><strong>Health plan option B: UHC Choice 2500</strong> — major medical + wellness + <span class="hl term" data-term="rx">prescription benefits</span>. Company pays <span class="hl term" data-term="premium">100% of employee premium</span>. Dependents cost extra.</p>
+
+        <p><strong>Health plan option C: UHC Choice 1000</strong> — major medical + wellness + prescriptions. Company pays <span class="hl term" data-term="premium_share">80% of employee premium</span>. Employee pays the rest + dependents cost extra.</p>
+
+        <hr class="hr"/>
+
+        <p><strong>Dental</strong> — employer pays <span class="hl term" data-term="premium_share">50% of premium</span>. Plans may include an <span class="hl term" data-term="annual_max">annual maximum benefit</span>.</p>
+
+        <p><strong>Vision</strong> — employer pays <span class="hl term" data-term="premium_share">50% of premium</span>.</p>
+
+        <p><strong>Section 125 FSA</strong> — set aside <span class="hl term" data-term="pretax">pre‑tax</span> money for medical reimbursement (limit applies).</p>
+
+        <p><strong>Short‑Term Disability (STD)</strong> — supplemental pay (example: up to 60% of base earnings for up to 26 weeks). <span class="hl term" data-term="auto_enroll">Automatically enrolled</span>.</p>
+
+        <p><strong>Long‑Term Disability (LTD)</strong> — supplemental pay after a longer waiting time (example: after 180 days). Automatically enrolled.</p>
+
+        <p><strong>Life insurance</strong> — employer paid, fixed death benefit.</p>
+
+        <p><strong>401(k)</strong> — retirement savings with an <span class="hl term" data-term="match">employer match</span> after eligibility.</p>
+
+        <p><strong>PTO</strong> — paid time off (holidays, vacation, sick time). Some policies allow <span class="hl term" data-term="rollover">rollover</span>.</p>
+      </div>
+
+      <div class="term-drawer" id="termDrawer" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="term-card">
+          <div class="term-top">
+            <div>
+              <div class="kicker" id="termKicker">TERM</div>
+              <div class="term-title" id="termTitle">—</div>
+            </div>
+            <button class="iconbtn" id="termClose" aria-label="Close">✕</button>
+          </div>
+          <div class="term-body" id="termBody"></div>
+          <div class="term-actions">
+            <button class="btn ghost" id="termCopy">Copy</button>
+            <button class="btn" id="termGotIt">Got it</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="card" id="s2">
+      <div class="head">
+        <h2>2) Vocabulary bank (EN/FR)</h2>
+        <p class="muted">Tap a card to flip. Use FR mode if you want translations.</p>
+      </div>
+      <div class="tools">
+        <input id="vocabSearch" class="input" type="search" placeholder="Search: deductible, premium, in-network, FSA…"/>
+        <button class="btn ghost" id="btnShuffleVocab">Shuffle</button>
+      </div>
+      <div id="vocabGrid" class="vocab-grid" aria-label="Vocabulary cards"></div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="card" id="s3">
+      <div class="head">
+        <h2>3) Eligibility timeline</h2>
+        <p class="muted">Practice the rule: “starts on the 1st of the month following 30 days of full-time employment.”</p>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <label class="label" for="startDate">Start date (first day of work)</label>
+          <input class="input" id="startDate" type="date"/>
+          <div class="row">
+            <button class="btn" id="btnCalcEligibility">Calculate eligibility date</button>
+            <button class="btn ghost" id="btnTryExamples">Try examples</button>
+          </div>
+          <div class="result" id="eligibilityResult" aria-live="polite">Choose a start date.</div>
+          <div class="mini">
+            <span class="tag">Tip</span>
+            <span class="muted">“Following 30 days” = you complete 30 full days first, then coverage starts on the next 1st.</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Quick check</h3>
+          <div id="eligibilityQuiz" class="quiz"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="card" id="s4">
+      <div class="head">
+        <h2>4) Plan comparison + family cost calculator</h2>
+        <p class="muted">Use the weekly payroll deductions from the email to estimate costs for a family of five.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="panel">
+          <h3>Plan cards</h3>
+          <div id="planCards" class="plan-cards"></div>
+          <div class="note">
+            <strong>What the email does NOT show:</strong> deductible / copays / out‑of‑pocket maximum for the UHC Choice plans.
+            You must check the official plan document (SBC/SPD).
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Family cost calculator</h3>
+          <div class="row">
+            <label class="label" for="calcPlan">Plan</label>
+            <select id="calcPlan" class="input"></select>
+          </div>
+          <div class="row">
+            <label class="label" for="calcTier">Coverage</label>
+            <select id="calcTier" class="input">
+              <option value="employee">Employee only</option>
+              <option value="children">Employee + children</option>
+              <option value="spouse">Employee + spouse</option>
+              <option value="family">Family (spouse + children)</option>
+            </select>
+          </div>
+          <div class="row">
+            <label class="label" for="calcPeople">Family size</label>
+            <select id="calcPeople" class="input">
+              <option value="5" selected>5 (example)</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+          <button class="btn" id="btnCalcCost">Calculate</button>
+          <div class="result" id="costResult" aria-live="polite">Choose a plan and coverage.</div>
+          <div class="mini muted">Monthly estimate uses: weekly × 52 ÷ 12.</div>
+        </div>
+
+        <div class="panel">
+          <h3>Cost logic simulator</h3>
+          <p class="muted">Understand the words: deductible, copay, coinsurance, out‑of‑pocket max.</p>
+          <div class="row">
+            <label class="label" for="simBill">Example bill (allowed amount)</label>
+            <input id="simBill" class="input" type="number" min="0" step="10" value="1200"/>
+          </div>
+          <div class="row">
+            <label class="label" for="simDed">Deductible</label>
+            <input id="simDed" class="input" type="number" min="0" step="50" value="1000"/>
+          </div>
+          <div class="row">
+            <label class="label" for="simCo">Coinsurance % (after deductible)</label>
+            <input id="simCo" class="input" type="number" min="0" max="100" step="5" value="20"/>
+          </div>
+          <div class="row">
+            <label class="label" for="simOOP">Out‑of‑pocket max</label>
+            <input id="simOOP" class="input" type="number" min="0" step="100" value="6000"/>
+          </div>
+          <button class="btn" id="btnSim">Simulate</button>
+          <div class="result" id="simResult" aria-live="polite">Try a simulation.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section class="card" id="s5">
+      <div class="head">
+        <h2>5) Questions to ask before you choose (family of 5)</h2>
+        <p class="muted">Tap to reveal. Copy your “question list” at the end.</p>
+      </div>
+
+      <div id="qaGrid" class="qa-grid" aria-label="Questions to ask"></div>
+
+      <div class="panel">
+        <h3>Your personal checklist</h3>
+        <p class="muted">Select the questions you want to ask. Then copy for an email to HR/Benefits.</p>
+        <div id="checklistQuestions" class="checklist-box"></div>
+        <div class="row">
+          <button class="btn" id="btnCopyQuestions">Copy selected questions</button>
+          <button class="btn ghost" id="btnClearQuestions">Clear</button>
+        </div>
+        <textarea id="questionsOut" class="textarea" rows="6" placeholder="Your copied questions will appear here too…"></textarea>
+      </div>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section class="card" id="s6">
+      <div class="head">
+        <h2>6) Practice zone</h2>
+        <p class="muted">Instant feedback: click = correct/incorrect immediately.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3>A) QCM — Decode meaning</h3>
+          <div id="qcm1" class="quiz"></div>
+        </div>
+
+        <div class="panel">
+          <h3>B) Gap fill — Articles + coverage</h3>
+          <div id="gap1" class="gap"></div>
+        </div>
+
+        <div class="panel">
+          <h3>C) Sentence order (Tap‑Order Challenge)</h3>
+          <div id="tapOrder" class="taporder"></div>
+        </div>
+
+        <div class="panel">
+          <h3>D) Grammar — Comparatives, superlatives, modals</h3>
+          <div id="grammarDrill" class="quiz"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section class="card" id="s7">
+      <div class="head">
+        <h2>7) Dialogue trainer</h2>
+        <p class="muted">Choose the best next reply. (Real HR/benefits phone-call style.)</p>
+      </div>
+      <div id="dialogue" class="dialogue"></div>
+    </section>
+
+    <!-- SECTION 8 -->
+    <section class="card" id="s8">
+      <div class="head">
+        <h2>8) Final mission — Choose + justify</h2>
+        <p class="muted">You’re a family of five. You must choose a plan *and* ask the right questions.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3>Scenario generator</h3>
+          <button class="btn" id="btnScenario">Generate scenario</button>
+          <div class="result" id="scenarioOut">Tap “Generate scenario”.</div>
+          <div class="mini muted">This does not give medical/financial advice. It trains decision vocabulary.</div>
+        </div>
+
+        <div class="panel">
+          <h3>Your justification (guided)</h3>
+          <div class="row">
+            <label class="label" for="finalPlan">Pick a plan</label>
+            <select id="finalPlan" class="input"></select>
+          </div>
+          <div class="row">
+            <label class="label" for="finalReason">Reason (use comparatives + modals)</label>
+            <textarea id="finalReason" class="textarea" rows="6" placeholder="Example: Surest seems simpler than a traditional plan. We might choose it because we can see costs before care, but we should confirm the out-of-pocket maximum and prescriptions for the kids."></textarea>
+          </div>
+          <div class="row">
+            <button class="btn" id="btnCoach">Coach my text</button>
+            <button class="btn ghost" id="btnCopyFinal">Copy</button>
+          </div>
+          <div class="result" id="coachOut">Write your justification, then click “Coach my text”.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="muted">
+        Teacher notes: this page references official definitions for deductible/coinsurance/out-of-pocket max and official statements about Surest and 2026 FSA limits.
+      </div>
+    </footer>
+  </main>
+
+  <script src="benefits-email-decoder-usa.js"></script>
+  <script src="js/benefits-email-decoder-usa.js"></script>
+
+</body>
+</html>
