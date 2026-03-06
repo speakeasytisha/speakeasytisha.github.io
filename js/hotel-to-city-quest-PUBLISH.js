@@ -7,6 +7,20 @@
   const $ = (sel, el=document) => el.querySelector(sel);
   const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
 
+
+
+  function safeEl(sel, root=document){
+    try{ return (root || document).querySelector(sel); }catch(e){ return null; }
+  }
+  function safeOn(sel, evt, handler, root=document){
+    const el = safeEl(sel, root);
+    if(!el){
+      console.warn("safeOn: missing element", sel);
+      return;
+    }
+    el.addEventListener(evt, handler);
+  }
+
   function escapeHtml(s){
     return String(s ?? "")
       .replaceAll("&","&amp;")
