@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SpeakEasyTisha • English 360° — Travel Success Hub (Writing + Speaking)</title>
+  <meta name="description" content="A one-stop interactive prep hub for English 360° with exam techniques, travel scenarios, speaking drills, and writing correction tools." />
+  <link rel="stylesheet" href="/css/english360-travel-exam-success-hub.css" />
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">SE</div>
+      <div>
+        <div class="title">English 360° — Travel Success Hub</div>
+        <div class="subtitle">Exam techniques + travel scenarios • focus: speaking + writing • A2→B2 • Mac/iPad Safari friendly</div>
+      </div>
+    </div>
+
+    <div class="toolbar" role="region" aria-label="Lesson controls">
+      <div class="control">
+        <div class="label">Level</div>
+        <div class="seg" role="group" aria-label="Level selector">
+          <button class="segBtn isOn" data-level="A2" type="button">A2</button>
+          <button class="segBtn" data-level="B1" type="button">B1</button>
+          <button class="segBtn" data-level="B2" type="button">B2</button>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="label">FR help</div>
+        <button class="pill" id="frToggle" type="button" aria-pressed="false">Off</button>
+      </div>
+
+      <div class="control">
+        <div class="label">Accent (TTS)</div>
+        <div class="seg" role="group" aria-label="Accent selector">
+          <button class="segBtn isOn" data-accent="US" type="button">US</button>
+          <button class="segBtn" data-accent="UK" type="button">UK</button>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="label">Rate</div>
+        <input id="rate" class="range" type="range" min="0.7" max="1.25" step="0.05" value="1" aria-label="Speech rate" />
+      </div>
+
+      <div class="control scoreBox">
+        <div class="label">Score</div>
+        <div class="scoreLine">
+          <span class="pill mono" id="scorePill">0 / 0</span>
+          <button class="iconBtn" id="resetScore" type="button" title="Reset score" aria-label="Reset score">↺</button>
+        </div>
+        <div class="tiny">Accuracy: <span id="acc">0%</span></div>
+      </div>
+
+      <div class="control">
+        <div class="label">Actions</div>
+        <div class="btnRow">
+          <button class="pill" id="printBtn" type="button">Print</button>
+          <button class="pill" id="newSetBtn" type="button">✨ New set</button>
+          <button class="pill ghost" id="resetAllBtn" type="button">Reset all</button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Lesson sections">
+      <a class="tab" href="#overview">Overview</a>
+      <a class="tab" href="#techniques">Techniques</a>
+      <a class="tab" href="#vocab">Vocabulary</a>
+      <a class="tab" href="#practice">Practice</a>
+      <a class="tab" href="#speaking">Speaking</a>
+      <a class="tab" href="#writing">Writing</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="hero card">
+      <div class="heroGrid">
+        <div>
+          <h1 class="h1">One-stop shop to succeed English 360°</h1>
+          <p class="lead">
+            You’ll practice exactly what gets scored: clear structure, appropriate vocabulary, accurate grammar, and confident delivery.
+            This page is built for <strong>travel scenarios</strong> (retirement / pleasure), while keeping the <strong>professional exam style</strong>.
+          </p>
+          <div class="notice" role="note">
+            <div class="noticeTitle">Success rule (simple)</div>
+            <div class="noticeBody">
+              <strong>Answer → Detail → Close</strong>
+              <span class="muted"> (one idea per sentence, one tense signal, one polite line).</span>
+              <div class="frOnly muted">Règle facile : Réponse → Détail → Conclusion (1 idée par phrase, 1 marqueur de temps, 1 phrase polie).</div>
+            </div>
+          </div>
+
+          <div class="chips" id="quickChips" aria-label="Quick phrase chips"></div>
+
+          <div class="tiny muted mt8">
+            Tip: click chips to speak them (TTS) and reuse them in the drills.
+            <span class="frOnly">Astuce : clique sur une “chip” pour l’entendre, puis réutilise-la dans les exercices.</span>
+          </div>
+        </div>
+
+        <div class="heroSide">
+          <div class="kpi">
+            <div class="kpiNum">40–60 min</div>
+            <div class="kpiLbl">Typical test length</div>
+            <div class="frOnly tiny muted">Durée indicative du test</div>
+          </div>
+          <div class="kpi">
+            <div class="kpiNum">5 skills</div>
+            <div class="kpiLbl">Listening • Reading • Grammar • Speaking • Writing</div>
+            <div class="frOnly tiny muted">5 compétences évaluées</div>
+          </div>
+          <div class="kpi">
+            <div class="kpiNum">125+</div>
+            <div class="kpiLbl">Words for writing tasks</div>
+            <div class="frOnly tiny muted">Nombre de mots en expression écrite</div>
+          </div>
+          <div class="kpi">
+            <div class="kpiNum">30–60 s</div>
+            <div class="kpiLbl">Typical speaking answers</div>
+            <div class="frOnly tiny muted">Durée de réponse orale</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section id="overview" class="card">
+      <h2 class="h2">0) What to expect (English 360° snapshot)</h2>
+      <p class="muted">
+        The exam is online and covers five competencies. In many versions it’s adaptive (some questions vary by candidate).
+        <span class="frOnly">L’examen est en ligne et couvre 5 compétences. Souvent, il est adaptatif (certaines questions varient selon le candidat).</span>
+      </p>
+
+      <div class="grid2" id="examCards"></div>
+
+      <details class="mt12">
+        <summary class="summary">Exam-day checklist (tech + mindset)</summary>
+        <div class="panel">
+          <ul class="bullets">
+            <li><strong>Tech:</strong> stable internet, mic + headphones, webcam, close all apps/tabs, silence notifications.</li>
+            <li><strong>Warm-up:</strong> 3 minutes: read 5 chips out loud + write a 5-line email skeleton.</li>
+            <li><strong>Mindset:</strong> don’t chase perfection—chase clarity. Short sentences win.</li>
+          </ul>
+          <div class="frOnly">
+            <ul class="bullets">
+              <li><strong>Technique :</strong> internet stable, micro + casque, webcam, fermer les applis/onglets, couper les notifications.</li>
+              <li><strong>Échauffement :</strong> 3 minutes : lire 5 “chips” à voix haute + écrire un squelette d’email en 5 lignes.</li>
+              <li><strong>Esprit :</strong> pas la perfection—la clarté. Les phrases courtes gagnent.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- Techniques -->
+    <section id="techniques" class="card">
+      <h2 class="h2">1) Techniques that “beat the exam” (ethically)</h2>
+      <p class="muted">
+        These are not tricks. They’re <strong>repeatable routines</strong> that match scoring criteria: structure, vocabulary, grammar accuracy, and ease.
+        <span class="frOnly">Ce ne sont pas des “trucs”. Ce sont des routines qui collent aux critères : structure, vocabulaire, grammaire, aisance.</span>
+      </p>
+
+      <div class="grid3" id="techCards"></div>
+
+      <div class="split mt14">
+        <div class="panel">
+          <h3 class="h3">Your “safe” sentence kit</h3>
+          <div class="tiny muted">Use these to stay correct under time pressure.</div>
+          <div class="kit" id="safeKit"></div>
+          <div class="frOnly tiny muted mt8">Objectif : rester correct(e) sous pression.</div>
+        </div>
+
+        <div class="panel">
+          <h3 class="h3">Polite request formulas</h3>
+          <div class="tiny muted">Perfect for travel calls / emails.</div>
+          <div class="kit" id="politeKit"></div>
+          <div class="frOnly tiny muted mt8">Parfait pour téléphone / emails en voyage.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vocabulary -->
+    <section id="vocab" class="card">
+      <h2 class="h2">2) Vocabulary — Travel situations (with “exam-ready” phrasing)</h2>
+      <div class="tiny muted">Tap a chip to hear it. Use “FR help” to see translations for selected words.</div>
+
+      <div class="vocabControls mt10">
+        <label class="labelInline">
+          Category
+          <select id="vocabCat" class="select">
+            <option value="all">All</option>
+          </select>
+        </label>
+
+        <label class="labelInline">
+          Search
+          <input id="vocabSearch" class="input" type="search" placeholder="e.g., reservation, refund, directions" />
+        </label>
+
+        <button class="pill ghost" id="vocabShuffle" type="button">Shuffle</button>
+      </div>
+
+      <div class="chips mt10" id="vocabChips" aria-label="Vocabulary chips"></div>
+
+      <details class="mt12">
+        <summary class="summary">Definitions + examples</summary>
+        <div class="panel" id="vocabList"></div>
+      </details>
+
+      <details class="mt12">
+        <summary class="summary">Matching game (tap-friendly)</summary>
+        <div class="panel">
+          <div class="tiny muted">Tap a word → then tap its category. No drag & drop.</div>
+          <div class="matchGrid">
+            <div>
+              <div class="miniTitle">Words</div>
+              <div class="matchWords" id="matchWords"></div>
+            </div>
+            <div>
+              <div class="miniTitle">Categories</div>
+              <div class="matchCats" id="matchCats"></div>
+            </div>
+          </div>
+          <div class="matchStatus mt10">
+            <span class="pill mono" id="matchProg">0 / 8</span>
+            <button class="pill" id="matchNew" type="button">New set</button>
+            <span class="tiny" id="matchMsg" aria-live="polite"></span>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- Practice -->
+    <section id="practice" class="card">
+      <h2 class="h2">3) Practice — Quick checks (instant feedback)</h2>
+
+      <div class="actionsRow">
+        <button class="pill" id="newGrammar" type="button">New grammar quiz</button>
+        <button class="pill" id="newWord" type="button">New word quiz</button>
+        <button class="pill" id="newOrder" type="button">New order</button>
+      </div>
+
+      <div class="grid2 mt10">
+        <div class="panel">
+          <h3 class="h3">A) Grammar quick-check</h3>
+          <div id="grammarBox"></div>
+        </div>
+
+        <div class="panel">
+          <h3 class="h3">B) Word choice + collocations</h3>
+          <div id="wordBox"></div>
+        </div>
+      </div>
+
+      <div class="panel mt12">
+        <h3 class="h3">C) Sentence order (tap order)</h3>
+        <div class="tiny muted">Tap words in order. Use “Undo” if needed.</div>
+        <div class="orderWrap mt8">
+          <div class="orderBank" id="orderBank"></div>
+          <div class="orderBuild" id="orderBuild" aria-label="Your sentence"></div>
+        </div>
+        <div class="actionsRow mt10">
+          <button class="pill" id="orderUndo" type="button">Undo</button>
+          <button class="pill" id="orderCheck" type="button">Check</button>
+          <button class="pill ghost" id="orderReveal" type="button">Reveal</button>
+          <span class="pill mono" id="orderProg">0 / 6</span>
+          <span id="orderMsg" class="tiny" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speaking -->
+    <section id="speaking" class="card">
+      <h2 class="h2">4) Speaking — Exam style (interaction + production)</h2>
+      <p class="muted">
+        Practice spontaneous answers with a timer. Use short, clear sentences. Record yourself if you want (phone voice memo works).
+        <span class="frOnly">Entraîne-toi à répondre spontanément avec un timer. Phrases courtes et claires. Tu peux t’enregistrer (dictaphone du téléphone).</span>
+      </p>
+
+      <div class="split mt10">
+        <div class="panel">
+          <h3 class="h3">A) Interaction (6 questions)</h3>
+
+          <label class="labelInline">
+            Scenario
+            <select id="speakScenario" class="select"></select>
+          </label>
+
+          <div class="timerRow mt8">
+            <button class="pill" id="speakStart" type="button">Start</button>
+            <button class="pill ghost" id="speakStop" type="button">Stop</button>
+            <span class="pill mono" id="speakTimer">00:00</span>
+            <button class="pill" id="speakListen" type="button">▶ Listen prompt</button>
+          </div>
+
+          <div class="prompt mt10">
+            <div class="miniTitle">Question</div>
+            <div id="speakQ" class="promptText"></div>
+            <div class="tiny muted mt6">
+              <span class="pill mono" id="speakCount">0 / 6</span>
+              <button class="pill ghost" id="speakNext" type="button">Next question</button>
+            </div>
+          </div>
+
+          <div class="miniTitle mt10">Useful phrases (tap to insert)</div>
+          <div class="chips" id="speakPhrases"></div>
+
+          <label class="labelInline mt10">
+            Notes (for teacher feedback)
+            <textarea id="speakNotes" class="textarea" rows="5" placeholder="Write quick notes: tense signals, key vocabulary, improvements..."></textarea>
+          </label>
+
+          <details class="mt10">
+            <summary class="summary">Model answers (toggle)</summary>
+            <div class="panel">
+              <div class="actionsRow">
+                <button class="pill" id="showA2" type="button">Show A2</button>
+                <button class="pill" id="showB1" type="button">Show B1</button>
+                <button class="pill" id="showB2" type="button">Show B2</button>
+              </div>
+              <div id="speakModel" class="model"></div>
+            </div>
+          </details>
+        </div>
+
+        <div class="panel">
+          <h3 class="h3">B) Production (2 prompts)</h3>
+
+          <label class="labelInline">
+            Prompt
+            <select id="prodPrompt" class="select"></select>
+          </label>
+
+          <div class="timerRow mt8">
+            <button class="pill" id="prod60" type="button">Start 60s</button>
+            <button class="pill" id="prod90" type="button">Start 90s</button>
+            <button class="pill ghost" id="prodStop" type="button">Stop</button>
+            <span class="pill mono" id="prodTimer">00:00</span>
+            <button class="pill" id="prodListen" type="button">▶ Listen prompt</button>
+          </div>
+
+          <div class="prompt mt10">
+            <div class="miniTitle">Prompt</div>
+            <div id="prodText" class="promptText"></div>
+          </div>
+
+          <div class="miniTitle mt10">Structure builder</div>
+          <div class="builder" id="prodBuilder"></div>
+
+          <details class="mt10">
+            <summary class="summary">Phone call scripts (ready-to-use)</summary>
+            <div class="panel" id="callScripts"></div>
+          </details>
+
+          <details class="mt10">
+            <summary class="summary">Dialogue trainer — choose the best reply</summary>
+            <div class="panel">
+              <div class="tiny muted">Tap the best reply. Immediate feedback.</div>
+              <div id="dialogueTrainer"></div>
+              <button class="pill mt10" id="dialogueNew" type="button">New dialogue</button>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Writing -->
+    <section id="writing" class="card">
+      <h2 class="h2">5) Writing — Exam tasks + live correction tools</h2>
+      <p class="muted">
+        Write with structure. Then use <strong>Teacher Mode</strong> to compare your corrected version and show key improvements.
+        <span class="frOnly">Écris avec une structure claire. Puis utilise le <strong>mode prof</strong> pour comparer la correction et voir les améliorations.</span>
+      </p>
+
+      <div class="split mt10">
+        <div class="panel">
+          <h3 class="h3">A) Write (student)</h3>
+
+          <label class="labelInline">
+            Task
+            <select id="writeTask" class="select"></select>
+          </label>
+
+          <div class="timerRow mt8">
+            <button class="pill" id="write15" type="button">Start 15 min</button>
+            <button class="pill ghost" id="writeStop" type="button">Stop</button>
+            <span class="pill mono" id="writeTimer">00:00</span>
+            <span class="pill mono">Words: <span id="wordCount">0</span></span>
+            <button class="pill" id="writeListen" type="button">▶ Listen prompt</button>
+          </div>
+
+          <div class="prompt mt10">
+            <div class="miniTitle">Prompt</div>
+            <div id="writePrompt" class="promptText"></div>
+          </div>
+
+          <div class="miniTitle mt10">Useful lines (tap to insert)</div>
+          <div class="chips" id="writeLines"></div>
+
+          <label class="labelInline mt10">
+            Your text (aim: 125+ words)
+            <textarea id="studentText" class="textarea" rows="12" placeholder="Write here..."></textarea>
+          </label>
+
+          <div class="actionsRow mt10">
+            <button class="pill ghost" id="clearStudent" type="button">Clear</button>
+            <button class="pill" id="showModelWrite" type="button">Show model (level)</button>
+            <button class="pill" id="copyTemplate" type="button">Copy template</button>
+          </div>
+
+          <details class="mt10">
+            <summary class="summary">Self-check (fast)</summary>
+            <div class="panel">
+              <ul class="bullets">
+                <li><strong>Structure:</strong> greeting → purpose → details → request → closing.</li>
+                <li><strong>Clarity:</strong> 1 idea per sentence. No “run-on” sentences.</li>
+                <li><strong>Grammar:</strong> articles (a/the), prepositions (in/on/at), question forms, modals.</li>
+                <li><strong>Politeness:</strong> please / could you / would it be possible…</li>
+              </ul>
+              <div class="frOnly">
+                <ul class="bullets">
+                  <li><strong>Structure :</strong> salutation → objectif → détails → demande → formule de fin.</li>
+                  <li><strong>Clarté :</strong> 1 idée par phrase, phrases courtes.</li>
+                  <li><strong>Grammaire :</strong> articles, prépositions, questions, modaux.</li>
+                  <li><strong>Politesse :</strong> please / could you / would it be possible…</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details class="mt10">
+            <summary class="summary">Common mistakes (auto-check)</summary>
+            <div class="panel" id="mistakeBox"></div>
+          </details>
+        </div>
+
+        <div class="panel">
+          <h3 class="h3">B) Teacher Mode — compare & correct</h3>
+          <div class="tiny muted">Paste your corrected version below and click “Compare”.</div>
+
+          <label class="labelInline mt10">
+            Corrected version (teacher)
+            <textarea id="teacherText" class="textarea" rows="10" placeholder="Paste the corrected version here..."></textarea>
+          </label>
+
+          <div class="actionsRow mt10">
+            <button class="pill" id="compareBtn" type="button">Compare</button>
+            <button class="pill ghost" id="clearTeacher" type="button">Clear</button>
+          </div>
+
+          <div class="legend mt10">
+            <span class="legendItem add">Added</span>
+            <span class="legendItem del">Removed</span>
+            <span class="legendItem same">Same</span>
+          </div>
+
+          <div class="diffBox mt10" id="diffOut" aria-live="polite"></div>
+
+          <details class="mt12">
+            <summary class="summary">Correction shortcuts (copy/paste)</summary>
+            <div class="panel">
+              <div class="miniTitle">Feedback stems</div>
+              <div class="kit" id="feedbackStems"></div>
+              <div class="miniTitle mt10">Upgrade list (A2→B2)</div>
+              <div class="kit" id="upgradeList"></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="h2">6) Finish strong</h2>
+      <div class="grid3">
+        <div class="panel">
+          <h3 class="h3">30-second warm-up</h3>
+          <ol class="steps">
+            <li>Say 5 chips out loud.</li>
+            <li>Answer 1 interaction question (30–45s).</li>
+            <li>Write a 5-line email skeleton.</li>
+          </ol>
+          <div class="frOnly tiny muted">Échauffement : 5 chips + 1 question + squelette d’email.</div>
+        </div>
+        <div class="panel">
+          <h3 class="h3">What examiners love</h3>
+          <ul class="bullets">
+            <li>Clear structure</li>
+            <li>Correct “polite” language</li>
+            <li>Simple grammar done well</li>
+            <li>Good pacing & confidence</li>
+          </ul>
+          <div class="frOnly tiny muted">Ce que les évaluateurs aiment : structure + politesse + grammaire sûre.</div>
+        </div>
+        <div class="panel">
+          <h3 class="h3">Emergency line</h3>
+          <div class="notice">
+            <div class="noticeBody">
+              “Sorry, could you repeat that more slowly, please?”
+              <div class="frOnly muted">“Désolé(e), vous pouvez répéter plus lentement, s’il vous plaît ?”</div>
+            </div>
+          </div>
+          <button class="pill mt10" id="sayEmergency" type="button">▶ Say it</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="muted">
+        SpeakEasyTisha • English 360° Travel Success Hub • No external libraries • Touch-friendly • Print-friendly
+      </div>
+    </footer>
+  </main>
+
+  <script src="/js/english360-travel-exam-success-hub.js"></script>
+</body>
+</html>

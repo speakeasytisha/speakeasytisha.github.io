@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Wedding Tense Ladder • Present Simple / Continuous / Future</title>
+  <link rel="stylesheet" href="/css/wedding-tense-ladder.css"/>
+</head>
+<body>
+<header class="top">
+  <div class="topIn">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">💍</div>
+      <div>
+        <h1>Wedding Tense Ladder</h1>
+        <div class="sub">Make tenses stick (A1→A2) • 1 step at a time • same verb, new situations</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <label class="pill">🪜 Step
+        <select id="step">
+          <option value="1">Step 1 — NOW vs ROUTINE</option>
+          <option value="2" selected>Step 2 — Add FUTURE (plan vs promise)</option>
+          <option value="3">Step 3 — Add ARRANGEMENTS / TIMETABLES</option>
+        </select>
+      </label>
+
+      <label class="pill">🇫🇷 FR help
+        <button class="btn" id="frBtn" aria-pressed="true"><span id="frState">ON</span></button>
+      </label>
+
+      <button class="btn" id="resetBtn">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="tabs" aria-label="Sections">
+    <button class="tab active" data-tab="map">1) The Schema</button>
+    <button class="tab" data-tab="sameverb">2) Same Verb Lab</button>
+    <button class="tab" data-tab="practice">3) Practice (instant)</button>
+    <button class="tab" data-tab="builder">4) Sentence Builder</button>
+  </nav>
+
+  <!-- 1) MAP -->
+  <section class="panel show" id="tab-map">
+    <article class="card">
+      <div class="enonce">
+        <div class="enonceTitle">THE SHORTCUT</div>
+        <div class="enonceText"><b>EN:</b> Ask only 3 questions: <b>NOW?</b> <b>ROUTINE?</b> <b>FUTURE?</b></div>
+        <div class="enonceText fr"><b>FR:</b> Pose 3 questions : <b>MAINTENANT ?</b> <b>HABITUDE ?</b> <b>FUTUR ?</b></div>
+      </div>
+
+      <div class="grid2">
+        <section class="card inner">
+          <div class="cardTitle">Tense Compass (tap wizard)</div>
+          <div class="muted">Tap answers → you get the tense + a wedding example.</div>
+
+          <div class="wizard" id="wizard">
+            <div class="q" id="q1">
+              <div class="qTitle">Q1 — Is it happening NOW?</div>
+              <div class="qTitle fr">Q1 — Est-ce que ça se passe MAINTENANT ?</div>
+              <div class="row">
+                <button class="opt" data-a="now_yes">Yes / Now</button>
+                <button class="opt" data-a="now_no">No</button>
+              </div>
+            </div>
+
+            <div class="q hide" id="q2">
+              <div class="qTitle">Q2 — Is it a ROUTINE / job / fact?</div>
+              <div class="qTitle fr">Q2 — Habitude / travail / fait ?</div>
+              <div class="row">
+                <button class="opt" data-a="routine_yes">Yes / Usually</button>
+                <button class="opt" data-a="routine_no">No</button>
+              </div>
+            </div>
+
+            <div class="q hide" id="q3">
+              <div class="qTitle">Q3 — Is it FUTURE?</div>
+              <div class="qTitle fr">Q3 — C’est FUTUR ?</div>
+              <div class="row">
+                <button class="opt" data-a="future_yes">Yes / Future</button>
+                <button class="opt" data-a="future_no">No / other</button>
+              </div>
+            </div>
+
+            <div class="q hide" id="q4">
+              <div class="qTitle">Future details (Step 2/3)</div>
+              <div class="qTitle fr">Détails futur (Étape 2/3)</div>
+              <div class="stack" id="futureChoices"></div>
+            </div>
+
+            <div class="result" id="wizResult" aria-live="polite"></div>
+
+            <div class="row" style="margin-top:10px">
+              <button class="btn" id="wizBack">← Back</button>
+              <button class="btn" id="wizRestart">↻ Restart</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card inner">
+          <div class="cardTitle">“Same verb” anchor</div>
+          <div class="muted">One verb = 5 situations. This stops overthinking.</div>
+
+          <div class="anchor">
+            <label class="pill">Verb
+              <select id="verbPick"></select>
+            </label>
+            <button class="btn" id="newAnchor">↻ New examples</button>
+          </div>
+
+          <div class="miniGrid" id="anchorGrid"></div>
+
+          <div class="note" style="margin-top:10px">
+            <b>Memory trick:</b> keep ONE sentence per box in your head.
+            <div class="fr"><b>FR:</b> Garde 1 phrase par boîte.</div>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- 2) SAME VERB -->
+  <section class="panel" id="tab-sameverb">
+    <article class="card">
+      <div class="row between">
+        <div>
+          <div class="cardTitle">Same Verb Lab (wedding situations)</div>
+          <div class="muted">Choose a verb + situation → see the tense + why. (No overload)</div>
+        </div>
+        <div class="row">
+          <button class="btn" id="svNew">🎲 New set</button>
+          <button class="btn" id="svSpeak">🔊 Speak</button>
+        </div>
+      </div>
+
+      <div class="enonce">
+        <div class="enonceTitle">HOW TO USE IT</div>
+        <div class="enonceText"><b>EN:</b> Start with Step 1 only. Add Step 2 next week. Step 3 later.</div>
+        <div class="enonceText fr"><b>FR:</b> Commence par Étape 1. Étape 2 la semaine prochaine. Étape 3 après.</div>
+      </div>
+
+      <div class="grid2">
+        <section class="card inner">
+          <div class="cardTitle">Pick your verb</div>
+          <label class="pill">Verb
+            <select id="svVerb"></select>
+          </label>
+
+          <div class="cardTitle" style="margin-top:10px">Pick a situation</div>
+          <div class="stack" id="svSituations"></div>
+          <div class="fb" id="svFb"></div>
+        </section>
+
+        <section class="card inner">
+          <div class="cardTitle">Output</div>
+          <div class="bigSentence" id="svOut"></div>
+
+          <div class="whyBox" id="svWhy"></div>
+
+          <div class="chips" id="svMarkers"></div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- 3) PRACTICE -->
+  <section class="panel" id="tab-practice">
+    <div class="grid2">
+      <article class="card">
+        <div class="cardTitle">A) Choose the tense (instant feedback)</div>
+        <div class="enonce">
+          <div class="enonceTitle">ÉNONCÉ</div>
+          <div class="enonceText"><b>EN:</b> Read the wedding situation. Choose the best tense.</div>
+          <div class="enonceText fr"><b>FR:</b> Lis la situation. Choisis le meilleur temps.</div>
+        </div>
+
+        <div id="qBox"></div>
+        <div class="row" style="margin-top:10px">
+          <button class="btn" id="qNew">+ New</button>
+          <button class="btn" id="qHint">💡 Hint</button>
+        </div>
+        <div class="fb" id="qFb"></div>
+      </article>
+
+      <article class="card">
+        <div class="cardTitle">B) Time markers = shortcut</div>
+        <div class="muted">Tap the marker → you see the “default tense”.</div>
+
+        <div class="markerGrid" id="markerGrid"></div>
+        <div class="fb" id="mFb"></div>
+      </article>
+    </div>
+
+    <div class="grid2" style="margin-top:12px">
+      <article class="card">
+        <div class="cardTitle">C) Fill-in (tap dropdown)</div>
+        <div class="enonce">
+          <div class="enonceTitle">ÉNONCÉ</div>
+          <div class="enonceText"><b>EN:</b> Choose the correct form. Immediate check.</div>
+          <div class="enonceText fr"><b>FR:</b> Choisis la bonne forme. Correction immédiate.</div>
+        </div>
+
+        <div id="fillBox"></div>
+        <div class="row" style="margin-top:10px">
+          <button class="btn" id="fNew">+ New</button>
+          <button class="btn" id="fHint">💡 Hint</button>
+        </div>
+        <div class="fb" id="fFb"></div>
+      </article>
+
+      <article class="card">
+        <div class="cardTitle">D) “Tiny talk” rehearsal (anti-fear)</div>
+        <div class="muted">Read aloud 3 lines. Same pattern every time.</div>
+
+        <div class="script" id="rehearsal"></div>
+        <div class="row" style="margin-top:10px">
+          <button class="btn" id="rNew">↻ New</button>
+          <button class="btn" id="rSpeak">🔊 Speak</button>
+        </div>
+        <div class="fb" id="rFb"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 4) BUILDER -->
+  <section class="panel" id="tab-builder">
+    <article class="card">
+      <div class="row between">
+        <div>
+          <div class="cardTitle">Sentence Builder (dropdowns = no mistakes)</div>
+          <div class="muted">Choose tense + pieces. The page builds a correct sentence.</div>
+        </div>
+        <div class="row">
+          <button class="btn" id="bBuild">✨ Build</button>
+          <button class="btn" id="bClear">🧹 Clear</button>
+        </div>
+      </div>
+
+      <div class="enonce">
+        <div class="enonceTitle">SMART HELP</div>
+        <div class="enonceText"><b>EN:</b> Choose a time marker → the builder suggests the best tense.</div>
+        <div class="enonceText fr"><b>FR:</b> Choisis un marqueur de temps → le builder suggère le temps.</div>
+      </div>
+
+      <div class="grid2">
+        <section class="card inner">
+          <div class="formRow">
+            <label>Subject</label>
+            <select id="bSub" class="select"></select>
+          </div>
+
+          <div class="formRow">
+            <label>Verb</label>
+            <select id="bVerb" class="select"></select>
+          </div>
+
+          <div class="formRow">
+            <label>Object</label>
+            <select id="bObj" class="select"></select>
+          </div>
+
+          <div class="formRow">
+            <label>Time marker</label>
+            <select id="bTime" class="select"></select>
+          </div>
+
+          <div class="formRow">
+            <label>Tense</label>
+            <select id="bTense" class="select"></select>
+          </div>
+
+          <div class="row" style="margin-top:10px">
+            <button class="btn" id="bSuggest">💡 Suggest tense</button>
+          </div>
+
+          <div class="fb" id="bFb"></div>
+        </section>
+
+        <section class="card inner">
+          <div class="cardTitle">Output</div>
+          <div class="bigSentence" id="bOut"></div>
+          <div class="whyBox" id="bWhy"></div>
+          <div class="row" style="margin-top:10px">
+            <button class="btn" id="bSpeak">🔊 Speak</button>
+            <button class="btn" id="bCopy">📋 Copy</button>
+          </div>
+          <div class="fb" id="bFb2"></div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <footer class="foot">
+    <span>Wedding topic • A1→A2 • Step-by-step (no overload)</span>
+    <span class="muted">Works on Safari/iPad (tap-friendly)</span>
+  </footer>
+</main>
+
+<script src="/js/wedding-tense-ladder.js"></script>
+</body>
+</html>

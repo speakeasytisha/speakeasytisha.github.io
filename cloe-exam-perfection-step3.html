@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>🧠 CLOE Exam Perfection — Models + Practice (Step 3) | SpeakEasyTisha</title>
+  <link rel="stylesheet" href="/css/cloe-exam-perfection-step3.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="hdr">
+    <div class="hdr__row">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true">SpeakEasy<span>Tisha</span></div>
+        <div class="brand__tag">CLOE • Step 3 • Model dialogue + model writing • Practice to perfection</div>
+      </div>
+
+      <div class="toolbar" aria-label="Toolbar">
+        <div class="tool">
+          <label for="accent" class="sr">Accent</label>
+          <select id="accent" class="select" title="Accent for listening">
+            <option value="en-GB">🇬🇧 UK</option>
+            <option value="en-US">🇺🇸 US</option>
+          </select>
+        </div>
+        <button class="btn btn--ghost" id="btnStopSpeech" type="button" title="Stop audio">⏹ Stop</button>
+        <button class="btn btn--ghost" id="btnPrint" type="button" title="Print models">🖨 Print</button>
+        <button class="btn btn--ghost" id="btnResetAll" type="button" title="Reset progress">↺ Reset</button>
+      </div>
+    </div>
+
+    <div class="hdr__row hdr__row--sub">
+      <div class="scoreline" aria-label="Score">
+        <span class="pill">🎯 Score</span>
+        <strong id="scoreTop">0</strong>
+        <span class="muted">/</span>
+        <span id="maxTop">30</span>
+        <span class="sep">•</span>
+        <span class="pill">🔑 Mastered topics</span>
+        <strong id="masteredCount">0</strong>
+        <span class="muted">/</span>
+        <span id="masteredMax">6</span>
+      </div>
+
+      <nav class="nav" aria-label="Sections">
+        <button class="nav__chip" data-scroll="#map" type="button">Scenario map</button>
+        <button class="nav__chip" data-scroll="#models" type="button">Models</button>
+        <button class="nav__chip" data-scroll="#practice" type="button">Practice</button>
+        <button class="nav__chip" data-scroll="#vocab" type="button">Flashcards</button>
+        <button class="nav__chip" data-scroll="#timed" type="button">Timed speaking</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="main">
+    <section class="card hero">
+      <h1>🧠 CLOE Exam Perfection — Models + Practice (Step 3)</h1>
+      <p class="lead">
+        This page is the <strong>next step</strong> after your
+        <em>Renault Quality Mission Step 2</em> and your <em>CLOE Topic Trainer</em>:
+        pick a scenario category and train with:
+        <strong>model dialogue</strong> ✅, <strong>model writing</strong> ✅, and <strong>interactive practice</strong>.
+      </p>
+
+      <div class="how">
+        <div class="how__item">
+          <div class="badge">1</div>
+          <div>
+            <strong>Study the models</strong>
+            <div class="muted">Read + listen (UK/US) and copy the structure.</div>
+          </div>
+        </div>
+        <div class="how__item">
+          <div class="badge">2</div>
+          <div>
+            <strong>Practice actively</strong>
+            <div class="muted">Build answers, fill gaps, fix mistakes, and choose the best reply.</div>
+          </div>
+        </div>
+        <div class="how__item">
+          <div class="badge">3</div>
+          <div>
+            <strong>Timed speaking</strong>
+            <div class="muted">Use 30s / 45s / 60s presets (45s is the default target for most prompts).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notice">
+        <strong>Important:</strong> Each category below includes a <strong>Model Dialogue</strong> and a <strong>Model Writing</strong> section.
+        They are always accessible in the <em>Models</em> area.
+      </div>
+    </section>
+
+    <section id="map" class="card">
+      <div class="row">
+        <div>
+          <h2>🗺️ Scenario map</h2>
+          <p class="muted">Tap a card to open the full workshop (models + practice + vocab).</p>
+        </div>
+        <div class="right">
+          <input id="search" class="input" type="search" placeholder="Search: email, meeting, supplier, complaint…" />
+        </div>
+      </div>
+
+      <div class="filters">
+        <button class="chip is-on" data-filter="all" type="button">All</button>
+        <button class="chip" data-filter="email" type="button">Email</button>
+        <button class="chip" data-filter="call" type="button">Phone</button>
+        <button class="chip" data-filter="meeting" type="button">Meeting</button>
+        <button class="chip" data-filter="problem" type="button">Problem solving</button>
+        <button class="chip" data-filter="travel" type="button">Travel</button>
+      </div>
+
+      <div id="topicGrid" class="grid" aria-label="Scenario topics"></div>
+    </section>
+
+    <section id="models" class="card">
+      <div class="row">
+        <div>
+          <h2>✅ Models (dialogue + writing)</h2>
+          <p class="muted">These are the “perfect answers” to copy. Listen line-by-line.</p>
+        </div>
+        <div class="right">
+          <div class="pill tiny" id="activeTopicPill">Topic: —</div>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="panel">
+          <div class="panel__head">
+            <h3>📞 Model Dialogue</h3>
+            <div class="panel__actions">
+              <button class="btn btn--ghost" id="btnListenDialogue" type="button">🔊 Listen all</button>
+              <button class="btn btn--ghost" id="btnToggleDialogue" type="button">Show/Hide</button>
+            </div>
+          </div>
+
+          <div id="dialogueWrap" class="panel__body">
+            <div class="muted">Select a topic from the map.</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head">
+            <h3>✉️ Model Writing</h3>
+            <div class="panel__actions">
+              <button class="btn btn--ghost" id="btnCopyEmail" type="button">📋 Copy</button>
+              <button class="btn btn--ghost" id="btnListenEmail" type="button">🔊 Listen</button>
+              <button class="btn btn--ghost" id="btnToggleEmail" type="button">Show/Hide</button>
+            </div>
+          </div>
+
+          <div id="emailWrap" class="panel__body">
+            <div class="muted">Select a topic from the map.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="practice" class="card">
+      <h2>🎯 Practice (interactive)</h2>
+      <p class="muted">Everything is tap-friendly (no mouse required). Instant feedback + “why”.</p>
+
+      <div class="split">
+        <div class="panel">
+          <div class="panel__head">
+            <h3>1) Choose the best reply (mini role-play)</h3>
+            <div class="panel__actions">
+              <button class="btn btn--ghost" id="btnNewQuiz" type="button">New</button>
+              <button class="btn btn--ghost" id="btnListenQuiz" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div class="panel__body">
+            <div class="qbox">
+              <div class="pill tiny">Prompt</div>
+              <p id="quizPrompt" class="qtext">Select a topic.</p>
+              <div id="quizOptions" class="options"></div>
+              <div class="qactions">
+                <button class="btn" id="btnCheckQuiz" type="button">Check</button>
+                <button class="btn btn--ghost" id="btnResetQuiz" type="button">Reset</button>
+              </div>
+              <div id="quizFeedback" class="feedback" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head">
+            <h3>2) Build the ideal answer (3-step)</h3>
+            <div class="panel__actions">
+              <button class="btn btn--ghost" id="btnListenBuilder" type="button">🔊 Listen model</button>
+              <button class="btn btn--ghost" id="btnResetBuilder" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div class="panel__body">
+            <div class="builder">
+              <div class="builder__col">
+                <div class="pill tiny">Blocks</div>
+                <div id="blockPool" class="blockpool" aria-label="Blocks to use"></div>
+              </div>
+              <div class="builder__col">
+                <div class="row row--tight">
+                  <div class="pill tiny">Your answer</div>
+                  <div class="right">
+                    <button class="btn" id="btnCheckBuilder" type="button">Check</button>
+                  </div>
+                </div>
+                <ol id="answerLane" class="answerlane" aria-label="Your ordered answer blocks"></ol>
+                <div id="builderFeedback" class="feedback" aria-live="polite"></div>
+              </div>
+            </div>
+            <p class="tiny muted">Tip: on iPad, tap <strong>➕ Add</strong> (drag is optional).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fill" class="card">
+      <div class="row">
+        <div>
+          <h2>3) Dropdown fill-in (professional paragraph)</h2>
+          <p class="muted">Choose the best professional words. Then check.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnNewFill" type="button">New</button>
+        </div>
+      </div>
+
+      <div class="fillbox">
+        <div class="pill tiny">Paragraph</div>
+        <div id="fillText" class="filltext">Select a topic.</div>
+        <div class="qactions">
+          <button class="btn" id="btnCheckFill" type="button">Check</button>
+          <button class="btn btn--ghost" id="btnResetFill" type="button">Reset</button>
+          <button class="btn btn--ghost" id="btnListenFill" type="button">🔊 Listen</button>
+        </div>
+        <div id="fillFeedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="vocab" class="card">
+      <div class="row">
+        <div>
+          <h2>🃏 Vocabulary flashcards</h2>
+          <p class="muted">Tap to flip. (FR help included on the back.)</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnShuffleVocab" type="button">🔀 Shuffle</button>
+        </div>
+      </div>
+      <div id="flashGrid" class="flashgrid" aria-label="Vocabulary flashcards"></div>
+    </section>
+
+    <section id="timed" class="card">
+      <div class="row">
+        <div>
+          <h2>⏱ Timed speaking (exam rhythm)</h2>
+          <p class="muted">Default target is <strong>45s</strong> for most prompts. Use presets anytime.</p>
+        </div>
+        <div class="right">
+          <div class="pill tiny">Recommended: <strong id="recommendedTime">45</strong>s</div>
+        </div>
+      </div>
+
+      <div class="timepanel">
+        <div class="timer">
+          <div class="timer__num" id="timerNum">45</div>
+          <div class="timer__label">seconds</div>
+        </div>
+
+        <div class="timecontrols">
+          <div class="timechips" aria-label="Timer presets">
+            <button class="chipbtn" id="btnSet30" type="button">30s</button>
+            <button class="chipbtn is-on" id="btnSet45" type="button">45s</button>
+            <button class="chipbtn" id="btnSet60" type="button">60s</button>
+          </div>
+          <div class="timebuttons">
+            <button class="btn" id="btnStartTimer" type="button">▶ Start</button>
+            <button class="btn btn--ghost" id="btnStopTimer" type="button">⏸ Stop</button>
+            <button class="btn btn--ghost" id="btnResetTimer" type="button">↺ Reset</button>
+          </div>
+          <div class="tiny muted">Speak using the 3-step plan: answer → 2 details → close.</div>
+        </div>
+
+        <div class="promptbox">
+          <div class="pill tiny">Speaking prompt</div>
+          <p id="speakPrompt" class="qtext">Select a topic.</p>
+          <div class="checkline">
+            <label class="check">
+              <input id="chkSpokeFullTime" type="checkbox" />
+              <span>I spoke for the full time (no early stop)</span>
+            </label>
+            <button class="btn btn--ghost" id="btnMarkMastered" type="button">🔑 Mark topic mastered</button>
+          </div>
+          <div id="timedFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="notes" class="card">
+      <div class="row">
+        <div>
+          <h2>🗒 Notes</h2>
+          <p class="muted">Copy your best phrases + personal mistakes (saved locally).</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnCopyNotes" type="button">📋 Copy notes</button>
+        </div>
+      </div>
+      <textarea id="notesBox" class="textarea" rows="8" placeholder="New phrases, mistakes to fix, pronunciation notes…"></textarea>
+
+      <div class="scoreline scoreline--bottom">
+        <span class="pill">🎯 Score</span>
+        <strong id="scoreBottom">0</strong>
+        <span class="muted">/</span>
+        <span id="maxBottom">30</span>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div class="tiny muted">
+        SpeakEasyTisha • CLOE Exam Perfection (Step 3) • Touch-friendly • Works on Safari (Mac/iPad)
+      </div>
+      <a class="tiny" href="#map">Back to top ↑</a>
+    </footer>
+  </main>
+
+  <script src="/js/cloe-exam-perfection-step3.js"></script>
+</body>
+</html>

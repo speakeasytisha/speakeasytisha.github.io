@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Newsflash — Vocabulary + Tenses (A2→B2)</title>
+  <link rel="stylesheet" href="/css/newsflash.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">📡</div>
+      <div>
+        <h1>Newsflash</h1>
+        <p class="subtitle">Current events, vocabulary, and the timeline tenses (Present / Past / Past Continuous)</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="control">
+        <label for="levelSelect">Level</label>
+        <select id="levelSelect" class="select">
+          <option value="A2">A2</option>
+          <option value="B1" selected>B1</option>
+          <option value="B2">B2</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label for="accentSelect">Accent</label>
+        <select id="accentSelect" class="select">
+          <option value="US" selected>🇺🇸 American</option>
+          <option value="UK">🇬🇧 British</option>
+        </select>
+      </div>
+
+      <div class="scorebox" role="status" aria-live="polite">
+        <div class="pill">Score: <span id="score">0</span></div>
+        <div class="pill subtle">Streak: <span id="streak">0</span></div>
+      </div>
+
+      <button id="resetAllBtn" class="btn ghost" type="button">Reset all</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- NEWS DESK -->
+    <section class="card">
+      <div class="cardHead">
+        <h2>1) News Desk — Headline Cards</h2>
+        <p class="hint">Tap a card to open “Reporter Mode” prompts. Keep it neutral, factual, and respectful.</p>
+      </div>
+
+      <div id="newsGrid" class="newsGrid" aria-label="News headlines"></div>
+
+      <div class="fullBrief" id="fullBrief" hidden>
+        <div class="fbTop">
+          <div>
+            <h3 class="tinyTitle">Full Brief — choose a tab</h3>
+            <p class="hint small" id="fbMeta">Select a headline to load the full summary, vocab & grammar.</p>
+          </div>
+          <div class="fbActions">
+            <button class="btn small" id="fbReadBtn" type="button">Read summary 🔊</button>
+            <button class="btn small ghost" id="fbCopyBtn" type="button">Copy</button>
+            <button class="btn small ghost" id="fbCloseBtn" type="button">Close</button>
+          </div>
+        </div>
+
+        <div class="fbTabs" role="tablist" aria-label="Full brief tabs">
+          <button class="tabBtn" type="button" data-tab="sum" aria-selected="true">🧾 Summary</button>
+          <button class="tabBtn" type="button" data-tab="facts">📌 Key facts</button>
+          <button class="tabBtn" type="button" data-tab="vocab">🧠 Vocab</button>
+          <button class="tabBtn" type="button" data-tab="grammar">🧩 Grammar</button>
+          <button class="tabBtn" type="button" data-tab="tasks">🎤 Tasks</button>
+        </div>
+
+        <div class="fbBody">
+          <div class="fbPane" data-pane="sum"></div>
+          <div class="fbPane" data-pane="facts" hidden></div>
+          <div class="fbPane" data-pane="vocab" hidden></div>
+          <div class="fbPane" data-pane="grammar" hidden></div>
+          <div class="fbPane" data-pane="tasks" hidden></div>
+        </div>
+      </div>
+
+
+      <div class="reporterMode" id="reporterMode" aria-live="polite">
+        <div class="reporterTop">
+          <div>
+            <h3 class="tinyTitle">Reporter Mode</h3>
+            <p class="hint small" id="repHint">Tap a news card to get 3 speaking prompts.</p>
+          </div>
+          <div class="repActions">
+            <button class="btn small" id="repReadBtn" type="button">Read prompts (US/UK)</button>
+            <button class="btn small ghost" id="repClearBtn" type="button">Clear</button>
+          </div>
+        </div>
+        <div class="reporterBox" id="repOut"></div>
+      </div>
+    </section>
+
+    <!-- VOCAB VAULT -->
+    <section class="card">
+      <div class="cardHead">
+        <h2>2) Vocab Vault — Learn it like a game</h2>
+        <p class="hint">Flashcards + quick games. Tap 🔊 to hear each word. (US/UK voice)</p>
+      </div>
+
+      <div class="vocabToolbar">
+        <div class="control">
+          <label for="vCategory">Category</label>
+          <select id="vCategory" class="select"></select>
+        </div>
+
+        <div class="control">
+          <label for="vSearch">Search</label>
+          <input id="vSearch" class="input" type="text" placeholder="Type: budget, inflation, witness..." />
+        </div>
+
+        <button id="shuffleVocabBtn" class="btn ghost" type="button">Shuffle</button>
+        <button id="vocabQuizBtn" class="btn" type="button">Start Vocab Quiz</button>
+        <button id="vocabResetBtn" class="btn ghost" type="button">Reset vocab</button>
+      </div>
+
+      <div class="vocabGrid" id="vocabGrid" aria-label="Vocabulary flashcards"></div>
+
+      <div class="divider"></div>
+
+      <div class="task">
+        <div class="taskHead">
+          <h3>2A) Matching — Word ↔ Definition (tap mode)</h3>
+          <button class="btn small ghost" type="button" data-reset="vmatch">Reset section</button>
+        </div>
+
+        <div class="tapMatch">
+          <div>
+            <h4 class="tinyTitle">Tap a word</h4>
+            <div id="vmLeft" class="chipGrid"></div>
+          </div>
+          <div>
+            <h4 class="tinyTitle">Then tap the definition</h4>
+            <div id="vmRight" class="chipGrid"></div>
+          </div>
+        </div>
+        <div id="vmFeedback" class="feedbackBox" aria-live="polite"></div>
+      </div>
+
+      <div class="task">
+        <div class="taskHead">
+          <h3>2B) Drag & Drop (or Tap) — Sort words into categories</h3>
+          <button class="btn small ghost" type="button" data-reset="cats">Reset section</button>
+        </div>
+
+        <p class="hint small">On iPad: tap a word, then tap a category box. On desktop: you can also drag.</p>
+
+        <div class="catGrid">
+          <div class="catBank">
+            <h4 class="tinyTitle">Word bank</h4>
+            <div id="catBank" class="bank"></div>
+          </div>
+
+          <div class="catBoxes">
+            <div class="catBox" data-cat="Conflict">
+              <h4>🕊️ Conflict & diplomacy</h4>
+              <div class="dropzone"></div>
+            </div>
+            <div class="catBox" data-cat="Economy">
+              <h4>📈 Economy & markets</h4>
+              <div class="dropzone"></div>
+            </div>
+            <div class="catBox" data-cat="Justice">
+              <h4>⚖️ Justice & investigation</h4>
+              <div class="dropzone"></div>
+            </div>
+            <div class="catBox" data-cat="France">
+              <h4>🇫🇷 France & politics</h4>
+              <div class="dropzone"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="orderActions">
+          <button id="checkCatsBtn" class="btn" type="button">Check categories</button>
+          <div id="catsFeedback" class="feedbackBox" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MICRO LESSON -->
+    <section class="card">
+      <div class="cardHead">
+        <h2>3) Micro‑Lesson — The “timeline trio”</h2>
+        <p class="hint">News needs a timeline. This trio keeps your story clear.</p>
+      </div>
+
+      <div class="miniGrid">
+        <div class="mini">
+          <h3>Present Simple</h3>
+          <p><span class="tag">General / now</span> facts, routines, headline style</p>
+          <p class="ex">“Markets <b>react</b> quickly to uncertainty.”</p>
+        </div>
+        <div class="mini">
+          <h3>Past Simple</h3>
+          <p><span class="tag">Finished</span> yesterday / last week / in 2026</p>
+          <p class="ex">“The government <b>survived</b> the vote.”</p>
+        </div>
+        <div class="mini">
+          <h3>Past Continuous</h3>
+          <p><span class="tag">Background</span> while / when / as</p>
+          <p class="ex">“While prices <b>were rising</b>, people <b>were worrying</b>.”</p>
+        </div>
+      </div>
+
+      <div class="spoiler">
+        <button class="btn small ghost" id="tenseCoachBtn" type="button">Open Tense Coach 🎮</button>
+        <div class="spoilerBody" id="tenseCoachBody" hidden>
+          <p class="hint small">Pick a tense + topic, then build a sentence. Tap 🔊 to hear it.</p>
+
+          <div class="coachGrid">
+            <div class="control">
+              <label for="tcTopic">Topic</label>
+              <select id="tcTopic" class="select"></select>
+            </div>
+            <div class="control">
+              <label for="tcTense">Tense</label>
+              <select id="tcTense" class="select">
+                <option value="PRES">Present Simple</option>
+                <option value="PAST">Past Simple</option>
+                <option value="PCONT">Past Continuous</option>
+              </select>
+            </div>
+            <div class="control">
+              <label for="tcConnector">Connector</label>
+              <select id="tcConnector" class="select">
+                <option>However</option>
+                <option>Meanwhile</option>
+                <option>As a result</option>
+                <option>Because of this</option>
+              </select>
+            </div>
+
+            <div class="coachBtns">
+              <button id="tcBuildBtn" class="btn" type="button">Build sentence</button>
+              <button id="tcReadBtn" class="btn ghost" type="button">Read 🔊</button>
+              <button id="tcResetBtn" class="btn ghost" type="button">Reset</button>
+            </div>
+          </div>
+
+          <div class="report" id="tcOut" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRACTICE -->
+    <section class="card">
+      <div class="cardHead">
+        <h2>4) Practice Zone — Instant feedback</h2>
+        <p class="hint">Quick, fun practice. ✅/❌ appears immediately with a “why”.</p>
+      </div>
+
+      <div class="task">
+        <div class="taskHead">
+          <h3>4A) QCM — Choose the correct tense</h3>
+          <button class="btn small ghost" type="button" data-reset="qcm">Reset section</button>
+        </div>
+        <div id="qcmArea" class="qa"></div>
+      </div>
+
+      <div class="task">
+        <div class="taskHead">
+          <h3>4B) Fill in the blank — Type the verb</h3>
+          <button class="btn small ghost" type="button" data-reset="fill">Reset section</button>
+        </div>
+        <div id="fillArea" class="qa"></div>
+      </div>
+
+      <div class="task">
+        <div class="taskHead">
+          <h3>4C) Headline Remix — Choose the best connector</h3>
+          <button class="btn small ghost" type="button" data-reset="conn">Reset section</button>
+        </div>
+        <div id="connArea" class="qa"></div>
+      </div>
+
+      <div class="task">
+        <div class="taskHead">
+          <h3>4D) Timeline Order — Put events in order (tap move)</h3>
+          <button class="btn small ghost" type="button" data-reset="order">Reset section</button>
+        </div>
+
+        <p class="hint small">Tap items to move them into “Your order”. Then check.</p>
+
+        <div class="orderGrid">
+          <div class="orderCol">
+            <h4 class="tinyTitle">Bank</h4>
+            <div id="orderBank" class="orderBox"></div>
+          </div>
+          <div class="orderCol">
+            <h4 class="tinyTitle">Your order</h4>
+            <div id="orderUser" class="orderBox"></div>
+          </div>
+        </div>
+
+        <div class="orderActions">
+          <button id="checkOrderBtn" class="btn" type="button">Check order</button>
+          <div id="orderFeedback" class="feedbackBox" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUILDER -->
+    <section class="card">
+      <div class="cardHead">
+        <h2>5) Builder — Your 30‑second news report</h2>
+        <p class="hint">Choose options and generate a coherent report (A2/B1/B2 versions). Then read it aloud.</p>
+      </div>
+
+      <div class="builder">
+        <div class="builderGrid">
+          <div class="control">
+            <label for="bTopic">Story</label>
+            <select id="bTopic" class="select"></select>
+          </div>
+
+          <div class="control">
+            <label for="bAngle">Angle</label>
+            <select id="bAngle" class="select">
+              <option value="FACTS" selected>Facts & timeline</option>
+              <option value="IMPACT">Impact on people/economy</option>
+              <option value="QUESTIONS">What we still don’t know</option>
+            </select>
+          </div>
+
+          <div class="control">
+            <label for="bTime">Timeline</label>
+            <select id="bTime" class="select">
+              <option value="NOW">Now (present)</option>
+              <option value="PAST" selected>Earlier (past)</option>
+              <option value="WHILE">While… (past continuous + past)</option>
+            </select>
+          </div>
+
+          <div class="control">
+            <label for="bTone">Tone</label>
+            <select id="bTone" class="select">
+              <option value="NEUTRAL" selected>Neutral</option>
+              <option value="CAUTIOUS">Cautious</option>
+              <option value="HOPEFUL">Hopeful</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="builderActions">
+          <button id="buildBtn" class="btn" type="button">Build my report</button>
+          <button id="readBtn" class="btn ghost" type="button">Read it 🔊</button>
+          <button id="copyBtn" class="btn ghost" type="button">Copy</button>
+          <button id="resetBuilderBtn" class="btn ghost" type="button">Reset builder</button>
+        </div>
+
+        <div class="output">
+          <h3 class="tinyTitle">Your mini‑report</h3>
+          <div id="reportOut" class="report" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+    <!-- DEEP DIVE -->
+    <section class="card">
+      <div class="cardHead">
+        <h2>6) Deep Dive — “Newsroom Deluxe” (EN ↔ FR)</h2>
+        <p class="hint">More detail + selective French support: translate key words, spin scenarios, and build a longer report.</p>
+      </div>
+
+      <div class="deepGrid">
+        <div class="deepCard">
+          <div class="taskHead">
+            <h3>6A) EN ↔ FR Micro‑Glossary (key words)</h3>
+            <button class="btn small ghost" type="button" data-reset="gloss">Reset</button>
+          </div>
+          <p class="hint small">Tap a word to reveal the French. Tap 🔊 to hear the English word (US/UK).</p>
+          <div class="glossToolbar">
+            <div class="control">
+              <label for="gFilter">Filter</label>
+              <select id="gFilter" class="select"></select>
+            </div>
+            <button id="gShuffleBtn" class="btn ghost" type="button">Shuffle</button>
+          </div>
+          <div id="glossGrid" class="glossGrid" aria-label="Bilingual glossary cards"></div>
+        </div>
+
+        <div class="deepCard">
+          <div class="taskHead">
+            <h3>6B) Translation Challenge (instant check)</h3>
+            <button class="btn small ghost" type="button" data-reset="trans">Reset</button>
+          </div>
+          <p class="hint small">Choose the best translation. Immediate ✅/❌ + explanation.</p>
+          <div id="transArea" class="qa"></div>
+        </div>
+
+        <div class="deepCard">
+          <div class="taskHead">
+            <h3>6C) Scenario Spinner — Live newsroom roleplay</h3>
+            <button class="btn small ghost" type="button" data-reset="spin">Reset</button>
+          </div>
+
+          <p class="hint small">Click SPIN. Then speak for 30–45 seconds using: <b>Past</b> (what happened), <b>Past Continuous</b> (background), <b>Present</b> (now).</p>
+
+          <div class="spinBox">
+            <button id="spinBtn" class="btn" type="button">SPIN 🎲</button>
+            <button id="spinReadBtn" class="btn ghost" type="button">Read 🔊</button>
+            <button id="spinCopyBtn" class="btn ghost" type="button">Copy</button>
+          </div>
+
+          <div id="spinOut" class="report" aria-live="polite"></div>
+
+          <div class="divider"></div>
+
+          <div class="taskHead">
+            <h3>6D) Long Report Builder (60–90 seconds)</h3>
+            <button class="btn small ghost" type="button" data-reset="long">Reset</button>
+          </div>
+
+          <p class="hint small">Pick a “detail pack” + generate a longer, coherent report. Includes French hints for advanced words.</p>
+
+          <div class="builderGrid">
+            <div class="control">
+              <label for="lTopic">Story</label>
+              <select id="lTopic" class="select"></select>
+            </div>
+            <div class="control">
+              <label for="lDetail">Detail pack</label>
+              <select id="lDetail" class="select">
+                <option value="WHAT" selected>What happened (timeline)</option>
+                <option value="WHY">Why it matters (impact)</option>
+                <option value="CHECK">Fact-check mindset</option>
+                <option value="BALANCE">Balanced language</option>
+              </select>
+            </div>
+            <div class="control">
+              <label for="lConnector">Connector style</label>
+              <select id="lConnector" class="select">
+                <option>However</option>
+                <option>Meanwhile</option>
+                <option>As a result</option>
+                <option>In addition</option>
+              </select>
+            </div>
+            <div class="coachBtns">
+              <button id="longBuildBtn" class="btn" type="button">Build long report</button>
+              <button id="longReadBtn" class="btn ghost" type="button">Read 🔊</button>
+              <button id="longCopyBtn" class="btn ghost" type="button">Copy</button>
+            </div>
+          </div>
+
+          <div id="longOut" class="report" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <footer class="footer">
+      <p>SpeakEasy tip: “Timeline first.” (What happened? What was happening? What is happening now?)</p>
+    </footer>
+  </main>
+
+  <script src="/js/newsflash_v2.js"></script>
+</body>
+</html>

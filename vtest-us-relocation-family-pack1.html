@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • VTest Scenario — Moving to the USA (Family)</title>
+  <link rel="stylesheet" href="/css/vtest-us-relocation-family-pack1.css" />
+  <meta name="color-scheme" content="dark light" />
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">🇺🇸</div>
+      <div>
+        <div class="brand__title">SpeakEasyTisha • VTest Scenario Pack</div>
+        <div class="brand__sub">Moving to the United States (family with 3 children) — A2→B2</div>
+      </div>
+    </div>
+    <div class="tools">
+      <div class="pill">
+        <span class="pill__label">Level</span>
+        <select id="level" class="select select--tiny" aria-label="Level">
+          <option value="a2">A2</option>
+          <option value="b1" selected>B1</option>
+          <option value="b2">B2</option>
+        </select>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Accent (TTS)</span>
+        <button class="btn btn--tiny" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="btn btn--tiny" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+      <div class="pill" title="Auto-checked score">
+        <span class="pill__label">Score</span>
+        <span class="pill__value" id="scoreTxt">0 / 0</span>
+        <button class="btn btn--tiny btn--ghost" id="resetAll" type="button" title="Reset">↺</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h1 class="h1">Mini VTest — Moving to the USA (Family)</h1>
+    <p class="lead">
+      A realistic exam-style pack for a learner relocating to the United States for a few years with <strong>three children</strong>.
+      Focus: <strong>speaking + writing</strong> (polite requests, clear emails, practical vocabulary).
+    </p>
+    <div class="row noPrint">
+      <a class="btn btn--primary" href="#profile">Profile</a>
+      <a class="btn" href="#grammar">Grammar</a>
+      <a class="btn" href="#vocab">Vocab</a>
+      <a class="btn" href="#practice">Practice</a>
+      <a class="btn" href="#speaking">Speaking</a>
+      <a class="btn" href="#writing">Writing</a>
+      <a class="btn" href="#sprint">7‑day plan</a>
+      <button class="btn btn--ghost" id="printPage" type="button">Print</button>
+      <button class="btn" id="newAll" type="button">✨ New set</button>
+    </div>
+
+    <div class="panel panel--soft" style="margin-top:14px;">
+      <div class="panelTitle">Exam key (easy): Situation → Request → Details → Confirmation</div>
+      <div class="model">1) Situation: who you are + what you need
+2) Request: could/would…?
+3) Details: documents, dates, costs
+4) Confirmation: “Could you confirm by email?”</div>
+      <div class="row" style="justify-content:space-between; margin-top:10px;">
+        <span class="badge">Accuracy: <span id="progressPct">0%</span></span>
+        <div class="progress" style="flex:1; min-width:160px;"><div id="progressBar"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="profile">
+    <div class="sectionHead">
+      <h2 class="h2">0) Candidate profile (editable)</h2>
+      <div class="row noPrint">
+        <label class="pill"><span class="pill__label">Years</span><input id="years" class="input" style="width:120px;padding:8px 10px;border-radius:12px;" placeholder="3" /></label>
+        <label class="pill"><span class="pill__label">Area</span><input id="city" class="input" style="width:220px;padding:8px 10px;border-radius:12px;" placeholder="Boston area" /></label>
+      </div>
+    </div>
+    <div class="model" id="profileOut"></div>
+  </section>
+
+  <section class="card" id="grammar">
+    <div class="sectionHead">
+      <h2 class="h2">1) Grammar — what tense + how to sound polite</h2>
+      <span class="badge">Tap key words to practice pronunciation</span>
+    </div>
+    <div class="grid2" id="grammarCards"></div>
+  </section>
+
+  <section class="card" id="vocab">
+    <div class="sectionHead">
+      <h2 class="h2">2) Vocabulary — relocation essentials</h2>
+      <div class="row noPrint">
+        <select id="vocabCat" class="select select--tiny" aria-label="Vocab category">
+          <option value="school" selected>School</option>
+          <option value="housing">Housing</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="daily">Daily life</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Key words (tap to say)</div>
+        <div class="chips" id="vocabChips"></div>
+        <div class="muted" style="margin-top:10px;">Tip: pick 6–8 words and reuse them in the speaking + writing drills.</div>
+      </div>
+      <div class="panel panel--soft">
+        <div class="panelTitle">Definitions</div>
+        <div class="grid2" id="vocabDefs"></div>
+      </div>
+    </div>
+
+    <div class="panel panel--soft" style="margin-top:16px;">
+      <div class="panelTitle">Matching game (tap-friendly)</div>
+      <div class="row noPrint" style="margin-bottom:10px;">
+        <select id="matchCat" class="select select--tiny" aria-label="Match category">
+          <option value="school" selected>School</option>
+          <option value="housing">Housing</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="daily">Daily life</option>
+        </select>
+        <button class="btn btn--tiny btn--ghost" id="newMatch" type="button">New set</button>
+      </div>
+      <div class="matchGrid">
+        <div id="matchLeft"></div>
+        <div id="matchRight"></div>
+      </div>
+      <div class="fb" id="matchFb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card" id="practice">
+    <div class="sectionHead">
+      <h2 class="h2">3) Practice — tense / word / fill / steps</h2>
+      <div class="row noPrint">
+        <button class="btn btn--tiny btn--ghost" id="newTenseQuiz" type="button">New tense quiz</button>
+        <button class="btn btn--tiny btn--ghost" id="newWordQuiz" type="button">New word quiz</button>
+        <button class="btn btn--tiny btn--ghost" id="newFill" type="button">New fill</button>
+        <button class="btn btn--tiny btn--ghost" id="newOrder" type="button">New order</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">A) What tense / structure?</div>
+        <div class="quiz" id="tenseQuiz"></div>
+      </div>
+      <div class="panel">
+        <div class="panelTitle">B) What word?</div>
+        <div class="quiz" id="wordQuiz"></div>
+      </div>
+    </div>
+
+    <div class="panel panel--soft" style="margin-top:16px;">
+      <div class="panelTitle">C) Fill in the blanks (instant feedback)</div>
+      <div class="grid2" id="fillList" style="margin-top:10px;"></div>
+    </div>
+
+    <div class="panel panel--soft" style="margin-top:16px;">
+      <div class="panelTitle">D) Process steps (tap order)</div>
+      <div class="row" style="justify-content:space-between;">
+        <span class="muted">Tap the steps in order (randomized).</span>
+        <span class="badge">Progress: <span id="tapProgress">0/6</span></span>
+      </div>
+      <div class="tapOrder" id="tapOrder" style="margin-top:10px;"></div>
+      <div class="fb" id="tapFb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card" id="speaking">
+    <div class="sectionHead">
+      <h2 class="h2">4) Speaking — role-play (60–90s)</h2>
+      <div class="row noPrint">
+        <select id="scenario" class="select select--tiny" aria-label="Scenario">
+          <option value="school" selected>Call a school office (enrollment)</option>
+          <option value="housing">Email landlord/agent (lease)</option>
+          <option value="healthcare">Call a clinic (appointment + insurance)</option>
+        </select>
+        <button class="btn btn--tiny btn--primary" id="start60" type="button">Start 60s</button>
+        <button class="btn btn--tiny btn--primary" id="start90" type="button">Start 90s</button>
+        <button class="btn btn--tiny btn--ghost" id="stopTimer" type="button">Stop</button>
+        <span class="badge" id="timerTxt">00:00</span>
+        <button class="btn btn--tiny btn--ghost" id="listenPrompt" type="button">▶ Listen prompt</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Prompt</div>
+        <div class="model" id="sPrompt"></div>
+
+        <div class="panel panel--soft" style="margin-top:12px;">
+          <div class="panelTitle">Useful phrases (tap to insert)</div>
+          <div class="chips" id="sChips"></div>
+        </div>
+
+        <textarea class="textarea" id="sOut" placeholder="Write your speaking notes here, then speak aloud…"></textarea>
+        <div class="row row--end noPrint" style="margin-top:10px;">
+          <button class="btn btn--tiny btn--primary" id="checkSpeak" type="button">Self-check</button>
+          <button class="btn btn--tiny btn--ghost" id="listenOut" type="button">▶ Listen notes</button>
+        </div>
+
+        <div class="panel panel--soft" style="margin-top:12px;">
+          <div class="panelTitle">Checklist</div>
+          <div class="grid2" id="sChecklist">
+            <label class="muted"><input type="checkbox" id="ck_situation" /> Situation (move/years/children)</label>
+            <label class="muted"><input type="checkbox" id="ck_request" /> Polite request (could/would)</label>
+            <label class="muted"><input type="checkbox" id="ck_details" /> Details (docs/lease/insurance)</label>
+            <label class="muted"><input type="checkbox" id="ck_future" /> Future plan (going to / will)</label>
+            <label class="muted"><input type="checkbox" id="ck_polite" /> Please + thank you</label>
+            <label class="muted"><input type="checkbox" id="ck_confirm" /> Confirmation (by email)</label>
+          </div>
+        </div>
+
+        <div class="fb" id="sFb" aria-live="polite"></div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">Model answers (toggle)</div>
+        <div class="row noPrint">
+          <button class="btn btn--tiny btn--ghost" id="toggleB1" type="button">Show/Hide B1 model</button>
+          <button class="btn btn--tiny btn--ghost" id="toggleB2" type="button">Show/Hide B2 model</button>
+        </div>
+        <div class="panel" id="modelB1Box" hidden>
+          <div class="panelTitle">B1 model</div>
+          <div class="model" id="modelB1"></div>
+        </div>
+        <div class="panel" id="modelB2Box" hidden style="margin-top:12px;">
+          <div class="panelTitle">B2 model</div>
+          <div class="model" id="modelB2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="writing">
+    <div class="sectionHead">
+      <h2 class="h2">5) Writing — short email (6–10 lines)</h2>
+      <div class="row noPrint">
+        <button class="btn btn--tiny btn--primary" id="checkWrite" type="button">Self-check</button>
+        <button class="btn btn--tiny btn--ghost" id="listenWrite" type="button">▶ Listen</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Prompt</div>
+        <div class="model" id="wPrompt"></div>
+
+        <div class="panel panel--soft" style="margin-top:12px;">
+          <div class="panelTitle">Useful lines (tap to insert)</div>
+          <div class="chips" id="wChips"></div>
+        </div>
+
+        <textarea class="textarea" id="wOut" placeholder="Write your email here…"></textarea>
+        <div class="fb" id="wFb" aria-live="polite"></div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">Checklist</div>
+        <div class="grid2" id="wChecklist">
+          <label class="muted"><input type="checkbox" id="w_subject" /> Subject line</label>
+          <label class="muted"><input type="checkbox" id="w_situation" /> Situation (move/children/years)</label>
+          <label class="muted"><input type="checkbox" id="w_request" /> Polite request (could/would)</label>
+          <label class="muted"><input type="checkbox" id="w_details" /> Key details (docs/lease/insurance)</label>
+          <label class="muted"><input type="checkbox" id="w_thanks" /> Thank you</label>
+          <label class="muted"><input type="checkbox" id="w_confirm" /> Ask for confirmation</label>
+        </div>
+        <div class="panel" style="margin-top:12px;">
+          <div class="panelTitle">Pro tip</div>
+          <div class="muted">Short + polite + structured = best score. Use “Could you please…” + a clear final question.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="sprint">
+    <div class="sectionHead">
+      <h2 class="h2">6) 7‑day sprint plan (15–25 min/day)</h2>
+      <span class="badge">Realistic prep path</span>
+    </div>
+    <div class="grid2" id="sprintOut"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footerInner">
+      <span>SpeakEasyTisha · VTest Scenario — Moving to the USA (Family)</span>
+      <span class="muted">Mac/iPad Safari · Tap-friendly · No external assets</span>
+    </div>
+  </footer>
+</main>
+
+<script src="/js/vtest-us-relocation-family-pack1.js"></script>
+</body>
+</html>
