@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canada Trip Planner Quest (A1+) · SpeakEasyTisha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/canada-trip-planner-quest.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__logo">
+          <span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span>
+        </div>
+        <div class="brand__tag">Canada Trip Planner Quest · A1+ → A2 · 1 hour+</div>
+      </div>
+
+      <div class="controls">
+        <div class="pill">
+          <span class="pill__label">Voice</span>
+          <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+          <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+        </div>
+
+        <div class="pill">
+          <span class="pill__label">Audio</span>
+          <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+          <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+          <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+        </div>
+
+        <div class="scorebox" aria-live="polite">
+          <div class="scorebox__label">Score</div>
+          <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+        </div>
+
+        <span class="pillTag" id="jsStatus">JS: loading…</span>
+
+        <button class="btn btn--danger" id="btnResetAll" type="button" title="Reset all activities">↺ Reset all</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero__inner">
+      <div class="hero__text">
+        <h1>Plan a Trip to Canada 🇨🇦</h1>
+        <p class="lead">
+          Explore real destinations, read <strong>useful summaries</strong>, then practice the grammar you need to
+          <strong>choose</strong>, <strong>compare</strong>, and <strong>discuss</strong> your trip (with no slang).
+        </p>
+
+        <div class="hero__cta">
+          <button class="btn" id="btnStart" type="button">▶️ Start (Destinations)</button>
+          <button class="btn btn--ghost" id="btnHow" type="button">ℹ️ How it works</button>
+        </div>
+
+        <div class="minirow">
+          <div class="minicard">
+            <div class="minicard__t">🧭 Choose by vibe</div>
+            <div class="minicard__p">Relaxing, romantic, touristy, outdoors, culture, food…</div>
+          </div>
+          <div class="minicard">
+            <div class="minicard__t">🧠 Grammar with practice</div>
+            <div class="minicard__p">Location + prepositions, time & dates, comparatives, connectors.</div>
+          </div>
+          <div class="minicard">
+            <div class="minicard__t">💬 Speak & debate</div>
+            <div class="minicard__p">Builders + dialogues to talk with your partner (polite, natural).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__panel">
+        <div class="panelcard">
+          <div class="panelcard__title">Today’s plan (≈ 60–75 min)</div>
+          <ol class="panelcard__list">
+            <li>Destination Explorer (filter + read)</li>
+            <li>Grammar: describe + locate + schedule</li>
+            <li>Practice: MCQ + sorting + builders</li>
+            <li>Comparatives & superlatives</li>
+            <li>Couple dialogue + travel plan builder</li>
+          </ol>
+          <div class="progress">
+            <div class="progress__bar" id="progressBar" style="width:0%"></div>
+          </div>
+          <div class="muted tiny">Tip: click 🔊 often. Repetition builds confidence.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main" class="shell">
+
+    <section class="section" id="sec1">
+      <div class="section__head">
+        <h2>1) Destination Explorer (filter like a website)</h2>
+        <p class="muted">Filter places, read a meaningful summary, then save your favorites.</p>
+      </div>
+
+      <div class="filters">
+        <div class="pill">
+          <span class="pill__label">Search</span>
+          <input class="input" id="searchBox" placeholder="e.g., mountains, French, winter, whales…" />
+        </div>
+
+        <div class="pill">
+          <span class="pill__label">Region</span>
+          <select class="select" id="regionSelect">
+            <option value="all">All</option>
+            <option value="west">West</option>
+            <option value="prairies">Prairies</option>
+            <option value="central">Central</option>
+            <option value="east">East</option>
+            <option value="north">North</option>
+          </select>
+        </div>
+
+        <div class="pill">
+          <span class="pill__label">Season</span>
+          <select class="select" id="seasonSelect">
+            <option value="all">Any</option>
+            <option value="summer">Summer</option>
+            <option value="fall">Fall</option>
+            <option value="winter">Winter</option>
+            <option value="spring">Spring</option>
+          </select>
+        </div>
+
+        <div class="pill">
+          <span class="pill__label">Sort</span>
+          <select class="select" id="sortSelect">
+            <option value="recommended">Recommended</option>
+            <option value="budget">Budget-friendly</option>
+            <option value="romantic">Romantic</option>
+            <option value="outdoors">Outdoors</option>
+            <option value="city">City break</option>
+          </select>
+        </div>
+
+        <button class="btn btn--ghost" id="btnClearFilters" type="button">↺ Clear</button>
+      </div>
+
+      <div class="tagbar" id="vibeTags"></div>
+
+      <div class="grid grid--dest" id="destGrid"></div>
+
+      <div class="card" style="margin-top:.9rem;">
+        <div class="card__head">
+          <h3>My shortlist (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnShortlistReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <p class="muted">Pick <strong>3</strong> places you would genuinely like. Then click “Check my shortlist”.</p>
+        <div id="shortlistHost"></div>
+      </div>
+    </section>
+
+    <section class="section" id="sec2">
+      <div class="section__head">
+        <h2>2) Grammar: Describe places + give location + talk about dates</h2>
+        <p class="muted">Short rules, clear frames, then practice right away.</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Describe a place (A1+/A2)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" type="button" data-speak="It is a lively city with great food. You can visit museums and walk by the river.">🔊</button>
+            </div>
+          </div>
+
+          <div class="reading">
+            <div class="line">
+              <div class="ico">🧱</div>
+              <div>
+                <strong>Useful frames</strong><br/>
+                <span class="pillTag">It is…</span> <code>It is + adjective + noun</code> → “It is a lively city.”<br/>
+                <span class="pillTag">There is/are…</span> <code>There is/are + noun</code> → “There are many parks.”<br/>
+                <span class="pillTag">You can…</span> <code>You can + base verb</code> → “You can go skiing.”<br/>
+              </div>
+            </div>
+
+            <div class="line">
+              <div class="ico">💡</div>
+              <div>
+                <strong>Adjectives</strong> (no slang)<br/>
+                relaxing, romantic, lively, quiet, scenic, cultural, touristy, modern, historic, affordable, expensive
+              </div>
+            </div>
+
+            <div class="line">
+              <div class="ico">🔗</div>
+              <div>
+                <strong>Connectors</strong><br/>
+                <span class="pillTag">Because</span> “It is great <strong>because</strong>…”<br/>
+                <span class="pillTag">However</span> “It is beautiful; <strong>however</strong>, it can be expensive.”<br/>
+                <span class="pillTag">Also</span> “<strong>Also</strong>, you can…”<br/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Location + prepositions</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" type="button" data-speak="Vancouver is on the west coast, in British Columbia.">🔊</button>
+            </div>
+          </div>
+
+          <div class="reading">
+            <div class="line">
+              <div class="ico">🗺️</div>
+              <div>
+                <strong>Where is it?</strong><br/>
+                <span class="pillTag">in</span> “in Canada / in Quebec / in the city center”<br/>
+                <span class="pillTag">on</span> “on the west coast / on an island”<br/>
+                <span class="pillTag">near</span> “near the mountains / near the ocean”<br/>
+                <span class="pillTag">between</span> “between two cities”<br/>
+              </div>
+            </div>
+
+            <div class="line">
+              <div class="ico">🧭</div>
+              <div>
+                <strong>Regions</strong><br/>
+                west (Pacific), central (Ontario/Quebec), east (Atlantic), north (Yukon/NWT/Nunavut)
+              </div>
+            </div>
+
+            <div class="line">
+              <div class="ico">⏱️</div>
+              <div>
+                <strong>Time & dates (simple)</strong><br/>
+                <span class="pillTag">in</span> “in July / in summer / in 2026”<br/>
+                <span class="pillTag">on</span> “on July 12th / on Monday”<br/>
+                <span class="pillTag">at</span> “at 7:30 pm / at noon”<br/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:.9rem;">
+        <div class="card__head">
+          <h3>Quick practice (Score): choose the best sentence</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnGrammarMCQReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="grammarMCQHost"></div>
+      </div>
+    </section>
+
+    <section class="section" id="sec3">
+      <div class="section__head">
+        <h2>3) Sorting game: adjectives → trip style (drag OR tap)</h2>
+        <p class="muted">Put many adjectives in each box. Touch-friendly.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Trip Vibe Sorter (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnAdjSortReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="adjSortHost"></div>
+      </div>
+    </section>
+
+    <section class="section" id="sec4">
+      <div class="section__head">
+        <h2>4) Comparatives & superlatives (better / best / cheaper / most scenic)</h2>
+        <p class="muted">Compare two places politely: “X is better than Y because…”</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>MCQ (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnCompMCQReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="compMCQHost"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Sentence Builder (drag OR tap) (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnCompBuilderReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="compBuilderHost"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec5">
+      <div class="section__head">
+        <h2>5) Couple dialogue: choose replies + build your suggestion</h2>
+        <p class="muted">Sound polite and natural (no slang). Use “How about…?” “I think…” “However…”</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <div class="card__head">
+            <h3>Choose the best reply (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnDialogueReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="dialogueHost"></div>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <h3>Suggestion Builder (drag OR tap) (Score)</h3>
+            <div class="righttools">
+              <button class="btn btn--ghost" id="btnSuggestBuilderReset" type="button">↺ Reset</button>
+            </div>
+          </div>
+          <div id="suggestBuilderHost"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec6">
+      <div class="section__head">
+        <h2>6) Travel Plan Text Builder (paragraph) + checklist</h2>
+        <p class="muted">Create a short plan with location, time, activities, and one comparison.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Build your plan (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnPlanSpeak" type="button">🔊 Listen</button>
+            <button class="btn btn--ghost" id="btnPlanCopy" type="button">📋 Copy</button>
+            <button class="btn btn--ghost" id="btnPlanReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+
+        <div class="formgrid">
+          <label class="lab">Destination
+            <select class="select" id="planDest"></select>
+          </label>
+
+          <label class="lab">Season / Month
+            <select class="select" id="planTime">
+              <option value="in summer">in summer</option>
+              <option value="in winter">in winter</option>
+              <option value="in spring">in spring</option>
+              <option value="in fall">in fall</option>
+              <option value="in July">in July</option>
+              <option value="in August">in August</option>
+              <option value="in December">in December</option>
+            </select>
+          </label>
+
+          <label class="lab">Dates (simple)
+            <select class="select" id="planDates">
+              <option value="from July 10th to July 15th">from July 10th to July 15th</option>
+              <option value="on a long weekend">on a long weekend</option>
+              <option value="for 5 days">for 5 days</option>
+              <option value="for one week">for one week</option>
+            </select>
+          </label>
+
+          <label class="lab">Trip style (adjectives)
+            <select class="select" id="planStyle">
+              <option value="relaxing">relaxing</option>
+              <option value="romantic">romantic</option>
+              <option value="lively">lively</option>
+              <option value="scenic">scenic</option>
+              <option value="cultural">cultural</option>
+              <option value="affordable">affordable</option>
+            </select>
+          </label>
+
+          <label class="lab">Activities (choose 2)
+            <div class="chips" id="activityChips"></div>
+          </label>
+
+          <label class="lab">Comparison
+            <select class="select" id="planCompare">
+              <option value="but it is more expensive than">but it is more expensive than</option>
+              <option value="and it is cheaper than">and it is cheaper than</option>
+              <option value="and it is more relaxing than">and it is more relaxing than</option>
+              <option value="however, it is less touristy than">however, it is less touristy than</option>
+            </select>
+          </label>
+
+          <label class="lab">Other place (to compare)
+            <select class="select" id="planOther"></select>
+          </label>
+        </div>
+
+        <div class="smallrow" style="margin-top:.65rem;">
+          <button class="btn" id="btnPlanBuild" type="button">✨ Build my paragraph</button>
+          <button class="hintbtn" id="btnPlanHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="btnPlanCheck" type="button">✅ Check (Score)</button>
+        </div>
+
+        <textarea class="textarea" id="planOutput" rows="6" placeholder="Your paragraph will appear here…"></textarea>
+
+        <div class="checklist" id="planChecklist"></div>
+        <div class="feedback hidden" id="planFeedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section" id="sec7">
+      <div class="section__head">
+        <h2>7) Listening: Which destination is it?</h2>
+        <p class="muted">Listen to a short description. Choose the correct destination.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Listening Challenge (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnListenReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="listenHost"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="muted tiny">© SpeakEasyTisha · Canada Trip Planner Quest · iPad/Mac friendly (drag OR tap)</div>
+        <a class="iconbtn" href="#top">↑ Back to top</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <pre id="debugBox" class="hidden" style="white-space:pre-wrap;margin:1rem;padding:1rem;border:1px dashed rgba(14,31,36,.35);border-radius:14px;background:#fff;max-width:1100px;">Debug log</pre>
+
+  <script src="/js/canada-trip-planner-quest.js"></script>
+</body>
+</html>
