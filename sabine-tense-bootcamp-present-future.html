@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Sabine • Wedding English Tense Bootcamp (PS/PC/Future)</title>
+  <link rel="stylesheet" href="/css/sabine-tense-bootcamp-present-future.css"/>
+</head>
+<body>
+<header class="top">
+  <div class="topIn">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">💍</div>
+      <div>
+        <h1>Sabine • Tense Bootcamp</h1>
+        <div class="sub">Present Simple • Present Continuous • Future (going to / will) • wedding planner context • FR help</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <label class="pill">🪜 Stage
+        <select id="stageSel" aria-label="Stage">
+          <option value="1" selected>Stage 1 — Present Simple</option>
+          <option value="2">Stage 2 — Present Continuous</option>
+          <option value="3">Stage 3 — Future (going to / will)</option>
+          <option value="4">Stage 4 — Mix & Challenge (hard)</option>
+          <option value="all">Show all</option>
+        </select>
+      </label>
+
+      <button class="btn" id="frBtn" aria-pressed="true">🇫🇷 FR: <span id="frState">ON</span></button>
+      <button class="btn" id="printBtn" title="Print the visual table">🖨️ Print</button>
+      <button class="btn" id="resetBtn" title="Reset">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero card">
+    <div class="row between">
+      <div>
+        <div class="kicker">Before the Tense Ladder • After the Timeline Games</div>
+        <h2 class="title">One tense at a time → realistic wedding English</h2>
+        <p class="lead">
+          This lesson starts <b>very easy</b> (one tense, one verb) and ends with a <b>mix challenge</b>.
+          Each section includes: <b>When & how</b>, <b>key words</b>, <b>French vs English</b>, <b>simple wedding vocabulary</b>,
+          then <b>QCM</b>, <b>fill-in</b>, and <b>drag/tap sorting</b>, and finally <b>speaking scenarios</b>.
+        </p>
+        <p class="lead fr">
+          Cette leçon commence <b>très simple</b> (un temps, un verbe) et finit avec un <b>challenge</b>.
+          Chaque partie contient : <b>quand/comment</b>, <b>mots-clés</b>, <b>FR vs EN</b>, <b>vocabulaire mariage facile</b>,
+          puis <b>QCM</b>, <b>texte à trous</b>, <b>tri (glisser/taper)</b>, et enfin <b>scénarios d’oral</b>.
+        </p>
+
+        <div class="jump">
+          <a class="jumpBtn" href="#visual">Visual Table</a>
+          <a class="jumpBtn" href="#ps">1) Present Simple</a>
+          <a class="jumpBtn" href="#pc">2) Present Continuous</a>
+          <a class="jumpBtn" href="#fut">3) Future</a>
+          <a class="jumpBtn" href="#mix">4) Mix Challenge</a>
+        </div>
+      </div>
+
+      <aside class="miniCheat" aria-label="Mini cheat sheet">
+        <div class="miniTitle">Fast cues</div>
+        <div class="miniLine"><span class="dot"></span><b>Usually / every day</b> → Present Simple</div>
+        <div class="miniLine"><span class="dot"></span><b>Now / today</b> → Present Continuous</div>
+        <div class="miniLine"><span class="dot"></span><b>Plan</b> → going to</div>
+        <div class="miniLine"><span class="dot"></span><b>Promise</b> → will</div>
+        <div class="miniLine"><span class="dot"></span><b>Schedule (starts at)</b> → Present Simple (future meaning)</div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- VISUAL TABLE -->
+  <section id="visual" class="card section">
+    <div class="row between">
+      <div>
+        <div class="secTitle">Visual: Past • Present • Future</div>
+        <div class="muted">A clean map of where each tense “lives”. (We focus on present + future here.)</div>
+      </div>
+      <div class="row">
+        <button class="btn" id="visualToggle">🔎 Toggle details</button>
+      </div>
+    </div>
+
+    <div class="timeTable" aria-label="tense table">
+      <div class="col past">
+        <div class="colHead">⏳ Past</div>
+        <div class="box dim">
+          <div class="bTitle">Past Simple</div>
+          <div class="bSub">yesterday / last week</div>
+          <div class="bEx">I called the florist yesterday.</div>
+        </div>
+        <div class="box dim">
+          <div class="bTitle">Past Continuous</div>
+          <div class="bSub">at 8 PM yesterday</div>
+          <div class="bEx">I was meeting a vendor at 8 PM.</div>
+        </div>
+      </div>
+
+      <div class="col present">
+        <div class="colHead">📍 Present</div>
+        <div class="box">
+          <div class="bTitle">Present Simple</div>
+          <div class="bSub">routine / facts</div>
+          <div class="bEx">I plan timelines every week.</div>
+          <div class="bMeta detail">Key words: usually, every day, on Mondays</div>
+        </div>
+        <div class="box">
+          <div class="bTitle">Present Continuous</div>
+          <div class="bSub">now / around now</div>
+          <div class="bEx">I’m emailing the couple now.</div>
+          <div class="bMeta detail">Key words: now, right now, today, this week</div>
+        </div>
+      </div>
+
+      <div class="col future">
+        <div class="colHead">🔮 Future</div>
+        <div class="box">
+          <div class="bTitle">Going to</div>
+          <div class="bSub">plans / intentions</div>
+          <div class="bEx">I’m going to call them tomorrow.</div>
+          <div class="bMeta detail">Key words: tomorrow, next week, soon</div>
+        </div>
+        <div class="box">
+          <div class="bTitle">Will</div>
+          <div class="bSub">promises / decisions</div>
+          <div class="bEx">I will send it today.</div>
+          <div class="bMeta detail">Key words: I promise, OK, don’t worry</div>
+        </div>
+        <div class="box special">
+          <div class="bTitle">Present Simple (future meaning)</div>
+          <div class="bSub">schedules / timetables</div>
+          <div class="bEx">The ceremony starts at 3:00 PM.</div>
+          <div class="bMeta detail">Logic: official schedule</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fb">
+      Tip: “Present Simple” can speak about the future when it is a schedule.
+    </div>
+    <div class="fb fr">
+      Astuce : le Present Simple peut parler du futur quand c’est un horaire / un programme.
+    </div>
+  </section>
+
+  <!-- STAGE 1: PRESENT SIMPLE -->
+  <section id="ps" class="card section stage" data-stage="1">
+    <div class="row between">
+      <div>
+        <div class="secTitle">1) Present Simple</div>
+        <div class="muted">Routine / job / facts — Sabine’s daily work.</div>
+      </div>
+      <div class="row">
+        <button class="btn" data-open="#psLearn">📘 Learn</button>
+        <button class="btn" data-open="#psPractice">🧩 Practice</button>
+        <button class="btn" data-open="#psSpeak">🗣️ Speak</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <article class="card inner" id="psLearn">
+        <div class="cardTitle">When & how</div>
+        <div class="enonce">
+          <div class="enonceTitle">Use</div>
+          <div class="enonceText">✅ routines / jobs / facts</div>
+          <div class="enonceText">✅ repeated actions (every day, usually)</div>
+          <div class="enonceText fr">✅ habitudes / travail / faits</div>
+          <div class="enonceText fr">✅ actions répétées (every day, usually)</div>
+        </div>
+
+        <div class="miniGrid">
+          <div class="miniBox">
+            <div class="miniHead">Form</div>
+            <div class="miniLine2"><b>I/you/we/they</b> + base verb: <b>I call</b></div>
+            <div class="miniLine2"><b>he/she/it</b> + <b>-s</b>: <b>She calls</b></div>
+            <div class="miniLine2 fr"><b>Attention:</b> en anglais, le <b>-s</b> est seulement à la 3e personne.</div>
+          </div>
+          <div class="miniBox">
+            <div class="miniHead">Key words</div>
+            <div class="chips" id="psKeywords"></div>
+          </div>
+        </div>
+
+        <div class="miniBox" style="margin-top:10px">
+          <div class="miniHead">French vs English</div>
+          <div class="miniLine2">EN: Present Simple = routine / facts.</div>
+          <div class="miniLine2">FR: Souvent… on utilise aussi le présent.</div>
+          <div class="miniLine2 fr">Ex: “Je planifie…” → “I plan…” (habitude).</div>
+        </div>
+
+        <div class="miniBox" style="margin-top:10px">
+          <div class="miniHead">Conjugation base (incl. irregular)</div>
+          <div class="tableWrap">
+            <table class="conj">
+              <thead><tr><th>Pronoun</th><th>do</th><th>be</th><th>have</th><th>plan</th></tr></thead>
+              <tbody id="psConj"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="miniBox" style="margin-top:10px">
+          <div class="miniHead">Wedding vocabulary (routine)</div>
+          <div class="vocab" id="psVocab"></div>
+        </div>
+      </article>
+
+      <article class="card inner" id="psPractice">
+        <div class="cardTitle">Practice (instant feedback)</div>
+
+        <div class="exCard">
+          <div class="exTitle">A) QCM — choose the correct sentence</div>
+          <div class="enonce"><div class="enonceTitle">ÉNONCÉ</div><div class="enonceText" id="psQcmPrompt">—</div></div>
+          <div class="opts" id="psQcmOpts"></div>
+          <div class="row">
+            <button class="btn" id="psQcmNew">+ New</button>
+            <button class="btn" id="psQcmHint">💡 Hint</button>
+          </div>
+          <div class="fb" id="psQcmFb"></div>
+        </div>
+
+        <div class="exCard">
+          <div class="exTitle">B) Fill in — choose the correct verb form</div>
+          <div class="enonce"><div class="enonceTitle">ÉNONCÉ</div><div class="enonceText" id="psFillPrompt">—</div></div>
+          <div class="row">
+            <select class="select" id="psFillSel" aria-label="Choose form"></select>
+            <button class="btn" id="psFillCheck">Check</button>
+            <button class="btn" id="psFillNew">+ New</button>
+          </div>
+          <div class="fb" id="psFillFb"></div>
+        </div>
+
+        <div class="exCard">
+          <div class="exTitle">C) Sort (tap or drag) — time words</div>
+          <div class="muted">Tap a card, then tap the correct box. Drag works on desktop.</div>
+          <div class="sortGrid">
+            <div class="pile" id="psSortPile"></div>
+            <div class="binWrap">
+              <div class="bin" id="psBinPS"><div class="binHead">Present Simple</div><div class="drop" id="psDropPS"></div></div>
+              <div class="bin" id="psBinOther"><div class="binHead">Not Present Simple</div><div class="drop" id="psDropOther"></div></div>
+            </div>
+          </div>
+          <div class="row">
+            <button class="btn" id="psSortNew">+ New</button>
+            <button class="btn" id="psSortReset">↺ Reset</button>
+          </div>
+          <div class="fb" id="psSortFb"></div>
+        </div>
+      </article>
+    </div>
+
+    <article class="card inner" id="psSpeak" style="margin-top:12px">
+      <div class="cardTitle">Speaking scenarios (Present Simple only)</div>
+      <div class="muted">Read out loud. Use the model if needed. (No slang.)</div>
+      <div class="speakGrid" id="psSpeakGrid"></div>
+    </article>
+  </section>
+
+  <!-- STAGE 2: PRESENT CONTINUOUS -->
+  <section id="pc" class="card section stage" data-stage="2">
+    <div class="row between">
+      <div>
+        <div class="secTitle">2) Present Continuous</div>
+        <div class="muted">Now / around now — what Sabine is doing today.</div>
+      </div>
+      <div class="row">
+        <button class="btn" data-open="#pcLearn">📘 Learn</button>
+        <button class="btn" data-open="#pcPractice">🧩 Practice</button>
+        <button class="btn" data-open="#pcSpeak">🗣️ Speak</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <article class="card inner" id="pcLearn">
+        <div class="cardTitle">When & how</div>
+        <div class="enonce">
+          <div class="enonceTitle">Use</div>
+          <div class="enonceText">✅ action happening now / around now</div>
+          <div class="enonceText">✅ temporary actions (this week)</div>
+          <div class="enonceText fr">✅ action en cours (maintenant / en ce moment)</div>
+          <div class="enonceText fr">✅ action temporaire (cette semaine)</div>
+        </div>
+
+        <div class="miniGrid">
+          <div class="miniBox">
+            <div class="miniHead">Form</div>
+            <div class="miniLine2"><b>am/is/are</b> + verb-<b>ing</b>: <b>I am calling</b></div>
+            <div class="miniLine2">Spelling: make → making (drop “e”), plan → planning (double consonant)</div>
+            <div class="miniLine2 fr">FR: souvent = “être en train de…” (mais pas toujours obligatoire).</div>
+          </div>
+          <div class="miniBox">
+            <div class="miniHead">Key words</div>
+            <div class="chips" id="pcKeywords"></div>
+          </div>
+        </div>
+
+        <div class="miniBox" style="margin-top:10px">
+          <div class="miniHead">French vs English</div>
+          <div class="miniLine2">EN: “I am calling” is very normal for “now”.</div>
+          <div class="miniLine2">FR: “Je suis en train d’appeler” vs “J’appelle”.</div>
+          <div class="miniLine2 fr">Ex: “J’appelle maintenant” → “I’m calling now.”</div>
+        </div>
+
+        <div class="miniBox" style="margin-top:10px">
+          <div class="miniHead">Conjugation base</div>
+          <div class="tableWrap">
+            <table class="conj">
+              <thead><tr><th>Pronoun</th><th>be</th><th>call (-ing)</th></tr></thead>
+              <tbody id="pcConj"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="miniBox" style="margin-top:10px">
+          <div class="miniHead">Wedding vocabulary (today)</div>
+          <div class="vocab" id="pcVocab"></div>
+        </div>
+      </article>
+
+      <article class="card inner" id="pcPractice">
+        <div class="cardTitle">Practice (instant feedback)</div>
+
+        <div class="exCard">
+          <div class="exTitle">A) QCM — choose the correct tense</div>
+          <div class="enonce"><div class="enonceTitle">ÉNONCÉ</div><div class="enonceText" id="pcQcmPrompt">—</div></div>
+          <div class="opts" id="pcQcmOpts"></div>
+          <div class="row">
+            <button class="btn" id="pcQcmNew">+ New</button>
+            <button class="btn" id="pcQcmHint">💡 Hint</button>
+          </div>
+          <div class="fb" id="pcQcmFb"></div>
+        </div>
+
+        <div class="exCard">
+          <div class="exTitle">B) Fill in — am / is / are + -ing</div>
+          <div class="enonce"><div class="enonceTitle">ÉNONCÉ</div><div class="enonceText" id="pcFillPrompt">—</div></div>
+          <div class="row">
+            <select class="select" id="pcFillSel"></select>
+            <button class="btn" id="pcFillCheck">Check</button>
+            <button class="btn" id="pcFillNew">+ New</button>
+          </div>
+          <div class="fb" id="pcFillFb"></div>
+        </div>
+
+        <div class="exCard">
+          <div class="exTitle">C) Sort (tap or drag) — time markers</div>
+          <div class="muted">Tap a card, then tap the correct box.</div>
+          <div class="sortGrid">
+            <div class="pile" id="pcSortPile"></div>
+            <div class="binWrap">
+              <div class="bin" id="pcBinPC"><div class="binHead">Present Continuous</div><div class="drop" id="pcDropPC"></div></div>
+              <div class="bin" id="pcBinOther"><div class="binHead">Not Present Continuous</div><div class="drop" id="pcDropOther"></div></div>
+            </div>
+          </div>
+          <div class="row">
+            <button class="btn" id="pcSortNew">+ New</button>
+            <button class="btn" id="pcSortReset">↺ Reset</button>
+          </div>
+          <div class="fb" id="pcSortFb"></div>
+        </div>
+      </article>
+    </div>
+
+    <article class="card inner" id="pcSpeak" style="margin-top:12px">
+      <div class="cardTitle">Speaking scenarios (Present Continuous)</div>
+      <div class="muted">Short professional updates (“right now / today / this week”).</div>
+      <div class="speakGrid" id="pcSpeakGrid"></div>
+    </article>
+  </section>
+
+  <!-- STAGE 3: FUTURE -->
+  <section id="fut" class="card section stage" data-stage="3">
+    <div class="row between">
+      <div>
+        <div class="secTitle">3) Future: going to / will</div>
+        <div class="muted">Plans vs promises — simple and practical.</div>
+      </div>
+      <div class="row">
+        <button class="btn" data-open="#fLearn">📘 Learn</button>
+        <button class="btn" data-open="#fPractice">🧩 Practice</button>
+        <button class="btn" data-open="#fSpeak">🗣️ Speak</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <article class="card inner" id="fLearn">
+        <div class="cardTitle">When & how</div>
+
+        <div class="miniGrid">
+          <div class="miniBox">
+            <div class="miniHead">Going to = plan</div>
+            <div class="miniLine2"><b>am/is/are going to</b> + base verb</div>
+            <div class="miniLine2">I am going to send the schedule tomorrow.</div>
+            <div class="miniLine2 fr">FR: “Je vais…” (intention / plan)</div>
+          </div>
+          <div class="miniBox">
+            <div class="miniHead">Will = promise / decision</div>
+            <div class="miniLine2"><b>will</b> + base verb</div>
+            <div class="miniLine2">I will call you this afternoon. (promise)</div>
+            <div class="miniLine2 fr">FR: “Je vais le faire” / “Je le ferai” (promesse)</div>
+          </div>
+        </div>
+
+        <div class="miniGrid" style="margin-top:10px">
+          <div class="miniBox">
+            <div class="miniHead">Key words</div>
+            <div class="chips" id="fKeywords"></div>
+          </div>
+          <div class="miniBox">
+            <div class="miniHead">French vs English (common confusion)</div>
+            <div class="miniLine2">FR often uses “je vais…” for many futures.</div>
+            <div class="miniLine2">EN uses “going to” for plans, and “will” for promises/decisions.</div>
+            <div class="miniLine2 fr">Objectif : écouter la logique (plan vs promesse).</div>
+          </div>
+        </div>
+
+        <div class="miniBox" style="margin-top:10px">
+          <div class="miniHead">Conjugation base</div>
+          <div class="tableWrap">
+            <table class="conj">
+              <thead><tr><th>Pronoun</th><th>going to (send)</th><th>will (send)</th></tr></thead>
+              <tbody id="fConj"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="miniBox" style="margin-top:10px">
+          <div class="miniHead">Wedding vocabulary (future)</div>
+          <div class="vocab" id="fVocab"></div>
+        </div>
+      </article>
+
+      <article class="card inner" id="fPractice">
+        <div class="cardTitle">Practice (instant feedback)</div>
+
+        <div class="exCard">
+          <div class="exTitle">A) QCM — going to or will?</div>
+          <div class="enonce"><div class="enonceTitle">ÉNONCÉ</div><div class="enonceText" id="fQcmPrompt">—</div></div>
+          <div class="opts" id="fQcmOpts"></div>
+          <div class="row">
+            <button class="btn" id="fQcmNew">+ New</button>
+            <button class="btn" id="fQcmHint">💡 Hint</button>
+          </div>
+          <div class="fb" id="fQcmFb"></div>
+        </div>
+
+        <div class="exCard">
+          <div class="exTitle">B) Fill in — choose the correct future form</div>
+          <div class="enonce"><div class="enonceTitle">ÉNONCÉ</div><div class="enonceText" id="fFillPrompt">—</div></div>
+          <div class="row">
+            <select class="select" id="fFillSel"></select>
+            <button class="btn" id="fFillCheck">Check</button>
+            <button class="btn" id="fFillNew">+ New</button>
+          </div>
+          <div class="fb" id="fFillFb"></div>
+        </div>
+
+        <div class="exCard">
+          <div class="exTitle">C) Sort (tap or drag) — plan vs promise</div>
+          <div class="muted">Tap a card, then tap the correct box.</div>
+          <div class="sortGrid">
+            <div class="pile" id="fSortPile"></div>
+            <div class="binWrap">
+              <div class="bin" id="fBinPlan"><div class="binHead">Plan (going to)</div><div class="drop" id="fDropPlan"></div></div>
+              <div class="bin" id="fBinPromise"><div class="binHead">Promise (will)</div><div class="drop" id="fDropPromise"></div></div>
+            </div>
+          </div>
+          <div class="row">
+            <button class="btn" id="fSortNew">+ New</button>
+            <button class="btn" id="fSortReset">↺ Reset</button>
+          </div>
+          <div class="fb" id="fSortFb"></div>
+        </div>
+      </article>
+    </div>
+
+    <article class="card inner" id="fSpeak" style="margin-top:12px">
+      <div class="cardTitle">Speaking scenarios (Future)</div>
+      <div class="muted">Plans + promises with clients/vendors.</div>
+      <div class="speakGrid" id="fSpeakGrid"></div>
+    </article>
+  </section>
+
+  <!-- STAGE 4: MIX -->
+  <section id="mix" class="card section stage" data-stage="4">
+    <div class="row between">
+      <div>
+        <div class="secTitle">4) Mix & Challenge (harder)</div>
+        <div class="muted">Choose the correct tense using keywords + logic. Wedding context, still simple vocabulary.</div>
+      </div>
+      <div class="row">
+        <button class="btn" id="mixNew">+ New set</button>
+        <button class="btn" id="mixHint">💡 Hint</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <article class="card inner">
+        <div class="cardTitle">A) QCM — choose the tense</div>
+        <div class="enonce"><div class="enonceTitle">ÉNONCÉ</div><div class="enonceText" id="mixPrompt">—</div></div>
+        <div class="opts" id="mixOpts"></div>
+        <div class="fb" id="mixFb"></div>
+      </article>
+
+      <article class="card inner">
+        <div class="cardTitle">B) Sort (tap or drag) — sentences</div>
+        <div class="muted">Tap a card, then tap the correct tense box.</div>
+        <div class="sortGrid">
+          <div class="pile" id="mixPile"></div>
+          <div class="binWrap">
+            <div class="bin" id="mixBinPS"><div class="binHead">Present Simple</div><div class="drop" id="mixDropPS"></div></div>
+            <div class="bin" id="mixBinPC"><div class="binHead">Present Continuous</div><div class="drop" id="mixDropPC"></div></div>
+            <div class="bin" id="mixBinF"><div class="binHead">Future</div><div class="drop" id="mixDropF"></div></div>
+          </div>
+        </div>
+        <div class="row">
+          <button class="btn" id="mixReset">↺ Reset</button>
+        </div>
+        <div class="fb" id="mixSortFb"></div>
+      </article>
+    </div>
+
+    <article class="card inner" style="margin-top:12px">
+      <div class="cardTitle">C) Speaking role-play (mixed)</div>
+      <div class="muted">Choose one card. Speak 4–6 lines (routine + now + next step).</div>
+      <div class="speakGrid" id="mixSpeakGrid"></div>
+    </article>
+  </section>
+
+  <footer class="foot">
+    <span>SpeakEasyTisha • Sabine tense bootcamp</span>
+    <span class="muted">Saved ✓</span>
+  </footer>
+</main>
+
+<script src="/js/sabine-tense-bootcamp-present-future.js"></script>
+</body>
+</html>
