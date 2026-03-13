@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpeakEasyTisha • Phrasal Verbs with GET (A2→B2)</title>
+  <link rel="stylesheet" href="/css/get-phrasal-verbs-pack1.css" />
+  <meta name="color-scheme" content="dark light" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">⚡</div>
+      <div>
+        <div class="brand__title">SpeakEasyTisha • Phrasal Verbs with <span class="mono">GET</span></div>
+        <div class="brand__sub">“Meaning changes in a blink” — learn → drill → mix → speak/write (A2→B2)</div>
+      </div>
+    </div>
+
+    <div class="tools">
+      <div class="pill">
+        <span class="pill__label">Level</span>
+        <select id="level" class="select select--tiny" aria-label="Level">
+          <option value="a2">A2</option>
+          <option value="b1" selected>B1</option>
+          <option value="b2">B2</option>
+        </select>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">FR help</span>
+        <button class="btn btn--tiny" id="frToggle" type="button">FR</button>
+        <span class="pill__value small" id="frStatus">FR help: OFF</span>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Accent (TTS)</span>
+        <button class="btn btn--tiny" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="btn btn--tiny" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+
+      <div class="pill" title="Auto-checked score">
+        <span class="pill__label">Score</span>
+        <span class="pill__value" id="scoreTxt">0 / 0</span>
+        <button class="btn btn--tiny btn--ghost" id="resetAll" type="button" title="Reset">↺</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card" id="start">
+    <h1 class="h1">GET + (particle) = new meaning</h1>
+    <p class="lead">
+      This lesson teaches <strong>phrasal verbs</strong> where a small change (up / over / by / along / through…)
+      can completely change meaning. It is structured and gradual: <strong>learn → practice by category → mixed review → role-play</strong>.
+    </p>
+
+    <div class="kpi">
+      <div class="kpiCard"><div class="kpiLabel">Lesson time</div><div class="kpiVal">75–90 min</div></div>
+      <div class="kpiCard"><div class="kpiLabel">Targets</div><div class="kpiVal">Meaning + form</div></div>
+      <div class="kpiCard"><div class="kpiLabel">Outcome</div><div class="kpiVal">Speak + write</div></div>
+    </div>
+
+    <div class="panel panel--soft" style="margin-top:16px;">
+      <div class="panelTitle">Session plan (teacher-friendly)</div>
+      <div class="model">0–15 min: Clear rules + “GET map” + separable vs inseparable.
+15–30 min: Step 1 — Core GET verbs (daily life + work + travel).
+30–45 min: Step 2 — Object placement (separable vs inseparable).
+45–60 min: Step 3 — Advanced GET (rid of, through, away with, into…).
+60–75 min: Step 4 — Mixed review (exam speed).
+75–90 min: Role-play speaking + writing (multiple scenarios + models).</div>
+
+      <div class="row noPrint" style="margin-top:10px;">
+        <a class="btn btn--primary" href="#rules">Rules</a>
+        <a class="btn" href="#vocab">Vocabulary</a>
+        <a class="btn" href="#practice">Practice steps</a>
+        <a class="btn" href="#roleplay">Role-play</a>
+        <button class="btn btn--ghost" id="printPage" type="button">Print</button>
+      </div>
+
+      <div class="row" style="justify-content:space-between; margin-top:10px;">
+        <span class="badge">Accuracy: <span id="progressPct">0%</span></span>
+        <div class="progress" style="flex:1; min-width:160px;"><div id="progressBar"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="rules">
+    <div class="sectionHead">
+      <h2 class="h2">1) Clear rules (beautiful + easy)</h2>
+      <span class="badge">Tabs: Learn → Build → See</span>
+    </div>
+
+    <div id="rulesNav" class="ruleNav noPrint"></div>
+    <div id="rulesBox"></div>
+  </section>
+
+  <section class="card" id="vocab">
+    <div class="sectionHead">
+      <h2 class="h2">2) Vocabulary bank (filter by category)</h2>
+      <span class="badge"><span id="vCount">0</span></span>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Choose a category</div>
+        <div class="row noPrint">
+          <select id="vCat" class="select" aria-label="Vocabulary category"></select>
+          <button class="btn" id="vClear" type="button">Clear search</button>
+        </div>
+        <div style="margin-top:10px;">
+          <input id="vSearch" class="input" placeholder="Search: meaning / particle / FR…" />
+        </div>
+
+        <div class="muted small" style="margin-top:10px;">
+          Each card includes: <strong>meaning</strong>, <strong>form</strong>, <strong>example</strong>, optional <strong>FR</strong>, and whether it’s <strong>separable</strong>.
+        </div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">Notes (cheat-sheet builder)</div>
+        <textarea id="notes" class="textarea" placeholder="Write your cheat-sheet here… (formulas + 3 perfect sentences)"></textarea>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--primary" id="listenNotes" type="button">▶ Listen notes</button>
+          <a class="btn btn--ghost" href="#practice">Go to practice</a>
+        </div>
+        <div class="fb" id="notesFb" aria-live="polite">Tip: write 1 “perfect sentence” for each new GET verb.</div>
+      </div>
+    </div>
+
+    <div class="vList" id="vGrid" style="margin-top:14px;"></div>
+  </section>
+
+  <section class="card" id="practice">
+    <div class="sectionHead">
+      <div>
+        <h2 class="h2">3) Practice steps (gradual)</h2>
+        <div class="muted small">Master each category before mixing.</div>
+      </div>
+      <div class="row noPrint stepper">
+        <button class="stepBtn is-on" data-step="core" type="button">Step 1<span class="mini">Core GET</span></button>
+        <button class="stepBtn" data-step="placement" type="button">Step 2<span class="mini">Object placement</span></button>
+        <button class="stepBtn" data-step="advanced" type="button">Step 3<span class="mini">Advanced GET</span></button>
+        <button class="stepBtn" data-step="mixed" type="button">Step 4<span class="mini">Mixed review</span></button>
+        <button class="stepBtn" data-step="roleplay" type="button">Step 5<span class="mini">Role-play</span></button>
+      </div>
+    </div>
+
+    <div class="panel panel--soft">
+      <div class="row" style="justify-content:space-between;">
+        <div>
+          <div class="panelTitle" id="practiceTitle">Practice</div>
+          <div class="muted small">Suggested time: <span class="badge" id="practiceTime">—</span></div>
+        </div>
+        <span class="badge">Instant feedback</span>
+      </div>
+    </div>
+
+    <div id="practiceMain" class="grid2" style="margin-top:14px;">
+      <div class="panel">
+        <div class="panelTitle">A) MCQ (instant feedback)</div>
+        <div id="mcqBox" class="quiz"></div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">B) Fill-in (instant feedback)</div>
+        <div id="fillBox" class="grid2"></div>
+
+        <div class="panel" style="margin-top:12px;">
+          <div class="panelTitle">C) Particle choice (tap)</div>
+          <div id="particleBox" class="quiz"></div>
+        </div>
+
+        <div class="panel" style="margin-top:12px;">
+          <div class="panelTitle">D) Speaking prompts (same category)</div>
+          <div class="model" id="sPrompts"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="roleplayWrap" hidden style="margin-top:14px;">
+      <section class="panel panel--soft" id="roleplay">
+        <div class="row" style="justify-content:space-between;">
+          <div>
+            <div class="panelTitle">Role-play (speaking + writing)</div>
+            <div class="muted small">Multiple scenarios + model speaking + model writing (professional English).</div>
+          </div>
+          <div class="row noPrint">
+            <button class="btn btn--tiny btn--primary" id="start3" type="button">Start 3 min</button>
+            <button class="btn btn--tiny btn--primary" id="start5" type="button">Start 5 min</button>
+            <button class="btn btn--tiny btn--ghost" id="stopTimer" type="button">Stop</button>
+            <span class="badge timerBadge" id="timerTxt">00:00</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid2" style="margin-top:14px;">
+        <div class="panel">
+          <div class="panelTitle">Scenario</div>
+          <select id="rpScenario" class="select"></select>
+
+          <div class="panel panel--soft" style="margin-top:12px;">
+            <div class="panelTitle">Prompt</div>
+            <div class="model" id="rpPrompt"></div>
+          </div>
+
+          <div class="panel" style="margin-top:12px;">
+            <div class="panelTitle">Useful GET verbs to include</div>
+            <div class="model" id="rpTips"></div>
+          </div>
+
+          <div class="panel panel--soft" style="margin-top:12px;">
+            <div class="row" style="justify-content:space-between;">
+              <div class="panelTitle">Tap order — ideal structure</div>
+              <span class="badge">Progress: <span id="rpProg">0/0</span></span>
+            </div>
+            <div class="tapOrder" id="rpOrder" style="margin-top:10px;"></div>
+            <div class="fb" id="rpFb" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="panel panel--soft">
+          <div class="panelTitle">Model speaking (call / meeting)</div>
+          <div class="row noPrint" style="margin-bottom:10px;">
+            <button class="btn btn--tiny btn--ghost" id="rpSpeakListen" type="button">▶ Listen (speaking)</button>
+          </div>
+          <div class="model" id="rpSpeakModel"></div>
+
+          <div class="panel panel--soft" style="margin-top:12px;">
+            <div class="panelTitle">Model writing (email / message)</div>
+            <div class="row noPrint" style="margin-bottom:10px;">
+              <button class="btn btn--tiny btn--ghost" id="rpWriteListen" type="button">▶ Listen (writing)</button>
+            </div>
+            <div class="model" id="rpWriteModel"></div>
+          </div>
+
+          <div class="panel" style="margin-top:12px;">
+            <div class="panelTitle">Write your version</div>
+            <textarea class="textarea" id="rpOut" placeholder="Write a short email or call script using 2–3 GET phrasal verbs. Keep it professional."></textarea>
+            <div class="muted small" style="margin-top:10px;">Teacher tip: underline the phrasal verbs and check object placement (if separable).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    <div class="footerInner">
+      <span>SpeakEasyTisha · GET Phrasal Verbs Pack 1</span>
+      <span class="muted">Mac/iPad Safari · Tap-first · High-contrast controls</span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="/js/get-phrasal-verbs-pack1.js"></script>
+</body>
+</html>
