@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animal Rescue Volunteer English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/animal-volunteer-followup.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">🐾 Animal volunteer English • A2 → B1</p>
+        <h1>Former social worker, dedicated animal helper</h1>
+        <p class="subtitle">A complete follow-up lesson to talk about rescue work, daily tasks, motivation, and experience — with grammar, vocabulary, French translation, and speaking practice.</p>
+        <div class="hero-actions">
+          <button onclick="window.print()">🖨️ Print</button>
+          <button id="resetAll">↻ Reset</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="stat"><span>Progress</span><strong id="progressPct">0%</strong></div>
+        <div class="stat"><span>Score</span><strong><span id="scoreNow">0</span> / <span id="scoreTotal">0</span></strong></div>
+        <div class="stat"><span>Focus</span><strong>Animals only</strong></div>
+        <div class="stat"><span>Profile</span><strong>Former social worker</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="topnav">
+    <a href="#start">1) Start</a>
+    <a href="#lesson">2) Lesson</a>
+    <a href="#vocab">3) Vocabulary</a>
+    <a href="#dialogue">4) Dialogue</a>
+    <a href="#practice">5) Practice</a>
+    <a href="#builder">6) Builder</a>
+  </nav>
+
+  <main class="wrap">
+    <section id="start" class="panel">
+      <h2>1) Start</h2>
+      <p>This lesson helps her present herself clearly in English: who she is, what she used to do, what she does now for animals, and why this work matters to her.</p>
+      <div class="two-col intro-grid">
+        <article class="mini-card">
+          <h3>What she can say after this lesson</h3>
+          <ul>
+            <li>I used to work as a social worker.</li>
+            <li>Now I volunteer with animals.</li>
+            <li>I help with feeding, cleaning, transport, socialisation, and adoption support.</li>
+            <li>I am patient, organised, and deeply committed.</li>
+          </ul>
+        </article>
+        <article class="mini-card">
+          <h3>Language goals</h3>
+          <ul>
+            <li>present simple</li>
+            <li>past simple / used to</li>
+            <li>can / have to / should</li>
+            <li>because / so / when / before / after</li>
+            <li>sequencing for describing tasks</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="lesson" class="panel">
+      <h2>2) Lesson — grammar + useful language</h2>
+
+      <div class="grammar-grid">
+        <article class="mini-card grammar-card">
+          <h3>Grammar 1 — Presenting yourself</h3>
+          <p><strong>Use:</strong> present simple for who you are and what you do now.</p>
+          <p class="model">I am a former social worker. Now I volunteer in animal rescue.</p>
+          <div class="fr">FR : Je suis une ancienne travailleuse sociale. Maintenant, je fais du bénévolat dans le sauvetage animal.</div>
+        </article>
+
+        <article class="mini-card grammar-card">
+          <h3>Grammar 2 — Talking about the past</h3>
+          <p><strong>Use:</strong> <em>used to</em> or past simple for previous work.</p>
+          <p class="model">I used to support vulnerable people and families.</p>
+          <div class="fr">FR : J’aidais des personnes et des familles vulnérables.</div>
+        </article>
+
+        <article class="mini-card grammar-card">
+          <h3>Grammar 3 — Ability / obligation / advice</h3>
+          <p><strong>can</strong> = ability • <strong>have to</strong> = obligation • <strong>should</strong> = advice</p>
+          <p class="model">I can calm a nervous dog. Volunteers have to follow safety rules. We should be gentle and observant.</p>
+          <div class="fr">FR : Je peux calmer un chien nerveux. Les bénévoles doivent respecter les règles de sécurité. Nous devrions être doux et observateurs.</div>
+        </article>
+
+        <article class="mini-card grammar-card">
+          <h3>Grammar 4 — Explaining your routine</h3>
+          <p><strong>Sequence words:</strong> first, then, after that, finally</p>
+          <p class="model">First, I prepare food. Then, I clean the space. After that, I check the animals. Finally, I write notes.</p>
+          <div class="fr">FR : D’abord, je prépare la nourriture. Ensuite, je nettoie l’espace. Après cela, je vérifie les animaux. Enfin, j’écris des notes.</div>
+        </article>
+      </div>
+
+      <div class="mini-checks">
+        <h3>Mini checks</h3>
+        <div class="mcq" data-answer="b">
+          <p>1) Which sentence talks about the past?</p>
+          <button data-choice="a">I volunteer every week.</button>
+          <button data-choice="b">I used to work as a social worker.</button>
+          <button data-choice="c">I can help scared cats.</button>
+          <p class="feedback"></p>
+        </div>
+        <div class="mcq" data-answer="c">
+          <p>2) Which sentence shows obligation?</p>
+          <button data-choice="a">I can transport kittens.</button>
+          <button data-choice="b">I should stay calm.</button>
+          <button data-choice="c">I have to follow the rescue protocol.</button>
+          <p class="feedback"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="vocab" class="panel">
+      <h2>3) Vocabulary with icons + French</h2>
+      <p>Tap a card to flip it.</p>
+      <div class="vocab-grid" id="vocabGrid"></div>
+    </section>
+
+    <section id="dialogue" class="panel">
+      <h2>4) Dialogue trainer</h2>
+      <p>Choose the best reply.</p>
+      <div id="dialogueBox" class="dialogue-box"></div>
+      <button id="restartDialogue" class="secondary">↺ Restart dialogue</button>
+    </section>
+
+    <section id="practice" class="panel">
+      <h2>5) Practice — instant feedback</h2>
+      <div class="practice-grid">
+        <article class="mini-card">
+          <h3>A) Fill in the blank</h3>
+          <div class="gap" data-answer="used to">
+            <label>I ______ work as a social worker.</label>
+            <input type="text" />
+            <button class="check-gap">Check</button>
+            <p class="feedback"></p>
+          </div>
+          <div class="gap" data-answer="have to">
+            <label>Volunteers ______ respect safety rules.</label>
+            <input type="text" />
+            <button class="check-gap">Check</button>
+            <p class="feedback"></p>
+          </div>
+          <div class="gap" data-answer="can">
+            <label>I ______ help with feeding and transport.</label>
+            <input type="text" />
+            <button class="check-gap">Check</button>
+            <p class="feedback"></p>
+          </div>
+        </article>
+
+        <article class="mini-card">
+          <h3>B) Sort the tasks</h3>
+          <p>Tap a word, then tap a category.</p>
+          <div id="tokenBank" class="token-bank"></div>
+          <div class="sort-grid">
+            <div class="dropzone" data-group="care"><h4>Animal care</h4></div>
+            <div class="dropzone" data-group="admin"><h4>Organisation</h4></div>
+            <div class="dropzone" data-group="qualities"><h4>Qualities</h4></div>
+          </div>
+          <p id="sortFeedback" class="feedback"></p>
+        </article>
+      </div>
+
+      <article class="mini-card speaking-card">
+        <h3>C) Speaking prompts</h3>
+        <ul>
+          <li>How do you introduce yourself in English?</li>
+          <li>What did you do before?</li>
+          <li>What do you do now for animals?</li>
+          <li>Why is this work important to you?</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="builder" class="panel">
+      <h2>6) Profile builder — former social worker + animal volunteer</h2>
+      <div class="builder-grid">
+        <div class="builder-controls mini-card">
+          <label>Name / subject
+            <input id="nameInput" type="text" placeholder="I / She" value="I" />
+          </label>
+          <label>Past job
+            <select id="pastJob">
+              <option value="used to work as a social worker">used to work as a social worker</option>
+              <option value="worked in social care">worked in social care</option>
+              <option value="supported vulnerable families">supported vulnerable families</option>
+            </select>
+          </label>
+          <label>Current role
+            <select id="currentRole">
+              <option value="now volunteer in animal rescue">now volunteer in animal rescue</option>
+              <option value="now help animals through volunteer work">now help animals through volunteer work</option>
+              <option value="now dedicate time to animal welfare">now dedicate time to animal welfare</option>
+            </select>
+          </label>
+          <label>Main actions</label>
+          <div class="checks">
+            <label><input type="checkbox" value="feed and clean" checked /> feed and clean</label>
+            <label><input type="checkbox" value="help scared animals feel safe" checked /> help scared animals feel safe</label>
+            <label><input type="checkbox" value="assist with transport"> assist with transport</label>
+            <label><input type="checkbox" value="support adoptions"> support adoptions</label>
+            <label><input type="checkbox" value="observe behaviour and write notes"> observe behaviour and write notes</label>
+          </div>
+          <label>Quality
+            <select id="quality">
+              <option value="patient and caring">patient and caring</option>
+              <option value="calm and reliable">calm and reliable</option>
+              <option value="organised and compassionate">organised and compassionate</option>
+            </select>
+          </label>
+          <label>Reason
+            <select id="reason">
+              <option value="because animals deserve protection and kindness">because animals deserve protection and kindness</option>
+              <option value="because this work is meaningful and necessary">because this work is meaningful and necessary</option>
+              <option value="because I want to improve animal welfare">because I want to improve animal welfare</option>
+            </select>
+          </label>
+          <button id="buildText">Build my text</button>
+        </div>
+
+        <div class="mini-card output-card">
+          <h3>Output</h3>
+          <div id="builderOutput" class="builder-output">Your text will appear here.</div>
+          <button id="copyOutput" class="secondary">Copy</button>
+          <p class="fr-note">FR tip: start simple, then add one detail about your past work and one detail about your volunteer tasks.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/animal-volunteer-followup.js"></script>
+</body>
+</html>
