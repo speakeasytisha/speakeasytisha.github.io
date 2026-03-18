@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Canada City + Nature Quest · A1+ · SpeakEasyTisha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/canada-city-nature-quest.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Canada City + Nature Quest 🇨🇦 · A1+ → A2 · Museums • Restaurants • Tours • Hiking </div>
+    </div>
+
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Auto audio</span>
+        <button class="seg is-on" id="autoOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="autoOn" type="button" aria-pressed="false">ON</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <span class="pillTag" id="buildTag">Build: 20260318-095425</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>City + Nature Quest 🇨🇦</h1>
+      <p class="lead">
+        He wants both: <strong>cities</strong> (Montréal/Quebec City) + <strong>nature</strong> (Banff/Vancouver area).
+        This lesson builds the language to plan days, ask questions, buy tickets, and stay safe — <strong></strong>.
+      </p>
+
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="btnHow" type="button">ℹ️ How to use</button>
+      </div>
+
+      <div class="minirow">
+        <div class="minicard">
+          <div class="minicard__t">🏙️ City day</div>
+          <div class="minicard__p">Museum tickets, restaurant booking, directions.</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">🏔️ Nature day</div>
+          <div class="minicard__p">Tours, hikes, safety, weather planning.</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">🧠 Grammar + practice</div>
+          <div class="minicard__p">There is/are, prepositions, comparatives, polite requests.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__panel">
+      <div class="panelcard">
+        <div class="panelcard__title">Lesson map (≈ 75–90 min)</div>
+        <ol class="panelcard__list">
+          <li>Choose your day: City or Nature (reading + questions)</li>
+          <li>Vocabulary (icons + FR + quiz)</li>
+          <li>Grammar: There is/are + prepositions + comparisons</li>
+          <li>City Skills: museum/restaurant/directions</li>
+          <li>Nature Skills: tour/hike/safety/weather</li>
+          <li>Dialogues (Role A/B) + Listening missions</li>
+          <li>Itinerary Builder (city + nature combined)</li>
+        </ol>
+        <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+        <div class="muted tiny">Auto audio OFF by default.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+
+  <section class="section" id="sec1">
+    <div class="section__head">
+      <h2>1) Choose your day: City or Nature</h2>
+      <p class="muted">Read the plan, listen if needed, and answer the questions.</p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Day</span>
+        <button class="seg is-on" id="dayCity" type="button" aria-pressed="true">🏙️ City Day</button>
+        <button class="seg" id="dayNature" type="button" aria-pressed="false">🏔️ Nature Day</button>
+      </div>
+
+      <button class="btn btn--ghost" id="btnReadSpeak" type="button">🔊 Listen</button>
+      <button class="btn btn--ghost" id="btnReadReset" type="button">↺ Reset questions</button>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <div class="card__head">
+          <h3>Reading</h3>
+          <div class="righttools">
+            <span class="pillTag" id="readTag">City Day</span>
+          </div>
+        </div>
+        <div class="reading" id="readingHost"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Reading questions (Score)</h3>
+        </div>
+        <div id="readingQuizHost"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec2">
+    <div class="section__head">
+      <h2>2) Vocabulary (icons + FR) — City & Nature</h2>
+      <p class="muted">Study the cards, then do the quiz.</p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Set</span>
+        <select class="select" id="vocabSet"></select>
+      </div>
+      <button class="btn btn--ghost" id="btnVocabShuffle" type="button">🔀 Shuffle</button>
+      <button class="btn" id="btnVocabQuiz" type="button">🧩 Quiz me</button>
+      <button class="btn btn--ghost" id="btnVocabQuizReset" type="button">↺ Reset quiz</button>
+    </div>
+
+    <div class="grid grid--cards" id="vocabGrid"></div>
+
+    <div class="card" style="margin-top:.9rem;">
+      <div class="card__head">
+        <h3>Vocabulary Quiz (Score)</h3>
+        <div class="righttools">
+          <button class="btn btn--ghost" id="btnVocabQuizSpeak" type="button">🔊 Listen</button>
+        </div>
+      </div>
+      <div id="vocabQuizHost"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec3">
+    <div class="section__head">
+      <h2>3) Grammar: There is/are · Prepositions · Comparisons</h2>
+      <p class="muted">Clear rules + examples + exercises.</p>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <div class="card__head">
+          <h3>Mini lessons</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnGramSpeak" type="button">🔊 Listen (summary)</button>
+          </div>
+        </div>
+        <div class="reading" id="gramLesson"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Practice (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnGramReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="gramMCQHost"></div>
+        <hr class="sep"/>
+        <div id="gramFillHost"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec4">
+    <div class="section__head">
+      <h2>4) City Skills: museum + restaurant + directions</h2>
+      <p class="muted">Touch-friendly tasks with instant feedback.</p>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <div class="card__head">
+          <h3>Museum ticket mission (Score)</h3>
+          <div class="righttools"><button class="btn btn--ghost" id="btnMuseumReset" type="button">↺ Reset</button></div>
+        </div>
+        <div id="museumHost"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Directions builder (drag OR tap) (Score)</h3>
+          <div class="righttools"><button class="btn btn--ghost" id="btnDirReset" type="button">↺ Reset</button></div>
+        </div>
+        <div id="dirBuilderHost"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:.9rem;">
+      <div class="card__head">
+        <h3>Restaurant reservation (Score)</h3>
+        <div class="righttools"><button class="btn btn--ghost" id="btnRestReset" type="button">↺ Reset</button></div>
+      </div>
+      <div id="restHost"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec5">
+    <div class="section__head">
+      <h2>5) Nature Skills: tour + hike + safety + weather</h2>
+      <p class="muted">Useful sentences for Banff/Vancouver outdoor days.</p>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <div class="card__head">
+          <h3>Tour booking (Score)</h3>
+          <div class="righttools"><button class="btn btn--ghost" id="btnTourReset" type="button">↺ Reset</button></div>
+        </div>
+        <div id="tourHost"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Safety + weather checklist (Score)</h3>
+          <div class="righttools"><button class="btn btn--ghost" id="btnSafeReset" type="button">↺ Reset</button></div>
+        </div>
+        <div id="safeHost"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec6">
+    <div class="section__head">
+      <h2>6) Dialogues + Listening Missions</h2>
+      <p class="muted">Role A/B practice + listening replies.</p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Dialogue</span>
+        <select class="select" id="dlgSelect"></select>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Practice</span>
+        <button class="seg is-on" id="roleA" type="button" aria-pressed="true">Role A</button>
+        <button class="seg" id="roleB" type="button" aria-pressed="false">Role B</button>
+      </div>
+      <button class="btn" id="btnDlgPlay" type="button">▶️ Play</button>
+      <button class="btn btn--ghost" id="btnDlgStep" type="button">➡️ Next line</button>
+      <button class="btn btn--ghost" id="btnDlgClear" type="button">🧹 Clear</button>
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h3 id="dlgTitle">Dialogue</h3>
+        <div class="righttools">
+          <button class="btn btn--ghost" id="btnDlgListenAll" type="button">🔊 Listen all</button>
+          <button class="btn btn--ghost" id="btnDlgHint" type="button">💡 Useful phrases</button>
+        </div>
+      </div>
+      <div class="chat"><div class="chat__stream" id="chatStream"></div></div>
+      <div class="feedback hidden" id="dlgHintBox"></div>
+    </div>
+
+    <div class="card" style="margin-top:.9rem;">
+      <div class="card__head">
+        <h3>Listening Missions (Score)</h3>
+        <div class="righttools"><button class="btn btn--ghost" id="btnListenReset" type="button">↺ Reset</button></div>
+      </div>
+      <div id="listenHost"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec7">
+    <div class="section__head">
+      <h2>7) Itinerary Builder: city + nature (speaking)</h2>
+      <p class="muted">Build a 2-day plan (one city day + one nature day). Check and score.</p>
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h3>Build your plan (Score)</h3>
+        <div class="righttools">
+          <button class="btn btn--ghost" id="btnItCopy" type="button">📋 Copy</button>
+          <button class="btn btn--ghost" id="btnItReset" type="button">↺ Reset</button>
+        </div>
+      </div>
+
+      <div class="formgrid">
+        <label class="lab">City
+          <select class="select" id="itCity"></select>
+        </label>
+        <label class="lab">Nature area
+          <select class="select" id="itNature"></select>
+        </label>
+        <label class="lab">Month
+          <select class="select" id="itMonth">
+            <option value="in June">in June</option>
+            <option value="in July">in July</option>
+            <option value="in August">in August</option>
+          </select>
+        </label>
+        <label class="lab">Transport
+          <select class="select" id="itTransport">
+            <option value="by plane">by plane</option>
+            <option value="by train">by train</option>
+            <option value="by bus">by bus</option>
+          </select>
+        </label>
+        <label class="lab">City activity
+          <select class="select" id="itCityAct">
+            <option value="visit a museum">visit a museum</option>
+            <option value="walk in the old town">walk in the old town</option>
+            <option value="try local food">try local food</option>
+          </select>
+        </label>
+        <label class="lab">Nature activity
+          <select class="select" id="itNatAct">
+            <option value="do an easy hike">do an easy hike</option>
+            <option value="take a scenic tour">take a scenic tour</option>
+            <option value="see a lake viewpoint">see a lake viewpoint</option>
+          </select>
+        </label>
+        <label class="lab">Comparison
+          <select class="select" id="itCompare">
+            <option value="more relaxing than">more relaxing than</option>
+            <option value="cheaper than">cheaper than</option>
+            <option value="more scenic than">more scenic than</option>
+            <option value="better than">better than</option>
+          </select>
+        </label>
+        <label class="lab">Other city
+          <select class="select" id="itOther"></select>
+        </label>
+      </div>
+
+      <div class="smallrow" style="margin-top:.7rem;">
+        <button class="btn" id="btnItBuild" type="button">✨ Build</button>
+        <button class="hintbtn" id="btnItHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="btnItCheck" type="button">✅ Check (Score)</button>
+        <button class="btn btn--ghost" id="btnItSpeak" type="button">🔊 Listen</button>
+      </div>
+
+      <textarea class="textarea" id="itOutput" rows="8" placeholder="Your 2-day plan will appear here…"></textarea>
+      <div class="checklist" id="itChecklist"></div>
+      <div class="feedback hidden" id="itFb"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="muted tiny">© SpeakEasyTisha · Canada City + Nature Quest · Touch-friendly (drag OR tap)</div>
+      <a class="iconbtn" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<pre id="debugBox" class="hidden" style="white-space:pre-wrap;margin:1rem;padding:1rem;border:1px dashed rgba(14,31,36,.35);border-radius:14px;background:#fff;max-width:1100px;">Debug log</pre>
+
+<script src="js/canada-city-nature-quest.js"></script>
+</body>
+</html>

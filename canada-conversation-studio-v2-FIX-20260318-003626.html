@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Canada Conversation Studio v2 · FIX-20260318-003626 · A1+ (SpeakEasyTisha)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/canada-conversation-studio-v2-FIX-20260318-003626.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Canada Conversation Studio v2 · A1+ → A2 · Grammar + Vocabulary + Reading + Listening + Dialogues</div>
+    </div>
+
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Auto audio</span>
+        <button class="seg" id="autoOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="autoOn" type="button" aria-pressed="false">ON</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button" title="Reset all">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>Canada Conversation Studio 🇨🇦</h1>
+      <p class="lead">
+        A practical lesson to <strong>understand</strong>, <strong>express</strong>, and <strong>converse</strong> in real situations
+        — with clear <strong>grammar lessons</strong> (tenses + comparisons) and fully interactive practice.
+      </p>
+
+      <div class="hero__cta">
+        <button class="btn" id="btnGoVocab" type="button">▶️ Start with Vocabulary</button>
+        <button class="btn btn--ghost" id="btnHow" type="button">ℹ️ How it works</button>
+      </div>
+
+      <div class="minirow">
+        <div class="minicard">
+          <div class="minicard__t">🧠 Grammar lessons included</div>
+          <div class="minicard__p">Tenses + questions + negatives + comparatives/superlatives (with exercises).</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">🔇 No forced audio</div>
+          <div class="minicard__p">Auto audio is OFF by default. Turn it ON only when you want it.</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">💬 Dialogues you can practice</div>
+          <div class="minicard__p">Chat-style dialogues with Role A/B + listening missions.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__panel">
+      <div class="panelcard">
+        <div class="panelcard__title">Lesson map (≈ 75–90 min)</div>
+        <ol class="panelcard__list">
+          <li>Vocabulary Hub (icons + audio + quiz)</li>
+          <li>Reading Comprehension (text + questions)</li>
+          <li>Grammar Lesson: Core Travel Tenses (forms + practice)</li>
+          <li>Grammar Lesson: Comparatives & Superlatives (forms + practice)</li>
+          <li>Animated Dialogues (hotel / ticket / directions / café)</li>
+          <li>Listening Missions (choose the best reply)</li>
+          <li>Speaking Studio (builders + conversation checklist)</li>
+        </ol>
+        <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+        <div class="muted tiny">Tip: Use Auto Audio ON only when needed during your session.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+
+  <!-- 1) VOCAB -->
+  <section class="section" id="sec1">
+    <div class="section__head">
+      <h2>1) Vocabulary Hub (icons + audio + practice)</h2>
+      <p class="muted">Choose a set, study the cards, then take a quick quiz.</p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Set</span>
+        <select class="select" id="vocabSet"></select>
+      </div>
+
+      <button class="btn btn--ghost" id="btnVocabShuffle" type="button">🔀 Shuffle</button>
+      <button class="btn" id="btnVocabQuiz" type="button">🧩 Quiz me</button>
+      <button class="btn btn--ghost" id="btnVocabQuizReset" type="button">↺ Reset quiz</button>
+    </div>
+
+    <div class="grid grid--cards" id="vocabGrid"></div>
+
+    <div class="card" id="vocabQuizCard" style="margin-top:.9rem;">
+      <div class="card__head">
+        <h3>Vocabulary Quiz (Score)</h3>
+        <div class="righttools">
+          <button class="btn btn--ghost" id="btnVocabQuizSpeak" type="button">🔊 Listen</button>
+        </div>
+      </div>
+      <div id="vocabQuizHost"></div>
+    </div>
+  </section>
+
+  <!-- 2) READING -->
+  <section class="section" id="sec2">
+    <div class="section__head">
+      <h2>2) Reading Comprehension: Planning the trip</h2>
+      <p class="muted">Read the text, listen if needed, then answer. (No slang — polite + natural.)</p>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <div class="card__head">
+          <h3>Reading text (optional audio)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnReadSpeak" type="button">🔊 Listen</button>
+            <button class="btn btn--ghost" id="btnReadSlow" type="button">🐢 Slow</button>
+            <button class="btn btn--ghost" id="btnReadNormal" type="button">🐇 Normal</button>
+          </div>
+        </div>
+
+        <div class="reading" id="readingText"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Reading questions (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnReadQuizReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="readingQuizHost"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) GRAMMAR: TENSES -->
+  <section class="section" id="sec3">
+    <div class="section__head">
+      <h2>3) Grammar Lesson: Core Travel Tenses (forms + practice)</h2>
+      <p class="muted">Rules + affirmative/negative/questions + quick practice.</p>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <div class="card__head">
+          <h3>Mini lesson (rules)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnTenseSpeak" type="button">🔊 Listen (summary)</button>
+          </div>
+        </div>
+
+        <div class="reading" id="tenseLesson"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Practice (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnTenseReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="tenseMCQHost"></div>
+        <hr class="sep"/>
+        <div id="tenseFillHost"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) GRAMMAR: COMPARATIVES -->
+  <section class="section" id="sec4">
+    <div class="section__head">
+      <h2>4) Grammar Lesson: Comparatives & Superlatives (forms + practice)</h2>
+      <p class="muted">How to form them + examples + exercises.</p>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <div class="card__head">
+          <h3>Mini lesson (how to form)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnCompSpeak" type="button">🔊 Listen (summary)</button>
+          </div>
+        </div>
+        <div class="reading" id="compLesson"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Practice (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnCompReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+
+        <div id="compMCQ2Host"></div>
+        <hr class="sep"/>
+        <div id="compFillHost"></div>
+        <hr class="sep"/>
+        <div id="compBuilderHost"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) ANIMATED DIALOGUES -->
+  <section class="section" id="sec5">
+    <div class="section__head">
+      <h2>5) Animated Dialogues (chat style)</h2>
+      <p class="muted">Play the dialogue, then practice the lines. Role A / Role B practice is built in.</p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Dialogue</span>
+        <select class="select" id="dlgSelect"></select>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Practice</span>
+        <button class="seg is-on" id="roleA" type="button" aria-pressed="true">Role A</button>
+        <button class="seg" id="roleB" type="button" aria-pressed="false">Role B</button>
+      </div>
+
+      <button class="btn" id="btnDlgPlay" type="button">▶️ Play</button>
+      <button class="btn btn--ghost" id="btnDlgStep" type="button">➡️ Next line</button>
+      <button class="btn btn--ghost" id="btnDlgClear" type="button">🧹 Clear</button>
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h3 id="dlgTitle">Dialogue</h3>
+        <div class="righttools">
+          <button class="btn btn--ghost" id="btnDlgListenAll" type="button">🔊 Listen all</button>
+          <button class="btn btn--ghost" id="btnDlgHint" type="button">💡 Useful phrases</button>
+        </div>
+      </div>
+
+      <div class="chat">
+        <div class="chat__stream" id="chatStream"></div>
+      </div>
+
+      <div class="feedback hidden" id="dlgHintBox"></div>
+    </div>
+  </section>
+
+  <!-- 6) LISTENING MISSIONS -->
+  <section class="section" id="sec6">
+    <div class="section__head">
+      <h2>6) Listening Missions: choose the best reply</h2>
+      <p class="muted">Tap 🔊, listen, then choose. Immediate feedback + hints.</p>
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h3>Listening + answers (Score)</h3>
+        <div class="righttools">
+          <button class="btn btn--ghost" id="btnListenReset" type="button">↺ Reset</button>
+        </div>
+      </div>
+      <div id="listenHost"></div>
+    </div>
+  </section>
+
+  <!-- 7) SPEAKING STUDIO -->
+  <section class="section" id="sec7">
+    <div class="section__head">
+      <h2>7) Speaking Studio: build sentences + mini conversation</h2>
+      <p class="muted">Use frames to express what you want, give an opinion, and compare options.</p>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <div class="card__head">
+          <h3>Sentence Builder (drag OR tap) (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnSpeakBuilderReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="speakBuilderHost"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Mini debate phrases (practice)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnDebateSpeak" type="button">🔊 Listen</button>
+          </div>
+        </div>
+
+        <div class="reading" id="debateBox"></div>
+
+        <div class="smallrow" style="margin-top:.65rem;">
+          <button class="btn" id="btnDebateMission" type="button">🎯 Mission (Score)</button>
+          <button class="hintbtn" id="btnDebateHint" type="button">💡 Hint</button>
+        </div>
+        <div class="feedback hidden" id="debateFb"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:.9rem;">
+      <div class="card__head">
+        <h3>Conversation Builder (text) + checklist (Score)</h3>
+        <div class="righttools">
+          <button class="btn btn--ghost" id="btnConvSpeak" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="btnConvCopy" type="button">📋 Copy</button>
+          <button class="btn btn--ghost" id="btnConvReset" type="button">↺ Reset</button>
+        </div>
+      </div>
+
+      <div class="formgrid">
+        <label class="lab">Place
+          <select class="select" id="convPlace"></select>
+        </label>
+        <label class="lab">Day / date
+          <select class="select" id="convDate">
+            <option value="on Monday">on Monday</option>
+            <option value="on Friday">on Friday</option>
+            <option value="on July 12th">on July 12th</option>
+            <option value="this weekend">this weekend</option>
+          </select>
+        </label>
+        <label class="lab">Time
+          <select class="select" id="convTime">
+            <option value="at 10 am">at 10 am</option>
+            <option value="at 2 pm">at 2 pm</option>
+            <option value="at 7 pm">at 7 pm</option>
+          </select>
+        </label>
+        <label class="lab">Style
+          <select class="select" id="convStyle">
+            <option value="relaxing">relaxing</option>
+            <option value="romantic">romantic</option>
+            <option value="scenic">scenic</option>
+            <option value="cultural">cultural</option>
+            <option value="affordable">affordable</option>
+          </select>
+        </label>
+        <label class="lab">Connector
+          <select class="select" id="convConnector">
+            <option value="because">because</option>
+            <option value="however">however</option>
+            <option value="also">also</option>
+            <option value="so">so</option>
+          </select>
+        </label>
+        <label class="lab">Comparison
+          <select class="select" id="convCompare">
+            <option value="better than">better than</option>
+            <option value="cheaper than">cheaper than</option>
+            <option value="more relaxing than">more relaxing than</option>
+            <option value="more interesting than">more interesting than</option>
+          </select>
+        </label>
+        <label class="lab">Other place
+          <select class="select" id="convOther"></select>
+        </label>
+      </div>
+
+      <div class="smallrow" style="margin-top:.65rem;">
+        <button class="btn" id="btnConvBuild" type="button">✨ Build</button>
+        <button class="hintbtn" id="btnConvHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="btnConvCheck" type="button">✅ Check (Score)</button>
+      </div>
+
+      <textarea class="textarea" id="convOutput" rows="6" placeholder="Your mini conversation will appear here…"></textarea>
+      <div class="checklist" id="convChecklist"></div>
+      <div class="feedback hidden" id="convFb"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="muted tiny">© SpeakEasyTisha · Canada Conversation Studio v2 · Touch-friendly (drag OR tap)</div>
+      <a class="iconbtn" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<pre id="debugBox" class="hidden" style="white-space:pre-wrap;margin:1rem;padding:1rem;border:1px dashed rgba(14,31,36,.35);border-radius:14px;background:#fff;max-width:1100px;">Debug log</pre>
+
+<script src="/js/canada-conversation-studio-v2-FIX-20260318-003626.js"></script>
+</body>
+</html>

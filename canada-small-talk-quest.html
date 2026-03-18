@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Canada Small Talk Quest · A1+ · SpeakEasyTisha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/canada-small-talk-quest.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Canada Small Talk Quest 🇨🇦 · A1+ → A2 · Introduce • Chat • Listen • Speak (no slang)</div>
+    </div>
+
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Auto audio</span>
+        <button class="seg is-on" id="autoOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="autoOn" type="button" aria-pressed="false">ON</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <span class="pillTag" id="buildTag">Build: 20260318-112050</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>Small Talk Quest: Canada 🇨🇦</h1>
+      <p class="lead">
+        A friendly, practical lesson to help him <strong>present himself</strong> and make <strong>natural small talk</strong>
+        during his trip (nationality, weather, work, travel plans). <strong>No slang</strong> — polite + normal.
+      </p>
+
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="btnHow" type="button">ℹ️ How to use</button>
+      </div>
+
+      <div class="minirow">
+        <div class="minicard">
+          <div class="minicard__t">🪪 Present yourself</div>
+          <div class="minicard__p">Name, nationality, where you live, job, reasons for travel.</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">🌦️ Weather + trip chat</div>
+          <div class="minicard__p">Easy phrases, questions, and short answers.</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">💬 Dialogues + listening</div>
+          <div class="minicard__p">Hotel lobby, café, tour desk, meeting someone.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__panel">
+      <div class="panelcard">
+        <div class="panelcard__title">Lesson map (≈ 60–75 min)</div>
+        <ol class="panelcard__list">
+          <li>Small talk toolkit (phrases + audio)</li>
+          <li>Vocabulary (icons + FR + quiz)</li>
+          <li>Grammar: BE + Present Simple + Questions</li>
+          <li>Sentence Builder (drag OR tap)</li>
+          <li>Conversation Builder (choose → build → checklist)</li>
+          <li>Animated Dialogues (Role A/B)</li>
+          <li>Listening Missions + Mini test</li>
+        </ol>
+        <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+        <div class="muted tiny">Auto audio OFF by default (click 🔊 only when needed).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+
+  <!-- 1) Toolkit -->
+  <section class="section" id="sec1">
+    <div class="section__head">
+      <h2>1) Small Talk Toolkit (no slang)</h2>
+      <p class="muted">Study the phrases, listen if needed, then try the quick practice.</p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Topic</span>
+        <select class="select" id="toolTopic"></select>
+      </div>
+      <button class="btn btn--ghost" id="btnToolShuffle" type="button">🔀 Shuffle</button>
+      <button class="btn" id="btnToolPractice" type="button">🧩 Practice</button>
+      <button class="btn btn--ghost" id="btnToolPracticeReset" type="button">↺ Reset</button>
+    </div>
+
+    <div class="grid grid--cards" id="toolGrid"></div>
+
+    <div class="card" style="margin-top:.9rem;">
+      <div class="card__head">
+        <h3>Quick Practice (Score)</h3>
+        <div class="righttools">
+          <button class="btn btn--ghost" id="btnToolSpeak" type="button">🔊 Listen</button>
+        </div>
+      </div>
+      <div id="toolPracticeHost"></div>
+    </div>
+  </section>
+
+  <!-- 2) Vocab -->
+  <section class="section" id="sec2">
+    <div class="section__head">
+      <h2>2) Vocabulary for small talk (icons + FR)</h2>
+      <p class="muted">Nationalities, jobs, weather, travel. Study → quiz.</p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Set</span>
+        <select class="select" id="vocabSet"></select>
+      </div>
+      <button class="btn btn--ghost" id="btnVocabShuffle" type="button">🔀 Shuffle</button>
+      <button class="btn" id="btnVocabQuiz" type="button">🧩 Quiz me</button>
+      <button class="btn btn--ghost" id="btnVocabQuizReset" type="button">↺ Reset quiz</button>
+    </div>
+
+    <div class="grid grid--cards" id="vocabGrid"></div>
+
+    <div class="card" style="margin-top:.9rem;">
+      <div class="card__head">
+        <h3>Vocabulary Quiz (Score)</h3>
+        <div class="righttools">
+          <button class="btn btn--ghost" id="btnVocabQuizSpeak" type="button">🔊 Listen</button>
+        </div>
+      </div>
+      <div id="vocabQuizHost"></div>
+    </div>
+  </section>
+
+  <!-- 3) Grammar -->
+  <section class="section" id="sec3">
+    <div class="section__head">
+      <h2>3) Grammar: BE + Present Simple + Questions</h2>
+      <p class="muted">Rules + affirmative/negative/questions + practice.</p>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <div class="card__head">
+          <h3>Mini lessons</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnGramSpeak" type="button">🔊 Listen (summary)</button>
+          </div>
+        </div>
+        <div class="reading" id="gramLesson"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Practice (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnGramReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="gramMCQHost"></div>
+        <hr class="sep"/>
+        <div id="gramFillHost"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) Builder -->
+  <section class="section" id="sec4">
+    <div class="section__head">
+      <h2>4) Sentence Builder (drag OR tap)</h2>
+      <p class="muted">Build polite small talk sentences. Tap tokens to place; tap placed tokens to remove.</p>
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h3>Word Order Builder (Score)</h3>
+        <div class="righttools">
+          <button class="btn btn--ghost" id="btnBuildReset" type="button">↺ Reset</button>
+        </div>
+      </div>
+      <div id="builderHost"></div>
+    </div>
+  </section>
+
+  <!-- 5) Conversation Builder -->
+  <section class="section" id="sec5">
+    <div class="section__head">
+      <h2>5) Conversation Builder: present yourself</h2>
+      <p class="muted">Choose options → build → check (great for speaking).</p>
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h3>Mini conversation (Score)</h3>
+        <div class="righttools">
+          <button class="btn btn--ghost" id="btnConvCopy" type="button">📋 Copy</button>
+          <button class="btn btn--ghost" id="btnConvReset" type="button">↺ Reset</button>
+        </div>
+      </div>
+
+      <div class="formgrid">
+        <label class="lab">Name
+          <select class="select" id="cName">
+            <option value="I’m Alex.">I’m Alex.</option>
+            <option value="My name is Alex.">My name is Alex.</option>
+            <option value="Hi, I’m Alex.">Hi, I’m Alex.</option>
+          </select>
+        </label>
+
+        <label class="lab">Nationality
+          <select class="select" id="cNat">
+            <option value="I’m French.">I’m French.</option>
+            <option value="I’m American.">I’m American.</option>
+            <option value="I’m from France.">I’m from France.</option>
+          </select>
+        </label>
+
+        <label class="lab">Where you live
+          <select class="select" id="cLive">
+            <option value="I live in Nantes.">I live in Nantes.</option>
+            <option value="I live near Paris.">I live near Paris.</option>
+            <option value="I live in the west of France.">I live in the west of France.</option>
+          </select>
+        </label>
+
+        <label class="lab">Work
+          <select class="select" id="cWork"></select>
+        </label>
+
+        <label class="lab">Trip plan
+          <select class="select" id="cTrip"></select>
+        </label>
+
+        <label class="lab">Weather line
+          <select class="select" id="cWeather">
+            <option value="The weather is lovely today.">The weather is lovely today.</option>
+            <option value="It’s a bit cool today.">It’s a bit cool today.</option>
+            <option value="It’s sunny today.">It’s sunny today.</option>
+          </select>
+        </label>
+
+        <label class="lab">Question
+          <select class="select" id="cQ">
+            <option value="How about you?">How about you?</option>
+            <option value="And you?">And you?</option>
+            <option value="What about you?">What about you?</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="smallrow" style="margin-top:.7rem;">
+        <button class="btn" id="btnConvBuild" type="button">✨ Build</button>
+        <button class="hintbtn" id="btnConvHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="btnConvCheck" type="button">✅ Check (Score)</button>
+        <button class="btn btn--ghost" id="btnConvSpeak" type="button">🔊 Listen</button>
+      </div>
+
+      <textarea class="textarea" id="convOutput" rows="7" placeholder="Your mini conversation appears here…"></textarea>
+      <div class="checklist" id="convChecklist"></div>
+      <div class="feedback hidden" id="convFb"></div>
+    </div>
+  </section>
+
+  <!-- 6) Dialogues -->
+  <section class="section" id="sec6">
+    <div class="section__head">
+      <h2>6) Animated Dialogues (Role A/B)</h2>
+      <p class="muted">Natural small talk in real situations. No slang.</p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Dialogue</span>
+        <select class="select" id="dlgSelect"></select>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Practice</span>
+        <button class="seg is-on" id="roleA" type="button" aria-pressed="true">Role A</button>
+        <button class="seg" id="roleB" type="button" aria-pressed="false">Role B</button>
+      </div>
+
+      <button class="btn" id="btnDlgPlay" type="button">▶️ Play</button>
+      <button class="btn btn--ghost" id="btnDlgStep" type="button">➡️ Next line</button>
+      <button class="btn btn--ghost" id="btnDlgClear" type="button">🧹 Clear</button>
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h3 id="dlgTitle">Dialogue</h3>
+        <div class="righttools">
+          <button class="btn btn--ghost" id="btnDlgListenAll" type="button">🔊 Listen all</button>
+          <button class="btn btn--ghost" id="btnDlgHint" type="button">💡 Useful phrases</button>
+        </div>
+      </div>
+
+      <div class="chat"><div class="chat__stream" id="chatStream"></div></div>
+      <div class="feedback hidden" id="dlgHintBox"></div>
+    </div>
+  </section>
+
+  <!-- 7) Listening + Mini -->
+  <section class="section" id="sec7">
+    <div class="section__head">
+      <h2>7) Listening Missions + Mini test</h2>
+      <p class="muted">Tap 🔊 then choose. Instant feedback + hints.</p>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <div class="card__head">
+          <h3>Listening Missions (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnListenReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="listenHost"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Mini Test (Score)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnMiniReset" type="button">↺ Reset</button>
+          </div>
+        </div>
+        <div id="miniHost"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="muted tiny">© SpeakEasyTisha · Canada Small Talk Quest · Touch-friendly (drag OR tap)</div>
+      <a class="iconbtn" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<pre id="debugBox" class="hidden" style="white-space:pre-wrap;margin:1rem;padding:1rem;border:1px dashed rgba(14,31,36,.35);border-radius:14px;background:#fff;max-width:1100px;">Debug log</pre>
+
+<script src="js/canada-small-talk-quest.js"></script>
+</body>
+</html>
