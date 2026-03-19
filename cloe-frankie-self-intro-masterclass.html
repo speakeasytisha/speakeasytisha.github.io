@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>👋 Frankie — CLOE Self‑Introduction Masterclass | SpeakEasyTisha</title>
+  <link rel="stylesheet" href="/css/cloe-frankie-self-intro-masterclass.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="hdr">
+    <div class="hdr__top">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true">SpeakEasy<span>Tisha</span></div>
+        <div class="brand__tag">CLOE first • Frankie • Present yourself (work + location + likes + travel)</div>
+      </div>
+
+      <div class="tools">
+        <div class="tool">
+          <label for="accent" class="sr">Accent</label>
+          <select id="accent" class="select" title="Accent for listening">
+            <option value="en-GB">🇬🇧 UK</option>
+            <option value="en-US">🇺🇸 US</option>
+          </select>
+        </div>
+        <button class="btn btn--ghost" id="btnStopSpeech" type="button">⏹ Stop</button>
+        <button class="btn btn--ghost" id="btnPrint" type="button">🖨 Print</button>
+        <button class="btn btn--ghost" id="btnResetAll" type="button">↺ Reset</button>
+      </div>
+    </div>
+
+    <div class="hdr__bottom">
+      <div class="scoreline" aria-label="Score">
+        <span class="pill">🎯 Score</span>
+        <strong id="scoreTop">0</strong><span class="muted">/</span><span id="maxTop">50</span>
+        <span class="sep">•</span>
+        <span class="pill">🔑 Mastered</span>
+        <strong id="masteredCount">0</strong><span class="muted">/</span><span id="masteredMax">0</span>
+      </div>
+
+      <nav class="nav" aria-label="Sections">
+        <button class="nav__chip" data-scroll="#plan" type="button">Plan</button>
+        <button class="nav__chip" data-scroll="#profile" type="button">Profile builder</button>
+        <button class="nav__chip" data-scroll="#preps" type="button">Prepositions</button>
+        <button class="nav__chip" data-scroll="#speaking" type="button">Speaking trainer</button>
+        <button class="nav__chip" data-scroll="#writing" type="button">Writing</button>
+        <button class="nav__chip" data-scroll="#builder" type="button">Build your paragraph</button>
+        <button class="nav__chip" data-scroll="#vocab" type="button">Vocabulary</button>
+        <button class="nav__chip" data-scroll="#minitest" type="button">Mini test</button>
+        <button class="nav__chip" data-scroll="#notes" type="button">Notes</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="main">
+    <section class="card hero">
+      <div class="hero__grid">
+        <div>
+          <h1>👋 Frankie — CLOE Self‑Introduction Masterclass</h1>
+          <p class="lead">
+            This page teaches you how to <strong>present yourself clearly</strong> for the CLOE oral interview:
+            <strong>where I live</strong> (city/country + north/south/east/west), <strong>your job</strong> (administration, CARSAT),
+            <strong>what I like</strong>, and <strong>places I have visited</strong>.
+          </p>
+
+          <div class="notice">
+            <strong>Winning structure:</strong> greeting → location → job → likes → travel experience → polite closing.
+          </div>
+
+          <div class="hero__actions">
+            <button class="btn" id="btnListenBest" type="button">🔊 Listen (best model)</button>
+            <button class="btn btn--ghost" id="btnJumpPractice" type="button">🎯 Jump to speaking</button>
+          </div>
+        </div>
+
+        <div class="hero__side">
+          <div class="mini">
+            <div class="mini__title">Quick starters</div>
+            <div class="mini__body">
+              <div class="bank" id="starterBank"></div>
+              <div class="tiny muted" style="margin-top:10px">Tap to listen (UK/US).</div>
+            </div>
+          </div>
+
+          <div class="mini">
+            <div class="mini__title">Score idea</div>
+            <div class="mini__body tiny muted">
+              You score points by completing: prepositions + speaking + writing + builder + mini test.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="plan" class="card">
+      <h2>🧭 CLOE oral plan (self‑presentation)</h2>
+      <div class="grid3">
+        <article class="step">
+          <h3><span class="badge">1</span> Introduce yourself</h3>
+          <p>Name + where you live + job title + workplace.</p>
+          <div class="mini">
+            <div class="mini__title">Sentence pattern</div>
+            <div class="mini__body"><code>Hello, my name is… I live in… I work as… at…</code></div>
+          </div>
+        </article>
+        <article class="step">
+          <h3><span class="badge">2</span> Expand</h3>
+          <p>2 responsibilities + 1 hobby + 1 place visited.</p>
+          <div class="mini">
+            <div class="mini__title">Connectors</div>
+            <div class="mini__body"><code>Also… / For example… / Overall…</code></div>
+          </div>
+        </article>
+        <article class="step">
+          <h3><span class="badge">3</span> Close politely</h3>
+          <p>Short closing sentence (calm, positive).</p>
+          <div class="mini">
+            <div class="mini__title">Closing</div>
+            <div class="mini__body"><code>To sum up… Thanks for listening.</code></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="profile" class="card">
+      <div class="row">
+        <div>
+          <h2>🧩 Profile builder (A2 → B2)</h2>
+          <p class="muted">Fill in the fields and generate a clean self‑introduction. Choose a level.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnCopyProfile" type="button">📋 Copy</button>
+          <button class="btn btn--ghost" id="btnListenProfile" type="button">🔊 Listen</button>
+        </div>
+      </div>
+
+      <div class="formgrid">
+        <div class="field">
+          <label for="fName">Name</label>
+          <input id="fName" class="select" type="text" value="Frankie" />
+          <div class="help">Use your real first name.</div>
+        </div>
+
+        <div class="field">
+          <label for="fCity">City (or near city)</label>
+          <input id="fCity" class="select" type="text" value="Lille" />
+          <div class="help">Example: Lille, Paris, Lyon… (or a nearby city)</div>
+        </div>
+
+        <div class="field">
+          <label for="fCountry">Country</label>
+          <input id="fCountry" class="select" type="text" value="France" />
+          <div class="help">Example: France, Ireland, Spain…</div>
+        </div>
+
+        <div class="field">
+          <label for="fRegion">North/South/East/West</label>
+          <select id="fRegion" class="select"></select>
+          <div class="help">Practice: <strong>in the west of France</strong>, etc.</div>
+        </div>
+
+        <div class="field">
+          <label for="fWorkplace">Workplace</label>
+          <input id="fWorkplace" class="select" type="text" value="CARSAT" />
+          <div class="help">Tip: say <strong>for CARSAT</strong> (your employer).</div>
+        </div>
+
+        <div class="field">
+          <label for="fJob">Job / profession</label>
+          <input id="fJob" class="select" type="text" value="administrative assistant" />
+          <div class="help">Example: administrative assistant, office assistant…</div>
+        </div>
+
+        <div class="field" style="grid-column: span 2">
+          <label for="fLikes">What you like</label>
+          <input id="fLikes" class="select" type="text" value="walking, movies, and discovering new places" />
+          <div class="help">Use <strong>like + V‑ing</strong>: I like walking.</div>
+        </div>
+
+        <div class="field">
+          <label for="fVisited">Places visited</label>
+          <input id="fVisited" class="select" type="text" value="Ireland and Ballynahinch" />
+          <div class="help">Use: <strong>I’ve visited…</strong> / <strong>I’ve been to…</strong></div>
+        </div>
+      </div>
+
+      <div class="leveltabs" id="levelTabs" aria-label="Choose level"></div>
+
+      <div class="outbox">
+        <div class="row row--tight">
+          <h3 id="outTitle">—</h3>
+          <div class="right">
+            <button class="btn btn--ghost" id="btnShowTips" type="button">💡 Tips</button>
+          </div>
+        </div>
+        <div class="outtext" id="outText">—</div>
+        <div class="outactions">
+          <button class="btn" id="btnMarkProfile" type="button">✅ I can say this</button>
+        </div>
+        <div class="feedback" id="profileFeedback" aria-live="polite"></div>
+        <div class="mini" id="tipsBox" hidden>
+          <div class="mini__title">Tips (EN/FR)</div>
+          <div class="mini__body" id="tipsBody"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="preps" class="card">
+      <div class="row">
+        <div>
+          <h2>📍 Prepositions for location (mini practice)</h2>
+          <p class="muted">City/country + directions (north/south/east/west) + workplace.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnNewPreps" type="button">New set</button>
+        </div>
+      </div>
+
+      <div class="mini">
+        <div class="mini__title">Choose the best preposition</div>
+        <div class="mini__body">
+          <div id="prepList" class="quizlist"></div>
+          <div class="qactions">
+            <button class="btn" id="btnCheckPreps" type="button">Check</button>
+            <button class="btn btn--ghost" id="btnResetPreps" type="button">Reset</button>
+          </div>
+          <div id="prepFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="speaking" class="card">
+      <div class="row">
+        <div>
+          <h2>🎤 Speaking trainer (CLOE style)</h2>
+          <p class="muted">Choose a prompt. Learn the structure, listen to the model, then practice with a timer.</p>
+        </div>
+        <div class="right">
+          <select id="sScenario" class="select" aria-label="Choose speaking prompt"></select>
+        </div>
+      </div>
+
+      <div class="split2">
+        <div class="mini">
+          <div class="mini__title">Prompt + structure</div>
+          <div class="mini__body">
+            <div class="pill tiny">Prompt</div>
+            <h3 id="sPrompt" style="margin:10px 0 0">—</h3>
+            <div class="outbox" style="margin-top:12px">
+              <div class="badgelist" id="sStruct"></div>
+            </div>
+            <div class="outactions">
+              <button class="btn btn--ghost" id="btnListenModel" type="button">🔊 Listen model</button>
+              <button class="btn btn--ghost" id="btnShowModel" type="button">👀 Show/Hide model</button>
+            </div>
+            <div class="outbox" id="modelBox" hidden>
+              <div class="outtext" id="sModel">—</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="mini__title">Timed practice</div>
+          <div class="mini__body">
+            <div class="timechips">
+              <button class="chipbtn" id="sp30" type="button">30s</button>
+              <button class="chipbtn is-on" id="sp45" type="button">45s</button>
+              <button class="chipbtn" id="sp60" type="button">60s</button>
+            </div>
+
+            <div class="timer" style="margin-top:10px">
+              <div class="timer__num" id="sTimerNum">45</div>
+              <div class="timer__label">seconds</div>
+            </div>
+
+            <div class="timebuttons" style="margin-top:10px">
+              <button class="btn" id="btnStartSpeak" type="button">▶ Start</button>
+              <button class="btn btn--ghost" id="btnStopSpeak" type="button">⏸ Stop</button>
+              <button class="btn btn--ghost" id="btnResetSpeak" type="button">↺ Reset</button>
+            </div>
+
+            <div class="mini" style="margin-top:12px">
+              <div class="mini__title">Fluency connectors</div>
+              <div class="mini__body">
+                <div class="bank" id="connectorBank"></div>
+              </div>
+            </div>
+
+            <button class="btn btn--ghost" id="btnDoneSpeak" type="button" style="margin-top:10px">✅ I spoke the full time</button>
+            <div class="feedback" id="sFeedback" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="writing" class="card">
+      <div class="row">
+        <div>
+          <h2>✍️ Writing (short CLOE style message)</h2>
+          <p class="muted">A short email introducing yourself to a colleague + an interactive fill‑in.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnCopyEmail" type="button">📋 Copy</button>
+          <button class="btn btn--ghost" id="btnListenEmail" type="button">🔊 Listen</button>
+        </div>
+      </div>
+
+      <div class="split2">
+        <div class="mini">
+          <div class="mini__title">Model email</div>
+          <div class="mini__body">
+            <div id="emailModel" class="email"></div>
+            <div class="tips" id="emailTips"></div>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="mini__title">Fill‑in (dropdown)</div>
+          <div class="mini__body">
+            <div class="filltext" id="emailFill">—</div>
+            <div class="qactions">
+              <button class="btn" id="btnCheckEmailFill" type="button">Check</button>
+              <button class="btn btn--ghost" id="btnResetEmailFill" type="button">Reset</button>
+            </div>
+            <div class="feedback" id="emailFillFeedback" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="builder" class="card">
+      <div class="row">
+        <div>
+          <h2>🧩 Build your self‑introduction paragraph</h2>
+          <p class="muted">Put the blocks in the best order. Drag on desktop or tap ➕ Add on iPad.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnBuilderReset" type="button">↺ Reset</button>
+          <button class="btn" id="btnBuilderCheck" type="button">Check</button>
+        </div>
+      </div>
+
+      <div class="builder">
+        <div class="builder__col">
+          <div class="tiny muted">Blocks</div>
+          <div id="bPool" class="blockpool"></div>
+        </div>
+        <div class="builder__col">
+          <div class="tiny muted">Your answer</div>
+          <ol id="bLane" class="answerlane"></ol>
+        </div>
+      </div>
+
+      <div class="outactions">
+        <button class="btn btn--ghost" id="btnBuilderListen" type="button">🔊 Listen full</button>
+        <button class="btn btn--ghost" id="btnBuilderCopy" type="button">📋 Copy full</button>
+      </div>
+
+      <div class="feedback" id="builderFeedback" aria-live="polite"></div>
+    </section>
+
+    <section id="vocab" class="card">
+      <div class="row">
+        <div>
+          <h2>🃏 Vocabulary flashcards (EN + FR)</h2>
+          <p class="muted">Tap to flip. Use Listen for pronunciation.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnShuffleVocab" type="button">🔀 Shuffle</button>
+        </div>
+      </div>
+
+      <div class="filters">
+        <button class="chip is-on" data-vfilter="all" type="button">All</button>
+        <button class="chip" data-vfilter="work" type="button">Work</button>
+        <button class="chip" data-vfilter="location" type="button">Location</button>
+        <button class="chip" data-vfilter="hobbies" type="button">Likes</button>
+        <button class="chip" data-vfilter="travel" type="button">Travel</button>
+      </div>
+
+      <div id="flashGrid" class="flashgrid" aria-label="Vocabulary flashcards"></div>
+    </section>
+
+    <section id="minitest" class="card">
+      <div class="row">
+        <div>
+          <h2>🧪 Mini test (quick)</h2>
+          <p class="muted">Prepositions + likes + travel experience. Check your answers.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnNewTest" type="button">🔄 New</button>
+        </div>
+      </div>
+
+      <div class="mini">
+        <div class="mini__title">Questions</div>
+        <div class="mini__body">
+          <div id="testBox" class="quizlist"></div>
+          <div class="qactions">
+            <button class="btn" id="btnCheckTest" type="button">Check</button>
+            <button class="btn btn--ghost" id="btnResetTest" type="button">Reset</button>
+          </div>
+          <div class="feedback" id="testFeedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="notes" class="card">
+      <div class="row">
+        <div>
+          <h2>🗒 Notes</h2>
+          <p class="muted">Saved locally in your browser.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnCopyNotes" type="button">📋 Copy</button>
+        </div>
+      </div>
+
+      <textarea id="notesBox" class="textarea" rows="8" placeholder="Mistakes + best phrases + vocabulary…"></textarea>
+
+      <div class="scoreline scoreline--bottom">
+        <span class="pill">🎯 Score</span>
+        <strong id="scoreBottom">0</strong><span class="muted">/</span><span id="maxBottom">50</span>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div class="tiny muted">SpeakEasyTisha • Frankie self‑introduction CLOE masterclass • Touch-friendly • Safari compatible</div>
+      <a class="tiny" href="#plan">Back to top ↑</a>
+    </footer>
+  </main>
+
+  <script src="/js/cloe-frankie-self-intro-masterclass.js"></script>
+</body>
+</html>
