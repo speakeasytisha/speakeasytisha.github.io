@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soccer English: Live Commentary (Pack 2)</title>
+  <link rel="stylesheet" href="/css/soccer-live-commentary-pack2.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">⚽</div>
+      <div>
+        <div class="brand__title">Soccer English • Live Commentary</div>
+        <div class="brand__sub">Present Continuous • Match actions • US + UK terms</div>
+      </div>
+    </div>
+
+    <div class="tools">
+      <div class="pill">
+        <span class="pill__label">Status</span>
+        <span class="pill__value" id="jsStatus">JS: loading…</span>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Level</span>
+        <select id="level" class="select select--tiny" aria-label="Level">
+          <option value="a2">A2</option>
+          <option value="b1" selected>B1</option>
+          <option value="b2">B2</option>
+        </select>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Terms</span>
+        <button class="btn btn--tiny btn--primary" id="dialBoth" type="button" aria-pressed="true">US+UK</button>
+        <button class="btn btn--tiny" id="dialUS" type="button" aria-pressed="false">US</button>
+        <button class="btn btn--tiny" id="dialUK" type="button" aria-pressed="false">UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">FR help</span>
+        <button class="btn btn--tiny" id="frToggle" type="button">FR</button>
+        <span class="pill__value small" id="frStatus">OFF</span>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Accent</span>
+        <button class="btn btn--tiny btn--primary" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="btn btn--tiny" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Score</span>
+        <span class="pill__value" id="scoreTxt">0 / 0</span>
+        <button class="btn btn--tiny btn--ghost" id="resetAll" type="button" title="Reset">↺</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card" id="start">
+    <h1 class="h1">Pack 2: Live Commentary English (US + UK)</h1>
+    <p class="lead">
+      Learn to describe what is happening <strong>right now</strong> during a match/game using
+      <strong>Present Continuous</strong> (He’s passing… They’re pressing…).
+      You’ll also practise <strong>match vocabulary</strong>, <strong>fan reactions</strong>, and <strong>predictions</strong>.
+    </p>
+
+    <div class="kpis">
+      <div class="kpi"><div class="kpiLabel">Grammar</div><div class="kpiVal">Present Continuous</div></div>
+      <div class="kpi"><div class="kpiLabel">Skill</div><div class="kpiVal">Speaking fluency</div></div>
+      <div class="kpi"><div class="kpiLabel">Style</div><div class="kpiVal">US + UK terms</div></div>
+    </div>
+
+    <div class="panel panel--soft" style="margin-top:14px;">
+      <div class="panelTitle">Quick warm-up</div>
+      <div class="model" id="warmupBox"></div>
+      <div class="row noPrint" style="margin-top:10px;">
+        <button class="btn btn--primary" id="listenWarmup" type="button">▶ Listen</button>
+        <a class="btn" href="#grammar">Grammar</a>
+        <a class="btn" href="#actions">Actions</a>
+        <a class="btn" href="#commentary">Commentary</a>
+        <a class="btn" href="#builders">Builders</a>
+        <a class="btn" href="#drills">Drills</a>
+        <button class="btn btn--ghost" id="printPage" type="button">Print</button>
+      </div>
+      <div class="row" style="justify-content:space-between; margin-top:12px;">
+        <span class="badge">Accuracy: <span id="progressPct">0%</span></span>
+        <div class="progress"><div id="progressBar"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="grammar">
+    <div class="sectionHead">
+      <h2 class="h2">1) Grammar: Present Continuous for live action</h2>
+      <span class="badge">Clear rules</span>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">How to form it</div>
+        <div class="model" id="pcGuide"></div>
+
+        <div class="panel panel--soft" style="margin-top:12px;">
+          <div class="panelTitle">Irregular / spelling reminders</div>
+          <div class="model" id="pcSpelling"></div>
+        </div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">When to use it (vs Present Simple)</div>
+        <div class="model" id="pcWhen"></div>
+
+        <div class="panel" style="margin-top:12px;">
+          <div class="panelTitle">Tap quiz (choose the best tense)</div>
+          <div id="tenseMCQ" class="quiz"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="actions">
+    <div class="sectionHead">
+      <h2 class="h2">2) Action Bank (verbs + objects)</h2>
+      <span class="badge">Tap to build commentary</span>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Action buttons</div>
+        <div class="row noPrint">
+          <button class="btn" id="evPass" type="button">Pass</button>
+          <button class="btn" id="evDribble" type="button">Dribble</button>
+          <button class="btn" id="evCross" type="button">Cross</button>
+          <button class="btn" id="evShoot" type="button">Shoot</button>
+          <button class="btn" id="evSave" type="button">Save</button>
+          <button class="btn" id="evTackle" type="button">Tackle</button>
+          <button class="btn" id="evPress" type="button">Press</button>
+          <button class="btn" id="evScore" type="button">Goal!</button>
+        </div>
+
+        <div class="panel panel--soft" style="margin-top:12px;">
+          <div class="panelTitle">Live commentary output</div>
+          <div class="model" id="liveFeed" aria-live="polite"></div>
+          <div class="row noPrint" style="margin-top:10px;">
+            <button class="btn btn--primary" id="listenFeed" type="button">▶ Listen</button>
+            <button class="btn" id="copyFeed" type="button">Copy</button>
+            <button class="btn btn--ghost" id="clearFeed" type="button">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">US + UK mini glossary (quick)</div>
+        <div class="model" id="dialBox"></div>
+
+        <div class="panel" style="margin-top:12px;">
+          <div class="panelTitle">Notes</div>
+          <textarea id="notes" class="textarea" placeholder="Save your best commentary lines here…"></textarea>
+          <div class="row noPrint" style="margin-top:10px;">
+            <button class="btn btn--primary" id="listenNotes" type="button">▶ Listen</button>
+            <button class="btn" id="copyNotes" type="button">Copy</button>
+            <button class="btn btn--ghost" id="clearNotes" type="button">Clear</button>
+          </div>
+          <div class="fb" id="notesFb" aria-live="polite">Tip: save 10 lines, then practise speaking them with the timer.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="commentary">
+    <div class="sectionHead">
+      <h2 class="h2">3) Commentary styles: neutral + excited</h2>
+      <span class="badge">No slang</span>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Neutral commentator phrases</div>
+        <div class="model" id="neutralPhrases"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--primary" id="listenNeutral" type="button">▶ Listen</button>
+          <button class="btn" id="addNeutral" type="button">Add to Notes</button>
+        </div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">Excited but still professional</div>
+        <div class="model" id="excitedPhrases"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--primary" id="listenExcited" type="button">▶ Listen</button>
+          <button class="btn" id="addExcited" type="button">Add to Notes</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel--soft" style="margin-top:16px;">
+      <div class="panelTitle">Speaking timers</div>
+      <div class="row noPrint">
+        <button class="btn" id="timer30" type="button">30s</button>
+        <button class="btn" id="timer60" type="button">60s</button>
+        <button class="btn" id="timer90" type="button">90s</button>
+        <button class="btn btn--ghost" id="timerStop" type="button">Stop</button>
+        <span class="badge timerBadge" id="timerTxt">00:00</span>
+      </div>
+      <div class="model" id="timerPrompt"></div>
+    </div>
+  </section>
+
+  <section class="card" id="builders">
+    <div class="sectionHead">
+      <h2 class="h2">4) Builders: create your own commentary</h2>
+      <span class="badge">A2/B1/B2 outputs</span>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Builder A: 4-step live sequence</div>
+        <div class="builderGrid" id="bAGrid"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--primary" id="bABuild" type="button">Build</button>
+          <button class="btn" id="bAListen" type="button">▶ Listen</button>
+          <button class="btn btn--ghost" id="bACopy" type="button">Copy</button>
+        </div>
+        <div class="model" id="bAOut"></div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">Builder B: prediction + plan</div>
+        <div class="builderGrid" id="bBGrid"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--primary" id="bBBuild" type="button">Build</button>
+          <button class="btn" id="bBListen" type="button">▶ Listen</button>
+          <button class="btn btn--ghost" id="bBCopy" type="button">Copy</button>
+        </div>
+        <div class="model" id="bBOut"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="drills">
+    <div class="sectionHead">
+      <h2 class="h2">5) Drills (gradual → mixed)</h2>
+      <span class="badge">Instant feedback</span>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">A) Fill-in: Present Continuous</div>
+        <div id="pcFill" class="grid2"></div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">B) US vs UK quick check</div>
+        <div id="dialMCQ" class="quiz"></div>
+
+        <div class="panel" style="margin-top:12px;">
+          <div class="panelTitle">C) Mixed challenge (final)</div>
+          <div id="mixedFill" class="grid2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footerInner">
+      <span>SpeakEasyTisha • Soccer English Pack 2</span>
+      <span class="muted">Tap-friendly • High-contrast controls • Mac/iPad Safari</span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="/js/soccer-live-commentary-pack2.js" defer></script>
+</body>
+</html>

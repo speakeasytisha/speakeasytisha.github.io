@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soccer English: US + UK (Match-day Plans)</title>
+  <link rel="stylesheet" href="css/soccer-english-us-uk-pack1.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">⚽</div>
+      <div>
+        <div class="brand__title">Soccer English • US + UK</div>
+        <div class="brand__sub">Future plans + match talk + detailed vocab for non-fans</div>
+      </div>
+    </div>
+
+    <div class="tools">
+      <div class="pill">
+        <span class="pill__label">Status</span>
+        <span class="pill__value" id="jsStatus">JS: loading…</span>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Level</span>
+        <select id="level" class="select select--tiny" aria-label="Level">
+          <option value="a2">A2</option>
+          <option value="b1" selected>B1</option>
+          <option value="b2">B2</option>
+        </select>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Terms</span>
+        <button class="btn btn--tiny btn--primary" id="dialBoth" type="button" aria-pressed="true">US+UK</button>
+        <button class="btn btn--tiny" id="dialUS" type="button" aria-pressed="false">US</button>
+        <button class="btn btn--tiny" id="dialUK" type="button" aria-pressed="false">UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">FR extra</span>
+        <button class="btn btn--tiny" id="frToggle" type="button">FR</button>
+        <span class="pill__value small" id="frStatus">OFF</span>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Accent (TTS)</span>
+        <button class="btn btn--tiny btn--primary" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="btn btn--tiny" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+
+      <div class="pill" title="Auto-checked score">
+        <span class="pill__label">Score</span>
+        <span class="pill__value" id="scoreTxt">0 / 0</span>
+        <button class="btn btn--tiny btn--ghost" id="resetAll" type="button" title="Reset">↺</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card" id="start">
+    <h1 class="h1">Soccer English + Future Plans (US + UK)</h1>
+    <p class="lead">
+      Goal: talk about future plans comfortably using the right future form
+      (<strong>going to</strong>, <strong>present continuous</strong>, <strong>will</strong>, <strong>plan to / plan on</strong>)
+      — and understand enough soccer English that even a non-fan can follow the conversation.
+    </p>
+
+    <div class="kpis">
+      <div class="kpi"><div class="kpiLabel">Theme</div><div class="kpiVal">Soccer + Movies</div></div>
+      <div class="kpi"><div class="kpiLabel">Main skill</div><div class="kpiVal">Future plans</div></div>
+      <div class="kpi"><div class="kpiLabel">Support</div><div class="kpiVal">FR vocab + examples</div></div>
+    </div>
+
+    <div class="panel panel--soft" style="margin-top:14px;">
+      <div class="panelTitle">Warm-up + soccer basics</div>
+      <div class="model" id="warmupBox"></div>
+      <div class="row noPrint" style="margin-top:10px;">
+        <button class="btn btn--primary" id="listenWarmup" type="button">▶ Listen</button>
+        <a class="btn" href="#grammar">Grammar</a>
+        <a class="btn" href="#vocab">Vocab</a>
+        <a class="btn" href="#dialogues">Dialogues</a>
+        <a class="btn" href="#builders">Builders</a>
+        <a class="btn" href="#drills">Drills</a>
+        <button class="btn btn--ghost" id="printPage" type="button">Print</button>
+      </div>
+      <div class="row" style="justify-content:space-between; margin-top:12px;">
+        <span class="badge">Accuracy: <span id="progressPct">0%</span></span>
+        <div class="progress"><div id="progressBar"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="grammar">
+    <div class="sectionHead">
+      <h2 class="h2">1) Grammar: future plans (clear + practical)</h2>
+      <span class="badge">When to use what</span>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">The 4 most useful future forms</div>
+        <div class="model" id="futureGuide"></div>
+
+        <div class="panel panel--soft" style="margin-top:12px;">
+          <div class="panelTitle">Mini checks (tap the best choice)</div>
+          <div id="futureMCQ" class="quiz"></div>
+        </div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">Plan to / Plan on / Going to / I'm visiting</div>
+        <div class="model" id="planGuide"></div>
+
+        <div class="panel" style="margin-top:12px;">
+          <div class="panelTitle">Explain the difference (quick drills)</div>
+          <div id="planFill" class="grid2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="vocab">
+    <div class="sectionHead">
+      <h2 class="h2">2) Vocabulary (US + UK) — detailed and translated</h2>
+      <span class="badge">French on every card</span>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Vocab controls</div>
+        <div class="row">
+          <div style="flex:1; min-width:220px;">
+            <label class="lbl" for="vocabCategory">Category</label>
+            <select id="vocabCategory" class="select">
+              <option value="basics">Match basics</option>
+              <option value="positions">Positions</option>
+              <option value="actions">Actions</option>
+              <option value="rules">Rules & Referees</option>
+              <option value="fan">Fan talk</option>
+              <option value="stats">Stats & Results</option>
+              <option value="movies">Movies (future plans)</option>
+            </select>
+          </div>
+          <div style="flex:1; min-width:220px;">
+            <label class="lbl" for="vocabSearch">Search</label>
+            <input id="vocabSearch" class="input" type="text" placeholder="Type: match / game / pitch / field / trailer...">
+          </div>
+        </div>
+
+        <div class="panel panel--soft" style="margin-top:12px;">
+          <div class="panelTitle">How to read each card</div>
+          <div class="model" id="vocabLegend"></div>
+        </div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">Vocabulary list</div>
+        <div id="vocabList" class="vList"></div>
+        <div class="fb" id="vocabFb">Tip: every card includes UK, US, French translation and an example.</div>
+      </div>
+    </div>
+
+    <div class="panel panel--soft" style="margin-top:16px;">
+      <div class="panelTitle">Notes (copy your best vocab + phrases)</div>
+      <textarea id="notes" class="textarea" placeholder="Build your own match-day plan phrases here…"></textarea>
+      <div class="row noPrint" style="margin-top:10px;">
+        <button class="btn btn--primary" id="listenNotes" type="button">▶ Listen</button>
+        <button class="btn" id="copyNotes" type="button">Copy</button>
+        <button class="btn btn--ghost" id="clearNotes" type="button">Clear</button>
+      </div>
+      <div class="fb" id="notesFb" aria-live="polite">Add vocabulary first, then use it in the builders.</div>
+    </div>
+  </section>
+
+  <section class="card" id="dialogues">
+    <div class="sectionHead">
+      <h2 class="h2">3) Dialogues (interactive) — soccer + movies</h2>
+      <span class="badge">Choose the reply</span>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Dialogue A: Planning the match</div>
+        <div class="model" id="dlgAContext"></div>
+        <div id="dlgA" class="dialogue"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--primary" id="dlgAListen" type="button">▶ Listen</button>
+          <button class="btn btn--ghost" id="dlgAReset" type="button">Reset</button>
+        </div>
+        <div class="fb" id="dlgAFb" aria-live="polite"></div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">Dialogue B: After the match + next weekend</div>
+        <div class="model" id="dlgBContext"></div>
+        <div id="dlgB" class="dialogue"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--primary" id="dlgBListen" type="button">▶ Listen</button>
+          <button class="btn btn--ghost" id="dlgBReset" type="button">Reset</button>
+        </div>
+        <div class="fb" id="dlgBFb" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="panel panel--soft" style="margin-top:16px;">
+      <div class="panelTitle">Speaking timers (practice like an exam)</div>
+      <div class="row noPrint">
+        <button class="btn" id="timer60" type="button">60s</button>
+        <button class="btn" id="timer90" type="button">90s</button>
+        <button class="btn" id="timer120" type="button">120s</button>
+        <button class="btn btn--ghost" id="timerStop" type="button">Stop</button>
+        <span class="badge timerBadge" id="timerTxt">00:00</span>
+      </div>
+      <div class="model" id="speakingPrompts"></div>
+    </div>
+  </section>
+
+  <section class="card" id="builders">
+    <div class="sectionHead">
+      <h2 class="h2">4) Text Builders — future plans (soccer + movies)</h2>
+      <span class="badge">A2 / B1 / B2 output</span>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Builder 1: Match-day plan</div>
+        <div class="builderGrid" id="b1Grid"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--primary" id="b1Build" type="button">Build</button>
+          <button class="btn" id="b1Listen" type="button">▶ Listen</button>
+          <button class="btn btn--ghost" id="b1Copy" type="button">Copy</button>
+        </div>
+        <div class="model" id="b1Out"></div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">Builder 2: Weekend plan (soccer + movie)</div>
+        <div class="builderGrid" id="b2Grid"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--primary" id="b2Build" type="button">Build</button>
+          <button class="btn" id="b2Listen" type="button">▶ Listen</button>
+          <button class="btn btn--ghost" id="b2Copy" type="button">Copy</button>
+        </div>
+        <div class="model" id="b2Out"></div>
+      </div>
+    </div>
+
+    <div class="panel panel--soft" style="margin-top:16px;">
+      <div class="panelTitle">Mini writing task (email/text style)</div>
+      <div class="model" id="writingTask"></div>
+      <textarea id="writingBox" class="textarea" placeholder="Write your message here…"></textarea>
+      <div class="row noPrint" style="margin-top:10px;">
+        <button class="btn btn--primary" id="writingCheck" type="button">Check structure</button>
+        <button class="btn" id="writingCopy" type="button">Copy</button>
+      </div>
+      <div class="fb" id="writingFb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card" id="drills">
+    <div class="sectionHead">
+      <h2 class="h2">5) Drills (gradual → mixed)</h2>
+      <span class="badge">Instant feedback</span>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">A) UK vs US: choose the best term</div>
+        <div id="dialQuiz" class="quiz"></div>
+      </div>
+
+      <div class="panel panel--soft">
+        <div class="panelTitle">B) Future plans: choose the best tense</div>
+        <div id="tenseQuiz" class="quiz"></div>
+
+        <div class="panel" style="margin-top:12px;">
+          <div class="panelTitle">C) Mixed challenge (final)</div>
+          <div id="mixedFill" class="grid2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footerInner">
+      <span>SpeakEasyTisha • Soccer English (US+UK) • Future Plans</span>
+      <span class="muted">Tap-friendly • High-contrast controls • Mac/iPad Safari</span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="js/soccer-english-us-uk-pack1.js" defer></script>
+</body>
+</html>
