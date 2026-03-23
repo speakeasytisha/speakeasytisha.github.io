@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SpeakEasyTisha • Future Plans: Soccer & Movies</title>
+  <link rel="stylesheet" href="/css/future-plans-soccer-movies-pack1.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">★</div>
+      <div>
+        <div class="brand__title">Future Plans • Soccer & Movies</div>
+        <div class="brand__sub">Talk about the future comfortably • A2 → B2</div>
+      </div>
+    </div>
+    <div class="tools">
+      <div class="pill">
+        <span class="pill__label">Level</span>
+        <select id="level" class="select select--tiny" aria-label="Level">
+          <option value="a2">A2</option>
+          <option value="b1" selected>B1</option>
+          <option value="b2">B2</option>
+        </select>
+      </div>
+      <div class="pill">
+        <span class="pill__label">FR</span>
+        <button class="btn btn--tiny" id="frToggle" type="button" aria-pressed="false">FR OFF</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Accent</span>
+        <button class="btn btn--tiny btn--primary" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="btn btn--tiny" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Score</span>
+        <span class="pill__value" id="scoreTxt">0 / 0</span>
+        <button class="btn btn--tiny btn--ghost" id="resetAll" type="button" title="Reset">↺</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" id="start">
+    <h1 class="h1">Plans for the future (comfortable + natural)</h1>
+    <p class="lead">Soccer + Movies vocabulary, grammar, interactive dialogues, drills, and text builders.</p>
+    <div class="panel panel--soft">
+      <div class="row noPrint">
+        <a class="btn btn--primary" href="#toolbox">1) Toolbox</a>
+        <a class="btn" href="#vocab">2) Vocabulary</a>
+        <a class="btn" href="#drills">3) Drills</a>
+        <a class="btn" href="#dialogues">4) Dialogues</a>
+        <a class="btn" href="#builders">5) Builders</a>
+        <button class="btn btn--ghost" id="printPage" type="button">Print</button>
+      </div>
+      <div class="row" style="justify-content:space-between; margin-top:12px;">
+        <span class="badge">Accuracy: <span id="progressPct">0%</span></span>
+        <div class="progress"><div id="progressBar"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="toolbox">
+    <div class="sectionHead"><h2 class="h2">1) Future toolbox</h2><span class="badge">Choose the form</span></div>
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Decision map</div>
+        <div class="model" id="decisionMap"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--primary" id="listenDecision" type="button">▶ Listen</button>
+          <button class="btn" id="copyDecision" type="button">Copy</button>
+        </div>
+        <div class="fb" id="mapFb">Tip: choose ONE form first.</div>
+      </div>
+      <div class="panel panel--soft">
+        <div class="panelTitle">Mini trainer</div>
+        <div id="choiceTrainer" class="quiz"></div>
+      </div>
+    </div>
+    <div class="panel panel--soft" style="margin-top:16px;">
+      <div class="panelTitle">Visiting patterns</div>
+      <div class="grid2">
+        <div class="callout"><h4>Correct</h4><div class="model" id="visitPatterns"></div></div>
+        <div class="callout"><h4>Mistakes</h4><div class="model" id="visitFixes"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="vocab">
+    <div class="sectionHead"><h2 class="h2">2) Vocabulary</h2><span class="badge">Tap to save</span></div>
+    <div class="row" style="justify-content:space-between;">
+      <div class="pill"><span class="pill__label">Category</span><select id="vocabCat" class="select select--tiny"></select></div>
+      <div class="pill"><span class="pill__label">Search</span><input id="vocabSearch" class="input input--tiny" type="text" placeholder="ticket, match..." /></div>
+      <div class="pill"><span class="pill__label">Show</span><button class="btn btn--tiny" id="showAllVocab" type="button">All</button><button class="btn btn--tiny btn--ghost" id="showFavVocab" type="button">Saved</button></div>
+    </div>
+    <div class="panel panel--soft" style="margin-top:14px;">
+      <div class="panelTitle">Vocabulary cards</div>
+      <div id="vocabGrid" class="vgrid"></div>
+      <div class="fb" id="vocabFb">Tap a card to save it.</div>
+    </div>
+  </section>
+
+  <section class="card" id="drills">
+    <div class="sectionHead"><h2 class="h2">3) Drills</h2><span class="badge">Instant feedback</span></div>
+    <div class="panel"><div class="panelTitle">A) Going to vs Will</div><div id="drillA" class="quiz"></div></div>
+    <div class="panel panel--soft" style="margin-top:16px;"><div class="panelTitle">B) Present Continuous</div><div id="drillB" class="quiz"></div></div>
+    <div class="panel" style="margin-top:16px;"><div class="panelTitle">C) Plan to vs Plan on</div><div id="drillC" class="quiz"></div></div>
+    <div class="panel panel--soft" style="margin-top:16px;"><div class="panelTitle">D) Why visiting?</div><div id="drillD" class="quiz"></div></div>
+    <div class="panel" style="margin-top:16px;">
+      <div class="panelTitle">E) Sentence builder</div>
+      <div class="builder">
+        <div class="builderCol"><div class="builderHead">Tap chunks</div><div id="chunkBank" class="chunkBank"></div></div>
+        <div class="builderCol">
+          <div class="builderHead">Your sentence</div>
+          <div id="chunkLine" class="chunkLine"></div>
+          <div class="row noPrint" style="margin-top:10px;">
+            <button class="btn btn--primary" id="checkChunks" type="button">Check</button>
+            <button class="btn" id="listenChunks" type="button">▶ Listen</button>
+            <button class="btn btn--ghost" id="resetChunks" type="button">Reset</button>
+          </div>
+          <div class="fb" id="chunkFb">Build the sentence step by step.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="dialogues">
+    <div class="sectionHead"><h2 class="h2">4) Dialogues</h2><span class="badge">Choose your lines</span></div>
+    <div class="grid2">
+      <div class="panel"><div class="panelTitle">Soccer plan</div><div id="dlg1" class="dialogue"></div></div>
+      <div class="panel panel--soft"><div class="panelTitle">Movie plan</div><div id="dlg2" class="dialogue"></div></div>
+    </div>
+  </section>
+
+  <section class="card" id="builders">
+    <div class="sectionHead"><h2 class="h2">5) Builders</h2><span class="badge">Speaking + Writing</span></div>
+    <div class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Speaking builder</div>
+        <div class="builderGrid" id="speakBuilder"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--primary" id="buildSpeaking" type="button">Build</button>
+          <button class="btn" id="listenBuiltSpeaking" type="button">▶ Listen</button>
+          <button class="btn btn--ghost" id="copyBuiltSpeaking" type="button">Copy</button>
+        </div>
+        <div class="model" id="builtSpeaking"></div>
+      </div>
+      <div class="panel panel--soft">
+        <div class="panelTitle">Writing builder</div>
+        <div class="row">
+          <div class="pill"><span class="pill__label">Tone</span>
+            <button class="btn btn--tiny btn--primary" id="writeFormal" type="button" aria-pressed="true">Formal</button>
+            <button class="btn btn--tiny" id="writeFriendly" type="button" aria-pressed="false">Friendly</button>
+          </div>
+        </div>
+        <div class="builderGrid" id="emailBuilder" style="margin-top:10px;"></div>
+        <div class="row noPrint" style="margin-top:10px;">
+          <button class="btn btn--primary" id="buildEmail" type="button">Build email</button>
+          <button class="btn" id="listenBuiltEmail" type="button">▶ Listen</button>
+          <button class="btn btn--ghost" id="copyBuiltEmail" type="button">Copy</button>
+        </div>
+        <div class="model" id="builtEmail"></div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:16px;">
+      <div class="row" style="justify-content:space-between;">
+        <div class="panelTitle">Timed speaking</div>
+        <span class="badge" id="timerTxt">00:00</span>
+      </div>
+      <div class="row noPrint" style="margin-top:10px;">
+        <button class="btn btn--tiny" id="t60" type="button">60s</button>
+        <button class="btn btn--tiny" id="t90" type="button">90s</button>
+        <button class="btn btn--tiny" id="t120" type="button">120s</button>
+        <button class="btn btn--tiny btn--ghost" id="tStop" type="button">Stop</button>
+      </div>
+      <div class="panel panel--soft" style="margin-top:12px;">
+        <div class="panelTitle">Checklist</div>
+        <ul class="bullets" id="speakChecklist"></ul>
+      </div>
+    </div>
+
+    <div class="panel panel--soft" style="margin-top:16px;">
+      <div class="panelTitle">Cheat sheet</div>
+      <div class="model" id="cheatSheet"></div>
+      <div class="row noPrint" style="margin-top:10px;">
+        <button class="btn btn--primary" id="listenCheat" type="button">▶ Listen</button>
+        <button class="btn" id="copyCheat" type="button">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footerInner">
+      <span>SpeakEasyTisha • Future Plans Lesson</span>
+      <span class="muted">Touch-friendly • High contrast</span>
+    </div>
+  </footer>
+</main>
+
+<script src="/js/future-plans-soccer-movies-pack1.js"></script>
+</body>
+</html>
