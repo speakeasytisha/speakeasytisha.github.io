@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>🧳 Frankie — CLOE Tourism Masterclass | SpeakEasyTisha</title>
+  <link rel="stylesheet" href="/css/cloe-frankie-tourism-masterclass.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="hdr">
+    <div class="hdr__top">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true">SpeakEasy<span>Tisha</span></div>
+        <div class="brand__tag">CLOE first • Frankie • Tourism + Airport + Ballynahinch</div>
+      </div>
+
+      <div class="tools">
+        <div class="tool">
+          <label for="accent" class="sr">Accent</label>
+          <select id="accent" class="select" title="Accent for listening">
+            <option value="en-GB">🇬🇧 UK</option>
+            <option value="en-US">🇺🇸 US</option>
+          </select>
+        </div>
+        <button class="btn btn--ghost" id="btnStopSpeech" type="button">⏹ Stop</button>
+        <button class="btn btn--ghost" id="btnPrint" type="button">🖨 Print cheat sheets</button>
+        <button class="btn btn--ghost" id="btnResetAll" type="button">↺ Reset</button>
+      </div>
+    </div>
+
+    <div class="hdr__bottom">
+      <div class="scoreline" aria-label="Score">
+        <span class="pill">🎯 Score</span>
+        <strong id="scoreTop">0</strong><span class="muted">/</span><span id="maxTop">60</span>
+        <span class="sep">•</span>
+        <span class="pill">🔑 Mastered</span>
+        <strong id="masteredCount">0</strong><span class="muted">/</span><span id="masteredMax">0</span>
+      </div>
+
+      <nav class="nav" aria-label="Sections">
+        <button class="nav__chip" data-scroll="#examplan" type="button">Exam plan</button>
+        <button class="nav__chip" data-scroll="#sim" type="button">Exam simulator</button>
+        <button class="nav__chip" data-scroll="#scenarios" type="button">Scenario trainer</button>
+        <button class="nav__chip" data-scroll="#speaking" type="button">Speaking bank</button>
+        <button class="nav__chip" data-scroll="#writing" type="button">Writing bank</button>
+        <button class="nav__chip" data-scroll="#grammar" type="button">Conjugations</button>
+        <button class="nav__chip" data-scroll="#modals" type="button">Modals</button>
+        <button class="nav__chip" data-scroll="#preps" type="button">Prepositions</button>
+        <button class="nav__chip" data-scroll="#connectors" type="button">Transitions + superlatives</button>
+        <button class="nav__chip" data-scroll="#vocab" type="button">Vocabulary</button>
+        <button class="nav__chip" data-scroll="#notes" type="button">Notes</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="main">
+
+    <section class="card hero">
+      <div class="hero__grid">
+        <div>
+          <h1>🏁 Frankie — CLOE Tourism Masterclass</h1>
+          <p class="lead">
+            A complete final training lesson regrouping everything you’ve studied:
+            <strong>CARSAT administrative assistant</strong>, <strong>travel</strong>, <strong>hotels</strong>, <strong>airport</strong>.
+            You’ll get: rules + formation, examples, French help, vocabulary, and realistic speaking + writing practice.
+          </p>
+
+          <div class="notice">
+            <strong>Goal:</strong> feel comfortable and fluent. Use the structure:
+            <em>greeting → context → 2 key details → request/solution → closing</em>.
+          </div>
+
+          <div class="hero__actions">
+            <button class="btn" id="btnSpinScenario" type="button">🎲 Spin a random scenario</button>
+            <button class="btn btn--ghost" id="btnJumpModels" type="button">✅ Jump to models</button>
+            <button class="btn btn--ghost" id="btnJumpPractice" type="button">🎯 Jump to practice</button>
+          </div>
+        </div>
+
+        <div class="hero__side">
+          <div class="mini">
+            <div class="mini__title">Quick speaking rhythm</div>
+            <div class="mini__body">
+              <ol class="tiny">
+                <li><strong>Answer directly</strong> (1 sentence)</li>
+                <li><strong>2 details</strong> (reason + example)</li>
+                <li><strong>Close politely</strong> (next step + thanks)</li>
+              </ol>
+              <div class="pill tiny">Tip</div>
+              <div class="tiny muted">Use connectors: first, however, for example, to sum up.</div>
+            </div>
+          </div>
+
+          <div class="mini">
+            <div class="mini__title">Audio</div>
+            <div class="mini__body tiny muted">
+              Tap 🔊 to listen. If a UK/US voice is missing, your device will pick the closest match.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="examplan" class="card">
+      <h2>🧭 Exam plan (how to win calmly)</h2>
+      <div class="grid3">
+        <article class="step">
+          <h3><span class="badge">1</span> Warm‑up (intro questions)</h3>
+          <p>Short answers + expand with 1 example.</p>
+          <div class="mini">
+            <div class="mini__title">Starter phrases</div>
+            <div class="mini__body">
+              <div class="bank" id="warmupBank"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="step">
+          <h3><span class="badge">2</span> Role‑play (situation)</h3>
+          <p>Problem → request → solution. Use polite modals.</p>
+          <div class="mini">
+            <div class="mini__title">Problem‑solving checklist</div>
+            <div class="mini__body tiny">
+              <ul class="muted">
+                <li>Say the problem clearly</li>
+                <li>Give 2 details (impact / urgency)</li>
+                <li>Ask for 1–2 actions (request)</li>
+                <li>Confirm next step + thank you</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="step">
+          <h3><span class="badge">3</span> Discussion (travel)</h3>
+          <p>Opinion + 2 arguments + short example + closing.</p>
+          <div class="mini">
+            <div class="mini__title">Mini formula</div>
+            <div class="mini__body"><code>Overall… First… However… For example… To sum up…</code></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="sim" class="card">
+      <div class="row">
+        <div>
+          <h2>🎭 Exam simulator (realistic)</h2>
+          <p class="muted">Random warm‑up → role‑play → discussion. Use timers as practice targets.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnNewSim" type="button">🔄 New simulation</button>
+        </div>
+      </div>
+
+      <div class="simgrid">
+        <div class="simcard">
+          <div class="pill tiny">Part 1 — Warm‑up</div>
+          <h3 id="simWarmQ">—</h3>
+          <div class="simbtns">
+            <button class="btn btn--ghost" id="btnListenWarm" type="button">🔊 Listen model</button>
+            <button class="btn" id="btnTimerWarm" type="button">▶ 45s</button>
+          </div>
+          <div class="muted tiny" id="simWarmModel">—</div>
+        </div>
+
+        <div class="simcard">
+          <div class="pill tiny">Part 2 — Role‑play</div>
+          <h3 id="simRoleQ">—</h3>
+          <div class="simbtns">
+            <button class="btn btn--ghost" id="btnListenRole" type="button">🔊 Listen model</button>
+            <button class="btn" id="btnTimerRole" type="button">▶ 60s</button>
+          </div>
+          <div class="muted tiny" id="simRoleModel">—</div>
+        </div>
+
+        <div class="simcard">
+          <div class="pill tiny">Part 3 — Discussion</div>
+          <h3 id="simDiscQ">—</h3>
+          <div class="simbtns">
+            <button class="btn btn--ghost" id="btnListenDisc" type="button">🔊 Listen model</button>
+            <button class="btn" id="btnTimerDisc" type="button">▶ 90s</button>
+          </div>
+          <div class="muted tiny" id="simDiscModel">—</div>
+        </div>
+
+        <div class="timerpanel" aria-label="Timer">
+          <div class="timer">
+            <div class="timer__num" id="timerNum">45</div>
+            <div class="timer__label">seconds</div>
+          </div>
+          <div class="timecontrols">
+            <div class="timechips">
+              <button class="chipbtn" id="t30" type="button">30s</button>
+              <button class="chipbtn is-on" id="t45" type="button">45s</button>
+              <button class="chipbtn" id="t60" type="button">60s</button>
+              <button class="chipbtn" id="t90" type="button">90s</button>
+            </div>
+            <div class="timebuttons">
+              <button class="btn" id="btnStartTimer" type="button">▶ Start</button>
+              <button class="btn btn--ghost" id="btnStopTimer" type="button">⏸ Stop</button>
+              <button class="btn btn--ghost" id="btnResetTimer" type="button">↺ Reset</button>
+            </div>
+            <div class="tiny muted">Speak with structure. Don’t stop early.</div>
+          </div>
+          <div class="feedback" id="timerFeedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="scenarios" class="card">
+      <div class="row">
+        <div>
+          <h2>🧩 Scenario trainer (models + practice)</h2>
+          <p class="muted">Choose a scenario. Every scenario includes model dialogue + model writing + exercises.</p>
+        </div>
+        <div class="right">
+          <select id="scenarioSelect" class="select" aria-label="Select scenario"></select>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="panel">
+          <div class="panel__head">
+            <h3>✅ Models</h3>
+            <div class="panel__actions">
+              <button class="btn btn--ghost" id="btnListenAll" type="button">🔊 Listen all</button>
+              <button class="btn btn--ghost" id="btnToggleFR" type="button">FR help</button>
+            </div>
+          </div>
+          <div class="panel__body">
+            <div class="pill tiny" id="scenarioMeta">—</div>
+            <h4 class="mt" id="scenarioTitle">—</h4>
+            <p class="muted" id="scenarioDesc">—</p>
+
+            <div class="modelbox">
+              <div class="modelbox__head">
+                <span class="pill tiny">Speaking structure</span>
+                <span class="tiny muted">Copy the structure, not every word.</span>
+              </div>
+              <div id="structureList" class="struct"></div>
+            </div>
+
+            <div class="modelbox">
+              <div class="modelbox__head">
+                <span class="pill tiny">Model dialogue (line by line)</span>
+              </div>
+              <div id="dialogueList" class="dialogue"></div>
+            </div>
+
+            <div class="modelbox">
+              <div class="modelbox__head">
+                <span class="pill tiny">Model writing</span>
+                <div class="row row--tight">
+                  <button class="btn btn--ghost" id="btnCopyEmail" type="button">📋 Copy</button>
+                  <button class="btn btn--ghost" id="btnListenEmail" type="button">🔊 Listen</button>
+                </div>
+              </div>
+              <div id="emailBox" class="email"></div>
+              <div id="emailTips" class="tips"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head">
+            <h3>🎯 Practice</h3>
+            <div class="panel__actions">
+              <button class="btn btn--ghost" id="btnNewQuiz" type="button">New quiz</button>
+              <button class="btn btn--ghost" id="btnNewFill" type="button">New fill</button>
+            </div>
+          </div>
+
+          <div class="panel__body">
+            <div class="practicegrid">
+              <div class="box">
+                <div class="pill tiny">1) Choose the best reply</div>
+                <p id="quizPrompt" class="qtext">—</p>
+                <div id="quizOptions" class="options"></div>
+                <div class="qactions">
+                  <button class="btn" id="btnCheckQuiz" type="button">Check</button>
+                  <button class="btn btn--ghost" id="btnResetQuiz" type="button">Reset</button>
+                </div>
+                <div id="quizFeedback" class="feedback" aria-live="polite"></div>
+              </div>
+
+              <div class="box">
+                <div class="row row--tight">
+                  <div class="pill tiny">2) Build the ideal answer</div>
+                  <div class="right">
+                    <button class="btn btn--ghost" id="btnResetBuilder" type="button">↺ Reset</button>
+                    <button class="btn" id="btnCheckBuilder" type="button">Check</button>
+                  </div>
+                </div>
+                <div class="builder">
+                  <div class="builder__col">
+                    <div class="tiny muted">Blocks (tap ➕ Add on iPad)</div>
+                    <div id="blockPool" class="blockpool"></div>
+                  </div>
+                  <div class="builder__col">
+                    <div class="tiny muted">Your answer</div>
+                    <ol id="answerLane" class="answerlane"></ol>
+                  </div>
+                </div>
+                <div id="builderFeedback" class="feedback" aria-live="polite"></div>
+              </div>
+
+              <div class="box">
+                <div class="pill tiny">3) Dropdown fill‑in</div>
+                <div id="fillText" class="filltext">—</div>
+                <div class="qactions">
+                  <button class="btn" id="btnCheckFill" type="button">Check</button>
+                  <button class="btn btn--ghost" id="btnResetFill" type="button">Reset</button>
+                  <button class="btn btn--ghost" id="btnListenFill" type="button">🔊 Listen</button>
+                </div>
+                <div id="fillFeedback" class="feedback" aria-live="polite"></div>
+              </div>
+            </div>
+
+            <div class="box">
+              <div class="row row--tight">
+                <div class="pill tiny">🔑 Mark scenario mastered</div>
+                <div class="right">
+                  <button class="btn btn--ghost" id="btnMarkMastered" type="button">Mark mastered</button>
+                </div>
+              </div>
+              <div class="tiny muted">Tip: mark mastered after you can speak for 45–60 seconds smoothly with connectors.</div>
+              <div id="masteredFeedback" class="feedback" aria-live="polite"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="speaking" class="card">
+      <div class="row">
+        <div>
+          <h2>🗣 Speaking bank (rules + phrases)</h2>
+          <p class="muted">Greetings, requests, problem solving, clarifying, closing — with FR help.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnCopySpeaking" type="button">📋 Copy all</button>
+        </div>
+      </div>
+
+      <div id="speakingBank" class="bankgrid"></div>
+    </section>
+
+    <section id="writing" class="card">
+      <div class="row">
+        <div>
+          <h2>✍️ Writing bank (email structure)</h2>
+          <p class="muted">Greeting → purpose → details → request → closing. Copy/paste ready.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnCopyWriting" type="button">📋 Copy all</button>
+        </div>
+      </div>
+
+      <div class="grid3" id="writingCards"></div>
+    </section>
+
+    <section id="grammar" class="card">
+      <div class="row">
+        <div>
+          <h2>📚 Conjugations (how to form them)</h2>
+          <p class="muted">Rules + keywords + examples + FR translation.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnExpandAllGrammar" type="button">Expand/Collapse</button>
+        </div>
+      </div>
+
+      <div id="grammarGrid" class="ggrid"></div>
+    </section>
+
+    <section id="modals" class="card">
+      <div class="row">
+        <div>
+          <h2>🧠 Modals (polite + precise)</h2>
+          <p class="muted">Could / would / should / must / have to / might…</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnShuffleModals" type="button">🔀 Shuffle practice</button>
+        </div>
+      </div>
+
+      <div class="mini">
+        <div class="mini__title">Rules</div>
+        <div class="mini__body">
+          <p class="muted" id="modalIntro"></p>
+          <div id="modalTable" class="mtable"></div>
+        </div>
+      </div>
+
+      <div class="mini">
+        <div class="mini__title">Modal practice (tap each line to check)</div>
+        <div class="mini__body">
+          <div id="modalPractice" class="quizlist"></div>
+          <div id="modalFeedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="preps" class="card">
+      <div class="row">
+        <div>
+          <h2>📍 Prepositions (time + place + movement)</h2>
+          <p class="muted">Small words, big mistakes. Practice with dropdowns.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnNewPreps" type="button">New set</button>
+        </div>
+      </div>
+
+      <div class="split2">
+        <div class="mini">
+          <div class="mini__title">Time + place</div>
+          <div class="mini__body">
+            <div id="prepTimePlace" class="quizlist"></div>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="mini__title">Movement + common phrases</div>
+          <div class="mini__body">
+            <div id="prepMove" class="quizlist"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="qactions">
+        <button class="btn" id="btnCheckPreps" type="button">Check</button>
+        <button class="btn btn--ghost" id="btnResetPreps" type="button">Reset</button>
+      </div>
+      <div id="prepFeedback" class="feedback" aria-live="polite"></div>
+    </section>
+
+    <section id="connectors" class="card">
+      <div class="row">
+        <div>
+          <h2>🔗 Transitions + superlatives</h2>
+          <p class="muted">Sound fluent: connect ideas and compare things naturally.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnCopyConnectors" type="button">📋 Copy connectors</button>
+        </div>
+      </div>
+
+      <div class="split2">
+        <div class="mini">
+          <div class="mini__title">Connector bank</div>
+          <div class="mini__body">
+            <div id="connectorBank" class="cgrid"></div>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="mini__title">Superlatives & comparatives (practice)</div>
+          <div class="mini__body">
+            <div id="superPractice" class="quizlist"></div>
+            <div class="qactions">
+              <button class="btn" id="btnCheckSuper" type="button">Check</button>
+              <button class="btn btn--ghost" id="btnResetSuper" type="button">Reset</button>
+            </div>
+            <div id="superFeedback" class="feedback" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vocab" class="card">
+      <div class="row">
+        <div>
+          <h2>🃏 Vocabulary (icons + FR)</h2>
+          <p class="muted">Tap to flip. Use Listen for pronunciation.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnShuffleVocab" type="button">🔀 Shuffle</button>
+        </div>
+      </div>
+
+      <div class="filters">
+        <button class="chip is-on" data-vfilter="all" type="button">All</button>
+        <button class="chip" data-vfilter="work" type="button">Work</button>
+        <button class="chip" data-vfilter="travel" type="button">Travel</button>
+        <button class="chip" data-vfilter="discussion" type="button">Destination</button>
+      </div>
+
+      <div id="flashGrid" class="flashgrid" aria-label="Vocabulary flashcards"></div>
+    </section>
+
+    <section id="notes" class="card">
+      <div class="row">
+        <div>
+          <h2>🗒 Notes</h2>
+          <p class="muted">Write your personal mistakes + best phrases (saved locally).</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnCopyNotes" type="button">📋 Copy notes</button>
+        </div>
+      </div>
+
+      <textarea id="notesBox" class="textarea" rows="8" placeholder="Mistakes to fix, best phrases, new vocabulary…"></textarea>
+
+      <div class="scoreline scoreline--bottom">
+        <span class="pill">🎯 Score</span>
+        <strong id="scoreBottom">0</strong><span class="muted">/</span><span id="maxBottom">60</span>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div class="tiny muted">SpeakEasyTisha • Frankie final CLOE masterclass • Touch-friendly • Safari compatible</div>
+      <a class="tiny" href="#examplan">Back to top ↑</a>
+    </footer>
+
+  </main>
+
+  <script src="/js/cloe-frankie-tourism-masterclass.js"></script>
+</body>
+</html>
