@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Canada Oral Practice Quest · A1+ · SpeakEasyTisha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/canada-oral-practice-quest.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Canada Oral Practice Quest 🇨🇦 · A1+ → A2 · Role‑play with your teacher (no slang)</div>
+    </div>
+
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Auto audio</span>
+        <button class="seg is-on" id="autoOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="autoOn" type="button" aria-pressed="false">ON</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <span class="pillTag" id="buildTag">Build: 20260324-122314</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>Oral Practice Quest 🇨🇦</h1>
+      <p class="lead">
+        A practical, interactive page to <strong>practice speaking</strong> using what he has learned:
+        small talk, tickets, directions, restaurant, tours, and safety.
+        You can do it <strong>together</strong> (teacher + learner), with model responses and checklists.
+        <strong>No slang</strong> — polite + normal.
+      </p>
+
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="btnHow" type="button">ℹ️ How to use</button>
+      </div>
+
+      <div class="minirow">
+        <div class="minicard">
+          <div class="minicard__t">🎭 Guided role‑play</div>
+          <div class="minicard__p">Line‑by‑line dialogues with “Your turn” + model answers.</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">⚡ Quick drills</div>
+          <div class="minicard__p">Short questions → choose the best reply → score.</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">🧩 Build & Speak</div>
+          <div class="minicard__p">Tap/drag words to build a response, then say it.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__panel">
+      <div class="panelcard">
+        <div class="panelcard__title">Lesson map (≈ 45–75 min)</div>
+        <ol class="panelcard__list">
+          <li>Choose a scenario (hotel / café / museum / transit / tour / hiking)</li>
+          <li>Guided role‑play (teacher prompts + learner replies)</li>
+          <li>Quick drills (responses + polite forms)</li>
+          <li>Build & Speak (sentence builder + speaking timers)</li>
+        </ol>
+        <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+        <div class="muted tiny">Auto audio is OFF by default (use 🔊 only when you want).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+
+  <section class="section" id="sec1">
+    <div class="section__head">
+      <h2>1) Choose a scenario (for Canada next summer)</h2>
+      <p class="muted">Pick one realistic situation. You will get a speaking guide + role‑play + drills.</p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Scenario</span>
+        <select class="select" id="scenarioSelect"></select>
+      </div>
+      <button class="btn btn--ghost" id="btnScenarioSpeak" type="button">🔊 Listen goal</button>
+      <button class="btn btn--ghost" id="btnScenarioReset" type="button">↺ Reset scenario</button>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <div class="card__head">
+          <h3 id="scTitle">Scenario</h3>
+          <div class="righttools">
+            <span class="pillTag" id="scLevel">A1+</span>
+          </div>
+        </div>
+        <div class="reading" id="scInfo"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Speaking guide (Teacher → Learner)</h3>
+          <div class="righttools">
+            <button class="btn btn--ghost" id="btnGuideSpeak" type="button">🔊 Listen guide</button>
+          </div>
+        </div>
+        <div id="scGuide"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec2">
+    <div class="section__head">
+      <h2>2) Guided role‑play (practice together)</h2>
+      <p class="muted">Teacher speaks the blue lines. Learner answers the green lines. Use timers if you want.</p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Practice</span>
+        <button class="seg is-on" id="roleTeacher" type="button" aria-pressed="true">👩‍🏫 Teacher</button>
+        <button class="seg" id="roleLearner" type="button" aria-pressed="false">🧑‍🎓 Learner</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Timer</span>
+        <button class="seg is-on" id="timerOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="timerOn" type="button" aria-pressed="false">ON</button>
+      </div>
+
+      <button class="btn" id="btnRPStart" type="button">▶️ Start role‑play</button>
+      <button class="btn btn--ghost" id="btnRPStep" type="button">➡️ Next</button>
+      <button class="btn btn--ghost" id="btnRPClear" type="button">🧹 Clear</button>
+      <button class="btn btn--ghost" id="btnRPModel" type="button">✅ Show model reply</button>
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h3 id="rpTitle">Role‑play</h3>
+        <div class="righttools">
+          <button class="btn btn--ghost" id="btnRPListenAll" type="button">🔊 Listen all</button>
+          <button class="btn btn--ghost" id="btnRPHint" type="button">💡 Useful phrases</button>
+        </div>
+      </div>
+
+      <div class="chat"><div class="chat__stream" id="rpStream"></div></div>
+
+      <div class="timerRow">
+        <div class="timerBox">
+          <div class="timerBox__t">Prep</div>
+          <div class="timerBox__v" id="prepTime">15</div>
+          <div class="muted tiny">seconds</div>
+          <button class="iconbtn" id="btnPrep" type="button">⏱ Start prep</button>
+        </div>
+        <div class="timerBox">
+          <div class="timerBox__t">Speak</div>
+          <div class="timerBox__v" id="speakTime">30</div>
+          <div class="muted tiny">seconds</div>
+          <button class="iconbtn" id="btnSpeakTimer" type="button">🎙 Start speak</button>
+        </div>
+        <div class="timerBox timerBox--wide">
+          <div class="timerBox__t">Model reply (for learner line)</div>
+          <div class="modelBox" id="modelBox">Click “Show model reply” when needed.</div>
+        </div>
+      </div>
+
+      <div class="feedback hidden" id="rpHintBox"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec3">
+    <div class="section__head">
+      <h2>3) Quick drills (responses)</h2>
+      <p class="muted">Short prompts. Choose the best reply. Immediate feedback + hints.</p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Set</span>
+        <select class="select" id="drillSet"></select>
+      </div>
+      <button class="btn" id="btnNewDrill" type="button">🎯 New prompt</button>
+      <button class="btn btn--ghost" id="btnDrillReset" type="button">↺ Reset</button>
+      <button class="btn btn--ghost" id="btnDrillSpeak" type="button">🔊 Listen prompt</button>
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h3>Drill (Score)</h3>
+      </div>
+      <div id="drillHost"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec4">
+    <div class="section__head">
+      <h2>4) Build & Speak (drag OR tap)</h2>
+      <p class="muted">Build the learner response, check it, then say it aloud.</p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Task</span>
+        <select class="select" id="buildTask"></select>
+      </div>
+      <button class="btn btn--ghost" id="btnBuildSpeakModel" type="button">🔊 Listen model</button>
+      <button class="btn btn--ghost" id="btnBuildReset" type="button">↺ Reset</button>
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h3>Sentence Builder (Score)</h3>
+        <div class="righttools">
+          <button class="btn" id="btnBuildCheck" type="button">✅ Check</button>
+        </div>
+      </div>
+      <div id="builderHost"></div>
+      <div class="feedback hidden" id="buildFb"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="muted tiny">© SpeakEasyTisha · Canada Oral Practice Quest · Touch‑friendly (drag OR tap)</div>
+      <a class="iconbtn" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<pre id="debugBox" class="hidden" style="white-space:pre-wrap;margin:1rem;padding:1rem;border:1px dashed rgba(14,31,36,.35);border-radius:14px;background:#fff;max-width:1100px;">Debug log</pre>
+
+<script src="js/canada-oral-practice-quest.js"></script>
+</body>
+</html>
