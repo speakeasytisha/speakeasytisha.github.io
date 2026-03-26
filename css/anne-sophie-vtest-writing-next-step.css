@@ -1,0 +1,527 @@
+:root {
+  --bg: #f8f5ff;
+  --bg-alt: #fffaf3;
+  --card: rgba(255, 255, 255, 0.88);
+  --card-strong: #ffffff;
+  --text: #2e2340;
+  --muted: #665c7a;
+  --line: rgba(92, 67, 133, 0.14);
+  --accent: #6f57c7;
+  --accent-2: #f39ab2;
+  --accent-3: #ffd98d;
+  --success: #2f8a5a;
+  --shadow: 0 18px 40px rgba(74, 43, 120, 0.12);
+  --radius: 24px;
+  --radius-sm: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(243, 154, 178, 0.18), transparent 26%),
+    radial-gradient(circle at top right, rgba(111, 87, 199, 0.18), transparent 22%),
+    linear-gradient(180deg, #fcfaff 0%, #fffdf9 100%);
+}
+
+.page-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255, 217, 141, 0.22), transparent 18%),
+    radial-gradient(circle at 85% 8%, rgba(111, 87, 199, 0.16), transparent 18%);
+}
+
+.shell {
+  position: relative;
+  width: min(1160px, calc(100% - 32px));
+  margin: 28px auto 56px;
+}
+
+.card,
+.cardish,
+.soft-panel,
+.model-box,
+.option-btn,
+.order-item,
+.select,
+.textarea,
+.tool-btn,
+.ghost-btn,
+.quick-nav a,
+.phrase-card,
+.tiny-phrase,
+.status-pill,
+.chip {
+  border: 1px solid var(--line);
+}
+
+.card,
+.cardish,
+.soft-panel,
+.model-box {
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.section {
+  margin-top: 28px;
+}
+
+.section--alt {
+  padding: 10px 0 2px;
+}
+
+.section__heading {
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3,
+p,
+ol,
+pre {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+
+h2 {
+  font-size: clamp(1.45rem, 3vw, 2.25rem);
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.08rem;
+  margin-bottom: 10px;
+}
+
+.lead,
+.section__intro,
+.prompt,
+.example,
+.feedback,
+.hero__note p,
+.quick-nav a,
+.score-card p,
+.email-card p,
+.mini-bank p,
+.focus-card p,
+.map-card p,
+.feedback-panel,
+.topic-box p {
+  color: var(--muted);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+  gap: 22px;
+  padding: 28px;
+}
+
+.hero__note,
+.topic-box,
+.feedback-panel {
+  padding: 16px 18px;
+}
+
+.hero__side {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.score-card {
+  padding: 18px;
+  text-align: center;
+}
+
+.score-card__label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.score-card strong {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.quick-nav {
+  display: grid;
+  gap: 10px;
+}
+
+.quick-nav a {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.quick-nav a:hover,
+.quick-nav a:focus {
+  outline: none;
+  transform: translateY(-1px);
+  color: var(--accent);
+}
+
+.chip-row,
+.bullet-chips,
+.tiny-phrases,
+.order-selected {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip,
+.bullet-chips span,
+.bullet-chips__item,
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  font-size: 0.92rem;
+}
+
+.focus-grid,
+.map-grid,
+.practice-grid,
+.email-grid,
+.mini-bank-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.focus-grid,
+.mini-bank-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.map-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.practice-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.email-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.focus-card,
+.map-card,
+.quiz-card,
+.email-card,
+.mini-bank,
+.closing {
+  padding: 20px;
+}
+
+.focus-card__icon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(111, 87, 199, 0.14), rgba(243, 154, 178, 0.16));
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+}
+
+.map-card__num {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(111, 87, 199, 0.14), rgba(255, 217, 141, 0.34));
+  color: var(--accent);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.map-card--wide,
+.quiz-card--wide {
+  grid-column: 1 / -1;
+}
+
+.phrase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.phrase-card,
+.tiny-phrase,
+.option-btn,
+.order-item,
+.tool-btn,
+.ghost-btn {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.phrase-card {
+  padding: 16px;
+  border-radius: 18px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.phrase-card:hover,
+.phrase-card:focus,
+.tiny-phrase:hover,
+.tiny-phrase:focus,
+.option-btn:hover,
+.option-btn:focus,
+.order-item:hover,
+.order-item:focus,
+.tool-btn:hover,
+.tool-btn:focus,
+.ghost-btn:hover,
+.ghost-btn:focus {
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.phrase-card__title {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.phrase-card strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.phrase-card__hint {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.options,
+.order-bank {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.option-btn,
+.order-item,
+.tool-btn,
+.ghost-btn,
+.select,
+.textarea {
+  width: 100%;
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: #fff;
+}
+
+.option-btn {
+  text-align: left;
+}
+
+.option-btn.is-correct {
+  border-color: rgba(47, 138, 90, 0.45);
+  background: rgba(47, 138, 90, 0.08);
+}
+
+.option-btn.is-wrong {
+  border-color: rgba(204, 78, 78, 0.4);
+  background: rgba(204, 78, 78, 0.08);
+}
+
+.option-btn.is-locked {
+  cursor: default;
+}
+
+.quiz-card__head,
+.studio-main__tools,
+.status-row,
+.model-box__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ghost-btn,
+.tool-btn--ghost {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.selected-wrap {
+  margin-top: 14px;
+}
+
+.selected-label,
+.label,
+.insert-title {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.studio-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.88fr) minmax(0, 1.12fr);
+  gap: 18px;
+}
+
+.studio-side,
+.studio-main {
+  padding: 20px;
+}
+
+.select {
+  appearance: none;
+  color: var(--text);
+}
+
+.formula-box,
+.insert-box {
+  margin-top: 16px;
+  padding: 16px;
+}
+
+.formula-box ol {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.tiny-phrase {
+  width: auto;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.textarea {
+  min-height: 320px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.feedback-panel {
+  margin-top: 14px;
+}
+
+.model-box {
+  margin-top: 16px;
+  padding: 16px;
+}
+
+.model-box pre {
+  margin-bottom: 0;
+  white-space: pre-wrap;
+  font-family: inherit;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.email-card__lines {
+  display: grid;
+  gap: 10px;
+}
+
+.section--closing {
+  padding-bottom: 10px;
+}
+
+.closing {
+  text-align: center;
+}
+
+@media (max-width: 960px) {
+  .hero,
+  .studio-layout,
+  .focus-grid,
+  .map-grid,
+  .practice-grid,
+  .email-grid,
+  .mini-bank-grid,
+  .phrase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .shell {
+    width: min(100% - 20px, 100%);
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+
+  .hero,
+  .focus-card,
+  .map-card,
+  .quiz-card,
+  .email-card,
+  .mini-bank,
+  .studio-side,
+  .studio-main,
+  .closing {
+    padding: 16px;
+  }
+
+  .chip,
+  .bullet-chips span,
+  .bullet-chips__item,
+  .status-pill,
+  .tiny-phrase {
+    font-size: 0.88rem;
+  }
+
+  .textarea {
+    min-height: 280px;
+  }
+}
