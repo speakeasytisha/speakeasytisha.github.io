@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabine • Wedding Email Studio Add-on</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/sabine-email-studio-addon-fixed-v3.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap hero">
+      <p class="eyebrow">SpeakEasyTisha • Wedding English support</p>
+      <h1>Sabine’s Wedding Email Studio</h1>
+      <p class="lead">Sabine, this page helps you <strong>memorise polite email phrases</strong>, <strong>see when to use them</strong>, and <strong>practise realistic wedding scenarios</strong> with the same subjects in emails, phone calls, and meetings.</p>
+
+      <div class="hero-actions">
+        <button id="toggle-fr" class="btn secondary" type="button">FR help: ON</button>
+        <button id="toggle-voice" class="btn secondary" type="button">Voice: UK</button>
+        <button id="speak-page" class="btn" type="button">🔊 Listen</button>
+        <button id="reset-page" class="btn ghost" type="button">↺ Reset</button>
+      </div>
+
+      <div class="hero-grid">
+        <div class="mini-card">
+          <span class="mini-icon">📧</span>
+          <h2>Email first</h2>
+          <p>Learn greetings, requests, reassurance, instructions, and closings with icons.</p>
+        </div>
+        <div class="mini-card">
+          <span class="mini-icon">🧠</span>
+          <h2>Memorise chunks</h2>
+          <p>Use short professional phrases you can keep and reuse.</p>
+        </div>
+        <div class="mini-card">
+          <span class="mini-icon">💬</span>
+          <h2>Same scenarios</h2>
+          <p>After the email, practise the same situation for a phone call and a meeting.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="quick-nav card">
+      <a href="#how-to-use">How to use</a>
+      <a href="#email-vocabulary">Email vocabulary</a>
+      <a href="#phrase-map">Phrase map</a>
+      <a href="#dialogue-studio">Dialogues</a>
+      <a href="#email-scenario-studio">Email studio</a>
+      <a href="#email-workshop">Interactive workshop</a>
+      <a href="#quick-review">Quick review</a>
+    </nav>
+
+    <section id="how-to-use" class="card">
+      <h2>How to use this page</h2>
+      <div class="bilingual">
+        <p><strong>EN:</strong> Start with the vocabulary cards. Then read the phrase map to see <strong>what phrase to use</strong> and <strong>when to use it</strong>. After that, choose one scenario and study the email, the reply, the phone call, and the meeting. Finish with the interactive workshop.</p>
+        <p class="fr-text"><strong>FR :</strong> Commence par les cartes de vocabulaire. Ensuite, lis la carte des phrases pour voir <strong>quelle phrase utiliser</strong> et <strong>quand l’utiliser</strong>. Après, choisis un scénario et travaille l’e-mail, la réponse, l’appel téléphonique et la réunion. Termine avec l’atelier interactif.</p>
+      </div>
+      <div class="tip-boxes">
+        <article class="tip">
+          <h3>✅ Step 1</h3>
+          <p>Memorise the phrase family, not one word alone.</p>
+        </article>
+        <article class="tip">
+          <h3>✅ Step 2</h3>
+          <p>Use polite verbs again and again: <code>am writing</code>, <code>could</code>, <code>please confirm</code>, <code>will</code>.</p>
+        </article>
+        <article class="tip">
+          <h3>✅ Step 3</h3>
+          <p>Study one realistic scenario from the email to the phone call.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="email-vocabulary" class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 1</p>
+          <h2>Email vocabulary studio</h2>
+        </div>
+        <div class="tools-inline">
+          <label>
+            Search
+            <input id="vocab-search" type="search" placeholder="greeting, confirm, follow-up…">
+          </label>
+          <label>
+            Category
+            <select id="vocab-filter">
+              <option value="all">All</option>
+              <option value="greetings">Greetings</option>
+              <option value="subjects">Subject lines</option>
+              <option value="questions">Questions</option>
+              <option value="requests">Requests</option>
+              <option value="problems">Problems</option>
+              <option value="reassurance">Reassurance</option>
+              <option value="follow-up">Follow-up</option>
+              <option value="instructions">Instructions</option>
+              <option value="closing">Closing</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <p class="support">Tap a card to flip it. Read the icon, then the phrase, then the French, then the example.</p>
+      <div id="vocab-grid" class="vocab-grid"></div>
+    </section>
+
+    <section id="phrase-map" class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 2</p>
+          <h2>Phrase map: what to say and when</h2>
+        </div>
+        <span class="tense-badge">Polite chunks + explanations</span>
+      </div>
+      <p class="support">The highlighted parts show the <strong>structure</strong>, the <strong>verb</strong>, and the <strong>key vocabulary</strong>.</p>
+      <div id="phrase-map-grid" class="phrase-map-grid"></div>
+    </section>
+
+    <section id="dialogue-studio" class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 3</p>
+          <h2>Phone call and meeting studio</h2>
+        </div>
+        <span class="tense-badge">Same subjects as the emails</span>
+      </div>
+      <p class="support">Choose a scenario. First read the email later on the page, then practise the same subject in spoken English here.</p>
+      <div id="scenario-pills" class="scenario-pills"></div>
+      <div class="dialogue-grid">
+        <article class="dialogue-box">
+          <div class="dialogue-head">
+            <h3>📞 Phone call</h3>
+            <button id="speak-phone" class="btn secondary" type="button">🔊 Listen</button>
+          </div>
+          <div id="phone-dialogue"></div>
+        </article>
+        <article class="dialogue-box">
+          <div class="dialogue-head">
+            <h3>🤝 Meeting</h3>
+            <button id="speak-meeting" class="btn secondary" type="button">🔊 Listen</button>
+          </div>
+          <div id="meeting-dialogue"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="email-scenario-studio" class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 4</p>
+          <h2>Email scenario studio</h2>
+        </div>
+        <span class="tense-badge">Original email + polite reply</span>
+      </div>
+      <p class="support">Choose a realistic wedding-planner situation. Study the subject line, greeting, request, problem, reassurance, and closing.</p>
+      <div id="scenario-summary" class="summary-box"></div>
+      <div class="email-grid">
+        <article class="email-card">
+          <div class="email-top">
+            <div>
+              <p class="eyebrow">Original email</p>
+              <h3 id="original-email-title">Client email</h3>
+            </div>
+            <button id="speak-original" class="btn secondary" type="button">🔊 Listen</button>
+          </div>
+          <div id="original-email-body"></div>
+        </article>
+        <article class="email-card">
+          <div class="email-top">
+            <div>
+              <p class="eyebrow">Reply</p>
+              <h3 id="reply-email-title">Polite reply</h3>
+            </div>
+            <button id="speak-reply" class="btn secondary" type="button">🔊 Listen</button>
+          </div>
+          <div id="reply-email-body"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="email-workshop" class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 5</p>
+          <h2>Interactive workshop</h2>
+        </div>
+        <span class="tense-badge">Practise with me</span>
+      </div>
+
+      <div class="card-sub">
+        <h3>Part A • Choose the best polite phrase</h3>
+        <p>Read the function and choose the best professional answer.</p>
+        <div id="quiz-box" class="quiz-box"></div>
+      </div>
+
+      <div class="card-sub">
+        <h3>Part B • Put the reply in the correct order</h3>
+        <p>Tap a sentence from the bank to build the reply. Tap a selected sentence to send it back.</p>
+        <div class="builder-layout">
+          <div>
+            <h4>Sentence bank</h4>
+            <div id="order-bank" class="sentence-bank"></div>
+          </div>
+          <div>
+            <h4>Your reply</h4>
+            <div id="order-selected" class="sentence-bank selected"></div>
+          </div>
+        </div>
+        <div class="builder-actions">
+          <button id="check-order" class="btn" type="button">✅ Check order</button>
+          <button id="reset-order" class="btn secondary" type="button">↺ Reset order</button>
+        </div>
+        <div id="order-feedback" class="feedback-box muted-box">Choose a scenario above, then build the polite reply.</div>
+      </div>
+
+      <div class="card-sub">
+        <h3>Part C • Choose the parts of the email</h3>
+        <p>Choose one part at a time. This makes the email easier to build and easier to memorise.</p>
+        <div class="builder-grid">
+          <label>
+            Subject
+            <select id="build-subject"></select>
+          </label>
+          <label>
+            Greeting
+            <select id="build-greeting"></select>
+          </label>
+          <label>
+            Opening
+            <select id="build-opening"></select>
+          </label>
+          <label>
+            Information
+            <select id="build-detail"></select>
+          </label>
+          <label>
+            Polite question / request
+            <select id="build-request"></select>
+          </label>
+          <label>
+            Reassurance / instruction
+            <select id="build-reassurance"></select>
+          </label>
+          <label>
+            Closing
+            <select id="build-closing"></select>
+          </label>
+        </div>
+        <div class="builder-actions">
+          <button id="build-email" class="btn" type="button">✨ Build email</button>
+          <button id="listen-built" class="btn secondary" type="button">🔊 Listen</button>
+        </div>
+        <div id="built-email" class="output-box muted-box">Your guided email will appear here.</div>
+      </div>
+    </section>
+
+    <section id="quick-review" class="card final-card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 6</p>
+          <h2>Quick review</h2>
+        </div>
+        <span class="tense-badge">Memorise these first</span>
+      </div>
+      <div id="review-grid" class="review-grid"></div>
+    </section>
+  </main>
+
+  <script src="/js/sabine-email-studio-addon-fixed-v3.js"></script>
+</body>
+</html>

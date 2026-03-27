@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabine • Wedding English Rescue Kit v2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/sabine-wedding-english-rescue-kit-fixed.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap hero">
+      <p class="eyebrow">SpeakEasyTisha • Wedding English support</p>
+      <h1>Sabine’s Wedding English Rescue Kit</h1>
+      <p class="lead">Sabine, this page gives you <strong>picture-style vocabulary support</strong> and <strong>short reusable work phrases</strong>. One tense at a time. One reading step at a time.</p>
+
+      <div class="hero-actions">
+        <button id="toggle-fr" class="btn secondary" type="button">FR help: ON</button>
+        <button id="toggle-voice" class="btn secondary" type="button">Voice: UK</button>
+        <button id="speak-page" class="btn" type="button">🔊 Listen</button>
+        <button id="reset-page" class="btn ghost" type="button">↺ Reset</button>
+      </div>
+
+      <div class="hero-grid">
+        <div class="mini-card">
+          <span class="mini-icon">🧠</span>
+          <h2>Focus</h2>
+          <p>Read the words with icons first. Then reuse the same words in phrases.</p>
+        </div>
+        <div class="mini-card">
+          <span class="mini-icon">💬</span>
+          <h2>Speak</h2>
+          <p>Use short wedding-planner chunks you can say quickly and clearly.</p>
+        </div>
+        <div class="mini-card">
+          <span class="mini-icon">⏳</span>
+          <h2>Tenses</h2>
+          <p>Each tense is separate so you only think about one grammar point at a time.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="quick-nav card">
+      <a href="#how-to-use">How to use</a>
+      <a href="#core-vocabulary">Core vocabulary</a>
+      <a href="#picture-phrases">Picture phrases</a>
+      <a href="#prepositions">Prepositions</a>
+      <a href="#present-simple">Present simple</a>
+      <a href="#present-continuous">Present continuous</a>
+      <a href="#past-simple">Past simple</a>
+      <a href="#future">Future</a>
+      <a href="#phrase-builder">Phrase builder</a>
+      <a href="#mini-dialogues">Mini dialogues</a>
+    </nav>
+
+    <section id="how-to-use" class="card">
+      <h2>How to use this page</h2>
+      <div class="bilingual">
+        <p><strong>EN:</strong> Start with the picture vocabulary. Read the icon + word + French. Then read the picture phrases. After that, study one tense only. Listen, repeat, and do the mini practice.</p>
+        <p class="fr-text"><strong>FR :</strong> Commence par le vocabulaire avec images. Lis l’icône + le mot + le français. Ensuite, lis les phrases avec images. Après, travaille <strong>un seul temps</strong>. Écoute, répète, puis fais le mini entraînement.</p>
+      </div>
+      <div class="tip-boxes">
+        <article class="tip">
+          <h3>✅ Step 1</h3>
+          <p>Read the same core words many times.</p>
+        </article>
+        <article class="tip">
+          <h3>✅ Step 2</h3>
+          <p>Use one tense only with those same words.</p>
+        </article>
+        <article class="tip">
+          <h3>✅ Step 3</h3>
+          <p>Say short professional phrases, not long complicated sentences.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="core-vocabulary" class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 1</p>
+          <h2>Core wedding vocabulary</h2>
+        </div>
+        <div class="tools-inline">
+          <label>
+            Search
+            <input id="vocab-search" type="search" placeholder="venue, florist, bouquet…">
+          </label>
+          <label>
+            Category
+            <select id="vocab-filter">
+              <option value="all">All</option>
+              <option value="people">People</option>
+              <option value="places">Places</option>
+              <option value="objects">Objects</option>
+              <option value="actions">Actions</option>
+              <option value="time">Time & schedule</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <p class="support">Tap a card to flip it. The icon stays with the word to make reading easier.</p>
+      <div id="vocab-grid" class="vocab-grid"></div>
+    </section>
+
+    <section id="picture-phrases" class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 2</p>
+          <h2>Picture phrases</h2>
+        </div>
+        <span class="tense-badge">Icons + words + French</span>
+      </div>
+      <p class="support">Read these like early reading support: picture first, then the word, then the translation.</p>
+      <div id="picture-phrase-grid" class="picture-phrase-grid"></div>
+    </section>
+
+    <section id="prepositions" class="card tense-section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 3</p>
+          <h2>Prepositions for wedding work</h2>
+        </div>
+        <span class="tense-badge">Place • Time • Movement</span>
+      </div>
+      <div class="tense-layout">
+        <div class="explain-box">
+          <h3>Fast guide</h3>
+          <ul class="clean-list">
+            <li><strong>at</strong> = point / exact time → <span class="example">at 3 PM, at the venue</span> <span class="fr-text">(à 15 h, au lieu)</span></li>
+            <li><strong>in</strong> = inside / month / year → <span class="example">in the hall, in June, in 2026</span> <span class="fr-text">(dans la salle, en juin, en 2026)</span></li>
+            <li><strong>on</strong> = surface / day / date → <span class="example">on the table, on Friday, on June 12</span> <span class="fr-text">(sur la table, vendredi, le 12 juin)</span></li>
+            <li><strong>to / from</strong> = movement → <span class="example">go to the church, come from the hotel</span> <span class="fr-text">(aller à / venir de)</span></li>
+          </ul>
+        </div>
+        <div class="phrase-box">
+          <h3>Useful phrases</h3>
+          <ul id="prep-phrases" class="phrase-list rich-list"></ul>
+        </div>
+      </div>
+      <div class="exercise card-sub">
+        <h3>Quick check</h3>
+        <p>Choose the correct preposition.</p>
+        <div id="prep-quiz" class="quiz-box"></div>
+      </div>
+    </section>
+
+    <section id="present-simple" class="card tense-section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 4</p>
+          <h2>Present Simple</h2>
+        </div>
+        <span class="tense-badge">Routine • Facts • Schedules</span>
+      </div>
+      <div class="tense-layout">
+        <div class="explain-box">
+          <h3>When to use it</h3>
+          <p><strong>EN:</strong> Use it for your routine, repeated tasks, and fixed schedules.</p>
+          <p class="fr-text"><strong>FR :</strong> Utilise-le pour les habitudes, les tâches répétées et les horaires fixes.</p>
+          <h3>Pattern</h3>
+          <p><code>I / You / We + base verb</code> → <span class="example">I check the timeline.</span></p>
+          <p><code>She / He + verb + s</code> → <span class="example">The florist prepares the bouquet.</span></p>
+          <p><strong>Key words:</strong> every day, usually, often, always, on Mondays</p>
+        </div>
+        <div class="phrase-box">
+          <h3>Ready-made phrases</h3>
+          <ul id="ps-phrases" class="phrase-list rich-list"></ul>
+        </div>
+      </div>
+      <div id="ps-quiz" class="quiz-box"></div>
+    </section>
+
+    <section id="present-continuous" class="card tense-section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 5</p>
+          <h2>Present Continuous</h2>
+        </div>
+        <span class="tense-badge">Now • Today • This week</span>
+      </div>
+      <div class="tense-layout">
+        <div class="explain-box">
+          <h3>When to use it</h3>
+          <p><strong>EN:</strong> Use it for what is happening now or around now.</p>
+          <p class="fr-text"><strong>FR :</strong> Utilise-le pour ce qui se passe maintenant ou en ce moment.</p>
+          <h3>Pattern</h3>
+          <p><code>am / is / are + verb-ing</code> → <span class="example">I am calling the caterer now.</span></p>
+          <p><strong>Key words:</strong> now, right now, today, this week, at the moment</p>
+        </div>
+        <div class="phrase-box">
+          <h3>Ready-made phrases</h3>
+          <ul id="pc-phrases" class="phrase-list rich-list"></ul>
+        </div>
+      </div>
+      <div id="pc-quiz" class="quiz-box"></div>
+    </section>
+
+    <section id="past-simple" class="card tense-section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 6</p>
+          <h2>Past Simple</h2>
+        </div>
+        <span class="tense-badge">Yesterday • Last week • Finished action</span>
+      </div>
+      <div class="tense-layout">
+        <div class="explain-box">
+          <h3>When to use it</h3>
+          <p><strong>EN:</strong> Use it for a finished action in the past.</p>
+          <p class="fr-text"><strong>FR :</strong> Utilise-le pour une action terminée dans le passé.</p>
+          <h3>Pattern</h3>
+          <p><code>subject + past verb</code> → <span class="example">I called the florist yesterday.</span></p>
+          <p><code>did not + base verb</code> → <span class="example">I did not confirm the menu.</span></p>
+          <p><strong>Key words:</strong> yesterday, last night, last week, this morning</p>
+        </div>
+        <div class="phrase-box">
+          <h3>Ready-made phrases</h3>
+          <ul id="past-phrases" class="phrase-list rich-list"></ul>
+        </div>
+      </div>
+      <div id="past-quiz" class="quiz-box"></div>
+    </section>
+
+    <section id="future" class="card tense-section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 7</p>
+          <h2>Future</h2>
+        </div>
+        <span class="tense-badge">Plan • Intention • Promise</span>
+      </div>
+      <div class="tense-layout">
+        <div class="explain-box">
+          <h3>When to use it</h3>
+          <p><strong>Going to</strong> = plan / intention → <span class="example">I am going to send the quote tomorrow.</span></p>
+          <p><strong>Will</strong> = decision / promise / reassurance → <span class="example">I will send it today.</span></p>
+          <p class="fr-text"><strong>FR :</strong> <em>going to</em> = plan prévu ; <em>will</em> = décision, promesse, réaction.</p>
+          <p><strong>Key words:</strong> tomorrow, next week, soon, don’t worry, I promise</p>
+        </div>
+        <div class="phrase-box">
+          <h3>Ready-made phrases</h3>
+          <ul id="future-phrases" class="phrase-list rich-list"></ul>
+        </div>
+      </div>
+      <div id="future-quiz" class="quiz-box"></div>
+    </section>
+
+    <section id="phrase-builder" class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 8</p>
+          <h2>Professional phrase builder</h2>
+        </div>
+      </div>
+      <p>Choose one tense and build a useful work sentence. The model answer appears immediately with icons.</p>
+      <div class="builder-grid">
+        <label>
+          Tense
+          <select id="builder-tense"></select>
+        </label>
+        <label>
+          Subject
+          <select id="builder-subject"></select>
+        </label>
+        <label>
+          Action
+          <select id="builder-action"></select>
+        </label>
+        <label>
+          Detail
+          <select id="builder-detail"></select>
+        </label>
+      </div>
+      <div class="builder-actions">
+        <button id="build-sentence" class="btn" type="button">Build sentence</button>
+        <button id="speak-sentence" class="btn secondary" type="button">🔊 Listen</button>
+      </div>
+      <div id="built-output" class="output-box">Your sentence will appear here.</div>
+      <div id="built-output-fr" class="output-box muted fr-text">La traduction apparaîtra ici.</div>
+    </section>
+
+    <section id="mini-dialogues" class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Step 9</p>
+          <h2>Mini dialogues for real situations</h2>
+        </div>
+      </div>
+      <label>
+        Situation
+        <select id="dialogue-select"></select>
+      </label>
+      <div id="dialogue-box" class="dialogue-box"></div>
+    </section>
+
+    <section class="card final-card">
+      <h2>Final reminder for Sabine</h2>
+      <p><strong>EN:</strong> You do not need difficult English. You need <strong>clear words, clear chunks, and the right time marker</strong>.</p>
+      <p class="fr-text"><strong>FR :</strong> Tu n’as pas besoin d’un anglais compliqué. Tu as besoin de <strong>mots clairs, de blocs utiles, et du bon marqueur de temps</strong>.</p>
+    </section>
+  </main>
+
+  <script src="/js/sabine-wedding-english-rescue-kit-fixed.js"></script>
+</body>
+</html>
