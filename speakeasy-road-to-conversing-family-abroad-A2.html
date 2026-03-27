@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>On the Road to Conversing • My Family Abroad • A2→A2.2</title>
+  <link rel="stylesheet" href="/css/speakeasy-road-to-conversing-family-abroad-A2.css" />
+</head>
+<body>
+  <header class="topbar" role="banner">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true">🚗</div>
+        <div class="brand__text">
+          <div class="brand__title">On the Road to Conversing</div>
+          <div class="brand__subtitle">My Family Abroad • A2 → A2.2 • SpeakEasy</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn btn--ghost" id="btnPrint" type="button">🖨️ Print</button>
+        <button class="btn btn--ghost" id="btnResetAll" type="button" title="Reset everything">↻ Reset All</button>
+
+        <div class="pillgroup" role="group" aria-label="Audio accent">
+          <span class="pillgroup__label">Accent</span>
+          <button class="pill is-active" id="accentUS" type="button">US</button>
+          <button class="pill" id="accentUK" type="button">UK</button>
+        </div>
+
+        <div class="pillgroup" role="group" aria-label="Hints">
+          <span class="pillgroup__label">Hints</span>
+          <button class="pill is-active" id="hintsOn" type="button">On</button>
+          <button class="pill" id="hintsOff" type="button">Off</button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Lesson sections">
+      <a href="#start">1) Start</a>
+      <a href="#grammar">2) Grammar course</a>
+      <a href="#vocab">3) Vocabulary</a>
+      <a href="#dialogue">4) Dialogue Lab</a>
+      <a href="#builder">5) Story Builder</a>
+      <a href="#practice">6) Practice Zone</a>
+      <a href="#cloe">7) CLOE tasks</a>
+      <a href="#wrap">8) Wrap‑up</a>
+    </nav>
+
+    <section class="status" aria-label="Progress and score">
+      <div class="status__item">
+        <div class="status__label">Progress</div>
+        <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+        <div class="status__value" id="progressPct">0%</div>
+      </div>
+      <div class="status__item">
+        <div class="status__label">Score</div>
+        <div class="status__value"><span id="scoreNow">0</span> / <span id="scoreTotal">0</span></div>
+      </div>
+      <div class="status__item">
+        <div class="status__label">Streak</div>
+        <div class="status__value" id="streakNow">0</div>
+      </div>
+      <div class="status__item status__hint">
+        <div class="status__label">Hint</div>
+        <div class="status__value" id="hintBox">Hints are on. Use Hint buttons inside activities.</div>
+      </div>
+    </section>
+  </header>
+
+  <main class="page" id="top">
+    <section class="card" id="start">
+      <h1>1) Start — the next step after present simple & present continuous</h1>
+      <p class="lede">
+        This lesson helps you <strong>converse</strong> by telling real stories:
+        <strong>past simple</strong> (what happened), plus polite conversation tools.
+      </p>
+
+      <div class="grid2">
+        <div class="mini">
+          <h2 class="h2">Your mission (A2 → A2.2)</h2>
+          <ul class="checklist">
+            <li>Tell a short story: <em>Last week, I visited… We went… I met…</em></li>
+            <li>Ask natural questions: <em>Did you…? What did you do? How was it?</em></li>
+            <li>React and continue: <em>Really? That’s great! Oh no… Why?</em></li>
+            <li>Use connectors: <em>because, so, then, after that, however</em></li>
+            <li>Speak 60–90 seconds with structure (CLOE‑friendly)</li>
+          </ul>
+        </div>
+
+        <div class="mini">
+          <h2 class="h2">Road map (fun + friendly)</h2>
+          <ol class="steps">
+            <li>Do the <strong>Grammar course</strong> (section 2) + mini checks.</li>
+            <li>Explore <strong>Vocabulary</strong> (section 3) with French help.</li>
+            <li>Play the <strong>Dialogue Lab</strong> (section 4) with choices.</li>
+            <li>Build your personal story in <strong>Story Builder</strong> (section 5).</li>
+          </ol>
+          <div class="callout small">Everything gives points. Your score saves automatically.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="grammar">
+      <h1>2) Grammar course — past simple for conversation (complete)</h1>
+      <p class="lede">Short explanations + examples + mini checks so she knows <em>why</em> something is correct.</p>
+
+      <div class="grid2">
+        <div class="mini">
+          <h2 class="h2">A) Past simple: affirmative</h2>
+          <div class="lessonBox">
+            <p><span class="kbd">Regular</span> verb + <strong>-ed</strong>: <em>visit → visited</em>, <em>call → called</em></p>
+            <p><span class="kbd">Irregular</span> special form: <em>go → went</em>, <em>meet → met</em>, <em>have → had</em></p>
+            <p><strong>Examples:</strong></p>
+            <ul class="checklist">
+              <li>I <strong>visited</strong> my son last year.</li>
+              <li>We <strong>went</strong> to a café.</li>
+              <li>I <strong>met</strong> his wife.</li>
+            </ul>
+          </div>
+          <h3 class="h3">Mini check (QCM)</h3>
+          <div class="quiz" id="mcqG1"></div>
+        </div>
+
+        <div class="mini">
+          <h2 class="h2">B) Past simple: negative</h2>
+          <div class="lessonBox">
+            <p><span class="kbd">Rule</span> <strong>didn’t + base verb</strong> (no -ed):</p>
+            <p><code>I didn’t visit</code> • <code>She didn’t go</code> • <code>We didn’t meet</code></p>
+            <p><strong>Example:</strong> I didn’t travel last month because I was busy.</p>
+          </div>
+          <h3 class="h3">Mini check (QCM)</h3>
+          <div class="quiz" id="mcqG2"></div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="mini">
+          <h2 class="h2">C) Questions: “Did…?”</h2>
+          <div class="lessonBox">
+            <p><span class="kbd">Yes/No</span> <strong>Did + subject + base verb</strong>?</p>
+            <p><code>Did you visit?</code> • <code>Did he call?</code> • <code>Did they go?</code></p>
+            <p><span class="kbd">Wh‑</span> questions:</p>
+            <p><code>Where did you go?</code> • <code>What did you do?</code> • <code>How was it?</code></p>
+            <p><span class="kbd">Short answers</span> <code>Yes, I did.</code> / <code>No, I didn’t.</code></p>
+          </div>
+          <h3 class="h3">Mini check (QCM)</h3>
+          <div class="quiz" id="mcqG3"></div>
+        </div>
+
+        <div class="mini">
+          <h2 class="h2">D) Time markers + connectors (conversation fuel)</h2>
+          <div class="lessonBox">
+            <p><span class="kbd">Time</span> yesterday • last week • two days ago • in 2023 • when I…</p>
+            <p><span class="kbd">Order</span> first • then • after that • finally</p>
+            <p><span class="kbd">Reasons</span> because • so • that’s why</p>
+            <p><span class="kbd">Contrast</span> but • however</p>
+            <p><strong>Example story:</strong> Last week I visited my son. <strong>First</strong> we had dinner, <strong>then</strong> we walked by the sea. I was happy <strong>because</strong> we had time together.</p>
+          </div>
+          <h3 class="h3">Mini check (QCM)</h3>
+          <div class="quiz" id="mcqG4"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="vocab">
+      <h1>3) Vocabulary with icons + French (many categories)</h1>
+      <p class="lede">Tap a card to flip. Search quickly. FR is included for confidence.</p>
+
+      <div class="searchRow">
+        <input id="vSearch" type="text" placeholder="Search: daughter‑in‑law / belle‑fille / last week ..." autocomplete="off" />
+        <button class="btn" id="btnVocabListen" type="button">🔊 Listen</button>
+        <button class="btn btn--ghost" id="btnVocabStop" type="button">⏹ Stop</button>
+      </div>
+
+      <div class="tabs" id="vTabs" aria-label="Vocabulary categories"></div>
+      <div class="vocabGrid" id="vocabGrid" aria-label="Vocabulary cards"></div>
+
+      <hr class="sep" />
+
+      <h2 class="h2">Vocabulary quick QCM (mix)</h2>
+      <div class="quiz" id="mcqVocab"></div>
+    </section>
+
+    <section class="card" id="dialogue">
+      <h1>4) Dialogue Lab — choose the correct reply (3 scenarios)</h1>
+      <p class="lede">Pick a scenario. Correct answers unlock the next line. Use Hint + Why.</p>
+
+      <div class="dialogueControls">
+        <label class="field">
+          <span>Scenario</span>
+          <select id="dlgScenario">
+            <option value="family" selected>📹 Video call: family abroad</option>
+            <option value="friend">☕ Chat with a friend: travel story</option>
+            <option value="planning">📅 Planning the next visit</option>
+          </select>
+        </label>
+
+        <div class="dialogueButtons">
+          <button class="btn btn--ghost" id="btnDlgListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="btnDlgHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="btnDlgWhy" type="button">Why?</button>
+          <button class="btn btn--ghost" id="btnDlgRestart" type="button">↺ Restart</button>
+        </div>
+      </div>
+
+      <div class="dlgBox">
+        <div class="dlgHead">
+          <div class="muted">Step: <strong id="dlgCount">1 / 1</strong></div>
+          <div class="muted">Mode: <strong id="dlgMode">Scoring</strong></div>
+        </div>
+
+        <div id="dlgNpc"></div>
+        <div class="dlgChoices" id="dlgChoices"></div>
+
+        <div class="fb" id="dlgFb" aria-live="polite"></div>
+        <div class="explain" id="dlgExplain" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="card" id="builder">
+      <h1>5) Story Builder — describe your personal situation (A2 / A2+)</h1>
+      <p class="lede">Build a text you can reuse on calls, in travel, and for CLOE speaking.</p>
+
+      <div class="builder">
+        <div class="mini">
+          <div class="grid2">
+            <label class="field">
+              <span>Level</span>
+              <select id="bLevel">
+                <option value="A2" selected>A2 (simple)</option>
+                <option value="A2plus">A2+ (more detail)</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Relationship focus</span>
+              <select id="bFocus">
+                <option value="family" selected>Family abroad</option>
+                <option value="travel">Travel story</option>
+                <option value="updates">Life updates</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Core sentence (edit if you want)</span>
+            <input id="bCore" autocomplete="off" value="My son lives in Finland and he is married to a German woman." />
+          </label>
+
+          <div class="grid2">
+            <label class="field">
+              <span>Last visit (time)</span>
+              <select id="bTime">
+                <option value="last year" selected>last year</option>
+                <option value="last month">last month</option>
+                <option value="two weeks ago">two weeks ago</option>
+                <option value="in 2023">in 2023</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Main feeling</span>
+              <select id="bFeel">
+                <option value="happy" selected>happy 😊</option>
+                <option value="proud">proud 🌟</option>
+                <option value="excited">excited 🎉</option>
+                <option value="a little worried">a little worried 😟</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>What did you do? (choose 2–3)</span>
+            <div class="pickGrid" id="bActivities"></div>
+          </label>
+
+          <label class="field">
+            <span>Next plan (simple)</span>
+            <select id="bPlan">
+              <option value="I’m going to visit again soon." selected>I’m going to visit again soon.</option>
+              <option value="I’m going to call them every week.">I’m going to call them every week.</option>
+              <option value="I’m going to travel in the summer.">I’m going to travel in the summer.</option>
+              <option value="I will book flights this week.">I will book flights this week.</option>
+            </select>
+          </label>
+
+          <div class="builder__buttons">
+            <button class="btn" id="btnBuild" type="button">✨ Build my text</button>
+            <button class="btn btn--ghost" id="btnBuildListen" type="button">🔊 Listen (only when I click)</button>
+            <button class="btn btn--ghost" id="btnBuildCopy" type="button">📋 Copy</button>
+            <button class="btn btn--ghost" id="btnBuildClear" type="button">🧽 Clear</button>
+          </div>
+
+          <div class="callout small">
+            <strong>Speaking tip:</strong> Say 1 sentence → pause → next sentence. Use <em>then / after that / because</em>.
+          </div>
+        </div>
+
+        <div class="mini">
+          <h2 class="h2">Your text</h2>
+          <div class="output" id="builderOut" tabindex="0" aria-label="Built text"></div>
+
+          <div class="rubric">
+            <h3 class="h3">Self‑check (CLOE)</h3>
+            <ul class="checklist">
+              <li>✅ I used past simple (went, visited, met…)</li>
+              <li>✅ I used 1 time marker (last week / ago…)</li>
+              <li>✅ I used 1 connector (then / because…)</li>
+              <li>✅ I gave 1 feeling (happy / proud…)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="practice">
+      <h1>6) Practice Zone — immediate feedback + “Why?”</h1>
+
+      <div class="toolbarRow">
+        <button class="btn btn--ghost" id="btnResetPractice" type="button">↺ Reset Practice</button>
+        <div class="muted smallNote">Use this to test exercises again (it clears only practice + dialogue scoring).</div>
+      </div>
+
+      <div class="grid2">
+        <div class="mini">
+          <h2 class="h2">A) QCM practice (mixed)</h2>
+          <div class="quiz" id="mcqPractice"></div>
+        </div>
+
+        <div class="mini">
+          <h2 class="h2">B) Fill in the blank (instant check)</h2>
+          <p class="muted">Type the missing word(s). You see ✅/❌ immediately. Hint works.</p>
+
+          <div class="fibRow">
+            <div class="fib__sent">1) Last year, I <span class="blank"><input data-id="fib1" data-answer="visited" autocomplete="off" /></span> my son.</div>
+            <button class="btn btn--ghost hintBtn" type="button" data-hint="Past of visit = visited.">Hint</button>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="fibRow">
+            <div class="fib__sent">2) We <span class="blank"><input data-id="fib2" data-answer="went" autocomplete="off" /></span> to a restaurant.</div>
+            <button class="btn btn--ghost hintBtn" type="button" data-hint="go → went (irregular past).">Hint</button>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="fibRow">
+            <div class="fib__sent">3) I <span class="blank"><input data-id="fib3" data-answer="didn’t" autocomplete="off" /></span> travel last month.</div>
+            <button class="btn btn--ghost hintBtn" type="button" data-hint="Negative past: didn’t + verb.">Hint</button>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="fibRow">
+            <div class="fib__sent">4) <span class="blank"><input data-id="fib4" data-answer="Did" autocomplete="off" /></span> you meet her?</div>
+            <button class="btn btn--ghost hintBtn" type="button" data-hint="Past question starts with Did.">Hint</button>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+
+          <div class="fibRow">
+            <div class="fib__sent">5) We had dinner, <span class="blank"><input data-id="fib5" data-answer="then" autocomplete="off" /></span> we walked.</div>
+            <button class="btn btn--ghost hintBtn" type="button" data-hint="Order word: first / then / after that.">Hint</button>
+            <div class="fb" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="mini">
+          <h2 class="h2">C) Drag & Drop (or Tap mode) — categories</h2>
+          <p class="muted">Tokens are shuffled. Tap a token → tap a box (iPad friendly). Immediate feedback.</p>
+
+          <div class="dnd__bank" id="tokenBank"></div>
+
+          <div class="dnd__zones">
+            <div class="zone" tabindex="0"><div class="zone__title">🕒 Time markers</div><div class="zone__drop" data-cat="time"></div></div>
+            <div class="zone" tabindex="0"><div class="zone__title">🧩 Connectors</div><div class="zone__drop" data-cat="connectors"></div></div>
+            <div class="zone" tabindex="0"><div class="zone__title">🔧 Past verbs</div><div class="zone__drop" data-cat="verbs"></div></div>
+            <div class="zone" tabindex="0"><div class="zone__title">❤️ Feelings</div><div class="zone__drop" data-cat="feelings"></div></div>
+          </div>
+
+          <div class="dndFeedback" id="dndFeedback" aria-live="polite"></div>
+        </div>
+
+        <div class="mini">
+          <h2 class="h2">D) Speaking prompts (short)</h2>
+          <div class="lessonBox">
+            <p><span class="kbd">Prompt 1</span> Tell me about your family abroad (3 sentences).</p>
+            <p><span class="kbd">Prompt 2</span> What did you do last weekend? (past simple)</p>
+            <p><span class="kbd">Prompt 3</span> Ask 3 questions to continue a conversation.</p>
+            <p><span class="kbd">Prompt 4</span> React: Really? / That’s great! / Oh no…</p>
+          </div>
+          <div class="callout small">Tip: Keep sentences short. Smile while speaking 😊</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="cloe">
+      <h1>7) CLOE tasks — speaking + writing</h1>
+
+      <div class="grid2">
+        <div class="mini">
+          <h2 class="h2">A) Speaking (60 seconds)</h2>
+          <div class="callout small">Structure: who → past story → feeling → next plan → conclusion.</div>
+
+          <div class="callout" id="speakPrompt">Describe your personal situation and tell a short story about a recent visit or call.</div>
+
+          <div class="toolbar">
+            <button class="btn" id="btnNewPrompt" type="button">🎲 New prompt</button>
+            <button class="btn btn--ghost" id="btnPromptListen" type="button">🔊 Listen</button>
+          </div>
+
+          <div class="timer">
+            <div class="timer__row">
+              <button class="btn" id="btnTimer" type="button">⏱ Start 60s</button>
+              <button class="btn btn--ghost" id="btnTimerStop" type="button">⏹ Stop</button>
+            </div>
+            <div class="timer__big" id="timerReadout">01:00</div>
+          </div>
+        </div>
+
+        <div class="mini">
+          <h2 class="h2">B) Writing (6–8 short sentences)</h2>
+          <p class="muted">Fill the template → Check → Copy.</p>
+
+          <label class="field"><span>1) Who / situation</span><input id="w1" autocomplete="off" placeholder="My son lives..." /></label>
+          <label class="field"><span>2) Contact</span><input id="w2" autocomplete="off" placeholder="We keep in touch..." /></label>
+          <label class="field"><span>3) Past story</span><input id="w3" autocomplete="off" placeholder="Last year, I visited..." /></label>
+          <label class="field"><span>4) More details</span><input id="w4" autocomplete="off" placeholder="We went / we met / we had..." /></label>
+          <label class="field"><span>5) Feeling + reason</span><input id="w5" autocomplete="off" placeholder="I felt ... because ..." /></label>
+          <label class="field"><span>6) Next plan</span><input id="w6" autocomplete="off" placeholder="Next time, I'm going to..." /></label>
+          <label class="field"><span>7) Connector</span><input id="w7" autocomplete="off" placeholder="Then / After that / However..." /></label>
+          <label class="field"><span>8) Closing</span><input id="w8" autocomplete="off" placeholder="Overall, ..." /></label>
+
+          <div class="toolbar">
+            <button class="btn btn--ghost" id="btnWriteModel" type="button">📌 Model</button>
+            <button class="btn" id="btnWriteCheck" type="button">✅ Check</button>
+            <button class="btn btn--ghost" id="btnWriteCopy" type="button">📋 Copy</button>
+          </div>
+
+          <div class="output small" id="writeOut" aria-label="Writing output"></div>
+          <div class="fb" id="writeFb" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="wrap">
+      <h1>8) Wrap‑up — “keep the conversation going” cheat‑sheet</h1>
+
+      <div class="grid2">
+        <div class="mini">
+          <h2 class="h2">Conversation boosters</h2>
+          <div class="lessonBox" id="cheat">
+            <p><span class="kbd">React</span> Really? • That’s great! • Oh no… • Interesting!</p>
+            <p><span class="kbd">Ask</span> How was it? • What did you do? • Where did you go? • Did you like it?</p>
+            <p><span class="kbd">Continue</span> Tell me more • And then? • Why? • How did you feel?</p>
+            <p><span class="kbd">Connect</span> first • then • after that • because • so • however</p>
+          </div>
+
+          <div class="toolbar">
+            <button class="btn btn--ghost" id="btnCheatCopy" type="button">📋 Copy</button>
+            <button class="btn btn--ghost" id="btnCheatListen" type="button">🔊 Listen</button>
+          </div>
+        </div>
+
+        <div class="mini">
+          <h2 class="h2">Final mixed QCM (10)</h2>
+          <div class="quiz" id="mcqFinal"></div>
+        </div>
+      </div>
+
+      <p class="footer"><a href="#top">↑ Back to top</a></p>
+    </section>
+  </main>
+
+  <script defer src="/js/speakeasy-road-to-conversing-family-abroad-A2.js"></script>
+</body>
+</html>
