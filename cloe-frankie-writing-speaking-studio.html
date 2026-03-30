@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>✍️🎤 Frankie — CLOE Writing + Oral Studio | SpeakEasyTisha</title>
+  <link rel="stylesheet" href="/css/cloe-frankie-writing-speaking-studio.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="hdr">
+    <div class="hdr__top">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true">SpeakEasy<span>Tisha</span></div>
+        <div class="brand__tag">CLOE • Writing + Oral practice • Guided scenarios • UK/US audio</div>
+      </div>
+
+      <div class="tools">
+        <label class="sr" for="accent">Accent</label>
+        <select id="accent" class="select" title="Accent for listening">
+          <option value="en-GB">🇬🇧 UK</option>
+          <option value="en-US">🇺🇸 US</option>
+        </select>
+        <button class="btn btn--ghost" id="btnStopSpeech" type="button">⏹ Stop</button>
+        <button class="btn btn--ghost" id="btnResetAll" type="button">↺ Reset</button>
+        <button class="btn btn--ghost" id="btnPrint" type="button">🖨 Print tips</button>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Lesson sections">
+      <button class="nav__chip" data-scroll="#overview" type="button">Exam tips</button>
+      <button class="nav__chip" data-scroll="#grammar" type="button">Grammar boosters</button>
+      <button class="nav__chip" data-scroll="#writing" type="button">Writing studio</button>
+      <button class="nav__chip" data-scroll="#oral" type="button">Oral studio</button>
+      <button class="nav__chip" data-scroll="#flash" type="button">Flashcards</button>
+      <button class="nav__chip" data-scroll="#workshop" type="button">Workshop</button>
+    </nav>
+
+    <div class="scoreline" aria-label="Score">
+      <span class="pill">🎯 Score</span>
+      <strong id="scoreTop">0</strong><span class="muted">/</span><span id="maxTop">60</span>
+      <span class="sep">•</span>
+      <span class="pill">✅ Completed</span>
+      <strong id="doneTop">0</strong><span class="muted">/</span><span id="doneMax">6</span>
+    </div>
+  </header>
+
+  <main id="main" class="main">
+    <section class="card hero">
+      <div class="hero__grid">
+        <div>
+          <h1>✍️🎤 CLOE Writing + Oral Studio</h1>
+          <p class="lead">
+            Practice <strong>realistic CLOE-style writing</strong> (short emails/messages) and <strong>oral role-plays</strong>.
+            Each scenario includes: <strong>a plan</strong>, <strong>model text</strong>, <strong>UK/US listening</strong>, and <strong>guided exercises</strong>.
+          </p>
+          <div class="notice">
+            <strong>Goal:</strong> calm + clear structure + correct key phrases. Simple English is often the best English.
+          </div>
+          <div class="hero__actions">
+            <button class="btn" id="btnQuickListen" type="button">🔊 Listen: perfect opener</button>
+            <button class="btn btn--ghost" data-scroll="#writing" type="button">Start writing</button>
+            <button class="btn btn--ghost" data-scroll="#oral" type="button">Start speaking</button>
+          </div>
+        </div>
+
+        <aside class="mini">
+          <div class="mini__title">Quick phrase bank</div>
+          <div class="mini__body">
+            <div class="bank" id="quickBank"></div>
+            <p class="tiny muted" style="margin-top:10px">Tap to listen. Use 2–3 phrases per answer.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="overview" class="card">
+      <h2>🧭 Exam tips (simple and safe)</h2>
+      <div class="grid3">
+        <article class="step">
+          <h3><span class="badge">Writing</span> short + clear</h3>
+          <p>Write like this: greeting → reason → request → details → closing.</p>
+          <div class="mini">
+            <div class="mini__title">Best sentence starter</div>
+            <div class="mini__body"><code>I’m writing to…</code> / <code>I’m contacting you regarding…</code></div>
+          </div>
+        </article>
+        <article class="step">
+          <h3><span class="badge">Speaking</span> 3 steps</h3>
+          <p>Answer directly → add details → request/close politely.</p>
+          <div class="mini">
+            <div class="mini__title">Use connectors</div>
+            <div class="mini__body"><code>First of all,</code> <code>For example,</code> <code>To sum up,</code></div>
+          </div>
+        </article>
+        <article class="step">
+          <h3><span class="badge">Fluency</span> not perfection</h3>
+          <p>Speak calmly. If you don’t know a word, rephrase.</p>
+          <div class="mini">
+            <div class="mini__title">Safe tool</div>
+            <div class="mini__body"><code>Could you repeat, please?</code></div>
+          </div>
+        </article>
+      </div>
+
+      <details class="details">
+        <summary>Optional timing reminder</summary>
+        <div class="details__body">
+          <ul class="muted">
+            <li>Written part is timed per question (adaptive test).</li>
+            <li>Oral interview is an individual exchange with role-play + discussion.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+    <section id="email-essentials" class="card">
+      <h2>📩 Email essentials (CLOE-ready)</h2>
+      <p class="muted">
+        Goal: write like a professional. Keep it simple: <strong>Subject → Greeting → Reason → Request → Details → Closing</strong>.
+      </p>
+
+      <div class="cols2">
+        <div class="mini">
+          <div class="mini__title">🧾 Subject lines (fast formula)</div>
+          <div class="mini__body">
+            <p class="tiny muted"><strong>Formula:</strong> Action + Topic + Key detail (date / reference)</p>
+
+            <label class="tiny muted" for="subjectPurpose">Purpose</label>
+            <select id="subjectPurpose" class="select"></select>
+
+            <label class="tiny muted" for="subjectTopic" style="margin-top:10px; display:block;">Topic</label>
+            <select id="subjectTopic" class="select"></select>
+
+            <label class="tiny muted" for="subjectDetail" style="margin-top:10px; display:block;">Detail (optional)</label>
+            <input id="subjectDetail" class="textarea" style="min-height:44px" placeholder="Example: May 4–6 / Ref. 2451 / Thursday evening" />
+
+            <div class="outactions">
+              <button class="btn" id="btnBuildSubject" type="button">Build subject</button>
+              <button class="btn btn--ghost" id="btnCopySubject" type="button">📋 Copy</button>
+              <button class="btn btn--ghost" id="btnListenSubject" type="button">🔊 Listen</button>
+            </div>
+
+            <div id="subjectOut" class="email" aria-live="polite" style="margin-top:10px"></div>
+
+            <p class="tiny muted" style="margin-top:10px">
+              Tip: avoid vague subjects like “Information”. Be specific.
+            </p>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="mini__title">👋 Greetings + ✅ Closings (tap to listen)</div>
+          <div class="mini__body">
+            <div class="pill tiny">Greetings</div>
+            <div class="bank" id="greetBank" style="margin-top:8px"></div>
+
+            <div class="pill tiny" style="margin-top:12px">Closings</div>
+            <div class="bank" id="closeBank" style="margin-top:8px"></div>
+
+            <div class="mini" style="margin-top:12px">
+              <div class="mini__title">Micro rules</div>
+              <div class="mini__body">
+                <ul class="muted">
+                  <li>Greeting + comma → <strong>blank line</strong> → message.</li>
+                  <li>Closing → <strong>new line</strong> → name.</li>
+                  <li>Use <strong>Could you please…?</strong> / <strong>Would it be possible to…?</strong> for polite requests.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="grammar" class="card">
+      <h2>🧠 Grammar boosters</h2>
+      <p class="muted">Short rules + quick practice for: sequencing, comparatives, superlatives.</p>
+
+      <div class="tabs" role="tablist" aria-label="Grammar tabs">
+        <button class="tab is-on" data-gtab="seq" type="button">🔗 Sequencing</button>
+        <button class="tab" data-gtab="comp" type="button">📈 Comparatives</button>
+        <button class="tab" data-gtab="sup" type="button">🏆 Superlatives</button>
+      </div>
+
+      <div class="gpanel" id="g_seq" role="tabpanel">
+        <div class="cols2">
+          <div class="mini"><div class="mini__title">Rules</div><div class="mini__body" id="seqRules"></div></div>
+          <div class="mini">
+            <div class="mini__title">Practice</div>
+            <div class="mini__body">
+              <div class="filltext" id="seqExercise"></div>
+              <div class="qactions">
+                <button class="btn" id="btnCheckSeq" type="button">Check</button>
+                <button class="btn btn--ghost" id="btnResetSeq" type="button">Reset</button>
+              </div>
+              <div class="feedback" id="seqFeedback" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gpanel" id="g_comp" role="tabpanel" hidden>
+        <div class="cols2">
+          <div class="mini"><div class="mini__title">Rules</div><div class="mini__body" id="compRules"></div></div>
+          <div class="mini">
+            <div class="mini__title">Practice</div>
+            <div class="mini__body">
+              <div id="compQuiz" class="quizlist"></div>
+              <div class="qactions">
+                <button class="btn" id="btnCheckComp" type="button">Check</button>
+                <button class="btn btn--ghost" id="btnResetComp" type="button">Reset</button>
+              </div>
+              <div class="feedback" id="compFeedback" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gpanel" id="g_sup" role="tabpanel" hidden>
+        <div class="cols2">
+          <div class="mini"><div class="mini__title">Rules</div><div class="mini__body" id="supRules"></div></div>
+          <div class="mini">
+            <div class="mini__title">Practice</div>
+            <div class="mini__body">
+              <div id="supQuiz" class="quizlist"></div>
+              <div class="qactions">
+                <button class="btn" id="btnCheckSup" type="button">Check</button>
+                <button class="btn btn--ghost" id="btnResetSup" type="button">Reset</button>
+              </div>
+              <div class="feedback" id="supFeedback" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="writing" class="card">
+      <div class="row">
+        <div>
+          <h2>✍️ Writing studio (guided)</h2>
+          <p class="muted">Choose a scenario. Read the model, then build your own email step by step.</p>
+        </div>
+        <div class="right">
+          <select id="wSelect" class="select" aria-label="Choose writing scenario"></select>
+        </div>
+      </div>
+
+      <div class="split2">
+        <div class="mini">
+          <div class="mini__title">Task + model</div>
+          <div class="mini__body">
+            <div class="pill tiny">Context</div>
+            <p id="wContext" class="muted"></p>
+            <div class="pill tiny">Task</div>
+            <p id="wTask" class="muted"></p>
+
+            <div class="outactions">
+              <button class="btn btn--ghost" id="btnShowWModel" type="button">👀 Show/Hide model</button>
+              <button class="btn btn--ghost" id="btnListenWModel" type="button">🔊 Listen model</button>
+              <button class="btn btn--ghost" id="btnCopyWModel" type="button">📋 Copy model</button>
+            </div>
+
+            <div id="wModelBox" class="email" hidden></div>
+
+            <div class="mini" style="margin-top:12px">
+              <div class="mini__title">Useful phrases (tap to listen)</div>
+              <div class="mini__body"><div class="bank" id="wPhraseBank"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="mini__title">Step-by-step exercises</div>
+          <div class="mini__body">
+            <details class="details" open>
+              <summary>Step 1 — Build the email structure</summary>
+              <div class="details__body">
+                <p class="tiny muted">Drag on desktop or tap ➕ Add on iPad. Use ↑ ↓ to adjust.</p>
+                <div class="builder">
+                  <div class="builder__col"><div class="tiny muted">Blocks</div><div id="wPool" class="blockpool"></div></div>
+                  <div class="builder__col"><div class="tiny muted">Your email order</div><ol id="wLane" class="answerlane"></ol></div>
+                </div>
+                <div class="outactions">
+                  <button class="btn" id="btnCheckWOrder" type="button">Check order</button>
+                  <button class="btn btn--ghost" id="btnResetWOrder" type="button">Reset</button>
+                </div>
+                <div class="feedback" id="wOrderFeedback" aria-live="polite"></div>
+              </div>
+            </details>
+
+            <details class="details">
+              <summary>Step 2 — Fill the blanks (dropdown)</summary>
+              <div class="details__body">
+                <div class="filltext" id="wFill"></div>
+                <div class="outactions">
+                  <button class="btn" id="btnCheckWFill" type="button">Check</button>
+                  <button class="btn btn--ghost" id="btnResetWFill" type="button">Reset</button>
+                </div>
+                <div class="feedback" id="wFillFeedback" aria-live="polite"></div>
+              </div>
+            </details>
+
+            <details class="details">
+              <summary>Step 3 — Write your own email</summary>
+              <div class="details__body">
+                <textarea id="wDraft" class="textarea" rows="9" placeholder="Write here…"></textarea>
+                <div class="outactions">
+                  <button class="btn" id="btnCheckWDraft" type="button">Check</button>
+                  <button class="btn btn--ghost" id="btnCopyWDraft" type="button">📋 Copy</button>
+                  <button class="btn btn--ghost" id="btnListenWDraft" type="button">🔊 Listen</button>
+                </div>
+                <div class="feedback" id="wDraftFeedback" aria-live="polite"></div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <div class="mini" style="margin-top:14px">
+        <div class="mini__title">Vocabulary for this scenario (icons)</div>
+        <div class="mini__body"><div id="wVocab" class="vocabrow"></div></div>
+      </div>
+    </section>
+
+    <section id="oral" class="card">
+      <div class="row">
+        <div>
+          <h2>🎤 Oral studio (role-play)</h2>
+          <p class="muted">Choose a scenario. Learn the plan, listen to the model, then practice with a timer.</p>
+        </div>
+        <div class="right">
+          <select id="oSelect" class="select" aria-label="Choose oral scenario"></select>
+        </div>
+      </div>
+
+      <div class="split2">
+        <div class="mini">
+          <div class="mini__title">Prompt + 3-step plan</div>
+          <div class="mini__body">
+            <div class="pill tiny">Prompt</div>
+            <h3 id="oPrompt" style="margin:10px 0 0">—</h3>
+            <div class="plan" id="oPlan"></div>
+
+            <div class="outactions">
+              <button class="btn btn--ghost" id="btnShowOModel" type="button">👀 Show/Hide model</button>
+              <button class="btn btn--ghost" id="btnListenOModel" type="button">🔊 Listen model</button>
+              <button class="btn btn--ghost" id="btnCopyOModel" type="button">📋 Copy model</button>
+            </div>
+
+            <div id="oModelBox" class="email" hidden><div id="oModelText"></div></div>
+
+            <div class="mini" style="margin-top:12px">
+              <div class="mini__title">Comparatives / superlatives you can steal</div>
+              <div class="mini__body"><div class="bank" id="oCompBank"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="mini__title">Timed practice + notes</div>
+          <div class="mini__body">
+            <div class="pill tiny" id="oRec">⏱ Recommended: 45s</div>
+
+            <div class="timechips">
+              <button class="chipbtn" id="o30" type="button">30s</button>
+              <button class="chipbtn is-on" id="o45" type="button">45s</button>
+              <button class="chipbtn" id="o60" type="button">60s</button>
+            </div>
+
+            <div class="timer">
+              <div class="timer__num" id="oTimerNum">45</div>
+              <div class="timer__label">seconds</div>
+            </div>
+
+            <div class="outactions">
+              <button class="btn" id="btnStartO" type="button">▶ Start</button>
+              <button class="btn btn--ghost" id="btnStopO" type="button">⏸ Stop</button>
+              <button class="btn btn--ghost" id="btnResetO" type="button">↺ Reset</button>
+            </div>
+
+            <div class="mini" style="margin-top:12px">
+              <div class="mini__title">Fluency connectors (tap to listen)</div>
+              <div class="mini__body"><div class="bank" id="oConnBank"></div></div>
+            </div>
+
+            <button class="btn btn--ghost" id="btnDoneO" type="button" style="margin-top:10px">✅ I spoke the full time</button>
+            <div class="feedback" id="oFeedback" aria-live="polite"></div>
+
+            <div class="mini" style="margin-top:12px">
+              <div class="mini__title">My notes</div>
+              <div class="mini__body">
+                <textarea id="oNotes" class="textarea" rows="6" placeholder="Key phrases, mistakes, improvements…"></textarea>
+                <div class="outactions"><button class="btn btn--ghost" id="btnCopyONotes" type="button">📋 Copy notes</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flash" class="card">
+      <div class="row">
+        <div>
+          <h2>🃏 Flashcards (EN + FR)</h2>
+          <p class="muted">Tap to flip. Use Listen for pronunciation (UK/US).</p>
+        </div>
+        <div class="right"><button class="btn btn--ghost" id="btnShuffleFlash" type="button">🔀 Shuffle</button></div>
+      </div>
+
+      <div class="filters">
+        <button class="chip is-on" data-fcat="all" type="button">All</button>
+        <button class="chip" data-fcat="writing" type="button">Writing</button>
+        <button class="chip" data-fcat="oral" type="button">Oral</button>
+        <button class="chip" data-fcat="grammar" type="button">Grammar</button>
+      </div>
+
+      <div id="flashGrid" class="flashgrid" aria-label="Flashcards"></div>
+    </section>
+
+    <section id="workshop" class="card">
+      <h2>🧑‍🏫 Workshop (with your teacher)</h2>
+      <p class="muted">After you finish one scenario: write your final version here, then read it aloud with the other accent.</p>
+
+      <div class="cols2">
+        <div class="mini">
+          <div class="mini__title">My final email / message</div>
+          <div class="mini__body">
+            <textarea id="finalWriting" class="textarea" rows="10" placeholder="Paste your final email here…"></textarea>
+            <div class="outactions">
+              <button class="btn btn--ghost" id="btnCopyFinalW" type="button">📋 Copy</button>
+              <button class="btn btn--ghost" id="btnListenFinalW" type="button">🔊 Listen</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="mini__title">My final oral answer (notes)</div>
+          <div class="mini__body">
+            <textarea id="finalOral" class="textarea" rows="10" placeholder="Write your oral plan + key phrases here…"></textarea>
+            <div class="outactions">
+              <button class="btn btn--ghost" id="btnCopyFinalO" type="button">📋 Copy</button>
+              <button class="btn btn--ghost" id="btnListenFinalO" type="button">🔊 Listen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scoreline scoreline--bottom" aria-label="Score bottom">
+        <span class="pill">🎯 Score</span>
+        <strong id="scoreBottom">0</strong><span class="muted">/</span><span id="maxBottom">60</span>
+        <span class="sep">•</span>
+        <span class="pill">✅ Completed</span>
+        <strong id="doneBottom">0</strong><span class="muted">/</span><span id="doneMaxBottom">6</span>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div class="tiny muted">SpeakEasyTisha • CLOE Writing + Oral Studio • Touch-friendly • Uses speechSynthesis</div>
+      <a class="tiny" href="#overview">Back to top ↑</a>
+    </footer>
+  </main>
+
+  <script src="/js/cloe-frankie-writing-speaking-studio.js"></script>
+</body>
+</html>

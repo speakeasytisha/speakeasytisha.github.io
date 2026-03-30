@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>On the Road to Conversing • Catching Up (Present Perfect + Irregular Verbs) • A2→A2.2</title>
+  <link rel="stylesheet" href="/css/speakeasy-road-to-conversing-catching-up-present-perfect-DENMARK-A2A2plus_v4.css"/>
+</head>
+<body>
+<header class="topbar" role="banner">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo" aria-hidden="true">🧭</div>
+      <div class="brand__text">
+        <div class="brand__title">On the Road to Conversing</div>
+        <div class="brand__subtitle">Catching Up • Present Perfect + Past Simple + Irregular Verbs • A2 → A2.2 (B1 stretch)</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <label class="tinyField">
+        <span>Level</span>
+        <select id="levelSelect" aria-label="Level">
+          <option value="A2" selected>A2</option>
+          <option value="A2plus">A2+</option>
+          <option value="B1">B1 stretch</option>
+        </select>
+      </label>
+
+      <button class="btn btn--ghost" id="btnPrint" type="button">🖨️ Print</button>
+      <button class="btn btn--ghost" id="btnResetPractice" type="button">↺ Reset Practice</button>
+      <button class="btn btn--ghost" id="btnResetAll" type="button" title="Reset everything">↻ Reset All</button>
+
+      <div class="pillgroup" role="group" aria-label="Audio accent">
+        <span class="pillgroup__label">Accent</span>
+        <button class="pill is-active" id="accentUS" type="button">US</button>
+        <button class="pill" id="accentUK" type="button">UK</button>
+      </div>
+
+      <div class="pillgroup" role="group" aria-label="Speed">
+        <span class="pillgroup__label">Speed</span>
+        <button class="pill is-active" id="speedNormal" type="button">Normal</button>
+        <button class="pill" id="speedSlow" type="button">Slow</button>
+      </div>
+
+      <div class="pillgroup" role="group" aria-label="Hints">
+        <span class="pillgroup__label">Hints</span>
+        <button class="pill is-active" id="hintsOn" type="button">On</button>
+        <button class="pill" id="hintsOff" type="button">Off</button>
+      </div>
+
+      <button class="btn btn--ghost" id="btnStopSpeak" type="button">⏹ Stop</button>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Lesson sections">
+    <a href="#start">1) Start</a>
+    <a href="#grammar">2) Grammar</a>
+    <a href="#irregulars">3) Irregular verbs</a>
+    <a href="#vocab">4) Vocabulary</a>
+    <a href="#dialogue">5) Dialogue</a>
+    <a href="#practice">6) Practice</a>
+    <a href="#builder">7) Builder</a>
+    <a href="#cloe">8) CLOE</a>
+  </nav>
+
+  <section class="status" aria-label="Progress and score">
+    <div class="status__item">
+      <div class="status__label">Progress</div>
+      <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+      <div class="status__value" id="progressPct">0%</div>
+    </div>
+    <div class="status__item">
+      <div class="status__label">Score</div>
+      <div class="status__value"><span id="scoreNow">0</span> / <span id="scoreTotal">0</span></div>
+    </div>
+    <div class="status__item">
+      <div class="status__label">Streak</div>
+      <div class="status__value" id="streakNow">0</div>
+    </div>
+    <div class="status__item status__hint">
+      <div class="status__label">Hint</div>
+      <div class="status__value" id="hintBox">Start with Grammar → do Irregulars → then Dialogue → then Builder.</div>
+    </div>
+  </section>
+</header>
+
+<main class="page" id="top">
+  <section class="card" id="start">
+    <h1>1) Catching up — talk to your daughter‑in‑law naturally 💬</h1>
+    <p class="lede">Main goal: use <strong>present perfect</strong> (recent updates + experience) and <strong>past simple</strong> (finished time) with confidence.</p>
+
+    <div class="grid3">
+      <div class="mini">
+        <h2 class="h2">👨‍👩‍👧‍👦 Topics</h2>
+        <ul class="checklist">
+          <li>Family (Denmark, marriage)</li>
+          <li>Work & volunteering</li>
+          <li>Plans + feelings + reactions</li>
+        </ul>
+      </div>
+
+      <div class="mini">
+        <h2 class="h2">🧠 Grammar focus</h2>
+        <ul class="checklist">
+          <li>Have/has + past participle</li>
+          <li>already / yet / just / ever / never</li>
+          <li>for / since</li>
+          <li>Past simple: yesterday / last…</li>
+        </ul>
+      </div>
+
+      <div class="mini">
+        <h2 class="h2">✅ Your mission (A2→A2.2)</h2>
+        <ul class="checklist">
+          <li>Ask 3 questions: <em>Have you…?</em></li>
+          <li>Give 4 updates: <em>I’ve…</em> (family + animals + youth)</li>
+          <li>Use 2 irregular participles</li>
+          <li>Finish with a friendly plan</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Path:</strong> Grammar toolkit → Irregular trainer → Dialogue → Practice → <strong>Ensemble Builder</strong>.
+    </div>
+  </section>
+
+  <section class="card" id="grammar">
+    <h1>2) Grammar toolkit — complete (form • rule • questions • negatives) 🧩</h1>
+    <p class="lede">Each section includes: <strong>rule</strong> • <strong>how to use</strong> • <strong>examples</strong> • <strong>micro exercises</strong> with instant feedback.</p>
+
+    <div class="toolGrid">
+      <article class="tool">
+        <div class="tool__head">
+          <h2 class="h2">A) Present perfect — <span class="chip">updates & experience</span> ✅</h2>
+          <button class="btn btn--ghost speakBtn" data-say="Present perfect: have or has plus past participle. Use it for life experience and recent updates.">🔊 Listen</button>
+        </div>
+
+        <div class="rule">
+          <div class="rule__row"><span class="badge">Form</span> <strong>have/has + past participle</strong> (I’ve / She’s)</div>
+          <div class="rule__row"><span class="badge">Affirmative</span> I’ve met her. • She’s moved.</div>
+          <div class="rule__row"><span class="badge">Negative</span> I haven’t met her yet. • She hasn’t called.</div>
+          <div class="rule__row"><span class="badge">Question</span> Have you met her yet? • Has she moved?</div>
+          <div class="rule__row"><span class="badge">Short answers</span> Yes, I have. / No, I haven’t.</div>
+        </div>
+
+        <div class="miniTable">
+          <div class="miniTable__title">Mini conjugation</div>
+          <div class="miniTable__grid">
+            <div><strong>I / you / we / they</strong> have (’ve) + pp</div><div><strong>he / she</strong> has (’s) + pp</div>
+            <div><strong>Negative</strong> haven’t / hasn’t + pp</div><div><strong>Question</strong> Have/Has + subject + pp?</div>
+          </div>
+        </div>
+
+        <div class="quiz" id="mcqPPForm"></div>
+      </article>
+
+      <article class="tool">
+        <div class="tool__head">
+          <h2 class="h2">B) Present perfect — <span class="chip">how to use</span> 🎯</h2>
+          <button class="btn btn--ghost speakBtn" data-say="Use present perfect for experience, for very recent actions with just, and for unfinished time like today or this week.">🔊 Listen</button>
+        </div>
+
+        <div class="rule">
+          <div class="rule__row"><span class="badge">Experience</span> Have you ever…? • I’ve never…</div>
+          <div class="rule__row"><span class="badge">Recent</span> I’ve just finished. • I’ve already sent it.</div>
+          <div class="rule__row"><span class="badge">Unfinished time</span> today / this week / recently / lately</div>
+          <div class="rule__row"><span class="badge">Result now</span> I’ve lost my keys (now I can’t find them).</div>
+        </div>
+
+        <div class="quiz" id="mcqPPUses"></div>
+      </article>
+
+      <article class="tool">
+        <div class="tool__head">
+          <h2 class="h2">C) Present perfect vs past simple — <span class="chip">finished time</span> ⏳</h2>
+          <button class="btn btn--ghost speakBtn" data-say="Past simple is for finished time: yesterday, last week, in 2024. Present perfect is for no finished time or for connection to now.">🔊 Listen</button>
+        </div>
+
+        <div class="rule">
+          <div class="rule__row"><span class="badge">Past simple</span> finished time: yesterday / last week / in 2024</div>
+          <div class="rule__row"><span class="badge">Present perfect</span> no finished time (catching up): I’ve met her.</div>
+          <div class="rule__row"><span class="badge">Past Q</span> Did you call her yesterday? (did + base)</div>
+          <div class="rule__row"><span class="badge">Past Neg</span> I didn’t call yesterday. (didn’t + base)</div>
+        </div>
+
+        <div class="quiz" id="mcqPPvsPast"></div>
+      </article>
+
+      <article class="tool">
+        <div class="tool__head">
+          <h2 class="h2">D) for / since — <span class="chip">duration</span> 🧷</h2>
+          <button class="btn btn--ghost speakBtn" data-say="For is duration: for two years. Since is starting point: since 2023. Use with present perfect for duration up to now.">🔊 Listen</button>
+        </div>
+
+        <div class="rule">
+          <div class="rule__row"><span class="badge">for</span> duration: for 2 years / for a few months</div>
+          <div class="rule__row"><span class="badge">since</span> starting point: since 2023 / since Monday</div>
+          <div class="rule__row"><span class="badge">Question</span> How long have you…?</div>
+        </div>
+
+        <div class="quiz" id="mcqForSince"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="card" id="irregulars">
+    <h1>3) Irregular verbs — the “irregular ones” trainer 🔥</h1>
+    <p class="lede">Present perfect needs the <strong>past participle</strong>. Practise the most useful irregular verbs for conversations.</p>
+
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">A) Irregular quick list (EN → PP + FR)</h2>
+        <div class="irrTable" id="irrTable"></div>
+        <div class="callout small">Tip: focus first on: <strong>be / go / do / have / meet / see / write</strong>.</div>
+      </div>
+
+      <div class="mini">
+        <h2 class="h2">B) Past participle QCM (15) ✅</h2>
+        <div class="quiz" id="mcqIrregulars"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="vocab">
+    <h1>4) Vocabulary with icons + French (for catching up)</h1>
+    <p class="lede">Tap a card to flip. Search. Listen only when you click.</p>
+
+    <div class="searchRow">
+      <input id="vSearch" type="text" placeholder="Search: daughter-in-law / déjà / Denmark / court / vet / report..." autocomplete="off"/>
+      <button class="btn" id="btnVocabListen" type="button">🔊 Listen selection</button>
+      <button class="btn btn--ghost" id="btnVocabStop" type="button">⏹ Stop</button>
+    </div>
+
+    <div class="tabs" id="vTabs"></div>
+    <div class="vocabGrid" id="vocabGrid"></div>
+  </section>
+
+  <section class="card" id="dialogue">
+    <h1>5) Interactive Dialogue — choose the best reply 🎭</h1>
+    <p class="lede">Progressive: correct reply unlocks the next line. Use Hint + Why.</p>
+
+    <div class="dialogueControls">
+      <label class="tinyField">
+        <span>Scenario</span>
+        <select id="dlgScenario">
+          <option value="call" selected>📞 Phone call (catching up)</option>
+          <option value="messages">💌 Messages (already/yet/ever)</option>
+          <option value="life">🌱 Life updates (volunteering)</option>
+          <option value="animals">🐾 Animal rescue (vet clinic)</option>
+          <option value="youth">🧒 Youth support (assessor)</option>
+        </select>
+      </label>
+
+      <div class="dialogueButtons">
+        <button class="btn btn--ghost" id="btnDlgListen" type="button">🔊 Listen line</button>
+        <button class="btn btn--ghost" id="btnDlgHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="btnDlgWhy" type="button">Why?</button>
+        <button class="btn btn--ghost" id="btnDlgRestart" type="button">↺ Restart</button>
+      </div>
+    </div>
+
+    <div class="dlgBox">
+      <div class="dlgHead">
+        <div class="muted">Step: <strong id="dlgCount">1 / 1</strong></div>
+        <div class="muted">Mode: <strong id="dlgMode">Scoring</strong></div>
+      </div>
+
+      <div id="dlgNpc"></div>
+      <div class="dlgChoices" id="dlgChoices"></div>
+      <div class="fb" id="dlgFb" aria-live="polite"></div>
+      <div class="explain" id="dlgExplain" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card" id="practice">
+    <h1>6) Practice Zone — instant feedback (easy → harder)</h1>
+
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">A) Mixed QCM (12)</h2>
+        <div class="quiz" id="mcqPractice"></div>
+        <div class="callout small lvlB1">B1 stretch questions are included — visible only on B1 mode.</div>
+      </div>
+
+      <div class="mini">
+        <h2 class="h2">B) Fill in the blank (8)</h2>
+        <div id="fibBox"></div>
+      </div>
+    </div>
+
+    <div class="mini" style="margin-top:14px;">
+      <h2 class="h2">C) Irregular mini‑builder (tap choices)</h2>
+      <p class="muted">Choose the correct past participle in the sentence.</p>
+      <div class="coach" id="irrCoach"></div>
+    </div>
+  </section>
+
+  <section class="card" id="builder">
+    <h1>7) Ensemble Builder — full “catching up” message ✨</h1>
+    <p class="lede">Build a complete text to send to your daughter‑in‑law. Then check the checklist.</p>
+
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">A) Choose blocks (pick 5–8)</h2>
+        <div class="blockTabs" id="bTabs"></div>
+        <div class="blockGrid" id="bGrid"></div>
+
+        <div class="toolbar">
+          <button class="btn" id="btnBuild" type="button">✨ Build my text</button>
+          <button class="btn btn--ghost" id="btnBuildListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="btnBuildCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="btnBuildCopy" type="button">📋 Copy</button>
+          <button class="btn btn--ghost" id="btnBuildClear" type="button">🧽 Clear</button>
+        </div>
+
+        <div class="callout small">
+          Add one finished time at the end: <strong>yesterday / last week / last month</strong> (past simple).
+        </div>
+      </div>
+
+      <div class="mini">
+        <h2 class="h2">B) Your message</h2>
+        <div class="output" id="builderOut" tabindex="0"></div>
+        <div class="checklistBox" id="builderChecklist"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="cloe">
+    <h1>8) CLOE tasks — speaking + writing</h1>
+
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">A) Speaking (60–90 seconds)</h2>
+        <div class="callout" id="speakPrompt">Catching up (Denmark 🇩🇰): give 4 updates with <strong>I’ve…</strong>, use <strong>already</strong> or <strong>yet</strong>, include 2 irregular participles (<em>been/seen/written/done</em>), and ask 3 questions starting with <strong>Have you…?</strong></div>
+        <div class="toolbar">
+          <button class="btn" id="btnNewPrompt" type="button">🎲 New prompt</button>
+          <button class="btn btn--ghost" id="btnPromptListen" type="button">🔊 Listen</button>
+        </div>
+
+        <div class="timer">
+          <div class="timer__row">
+            <button class="btn" id="btnTimer" type="button">⏱ Start 60s</button>
+            <button class="btn btn--ghost" id="btnTimerStop" type="button">⏹ Stop</button>
+          </div>
+          <div class="timer__big" id="timerReadout">01:00</div>
+        </div>
+      </div>
+
+      <div class="mini">
+        <h2 class="h2">B) Writing (8 steps)</h2>
+        <label class="field"><span>1) Greeting + how have you been?</span><input id="w1" autocomplete="off" placeholder="Hi! How have you been?" /></label>
+        <label class="field"><span>2) Update (present perfect)</span><input id="w2" autocomplete="off" placeholder="I’ve been busy lately..." /></label>
+        <label class="field"><span>3) Family update</span><input id="w3" autocomplete="off" placeholder="I’ve met my daughter‑in‑law..." /></label>
+        <label class="field"><span>4) Keyword (already/yet/just/ever/never)</span><input id="w4" autocomplete="off" placeholder="I haven’t visited Denmark yet..." /></label>
+        <label class="field"><span>5) Irregular participle</span><input id="w5" autocomplete="off" placeholder="I’ve seen / I’ve written..." /></label>
+        <label class="field"><span>6) 3 questions (Have you…?)</span><input id="w6" autocomplete="off" placeholder="Have you…? Have you…? Have you…?" /></label>
+        <label class="field"><span>7) Past simple with finished time</span><input id="w7" autocomplete="off" placeholder="I called last week / I visited yesterday..." /></label>
+        <label class="field"><span>8) Friendly closing + plan</span><input id="w8" autocomplete="off" placeholder="I’ll call again soon. Take care!" /></label>
+
+        <div class="toolbar">
+          <button class="btn btn--ghost" id="btnWriteModel" type="button">📌 Model</button>
+          <button class="btn" id="btnWriteCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="btnWriteListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="btnWriteCopy" type="button">📋 Copy</button>
+        </div>
+
+        <div class="output small" id="writeOut"></div>
+        <div class="fb" id="writeFb" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <p class="footer"><a href="#top">↑ Back to top</a></p>
+  </section>
+</main>
+
+<script defer src="/js/speakeasy-road-to-conversing-catching-up-present-perfect-DENMARK-A2A2plus_v4.js"></script>
+</body>
+</html>
