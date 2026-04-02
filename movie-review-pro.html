@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpeakEasyTisha • Movie Review Pro Lab</title>
+  <link rel="stylesheet" href="/css/movie-review-pro.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-wrap">
+      <div class="brand">SpeakEasyTisha</div>
+      <div class="subbrand">VTest-style speaking + writing lab</div>
+    </div>
+    <div class="top-controls">
+      <div class="accent-box" role="group" aria-label="Accent">
+        <span class="control-label">Accent</span>
+        <button class="mini-btn active" id="accent-us" type="button">American</button>
+        <button class="mini-btn" id="accent-uk" type="button">British</button>
+      </div>
+      <div class="accent-box" role="group" aria-label="Display mode">
+        <span class="control-label">iPad mode</span>
+        <button class="mini-btn active" id="ipad-toggle" type="button" aria-pressed="true">On</button>
+      </div>
+      <div class="score-box" aria-live="polite">
+        <span class="control-label">Score</span>
+        <strong id="score-display">0 / 0</strong>
+        <button class="mini-btn reset-inline" id="reset-score" type="button" title="Reset score">↺</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero card">
+      <div class="hero-copy">
+        <p class="eyebrow">🎬 Professional movie English</p>
+        <h1>Movie Review Pro Lab</h1>
+        <p class="lead">
+          Learn how to describe a film like a professional: genre, rating, runtime, plot,
+          strengths, weaknesses, audience, comparisons, and final recommendation.
+          The page is built like a <strong>VTest-style final practice</strong> with guided speaking,
+          writing, grammar, and interactive tasks.
+        </p>
+        <div class="hero-actions">
+          <a class="cta" href="#movie-library">Explore the movies</a>
+          <a class="ghost-btn" href="#writing-studio">Go to writing</a>
+          <button class="ghost-btn" id="print-grammar" type="button">Print grammar</button>
+        </div>
+      </div>
+      <aside class="hero-side">
+        <div class="info-tile">
+          <span class="tile-icon">🧠</span>
+          <div>
+            <strong>Target skills</strong>
+            <p>Speak clearly, compare films, justify opinions, and write a structured review or essay.</p>
+          </div>
+        </div>
+        <div class="info-tile">
+          <span class="tile-icon">⏱️</span>
+          <div>
+            <strong>Time targets</strong>
+            <p>Speaking: 20s prep + 75s speak · Writing: 12 minutes · Review reading: 5 minutes</p>
+          </div>
+        </div>
+        <div class="info-tile">
+          <span class="tile-icon">📱</span>
+          <div>
+            <strong>Mac + iPad friendly</strong>
+            <p>Tap-first controls, drag-and-drop plus touch selection, readable buttons, and no external assets.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="card section-intro">
+      <h2>How to sound professional when describing a movie</h2>
+      <div class="pill-row">
+        <span class="pill">🎞️ title + genre</span>
+        <span class="pill">🔞 rating + audience</span>
+        <span class="pill">⏳ runtime</span>
+        <span class="pill">🧩 plot premise</span>
+        <span class="pill">👍 strengths</span>
+        <span class="pill">👎 weaknesses</span>
+        <span class="pill">⚖️ comparisons</span>
+        <span class="pill">✅ recommendation</span>
+      </div>
+      <div class="mini-grid two-col">
+        <article class="soft-card">
+          <h3>Model professional summary</h3>
+          <p id="model-summary">
+            <strong>Project Hail Mary</strong> is a <strong>PG-13 science-fiction thriller</strong> that runs for
+            <strong>2 hours and 36 minutes</strong>. The film follows a science teacher who wakes up alone on a spacecraft
+            and gradually discovers that he may be humanity’s last hope. What works particularly well is the mix of suspense,
+            science, and emotion. It is appropriate for teens and adults who enjoy intelligent, high-stakes stories,
+            although younger children may find the themes too intense.
+          </p>
+          <div class="chip-wrap" id="summary-chips"></div>
+        </article>
+        <article class="soft-card">
+          <h3>Useful transitions</h3>
+          <ul class="clean-list">
+            <li><strong>To begin with,</strong> the film is set in…</li>
+            <li><strong>In addition,</strong> the pacing is…</li>
+            <li><strong>What stands out most is…</strong></li>
+            <li><strong>However,</strong> some viewers may find…</li>
+            <li><strong>Compared with…</strong> this movie feels…</li>
+            <li><strong>Overall,</strong> I would recommend it to…</li>
+          </ul>
+          <button class="secondary-btn" type="button" id="copy-transitions">Copy transitions</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>Movie vocabulary studio</h2>
+          <p>Use richer adjectives, adverbs, and audience language before you speak or write.</p>
+        </div>
+        <div class="library-controls">
+          <button class="secondary-btn" type="button" id="copy-adjectives">Copy adjectives</button>
+          <button class="secondary-btn" type="button" id="copy-adverbs">Copy adverbs</button>
+        </div>
+      </div>
+      <div class="mini-grid three-col">
+        <article class="soft-card">
+          <h3>🎭 Adjectives to describe a movie</h3>
+          <div id="adjective-chips" class="chip-wrap"></div>
+        </article>
+        <article class="soft-card">
+          <h3>⚡ Adverbs to sound more natural</h3>
+          <div id="adverb-chips" class="chip-wrap"></div>
+        </article>
+        <article class="soft-card">
+          <h3>🗂️ Category language</h3>
+          <div id="category-vocab" class="vocab-stack"></div>
+        </article>
+      </div>
+      <div class="mini-grid two-col top-space">
+        <article class="soft-card">
+          <h3>👥 Audience + opinion expressions</h3>
+          <div id="audience-vocab-chips" class="chip-wrap"></div>
+        </article>
+        <article class="soft-card">
+          <h3>Vocabulary builder</h3>
+          <p>Tap the chips, then build a stronger sentence with genre words, adjectives, adverbs, and audience language.</p>
+          <textarea id="vocab-builder" rows="7" placeholder="Example: Project Hail Mary is an ambitious and highly suspenseful science-fiction thriller. It may appeal to teens and adults who enjoy intelligent stories."></textarea>
+          <div class="button-row">
+            <button class="secondary-btn" type="button" id="clear-vocab-builder">Clear</button>
+            <button class="secondary-btn" type="button" id="check-vocab-builder">Check vocabulary</button>
+          </div>
+          <div id="vocab-feedback" class="feedback-box"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="movie-library" class="card">
+      <div class="section-head">
+        <div>
+          <h2>1) Movie library by category</h2>
+          <p>Click a card to load it into the speaking and writing sections.</p>
+        </div>
+        <div class="library-controls">
+          <label class="field-inline">
+            <span>Filter</span>
+            <select id="genre-filter">
+              <option value="all">All categories</option>
+            </select>
+          </label>
+          <button class="secondary-btn" type="button" id="shuffle-movie">Random movie</button>
+        </div>
+      </div>
+      <div id="movie-grid" class="movie-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <h2>2) Ratings, runtimes, and audience language</h2>
+      <div class="mini-grid three-col">
+        <article class="soft-card">
+          <h3>Movie ratings in simple English</h3>
+          <div class="rating-boxes">
+            <div class="rating-card"><strong>PG</strong><span>Generally suitable for children, but parental guidance is still useful.</span></div>
+            <div class="rating-card"><strong>PG-13</strong><span>Usually fine for teenagers, but some material may be too intense for younger viewers.</span></div>
+            <div class="rating-card"><strong>R</strong><span>Restricted content. Usually better for mature teens and adults because of violence, language, or disturbing themes.</span></div>
+          </div>
+        </article>
+        <article class="soft-card">
+          <h3>Describe runtime naturally</h3>
+          <ul class="clean-list">
+            <li>It <strong>runs for</strong> 1 hour and 48 minutes.</li>
+            <li>It is <strong>just under two hours long</strong>.</li>
+            <li>It feels <strong>fast-paced</strong> despite the long runtime.</li>
+            <li>It is <strong>a bit too long</strong> for casual viewers.</li>
+          </ul>
+        </article>
+        <article class="soft-card">
+          <h3>Appropriate for whom?</h3>
+          <ul class="clean-list">
+            <li>It is ideal for viewers who enjoy…</li>
+            <li>It may appeal to fans of…</li>
+            <li>It is probably not suitable for…</li>
+            <li>I would recommend it mainly to…</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>3) Sort the movies by category</h2>
+          <p>Drag a movie into the right category, or tap a movie chip and then tap a category box.</p>
+        </div>
+        <div class="library-controls">
+          <button class="secondary-btn" type="button" id="check-categories">Check categories</button>
+          <button class="secondary-btn" type="button" id="reset-categories">Reset</button>
+        </div>
+      </div>
+      <div class="sort-bank-wrap">
+        <h3>Movie bank</h3>
+        <div id="movie-bank" class="sort-bank" aria-label="Movie bank"></div>
+      </div>
+      <div id="category-board" class="category-board"></div>
+      <div id="category-feedback" class="feedback-box" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>4) Grammar for movie reviews and exam answers</h2>
+          <p>Use the right tense for the right job.</p>
+        </div>
+        <button class="secondary-btn" type="button" id="copy-grammar">Copy grammar notes</button>
+      </div>
+      <div class="mini-grid two-col">
+        <article class="grammar-card">
+          <h3>Present simple</h3>
+          <p><strong>Why?</strong> Use it for general facts, plot descriptions, and what a film is about.</p>
+          <p><strong>Examples:</strong> “The film follows a scientist.” / “It takes place in space.”</p>
+        </article>
+        <article class="grammar-card">
+          <h3>Past simple</h3>
+          <p><strong>Why?</strong> Use it for your viewing experience or completed reactions.</p>
+          <p><strong>Examples:</strong> “I watched it last weekend.” / “The ending surprised me.”</p>
+        </article>
+        <article class="grammar-card">
+          <h3>Present perfect</h3>
+          <p><strong>Why?</strong> Use it for life experience and broad review comments.</p>
+          <p><strong>Examples:</strong> “I have seen it twice.” / “The director has created a memorable atmosphere.”</p>
+        </article>
+        <article class="grammar-card">
+          <h3>Modals + recommendation</h3>
+          <p><strong>Why?</strong> Use them to advise, warn, or suggest.</p>
+          <p><strong>Examples:</strong> “You should watch it.” / “Families may prefer Hoppers.” / “Young children might find it frightening.”</p>
+        </article>
+        <article class="grammar-card">
+          <h3>Comparatives and superlatives</h3>
+          <p><strong>Why?</strong> Use them to compare films clearly.</p>
+          <p><strong>Examples:</strong> “Scream 7 is darker than Hoppers.” / “Project Hail Mary is the most ambitious film in this set.”</p>
+        </article>
+        <article class="grammar-card">
+          <h3>Sequencing and transitions</h3>
+          <p><strong>Why?</strong> They give your speaking and writing structure.</p>
+          <p><strong>Examples:</strong> “First, … Then, … In addition, … However, … Overall, …”</p>
+        </article>
+      </div>
+
+      <div class="mini-grid two-col exercise-row">
+        <article class="soft-card">
+          <h3>Choose the best tense</h3>
+          <div id="tense-quiz" class="question-stack"></div>
+        </article>
+        <article class="soft-card">
+          <h3>Upgrade the sentence</h3>
+          <p>Tap useful chips to build a stronger review sentence.</p>
+          <div class="builder-panel">
+            <textarea id="upgrade-output" rows="7" placeholder="Build a professional movie comment here..."></textarea>
+            <div id="upgrade-chips" class="chip-wrap"></div>
+            <div class="button-row">
+              <button class="secondary-btn" type="button" id="clear-upgrade">Clear</button>
+              <button class="secondary-btn" type="button" id="check-upgrade">Check structure</button>
+            </div>
+            <div id="upgrade-feedback" class="feedback-box"></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5) Rating + audience challenge</h2>
+      <div class="mini-grid two-col">
+        <article class="soft-card">
+          <h3>Pick the best audience sentence</h3>
+          <div id="audience-quiz" class="question-stack"></div>
+        </article>
+        <article class="soft-card">
+          <h3>Talk about strong and weak points</h3>
+          <div class="phrase-grid">
+            <div>
+              <h4>Strong points</h4>
+              <div class="chip-wrap" id="good-chips"></div>
+            </div>
+            <div>
+              <h4>Weak points</h4>
+              <div class="chip-wrap" id="weak-chips"></div>
+            </div>
+          </div>
+          <textarea id="pros-cons-output" rows="6" placeholder="Example: What works particularly well is the tension and atmosphere. However, the pacing may feel slow to some viewers."></textarea>
+          <div class="button-row">
+            <button class="secondary-btn" type="button" id="clear-pros-cons">Clear</button>
+            <button class="secondary-btn" type="button" id="check-pros-cons">Check</button>
+          </div>
+          <div id="pros-cons-feedback" class="feedback-box"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>6) Guided dialogue</h2>
+          <p>Choose the best language to discuss a movie naturally and professionally.</p>
+        </div>
+        <button class="secondary-btn" type="button" id="new-dialogue">New dialogue</button>
+      </div>
+      <article class="dialogue-card">
+        <div class="dialogue-line speaker-a">🎤 A: We need to recommend a movie for two teenagers and one adult. Which title would you suggest?</div>
+        <div class="dialogue-line speaker-b">
+          🎤 B:
+          <select class="dialogue-select" data-answer="I would probably choose Project Hail Mary because it is exciting but not as extreme as the R-rated thrillers.">
+            <option value="">Choose…</option>
+            <option>I would probably choose Project Hail Mary because it is exciting but not as extreme as the R-rated thrillers.</option>
+            <option>I choose horror because they was scary and teenager likes blood.</option>
+            <option>Maybe choose any movie because rating are not important.</option>
+          </select>
+        </div>
+        <div class="dialogue-line speaker-a">🎤 A: Good point. How could we describe it in a more professional way?</div>
+        <div class="dialogue-line speaker-b">
+          🎤 B:
+          <select class="dialogue-select" data-answer="To begin with, it is a science-fiction thriller with a strong emotional core and an ambitious story.">
+            <option value="">Choose…</option>
+            <option>To begin with, it is a science-fiction thriller with a strong emotional core and an ambitious story.</option>
+            <option>It good and nice and long movie in the space.</option>
+            <option>It is movie and there is many things inside.</option>
+          </select>
+        </div>
+        <div class="dialogue-line speaker-a">🎤 A: What about a negative point?</div>
+        <div class="dialogue-line speaker-b">
+          🎤 B:
+          <select class="dialogue-select" data-answer="However, its long runtime may feel demanding for viewers who prefer shorter, lighter films.">
+            <option value="">Choose…</option>
+            <option>However, its long runtime may feel demanding for viewers who prefer shorter, lighter films.</option>
+            <option>But it is too much long and maybe boring for some persons.</option>
+            <option>Negative point is the movie has a spaceship.</option>
+          </select>
+        </div>
+        <div class="dialogue-line speaker-a">🎤 A: Compare it with a family movie from the list.</div>
+        <div class="dialogue-line speaker-b">
+          🎤 B:
+          <select class="dialogue-select" data-answer="Compared with Hoppers, it is more intense, more serious, and clearly aimed at older viewers.">
+            <option value="">Choose…</option>
+            <option>Compared with Hoppers, it is more intense, more serious, and clearly aimed at older viewers.</option>
+            <option>Hoppers is funny but this one is space, so yes.</option>
+            <option>They are exactly the same because both are movies.</option>
+          </select>
+        </div>
+        <div class="button-row">
+          <button class="secondary-btn" type="button" id="check-dialogue">Check dialogue</button>
+          <button class="secondary-btn" type="button" id="reset-dialogue">Reset</button>
+          <button class="secondary-btn" type="button" id="copy-dialogue-model">Copy model</button>
+          <button class="secondary-btn" type="button" id="listen-dialogue-model">▶ Listen model</button>
+        </div>
+        <div id="dialogue-feedback" class="feedback-box"></div>
+        <h3>Model dialogue</h3>
+        <div id="dialogue-model" class="model-box"></div>
+      </article>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>6B) SMS / cinema invite lab</h2>
+          <p>Practice realistic text messages to invite someone to a movie, accept an invite, or refuse politely.</p>
+        </div>
+        <div class="library-controls">
+          <label class="field-inline">
+            <span>SMS type</span>
+            <select id="sms-type">
+              <option value="invite">Invite someone</option>
+              <option value="accept">Accept an invite</option>
+              <option value="decline">Decline and suggest another time</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="mini-grid two-col">
+        <article class="soft-card">
+          <h3>Useful SMS language</h3>
+          <div id="sms-chips" class="chip-wrap"></div>
+          <h3 class="top-space">Model messages</h3>
+          <div class="mini-grid sms-model-grid">
+            <div>
+              <h4>📩 Invite</h4>
+              <div id="sms-model-invite" class="model-box"></div>
+            </div>
+            <div>
+              <h4>✅ Accept</h4>
+              <div id="sms-model-accept" class="model-box"></div>
+            </div>
+            <div>
+              <h4>❌ Decline / suggest another time</h4>
+              <div id="sms-model-decline" class="model-box"></div>
+            </div>
+          </div>
+        </article>
+        <article class="soft-card">
+          <h3>Write your SMS</h3>
+          <p>Keep it short but realistic: greeting, movie title, day or time, reaction, and a question or reply.</p>
+          <textarea id="sms-output" rows="10" placeholder="Example: Hi! Are you free Saturday evening? Would you like to see Project Hail Mary at 8:15? It looks really exciting. Let me know if you’re interested."></textarea>
+          <div class="button-row">
+            <button class="secondary-btn" type="button" id="clear-sms">Clear</button>
+            <button class="secondary-btn" type="button" id="check-sms">Check SMS</button>
+            <button class="secondary-btn" type="button" id="copy-sms">Copy SMS</button>
+            <button class="secondary-btn" type="button" id="load-sms-model">Load model</button>
+          </div>
+          <div id="sms-feedback" class="feedback-box"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>7) Speaking exam practice</h2>
+          <p>VTest-style guided speaking with prep time, speaking time, and starter phrases.</p>
+        </div>
+        <div class="library-controls">
+          <button class="secondary-btn" type="button" id="new-speaking">New prompt</button>
+          <button class="secondary-btn" type="button" id="speak-prompt-audio">▶ Listen prompt</button>
+        </div>
+      </div>
+      <div class="mini-grid two-col">
+        <article class="soft-card speaking-card">
+          <h3>Prompt</h3>
+          <p id="speaking-prompt">Describe a movie from the list that you would recommend to a teenager and explain why it is appropriate.</p>
+          <div class="button-row timer-row">
+            <div class="timer-box">
+              <span>Prep</span>
+              <strong id="prep-timer">20</strong>
+              <button class="secondary-btn" type="button" id="start-prep">Start</button>
+            </div>
+            <div class="timer-box">
+              <span>Speak</span>
+              <strong id="speak-timer">75</strong>
+              <button class="secondary-btn" type="button" id="start-speak">Start</button>
+            </div>
+          </div>
+          <button class="secondary-btn" type="button" id="reset-speaking-timers">Reset timers</button>
+        </article>
+        <article class="soft-card">
+          <h3>Starter bank</h3>
+          <div id="speaking-starters" class="chip-wrap"></div>
+          <textarea id="speaking-outline" rows="8" placeholder="Build your 4-part outline here: 1) introduce the movie 2) describe it 3) give pros/cons 4) recommend it."></textarea>
+          <div class="button-row">
+            <button class="secondary-btn" type="button" id="clear-outline">Clear</button>
+            <button class="secondary-btn" type="button" id="check-outline">Auto-check</button>
+            <button class="secondary-btn" type="button" id="copy-speaking-model">Copy model</button>
+            <button class="secondary-btn" type="button" id="listen-speaking-model">▶ Listen model</button>
+          </div>
+          <div id="outline-feedback" class="feedback-box"></div>
+          <h3>Model speaking answer</h3>
+          <div id="speaking-model" class="model-box"></div>
+          <p class="small-note">Notice the tense choices: present simple for the plot, past simple for your reaction, and modals for recommendation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="writing-studio" class="card">
+      <div class="section-head">
+        <div>
+          <h2>8) Writing studio — paragraph, review, or essay</h2>
+          <p>Choose a task, study the model, then write your own structured answer.</p>
+        </div>
+        <div class="library-controls">
+          <label class="field-inline">
+            <span>Task type</span>
+            <select id="writing-task-type">
+              <option value="essay">Short opinion essay</option>
+              <option value="review">Professional review paragraph</option>
+              <option value="email">Recommendation email</option>
+            </select>
+          </label>
+          <button class="secondary-btn" type="button" id="new-writing-task">New task</button>
+        </div>
+      </div>
+      <div class="mini-grid two-col">
+        <article class="soft-card">
+          <h3>Task</h3>
+          <div id="writing-task" class="task-box"></div>
+          <div class="button-row">
+            <button class="secondary-btn" type="button" id="copy-task">Copy task</button>
+            <button class="secondary-btn" type="button" id="listen-model">▶ Listen model</button>
+            <button class="secondary-btn" type="button" id="copy-writing-model">Copy model</button>
+            <button class="secondary-btn" type="button" id="load-writing-model">Load model</button>
+          </div>
+          <h3>Model answer</h3>
+          <div id="writing-model" class="model-box"></div>
+        </article>
+        <article class="soft-card">
+          <h3>Builder guide</h3>
+          <div class="outline-guide">
+            <div><strong>1.</strong> Introduce the title, genre, rating, and runtime.</div>
+            <div><strong>2.</strong> Explain the basic plot with the present simple.</div>
+            <div><strong>3.</strong> Give strong points and weak points.</div>
+            <div><strong>4.</strong> Compare it with another movie.</div>
+            <div><strong>5.</strong> Recommend it clearly.</div>
+          </div>
+          <div id="writing-phrases" class="chip-wrap"></div>
+          <textarea id="writing-output" rows="16" placeholder="Write your answer here..."></textarea>
+          <div class="button-row">
+            <button class="secondary-btn" type="button" id="clear-writing">Clear</button>
+            <button class="secondary-btn" type="button" id="check-writing">Self-check</button>
+            <button class="secondary-btn" type="button" id="copy-writing">Copy text</button>
+          </div>
+          <div id="writing-feedback" class="feedback-box"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="card final-report">
+      <h2>9) Final self-evaluation</h2>
+      <div class="mini-grid three-col">
+        <article class="soft-card">
+          <h3>Speaking</h3>
+          <label><input type="checkbox" class="eval-check"> I used title + genre + rating + runtime.</label>
+          <label><input type="checkbox" class="eval-check"> I used transitions and comparisons.</label>
+          <label><input type="checkbox" class="eval-check"> I finished with a clear recommendation.</label>
+        </article>
+        <article class="soft-card">
+          <h3>Writing</h3>
+          <label><input type="checkbox" class="eval-check"> I used the present simple for the plot.</label>
+          <label><input type="checkbox" class="eval-check"> I included pros and cons.</label>
+          <label><input type="checkbox" class="eval-check"> I used at least one comparative or superlative.</label>
+        </article>
+        <article class="soft-card">
+          <h3>Vocabulary</h3>
+          <label><input type="checkbox" class="eval-check"> I described the target audience clearly.</label>
+          <label><input type="checkbox" class="eval-check"> I used professional review language.</label>
+          <label><input type="checkbox" class="eval-check"> I justified my opinion.</label>
+        </article>
+      </div>
+      <div class="button-row top-space">
+        <button class="secondary-btn" type="button" id="copy-report">Copy final checklist</button>
+        <a class="ghost-btn" href="#top">Back to top</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    SpeakEasyTisha · Movie Review Pro Lab · No external assets · Mac/iPad Safari friendly
+  </footer>
+
+  <script src="/js/movie-review-pro.js"></script>
+</body>
+</html>
