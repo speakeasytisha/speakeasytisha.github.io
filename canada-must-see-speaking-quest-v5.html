@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Canada Must‑See Speaking Quest v5 · SpeakEasyTisha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/canada-must-see-speaking-quest-v5.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Canada Must‑See Speaking Quest 🇨🇦 · v2 · A1+ → A2 · guided speaking · no slang</div>
+    </div>
+
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Auto audio</span>
+        <button class="seg is-on" id="autoOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="autoOn" type="button" aria-pressed="false">ON</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <span class="pillTag">Build: 20260402-113103</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>What not to miss in Canada 🇨🇦</h1>
+      <p class="lead">
+        Deeper descriptions + a hotel picker + richer food profiles + vocabulary + multiple role‑plays + past tense + reviews.
+      </p>
+
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="btnHow" type="button">ℹ️ How to use</button>
+      </div>
+
+      <div class="progress" style="margin-top:.7rem"><div class="progress__bar" id="progressBar"></div></div>
+      <div class="tiny" style="margin-top:.35rem;opacity:.95">Tip: Auto audio is OFF by default.</div>
+    </div>
+
+    <div class="hero__panel">
+      <div class="panelcard">
+        <div class="panelcard__title">Lesson plan (≈ 75–120 min)</div>
+        <ol class="panelcard__list">
+          <li>Pick must‑see places (detailed)</li>
+          <li>Pick hotels (price, amenities, breakfast)</li>
+          <li>Pick restaurants + Canadian food</li>
+          <li>Vocabulary + 10‑question quick check</li>
+          <li>Role‑plays (4 scenarios)</li>
+          <li>Grammar + past tense + review writing</li>
+        </ol>
+        <div class="tiny" style="opacity:.95;margin-top:.45rem">
+          Note: hotel/restaurant names are <strong>practice profiles</strong> (not real bookings).
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+
+  <section class="section" id="sec1">
+    <h2>1) Must‑see picker (region + theme)</h2>
+    <p class="muted">Choose a region and a theme. Then select a place to see what is special about it.</p>
+
+    <div class="smallrow">
+      <label class="pill"><span class="pill__label">Region</span><select class="select" id="regionSelect"></select></label>
+      <label class="pill"><span class="pill__label">Theme</span><select class="select" id="themeSelect"></select></label>
+      <button class="btn btn--ghost" id="btnPlaceSpeak" type="button">🔊 Listen model</button>
+      <button class="btn btn--ghost" id="btnPlaceHint" type="button">💡 Speaking help</button>
+    </div>
+
+    <div class="grid3" id="placesGrid"></div>
+
+    <div class="card" style="margin-top:.7rem">
+      <h3 id="placeTitle">Choose a place</h3>
+      <div class="badgeRow" id="placeBadges"></div>
+      <p class="muted" id="placeWhere"></p>
+
+      <div class="kcard">
+        <div><strong>What is special?</strong> <span id="placeSpecial"></span></div>
+        <div style="margin-top:.35rem"><strong>Highlights:</strong> <span id="placeHighlights"></span></div>
+        <div style="margin-top:.35rem"><strong>Best for:</strong> <span id="placeBestFor"></span></div>
+        <div style="margin-top:.35rem"><strong>Planning tip:</strong> <span id="placeTimeTip"></span></div>
+        <div style="margin-top:.35rem"><strong>Budget feel:</strong> <span id="placeBudget"></span></div>
+      </div>
+
+      <p id="placeDesc" style="margin-top:.65rem"></p>
+
+      <div class="kcard">
+        <h4>🗣️ Speak (4 sentences)</h4>
+        <div id="placeTalk"></div>
+        <div class="smallrow">
+          <button class="btn" id="btnPlaceDone" type="button">✅ Mark as done (+2)</button>
+          <button class="btn btn--ghost" id="btnPlaceReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="placeFb"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec2">
+    <h2>2) Hotel picker (price · comfort · breakfast · amenities)</h2>
+    <p class="muted">Pick a region, then compare hotels: cheaper vs more comfortable vs breakfast included.</p>
+
+    <div class="smallrow">
+      <label class="pill"><span class="pill__label">Region</span><select class="select" id="hotelRegion"></select></label>
+      <label class="pill"><span class="pill__label">Budget</span><select class="select" id="hotelBudget"></select></label>
+      <label class="pill"><span class="pill__label">Breakfast</span>
+        <select class="select" id="hotelBreakfast">
+          <option value="all">Any</option>
+          <option value="Included">Included</option>
+          <option value="Not included">Not included</option>
+          <option value="Optional (paid)">Optional (paid)</option>
+          <option value="Self‑catering">Self‑catering</option>
+        </select>
+      </label>
+      <button class="btn btn--ghost" id="btnHotelSpeak" type="button">🔊 Useful hotel questions</button>
+    </div>
+
+    <div class="grid3" id="hotelGrid"></div>
+
+    <div class="card" style="margin-top:.7rem">
+      <h3>🗣️ Guided speaking: choose 1 hotel</h3>
+      <div class="kcard" id="hotelGuide"></div>
+      <div class="feedback hidden" id="hotelFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec3">
+    <h2>3) Food & restaurant speaking (Canadian‑style profiles)</h2>
+    <p class="muted">Choose a city, then practice: what to eat, atmosphere, who it’s for, and why to go.</p>
+
+    <div class="smallrow">
+      <label class="pill"><span class="pill__label">City</span><select class="select" id="restCity"></select></label>
+      <button class="btn btn--ghost" id="btnRestSpeak" type="button">🔊 Useful restaurant questions</button>
+      <button class="btn btn--ghost" id="btnFoodVocab" type="button">💡 Typical Canadian food</button>
+    </div>
+
+    <div class="grid3" id="restGrid"></div>
+
+    <div class="card" style="margin-top:.7rem">
+      <h3>🗣️ Guided speaking: choose 1 restaurant</h3>
+      <div class="kcard" id="restGuide"></div>
+      <div class="feedback hidden" id="restFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec4">
+    <h2>4) Vocabulary (icons + French) + Quick Check (10 questions)</h2>
+    <p class="muted">Use the search. Click <strong>Reveal</strong> to see definition + example.</p>
+
+    <div class="smallrow">
+      <input class="search" id="vSearch" placeholder="Search vocabulary (example: breakfast, quiet, crowded)"/>
+      <label class="pill"><span class="pill__label">Category</span><select class="select" id="vCat"></select></label>
+      <button class="btn btn--ghost" id="btnVocabReset" type="button">↺ Clear search</button>
+    </div>
+
+    <div class="grid3" id="vocabGrid"></div>
+
+    <div class="card" style="margin-top:.7rem">
+      <h3>Quick Check A: 10 questions</h3>
+      <div class="smallrow">
+        <button class="btn" id="btnQCStart" type="button">▶️ Start / New set</button>
+        <button class="btn btn--ghost" id="btnQCHint" type="button">💡 Hint</button>
+      </div>
+      <div id="qcHost"></div>
+      <div class="feedback hidden" id="qcFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec5">
+    <h2>5) Role‑plays (choose a scenario)</h2>
+    <p class="muted">Teacher reads blue. Learner answers green. Model replies available. Optional timers.</p>
+
+    <div class="smallrow">
+      <label class="pill"><span class="pill__label">Scenario</span><select class="select" id="rpSelect"></select></label>
+
+      <div class="pill">
+        <span class="pill__label">Role</span>
+        <button class="seg is-on" id="roleTeacher" type="button" aria-pressed="true">👩‍🏫 Teacher</button>
+        <button class="seg" id="roleLearner" type="button" aria-pressed="false">🧑‍🎓 Learner</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Timer</span>
+        <button class="seg is-on" id="timerOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="timerOn" type="button" aria-pressed="false">ON</button>
+      </div>
+
+      <button class="btn" id="btnRPStart" type="button">▶️ Start</button>
+      <button class="btn btn--ghost" id="btnRPStep" type="button">➡️ Next</button>
+      <button class="btn btn--ghost" id="btnRPClear" type="button">🧹 Clear</button>
+      <button class="btn btn--ghost" id="btnRPModel" type="button">✅ Show model reply</button>
+      <button class="btn btn--ghost" id="btnRPHint" type="button">💡 Useful phrases</button>
+    </div>
+
+    <div class="card">
+      <h3 id="rpTitle">Role‑play</h3>
+      <div class="chat" id="rpStream"></div>
+
+      <div class="timerRow">
+        <div class="timerBox">
+          <div class="timerBox__t">Prep</div>
+          <div class="timerBox__v" id="prepTime">15</div>
+          <div class="muted tiny">seconds</div>
+          <button class="toolmini" id="btnPrep" type="button">⏱ Start prep</button>
+        </div>
+        <div class="timerBox">
+          <div class="timerBox__t">Speak</div>
+          <div class="timerBox__v" id="speakTime">30</div>
+          <div class="muted tiny">seconds</div>
+          <button class="toolmini" id="btnSpeakTimer" type="button">🎙 Start speak</button>
+        </div>
+        <div class="timerBox">
+          <div class="timerBox__t">Model reply</div>
+          <div class="modelBox" id="modelBox">Click “Show model reply” when needed.</div>
+        </div>
+      </div>
+
+      <div class="feedback hidden" id="rpHintBox"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec6">
+    <h2>6) Grammar (polite requests · comparatives/superlatives · past tense)</h2>
+    <p class="muted">Short rules + exercises with instant feedback.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Polite requests</h3>
+        <div class="kcard">
+          <ul style="margin:.2rem 0;padding-left:1.1rem;line-height:1.6">
+            <li><strong>I’d like…</strong></li>
+            <li><strong>We’d like…</strong></li>
+            <li><strong>Could I have…?</strong></li>
+            <li><strong>Could you…?</strong></li>
+          </ul>
+          <div class="muted">Example: Could you recommend a quiet restaurant, please?</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Comparatives & superlatives</h3>
+        <div class="kcard">
+          <div><strong>Comparative</strong> (2 things): cheaper / more expensive / better / more comfortable</div>
+          <div style="margin-top:.35rem"><strong>Superlative</strong> (#1): the cheapest / the most expensive / the best</div>
+          <div class="muted" style="margin-top:.35rem">Example: This hotel is cheaper, but that hotel is more comfortable.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:.7rem">
+      <h3>Past simple (previous stay)</h3>
+      <div class="kcard" id="pastRules"></div>
+
+      <div style="margin-top:.65rem">
+        <h4>Exercise: Past simple mini quiz</h4>
+        <div id="pastHost"></div>
+        <div class="feedback hidden" id="pastFb"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:.7rem">
+      <h3>Build the sentence (drag OR tap)</h3>
+      <div class="smallrow">
+        <select class="select" id="buildSelect"></select>
+        <button class="btn" id="btnBuildCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="btnBuildReset" type="button">↺ Reset</button>
+        <button class="btn btn--ghost" id="btnBuildSpeak" type="button">🔊 Listen model</button>
+      </div>
+      <div id="builderHost"></div>
+      <div class="feedback hidden" id="buildFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec7">
+    <h2>7) Listening + Reading</h2>
+    <p class="muted">Audio plays only when you click Play (no automatic audio).</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Listening (recommendations)</h3>
+        <div class="kcard">
+          <div class="smallrow">
+            <button class="btn" id="btnListenPlay" type="button">🔊 Play</button>
+            <button class="btn btn--ghost" id="btnListenStop" type="button">⏹ Stop</button>
+          </div>
+          <div class="smallrow">
+            <button class="btn btn--ghost" id="btnListenText" type="button">📄 Show text</button>
+          </div>
+          <div class="kcard hidden" id="listenTextBox"></div>
+          <div id="listenQ"></div>
+          <div class="feedback hidden" id="listenFb"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Reading (trip plan)</h3>
+        <div class="kcard">
+          <p id="readingText"></p>
+          <div id="readingQ"></div>
+          <div class="feedback hidden" id="readingFb"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec8">
+    <h2>8) Reviews (positive or negative) — writing + speaking</h2>
+    <p class="muted">Choose options, then generate a short review. You can read it aloud.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Review builder</h3>
+        <div class="smallrow">
+          <label class="pill"><span class="pill__label">Type</span>
+            <select class="select" id="revType">
+              <option value="positive">Positive</option>
+              <option value="negative">Negative</option>
+            </select>
+          </label>
+          <label class="pill"><span class="pill__label">Stars</span>
+            <select class="select" id="revStars">
+              <option value="5">★★★★★ (5)</option>
+              <option value="4">★★★★☆ (4)</option>
+              <option value="3">★★★☆☆ (3)</option>
+              <option value="2">★★☆☆☆ (2)</option>
+              <option value="1">★☆☆☆☆ (1)</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="smallrow">
+          <label class="pill"><span class="pill__label">Item</span>
+            <select class="select" id="revPlace"></select>
+          </label>
+          <label class="pill"><span class="pill__label">Focus</span>
+            <select class="select" id="revFocus">
+              <option value="hotel">Hotel</option>
+              <option value="restaurant">Restaurant</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="smallrow">
+          <button class="btn" id="btnRevBuild" type="button">✨ Build review</button>
+          <button class="btn btn--ghost" id="btnRevSpeak" type="button">🔊 Read aloud</button>
+          <button class="btn btn--ghost" id="btnRevCopy" type="button">📋 Copy</button>
+        </div>
+
+        <textarea class="review" id="revOut" placeholder="Your review will appear here…"></textarea>
+        <div class="feedback hidden" id="revFb"></div>
+      </div>
+
+      <div class="card">
+        <h3>Useful review phrases</h3>
+        <div class="kcard" id="revPhrases"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="tiny" style="opacity:.95">© SpeakEasyTisha · canada-must-see-speaking-quest-v4 · Build 20260401-105335</div>
+      <a class="toolmini" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<pre id="debugBox" class="hidden" style="white-space:pre-wrap;margin:1rem;padding:1rem;border:1px dashed rgba(14,31,36,.35);border-radius:14px;background:#fff;max-width:1120px;color:#0e1f24;">Debug log</pre>
+
+<script src="js/canada-must-see-speaking-quest-v5.js"></script>
+</body>
+</html>
