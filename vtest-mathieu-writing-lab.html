@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpeakEasyTisha • VTest Writing Lab • Mathieu</title>
+  <link rel="stylesheet" href="/css/vtest-mathieu-writing-lab.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-row wrap">
+      <div class="brand-left">
+        <div class="brand-mark">✍️</div>
+        <div>
+          <p class="eyebrow">SpeakEasyTisha</p>
+          <h1>VTest • Writing Lab <span>(Mathieu)</span></h1>
+        </div>
+      </div>
+      <div class="top-controls card compact">
+        <div class="control-group">
+          <span class="control-label">Accent (TTS)</span>
+          <div class="segmented" id="accentToggle">
+            <button type="button" class="seg active" data-accent="us">US</button>
+            <button type="button" class="seg" data-accent="uk">UK</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Mode</span>
+          <button type="button" id="ipadModeBtn" class="pill-btn">iPad friendly: On</button>
+        </div>
+        <div class="control-group score-box">
+          <span class="control-label">Score</span>
+          <strong><span id="scoreNow">0</span> / <span id="scoreMax">0</span></strong>
+          <button type="button" id="resetScoreBtn" class="mini-btn">↺</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero wrap">
+      <div class="hero-copy card hero-card">
+        <p class="hero-kicker">Professional writing practice for realistic VTest-style tasks</p>
+        <h2>Learn how to answer clearly, politely, and with structure</h2>
+        <p>
+          This page focuses on practical written scenarios that help you write like a professional:
+          requests, complaints, changes, recommendations, and short opinion tasks. It also gives a compact
+          writing studio with model answers, timing, and guided building blocks.
+        </p>
+        <div class="hero-pills">
+          <span>✅ model answers</span>
+          <span>✅ phrase banks + vocabulary</span>
+          <span>✅ timed writing practice</span>
+          <span>✅ Mac / iPad Safari friendly</span>
+        </div>
+      </div>
+      <div class="hero-stats card">
+        <div class="stat">
+          <span class="stat-label">Focus</span>
+          <strong>Professional writing scenarios</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Best for</span>
+          <strong>VTest-style preparation</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Routine</span>
+          <strong>20–30 minutes</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Targets</span>
+          <strong>A2 80+ • B1/B2.1 150+ • B2.2+ 200+</strong>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="toolbar card">
+      <div class="toolbar-grid">
+        <label>
+          <span>Name (optional)</span>
+          <input id="studentName" type="text" placeholder="Student name" />
+        </label>
+        <label>
+          <span>Level</span>
+          <select id="levelSelect">
+            <option value="a2">A2 (simple + clear)</option>
+            <option value="b1" selected>B1 (structured + natural)</option>
+            <option value="b2">B2 (more precise + professional)</option>
+          </select>
+        </label>
+        <label>
+          <span>Writing target</span>
+          <select id="writingTargetSelect">
+            <option value="message">Short message / email</option>
+            <option value="email" selected>Professional email</option>
+            <option value="essay">Structured opinion answer</option>
+          </select>
+        </label>
+        <div class="toolbar-actions">
+          <button type="button" class="secondary" id="saveProgressBtn">Enregistrer</button>
+          <button type="button" class="secondary" id="loadProgressBtn">Charger</button>
+          <button type="button" class="secondary" id="printBtn">Print</button>
+        </div>
+      </div>
+      <div class="tip-banner">
+        <strong>Safe exam recipe:</strong> greeting / context → clear reason → request or opinion → details / example → polite closing.
+      </div>
+      <div class="progress-row">
+        <span>Progress</span>
+        <div class="progress-bar"><div id="progressFill"></div></div>
+        <span id="progressText">0%</span>
+      </div>
+    </section>
+
+    <nav class="quick-nav card">
+      <a href="#examTips">Exam tips</a>
+      <a href="#grammar">Grammar boosters</a>
+      <a href="#scenarioStudio">Scenario studio</a>
+      <a href="#timedPractice">Timed practice</a>
+      <a href="#report">Report</a>
+    </nav>
+
+    <section id="examTips" class="card">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">1) Exam tips</p>
+          <h3>What strong VTest writing usually looks like</h3>
+        </div>
+        <div class="section-actions">
+          <button type="button" class="secondary" id="listenTipsBtn">▶ Listen</button>
+        </div>
+      </div>
+
+      <div class="three-col">
+        <article class="sub-card">
+          <h4>⭐ What gives points</h4>
+          <ul class="tick-list">
+            <li>Clear purpose from the first lines</li>
+            <li>Useful connectors and logical sequencing</li>
+            <li>Specific details, dates, or examples</li>
+            <li>Polite, professional tone</li>
+            <li>Accurate tense choice</li>
+          </ul>
+        </article>
+        <article class="sub-card">
+          <h4>⚠️ What weakens the answer</h4>
+          <ul class="cross-list">
+            <li>Being too vague</li>
+            <li>Repeating very basic words</li>
+            <li>Missing greeting or closing in emails</li>
+            <li>Wrong tense for the situation</li>
+            <li>No explanation or no request</li>
+          </ul>
+        </article>
+        <article class="sub-card">
+          <h4>🧭 Quick plan</h4>
+          <div class="mini-stack">
+            <div class="mini-example" data-copy="I’m writing to ask for information about...">1. I’m writing to...</div>
+            <div class="mini-example" data-copy="First of all, I would like to explain the situation clearly.">2. First of all...</div>
+            <div class="mini-example" data-copy="Could you please let me know if...?">3. Could you please...?</div>
+            <div class="mini-example" data-copy="Thank you in advance for your help.">4. Thank you in advance...</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="two-col stretch">
+        <article class="sub-card">
+          <div class="sub-head">
+            <h4>Quick phrase bank</h4>
+            <button type="button" class="secondary small" id="copyConnectorsBtn">Copier</button>
+          </div>
+          <div class="chip-bank" id="connectorBank"></div>
+        </article>
+        <article class="sub-card">
+          <h4>Mini correction clinic</h4>
+          <div id="errorList" class="error-list"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="grammar" class="card">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">2) Grammar boosters</p>
+          <h3>Tenses, sequencing, comparatives, and transition words</h3>
+        </div>
+      </div>
+
+      <div class="three-col">
+        <article class="sub-card grammar-card">
+          <h4>⏱ Tenses and why</h4>
+          <ul class="mini-list">
+            <li><strong>Present simple:</strong> facts, routines, neutral statements</li>
+            <li><strong>Present continuous:</strong> current problem or action happening now</li>
+            <li><strong>Past simple / preterite:</strong> what happened in a finished past situation</li>
+            <li><strong>Present perfect:</strong> past experience linked to now</li>
+            <li><strong>Would / could / will:</strong> requests, solutions, future action</li>
+          </ul>
+        </article>
+        <article class="sub-card grammar-card">
+          <h4>🔗 Sequencing + transitions</h4>
+          <div class="chip-bank compact-bank" id="transitionBank"></div>
+        </article>
+        <article class="sub-card grammar-card">
+          <h4>📏 Comparatives / superlatives</h4>
+          <p class="soft">Useful to compare options, services, hotels, transport, or solutions.</p>
+          <div class="mini-stack comparison-examples">
+            <div class="mini-example" data-copy="This option is cheaper than the first one.">cheaper than</div>
+            <div class="mini-example" data-copy="This solution is more practical for our team.">more practical</div>
+            <div class="mini-example" data-copy="It is the most efficient option.">the most efficient</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="two-col stretch">
+        <article class="sub-card">
+          <h4>Tense choice quiz</h4>
+          <div id="tenseQuiz" class="quiz-list"></div>
+        </article>
+        <article class="sub-card">
+          <h4>Connector / style quiz</h4>
+          <div id="rewriteQuiz" class="quiz-list"></div>
+          <button type="button" class="secondary" id="newQuizBtn">New set</button>
+        </article>
+      </div>
+
+      <div class="two-col stretch">
+        <article class="sub-card">
+          <div class="sub-head">
+            <h4>🛠 Essential writing verbs</h4>
+            <button type="button" class="secondary small" id="listenVerbsBtn">▶ Listen set</button>
+          </div>
+          <p class="soft">Past simple = preterite. These verbs are especially useful in messages, emails, complaints, and short opinion tasks.</p>
+          <div id="verbCards" class="verb-grid"></div>
+        </article>
+        <article class="sub-card">
+          <div class="sub-head">
+            <h4>Verb form drill</h4>
+            <button type="button" class="secondary small" id="newVerbQuizBtn">New set</button>
+          </div>
+          <div id="verbQuiz" class="quiz-list"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="scenarioStudio" class="card">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">3) Scenario studio</p>
+          <h3>Choose a realistic writing task and build the answer step by step</h3>
+        </div>
+        <div class="section-actions">
+          <button type="button" class="secondary" id="newScenarioBtn">New scenario</button>
+        </div>
+      </div>
+
+      <div class="task-box accent-box">
+        <div>
+          <p class="task-label">Selected task</p>
+          <h4 id="scenarioTitle">Hotel reservation request</h4>
+          <p id="scenarioTask">Write a professional email to ask for availability, price, and one specific detail.</p>
+        </div>
+        <div class="task-meta">
+          <label>
+            <span>Scenario</span>
+            <select id="scenarioSelect"></select>
+          </label>
+          <button type="button" id="loadScenarioBtn" class="primary">Load scenario</button>
+        </div>
+      </div>
+
+      <div class="three-col">
+        <article class="sub-card">
+          <h4>🗂 Context + objective</h4>
+          <div id="scenarioMeta" class="meta-box"></div>
+        </article>
+        <article class="sub-card">
+          <div class="sub-head">
+            <h4>💬 Useful phrases</h4>
+            <button type="button" class="secondary small" id="insertPhraseBtn">Insert</button>
+          </div>
+          <div class="chip-bank" id="phraseBank"></div>
+        </article>
+        <article class="sub-card">
+          <div class="sub-head">
+            <h4>🧠 Upgrade vocabulary</h4>
+            <button type="button" class="secondary small" id="insertUpgradeBtn">Insert</button>
+          </div>
+          <div class="chip-bank" id="upgradeBank"></div>
+        </article>
+      </div>
+
+      <div class="two-col stretch">
+        <article class="sub-card">
+          <div class="sub-head">
+            <h4>📚 Vocabulary cards</h4>
+            <button type="button" class="secondary small" id="listenVocabBtn">▶ Listen set</button>
+          </div>
+          <div id="vocabCards" class="vocab-grid"></div>
+        </article>
+        <article class="sub-card">
+          <h4>🧭 Tenses for this scenario</h4>
+          <div id="tenseGuide" class="info-stack"></div>
+          <div class="notice-box">
+            <strong>Tip:</strong> choose the tense because of the function, not because it “sounds difficult”.
+          </div>
+        </article>
+      </div>
+
+      <div class="two-col stretch">
+        <article class="sub-card">
+          <h4>Step 1 — Build the order</h4>
+          <p class="soft">Tap <strong>➕ Add</strong>, then use <strong>↑ ↓</strong> to adjust. The source blocks are mixed on purpose, which is more reliable on iPad than drag and drop.</p>
+          <div class="order-grid">
+            <div>
+              <p class="soft strongish">Blocks</p>
+              <div id="orderBank" class="stack-list"></div>
+            </div>
+            <div>
+              <p class="soft strongish">Your order</p>
+              <div id="orderTarget" class="stack-list target-list"></div>
+            </div>
+          </div>
+          <div class="btn-row wrap-buttons">
+            <button type="button" class="secondary" id="checkOrderBtn">Check order</button>
+            <button type="button" class="secondary" id="resetOrderBtn">Reset</button>
+          </div>
+          <div id="orderFeedback" class="feedback-panel"></div>
+        </article>
+        <article class="sub-card">
+          <h4>Step 2 — Fill the gaps</h4>
+          <div id="fillBlanksBox" class="quiz-list"></div>
+          <div class="btn-row wrap-buttons">
+            <button type="button" class="secondary" id="checkFillBtn">Check</button>
+            <button type="button" class="secondary" id="resetFillBtn">Reset</button>
+          </div>
+          <div id="fillFeedback" class="feedback-panel"></div>
+        </article>
+      </div>
+
+      <div class="two-col stretch">
+        <article class="sub-card">
+          <h4>Compact writing studio</h4>
+          <p class="soft">Build a strong opener or subject line before writing the full answer.</p>
+          <div class="builder-grid">
+            <label>
+              <span>Purpose</span>
+              <select id="purposeSelect"></select>
+            </label>
+            <label>
+              <span>Topic</span>
+              <select id="topicSelect"></select>
+            </label>
+            <label>
+              <span>Detail</span>
+              <select id="detailSelect"></select>
+            </label>
+          </div>
+          <div class="btn-row wrap-buttons">
+            <button type="button" class="secondary" id="buildSubjectBtn">Build subject</button>
+            <button type="button" class="secondary" id="buildOpenerBtn">Build opener</button>
+            <button type="button" class="secondary" id="copyBuilderBtn">Copy</button>
+          </div>
+          <div id="builderOutput" class="report-output small-output"></div>
+        </article>
+        <article class="sub-card">
+          <h4>Step 3 — Write your own answer</h4>
+          <textarea id="draftArea" rows="16" placeholder="Write here. Start with a clear reason for writing."></textarea>
+          <div class="btn-row wrap-buttons">
+            <button type="button" class="primary" id="checkDraftBtn">Self-check</button>
+            <button type="button" class="secondary" id="modelBtn">Show model</button>
+            <button type="button" class="secondary" id="copyDraftBtn">Copier</button>
+            <button type="button" class="secondary" id="listenDraftBtn">▶ Listen</button>
+            <button type="button" class="secondary" id="clearDraftBtn">Clear</button>
+          </div>
+          <div id="draftFeedback" class="feedback-panel"></div>
+        </article>
+      </div>
+
+      <article class="sub-card model-card" id="modelCard" hidden>
+        <div class="sub-head">
+          <h4>Model answer</h4>
+          <div class="section-actions">
+            <button type="button" class="secondary small" id="copyModelBtn">Copy model</button>
+            <button type="button" class="secondary small" id="listenModelBtn">▶ Listen</button>
+          </div>
+        </div>
+        <div id="modelOutput" class="report-output"></div>
+      </article>
+    </section>
+
+    <section id="timedPractice" class="card">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">4) Timed practice</p>
+          <h3>Write under calmer exam conditions</h3>
+        </div>
+      </div>
+
+      <div class="two-col stretch">
+        <article class="sub-card">
+          <h4>Timer</h4>
+          <div class="timer-box">
+            <div id="timerDisplay">15:00</div>
+            <div class="btn-row wrap-buttons">
+              <button type="button" class="primary" data-time="600">10 min</button>
+              <button type="button" class="secondary" data-time="900">15 min</button>
+              <button type="button" class="secondary" data-time="1200">20 min</button>
+              <button type="button" class="secondary" data-time="1800">30 min</button>
+              <button type="button" class="secondary" id="timerStartBtn">Start</button>
+              <button type="button" class="secondary" id="timerPauseBtn">Pause</button>
+              <button type="button" class="secondary" id="timerResetBtn">Reset</button>
+            </div>
+          </div>
+          <div class="checklist-box">
+            <h5>Before submitting, check:</h5>
+            <label><input type="checkbox" class="progress-check" /> I answered the task clearly.</label>
+            <label><input type="checkbox" class="progress-check" /> I used a polite and professional tone.</label>
+            <label><input type="checkbox" class="progress-check" /> I included details, dates, or examples.</label>
+            <label><input type="checkbox" class="progress-check" /> I used at least 3 connectors.</label>
+            <label><input type="checkbox" class="progress-check" /> I wrote a suitable closing or conclusion.</label>
+          </div>
+        </article>
+        <article class="sub-card">
+          <h4>Fast challenge cards</h4>
+          <div id="challengeCards" class="exam-cards"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="report" class="card">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">5) Report</p>
+          <h3>Copy or print the lesson summary</h3>
+        </div>
+        <div class="section-actions">
+          <button type="button" class="secondary" id="copyReportBtn">Copier</button>
+        </div>
+      </div>
+      <div id="reportOutput" class="report-output"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <p>SpeakEasyTisha • VTest Writing Lab • Guided scenarios • Touch-friendly • Uses speechSynthesis</p>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <script src="/js/vtest-mathieu-writing-lab.js"></script>
+</body>
+</html>
