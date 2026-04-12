@@ -757,19 +757,18 @@
       var card = document.createElement("button");
       card.type = "button";
       card.className = "flash";
+      card.setAttribute("aria-label", "Letter " + letter + ". Tap to hear and flip.");
+      card.title = "Tap to hear and flip";
       var back = "";
       if(letter === "Z"){
-        back = "US: <strong>zee</strong><br>UK: <strong>zed</strong><div class='tag'>Try: “Zebra”</div>";
+        back = "Tap to hear • US: <strong>zee</strong><br>UK: <strong>zed</strong><div class='tag'>Try: “Zebra”</div>";
       }else{
-        back = "Tap Listen to hear<br><div class='tag'>Example: " + (letter==="A"?"Apple":letter==="E"?"Email":letter==="I"?"India":letter==="O"?"Oscar":letter==="U"?"Uniform":"") + "</div>";
+        back = "Tap to hear<br><div class='tag'>Example: " + (letter==="A"?"Apple":letter==="B"?"Ball":letter==="C"?"Ceiling":letter==="D"?"Dog":letter==="E"?"Email":letter==="F"?"Father":letter==="G"?"George":letter==="H"?"Help":letter==="I"?"India":letter==="J"?"Jacket":letter==="O"?"Oscar":letter==="U"?"Uniform":"") + "</div>";
       }
       card.innerHTML = "<div class='front'>" + letter + "</div><div class='back'>" + back + "</div>";
       card.addEventListener("click", function(){
-        card.classList.toggle("is-flipped");
-      });
-      // long-press alternative not needed; keep simple
-      card.addEventListener("dblclick", function(){
         speak(letter === "Z" ? (getAccent()==="uk"?"zed":"zee") : letter);
+        card.classList.toggle("is-flipped");
       });
       wrap.appendChild(card);
     });
