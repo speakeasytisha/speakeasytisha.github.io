@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpeakEasyTisha • English 360° • Essay Booster (A1→B2+)</title>
+  <link rel="stylesheet" href="/css/english-360-essay-booster.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-row wrap">
+      <div class="brand-left">
+        <div class="brand-mark">✍️</div>
+        <div>
+          <p class="eyebrow">SpeakEasyTisha</p>
+          <h1>English 360° • Essay Booster <span>(A1.1 → B2.2+)</span></h1>
+        </div>
+      </div>
+      <div class="top-controls card compact">
+        <div class="control-group">
+          <span class="control-label">Accent (TTS)</span>
+          <div class="segmented" id="accentToggle">
+            <button type="button" class="seg active" data-accent="us">US</button>
+            <button type="button" class="seg" data-accent="uk">UK</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Mode</span>
+          <button type="button" id="ipadModeBtn" class="pill-btn">iPad friendly: On</button>
+        </div>
+        <div class="control-group score-box">
+          <span class="control-label">Score</span>
+          <strong><span id="scoreNow">0</span> / <span id="scoreMax">0</span></strong>
+          <button type="button" id="resetScoreBtn" class="mini-btn">↺</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero wrap">
+      <div class="hero-copy card hero-card">
+        <p class="hero-kicker">Write with structure, detail, and confidence</p>
+        <h2>Guided essay lesson to help gain points</h2>
+        <p>
+          This page turns essay writing into small, clear steps: idea → plan → sentence → paragraph → full essay.
+          It starts with simple A1/A2 support and gradually upgrades to a natural B1/B2 level.
+        </p>
+        <div class="hero-pills">
+          <span>✅ clear model answers</span>
+          <span>✅ tap-friendly on Mac / iPad Safari</span>
+          <span>✅ instant feedback + hints</span>
+          <span>✅ print-ready report</span>
+        </div>
+      </div>
+      <div class="hero-stats card">
+        <div class="stat">
+          <span class="stat-label">Focus</span>
+          <strong>Essay / opinion writing</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Best for</span>
+          <strong>English 360° style tasks</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Routine</span>
+          <strong>15–25 minutes</strong>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="toolbar card">
+      <div class="toolbar-grid">
+        <label>
+          <span>Name (optional)</span>
+          <input id="studentName" type="text" placeholder="Student name" />
+        </label>
+        <label>
+          <span>Level</span>
+          <select id="levelSelect">
+            <option value="a2">A2 (simple + clear)</option>
+            <option value="b1">B1 (structured + natural)</option>
+            <option value="b2">B2 (precise + convincing)</option>
+          </select>
+        </label>
+        <label>
+          <span>Context</span>
+          <select id="contextSelect">
+            <option value="general">General / exam</option>
+            <option value="travel">Travel / transport</option>
+            <option value="work">Work / office</option>
+            <option value="service">Customer service</option>
+            <option value="study">Training / study</option>
+          </select>
+        </label>
+        <div class="toolbar-actions">
+          <button type="button" class="secondary" id="saveProgressBtn">Enregistrer</button>
+          <button type="button" class="secondary" id="loadProgressBtn">Charger</button>
+          <button type="button" class="secondary" id="printBtn">Print</button>
+        </div>
+      </div>
+      <div class="tip-banner">
+        <strong>Golden rule for the exam:</strong> answer the question clearly, organize the text well, use connectors, and support each idea with a reason or an example.
+      </div>
+      <div class="progress-row">
+        <span>Progress</span>
+        <div class="progress-bar"><div id="progressFill"></div></div>
+        <span id="progressText">0%</span>
+      </div>
+    </section>
+
+    <nav class="quick-nav card">
+      <a href="#recipe">Essay recipe</a>
+      <a href="#clinic">Correction clinic</a>
+      <a href="#builder">Builder</a>
+      <a href="#practice">Timed practice</a>
+      <a href="#report">Report</a>
+    </nav>
+
+    <section id="recipe" class="card">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">1) Essay recipe</p>
+          <h3>Learn the structure before writing</h3>
+        </div>
+        <div class="section-actions">
+          <button type="button" class="secondary" id="listenRecipeBtn">▶ Listen</button>
+        </div>
+      </div>
+      <div class="recipe-grid">
+        <article class="recipe-step">
+          <span class="step-no">1</span>
+          <h4>Opening sentence</h4>
+          <p>Introduce the topic in a simple and clear way.</p>
+          <div class="mini-example" data-copy="Many people believe that good customer service is essential for a positive experience.">Many people believe that good customer service is essential for a positive experience.</div>
+        </article>
+        <article class="recipe-step">
+          <span class="step-no">2</span>
+          <h4>Opinion / thesis</h4>
+          <p>Give your answer directly so the examiner knows your position.</p>
+          <div class="mini-example" data-copy="In my opinion, companies should always respond quickly and politely to customer complaints.">In my opinion, companies should always respond quickly and politely to customer complaints.</div>
+        </article>
+        <article class="recipe-step">
+          <span class="step-no">3</span>
+          <h4>Reason 1 + example</h4>
+          <p>Explain your first idea and support it.</p>
+          <div class="mini-example" data-copy="First of all, a fast response reassures the customer and shows that the company takes the problem seriously.">First of all, a fast response reassures the customer and shows that the company takes the problem seriously.</div>
+        </article>
+        <article class="recipe-step">
+          <span class="step-no">4</span>
+          <h4>Reason 2 + detail</h4>
+          <p>Add a second strong idea. Use a connector.</p>
+          <div class="mini-example" data-copy="Moreover, polite communication can reduce tension and help solve the issue more efficiently.">Moreover, polite communication can reduce tension and help solve the issue more efficiently.</div>
+        </article>
+        <article class="recipe-step">
+          <span class="step-no">5</span>
+          <h4>Conclusion</h4>
+          <p>Restate your opinion and finish neatly.</p>
+          <div class="mini-example" data-copy="To conclude, a professional and respectful answer can improve customer trust and protect a company’s reputation.">To conclude, a professional and respectful answer can improve customer trust and protect a company’s reputation.</div>
+        </article>
+      </div>
+
+      <div class="two-col stretch">
+        <article class="sub-card">
+          <h4>What gives points</h4>
+          <ul class="tick-list">
+            <li>Answer the task directly.</li>
+            <li>Write in clear paragraphs.</li>
+            <li>Use connectors naturally.</li>
+            <li>Give reasons and examples.</li>
+            <li>Use precise vocabulary instead of repeating basic words.</li>
+          </ul>
+        </article>
+        <article class="sub-card">
+          <h4>What loses points</h4>
+          <ul class="cross-list">
+            <li>Ideas without explanation.</li>
+            <li>Very short answers.</li>
+            <li>French-style translations in English.</li>
+            <li>Missing connectors or weak conclusion.</li>
+            <li>Repeating the same simple verbs again and again.</li>
+          </ul>
+        </article>
+      </div>
+
+      <article class="sub-card">
+        <div class="sub-head">
+          <h4>Connector bank</h4>
+          <button type="button" class="secondary small" id="copyConnectorsBtn">Copier</button>
+        </div>
+        <div class="chip-bank" id="connectorBank"></div>
+      </article>
+    </section>
+
+    <section id="clinic" class="card">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">2) Correction clinic</p>
+          <h3>From A1 habits to stronger B1/B2 writing</h3>
+        </div>
+      </div>
+      <div class="two-col stretch">
+        <article class="sub-card">
+          <h4>Common mistakes to fix</h4>
+          <div class="error-list" id="errorList"></div>
+        </article>
+        <article class="sub-card">
+          <h4>Mini rewrite quiz</h4>
+          <p class="soft">Choose the most natural sentence. Immediate feedback appears below.</p>
+          <div id="rewriteQuiz" class="quiz-list"></div>
+          <button type="button" class="secondary" id="newQuizBtn">New set</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="builder" class="card">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">3) Guided builder</p>
+          <h3>Build an essay sentence by sentence</h3>
+        </div>
+        <div class="section-actions">
+          <button type="button" class="secondary" id="newTopicBtn">New topic</button>
+        </div>
+      </div>
+
+      <div class="task-box accent-box">
+        <div>
+          <p class="task-label">Essay task</p>
+          <h4 id="essayPromptTitle">Should companies always compensate unhappy customers?</h4>
+          <p id="essayPromptText">Write an opinion essay. Give your opinion and support it with reasons and examples.</p>
+        </div>
+        <div class="task-meta">
+          <label>
+            <span>Topic</span>
+            <select id="topicSelect"></select>
+          </label>
+          <button type="button" id="loadTopicBtn" class="primary">Load topic</button>
+        </div>
+      </div>
+
+      <div class="three-col">
+        <article class="sub-card">
+          <div class="sub-head">
+            <h4>Ideas</h4>
+            <button type="button" class="secondary small" id="insertIdeaBtn">Insert</button>
+          </div>
+          <div class="chip-bank" id="ideaBank"></div>
+        </article>
+        <article class="sub-card">
+          <div class="sub-head">
+            <h4>Useful phrases</h4>
+            <button type="button" class="secondary small" id="insertPhraseBtn">Insert</button>
+          </div>
+          <div class="chip-bank" id="phraseBank"></div>
+        </article>
+        <article class="sub-card">
+          <div class="sub-head">
+            <h4>Upgrade vocabulary</h4>
+            <button type="button" class="secondary small" id="insertUpgradeBtn">Insert</button>
+          </div>
+          <div class="chip-bank" id="upgradeBank"></div>
+        </article>
+      </div>
+
+      <div class="two-col stretch">
+        <article class="sub-card">
+          <h4>Paragraph plan</h4>
+          <div class="plan-builder" id="planBuilder"></div>
+          <div class="btn-row">
+            <button type="button" class="secondary" id="autoPlanBtn">Auto-plan</button>
+            <button type="button" class="secondary" id="clearPlanBtn">Clear</button>
+          </div>
+        </article>
+        <article class="sub-card">
+          <h4>Draft zone</h4>
+          <textarea id="draftArea" rows="15" placeholder="Write here. Start with your opening sentence and opinion."></textarea>
+          <div class="btn-row wrap-buttons">
+            <button type="button" class="primary" id="checkDraftBtn">Self-check</button>
+            <button type="button" class="secondary" id="modelBtn">Model answer</button>
+            <button type="button" class="secondary" id="listenDraftBtn">▶ Listen</button>
+            <button type="button" class="secondary" id="copyDraftBtn">Copier</button>
+            <button type="button" class="secondary" id="clearDraftBtn">Clear</button>
+          </div>
+          <div id="draftFeedback" class="feedback-panel"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="practice" class="card">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">4) Timed practice</p>
+          <h3>Write under exam conditions</h3>
+        </div>
+      </div>
+      <div class="two-col stretch">
+        <article class="sub-card">
+          <h4>Timer</h4>
+          <div class="timer-box">
+            <div id="timerDisplay">12:00</div>
+            <div class="btn-row wrap-buttons">
+              <button type="button" class="primary" data-time="720">12 min</button>
+              <button type="button" class="secondary" data-time="900">15 min</button>
+              <button type="button" class="secondary" id="timerStartBtn">Start</button>
+              <button type="button" class="secondary" id="timerPauseBtn">Pause</button>
+              <button type="button" class="secondary" id="timerResetBtn">Reset</button>
+            </div>
+          </div>
+          <div class="checklist-box">
+            <h5>Before submitting, check:</h5>
+            <label><input type="checkbox" class="progress-check" /> I answered the question clearly.</label>
+            <label><input type="checkbox" class="progress-check" /> I used paragraphs.</label>
+            <label><input type="checkbox" class="progress-check" /> I used at least 4 connectors.</label>
+            <label><input type="checkbox" class="progress-check" /> I added at least 2 detailed reasons or examples.</label>
+            <label><input type="checkbox" class="progress-check" /> I wrote a conclusion.</label>
+          </div>
+        </article>
+        <article class="sub-card">
+          <h4>Exam-style challenge</h4>
+          <div class="exam-cards" id="challengeCards"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="report" class="card">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">5) Report</p>
+          <h3>Copy or print the lesson summary</h3>
+        </div>
+        <div class="section-actions">
+          <button type="button" class="secondary" id="copyReportBtn">Copier</button>
+        </div>
+      </div>
+      <div id="reportOutput" class="report-output"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <p>SpeakEasyTisha · Essay Booster (A1.1 → B2.2+) · No external libraries · Mac / iPad Safari friendly</p>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <script src="/js/english-360-essay-booster.js"></script>
+</body>
+</html>
