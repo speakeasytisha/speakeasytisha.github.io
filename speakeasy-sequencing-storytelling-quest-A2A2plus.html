@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Sequencing & Storytelling Quest • Connectors + Tenses • A2→A2.2</title>
+  <link rel="stylesheet" href="css/speakeasy-sequencing-storytelling-quest-A2A2plus.css"/>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo" aria-hidden="true">🧩</div>
+      <div>
+        <div class="brand__title">Sequencing & Storytelling Quest</div>
+        <div class="brand__sub">Connectors (EN+FR) + Verb tenses • Safari + Animal rescue + Youth support • A2 → A2.2</div>
+      </div>
+    </div>
+
+    <div class="toolbarTop">
+      <div class="pillgroup" role="group" aria-label="Voice">
+        <span class="pillgroup__label">Voice</span>
+        <button class="pill is-active" id="voiceUS" type="button">US</button>
+        <button class="pill" id="voiceUK" type="button">UK</button>
+      </div>
+
+      <div class="pillgroup" role="group" aria-label="Auto audio">
+        <span class="pillgroup__label">Auto audio</span>
+        <button class="pill" id="autoOff" type="button">OFF</button>
+        <button class="pill is-active" id="autoOn" type="button">ON</button>
+      </div>
+
+      <div class="pillgroup" role="group" aria-label="Speed">
+        <span class="pillgroup__label">Speed</span>
+        <button class="pill is-active" id="speedN" type="button">Normal</button>
+        <button class="pill" id="speedS" type="button">Slow</button>
+      </div>
+
+      <button class="btn btn--ghost" id="stopAudio" type="button">⏹ Stop</button>
+      <button class="btn btn--ghost" id="resetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+
+  <div class="status">
+    <div class="status__box">
+      <div class="status__label">Score</div>
+      <div class="status__value"><span id="scoreNow">0</span> / <span id="scoreTotal">0</span></div>
+    </div>
+    <div class="status__box">
+      <div class="status__label">Progress</div>
+      <div class="progress"><div class="progress__bar" id="pBar"></div></div>
+      <div class="status__value" id="pPct">0%</div>
+    </div>
+    <div class="status__box status__hint">
+      <div class="status__label">Hint</div>
+      <div class="status__value" id="hintBox">Start with the connector toolkit, then do the tense cards, then role‑plays, then writing.</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="#how">How to use</a>
+    <a href="#connectors">1) Connectors</a>
+    <a href="#tenses">2) Tenses</a>
+    <a href="#practice">3) Practice</a>
+    <a href="#roleplays">4) Role‑plays</a>
+    <a href="#writing">5) Writing</a>
+    <a href="#vocab">6) Safari + vocab</a>
+  </nav>
+</header>
+
+<main class="page">
+  <section class="card" id="how">
+    <h1>How to use (with your teacher + alone) 🎭</h1>
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">👩‍🏫 With your teacher</h2>
+        <ol class="list">
+          <li>Open <strong>Role‑plays</strong> and choose a scenario.</li>
+          <li>Teacher reads <span class="tag tBlue">blue</span>. You answer <span class="tag tGreen">green</span>.</li>
+          <li>Use <strong>Show model</strong> when needed, then try again.</li>
+          <li>Use <strong>prep + speak timers</strong> if you want.</li>
+        </ol>
+      </div>
+      <div class="mini">
+        <h2 class="h2">🧑‍💻 Alone</h2>
+        <ol class="list">
+          <li>Learn connectors + translations (section 1).</li>
+          <li>Review verb tenses (section 2).</li>
+          <li>Do practice (section 3) for instant feedback.</li>
+          <li>Write a guided text + compare with the model (section 5).</li>
+        </ol>
+      </div>
+    </div>
+    <div class="callout">Tip: Auto audio is ON by default. Turn it OFF if you prefer silence.</div>
+  </section>
+
+  <section class="card" id="connectors">
+    <h1>1) Sequencing & connectors (EN + FR) 🔗</h1>
+    <p class="lede">Click a card to reveal the French translation + usage + example. Use the search.</p>
+
+    <div class="searchRow">
+      <input id="cSearch" placeholder="Search: first / ensuite / because / however..." autocomplete="off"/>
+      <button class="btn" id="listenConnectors" type="button">🔊 Listen selection</button>
+      <button class="btn btn--ghost" id="clearC" type="button">↺ Clear</button>
+    </div>
+
+    <div class="tabs" id="cTabs"></div>
+    <div class="cardGrid" id="cGrid"></div>
+
+    <div class="mini" style="margin-top:14px;">
+      <h2 class="h2">Quick connector check (instant) ✅</h2>
+      <div class="quiz" id="mcqConnectors"></div>
+    </div>
+  </section>
+
+  <section class="card" id="tenses">
+    <h1>2) Verb tenses for stories (rule + form + questions/negatives) ⏱️</h1>
+    <p class="lede">Choose a tense card. Each card has rules and a mini quiz.</p>
+
+    <div class="tenseTabs" id="tenseTabs"></div>
+    <div id="tensePanel"></div>
+  </section>
+
+  <section class="card" id="practice">
+    <h1>3) Practice zone — easy → harder (instant feedback) 🎯</h1>
+
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">A) Mixed QCM (connectors + tenses)</h2>
+        <div class="quiz" id="mcqPractice"></div>
+      </div>
+
+      <div class="mini">
+        <h2 class="h2">B) Fill in the blanks (instant check)</h2>
+        <div id="fibBox"></div>
+      </div>
+    </div>
+
+    <div class="mini" style="margin-top:14px;">
+      <h2 class="h2">C) Build the story (drag OR tap) — immediate checks</h2>
+      <div class="storyPick">
+        <label class="field">
+          <span>Choose a story</span>
+          <select id="storySelect"></select>
+        </label>
+        <button class="btn btn--ghost" id="storyReset" type="button">↺ Reset story</button>
+      </div>
+
+      <div class="callout small" id="storyHint"></div>
+      <div class="dndBank" id="storyBank"></div>
+      <div class="slots" id="storySlots"></div>
+      <div class="feedback" id="storyFb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card" id="roleplays">
+    <h1>4) Role‑plays — step by step (teacher + solo) 🎭</h1>
+    <p class="lede">Choose a scenario. Teacher reads blue. You answer green. Use model replies and useful phrases.</p>
+
+    <div class="rpTop">
+      <label class="field">
+        <span>Scenario</span>
+        <select id="rpSelect"></select>
+      </label>
+
+      <div class="rpBtns">
+        <button class="btn" id="rpStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="rpNext" type="button">➡️ Next</button>
+        <button class="btn btn--ghost" id="rpClear" type="button">↺ Clear</button>
+        <button class="btn btn--ghost" id="rpModel" type="button">✅ Show model reply</button>
+        <button class="btn btn--ghost" id="rpPhrases" type="button">💬 Useful phrases</button>
+      </div>
+
+      <div class="rpTimers">
+        <div class="timerBox">
+          <div class="timerLabel">Prep</div>
+          <div class="timerBig" id="prepTime">15</div>
+          <div class="timerSmall">seconds</div>
+          <button class="btn btn--ghost" id="prepBtn" type="button">⏱ Start prep</button>
+        </div>
+        <div class="timerBox">
+          <div class="timerLabel">Speak</div>
+          <div class="timerBig" id="speakTime">30</div>
+          <div class="timerSmall">seconds</div>
+          <button class="btn btn--ghost" id="speakBtn" type="button">🎙 Start speak</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="rpStage">
+      <div class="rpHeader">
+        <div class="rpMeta">Step: <strong id="rpCount">0 / 0</strong></div>
+        <div class="rpMeta">Mode: <strong id="rpMode">Ready</strong></div>
+      </div>
+
+      <div class="bubble tBlue" id="rpTeacher"></div>
+      <div class="bubble tGreen" id="rpLearner">
+        <div class="rpLearnerTop">
+          <button class="btn btn--ghost" id="rpListenLine" type="button">🔊 Listen teacher line</button>
+          <button class="btn btn--ghost" id="rpHint" type="button">💡 Hint</button>
+        </div>
+
+        <div class="replyChoices" id="rpChoices"></div>
+
+        <div class="freeBox">
+          <label class="field">
+            <span>Optional: type your answer (no strict grading)</span>
+            <textarea id="rpFree" rows="3" placeholder="Type your reply here..."></textarea>
+          </label>
+          <div class="freeBtns">
+            <button class="btn btn--ghost" id="rpFreeListen" type="button">🔊 Listen my text</button>
+            <button class="btn btn--ghost" id="rpFreeClear" type="button">🧽 Clear</button>
+          </div>
+        </div>
+
+        <div class="feedback" id="rpFb" aria-live="polite"></div>
+        <div class="explain" id="rpExplain"></div>
+      </div>
+
+      <div class="mini" style="margin-top:14px; display:none;" id="rpPhrasesBox">
+        <h2 class="h2">Useful phrases</h2>
+        <ul class="list" id="rpPhraseList"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="writing">
+    <h1>5) Guided writing — gradual → model text ✍️</h1>
+    <p class="lede">Choose a subject. Follow the steps. Then show the model if you want.</p>
+
+    <div class="grid2">
+      <div class="mini">
+        <label class="field">
+          <span>Choose a writing subject</span>
+          <select id="wSelect"></select>
+        </label>
+
+        <div class="callout small" id="wSubject"></div>
+        <ol class="list" id="wSteps"></ol>
+
+        <label class="field">
+          <span>Your text</span>
+          <textarea id="wText" rows="8" placeholder="Write here..."></textarea>
+        </label>
+
+        <div class="wBtns">
+          <button class="btn" id="wCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="wHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="wModel" type="button">👀 Show model text</button>
+          <button class="btn btn--ghost" id="wListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="wCopy" type="button">📋 Copy</button>
+          <button class="btn btn--ghost" id="wReset" type="button">↺ Reset</button>
+        </div>
+
+        <div class="feedback" id="wFb" aria-live="polite"></div>
+        <div class="checklistBox" id="wChecklist"></div>
+      </div>
+
+      <div class="mini">
+        <h2 class="h2">Model text</h2>
+        <div class="output" id="wModelBox">Click “Show model text” to reveal.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="vocab">
+    <h1>6) Safari + volunteer vocabulary (icons + FR) 🦁🐿️🧑‍⚖️</h1>
+    <p class="lede">Search by English or French. Click to reveal definition + example.</p>
+
+    <div class="searchRow">
+      <input id="vSearch" placeholder="Search: giraffe / écureuil / rapport / camp..." autocomplete="off"/>
+      <button class="btn" id="listenVocab" type="button">🔊 Listen selection</button>
+      <button class="btn btn--ghost" id="clearV" type="button">↺ Clear</button>
+    </div>
+
+    <div class="tabs" id="vTabs"></div>
+    <div class="cardGrid" id="vGrid"></div>
+
+    <div class="mini" style="margin-top:14px;">
+      <h2 class="h2">Quick vocab check (10) ✅</h2>
+      <div class="quiz" id="mcqVocab"></div>
+    </div>
+
+    <p class="footer"><a href="#how">↑ Back to top</a></p>
+  </section>
+</main>
+
+<script defer src="js/speakeasy-sequencing-storytelling-quest-A2A2plus.js"></script>
+</body>
+</html>
