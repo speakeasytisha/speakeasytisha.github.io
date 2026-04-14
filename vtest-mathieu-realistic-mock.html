@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpeakEasyTisha • VTest Realistic Mock for Mathieu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/vtest-mathieu-realistic-mock.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap topbar">
+      <div class="brand-block">
+        <div class="brand">SpeakEasyTisha</div>
+        <div class="subbrand">VTest Prep • Realistic Mock for Mathieu</div>
+      </div>
+      <div class="top-actions">
+        <div class="toggle-group" aria-label="Accent selector">
+          <span class="toggle-label">Accent</span>
+          <button class="toggle-btn active" data-accent="en-US" id="accent-us" type="button">American</button>
+          <button class="toggle-btn" data-accent="en-GB" id="accent-uk" type="button">British</button>
+        </div>
+        <div class="toggle-group" aria-label="Touch friendly mode">
+          <span class="toggle-label">iPad mode</span>
+          <button class="toggle-btn active" id="ipad-toggle" type="button" aria-pressed="true">On</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy card">
+          <div class="eyebrow">Realistic • Timed • Touch-friendly</div>
+          <h1>VTest-style realistic mock for Mathieu</h1>
+          <p>
+            This practice page is built to feel closer to the real VTest flow: mixed listening/reading tasks,
+            speaking tasks that match the official activity families, and writing prompts with realistic exam-style topics.
+          </p>
+          <div class="notice">
+            <strong>Important:</strong> this is an exam-style training page, not an official clone. It is designed to be realistic,
+            useful, and aligned with public VTest task descriptions. The published VTest timing ranges are now shown below so you can train with more realistic pacing.
+          </div>
+          <div class="hero-controls">
+            <label>
+              <span>Student name</span>
+              <input id="student-name" type="text" placeholder="Mathieu">
+            </label>
+            <label>
+              <span>Target level</span>
+              <select id="target-level">
+                <option value="b1b2">B1 → B2</option>
+                <option value="b2">B2 focused</option>
+              </select>
+            </label>
+            <label>
+              <span>Context focus</span>
+              <select id="context-focus">
+                <option value="general">General professional</option>
+                <option value="customer">Customer service</option>
+                <option value="events">Events / travel</option>
+                <option value="sportsmedia">Sports & media</option>
+              </select>
+            </label>
+          </div>
+          <div class="hero-buttons">
+            <button class="primary-btn" id="start-mock-btn" type="button">Start realistic mock</button>
+            <a class="ghost-btn" href="#speaking">Jump to speaking</a>
+            <a class="ghost-btn" href="#writing">Jump to writing</a>
+            <button class="ghost-btn" id="copy-cheat-btn" type="button">Copy quick exam tips</button>
+          </div>
+        </div>
+
+        <aside class="score-card card">
+          <div class="score-line">
+            <div>
+              <div class="score-title">Score</div>
+              <div class="score-value"><span id="score-correct">0</span> / <span id="score-total">0</span></div>
+            </div>
+            <button class="reset-icon-btn" id="reset-score" type="button" aria-label="Reset score">↺</button>
+          </div>
+          <div class="progress-block">
+            <div class="progress-head">
+              <span>Progress</span>
+              <span id="progress-text">0%</span>
+            </div>
+            <div class="progress-bar"><span id="progress-fill"></span></div>
+          </div>
+          <ul class="wins-list">
+            <li>Listening/Reading tasks follow the official task families.</li>
+            <li>Speaking includes read aloud, listen & repeat, and independent response.</li>
+            <li>Writing includes essay-style prompts and photo-description practice.</li>
+            <li>Model answers are available for speaking and writing practice.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="wrap exam-map card">
+      <h2>VTest-style map</h2>
+      <div class="mini-grid three">
+        <div class="mini-card">
+          <h3>Listening + Reading</h3>
+          <p>Read and answer, listen and answer, listen and choose, multiple choice, fill in the blank.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Speaking</h3>
+          <p>Read aloud, listen and repeat, then a timed independent answer with prep time.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Writing</h3>
+          <p>One timed written response. Depending on level, this can be an essay-style prompt or a photo description.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap exam-map card">
+      <h2>Published timing guide</h2>
+      <div class="notice">
+        <strong>Use this as the pacing reference:</strong> the real VTest is adaptive, so the total test length can vary.
+        These timings are the public per-task ranges published by VTest and are the best benchmark for training.
+      </div>
+      <div class="mini-grid three">
+        <div class="mini-card">
+          <h3>Listening + Reading</h3>
+          <ul class="wins-list">
+            <li>Read and answer: read 45–120 sec, answer 45–75 sec</li>
+            <li>Listen and answer: listen 45–60 sec, answer 45–60 sec</li>
+            <li>Listen and choose: 40–75 sec</li>
+            <li>Multiple choice: 30 sec</li>
+            <li>Fill in the blank: 75 sec</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h3>Speaking</h3>
+          <ul class="wins-list">
+            <li>Reading fluency: 60 sec</li>
+            <li>Listen and repeat: 15 sec</li>
+            <li>Speaking proficiency: prep 40–60 sec, speak 45–90 sec</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h3>Writing</h3>
+          <ul class="wins-list">
+            <li>Writing task: 30 minutes</li>
+            <li>The prompt may be an essay-style response or a photo description</li>
+            <li>This mock keeps model answers visible for training, even though the real exam does not</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section-block" id="listening-reading">
+      <div class="section-head card">
+        <div>
+          <div class="eyebrow">Section 1</div>
+          <h2>Listening + Reading</h2>
+          <p>Practice the main VTest-style task families with realistic scenarios that could appear on an exam. Use the published timing guide above for official public ranges.</p>
+        </div>
+        <button class="complete-btn" data-complete="listening-reading" type="button">Mark complete</button>
+      </div>
+
+      <div class="task-grid">
+        <article class="task-card card" id="read-answer-card">
+          <div class="task-top">
+            <h3>1A. Read and answer</h3>
+            <div class="timer-chip"><span class="timer-label">Suggested</span> <span>90 sec</span></div>
+          </div>
+          <div id="read-answer-content"></div>
+          <div class="task-actions">
+            <button class="primary-btn" id="check-read-answer" type="button">Check</button>
+            <button class="ghost-btn" id="new-read-answer" type="button">New task</button>
+            <button class="ghost-btn" id="copy-read-text" type="button">Copy text</button>
+          </div>
+          <div class="feedback" id="read-answer-feedback"></div>
+        </article>
+
+        <article class="task-card card" id="listen-answer-card">
+          <div class="task-top">
+            <h3>1B. Listen and answer</h3>
+            <div class="timer-chip"><span class="timer-label">Suggested</span> <span>60 sec</span></div>
+          </div>
+          <div id="listen-answer-content"></div>
+          <div class="task-actions">
+            <button class="ghost-btn" id="play-listen-answer" type="button">▶ Play</button>
+            <button class="ghost-btn" id="slow-listen-answer" type="button">▶ Slow</button>
+            <button class="ghost-btn" id="toggle-listen-answer-script" type="button">Show transcript</button>
+            <button class="primary-btn" id="check-listen-answer" type="button">Check</button>
+            <button class="ghost-btn" id="new-listen-answer" type="button">New task</button>
+          </div>
+          <div class="script-box hidden" id="listen-answer-script"></div>
+          <div class="feedback" id="listen-answer-feedback"></div>
+        </article>
+
+        <article class="task-card card" id="listen-choose-card">
+          <div class="task-top">
+            <h3>1C. Listen and choose the correct answer</h3>
+            <div class="timer-chip"><span class="timer-label">Suggested</span> <span>45 sec</span></div>
+          </div>
+          <div id="listen-choose-content"></div>
+          <div class="task-actions">
+            <button class="ghost-btn" id="play-listen-choose" type="button">▶ Play</button>
+            <button class="ghost-btn" id="slow-listen-choose" type="button">▶ Slow</button>
+            <button class="ghost-btn" id="toggle-listen-choose-script" type="button">Show transcript</button>
+            <button class="primary-btn" id="check-listen-choose" type="button">Check</button>
+            <button class="ghost-btn" id="new-listen-choose" type="button">New task</button>
+          </div>
+          <div class="script-box hidden" id="listen-choose-script"></div>
+          <div class="feedback" id="listen-choose-feedback"></div>
+        </article>
+
+        <article class="task-card card" id="multiple-choice-card">
+          <div class="task-top">
+            <h3>1D. Multiple choice</h3>
+            <div class="timer-chip"><span class="timer-label">Suggested</span> <span>30 sec each</span></div>
+          </div>
+          <div id="multiple-choice-content"></div>
+          <div class="task-actions">
+            <button class="primary-btn" id="check-multiple-choice" type="button">Check</button>
+            <button class="ghost-btn" id="new-multiple-choice" type="button">New set</button>
+          </div>
+          <div class="feedback" id="multiple-choice-feedback"></div>
+        </article>
+
+        <article class="task-card card" id="fill-blank-card">
+          <div class="task-top">
+            <h3>1E. Fill in the blank</h3>
+            <div class="timer-chip"><span class="timer-label">Suggested</span> <span>75 sec</span></div>
+          </div>
+          <div id="fill-blank-content"></div>
+          <div class="task-actions">
+            <button class="ghost-btn" id="play-fill-blank" type="button">▶ Play</button>
+            <button class="ghost-btn" id="slow-fill-blank" type="button">▶ Slow</button>
+            <button class="ghost-btn" id="toggle-fill-blank-script" type="button">Show transcript</button>
+            <button class="primary-btn" id="check-fill-blank" type="button">Check</button>
+            <button class="ghost-btn" id="new-fill-blank" type="button">New item</button>
+          </div>
+          <div class="script-box hidden" id="fill-blank-script"></div>
+          <div class="feedback" id="fill-blank-feedback"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section-block" id="speaking">
+      <div class="section-head card">
+        <div>
+          <div class="eyebrow">Section 2</div>
+          <h2>Speaking</h2>
+          <p>These tasks are based on the official speaking activity families: reading fluency, listen and repeat, and speaking proficiency. The training timers here sit inside the official public ranges.</p>
+        </div>
+        <button class="complete-btn" data-complete="speaking" type="button">Mark complete</button>
+      </div>
+
+      <div class="task-grid two-cols">
+        <article class="task-card card">
+          <div class="task-top">
+            <h3>2A. Reading fluency</h3>
+            <div class="timer-chip"><span class="timer-label">Time</span> <span id="read-fluency-timer">60</span>s</div>
+          </div>
+          <div id="read-fluency-content"></div>
+          <div class="task-actions">
+            <button class="primary-btn" id="start-read-fluency" type="button">Start 60s</button>
+            <button class="ghost-btn" id="new-read-fluency" type="button">New text</button>
+            <button class="ghost-btn" id="copy-read-fluency" type="button">Copy text</button>
+          </div>
+          <div class="hint-box">Tip: read at a normal speed, keep going if you make a mistake, and do not restart from the beginning.</div>
+        </article>
+
+        <article class="task-card card">
+          <div class="task-top">
+            <h3>2B. Listen and repeat</h3>
+            <div class="timer-chip"><span class="timer-label">Time</span> <span id="listen-repeat-timer">15</span>s</div>
+          </div>
+          <div id="listen-repeat-content"></div>
+          <div class="task-actions">
+            <button class="ghost-btn" id="play-listen-repeat" type="button">▶ Play</button>
+            <button class="ghost-btn" id="slow-listen-repeat" type="button">▶ Slow</button>
+            <button class="primary-btn" id="start-listen-repeat" type="button">Start 15s</button>
+            <button class="ghost-btn" id="toggle-listen-repeat-text" type="button">Show text</button>
+            <button class="ghost-btn" id="new-listen-repeat" type="button">New phrase</button>
+          </div>
+          <div class="script-box hidden" id="listen-repeat-text"></div>
+        </article>
+      </div>
+
+      <article class="task-card card large-card">
+        <div class="task-top">
+          <h3>2C. Speaking proficiency</h3>
+          <div class="dual-timers">
+            <div class="timer-chip"><span class="timer-label">Prep</span> <span id="speaking-prep-timer">45</span>s</div>
+            <div class="timer-chip"><span class="timer-label">Speak</span> <span id="speaking-speak-timer">60</span>s</div>
+          </div>
+        </div>
+        <div id="speaking-prompt-content"></div>
+        <div class="starter-wrap">
+          <div class="subhead">Useful starters</div>
+          <div class="chip-row" id="speaking-starters"></div>
+        </div>
+        <label class="full-width">
+          <span>Your outline</span>
+          <textarea id="speaking-outline" rows="6" placeholder="Opinion...
+Example...
+Reason...
+Conclusion..."></textarea>
+        </label>
+        <div class="task-actions">
+          <button class="primary-btn" id="start-speaking-prep" type="button">Start prep</button>
+          <button class="primary-btn" id="start-speaking-speak" type="button">Start speaking</button>
+          <button class="ghost-btn" id="new-speaking-prompt" type="button">New prompt</button>
+          <button class="ghost-btn" id="toggle-speaking-ideas" type="button">Show ideas</button>
+          <button class="ghost-btn" id="toggle-speaking-model" type="button">Show model answer</button>
+          <button class="ghost-btn" id="clear-speaking-outline" type="button">Clear</button>
+        </div>
+        <div class="script-box hidden" id="speaking-ideas"></div>
+        <div class="script-box hidden" id="speaking-model"></div>
+      </article>
+    </section>
+
+    <section class="wrap section-block" id="writing">
+      <div class="section-head card">
+        <div>
+          <div class="eyebrow">Section 3</div>
+          <h2>Writing</h2>
+          <p>Practice one full written response with model answers. This section includes both essay-style prompts and photo-description tasks, with the full 30-minute public writing timer.</p>
+        </div>
+        <button class="complete-btn" data-complete="writing" type="button">Mark complete</button>
+      </div>
+
+      <article class="task-card card large-card">
+        <div class="task-top">
+          <h3>3A. Writing proficiency</h3>
+          <div class="dual-timers">
+            <div class="timer-chip"><span class="timer-label">Timer</span> <span id="writing-timer">30:00</span></div>
+            <div class="timer-chip"><span class="timer-label">Words</span> <span id="word-count">0</span></div>
+          </div>
+        </div>
+        <div class="mode-switch">
+          <button class="toggle-btn active" id="mode-essay" type="button">Essay / structured response</button>
+          <button class="toggle-btn" id="mode-photo" type="button">Describe the photo</button>
+        </div>
+        <div id="writing-prompt-content"></div>
+        <label class="full-width">
+          <span>Your answer</span>
+          <textarea id="writing-answer" rows="14" placeholder="Write your response here..."></textarea>
+        </label>
+        <div class="task-actions">
+          <button class="primary-btn" id="start-writing-timer" type="button">Start 30 min</button>
+          <button class="ghost-btn" id="reset-writing-timer" type="button">Reset timer</button>
+          <button class="ghost-btn" id="new-essay-task" type="button">New essay</button>
+          <button class="ghost-btn" id="new-photo-task" type="button">New photo task</button>
+          <button class="ghost-btn" id="toggle-writing-plan" type="button">Show plan</button>
+          <button class="ghost-btn" id="toggle-writing-model" type="button">Show model answer</button>
+          <button class="ghost-btn" id="listen-writing-model" type="button">▶ Listen model</button>
+          <button class="ghost-btn" id="self-check-writing" type="button">Self-check</button>
+          <button class="ghost-btn" id="clear-writing-answer" type="button">Clear</button>
+        </div>
+        <div class="script-box hidden" id="writing-plan"></div>
+        <div class="script-box hidden" id="writing-model"></div>
+        <div class="feedback" id="writing-self-check"></div>
+      </article>
+    </section>
+
+    <section class="wrap section-block" id="mini-mock">
+      <div class="section-head card">
+        <div>
+          <div class="eyebrow">Section 4</div>
+          <h2>Mini realistic mock flow</h2>
+          <p>Generate one mixed exam-style sequence and copy a teacher report at the end.</p>
+        </div>
+        <button class="complete-btn" data-complete="mini-mock" type="button">Mark complete</button>
+      </div>
+
+      <article class="task-card card large-card">
+        <div class="task-actions wide-gap">
+          <button class="primary-btn" id="generate-mini-mock" type="button">Generate mini mock</button>
+          <button class="ghost-btn" id="copy-report" type="button">Copy report</button>
+        </div>
+        <div id="mini-mock-content" class="report-card"></div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>SpeakEasyTisha · VTest realistic mock · Mac &amp; iPad Safari friendly</div>
+      <div id="footer-score">Score 0 / 0</div>
+    </div>
+  </footer>
+
+  <script src="js/vtest-mathieu-realistic-mock.js"></script>
+</body>
+</html>
