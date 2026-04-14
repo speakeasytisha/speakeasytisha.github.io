@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SpeakEasyTisha • Myriam • Hobbies Essay Booster (A2→B2)</title>
+  <meta name="description" content="Essay booster on hobbies for Myriam: vocabulary, grammar accuracy, sentence structures, sequencing, comparing, connectors, writing + speaking practice with models."/>
+  <link rel="stylesheet" href="./css/english360-myriam-hobbies-essay-booster-v2.css"/>
+</head>
+<body>
+  <a class="skip" href="#main">Skip</a>
+
+  <header class="top">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">SE</div>
+      <div>
+        <div class="title">Myriam • Hobbies Essay Booster</div>
+        <div class="subtitle">Vocabulary • Accuracy • Sentence control • Sequencing • Comparing • Connecting • Writing + Speaking</div>
+      </div>
+    </div>
+
+    <div class="toolbar" role="region" aria-label="Lesson controls">
+      <div class="control">
+        <div class="label">Level</div>
+        <div class="seg" role="group" aria-label="Level selector">
+          <button class="segBtn isOn" type="button" data-level="A2">A2+</button>
+          <button class="segBtn" type="button" data-level="B1">B1</button>
+          <button class="segBtn" type="button" data-level="B2">B2</button>
+        </div>
+        <div class="tiny muted mt6">Goal: A2+ → B2.1</div>
+      </div>
+
+      <div class="control">
+        <div class="label">FR help</div>
+        <button class="pill" id="frToggle" type="button" aria-pressed="false">Off</button>
+        <div class="tiny muted mt6">Show French support</div>
+      </div>
+
+      <div class="control">
+        <div class="label">Accent (TTS)</div>
+        <div class="seg" role="group" aria-label="Accent selector">
+          <button class="segBtn isOn" type="button" data-accent="US">US</button>
+          <button class="segBtn" type="button" data-accent="UK">UK</button>
+        </div>
+        <div class="tiny muted mt6">Tap chips to hear</div>
+      </div>
+
+      <div class="control">
+        <div class="label">Rate</div>
+        <input id="rate" class="range" type="range" min="0.7" max="1.25" step="0.05" value="1"/>
+        <div class="tiny muted mt6">Slow down for clarity</div>
+      </div>
+
+      <div class="control scoreBox">
+        <div class="label">Score</div>
+        <div class="scoreLine">
+          <span class="pill mono" id="scorePill">0 / 0</span>
+          <button class="iconBtn" id="resetScore" type="button" title="Reset score" aria-label="Reset score">↺</button>
+        </div>
+        <div class="tiny">Accuracy: <span id="acc">0%</span></div>
+      </div>
+
+      <div class="control">
+        <div class="label">Status</div>
+        <div class="jsOk" id="jsOk" aria-live="polite">JS: loading…</div>
+        <div class="errBox" id="errBox" aria-live="polite" hidden></div>
+        <div class="tiny muted mt6">No drag‑and‑drop. Tap‑friendly.</div>
+      </div>
+
+      <div class="control">
+        <div class="label">Actions</div>
+        <div class="btnRow">
+          <button class="pill" id="printBtn" type="button">Print</button>
+          <button class="pill" id="newSetBtn" type="button">✨ New set</button>
+          <button class="pill ghost" id="resetAllBtn" type="button">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Sections">
+      <a class="tab" href="#vocab">Vocabulary</a>
+      <a class="tab" href="#accuracy">Accuracy</a>
+      <a class="tab" href="#structures">Sentence builder</a>
+      <a class="tab" href="#connectors">Connectors</a>
+      <a class="tab" href="#writing">Writing tasks</a>
+      <a class="tab" href="#speaking">Speaking</a>
+      <a class="tab" href="#teacher">Teacher compare</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap">
+    <noscript>
+      <div class="noscript">
+        <strong>JavaScript is disabled.</strong> Please enable JS to use the interactive exercises.
+      </div>
+    </noscript>
+
+    <section class="hero card">
+      <div class="heroGrid">
+        <div>
+          <h1 class="h1">Hobbies = perfect “exam writing” material</h1>
+          <p class="lead">
+            We’re going to keep your strong structure (<strong>intro → reasons → conclusion</strong>) and improve your biggest limits:
+            <strong>articles</strong>, <strong>word choice</strong>, <strong>agreement</strong>, and <strong>sentence control</strong>.
+          </p>
+
+          <div class="notice" role="note">
+            <div class="noticeTitle">One sentence rule (control)</div>
+            <div class="noticeBody">
+              <strong>1 idea = 1 sentence</strong> → fewer mistakes, clearer writing, higher score.
+              <div class="frOnly muted">1 idée = 1 phrase → moins de fautes, plus clair, meilleur score.</div>
+            </div>
+          </div>
+
+          <div class="miniTitle mt12">Tap-to-use upgrade lines</div>
+          <div class="chips mt8" id="upgradeChips"></div>
+        </div>
+
+        <div class="heroSide">
+          <div class="kpi">
+            <div class="kpiNum">Vocabulary</div>
+            <div class="kpiLbl">Walking • Motorcycle • Arts • Cooking • Family • Travel</div>
+          </div>
+          <div class="kpi">
+            <div class="kpiNum">Accuracy</div>
+            <div class="kpiLbl">Articles • verb patterns • prepositions • agreement</div>
+          </div>
+          <div class="kpi">
+            <div class="kpiNum">Writing</div>
+            <div class="kpiLbl">125+ words • models A2/B1/B2</div>
+          </div>
+          <div class="kpi">
+            <div class="kpiNum">Speaking</div>
+            <div class="kpiLbl">60‑second answers • connectors + examples</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vocab" class="card">
+      <h2 class="h2">1) Vocabulary (tap to hear)</h2>
+      <p class="muted">Filter + search. Tap a chip to hear it. Use these words in writing + speaking.</p>
+
+      <div class="panel mt10">
+        <div class="vocabControls">
+          <label class="labelInline">
+            Category
+            <select id="vCat" class="select"></select>
+          </label>
+          <label class="labelInline">
+            Search
+            <input id="vSearch" class="input" type="search" placeholder="trail, helmet, craft, recipe, grandchildren…"/>
+          </label>
+          <button class="pill ghost" id="vShuffle" type="button">Shuffle</button>
+          <button class="pill" id="vFlash" type="button">Flashcards</button>
+        </div>
+
+        <div class="chips mt10" id="vChips"></div>
+
+        <details class="mt12">
+          <summary class="summary">Definitions + examples</summary>
+          <div id="vList"></div>
+        </details>
+
+        <div class="modal" id="flashModal" hidden>
+          <div class="modalCard" role="dialog" aria-modal="true" aria-label="Flashcards">
+            <div class="modalTop">
+              <div class="modalTitle">Flashcards</div>
+              <button class="iconBtn" id="flashClose" type="button" aria-label="Close">✕</button>
+            </div>
+            <div class="flashCard" id="flashCard" tabindex="0" role="button" aria-label="Flip card"></div>
+            <div class="flashBtns">
+              <button class="pill ghost" id="flashPrev" type="button">◀ Prev</button>
+              <button class="pill" id="flashFlip" type="button">Flip</button>
+              <button class="pill ghost" id="flashNext" type="button">Next ▶</button>
+            </div>
+            <div class="tiny muted mt10">Tip: Flip → read aloud → use it in a sentence.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="accuracy" class="card">
+      <h2 class="h2">2) Accuracy booster (articles + verbs + prepositions)</h2>
+      <p class="muted">Short quizzes to fix the biggest score killers.</p>
+
+      <div class="grid2 mt10">
+        <div class="panel">
+          <h3 class="h3">A) Mini lesson (tap to copy)</h3>
+          <div class="miniLesson" id="miniLesson"></div>
+
+          <div class="actionsRow mt10">
+            <button class="pill" id="copyLesson" type="button">Copy key rules</button>
+            <button class="pill ghost" id="sayLesson" type="button">▶ Read</button>
+          </div>
+
+          <details class="mt12">
+            <summary class="summary">Common mistakes checklist</summary>
+            <div class="panel" id="mistakeBox"></div>
+          </details>
+        </div>
+
+        <div class="panel">
+          <h3 class="h3">B) Quick quiz (scored)</h3>
+          <div id="accQuiz"></div>
+          <div class="actionsRow mt10">
+            <button class="pill" id="newAccQuiz" type="button">New question</button>
+          </div>
+
+          <details class="mt12">
+            <summary class="summary">Fix the sentence (tap to edit)</summary>
+            <div class="tiny muted">Rewrite the sentence with correct grammar. Then check.</div>
+            <div class="fixBox mt10">
+              <div class="fixPrompt" id="fixPrompt"></div>
+              <textarea class="textarea" id="fixInput" rows="3" placeholder="Rewrite here…"></textarea>
+              <div class="actionsRow mt10">
+                <button class="pill" id="fixCheck" type="button">Check</button>
+                <button class="pill ghost" id="fixShow" type="button">Show model</button>
+                <button class="pill ghost" id="fixNew" type="button">New</button>
+              </div>
+              <div class="model mt10" id="fixFeedback"></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="structures" class="card">
+      <h2 class="h2">3) Sentence builder (control + variety)</h2>
+      <p class="muted">Tap chips to build strong, safe sentences. One idea per sentence.</p>
+
+      <div class="grid2 mt10">
+        <div class="panel">
+          <h3 class="h3">A) Sentence structures (tap to insert)</h3>
+          <div class="chips" id="structChips"></div>
+
+          <label class="labelInline mt12">
+            Your sentences
+            <textarea class="textarea" id="structOut" rows="10" placeholder="Tap chips to build sentences…"></textarea>
+          </label>
+
+          <div class="actionsRow mt10">
+            <button class="pill ghost" id="structClear" type="button">Clear</button>
+            <button class="pill" id="structModel" type="button">Show examples (level)</button>
+            <button class="pill" id="structSay" type="button">▶ Read</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="h3">B) Comparing practice (walking vs motorcycle, etc.)</h3>
+          <div class="tiny muted">Choose → build 3 comparison sentences.</div>
+
+          <label class="labelInline mt10">
+            Compare
+            <select id="cmpPair" class="select"></select>
+          </label>
+
+          <div class="miniTitle mt10">Comparative chips</div>
+          <div class="chips mt8" id="cmpChips"></div>
+
+          <label class="labelInline mt10">
+            Your comparison
+            <textarea class="textarea" id="cmpOut" rows="7" placeholder="Example: Walking is more relaxing than riding a motorcycle."></textarea>
+          </label>
+
+          <div class="actionsRow mt10">
+            <button class="pill ghost" id="cmpClear" type="button">Clear</button>
+            <button class="pill" id="cmpModel" type="button">Show model</button>
+          </div>
+          <div class="model mt10" id="cmpModelOut"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="connectors" class="card">
+      <h2 class="h2">4) Sequencing + connectors (make it flow)</h2>
+      <p class="muted">Use 2 connectors + 1 example → instant “next level”.</p>
+
+      <div class="grid2 mt10">
+        <div class="panel">
+          <h3 class="h3">A) Connector bank</h3>
+          <div class="chips" id="connChips"></div>
+
+          <label class="labelInline mt12">
+            Connector practice
+            <textarea class="textarea" id="connOut" rows="6" placeholder="Tap connectors to build a mini paragraph…"></textarea>
+          </label>
+
+          <div class="actionsRow mt10">
+            <button class="pill ghost" id="connClear" type="button">Clear</button>
+            <button class="pill" id="connExample" type="button">Show mini paragraph</button>
+          </div>
+          <div class="model mt10" id="connExampleOut"></div>
+        </div>
+
+        <div class="panel">
+          <h3 class="h3">B) Connector mini‑quiz (scored)</h3>
+          <div id="connQuiz"></div>
+          <button class="pill mt10" id="newConnQuiz" type="button">New question</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="writing" class="card">
+      <h2 class="h2">5) Writing tasks (exam-style) — hobbies + travel life</h2>
+      <p class="muted">Choose a task → write 125+ words → show model for your level. <span class="frOnly">Choisis une tâche → écris 125+ mots → voir le modèle.</span></p>
+
+      <div class="split mt10">
+        <div class="panel">
+          <h3 class="h3">A) Your writing</h3>
+
+          <label class="labelInline mt10">
+            Task
+            <select id="writeTask" class="select"></select>
+          </label>
+
+          <div class="timerRow mt10">
+            <button class="pill" id="write15" type="button">Start 15 min</button>
+            <button class="pill ghost" id="writeStop" type="button">Stop</button>
+            <span class="pill mono" id="writeTimer">00:00</span>
+            <span class="pill mono">Words: <span id="wordCount">0</span></span>
+            <button class="pill" id="writeListen" type="button">▶ Listen prompt</button>
+          </div>
+
+          <div class="prompt mt10">
+            <div class="miniTitle">Prompt</div>
+            <div id="writePrompt" class="promptText"></div>
+          </div>
+
+          <div class="miniTitle mt10">Useful lines (tap to insert)</div>
+          <div class="chips" id="writeLines"></div>
+
+          <label class="labelInline mt10">
+            Your text
+            <textarea id="studentText" class="textarea" rows="12" placeholder="Write here…"></textarea>
+          </label>
+
+          <div class="actionsRow mt10">
+            <button class="pill ghost" id="clearStudent" type="button">Clear</button>
+            <button class="pill" id="copyTemplate" type="button">Copy template</button>
+            <button class="pill" id="showModelWrite" type="button">Show model (level)</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="h3">B) Model library + subject lines (if needed)</h3>
+          <div class="tiny muted">Pick a scenario → see strong subjects + full model.</div>
+
+          <label class="labelInline mt10">
+            Scenario
+            <select id="modelScenario" class="select"></select>
+          </label>
+
+          <div class="actionsRow mt10">
+            <button class="pill" id="showSubjects" type="button">Show subjects</button>
+            <button class="pill ghost" id="copySubjects" type="button">Copy</button>
+          </div>
+          <div class="model mt10" id="subjectOut"></div>
+
+          <div class="actionsRow mt12">
+            <button class="pill" id="showModelEmail" type="button">Show model (level)</button>
+            <button class="pill ghost" id="copyModelEmail" type="button">Copy</button>
+            <button class="pill" id="sayModelEmail" type="button">▶ Read aloud</button>
+          </div>
+          <div class="model mt10" id="modelEmailOut"></div>
+
+          <details class="mt12">
+            <summary class="summary">Proofread checklist (fast)</summary>
+            <div class="panel" id="proofBox"></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="speaking" class="card">
+      <h2 class="h2">6) Speaking (60 seconds)</h2>
+      <p class="muted">Structure + connectors + one example. Tap “Start 60s”.</p>
+
+      <div class="grid2 mt10">
+        <div class="panel">
+          <h3 class="h3">A) Prompt + structure</h3>
+
+          <label class="labelInline mt10">
+            Prompt
+            <select id="spPrompt" class="select"></select>
+          </label>
+
+          <div class="timerRow mt10">
+            <button class="pill" id="sp60" type="button">Start 60s</button>
+            <button class="pill ghost" id="spStop" type="button">Stop</button>
+            <span class="pill mono" id="spTimer">00:00</span>
+            <button class="pill" id="spListen" type="button">▶ Listen prompt</button>
+          </div>
+
+          <div class="prompt mt10">
+            <div class="miniTitle">Prompt</div>
+            <div id="spPromptText" class="promptText"></div>
+          </div>
+
+          <div class="miniTitle mt10">Safe structure</div>
+          <div class="builder" id="spBuilder"></div>
+
+          <div class="actionsRow mt10">
+            <button class="pill" id="spShowModel" type="button">Show model (level)</button>
+            <button class="pill" id="spSayModel" type="button">▶ Read model</button>
+          </div>
+          <div class="model mt10" id="spModelOut"></div>
+        </div>
+
+        <div class="panel">
+          <h3 class="h3">B) Fluency boosters (tap + reuse)</h3>
+          <div class="chips" id="fluencyChips"></div>
+
+          <details class="mt12">
+            <summary class="summary">Mini roleplay (you + teacher)</summary>
+            <div class="tiny muted">Choose a situation and practise in two turns: you ask → teacher answers.</div>
+            <label class="labelInline mt10">
+              Situation
+              <select id="rpScenario" class="select"></select>
+            </label>
+            <div class="prompt mt10">
+              <div class="miniTitle">Your line</div>
+              <div class="promptText" id="rpYou"></div>
+            </div>
+            <div class="prompt mt10">
+              <div class="miniTitle">Teacher line (model)</div>
+              <div class="promptText" id="rpTeacher"></div>
+            </div>
+            <div class="actionsRow mt10">
+              <button class="pill" id="rpSayYou" type="button">▶ Say your line</button>
+              <button class="pill ghost" id="rpSayTeacher" type="button">▶ Say teacher</button>
+              <button class="pill ghost" id="rpNew" type="button">New</button>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="teacher" class="card">
+      <h2 class="h2">7) Teacher compare (student vs corrected vs higher-level)</h2>
+      <p class="muted">Paste the student text, paste your corrected version, then compare.</p>
+
+      <div class="grid2 mt10">
+        <div class="panel">
+          <h3 class="h3">Student version</h3>
+          <textarea id="diffStudent" class="textarea" rows="10" placeholder="Paste student version here"></textarea>
+          <div class="actionsRow mt10">
+            <button class="pill ghost" id="useWritingBox" type="button">Use writing box</button>
+            <button class="pill ghost" id="clearDiffStudent" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="h3">Corrected / higher-level</h3>
+          <textarea id="diffTeacher" class="textarea" rows="10" placeholder="Paste corrected version here"></textarea>
+          <div class="actionsRow mt10">
+            <button class="pill" id="compareBtn" type="button">Compare</button>
+            <button class="pill ghost" id="clearDiffTeacher" type="button">Clear</button>
+          </div>
+          <div class="legend mt10">
+            <span class="legendItem add">Added</span>
+            <span class="legendItem del">Removed</span>
+            <span class="legendItem same">Same</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="diffBox mt12" id="diffOut" aria-live="polite"></div>
+
+      <details class="mt12">
+        <summary class="summary">Feedback stems (copy/paste)</summary>
+        <div class="panel" id="feedbackBox"></div>
+      </details>
+    </section>
+
+    <footer class="footer">
+      <div class="muted">SpeakEasyTisha • Myriam • Hobbies Essay Booster • Touch-friendly • Print-friendly</div>
+    </footer>
+  </main>
+
+  
+  <script>
+    // If the external JS file is missing / wrong path, show a clear message.
+    window.__SE_MyriamHobbiesBoosterLoaded = false;
+    setTimeout(function(){
+      if(!window.__SE_MyriamHobbiesBoosterLoaded){
+        var ok = document.getElementById('jsOk');
+        if(ok) ok.textContent = 'JS: not loaded ❌';
+        var box = document.getElementById('errBox');
+        if(box){ box.hidden = false; box.textContent =
+          '⚠️ JS file not loaded.
+Check: HTML in the root folder, JS in /js/, CSS in /css/.
+This page expects: /js/english360-myriam-hobbies-essay-booster-v2.js and /css/english360-myriam-hobbies-essay-booster-v2.css.';
+        }
+      }
+    }, 1200);
+  </script>
+
+  <script src="./js/english360-myriam-hobbies-essay-booster-v2.js" onerror="this.onerror=null; this.src='/js/english360-myriam-hobbies-essay-booster-v2.js';"></script>
+</body>
+</html>
