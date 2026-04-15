@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>🎤 Frankie — CLOE Oral Mock (Last Lesson) | SpeakEasyTisha</title>
+
+  <!-- Put CSS in /css/cloe-frankie-oral-last-lesson.css -->
+  <link rel="stylesheet" href="/css/cloe-frankie-oral-last-lesson.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="se-header">
+    <div class="se-header__inner">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true">SpeakEasy<span>Tisha</span></div>
+        <div class="brand__tag">CLOE • Oral mock • About you + work + where you live • UK/US audio • Touch-friendly</div>
+      </div>
+
+      <div class="toolrow">
+        <div class="tool">
+          <label class="sr" for="accent">Accent</label>
+          <select id="accent" class="select" title="Text-to-speech accent">
+            <option value="en-GB">🇬🇧 UK</option>
+            <option value="en-US">🇺🇸 US</option>
+          </select>
+        </div>
+        <button class="btn btn--ghost" id="btnStopSpeech" type="button">⏹ Stop</button>
+        <button class="btn btn--ghost" id="btnResetAll" type="button">↺ Reset</button>
+        <button class="btn btn--ghost" id="btnPrint" type="button">🖨 Print</button>
+      </div>
+    </div>
+
+    <nav class="se-nav" aria-label="Lesson sections">
+      <button class="navchip" data-scroll="#format" type="button">Exam style</button>
+      <button class="navchip" data-scroll="#oral" type="button">Oral mock</button>
+      <button class="navchip" data-scroll="#builder" type="button">Build answer</button>
+      <button class="navchip" data-scroll="#fill" type="button">Fill-in</button>
+      <button class="navchip" data-scroll="#vocab" type="button">Flashcards</button>
+      <button class="navchip" data-scroll="#workshop" type="button">Workshop</button>
+    </nav>
+
+    <div class="scorebar" aria-label="Score">
+      <div class="scorebar__left">
+        <span class="pill">🎯 Score</span>
+        <strong id="scoreTop">0</strong>
+        <span class="muted">/</span>
+        <span id="maxTop">60</span>
+        <span class="sep">•</span>
+        <span class="pill">✅ Completed</span>
+        <strong id="doneTop">0</strong><span class="muted">/</span><span id="doneMax">5</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="se-main">
+    <section class="card hero">
+      <h1>🎤 Frankie — CLOE Oral Mock (Last Lesson)</h1>
+      <p class="lead">
+        Practise like the CLOE oral interview: <strong>answer clearly</strong>, <strong>add details</strong>,
+        <strong>use connectors</strong>, and <strong>ask one question back</strong>.
+      </p>
+
+      <div class="notice">
+        <strong>3-step speaking tool:</strong>
+        <span class="tag">Direct answer</span>
+        <span class="tag">2 details + example</span>
+        <span class="tag">Polite closing + question back</span>
+      </div>
+
+      <div class="hero__actions">
+        <button class="btn" id="btnListenPerfect" type="button">🔊 Listen: perfect answer rhythm</button>
+        <button class="btn btn--ghost" data-scroll="#oral" type="button">Start the mock</button>
+        <button class="btn btn--ghost" data-scroll="#vocab" type="button">Review vocab</button>
+      </div>
+    </section>
+
+    <section id="format" class="card">
+      <h2>🧭 Exam style reminders (simple)</h2>
+      <div class="grid3">
+        <article class="step">
+          <h3><span class="badge">Speak</span> Calm + clear</h3>
+          <p class="muted">Use simple, accurate English. Rephrase if needed.</p>
+        </article>
+        <article class="step">
+          <h3><span class="badge">Structure</span> 3 steps</h3>
+          <p class="muted">Answer → details → closing + question back.</p>
+        </article>
+        <article class="step">
+          <h3><span class="badge">Interaction</span> Ask back</h3>
+          <p class="muted">Show you can interact: clarify, confirm, ask a question.</p>
+        </article>
+      </div>
+
+      <div class="mini" style="margin-top:12px">
+        <div class="mini__title">Fast connectors</div>
+        <div class="mini__body">
+          <div class="bank" id="connectorBank" aria-label="Connector bank"></div>
+          <p class="tiny muted" style="margin-top:10px">Tap a connector to hear it. Use 2–4 per answer.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="oral" class="card">
+      <div class="row">
+        <div>
+          <h2>🎙 Oral mock (choose a scenario)</h2>
+          <p class="muted">Listen → read the model → practise with the timer → answer a follow-up question.</p>
+        </div>
+        <div class="right">
+          <label class="sr" for="scenarioSelect">Scenario</label>
+          <select id="scenarioSelect" class="select"></select>
+        </div>
+      </div>
+
+      <div class="scenario">
+        <div class="scenario__left">
+          <div class="pill tiny">Prompt</div>
+          <h3 id="promptText">—</h3>
+          <p class="tiny muted" id="contextText">—</p>
+
+          <div class="outactions">
+            <button class="btn btn--ghost" id="btnListenPrompt" type="button">🔊 Listen prompt</button>
+            <button class="btn btn--ghost" id="btnToggleModel" type="button">👀 Show/Hide model</button>
+            <button class="btn btn--ghost" id="btnListenModel" type="button">🔊 Listen model</button>
+            <button class="btn btn--ghost" id="btnCopyModel" type="button">📋 Copy model</button>
+          </div>
+
+          <div class="modelbox" id="modelBox" hidden>
+            <div class="modelbox__head">
+              <span class="pill">Model answer (structured)</span>
+              <span class="tiny muted">Copy the structure + phrases, not every word.</span>
+            </div>
+            <div id="modelText" class="textbox"></div>
+
+            <div class="pill tiny" style="margin-top:12px">3-step plan</div>
+            <ol id="planList" class="olist"></ol>
+          </div>
+
+          <div class="mini" style="margin-top:12px">
+            <div class="mini__title">Follow-up question practice</div>
+            <div class="mini__body">
+              <p class="tiny muted">Click to get a realistic follow-up question. Answer it in one calm mini-structure.</p>
+              <div class="follow">
+                <div class="follow__q" id="followQ">—</div>
+                <div class="outactions" style="margin-top:10px">
+                  <button class="btn" id="btnNewFollow" type="button">🎲 New follow-up</button>
+                  <button class="btn btn--ghost" id="btnListenFollow" type="button">🔊 Listen</button>
+                  <button class="btn btn--ghost" id="btnToggleFollowModel" type="button">👀 Show/Hide sample reply</button>
+                </div>
+                <div class="textbox" id="followModel" hidden></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="scenario__right">
+          <h3>⏱ Timed practice</h3>
+          <p class="muted tiny">Use the recommended timer. Try to speak until the end.</p>
+
+          <div class="pill tiny" id="recommendedTime">⏱ Recommended: <strong id="recommendedTimeVal">60</strong>s</div>
+
+          <div class="timechips" aria-label="Quick timer presets">
+            <button class="chipbtn" id="btnSet45" type="button">45s</button>
+            <button class="chipbtn is-on" id="btnSet60" type="button">60s</button>
+            <button class="chipbtn" id="btnSet90" type="button">90s</button>
+          </div>
+
+          <div class="timer">
+            <div class="timer__num" id="timerNum">60</div>
+            <div class="timer__label">seconds</div>
+          </div>
+
+          <div class="outactions">
+            <button class="btn" id="btnStartTimer" type="button">▶ Start</button>
+            <button class="btn btn--ghost" id="btnStopTimer" type="button">⏸ Stop</button>
+            <button class="btn btn--ghost" id="btnResetTimer" type="button">↺ Reset</button>
+          </div>
+
+          <div class="feedback" id="timerFeedback" aria-live="polite"></div>
+
+          <button class="btn btn--ghost" id="btnDoneSpoke" type="button" style="margin-top:10px">✅ I spoke the full time</button>
+
+          <div class="mini" style="margin-top:12px">
+            <div class="mini__title">Your notes</div>
+            <div class="mini__body">
+              <textarea id="notesBox" class="textarea" rows="7" placeholder="New words, mistakes, pronunciation notes…"></textarea>
+              <div class="outactions">
+                <button class="btn btn--ghost" id="btnCopyNotes" type="button">🗒 Copy notes</button>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="builder" class="card">
+      <h2>🧩 Build a simple oral answer (easy mode)</h2>
+      <p class="muted">Start with <strong>Easy (4 blocks)</strong>. On iPad: tap ➕ Add. Use ↑ ↓ to reorder.</p>
+
+      <div class="mini" style="margin-top:12px">
+        <div class="mini__title">Builder level</div>
+        <div class="mini__body">
+          <label for="builderLevel" class="tiny muted">Choose your difficulty</label>
+          <select id="builderLevel" class="select" aria-label="Builder difficulty">
+            <option value="easy" selected>Easy (4 blocks)</option>
+            <option value="full">Full (all blocks)</option>
+          </select>
+          <p class="tiny muted" style="margin-top:8px">Tip: stay in Easy mode unless you feel very confident.</p>
+        </div>
+      </div>
+
+      <div class="builder">
+        <div class="builder__col">
+          <div class="mini">
+            <div class="mini__title">Blocks</div>
+            <div class="mini__body">
+              <div id="blockPool" class="blockpool" aria-label="Available blocks"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="builder__col">
+          <div class="mini">
+            <div class="mini__title">Your answer order</div>
+            <div class="mini__body">
+              <ol id="answerLane" class="answerlane" aria-label="Your ordered blocks"></ol>
+              <div class="outactions">
+                <button class="btn" id="btnCheckBuilder" type="button">✅ Check</button>
+                <button class="btn btn--ghost" id="btnShowBuilderOrder" type="button">👀 Show order</button>
+                <button class="btn btn--ghost" id="btnResetBuilder" type="button">↺ Reset</button>
+                <button class="btn btn--ghost" id="btnListenBuilt" type="button">🔊 Listen</button>
+              </div>
+              <div class="feedback" id="builderFeedback" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fill" class="card">
+      <h2>🧪 Fill-in practice (prepositions + spelling)</h2>
+      <p class="muted">Complete the text using dropdowns. Then check.</p>
+
+      <div class="mini">
+        <div class="mini__title">Fill the paragraph</div>
+        <div class="mini__body">
+          <div class="filltext" id="fillBox"></div>
+          <div class="outactions">
+            <button class="btn" id="btnCheckFill" type="button">Check</button>
+            <button class="btn btn--ghost" id="btnResetFill" type="button">Reset</button>
+            <button class="btn btn--ghost" id="btnListenFill" type="button">🔊 Listen</button>
+          </div>
+          <div class="feedback" id="fillFeedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vocab" class="card">
+      <div class="row">
+        <div>
+          <h2>🃏 Vocabulary flashcards (EN + FR)</h2>
+          <p class="muted">Tap to flip. Use Listen for pronunciation.</p>
+        </div>
+        <div class="right">
+          <button class="btn btn--ghost" id="btnShuffleVocab" type="button">🔀 Shuffle</button>
+        </div>
+      </div>
+
+      <div class="filters" aria-label="Flashcard filters">
+        <button class="chip is-on" data-vcat="all" type="button">All</button>
+        <button class="chip" data-vcat="About you" type="button">About you</button>
+        <button class="chip" data-vcat="Work (CARSAT)" type="button">Work</button>
+        <button class="chip" data-vcat="Where you live" type="button">Where you live</button>
+      </div>
+
+      <div id="flashGrid" class="flashgrid" aria-label="Vocabulary flashcards"></div>
+    </section>
+
+    <section id="workshop" class="card">
+      <h2>🧑‍🏫 Workshop (with your teacher)</h2>
+      <p class="muted">Write your final version, then speak it with the other accent.</p>
+
+      <div class="split2">
+        <div class="mini">
+          <div class="mini__title">My final oral answer (notes)</div>
+          <div class="mini__body">
+            <textarea id="finalOral" class="textarea" rows="10" placeholder="Write your final answer here (bullet points or full text)…"></textarea>
+            <div class="outactions">
+              <button class="btn btn--ghost" id="btnCopyFinalOral" type="button">📋 Copy</button>
+              <button class="btn btn--ghost" id="btnListenFinalOral" type="button">🔊 Listen</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="mini__title">Self-check</div>
+          <div class="mini__body">
+            <div id="checkGrid" class="checkgrid" aria-label="Checklist"></div>
+            <button class="btn btn--ghost" id="btnDoneChecklist" type="button" style="margin-top:10px">✅ Mark checklist done</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="scorebar scorebar--bottom" aria-label="Score bottom">
+        <div class="scorebar__left">
+          <span class="pill">🎯 Score</span>
+          <strong id="scoreBottom">0</strong>
+          <span class="muted">/</span>
+          <span id="maxBottom">60</span>
+          <span class="sep">•</span>
+          <span class="pill">✅ Completed</span>
+          <strong id="doneBottom">0</strong><span class="muted">/</span><span id="doneMaxBottom">5</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p class="tiny muted">SpeakEasyTisha • CLOE oral mock • Touch-friendly • Uses speechSynthesis</p>
+      <a class="tiny" href="#format">Back to top ↑</a>
+    </footer>
+  </main>
+
+  <script src="/js/cloe-frankie-oral-last-lesson.js"></script>
+</body>
+</html>
