@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time & Travel English Quest · SpeakEasyTisha</title>
+  <link rel="stylesheet" href="/css/pink-time-dates-quest.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="brand">SpeakEasyTisha</div>
+    <div class="controls-top">
+      <div class="voice-toggle" aria-label="Voice choice">
+        <span>Voice</span>
+        <button class="mini-btn active" data-voice="US">US</button>
+        <button class="mini-btn" data-voice="UK">UK</button>
+      </div>
+      <div class="voice-toggle" aria-label="Auto audio">
+        <span>Auto audio</span>
+        <button class="mini-btn active" data-autoaudio="off">OFF</button>
+        <button class="mini-btn" data-autoaudio="on">ON</button>
+      </div>
+      <div class="score-box">Score <strong id="globalScore">0 / 0</strong></div>
+      <button id="resetAllBtn" class="secondary-btn">↺ Reset all</button>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="hero card">
+      <p class="eyebrow">A1+ → A2 · Touch-friendly · Travel + time + grammar</p>
+      <h1>Time & Travel English Quest</h1>
+      <p class="lead">
+        Learn time, days, weeks, months, seasons, years, travel verbs, present simple, and present continuous with
+        vocabulary cards, quick drills, guided dialogues, sentence builders, and role-plays.
+      </p>
+      <div class="hero-actions">
+        <a href="#vocab" class="primary-btn">▶ Start lesson</a>
+        <a href="#roleplay" class="secondary-btn">🎭 Go to role-play</a>
+      </div>
+    </section>
+
+    <section class="lesson-map card">
+      <h2>Lesson map (≈ 90–120 min)</h2>
+      <ol>
+        <li>Vocabulary cards: time, calendar, travel actions</li>
+        <li>Present simple vs present continuous</li>
+        <li>Quick drills with immediate feedback</li>
+        <li>Guided dialogues</li>
+        <li>Build & Speak (tap-first builder)</li>
+        <li>Interactive role-play with model replies and timers</li>
+      </ol>
+    </section>
+
+    <section id="vocab" class="card">
+      <h2>1) Vocabulary with icons</h2>
+      <p class="section-intro">Tap a category, then click a card to reveal the definition, French translation, and an example.</p>
+
+      <div class="tabs" role="tablist" aria-label="Vocabulary categories">
+        <button class="tab-btn active" data-tab="time">🕒 Time</button>
+        <button class="tab-btn" data-tab="week">📅 Days & Weeks</button>
+        <button class="tab-btn" data-tab="months">🗓 Months</button>
+        <button class="tab-btn" data-tab="seasons">🌦 Seasons</button>
+        <button class="tab-btn" data-tab="travel">✈️ Travel verbs</button>
+      </div>
+
+      <div id="tab-time" class="tab-panel active"><div class="card-grid" id="timeGrid"></div></div>
+      <div id="tab-week" class="tab-panel"><div class="card-grid" id="weekGrid"></div></div>
+      <div id="tab-months" class="tab-panel"><div class="card-grid" id="monthsGrid"></div></div>
+      <div id="tab-seasons" class="tab-panel"><div class="card-grid" id="seasonsGrid"></div></div>
+      <div id="tab-travel" class="tab-panel"><div class="card-grid" id="travelGrid"></div></div>
+    </section>
+
+    <section id="grammar" class="card">
+      <h2>2) Grammar focus: Present simple & Present continuous</h2>
+      <div class="grammar-grid">
+        <article class="grammar-box">
+          <h3>🟣 Present simple</h3>
+          <p><strong>Use:</strong> routines, facts, schedules</p>
+          <ul>
+            <li>I travel in summer.</li>
+            <li>The hotel opens at 2:00 PM.</li>
+            <li>She books trips online.</li>
+          </ul>
+          <p class="mini-note">Keywords: every day, usually, often, on Mondays, in summer</p>
+        </article>
+        <article class="grammar-box">
+          <h3>🟣 Present continuous</h3>
+          <p><strong>Use:</strong> now, around now, or a current plan</p>
+          <ul>
+            <li>I am packing my suitcase now.</li>
+            <li>We are travelling in July.</li>
+            <li>She is calling the hotel.</li>
+          </ul>
+          <p class="mini-note">Keywords: now, today, at the moment, this week</p>
+        </article>
+      </div>
+      <div class="compare-box">
+        <h3>Quick comparison</h3>
+        <p><strong>I travel in August.</strong> → general habit / usual plan</p>
+        <p><strong>I am travelling in August.</strong> → a current or arranged plan</p>
+      </div>
+    </section>
+
+    <section id="drills" class="card">
+      <h2>3) Quick drills</h2>
+      <p class="section-intro">Choose the best answer. Instant feedback + hints.</p>
+      <div class="drill-controls">
+        <label for="drillSet">Set</label>
+        <select id="drillSet">
+          <option value="calendar">Calendar & time</option>
+          <option value="grammar">Grammar</option>
+          <option value="travel">Travel</option>
+        </select>
+        <button id="newDrillBtn" class="primary-btn">New prompt</button>
+        <button id="resetDrillsBtn" class="secondary-btn">↺ Reset</button>
+        <button id="listenDrillBtn" class="secondary-btn">🔊 Listen prompt</button>
+      </div>
+      <div class="exercise-box">
+        <h3 id="drillPrompt">Click “New prompt” to begin.</h3>
+        <div id="drillOptions" class="options-grid"></div>
+        <p id="drillFeedback" class="feedback"></p>
+      </div>
+    </section>
+
+    <section id="dialogues" class="card">
+      <h2>4) Interactive dialogues</h2>
+      <p class="section-intro">Read, listen, and practise practical mini-dialogues.</p>
+      <div class="dialogue-chooser">
+        <label for="dialogueSelect">Dialogue</label>
+        <select id="dialogueSelect">
+          <option value="planning">Planning a trip</option>
+          <option value="hotel">Booking a hotel</option>
+          <option value="dates">Talking about days and dates</option>
+        </select>
+        <button id="loadDialogueBtn" class="primary-btn">Load dialogue</button>
+        <button id="listenDialogueBtn" class="secondary-btn">🔊 Listen line</button>
+      </div>
+      <div id="dialogueLines" class="dialogue-lines"></div>
+      <div class="model-box">
+        <strong>Your turn helper:</strong>
+        <p id="dialogueModel">Choose a dialogue.</p>
+      </div>
+    </section>
+
+    <section id="builder" class="card">
+      <h2>5) Build & Speak</h2>
+      <p class="section-intro">Tap words to build the sentence, then check it and say it aloud.</p>
+      <div class="builder-controls">
+        <label for="builderTask">Task</label>
+        <select id="builderTask"></select>
+        <button id="resetBuilderBtn" class="secondary-btn">↺ Reset</button>
+        <button id="listenBuilderBtn" class="secondary-btn">🔊 Listen model</button>
+      </div>
+      <div id="builderTarget" class="builder-target" aria-live="polite"></div>
+      <div id="builderWords" class="builder-words"></div>
+      <div class="builder-actions">
+        <button id="checkBuilderBtn" class="primary-btn">✅ Check</button>
+        <button id="clearBuilderBtn" class="secondary-btn">Clear</button>
+      </div>
+      <p id="builderFeedback" class="feedback"></p>
+    </section>
+
+    <section id="roleplay" class="card">
+      <h2>6) Guided role-play</h2>
+      <p class="section-intro">Teacher lines in blue. Learner replies supported with model answers.</p>
+      <div class="roleplay-controls">
+        <label for="scenarioSelect">Scenario</label>
+        <select id="scenarioSelect"></select>
+        <button id="startRoleplayBtn" class="primary-btn">▶ Start</button>
+        <button id="nextRoleplayBtn" class="secondary-btn">➡ Next</button>
+        <button id="showModelBtn" class="secondary-btn">✅ Show model reply</button>
+        <button id="listenRoleplayBtn" class="secondary-btn">🔊 Listen line</button>
+      </div>
+      <div class="timer-row">
+        <div class="timer-box">
+          <span>Prep</span>
+          <strong id="prepSeconds">15</strong>
+          <span>seconds</span>
+          <button id="prepTimerBtn" class="mini-btn">⏱ Start prep</button>
+        </div>
+        <div class="timer-box">
+          <span>Speak</span>
+          <strong id="speakSeconds">30</strong>
+          <span>seconds</span>
+          <button id="speakTimerBtn" class="mini-btn">🎙 Start speak</button>
+        </div>
+      </div>
+      <div id="roleplayLine" class="roleplay-line">Choose a scenario and click Start.</div>
+      <div id="roleplayModel" class="model-box">Model reply will appear here.</div>
+    </section>
+
+    <footer class="site-footer">
+      <p>© SpeakEasyTisha · Time & Travel English Quest · Touch-friendly (tap-first)</p>
+    </footer>
+  </main>
+
+  <script src="/js/pink-time-dates-quest.js"></script>
+</body>
+</html>
