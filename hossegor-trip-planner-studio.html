@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hossegor Trip Planner Studio</title>
+  <link rel="stylesheet" href="css/hossegor-trip-planner-studio.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">SpeakEasyTisha</div>
+    <div class="controls">
+      <div class="chip">Accent
+        <button class="mini active" data-voice="US">US</button>
+        <button class="mini" data-voice="UK">UK</button>
+      </div>
+      <div class="chip">Score <strong id="score">0 / 0</strong></div>
+      <button id="resetAll" class="ghost">Reset</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero card">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">6 days from May 7 • hotel for 2 • beach preference</p>
+          <h1>Hossegor Trip Planner Studio</h1>
+          <p class="lead">Plan a realistic beach trip, compare real hotels, talk about amenities, and practise booking a room in English.</p>
+          <div class="actions">
+            <a class="btn" href="#hotels">Start lesson</a>
+            <button class="ghost" id="listenHero">🔊 Listen</button>
+          </div>
+        </div>
+        <aside class="sidebox">
+          <h3>Trip facts</h3>
+          <ul>
+            <li>📍 Hossegor / Capbreton area</li>
+            <li>👫 2 adults</li>
+            <li>📅 May 7 for 6 days</li>
+            <li>🏖️ prefers the beach</li>
+            <li>🏄 husband likes surf / kite</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Vocabulary</h2>
+      <div class="tabs">
+        <button class="tab active" data-tab="hotel">🏨 Hotel</button>
+        <button class="tab" data-tab="amenities">🧳 Amenities</button>
+        <button class="tab" data-tab="surf">🏄 Surf & kite</button>
+      </div>
+      <div id="tab-hotel" class="panel active"><div id="hotelGrid" class="grid"></div></div>
+      <div id="tab-amenities" class="panel"><div id="amenitiesGrid" class="grid"></div></div>
+      <div id="tab-surf" class="panel"><div id="surfGrid" class="grid"></div></div>
+    </section>
+
+    <section id="hotels" class="card">
+      <h2>Compare real hotel options</h2>
+      <div class="hotel-grid">
+        <article class="hotel featured">
+          <div class="top">
+            <div><h3>Hôtel de La Plage</h3><p class="muted">Best beach choice</p></div>
+            <div class="rate">9.1</div>
+          </div>
+          <ul>
+            <li>🏖️ Right on the beach / oceanfront</li>
+            <li>💑 Highly rated by couples</li>
+            <li>🚗 Parking mentioned</li>
+            <li>🥐 Breakfast mentioned by guests</li>
+          </ul>
+          <p class="price">Example rate shown: $189.02 / night</p>
+          <button class="ghost speak" data-text="I prefer Hotel de La Plage because it is right on the beach.">🔊 Practise</button>
+        </article>
+
+        <article class="hotel">
+          <div class="top">
+            <div><h3>Hôtel du Parc & Spa</h3><p class="muted">Good value / resort feel</p></div>
+            <div class="rate">7.6</div>
+          </div>
+          <ul>
+            <li>💦 Private beach area by the lake mentioned</li>
+            <li>🧖 Spa atmosphere</li>
+            <li>💶 Lower example rate</li>
+          </ul>
+          <p class="price">Example rate shown: $153.10 / night</p>
+          <button class="ghost speak" data-text="This hotel is cheaper, but I prefer a hotel directly on the beach.">🔊 Practise</button>
+        </article>
+
+        <article class="hotel">
+          <div class="top">
+            <div><h3>Hotel Mercedes</h3><p class="muted">Near beach + near lake</p></div>
+            <div class="rate">8.8</div>
+          </div>
+          <ul>
+            <li>🚶 10-minute walk from sandy beaches</li>
+            <li>🌿 3-minute walk from the marine lake</li>
+            <li>📍 good mixed location</li>
+          </ul>
+          <p class="price">Example rate shown: $183.12 / night</p>
+          <button class="ghost speak" data-text="This hotel is close to both the beach and the lake.">🔊 Practise</button>
+        </article>
+      </div>
+      <div class="decision">
+        <strong>Best answer for Karine:</strong>
+        <p id="bestText">I think Hôtel de La Plage is the best choice because it is right on the beach.</p>
+        <button class="ghost" id="listenBest">🔊 Listen</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Surf / kite spots nearby</h2>
+      <div class="spot-grid">
+        <article class="spot"><h3>La Sud</h3><p>🌱 Better for easier conditions / beginner retreat.</p></article>
+        <article class="spot"><h3>La Gravière</h3><p>🔥 Famous powerful waves, world-class reputation.</p></article>
+        <article class="spot"><h3>La Nord</h3><p>⚠️ Experts only.</p></article>
+        <article class="spot"><h3>Sud Landes Kite</h3><p>🪁 Nearby kite-school option in the area.</p></article>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row-head">
+        <h2>Multiple choice</h2>
+        <button class="btn" id="newMcq">New question</button>
+      </div>
+      <h3 id="mcqPrompt">Click “New question” to begin.</h3>
+      <div id="mcqOptions" class="options"></div>
+      <p id="mcqFeedback" class="feedback"></p>
+    </section>
+
+    <section class="card">
+      <div class="row-head">
+        <h2>Fill in the blank</h2>
+        <button class="btn" id="newFill">New fill-in</button>
+      </div>
+      <p id="fillPrompt">Click “New fill-in” to begin.</p>
+      <div class="fill-row">
+        <input id="fillInput" type="text" placeholder="Type your answer" />
+        <button class="btn" id="checkFill">Check</button>
+      </div>
+      <p id="fillHint" class="muted"></p>
+      <p id="fillFeedback" class="feedback"></p>
+    </section>
+
+    <section class="card">
+      <div class="row-head">
+        <h2>Booking dialogue</h2>
+        <button class="btn" id="loadDialogue">Load dialogue</button>
+      </div>
+      <div id="dialogue" class="dialogue"></div>
+      <div class="helper"><strong>Helper:</strong> <span id="helperText">Load the dialogue to begin.</span></div>
+    </section>
+
+    <section class="card">
+      <h2>Final roleplay builder</h2>
+      <div class="role-grid">
+        <textarea id="r1">Hello, I would like to book a room, please.</textarea>
+        <textarea id="r2">For two adults, from May 7 for six days.</textarea>
+        <textarea id="r3">We prefer a hotel near the beach.</textarea>
+        <textarea id="r4">Do you have breakfast and parking?</textarea>
+        <textarea id="r5">My husband is a surfer, so the beach location is perfect.</textarea>
+        <textarea id="r6">Thank you very much.</textarea>
+      </div>
+      <div class="actions">
+        <button class="btn" id="listenRoleUs">🇺🇸 Listen full roleplay</button>
+        <button class="ghost" id="listenRoleUk">🇬🇧 Listen full roleplay</button>
+        <button class="ghost" id="showRole">Show text</button>
+      </div>
+      <pre id="roleOut" class="out"></pre>
+    </section>
+  </main>
+  <script src="js/hossegor-trip-planner-studio.js"></script>
+</body>
+</html>
