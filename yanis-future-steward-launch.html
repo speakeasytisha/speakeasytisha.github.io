@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Yanis — Ready for Take-Off</title>
+  <link rel="stylesheet" href="css/yanis-future-steward-launch.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <div class="eyebrow">SpeakEasyTisha • First lesson</div>
+      <h1>Yanis — Ready for Take-Off</h1>
+      <p class="hero-subtitle">All about you, your current job, your English, and your future as a steward.</p>
+
+      <div class="accent-toolbar" aria-label="Listening controls">
+        <div class="accent-row">
+          <span class="accent-label">Choose your accent</span>
+          <div class="accent-toggle">
+            <button id="accentUK" class="accent-btn active" type="button" aria-pressed="true">British 🇬🇧</button>
+            <button id="accentUS" class="accent-btn" type="button" aria-pressed="false">American 🇺🇸</button>
+            <button id="stopAudio" class="btn btn-outline btn-small" type="button">Stop audio</button>
+          </div>
+        </div>
+        <p id="voiceStatus" class="tiny-note voice-status">Current accent: British English. Use the speaker buttons throughout the lesson to hear words, texts, and sentences.</p>
+      </div>
+
+      <div class="hero-grid">
+        <div class="boarding-card">
+          <div class="boarding-label">Today’s mission</div>
+          <ul>
+            <li>describe yourself clearly</li>
+            <li>talk about your job and your tasks</li>
+            <li>say when you use English</li>
+            <li>explain your goal and why</li>
+          </ul>
+        </div>
+
+        <div class="boarding-card score-card">
+          <div class="boarding-label">Flight score</div>
+          <div id="scoreDisplay" class="score-value">0 / 38</div>
+          <p class="tiny-note">Your score updates automatically during the interactive activities.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section section-light">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Your lesson map</h2>
+          <p>This first lesson helps you speak about yourself with clear, useful English from day one.</p>
+        </div>
+
+        <div class="map-grid">
+          <article class="map-card">
+            <h3>1. Vocabulary runway</h3>
+            <p>Useful words and expressions for your job, your English use, and your future goal.</p>
+          </article>
+          <article class="map-card">
+            <h3>2. Clear grammar start</h3>
+            <p>Present simple with <strong>be</strong> and main verbs: affirmative, negative, and questions.</p>
+          </article>
+          <article class="map-card">
+            <h3>3. Interactive practice</h3>
+            <p>Tap-friendly vocabulary, prepositions, and verb activities with instant feedback.</p>
+          </article>
+          <article class="map-card">
+            <h3>4. Your final introduction</h3>
+            <p>Build your own short presentation before checking a model answer.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-navy">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Vocabulary runway</h2>
+          <p>Tap the card to switch between the key word and the explanation. Use the arrows to move through the set.</p>
+        </div>
+
+        <div class="flashcard-shell">
+          <div class="flash-toolbar">
+            <button id="prevFlashcard" class="btn btn-outline" type="button">◀ Previous</button>
+            <div id="flashcardCounter" class="flash-counter">1 / 16</div>
+            <button id="nextFlashcard" class="btn btn-outline" type="button">Next ▶</button>
+          </div>
+
+          <button id="flashcard" class="flashcard" type="button" aria-live="polite">
+            <div class="flash-topline" id="flashTag">Vocabulary</div>
+            <div id="flashFrontView" class="flash-face">
+              <div class="flash-main" id="flashMain">reception desk</div>
+              <div class="flash-sub" id="flashSub">front side</div>
+            </div>
+            <div id="flashBackView" class="flash-face flash-back-view" hidden>
+              <div class="flash-translation" id="flashTranslation"></div>
+              <div class="flash-definition" id="flashDefinition"></div>
+              <div class="flash-example-label">Example</div>
+              <div class="flash-example" id="flashExample"></div>
+            </div>
+          </button>
+
+          <div class="flash-actions">
+            <button id="flipFlashcard" class="btn btn-primary" type="button">Flip card</button>
+            <button id="shuffleFlashcards" class="btn btn-secondary" type="button">Shuffle cards</button>
+            <button id="listenFlashcard" class="btn btn-outline" type="button">🔊 Listen</button>
+          </div>
+        </div>
+
+        <div class="tips-grid">
+          <article class="tip-card">
+            <h3>Use these patterns</h3>
+            <ul>
+              <li>I work as a receptionist.</li>
+              <li>I work in a hotel.</li>
+              <li>I am responsible for check-in and check-out.</li>
+              <li>I use English on the phone and by email.</li>
+              <li>I want to become a steward.</li>
+            </ul>
+          </article>
+          <article class="tip-card">
+            <h3>Prepositions to remember</h3>
+            <ul>
+              <li><strong>in</strong> a hotel</li>
+              <li><strong>at</strong> reception</li>
+              <li><strong>on</strong> the phone</li>
+              <li><strong>by</strong> email</li>
+              <li><strong>during</strong> the weekend</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Vocabulary check</h2>
+          <p>Choose the best answer. You get instant feedback.</p>
+        </div>
+
+        <div class="quiz-shell">
+          <div id="vocabQuizBox" class="quiz-card">
+            <div class="quiz-topline">Vocabulary mission</div>
+            <div class="quiz-audio-row">
+              <div id="vocabQuestionNumber" class="quiz-progress">Question 1 / 10</div>
+              <button id="listenVocabQuestion" class="btn btn-outline btn-small" type="button">🔊 Listen</button>
+            </div>
+            <h3 id="vocabQuestion">What does “check-in” mean?</h3>
+            <div id="vocabOptions" class="option-grid"></div>
+            <div id="vocabFeedback" class="feedback"></div>
+            <div class="quiz-actions">
+              <button id="nextVocabQuestion" class="btn btn-primary" type="button">Next question</button>
+                <button id="resetVocabQuiz" class="btn btn-secondary" type="button">Reset section</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-red">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Preposition control tower</h2>
+          <p>Choose the correct preposition for each sentence. Then check your answers.</p>
+        </div>
+
+        <div class="practice-card">
+          <div id="prepositionList" class="list-practice"></div>
+          <div class="quiz-actions">
+            <button id="checkPrepositions" class="btn btn-primary" type="button">Check answers</button>
+            <button id="resetPrepositions" class="btn btn-secondary" type="button">Reset section</button>
+          </div>
+          <div id="prepositionSummary" class="feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Clear grammar start</h2>
+          <p>For your first lesson, you need two essentials: <strong>be</strong> and the <strong>present simple</strong> with main verbs.</p>
+        </div>
+
+        <div class="grammar-grid">
+          <article class="grammar-card">
+            <h3>1. Use <em>be</em> for identity and description</h3>
+            <p>You use <strong>be</strong> to say who you are, how old you are, where you are, and what you are.</p>
+            <table class="grammar-table">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Affirmative</td>
+                  <td>I am a receptionist. / I am twenty-five.</td>
+                </tr>
+                <tr>
+                  <td>Negative</td>
+                  <td>I am not a steward yet.</td>
+                </tr>
+                <tr>
+                  <td>Question</td>
+                  <td>Are you ready for boarding? / Am I clear?</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <article class="grammar-card">
+            <h3>2. Use the present simple for routines and job tasks</h3>
+            <p>You use the present simple to talk about your job, your responsibilities, and your regular habits.</p>
+            <table class="grammar-table">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Affirmative</td>
+                  <td>I welcome guests. / I answer emails.</td>
+                </tr>
+                <tr>
+                  <td>Negative</td>
+                  <td>I do not work alone. / I do not use English every minute.</td>
+                </tr>
+                <tr>
+                  <td>Question</td>
+                  <td>Do you answer phone calls? / Do you use English at work?</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+
+        <div class="grammar-grid grammar-grid-bottom">
+          <article class="grammar-card accent-card">
+            <h3>Useful job expressions</h3>
+            <ul>
+              <li>I work as a hotel receptionist.</li>
+              <li>I am responsible for guest reception.</li>
+              <li>I welcome guests and answer calls.</li>
+              <li>I handle check-in and check-out.</li>
+              <li>I deal with reservations and customer requests.</li>
+              <li>I use English mainly by email and on the phone.</li>
+              <li>I want to become a steward because I enjoy service and human contact.</li>
+            </ul>
+          </article>
+
+          <article class="grammar-card accent-card">
+            <h3>Quick form guide</h3>
+            <div class="mini-grid">
+              <div>
+                <h4>Affirmative</h4>
+                <p>I work in a hotel.</p>
+              </div>
+              <div>
+                <h4>Negative</h4>
+                <p>I do not work in an office.</p>
+              </div>
+              <div>
+                <h4>Question</h4>
+                <p>Do you work on weekends?</p>
+              </div>
+            </div>
+            <div class="mini-grid">
+              <div>
+                <h4>Affirmative</h4>
+                <p>I am motivated.</p>
+              </div>
+              <div>
+                <h4>Negative</h4>
+                <p>I am not late.</p>
+              </div>
+              <div>
+                <h4>Question</h4>
+                <p>Are you ready?</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Your future goal — say it simply</h2>
+          <p>You do not need a full future tense lesson yet. Use these easy patterns to talk about your next step with confidence.</p>
+        </div>
+
+        <div class="bank-grid">
+          <article class="bank-card">
+            <h3>Easy goal patterns</h3>
+            <ul>
+              <li>I want to become a steward.</li>
+              <li>I would like to work as cabin crew.</li>
+              <li>My goal is to work in air travel.</li>
+              <li>I am preparing for the LILATE exam.</li>
+            </ul>
+          </article>
+          <article class="bank-card">
+            <h3>Add your reason</h3>
+            <ul>
+              <li>because I enjoy customer contact.</li>
+              <li>because I like helping people.</li>
+              <li>because I am interested in air travel.</li>
+              <li>because I want an international job.</li>
+            </ul>
+          </article>
+          <article class="bank-card">
+            <h3>Your mini formula</h3>
+            <ul>
+              <li>Right now, I work as a receptionist.</li>
+              <li>In the future, I want to become a steward.</li>
+              <li>I think this job is a good step for me.</li>
+              <li>I am motivated and ready to improve my English.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-navy">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Verb formation lab</h2>
+          <p>Choose the correct form in each sentence. Focus on affirmative, negative, and question forms.</p>
+        </div>
+
+        <div class="practice-card">
+          <div id="grammarList" class="list-practice"></div>
+          <div class="quiz-actions">
+            <button id="checkGrammar" class="btn btn-primary" type="button">Check answers</button>
+            <button id="resetGrammar" class="btn btn-secondary" type="button">Reset section</button>
+          </div>
+          <div id="grammarSummary" class="feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Sentence pilot mode</h2>
+          <p>Pick the correct sentence type: affirmative, negative, or question.</p>
+        </div>
+
+        <div class="practice-card">
+          <div id="transformList" class="list-practice"></div>
+          <div class="quiz-actions">
+            <button id="checkTransform" class="btn btn-primary" type="button">Check answers</button>
+            <button id="resetTransform" class="btn btn-secondary" type="button">Reset section</button>
+          </div>
+          <div id="transformSummary" class="feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-red">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Your language bank</h2>
+          <p>Use these sentence starters to speak about yourself with more confidence.</p>
+        </div>
+
+        <div class="bank-grid">
+          <article class="bank-card">
+            <h3>Who you are</h3>
+            <ul>
+              <li>My name is …</li>
+              <li>I am … years old.</li>
+              <li>I live in …</li>
+            </ul>
+          </article>
+          <article class="bank-card">
+            <h3>Your job today</h3>
+            <ul>
+              <li>I work as a …</li>
+              <li>I work in a …</li>
+              <li>My main tasks are …</li>
+            </ul>
+          </article>
+          <article class="bank-card">
+            <h3>What you do well</h3>
+            <ul>
+              <li>I am organized.</li>
+              <li>I am calm under pressure.</li>
+              <li>I enjoy customer contact.</li>
+            </ul>
+          </article>
+          <article class="bank-card">
+            <h3>When you use English</h3>
+            <ul>
+              <li>I use English on the phone.</li>
+              <li>I use English by email.</li>
+              <li>I use English with international guests.</li>
+            </ul>
+          </article>
+          <article class="bank-card">
+            <h3>Your future goal</h3>
+            <ul>
+              <li>I want to become a steward.</li>
+              <li>I would like to work in air travel.</li>
+              <li>I like helping people and travelling.</li>
+            </ul>
+          </article>
+          <article class="bank-card">
+            <h3>Useful connectors</h3>
+            <ul>
+              <li>At the moment, …</li>
+              <li>In my job, …</li>
+              <li>In the future, …</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Final mission — your introduction</h2>
+          <p>Write your own short presentation first. Then reveal a model answer when you are ready.</p>
+        </div>
+
+        <div class="writing-grid">
+          <article class="writing-card">
+            <h3>Your checklist</h3>
+            <ol>
+              <li>Introduce yourself.</li>
+              <li>Say where you live.</li>
+              <li>Describe your current job.</li>
+              <li>Explain your main tasks.</li>
+              <li>Say when you use English.</li>
+              <li>Say what you do well.</li>
+              <li>Explain your future goal and why.</li>
+            </ol>
+            <button id="toggleIdeas" class="btn btn-outline" type="button">Show idea bank</button>
+            <div id="ideaBank" class="hidden-panel" hidden>
+              <p><strong>Helpful words:</strong> motivated, professional, organized, helpful, flexible, customer service, international, welcoming, calm, teamwork.</p>
+            </div>
+          </article>
+
+          <article class="writing-card">
+            <h3>Your writing space</h3>
+            <label class="visually-hidden" for="introWriting">Write your introduction here</label>
+            <textarea id="introWriting" rows="12" placeholder="Write your introduction here..."></textarea>
+            <div class="quiz-actions">
+              <button id="clearWriting" class="btn btn-secondary" type="button">Clear writing</button>
+              <button id="toggleModel" class="btn btn-primary" type="button">Reveal model answer</button>
+              <button id="listenModelAnswer" class="btn btn-outline" type="button">🔊 Listen to model</button>
+            </div>
+            <div id="modelAnswer" class="hidden-panel" hidden>
+              <p><strong>Model answer:</strong></p>
+              <p>Good afternoon. My name is Yanis, I am twenty-five years old and I live in Schiltigheim. I work as a receptionist in a three-star hotel. In my job, I welcome guests, handle check-in and check-out, answer emails and phone calls, and deal with reservations. During the weekend, I also help with the bar and breakfast service. I use English mainly on the phone and by email, especially with international guests. I think I am friendly, helpful, and comfortable with customer contact. In the future, I want to become a steward because I enjoy service, communication, and working with people.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h2 class="footer-title">Yanis — Ready for Take-Off</h2>
+        <p>Your first lesson is all about building confidence, clarity, and strong foundations for your future.</p>
+      </div>
+      <div class="footer-score-box">
+        <div class="boarding-label">Final flight score</div>
+        <div id="scoreDisplayBottom" class="score-value">0 / 38</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/yanis-future-steward-launch.js"></script>
+</body>
+</html>
