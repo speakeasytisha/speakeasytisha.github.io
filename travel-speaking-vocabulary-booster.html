@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Speaking & Vocabulary Booster</title>
+  <link rel="stylesheet" href="css/travel-speaking-vocabulary-booster.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="brand-wrap">
+      <div class="brand">SpeakEasyTisha</div>
+      <div class="sub-brand">Travel Speaking & Vocabulary Booster • fixed version</div>
+    </div>
+    <div class="top-tools">
+      <div class="tool-pill">
+        <span>Accent</span>
+        <button class="mini active" data-voice="US">US</button>
+        <button class="mini" data-voice="UK">UK</button>
+      </div>
+      <div class="tool-pill">
+        <span>Auto audio</span>
+        <button class="mini active" data-audio="off">OFF</button>
+        <button class="mini" data-audio="on">ON</button>
+      </div>
+      <div class="tool-pill">Score <strong id="scoreText">0 / 0</strong></div>
+      <button id="resetAll" class="ghost">↺ Reset</button>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="hero card">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">🗣️ Speak more • 🧠 Build grammar control • 🧳 Expand useful travel vocabulary</div>
+          <h1>Travel Speaking & Vocabulary Booster</h1>
+          <p class="lead">
+            This page helps you speak in longer, clearer sentences. You will practise hotel English, parking English,
+            restaurant English, question training, grammar review, and CLOE-style speaking reflexes.
+          </p>
+          <div class="hero-actions">
+            <a href="#vocab" class="btn">▶ Start booster</a>
+            <a href="#final-speaking" class="ghost">🎙 Final speaking task</a>
+            <button class="voice-btn speak-btn" data-text="You are building your speaking confidence. You are learning hotel vocabulary, parking vocabulary, restaurant vocabulary, and useful grammar for travel.">🔊 Listen intro</button>
+          </div>
+        </div>
+        <aside class="hero-side">
+          <h3>You will practise</h3>
+          <ul>
+            <li>hotel vocabulary</li>
+            <li>parking vocabulary</li>
+            <li>restaurant vocabulary</li>
+            <li>present simple vs present continuous</li>
+            <li>would like</li>
+            <li>repeat and answer reflex</li>
+            <li>3-step answer system</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <nav class="quest-nav card">
+      <a href="#vocab">Vocabulary</a>
+      <a href="#grammar">Grammar</a>
+      <a href="#transform">Transform</a>
+      <a href="#questions">Questions</a>
+      <a href="#roleplay">Roleplay</a>
+      <a href="#final-speaking">Final speaking</a>
+    </nav>
+
+    <section id="vocab" class="card">
+      <div class="section-head">
+        <div>
+          <h2>1) Vocabulary booster</h2>
+          <p class="section-intro">Tap a tab, then tap a card to reveal the meaning, French translation, and example.</p>
+        </div>
+      </div>
+      <div class="tabs">
+        <button class="tab active" data-tab="hotel">🏨 Hotel</button>
+        <button class="tab" data-tab="parking">🚗 Parking</button>
+        <button class="tab" data-tab="restaurant">🍽 Restaurant</button>
+        <button class="tab" data-tab="travel">✈️ Travel basics</button>
+      </div>
+      <div id="tab-hotel" class="panel active"><div id="hotelVocabGrid" class="vocab-grid"></div></div>
+      <div id="tab-parking" class="panel"><div id="parkingVocabGrid" class="vocab-grid"></div></div>
+      <div id="tab-restaurant" class="panel"><div id="restaurantVocabGrid" class="vocab-grid"></div></div>
+      <div id="tab-travel" class="panel"><div id="travelVocabGrid" class="vocab-grid"></div></div>
+    </section>
+
+    <section id="grammar" class="card">
+      <div class="section-head">
+        <div>
+          <h2>2) Grammar booster</h2>
+          <p class="section-intro">Review the grammar you already know, but use it better and more automatically.</p>
+        </div>
+      </div>
+      <div class="grammar-grid">
+        <article class="grammar-card simple">
+          <h3>Present Simple</h3>
+          <div class="grammar-pill">facts • habits • preferences</div>
+          <p><strong>Use it for:</strong> what is generally true.</p>
+          <ul>
+            <li>You prefer the beach.</li>
+            <li>You travel in May.</li>
+            <li>You like quiet hotels.</li>
+          </ul>
+          <div class="sample-list">
+            <button class="sample speak-btn" data-text="You prefer the beach.">You prefer the beach. 🔊</button>
+            <button class="sample speak-btn" data-text="You like quiet hotels.">You like quiet hotels. 🔊</button>
+          </div>
+        </article>
+        <article class="grammar-card continuous">
+          <h3>Present Continuous</h3>
+          <div class="grammar-pill">now • plan now</div>
+          <p><strong>Use it for:</strong> what is happening now or your current plan.</p>
+          <ul>
+            <li>You are travelling to Hossegor.</li>
+            <li>You are booking a hotel.</li>
+            <li>You are looking for a restaurant.</li>
+          </ul>
+          <div class="sample-list">
+            <button class="sample speak-btn" data-text="You are travelling to Hossegor.">You are travelling to Hossegor. 🔊</button>
+            <button class="sample speak-btn" data-text="You are looking for a restaurant.">You are looking for a restaurant. 🔊</button>
+          </div>
+        </article>
+        <article class="grammar-card polite">
+          <h3>Would like</h3>
+          <div class="grammar-pill">polite request</div>
+          <p><strong>Use it for:</strong> sounding polite in hotels and restaurants.</p>
+          <ul>
+            <li>I would like to book a room.</li>
+            <li>I would like a table for two.</li>
+            <li>I would like to know if parking is included.</li>
+          </ul>
+          <div class="sample-list">
+            <button class="sample speak-btn" data-text="I would like to book a room.">I would like to book a room. 🔊</button>
+            <button class="sample speak-btn" data-text="I would like a table for two.">I would like a table for two. 🔊</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="contrast-box">
+        <h3>See the difference</h3>
+        <div class="contrast-grid">
+          <div class="contrast-item"><strong>You prefer the beach.</strong><span>general preference</span></div>
+          <div class="contrast-item"><strong>You are travelling to the beach.</strong><span>current plan</span></div>
+          <div class="contrast-item"><strong>I want a room.</strong><span>simple / direct</span></div>
+          <div class="contrast-item"><strong>I would like a room.</strong><span>more polite</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="transform" class="card">
+      <div class="section-head">
+        <div>
+          <h2>3) Transform the sentence</h2>
+          <p class="section-intro">Change the sentence to practise grammar automatically.</p>
+        </div>
+        <button id="newTransform" class="btn">New task</button>
+      </div>
+      <div class="exercise-box">
+        <p id="transformPrompt" class="fill-prompt">Click “New task” to begin.</p>
+        <div class="transform-grid">
+          <div class="transform-card">
+            <label for="transformAnswer1">Your answer</label>
+            <input id="transformAnswer1" type="text" placeholder="Type your answer" />
+          </div>
+          <div class="transform-card">
+            <label for="transformAnswer2">Another version (if needed)</label>
+            <input id="transformAnswer2" type="text" placeholder="Optional" />
+          </div>
+        </div>
+        <div class="hero-actions">
+          <button id="checkTransform" class="btn">Check</button>
+          <button id="listenTransform" class="voice-btn">🔊 Listen prompt</button>
+        </div>
+        <p id="transformHint" class="mini-note"></p>
+        <p id="transformFeedback" class="feedback"></p>
+      </div>
+    </section>
+
+    <section id="questions" class="card">
+      <div class="section-head">
+        <div>
+          <h2>4) Understand the question → answer the question</h2>
+          <p class="section-intro">Train the reflex that helps a lot in CLOE: repeat the question, then answer it.</p>
+        </div>
+      </div>
+      <div class="question-grid" id="questionGrid"></div>
+    </section>
+
+    <section id="roleplay" class="card">
+      <div class="section-head">
+        <div>
+          <h2>5) Roleplay practice</h2>
+          <p class="section-intro">Practise realistic mini-dialogues.</p>
+        </div>
+        <div class="hero-actions">
+          <button id="loadHotelRoleplay" class="btn">Hotel</button>
+          <button id="loadParkingRoleplay" class="ghost">Parking</button>
+          <button id="loadRestaurantRoleplay" class="ghost">Restaurant</button>
+        </div>
+      </div>
+      <div id="roleplayBox" class="dialogue-box"></div>
+      <div class="helper-box"><strong>Helper:</strong> <span id="roleplayHelper">Choose a roleplay to begin.</span></div>
+    </section>
+
+    <section id="final-speaking" class="card">
+      <div class="section-head">
+        <div>
+          <h2>6) Final speaking mission</h2>
+          <p class="section-intro">Use the 3-step answer system: answer + reason + detail.</p>
+        </div>
+      </div>
+      <div class="mission-box">
+        <h3>Your prompt</h3>
+        <p id="finalPrompt">Describe your trip and what you need.</p>
+        <button class="voice-btn speak-btn" data-text="Describe your trip and what you need.">🔊 Listen prompt</button>
+      </div>
+      <div class="three-step-grid">
+        <div class="editable-card">
+          <label>Step 1: answer</label>
+          <textarea id="step1">I am travelling to Hossegor with my husband.</textarea>
+        </div>
+        <div class="editable-card">
+          <label>Step 2: reason</label>
+          <textarea id="step2">We prefer the beach because we like the ocean.</textarea>
+        </div>
+        <div class="editable-card">
+          <label>Step 3: detail</label>
+          <textarea id="step3">I would like to book a room with parking, and I would also like to book a table for two.</textarea>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <button id="listenMissionUS" class="btn">🇺🇸 Listen answer</button>
+        <button id="listenMissionUK" class="voice-btn">🇬🇧 Listen answer</button>
+        <button id="showMissionText" class="ghost">📝 Show full text</button>
+      </div>
+      <pre id="missionOutput" class="role-output"></pre>
+    </section>
+  </main>
+
+  <script src="js/travel-speaking-vocabulary-booster.js"></script>
+</body>
+</html>
