@@ -1,0 +1,1516 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Sequencing & Storytelling Quest — NEXT LEVEL (Single File) • A2→A2.2</title>
+  <style>
+:root{
+  --bg:#0b1220;
+  --text:#f7f8fb;
+  --muted:rgba(247,248,251,.78);
+  --line:rgba(255,255,255,.12);
+  --accent:#a7f3d0;
+  --accent2:#7dd3fc;
+  --good:#34d399;
+  --bad:#fb7185;
+  --shadow:0 14px 40px rgba(0,0,0,.35);
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text);
+  background:radial-gradient(1200px 700px at 20% 10%,#1b2a52 0%,var(--bg) 55%,#070b14 100%);
+  line-height:1.5;
+}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:linear-gradient(180deg,rgba(11,18,32,.98),rgba(11,18,32,.88));border-bottom:1px solid var(--line);}
+.topbar__inner{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand{display:flex;gap:12px;align-items:center}
+.brand__logo{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;border:1px solid rgba(167,243,208,.25);background:linear-gradient(135deg,rgba(167,243,208,.16),rgba(125,211,252,.10));box-shadow:var(--shadow);font-size:22px;}
+.brand__title{font-weight:950;letter-spacing:.2px}
+.brand__sub{font-size:12.5px;color:var(--muted);margin-top:2px}
+.badgeLive{margin-left:8px;display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid rgba(52,211,153,.35);background:rgba(52,211,153,.12);color:rgba(247,248,251,.92);font-size:12px;font-weight:950}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
+.pillgroup{display:flex;align-items:center;gap:6px;padding:6px 8px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.04);}
+.pillgroup__label{font-size:12px;color:var(--muted);margin-right:2px}
+.pill{border:1px solid rgba(255,255,255,.18);background:transparent;color:var(--text);padding:6px 10px;border-radius:999px;cursor:pointer;font-weight:950;}
+.pill:hover{background:rgba(255,255,255,.08)}
+.pill.is-active{border-color:rgba(167,243,208,.40);background:rgba(167,243,208,.14)}
+.btn{border:1px solid rgba(167,243,208,.30);background:rgba(167,243,208,.12);color:var(--text);padding:9px 12px;border-radius:14px;cursor:pointer;font-weight:900;box-shadow:0 8px 22px rgba(0,0,0,.18);}
+.btn:hover{background:rgba(167,243,208,.18)}
+.btn--ghost{background:transparent;border-color:rgba(255,255,255,.20);box-shadow:none}
+.btn--ghost:hover{background:rgba(255,255,255,.08)}
+.btn:focus,.pill:focus,input:focus,select:focus,textarea:focus{outline:3px solid rgba(167,243,208,.35);outline-offset:2px}
+.status{padding:10px 18px 12px;display:grid;grid-template-columns:.8fr 1.2fr 2fr;gap:10px;}
+.status__box{border:1px solid var(--line);border-radius:16px;padding:10px 12px;background:rgba(255,255,255,.03);}
+.status__label{font-size:12px;color:var(--muted);margin-bottom:6px}
+.status__value{font-weight:950}
+.status__hint .status__value{font-weight:750;color:var(--muted)}
+.progress{height:10px;border-radius:999px;border:1px solid rgba(255,255,255,.14);overflow:hidden;background:rgba(0,0,0,.25);}
+.progress__bar{width:0%;height:100%;background:linear-gradient(90deg,rgba(167,243,208,.95),rgba(125,211,252,.85));}
+.nav{display:flex;gap:10px;padding:10px 18px 12px;overflow-x:auto;border-top:1px solid var(--line);}
+.nav a{white-space:nowrap;padding:8px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);color:var(--text);}
+.nav a:hover{background:rgba(255,255,255,.08);text-decoration:none}
+.page{max-width:1180px;margin:18px auto 70px;padding:0 16px}
+.card{background:linear-gradient(180deg,rgba(15,31,58,.95),rgba(15,26,48,.90));border:1px solid rgba(255,255,255,.10);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 18px 16px;margin:16px 0;}
+h1{font-size:22px;margin:6px 0 6px}
+.h2{font-size:18px;margin:8px 0}
+.lede{color:var(--muted);margin:0 0 12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+@media (max-width:980px){.status{grid-template-columns:1fr}.grid2,.grid3{grid-template-columns:1fr}}
+.mini{border:1px solid rgba(255,255,255,.10);border-radius:16px;background:linear-gradient(180deg,rgba(16,39,70,.80),rgba(16,31,58,.70));padding:12px 12px 10px;}
+.list{margin:8px 0 0;padding-left:18px}
+.list li{margin:6px 0}
+.callout{margin-top:10px;padding:10px 12px;border-radius:16px;border:1px solid rgba(125,211,252,.22);background:rgba(125,211,252,.08);color:rgba(247,248,251,.92);}
+.callout.small{font-size:13px}
+.searchRow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.searchRow input{flex:1 1 280px;padding:10px 10px;border-radius:14px;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.22);color:var(--text);font-weight:850;}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.tab{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);color:var(--text);padding:8px 10px;border-radius:999px;cursor:pointer;font-weight:950;}
+.tab:hover{background:rgba(255,255,255,.08)}
+.tab.is-active{border-color:rgba(167,243,208,.40);background:rgba(167,243,208,.14)}
+.cardGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:980px){.cardGrid{grid-template-columns:repeat(2,1fr)}}
+.flash{min-height:132px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgb(10, 186, 244);padding:10px 12px;cursor:pointer;text-align:left;overflow:hidden}
+.flash:hover{background:rgb(251, 14, 17)}
+.flash__top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.flash__icon{font-size:20px}
+.flash__term{font-weight:1000}
+.flash__meta{font-size:12px;color:var(--muted);margin-top:6px}
+.flash__def{margin-top:6px;color:rgba(247,248,251,.92);display:none}
+.flash.is-flipped{border-color:rgba(167,243,208,.28);background:rgba(167,243,208,.10)}
+.flash.is-flipped .flash__def{display:block}
+.flash.is-flipped .flash__meta{display:none}
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.18);font-size:12px;color:var(--muted);font-weight:950;}
+.quiz{display:grid;gap:10px;margin-top:10px}
+.qItem{border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);padding:10px 12px}
+.qQ{font-weight:950;margin:0 0 8px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1px solid rgba(255,255,255,.20);background:rgba(255,255,255,.03);color:var(--text);padding:10px 12px;border-radius:14px;cursor:pointer;font-weight:900;text-align:left}
+.opt:hover{background:rgba(255,255,255,.08)}
+.opt.is-right{border-color:rgba(52,211,153,.55);background:rgba(52,211,153,.14)}
+.opt.is-wrong{border-color:rgba(251,113,133,.65);background:rgba(251,113,133,.14)}
+.feedback{margin-top:10px;padding:10px 12px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(0,0,0,.14);font-weight:900;color:var(--muted)}
+.feedback.good{color:rgba(52,211,153,.95)}
+.feedback.bad{color:rgba(251,113,133,.95)}
+.explain{margin-top:10px;padding:10px 12px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(0,0,0,.14);color:var(--muted);display:none}
+.explain.is-on{display:block}
+.field{display:grid;gap:6px}
+.field span{font-size:12px;color:var(--muted);font-weight:950}
+.field select,.field textarea{width:100%;padding:10px 10px;border-radius:14px;border:1px solid rgba(255,255,255,.18);background:rgb(0, 0, 0);color:var(--text);font-weight:850}
+.field textarea{resize:vertical}
+/* Story builder */
+.storyPick{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.bank{display:flex;flex-wrap:wrap;gap:8px;padding:10px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);}
+.token{border:1px solid rgba(255,255,255,.18);background:rgb(255, 255, 255);padding:8px 10px;border-radius:999px;cursor:grab;font-weight:950;user-select:none}
+.token.is-selected{outline:3px solid rgba(125,211,252,.35);outline-offset:2px}
+.token.is-locked{border-color:rgba(52,211,153,.40);background:rgba(52,211,153,.10);cursor:default}
+.slots{display:grid;gap:10px;margin-top:10px}
+.slot{border-radius:16px;border:1px dashed rgba(255,255,255,.20);background:rgba(0,0,0,.18);padding:12px;min-height:54px;display:flex;align-items:center;gap:10px}
+.slotNum{width:28px;height:28px;border-radius:10px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);font-weight:950}
+.slotText{font-weight:900;color:rgba(247,248,251,.92)}
+.slot.is-hot{outline:3px solid rgba(167,243,208,.25);outline-offset:2px}
+.slot.is-bad{outline:3px solid rgba(251,113,133,.25);outline-offset:2px}
+/* Roleplay */
+.rpTop{display:grid;gap:10px}
+.rpBtns,.wBtns,.freeBtns,.rpLearnerTop{display:flex;gap:10px;flex-wrap:wrap}
+.bubble{border-radius:16px;padding:12px;border:1px solid rgba(255,255,255,.10);margin:10px 0}
+.tBlue{border-color:rgba(125,211,252,.35);background:rgba(125,211,252,.12)}
+.tGreen{border-color:rgba(52,211,153,.35);background:rgba(52,211,153,.12)}
+.choice{border-radius:16px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);padding:12px;cursor:pointer;font-weight:900;text-align:left}
+.choice:hover{background:rgba(255,255,255,.08)}
+.choice.is-right{border-color:rgba(52,211,153,.55);background:rgba(52,211,153,.12)}
+.choice.is-wrong{border-color:rgba(251,113,133,.65);background:rgba(251,113,133,.12)}
+.checklistBox{margin-top:10px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(0,0,0,.14);padding:10px 12px}
+.chk{display:flex;gap:10px;margin:8px 0;align-items:flex-start}
+.dot{width:12px;height:12px;border-radius:4px;margin-top:3px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06)}
+.chk.ok .dot{background:rgba(52,211,153,.35);border-color:rgba(52,211,153,.55)}
+.chk.bad .dot{background:rgba(251,113,133,.28);border-color:rgba(251,113,133,.55)}
+.chk small{color:var(--muted)}
+.output{border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);padding:12px;min-height:260px;white-space:pre-wrap}
+.smallNote{font-size:12px;color:var(--muted);margin-top:6px}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo" aria-hidden="true">🧩</div>
+      <div>
+        <div class="brand__title">Sequencing & Storytelling Quest — Next Level <span class="badgeLive" id="alive">loading…</span></div>
+        <div class="brand__sub">Connectors (EN+FR) + Verb tenses • Safari + Animal rescue + Youth support • A2 → A2.2</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="pillgroup" role="group" aria-label="Voice">
+        <span class="pillgroup__label">Voice</span>
+        <button class="pill is-active" id="voiceUS" type="button">US</button>
+        <button class="pill" id="voiceUK" type="button">UK</button>
+      </div>
+
+      <div class="pillgroup" role="group" aria-label="Auto audio">
+        <span class="pillgroup__label">Auto audio</span>
+        <button class="pill is-active" id="autoOff" type="button">OFF</button>
+        <button class="pill" id="autoOn" type="button">ON</button>
+      </div>
+
+      <div class="pillgroup" role="group" aria-label="Speed">
+        <span class="pillgroup__label">Speed</span>
+        <button class="pill is-active" id="speedN" type="button">Normal</button>
+        <button class="pill" id="speedS" type="button">Slow</button>
+      </div>
+
+      <button class="btn btn--ghost" id="stopAudio" type="button">⏹ Stop</button>
+      <button class="btn btn--ghost" id="resetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+
+  <div class="status">
+    <div class="status__box">
+      <div class="status__label">Score</div>
+      <div class="status__value"><span id="scoreNow">0</span> / <span id="scoreTotal">0</span></div>
+    </div>
+    <div class="status__box">
+      <div class="status__label">Progress</div>
+      <div class="progress"><div class="progress__bar" id="pBar"></div></div>
+      <div class="status__value" id="pPct">0%</div>
+    </div>
+    <div class="status__box status__hint">
+      <div class="status__label">Hint</div>
+      <div class="status__value" id="hintBox">Loading…</div>
+      <div class="smallNote">Debug: <span id="dbg">…</span></div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="#how">How to use</a>
+    <a href="#modelstories">0) Model stories</a>
+    <a href="#connectors">1) Connectors</a>
+    <a href="#tenses">2) Tenses</a>
+    <a href="#practice">3) Practice</a>
+    <a href="#roleplays">4) Role‑plays</a>
+    <a href="#writing">5) Writing</a>
+    <a href="#vocab">6) Vocabulary</a>
+  </nav>
+</header>
+
+<main class="page">
+  <section class="card" id="how">
+    <h1>How to use (together + alone) 🎭</h1>
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">👩‍🏫 With your teacher</h2>
+        <ol class="list">
+          <li>Start with a role‑play (Vet / Youth / Safari).</li>
+          <li>Teacher reads <span class="tag tBlue">blue</span>. You answer <span class="tag tGreen">green</span>.</li>
+          <li>Use <strong>Hint</strong> to see target words + tense.</li>
+          <li>Repeat the same step 2–3 times to build confidence.</li>
+        </ol>
+      </div>
+      <div class="mini">
+        <h2 class="h2">🧑‍💻 Alone</h2>
+        <ol class="list">
+          <li>Learn connectors + translations.</li>
+          <li>Review the tenses cards.</li>
+          <li>Do Practice (QCM + Fill‑in + Story builder).</li>
+          <li>Write a guided text and compare with the model.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="callout">If you ever see “⚠️ JS error” in the hint box, copy the message and send it to me.</div>
+  </section>
+
+  <section class="card" id="modelstories">
+    <h1>0) Model stories to read (EN) + translation (FR) 📖</h1>
+    <p class="lede">
+      These are <strong>model “true‑style” stories</strong> (realistic examples) based on your topics:
+      <strong>safari</strong>, <strong>vet clinic</strong>, <strong>youth support</strong>, and <strong>catching up with family</strong>.
+      Read first → then do the exercises.
+    </p>
+
+    <div class="callout small">
+      <strong>How to use (French learner tips):</strong><br/>
+      1) Lis l’histoire en anglais (simple).<br/>
+      2) Clique <strong>Show FR</strong> si besoin.<br/>
+      3) Repère les connecteurs: <em>First / Then / While / After that / Finally</em>.<br/>
+      4) Re‑raconte l’histoire avec les mêmes connecteurs.
+    </div>
+
+    <div class="tabs" id="msTabs" aria-label="Model story tabs">
+      <button class="tab is-active" type="button" data-ms="safari">🦁 Safari (Africa)</button>
+      <button class="tab" type="button" data-ms="vet">🐿️ Vet clinic (small animals)</button>
+      <button class="tab" type="button" data-ms="youth">🧑‍⚖️ Youth support (assessor)</button>
+      <button class="tab" type="button" data-ms="family">🇩🇰 Family (Denmark)</button>
+    </div>
+
+    <article class="mini" id="msPanel">
+      <!-- filled by JS -->
+    </article>
+  </section>
+
+
+  <section class="card" id="connectors">
+    <h1>1) Sequencing & connectors (EN + FR) 🔗</h1>
+    <p class="lede">Click a card to reveal the French translation + usage + example. Use the search.</p>
+
+    <div class="searchRow">
+      <input id="cSearch" placeholder="Search: first / ensuite / because / cependant..." autocomplete="off"/>
+      <button class="btn" id="listenConnectors" type="button">🔊 Listen selection</button>
+      <button class="btn btn--ghost" id="clearC" type="button">↺ Clear</button>
+    </div>
+
+    <div class="tabs" id="cTabs"></div>
+    <div class="cardGrid" id="cGrid"></div>
+
+    <div class="mini" style="margin-top:14px;">
+      <h2 class="h2">Quick connector check ✅ <span class="tag">Choisis le bon connecteur</span></h2>
+      <div class="quiz" id="mcqConnectors"></div>
+    </div>
+  </section>
+
+  <section class="card" id="tenses">
+    <h1>2) Verb tenses for stories (rules + form) ⏱️ <span class="tag">Règles + exemples + mini‑quiz</span></h1>
+    <p class="lede">Choose a tense tab. Each card includes a mini quiz.</p>
+    <div class="tabs" id="tenseTabs"></div>
+    <div id="tensePanel"></div>
+  </section>
+
+  <section class="card" id="practice">
+    <h1>3) Practice zone — lots of exercises 🎯 <span class="tag">Exercices guidés</span></h1>
+
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">A) Mixed QCM (connectors + tenses + vocab) <span class="tag">QCM</span> <span class="tag">Réponse immédiate</span></h2>
+        <div class="quiz" id="mcqPractice"></div>
+      </div>
+
+      <div class="mini">
+        <h2 class="h2">B) Fill in the blanks (instant check) <span class="tag">Complète</span> <span class="tag">Correction immédiate</span></h2>
+        <div id="fibBox"></div>
+      </div>
+    </div>
+
+    <div class="mini" style="margin-top:14px;">
+      <h2 class="h2">C) Build the story (drag OR tap) — 6 stories</h2>
+      <div class="storyPick">
+        <label class="field">
+          <span>Choose a story</span>
+          <select id="storySelect"></select>
+        </label>
+        <button class="btn btn--ghost" id="storyReset" type="button">↺ Reset story</button>
+      </div>
+
+      <div class="callout small" id="storyHint"></div>
+      <div class="bank" id="storyBank"></div>
+      <div class="slots" id="storySlots"></div>
+      <div class="feedback" id="storyFb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card" id="roleplays">
+    <h1>4) Role‑plays — deeper scenarios 🎭 <span class="tag">Dialogue guidé</span></h1>
+    <p class="lede">Choose a scenario. Teacher reads blue. You answer green. Use model replies and useful phrases.</p>
+
+    <div class="rpTop">
+      <label class="field">
+        <span>Scenario</span>
+        <select id="rpSelect"></select>
+      </label>
+
+      <div class="rpBtns">
+        <button class="btn" id="rpStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="rpNext" type="button">➡️ Next</button>
+        <button class="btn btn--ghost" id="rpClear" type="button">↺ Clear</button>
+        <button class="btn btn--ghost" id="rpModel" type="button">✅ Show model reply</button>
+        <button class="btn btn--ghost" id="rpPhrases" type="button">💬 Useful phrases</button>
+      </div>
+
+      <div class="mini">
+        <div class="status__label">Step</div>
+        <div class="status__value"><span id="rpCount">0 / 0</span> • Mode: <span id="rpMode">Ready</span></div>
+      </div>
+
+      <div class="bubble tBlue" id="rpTeacher"></div>
+
+      <div class="bubble tGreen" id="rpLearner">
+        <div class="rpLearnerTop">
+          <button class="btn btn--ghost" id="rpListenLine" type="button">🔊 Listen teacher line</button>
+          <button class="btn btn--ghost" id="rpHint" type="button">💡 Hint</button>
+        </div>
+
+        <div class="replyChoices" id="rpChoices"></div>
+
+        <div class="mini" style="margin-top:10px;">
+          <label class="field">
+            <span>Optional: type your answer (no strict grading)</span>
+            <textarea id="rpFree" rows="3" placeholder="Type your reply here..."></textarea>
+          </label>
+          <div class="freeBtns">
+            <button class="btn btn--ghost" id="rpFreeListen" type="button">🔊 Listen my text</button>
+            <button class="btn btn--ghost" id="rpFreeClear" type="button">🧽 Clear</button>
+          </div>
+        </div>
+
+        <div class="feedback" id="rpFb" aria-live="polite"></div>
+        <div class="explain" id="rpExplain"></div>
+      </div>
+
+      <div class="mini" style="margin-top:14px; display:none;" id="rpPhrasesBox">
+        <h2 class="h2">Useful phrases</h2>
+        <ul class="list" id="rpPhraseList"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="writing">
+    <h1>5) Guided writing — gradual → model text ✍️ <span class="tag">Écriture guidée</span></h1>
+    <p class="lede">Choose a subject, follow the steps, then show the model if you want.</p>
+
+    <div class="grid2">
+      <div class="mini">
+        <label class="field">
+          <span>Choose a writing subject</span>
+          <select id="wSelect"></select>
+        </label>
+
+        <div class="callout small" id="wSubject"></div>
+        <ol class="list" id="wSteps"></ol>
+
+        <label class="field">
+          <span>Your text</span>
+          <textarea id="wText" rows="9" placeholder="Write here..."></textarea>
+        </label>
+
+        <div class="wBtns">
+          <button class="btn" id="wCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="wHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="wModel" type="button">👀 Show model text</button>
+          <button class="btn btn--ghost" id="wListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="wCopy" type="button">📋 Copy</button>
+          <button class="btn btn--ghost" id="wReset" type="button">↺ Reset</button>
+        </div>
+
+        <div class="feedback" id="wFb" aria-live="polite"></div>
+        <div class="checklistBox" id="wChecklist"></div>
+      </div>
+
+      <div class="mini">
+        <h2 class="h2">Model text</h2>
+        <div class="output" id="wModelBox" data-on="0">Click “Show model text” to reveal.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="vocab">
+    <h1>6) Vocabulary (icons + FR + examples) 🦁🐿️🧑‍⚖️</h1>
+    <p class="lede">Search by English or French. Click to reveal definition + example.</p>
+
+    <div class="searchRow">
+      <input id="vSearch" placeholder="Search: giraffe / écureuil / dossier / bandage..." autocomplete="off"/>
+      <button class="btn" id="listenVocab" type="button">🔊 Listen selection</button>
+      <button class="btn btn--ghost" id="clearV" type="button">↺ Clear</button>
+    </div>
+
+    <div class="tabs" id="vTabs"></div>
+    <div class="cardGrid" id="vGrid"></div>
+
+    <div class="mini" style="margin-top:14px;">
+      <h2 class="h2">Quick vocab check (15) ✅</h2>
+      <div class="quiz" id="mcqVocab"></div>
+    </div>
+
+    <p class="smallNote">If anything is still “dead”, check the top badge: it must say <strong>JS loaded ✅</strong>.</p>
+  </section>
+</main>
+
+<script>
+(function(){
+  'use strict';
+
+  // ====== Debug overlay ======
+  function byId(id){ return document.getElementById(id); }
+  function qs(sel,root){ return (root||document).querySelector(sel); }
+  function qsa(sel,root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); }
+
+  window.addEventListener('error', function(e){
+    try{
+      var box = byId('hintBox');
+      if(box) box.textContent = '⚠️ JS error: ' + (e && e.message ? e.message : 'Unknown error');
+      var dbg = byId('dbg');
+      if(dbg) dbg.textContent = 'JS error: ' + (e && e.message ? e.message : 'Unknown error');
+    }catch(_){}
+  });
+
+  // ====== Data injected ======
+  var CONNECTORS = [{"cat": "Sequencing", "icon": "1️⃣", "en": "First, ...", "fr": "D’abord, ...", "use": "start", "ex": "First, we arrived at the lodge."}, {"cat": "Sequencing", "icon": "2️⃣", "en": "Then, ...", "fr": "Ensuite, ...", "use": "next step", "ex": "Then, we got into the jeep."}, {"cat": "Sequencing", "icon": "➡️", "en": "After that, ...", "fr": "Après ça, ...", "use": "next event", "ex": "After that, we saw elephants."}, {"cat": "Sequencing", "icon": "⏳", "en": "Later, ...", "fr": "Plus tard, ...", "use": "later in time", "ex": "Later, we took photos."}, {"cat": "Sequencing", "icon": "⏱️", "en": "Meanwhile, ...", "fr": "Pendant ce temps, ...", "use": "two actions at the same time", "ex": "Meanwhile, the guide explained the rules."}, {"cat": "Sequencing", "icon": "🏁", "en": "Finally, ...", "fr": "Enfin, ...", "use": "end", "ex": "Finally, we returned to the camp."}, {"cat": "Sequencing", "icon": "⬅️", "en": "Before that, ...", "fr": "Avant ça, ...", "use": "go back one step", "ex": "Before that, we checked the map."}, {"cat": "Sequencing", "icon": "🧭", "en": "In the end, ...", "fr": "Au final, ...", "use": "final result", "ex": "In the end, we felt proud."}, {"cat": "Time links", "icon": "🕒", "en": "When ...", "fr": "Quand ...", "use": "time clause", "ex": "When we arrived, it was hot."}, {"cat": "Time links", "icon": "⏳", "en": "While ...", "fr": "Pendant que ...", "use": "background action", "ex": "While we were driving, we saw zebras."}, {"cat": "Time links", "icon": "✅", "en": "As soon as ...", "fr": "Dès que ...", "use": "immediately after", "ex": "As soon as I finished, I called you."}, {"cat": "Time links", "icon": "🕰️", "en": "At the same time, ...", "fr": "En même temps, ...", "use": "two actions together", "ex": "At the same time, the vet explained the plan."}, {"cat": "Cause & effect", "icon": "💡", "en": "Because ...", "fr": "Parce que ...", "use": "reason", "ex": "Because it was late, we went home."}, {"cat": "Cause & effect", "icon": "➡️", "en": "So ...", "fr": "Donc ...", "use": "result", "ex": "So we changed the plan."}, {"cat": "Cause & effect", "icon": "🧾", "en": "That’s why ...", "fr": "C’est pourquoi ...", "use": "strong result", "ex": "That’s why I practise English."}, {"cat": "Cause & effect", "icon": "📍", "en": "As a result, ...", "fr": "Par conséquent, ...", "use": "result (formal)", "ex": "As a result, we scheduled a follow‑up."}, {"cat": "Contrast", "icon": "⚖️", "en": "But ...", "fr": "Mais ...", "use": "contrast", "ex": "It was scary, but exciting."}, {"cat": "Contrast", "icon": "🌧️", "en": "However, ...", "fr": "Cependant, ...", "use": "contrast (formal)", "ex": "However, the weather changed."}, {"cat": "Contrast", "icon": "🔁", "en": "On the other hand, ...", "fr": "D’un autre côté, ...", "use": "contrast two ideas", "ex": "On the other hand, it can be stressful."}, {"cat": "Contrast", "icon": "🧩", "en": "Although ...", "fr": "Bien que ...", "use": "contrast clause", "ex": "Although I was tired, I continued."}, {"cat": "Adding", "icon": "➕", "en": "Also, ...", "fr": "Aussi, ...", "use": "add info", "ex": "Also, I volunteer at a vet clinic."}, {"cat": "Adding", "icon": "📌", "en": "In addition, ...", "fr": "De plus, ...", "use": "add info (formal)", "ex": "In addition, I write reports."}, {"cat": "Adding", "icon": "🧷", "en": "For example, ...", "fr": "Par exemple, ...", "use": "example", "ex": "For example, we treated a squirrel."}, {"cat": "Adding", "icon": "🧠", "en": "In my opinion, ...", "fr": "À mon avis, ...", "use": "opinion", "ex": "In my opinion, practice helps."}];
+  var TENSES = [{"key": "present_simple", "icon": "🟦", "title": "Present simple (routine)", "fr": "Présent simple (habitudes)", "form": "I work / I don’t work / Do you work?", "use": "habits, facts, routines", "keywords": "often, usually, every week", "examples": ["I volunteer at a vet clinic every week.", "I help small animals.", "I usually write a short report."], "quiz": [{"q": "Routine:", "opts": ["I volunteer every week.", "I am volunteer every week.", "I volunteering every week."], "a": "I volunteer every week.", "hint": "routine → base verb"}, {"q": "Negative:", "opts": ["I don’t work on Sundays.", "I doesn’t work on Sundays.", "I not work on Sundays."], "a": "I don’t work on Sundays.", "hint": "don’t + base verb"}, {"q": "Question:", "opts": ["Do you help young people?", "Are you help young people?", "Do you helps young people?"], "a": "Do you help young people?", "hint": "Do + base verb"}, {"q": "He/She:", "opts": ["She helps small animals.", "She help small animals.", "She is help small animals."], "a": "She helps small animals.", "hint": "she + verb+s"}]}, {"key": "past_simple", "icon": "🟧", "title": "Past simple (finished past)", "fr": "Prétérit (passé terminé)", "form": "I visited / I didn’t visit / Did you visit?", "use": "finished past event", "keywords": "yesterday, last week, last year, in 2024", "examples": ["Last year, we went on a safari.", "We saw elephants.", "We didn’t see a rhino."], "quiz": [{"q": "Finished time:", "opts": ["We visited Africa last year.", "We have visited Africa last year.", "We visit Africa last year."], "a": "We visited Africa last year.", "hint": "last year → past simple"}, {"q": "Question:", "opts": ["Did you see lions?", "Did you saw lions?", "Do you saw lions?"], "a": "Did you see lions?", "hint": "Did + base verb"}, {"q": "Negative:", "opts": ["I didn’t go to court.", "I don’t went to court.", "I didn’t went to court."], "a": "I didn’t go to court.", "hint": "didn’t + base"}, {"q": "Yesterday:", "opts": ["Yesterday, I helped an injured bird.", "Yesterday, I have helped an injured bird.", "Yesterday, I help an injured bird."], "a": "Yesterday, I helped an injured bird.", "hint": "yesterday → past simple"}]}, {"key": "past_cont", "icon": "🟪", "title": "Past continuous (background)", "fr": "Passé continu (action en cours)", "form": "I was working / I wasn’t working / Were you working?", "use": "background action, action in progress", "keywords": "while, when (background)", "examples": ["While we were driving, we saw zebras.", "I was taking photos when a lion appeared.", "They were waiting while I was writing notes."], "quiz": [{"q": "Form:", "opts": ["I was taking notes.", "I was take notes.", "I were taking notes."], "a": "I was taking notes.", "hint": "was + -ing"}, {"q": "While + background:", "opts": ["While I was writing, the judge asked questions.", "While I wrote, the judge asked questions (background).", "While I was write, the judge asked questions."], "a": "While I was writing, the judge asked questions.", "hint": "was/were + -ing"}, {"q": "Negative:", "opts": ["I wasn’t sleeping.", "I didn’t sleeping.", "I wasn’t sleep."], "a": "I wasn’t sleeping.", "hint": "wasn’t + -ing"}, {"q": "Question:", "opts": ["Were they listening?", "Did they listening?", "Were they listen?"], "a": "Were they listening?", "hint": "Were + -ing"}]}, {"key": "present_perf", "icon": "🟩", "title": "Present perfect (experience / recent)", "fr": "Present perfect (expérience / récent)", "form": "I have helped / I haven’t helped / Have you helped?", "use": "experience, recent update (no finished time)", "keywords": "already, yet, just, ever, never, recently, lately", "examples": ["I’ve met my daughter‑in‑law.", "I’ve already sent a message.", "I haven’t visited Denmark yet."], "quiz": [{"q": "No finished time:", "opts": ["I’ve met her twice.", "I met her twice yesterday.", "I have meet her twice."], "a": "I’ve met her twice.", "hint": "have + past participle"}, {"q": "Just (recent):", "opts": ["I’ve just arrived.", "I’ve just arrive.", "I just have arrived."], "a": "I’ve just arrived.", "hint": "just + present perfect"}, {"q": "Ever:", "opts": ["Have you ever worked with animals?", "Did you ever worked with animals?", "Have you ever work with animals?"], "a": "Have you ever worked with animals?", "hint": "Have you ever + pp"}, {"q": "Yet (question):", "opts": ["Have you finished yet?", "Did you finished yet?", "Have you finish yet?"], "a": "Have you finished yet?", "hint": "Have + pp + yet"}]}, {"key": "future", "icon": "🟨", "title": "Future (plan + arrangement)", "fr": "Futur (plan + rendez‑vous)", "form": "going to / will / present continuous", "use": "plans, arrangements, decisions, offers", "keywords": "tomorrow, next week, on Saturday, at 3 pm", "examples": ["I’m going to call you this weekend.", "I’m meeting you on Friday at 6.", "I’ll send you the photos later."], "quiz": [{"q": "Plan:", "opts": ["I’m going to visit Denmark next month.", "I’m go to visit Denmark next month.", "I will going to visit Denmark next month."], "a": "I’m going to visit Denmark next month.", "hint": "am/is/are going to"}, {"q": "Decision now:", "opts": ["I’ll call you now.", "I’m going to call you now (decision).", "I calling you now."], "a": "I’ll call you now.", "hint": "decision now → will"}, {"q": "Arrangement:", "opts": ["I’m meeting you on Friday at 6.", "I meet you in Friday at 6.", "I’m meeting you in Friday at 6."], "a": "I’m meeting you on Friday at 6.", "hint": "on day / at time"}, {"q": "Offer:", "opts": ["I’ll help you.", "I’m going to help you (offer).", "I helping you."], "a": "I’ll help you.", "hint": "offer → will"}]}];
+  var VOCAB = [{"cat": "Safari", "icon": "🦁", "en": "lion", "fr": "lion", "def": "a large wild cat", "ex": "We saw a lion near the road."}, {"cat": "Safari", "icon": "🐘", "en": "elephant", "fr": "éléphant", "def": "a very large animal with a trunk", "ex": "Elephants were walking slowly."}, {"cat": "Safari", "icon": "🦒", "en": "giraffe", "fr": "girafe", "def": "a tall animal with a long neck", "ex": "A giraffe was eating leaves."}, {"cat": "Safari", "icon": "🦓", "en": "zebra", "fr": "zèbre", "def": "an animal with stripes", "ex": "Zebras were running together."}, {"cat": "Safari", "icon": "🦏", "en": "rhino", "fr": "rhinocéros", "def": "a large animal with a horn", "ex": "We hoped to see a rhino."}, {"cat": "Safari", "icon": "🐆", "en": "leopard", "fr": "léopard", "def": "a wild cat with spots", "ex": "We were lucky: we saw a leopard."}, {"cat": "Safari", "icon": "🐊", "en": "crocodile", "fr": "crocodile", "def": "a large reptile", "ex": "A crocodile was resting on the bank."}, {"cat": "Safari", "icon": "🚙", "en": "safari jeep", "fr": "4x4 de safari", "def": "a vehicle used on safari", "ex": "We drove in a safari jeep."}, {"cat": "Safari", "icon": "🧭", "en": "guide", "fr": "guide", "def": "person who leads and explains", "ex": "Our guide explained the safety rules."}, {"cat": "Safari", "icon": "🔭", "en": "binoculars", "fr": "jumelles", "def": "tool to see far", "ex": "Use binoculars to look for animals."}, {"cat": "Safari", "icon": "🤫", "en": "to stay quiet", "fr": "rester silencieux", "def": "to make no noise", "ex": "We stayed quiet to watch the lion."}, {"cat": "Safari", "icon": "🐾", "en": "footprints", "fr": "empreintes", "def": "marks on the ground", "ex": "We saw footprints near the river."}, {"cat": "Safari", "icon": "🌅", "en": "sunset", "fr": "coucher de soleil", "def": "the sun going down", "ex": "The sunset was beautiful."}, {"cat": "Safari", "icon": "🏕️", "en": "lodge / camp", "fr": "lodge / camp", "def": "place to stay", "ex": "We stayed in a lodge."}, {"cat": "Animal rescue", "icon": "🐿️", "en": "squirrel", "fr": "écureuil", "def": "small wild animal with a bushy tail", "ex": "We treated a squirrel."}, {"cat": "Animal rescue", "icon": "🦔", "en": "hedgehog", "fr": "hérisson", "def": "small animal with spines", "ex": "We helped an injured hedgehog."}, {"cat": "Animal rescue", "icon": "🦫", "en": "groundhog", "fr": "marmotte", "def": "a big rodent (groundhog)", "ex": "We helped a groundhog with a wound."}, {"cat": "Animal rescue", "icon": "🐦", "en": "injured bird", "fr": "oiseau blessé", "def": "a bird that is hurt", "ex": "An injured bird arrived at the clinic."}, {"cat": "Animal rescue", "icon": "🩺", "en": "vet clinic", "fr": "cabinet vétérinaire", "def": "place where a vet treats animals", "ex": "I volunteer at a vet clinic."}, {"cat": "Animal rescue", "icon": "🧤", "en": "gloves", "fr": "gants", "def": "hand protection", "ex": "I wear gloves for safety."}, {"cat": "Animal rescue", "icon": "🧺", "en": "carrier", "fr": "cage de transport", "def": "box to transport an animal", "ex": "Put the animal in a carrier."}, {"cat": "Animal rescue", "icon": "🧼", "en": "to clean a wound", "fr": "nettoyer une plaie", "def": "clean an injury", "ex": "We cleaned the wound carefully."}, {"cat": "Animal rescue", "icon": "🩹", "en": "bandage", "fr": "bandage", "def": "covering for a wound", "ex": "We put a bandage on the paw."}, {"cat": "Animal rescue", "icon": "🥣", "en": "to feed", "fr": "nourrir", "def": "give food", "ex": "We fed the animal slowly."}, {"cat": "Animal rescue", "icon": "💧", "en": "dehydrated", "fr": "déshydraté", "def": "needs water", "ex": "The animal was dehydrated."}, {"cat": "Animal rescue", "icon": "🌡️", "en": "to warm up", "fr": "réchauffer", "def": "make warm", "ex": "We warmed it up carefully."}, {"cat": "Animal rescue", "icon": "😌", "en": "to calm down", "fr": "se calmer", "def": "become calm", "ex": "The animal calmed down slowly."}, {"cat": "Animal rescue", "icon": "🕊️", "en": "to release", "fr": "relâcher", "def": "let it go back to nature", "ex": "We released it after recovery."}, {"cat": "Youth support", "icon": "🏛️", "en": "court hearing", "fr": "audience", "def": "a meeting in court", "ex": "I attended a court hearing."}, {"cat": "Youth support", "icon": "🧑‍⚖️", "en": "judge", "fr": "juge", "def": "person who decides in court", "ex": "The judge asked questions."}, {"cat": "Youth support", "icon": "📋", "en": "case file", "fr": "dossier", "def": "documents about one case", "ex": "I read the case file."}, {"cat": "Youth support", "icon": "📝", "en": "assessment", "fr": "évaluation", "def": "careful evaluation", "ex": "I wrote an assessment."}, {"cat": "Youth support", "icon": "🧾", "en": "report", "fr": "rapport", "def": "a written document", "ex": "I sent the report to the team."}, {"cat": "Youth support", "icon": "📅", "en": "follow‑up", "fr": "suivi", "def": "later check", "ex": "We planned a follow-up."}, {"cat": "Youth support", "icon": "🤝", "en": "support plan", "fr": "plan d’accompagnement", "def": "plan to help progress", "ex": "We created a support plan."}, {"cat": "Youth support", "icon": "💬", "en": "to encourage", "fr": "encourager", "def": "give support and confidence", "ex": "I encouraged the young person."}, {"cat": "Youth support", "icon": "🌱", "en": "progress", "fr": "progrès", "def": "improvement over time", "ex": "We focus on progress."}, {"cat": "Youth support", "icon": "⚠️", "en": "offence / offense", "fr": "infraction", "def": "a crime or rule‑breaking act", "ex": "The offence was serious."}, {"cat": "Youth support", "icon": "⛓️", "en": "sentence (for a crime)", "fr": "peine", "def": "punishment decided by a judge", "ex": "The sentence can include community service."}, {"cat": "Youth support", "icon": "🛠️", "en": "community service", "fr": "travaux d’intérêt général", "def": "work to help the community", "ex": "He did community service."}];
+  var MCQ = [{"q": "Choose the best connector: We were driving slowly. ____, the guide was looking for footprints.", "opts": ["Meanwhile", "Finally", "Because"], "a": "Meanwhile", "hint": "two actions at the same time", "why": "Meanwhile = parallel actions."}, {"q": "Choose the best connector: It was late, ____ we returned to the lodge.", "opts": ["so", "however", "although"], "a": "so", "hint": "result", "why": "So shows result."}, {"q": "Choose the best connector: It was scary. ____, it was exciting.", "opts": ["However", "Because", "Then"], "a": "However", "hint": "contrast", "why": "However shows contrast."}, {"q": "Choose the best connector: ____ we arrived, we met the guide.", "opts": ["When", "So", "Finally"], "a": "When", "hint": "time link", "why": "When introduces the time clause."}, {"q": "Choose the best connector: ____ I finished, I called you.", "opts": ["As soon as", "Although", "In addition"], "a": "As soon as", "hint": "immediately after", "why": "As soon as = immediately after."}, {"q": "Choose the best connector: ____ , we checked the safety rules.", "opts": ["Before that", "Because", "Yet"], "a": "Before that", "hint": "go back one step", "why": "Before that goes back in time."}, {"q": "Choose the best tense: I ____ at a vet clinic every week.", "opts": ["volunteer", "am volunteer", "volunteering"], "a": "volunteer", "hint": "routine → present simple", "why": "Routine → present simple."}, {"q": "Choose the best tense: Yesterday, we ____ an injured bird.", "opts": ["helped", "have helped", "help"], "a": "helped", "hint": "yesterday → past simple", "why": "Finished time → past simple."}, {"q": "Choose the best tense: While we ____ , we saw zebras.", "opts": ["were driving", "drive", "are driving"], "a": "were driving", "hint": "past continuous", "why": "Background action → were driving."}, {"q": "Choose the best tense: I’ve ____ a report this week.", "opts": ["written", "wrote", "write"], "a": "written", "hint": "write → written", "why": "Present perfect uses past participle."}, {"q": "Choose the best question: ____ you ever been on a safari?", "opts": ["Have", "Did", "Do"], "a": "Have", "hint": "present perfect question", "why": "Have you ever…"}, {"q": "Choose the best vocabulary: binoculars =", "opts": ["jumelles", "bandage", "dossier"], "a": "jumelles", "hint": "safari equipment", "why": "Binoculars = jumelles."}, {"q": "Choose the best vocabulary: case file =", "opts": ["dossier", "suivi", "gants"], "a": "dossier", "hint": "youth support", "why": "Case file = dossier."}, {"q": "Choose the best vocabulary: community service =", "opts": ["travaux d’intérêt général", "peine", "empreintes"], "a": "travaux d’intérêt général", "hint": "youth support", "why": "Community service in French."}, {"q": "Choose the best tense: I’m going to ____ you tomorrow.", "opts": ["call", "called", "calling"], "a": "call", "hint": "going to + base verb", "why": "Going to + base verb."}, {"q": "Choose the best tense: I ____ taking photos when a lion appeared.", "opts": ["was", "were", "am"], "a": "was", "hint": "I was + -ing", "why": "Past continuous: I was taking…"}, {"q": "Choose the best connector: I volunteer at a vet clinic. ____, I support young people.", "opts": ["Also", "Yesterday", "Yet"], "a": "Also", "hint": "add info", "why": "Also adds another detail."}, {"q": "Choose the best connector: ____ , we returned to the camp.", "opts": ["Finally", "While", "Because"], "a": "Finally", "hint": "end", "why": "Finally = last step."}, {"q": "Choose the best connector: In the end =", "opts": ["Au final", "Pendant que", "Parce que"], "a": "Au final", "hint": "French translation", "why": "In the end = Au final."}, {"q": "Choose the best tense: I haven’t visited Denmark ____ .", "opts": ["yet", "already", "first"], "a": "yet", "hint": "yet in negatives", "why": "Yet fits negative present perfect."}, {"q": "Choose the best connector: It was hard. ____ , we continued.", "opts": ["Although", "So", "After that"], "a": "Although", "hint": "contrast clause", "why": "Although introduces contrast."}, {"q": "Choose the best vocabulary: sentence (for a crime) =", "opts": ["peine", "rapport", "lodge"], "a": "peine", "hint": "French translation", "why": "Sentence = peine."}, {"q": "Choose the best vocabulary: footprints =", "opts": ["empreintes", "jumelles", "audience"], "a": "empreintes", "hint": "safari word", "why": "Footprints = empreintes."}, {"q": "Choose the best connector: For example =", "opts": ["Par exemple", "Cependant", "Donc"], "a": "Par exemple", "hint": "French translation", "why": "For example = Par exemple."}];
+  var FIB = [{"id": "fib1", "sent": "First, we ____ (arrive) at the lodge.", "a": "arrived", "hint": "arrive → arrived (past simple)"}, {"id": "fib2", "sent": "While we ____ (drive), we saw zebras.", "a": "were driving", "hint": "were + driving (past continuous)"}, {"id": "fib3", "sent": "I’ve ____ (meet) my daughter‑in‑law.", "a": "met", "hint": "meet → met (past participle)"}, {"id": "fib4", "sent": "I haven’t visited Denmark ____ .", "a": "yet", "hint": "yet = negatives/questions"}, {"id": "fib5", "sent": "I volunteer at a vet clinic. ____, I support young people.", "a": "Also", "hint": "Also = add info"}, {"id": "fib6", "sent": "It was late, ____ we went home.", "a": "so", "hint": "so = result"}, {"id": "fib7", "sent": "After that, we ____ (see) elephants near the river.", "a": "saw", "hint": "see → saw (past simple)"}, {"id": "fib8", "sent": "Meanwhile, the guide ____ (explain) the rules.", "a": "was explaining", "hint": "was + explaining"}, {"id": "fib9", "sent": "I ____ (volunteer) every week.", "a": "volunteer", "hint": "present simple routine"}, {"id": "fib10", "sent": "I’ve ____ (write) a report.", "a": "written", "hint": "write → written"}, {"id": "fib11", "sent": "We planned a follow‑up ____ check progress.", "a": "to", "hint": "to + verb = purpose"}, {"id": "fib12", "sent": "Finally, we’re going to ____ (release) the animal.", "a": "release", "hint": "going to + base verb"}, {"id": "fib13", "sent": "Because it was hot, we ____ (drink) water.", "a": "drank", "hint": "drink → drank"}, {"id": "fib14", "sent": "Although I was tired, I ____ (continue).", "a": "continued", "hint": "continue → continued"}, {"id": "fib15", "sent": "The child made progress, ____ we continued the follow‑up.", "a": "so", "hint": "so = result"}];
+  var STORIES = [{"id": "s1", "title": "Safari day (Africa)", "target": ["First, we arrived at the lodge.", "Then, we got into the safari jeep.", "While we were driving, we saw zebras.", "After that, we saw elephants near the river.", "Finally, we watched the sunset and returned."], "hint": "first → then → while → after that → finally"}, {"id": "s2", "title": "Vet clinic shift (small animals)", "target": ["First, an injured bird arrived at the clinic.", "Then, I put on gloves and prepared a carrier.", "While the vet was checking the animal, I cleaned the wound.", "After that, we fed it slowly.", "Finally, we planned a follow‑up and release."], "hint": "include one while sentence"}, {"id": "s3", "title": "Youth assessor follow‑up", "target": ["First, I read the case file.", "Then, I met the young person and listened carefully.", "Meanwhile, the team discussed the support plan.", "After that, I wrote a short report.", "Finally, we scheduled a follow‑up meeting."], "hint": "use meanwhile"}, {"id": "s4", "title": "Safari morning (Africa)", "target": ["First, we checked the safety rules with the guide.", "Then, we drove slowly and stayed quiet.", "Meanwhile, the guide was looking for footprints.", "After that, we saw a rhino far away with binoculars.", "Finally, we returned to the lodge for breakfast."], "hint": "add binoculars"}, {"id": "s5", "title": "Vet rescue phone call", "target": ["First, someone called because they found an injured squirrel.", "Then, we prepared a carrier and gloves.", "While the vet was getting ready, I was warming the animal up.", "After that, we cleaned the wound and gave medicine.", "Finally, we planned a follow‑up before release."], "hint": "include because + while"}, {"id": "s6", "title": "Court day summary", "target": ["First, I read the case file and prepared questions.", "Then, I attended a court hearing with the team.", "While the judge was speaking, I was taking notes.", "After that, I wrote a report and suggested a support plan.", "Finally, we scheduled a follow‑up meeting."], "hint": "court vocabulary + while"}];
+  var ROLEPLAYS = {"vet": {"title": "🐾 Vet clinic role‑play (extended)", "steps": [{"t": "Hi! Can you explain your vet clinic volunteering in simple words?", "targets": ["I volunteer", "vet clinic"], "model": "Hi! I volunteer at a vet clinic and I help small animals."}, {"t": "What happened to the animal today? Give one reason (because).", "targets": ["because", "past simple"], "model": "It fell from a tree, so it got injured. We brought it here because it needed help."}, {"t": "What do you do first when an animal arrives? (First…)", "targets": ["First", "gloves"], "model": "First, I put on gloves and I prepare a carrier."}, {"t": "Then what do you do? (Then…)", "targets": ["Then", "call"], "model": "Then, I call the vet and I take notes."}, {"t": "What were you doing while the vet was checking the animal?", "targets": ["while", "was"], "model": "I was cleaning the wound while the vet was checking the animal."}, {"t": "After that, what treatment did you do? (bandage)", "targets": ["After that", "bandage"], "model": "After that, we cleaned the wound and we put a bandage on."}, {"t": "Have you ever treated a squirrel or a hedgehog?", "targets": ["Have you", "ever"], "model": "Yes, I have. I’ve treated squirrels and I’ve helped an injured hedgehog."}, {"t": "What happens next? (follow‑up)", "targets": ["follow-up", "so"], "model": "We plan a follow-up, so we can check the animal again."}, {"t": "How do you feel after a rescue? (but + rewarding)", "targets": ["but", "rewarding"], "model": "It can be stressful, but it’s very rewarding."}, {"t": "Finally, when will you release the animal? (going to)", "targets": ["Finally", "going to"], "model": "Finally, we’re going to release it when it is strong again."}], "phrases": ["Let me explain step by step.", "First… Then… After that… Finally…", "I put on gloves for safety.", "We cleaned the wound and put a bandage on.", "We plan a follow-up to check progress.", "It’s challenging, but rewarding.", "We release the animal back to nature."]}, "youth": {"title": "🧑‍⚖️ Youth support role‑play (extended)", "steps": [{"t": "In one sentence: what do you do with young people?", "targets": ["I support", "young people"], "model": "I support young people by doing assessments and follow-ups."}, {"t": "What do you do first in a case? (First…)", "targets": ["First", "case file"], "model": "First, I read the case file to understand the situation."}, {"t": "Then what do you do? (Then…)", "targets": ["Then", "meet"], "model": "Then, I meet the young person and I listen carefully."}, {"t": "What were you doing during the meeting? (was + while)", "targets": ["was", "while"], "model": "I was taking notes while the young person was speaking."}, {"t": "After that, what do you write? (report)", "targets": ["After that", "report"], "model": "After that, I write a short report for the team."}, {"t": "Have you written the report yet? Use already / yet.", "targets": ["already", "yet"], "model": "Yes, I’ve already written it, but I haven’t sent it yet."}, {"t": "Did you attend a court hearing last month?", "targets": ["court", "last month"], "model": "Yes, I attended a court hearing last month and the judge asked questions."}, {"t": "Why do you do follow‑ups? Use so / That’s why.", "targets": ["so", "That’s why"], "model": "We do follow-ups so the young person can make progress. That’s why encouragement is important."}, {"t": "When is the next follow‑up meeting? (on / at)", "targets": ["on", "at"], "model": "We have a follow-up meeting on Tuesday at 10 a.m."}, {"t": "Finish with a positive message about progress.", "targets": ["progress", "encourage"], "model": "Progress takes time, and we encourage the young person step by step."}], "phrases": ["I do an assessment and write a report.", "First, I read the case file.", "Then, I meet the young person and listen carefully.", "I was taking notes while they were speaking.", "After that, I write a short report.", "We focus on safety and progress.", "That’s why we do follow-ups and encouragement.", "We schedule a follow-up meeting on… at…"]}, "safari": {"title": "🦁 Safari storytelling role‑play (Africa)", "steps": [{"t": "Tell me your trip in one sentence (past simple).", "targets": ["past simple"], "model": "Last year, we went on a safari in Africa."}, {"t": "What happened first? Use First.", "targets": ["First"], "model": "First, we arrived at the lodge and met the guide."}, {"t": "Then what did you do? Use Then.", "targets": ["Then"], "model": "Then, we got into the safari jeep and drove into the park."}, {"t": "Background: What were you doing when you saw animals?", "targets": ["while", "were"], "model": "While we were driving slowly, we saw zebras near the road."}, {"t": "What animal did you see next? Use After that.", "targets": ["After that", "elephant"], "model": "After that, we saw elephants near the river."}, {"t": "Add a detail with For example.", "targets": ["For example"], "model": "For example, we used binoculars to look for a rhino."}, {"t": "Use Because to explain a reason.", "targets": ["because"], "model": "We stayed quiet because we didn’t want to scare the animals."}, {"t": "Use However for contrast.", "targets": ["However"], "model": "However, the weather changed and it started raining."}, {"t": "Use past continuous again (was + -ing).", "targets": ["past continuous"], "model": "I was taking photos when a lion appeared."}, {"t": "Finish the story with Finally.", "targets": ["Finally"], "model": "Finally, we watched the sunset and returned to the lodge."}, {"t": "How did you feel? Use but.", "targets": ["but"], "model": "It was scary sometimes, but it was amazing."}, {"t": "Ask me one question (Have you ever…?).", "targets": ["Have you", "ever"], "model": "Have you ever been on a safari?"}], "phrases": ["First… Then… After that… Finally…", "While we were…, we saw…", "We stayed quiet because…", "However, …", "It was scary, but amazing.", "Have you ever…?"]}, "catchup": {"title": "📞 Catching up (Denmark + life updates)", "steps": [{"t": "Hi! How have you been?", "targets": ["I’ve been", "lately"], "model": "Hi! I’ve been busy lately, but I’m good. How have you been?"}, {"t": "What’s new these days? (present perfect + also)", "targets": ["present perfect", "also"], "model": "I’ve volunteered at a vet clinic, and I’ve also supported young people as an assessor."}, {"t": "Have you visited Denmark yet?", "targets": ["yet", "Not yet"], "model": "Not yet, but I’ve already looked at flights."}, {"t": "Tell me a short story: Africa trip (First / Then / Finally).", "targets": ["First", "Finally"], "model": "First, we arrived at the lodge. Then, we went on safari. Finally, we watched the sunset."}, {"t": "Ask two questions (Have you…?).", "targets": ["Have you"], "model": "Have you been busy lately? Have you ever been to Denmark?"}, {"t": "Plan the next call (on / at).", "targets": ["on", "at"], "model": "I’ll call you on Saturday at 3 pm. Is that okay?"}], "phrases": ["How have you been lately?", "That’s great to hear.", "Have you… yet?", "First / Then / After that / Finally", "Let’s keep in touch."]}};
+  var WRITING_TASKS = [{"id": "w1", "title": "💌 Message to your daughter‑in‑law (catching up)", "subject": "Say hello, share updates, and ask questions.", "steps": ["Greeting + How have you been?", "2 updates (present perfect): vet clinic + youth support", "1 keyword: already / yet / just / ever / never", "2 sequencing connectors (first/then/finally)", "2 questions (Have you…?)", "Closing + plan (future)"], "model": "Hi! How have you been lately? I’ve been busy, but I’m good. I’ve volunteered at a vet clinic and I’ve also supported young people as an assessor. I haven’t visited Denmark yet, but I’ve already looked at flights. First, I want to hear your news. Then, I can tell you about my week. Finally, we can plan our next call. Have you been busy lately? Have you ever visited Denmark? Take care! I’m going to call you this weekend.", "checks": [{"label": "Present perfect (I’ve / have / has)", "re": "\\bI['’]ve\\b|\\bhave\\b|\\bhas\\b"}, {"label": "Keyword (already/yet/just/ever/never)", "re": "\\b(already|yet|just|ever|never)\\b"}, {"label": "Sequencing (first/then/after/finally)", "re": "\\b(first|then|after that|finally)\\b"}, {"label": "2 questions (Have you)", "re": "\\bHave you\\b"}, {"label": "Future (going to / will / meeting)", "re": "\\bgoing to\\b|\\bI['’]ll\\b|\\bI will\\b|\\bI['’]m meeting\\b"}]}, {"id": "w2", "title": "🦁 Safari story (Africa)", "subject": "Tell a short story with sequencing + past tenses.", "steps": ["Use First / Then / After that / Finally", "Use 2 past simple verbs (went/saw/visited/arrived)", "Use 1 past continuous (was/were + -ing) with while/when", "Add 1 feeling + but/however"], "model": "First, we arrived at the lodge in the afternoon. Then, we got into the safari jeep and drove into the park. While we were driving, we saw zebras and a giraffe near the road. After that, we watched elephants by the river. Finally, we returned to the camp at sunset. It was scary sometimes, but it was amazing.", "checks": [{"label": "Sequencing (first/then/after/finally)", "re": "\\b(first|then|after that|finally)\\b"}, {"label": "Past continuous (was/were + ing)", "re": "\\bwas\\b\\s+\\w+ing\\b|\\bwere\\b\\s+\\w+ing\\b"}, {"label": "Past simple verb (went/saw/arrived/returned)", "re": "\\b(went|saw|arrived|returned|drove|watched|visited)\\b"}, {"label": "Contrast (but/however)", "re": "\\b(but|however)\\b"}]}, {"id": "w3", "title": "🐿️ Vet clinic volunteering (step by step)", "subject": "Describe what you do with small animals.", "steps": ["Use present simple (I volunteer / I help)", "Use sequencing: first/then/after/finally", "Use 4 rescue words (gloves, carrier, wound, bandage, feed, release)", "Finish with a feeling (rewarding/challenging)"], "model": "I volunteer at a vet clinic and I help small animals. First, I put on gloves and prepare a carrier. Then, I clean the wound and we put a bandage on. After that, we feed the animal and keep it calm. Finally, we plan a follow-up before we release it. It’s challenging sometimes, but it’s very rewarding.", "checks": [{"label": "Routine present (I volunteer/I help)", "re": "\\bI volunteer\\b|\\bI help\\b"}, {"label": "Sequencing connectors", "re": "\\b(first|then|after that|finally)\\b"}, {"label": "Rescue words", "re": "\\b(gloves|carrier|wound|bandage|feed|release)\\b"}, {"label": "Feeling (rewarding/challenging)", "re": "\\b(rewarding|challenging)\\b"}]}, {"id": "w4", "title": "🏛️ Youth support role (assessment + follow-up)", "subject": "Explain your role and a typical sequence.", "steps": ["Use present simple for role (I support / I write)", "Use 2 connectors (because/so/however)", "Use 4 youth words (case file, court hearing, report, follow-up, support plan)", "End with a progress sentence (That’s why...)"], "model": "I support young people by doing assessments and follow-ups. First, I read the case file because I need to understand the situation. Then, I meet the young person and listen carefully. After that, I write a report and we prepare a support plan, so the child can make progress. However, it can be difficult. That’s why we do follow-ups and encouragement.", "checks": [{"label": "Role present (I support/I write)", "re": "\\bI support\\b|\\bI write\\b"}, {"label": "Connectors (because/so/however/that’s why)", "re": "\\b(because|so|however|that’s why)\\b"}, {"label": "Youth words", "re": "\\b(case file|court hearing|report|follow\\-up|support plan)\\b"}, {"label": "Progress/encouragement", "re": "\\b(progress|encourage)\\b"}]}, {"id": "w5", "title": "☎️ Rescue phone call (vet clinic)", "subject": "Write what happened after a phone call about an injured animal.", "steps": ["Start with Because (reason)", "Use First / Then / While / After that / Finally", "Use 5 rescue words", "Use a feeling with but/however"], "model": "Because someone found an injured squirrel, they called the clinic. First, I put on gloves and prepared a carrier. Then, the vet checked the animal. While the vet was working, I cleaned the wound and we put a bandage on. After that, we fed it slowly and kept it warm. Finally, we planned a follow-up before we release it. It was stressful, but it was rewarding.", "checks": [{"label": "Because (reason)", "re": "\\bbecause\\b"}, {"label": "Sequencing connectors", "re": "\\b(first|then|while|after that|finally)\\b"}, {"label": "Rescue words", "re": "\\b(gloves|carrier|wound|bandage|feed|release|warm)\\b"}, {"label": "Contrast (but/however)", "re": "\\b(but|however)\\b"}]}, {"id": "w6", "title": "🏛️ Court day summary", "subject": "Write a short summary of one court day with connectors + tenses.", "steps": ["Use First / Then / While / After that / Finally", "Use 2 past simple verbs (attended/asked/wrote/scheduled)", "Use 1 past continuous (was/were + ing)", "Use 4 youth words (court hearing, judge, report, follow-up)", "End with a positive progress sentence"], "model": "First, I read the case file and prepared questions. Then, I attended a court hearing and the judge asked questions. While the judge was speaking, I was taking notes. After that, I wrote a report and suggested a support plan. Finally, we scheduled a follow-up meeting. Progress takes time, and encouragement helps.", "checks": [{"label": "Sequencing connectors", "re": "\\b(first|then|while|after that|finally)\\b"}, {"label": "Past continuous (was/were + ing)", "re": "\\bwas\\b\\s+\\w+ing\\b|\\bwere\\b\\s+\\w+ing\\b"}, {"label": "Youth words", "re": "\\b(court hearing|judge|report|follow\\-up)\\b"}, {"label": "Progress/encouragement", "re": "\\b(progress|encourage)\\b"}]}];
+
+  function escHtml(s){
+    return String(s).replace(/[&<>"']/g, function(m){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]);
+    });
+  }
+  function norm(s){ return String(s||'').trim().toLowerCase().replace(/\s+/g,' '); }
+  function shuffle(arr){
+    var a = arr.slice();
+    for(var i=a.length-1;i>0;i--){
+      var j = Math.floor(Math.random()*(i+1));
+      var t=a[i]; a[i]=a[j]; a[j]=t;
+    }
+    return a;
+  }
+
+  // ====== State ======
+  var STORE = 'SET_SEQ_STORY_SINGLE_V6';
+  var state = load() || {score:0, solved:{}, voice:'US', autoAudio:false, speed:'normal'};
+  var totalPoints = 0;
+
+  function load(){
+    try{ return JSON.parse(localStorage.getItem(STORE) || ''); }catch(e){ return null; }
+  }
+  function save(){ localStorage.setItem(STORE, JSON.stringify(state)); }
+
+  function setHint(t){
+    var hb = byId('hintBox'); if(hb) hb.textContent = t;
+  }
+  function markSolved(id, pts){
+    if(state.solved[id]) return false;
+    state.solved[id]=true;
+    state.score += (pts||1);
+    save();
+    updateHUD();
+    return true;
+  }
+  function updateHUD(){
+    byId('scoreNow').textContent = String(state.score);
+    byId('scoreTotal').textContent = String(totalPoints);
+    var pct = totalPoints ? Math.round((state.score/totalPoints)*100) : 0;
+    byId('pPct').textContent = pct + '%';
+    byId('pBar').style.width = Math.max(0, Math.min(100, pct)) + '%';
+  }
+
+  // ====== Speech ======
+  var voices = [];
+  function refreshVoices(){
+    try{ voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : []; }catch(e){ voices=[]; }
+  }
+  if('speechSynthesis' in window){
+    refreshVoices();
+    window.speechSynthesis.onvoiceschanged = refreshVoices;
+  }
+  function pickVoice(){
+    var want = (state.voice==='UK') ? ['en-GB','en_GB'] : ['en-US','en_US'];
+    for(var i=0;i<voices.length;i++){ if(want.indexOf(voices[i].lang)>=0) return voices[i]; }
+    for(var j=0;j<voices.length;j++){ if((voices[j].lang||'').toLowerCase().indexOf('en')===0) return voices[j]; }
+    return null;
+  }
+  function speak(text){
+    if(!('speechSynthesis' in window)) return;
+    try{
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      var v = pickVoice();
+      if(v) u.voice = v;
+      u.rate = (state.speed==='slow') ? 0.78 : 0.95;
+      window.speechSynthesis.speak(u);
+    }catch(e){}
+  }
+  function stopSpeak(){ try{ if('speechSynthesis' in window) window.speechSynthesis.cancel(); }catch(e){} }
+
+  // ====== Top controls ======
+  function setActive(btnId, on){
+    var el=byId(btnId); if(el) el.className = on ? 'pill is-active' : 'pill';
+  }
+  function initTop(){
+    setActive('voiceUS', state.voice==='US');
+    setActive('voiceUK', state.voice==='UK');
+    setActive('autoOn', !!state.autoAudio);
+    setActive('autoOff', !state.autoAudio);
+    setActive('speedN', state.speed==='normal');
+    setActive('speedS', state.speed==='slow');
+
+    byId('voiceUS').onclick=function(){ state.voice='US'; save(); initTop(); setHint('Voice: US'); };
+    byId('voiceUK').onclick=function(){ state.voice='UK'; save(); initTop(); setHint('Voice: UK'); };
+    byId('autoOn').onclick=function(){ state.autoAudio=true; save(); initTop(); setHint('Auto audio ON'); };
+    byId('autoOff').onclick=function(){ state.autoAudio=false; save(); initTop(); setHint('Auto audio OFF'); };
+    byId('speedN').onclick=function(){ state.speed='normal'; save(); initTop(); };
+    byId('speedS').onclick=function(){ state.speed='slow'; save(); initTop(); };
+    byId('stopAudio').onclick=stopSpeak;
+    byId('resetAll').onclick=function(){
+      if(!confirm('Reset everything for this lesson?')) return;
+      localStorage.removeItem(STORE);
+      location.reload();
+    };
+  }
+
+  // ====== Tabs + grids ======
+  function buildTabs(rootId, items){
+    var root = byId(rootId);
+    var cats = ['All'];
+    for(var i=0;i<items.length;i++){
+      if(cats.indexOf(items[i].cat)===-1) cats.push(items[i].cat);
+    }
+    root.innerHTML = cats.map(function(c,idx){
+      return '<button class="tab '+(idx===0?'is-active':'')+'" type="button" data-cat="'+escHtml(c)+'">'+escHtml(c)+'</button>';
+    }).join('');
+  }
+  function activeCat(rootId){
+    var root=byId(rootId);
+    var a = root ? root.querySelector('.tab.is-active') : null;
+    return (a && a.getAttribute('data-cat')) ? a.getAttribute('data-cat') : 'All';
+  }
+  function setActiveTab(rootId, cat){
+    var root=byId(rootId);
+    qsa('.tab', root).forEach(function(t){ t.classList.remove('is-active'); });
+    var btn = root.querySelector('.tab[data-cat="'+cat.replace(/"/g,'\\"')+'"]');
+    if(btn) btn.classList.add('is-active');
+  }
+
+  function renderFlashGrid(gridId, items, searchVal, cat){
+    var grid = byId(gridId);
+    var q = norm(searchVal);
+    var out = [];
+    for(var i=0;i<items.length;i++){
+      var x=items[i];
+      if(cat!=='All' && x.cat!==cat) continue;
+      if(q){
+        var ok = norm(x.en).indexOf(q)>=0 || norm(x.fr).indexOf(q)>=0 || norm(x.use||x.def||'').indexOf(q)>=0 || norm(x.ex||'').indexOf(q)>=0;
+        if(!ok) continue;
+      }
+      out.push(
+        '<button class="flash" type="button" data-say="'+escHtml(x.en)+'">'+
+          '<div class="flash__top">'+
+            '<div class="flash__icon" aria-hidden="true">'+escHtml(x.icon||"✨")+'</div>'+
+            '<div class="flash__term">'+escHtml(x.en)+'</div>'+
+          '</div>'+
+          '<div class="flash__meta"><span class="tag">'+escHtml(x.cat)+'</span> • click to reveal</div>'+
+          '<div class="flash__def">'+
+            '<div><strong>FR:</strong> '+escHtml(x.fr)+'</div>'+
+            '<div><strong>Use:</strong> '+escHtml(x.use||x.def||"")+'</div>'+
+            '<div style="margin-top:6px;"><strong>Example:</strong> '+escHtml(x.ex||"")+'</div>'+
+          '</div>'+
+        '</button>'
+      );
+    }
+    grid.innerHTML = out.join('');
+  }
+
+  function attachFlip(gridId){
+    var grid=byId(gridId);
+    grid.onclick=function(e){
+      var card=e.target.closest('.flash');
+      if(!card) return;
+      card.classList.toggle('is-flipped');
+      var say=card.getAttribute('data-say')||'';
+      if(say) speak(say);
+    };
+  }
+
+  // ====== MCQ renderer ======
+  function renderMCQ(rootId, bank, prefix){
+    var root=byId(rootId);
+    var html=[];
+    for(var i=0;i<bank.length;i++){
+      var q=bank[i];
+      var id=prefix+'_'+(i+1);
+      var opts=shuffle(q.opts);
+      html.push(
+        '<div class="qItem" data-id="'+escHtml(id)+'" data-a="'+escHtml(q.a)+'">'+
+          '<div class="qQ">'+escHtml(q.q)+'</div>'+
+          '<div class="opts">'+opts.map(function(o){
+            return '<button class="opt" type="button" data-c="'+escHtml(o)+'">'+escHtml(o)+'</button>';
+          }).join('')+'</div>'+
+          '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">'+
+            '<button class="btn btn--ghost hintBtn" type="button" data-h="'+escHtml(q.hint||"")+'">Hint</button>'+
+            '<button class="btn btn--ghost whyBtn" type="button">Why?</button>'+
+          '</div>'+
+          '<div class="feedback" data-fb></div>'+
+          '<div class="explain" data-ex>'+escHtml(q.why||"")+'</div>'+
+        '</div>'
+      );
+    }
+    root.innerHTML = html.join('');
+
+    // restore solved
+    qsa('.qItem', root).forEach(function(it){
+      var id=it.getAttribute('data-id');
+      if(state.solved[id]){
+        qsa('.opt',it).forEach(function(b){ b.disabled=true; });
+        var fb=it.querySelector('[data-fb]');
+        fb.textContent='✅ Already solved';
+        fb.classList.add('good');
+      }
+    });
+
+    root.onclick=function(e){
+      var it=e.target.closest('.qItem'); if(!it) return;
+      var id=it.getAttribute('data-id');
+      var ans=it.getAttribute('data-a');
+      var fb=it.querySelector('[data-fb]');
+      var ex=it.querySelector('[data-ex]');
+      var opt=e.target.closest('.opt');
+      var hint=e.target.closest('.hintBtn');
+      var why=e.target.closest('.whyBtn');
+
+      if(why){ ex.classList.toggle('is-on'); return; }
+      if(hint){
+        fb.classList.remove('good','bad');
+        fb.textContent='💡 '+(hint.getAttribute('data-h')||'');
+        setHint(hint.getAttribute('data-h')||'');
+        return;
+      }
+      if(!opt) return;
+      var choice=opt.getAttribute('data-c');
+
+      if(choice===ans){
+        opt.classList.add('is-right');
+        fb.classList.remove('bad'); fb.classList.add('good');
+        fb.textContent = state.solved[id] ? '✅ Correct (practice mode)' : '✅ Correct!';
+        qsa('.opt',it).forEach(function(b){ b.disabled=true; });
+        if((ex.textContent||'').trim()) ex.classList.add('is-on');
+        if(!state.solved[id]) markSolved(id,1);
+        speak(ans);
+      }else{
+        opt.classList.add('is-wrong');
+        fb.classList.remove('good'); fb.classList.add('bad');
+        fb.textContent='❌ Not yet. Try again.';
+      }
+    };
+  }
+
+  // ====== FIB ======
+  function renderFIB(){
+    var root=byId('fibBox');
+    var html=[];
+    for(var i=0;i<FIB.length;i++){
+      var item=FIB[i];
+      var sent = item.sent.replace('____','<span class="blank"><input data-a="'+escHtml(item.a)+'" placeholder="..." autocomplete="off"></span>');
+      html.push(
+        '<div class="qItem" data-id="'+escHtml(item.id)+'">'+
+          '<div class="qQ">'+sent+'</div>'+
+          '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">'+
+            '<button class="btn btn--ghost hintBtn" type="button" data-h="'+escHtml(item.hint)+'">Hint</button>'+
+            '<div class="feedback" data-fb></div>'+
+          '</div>'+
+        '</div>'
+      );
+    }
+    root.innerHTML = html.join('');
+
+    // restore solved
+    qsa('.qItem',root).forEach(function(row){
+      var id=row.getAttribute('data-id');
+      if(state.solved[id]){
+        var inp=row.querySelector('input');
+        var fb=row.querySelector('[data-fb]');
+        inp.value = inp.getAttribute('data-a');
+        inp.disabled=true;
+        fb.textContent='✅ Correct';
+        fb.classList.add('good');
+      }
+    });
+
+    root.onclick=function(e){
+      var row=e.target.closest('.qItem'); if(!row) return;
+      var hint=e.target.closest('.hintBtn'); if(!hint) return;
+      var fb=row.querySelector('[data-fb]');
+      fb.classList.remove('good','bad');
+      fb.textContent='💡 '+(hint.getAttribute('data-h')||'');
+      setHint(hint.getAttribute('data-h')||'');
+    };
+
+    root.oninput=function(e){
+      var inp=e.target.closest('input'); if(!inp) return;
+      var row=inp.closest('.qItem');
+      var id=row.getAttribute('data-id');
+      var fb=row.querySelector('[data-fb]');
+      var ans=norm(inp.getAttribute('data-a'));
+      var val=norm(inp.value);
+      if(val===ans){
+        inp.disabled=true;
+        fb.classList.remove('bad'); fb.classList.add('good');
+        fb.textContent='✅ Correct!';
+        if(!state.solved[id]) markSolved(id,1);
+        speak(inp.getAttribute('data-a'));
+      }else if(val.length>=Math.max(3,ans.length)){
+        fb.classList.remove('good'); fb.classList.add('bad');
+        fb.textContent='❌ Not yet.';
+      }else{
+        fb.textContent=''; fb.classList.remove('good','bad');
+      }
+    };
+  }
+
+  // ====== Story builder (drag OR tap) ======
+  var storySelectedToken = null;
+  var story = null;
+
+  function loadStory(id){
+    for(var i=0;i<STORIES.length;i++){ if(STORIES[i].id===id){ story = {id:id, target:STORIES[i].target.slice(), placed:[]}; break; } }
+    if(!story) story = {id:STORIES[0].id, target:STORIES[0].target.slice(), placed:[]};
+    byId('storyHint').textContent = 'Tip: ' + (STORIES.filter(function(s){return s.id===id;})[0]||STORIES[0]).hint;
+    byId('storyFb').className='feedback';
+    byId('storyFb').textContent='Tap a token → tap a slot (or drag).';
+    storySelectedToken=null;
+    renderStory();
+  }
+
+  function renderStory(){
+    var bank=byId('storyBank');
+    var slots=byId('storySlots');
+
+    // create tokens in random order
+    var tokens = shuffle(story.target);
+    bank.innerHTML = tokens.map(function(t){
+      return '<button class="token" type="button" draggable="true" data-text="'+escHtml(t)+'">'+escHtml(t)+'</button>';
+    }).join('');
+
+    slots.innerHTML = story.target.map(function(_,idx){
+      return '<div class="slot" data-i="'+idx+'" tabindex="0">'+
+              '<div class="slotNum">'+(idx+1)+'</div>'+
+              '<div class="slotText">Tap/drag the correct sentence here…</div>'+
+             '</div>';
+    }).join('');
+
+    // tap select
+    bank.onclick=function(e){
+      var tok=e.target.closest('.token'); if(!tok) return;
+      if(tok.classList.contains('is-locked')) return;
+      // toggle selection
+      qsa('.token', bank).forEach(function(x){ if(x!==tok) x.classList.remove('is-selected'); });
+      tok.classList.toggle('is-selected');
+      storySelectedToken = tok.classList.contains('is-selected') ? tok : null;
+      byId('storyFb').className='feedback';
+      byId('storyFb').textContent = storySelectedToken ? ('Selected: "'+tok.getAttribute('data-text')+'". Tap a slot.') : 'Tap a token → tap a slot.';
+    };
+
+    // drag
+    bank.addEventListener('dragstart', function(e){
+      var tok=e.target.closest('.token'); if(!tok || tok.classList.contains('is-locked')) return;
+      e.dataTransfer.setData('text/plain', tok.getAttribute('data-text'));
+      e.dataTransfer.effectAllowed='move';
+    });
+
+    qsa('.slot', slots).forEach(function(slot){
+      slot.addEventListener('dragover', function(e){ e.preventDefault(); slot.classList.add('is-hot'); });
+      slot.addEventListener('dragleave', function(){ slot.classList.remove('is-hot'); });
+      slot.addEventListener('drop', function(e){
+        e.preventDefault(); slot.classList.remove('is-hot');
+        placeStoryToken(e.dataTransfer.getData('text/plain'), parseInt(slot.getAttribute('data-i'),10), slot);
+      });
+      slot.addEventListener('click', function(){
+        if(!storySelectedToken) return;
+        placeStoryToken(storySelectedToken.getAttribute('data-text'), parseInt(slot.getAttribute('data-i'),10), slot);
+      });
+      slot.addEventListener('keydown', function(ev){
+        if((ev.key==='Enter'||ev.key===' ') && storySelectedToken){
+          ev.preventDefault();
+          placeStoryToken(storySelectedToken.getAttribute('data-text'), parseInt(slot.getAttribute('data-i'),10), slot);
+        }
+      });
+    });
+  }
+
+  function placeStoryToken(text, idx, slotEl){
+    var expected = story.target[idx];
+    var fb = byId('storyFb');
+
+    if(text === expected){
+      slotEl.querySelector('.slotText').textContent = text;
+      slotEl.classList.add('is-hot');
+      setTimeout(function(){ slotEl.classList.remove('is-hot'); }, 200);
+
+      // lock token with matching text (simple scan)
+      var bank=byId('storyBank');
+      var tokens=qsa('.token', bank);
+      for(var i=0;i<tokens.length;i++){
+        if(tokens[i].getAttribute('data-text')===text){
+          tokens[i].classList.remove('is-selected');
+          tokens[i].classList.add('is-locked');
+          tokens[i].setAttribute('draggable','false');
+          break;
+        }
+      }
+      storySelectedToken=null;
+
+      fb.classList.remove('bad'); fb.classList.add('good');
+      fb.textContent='✅ Correct placement!';
+      speak(text);
+      markSolved('story_'+story.id+'_'+(idx+1), 1);
+
+      // check completion
+      var allDone=true;
+      qsa('.slotText', byId('storySlots')).forEach(function(st){
+        if(st.textContent.indexOf('Tap/drag')===0) allDone=false;
+      });
+      if(allDone){
+        fb.textContent='🎉 Story complete!';
+        speak(story.target.join(' '));
+      }
+    }else{
+      slotEl.classList.add('is-bad');
+      setTimeout(function(){ slotEl.classList.remove('is-bad'); }, 300);
+      fb.classList.remove('good'); fb.classList.add('bad');
+      fb.textContent='❌ Not correct for this slot.';
+    }
+  }
+
+  // ====== Tenses panel ======
+  function renderTense(key){
+    var t = TENSES[0];
+    for(var i=0;i<TENSES.length;i++){ if(TENSES[i].key===key){ t=TENSES[i]; break; } }
+    var panel = byId('tensePanel');
+    panel.innerHTML =
+      '<div class="mini">'+
+        '<h2 class="h2">'+escHtml(t.icon)+' '+escHtml(t.title)+' <span class="tag">'+escHtml(t.fr)+'</span></h2>'+
+        '<div class="callout small">'+
+          '<div><strong>Form:</strong> '+escHtml(t.form)+'</div>'+
+          '<div><strong>Use:</strong> '+escHtml(t.use)+'</div>'+
+          '<div><strong>Keywords:</strong> '+escHtml(t.keywords)+'</div>'+
+        '</div>'+
+        '<div class="grid2" style="margin-top:12px;">'+
+          '<div class="mini">'+
+            '<h3 class="h2" style="font-size:16px;margin:6px 0;">Examples</h3>'+
+            '<ul class="list">'+t.examples.map(function(x){ return '<li>'+escHtml(x)+'</li>'; }).join('')+'</ul>'+
+            '<button class="btn btn--ghost" id="listenExamples" type="button">🔊 Listen examples</button>'+
+          '</div>'+
+          '<div class="mini">'+
+            '<h3 class="h2" style="font-size:16px;margin:6px 0;">Mini quiz</h3>'+
+            '<div class="quiz" id="tenseQuiz"></div>'+
+          '</div>'+
+        '</div>'+
+      '</div>';
+
+    byId('listenExamples').onclick=function(){ speak(t.examples.join(' ')); };
+    renderMCQ('tenseQuiz', t.quiz, 'tense_'+t.key);
+  }
+
+  function initTenses(){
+    var tabs = byId('tenseTabs');
+    tabs.innerHTML = TENSES.map(function(t,idx){
+      return '<button class="tab '+(idx===0?'is-active':'')+'" type="button" data-k="'+escHtml(t.key)+'">'+escHtml(t.icon)+' '+escHtml(t.title)+'</button>';
+    }).join('');
+
+    tabs.onclick=function(e){
+      var b=e.target.closest('.tab'); if(!b) return;
+      qsa('.tab', tabs).forEach(function(x){ x.classList.remove('is-active'); });
+      b.classList.add('is-active');
+      renderTense(b.getAttribute('data-k'));
+    };
+
+    renderTense(TENSES[0].key);
+  }
+
+  // ====== Roleplays ======
+  var rpKey = null;
+  var rpIdx = 0;
+  var showModel = false;
+  var showPhrases = false;
+
+  function checkTargets(text, targets){
+    var t = norm(text);
+    var hasPP = /\b(i['’]ve|have|has)\b/.test(t);
+    var hasPastMarker = /\b(yesterday|last week|last month|last year|in \d{4})\b/.test(t);
+    var hasPastVerb = /\b(went|saw|met|did|had|made|took|wrote|bought|brought|found|felt|got|fell|put|fed|cleaned|helped|attended|asked|scheduled|prepared)\b/.test(t) || /\b\w+ed\b/.test(t);
+    var hasPastCont = /\b(was|were)\b/.test(t) && /\b\w+ing\b/.test(t);
+
+    for(var i=0;i<targets.length;i++){
+      var key = norm(targets[i]);
+      if(key==='present perfect'){ if(!hasPP) return false; continue; }
+      if(key==='past simple'){ if(!(hasPastMarker||hasPastVerb)) return false; continue; }
+      if(key==='past continuous'){ if(!hasPastCont) return false; continue; }
+      if(key==='was'){ if(t.indexOf(' was ')===-1 && t.indexOf('was ')!==0) return false; continue; }
+      if(key==='were'){ if(t.indexOf(' were ')===-1 && t.indexOf('were ')!==0) return false; continue; }
+      if(t.indexOf(key)===-1) return false;
+    }
+    return true;
+  }
+
+  function makeVariations(model){
+    var v=[];
+    v.push(model.replace(/\bI’ve\b/g,'I have').replace(/\bI’m\b/g,'I am'));
+    v.push(model.replace(/\bvery\b/g,'really'));
+    v.push(model.replace(/\bNot yet\b/g,'Not yet').replace(/\bI’m going to\b/g,'I am going to'));
+    // dedupe
+    var out=[];
+    for(var i=0;i<v.length;i++){ if(v[i]!==model && out.indexOf(v[i])===-1) out.push(v[i]); }
+    return out;
+  }
+
+  function renderRoleplay(){
+    var rp = ROLEPLAYS[rpKey];
+    var steps = rp.steps;
+    var step = steps[rpIdx];
+    byId('rpCount').textContent = (rpIdx+1)+' / '+steps.length;
+    byId('rpTeacher').textContent = step.t;
+    if(state.autoAudio) speak(step.t);
+
+    var sid='rp_'+rpKey+'_'+(rpIdx+1);
+    byId('rpMode').textContent = state.solved[sid] ? 'Practice' : 'Scoring';
+
+    // Build choices: model + variations, select 3
+    var opts = shuffle([step.model].concat(makeVariations(step.model))).slice(0,3);
+    var choices = byId('rpChoices');
+    choices.innerHTML = opts.map(function(o){
+      return '<button class="choice" type="button" data-t="'+escHtml(o)+'">'+escHtml(o)+'</button>';
+    }).join('');
+
+    var fb=byId('rpFb');
+    fb.className='feedback';
+    fb.textContent='Choose a reply (or type your own below).';
+
+    var explain=byId('rpExplain');
+    explain.className = 'explain'+(showModel?' is-on':'');
+    explain.textContent = showModel ? ('Model: '+step.model) : 'Click “Show model reply” if you need help.';
+
+    // phrases
+    var box=byId('rpPhrasesBox');
+    box.style.display = showPhrases ? 'block' : 'none';
+    if(showPhrases){
+      byId('rpPhraseList').innerHTML = rp.phrases.map(function(p){ return '<li>'+escHtml(p)+'</li>'; }).join('');
+    }
+
+    choices.onclick=function(e){
+      var b=e.target.closest('.choice'); if(!b) return;
+      var txt=b.getAttribute('data-t')||'';
+      if(checkTargets(txt, step.targets)){
+        b.classList.add('is-right');
+        fb.className='feedback good';
+        fb.textContent='✅ Good reply! Say it aloud, then click Next.';
+        if(!state.solved[sid]) markSolved(sid,1);
+        speak(txt);
+      }else{
+        b.classList.add('is-wrong');
+        fb.className='feedback bad';
+        fb.textContent='❌ Try again. Click Hint to see the targets.';
+      }
+    };
+  }
+
+  function initRoleplays(){
+    var sel=byId('rpSelect');
+    var keys=[];
+    for(var k in ROLEPLAYS){ if(ROLEPLAYS.hasOwnProperty(k)) keys.push(k); }
+    keys.sort();
+
+    sel.innerHTML = keys.map(function(k){ return '<option value="'+escHtml(k)+'">'+escHtml(ROLEPLAYS[k].title)+'</option>'; }).join('');
+    rpKey = sel.value || keys[0];
+    rpIdx=0; showModel=false; showPhrases=false;
+
+    sel.onchange=function(){ rpKey=sel.value; rpIdx=0; showModel=false; showPhrases=false; clearRoleplay(); };
+
+    byId('rpStart').onclick=function(){ rpIdx=0; showModel=false; showPhrases=false; renderRoleplay(); };
+    byId('rpNext').onclick=function(){
+      var steps=ROLEPLAYS[rpKey].steps;
+      rpIdx = Math.min(steps.length-1, rpIdx+1);
+      showModel=false;
+      renderRoleplay();
+    };
+    byId('rpClear').onclick=function(){ clearRoleplay(); };
+    byId('rpModel').onclick=function(){ showModel=!showModel; renderRoleplay(); };
+    byId('rpPhrases').onclick=function(){ showPhrases=!showPhrases; renderRoleplay(); };
+    byId('rpListenLine').onclick=function(){
+      var rp=ROLEPLAYS[rpKey]; if(!rp) return;
+      var step=rp.steps[rpIdx]; if(step) speak(step.t);
+    };
+    byId('rpHint').onclick=function(){
+      var step=ROLEPLAYS[rpKey].steps[rpIdx];
+      byId('rpFb').className='feedback';
+      byId('rpFb').textContent='💡 Targets: '+step.targets.join(' • ');
+      setHint('Targets: '+step.targets.join(' • '));
+    };
+    byId('rpFreeListen').onclick=function(){
+      var txt=byId('rpFree').value.trim();
+      if(!txt){ setHint('Type something first.'); return; }
+      speak(txt);
+    };
+    byId('rpFreeClear').onclick=function(){ byId('rpFree').value=''; };
+
+    clearRoleplay();
+  }
+
+  function clearRoleplay(){
+    byId('rpTeacher').textContent='Choose a scenario and click Start.';
+    byId('rpChoices').innerHTML='';
+    byId('rpFb').textContent='';
+    byId('rpExplain').textContent='';
+    byId('rpCount').textContent='0 / 0';
+    byId('rpMode').textContent='Ready';
+    byId('rpPhrasesBox').style.display='none';
+    byId('rpFree').value='';
+  }
+
+  // ====== Writing ======
+  var wKey=null;
+
+  function getTask(){
+    for(var i=0;i<WRITING_TASKS.length;i++){ if(WRITING_TASKS[i].id===wKey) return WRITING_TASKS[i]; }
+    return WRITING_TASKS[0];
+  }
+  function loadWriting(id){
+    wKey=id;
+    var t=getTask();
+    byId('wSubject').textContent='Subject: '+t.subject;
+    byId('wSteps').innerHTML = t.steps.map(function(s){ return '<li>'+escHtml(s)+'</li>'; }).join('');
+    byId('wText').value='';
+    byId('wFb').className='feedback';
+    byId('wFb').textContent='Write your text, then click Check.';
+    byId('wChecklist').innerHTML='';
+    byId('wModelBox').dataset.on='0';
+    byId('wModelBox').textContent='Click “Show model text” to reveal.';
+  }
+
+  function checkWriting(){
+    var t=getTask();
+    var txt=byId('wText').value.trim();
+    if(!txt){
+      byId('wFb').className='feedback bad';
+      byId('wFb').textContent='❌ Please write a text first.';
+      return;
+    }
+    var checks = t.checks.map(function(c){
+      var ok = new RegExp(c.re,'i').test(txt);
+      return {label:c.label, ok:ok};
+    });
+
+    // sequencing count rule (if present in label)
+    var seqCount = (txt.match(/\b(first|then|after that|finally|while)\b/gi)||[]).length;
+    for(var i=0;i<checks.length;i++){
+      if(checks[i].label.toLowerCase().indexOf('sequencing')>=0){
+        // keep as is; we accept it if at least 2 connectors exist overall
+        if(seqCount>=2) checks[i].ok=true;
+      }
+    }
+
+    byId('wChecklist').innerHTML = checks.map(function(ch){
+      return '<div class="chk '+(ch.ok?'ok':'bad')+'">'+
+               '<div class="dot"></div>'+
+               '<div>'+escHtml(ch.label)+' '+(ch.ok?'<small>OK</small>':'<small>Missing</small>')+'</div>'+
+             '</div>';
+    }).join('');
+
+    var allOk = checks.every(function(x){ return x.ok; });
+    if(allOk){
+      byId('wFb').className='feedback good';
+      byId('wFb').textContent='✅ Great! Checklist complete.';
+      markSolved('write_'+t.id, 3);
+    }else{
+      byId('wFb').className='feedback bad';
+      byId('wFb').textContent='❌ Not complete yet. Add the missing items.';
+    }
+  }
+
+  function initWriting(){
+    var sel=byId('wSelect');
+    sel.innerHTML = WRITING_TASKS.map(function(t){
+      return '<option value="'+escHtml(t.id)+'">'+escHtml(t.title)+'</option>';
+    }).join('');
+    wKey = sel.value || WRITING_TASKS[0].id;
+    sel.onchange=function(){ loadWriting(sel.value); };
+
+    byId('wReset').onclick=function(){ loadWriting(wKey); };
+    byId('wModel').onclick=function(){
+      var box=byId('wModelBox');
+      var t=getTask();
+      if(box.dataset.on==='1'){ box.dataset.on='0'; box.textContent='Click “Show model text” to reveal.'; return; }
+      box.dataset.on='1'; box.textContent=t.model;
+    };
+    byId('wListen').onclick=function(){
+      var txt=byId('wText').value.trim();
+      if(!txt){ setHint('Write something first.'); return; }
+      speak(txt);
+    };
+    byId('wCopy').onclick=function(){
+      // fallback copy
+      var txt=byId('wText');
+      txt.focus(); txt.select();
+      try{
+        var ok=document.execCommand('copy');
+        setHint(ok ? 'Copied!' : 'Copy failed. Please copy manually.');
+      }catch(e){
+        setHint('Copy failed. Please copy manually.');
+      }
+    };
+    byId('wHint').onclick=function(){
+      var t=getTask();
+      setHint('Use: '+t.steps.slice(0,3).join(' • '));
+      byId('wFb').className='feedback';
+      byId('wFb').textContent='💡 Steps: '+t.steps.join(' | ');
+    };
+    byId('wCheck').onclick=checkWriting;
+
+    loadWriting(wKey);
+  }
+
+  // ====== Connectors section ======
+  function initConnectors(){
+    buildTabs('cTabs', CONNECTORS);
+    renderFlashGrid('cGrid', CONNECTORS, byId('cSearch').value, activeCat('cTabs'));
+    attachFlip('cGrid');
+
+    byId('cTabs').onclick=function(e){
+      var b=e.target.closest('.tab'); if(!b) return;
+      qsa('.tab', byId('cTabs')).forEach(function(x){ x.classList.remove('is-active'); });
+      b.classList.add('is-active');
+      renderFlashGrid('cGrid', CONNECTORS, byId('cSearch').value, activeCat('cTabs'));
+    };
+    byId('cSearch').oninput=function(){ renderFlashGrid('cGrid', CONNECTORS, byId('cSearch').value, activeCat('cTabs')); };
+    byId('clearC').onclick=function(){
+      byId('cSearch').value='';
+      setActiveTab('cTabs','All');
+      renderFlashGrid('cGrid', CONNECTORS, '', 'All');
+    };
+    byId('listenConnectors').onclick=function(){
+      var cat=activeCat('cTabs');
+      var q=norm(byId('cSearch').value);
+      var list=[];
+      for(var i=0;i<CONNECTORS.length;i++){
+        var x=CONNECTORS[i];
+        if(cat!=='All' && x.cat!==cat) continue;
+        if(q && norm(x.en).indexOf(q)<0 && norm(x.fr).indexOf(q)<0) continue;
+        list.push(x.en);
+        if(list.length>=16) break;
+      }
+      if(!list.length){ setHint('No connector matches.'); return; }
+      speak(list.join(' '));
+    };
+
+    // Quick connector MCQ
+    renderMCQ('mcqConnectors', MCQ.slice(0,8), 'connqc');
+  }
+
+  // ====== Vocab section ======
+  function initVocab(){
+    buildTabs('vTabs', VOCAB);
+    renderFlashGrid('vGrid', VOCAB, byId('vSearch').value, activeCat('vTabs'));
+    attachFlip('vGrid');
+
+    byId('vTabs').onclick=function(e){
+      var b=e.target.closest('.tab'); if(!b) return;
+      qsa('.tab', byId('vTabs')).forEach(function(x){ x.classList.remove('is-active'); });
+      b.classList.add('is-active');
+      renderFlashGrid('vGrid', VOCAB, byId('vSearch').value, activeCat('vTabs'));
+    };
+    byId('vSearch').oninput=function(){ renderFlashGrid('vGrid', VOCAB, byId('vSearch').value, activeCat('vTabs')); };
+    byId('clearV').onclick=function(){
+      byId('vSearch').value='';
+      setActiveTab('vTabs','All');
+      renderFlashGrid('vGrid', VOCAB, '', 'All');
+    };
+    byId('listenVocab').onclick=function(){
+      var cat=activeCat('vTabs');
+      var q=norm(byId('vSearch').value);
+      var list=[];
+      for(var i=0;i<VOCAB.length;i++){
+        var x=VOCAB[i];
+        if(cat!=='All' && x.cat!==cat) continue;
+        if(q && norm(x.en).indexOf(q)<0 && norm(x.fr).indexOf(q)<0) continue;
+        list.push(x.en);
+        if(list.length>=18) break;
+      }
+      if(!list.length){ setHint('No vocab matches.'); return; }
+      speak(list.join(' '));
+    };
+
+    // Quick vocab MCQ (15)
+    var quiz=[];
+    var pool=VOCAB.slice();
+    pool = shuffle(pool).slice(0,15);
+    for(var i=0;i<pool.length;i++){
+      var v=pool[i];
+      var distract=[];
+      while(distract.length<2){
+        var d=VOCAB[Math.floor(Math.random()*VOCAB.length)].fr;
+        if(d!==v.fr && distract.indexOf(d)===-1) distract.push(d);
+      }
+      var opts=shuffle([v.fr].concat(distract));
+      quiz.push({q: v.icon+' '+v.en+' = ? (FR)', opts: opts, a: v.fr, hint: v.ex, why: v.en+' = '+v.fr});
+    }
+    renderMCQ('mcqVocab', quiz, 'vqc');
+  }
+
+  // ====== Practice zone ======
+  function initPractice(){
+    renderMCQ('mcqPractice', MCQ, 'prac');
+    renderFIB();
+
+    var sel=byId('storySelect');
+    sel.innerHTML = STORIES.map(function(s){ return '<option value="'+escHtml(s.id)+'">'+escHtml(s.title)+'</option>'; }).join('');
+    sel.onchange=function(){ loadStory(sel.value); };
+    byId('storyReset').onclick=function(){ loadStory(sel.value); };
+    loadStory(sel.value || STORIES[0].id);
+  }
+
+  // ====== Totals ======
+  function computeTotal(){
+    var q = 0;
+    q += byId('mcqConnectors').querySelectorAll('.qItem').length;
+    q += byId('mcqPractice').querySelectorAll('.qItem').length;
+    // tense quiz varies; we will count maximum as TENSES quiz total (all tenses)
+    var tq=0;
+    for(var i=0;i<TENSES.length;i++) tq += TENSES[i].quiz.length;
+    q += tq;
+    q += byId('mcqVocab').querySelectorAll('.qItem').length;
+    var fib = FIB.length;
+    var story = 0;
+    for(var s=0;s<STORIES.length;s++) story += STORIES[s].target.length;
+    var rp = 0;
+    for(var k in ROLEPLAYS){ if(ROLEPLAYS.hasOwnProperty(k)) rp += ROLEPLAYS[k].steps.length; }
+    var writing = WRITING_TASKS.length * 3;
+    return q + fib + story + rp + writing;
+  }
+
+  function init(){
+    // mark alive
+    byId('alive').textContent='JS loaded ✅';
+    byId('dbg').textContent='OK';
+
+    initTop();
+
+    initConnectors();
+    initTenses();
+    initPractice();
+    initRoleplays();
+    initWriting();
+    initVocab();
+
+    totalPoints = computeTotal();
+    updateHUD();
+    setHint('Start with Connectors → Tenses → Practice → Role‑plays → Writing.');
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+})();</script>
+
+<script>
+(function(){
+  // Model stories (EN + FR). Simple, A2/A2+ friendly, with clear connectors.
+  var STORIES = {
+    safari: {
+      title: "🦁 Safari day in Africa (model story)",
+      en: [
+        "First, we arrived at the lodge in the afternoon.",
+        "Then, we met the guide and learned the safety rules.",
+        "While we were driving in the safari jeep, we saw zebras near the road.",
+        "After that, we watched elephants by the river and took photos.",
+        "Finally, we returned to the camp at sunset. It was scary sometimes, but it was amazing."
+      ],
+      fr: [
+        "D’abord, nous sommes arrivés au lodge dans l’après‑midi.",
+        "Ensuite, nous avons rencontré le guide et appris les règles de sécurité.",
+        "Pendant que nous roulions dans le 4x4, nous avons vu des zèbres près de la route.",
+        "Après ça, nous avons observé des éléphants près de la rivière et pris des photos.",
+        "Enfin, nous sommes retournés au camp au coucher du soleil. C’était parfois effrayant, mais incroyable."
+      ],
+      vocab: [
+        ["🚙 safari jeep","4x4 de safari"],
+        ["🔭 binoculars","jumelles"],
+        ["🐾 footprints","empreintes"],
+        ["🌅 sunset","coucher de soleil"],
+        ["🛑 safety rules","règles de sécurité"]
+      ],
+      mini: [
+        {q:"Where did the story start?", a:"At the lodge", opts:["At the lodge","In court","At the vet clinic"]},
+        {q:"Which connector shows a background action?", a:"While", opts:["Finally","While","Because"]},
+        {q:"What did they see by the river?", a:"Elephants", opts:["Elephants","Squirrels","Case files"]},
+      ]
+    },
+    vet: {
+      title: "🐿️ Vet clinic shift (small animals) (model story)",
+      en: [
+        "First, an injured bird arrived at the vet clinic.",
+        "Then, I put on gloves and prepared a carrier.",
+        "While the vet was checking the animal, I cleaned the wound carefully.",
+        "After that, we fed the bird slowly and kept it calm.",
+        "Finally, we planned a follow‑up and a release when it is strong again. It was challenging, but rewarding."
+      ],
+      fr: [
+        "D’abord, un oiseau blessé est arrivé au cabinet vétérinaire.",
+        "Ensuite, j’ai mis des gants et préparé une cage de transport.",
+        "Pendant que le vétérinaire examinait l’animal, j’ai nettoyé la plaie avec soin.",
+        "Après ça, nous avons nourri l’oiseau doucement et l’avons calmé.",
+        "Enfin, nous avons prévu un suivi et un relâcher quand il sera assez fort. C’était difficile, mais gratifiant."
+      ],
+      vocab: [
+        ["🧤 gloves","gants"],
+        ["🧺 carrier","cage de transport"],
+        ["🧼 clean a wound","nettoyer une plaie"],
+        ["🥣 feed","nourrir"],
+        ["🕊️ release","relâcher"]
+      ],
+      mini: [
+        {q:"What arrived first?", a:"An injured bird", opts:["An injured bird","A judge","A zebra"]},
+        {q:"What did she prepare?", a:"A carrier", opts:["A carrier","A case file","Binoculars"]},
+        {q:"What is planned at the end?", a:"A follow‑up", opts:["A follow‑up","A safari jeep","A sentence"]},
+      ]
+    },
+    youth: {
+      title: "🧑‍⚖️ Youth support follow‑up (assessor) (model story)",
+      en: [
+        "First, I read the case file to understand the situation.",
+        "Then, I met the young person and listened carefully.",
+        "Meanwhile, the team discussed a support plan.",
+        "After that, I wrote a short report for the judge.",
+        "Finally, we scheduled a follow‑up meeting. Progress takes time, and encouragement helps."
+      ],
+      fr: [
+        "D’abord, j’ai lu le dossier pour comprendre la situation.",
+        "Ensuite, j’ai rencontré le jeune et j’ai écouté attentivement.",
+        "Pendant ce temps, l’équipe a discuté d’un plan d’accompagnement.",
+        "Après ça, j’ai rédigé un court rapport pour le juge.",
+        "Enfin, nous avons planifié un rendez‑vous de suivi. Les progrès prennent du temps, et l’encouragement aide."
+      ],
+      vocab: [
+        ["📋 case file","dossier"],
+        ["📝 assessment","évaluation"],
+        ["🧾 report","rapport"],
+        ["📅 follow‑up","suivi"],
+        ["🤝 support plan","plan d’accompagnement"]
+      ],
+      mini: [
+        {q:"Who is the report for?", a:"The judge", opts:["The judge","The safari guide","The squirrel"]},
+        {q:"Which connector means ‘en même temps’?", a:"Meanwhile", opts:["Because","Meanwhile","Finally"]},
+        {q:"What is scheduled at the end?", a:"A follow‑up meeting", opts:["A follow‑up meeting","A safari","A bandage"]},
+      ]
+    },
+    family: {
+      title: "🇩🇰 Catching up with family (Denmark) (model story)",
+      en: [
+        "First, I sent a message to say hello.",
+        "Then, I shared two updates: I’ve volunteered at a vet clinic, and I’ve supported young people as an assessor.",
+        "After that, I asked questions: Have you been busy lately? Have you enjoyed Denmark?",
+        "Finally, I planned the next call: I’m going to call you on Saturday at 3 p.m."
+      ],
+      fr: [
+        "D’abord, j’ai envoyé un message pour dire bonjour.",
+        "Ensuite, j’ai partagé deux nouvelles : je fais du bénévolat au cabinet vétérinaire, et j’accompagne des jeunes en tant qu’évaluatrice.",
+        "Après ça, j’ai posé des questions : Tu as été occupée dernièrement ? Tu as aimé le Danemark ?",
+        "Enfin, j’ai fixé le prochain appel : je vais t’appeler samedi à 15h."
+      ],
+      vocab: [
+        ["👩‍🦰 daughter‑in‑law","belle‑fille"],
+        ["💬 catch up","prendre des nouvelles"],
+        ["✅ already / yet","déjà / encore"],
+        ["📞 keep in touch","rester en contact"],
+        ["🗓️ plan","prévoir / planifier"]
+      ],
+      mini: [
+        {q:"What did she do first?", a:"Sent a message", opts:["Sent a message","Went on safari","Went to court"]},
+        {q:"Which tense appears in ‘I’ve volunteered’?", a:"Present perfect", opts:["Past continuous","Present perfect","Future"]},
+        {q:"When is the call planned?", a:"Saturday at 3 p.m.", opts:["Yesterday","Saturday at 3 p.m.","In 2024"]},
+      ]
+    }
+  };
+
+  function esc(s){ return String(s).replace(/[&<>"']/g,function(m){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]);}); }
+
+  function render(key){
+    var s = STORIES[key];
+    if(!s) return;
+    var panel = document.getElementById('msPanel');
+    var en = s.en.map(function(line){ return "<li>"+esc(line)+"</li>"; }).join("");
+    var fr = s.fr.map(function(line){ return "<li>"+esc(line)+"</li>"; }).join("");
+    var vocab = s.vocab.map(function(v){ return "<li><strong>"+esc(v[0])+"</strong> → "+esc(v[1])+"</li>"; }).join("");
+    var mini = s.mini.map(function(item,idx){
+      var opts = item.opts.map(function(o){
+        return '<button class="opt" type="button" data-msq="'+key+'_'+idx+'" data-a="'+esc(item.a)+'" data-c="'+esc(o)+'">'+esc(o)+'</button>';
+      }).join("");
+      return '<div class="qItem" data-msqid="'+key+'_'+idx+'">'+
+               '<div class="qQ">'+esc(item.q)+'</div>'+
+               '<div class="opts">'+opts+'</div>'+
+               '<div class="feedback" data-fb></div>'+
+             '</div>';
+    }).join("");
+
+    panel.innerHTML =
+      '<h2 class="h2">'+esc(s.title)+'</h2>'+
+      '<div class="callout small"><strong>Goal:</strong> Read the story, spot the connectors, then retell it.</div>'+
+      '<div class="grid2" style="margin-top:12px;">'+
+        '<div class="mini">'+
+          '<h3 class="h2" style="font-size:16px;margin:6px 0;">English story (A2/A2+)</h3>'+
+          '<ol class="list">'+en+'</ol>'+
+          '<div class="wBtns">'+
+            '<button class="btn btn--ghost" type="button" id="msListen">🔊 Listen</button>'+
+            '<button class="btn btn--ghost" type="button" id="msToggleFR">🇫🇷 Show FR</button>'+
+          '</div>'+
+          '<div class="mini" id="msFR" style="display:none;margin-top:10px;">'+
+            '<h3 class="h2" style="font-size:16px;margin:6px 0;">French translation (help)</h3>'+
+            '<ol class="list">'+fr+'</ol>'+
+          '</div>'+
+        '</div>'+
+        '<div class="mini">'+
+          '<h3 class="h2" style="font-size:16px;margin:6px 0;">Key vocabulary</h3>'+
+          '<ul class="list">'+vocab+'</ul>'+
+          '<div class="callout small"><strong>Mini comprehension (QCM):</strong> Choisis la bonne réponse.</div>'+
+          '<div class="quiz" id="msMini">'+mini+'</div>'+
+        '</div>'+
+      '</div>';
+
+    // Hook buttons
+    document.getElementById('msListen').onclick=function(){
+      if(window.speechSynthesis){
+        window.speechSynthesis.cancel();
+        var text = s.en.join(' ');
+        var u = new SpeechSynthesisUtterance(text);
+        // let the main page voice buttons handle accents; keep default here
+        window.speechSynthesis.speak(u);
+      }
+    };
+    document.getElementById('msToggleFR').onclick=function(){
+      var box=document.getElementById('msFR');
+      var on = box.style.display !== 'none';
+      box.style.display = on ? 'none' : 'block';
+      this.textContent = on ? '🇫🇷 Show FR' : '🇫🇷 Hide FR';
+    };
+
+    // Hook mini QCM feedback
+    document.getElementById('msMini').onclick=function(e){
+      var b=e.target.closest('.opt'); if(!b) return;
+      var qid=b.getAttribute('data-msq');
+      var ans=b.getAttribute('data-a');
+      var ch=b.getAttribute('data-c');
+      var wrap=document.querySelector('.qItem[data-msqid="'+qid+'"]');
+      var fb=wrap.querySelector('[data-fb]');
+      if(ch===ans){
+        b.classList.add('is-right');
+        fb.className='feedback good';
+        fb.textContent='✅ Correct (Bravo)';
+        wrap.querySelectorAll('.opt').forEach(function(x){ x.disabled=true; });
+      }else{
+        b.classList.add('is-wrong');
+        fb.className='feedback bad';
+        fb.textContent='❌ Not yet (essaie encore)';
+      }
+    };
+  }
+
+  // Tabs behavior
+  var tabs = document.getElementById('msTabs');
+  if(tabs){
+    tabs.onclick=function(e){
+      var b=e.target.closest('.tab'); if(!b) return;
+      Array.prototype.slice.call(tabs.querySelectorAll('.tab')).forEach(function(x){ x.classList.remove('is-active'); });
+      b.classList.add('is-active');
+      render(b.getAttribute('data-ms'));
+    };
+    render('safari');
+  }
+})();
+</script>
+
+</body>
+</html>
