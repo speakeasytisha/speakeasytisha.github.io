@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yanis — Work & Future Goal Oral Practice Quest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-5-oral-practice-quest.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="topbar">
+  <div class="topbar__inner container">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Yanis • Oral Practice Quest • Current work + future steward goal</div>
+    </div>
+
+    <div class="toolbar">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUK" type="button" aria-pressed="true">🇬🇧 UK</button>
+        <button class="seg" id="voiceUS" type="button" aria-pressed="false">🇺🇸 US</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn-ghost btn-small" id="btnPause" type="button">⏸</button>
+        <button class="btn btn-ghost btn-small" id="btnResume" type="button">▶️</button>
+        <button class="btn btn-ghost btn-small" id="btnStop" type="button">⏹</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <button class="btn btn-danger btn-small" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="container hero__inner">
+    <div>
+      <span class="eyebrow">Yanis • Page 5 • Oral practice with what you know now</span>
+      <h1>Your work, your English, your future goal</h1>
+      <p class="lead">
+        Practise simple speaking with <strong>your current job</strong> and <strong>your future goal</strong>.
+        You will answer questions, ask simple questions, and build clear sentences step by step.
+        <small>Entraîne-toi à parler de ton travail actuel et de ton futur objectif. Tu vas répondre à des questions, poser des questions simples et construire des phrases claires pas à pas.</small>
+      </p>
+
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start</button>
+        <button class="btn btn-ghost" id="btnHow" type="button">ℹ️ How to use</button>
+      </div>
+
+      <div class="minirow">
+        <div class="minicard">
+          <div class="minicard__t">🎭 Guided role-play</div>
+          <div class="minicard__p">Read, listen, repeat, and answer with model help.<br><span class="fr-sub">Lis, écoute, répète et réponds avec aide.</span></div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">⚡ Quick drills</div>
+          <div class="minicard__p">Choose the best short answer or question.<br><span class="fr-sub">Choisis la meilleure petite réponse ou question.</span></div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">🧩 Build & speak</div>
+          <div class="minicard__p">Tap or drag to build a sentence, then say it aloud.<br><span class="fr-sub">Appuie ou glisse pour construire une phrase, puis dis-la.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panelcard">
+      <div class="panelcard__title">Lesson map</div>
+      <ol class="panelcard__list">
+        <li>Choose a simple work or future-goal scenario.</li>
+        <li>Read the speaking guide.</li>
+        <li>Do the guided role-play.</li>
+        <li>Practise with quick drills.</li>
+        <li>Build and say a full sentence.</li>
+      </ol>
+      <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+      <p class="tiny-note">Audio reads the English only. <span class="fr-sub">L’audio lit seulement l’anglais.</span></p>
+    </div>
+  </div>
+</section>
+
+<nav class="quick-nav" aria-label="lesson navigation">
+  <div class="container quick-nav__inner">
+    <a href="#sec1">Scenarios</a>
+    <a href="#sec2">Role-play</a>
+    <a href="#sec3">Quick drills</a>
+    <a href="#sec4">Build & speak</a>
+  </div>
+</nav>
+
+<main id="main" class="shell container">
+  <section class="section" id="sec1">
+    <div class="section__head">
+      <h2>1) Choose a scenario</h2>
+      <p>Pick one realistic situation using only what you have learned so far.<br><span class="fr-sub">Choisis une situation réaliste avec seulement ce que tu as déjà appris.</span></p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Scenario</span>
+        <select class="select" id="scenarioSelect"></select>
+      </div>
+      <button class="btn btn-ghost btn-small" id="btnScenarioSpeak" type="button">🔊 Hear the goal</button>
+      <button class="btn btn-ghost btn-small" id="btnScenarioReset" type="button">↺ Reset scenario</button>
+    </div>
+
+    <div class="two">
+      <article class="card">
+        <div class="card__head">
+          <h3 id="scTitle">Scenario</h3>
+          <span class="pillTag" id="scLevel">A1+ / A2</span>
+        </div>
+        <div id="scInfo" class="reading"></div>
+      </article>
+
+      <article class="card">
+        <div class="card__head">
+          <h3>Speaking guide</h3>
+          <button class="btn btn-ghost btn-small" id="btnGuideSpeak" type="button">🔊 Hear the guide</button>
+        </div>
+        <div id="scGuide" class="reading"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="sec2">
+    <div class="section__head">
+      <h2>2) Guided role-play</h2>
+      <p>Teacher lines are blue. Your lines are red. Use the model only if needed.<br><span class="fr-sub">Les phrases du professeur sont bleues. Tes phrases sont rouges. Utilise le modèle seulement si besoin.</span></p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Practice</span>
+        <button class="seg is-on" id="roleTeacher" type="button" aria-pressed="true">👩‍🏫 Teacher</button>
+        <button class="seg" id="roleLearner" type="button" aria-pressed="false">🧑‍🎓 Learner</button>
+      </div>
+
+      <button class="btn btn-small" id="btnRPStart" type="button">▶️ Start role-play</button>
+      <button class="btn btn-ghost btn-small" id="btnRPStep" type="button">➡️ Next</button>
+      <button class="btn btn-ghost btn-small" id="btnRPClear" type="button">🧹 Clear</button>
+      <button class="btn btn-ghost btn-small" id="btnRPModel" type="button">✅ Show model</button>
+      <button class="btn btn-ghost btn-small" id="btnRPHint" type="button">💡 Useful phrases</button>
+    </div>
+
+    <article class="card">
+      <div class="card__head">
+        <h3 id="rpTitle">Role-play</h3>
+        <button class="btn btn-ghost btn-small" id="btnRPListenAll" type="button">🔊 Hear all</button>
+      </div>
+
+      <div class="chat"><div class="chat__stream" id="rpStream"></div></div>
+
+      <div class="timerRow">
+        <div class="timerBox">
+          <div class="timerBox__t">Prep</div>
+          <div class="timerBox__v" id="prepTime">15</div>
+          <div class="tiny-note">seconds</div>
+          <button class="iconbtn" id="btnPrep" type="button">⏱ Start prep</button>
+        </div>
+        <div class="timerBox">
+          <div class="timerBox__t">Speak</div>
+          <div class="timerBox__v" id="speakTime">30</div>
+          <div class="tiny-note">seconds</div>
+          <button class="iconbtn" id="btnSpeakTimer" type="button">🎙 Start speak</button>
+        </div>
+        <div class="timerBox timerBox--wide">
+          <div class="timerBox__t">Model answer</div>
+          <div class="modelBox" id="modelBox">Click “Show model” when you need support.</div>
+        </div>
+      </div>
+
+      <div class="feedback hidden" id="rpHintBox"></div>
+    </article>
+  </section>
+
+  <section class="section" id="sec3">
+    <div class="section__head">
+      <h2>3) Quick drills</h2>
+      <p>Choose the best answer or the best question. Immediate feedback will appear.<br><span class="fr-sub">Choisis la meilleure réponse ou la meilleure question. La correction apparaît tout de suite.</span></p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Set</span>
+        <select class="select" id="drillSet"></select>
+      </div>
+      <button class="btn btn-small" id="btnNewDrill" type="button">🎯 New prompt</button>
+      <button class="btn btn-ghost btn-small" id="btnDrillReset" type="button">↺ Reset</button>
+      <button class="btn btn-ghost btn-small" id="btnDrillSpeak" type="button">🔊 Hear prompt</button>
+    </div>
+
+    <article class="card">
+      <div class="card__head"><h3>Short practice</h3></div>
+      <div id="drillHost"></div>
+    </article>
+  </section>
+
+  <section class="section" id="sec4">
+    <div class="section__head">
+      <h2>4) Build & speak</h2>
+      <p>Build the sentence with tap or drag, then say it aloud.<br><span class="fr-sub">Construis la phrase en appuyant ou en glissant, puis dis-la à voix haute.</span></p>
+    </div>
+
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Task</span>
+        <select class="select" id="buildTask"></select>
+      </div>
+      <button class="btn btn-ghost btn-small" id="btnBuildSpeakModel" type="button">🔊 Hear model</button>
+      <button class="btn btn-ghost btn-small" id="btnBuildReset" type="button">↺ Reset</button>
+    </div>
+
+    <article class="card">
+      <div class="card__head">
+        <h3>Sentence builder</h3>
+        <button class="btn btn-small" id="btnBuildCheck" type="button">✅ Check</button>
+      </div>
+      <div id="builderHost"></div>
+      <div class="feedback hidden" id="buildFb"></div>
+    </article>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="tiny-note">SpeakEasyTisha • Yanis • Work & Future Goal Oral Practice Quest • Touch-friendly</div>
+      <a class="iconbtn" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<pre id="debugBox" class="hidden debug-box">Debug</pre>
+<script src="js/yanis-page-5-oral-practice-quest.js"></script>
+</body>
+</html>
