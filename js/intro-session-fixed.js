@@ -31,12 +31,16 @@ window.__INTRO_DATA__ = {
                            {"country":"🇳🇿 New Zealand","formal":"Kia ora!","slang":"","notes":"“Kia ora” comes from Māori — used by everyone to say hello or thank you"},
                            {"country":"🇿🇦 South Africa","formal":"Hello! / Good day!","slang":"Howzit!","notes":"“Howzit” = “How is it?” (friendly informal hello)"}],
       "slides":[{"n":1,"lines":["🏨","▶ Start Lesson","– GETTING TO KNOW EACH OTHER–","🧳","✈️","🗺️","INTRODUCTION","– ENGLISH LESSON –","📞","LEARNER: Tisha Douty | DURATION: 60 MIN | FOCUS: INTRODUCTIONS, GREETINGS, COMMUNICATION NEEDS"]},
-              {"n":2,"lines":["Tisha","“Hello Tisha! Nice to meet you!”","💬","How are you today?","😊😴😄 to say how you feel today.","👶 Do you have children?","🏠 How many people are in your family?","🐶🐱 Do you have any pets?","🗓️ What do you do on weekends?","🎨🎵🏃‍♀️ What do you do in your free time?"]},
-              {"n":3,"lines":["👩‍🏫 About Me –","Hello, my name is Tisha.","I’m originally from the United States, but I’ve been living in France for over twenty years.","I have four children, and they are all completely bilingual — they speak both English and French perfectly!","I’m passionate about languages, culture, and helping people feel confident when they speak English.","My goal is to make English simple, natural, and fun for you.","I know what it’s like to learn a new language — I came to France when I was sixteen to learn French, so I really understand what it feels like to be in your shoes! 👣","💬"]},
-              {"n":4,"lines":["A WARM WELCOME: OBJECTIVES","– “GETTING TO KNOW EACH OTHER” –","FRIENDLY, RELAXED ATMOSPHERE 😊","START USING ENGLISH NATURALLY AND CONFIDENTLY 🗣️","SIMPLE INTRODUCTIONS AND GREETINGS 🤝","UNDERSTAND, REACT, AND PRONOUNCE 👂","FEEL COMFORTABLE SPEAKING💬","CONFIRM COURSE TOPICS 🧭"]},
+              {"n":2,"lines":["Angie","“Hello Tisha! Nice to meet you!”","💬","How are you today?","😊😴😄 to say how you feel today.","👶 Do you have children?","🏠 How many people are in your family?","🐶🐱 Do you have any pets?","🗓️ What do you do on weekends?","🎨🎵🏃‍♀️ What do you do in your free time?"]},
+              {"n":3,"lines":["👩‍🏫 About Me –","Hello, my name is Tisha." , 
+                              "I’m originally from the United States, but I’ve been living in France for over twenty years.",
+                              "I have four children, and they are all completely bilingual — they speak both English and French perfectly!",
+                              "I’m passionate about languages, culture, and helping people feel confident when they speak English.",
+                              "My goal is to make English simple, natural, and fun for you.",
+                              "I know what it’s like to learn a new language — I came to France when I was sixteen to learn French, so I really understand what it feels like to be in your shoes! 👣","💬"]},
+              {"n":4,"lines":["A WARM WELCOME :OBJECTIVES","– “GETTING TO KNOW EACH OTHER” –","FRIENDLY, RELAXED ATMOSPHERE 😊","START USING ENGLISH NATURALLY AND CONFIDENTLY 🗣️","SIMPLE INTRODUCTIONS AND GREETINGS 🤝","UNDERSTAND, REACT, AND PRONOUNCE 👂","FEEL COMFORTABLE SPEAKING💬","CONFIRM COURSE TOPICS 🧭"]},
               
-                {"n":5,"lines":
-                 ["METHOD: ENGLISH WITH TISHA",
+               {"n":5,"lines":["METHOD: ENGLISH WITH TISHA",
                   " — MY PHILOSOPHY is: PRACTICE MAKES PERFECT — until English becomes automatic.",
                   "Everyone learns differently: some people learn by",
                   "MATERIALS:  PICTURES, SHORT TEXTS, AUDIO, WHATEVER I CAN FIND!",
@@ -213,7 +217,7 @@ window.__INTRO_DATA__ = {
     }
     if ($("aboutStory")) {
       var story = esc(aboutLines.join(" ")).replace(/\s{2,}/g, " ");
-      $("aboutStory").innerHTML = "<p><strong>Welcome, <span data-bind=\"userName\">there</span>!</strong></p>" +
+      $("aboutStory").innerHTML = "<p><strong>Welcome, <span data-bind=\"userName\"></span>!</strong></p>" +
         "<p>" + story + "</p>";
       updateNameBindings();
     }
