@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karine – Meet Me in Saint-Gilles | SpeakEasyTisha</title>
+  <link rel="stylesheet" href="css/karine-self-introduction-studio.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="brand-wrap">
+      <div class="brand">SpeakEasyTisha</div>
+      <div class="sub-brand">Karine • Self-Introduction & Street Conversation Studio</div>
+    </div>
+
+    <div class="top-tools">
+      <div class="voice-box">
+        <span>Accent</span>
+        <button class="mini-btn active" data-voice="US">US</button>
+        <button class="mini-btn" data-voice="UK">UK</button>
+      </div>
+
+      <div class="voice-box">
+        <span>Auto audio</span>
+        <button class="mini-btn active" data-audio="off">OFF</button>
+        <button class="mini-btn" data-audio="on">ON</button>
+      </div>
+
+      <div class="score-pill">Score <strong id="globalScore">0 / 0</strong></div>
+      <button id="resetAllBtn" class="secondary-btn">↺ Reset all</button>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="hero card">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Real-life self-introduction • Saint-Gilles-Croix-de-Vie</p>
+          <h1>Meet Me in Saint-Gilles</h1>
+          <p class="lead">
+            Learn to introduce yourself, talk about your family and daily life, greet people naturally,
+            and keep a simple conversation going when you meet someone in the street.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#vocab" class="primary-btn">▶ Start lesson</a>
+            <a href="#final-builder" class="secondary-btn">🧩 Go to dialogue builder</a>
+            <button class="secondary-btn" id="heroListenBtn">🔊 Listen intro</button>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <h3>Lesson focus</h3>
+          <ul>
+            <li>Introduce yourself clearly</li>
+            <li>Talk about home, family, and hobbies</li>
+            <li>Use greetings and polite forms naturally</li>
+            <li>Ask questions back in a real conversation</li>
+            <li>Build a full mini-dialogue and listen in US/UK English</li>
+            <li> Present simple structure for self-introduction</li>
+        <li>Interactive practice: multiple choice, fill-in, and sort/tap</li>
+        <li>Street conversation dialogue + roleplay</li>
+        <li>Editable self-introduction and final dialogue builder</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  
+
+    <section id="vocab" class="card">
+      <div class="section-head">
+        <div>
+          <h2>1) Vocabulary with icons</h2>
+          <p class="section-intro">Tap a category, then tap a card to reveal the meaning, French translation, and an example.</p>
+        </div>
+        <button class="secondary-btn" id="listenVocabIntroBtn">🔊 Listen guide</button>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Vocabulary categories">
+        <button class="tab-btn active" data-tab="identity">👤 Identity</button>
+        <button class="tab-btn" data-tab="family">👨‍👩‍👧 Family</button>
+        <button class="tab-btn" data-tab="home">🏠 Home & town</button>
+        <button class="tab-btn" data-tab="hobbies">🌊 Hobbies</button>
+        <button class="tab-btn" data-tab="greetings">👋 Greetings</button>
+      </div>
+
+      <div id="tab-identity" class="tab-panel active"><div id="identityGrid" class="vocab-grid"></div></div>
+      <div id="tab-family" class="tab-panel"><div id="familyGrid" class="vocab-grid"></div></div>
+      <div id="tab-home" class="tab-panel"><div id="homeGrid" class="vocab-grid"></div></div>
+      <div id="tab-hobbies" class="tab-panel"><div id="hobbiesGrid" class="vocab-grid"></div></div>
+      <div id="tab-greetings" class="tab-panel"><div id="greetingsGrid" class="vocab-grid"></div></div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>2) Build your self-introduction</h2>
+          <p class="section-intro">Use these model blocks to talk about yourself and your family life.</p>
+        </div>
+      </div>
+
+      <div class="intro-grid">
+        <article class="model-card">
+          <h3>🪪 Identity</h3>
+          <p>Hello, my name is Karine.</p>
+          <p>I live in Saint-Gilles-Croix-de-Vie.</p>
+          <p>I have lived here for sixty years.</p>
+          <button class="voice-btn listen-model" data-text="Hello, my name is Karine. I live in Saint-Gilles-Croix-de-Vie. I have lived here for sixty years.">🔊 Listen</button>
+        </article>
+
+        <article class="model-card">
+          <h3>💍 Family life</h3>
+          <p>I am married.</p>
+          <p>My husband is a hairdresser.</p>
+          <p>He has a salon in Saint-Gilles.</p>
+          <p>We have one daughter, and she lives in Paris.</p>
+          <button class="voice-btn listen-model" data-text="I am married. My husband is a hairdresser. He has a salon in Saint-Gilles. We have one daughter, and she lives in Paris.">🔊 Listen</button>
+        </article>
+
+        <article class="model-card">
+          <h3>🌊 Hobbies</h3>
+          <p>I enjoy yoga, dance, and going to the beach.</p>
+          <p>My husband is also a surfer.</p>
+          <button class="voice-btn listen-model" data-text="I enjoy yoga, dance, and going to the beach. My husband is also a surfer.">🔊 Listen</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="greetings-use" class="card">
+      <div class="section-head">
+        <div>
+          <h2>3) Greetings and addressing people</h2>
+          <p class="section-intro">Learn how to greet someone in the street in a natural way and how to sound polite.</p>
+        </div>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-card polite">
+          <h3>🌸 Polite / neutral</h3>
+          <ul>
+            <li>Hello</li>
+            <li>Good morning</li>
+            <li>Good afternoon</li>
+            <li>Good evening</li>
+            <li>Excuse me</li>
+            <li>Nice to meet you</li>
+          </ul>
+          <p class="mini-note">Good for new people, shops, hotels, and polite street interactions.</p>
+          <button class="voice-btn listen-model" data-text="Hello. Good morning. Good afternoon. Good evening. Excuse me. Nice to meet you.">🔊 Listen</button>
+        </div>
+
+        <div class="compare-card casual">
+          <h3>☀️ Casual / friendly</h3>
+          <ul>
+            <li>Hi</li>
+            <li>Hi there</li>
+            <li>How are you?</li>
+            <li>See you</li>
+          </ul>
+          <p class="mini-note">Good for relaxed conversation when the situation feels friendly.</p>
+          <button class="voice-btn listen-model" data-text="Hi. Hi there. How are you? See you.">🔊 Listen</button>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <strong>Best advice:</strong> Start neutral or polite with a new person, then become more casual if the conversation feels relaxed.
+      </div>
+
+      <div class="greeting-training">
+        <div class="response-card">
+          <h3>💬 “Hello, how are you?” — useful answers</h3>
+          <ul>
+            <li>I’m fine, thank you. And you?</li>
+            <li>I’m good, thank you. And you?</li>
+            <li>I’m very well, thank you. How are you?</li>
+            <li>I’m doing well, thank you. How about you?</li>
+            <li>I’m fine, thank you. How about yourself?</li>
+          </ul>
+          <div class="builder-tools">
+            <button class="voice-btn listen-model" data-text="I’m fine, thank you. And you? I’m good, thank you. And you? I’m very well, thank you. How are you? I’m doing well, thank you. How about you? I’m fine, thank you. How about yourself?">🔊 Listen responses</button>
+          </div>
+        </div>
+
+        <div class="response-card culture-card">
+          <h3>🛍️ In a shop or store</h3>
+          <p><strong>Staff:</strong> How are you folks doing today?</p>
+          <p><strong>You:</strong> Fine, thank you. How are you?</p>
+          <p class="mini-note">In the U.S., this is often polite small talk. With someone you do not know, people usually keep the answer short and positive.</p>
+          <p class="mini-note">Common light topics are the weather, traffic, weekend plans, or local life. In the U.K., this is similar, and the weather is especially common.</p>
+          <div class="note-box">
+            <strong>Note:</strong> You may hear <em>Hey</em> between friends or people who already know each other well, but it is better to teach <em>Hello</em>, <em>Good morning</em>, or <em>Good evening</em> as your main reference forms.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mcq" class="card">
+      <div class="section-head">
+        <div>
+          <h2>4) Quick check – multiple choice</h2>
+          <p class="section-intro">Choose the best answer and get instant feedback.</p>
+        </div>
+        <div class="builder-tools">
+          <button id="newMcqBtn" class="primary-btn">New question</button>
+          <button id="resetMcqBtn" class="secondary-btn">↺ Reset</button>
+          <button id="listenMcqBtn" class="secondary-btn">🔊 Listen prompt</button>
+        </div>
+      </div>
+
+      <div class="exercise-box">
+        <h3 id="mcqPrompt">Click “New question” to begin.</h3>
+        <div id="mcqOptions" class="options-grid"></div>
+        <p id="mcqFeedback" class="feedback"></p>
+      </div>
+    </section>
+
+    <section id="fillins" class="card">
+      <div class="section-head">
+        <div>
+          <h2>5) Fill in the blanks</h2>
+          <p class="section-intro">Complete the sentence, then check your answer.</p>
+        </div>
+        <div class="builder-tools">
+          <button id="newFillBtn" class="primary-btn">New fill-in</button>
+          <button id="resetFillBtn" class="secondary-btn">↺ Reset</button>
+          <button id="listenFillBtn" class="secondary-btn">🔊 Listen prompt</button>
+        </div>
+      </div>
+
+      <div class="exercise-box">
+        <p id="fillPrompt" class="fill-prompt">Click “New fill-in” to begin.</p>
+        <div class="fill-row">
+          <input id="fillInput" type="text" placeholder="Type your answer here" />
+          <button id="checkFillBtn" class="primary-btn">✅ Check</button>
+        </div>
+        <p id="fillHint" class="mini-note"></p>
+        <p id="fillFeedback" class="feedback"></p>
+      </div>
+    </section>
+
+    <section id="sorter" class="card">
+      <div class="section-head">
+        <div>
+          <h2>6) Sort and tap – casual or polite?</h2>
+          <p class="section-intro">Drag the expression into the correct box, or tap the expression and then tap a box on iPad.</p>
+        </div>
+        <button id="resetSortBtn" class="secondary-btn">↺ Reset sorting</button>
+      </div>
+
+      <div class="sort-play-area">
+        <div id="sortPool" class="sort-pool"></div>
+
+        <div class="sort-targets">
+          <div class="sort-box" data-sort-target="polite">
+            <h3>🌸 Polite / neutral</h3>
+            <div class="dropzone" id="dropPolite"></div>
+          </div>
+          <div class="sort-box" data-sort-target="casual">
+            <h3>☀️ Casual / friendly</h3>
+            <div class="dropzone" id="dropCasual"></div>
+          </div>
+        </div>
+      </div>
+
+      <p id="sortFeedback" class="feedback"></p>
+    </section>
+
+    <section id="dialogue" class="card">
+      <div class="section-head">
+        <div>
+          <h2>7) Interactive dialogue – meeting someone in the street</h2>
+          <p class="section-intro">Read, listen, and practise both answering and asking questions back.</p>
+        </div>
+        <div class="builder-tools">
+          <button id="loadDialogueBtn" class="primary-btn">Load dialogue</button>
+          <button id="listenDialogueBtn" class="secondary-btn">🔊 Listen first line</button>
+        </div>
+      </div>
+
+      <div id="dialogueLines" class="dialogue-lines"></div>
+      <div class="model-box">
+        <strong>Helper:</strong>
+        <p id="dialogueModel">Click “Load dialogue” to begin.</p>
+      </div>
+    </section>
+
+    <section id="roleplay" class="card">
+      <div class="section-head">
+        <div>
+          <h2>8) Guided roleplay</h2>
+          <p class="section-intro">Practise a normal encounter: greet, introduce yourself, answer, and ask a question back.</p>
+        </div>
+      </div>
+
+      <div class="roleplay-tools">
+        <label for="scenarioSelect">Scenario</label>
+        <select id="scenarioSelect"></select>
+        <button id="startRoleplayBtn" class="primary-btn">▶ Start</button>
+        <button id="nextRoleplayBtn" class="secondary-btn">➡ Next</button>
+        <button id="showRoleplayModelBtn" class="secondary-btn">✅ Show model reply</button>
+        <button id="listenRoleplayBtn" class="secondary-btn">🔊 Listen line</button>
+        <button id="listenRoleplayModelBtn" class="voice-btn">🔊 Listen model reply</button>
+      </div>
+
+      <div class="timer-row">
+        <div class="timer-box">
+          <span>Prep</span>
+          <strong id="prepSeconds">15</strong>
+          <button id="prepTimerBtn" class="mini-btn">⏱ Start</button>
+        </div>
+        <div class="timer-box">
+          <span>Speak</span>
+          <strong id="speakSeconds">30</strong>
+          <button id="speakTimerBtn" class="mini-btn">🎙 Start</button>
+        </div>
+      </div>
+
+      <div id="roleplayLine" class="roleplay-line">Choose a scenario and click Start.</div>
+      <div id="roleplayModel" class="model-box">Model reply will appear here.</div>
+    </section>
+
+    <section id="self-builder" class="card">
+      <div class="section-head">
+        <div>
+          <h2>9) Build your self-description</h2>
+          <p class="section-intro">Tap the blocks to create your own mini-presentation.</p>
+        </div>
+        <div class="builder-tools">
+          <button id="resetSelfBuilderBtn" class="secondary-btn">↺ Reset</button>
+          <button id="listenSelfBuilderBtn" class="secondary-btn">🔊 Listen built text</button>
+        </div>
+      </div>
+
+      <div id="selfBuilderOutput" class="builder-output">Your self-description will appear here.</div>
+      <div id="selfBuilderBlocks" class="block-grid"></div>
+    </section>
+
+    <section id="final-builder" class="card">
+      <div class="section-head">
+        <div>
+          <h2>10) Final editable dialogue builder</h2>
+          <p class="section-intro">Create a complete mini-dialogue, listen to it in US or UK English, and change the lines if you want.</p>
+        </div>
+      </div>
+
+      <div class="final-builder-grid">
+        <div class="editable-card">
+          <label for="line1">Greeting</label>
+          <textarea id="line1">Hello! Nice to meet you.</textarea>
+        </div>
+        <div class="editable-card">
+          <label for="line2">Self-introduction</label>
+          <textarea id="line2">My name is Karine. I live in Saint-Gilles-Croix-de-Vie.</textarea>
+        </div>
+        <div class="editable-card">
+          <label for="line3">Family / life</label>
+          <textarea id="line3">I am married. My husband is a hairdresser, and we have one daughter in Paris.</textarea>
+        </div>
+        <div class="editable-card">
+          <label for="line4">Hobbies</label>
+          <textarea id="line4">I enjoy yoga, dance, and going to the beach.</textarea>
+        </div>
+        <div class="editable-card">
+          <label for="line5">Question back</label>
+          <textarea id="line5">I’m fine, thank you. And you? Do you live here too?</textarea>
+        </div>
+        <div class="editable-card">
+          <label for="line6">Closing</label>
+          <textarea id="line6">It was nice talking to you. Have a lovely day!</textarea>
+        </div>
+      </div>
+
+      <div class="builder-tools">
+        <button id="listenFinalUsBtn" class="primary-btn">🇺🇸 Listen full dialogue</button>
+        <button id="listenFinalUkBtn" class="voice-btn">🇬🇧 Listen full dialogue</button>
+        <button id="showFinalTextBtn" class="secondary-btn">📝 Show full text</button>
+      </div>
+
+      <div id="finalTextOutput" class="final-output"></div>
+    </section>
+
+    <footer class="site-footer">
+      <p>© SpeakEasyTisha • Karine Self-Introduction Studio • Touch-friendly for Mac + iPad</p>
+    </footer>
+  </main>
+
+  <script src="js/tts.js"></script>
+  <script src="js/karine-self-introduction-studio.js"></script>
+</body>
+</html>
