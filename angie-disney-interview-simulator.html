@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Angie — Magical Interview Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Nunito:wght@400;600;700;800;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/angie-disney-interview-simulator.css" />
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#top"><span class="brand-script">SpeakEasyTisha</span><span>Angie’s Interview Journey</span></a>
+    <nav class="nav" aria-label="Lesson sections">
+      <a href="#mission">Mission</a><a href="#intro">Presentation</a><a href="#grammar">Grammar</a><a href="#simulator">Simulator</a><a href="#roleplays">Roleplays</a><a href="#results">Results</a>
+    </nav>
+    <div class="controls">
+      <button class="seg active" id="accentUS" type="button">US</button><button class="seg" id="accentUK" type="button">UK</button>
+      <span class="score">Score <strong id="scoreTop">0</strong></span>
+      <button class="btn ghost" id="resetAll" type="button">Reset</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" id="mission">
+      <div class="hero-card">
+        <p class="kicker">✨ Timed interview practice · A1/A2 → confident A2+</p>
+        <h1>Angie, your magical interview starts here.</h1>
+        <p class="lead">Practise your professional presentation, answer interview questions, fix your key grammar mistakes, and prepare to speak with confidence for your next Disney interview.</p>
+        <div class="hero-actions">
+          <button class="btn primary" data-say="#heroSpeak" type="button">🔊 Listen</button>
+          <a class="btn" href="#simulator">Start simulator</a>
+          <button class="btn" id="printPage" type="button">🖨️ Print prep sheet</button>
+        </div>
+        <div id="heroSpeak" class="srText">Angie, your magical interview starts here. Today you will practise your professional presentation, answer interview questions, and build confidence step by step.</div>
+      </div>
+      <div class="castle-card" aria-hidden="true"><div class="moon">☾</div><div class="castle">🏰</div><div class="spark spark1">✦</div><div class="spark spark2">✧</div><div class="spark spark3">✦</div></div>
+    </section>
+
+    <section class="section" id="expect">
+      <div class="section-head"><h2>🎯 What to expect in the interview</h2><p>Use this as your “success map”.</p></div>
+      <div class="grid3">
+        <article class="card"><h3>1. Tell your story clearly</h3><p>Prepare your journey, your motivation, and how your experience can help you succeed.</p><button class="mini" data-say-plain="Prepare your journey, your motivation, and how your experience can help you succeed." type="button">🔊</button></article>
+        <article class="card"><h3>2. Practise STAR stories</h3><p>For questions like “Tell me about a time…”, use Situation, Task, Action, Result.</p><button class="mini" data-say-plain="For questions like tell me about a time, use Situation, Task, Action, Result." type="button">🔊</button></article>
+        <article class="card"><h3>3. Show guest-service energy</h3><p>Smile, stay positive, listen carefully, and show that you want to help guests.</p><button class="mini" data-say-plain="Smile, stay positive, listen carefully, and show that you want to help guests." type="button">🔊</button></article>
+      </div>
+    </section>
+
+    <section class="section" id="intro">
+      <div class="section-head"><h2>🧑‍💼 Professional presentation builder</h2><p>Build a safe interview answer, then compare it with two stronger models.</p></div>
+      <div class="grid2">
+        <article class="card bigcard">
+          <h3>Build your answer</h3>
+          <div class="formGrid">
+            <label><span>Feeling today</span><select id="feeling"><option>happy</option><option>motivated</option><option>nervous but ready</option><option>excited</option></select></label>
+            <label><span>Where you live</span><select id="live"><option>near Nantes, in Le Pouliguen</option><option>in France, near Nantes</option><option>on the west coast of France</option></select></label>
+            <label><span>Studies</span><select id="studies"><option>I would like to finish my school year online</option><option>I want to finish my studies</option><option>I would like to specialise in literature</option></select></label>
+            <label><span>Work experience</span><select id="work"><option>I sell strawberries</option><option>I have experience selling strawberries</option><option>I have some customer contact experience</option></select></label>
+            <label><span>Free time</span><select id="hobby"><option>reading</option><option>watching movies in English</option><option>going to the gym four times a week</option><option>reading and going to the gym</option></select></label>
+            <label><span>Disney dream</span><select id="dream"><option>I would like to work at Disneyland Paris</option><option>I would like to work at Disney World in Orlando one day</option><option>I would like to create magical experiences for guests</option></select></label>
+            <label><span>Why English?</span><select id="english"><option>for work and guest service</option><option>to speak with international guests</option><option>to feel more comfortable in conversations</option></select></label>
+            <label><span>Goal</span><select id="goal"><option>speak more confidently</option><option>make fewer mistakes</option><option>maintain a simple conversation</option><option>feel comfortable during my interview</option></select></label>
+          </div>
+          <textarea id="customExtra" placeholder="Optional: add one personal sentence here…"></textarea>
+          <div class="row"><button class="btn primary" id="buildIntro" type="button">✨ Build presentation</button><button class="btn" id="listenIntro" type="button">🔊 Listen</button><button class="btn" id="copyIntro" type="button">Copy</button></div>
+          <div class="output" id="introOutput"></div>
+        </article>
+        <article class="card bigcard">
+          <h3>Two upgraded models</h3>
+          <div class="model"><div class="tag">Model 1 — clear A2 interview answer</div><p id="modelA2"></p><button class="mini" data-say-target="modelA2" type="button">🔊 Listen</button></div>
+          <div class="model"><div class="tag">Model 2 — stronger A2+/B1 answer</div><p id="modelB1"></p><button class="mini" data-say-target="modelB1" type="button">🔊 Listen</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="vocab">
+      <div class="section-head"><h2>📚 Interview vocabulary</h2><p>Tap to reveal French, definition, and example.</p></div>
+      <div class="vocabGrid" id="vocabGrid"></div>
+    </section>
+
+    <section class="section" id="grammar">
+      <div class="section-head"><h2>🪄 Grammar spells for Angie’s sentences</h2><p>Correct the exact mistakes that block her interview answers.</p></div>
+      <div class="grammarGrid" id="grammarCards"></div>
+      <article class="card exercise">
+        <h3>🎮 Quick correction challenge</h3>
+        <div id="quizBox"></div>
+        <div class="row"><button class="btn primary" id="checkQuiz" type="button">Check answers</button><button class="btn" id="resetQuiz" type="button">Reset</button><span id="quizFeedback" class="feedback"></span></div>
+      </article>
+    </section>
+
+    <section class="section simulator" id="simulator">
+      <div class="section-head"><h2>⏱️ Disney Interview Simulator</h2><p>Timed questions, scoring, feedback, and model answers.</p></div>
+      <article class="card simCard">
+        <div class="simTop"><div><span class="tag">Question <span id="qNum">1</span>/<span id="qTotal">8</span></span><h3 id="simQuestion">Question</h3><p id="simHint" class="muted"></p></div><div class="timer"><span id="timer">00:45</span><button class="btn" id="timerStart" type="button">Start</button><button class="btn" id="timerReset" type="button">Reset time</button></div></div>
+        <div class="row"><button class="btn" id="listenQuestion" type="button">🔊 Listen to question</button><button class="btn" id="showModel" type="button">Show model answer</button><button class="btn" id="prevQ" type="button">← Previous</button><button class="btn primary" id="nextQ" type="button">Next →</button></div>
+        <textarea id="answerBox" placeholder="Write notes or your answer here. Then practise speaking out loud."></textarea>
+        <div class="rubric">
+          <label><input type="checkbox" class="rub" value="2"> I answered the question.</label>
+          <label><input type="checkbox" class="rub" value="2"> I used a complete sentence.</label>
+          <label><input type="checkbox" class="rub" value="2"> I used correct grammar.</label>
+          <label><input type="checkbox" class="rub" value="2"> I gave one reason or example.</label>
+          <label><input type="checkbox" class="rub" value="2"> I spoke clearly and smiled.</label>
+        </div>
+        <div class="row"><button class="btn primary" id="scoreAnswer" type="button">Score this answer</button><button class="btn" id="listenAnswer" type="button">🔊 Listen to my answer</button><span class="feedback" id="simFeedback"></span></div>
+        <div class="modelAnswer hidden" id="modelAnswer"></div>
+      </article>
+    </section>
+
+    <section class="section" id="roleplays">
+      <div class="section-head"><h2>🎭 Interactive role plays</h2><p>Practise real guest-service conversations with magical park situations.</p></div>
+      <div class="grid2">
+        <article class="card bigcard"><h3>Guest-service dialogue builder</h3><label><span>Situation</span><select id="roleSituation"><option value="directions">A guest asks for directions</option><option value="ticket">A guest has a ticket problem</option><option value="restaurant">A guest asks for a restaurant</option><option value="lostChild">A child is lost</option><option value="showTime">A guest asks about a show time</option></select></label><label><span>Your tone</span><select id="roleTone"><option>friendly and calm</option><option>professional and reassuring</option><option>warm and enthusiastic</option></select></label><div class="row"><button class="btn primary" id="buildRole" type="button">Build dialogue</button><button class="btn" id="listenRole" type="button">🔊 Listen</button></div><div class="dialogue" id="roleOutput"></div></article>
+        <article class="card bigcard"><h3>STAR answer builder</h3><p class="muted">For “Tell me about a time…” questions.</p><label><span>Situation</span><input id="starS" value="A customer needed help while I was selling strawberries"></label><label><span>Task</span><input id="starT" value="I had to listen and help them quickly"></label><label><span>Action</span><input id="starA" value="I stayed calm, smiled, and explained clearly"></label><label><span>Result</span><input id="starR" value="The customer was happy and thanked me"></label><div class="row"><button class="btn primary" id="buildStar" type="button">Build STAR answer</button><button class="btn" id="listenStar" type="button">🔊 Listen</button></div><div class="output" id="starOutput"></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="section-head"><h2>🏆 Final score & teacher notes</h2><p>Use this to close the lesson positively.</p></div>
+      <article class="card bigcard"><div class="finalScore">Total score: <strong id="scoreBottom">0</strong></div><p id="finalMessage">Every sentence you practise brings you closer to your goal.</p><textarea id="teacherNotes" placeholder="Teacher notes: pronunciation, grammar focus, next steps…"></textarea><button class="btn primary" id="copyReport" type="button">Copy lesson report</button></article>
+    </section>
+  </main>
+  <footer class="footer">Made for Angie with a fairytale interview journey ✨</footer>
+  <script src="js/angie-disney-interview-simulator.js"></script>
+</body>
+</html>
