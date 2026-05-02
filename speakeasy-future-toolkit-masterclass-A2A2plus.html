@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Future Toolkit Masterclass • A2 → A2.2</title>
+  <link rel="stylesheet" href="css/speakeasy-future-toolkit-masterclass-A2A2plus.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo" aria-hidden="true">🔮</div>
+      <div>
+        <div class="brand__title">Future Toolkit Masterclass <span class="tag">A2 → A2.2</span></div>
+        <div class="brand__sub">going to • will • present continuous • timetables • time words • instant feedback</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="pillgroup" role="group" aria-label="Accent">
+        <span class="pillgroup__label">Accent</span>
+        <button class="pill is-active" id="accentUS" type="button">US</button>
+        <button class="pill" id="accentUK" type="button">UK</button>
+      </div>
+
+      <div class="pillgroup" role="group" aria-label="Speed">
+        <span class="pillgroup__label">Speed</span>
+        <button class="pill is-active" id="speedN" type="button">Normal</button>
+        <button class="pill" id="speedS" type="button">Slow</button>
+      </div>
+
+      <div class="pillgroup" role="group" aria-label="Hints">
+        <span class="pillgroup__label">Hints</span>
+        <button class="pill is-active" id="hOn" type="button">On</button>
+        <button class="pill" id="hOff" type="button">Off</button>
+      </div>
+
+      <button class="btn btn--ghost" id="stopAudio" type="button">⏹ Stop</button>
+      <button class="btn btn--ghost" id="resetPractice" type="button">↺ Reset practice</button>
+      <button class="btn btn--ghost" id="resetAll" type="button">↻ Reset all</button>
+      <button class="btn btn--ghost" id="printBtn" type="button">🖨️ Print</button>
+    </div>
+  </div>
+
+  <div class="status">
+    <div class="status__box">
+      <div class="status__label">Score</div>
+      <div class="status__value"><span id="scoreNow">0</span> / <span id="scoreTotal">0</span></div>
+    </div>
+    <div class="status__box">
+      <div class="status__label">Progress</div>
+      <div class="progress"><div class="progress__bar" id="pBar"></div></div>
+      <div class="status__value" id="pPct">0%</div>
+    </div>
+    <div class="status__box status__hint">
+      <div class="status__label">Hint</div>
+      <div class="status__value" id="hintBox">Start with “Model stories”, then Grammar cards, then Practice.</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="#models">0) Model stories</a>
+    <a href="#grammar">1) Grammar</a>
+    <a href="#practice">2) Practice</a>
+    <a href="#builder">3) Sentence builder</a>
+    <a href="#dialogue">4) Dialogue</a>
+    <a href="#writing">5) Writing</a>
+    <a href="#vocab">6) Vocabulary</a>
+  </nav>
+</header>
+
+<main class="page">
+  <section class="card" id="models">
+    <h1>0) Model stories (read first) 📖 <span class="tag">EN + FR</span></h1>
+    <p class="lede">These model “future” stories are very guided for French learners. Read → show FR → listen → do exercises.</p>
+
+    <div class="tabs" id="msTabs">
+      <button class="tab is-active" type="button" data-ms="family">🇩🇰 Family</button>
+      <button class="tab" type="button" data-ms="vet">🐿️ Vet clinic</button>
+      <button class="tab" type="button" data-ms="youth">🧑‍⚖️ Youth support</button>
+    </div>
+
+    <article class="mini" id="msPanel"></article>
+  </section>
+
+  <section class="card" id="grammar">
+    <h1>1) Future tenses — complete toolkit 🧩</h1>
+    <p class="lede">Pick a card. Each one has rules + form + mini quiz (French learner friendly).</p>
+
+    <div class="tabs" id="gTabs"></div>
+    <div id="gPanel"></div>
+
+    <div class="mini" style="margin-top:14px;">
+      <h2 class="h2">Time words + connectors (quick reference)</h2>
+      <div class="grid2">
+        <div class="mini">
+          <h3 class="h2" style="font-size:16px;margin:6px 0;">Time words</h3>
+          <ul class="list" id="timeList"></ul>
+        </div>
+        <div class="mini">
+          <h3 class="h2" style="font-size:16px;margin:6px 0;">Story connectors</h3>
+          <ul class="list" id="connList"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="practice">
+    <h1>2) Practice — very guided 🎯</h1>
+
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">A) QCM (24) <span class="tag">Immediate feedback</span></h2>
+        <div class="quiz" id="mcqMain"></div>
+      </div>
+
+      <div class="mini">
+        <h2 class="h2">B) Fill in the blank (18) <span class="tag">Instant check</span></h2>
+        <div id="fibBox"></div>
+      </div>
+    </div>
+
+    <div class="mini" style="margin-top:14px;">
+      <h2 class="h2">C) Plan order (drag OR tap) — immediate checks</h2>
+      <div class="storyPick">
+        <label class="field">
+          <span>Choose a plan</span>
+          <select id="storySelect"></select>
+        </label>
+        <button class="btn btn--ghost" id="storyReset" type="button">↺ Reset plan</button>
+      </div>
+      <div class="callout small" id="storyHint"></div>
+      <div class="bank" id="storyBank"></div>
+      <div class="slots" id="storySlots"></div>
+      <div class="feedback" id="storyFb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card" id="builder">
+    <h1>3) Sentence builder (tap tiles) 🧱</h1>
+    <p class="lede">Tap words in the correct order. Immediate feedback + hint.</p>
+
+    <div class="grid2">
+      <div class="mini">
+        <label class="field">
+          <span>Choose a sentence</span>
+          <select id="bsSelect"></select>
+        </label>
+        <div class="callout small" id="bsHint"></div>
+        <div class="bank" id="bsBank"></div>
+        <div class="output" id="bsOut"></div>
+        <div class="wBtns" style="margin-top:10px;">
+          <button class="btn btn--ghost" id="bsUndo" type="button">↩️ Undo</button>
+          <button class="btn btn--ghost" id="bsClear" type="button">🧽 Clear</button>
+          <button class="btn" id="bsCheck" type="button">✅ Check</button>
+        </div>
+        <div class="feedback" id="bsFb"></div>
+      </div>
+
+      <div class="mini">
+        <h2 class="h2">Model reminders</h2>
+        <ul class="list">
+          <li><strong>Plan:</strong> I’m going to + verb</li>
+          <li><strong>Arrangement:</strong> I’m + verb‑ing + time</li>
+          <li><strong>Offer/decision:</strong> I’ll + verb</li>
+          <li><strong>Timetable:</strong> It starts/leaves at…</li>
+          <li><strong>Time:</strong> on + day • at + time • in + month/year</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="dialogue">
+    <h1>4) Dialogue trainer (choose reply) 🎭</h1>
+    <p class="lede">Choose a scenario. Correct reply unlocks next step.</p>
+
+    <div class="dialogueControls">
+      <label class="field">
+        <span>Scenario</span>
+        <select id="rpSelect"></select>
+      </label>
+      <div class="wBtns">
+        <button class="btn" id="rpStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="rpNext" type="button">➡️ Next</button>
+        <button class="btn btn--ghost" id="rpRestart" type="button">↺ Restart</button>
+        <button class="btn btn--ghost" id="rpModel" type="button">👀 Model</button>
+        <button class="btn btn--ghost" id="rpHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="rpListen" type="button">🔊 Listen line</button>
+      </div>
+      <div class="mini"><div class="status__label">Step</div><div class="status__value" id="rpCount">0 / 0</div></div>
+    </div>
+
+    <div class="dlgBox">
+      <div class="bubble tBlue" id="rpTeacher">Choose a scenario and click Start.</div>
+      <div class="bubble tGreen">
+        <div class="replyChoices" id="rpChoices"></div>
+        <div class="feedback" id="rpFb"></div>
+        <div class="explain" id="rpExplain"></div>
+      </div>
+      <div class="mini" style="margin-top:12px; display:none;" id="rpPhraseBox">
+        <h2 class="h2">Useful phrases</h2>
+        <ul class="list" id="rpPhrases"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="writing">
+    <h1>5) Writing studio (guided + model) ✍️</h1>
+    <p class="lede">Pick a subject, follow steps, then reveal the model.</p>
+
+    <div class="grid2">
+      <div class="mini">
+        <label class="field">
+          <span>Choose a writing task</span>
+          <select id="wSelect"></select>
+        </label>
+        <div class="callout small" id="wSubject"></div>
+        <ol class="list" id="wSteps"></ol>
+
+        <label class="field">
+          <span>Your text</span>
+          <textarea id="wText" rows="9" placeholder="Write here..."></textarea>
+        </label>
+
+        <div class="wBtns">
+          <button class="btn" id="wCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="wHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="wModel" type="button">👀 Show model</button>
+          <button class="btn btn--ghost" id="wListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="wCopy" type="button">📋 Copy</button>
+          <button class="btn btn--ghost" id="wReset" type="button">↺ Reset</button>
+        </div>
+
+        <div class="feedback" id="wFb"></div>
+        <div class="checklistBox" id="wChecklist"></div>
+      </div>
+
+      <div class="mini">
+        <h2 class="h2">Model text</h2>
+        <div class="output" id="wModelBox" data-on="0">Click “Show model” to reveal.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="vocab">
+    <h1>6) Vocabulary (icons + FR) 🧠</h1>
+    <p class="lede">Search English or French. Click to reveal definition + example.</p>
+
+    <div class="searchRow">
+      <input id="vSearch" placeholder="Search: tomorrow / next week / book / schedule..." autocomplete="off"/>
+      <button class="btn" id="vListen" type="button">🔊 Listen selection</button>
+      <button class="btn btn--ghost" id="vClear" type="button">↺ Clear</button>
+    </div>
+
+    <div class="tabs" id="vTabs"></div>
+    <div class="cardGrid" id="vGrid"></div>
+  </section>
+
+  <p class="footer"><a href="#models">↑ Back to top</a></p>
+</main>
+
+<script defer src="js/speakeasy-future-toolkit-masterclass-A2A2plus.js"></script>
+</body>
+</html>
