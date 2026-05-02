@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Eric’s Holland Trip Review Quest · SpeakEasyTisha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/holland-trip-review-eric.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to lesson</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Eric’s Holland Trip Review Quest 🇳🇱 · A2 → B1 · past storytelling + review writing</div>
+    </div>
+
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Auto audio</span>
+        <button class="seg is-on" id="autoOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="autoOn" type="button" aria-pressed="false">ON</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <span class="pillTag">Build: 20260428</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <div class="eyebrow">🇳🇱 From travel memories to confident storytelling</div>
+      <h1>Eric’s Holland Trip Review Quest</h1>
+      <p class="lead">
+        Talk about what happened, describe the weather, explain what you visited, and write a clear review of your trip using the past simple, the past continuous, and the present perfect.
+      </p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="btnHow" type="button">ℹ️ How to use</button>
+        <button class="btn btn--ghost" id="btnHeroListen" type="button">🔊 Listen intro</button>
+      </div>
+      <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+      <div class="tiny" style="margin-top:.35rem;opacity:.95">Tip: click the 🔊 buttons to practise pronunciation. Auto audio is OFF by default.</div>
+    </div>
+
+    <div class="hero__panel">
+      <div class="panelcard windmill-card">
+        <div class="panelcard__title">Lesson path (≈ 90–120 min)</div>
+        <ol class="panelcard__list">
+          <li>Trip map: cities, monuments, museums</li>
+          <li>Interactive flashcards: travel + weather</li>
+          <li>Grammar: past simple, past continuous, present perfect</li>
+          <li>Comprehension texts + questions</li>
+          <li>Model reviews in different levels</li>
+          <li>Interactive dialogue + role plays</li>
+          <li>Write a trip summary / review</li>
+        </ol>
+        <div class="mini-note">Holland is often used in conversation, but <strong>the Netherlands</strong> is the official country name.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section" id="sec1">
+    <div class="section__head">
+      <h2>1) Trip memory map: What did Eric visit?</h2>
+      <p class="muted">Choose a place. Read the useful information, listen to the model, then speak using the past.</p>
+    </div>
+
+    <div class="smallrow">
+      <label class="pill"><span class="pill__label">Area</span><select class="select" id="placeArea"></select></label>
+      <label class="pill"><span class="pill__label">Theme</span><select class="select" id="placeTheme"></select></label>
+      <button class="btn btn--ghost" id="btnPlaceListen" type="button">🔊 Listen place model</button>
+      <button class="btn btn--ghost" id="btnPlaceHelp" type="button">💡 Speaking help</button>
+    </div>
+
+    <div class="grid3" id="placeGrid"></div>
+
+    <div class="card focus-card" style="margin-top:.75rem">
+      <h3 id="placeTitle">Choose a place</h3>
+      <div class="badgeRow" id="placeBadges"></div>
+      <p class="muted" id="placeWhere"></p>
+      <div class="kcard">
+        <div><strong>Why people go:</strong> <span id="placeWhy"></span></div>
+        <div><strong>What you can say:</strong> <span id="placeSay"></span></div>
+        <div><strong>Useful details:</strong> <span id="placeDetails"></span></div>
+      </div>
+      <div class="kcard speak-box">
+        <h4>🗣️ Speak: 4 travel-review sentences</h4>
+        <div id="placeModelLines"></div>
+        <div class="smallrow">
+          <button class="btn" id="btnPlaceDone" type="button">✅ I said it (+2)</button>
+          <button class="btn btn--ghost" id="btnPlaceReset" type="button">↺ Hide feedback</button>
+        </div>
+        <div class="feedback hidden" id="placeFb"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec2">
+    <div class="section__head">
+      <h2>2) Flashcards: Holland trip vocabulary + weather</h2>
+      <p class="muted">Search, filter, reveal, and listen. Each card gives the French meaning, a definition, and a trip example.</p>
+    </div>
+    <div class="smallrow">
+      <input class="search" id="vocabSearch" placeholder="Search: rainy, museum, canal, visited, since…"/>
+      <label class="pill"><span class="pill__label">Category</span><select class="select" id="vocabCat"></select></label>
+      <button class="btn btn--ghost" id="btnVocabClear" type="button">↺ Clear</button>
+      <button class="btn btn--ghost" id="btnVocabSpeakAll" type="button">🔊 Listen visible words</button>
+    </div>
+    <div class="grid3" id="vocabGrid"></div>
+  </section>
+
+  <section class="section" id="sec3">
+    <div class="section__head">
+      <h2>3) Grammar workshop: tell the trip clearly</h2>
+      <p class="muted">Three tenses, three jobs. Use the mini lessons, then complete the exercises with instant feedback.</p>
+    </div>
+
+    <div class="grid3">
+      <div class="card grammar-card">
+        <h3>Past simple</h3>
+        <div class="tense-pill">finished actions</div>
+        <p><strong>Use:</strong> what happened during the trip.</p>
+        <div class="formula">Subject + past verb</div>
+        <p class="example">We visited Amsterdam. We stayed for four days. We saw windmills.</p>
+        <button class="iconbtn" data-say="We visited Amsterdam. We stayed for four days. We saw windmills." type="button">🔊 Listen</button>
+      </div>
+      <div class="card grammar-card">
+        <h3>Past continuous</h3>
+        <div class="tense-pill">background / action in progress</div>
+        <p><strong>Use:</strong> what was happening around another event.</p>
+        <div class="formula">was / were + verb-ing</div>
+        <p class="example">We were walking along the canal when it started to rain.</p>
+        <button class="iconbtn" data-say="We were walking along the canal when it started to rain." type="button">🔊 Listen</button>
+      </div>
+      <div class="card grammar-card">
+        <h3>Present perfect</h3>
+        <div class="tense-pill">up until now / life experience</div>
+        <p><strong>Use:</strong> experience before now, result now, or “so far”.</p>
+        <div class="formula">have / has + past participle</div>
+        <p class="example">I have visited the Netherlands. It has been a memorable trip so far.</p>
+        <button class="iconbtn" data-say="I have visited the Netherlands. It has been a memorable trip so far." type="button">🔊 Listen</button>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:.75rem">
+      <div class="card">
+        <h3>Exercise A: choose the correct tense</h3>
+        <div id="grammarQuiz"></div>
+        <div class="feedback hidden" id="grammarFb"></div>
+      </div>
+      <div class="card">
+        <h3>Exercise B: build the sentence (tap mode)</h3>
+        <p class="muted">Tap words in the correct order. This works on iPad and Mac.</p>
+        <div class="smallrow">
+          <select class="select" id="buildSelect"></select>
+          <button class="btn" id="btnBuildCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="btnBuildReset" type="button">↺ Reset</button>
+          <button class="btn btn--ghost" id="btnBuildSpeak" type="button">🔊 Model</button>
+        </div>
+        <div id="builderHost"></div>
+        <div class="feedback hidden" id="buildFb"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec4">
+    <div class="section__head">
+      <h2>4) Reading comprehension: three versions of the trip</h2>
+      <p class="muted">Choose a text, read or listen, show the French support if needed, then answer the questions.</p>
+    </div>
+    <div class="smallrow">
+      <label class="pill"><span class="pill__label">Text</span><select class="select" id="readingSelect"></select></label>
+      <button class="btn" id="btnReadingListen" type="button">🔊 Listen text</button>
+      <button class="btn btn--ghost" id="btnReadingFr" type="button">🇫🇷 Show / hide French help</button>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3 id="readingTitle">Reading</h3>
+        <div class="readingText" id="readingText"></div>
+        <div class="readingFr hidden" id="readingFr"></div>
+      </div>
+      <div class="card">
+        <h3>Comprehension questions</h3>
+        <div id="readingQuestions"></div>
+        <div class="feedback hidden" id="readingFb"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec5">
+    <div class="section__head">
+      <h2>5) Model texts: give a review of Holland</h2>
+      <p class="muted">Compare different versions. Eric can choose the level that feels possible, then upgrade it.</p>
+    </div>
+    <div class="smallrow">
+      <label class="pill"><span class="pill__label">Situation</span><select class="select" id="modelSituation"></select></label>
+      <label class="pill"><span class="pill__label">Level</span><select class="select" id="modelLevel"></select></label>
+      <button class="btn" id="btnModelListen" type="button">🔊 Listen model</button>
+      <button class="btn btn--ghost" id="btnModelCopy" type="button">📋 Copy</button>
+    </div>
+    <div class="card model-panel">
+      <h3 id="modelTitle">Model text</h3>
+      <div class="modelText" id="modelText"></div>
+      <div class="feedback hidden" id="modelFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec6">
+    <div class="section__head">
+      <h2>6) Interactive dialogue + role plays</h2>
+      <p class="muted">Teacher reads blue. Eric answers green. Use the model button only after trying.</p>
+    </div>
+    <div class="smallrow">
+      <label class="pill"><span class="pill__label">Scenario</span><select class="select" id="roleSelect"></select></label>
+      <button class="btn" id="btnRoleStart" type="button">▶️ Start</button>
+      <button class="btn btn--ghost" id="btnRoleNext" type="button">➡️ Next</button>
+      <button class="btn btn--ghost" id="btnRoleModel" type="button">✅ Show model reply</button>
+      <button class="btn btn--ghost" id="btnRolePhrases" type="button">💡 Useful phrases</button>
+      <button class="btn btn--ghost" id="btnRoleClear" type="button">🧹 Clear</button>
+    </div>
+    <div class="card chat-card">
+      <h3 id="roleTitle">Role play</h3>
+      <div class="chat" id="chatStream"></div>
+      <div class="timerRow">
+        <div class="timerBox">
+          <div class="timerBox__t">Prep</div>
+          <div class="timerBox__v" id="prepTime">15</div>
+          <div class="tiny muted">seconds</div>
+          <button class="toolmini" id="btnPrepTimer" type="button">⏱ Start prep</button>
+        </div>
+        <div class="timerBox">
+          <div class="timerBox__t">Speak</div>
+          <div class="timerBox__v" id="speakTime">45</div>
+          <div class="tiny muted">seconds</div>
+          <button class="toolmini" id="btnSpeakTimer" type="button">🎙 Start speak</button>
+        </div>
+        <div class="timerBox">
+          <div class="timerBox__t">Model / phrases</div>
+          <div class="modelBox" id="roleHelpBox">Start a scenario when you are ready.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec7">
+    <div class="section__head">
+      <h2>7) Write Eric’s trip summary / review</h2>
+      <p class="muted">Use the builder first, then write your own version. The checklist checks for the important grammar and travel details.</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Summary builder</h3>
+        <div class="formgrid">
+          <label class="lab">Duration
+            <select class="select" id="sumDuration">
+              <option>for three days</option>
+              <option>for four days</option>
+              <option>for a long weekend</option>
+              <option>for one week</option>
+            </select>
+          </label>
+          <label class="lab">Weather
+            <select class="select" id="sumWeather">
+              <option>sunny but cold</option>
+              <option>cloudy and windy</option>
+              <option>rainy at times</option>
+              <option>mild and pleasant</option>
+            </select>
+          </label>
+          <label class="lab">Main places
+            <select class="select" id="sumPlaces">
+              <option>Amsterdam and the windmills</option>
+              <option>Amsterdam, Delft and The Hague</option>
+              <option>canals, museums and cafés</option>
+              <option>Zaanse Schans and Kinderdijk</option>
+            </select>
+          </label>
+          <label class="lab">Opinion
+            <select class="select" id="sumOpinion">
+              <option>memorable and easy to visit</option>
+              <option>beautiful but sometimes crowded</option>
+              <option>interesting, relaxed and different</option>
+              <option>a great mix of culture and scenery</option>
+            </select>
+          </label>
+        </div>
+        <div class="smallrow">
+          <button class="btn" id="btnSummaryBuild" type="button">✨ Build my draft</button>
+          <button class="btn btn--ghost" id="btnSummaryListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="btnSummaryCopy" type="button">📋 Copy</button>
+        </div>
+        <textarea class="textarea" id="summaryText" rows="11" placeholder="Eric’s summary will appear here. He can edit it and make it personal…"></textarea>
+      </div>
+      <div class="card">
+        <h3>Checklist + feedback</h3>
+        <button class="btn" id="btnSummaryCheck" type="button">✅ Check my summary</button>
+        <div class="checklist" id="summaryChecklist"></div>
+        <div class="kcard" style="margin-top:.75rem">
+          <h4>Useful final-review structure</h4>
+          <ol class="cleanList">
+            <li><strong>Context:</strong> I went to Holland for…</li>
+            <li><strong>Past actions:</strong> We visited / saw / stayed…</li>
+            <li><strong>Story moment:</strong> While we were…, something happened.</li>
+            <li><strong>Present perfect:</strong> I have never seen… / I have enjoyed… so far.</li>
+            <li><strong>Opinion:</strong> I would recommend it because…</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="tiny" style="opacity:.95">© SpeakEasyTisha · holland-trip-review-eric · Build 20260428</div>
+      <a class="toolmini" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<pre id="debugBox" class="hidden debugBox">Debug log</pre>
+<script src="js/holland-trip-review-eric.js"></script>
+</body>
+</html>

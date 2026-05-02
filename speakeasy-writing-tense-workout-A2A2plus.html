@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Writing Tense Workout • A2 → A2.2+</title>
+  <link rel="stylesheet" href="css/speakeasy-writing-tense-workout-A2A2plus.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo" aria-hidden="true">✍️</div>
+      <div>
+        <div class="brand__title">Writing Tense Workout <span class="tag">A2 → A2.2+</span></div>
+        <div class="brand__sub">Put your tenses to work • writing + speaking style • instant feedback</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="pillgroup" role="group" aria-label="Accent">
+        <span class="pillgroup__label">Accent</span>
+        <button class="pill is-active" id="accentUS" type="button">US</button>
+        <button class="pill" id="accentUK" type="button">UK</button>
+      </div>
+
+      <div class="pillgroup" role="group" aria-label="Speed">
+        <span class="pillgroup__label">Speed</span>
+        <button class="pill is-active" id="speedN" type="button">Normal</button>
+        <button class="pill" id="speedS" type="button">Slow</button>
+      </div>
+
+      <div class="pillgroup" role="group" aria-label="Hints">
+        <span class="pillgroup__label">Hints</span>
+        <button class="pill is-active" id="hOn" type="button">On</button>
+        <button class="pill" id="hOff" type="button">Off</button>
+      </div>
+
+      <button class="btn btn--ghost" id="stopAudio" type="button">⏹ Stop</button>
+      <button class="btn btn--ghost" id="resetPractice" type="button">↺ Reset practice</button>
+      <button class="btn btn--ghost" id="resetAll" type="button">↻ Reset all</button>
+      <button class="btn btn--ghost" id="printBtn" type="button">🖨️ Print</button>
+    </div>
+  </div>
+
+  <div class="status">
+    <div class="status__box">
+      <div class="status__label">Score</div>
+      <div class="status__value"><span id="scoreNow">0</span> / <span id="scoreTotal">0</span></div>
+    </div>
+    <div class="status__box">
+      <div class="status__label">Progress</div>
+      <div class="progress"><div class="progress__bar" id="pBar"></div></div>
+      <div class="status__value" id="pPct">0%</div>
+    </div>
+    <div class="status__box status__hint">
+      <div class="status__label">Hint</div>
+      <div class="status__value" id="hintBox">Start with Vocabulary → Grammar cards → Writing studio.</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="#vocab">0) Vocabulary</a>
+    <a href="#grammar">1) Grammar recap</a>
+    <a href="#rewrite">2) Quick rewrite</a>
+    <a href="#studio">3) Writing studio</a>
+    <a href="#compare">4) Compare & upgrade</a>
+  </nav>
+</header>
+
+<main class="page">
+  <section class="card" id="vocab">
+    <h1>0) New vocabulary (icons + FR) 🧠</h1>
+    <p class="lede">Click a card to see meaning + example. Use these words in your writing.</p>
+
+    <div class="searchRow">
+      <input id="vSearch" placeholder="Search: exhibition / already / squirrel / while..." autocomplete="off"/>
+      <button class="btn" id="vListen" type="button">🔊 Listen selection</button>
+      <button class="btn btn--ghost" id="vClear" type="button">↺ Clear</button>
+    </div>
+
+    <div class="tabs" id="vTabs"></div>
+    <div class="cardGrid" id="vGrid"></div>
+  </section>
+
+  <section class="card" id="grammar">
+    <h1>1) Grammar recap (complete but simple) 🧩</h1>
+    <p class="lede">Choose a tense. Read the rule, then do the mini quiz.</p>
+    <div class="tabs" id="gTabs"></div>
+    <div id="gPanel"></div>
+  </section>
+
+  <section class="card" id="rewrite">
+    <h1>2) Quick rewrite (warm‑up) ⚡</h1>
+    <p class="lede">Choose the best answer. Immediate feedback + hint.</p>
+    <div class="mini">
+      <div class="quiz" id="rwBox"></div>
+    </div>
+  </section>
+
+  <section class="card" id="studio">
+    <h1>3) Writing studio — put it to work ✍️</h1>
+    <p class="lede">Pick a task → choose a writing level → write → check → compare with the simple model and upgraded model.</p>
+
+    <div class="grid2">
+      <div class="mini">
+        <label class="field">
+          <span>Choose a task</span>
+          <select id="taskSelect"></select>
+        </label>
+
+        <label class="field">
+          <span>Choose a level</span>
+          <select id="levelSelect"></select>
+        </label>
+
+        <div class="callout small" id="taskScenario"></div>
+
+        <div class="mini" style="margin-top:10px;">
+          <h2 class="h2">Steps ✅</h2>
+          <ol class="list" id="taskSteps"></ol>
+        </div>
+
+        <div class="mini" style="margin-top:10px;">
+          <h2 class="h2">Helpful frame (optional) 🧱</h2>
+          <ul class="list" id="taskFrame"></ul>
+        </div>
+
+        <div class="mini" style="margin-top:10px;">
+          <h2 class="h2">New vocabulary to use ✨</h2>
+          <div class="chips" id="taskVocab"></div>
+        </div>
+      </div>
+
+      <div class="mini">
+        <label class="field">
+          <span>Your text</span>
+          <textarea id="wText" rows="12" placeholder="Write here..."></textarea>
+        </label>
+
+        <div class="wBtns">
+          <button class="btn" id="wCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="wHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="wModel1" type="button">👀 Model (simple)</button>
+          <button class="btn btn--ghost" id="wModel2" type="button">🚀 Upgrade model</button>
+          <button class="btn btn--ghost" id="wListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="wCopy" type="button">📋 Copy</button>
+          <button class="btn btn--ghost" id="wReset" type="button">↺ Reset</button>
+        </div>
+
+        <div class="feedback" id="wFb"></div>
+        <div class="checklistBox" id="wChecklist"></div>
+
+        <div class="mini" style="margin-top:12px;">
+          <h2 class="h2">Model text box</h2>
+          <div class="output" id="wModelBox">Click a model button to reveal.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="compare">
+    <h1>4) Compare & upgrade (CLOE style) 🔍</h1>
+    <p class="lede">Turn a basic message into a smoother, more confident message.</p>
+
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">A) Basic version</h2>
+        <div class="output" id="basicBox"></div>
+        <div class="wBtns">
+          <button class="btn btn--ghost" id="basicListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="basicCopy" type="button">📋 Copy</button>
+        </div>
+      </div>
+      <div class="mini">
+        <h2 class="h2">B) Upgraded version</h2>
+        <div class="output" id="upgradeBox"></div>
+        <div class="wBtns">
+          <button class="btn btn--ghost" id="upgradeListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="upgradeCopy" type="button">📋 Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mini" style="margin-top:14px;">
+      <h2 class="h2">Why this upgrade works 💡</h2>
+      <ul class="list" id="whyList"></ul>
+    </div>
+  </section>
+
+  <p class="footer"><a href="#vocab">↑ Back to top</a></p>
+</main>
+
+<script defer src="js/speakeasy-writing-tense-workout-A2A2plus.js"></script>
+</body>
+</html>

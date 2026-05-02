@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Matisse Exhibition — English Visit Toolkit</title>
+  <link rel="stylesheet" href="css/speakeasy-matisse-exhibition-writing-A2A2plus.css"/>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo">🎨</div>
+      <div>
+        <div class="brand__title">Matisse Exhibition — English Visit Toolkit <span class="tag">A2 → A2.2+</span></div>
+        <div class="brand__sub">Explain your visit • describe art • use future, past, present perfect, comparatives</div>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="pillgroup"><span class="pillgroup__label">Accent</span><button class="pill is-active" id="accentUS" type="button">US</button><button class="pill" id="accentUK" type="button">UK</button></div>
+      <div class="pillgroup"><span class="pillgroup__label">Speed</span><button class="pill is-active" id="speedN" type="button">Normal</button><button class="pill" id="speedS" type="button">Slow</button></div>
+      <button class="btn btn--ghost" id="stopAudio" type="button">⏹ Stop</button>
+      <button class="btn btn--ghost" id="resetAll" type="button">↻ Reset</button>
+      <button class="btn btn--ghost" id="printBtn" type="button">🖨️ Print</button>
+    </div>
+  </div>
+  <div class="status">
+    <div class="status__box"><div class="status__label">Score</div><div class="status__value"><span id="scoreNow">0</span> / <span id="scoreTotal">0</span></div></div>
+    <div class="status__box"><div class="status__label">Progress</div><div class="progress"><div class="progress__bar" id="pBar"></div></div><div class="status__value" id="pPct">0%</div></div>
+    <div class="status__box status__hint"><div class="status__label">Hint</div><div class="status__value" id="hintBox">Start with the facts, then learn vocabulary and build your own paragraph.</div></div>
+  </div>
+  <nav class="nav">
+    <a href="#facts">0) Facts</a>
+    <a href="#reading">1) Read</a>
+    <a href="#accessInfo">2) Access</a>
+    <a href="#vocab">3) Vocabulary</a>
+    <a href="#grammar">4) Grammar</a>
+    <a href="#practice">5) Practice</a>
+    <a href="#builder">6) Builder</a>
+    <a href="#dialogue">7) Dialogue</a>
+    <a href="#writing">8) Writing</a>
+  </nav>
+</header>
+
+<main class="page">
+  <section class="hero card">
+    <div>
+      <h1>Road to conversing: talk about your Matisse exhibition visit 🖼️</h1>
+      <p class="lede">By the end, you can explain your plan, describe what you saw, and give your opinion with clear tenses and art vocabulary.</p>
+      <div class="heroBtns">
+        <button class="btn" id="heroListen" type="button">🔊 Listen objective</button>
+        <a class="btn btn--ghost" href="#writing">Go to writing studio ✍️</a>
+      </div>
+    </div>
+    <div class="heroCard">
+      <div class="bigEmoji">✂️🎨</div>
+      <strong>Key idea</strong>
+      <p>Matisse used simple shapes and bright colours to create powerful art.</p>
+    </div>
+  </section>
+
+  <section class="card" id="facts">
+    <h1>0) Essential facts — click + listen 🧭</h1>
+    <p class="lede">Use these facts to prepare a short CLOE-style answer.</p>
+    <div class="factGrid" id="factGrid"></div>
+  </section>
+
+  <section class="card" id="reading">
+    <h1>1) Model text — before and after the visit 📖</h1>
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">Before the visit 🔮</h2>
+        <p id="beforeText">Tomorrow, I’m going to Paris to visit the Matisse exhibition at the Grand Palais. I’m especially interested in the colourful cut-outs because they look simple but very creative. Afterwards, I’m having lunch at a restaurant, and then I’ve got an appointment at 3:30. I’m really looking forward to this cultural day.</p>
+        <div class="wBtns"><button class="btn btn--ghost listenText" data-target="beforeText" type="button">🔊 Listen</button><button class="btn btn--ghost toggleFR" data-target="beforeFR" type="button">🇫🇷 Show FR</button></div>
+        <div class="frBox" id="beforeFR">Demain, je vais à Paris pour visiter l’exposition Matisse au Grand Palais. Je suis particulièrement intéressée par les découpages colorés parce qu’ils ont l’air simples mais très créatifs. Ensuite, je déjeune au restaurant, puis j’ai un rendez-vous à 15h30. J’ai vraiment hâte de faire cette journée culturelle.</div>
+      </div>
+      <div class="mini">
+        <h2 class="h2">After the visit 🕰️</h2>
+        <p id="afterText">Yesterday, I visited the Matisse exhibition at the Grand Palais, and I really enjoyed it. I noticed the bright colours, the simple shapes and the powerful cut-outs. The exhibition was more colourful than I expected, and it is one of the most interesting exhibitions I’ve seen. I would definitely recommend it.</p>
+        <div class="wBtns"><button class="btn btn--ghost listenText" data-target="afterText" type="button">🔊 Listen</button><button class="btn btn--ghost toggleFR" data-target="afterFR" type="button">🇫🇷 Show FR</button></div>
+        <div class="frBox" id="afterFR">Hier, j’ai visité l’exposition Matisse au Grand Palais et j’ai vraiment apprécié. J’ai remarqué les couleurs vives, les formes simples et les découpages puissants. L’exposition était plus colorée que prévu, et c’est l’une des expositions les plus intéressantes que j’aie vues. Je la recommanderais sans hésiter.</div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="card" id="accessInfo">
+    <h1>2) Getting there — access, metro, taxi, parking 🧭</h1>
+    <p class="lede">Use this section to explain practical travel details in English.</p>
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">A) Simple explanation</h2>
+        <p id="accessSimple">The Matisse exhibition is at the Grand Palais in Paris. The entrance is Square Jean Perrin. I can get there by metro and get off at Champs-Élysées–Clemenceau. If I go by car, I need to find a nearby car park.</p>
+        <div class="wBtns"><button class="btn btn--ghost listenText" data-target="accessSimple" type="button">🔊 Listen</button><button class="btn btn--ghost toggleFR" data-target="accessSimpleFR" type="button">🇫🇷 Show FR</button></div>
+        <div class="frBox" id="accessSimpleFR">L’exposition Matisse est au Grand Palais à Paris. L’entrée est Square Jean Perrin. Je peux y aller en métro et descendre à Champs-Élysées–Clemenceau. Si j’y vais en voiture, je dois trouver un parking à proximité.</div>
+      </div>
+      <div class="mini">
+        <h2 class="h2">B) Upgraded explanation</h2>
+        <p id="accessUpgrade">The easiest option is probably the metro. I can take line 1 or line 13 to Champs-Élysées–Clemenceau, or line 1 or line 9 to Franklin D. Roosevelt. Then I can follow the signs to the Grand Palais. If I take a taxi, there are taxi stands on Avenue Churchill. If I drive, I need to plan ahead because the Grand Palais does not have its own public car park.</p>
+        <div class="wBtns"><button class="btn btn--ghost listenText" data-target="accessUpgrade" type="button">🔊 Listen</button><button class="btn btn--ghost toggleFR" data-target="accessUpgradeFR" type="button">🇫🇷 Show FR</button></div>
+        <div class="frBox" id="accessUpgradeFR">L’option la plus simple est probablement le métro. Je peux prendre la ligne 1 ou 13 jusqu’à Champs-Élysées–Clemenceau, ou la ligne 1 ou 9 jusqu’à Franklin D. Roosevelt. Ensuite, je peux suivre les panneaux jusqu’au Grand Palais. Si je prends un taxi, il y a des stations de taxi avenue Churchill. Si je viens en voiture, je dois prévoir à l’avance car le Grand Palais n’a pas son propre parking public.</div>
+      </div>
+    </div>
+    <div class="mini" style="margin-top:14px;">
+      <h2 class="h2">Useful access phrases 🚇</h2>
+      <ul class="list">
+        <li><strong>You can take line 1 or line 13.</strong> — Vous pouvez prendre la ligne 1 ou la ligne 13.</li>
+        <li><strong>Get off at Champs-Élysées–Clemenceau.</strong> — Descendez à Champs-Élysées–Clemenceau.</li>
+        <li><strong>Follow the signs to the Grand Palais.</strong> — Suivez les panneaux jusqu’au Grand Palais.</li>
+        <li><strong>The entrance is Square Jean Perrin.</strong> — L’entrée est Square Jean Perrin.</li>
+        <li><strong>I need to find a nearby car park.</strong> — Je dois trouver un parking à proximité.</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section class="card" id="vocab">
+    <h1>3) Vocabulary (icons + FR) 🧠</h1>
+    <div class="searchRow">
+      <input id="vSearch" placeholder="Search: cut-out / colourful / appointment..." autocomplete="off"/>
+      <button class="btn" id="vListen" type="button">🔊 Listen selection</button>
+      <button class="btn btn--ghost" id="vClear" type="button">↺ Clear</button>
+    </div>
+    <div class="tabs" id="vTabs"></div>
+    <div class="cardGrid" id="vGrid"></div>
+  </section>
+
+  <section class="card" id="grammar">
+    <h1>4) Grammar tools for the visit 🧩</h1>
+    <p class="lede">Choose a grammar card, read the rule, then answer the mini quiz.</p>
+    <div class="tabs" id="gTabs"></div>
+    <div id="gPanel"></div>
+  </section>
+
+  <section class="card" id="practice">
+    <h1>5) Practice — instant feedback ✅</h1>
+    <div class="grid2">
+      <div class="mini">
+        <h2 class="h2">A) QCM</h2>
+        <div class="quiz" id="qcmBox"></div>
+      </div>
+      <div class="mini">
+        <h2 class="h2">B) Fill in the blank</h2>
+        <div class="quiz" id="fillBox"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="builder">
+    <h1>5) Sentence builder — tap the words 🧱</h1>
+    <div class="grid2">
+      <div class="mini">
+        <label class="field"><span>Choose a sentence</span><select id="builderSelect"></select></label>
+        <div class="callout small" id="builderTitle"></div>
+        <div class="bank" id="wordBank"></div>
+        <div class="output" id="builtSentence"></div>
+        <div class="wBtns"><button class="btn btn--ghost" id="undoBuild" type="button">↩️ Undo</button><button class="btn btn--ghost" id="clearBuild" type="button">🧽 Clear</button><button class="btn" id="checkBuild" type="button">✅ Check</button></div>
+        <div class="feedback" id="builderFb"></div>
+      </div>
+      <div class="mini">
+        <h2 class="h2">Speaking tip</h2>
+        <ul class="list">
+          <li>Before: <strong>I’m going to visit...</strong></li>
+          <li>After: <strong>I visited / I saw / I enjoyed...</strong></li>
+          <li>Experience: <strong>I’ve never seen...</strong></li>
+          <li>Opinion: <strong>It is one of the most...</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="dialogue">
+    <h1>7) Dialogue trainer — choose the best reply 🎭</h1>
+    <div class="dialogueControls">
+      <label class="field"><span>Scenario</span><select id="dialogueSelect"></select></label>
+      <div class="wBtns"><button class="btn" id="startDialogue" type="button">▶️ Start</button><button class="btn btn--ghost" id="nextDialogue" type="button">➡️ Next</button><button class="btn btn--ghost" id="resetDialogue" type="button">↺ Reset dialogue</button><button class="btn btn--ghost" id="listenPrompt" type="button">🔊 Listen prompt</button></div>
+    </div>
+    <div class="bubble tBlue" id="dialoguePrompt">Choose a scenario and click Start.</div>
+    <div class="bubble tGreen"><div class="replyChoices" id="replyChoices"></div><div class="feedback" id="dialogueFb"></div></div>
+  </section>
+
+  <section class="card" id="writing">
+    <h1>8) Writing studio — plan, review, access, or CLOE answer ✍️</h1>
+    <p class="lede">Choose a task. Write your paragraph. Check the goals. Then compare with the simple and upgraded models.</p>
+    <div class="grid2">
+      <div class="mini">
+        <label class="field"><span>Choose a task</span><select id="writingSelect"></select></label>
+        <div class="callout small" id="writingScenario"></div>
+        <h2 class="h2">Steps</h2>
+        <ol class="list" id="writingSteps"></ol>
+        <div class="wBtns"><button class="btn btn--ghost" id="showModel1" type="button">👀 Model paragraph</button><button class="btn btn--ghost" id="showModel2" type="button">🚀 Upgraded paragraph</button><button class="btn btn--ghost" id="listenModel" type="button">🔊 Listen model box</button></div>
+        <div class="output" id="modelBox">Click a model button to reveal.</div>
+      </div>
+      <div class="mini">
+        <label class="field"><span>Your text</span><textarea id="userText" rows="11" placeholder="Write your paragraph here..."></textarea></label>
+        <div class="wBtns"><button class="btn" id="checkWriting" type="button">✅ Check</button><button class="btn btn--ghost" id="hintWriting" type="button">💡 Hint</button><button class="btn btn--ghost" id="listenWriting" type="button">🔊 Listen</button><button class="btn btn--ghost" id="copyWriting" type="button">📋 Copy</button><button class="btn btn--ghost" id="resetWriting" type="button">↺ Reset</button></div>
+        <div class="feedback" id="writingFb"></div>
+        <div class="checklistBox" id="writingChecklist"></div>
+      </div>
+    </div>
+  </section>
+
+  <p class="footer"><a href="#facts">↑ Back to top</a></p>
+</main>
+<script defer src="js/speakeasy-matisse-exhibition-writing-A2A2plus.js"></script>
+</body>
+</html>
