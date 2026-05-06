@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Karine Practice Studio (A1+) · SpeakEasyTisha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/karine-practice-studio-a1-v2.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Karine Practice Studio · review everything before moving on</div>
+    </div>
+
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Accent</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <select class="select" id="voiceSelect" aria-label="Voice list"></select>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="seg is-on" id="autoOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="autoOn" type="button" aria-pressed="false">ON</button>
+        <button class="btn btn--ghost" id="btnTestVoice" type="button">🔊 Test</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+
+      <span class="pill" id="jsStatus">JS: loading…</span>
+      <span class="pill">Build: 20260506-102132</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>Practice Studio (A1+) — Karine</h1>
+      <p class="lead">
+        Review <strong>vocabulary + grammar</strong> (hotel, tickets, directions, small talk) and practise with
+        <strong>interactive exercises</strong> + <strong>listening with transcripts</strong>.
+      </p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start practice</button>
+        <button class="btn btn--ghost" id="btnHow" type="button">ℹ️ How to use</button>
+      </div>
+      <div class="progress" style="margin-top:.7rem"><div class="progress__bar" id="progressBar"></div></div>
+      <div class="tiny" style="margin-top:.35rem;opacity:.95">
+        Tip: If the voice sounds French on iPhone/iPad, install an English voice in Settings → Accessibility → Spoken Content → Voices.
+      </div>
+    </div>
+
+    <div class="panelcard">
+      <div class="panelcard__title">What we practise today</div>
+      <ol class="panelcard__list">
+        <li>Vocabulary (categories + audio)</li>
+        <li>Grammar lessons (rules + examples)</li>
+        <li>Interactive exercises (MCQ, fill, word order, sorting)</li>
+        <li>Listening dialogues (show/hide text + speaker buttons)</li>
+        <li>Final mixed quiz</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+
+  <section class="section" id="secVocab">
+    <h2>1) Vocabulary review (with categories)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <select class="select" id="vCat"></select>
+        <button class="btn btn--ghost" id="btnVRevealAll" type="button">👀 Reveal all</button>
+        <button class="btn btn--ghost" id="btnVHideAll" type="button">🙈 Hide all</button>
+        <button class="btn btn--ghost" id="btnVQuiz" type="button">✅ Quick quiz</button>
+      </div>
+      <div class="tiny" style="color:rgba(14,31,36,.75)">Tap a word card to reveal meaning + French + example. Use 🔊 to practise pronunciation.</div>
+      <div class="grid3" id="vGrid" style="margin-top:.6rem"></div>
+      <div class="feedback hidden" id="vFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secGrammar">
+    <h2>2) Grammar lessons (rules + examples)</h2>
+    <div class="grid2" id="gGrid"></div>
+  </section>
+
+  <section class="section" id="secExercises">
+    <h2>3) Exercise Lab (interactive + score)</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>MCQ (choose the best answer)</h3>
+        <div class="kcard" id="mcqHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="mcqStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="mcqCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="mcqNext" type="button">➡️ Next</button>
+          <button class="btn btn--ghost" id="mcqHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="mcqReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="mcqFb"></div>
+      </div>
+
+      <div class="card">
+        <h3>Dropdown (choose the correct word)</h3>
+        <div class="kcard" id="ddHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="ddStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="ddCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="ddNext" type="button">➡️ Next</button>
+          <button class="btn btn--ghost" id="ddHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="ddReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="ddFb"></div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:.8rem">
+      <div class="card">
+        <h3>Sentence builder (tap OR drag)</h3>
+        <div class="kcard" id="ordHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="ordStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="ordCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="ordHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="ordReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="ordFb"></div>
+      </div>
+
+      <div class="card">
+        <h3>Fill the blanks (word bank)</h3>
+        <div class="kcard" id="bankHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="bankStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="bankCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="bankHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="bankReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="bankFb"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:.8rem">
+      <h3>Sorting (tap OR drag) — Prepositions vs Direction verbs</h3>
+      <div class="kcard" id="sortHost"></div>
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="sortCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="sortHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="sortReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="sortFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secListening">
+    <h2>4) Listening Studio (show text + speaker buttons)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <select class="select" id="lisPick"></select>
+        <button class="btn btn--ghost" id="lisPlayAll" type="button">🔊 Play all</button>
+        <button class="btn btn--ghost" id="lisShow" type="button">📄 Show text</button>
+        <button class="btn btn--ghost" id="lisHide" type="button">🙈 Hide text</button>
+      </div>
+
+      <div class="dialogue" id="lisStream"></div>
+
+      <hr class="soft"/>
+
+      <h3>Comprehension check (5 questions)</h3>
+      <div class="kcard" id="lisQHost">Choose a dialogue above.</div>
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="lisCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="lisReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="lisQFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secFinal">
+    <h2>5) Final mixed quiz (ready to move on?)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <button class="btn" id="finalStart" type="button">▶️ Start final quiz</button>
+        <button class="btn btn--ghost" id="finalCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="finalNext" type="button">➡️ Next</button>
+        <button class="btn btn--ghost" id="finalHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="finalReset" type="button">↺ Reset</button>
+      </div>
+      <div class="kcard" id="finalHost">Click Start.</div>
+      <div class="feedback hidden" id="finalFb"></div>
+      <div class="tiny" style="color:rgba(14,31,36,.72);margin-top:.55rem">Goal: at least 16/20 before moving on.</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="tiny" style="opacity:.95">© SpeakEasyTisha · karine-practice-studio-a1-v2 · Build 20260506-094733</div>
+      <a class="toolmini" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<script src="js/karine-practice-studio-a1-v2.js"></script>
+</body>
+</html>
