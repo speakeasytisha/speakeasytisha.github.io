@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yanis — LILATE Part 3: Give Instructions & Solve Problems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-8-lilate-part3.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Yanis · LILATE Part 3 · Give instructions, explain procedures, solve a problem</div>
+    </div>
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div>
+      <h1>Yanis — Give Instructions & Solve Problems ✈️</h1>
+      <p class="lead">
+        In this lesson, you practise the next LILATE step: <strong>giving instructions, explaining procedures,
+        passing on information clearly, and helping in a real passenger situation</strong>.
+      </p>
+      <p class="lead fr">Dans cette leçon, vous travaillez l’étape suivante du LILATE : <strong>donner des consignes,
+        expliquer une procédure, transmettre des informations clairement et aider dans une situation réelle avec un passager</strong>.</p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start lesson</button>
+        <button class="btn btn--ghost speak" data-say="In this lesson, you practise giving instructions, explaining procedures, passing on information clearly, and helping in a real passenger situation." type="button">🔊 Listen lesson goal</button>
+      </div>
+      <div class="minirow">
+        <div class="minicard">
+          <div class="minicard__t">🎯 Exam link</div>
+          <div class="minicard__p">Transmit instructions, procedures, or information.</div>
+          <div class="fr tiny">Transmettre des consignes, des procédures ou des informations.</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">🧭 Clear sequence</div>
+          <div class="minicard__p">First, then, after that, finally.</div>
+          <div class="fr tiny">D’abord, puis, après cela, enfin.</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">🎭 Roleplays + models</div>
+          <div class="minicard__p">Prompt + your answer + visible model answer + audio.</div>
+          <div class="fr tiny">Consigne + votre réponse + modèle visible + audio.</div>
+        </div>
+      </div>
+    </div>
+    <div class="panelcard">
+      <div class="panelcard__title">Lesson map (≈ 60 min)</div>
+      <ol class="panelcard__list">
+        <li>What this exam part wants</li>
+        <li>Grammar: imperatives + can / can’t + must / have to</li>
+        <li>Grammar: sequence markers for procedures</li>
+        <li>Vocabulary flashcards + note-taking</li>
+        <li>Fill in the gaps + sentence building</li>
+        <li>Listen and pass on information</li>
+        <li>Writing ladder: simple → better → stronger</li>
+        <li>Interactive roleplays with visible model answers</li>
+      </ol>
+      <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+      <div class="muted tiny">Audio reads the English only.</div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section">
+    <div class="section__head">
+      <h2>1) What this part of the exam wants</h2>
+      <p class="muted">You must explain what to do, give the next steps, and stay clear and professional.</p>
+      <p class="fr">Vous devez expliquer quoi faire, donner les étapes suivantes et rester clair et professionnel.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>LILATE target</h3><button class="iconbtn speak" data-say="In this part, you give instructions, explain procedures, pass on information from another person, and help someone solve a problem.">🔊</button></div>
+        <div class="reading">
+          <div class="line"><div class="ico">💬</div><div><strong>Give instructions</strong><br><span class="muted">Tell the person what to do next.</span><div class="fr tiny">Dire à la personne ce qu’elle doit faire ensuite.</div></div></div>
+          <div class="line"><div class="ico">📋</div><div><strong>Explain a procedure</strong><br><span class="muted">Use clear order: first, then, after that, finally.</span><div class="fr tiny">Utiliser un ordre clair : d’abord, puis, après cela, enfin.</div></div></div>
+          <div class="line"><div class="ico">📨</div><div><strong>Pass on information</strong><br><span class="muted">Repeat important details from a message or from a colleague.</span><div class="fr tiny">Répéter les informations importantes d’un message ou d’un collègue.</div></div></div>
+          <div class="line"><div class="ico">🛟</div><div><strong>Help with a problem</strong><br><span class="muted">Stay calm, explain the next steps, and offer a clear solution.</span><div class="fr tiny">Rester calme, expliquer les étapes suivantes et proposer une solution claire.</div></div></div>
+        </div>
+      </div>
+      <div class="card notesCard">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">Key words / Mots clés
+          <textarea class="textarea" rows="8" placeholder="give instructions / explain a procedure / first, then / must / can..."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>2) Grammar workshop — imperatives for instructions</h2>
+      <p class="muted">An imperative is the simplest way to give an instruction.</p>
+      <p class="fr">L’impératif est la façon la plus simple de donner une consigne.</p>
+    </div>
+    <div class="grid-2-1">
+      <div class="card">
+        <div class="card__head"><h3>Rule 1 — imperative = base verb</h3><button class="iconbtn speak" data-say="For instructions, use the base verb. Sit down. Show your boarding pass. Place your bag in the overhead bin. Please remain calm.">🔊</button></div>
+        <div class="explainBox">
+          <p><strong>Use the base verb</strong> to tell a person what to do.</p>
+          <p class="fr tiny"><strong>On utilise la base du verbe</strong> pour dire à une personne ce qu’elle doit faire.</p>
+          <ul>
+            <li><strong>Show</strong> your boarding pass.</li>
+            <li><strong>Please take</strong> your seat.</li>
+            <li><strong>Place</strong> your bag in the overhead bin.</li>
+            <li><strong>Remain</strong> calm.</li>
+          </ul>
+          <p><strong>To be more polite</strong>, you can add <strong>please</strong>.</p>
+          <p class="fr tiny">Pour être plus poli, vous pouvez ajouter <strong>please</strong>.</p>
+          <ul>
+            <li><strong>Please wait</strong> here.</li>
+            <li><strong>Please follow</strong> me.</li>
+            <li><strong>Please listen</strong> carefully.</li>
+          </ul>
+        </div>
+        <div class="compareBox">
+          <div class="good">✅ Show your passport.</div>
+          <div class="good">✅ Please take your seat.</div>
+          <div class="bad">❌ You show your passport.</div>
+          <div class="bad">❌ Please to take your seat.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>More concrete examples</h3></div>
+        <div class="exampleBlock">
+          <p><strong>At the gate:</strong> Please have your boarding pass ready.</p>
+          <p><strong>On board:</strong> Please fasten your seat belt.</p>
+          <p><strong>With luggage:</strong> Please place your bag under the seat.</p>
+          <p><strong>During a delay:</strong> Please wait near the gate for the next announcement.</p>
+          <hr>
+          <p><strong>Short pattern to remember:</strong></p>
+          <p class="promptBox">Please + base verb + complement</p>
+          <p class="fr tiny">Please + base verb + complément</p>
+        </div>
+      </div>
+      <div class="card notesCard">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">Write 3 useful instructions
+          <textarea class="textarea" rows="10" placeholder="Please wait here. / Please show your passport. / Please follow me."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>3) Grammar workshop — can, can’t, must, have to</h2>
+      <p class="muted">These words help you explain permission, possibility, and obligation.</p>
+      <p class="fr">Ces mots vous aident à expliquer la permission, la possibilité et l’obligation.</p>
+    </div>
+    <div class="grid-2-1">
+      <div class="card">
+        <div class="card__head"><h3>Rule 2 — what each word means</h3><button class="iconbtn speak" data-say="Can means permission or possibility. Can't means something is not possible or not allowed. Must means strong obligation. Have to also means obligation, often because of a rule or a procedure.">🔊</button></div>
+        <table class="miniTable">
+          <tr><th>Form</th><th>Meaning</th><th>Example</th></tr>
+          <tr><td>can</td><td>permission / possibility</td><td>You <strong>can</strong> take one small bag.</td></tr>
+          <tr><td>can’t</td><td>not allowed / not possible</td><td>You <strong>can’t</strong> keep the bag here.</td></tr>
+          <tr><td>must</td><td>strong obligation</td><td>You <strong>must</strong> fasten your seat belt.</td></tr>
+          <tr><td>have to</td><td>obligation / procedure</td><td>You <strong>have to</strong> go to the gate now.</td></tr>
+        </table>
+        <div class="notesMini">
+          <strong>Important:</strong> after can / can’t / must, use the base verb.<br>
+          <span class="fr tiny"><strong>Important :</strong> après can / can’t / must, on utilise la base du verbe.</span>
+          <div class="good">✅ You must wait.</div>
+          <div class="bad">❌ You must to wait.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Concrete steward-style examples</h3></div>
+        <div class="exampleBlock">
+          <p>You <strong>can</strong> keep your passport in your hand.</p>
+          <p>You <strong>can’t</strong> take this large bag into the cabin.</p>
+          <p>You <strong>must</strong> remain seated during take-off.</p>
+          <p>You <strong>have to</strong> follow the crew instructions.</p>
+          <hr>
+          <p><strong>Question forms:</strong></p>
+          <p><strong>Can</strong> I help you?</p>
+          <p><strong>Do</strong> I have to print my boarding pass?</p>
+        </div>
+      </div>
+      <div class="card notesCard">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">Write your own examples
+          <textarea class="textarea" rows="10" placeholder="You can... / You can't... / You must... / You have to..."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>4) Grammar workshop — sequence markers for procedures</h2>
+      <p class="muted">Sequence words help you explain steps in a clear order.</p>
+      <p class="fr">Les mots de séquence vous aident à expliquer les étapes dans un ordre clair.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Useful sequence markers</h3><button class="iconbtn speak" data-say="First, show your passport. Then go to the gate. After that, place your bag under the seat. Finally, fasten your seat belt.">🔊</button></div>
+        <div class="patternList">
+          <div class="patternItem"><strong>First, ...</strong><div class="fr tiny">D’abord, ...</div></div>
+          <div class="patternItem"><strong>Then, ...</strong><div class="fr tiny">Puis, ...</div></div>
+          <div class="patternItem"><strong>After that, ...</strong><div class="fr tiny">Après cela, ...</div></div>
+          <div class="patternItem"><strong>Finally, ...</strong><div class="fr tiny">Enfin, ...</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Model procedure</h3></div>
+        <div class="modelBox visible" id="procedureModel">First, show your boarding pass. Then go to the gate. After that, place your bag in the overhead bin. Finally, take your seat and fasten your seat belt.</div>
+        <div class="smallBtns">
+          <button class="iconbtn speak" data-say="First, show your boarding pass. Then go to the gate. After that, place your bag in the overhead bin. Finally, take your seat and fasten your seat belt.">🔊 Listen model</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>5) Vocabulary flashcards</h2>
+      <p class="muted">Tap the cards. Listen to the English only.</p>
+      <p class="fr">Touchez les cartes. L’audio lit l’anglais uniquement.</p>
+    </div>
+    <div class="grid--cards" id="flashGrid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>6) Fill in the gaps — step by step</h2>
+      <p class="muted">Short, controlled practice first.</p>
+      <p class="fr">Petits exercices contrôlés d’abord.</p>
+    </div>
+    <div class="card">
+      <div class="exerciseTitle">Exercise A — choose the best word</div>
+      <div id="fillHostA"></div>
+    </div>
+    <div class="card topSpace">
+      <div class="exerciseTitle">Exercise B — complete the procedure</div>
+      <div id="fillHostB"></div>
+    </div>
+    <div class="card topSpace">
+      <div class="exerciseTitle">Exercise C — write the missing sequence word</div>
+      <div class="writeRow">
+        <div class="qprompt">__________, show your boarding pass. Then, go to the gate. __________, take your seat. __________, fasten your seat belt.</div>
+        <textarea class="textarea" id="seqWrite" rows="4" placeholder="Write the missing words here..."></textarea>
+        <div class="smallBtns">
+          <button class="btn" id="btnSeqCheck" type="button">✅ Check my answer</button>
+          <button class="btn btn--ghost" id="btnSeqModel" type="button">👀 Show model</button>
+        </div>
+        <div class="feedback hidden" id="seqFb"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>7) Listen, collect information, pass it on</h2>
+      <p class="muted">This is very close to the exam logic for Part 3.</p>
+      <p class="fr">C’est très proche de la logique de l’examen pour la Partie 3.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Audio message from a colleague</h3><button class="iconbtn" id="btnMsg1" type="button">🔊 Listen</button></div>
+        <p class="msgBox" id="msg1Text">Hello. Gate B12 has changed to gate C4. A passenger is worried because he has a short connection. Please tell him to go to gate C4 immediately and keep his passport and boarding pass ready.</p>
+        <div id="listenQs1"></div>
+      </div>
+      <div class="card notesCard">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">Write the key information
+          <textarea class="textarea" rows="12" placeholder="gate change / short connection / go to gate C4 / passport and boarding pass ready..."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>8) Writing ladder — compare and improve</h2>
+      <p class="muted">You can compare levels together and explain how to improve step by step.</p>
+      <p class="fr">Vous pouvez comparer les niveaux ensemble et expliquer comment améliorer pas à pas.</p>
+    </div>
+    <div class="card">
+      <div class="compareCols">
+        <div class="compareCard">
+          <h4>Level 1 — simple</h4>
+          <div class="modelWrite">Go to gate C4. You need your passport. Be fast.</div>
+          <div class="fr tiny">Très simple, compréhensible, mais peu naturel.</div>
+        </div>
+        <div class="compareCard">
+          <h4>Level 2 — better</h4>
+          <div class="modelWrite">Please go to gate C4 now. You need to keep your passport and boarding pass ready.</div>
+          <div class="fr tiny">Plus clair, plus poli, plus précis.</div>
+        </div>
+        <div class="compareCard">
+          <h4>Level 3 — stronger</h4>
+          <div class="modelWrite">Please go to gate C4 immediately. You have a short connection, so please keep your passport and boarding pass ready. If you need help, I can assist you.</div>
+          <div class="fr tiny">Plus professionnel, mieux structuré, plus utile pour la situation.</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="checkitem">Add a polite opening: <strong>Please...</strong></div>
+        <div class="checkitem">Add a clear instruction: <strong>go to / keep / show / wait</strong></div>
+        <div class="checkitem">Add an important detail: <strong>gate / time / passport / boarding pass</strong></div>
+        <div class="checkitem">Add support: <strong>If you need help, I can assist you.</strong></div>
+      </div>
+      <div class="topSpace">
+        <label class="lab">Write your version
+          <textarea class="textarea" id="writeOwn" rows="6" placeholder="Write a short professional message for the passenger..."></textarea>
+        </label>
+        <div class="smallBtns">
+          <button class="btn" id="btnWriteCheck" type="button">✅ Check my writing</button>
+          <button class="btn btn--ghost" id="btnWriteModel" type="button">👀 Show stronger model</button>
+        </div>
+        <div class="feedback hidden" id="writeFb"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>9) Interactive roleplays — visible models</h2>
+      <p class="muted">Listen, answer, then compare with the model.</p>
+      <p class="fr">Écoutez, répondez, puis comparez avec le modèle.</p>
+    </div>
+    <div class="filters">
+      <div class="pill"><span class="pill__label">Scenario</span>
+        <select class="select" id="roleSelect"></select>
+      </div>
+      <button class="btn btn--ghost" id="btnRolePrompt" type="button">🔊 Listen prompt</button>
+      <button class="btn btn--ghost" id="btnRoleModel" type="button">🔊 Listen model</button>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Your prompt</h3></div>
+        <div class="promptBox" id="rolePrompt"></div>
+        <div class="fr tiny" id="rolePromptFr"></div>
+        <label class="lab topSpace">Your answer
+          <textarea class="textarea" id="roleAnswer" rows="6" placeholder="Speak first, then write key words or your answer here..."></textarea>
+        </label>
+        <div class="smallBtns">
+          <button class="btn" id="btnRoleCheck" type="button">✅ Check my answer</button>
+          <button class="btn btn--ghost" id="btnRoleShowModel" type="button">👀 Show model answer</button>
+        </div>
+        <div class="feedback hidden" id="roleFb"></div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Visible model answer</h3></div>
+        <div class="modelBox" id="roleModelBox">Click “Show model answer” to compare.</div>
+        <div class="fr tiny" id="roleModelFr"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="muted tiny">SpeakEasyTisha · Yanis · LILATE Part 3 · Touch-friendly</div>
+      <a class="iconbtn" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<script src="js/yanis-page-8-lilate-part3.js"></script>
+</body>
+</html>

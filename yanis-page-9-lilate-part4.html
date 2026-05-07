@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yanis — LILATE Part 4: Read, Identify & Respond</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-9-lilate-part4.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Yanis · LILATE Part 4 · Read a document, identify useful information, answer professionally</div>
+    </div>
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div>
+      <h1>Yanis — Read, Identify & Respond ✈️</h1>
+      <p class="lead">
+        In this lesson, you practise the next LILATE step: <strong>reading a professional support,
+        identifying the main information, and answering clearly in a passenger or steward situation</strong>.
+      </p>
+      <p class="lead fr">Dans cette leçon, vous travaillez l’étape suivante du LILATE : <strong>lire un support professionnel,
+        repérer les informations principales et répondre clairement dans une situation liée aux passagers ou au métier de steward</strong>.</p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start lesson</button>
+        <button class="btn btn--ghost speak" data-say="In this lesson, you practise reading a professional support, identifying the main information, and answering clearly in a passenger or steward situation." type="button">🔊 Listen lesson goal</button>
+      </div>
+      <div class="minirow">
+        <div class="minicard">
+          <div class="minicard__t">📄 Read a support</div>
+          <div class="minicard__p">Board, notice, short message, passenger information.</div>
+          <div class="fr tiny">Tableau, notice, message court, information passager.</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">🔎 Find the key info</div>
+          <div class="minicard__p">Who? What? Where? When? Why? What next?</div>
+          <div class="fr tiny">Qui ? Quoi ? Où ? Quand ? Pourquoi ? Et ensuite ?</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">💬 Respond professionally</div>
+          <div class="minicard__p">Use clear, calm sentences and guide the person.</div>
+          <div class="fr tiny">Utiliser des phrases claires et calmes pour guider la personne.</div>
+        </div>
+      </div>
+    </div>
+    <div class="panelcard">
+      <div class="panelcard__title">Lesson map (≈ 60 min)</div>
+      <ol class="panelcard__list">
+        <li>What this exam part wants</li>
+        <li>Grammar: question words to find key information</li>
+        <li>Grammar: there is / there are + because / so / but</li>
+        <li>Vocabulary flashcards + note-taking</li>
+        <li>Fill in the blanks + choose the best answer</li>
+        <li>Read a flight board / notice</li>
+        <li>Listen to an announcement and identify the key details</li>
+        <li>Writing ladder: simple → better → stronger</li>
+        <li>Roleplays with visible model answers</li>
+      </ol>
+      <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+      <div class="muted tiny">Audio reads the English only.</div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section">
+    <div class="section__head">
+      <h2>1) What this part of the exam wants</h2>
+      <p class="muted">You may read a text or look at a document, identify the useful information, and answer questions clearly.</p>
+      <p class="fr">Vous pouvez lire un texte ou regarder un document, repérer les informations utiles et répondre clairement aux questions.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>LILATE target</h3><button class="iconbtn speak" data-say="In this part, you read or consult a support, identify the useful information, understand the main idea, and answer professionally.">🔊</button></div>
+        <div class="reading">
+          <div class="line"><div class="ico">📄</div><div><strong>Read or consult a support</strong><br><span class="muted">A message, a notice, a small timetable, a board, or a short text.</span><div class="fr tiny">Un message, une notice, un petit horaire, un tableau ou un texte court.</div></div></div>
+          <div class="line"><div class="ico">🔍</div><div><strong>Find the useful information</strong><br><span class="muted">Look for the main idea, the key details, and the next action.</span><div class="fr tiny">Chercher l’idée principale, les détails importants et l’action suivante.</div></div></div>
+          <div class="line"><div class="ico">🧠</div><div><strong>Understand the general meaning</strong><br><span class="muted">You do not need every word. You need the important meaning.</span><div class="fr tiny">Vous n’avez pas besoin de chaque mot, mais du sens important.</div></div></div>
+          <div class="line"><div class="ico">💬</div><div><strong>Answer professionally</strong><br><span class="muted">Explain the information clearly to a passenger or in a work situation.</span><div class="fr tiny">Expliquer l’information clairement à un passager ou dans une situation professionnelle.</div></div></div>
+        </div>
+      </div>
+      <div class="card notesCard">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">Main idea / Idée principale
+          <textarea class="textarea" rows="4" placeholder="main information / key details / next action"></textarea>
+        </label>
+        <label class="lab">My exam strategy / Ma stratégie
+          <textarea class="textarea" rows="5" placeholder="1. read the title / 2. find who / 3. find where / 4. find what next..."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>2) Grammar workshop — question words to find key information</h2>
+      <p class="muted">These words help you understand a document and ask the right follow-up questions.</p>
+      <p class="fr">Ces mots vous aident à comprendre un document et à poser les bonnes questions de suivi.</p>
+    </div>
+    <div class="card">
+      <div class="card__head"><h3>Rule + concrete examples</h3><button class="iconbtn speak" data-say="Who is the passenger? What is the problem? Where is the gate? When is boarding? Why is the flight delayed? What should the passenger do next?">🔊</button></div>
+      <div class="reading">
+        <div class="line"><div class="ico">👤</div><div><strong>Who</strong> = person<br><span class="muted">Who is the passenger? Who needs help?</span><div class="fr tiny">Who = la personne</div></div></div>
+        <div class="line"><div class="ico">❓</div><div><strong>What</strong> = thing / information<br><span class="muted">What is the problem? What is the new gate?</span><div class="fr tiny">What = la chose / l’information</div></div></div>
+        <div class="line"><div class="ico">📍</div><div><strong>Where</strong> = place<br><span class="muted">Where is boarding? Where should the passenger go?</span><div class="fr tiny">Where = le lieu</div></div></div>
+        <div class="line"><div class="ico">⏰</div><div><strong>When</strong> = time<br><span class="muted">When does boarding start? When is the next flight?</span><div class="fr tiny">When = le moment / l’heure</div></div></div>
+        <div class="line"><div class="ico">🧾</div><div><strong>Why</strong> = reason<br><span class="muted">Why is the flight delayed? Why is the passenger worried?</span><div class="fr tiny">Why = la raison</div></div></div>
+        <div class="line"><div class="ico">➡️</div><div><strong>What next?</strong> = next action<br><span class="muted">What should the passenger do next?</span><div class="fr tiny">Que faut-il faire ensuite ?</div></div></div>
+      </div>
+      <div class="compareGrid topSpace">
+        <div class="compareCard">
+          <h4>Useful pattern</h4>
+          <p><strong>What is the problem?</strong><br><span class="fr tiny">Quel est le problème ?</span></p>
+          <p><strong>Where is the gate?</strong><br><span class="fr tiny">Où est la porte ?</span></p>
+          <p><strong>What should the passenger do next?</strong><br><span class="fr tiny">Que doit faire le passager ensuite ?</span></p>
+        </div>
+        <div class="compareCard">
+          <h4>Take notes</h4>
+          <label class="lab">Write 3 questions
+            <textarea class="textarea" rows="5" placeholder="What is...? / Where is...? / Why is...?"></textarea>
+          </label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>3) Grammar workshop — there is / there are + because / so / but</h2>
+      <p class="muted">These structures help you describe a support and explain information clearly.</p>
+      <p class="fr">Ces structures vous aident à décrire un support et à expliquer les informations clairement.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>There is / There are</h3><button class="iconbtn speak" data-say="There is a delay. There is a new gate. There are two important details in this message. There is no meal service on this flight.">🔊</button></div>
+        <div class="reading">
+          <div class="line"><div class="ico">1️⃣</div><div><strong>There is</strong> + singular noun<br><span class="muted">There is a delay. There is a new gate. There is an important message.</span><div class="fr tiny">Il y a + singulier</div></div></div>
+          <div class="line"><div class="ico">2️⃣</div><div><strong>There are</strong> + plural noun<br><span class="muted">There are two flights. There are three important details.</span><div class="fr tiny">Il y a + pluriel</div></div></div>
+          <div class="line"><div class="ico">🚫</div><div><strong>Negative</strong><br><span class="muted">There is no delay. There are no seats available.</span><div class="fr tiny">Forme négative</div></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Because / so / but</h3><button class="iconbtn speak" data-say="The flight is delayed because of the weather. The gate has changed, so the passenger must go to C4. The passenger is tired, but he is calm.">🔊</button></div>
+        <div class="reading">
+          <div class="line"><div class="ico">🧠</div><div><strong>because</strong> = reason<br><span class="muted">The flight is delayed because of the weather.</span><div class="fr tiny">because = parce que / à cause de</div></div></div>
+          <div class="line"><div class="ico">➡️</div><div><strong>so</strong> = result / consequence<br><span class="muted">The gate has changed, so the passenger must go to C4.</span><div class="fr tiny">so = donc</div></div></div>
+          <div class="line"><div class="ico">⚖️</div><div><strong>but</strong> = contrast<br><span class="muted">The passenger is worried, but the situation is clear now.</span><div class="fr tiny">but = mais</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>4) Vocabulary flashcards — documents, notices, flight information</h2>
+      <p class="muted">Learn the words you often see in boards, notices, and passenger information.</p>
+      <p class="fr">Apprenez les mots que l’on voit souvent sur les tableaux, les notices et les informations passagers.</p>
+    </div>
+    <div class="grid--cards" id="flashGrid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>5) Practice step by step — fill in the blanks</h2>
+      <p class="muted">Read the sentence, choose the best word, and think about the rule.</p>
+      <p class="fr">Lisez la phrase, choisissez le meilleur mot et pensez à la règle.</p>
+    </div>
+    <div class="two">
+      <div class="card"><div class="card__head"><h3>Exercise A</h3></div><div id="fillA"></div></div>
+      <div class="card"><div class="card__head"><h3>Exercise B</h3></div><div id="fillB"></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>6) Read a support — airport board + passenger notice</h2>
+      <p class="muted">Find the main information first. Then answer the questions.</p>
+      <p class="fr">Repérez d’abord l’information principale. Puis répondez aux questions.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Support A — Flight board</h3><button class="iconbtn speak" data-say="Flight AF 438 to Paris. Boarding time 17 40. Gate C4. Status delayed twenty minutes. Connection desk B2.">🔊</button></div>
+        <table class="infoTable">
+          <tr><th>Flight</th><td>AF 438</td></tr>
+          <tr><th>Destination</th><td>Paris</td></tr>
+          <tr><th>Boarding time</th><td>17:40</td></tr>
+          <tr><th>Gate</th><td>C4</td></tr>
+          <tr><th>Status</th><td>Delayed 20 minutes</td></tr>
+          <tr><th>Connection desk</th><td>B2</td></tr>
+        </table>
+        <div class="sep"></div>
+        <div class="msgBox"><strong>Support B — Passenger notice</strong><br><br>
+          Dear passengers, due to weather conditions, boarding for flight AF 438 will begin twenty minutes later than planned.
+          Please keep your passport and boarding pass ready and go to gate C4.
+          If you have a short connection, please visit desk B2.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Questions</h3></div>
+        <div id="readQs"></div>
+        <div class="topSpace">
+          <label class="lab">Take notes — main idea + useful details
+            <textarea class="textarea" rows="7" placeholder="Flight AF 438 to Paris... Gate C4... delayed 20 minutes..."></textarea>
+          </label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>7) Listen and identify the useful information</h2>
+      <p class="muted">Listen to the announcement. Then answer the questions.</p>
+      <p class="fr">Écoutez l’annonce. Puis répondez aux questions.</p>
+    </div>
+    <div class="card">
+      <div class="card__head"><h3>Announcement</h3><div class="smallBtns"><button class="btn" id="btnAnnounce" type="button">🔊 Play announcement</button><button class="btn btn--ghost" id="btnShowTranscript" type="button">👀 Show transcript</button></div></div>
+      <div class="promptBox">This announcement is about a gate change, a short connection, and what the passenger must keep ready.</div>
+      <div class="fr tiny topSpace">Cette annonce parle d’un changement de porte, d’une correspondance courte et de ce que le passager doit garder prêt.</div>
+      <div class="topSpace modelBox hidden" id="announceTranscript"><strong>Transcript:</strong><br>Attention please. Flight AF 438 to Paris is delayed by twenty minutes because of the weather. Boarding will now begin at gate C4. Passengers with a short connection should go to desk B2. Please keep your passport and boarding pass ready.<div class="fr tiny topSpace">Transcription : Le vol AF 438 à destination de Paris a vingt minutes de retard à cause de la météo. L’embarquement commencera désormais à la porte C4. Les passagers avec une correspondance courte doivent se rendre au comptoir B2. Veuillez garder votre passeport et votre carte d’embarquement prêts.</div></div>
+      <div class="sep"></div>
+      <div id="listenQs"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>8) Writing ladder — simple, better, stronger</h2>
+      <p class="muted">Compare the 3 levels. Then write your own version.</p>
+      <p class="fr">Comparez les 3 niveaux. Puis écrivez votre propre version.</p>
+    </div>
+    <div class="compareGrid">
+      <div class="compareCard">
+        <h4>Level 1 — Simple</h4>
+        <p>There is a delay. Go to gate C4.</p>
+        <div class="fr tiny">Très simple. L’idée est claire, mais il manque des détails.</div>
+      </div>
+      <div class="compareCard">
+        <h4>Level 2 — Better</h4>
+        <p>There is a twenty-minute delay. Please go to gate C4 and keep your boarding pass ready.</p>
+        <div class="fr tiny">Mieux : il y a plus d’informations et une consigne claire.</div>
+      </div>
+      <div class="compareCard">
+        <h4>Level 3 — Stronger</h4>
+        <p>Your flight is delayed by twenty minutes because of the weather, so please go to gate C4 and keep your passport and boarding pass ready. If you have a short connection, please go to desk B2.</p>
+        <div class="fr tiny">Plus fort : raison + conséquence + prochaine étape.</div>
+      </div>
+    </div>
+    <div class="two topSpace">
+      <div class="card">
+        <div class="card__head"><h3>How to improve step by step</h3></div>
+        <div class="reading">
+          <div class="line"><div class="ico">1️⃣</div><div><strong>Say the main information</strong><br><span class="muted">There is a delay. The gate is C4.</span></div></div>
+          <div class="line"><div class="ico">2️⃣</div><div><strong>Add one useful detail</strong><br><span class="muted">twenty minutes / passport / boarding pass</span></div></div>
+          <div class="line"><div class="ico">3️⃣</div><div><strong>Add the reason or the result</strong><br><span class="muted">because / so / but</span></div></div>
+          <div class="line"><div class="ico">4️⃣</div><div><strong>Give the next step politely</strong><br><span class="muted">Please go to... Please keep... If you need help...</span></div></div>
+        </div>
+      </div>
+      <div class="card notesCard">
+        <div class="card__head"><h3>Write your version</h3></div>
+        <label class="lab">My answer
+          <textarea class="textarea" rows="9" placeholder="There is a delay... Please go to gate..."></textarea>
+        </label>
+        <div class="checklist">
+          <div class="checkitem">☐ main information</div>
+          <div class="checkitem">☐ one useful detail</div>
+          <div class="checkitem">☐ because / so / but</div>
+          <div class="checkitem">☐ clear next step</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>9) LILATE checkpoint — read, identify, answer like a future steward</h2>
+      <p class="muted">Read the prompt, answer out loud, then compare with the visible model answer.</p>
+      <p class="fr">Lisez la consigne, répondez à voix haute, puis comparez avec le modèle visible.</p>
+    </div>
+    <div id="roleplayHost"></div>
+  </section>
+
+  <section class="section footerCard">
+    <div class="section__head">
+      <h2>10) Final recap</h2>
+      <p class="muted">At the end of this lesson, you can read a simple support, identify the main idea, and answer more clearly.</p>
+      <p class="fr">À la fin de cette leçon, vous pouvez lire un support simple, repérer l’idée principale et répondre plus clairement.</p>
+    </div>
+    <div class="reading">
+      <div class="line"><div class="ico">✅</div><div><strong>You can now...</strong><br><span class="muted">find key information, use question words, describe a support with there is / there are, and give a clearer professional answer.</span></div></div>
+    </div>
+  </section>
+</main>
+
+<script src="js/yanis-page-9-lilate-part4.js"></script>
+</body>
+</html>
