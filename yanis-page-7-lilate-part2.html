@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yanis — LILATE Part 2: Clarify, Reformulate & Write</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-7-lilate-part2.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Yanis · LILATE Part 2 · Clarify, reformulate, write</div>
+    </div>
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div>
+      <h1>Yanis — Clarify, Reformulate & Write ✈️</h1>
+      <p class="lead">
+        In this lesson, you practise the next LILATE step: <strong>understanding a request, asking for clarification,
+        reformulating information, and writing a short professional message</strong>.
+      </p>
+      <p class="lead fr">Dans cette leçon, vous travaillez l’étape suivante du LILATE : <strong>comprendre une demande, demander une clarification,
+        reformuler une information et écrire un court message professionnel</strong>.</p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start lesson</button>
+        <button class="btn btn--ghost" id="btnLessonAudio" type="button">🔊 Listen lesson goal</button>
+      </div>
+      <div class="minirow">
+        <div class="minicard">
+          <div class="minicard__t">🎯 Exam link</div>
+          <div class="minicard__p">Gather information, reformulate, transcribe in another format.</div>
+          <div class="fr tiny">Recueillir des informations, reformuler, transcrire sous un autre format.</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">✍️ Writing ladder</div>
+          <div class="minicard__p">Simple version → better version → stronger professional version.</div>
+          <div class="fr tiny">Version simple → meilleure version → version plus professionnelle.</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">🎭 Roleplays</div>
+          <div class="minicard__p">Prompt + your answer + visible model answer + audio.</div>
+          <div class="fr tiny">Consigne + votre réponse + modèle visible + audio.</div>
+        </div>
+      </div>
+    </div>
+    <div class="panelcard">
+      <div class="panelcard__title">Lesson map (≈ 60 min)</div>
+      <ol class="panelcard__list">
+        <li>Useful language to stay calm and professional</li>
+        <li>Grammar: calm / calmly + clear / clearly + polite question patterns</li>
+        <li>Vocabulary flashcards + notes</li>
+        <li>Fill-in activities + listening and collecting information</li>
+        <li>Writing comparison: basic / better / stronger</li>
+        <li>Interactive roleplays with visible model answers</li>
+      </ol>
+      <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+      <div class="muted tiny">Audio reads the English only.</div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section">
+    <div class="section__head">
+      <h2>1) What this part of the exam wants</h2>
+      <p class="muted">You do not just answer. You must understand, clarify, reformulate, and write clearly.</p>
+      <p class="fr">Vous ne devez pas seulement répondre. Vous devez comprendre, demander une clarification, reformuler et écrire clairement.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head">
+          <h3>LILATE target</h3>
+          <button class="iconbtn speak" data-say="In this part, you collect information, ask questions, reformulate if necessary, and write the information in another format.">🔊</button>
+        </div>
+        <div class="reading">
+          <div class="line"><div class="ico">🔍</div><div><strong>Collect information</strong><br><span class="muted">Listen carefully and identify the important details.</span><div class="fr tiny">Écoutez attentivement et identifiez les informations importantes.</div></div></div>
+          <div class="line"><div class="ico">🔄</div><div><strong>Reformulate</strong><br><span class="muted">Say the message again in simple, clear English.</span><div class="fr tiny">Redites le message en anglais simple et clair.</div></div></div>
+          <div class="line"><div class="ico">📝</div><div><strong>Write / transcribe</strong><br><span class="muted">Turn a spoken message into a short written note or short professional text.</span><div class="fr tiny">Transformez un message oral en note écrite ou en court texte professionnel.</div></div></div>
+        </div>
+      </div>
+      <div class="card notesCard">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">Key words / Mots clés
+          <textarea class="textarea" rows="7" placeholder="collect information / reformulate / write a note..."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>2) Grammar workshop — calm or calmly?</h2>
+      <p class="muted">This helps you sound professional in customer and passenger situations.</p>
+      <p class="fr">Cela vous aide à parler de façon professionnelle dans les situations avec des clients et des passagers.</p>
+    </div>
+    <div class="grid-2-1">
+      <div class="card">
+        <div class="card__head"><h3>Rule 1 — adjective vs adverb</h3><button class="iconbtn speak" data-say="Calm is an adjective. It describes a person or a situation. Calmly is an adverb. It describes how you speak or act.">🔊</button></div>
+        <div class="explainBox">
+          <p><strong>calm</strong> = adjective → it describes a <strong>person</strong> or a <strong>situation</strong>.</p>
+          <p class="fr tiny">calm = adjectif → décrit une personne ou une situation.</p>
+          <ul>
+            <li>The passenger is <strong>calm</strong>.</li>
+            <li>You are <strong>calm</strong> and professional.</li>
+            <li>It is a <strong>calm</strong> situation.</li>
+          </ul>
+          <p><strong>calmly</strong> = adverb → it describes <strong>how you speak or act</strong>.</p>
+          <p class="fr tiny">calmly = adverbe → décrit comment vous parlez ou agissez.</p>
+          <ul>
+            <li>You speak <strong>calmly</strong>.</li>
+            <li>Please explain the situation <strong>calmly</strong>.</li>
+            <li>You answer the passenger <strong>calmly</strong>.</li>
+          </ul>
+        </div>
+        <div class="compareBox">
+          <div class="good">✅ You are calm.</div>
+          <div class="good">✅ Please speak calmly.</div>
+          <div class="bad">❌ You are calmly.</div>
+          <div class="bad">❌ Please be calmly.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Rule 2 — other useful pairs</h3><button class="iconbtn speak" data-say="clear clearly, polite politely, careful carefully, quick quickly, helpful helpfully.">🔊</button></div>
+        <table class="miniTable">
+          <tr><th>Adjective</th><th>Adverb</th><th>Example</th></tr>
+          <tr><td>clear</td><td>clearly</td><td>You give a clear explanation. / You explain clearly.</td></tr>
+          <tr><td>polite</td><td>politely</td><td>You are polite. / You speak politely.</td></tr>
+          <tr><td>careful</td><td>carefully</td><td>Please be careful. / Please listen carefully.</td></tr>
+          <tr><td>quick</td><td>quickly</td><td>It is a quick check. / Please reply quickly.</td></tr>
+        </table>
+        <div class="notesMini">Tip: adjective = noun / be. Adverb = verb.<div class="fr tiny">adjectif = nom / be. adverbe = verbe.</div></div>
+      </div>
+      <div class="card notesCard">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">Write your own examples
+          <textarea class="textarea" rows="10" placeholder="I am calm. / I speak calmly. / I explain clearly..."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>3) Grammar workshop — polite clarification language</h2>
+      <p class="muted">In the exam, you must not panic. You can ask for help professionally.</p>
+      <p class="fr">Dans l’examen, vous ne devez pas paniquer. Vous pouvez demander de l’aide de façon professionnelle.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Useful structures</h3><button class="iconbtn speak" data-say="Could you repeat that, please? Could you say that more slowly, please? If I understand correctly, you need help with your seat. Let me check. So, the problem is your connection.">🔊</button></div>
+        <div class="patternList">
+          <div class="patternItem"><strong>Could you repeat that, please?</strong><div class="fr tiny">Pourriez-vous répéter, s’il vous plaît ?</div></div>
+          <div class="patternItem"><strong>Could you say that more slowly, please?</strong><div class="fr tiny">Pourriez-vous parler plus lentement, s’il vous plaît ?</div></div>
+          <div class="patternItem"><strong>Can I check something?</strong><div class="fr tiny">Puis-je vérifier quelque chose ?</div></div>
+          <div class="patternItem"><strong>If I understand correctly, ...</strong><div class="fr tiny">Si je comprends bien, ...</div></div>
+          <div class="patternItem"><strong>So, the problem is ...</strong><div class="fr tiny">Donc, le problème est ...</div></div>
+          <div class="patternItem"><strong>Let me check.</strong><div class="fr tiny">Laissez-moi vérifier.</div></div>
+          <div class="patternItem"><strong>I will explain the next steps.</strong><div class="fr tiny">Je vais expliquer les étapes suivantes.</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Concrete examples</h3></div>
+        <div class="exampleBlock">
+          <p><strong>Passenger:</strong> I have a problem with my seat.</p>
+          <p><strong>You:</strong> <span class="good">Could you explain the problem, please?</span></p>
+          <hr>
+          <p><strong>Passenger:</strong> I have a connection and I am worried.</p>
+          <p><strong>You:</strong> <span class="good">If I understand correctly, you are worried about your connection.</span></p>
+          <hr>
+          <p><strong>Passenger:</strong> My cabin bag is too big?</p>
+          <p><strong>You:</strong> <span class="good">Let me check. I will explain the next steps.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>4) Vocabulary flashcards</h2>
+      <p class="muted">Tap the cards. Listen to the English only.</p>
+      <p class="fr">Touchez les cartes. L’audio lit l’anglais uniquement.</p>
+    </div>
+    <div class="grid--cards" id="flashGrid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>5) Fill in the gaps — step by step</h2>
+      <p class="muted">Short, controlled practice first.</p>
+      <p class="fr">Petits exercices contrôlés d’abord.</p>
+    </div>
+    <div class="card">
+      <div class="exerciseTitle">Exercise A — choose the best word</div>
+      <div id="fillHostA"></div>
+    </div>
+    <div class="card topSpace">
+      <div class="exerciseTitle">Exercise B — complete the polite sentence</div>
+      <div id="fillHostB"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>6) Listen, collect information, reformulate</h2>
+      <p class="muted">This is very close to the exam logic.</p>
+      <p class="fr">C’est très proche de la logique de l’examen.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head">
+          <h3>Audio message 1</h3>
+          <button class="iconbtn" id="btnMsg1" type="button">🔊 Listen</button>
+        </div>
+        <p class="msgBox" id="msg1Text">A passenger is travelling to Rome tomorrow. He would like to know if he can take one extra cabin bag. He is also worried because he has a short connection in Paris.</p>
+        <div id="listenQs1"></div>
+      </div>
+      <div class="card notesCard">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">Write the key information
+          <textarea class="textarea" rows="12" placeholder="destination / extra cabin bag / short connection..."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>7) Writing ladder — compare and improve</h2>
+      <p class="muted">You can compare levels together and explain how to improve step by step.</p>
+      <p class="fr">Vous pouvez comparer les niveaux ensemble et expliquer comment améliorer pas à pas.</p>
+    </div>
+    <div class="card">
+      <div class="card__head">
+        <h3>Task</h3>
+        <button class="iconbtn speak" data-say="Write a short professional message to a passenger explaining a delay and giving the next steps.">🔊</button>
+      </div>
+      <div class="taskBox">
+        <strong>Write a short professional message to a passenger explaining a delay and giving the next steps.</strong>
+        <div class="fr tiny">Écrivez un court message professionnel à un passager pour expliquer un retard et donner les étapes suivantes.</div>
+      </div>
+      <label class="lab topSpace">Your version
+        <textarea class="textarea" id="studentWrite" rows="8" placeholder="Hello..."></textarea>
+      </label>
+      <div class="smallrow topSpace">
+        <button class="btn btn--ghost" id="btnShowBasic" type="button">Show simple version</button>
+        <button class="btn btn--ghost" id="btnShowBetter" type="button">Show better version</button>
+        <button class="btn btn--ghost" id="btnShowStrong" type="button">Show stronger version</button>
+      </div>
+      <div class="compareCols topSpace">
+        <div class="compareCard">
+          <h4>Simple version</h4>
+          <div class="modelWrite" id="basicBox">Click to show.</div>
+        </div>
+        <div class="compareCard">
+          <h4>Better version</h4>
+          <div class="modelWrite" id="betterBox">Click to show.</div>
+        </div>
+        <div class="compareCard">
+          <h4>Stronger version</h4>
+          <div class="modelWrite" id="strongBox">Click to show.</div>
+        </div>
+      </div>
+      <div class="checklist" id="writeChecklist"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>8) Interactive roleplays — visible model answers</h2>
+      <p class="muted">Listen to the prompt, answer, then compare with the model.</p>
+      <p class="fr">Écoutez la consigne, répondez, puis comparez avec le modèle.</p>
+    </div>
+    <div class="filters">
+      <div class="pill">
+        <span class="pill__label">Scenario</span>
+        <select class="select" id="rpSelect"></select>
+      </div>
+      <button class="btn btn--ghost" id="btnPlayPrompt" type="button">🔊 Listen prompt</button>
+      <button class="btn btn--ghost" id="btnPlayModel" type="button">🔊 Listen model</button>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Your prompt</h3></div>
+        <div class="promptBox" id="rpPrompt"></div>
+        <label class="lab topSpace">Your answer
+          <textarea class="textarea" id="rpAnswer" rows="6" placeholder="Your answer..."></textarea>
+        </label>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Visible model answer</h3></div>
+        <div class="modelBox visible" id="rpModel"></div>
+        <div class="fr tiny topSpace" id="rpModelFr"></div>
+        <div class="smallrow topSpace">
+          <button class="btn" id="btnCompareAnswer" type="button">✅ Compare with checklist</button>
+        </div>
+        <div class="checklist" id="rpChecklist"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>9) Final checkpoint — calm or calmly?</h2>
+      <p class="muted">A quick finish to secure the difference.</p>
+      <p class="fr">Une petite fin rapide pour bien fixer la différence.</p>
+    </div>
+    <div class="card">
+      <div id="finalQuick"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="muted tiny">SpeakEasyTisha · Yanis · LILATE Part 2 lesson · Touch-friendly</div>
+      <a class="iconbtn" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<script src="js/yanis-page-7-lilate-part2.js"></script>
+</body>
+</html>
