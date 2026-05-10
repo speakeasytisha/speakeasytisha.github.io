@@ -1,1 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jane’s French Mother’s Day Journey · SpeakEasyTisha</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#lesson">Skip to lesson</a>
+  <div class="bg-heart h1">❤</div>
+  <div class="bg-heart h2">❦</div>
+  <div class="bg-heart h3">✦</div>
+  <div class="bg-heart h4">❤</div>
 
+  <header class="topbar" id="top">
+    <div class="brand-block">
+      <div class="brand-mark">ST</div>
+      <div>
+        <p class="brand">SpeakEasyTisha</p>
+        <p class="lesson-title">Jane’s French Mother’s Day Journey · First French lesson · A0 → A1</p>
+      </div>
+    </div>
+    <div class="top-tools" aria-label="Lesson controls">
+      <div class="voice-mini">
+        <span>Voice</span>
+        <button class="pill active" data-accent="fr-FR" type="button">France 🇫🇷</button>
+        <button class="pill" data-accent="fr-CA" type="button">Canada 🇨🇦</button>
+      </div>
+      <label class="voice-select-wrap">Voice
+        <select id="voiceSelect" aria-label="Available French voice"></select>
+      </label>
+      <div class="audio-controls">
+        <button id="pauseAudio" type="button" title="Pause audio">⏸</button>
+        <button id="resumeAudio" type="button" title="Resume audio">▶️</button>
+        <button id="stopAudio" type="button" title="Stop audio">⏹</button>
+      </div>
+      <div class="score-box" aria-live="polite"><span>Score</span><strong id="scoreText">0 / 0</strong></div>
+      <button class="secondary tiny-control" id="testVoice" type="button">🔊 Test accent</button>
+      <button class="secondary tiny-control" id="voiceDebugBtn" type="button">🔎 Check voices</button>
+      <p id="voiceStatus" class="voice-status" aria-live="polite">Choose France or Canada, then press any speaker button.</p>
+      <button id="resetLesson" class="reset-btn" type="button">↺ Reset</button>
+      <div id="voiceDebug" class="voice-debug hidden" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <main id="lesson">
+    <section class="hero panel-large">
+      <div class="hero-copy">
+        <p class="eyebrow">A rose-red French lesson made with love</p>
+        <h1>Jane’s French Mother’s Day Journey</h1>
+        <p class="subtitle">Learn to introduce yourself in French, tell your story simply, listen with a French accent from France or Canada, and build a warm self-presentation step by step.</p>
+        <div class="hero-actions">
+          <button class="primary" data-scroll="mission" type="button">▶️ Start</button>
+          <button class="secondary" data-scroll="how" type="button">ℹ️ How to use</button>
+          <button class="secondary" id="printBtn" type="button">🖨 Print</button>
+          <button class="listen-btn" data-say="Bonjour Jane. Bienvenue dans ta première leçon de français. Cette leçon est un cadeau pour la fête des mères." type="button">🔊 Listen intro</button>
+        </div>
+        <p class="tiny-tip">Tip: choose France or Canada in the top bar before pressing a speaker button.</p>
+      </div>
+      <aside class="dedication-card">
+        <div class="seal">❤</div>
+        <h2>For Jane</h2>
+        <p>You have spent your life learning, helping, supporting, mediating, teaching, and bringing people together. This lesson celebrates your strength, generosity, and beautiful story.</p>
+        <button class="listen-btn" data-say="Jane, cette leçon est pour toi. Tu es forte, généreuse, courageuse et très aimée." type="button">🔊 Listen dedication</button>
+      </aside>
+    </section>
+
+    <section class="path-card" id="how">
+      <div>
+        <p class="section-kicker">Lesson path</p>
+        <h2>From first words to a beautiful self-introduction</h2>
+      </div>
+      <ol class="lesson-path">
+        <li><span>1</span> Final mission: introduce yourself</li>
+        <li><span>2</span> Vocabulary by category</li>
+        <li><span>3</span> Grammar: present verbs + passé composé maison d’être</li>
+        <li><span>4</span> Les accords: masculin, féminin, singulier, pluriel</li>
+        <li><span>5</span> Interactive practice studio</li>
+        <li><span>6</span> Realistic dialogues + role plays</li>
+        <li><span>7</span> Speaking levels + self-introduction builder</li>
+        <li><span>8</span> Mother’s Day note in French + English</li>
+      </ol>
+    </section>
+
+    <section class="panel mission" id="mission">
+      <p class="section-kicker">Your final mission</p>
+      <h2>By the end, you will be able to say this in French</h2>
+      <div class="model-box rose-frame">
+        <div>
+          <p class="fr big" id="goalText">Bonjour, je m’appelle Jane. Je suis née en 1955 dans le New Hampshire. Maintenant, j’habite à Walnut Creek, en Californie. Je suis une femme forte, généreuse et courageuse. J’ai étudié à l’université du New Hampshire, puis j’ai travaillé dans plusieurs domaines. Aujourd’hui, j’apprends le français parce que j’aime apprendre et je veux partager de beaux moments avec ma famille.</p>
+          <p class="en">Hello, my name is Jane. I was born in 1955 in New Hampshire. Now, I live in Walnut Creek, California. I am a strong, generous, and courageous woman. I studied at the University of New Hampshire, then I worked in several fields. Today, I am learning French because I love learning and I want to share beautiful moments with my family.</p>
+        </div>
+        <button class="listen-btn large" data-target="goalText" type="button">🔊 Listen</button>
+      </div>
+      <div class="progress-strip">
+        <span>Words</span><span>Grammar</span><span>Accords</span><span>Sentences</span><span>Dialogues</span><span>Your story</span>
+      </div>
+    </section>
+
+    <section class="panel vocab-section" id="vocabulary">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Step 1</p>
+          <h2>Vocabulary by category</h2>
+          <p class="soft">Use the filters to focus on identity, family, qualities, work, verbs, connectors, or travel phrases. Each card has a definition, translation, example, and speaker button.</p>
+        </div>
+        <button class="listen-btn" id="listenVisibleVocab" type="button">🔊 Listen visible words</button>
+      </div>
+      <div class="vocab-tools">
+        <label>Search
+          <input id="vocabSearch" type="search" placeholder="Search: family, strong, then, vendre..." />
+        </label>
+        <label>Category
+          <select id="categorySelect">
+            <option value="all">All categories</option>
+          </select>
+        </label>
+        <button class="secondary" id="clearVocab" type="button">↺ Clear</button>
+      </div>
+      <div class="category-ribbon" id="categoryRibbon" aria-label="Vocabulary categories"></div>
+      <div class="vocab-grid" id="vocabGrid" aria-live="polite"></div>
+    </section>
+
+    <section class="panel grammar-section" id="grammar">
+      <p class="section-kicker">Step 2</p>
+      <h2>Grammar workshop: verbs Jane needs to present herself</h2>
+      <p class="soft">French verbs change depending on the person. Start with <strong>je</strong> for your self-introduction, then review the complete present tense tables.</p>
+
+      <div class="grammar-map">
+        <article class="grammar-card highlight">
+          <span class="tag">Essential</span>
+          <h3>être = to be</h3>
+          <p><strong>Use it for:</strong> identity, nationality, qualities, profession.</p>
+          <div class="mini-table">
+            <div>je suis</div><div>I am</div>
+            <div>tu es</div><div>you are</div>
+            <div>il/elle est</div><div>he/she is</div>
+            <div>nous sommes</div><div>we are</div>
+            <div>vous êtes</div><div>you are</div>
+            <div>ils/elles sont</div><div>they are</div>
+          </div>
+          <p class="example fr">Je suis américaine. Je suis forte et généreuse.</p>
+          <button class="listen-btn small" data-say="Je suis américaine. Je suis forte et généreuse." type="button">🔊 Listen</button>
+        </article>
+
+        <article class="grammar-card highlight">
+          <span class="tag">Essential</span>
+          <h3>avoir = to have</h3>
+          <p><strong>Use it for:</strong> possession and many biography sentences in the past.</p>
+          <div class="mini-table">
+            <div>j’ai</div><div>I have</div>
+            <div>tu as</div><div>you have</div>
+            <div>il/elle a</div><div>he/she has</div>
+            <div>nous avons</div><div>we have</div>
+            <div>vous avez</div><div>you have</div>
+            <div>ils/elles ont</div><div>they have</div>
+          </div>
+          <p class="example fr">J’ai une famille. J’ai un master en psychologie.</p>
+          <button class="listen-btn small" data-say="J’ai une famille. J’ai un master en psychologie." type="button">🔊 Listen</button>
+        </article>
+
+        <article class="grammar-card">
+          <span class="tag">Present -ER</span>
+          <h3>-ER verbs: habiter, aimer, travailler, aider</h3>
+          <p><strong>Rule:</strong> remove <em>-er</em>, then add the present endings: <strong>-e, -es, -e, -ons, -ez, -ent</strong>.</p>
+          <table class="conj-table">
+            <thead><tr><th>Person</th><th>habiter</th><th>aimer</th><th>travailler</th></tr></thead>
+            <tbody>
+              <tr><td>je / j’</td><td>j’habite</td><td>j’aime</td><td>je travaille</td></tr>
+              <tr><td>tu</td><td>tu habites</td><td>tu aimes</td><td>tu travailles</td></tr>
+              <tr><td>il/elle</td><td>il habite</td><td>elle aime</td><td>elle travaille</td></tr>
+              <tr><td>nous</td><td>nous habitons</td><td>nous aimons</td><td>nous travaillons</td></tr>
+              <tr><td>vous</td><td>vous habitez</td><td>vous aimez</td><td>vous travaillez</td></tr>
+              <tr><td>ils/elles</td><td>elles habitent</td><td>ils aiment</td><td>elles travaillent</td></tr>
+            </tbody>
+          </table>
+          <p class="example fr">J’habite à Walnut Creek. J’aime aider les autres. Je travaille avec des familles.</p>
+          <button class="listen-btn small" data-say="J’habite à Walnut Creek. J’aime aider les autres. Je travaille avec des familles." type="button">🔊 Listen</button>
+        </article>
+
+        <article class="grammar-card">
+          <span class="tag">Present -IR</span>
+          <h3>-IR verbs: choisir, réunir, réussir</h3>
+          <p><strong>Rule:</strong> remove <em>-ir</em>, then add: <strong>-is, -is, -it, -issons, -issez, -issent</strong>.</p>
+          <table class="conj-table">
+            <thead><tr><th>Person</th><th>choisir</th><th>réunir</th><th>réussir</th></tr></thead>
+            <tbody>
+              <tr><td>je</td><td>je choisis</td><td>je réunis</td><td>je réussis</td></tr>
+              <tr><td>tu</td><td>tu choisis</td><td>tu réunis</td><td>tu réussis</td></tr>
+              <tr><td>il/elle</td><td>elle choisit</td><td>elle réunit</td><td>elle réussit</td></tr>
+              <tr><td>nous</td><td>nous choisissons</td><td>nous réunissons</td><td>nous réussissons</td></tr>
+              <tr><td>vous</td><td>vous choisissez</td><td>vous réunissez</td><td>vous réussissez</td></tr>
+              <tr><td>ils/elles</td><td>elles choisissent</td><td>elles réunissent</td><td>elles réussissent</td></tr>
+            </tbody>
+          </table>
+          <p class="example fr">Je réunis ma famille quand je peux. Je choisis d’apprendre le français.</p>
+          <button class="listen-btn small" data-say="Je réunis ma famille quand je peux. Je choisis d’apprendre le français." type="button">🔊 Listen</button>
+        </article>
+
+        <article class="grammar-card">
+          <span class="tag">Present -RE</span>
+          <h3>-RE verbs: vendre, répondre, attendre</h3>
+          <p><strong>Rule:</strong> remove <em>-re</em>, then add: <strong>-s, -s, nothing, -ons, -ez, -ent</strong>.</p>
+          <table class="conj-table">
+            <thead><tr><th>Person</th><th>vendre</th><th>répondre</th><th>attendre</th></tr></thead>
+            <tbody>
+              <tr><td>je</td><td>je vends</td><td>je réponds</td><td>j’attends</td></tr>
+              <tr><td>tu</td><td>tu vends</td><td>tu réponds</td><td>tu attends</td></tr>
+              <tr><td>il/elle</td><td>elle vend</td><td>elle répond</td><td>elle attend</td></tr>
+              <tr><td>nous</td><td>nous vendons</td><td>nous répondons</td><td>nous attendons</td></tr>
+              <tr><td>vous</td><td>vous vendez</td><td>vous répondez</td><td>vous attendez</td></tr>
+              <tr><td>ils/elles</td><td>elles vendent</td><td>elles répondent</td><td>elles attendent</td></tr>
+            </tbody>
+          </table>
+          <p class="example fr">Je vends des ordinateurs. Je réponds aux familles avec patience.</p>
+          <button class="listen-btn small" data-say="Je vends des ordinateurs. Je réponds aux familles avec patience." type="button">🔊 Listen</button>
+        </article>
+
+        <article class="grammar-card">
+          <span class="tag">Very useful</span>
+          <h3>s’appeler, vouloir, pouvoir, apprendre</h3>
+          <p>Some verbs are special. Memorize the forms you need first.</p>
+          <table class="conj-table compact">
+            <thead><tr><th>Verb</th><th>Je</th><th>Useful sentence</th></tr></thead>
+            <tbody>
+              <tr><td>s’appeler</td><td>je m’appelle</td><td>Je m’appelle Jane.</td></tr>
+              <tr><td>vouloir</td><td>je veux</td><td>Je veux apprendre le français.</td></tr>
+              <tr><td>pouvoir</td><td>je peux</td><td>Je peux parler un peu français.</td></tr>
+              <tr><td>apprendre</td><td>j’apprends</td><td>J’apprends le français.</td></tr>
+            </tbody>
+          </table>
+          <button class="listen-btn small" data-say="Je m’appelle Jane. Je veux apprendre le français. Je peux parler un peu français. J’apprends le français." type="button">🔊 Listen</button>
+        </article>
+
+        <article class="grammar-card biography-card">
+          <span class="tag">Biography bonus</span>
+          <h3>Talking about past life experience</h3>
+          <p>For a first self-introduction, use a few easy past phrases with <strong>j’ai + past participle</strong>.</p>
+          <table class="conj-table compact">
+            <thead><tr><th>French</th><th>English</th></tr></thead>
+            <tbody>
+              <tr><td>J’ai étudié.</td><td>I studied.</td></tr>
+              <tr><td>J’ai travaillé.</td><td>I worked.</td></tr>
+              <tr><td>J’ai vendu.</td><td>I sold.</td></tr>
+              <tr><td>J’ai aidé.</td><td>I helped.</td></tr>
+              <tr><td>Je suis née.</td><td>I was born. Féminin: née.</td></tr>
+            </tbody>
+          </table>
+          <p class="example fr">J’ai étudié à l’université. J’ai travaillé comme médiatrice. Je suis née dans le New Hampshire.</p>
+          <button class="listen-btn small" data-say="J’ai étudié à l’université. J’ai travaillé comme médiatrice. Je suis née dans le New Hampshire." type="button">🔊 Listen</button>
+        </article>
+
+        <article class="grammar-card etre-house-card full-width">
+          <span class="tag">Passé composé</span>
+          <h3>How to know: avoir or être? Use the maison d’être</h3>
+          <p><strong>First reflex:</strong> most verbs use <strong>avoir</strong>: j’ai étudié, j’ai travaillé, j’ai vendu, j’ai aidé. Use <strong>être</strong> for the “house verbs” — movement/change verbs that enter, leave, go up, go down, arrive, leave, come back, stay, fall, be born, or die — and for reflexive verbs.</p>
+          <div class="house-layout">
+            <div class="etre-house" aria-label="Maison d’être visual memory aid">
+              <div class="roof">être</div>
+              <div class="chimney">naître<br>mourir</div>
+              <div class="room top">monter ↑<br>descendre ↓</div>
+              <div class="room left">entrer →<br>rentrer →</div>
+              <div class="person">☺</div>
+              <div class="room right">sortir ←<br>partir ←</div>
+              <div class="room bottom">arriver · venir · aller<br>retourner · rester · tomber</div>
+            </div>
+            <div class="auxiliary-rules">
+              <h4>Quick spotting method</h4>
+              <ol>
+                <li><strong>Is it a normal action?</strong> Use <strong>avoir</strong>: j’ai étudié, j’ai travaillé, j’ai vendu.</li>
+                <li><strong>Is the person moving in/out/up/down or changing place?</strong> Think of the house → usually <strong>être</strong>: je suis entrée, je suis sortie.</li>
+                <li><strong>Is it reflexive?</strong> Use <strong>être</strong>: je me suis présentée.</li>
+                <li><strong>With être, make the agreement:</strong> Jane says <strong>je suis née</strong>, <strong>je suis allée</strong>, <strong>je suis sortie</strong>.</li>
+              </ol>
+              <p class="tiny-tip"><strong>Beginner note:</strong> a few movement verbs can use avoir in advanced cases when there is a direct object. For Jane’s first self-introduction, the maison d’être rule is the safe method.</p>
+            </div>
+          </div>
+          <div class="mini-table house-examples">
+            <div>avoir</div><div>J’ai étudié à l’université.</div>
+            <div>avoir</div><div>J’ai travaillé dans une bijouterie.</div>
+            <div>être</div><div>Je suis née dans le New Hampshire.</div>
+            <div>être</div><div>Je suis allée en Californie.</div>
+          </div>
+          <button class="listen-btn small" data-say="J’ai étudié à l’université. J’ai travaillé dans une bijouterie. Je suis née dans le New Hampshire. Je suis allée en Californie." type="button">🔊 Listen examples</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel accord-section" id="accords">
+      <p class="section-kicker">Step 3</p>
+      <h2>Lesson: les accords — masculin, féminin, singulier, pluriel</h2>
+      <p class="soft">In French, many words must “agree” with the person or object. For Jane, many adjectives are in the féminin form: <strong>forte</strong>, <strong>généreuse</strong>, <strong>courageuse</strong>, <strong>américaine</strong>, <strong>née</strong>.</p>
+      <div class="accord-grid">
+        <article class="accord-card">
+          <h3>1. Masculin ou féminin ?</h3>
+          <p><strong>Masculin :</strong> un homme fort, généreux, américain.</p>
+          <p><strong>Féminin :</strong> une femme forte, généreuse, américaine.</p>
+          <p class="rule">Règle fréquente : on ajoute <strong>-e</strong> au féminin. Certains mots changent davantage : généreux → généreuse.</p>
+        </article>
+        <article class="accord-card">
+          <h3>2. Singulier ou pluriel ?</h3>
+          <p><strong>Singulier :</strong> une personne généreuse.</p>
+          <p><strong>Pluriel :</strong> des personnes généreuses.</p>
+          <p class="rule">Règle fréquente : on ajoute <strong>-s</strong> au pluriel.</p>
+        </article>
+        <article class="accord-card">
+          <h3>3. Born: né / née / nés / nées</h3>
+          <p><strong>Jane:</strong> Je suis née en 1955.</p>
+          <p><strong>Man:</strong> Je suis né en 1955.</p>
+          <p><strong>Women:</strong> Elles sont nées en 1955.</p>
+          <p class="rule">Because Jane is a woman, write <strong>née</strong> with an extra <strong>e</strong>.</p>
+        </article>
+      </div>
+      <div class="mini-lesson-box">
+        <h3>Jane’s safe agreement formula</h3>
+        <p class="fr">Je suis une femme forte, généreuse, courageuse et américaine.</p>
+        <p class="en">I am a strong, generous, courageous, and American woman.</p>
+        <button class="listen-btn small" data-say="Je suis une femme forte, généreuse, courageuse et américaine." type="button">🔊 Listen</button>
+      </div>
+    </section>
+
+    <section class="panel practice-panel" id="practice">
+      <p class="section-kicker">Step 4</p>
+      <h2>Interactive practice studio</h2>
+      <p class="soft">Try the exercises, use the hint buttons, and show the models only after you try. Your score updates in the top bar.</p>
+      <div class="tabs" role="tablist" aria-label="Practice tabs">
+        <button class="tab active" data-tab="quizPanel" type="button">Mini quiz</button>
+        <button class="tab" data-tab="verbPanel" type="button">Verb conjugation</button>
+        <button class="tab" data-tab="accordPanel" type="button">Les accords</button>
+        <button class="tab" data-tab="connectorPanel" type="button">Connectors</button>
+        <button class="tab" data-tab="auxiliaryPanel" type="button">Avoir / être</button>
+        <button class="tab" data-tab="builderPanel" type="button">Sentence builder</button>
+        <button class="tab" data-tab="timelinePanel" type="button">Timeline</button>
+      </div>
+
+      <div class="tab-panel active" id="quizPanel">
+        <h3>Mini quiz: choose the best French phrase</h3>
+        <div class="quiz-list">
+          <article class="quiz-item" data-answer="Je m’appelle Jane.">
+            <p>1. “My name is Jane.”</p>
+            <button data-choice="Je suis née Jane." type="button">Je suis née Jane.</button>
+            <button data-choice="Je m’appelle Jane." type="button">Je m’appelle Jane.</button>
+            <button data-choice="J’habite Jane." type="button">J’habite Jane.</button>
+            <p class="feedback"></p>
+          </article>
+          <article class="quiz-item" data-answer="J’habite à Walnut Creek.">
+            <p>2. “I live in Walnut Creek.”</p>
+            <button data-choice="J’habite à Walnut Creek." type="button">J’habite à Walnut Creek.</button>
+            <button data-choice="Je viens à Walnut Creek." type="button">Je viens à Walnut Creek.</button>
+            <button data-choice="Je suis Walnut Creek." type="button">Je suis Walnut Creek.</button>
+            <p class="feedback"></p>
+          </article>
+          <article class="quiz-item" data-answer="Je suis forte et généreuse.">
+            <p>3. “I am strong and generous.”</p>
+            <button data-choice="Je suis fort et généreux." type="button">Je suis fort et généreux.</button>
+            <button data-choice="Je suis forte et généreuse." type="button">Je suis forte et généreuse.</button>
+            <button data-choice="J’ai forte et généreuse." type="button">J’ai forte et généreuse.</button>
+            <p class="feedback"></p>
+          </article>
+          <article class="quiz-item" data-answer="J’apprends le français.">
+            <p>4. “I am learning French.”</p>
+            <button data-choice="J’apprends le français." type="button">J’apprends le français.</button>
+            <button data-choice="Je suis apprendre français." type="button">Je suis apprendre français.</button>
+            <button data-choice="Je apprends la française." type="button">Je apprends la française.</button>
+            <p class="feedback"></p>
+          </article>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="verbPanel">
+        <h3>Fill in the verb forms</h3>
+        <p class="soft">Use the grammar tables if needed. Accents are accepted but not required for checking.</p>
+        <div class="fill-list">
+          <label>1. Je <input data-answer="suis" autocomplete="off"> américaine. <span class="hint-text">être</span></label>
+          <label>2. J’<input data-answer="habite" autocomplete="off"> à Walnut Creek. <span class="hint-text">habiter</span></label>
+          <label>3. J’<input data-answer="aime" autocomplete="off"> aider ma famille. <span class="hint-text">aimer</span></label>
+          <label>4. Je <input data-answer="réunis" autocomplete="off"> ma famille quand je peux. <span class="hint-text">réunir</span></label>
+          <label>5. Je <input data-answer="vends" autocomplete="off"> des ordinateurs. <span class="hint-text">vendre</span></label>
+          <label>6. J’<input data-answer="apprends" autocomplete="off"> le français. <span class="hint-text">apprendre</span></label>
+        </div>
+        <div class="exercise-actions">
+          <button class="primary check-blanks" data-group="verbPanel" type="button">Check verbs</button>
+          <button class="secondary hint-btn" data-hint="For JE: être → je suis, -ER → je + e, -IR → je + is, -RE → je + s. apprendre → j’apprends." type="button">Hint</button>
+          <button class="secondary reset-blanks" data-group="verbPanel" type="button">Reset</button>
+        </div>
+        <p class="feedback group-feedback"></p>
+      </div>
+
+      <div class="tab-panel" id="accordPanel">
+        <h3>Choose the correct agreement</h3>
+        <div class="fill-list">
+          <label>1. Je suis une femme <input data-answer="forte" autocomplete="off">. <span class="hint-text">strong, féminin</span></label>
+          <label>2. Je suis très <input data-answer="généreuse" autocomplete="off">. <span class="hint-text">generous, féminin</span></label>
+          <label>3. Je suis <input data-answer="née" autocomplete="off"> en 1955. <span class="hint-text">born, féminin</span></label>
+          <label>4. Mes amies sont <input data-answer="courageuses" autocomplete="off">. <span class="hint-text">courageous, féminin pluriel</span></label>
+          <label>5. Nous sommes des personnes <input data-answer="patientes" autocomplete="off">. <span class="hint-text">patient, pluriel</span></label>
+        </div>
+        <div class="exercise-actions">
+          <button class="primary check-blanks" data-group="accordPanel" type="button">Check accords</button>
+          <button class="secondary hint-btn" data-hint="Jane = féminin : forte, généreuse, née. Pluriel usually adds -s: courageuses, patientes." type="button">Hint</button>
+          <button class="secondary reset-blanks" data-group="accordPanel" type="button">Reset</button>
+        </div>
+        <p class="feedback group-feedback"></p>
+      </div>
+
+      <div class="tab-panel" id="connectorPanel">
+        <h3>Add connectors to make the story flow</h3>
+        <p class="soft">Use: <strong>et</strong>, <strong>mais</strong>, <strong>puis</strong>, <strong>plus tard</strong>, <strong>maintenant</strong>, <strong>parce que</strong>.</p>
+        <div class="fill-list">
+          <label>1. Je suis née dans le New Hampshire, <input data-answer="mais" autocomplete="off"> maintenant j’habite en Californie.</label>
+          <label>2. J’ai étudié à l’université, <input data-answer="puis" autocomplete="off"> j’ai travaillé dans plusieurs domaines.</label>
+          <label>3. J’apprends le français <input data-answer="parce que" autocomplete="off"> j’aime apprendre.</label>
+          <label>4. Je suis forte <input data-answer="et" autocomplete="off"> généreuse.</label>
+          <label>5. <input data-answer="plus tard" autocomplete="off">, j’ai travaillé comme médiatrice.</label>
+        </div>
+        <div class="exercise-actions">
+          <button class="primary check-blanks" data-group="connectorPanel" type="button">Check connectors</button>
+          <button class="secondary hint-btn" data-hint="mais = but, puis = then, parce que = because, et = and, plus tard = later." type="button">Hint</button>
+          <button class="secondary reset-blanks" data-group="connectorPanel" type="button">Reset</button>
+        </div>
+        <p class="feedback group-feedback"></p>
+      </div>
+
+      <div class="tab-panel" id="auxiliaryPanel">
+        <h3>Passé composé: choose avoir or être</h3>
+        <p class="soft">Use <strong>avoir</strong> for most action verbs. Use the <strong>maison d’être</strong> for entering, leaving, going, coming, arriving, leaving, being born, etc. With <strong>être</strong>, remember the agreement: née, allée, sortie.</p>
+        <div class="fill-list">
+          <label>1. J’ai étudié à l’université. Auxiliary: <input data-answer="avoir" autocomplete="off"> <span class="hint-text">normal action</span></label>
+          <label>2. Je suis née dans le New Hampshire. Auxiliary: <input data-answer="être" autocomplete="off"> <span class="hint-text">naître is in the house</span></label>
+          <label>3. J’ai travaillé dans une bijouterie. Auxiliary: <input data-answer="avoir" autocomplete="off"> <span class="hint-text">normal action</span></label>
+          <label>4. Je suis allée en Californie. Auxiliary: <input data-answer="être" autocomplete="off"> <span class="hint-text">aller is in the house</span></label>
+          <label>5. J’ai vendu des ordinateurs. Auxiliary: <input data-answer="avoir" autocomplete="off"> <span class="hint-text">normal action</span></label>
+          <label>6. Je me suis présentée. Auxiliary: <input data-answer="être" autocomplete="off"> <span class="hint-text">reflexive verb</span></label>
+        </div>
+        <div class="exercise-actions">
+          <button class="primary check-blanks" data-group="auxiliaryPanel" type="button">Check avoir / être</button>
+          <button class="secondary hint-btn" data-hint="Most verbs use avoir. Use être for the maison d’être verbs and reflexive verbs. With Jane: je suis née, je suis allée, je me suis présentée." type="button">Hint</button>
+          <button class="secondary reset-blanks" data-group="auxiliaryPanel" type="button">Reset</button>
+        </div>
+        <p class="feedback group-feedback"></p>
+      </div>
+
+      <div class="tab-panel" id="builderPanel">
+        <h3>Tap the words in the correct order</h3>
+        <label class="inline-select">Choose a sentence
+          <select id="builderSelect">
+            <option value="Je suis originaire du New Hampshire">I am originally from New Hampshire.</option>
+            <option value="J’aime aider ma famille et mes amis">I like helping my family and friends.</option>
+            <option value="Maintenant j’habite à Walnut Creek en Californie">Now I live in Walnut Creek, California.</option>
+          </select>
+        </label>
+        <div class="word-bank" id="wordBank"></div>
+        <div class="sentence-drop" id="sentenceDrop" aria-live="polite"></div>
+        <div class="exercise-actions">
+          <button class="primary" id="checkSentence" type="button">Check sentence</button>
+          <button class="secondary hint-btn" id="sentenceHint" data-hint="Look at the English sentence, then start with Je / J’ / Maintenant." type="button">Hint</button>
+          <button class="secondary" id="modelSentence" type="button">Show model</button>
+          <button class="secondary" id="resetSentence" type="button">Reset</button>
+        </div>
+        <p class="feedback" id="sentenceFeedback"></p>
+      </div>
+
+      <div class="tab-panel" id="timelinePanel">
+        <h3>Jane’s life timeline in French</h3>
+        <p class="soft">Read the event, try to say it, then show the model and listen.</p>
+        <div class="timeline-cards">
+          <article class="timeline-card">
+            <span>1955</span>
+            <p>Born in New Hampshire</p>
+            <button class="model-toggle" type="button">Show model</button>
+            <p class="model hidden fr">Je suis née en 1955 dans le New Hampshire.</p>
+            <button class="listen-btn small" data-say="Je suis née en mille neuf cent cinquante-cinq dans le New Hampshire." type="button">🔊 Listen</button>
+          </article>
+          <article class="timeline-card">
+            <span>University</span>
+            <p>Studied at the University of New Hampshire while raising two children</p>
+            <button class="model-toggle" type="button">Show model</button>
+            <p class="model hidden fr">J’ai étudié à l’université du New Hampshire avec deux enfants.</p>
+            <button class="listen-btn small" data-say="J’ai étudié à l’université du New Hampshire avec deux enfants." type="button">🔊 Listen</button>
+          </article>
+          <article class="timeline-card">
+            <span>Career</span>
+            <p>Jewelry, computers, psychology, charities, mediation, school presentations</p>
+            <button class="model-toggle" type="button">Show model</button>
+            <p class="model hidden fr">J’ai travaillé dans une bijouterie, chez Digital, dans la psychologie, avec des associations, comme médiatrice et comme recruteuse pour des écoles.</p>
+            <button class="listen-btn small" data-say="J’ai travaillé dans une bijouterie, chez Digital, dans la psychologie, avec des associations, comme médiatrice et comme recruteuse pour des écoles." type="button">🔊 Listen</button>
+          </article>
+          <article class="timeline-card">
+            <span>Today</span>
+            <p>Lives in Walnut Creek and wants to bring family together</p>
+            <button class="model-toggle" type="button">Show model</button>
+            <p class="model hidden fr">Aujourd’hui, j’habite à Walnut Creek et j’aime réunir ma famille.</p>
+            <button class="listen-btn small" data-say="Aujourd’hui, j’habite à Walnut Creek et j’aime réunir ma famille." type="button">🔊 Listen</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel dialogue-panel" id="dialogues">
+      <p class="section-kicker">Step 5</p>
+      <h2>Realistic dialogues and role plays</h2>
+      <p class="soft">Each scenario includes a prompt, a place to write your answer, a hint, a model response, and a speaker button.</p>
+      <div class="dialogue-grid">
+        <article class="dialogue-card">
+          <h3>Scenario 1 — Meeting someone on the street</h3>
+          <div class="chat prompt"><p><strong>Person:</strong> Bonjour Madame, vous êtes d’ici ?</p><button class="listen-btn small" data-say="Bonjour Madame, vous êtes d’ici ?" type="button">🔊 Listen</button></div>
+          <label>Your answer in French<textarea placeholder="Try: Bonjour, je m’appelle Jane..."></textarea></label>
+          <div class="exercise-actions"><button class="secondary hint-btn" data-hint="Say your name + where you live: Bonjour, je m’appelle Jane. J’habite à Walnut Creek, en Californie." type="button">Hint</button><button class="model-toggle" type="button">Show model answer</button></div>
+          <div class="model hidden model-answer"><p class="fr">Bonjour, je m’appelle Jane. Je ne suis pas d’ici. J’habite à Walnut Creek, en Californie.</p><p class="en">Hello, my name is Jane. I’m not from here. I live in Walnut Creek, California.</p><button class="listen-btn small" data-say="Bonjour, je m’appelle Jane. Je ne suis pas d’ici. J’habite à Walnut Creek, en Californie." type="button">🔊 Listen</button></div>
+        </article>
+        <article class="dialogue-card">
+          <h3>Scenario 2 — Seeing someone after a long time</h3>
+          <div class="chat prompt"><p><strong>Friend:</strong> Jane ! Ça fait longtemps ! Comment vas-tu ?</p><button class="listen-btn small" data-say="Jane ! Ça fait longtemps ! Comment vas-tu ?" type="button">🔊 Listen</button></div>
+          <label>Your answer in French<textarea placeholder="Try: Ça va bien, merci..."></textarea></label>
+          <div class="exercise-actions"><button class="secondary hint-btn" data-hint="Start with: Ça va bien, merci. Then say what you are doing now: Maintenant, j’apprends le français." type="button">Hint</button><button class="model-toggle" type="button">Show model answer</button></div>
+          <div class="model hidden model-answer"><p class="fr">Ça va bien, merci. Je suis très contente de te revoir. Maintenant, j’habite en Californie et j’apprends le français.</p><p class="en">I’m doing well, thank you. I’m very happy to see you again. Now, I live in California and I am learning French.</p><button class="listen-btn small" data-say="Ça va bien, merci. Je suis très contente de te revoir. Maintenant, j’habite en Californie et j’apprends le français." type="button">🔊 Listen</button></div>
+        </article>
+        <article class="dialogue-card">
+          <h3>Scenario 3 — Quick phone exchange for travel</h3>
+          <div class="chat prompt"><p><strong>Hotel:</strong> Bonjour, Hôtel Belle Rose. Je peux vous aider ?</p><button class="listen-btn small" data-say="Bonjour, Hôtel Belle Rose. Je peux vous aider ?" type="button">🔊 Listen</button></div>
+          <label>Your answer in French<textarea placeholder="Try: Bonjour, je m’appelle Jane. Je voudrais..."></textarea></label>
+          <div class="exercise-actions"><button class="secondary hint-btn" data-hint="For a polite request, use: Je voudrais + noun. Example: Je voudrais une chambre pour deux nuits." type="button">Hint</button><button class="model-toggle" type="button">Show model answer</button></div>
+          <div class="model hidden model-answer"><p class="fr">Bonjour, je m’appelle Jane. Je voudrais une chambre pour deux nuits, s’il vous plaît. Je voyage avec ma famille.</p><p class="en">Hello, my name is Jane. I would like a room for two nights, please. I am traveling with my family.</p><button class="listen-btn small" data-say="Bonjour, je m’appelle Jane. Je voudrais une chambre pour deux nuits, s’il vous plaît. Je voyage avec ma famille." type="button">🔊 Listen</button></div>
+        </article>
+        <article class="dialogue-card">
+          <h3>Scenario 4 — Family reunion moment</h3>
+          <div class="chat prompt"><p><strong>Relative:</strong> Pourquoi apprends-tu le français ?</p><button class="listen-btn small" data-say="Pourquoi apprends-tu le français ?" type="button">🔊 Listen</button></div>
+          <label>Your answer in French<textarea placeholder="Try: J’apprends le français parce que..."></textarea></label>
+          <div class="exercise-actions"><button class="secondary hint-btn" data-hint="Use parce que = because: J’apprends le français parce que j’aime apprendre et j’aime ma famille." type="button">Hint</button><button class="model-toggle" type="button">Show model answer</button></div>
+          <div class="model hidden model-answer"><p class="fr">J’apprends le français parce que j’aime apprendre, j’aime ma famille et je veux partager de beaux moments ensemble.</p><p class="en">I am learning French because I love learning, I love my family, and I want to share beautiful moments together.</p><button class="listen-btn small" data-say="J’apprends le français parce que j’aime apprendre, j’aime ma famille et je veux partager de beaux moments ensemble." type="button">🔊 Listen</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel speaking-panel" id="speaking">
+      <p class="section-kicker">Step 6</p>
+      <h2>Your self-introduction: simple → personal → beautiful</h2>
+      <p class="soft">Each level adds one clear improvement. The goal is not to be perfect; the goal is to build confidence and tell your story with warmth.</p>
+      <div class="levels">
+        <article class="level-card">
+          <div class="level-badge">Level 1</div>
+          <h3>Simple and correct</h3>
+          <p class="fr" id="level1">Bonjour, je m’appelle Jane. Je suis américaine. J’habite à Walnut Creek, en Californie. J’apprends le français.</p>
+          <ul><li>Short sentences</li><li>Correct basic verbs</li><li>Easy pronunciation</li></ul>
+          <button class="listen-btn small" data-target="level1" type="button">🔊 Listen</button>
+        </article>
+        <article class="level-card">
+          <div class="level-badge">Level 2</div>
+          <h3>More personal</h3>
+          <p class="fr" id="level2">Bonjour, je m’appelle Jane. Je suis née en 1955 dans le New Hampshire, mais maintenant j’habite à Walnut Creek, en Californie. Je suis forte et généreuse. J’aime aider ma famille et mes amis.</p>
+          <ul><li>Adds origin and present location</li><li>Uses <strong>mais</strong> for contrast</li><li>Adds féminin agreements</li></ul>
+          <button class="listen-btn small" data-target="level2" type="button">🔊 Listen</button>
+        </article>
+        <article class="level-card featured">
+          <div class="level-badge">Level 3</div>
+          <h3>Warm and complete</h3>
+          <p class="fr" id="level3">Bonjour, je m’appelle Jane. Je suis née en 1955 dans le New Hampshire. Maintenant, j’habite à Walnut Creek, en Californie. J’ai étudié à l’université du New Hampshire et j’ai travaillé dans plusieurs domaines : la bijouterie, l’informatique, la psychologie, les associations et la médiation. Je suis une femme forte, généreuse et courageuse. Aujourd’hui, j’apprends le français parce que j’aime apprendre et j’aime réunir ma famille.</p>
+          <ul><li>Adds timeline and career vocabulary</li><li>Uses connectors: et, maintenant, parce que</li><li>Ends with meaning and emotion</li></ul>
+          <button class="listen-btn small" data-target="level3" type="button">🔊 Listen</button>
+        </article>
+      </div>
+      <div class="upgrade-map">
+        <h3>How to get from Level 1 to Level 3</h3>
+        <ol>
+          <li><strong>Add time:</strong> Je suis née en 1955. / Maintenant...</li>
+          <li><strong>Add place:</strong> dans le New Hampshire / à Walnut Creek / en Californie.</li>
+          <li><strong>Add grammar:</strong> je suis, j’habite, j’aime, j’apprends, j’ai travaillé.</li>
+          <li><strong>Add connectors:</strong> et, mais, puis, plus tard, parce que.</li>
+          <li><strong>Add accords:</strong> forte, généreuse, courageuse, américaine, née.</li>
+          <li><strong>Add meaning:</strong> J’aime aider. Je veux réunir ma famille.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="panel builder-custom" id="custom">
+      <p class="section-kicker">Step 7</p>
+      <h2>Interactive self-introduction builder</h2>
+      <p class="soft">Choose details, generate a French model, listen, and practice until it feels natural. The adjective connector is fixed to <strong>et</strong> because <em>forte mais généreuse</em> or <em>forte parce que généreuse</em> is not a natural beginner sentence.</p>
+      <div class="form-grid">
+        <label>Name<input id="nameInput" value="Jane"></label>
+        <label>Born in<input id="bornInput" value="1955 dans le New Hampshire"></label>
+        <label>Now live in<input id="liveInput" value="Walnut Creek, en Californie"></label>
+        <label>Quality 1<select id="quality1"><option value="forte">forte</option><option value="généreuse">généreuse</option><option value="courageuse">courageuse</option><option value="curieuse">curieuse</option><option value="patiente">patiente</option></select></label>
+        <label>Quality 2<select id="quality2"><option value="généreuse">généreuse</option><option value="forte">forte</option><option value="courageuse">courageuse</option><option value="bienveillante">bienveillante</option><option value="patiente">patiente</option></select></label>
+        <label>Timeline connector<select id="connectorInput"><option value="puis">puis</option><option value="ensuite">ensuite</option><option value="plus tard">plus tard</option></select></label>
+        <label class="wide">Career sentence<input id="careerInput" value="j’ai travaillé dans plusieurs domaines"></label>
+        <label class="wide">Reason for learning French<input id="reasonInput" value="j’aime apprendre et je veux partager de beaux moments avec ma famille"></label>
+      </div>
+      <div class="exercise-actions">
+        <button class="primary" id="generateIntro" type="button">✨ Generate my French introduction</button>
+        <button class="secondary" id="copyIntro" type="button">Copy text</button>
+      </div>
+      <div class="model-box" id="generatedBox">
+        <p class="fr" id="generatedIntro">Bonjour, je m’appelle Jane. Je suis née en 1955 dans le New Hampshire. Maintenant, j’habite à Walnut Creek, en Californie. Je suis forte et généreuse. Aujourd’hui, j’apprends le français parce que j’aime apprendre et je veux partager de beaux moments avec ma famille.</p>
+        <button class="listen-btn" data-target="generatedIntro" type="button">🔊 Listen</button>
+      </div>
+      <p class="feedback" id="copyFeedback"></p>
+    </section>
+
+    <section class="panel mother-note" id="note">
+      <p class="section-kicker">Step 8</p>
+      <h2>A Mother’s Day note</h2>
+      <div class="note-grid">
+        <article class="note-card french-note">
+          <h3>En français</h3>
+          <p id="motherFrench">Bonne fête des mères, Jane. Cette leçon est un petit cadeau pour célébrer ta force, ta générosité et tout l’amour que tu donnes à ta famille. Tu as toujours su avancer, apprendre, aider et aimer. Merci pour ta présence, ton courage et ton désir de réunir ceux que tu aimes. Tu es profondément aimée.</p>
+          <button class="listen-btn" data-target="motherFrench" type="button">🔊 Listen</button>
+        </article>
+        <article class="note-card english-note">
+          <h3>English translation</h3>
+          <p>Happy Mother’s Day, Jane. This lesson is a small gift to celebrate your strength, your generosity, and all the love you give to your family. You have always known how to move forward, learn, help, and love. Thank you for your presence, your courage, and your desire to bring together the people you love. You are deeply loved.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© SpeakEasyTisha · jane-mothers-day-french-lesson · Build 20260510</p>
+      <a href="#top">↑ Back to top</a>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
