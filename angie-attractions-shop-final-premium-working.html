@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Angie — Attractions & Boutique Magic Training</title>
+  <link rel="stylesheet" href="css/angie-attractions-shop-final-premium-working.css" />
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">✨ SpeakEasyTisha</div>
+    <div class="controls">
+      <button class="pill active" data-accent="US">🇺🇸 US</button>
+      <button class="pill" data-accent="UK">🇬🇧 UK</button>
+      <button class="pill" id="resetScore">Reset</button>
+      <span class="score">Score: <strong id="score">0</strong></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero card">
+      <p class="kicker">Cast Member Communication Training</p>
+      <h1>Welcome to your Attractions & Boutique mission</h1>
+      <p class="lead">You are learning the English you need to welcome guests, guide them clearly, help in a shop, and prepare for your Disney interview.</p>
+      <button class="btn primary" data-speak="#heroText">🔊 Listen</button>
+      <p id="heroText" class="hiddenText">Welcome to your Attractions and Boutique mission. You are learning how to welcome guests, guide them clearly, help in a shop, and prepare for your Disney interview.</p>
+    </section>
+
+    <section class="card">
+      <h2>🎢 Attractions vocabulary</h2>
+      <p class="mini">Tap listen and repeat. These are useful phrases for guest service.</p>
+      <div class="vocabGrid" id="attractionVocab"></div>
+    </section>
+
+    <section class="card">
+      <h2>🛍️ Boutique vocabulary</h2>
+      <div class="vocabGrid" id="shopVocab"></div>
+    </section>
+
+    <section class="card grammar">
+      <h2>🪄 Grammar Spell 1 — Polite professional language</h2>
+      <div class="ruleGrid">
+        <div class="rule"><h3>Can I + verb?</h3><p><strong>Use:</strong> offer help.</p><p class="example">Can I help you?</p></div>
+        <div class="rule"><h3>Would you like + noun?</h3><p><strong>Use:</strong> offer a choice politely.</p><p class="example">Would you like a bag?</p></div>
+        <div class="rule"><h3>Would you like to + verb?</h3><p><strong>Use:</strong> make a polite suggestion.</p><p class="example">Would you like to wait here?</p></div>
+        <div class="rule"><h3>Should + verb</h3><p><strong>Use:</strong> give advice or guidance.</p><p class="example">You should go this way.</p></div>
+      </div>
+      <button class="btn" data-speak="#politeRule">🔊 Listen to the rule</button>
+      <p id="politeRule" class="hiddenText">Can I means I offer help. Would you like means I give a polite choice. Should means I give advice or guidance.</p>
+      <div class="exercise" data-type="choice" data-answer="should">
+        <h3>Choose the best word</h3>
+        <p>A guest is lost: “You ___ go this way.”</p>
+        <button>can</button><button>should</button><button>would like</button>
+        <p class="feedback"></p>
+      </div>
+      <div class="exercise" data-type="choice" data-answer="Can I">
+        <p>You offer help: “___ help you?”</p>
+        <button>Can I</button><button>Should I</button><button>Would you like</button>
+        <p class="feedback"></p>
+      </div>
+      <div class="exercise" data-type="choice" data-answer="Would you like">
+        <p>You offer a bag: “___ a bag?”</p>
+        <button>Can I</button><button>Should</button><button>Would you like</button>
+        <p class="feedback"></p>
+      </div>
+    </section>
+
+    <section class="card grammar">
+      <h2>➡️ Grammar Spell 2 — Instructions at attractions</h2>
+      <p><strong>Rule:</strong> use the imperative. Start with the verb. No “you”.</p>
+      <p class="example">✅ Please wait here. ✅ Follow me. ✅ Turn left. ✅ Keep your ticket.</p>
+      <h3>Instruction verb bank</h3>
+      <div class="vocabGrid" id="instructionVocab"></div>
+      <div class="exercise rewrite" data-accepted="go straight|please go straight">
+        <h3>Make it professional</h3>
+        <p>Rewrite: “You go straight.”</p>
+        <input placeholder="Type your answer here…" />
+        <button class="checkInput">Check</button>
+        <p class="feedback"></p>
+      </div>
+      <div class="exercise rewrite" data-accepted="wait here|please wait here">
+        <p>Rewrite: “You wait here.”</p>
+        <input placeholder="Type your answer here…" />
+        <button class="checkInput">Check</button>
+        <p class="feedback"></p>
+      </div>
+      <div class="exercise rewrite" data-accepted="follow me|please follow me">
+        <p>Rewrite: “You follow me.”</p>
+        <input placeholder="Type your answer here…" />
+        <button class="checkInput">Check</button>
+        <p class="feedback"></p>
+      </div>
+    </section>
+
+    <section class="card grammar">
+      <h2>❓ Grammar Spell 3 — How to formulate questions</h2>
+      <div class="ruleGrid">
+        <div class="rule"><h3>Can + subject + verb?</h3><p>Can I help you?</p></div>
+        <div class="rule"><h3>Do + subject + verb?</h3><p>Do you need help?</p></div>
+        <div class="rule"><h3>Are + subject + -ing?</h3><p>Are you looking for something?</p></div>
+        <div class="rule"><h3>WH + auxiliary + subject?</h3><p>Where do you want to go?</p></div>
+      </div>
+      <div class="exercise rewrite" data-accepted="do you need help">
+        <p>Build the question: “you / need / help”</p>
+        <input placeholder="Type the question…" />
+        <button class="checkInput">Check</button>
+        <p class="feedback"></p>
+      </div>
+      <div class="exercise rewrite" data-accepted="are you looking for something">
+        <p>Build the question: “you / looking / for something”</p>
+        <input placeholder="Type the question…" />
+        <button class="checkInput">Check</button>
+        <p class="feedback"></p>
+      </div>
+      <div class="exercise rewrite" data-accepted="where is the castle|where is the attraction">
+        <p>Ask where something is.</p>
+        <input placeholder="Type your question…" />
+        <button class="checkInput">Check</button>
+        <p class="feedback"></p>
+      </div>
+    </section>
+
+    <section class="card grammar">
+      <h2>🧑‍🤝‍🧑 Pronoun magic — his, her, their</h2>
+      <p><strong>his</strong> = for a man or boy. <strong>her</strong> = for a woman or girl. <strong>their</strong> = for several people.</p>
+      <div class="exercise" data-type="choice" data-answer="his">
+        <p>My brother is here. ___ ticket is in his bag.</p>
+        <button>his</button><button>her</button><button>their</button>
+        <p class="feedback"></p>
+      </div>
+      <div class="exercise" data-type="choice" data-answer="her">
+        <p>A little girl is lost. I need to help ___.</p>
+        <button>him</button><button>her</button><button>their</button>
+        <p class="feedback"></p>
+      </div>
+      <div class="exercise" data-type="choice" data-answer="their">
+        <p>The guests are looking for ___ family.</p>
+        <button>his</button><button>her</button><button>their</button>
+        <p class="feedback"></p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>🎭 Interactive dialogue — attraction</h2>
+      <div class="dialogue">
+        <p><strong>Guest:</strong> Hello, where is the castle?</p>
+        <p><strong>You:</strong> <select id="d1"><option value="">Choose…</option><option>Please go straight and turn left.</option><option>I sale strawberries.</option><option>I have 21 years.</option></select></p>
+        <p><strong>Guest:</strong> Thank you. Is the wait time long?</p>
+        <p><strong>You:</strong> <select id="d2"><option value="">Choose…</option><option>The wait time is about twenty minutes.</option><option>You should goes.</option><option>I love cook.</option></select></p>
+        <button class="btn primary" id="checkDialogue">Check dialogue</button>
+        <button class="btn" data-speak="#dialogueModel">🔊 Listen to model</button>
+        <p id="dialogueFeedback" class="feedback"></p>
+        <p id="dialogueModel" class="hiddenText">Guest: Hello, where is the castle? You: Please go straight and turn left. Guest: Thank you. Is the wait time long? You: The wait time is about twenty minutes.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>🛍️ Interactive dialogue — boutique</h2>
+      <div class="dialogue">
+        <p><strong>Customer:</strong> Hello.</p>
+        <p><strong>You:</strong> <select id="s1"><option value="">Choose…</option><option>Hello! Can I help you?</option><option>Hello, you need?</option><option>I wish to go.</option></select></p>
+        <p><strong>Customer:</strong> How much is this?</p>
+        <p><strong>You:</strong> <select id="s2"><option value="">Choose…</option><option>It costs fifteen euros.</option><option>It is fifteen money.</option><option>I sale strawberries.</option></select></p>
+        <p><strong>Customer:</strong> Thank you.</p>
+        <p><strong>You:</strong> <select id="s3"><option value="">Choose…</option><option>You’re welcome. Have a magical day!</option><option>Goodbye you.</option><option>I love cook.</option></select></p>
+        <button class="btn primary" id="checkShop">Check boutique dialogue</button>
+        <button class="btn" data-speak="#shopModel">🔊 Listen to model</button>
+        <p id="shopFeedback" class="feedback"></p>
+        <p id="shopModel" class="hiddenText">Customer: Hello. You: Hello! Can I help you? Customer: How much is this? You: It costs fifteen euros. Customer: Thank you. You: You’re welcome. Have a magical day!</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>🌟 Final speaking builder</h2>
+      <p>Use the grammar to build a professional answer.</p>
+      <label>Situation</label>
+      <select id="finalSituation">
+        <option value="lost">A guest is lost</option>
+        <option value="bag">A customer needs a bag</option>
+        <option value="ride">A guest asks about a ride</option>
+      </select>
+      <button class="btn primary" id="buildFinal">Build my answer</button>
+      <button class="btn" id="speakFinal">🔊 Listen</button>
+      <div class="output" id="finalOutput"></div>
+    </section>
+  </main>
+
+  <footer>
+    You are not just learning English. You are learning how to create magical moments for guests. ✨
+  </footer>
+
+  <script src="js/angie-attractions-shop-final-premium-working.js"></script>
+</body>
+</html>
