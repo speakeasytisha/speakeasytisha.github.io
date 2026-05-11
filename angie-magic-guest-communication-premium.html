@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Angie — Magical Guest Communication</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/angie-magic-guest-communication-premium.css" />
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand__script">SpeakEasyTisha</span>
+      <span class="brand__tag">Angie’s Disney Interview Journey</span>
+    </div>
+    <div class="controls">
+      <div class="accent" role="group" aria-label="Accent">
+        <button id="accentUS" class="accent__btn active" type="button">US 🇺🇸</button>
+        <button id="accentUK" class="accent__btn" type="button">UK 🇬🇧</button>
+      </div>
+      <span class="score">Score: <strong id="score">0</strong></span>
+      <button class="btn ghost" id="resetAll" type="button">Reset</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__text">
+      <p class="kicker">✨ CAST MEMBER COMMUNICATION TRAINING</p>
+      <h1>Welcome Guests Like a Real Cast Member</h1>
+      <p class="lead">Every sentence you practise brings you closer to your Disney dream: attractions, boutique, interviews, and confident guest service.</p>
+      <div class="hero__buttons">
+        <button class="btn primary" data-speak="#heroSpeak" type="button">🔊 Listen</button>
+        <button class="btn" data-scroll="#vocab" type="button">Start the lesson</button>
+      </div>
+      <p id="heroSpeak" class="sr-text">Welcome to your magical guest communication lesson. Today you will practise vocabulary, verbs, present simple, present continuous, articles, there is, there are, prepositions, dialogues, and roleplays for Disney attractions and boutique situations.</p>
+    </div>
+    <div class="castleCard" aria-hidden="true">
+      <div class="moon">🌙</div>
+      <div class="castle">🏰</div>
+      <div class="spark s1">✨</div>
+      <div class="spark s2">⭐</div>
+      <div class="spark s3">💫</div>
+      <div class="path">🎢 🛍️ 🧭 🎟️ 🗣️</div>
+    </div>
+  </section>
+
+  <main>
+    <section id="vocab" class="section">
+      <div class="sectionHead">
+        <h2>🧠 Magic Vocabulary — Attractions, Boutique & Guest Service</h2>
+        <p>Tap a card to reveal the French translation, definition, and example. Use the listen button to repeat.</p>
+      </div>
+      <div class="tabs">
+        <button class="tab active" data-tab="attractions" type="button">🎢 Attractions</button>
+        <button class="tab" data-tab="boutique" type="button">🛍️ Boutique</button>
+        <button class="tab" data-tab="service" type="button">😊 Guest Service</button>
+      </div>
+      <div class="toolRow">
+        <button class="btn" id="shuffleVocab" type="button">🔀 Shuffle</button>
+        <button class="btn" id="listenVocab" type="button">🔊 Listen all visible</button>
+      </div>
+      <div id="vocabGrid" class="vocabGrid"></div>
+    </section>
+
+    <section class="section">
+      <div class="sectionHead">
+        <h2>⚙️ Verb Magic — The Engine of English</h2>
+        <p>A verb is an action or a state. Verbs make English move.</p>
+      </div>
+      <div class="grid2">
+        <div class="grammarBox one">
+          <h3>Action verbs</h3>
+          <p>Use action verbs for things you do.</p>
+          <p class="example">work, help, speak, wait, go, sell, show, check</p>
+        </div>
+        <div class="grammarBox one">
+          <h3>State verbs</h3>
+          <p>Use state verbs for situations, feelings, or identity.</p>
+          <p class="example">be, have, like, love, need, want, understand</p>
+        </div>
+      </div>
+      <div class="exerciseCard">
+        <h3>Sort the verbs</h3>
+        <p>Choose if the verb is an action or a state.</p>
+        <div id="verbSort" class="quizList"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionHead">
+        <h2>✨ Grammar Spell 1 — Present Simple</h2>
+        <p>Use the present simple for routines, jobs, habits, facts, and repeated actions.</p>
+      </div>
+      <div class="grammarBox">
+        <div>
+          <h3>When do I use it?</h3>
+          <ul>
+            <li>Facts: <em>I live near Nantes.</em></li>
+            <li>Jobs: <em>I work in a boutique.</em></li>
+            <li>Habits: <em>I go to the gym four times a week.</em></li>
+            <li>Customer service: <em>I help guests.</em></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Structure</h3>
+          <p><strong>I / you / we / they + verb</strong></p>
+          <p><strong>he / she / it + verb + s</strong></p>
+          <p class="example">I help guests. / She helps guests.</p>
+        </div>
+      </div>
+      <div class="grammarBox">
+        <div>
+          <h3>Negative</h3>
+          <p><strong>I / you / we / they + do not + verb</strong></p>
+          <p><strong>he / she / it + does not + verb</strong></p>
+          <p class="example">I do not work here. / She does not work here.</p>
+        </div>
+        <div>
+          <h3>Questions</h3>
+          <p><strong>Do / Does + subject + verb?</strong></p>
+          <p class="example">Do you work here? / Does she help guests?</p>
+        </div>
+      </div>
+      <div class="exerciseCard">
+        <h3>Practice — Choose the correct verb</h3>
+        <div id="presentSimpleQuiz" class="quizList"></div>
+      </div>
+      <div class="exerciseCard">
+        <h3>Practice — Make the sentence professional</h3>
+        <div id="simpleRewrite" class="inputList"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionHead">
+        <h2>✨ Grammar Spell 2 — Present Continuous</h2>
+        <p>Use the present continuous for actions happening now, current activity, and temporary situations.</p>
+      </div>
+      <div class="grammarBox">
+        <div>
+          <h3>When do I use it?</h3>
+          <ul>
+            <li>Now: <em>I am helping a guest.</em></li>
+            <li>At the moment: <em>Guests are waiting.</em></li>
+            <li>Today / temporary: <em>She is working in the boutique today.</em></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Structure</h3>
+          <p><strong>am / is / are + verb + ing</strong></p>
+          <p class="example">I am helping. / She is working. / They are waiting.</p>
+        </div>
+      </div>
+      <div class="exerciseCard">
+        <h3>Practice — Choose the correct form</h3>
+        <div id="continuousQuiz" class="quizList"></div>
+      </div>
+      <div class="exerciseCard">
+        <h3>Present Simple or Present Continuous?</h3>
+        <p>Look for the signal words: every day, usually, now, right now, today.</p>
+        <div id="tenseChoice" class="quizList"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionHead">
+        <h2>🧭 Tense Compass — How do I know which tense to use?</h2>
+        <p>This table helps Angie choose quickly during speaking.</p>
+      </div>
+      <div class="compare">
+        <div class="compareCol">
+          <h3>Present Simple</h3>
+          <p>routine • habit • fact • job</p>
+          <p class="example">I work in attractions.</p>
+          <p class="example">The attraction opens at 9.</p>
+        </div>
+        <div class="compareCol">
+          <h3>Present Continuous</h3>
+          <p>now • at the moment • temporary</p>
+          <p class="example">I am helping a guest.</p>
+          <p class="example">Guests are waiting outside.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionHead">
+        <h2>✨ Grammar Spell 3 — A / An / The / Nothing</h2>
+        <p>This is very important for natural English in attractions, boutique, and interviews.</p>
+      </div>
+      <div class="grid3">
+        <div class="ruleCard">
+          <h3>A / An</h3>
+          <p>Use for <strong>one thing</strong> when it is not specific.</p>
+          <p><strong>a</strong> before consonant sound: a map, a bag</p>
+          <p><strong>an</strong> before vowel sound: an attraction, an entrance</p>
+        </div>
+        <div class="ruleCard">
+          <h3>The</h3>
+          <p>Use for something specific or known by both people.</p>
+          <p class="example">The castle is on the left.</p>
+        </div>
+        <div class="ruleCard">
+          <h3>No article Ø</h3>
+          <p>Use no article for general ideas.</p>
+          <p class="example">I love Disney. I need English. I study literature.</p>
+        </div>
+      </div>
+      <div class="exerciseCard">
+        <h3>Practice — Choose the article</h3>
+        <div id="articleQuiz" class="quizList"></div>
+      </div>
+      <div class="exerciseCard">
+        <h3>Practice — Type the missing article</h3>
+        <p>Type: <strong>a</strong>, <strong>an</strong>, <strong>the</strong>, or <strong>nothing</strong>.</p>
+        <div id="articleInputs" class="inputList"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionHead">
+        <h2>🏰 Grammar Spell 4 — There is / There are</h2>
+        <p>Use this to describe what exists in the park or in the boutique.</p>
+      </div>
+      <div class="grammarBox">
+        <div>
+          <h3>There is</h3>
+          <p>Use for ONE thing.</p>
+          <p class="example">There is a shop near the castle.</p>
+        </div>
+        <div>
+          <h3>There are</h3>
+          <p>Use for MORE THAN ONE thing.</p>
+          <p class="example">There are two entrances.</p>
+        </div>
+      </div>
+      <div class="exerciseCard">
+        <h3>Practice — There is / There are</h3>
+        <div id="thereQuiz" class="quizList"></div>
+      </div>
+      <div class="exerciseCard">
+        <h3>Park description builder</h3>
+        <div id="thereBuilder" class="builder"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionHead">
+        <h2>📍 Prepositions of Place</h2>
+        <p>Use these to give directions and describe where things are.</p>
+      </div>
+      <div id="prepGrid" class="prepGrid"></div>
+      <div class="exerciseCard">
+        <h3>Practice — Choose the preposition</h3>
+        <div id="prepQuiz" class="quizList"></div>
+      </div>
+      <div class="exerciseCard">
+        <h3>Direction Builder</h3>
+        <div id="directionBuilder" class="builder"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionHead">
+        <h2>🎢 Interactive Dialogue — Attraction</h2>
+        <p>Choose the best answers, then listen to the model.</p>
+      </div>
+      <div class="dialogue">
+        <div class="line guest"><strong>Guest:</strong> Excuse me, where is the entrance?</div>
+        <label class="field"><span>You:</span>
+          <select id="attr1">
+            <option value="">Choose…</option>
+            <option>The entrance is next to the castle.</option>
+            <option>I have 21 years old.</option>
+            <option>I sale strawberries.</option>
+          </select>
+        </label>
+        <div class="line guest"><strong>Guest:</strong> What is the wait time?</div>
+        <label class="field"><span>You:</span>
+          <select id="attr2">
+            <option value="">Choose…</option>
+            <option>The wait time is about twenty minutes.</option>
+            <option>There are one wait time.</option>
+            <option>I am work today.</option>
+          </select>
+        </label>
+        <div class="toolRow">
+          <button class="btn primary" id="checkAttractionDialogue" type="button">Check dialogue</button>
+          <button class="btn" data-speak="#attrModel" type="button">🔊 Listen model</button>
+        </div>
+        <div id="attrFeedback" class="feedback"></div>
+        <p id="attrModel" class="sr-text">Guest: Excuse me, where is the entrance? You: The entrance is next to the castle. Guest: What is the wait time? You: The wait time is about twenty minutes.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionHead">
+        <h2>🛍️ Interactive Dialogue — Boutique</h2>
+        <p>Practise polite customer-service English.</p>
+      </div>
+      <div class="dialogue">
+        <div class="line guest"><strong>Customer:</strong> Hello. Do you have this in another size?</div>
+        <label class="field"><span>You:</span>
+          <select id="shop1">
+            <option value="">Choose…</option>
+            <option>Of course. What size do you need?</option>
+            <option>You need size?</option>
+            <option>I love cook.</option>
+          </select>
+        </label>
+        <div class="line guest"><strong>Customer:</strong> I need a medium.</div>
+        <label class="field"><span>You:</span>
+          <select id="shop2">
+            <option value="">Choose…</option>
+            <option>Let me check for you.</option>
+            <option>I check you.</option>
+            <option>It is a English.</option>
+          </select>
+        </label>
+        <div class="toolRow">
+          <button class="btn primary" id="checkShopDialogue" type="button">Check dialogue</button>
+          <button class="btn" data-speak="#shopModel" type="button">🔊 Listen model</button>
+        </div>
+        <div id="shopFeedback" class="feedback"></div>
+        <p id="shopModel" class="sr-text">Customer: Hello. Do you have this in another size? You: Of course. What size do you need? Customer: I need a medium. You: Let me check for you.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionHead">
+        <h2>🎭 Roleplay Builder — Real Disney Situations</h2>
+        <p>Choose a scenario and build your professional answer.</p>
+      </div>
+      <div class="roleplayBox">
+        <label class="field">
+          <span>Choose a scenario</span>
+          <select id="roleScenario">
+            <option value="directions">A guest asks for directions</option>
+            <option value="boutique">A customer wants another size</option>
+            <option value="info">A guest needs information</option>
+            <option value="ticket">A guest lost a ticket</option>
+          </select>
+        </label>
+        <div id="rolePrompt" class="rolePrompt"></div>
+        <div class="choiceGrid" id="roleChoices"></div>
+        <div class="output" id="roleOutput"></div>
+        <div class="toolRow">
+          <button class="btn primary" id="buildRole" type="button">✨ Build response</button>
+          <button class="btn" id="speakRole" type="button">🔊 Listen</button>
+          <button class="btn ghost" id="resetRole" type="button">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final">
+      <h2>🏰 Final Interview Bridge</h2>
+      <p class="lead">Answer this interview question using today’s grammar:</p>
+      <p class="interviewQ"><strong>How would you help a guest in the park or in the boutique?</strong></p>
+      <textarea id="interviewAnswer" placeholder="Write your answer here. Try to use: I can..., I would..., There is..., The..., a/an..., present simple..."></textarea>
+      <div class="toolRow">
+        <button class="btn primary" id="checkInterview" type="button">Check my answer</button>
+        <button class="btn" id="speakInterview" type="button">🔊 Listen</button>
+      </div>
+      <div id="interviewFeedback" class="feedback"></div>
+      <p class="magicLine">Every sentence you practise is helping you become more confident, more natural, and more ready for your Disney interview. ✨</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>SpeakEasyTisha • Angie’s Magical Guest Communication Training</span>
+  </footer>
+
+  <script src="js/angie-magic-guest-communication-premium.js"></script>
+</body>
+</html>
