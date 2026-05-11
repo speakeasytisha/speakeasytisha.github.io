@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SpeakEasyTisha • Myriam • Dream USA — To‑die‑for Places</title>
+  <meta name="description" content="Interactive lesson: dreamy real places in the USA (real images), vocabulary + describing + I spy + compare + speaking + writing. A2→B2.">
+  <link rel="stylesheet" href="./css/english360-myriam-dream-usa-to-die-for-places-v2.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">SE</div>
+    <div>
+      <div class="title">Dream USA — To‑die‑for Places</div>
+      <div class="subtitle">Myriam • Describe • Compare • Give your opinion • Speak & Write • A2.1 → B2.1 (step‑by‑step)</div>
+    </div>
+  </div>
+
+  <div class="toolbar" role="region" aria-label="Controls">
+    <div class="tool">
+      <div class="label">Level</div>
+      <div class="seg" role="group" aria-label="Level selector">
+        <button type="button" class="segBtn on" data-level="A2">A2+</button>
+        <button type="button" class="segBtn" data-level="B1">B1</button>
+        <button type="button" class="segBtn" data-level="B2">B2</button>
+      </div>
+      <div class="tiny muted mt6">We upgrade in small steps.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">French translations</div>
+      <button type="button" id="frToggle" class="pill" aria-pressed="true">On</button>
+      <div class="tiny muted mt6">Only for vocabulary.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Accent (TTS)</div>
+      <div class="seg" role="group" aria-label="Accent">
+        <button type="button" class="segBtn on" data-accent="US">US</button>
+        <button type="button" class="segBtn" data-accent="UK">UK</button>
+      </div>
+      <div class="label mt8">Rate</div>
+      <input id="rate" class="range" type="range" min="0.7" max="1.25" step="0.05" value="1">
+    </div>
+
+    <div class="tool scoreTool">
+      <div class="label">Score</div>
+      <div class="scoreRow">
+        <span class="pill mono" id="scorePill">0 / 0</span>
+        <button type="button" class="iconBtn" id="resetScore" aria-label="Reset score">↺</button>
+      </div>
+      <div class="tiny">Accuracy: <span id="acc">0%</span></div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Actions</div>
+      <div class="row">
+        <button type="button" class="pill" id="newSetBtn">✨ Random place</button>
+        <button type="button" class="pill" id="printBtn">Print</button>
+        <button type="button" class="pill ghost" id="resetAllBtn">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Status</div>
+      <div class="pill ok" id="jsOk">JS: loading…</div>
+      <div class="errBox" id="errBox" hidden></div>
+      <div class="tiny muted mt6">Mac + iPad Safari • Tap‑friendly</div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Navigation">
+    <a class="tab" href="#place">Places + images</a>
+    <a class="tab" href="#vocab">Vocabulary</a>
+    <a class="tab" href="#ladder">Description ladder</a>
+    <a class="tab" href="#ispy">I spy</a>
+    <a class="tab" href="#compare">Compare</a>
+    <a class="tab" href="#speaking">Speaking</a>
+    <a class="tab" href="#writing">Writing</a>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <noscript>
+    <div class="noscript"><strong>JavaScript is disabled.</strong> Please enable JS to use this interactive lesson.</div>
+  </noscript>
+
+  <section class="card hero">
+    <h1 class="h1">To‑die‑for places to visit in the USA 🇺🇸✨</h1>
+    <p class="lead">
+      Today we focus on a key skill: <strong>describing an image clearly</strong> (and speaking/writing about it).
+      You will explore <strong>real places</strong>, learn matching vocabulary, and build <strong>A2 → B2</strong> descriptions.
+    </p>
+    <div class="notice">
+      <div class="noticeTitle">Golden rule (simple + powerful)</div>
+      <div class="noticeBody">
+        <strong>What?</strong> → <strong>Where?</strong> → <strong>What does it look like?</strong> → <strong>Action</strong> → <strong>Opinion / maybe</strong>
+      </div>
+    </div>
+
+    <div class="miniTitle mt12">Safe starter phrases (tap)</div>
+    <div class="chips mt8" id="starterChips"></div>
+  </section>
+
+  <section id="place" class="card">
+    <h2 class="h2">1) Choose a place (real image)</h2>
+    <p class="muted">Describe the image + give your opinion. Tap a word to hear it.</p>
+
+    <div class="row mt10">
+      <label class="stack">
+        <span class="label">Place</span>
+        <select id="placeSelect" class="select"></select>
+      </label>
+      <button class="pill" id="shufflePlaceBtn" type="button">🎲 Surprise</button>
+      <button class="pill ghost" id="sayPlacePromptBtn" type="button">▶ Read prompt</button>
+    </div>
+
+    <div class="grid2 mt12">
+      <div class="panel">
+        <div class="placeHeader">
+          <div>
+            <div class="placeName" id="placeName">—</div>
+            <div class="placeMeta" id="placeMeta">—</div>
+          </div>
+          <span class="pill mono" id="placeTag">—</span>
+        </div>
+
+        <figure class="photo">
+          <img id="placeImg" alt="Place image" loading="lazy">
+          <figcaption class="caption" id="imgCredit">Image: —</figcaption>
+        </figure>
+
+        <div class="promptBox mt10" id="placePrompt">—</div>
+
+        <details class="mt12">
+          <summary class="summary">Things to spot in the image (tap)</summary>
+          <div class="chips mt10" id="tokensChips"></div>
+        </details>
+      </div>
+
+      <div class="panel">
+        <h3 class="h3">Describe in 60 seconds</h3>
+
+        <div class="timerRow mt10">
+          <button type="button" class="pill" id="d60Btn">Start 60s</button>
+          <button type="button" class="pill ghost" id="dStopBtn">Stop</button>
+          <span class="pill mono" id="descTimer">00:00</span>
+          <span class="pill mono">Words: <span id="descWords">0</span></span>
+          <button type="button" class="pill ghost" id="sayDescBtn">▶ Read</button>
+        </div>
+
+        <textarea id="descBox" class="textarea mt10" rows="10" placeholder="Describe the image here…"></textarea>
+
+        <div class="row mt10">
+          <button type="button" class="pill" id="quickCheckBtn">Quick check</button>
+          <button type="button" class="pill ghost" id="clearDescBtn">Clear</button>
+          <button type="button" class="pill" id="showModelBtn">Show model</button>
+        </div>
+
+        <div class="model mt10" id="descFeedback"></div>
+
+        <details class="mt12">
+          <summary class="summary">Model descriptions (A2 / B1 / B2)</summary>
+          <div class="row mt10">
+            <button type="button" class="pill" id="modelA2Btn">A2+</button>
+            <button type="button" class="pill" id="modelB1Btn">B1</button>
+            <button type="button" class="pill" id="modelB2Btn">B2</button>
+            <button type="button" class="pill ghost" id="sayModelBtn">▶ Read model</button>
+          </div>
+          <div class="model mt10" id="modelOut"></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="vocab" class="card">
+    <h2 class="h2">2) Vocabulary that matches the image</h2>
+    <p class="muted">Pick a category. Tap = listen + reuse in your description.</p>
+
+    <div class="panel mt10">
+      <div class="row wrapRow">
+        <label class="stack">
+          <span class="label">Category</span>
+          <select id="vCat" class="select"></select>
+        </label>
+        <label class="stack">
+          <span class="label">Search</span>
+          <input id="vSearch" class="input" type="search" placeholder="canyon, fog, waterfall, lively…">
+        </label>
+        <button class="pill ghost" id="vShuffleBtn" type="button">Refresh</button>
+        <button class="pill" id="vToDescBtn" type="button">⬇ Add 3 words</button>
+      </div>
+
+      <div class="chips mt12" id="vChips"></div>
+
+      <details class="mt12">
+        <summary class="summary">Definitions + examples</summary>
+        <div id="vList" class="mt10"></div>
+      </details>
+    </div>
+  </section>
+
+  <section id="ladder" class="card">
+    <h2 class="h2">3) Description ladder (copy/paste)</h2>
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3 class="h3">A) Structure</h3>
+        <div class="lessonBox" id="ladderBox"></div>
+        <div class="row mt10">
+          <button class="pill" id="copyLadderBtn" type="button">Copy</button>
+          <button class="pill ghost" id="sayLadderBtn" type="button">▶ Read</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h3 class="h3">B) Sentence frames (tap)</h3>
+        <div class="chips mt10" id="framesChips"></div>
+        <textarea id="framesBox" class="textarea mt10" rows="10" placeholder="Build your sentences here…"></textarea>
+        <div class="row mt10">
+          <button class="pill ghost" id="framesClearBtn" type="button">Clear</button>
+          <button class="pill" id="framesToDescBtn" type="button">⬇ Send to description</button>
+          <button class="pill ghost" id="framesSayBtn" type="button">▶ Read</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ispy" class="card">
+    <h2 class="h2">4) I spy (quick game)</h2>
+    <p class="muted">Read the clue, write a full sentence, then check.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3 class="h3">A) Clue</h3>
+        <div class="promptBox" id="ispyPrompt">—</div>
+        <div class="row mt10">
+          <button class="pill" id="newIspyBtn" type="button">New clue</button>
+          <button class="pill ghost" id="sayIspyBtn" type="button">▶ Read</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h3 class="h3">B) Your answer</h3>
+        <textarea id="ispyBox" class="textarea" rows="6" placeholder="Ex: I can see a bridge in the foreground. It is covered in fog."></textarea>
+        <div class="row mt10">
+          <button class="pill" id="ispyCheckBtn" type="button">Check</button>
+          <button class="pill ghost" id="ispyShowBtn" type="button">Show model</button>
+          <button class="pill ghost" id="ispyClearBtn" type="button">Clear</button>
+        </div>
+        <div class="model mt10" id="ispyFeedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare" class="card">
+    <h2 class="h2">5) Compare 2 places (B1/B2 booster)</h2>
+    <p class="muted">Pick two places and generate a natural comparison (no “more nature”!).</p>
+
+    <div class="panel mt10">
+      <div class="row wrapRow">
+        <label class="stack">
+          <span class="label">Place A</span>
+          <select id="cmpA" class="select"></select>
+        </label>
+        <label class="stack">
+          <span class="label">Place B</span>
+          <select id="cmpB" class="select"></select>
+        </label>
+        <button class="pill" id="cmpBuildBtn" type="button">Build</button>
+        <button class="pill ghost" id="cmpSwapBtn" type="button">Swap</button>
+      </div>
+
+      <div class="miniTitle mt12">Connectors (tap)</div>
+      <div class="chips mt8" id="cmpChips"></div>
+
+      <textarea id="cmpBox" class="textarea mt10" rows="7" placeholder="Write your comparison here…"></textarea>
+
+      <div class="row mt10">
+        <button class="pill" id="cmpCheckBtn" type="button">Check</button>
+        <button class="pill ghost" id="cmpSayBtn" type="button">▶ Read</button>
+        <button class="pill ghost" id="cmpClearBtn" type="button">Clear</button>
+      </div>
+
+      <div class="model mt10" id="cmpFeedback"></div>
+    </div>
+  </section>
+
+  <section id="speaking" class="card">
+    <h2 class="h2">6) Speaking (dream trip pitch) 🎤</h2>
+    <p class="muted">Speak for 60–90 seconds. Use: maybe / it seems / compared to.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3 class="h3">A) Prompt</h3>
+        <div class="promptBox" id="speakPrompt"></div>
+
+        <div class="timerRow mt10">
+          <button type="button" class="pill" id="s60Btn">Start 60s</button>
+          <button type="button" class="pill" id="s90Btn">Start 90s</button>
+          <button type="button" class="pill ghost" id="sStopBtn">Stop</button>
+          <span class="pill mono" id="sTimer">00:00</span>
+          <button type="button" class="pill ghost" id="saySpeakPromptBtn">▶ Read</button>
+        </div>
+
+        <div class="miniTitle mt12">Fluency boosters (tap)</div>
+        <div class="chips mt8" id="fluencyChips"></div>
+
+        <textarea id="sNotes" class="textarea mt10" rows="10" placeholder="Notes for speaking…"></textarea>
+        <div class="row mt10">
+          <button class="pill ghost" id="sNotesClearBtn" type="button">Clear</button>
+          <button class="pill" id="sNotesSayBtn" type="button">▶ Read</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 class="h3">B) Model (level)</h3>
+        <div class="row mt10">
+          <button class="pill" id="sModelBtn" type="button">Show model</button>
+          <button class="pill ghost" id="sModelSayBtn" type="button">▶ Read model</button>
+        </div>
+        <div class="model mt10" id="sModelOut"></div>
+
+        <details class="mt12">
+          <summary class="summary">Self-check</summary>
+          <div class="lessonBox mt10" id="sChecklist"></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing" class="card">
+    <h2 class="h2">7) Writing (mini text)</h2>
+    <p class="muted">Write a short travel text: message to a friend / mini review.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3 class="h3">A) Prompt + useful phrases</h3>
+        <div class="promptBox" id="wPrompt"></div>
+
+        <div class="miniTitle mt12">Useful phrases (tap)</div>
+        <div class="chips mt8" id="wChips"></div>
+      </div>
+
+      <div class="panel">
+        <h3 class="h3">B) Your text</h3>
+
+        <div class="timerRow mt10">
+          <button type="button" class="pill" id="w8Btn">Start 8 min</button>
+          <button type="button" class="pill ghost" id="wStopBtn">Stop</button>
+          <span class="pill mono" id="wTimer">00:00</span>
+          <span class="pill mono">Words: <span id="wWords">0</span></span>
+          <button type="button" class="pill ghost" id="sayWritingBtn">▶ Read</button>
+        </div>
+
+        <textarea id="wBox" class="textarea mt10" rows="12" placeholder="Write here…"></textarea>
+
+        <div class="row mt10">
+          <button type="button" class="pill" id="wModelBtn">Show model</button>
+          <button type="button" class="pill ghost" id="wClearBtn">Clear</button>
+          <button type="button" class="pill ghost" id="wCopyBtn">Copy</button>
+        </div>
+
+        <div class="model mt10" id="wModelOut"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="muted">SpeakEasyTisha • Dream USA • Images (CC) • Touch‑friendly • Print‑friendly</div>
+  </footer>
+</main>
+
+<script>
+window.__DreamUSALoaded=false;
+setTimeout(function(){
+  if(!window.__DreamUSALoaded){
+    var ok=document.getElementById('jsOk'); if(ok) ok.textContent='JS: not loaded ❌';
+    var box=document.getElementById('errBox');
+    if(box){ box.hidden=false; box.textContent='⚠️ JS not loaded. Check: HTML in root, CSS in /css/, JS in /js/.'; }
+  }
+},1200);
+</script>
+<script src="./js/english360-myriam-dream-usa-to-die-for-places-v2.js"></script>
+</body>
+</html>
