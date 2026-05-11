@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🎨 Frankie — Your Next 10 Sessions | SpeakEasyTisha</title>
+  <link rel="stylesheet" href="/css/frankie-next-10-sessions-roadmap.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="se-header">
+    <div class="se-header__inner">
+      <div class="brand">
+        <div class="brand__logo">SpeakEasy<span>Tisha</span></div>
+        <div class="brand__tag">artistic roadmap • next 10 sessions • your opinion matters</div>
+      </div>
+      <div class="head-actions">
+        <button class="btn btn--ghost" data-scroll="#overview" type="button">Overview</button>
+        <button class="btn btn--ghost" data-scroll="#roadmap" type="button">10 sessions</button>
+        <button class="btn btn--ghost" data-scroll="#opinion" type="button">Your opinion</button>
+        <button class="btn btn--ghost" id="btnPrint" type="button">🖨 Print</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="se-main">
+    <section class="card hero">
+      <div class="hero__left">
+        <p class="eyebrow">🌈 Your next chapter</p>
+        <h1>Your next 10 sessions together</h1>
+        <p class="lead">This page shows a suggested plan for our next lessons. The goal is to help you move forward step by step, build even more confidence, and keep developing the English you need for real life, travel and communication.</p>
+        <div class="hero-pills">
+          <span class="pill">🎯 practical English</span>
+          <span class="pill">🗣 speaking confidence</span>
+          <span class="pill">✍️ clearer writing</span>
+          <span class="pill">💛 step-by-step progress</span>
+        </div>
+      </div>
+      <div class="hero__right art-card">
+        <div class="art-card__swatch sw1"></div>
+        <div class="art-card__swatch sw2"></div>
+        <div class="art-card__swatch sw3"></div>
+        <div class="art-card__text">
+          <div class="quote-mark">“</div>
+          <p>You already have a strong base. These next sessions are here to help you feel even more comfortable, capable and confident.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview" class="card">
+      <div class="section-head">
+        <div>
+          <h2>🧭 What this plan will help you do</h2>
+          <p class="muted">The focus is on helping you feel stronger in the situations that matter most to you.</p>
+        </div>
+      </div>
+      <div class="benefit-grid">
+        <article class="benefit"><div class="benefit__icon">🎤</div><h3>Speak more smoothly</h3><p>Build longer answers, react more naturally and feel more comfortable in conversation.</p></article>
+        <article class="benefit"><div class="benefit__icon">🎧</div><h3>Understand more clearly</h3><p>Train your ear for key words, useful phrases and more confident listening reactions.</p></article>
+        <article class="benefit"><div class="benefit__icon">✈️</div><h3>Travel more easily</h3><p>Keep improving the English you need for hotels, transport, directions and practical situations.</p></article>
+        <article class="benefit"><div class="benefit__icon">💼</div><h3>Talk about work better</h3><p>Present your job and explain simple professional situations more clearly.</p></article>
+        <article class="benefit"><div class="benefit__icon">✍️</div><h3>Write with more structure</h3><p>Use better greetings, subject lines, connectors and polite requests in short texts.</p></article>
+        <article class="benefit"><div class="benefit__icon">🌟</div><h3>See your progress</h3><p>Notice what you can do, choose your priorities and keep moving forward with confidence.</p></article>
+      </div>
+    </section>
+
+    <section class="card strategy">
+      <div class="section-head">
+        <div>
+          <h2>🪄 How we will move forward</h2>
+          <p class="muted">The idea is to make progress feel manageable, useful and motivating.</p>
+        </div>
+      </div>
+      <div class="steps-grid">
+        <div class="step"><span class="badge">1</span><strong>Review & anchor</strong><p>We start from things you already know so you feel secure and ready.</p></div>
+        <div class="step"><span class="badge">2</span><strong>Build & expand</strong><p>We add the next useful structures, vocabulary and speaking tools.</p></div>
+        <div class="step"><span class="badge">3</span><strong>Practise in context</strong><p>You use English in guided situations that feel practical and realistic.</p></div>
+        <div class="step"><span class="badge">4</span><strong>Personalise</strong><p>We keep adapting the plan according to what feels the most useful to you.</p></div>
+      </div>
+    </section>
+
+    <section id="roadmap" class="card">
+      <div class="section-head">
+        <div>
+          <h2>📚 Your 10-session roadmap</h2>
+          <p class="muted">Open each session to see the goal, the language focus and the practice ideas.</p>
+        </div>
+        <div class="head-actions">
+          <button class="btn btn--ghost" id="btnOpenAll" type="button">📂 Open all</button>
+          <button class="btn btn--ghost" id="btnCloseAll" type="button">📁 Close all</button>
+        </div>
+      </div>
+      <div id="sessionList" class="session-list"></div>
+    </section>
+
+    <section id="opinion" class="card">
+      <div class="section-head">
+        <div>
+          <h2>💬 Tell me what sounds the most useful to you</h2>
+          <p class="muted">You can tick the sessions you are the most excited about and write your ideas below.</p>
+        </div>
+      </div>
+      <div class="opinion-grid" id="opinionGrid"></div>
+      <div class="mini-card">
+        <label for="prioritySelect">Which area would you like to prioritise first?</label>
+        <select id="prioritySelect" class="select">
+          <option value="">Choose one…</option>
+          <option>Speaking confidence</option>
+          <option>Listening and understanding</option>
+          <option>Travel English</option>
+          <option>Work-related English</option>
+          <option>Writing emails/messages</option>
+          <option>Grammar and sentence building</option>
+          <option>Giving opinions and speaking longer</option>
+        </select>
+      </div>
+      <div class="notes-grid">
+        <div class="mini-card">
+          <label for="likeMost">What would help you the most?</label>
+          <textarea id="likeMost" class="textarea" rows="4" placeholder="For example: speaking more easily, understanding questions better, writing short emails…"></textarea>
+        </div>
+        <div class="mini-card">
+          <label for="topicsWish">Are there any extra topics you would love to include?</label>
+          <textarea id="topicsWish" class="textarea" rows="4" placeholder="Your ideas / favourite themes / situations you want to practise…"></textarea>
+        </div>
+      </div>
+      <div class="prompt-actions">
+        <button class="btn" id="btnCopyOpinion" type="button">📋 Copy my opinion</button>
+      </div>
+    </section>
+
+    <section class="card reassurance">
+      <h2>🤝 A reassuring note</h2>
+      <p class="lead2">This plan is flexible. We can adapt the rhythm, the order and the themes together. The most important thing is that the lessons continue to help you feel comfortable, supported and motivated while you keep improving your English step by step.</p>
+      <div class="affirmation-box">
+        <button class="btn" id="btnRevealNote" type="button">💛 Reveal my note to you</button>
+        <div id="revealNote" class="affirmation-text" hidden>
+          You have already done a lot of meaningful work, and these next 10 sessions are designed to help you keep growing in a calm, useful and positive way. Your opinion matters, and we will shape the next steps together.
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>SpeakEasyTisha • Frankie roadmap page • Artistic themed lesson plan • Touch-friendly for Mac/iPad</p>
+    </footer>
+  </main>
+  <script src="/js/frankie-next-10-sessions-roadmap.js"></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🎨 Frankie — CLOE Celebration & Progress Gallery | SpeakEasyTisha</title>
+  <link rel="stylesheet" href="/css/frankie-cloe-results-celebration.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="se-header">
+    <div class="se-header__inner">
+      <div class="brand">
+        <div class="brand__logo">SpeakEasy<span>Tisha</span></div>
+        <div class="brand__tag">CLOE celebration • progress gallery • future roadmap</div>
+      </div>
+      <div class="head-actions">
+        <button class="btn btn--ghost" data-scroll="#story" type="button">Progress story</button>
+        <button class="btn btn--ghost" data-scroll="#gallery" type="button">What you can do</button>
+        <button class="btn btn--ghost" data-scroll="#next" type="button">Next lessons</button>
+        <button class="btn btn--ghost" id="btnPrint" type="button">🖨 Print</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="se-main">
+    <section class="card hero">
+      <div class="hero__left">
+        <p class="eyebrow">🎉 Congratulations, Frankie!</p>
+        <h1>Your CLOE Progress Gallery</h1>
+        <p class="lead">This lesson celebrates how far you have come, highlights what you can do now, and shows the reassuring next steps for our future lessons together.</p>
+        <div class="hero-pills">
+          <span class="pill">Start: <strong id="startLevelHero">A1.1+</strong></span>
+          <span class="pill">Target: <strong id="targetLevelHero">A1.2</strong></span>
+          <span class="pill pill--gold">Result: <strong id="resultLevelHero">A2</strong></span>
+        </div>
+      </div>
+      <div class="hero__right art-card">
+        <div class="art-card__swatch sw1"></div>
+        <div class="art-card__swatch sw2"></div>
+        <div class="art-card__swatch sw3"></div>
+        <div class="art-card__text">
+          <div class="quote-mark">“</div>
+          <p>You have worked hard, stayed committed and made real progress. This result is something to be proud of.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card stats">
+      <div class="stat stat--start">
+        <div class="stat__label">Starting point</div>
+        <div class="stat__value" id="startBox">A1.1+</div>
+        <div class="stat__sub">Initial analysis: 10/100</div>
+      </div>
+      <div class="stat stat--goal">
+        <div class="stat__label">Original target</div>
+        <div class="stat__value" id="goalBox">A1.2</div>
+        <div class="stat__sub">Target after the first training plan</div>
+      </div>
+      <div class="stat stat--result">
+        <div class="stat__label">CLOE result</div>
+        <div class="stat__value" id="resultBox">A2</div>
+        <div class="stat__sub">Obtained on 30/04/2026</div>
+      </div>
+    </section>
+
+    <section id="story" class="card">
+      <div class="section-head">
+        <div>
+          <h2>🪄 From the beginning to today</h2>
+          <p class="muted">A simple visual story of your journey.</p>
+        </div>
+        <button class="btn btn--ghost" id="btnRevealStory" type="button">✨ Reveal the story</button>
+      </div>
+      <div class="timeline" id="timeline"></div>
+      <div class="compare-grid">
+        <article class="mini-card">
+          <h3>🌱 Where you started</h3>
+          <ul id="startedList" class="ticklist"></ul>
+        </article>
+        <article class="mini-card">
+          <h3>🏅 What you achieved</h3>
+          <div class="result-list" id="resultList"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="gallery" class="card">
+      <div class="section-head">
+        <div>
+          <h2>🖼️ What you can do now</h2>
+          <p class="muted">Tap each card to see what this progress means in practice.</p>
+        </div>
+        <button class="btn btn--ghost" id="btnShowAllCards" type="button">👀 Show all</button>
+      </div>
+      <div class="flip-grid" id="accomplishmentGrid"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>✅ Specific things you can do now</h2>
+          <p class="muted">These are concrete wins to recognise and remember.</p>
+        </div>
+      </div>
+      <div class="can-do-board" id="canDoBoard"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>🧪 Before and after: language upgrades</h2>
+          <p class="muted">A celebration exercise: spot how your English has become stronger and more natural.</p>
+        </div>
+      </div>
+      <div class="upgrade-controls">
+        <label for="upgradeSelect">Choose an example</label>
+        <select id="upgradeSelect" class="select"></select>
+      </div>
+      <div class="upgrade-panel">
+        <div class="upgrade-box upgrade-box--before">
+          <div class="upgrade-box__title">Before</div>
+          <p id="upgradeBefore">—</p>
+        </div>
+        <div class="upgrade-box upgrade-box--after">
+          <div class="upgrade-box__title">After</div>
+          <p id="upgradeAfter">—</p>
+        </div>
+      </div>
+      <div class="feedback goodish" id="upgradeWhy">—</div>
+    </section>
+
+    <section class="card reflection">
+      <div class="section-head">
+        <div>
+          <h2>💬 Reflection & speaking warm-up</h2>
+          <p class="muted">Use these prompts to talk about your progress with your teacher.</p>
+        </div>
+        <button class="btn btn--ghost" id="btnNewPrompt" type="button">🎲 New prompt</button>
+      </div>
+      <div class="prompt-box" id="reflectionPrompt">—</div>
+      <div class="prompt-actions">
+        <button class="btn" id="btnListenPrompt" type="button">🔊 Listen</button>
+        <button class="btn btn--ghost" id="btnCopyPrompt" type="button">📋 Copy</button>
+      </div>
+      <textarea id="reflectionNotes" class="textarea" rows="6" placeholder="My ideas / my speaking notes…"></textarea>
+    </section>
+
+    <section id="next" class="card">
+      <div class="section-head">
+        <div>
+          <h2>🌟 Next chapter: what we will continue working on</h2>
+          <p class="muted">This result is not the end. It is a strong new base for the lessons ahead.</p>
+        </div>
+      </div>
+      <div class="future-grid" id="futureGrid"></div>
+    </section>
+
+    <section class="card reassurance">
+      <h2>🤝 Reassurance for the future</h2>
+      <p class="lead2">You do not need to be “perfect” to keep progressing. You already have real results, real tools and a much stronger base than when you started. In the next lessons, we will keep consolidating your grammar, strengthening your listening and helping you feel even more comfortable speaking and writing in practical situations.</p>
+      <div class="affirmation-box">
+        <button class="btn" id="btnRevealAffirmation" type="button">💛 Reveal my celebration note</button>
+        <div id="affirmationText" class="affirmation-text" hidden>
+          Frankie, you have done a great job. You worked hard, you stayed engaged, and you made clear progress. Reaching <strong>A2</strong> from your starting point is a real achievement. I’m proud of the work you have done, and I’m happy that we will continue building on it together.
+        </div>
+      </div>
+    </section>
+
+    <section class="card final-check">
+      <div class="section-head">
+        <div>
+          <h2>📝 My end-of-lesson takeaway</h2>
+          <p class="muted">Write one thing you are proud of, one thing you can do now, and one goal for the future.</p>
+        </div>
+      </div>
+      <div class="takeaway-grid">
+        <div class="mini-card">
+          <label for="takeProud">I am proud of…</label>
+          <textarea id="takeProud" class="textarea" rows="4"></textarea>
+        </div>
+        <div class="mini-card">
+          <label for="takeCanDo">I can now…</label>
+          <textarea id="takeCanDo" class="textarea" rows="4"></textarea>
+        </div>
+        <div class="mini-card">
+          <label for="takeNext">In our next lessons, I want to…</label>
+          <textarea id="takeNext" class="textarea" rows="4"></textarea>
+        </div>
+      </div>
+      <div class="prompt-actions">
+        <button class="btn btn--ghost" id="btnCopyTakeaway" type="button">📋 Copy my takeaway</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>SpeakEasyTisha • Celebration lesson • Artistic progress page • Touch-friendly for Mac/iPad</p>
+    </footer>
+  </main>
+  <script src="/js/frankie-cloe-results-celebration.js"></script>
+</body>
+</html>

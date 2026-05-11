@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>📚 Frankie — Your Lesson History | SpeakEasyTisha</title>
+  <link rel="stylesheet" href="/css/frankie-lesson-history.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="se-header">
+    <div class="se-header__inner">
+      <div class="brand">
+        <div class="brand__logo">SpeakEasy<span>Tisha</span></div>
+        <div class="brand__tag">Frankie • your lesson journey • sortable by category</div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn--ghost" data-scroll="#filters" type="button">Filters</button>
+        <button class="btn btn--ghost" data-scroll="#timeline" type="button">Timeline</button>
+        <button class="btn btn--ghost" id="btnPrint" type="button">🖨 Print</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="se-main">
+    <section class="card hero">
+      <div class="hero__content">
+        <p class="eyebrow">🌟 Your learning journey</p>
+        <h1>Your lesson history</h1>
+        <p class="lead">This page brings together the main themes, grammar points, skills and resources from your lessons. You can explore your journey by theme, by grammar focus, or by practical categories such as <strong>verbs</strong>, <strong>prepositions</strong>, <strong>numbers</strong>, <strong>writing</strong> and more.</p>
+        <div class="pill-row">
+          <span class="pill">🧭 19 sessions</span>
+          <span class="pill">⏱ 20 hours planned</span>
+          <span class="pill">🎯 CLOE exam focus</span>
+          <span class="pill">📅 Test planned: 30/04/2026</span>
+        </div>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <div class="blob blob--1"></div>
+        <div class="blob blob--2"></div>
+        <div class="blob blob--3"></div>
+        <div class="quote-card">
+          <p>Use the filters below to review exactly what you need.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card"><div class="stat-card__icon">📘</div><div class="stat-card__value">19</div><div class="stat-card__label">lessons in your history</div></article>
+      <article class="stat-card"><div class="stat-card__icon">🏨</div><div class="stat-card__value">8</div><div class="stat-card__label">hotel / travel foundations</div></article>
+      <article class="stat-card"><div class="stat-card__icon">📝</div><div class="stat-card__value">writing + oral</div><div class="stat-card__label">CLOE practice built in</div></article>
+      <article class="stat-card"><div class="stat-card__icon">🧠</div><div class="stat-card__value">grammar + speaking</div><div class="stat-card__label">core focus all along</div></article>
+    </section>
+
+    <section id="filters" class="card">
+      <div class="section-head">
+        <div>
+          <h2>🔎 Find lessons by category</h2>
+          <p class="muted">Tip: you can combine a search + category filters. Filters work in an “any match” way.</p>
+        </div>
+        <div class="controls controls--top">
+          <button class="btn btn--ghost" id="btnClearFilters" type="button">Clear filters</button>
+        </div>
+      </div>
+
+      <div class="controls-grid">
+        <label class="field">
+          <span>Search</span>
+          <input id="searchInput" class="input" type="search" placeholder="Search theme, grammar, skill, date, title…" />
+        </label>
+        <label class="field">
+          <span>Sort by</span>
+          <select id="sortSelect" class="select">
+            <option value="dateAsc">Date (oldest first)</option>
+            <option value="dateDesc">Date (newest first)</option>
+            <option value="sessionAsc">Session number (1 → 19)</option>
+            <option value="sessionDesc">Session number (19 → 1)</option>
+            <option value="titleAsc">Theme / title (A → Z)</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="filterGroups"></div>
+    </section>
+
+    <section class="card overview-card">
+      <div class="section-head">
+        <div>
+          <h2>📌 Quick overview</h2>
+          <p class="muted">Your filtered results update automatically.</p>
+        </div>
+      </div>
+      <div class="overview-grid">
+        <div class="overview-box"><span class="overview-box__label">Showing</span><strong id="shownCount">0</strong><span class="overview-box__sub">lessons</span></div>
+        <div class="overview-box"><span class="overview-box__label">Main exam focus</span><strong>CLOE</strong><span class="overview-box__sub">written + oral</span></div>
+        <div class="overview-box"><span class="overview-box__label">Saved filters</span><strong id="activeTagCount">0</strong><span class="overview-box__sub">categories selected</span></div>
+      </div>
+    </section>
+
+    <section id="timeline" class="card">
+      <div class="section-head">
+        <div>
+          <h2>🗂 Your timeline of lessons</h2>
+          <p class="muted">Open a lesson to see the focus, grammar, contents and resource links.</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn--ghost" id="btnOpenAll" type="button">Open all</button>
+          <button class="btn btn--ghost" id="btnCloseAll" type="button">Close all</button>
+        </div>
+      </div>
+      <div id="resultsInfo" class="results-info"></div>
+      <div id="lessonList" class="timeline"></div>
+    </section>
+
+    <footer class="footer">
+      <p>SpeakEasyTisha • Frankie lesson history • touch-friendly for Mac and iPad</p>
+    </footer>
+  </main>
+
+  <script src="/js/frankie-lesson-history.js"></script>
+</body>
+</html>
