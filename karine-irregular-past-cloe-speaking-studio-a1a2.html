@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Irregular Past + CLOE Speaking Studio (A1/A2) · SpeakEasyTisha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/karine-irregular-past-cloe-speaking-studio-a1a2.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip</a>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Karine · Irregular Past + Conversation Repair · CLOE Speaking Studio</div>
+    </div>
+    <div class="controls">
+      <div class="pill"><span class="pill__label">Accent</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+      <div class="pill"><span class="pill__label">Voice</span><select class="select" id="voiceSelect" aria-label="Voice list"></select></div>
+      <div class="pill"><span class="pill__label">Audio</span>
+        <button class="seg is-on" id="autoOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="autoOn" type="button" aria-pressed="false">ON</button>
+        <button class="btn btn--ghost" id="btnTestVoice" type="button">🔊 Test</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+      <span class="pill" id="jsStatus">JS: loading…</span>
+      <span class="pill">Build: 20260514-161100</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>Irregular Past + CLOE Speaking Studio (A1/A2)</h1>
+      <p class="lead">Today: <strong>irregular past</strong> (went / had / did / saw / bought…) + <strong>did / didn’t</strong> + <strong>conversation repair</strong> + <strong>roleplays</strong>.</p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="btnHow" type="button">ℹ️ How to use</button>
+      </div>
+      <div class="progress" style="margin-top:.7rem"><div class="progress__bar" id="progressBar"></div></div>
+      <div class="tiny" style="margin-top:.35rem;opacity:.95">Tip: If the voice sounds French on iPhone/iPad, install an English voice in Settings → Accessibility → Spoken Content → Voices.</div>
+    </div>
+    <div class="panelcard">
+      <div class="panelcard__title">2‑hour class map</div>
+      <ol class="panelcard__list">
+        <li>Vocabulary + repair phrases</li><li>Grammar: irregular past + did/didn’t</li><li>Exercise Lab + Irregular Trainer</li>
+        <li>Roleplay studio (hotel / restaurant / tickets)</li><li>Listening with transcript toggle</li><li>Story Builder</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section" id="secVocab">
+    <h2>1) Vocabulary (icons + French)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <select class="select" id="vCat"></select>
+        <button class="btn btn--ghost" id="btnVRevealAll" type="button">👀 Reveal all</button>
+        <button class="btn btn--ghost" id="btnVHideAll" type="button">🙈 Hide all</button>
+        <button class="btn btn--ghost" id="btnVQuiz" type="button">✅ Quick quiz</button>
+      </div>
+      <div class="tiny" style="color:rgba(14,31,36,.75)">Tap a card to reveal meaning + FR + example. Use 🔊 to practise pronunciation.</div>
+      <div class="grid3" id="vGrid" style="margin-top:.6rem"></div>
+      <div class="feedback hidden" id="vFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secGrammar">
+    <h2>2) Grammar mini‑lessons</h2>
+    <div class="grid2" id="gGrid"></div>
+  </section>
+
+  <section class="section" id="secExercises">
+    <h2>3) Exercise Lab (score + hints)</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>MCQ</h3>
+        <div class="kcard" id="mcqHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="mcqStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="mcqCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="mcqNext" type="button">➡️ Next</button>
+          <button class="btn btn--ghost" id="mcqHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="mcqReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="mcqFb"></div>
+      </div>
+      <div class="card">
+        <h3>Dropdown</h3>
+        <div class="kcard" id="ddHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="ddStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="ddCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="ddNext" type="button">➡️ Next</button>
+          <button class="btn btn--ghost" id="ddHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="ddReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="ddFb"></div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:.8rem">
+      <div class="card">
+        <h3>Sentence builder (tap OR drag)</h3>
+        <div class="kcard" id="ordHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="ordStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="ordCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="ordHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="ordReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="ordFb"></div>
+      </div>
+      <div class="card">
+        <h3>Fill the blanks (word bank)</h3>
+        <div class="kcard" id="bankHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="bankStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="bankCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="bankHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="bankReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="bankFb"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:.8rem">
+      <h3>Sorting (tap OR drag)</h3>
+      <div class="kcard" id="sortHost"></div>
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="sortCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="sortHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="sortReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="sortFb"></div>
+    </div>
+
+    <div class="card" style="margin-top:.8rem">
+      <h3>Irregular Trainer (easy → hard)</h3>
+      <div class="tabs">
+        <button class="tabbtn is-on" id="trEasy" type="button">Easy</button>
+        <button class="tabbtn" id="trMed" type="button">Medium</button>
+        <button class="tabbtn" id="trHard" type="button">Hard</button>
+      </div>
+      <div class="kcard" id="trHost">Choose a level, then Start.</div>
+      <div class="smallrow">
+        <button class="btn" id="trStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="trCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="trNext" type="button">➡️ Next</button>
+        <button class="btn btn--ghost" id="trHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="trReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="trFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secRoleplay">
+    <h2>4) Roleplay Studio (teacher‑guided)</h2>
+    <div class="card">
+      <div class="tiny" style="color:rgba(14,31,36,.72)">Use the buttons to reveal a model answer when needed. Practise pronunciation with 🔊.</div>
+
+      <div class="kcard" style="margin-top:.6rem">
+        <div class="badge">Roleplay A · Hotel</div>
+        <p><strong>Scenario:</strong> You checked in yesterday. The room was noisy. You want to explain what happened and ask for help.</p>
+        <div class="smallrow">
+          <button class="btn btn--ghost" data-rp="a" data-act="show">👀 Show model</button>
+          <button class="btn btn--ghost" data-rp="a" data-act="hide">🙈 Hide model</button>
+          <button class="btn btn--ghost" data-rp="a" data-act="listen">🔊 Listen model</button>
+        </div>
+        <div class="kcard hidden" id="rpA"></div>
+      </div>
+
+      <div class="kcard" style="margin-top:.8rem">
+        <div class="badge">Roleplay B · Restaurant</div>
+        <p><strong>Scenario:</strong> You ate at a restaurant last night. What did you have? What was good or not good?</p>
+        <div class="smallrow">
+          <button class="btn btn--ghost" data-rp="b" data-act="show">👀 Show model</button>
+          <button class="btn btn--ghost" data-rp="b" data-act="hide">🙈 Hide model</button>
+          <button class="btn btn--ghost" data-rp="b" data-act="listen">🔊 Listen model</button>
+        </div>
+        <div class="kcard hidden" id="rpB"></div>
+      </div>
+
+      <div class="kcard" style="margin-top:.8rem">
+        <div class="badge">Roleplay C · Tickets</div>
+        <p><strong>Scenario:</strong> You bought tickets. You didn’t understand “fee”. Use repair phrases and check the price.</p>
+        <div class="smallrow">
+          <button class="btn btn--ghost" data-rp="c" data-act="show">👀 Show model</button>
+          <button class="btn btn--ghost" data-rp="c" data-act="hide">🙈 Hide model</button>
+          <button class="btn btn--ghost" data-rp="c" data-act="listen">🔊 Listen model</button>
+        </div>
+        <div class="kcard hidden" id="rpC"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="secListening">
+    <h2>5) Listening (show/hide text)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <select class="select" id="lisPick"></select>
+        <button class="btn btn--ghost" id="lisPlayAll" type="button">🔊 Play all</button>
+        <button class="btn btn--ghost" id="lisShow" type="button">📄 Show text</button>
+        <button class="btn btn--ghost" id="lisHide" type="button">🙈 Hide text</button>
+      </div>
+
+      <div class="dialogue" id="lisStream"></div>
+
+      <hr class="soft"/>
+
+      <h3>Listening comprehension (5)</h3>
+      <div class="kcard" id="lisQHost">Choose a dialogue above.</div>
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="lisCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="lisReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="lisQFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secStory">
+    <h2>6) Story Builder (A1 → A2/B1)</h2>
+    <div class="card">
+      <div class="tabs">
+        <button class="tabbtn is-on" id="lvlA1" type="button">A1</button>
+        <button class="tabbtn" id="lvlA2" type="button">A2</button>
+        <button class="tabbtn" id="lvlB1" type="button">B1</button>
+      </div>
+
+      <div class="kcard" id="storyHost">Loading…</div>
+
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="storyListen" type="button">🔊 Listen</button>
+        <button class="btn btn--ghost" id="storyCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="storyReset" type="button">↺ Reset</button>
+      </div>
+
+      <div class="feedback hidden" id="storyFb"></div>
+
+      <div class="kcard" style="margin-top:.75rem">
+        <strong>Output:</strong><br/>
+        <span id="storyOut"></span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="tiny" style="opacity:.95">© SpeakEasyTisha · karine-irregular-past-cloe-speaking-studio-a1a2 · Build 20260514-161100</div>
+      <a class="toolmini" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<pre id="debugBox" class="hidden" style="white-space:pre-wrap;margin:1rem auto;padding:1rem;border:1px dashed rgba(255,255,255,.35);border-radius:14px;background:rgba(255,255,255,.92);max-width:1180px;color:#0e1f24;">Debug log</pre>
+
+<script src="js/karine-irregular-past-cloe-speaking-studio-a1a2.js"></script>
+</body>
+</html>

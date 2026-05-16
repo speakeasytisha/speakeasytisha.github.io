@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Canada Speaking Quest · Lesson 2 · SpeakEasyTisha</title>
+  <meta name="description" content="A complete 60-minute teacher-led oral lesson for travelling to Canada: airport, border, hotel, restaurant, directions, weather, and final speaking mission." />
+  <link rel="stylesheet" href="css/eric-canada-speaking-quest-lesson2.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to lesson</a>
+
+  <header class="topbar" id="top">
+    <div class="brand-block">
+      <div class="brand">SpeakEasy Tisha</div>
+      <p class="crumb">Canada Speaking Quest · Lesson 2 · A1+ → A2/B1 · Oral scenarios</p>
+    </div>
+
+    <div class="controls" aria-label="Lesson controls">
+      <div class="control-group" aria-label="Voice choice">
+        <span class="control-label">Voice</span>
+        <button class="pill active" type="button" data-voice="en-US">US</button>
+        <button class="pill" type="button" data-voice="en-GB">UK</button>
+      </div>
+      <div class="control-group audio-row">
+        <span class="control-label">Audio</span>
+        <button class="icon-btn" type="button" id="pauseAudio" aria-label="Pause audio">⏸</button>
+        <button class="icon-btn" type="button" id="resumeAudio" aria-label="Resume audio">▶️</button>
+        <button class="icon-btn" type="button" id="stopAudio" aria-label="Stop audio">⏹</button>
+      </div>
+      <div class="score-box" aria-live="polite"><span>Score</span><strong id="scoreText">0 / 0</strong></div>
+      <button class="pill reset-all" type="button" id="resetAll">↺ Reset</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero card">
+      <div class="hero-text">
+        <span class="badge">Full one-hour lesson</span>
+        <h1>Canada Speaking Quest</h1>
+        <p class="lead">Today you practise real oral scenarios for a trip to Canada: arriving at the airport, answering border questions, checking into a hotel, ordering in a restaurant, asking for help, and describing your travel plans.</p>
+        <div class="hero-actions">
+          <button class="primary" type="button" data-say="Today I am going to practise real travel conversations for Canada. I will answer questions, ask politely for help, explain small problems, and speak with more details.">▶️ Start lesson goal</button>
+          <a class="secondary" href="#map">Lesson map</a>
+          <a class="secondary" href="#final">Final speaking mission</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h2>Teacher focus</h2>
+        <ul class="check-list">
+          <li><strong>Confidence:</strong> answer without freezing.</li>
+          <li><strong>Accuracy:</strong> question forms + polite requests.</li>
+          <li><strong>Fluency:</strong> add reason, detail, feeling, next step.</li>
+          <li><strong>Canada context:</strong> useful travel situations, not random phrases.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="card teacher-note" id="what-learned">
+      <div class="section-title compact">
+        <span class="number">✓</span>
+        <div>
+          <h2>What was missing before — and what this lesson fixes</h2>
+          <p>This page is built as a real lesson, not only a collection of activities.</p>
+        </div>
+      </div>
+      <div class="grid fix-grid">
+        <article><strong>Before:</strong> too generic.<br><strong>Now:</strong> Canada airport, border, hotel, restaurant, tourist office, weather, and getting lost.</article>
+        <article><strong>Before:</strong> little teacher guidance.<br><strong>Now:</strong> exact timing, teacher prompts, follow-up questions, correction checklist.</article>
+        <article><strong>Before:</strong> not enough input.<br><strong>Now:</strong> vocabulary cards, grammar toolbox, model answers, pronunciation chunks.</article>
+        <article><strong>Before:</strong> too short.<br><strong>Now:</strong> a structured 60-minute lesson with extension tasks.</article>
+      </div>
+    </section>
+
+    <section class="card" id="map">
+      <div class="section-title">
+        <span class="number">1</span>
+        <div>
+          <h2>Lesson map <span class="time">60 minutes</span></h2>
+          <p>Use the timings as a teacher roadmap. Skip extension cards if the learner needs more repetition.</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <div><b>0–5 min</b><span>Warm-up: Why Canada? What are you going to do?</span></div>
+        <div><b>5–15 min</b><span>Canada survival vocabulary + listen/repeat cards</span></div>
+        <div><b>15–25 min</b><span>Grammar toolbox: polite questions + travel answers</span></div>
+        <div><b>25–38 min</b><span>Guided role-play: airport/border + hotel</span></div>
+        <div><b>38–50 min</b><span>Scenario carousel: restaurant, directions, tourist office, weather problem</span></div>
+        <div><b>50–58 min</b><span>Final speaking mission: 60-second Canada plan</span></div>
+        <div><b>58–60 min</b><span>Feedback: strengths + one correction target</span></div>
+      </div>
+    </section>
+
+    <section class="card" id="warmup">
+      <div class="section-title">
+        <span class="number">2</span>
+        <div>
+          <h2>Warm-up — answer, then improve</h2>
+          <p>Teacher asks the question. Learner answers once quickly, then uses the upgrade box to add details.</p>
+        </div>
+      </div>
+      <div id="warmupGrid" class="grid warmup-grid"></div>
+    </section>
+
+    <section class="card" id="vocab">
+      <div class="section-title">
+        <span class="number">3</span>
+        <div>
+          <h2>Canada survival vocabulary</h2>
+          <p>Filter by situation. Each card has a definition, French translation, example, and listen button. The audio reads only the English.</p>
+        </div>
+      </div>
+      <div class="filter-row" id="vocabFilters"></div>
+      <div id="vocabGrid" class="grid vocab-grid"></div>
+    </section>
+
+    <section class="card grammar" id="toolbox">
+      <div class="section-title">
+        <span class="number">4</span>
+        <div>
+          <h2>Grammar toolbox — useful forms for Canada</h2>
+          <p>Do not teach every tense today. Teach the forms he needs to survive a real conversation.</p>
+        </div>
+      </div>
+
+      <div class="grammar-grid">
+        <article class="grammar-card">
+          <h3>1. Polite requests</h3>
+          <p class="rule">Use <strong>Could you…?</strong> when you ask another person to help you.</p>
+          <div class="formula">Could you + verb + …?</div>
+          <ul>
+            <li>Could you help me, please?</li>
+            <li>Could you tell me where the bus stop is?</li>
+            <li>Could you repeat that more slowly, please?</li>
+          </ul>
+          <button class="mini-listen" type="button" data-say="Could you help me, please? Could you tell me where the bus stop is? Could you repeat that more slowly, please?">🔊 Listen</button>
+        </article>
+
+        <article class="grammar-card">
+          <h3>2. Polite personal requests</h3>
+          <p class="rule">Use <strong>Could I…?</strong> when you ask permission for yourself.</p>
+          <div class="formula">Could I + verb + …?</div>
+          <ul>
+            <li>Could I check in now?</li>
+            <li>Could I have a map, please?</li>
+            <li>Could I change rooms?</li>
+          </ul>
+          <button class="mini-listen" type="button" data-say="Could I check in now? Could I have a map, please? Could I change rooms?">🔊 Listen</button>
+        </article>
+
+        <article class="grammar-card">
+          <h3>3. Travel plans</h3>
+          <p class="rule">Use <strong>be going to</strong> for plans that are already in your mind.</p>
+          <div class="formula">I am going to + verb</div>
+          <ul>
+            <li>I’m going to visit Montreal.</li>
+            <li>We’re going to rent a car.</li>
+            <li>I’m not going to stay very long.</li>
+          </ul>
+          <button class="mini-listen" type="button" data-say="I am going to visit Montreal. We are going to rent a car. I am not going to stay very long.">🔊 Listen</button>
+        </article>
+
+        <article class="grammar-card">
+          <h3>4. Travel preparation</h3>
+          <p class="rule">Use <strong>have + past participle</strong> for things prepared before the trip.</p>
+          <div class="formula">I have booked / I have checked / I have prepared</div>
+          <ul>
+            <li>I have booked my flight.</li>
+            <li>I haven’t checked in online yet.</li>
+            <li>Have you prepared the documents?</li>
+          </ul>
+          <button class="mini-listen" type="button" data-say="I have booked my flight. I have not checked in online yet. Have you prepared the documents?">🔊 Listen</button>
+        </article>
+
+        <article class="grammar-card">
+          <h3>5. Explain a problem</h3>
+          <p class="rule">Use <strong>because</strong> for the reason and <strong>so</strong> for the result.</p>
+          <div class="formula">Problem + because + reason. So + request.</div>
+          <ul>
+            <li>My key card doesn’t work because the door does not open.</li>
+            <li>It is raining, so could you recommend an indoor activity?</li>
+            <li>I missed my bus, so I need another route.</li>
+          </ul>
+          <button class="mini-listen" type="button" data-say="My key card does not work because the door does not open. It is raining, so could you recommend an indoor activity? I missed my bus, so I need another route.">🔊 Listen</button>
+        </article>
+
+        <article class="grammar-card">
+          <h3>6. Make answers longer</h3>
+          <p class="rule">Use the four-step answer when the teacher asks a question.</p>
+          <div class="formula">Answer → detail → reason → closing sentence</div>
+          <ul>
+            <li>I’m going to Canada for holidays.</li>
+            <li>I’d like to visit nature and cities.</li>
+            <li>Because I love beautiful landscapes.</li>
+            <li>I’m really looking forward to it.</li>
+          </ul>
+          <button class="mini-listen" type="button" data-say="I am going to Canada for holidays. I would like to visit nature and cities, because I love beautiful landscapes. I am really looking forward to it.">🔊 Listen</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="card practice" id="grammarPractice">
+      <div class="section-title">
+        <span class="number">5</span>
+        <div>
+          <h2>Grammar practice — choose the best travel phrase</h2>
+          <p>Immediate feedback. Then say the correct sentence aloud.</p>
+        </div>
+      </div>
+      <div class="quiz-top">
+        <button class="secondary" type="button" id="newQuiz">New question</button>
+        <button class="secondary" type="button" id="listenQuiz">🔊 Listen prompt</button>
+      </div>
+      <div id="quizBox" class="quiz-box" aria-live="polite"></div>
+    </section>
+
+    <section class="card" id="roleplay">
+      <div class="section-title">
+        <span class="number">6</span>
+        <div>
+          <h2>Guided role-play — teacher + learner</h2>
+          <p>Teacher reads the blue line. Learner answers. Use “Show model” only after he tries.</p>
+        </div>
+      </div>
+
+      <div class="selector-row">
+        <label for="scenarioSelect">Scenario</label>
+        <select id="scenarioSelect"></select>
+        <button class="secondary" type="button" id="listenScenario">🔊 Listen goal</button>
+        <button class="secondary" type="button" id="resetScenario">↺ Reset</button>
+      </div>
+
+      <article class="scenario-box">
+        <div class="scenario-head">
+          <span class="badge" id="scenarioLevel">A2</span>
+          <h3 id="scenarioTitle">Scenario</h3>
+        </div>
+        <p id="scenarioGoal" class="goal-text"></p>
+        <div class="grid coach-grid">
+          <div class="coach-block">
+            <h4>Must-use language</h4>
+            <ul id="scenarioLanguage"></ul>
+          </div>
+          <div class="coach-block">
+            <h4>Teacher follow-up questions</h4>
+            <ul id="scenarioFollowups"></ul>
+          </div>
+        </div>
+      </article>
+
+      <div class="roleplay-panel">
+        <div class="roleplay-toolbar">
+          <button class="primary" type="button" id="startRoleplay">▶️ Start</button>
+          <button class="secondary" type="button" id="nextLine">➡️ Next line</button>
+          <button class="secondary" type="button" id="showModel">✅ Show model reply</button>
+          <button class="secondary" type="button" id="listenLine">🔊 Listen current line</button>
+        </div>
+        <div class="dialogue-card" id="dialogueCard" aria-live="polite">
+          <span class="speaker">Choose a scenario</span>
+          <p>Then click Start.</p>
+        </div>
+        <div class="model-box hidden" id="modelBox"></div>
+      </div>
+    </section>
+
+    <section class="card" id="upgrade">
+      <div class="section-title">
+        <span class="number">7</span>
+        <div>
+          <h2>From short answer to strong answer</h2>
+          <p>This is the key fluency work. He answers first, then upgrades with detail, reason, and closing sentence.</p>
+        </div>
+      </div>
+      <div id="upgradeGrid" class="grid upgrade-grid"></div>
+    </section>
+
+    <section class="card" id="builders">
+      <div class="section-title">
+        <span class="number">8</span>
+        <div>
+          <h2>Build & Speak — tap the words</h2>
+          <p>Touch-friendly sentence builders. Tap words in order, check, then say the sentence naturally.</p>
+        </div>
+      </div>
+      <div class="selector-row">
+        <label for="builderSelect">Task</label>
+        <select id="builderSelect"></select>
+        <button class="secondary" type="button" id="listenBuilderModel">🔊 Listen model</button>
+        <button class="secondary" type="button" id="resetBuilder">↺ Reset builder</button>
+      </div>
+      <div class="builder-layout">
+        <div>
+          <h3 id="builderPrompt">Prompt</h3>
+          <div id="wordBank" class="word-bank"></div>
+        </div>
+        <div>
+          <h3>Your sentence</h3>
+          <div id="answerZone" class="answer-zone" aria-live="polite"></div>
+          <div class="builder-actions">
+            <button class="primary" type="button" id="checkBuilder">✅ Check</button>
+            <button class="secondary" type="button" id="undoBuilder">↶ Undo</button>
+            <button class="secondary" type="button" id="speakMySentence">🔊 Listen sentence</button>
+          </div>
+          <p id="builderFeedback" class="feedback"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="fill">
+      <div class="section-title">
+        <span class="number">9</span>
+        <div>
+          <h2>Mini-dialogue gap fill</h2>
+          <p>Complete the travel conversation with the best words. Then read the full dialogue aloud.</p>
+        </div>
+      </div>
+      <div id="fillBox" class="fill-box"></div>
+      <div class="inline-actions">
+        <button class="primary" type="button" id="checkFill">✅ Check dialogue</button>
+        <button class="secondary" type="button" id="resetFill">↺ Reset</button>
+        <button class="secondary" type="button" id="listenFill">🔊 Listen completed dialogue</button>
+      </div>
+      <p id="fillFeedback" class="feedback"></p>
+    </section>
+
+    <section class="card" id="pronunciation">
+      <div class="section-title">
+        <span class="number">10</span>
+        <div>
+          <h2>Pronunciation & fluency chunks</h2>
+          <p>Practice in short groups. The goal is not speed; the goal is clear, calm speech.</p>
+        </div>
+      </div>
+      <div id="chunkGrid" class="grid chunk-grid"></div>
+    </section>
+
+    <section class="card final-card" id="final">
+      <div class="section-title">
+        <span class="number">11</span>
+        <div>
+          <h2>Final speaking mission — 60 seconds</h2>
+          <p>Answer like a mini oral exam. Use the structure, then react to teacher follow-up questions.</p>
+        </div>
+      </div>
+      <div class="final-layout">
+        <div class="mission-card">
+          <h3>Your mission</h3>
+          <p class="prompt-big">You are preparing a trip to Canada. Explain your plans, your reservations, what you want to visit, what you need to check, and what you will do if there is a small problem.</p>
+          <button class="secondary" type="button" data-say="I am preparing a trip to Canada. I have booked my flight and I am going to visit beautiful places. I would like to ask for information, check into my hotel, order in a restaurant, and ask for help if I have a problem.">🔊 Listen simple model</button>
+          <button class="secondary" type="button" id="showFinalModels">Show model answers</button>
+        </div>
+        <div class="timer-card">
+          <h3>Timer</h3>
+          <div class="timer-grid">
+            <button class="primary" type="button" data-timer="30">30 sec</button>
+            <button class="primary" type="button" data-timer="60">60 sec</button>
+            <button class="primary" type="button" data-timer="90">90 sec</button>
+          </div>
+          <div id="timerDisplay" class="timer-display">Ready</div>
+          <button class="secondary" type="button" id="stopTimer">Stop timer</button>
+        </div>
+      </div>
+      <div id="finalModels" class="model-bank hidden">
+        <article>
+          <h4>A1+/A2 model</h4>
+          <p>I’m going to Canada for holidays. I’m going to stay in a hotel and visit a city. I have booked my flight, but I need to check the documents. I would like to see nature and take photos. If I have a problem, I will ask someone for help.</p>
+          <button class="mini-listen" type="button" data-say="I am going to Canada for holidays. I am going to stay in a hotel and visit a city. I have booked my flight, but I need to check the documents. I would like to see nature and take photos. If I have a problem, I will ask someone for help.">🔊 Listen</button>
+        </article>
+        <article>
+          <h4>A2+/B1 model</h4>
+          <p>I’m really looking forward to my trip to Canada because I’d like to discover both the cities and the landscapes. I have already booked my flight and accommodation, but I still need to check the travel documents and the weather. During the trip, I’m going to ask for local advice, try Canadian food, and take photos. If something goes wrong, for example if I get lost or miss a bus, I’ll stay calm and ask, “Could you help me, please?”</p>
+          <button class="mini-listen" type="button" data-say="I am really looking forward to my trip to Canada because I would like to discover both the cities and the landscapes. I have already booked my flight and accommodation, but I still need to check the travel documents and the weather. During the trip, I am going to ask for local advice, try Canadian food, and take photos. If something goes wrong, for example if I get lost or miss a bus, I will stay calm and ask, could you help me please?">🔊 Listen</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="card teacher-note" id="teacher">
+      <div class="section-title">
+        <span class="number">12</span>
+        <div>
+          <h2>Teacher feedback sheet</h2>
+          <p>Use this at the end: praise first, then choose one correction target for next time.</p>
+        </div>
+      </div>
+      <div class="grid feedback-grid">
+        <article>
+          <h3>Strengths to notice</h3>
+          <label><input type="checkbox"> He answered without blocking.</label>
+          <label><input type="checkbox"> He used polite requests.</label>
+          <label><input type="checkbox"> He added reasons with because.</label>
+          <label><input type="checkbox"> He used travel vocabulary correctly.</label>
+        </article>
+        <article>
+          <h3>Correction target</h3>
+          <label><input type="checkbox"> Question order: Could you + verb?</label>
+          <label><input type="checkbox"> Pronunciation: would / could / booked.</label>
+          <label><input type="checkbox"> Add a closing sentence.</label>
+          <label><input type="checkbox"> Use past participles: booked / checked / prepared.</label>
+        </article>
+        <article>
+          <h3>Next lesson bridge</h3>
+          <p>Next logical lesson: <strong>Canada problem-solving stories</strong> — using past simple + past continuous to explain what happened: “I was waiting for the bus when I realized I was at the wrong stop.”</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card official-note">
+      <h2>Travel note for class</h2>
+      <p>This is an English lesson, not administrative advice. For real travel, check official Canada information about entry documents, border declarations, national parks, and local transport before leaving.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© SpeakEasyTisha · Canada Speaking Quest · Touch-friendly · Audio reads English only</p>
+    <a href="#top">↑ Back to top</a>
+  </footer>
+
+  <script defer src="js/eric-canada-speaking-quest-lesson2.js"></script>
+</body>
+</html>

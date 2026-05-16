@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yanis — Airport Procedures & Passenger Interactions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-11-airport-procedures-passenger-interactions.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Yanis · Airport Procedures & Passenger Interactions ✈️ · Learn it, note it, use it</div>
+    </div>
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+      <div class="scorebox" aria-live="polite">
+        <span class="scorebox__label">Score</span>
+        <span class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></span>
+      </div>
+      <button class="btn btn--ghost" id="btnStopAudio" type="button">⏹ Stop audio</button>
+      <button class="btn btn--danger" id="btnReset" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>Yanis — Airport Procedures & Passenger Interactions ✈️</h1>
+      <p class="lead">Today you will learn how to talk about <strong>airport procedures</strong> and <strong>simple passenger interactions</strong>. You will review useful vocabulary, practise polite service language, and use short roleplays linked to your future goal as a steward.</p>
+      <p class="lead fr">Aujourd’hui, vous allez apprendre à parler des <strong>procédures à l’aéroport</strong> et des <strong>interactions simples avec les passagers</strong>. Vous allez revoir du vocabulaire utile, pratiquer un langage de service poli, et utiliser de petits jeux de rôle liés à votre futur objectif de steward.</p>
+      <div class="hero__cta">
+        <a class="btn" href="#vocab">▶️ Start the lesson</a>
+        <button class="btn btn--ghost" id="btnSpeakGoals" type="button">🔊 Listen to the goals</button>
+      </div>
+      <div class="minirow">
+        <div class="minicard"><div class="minicard__t">📘 Learn</div><div class="minicard__p">Airport procedures, passenger phrases, and service language.</div></div>
+        <div class="minicard"><div class="minicard__t">🧠 Practise</div><div class="minicard__p">Choose, fill in, sort steps, and build better sentences.</div></div>
+        <div class="minicard"><div class="minicard__t">🎤 Roleplay</div><div class="minicard__p">Check-in, boarding, and on-board help with visible model answers.</div></div>
+      </div>
+    </div>
+    <div class="hero__panel card darkcard">
+      <h2>Lesson map</h2>
+      <ol>
+        <li>Learn the key words and phrases</li>
+        <li>Take notes</li>
+        <li>Review grammar for procedures</li>
+        <li>Do interactive practice</li>
+        <li>Write and compare 3 levels</li>
+        <li>Speak in mini airport scenarios</li>
+      </ol>
+      <div class="progress"><div id="progressBar" class="progress__bar"></div></div>
+      <p class="muted light">Tip: say the model aloud after you listen. Then try again without looking.</p>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section" id="vocab">
+    <div class="section__head">
+      <h2>1) Airport procedures & passenger language cards</h2>
+      <p class="muted">Tap a card to flip it. Use the audio button to hear the English only.</p>
+      <p class="muted fr">Touchez une carte pour la retourner. Utilisez le bouton audio pour entendre seulement l’anglais.</p>
+    </div>
+    <div class="filters">
+      <button class="btn btn--ghost filter-btn active" type="button" data-filter="all">All</button>
+      <button class="btn btn--ghost filter-btn" type="button" data-filter="procedure">Procedures</button>
+      <button class="btn btn--ghost filter-btn" type="button" data-filter="service">Service</button>
+    </div>
+    <div class="card-grid" id="cardGrid"></div>
+  </section>
+
+  <section class="section" id="notes">
+    <div class="section__head">
+      <h2>2) Take notes</h2>
+      <p class="muted">Write the words and expressions you want to remember today.</p>
+      <p class="muted fr">Écrivez les mots et expressions que vous voulez retenir aujourd’hui.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <h3>Procedure words</h3>
+        <div class="notes-list">
+          <label>1. <input type="text" placeholder="Example: check in"></label>
+          <label>2. <input type="text" placeholder="Example: go through security"></label>
+          <label>3. <input type="text" placeholder="Example: boarding gate"></label>
+          <label>4. <input type="text" placeholder="Example: board the plane"></label>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Useful passenger phrases</h3>
+        <div class="notes-list">
+          <label>1. <input type="text" placeholder="Example: May I see your boarding pass?"></label>
+          <label>2. <input type="text" placeholder="Example: Please take your seat"></label>
+          <label>3. <input type="text" placeholder="Example: Let me check"></label>
+          <label>4. <input type="text" placeholder="Example: Please wait here"></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="grammar">
+    <div class="section__head">
+      <h2>3) Grammar booster — procedures and polite service</h2>
+      <p class="muted">Read the rule, study the examples, then write your own sentence.</p>
+      <p class="muted fr">Lisez la règle, étudiez les exemples, puis écrivez votre propre phrase.</p>
+    </div>
+
+    <div class="grammar-grid">
+      <article class="card grammar-card">
+        <h3>A. Imperatives = short instructions</h3>
+        <p><strong>Rule:</strong> We use the base verb to give a short instruction or direction.</p>
+        <p class="fr small">On utilise la base du verbe pour donner une instruction courte ou une direction.</p>
+        <div class="example-box">
+          <p>✅ <strong>Please show</strong> your passport.</p>
+          <p>✅ <strong>Go</strong> to gate 12.</p>
+          <p>✅ <strong>Please wait</strong> here.</p>
+          <p>✅ <strong>Fasten</strong> your seat belt.</p>
+        </div>
+        <div class="compare-box">
+          <p><strong>Compare:</strong></p>
+          <p>Instruction: <strong>Please take your seat.</strong></p>
+          <p>Statement: <strong>You take your seat.</strong> ❌ not natural here</p>
+        </div>
+        <div class="note-box">
+          <label>My example: <input type="text" placeholder="Example: Please follow me."></label>
+        </div>
+      </article>
+
+      <article class="card grammar-card">
+        <h3>B. Can I...? / May I...? / Let me...</h3>
+        <p><strong>Rule:</strong> Use these forms to offer help or act politely in a service situation.</p>
+        <p class="fr small">Utilisez ces formes pour proposer de l’aide ou agir poliment dans une situation de service.</p>
+        <div class="example-box">
+          <p>✅ <strong>Can I help you?</strong></p>
+          <p>✅ <strong>May I see your boarding pass?</strong></p>
+          <p>✅ <strong>Let me check the gate for you.</strong></p>
+          <p>✅ <strong>Let me help you with your bag.</strong></p>
+        </div>
+        <div class="compare-box">
+          <p><strong>Compare:</strong></p>
+          <p>More direct: <strong>Show me your passport.</strong></p>
+          <p>More professional: <strong>May I see your passport, please?</strong></p>
+        </div>
+        <div class="note-box">
+          <label>My example: <input type="text" placeholder="Example: Can I help you with your seat?"></label>
+        </div>
+      </article>
+
+      <article class="card grammar-card">
+        <h3>C. Sequence words = clear procedures</h3>
+        <p><strong>Rule:</strong> Use sequence words to explain the steps clearly.</p>
+        <p class="fr small">Utilisez des mots d’ordre pour expliquer les étapes clairement.</p>
+        <div class="example-box">
+          <p>✅ <strong>First</strong>, check in online.</p>
+          <p>✅ <strong>Then</strong>, go through security.</p>
+          <p>✅ <strong>After that</strong>, wait at the gate.</p>
+          <p>✅ <strong>Finally</strong>, board the plane.</p>
+        </div>
+        <div class="note-box">
+          <label>My steps: <input type="text" placeholder="First..., then..., after that..., finally..."></label>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="ex1">
+    <div class="section__head">
+      <h2>4) Choose the best phrase</h2>
+      <p class="muted">Read the situation and choose the best answer.</p>
+      <p class="muted fr">Lisez la situation et choisissez la meilleure réponse.</p>
+    </div>
+    <div class="card" id="mcqHost"></div>
+  </section>
+
+  <section class="section" id="ex2">
+    <div class="section__head">
+      <h2>5) Fill in the blank</h2>
+      <p class="muted">Complete the sentence with the best word or phrase.</p>
+      <p class="muted fr">Complétez la phrase avec le meilleur mot ou expression.</p>
+    </div>
+    <div class="card" id="fillHost"></div>
+  </section>
+
+  <section class="section" id="ex3">
+    <div class="section__head">
+      <h2>6) Put the procedure in the correct order</h2>
+      <p class="muted">Tap the steps in the correct order.</p>
+      <p class="muted fr">Touchez les étapes dans le bon ordre.</p>
+    </div>
+    <div class="card" id="sequenceHost"></div>
+  </section>
+
+  <section class="section" id="ex4">
+    <div class="section__head">
+      <h2>7) Build the sentence</h2>
+      <p class="muted">Tap the words in the correct order.</p>
+      <p class="muted fr">Touchez les mots dans le bon ordre.</p>
+    </div>
+    <div class="card" id="builderHost"></div>
+  </section>
+
+  <section class="section" id="writing">
+    <div class="section__head">
+      <h2>8) Writing ladder — simple, better, stronger</h2>
+      <p class="muted">Compare the 3 levels, then write your own short answer.</p>
+      <p class="muted fr">Comparez les 3 niveaux, puis écrivez votre propre réponse courte.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <h3>Situation</h3>
+        <p>A passenger asks: <strong>“Where do I go now?”</strong></p>
+        <p class="fr small">Un passager demande : <strong>« Où est-ce que je vais maintenant ? »</strong></p>
+        <div class="ladder">
+          <div class="ladder-step"><strong>Level 1:</strong> Go to gate 8.</div>
+          <div class="ladder-step"><strong>Level 2:</strong> Please go to gate 8 and wait there.</div>
+          <div class="ladder-step"><strong>Level 3:</strong> Please go to gate 8 and wait there. Boarding will start in ten minutes.</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Write your own answer</h3>
+        <textarea id="writingBox" rows="7" placeholder="Write 2 or 3 short sentences..."></textarea>
+        <div class="smallrow top-gap">
+          <button class="btn" id="btnCheckWriting" type="button">✅ Check my writing</button>
+          <button class="btn btn--ghost" id="btnShowWritingTips" type="button">💡 Show writing tips</button>
+        </div>
+        <div class="feedback hidden" id="writingFeedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="roleplay">
+    <div class="section__head">
+      <h2>9) Roleplay — airport and plane situations</h2>
+      <p class="muted">Listen, speak, and compare your answer with the model.</p>
+      <p class="muted fr">Écoutez, parlez, et comparez votre réponse avec le modèle.</p>
+    </div>
+    <div class="card scenario-card">
+      <div class="scenario-controls">
+        <select id="scenarioSelect" class="select"></select>
+        <button class="btn" id="btnScenarioPlay" type="button">🔊 Listen prompt</button>
+        <button class="btn btn--ghost" id="btnShowModel" type="button">👀 Show model</button>
+      </div>
+      <div class="scenario-box">
+        <h3 id="scenarioTitle"></h3>
+        <p id="scenarioPrompt" class="scenario-prompt"></p>
+        <p id="scenarioPromptFr" class="muted fr"></p>
+      </div>
+      <div class="model-box hidden" id="modelBox">
+        <h4>Model answer</h4>
+        <p id="modelText"></p>
+        <p id="modelTextFr" class="muted fr"></p>
+        <div class="smallrow">
+          <button class="btn btn--ghost" id="btnPlayModel" type="button">🔊 Listen to the model</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="wrapup">
+    <div class="section__head">
+      <h2>10) Wrap-up</h2>
+      <p class="muted">What can you do now?</p>
+      <p class="muted fr">Que pouvez-vous faire maintenant ?</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <h3>You can now...</h3>
+        <ul class="checklist">
+          <li>use key procedure words for the airport</li>
+          <li>give short, clear instructions</li>
+          <li>use polite service phrases</li>
+          <li>guide a passenger in a simple situation</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Mini speaking task</h3>
+        <ol>
+          <li>Please show your ...</li>
+          <li>Then go to gate ...</li>
+          <li>Please wait ...</li>
+          <li>Can I help you with ... ?</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="muted">Yanis · Airport Procedures & Passenger Interactions · Touch-friendly for Safari / iPad</div>
+      <a class="btn btn--ghost" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<script src="js/yanis-page-11-airport-procedures-passenger-interactions.js"></script>
+</body>
+</html>

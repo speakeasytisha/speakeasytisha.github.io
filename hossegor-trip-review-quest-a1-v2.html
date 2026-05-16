@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Hossegor Trip Review Quest (A1+) v2 · SpeakEasyTisha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/hossegor-trip-review-quest-a1-v2.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip</a>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Hossegor Trip Review Quest · A1+ · Past simple + connectors + going to</div>
+    </div>
+    <div class="controls">
+      <div class="pill"><span class="pill__label">Accent</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+      <div class="pill"><span class="pill__label">Voice</span><select class="select" id="voiceSelect" aria-label="Voice list"></select></div>
+      <div class="pill"><span class="pill__label">Audio</span>
+        <button class="seg is-on" id="autoOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="autoOn" type="button" aria-pressed="false">ON</button>
+        <button class="btn btn--ghost" id="btnTestVoice" type="button">🔊 Test</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+      <span class="pill" id="jsStatus">JS: loading…</span>
+      <span class="pill">Build: 20260514-151243</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>Hossegor Trip Review Quest (A1+) — Level Up</h1>
+      <p class="lead">Focus: <strong>Past simple (affirmative / negative / questions)</strong> + <strong>connectors</strong> + <strong>going to</strong> (Spain / Brazil / Crete).</p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="btnHow" type="button">ℹ️ How to use</button>
+      </div>
+      <div class="progress" style="margin-top:.7rem"><div class="progress__bar" id="progressBar"></div></div>
+      <div class="tiny" style="margin-top:.35rem;opacity:.95">Tip: If the voice sounds French on iPhone/iPad, install an English voice in Settings → Accessibility → Spoken Content → Voices.</div>
+    </div>
+    <div class="panelcard">
+      <div class="panelcard__title">Lesson map (≈ 70 min)</div>
+      <ol class="panelcard__list">
+        <li>Vocabulary + connectors</li><li>Grammar: was/were + past simple + going to</li><li>Exercises + Past Simple Trainer (easy → hard)</li><li>Reading</li><li>Writing (A1/A2/B1 versions)</li><li>Listening</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section" id="secVocab">
+    <h2>1) Vocabulary (icons + French)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <select class="select" id="vCat"></select>
+        <button class="btn btn--ghost" id="btnVRevealAll" type="button">👀 Reveal all</button>
+        <button class="btn btn--ghost" id="btnVHideAll" type="button">🙈 Hide all</button>
+        <button class="btn btn--ghost" id="btnVQuiz" type="button">✅ Quick quiz</button>
+      </div>
+      <div class="grid3" id="vGrid" style="margin-top:.6rem"></div>
+      <div class="feedback hidden" id="vFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secGrammar">
+    <h2>2) Grammar mini‑lessons (rules + examples)</h2>
+    <div class="grid2" id="gGrid"></div>
+  </section>
+
+  <section class="section" id="secExercises">
+    <h2>3) Exercise Lab (interactive + score)</h2>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>MCQ</h3>
+        <div class="kcard" id="mcqHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="mcqStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="mcqCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="mcqNext" type="button">➡️ Next</button>
+          <button class="btn btn--ghost" id="mcqHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="mcqReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="mcqFb"></div>
+      </div>
+
+      <div class="card">
+        <h3>Dropdown</h3>
+        <div class="kcard" id="ddHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="ddStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="ddCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="ddNext" type="button">➡️ Next</button>
+          <button class="btn btn--ghost" id="ddHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="ddReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="ddFb"></div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:.8rem">
+      <div class="card">
+        <h3>Sentence builder (tap OR drag)</h3>
+        <div class="kcard" id="ordHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="ordStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="ordCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="ordHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="ordReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="ordFb"></div>
+      </div>
+
+      <div class="card">
+        <h3>Fill the blanks (word bank)</h3>
+        <div class="kcard" id="bankHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="bankStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="bankCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="bankHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="bankReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="bankFb"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:.8rem">
+      <h3>Sorting (tap OR drag)</h3>
+      <div class="kcard" id="sortHost"></div>
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="sortCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="sortHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="sortReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="sortFb"></div>
+    </div>
+
+    <div class="card" style="margin-top:.8rem">
+      <h3>Past Simple Trainer (easy → hard)</h3>
+      <div class="tabs">
+        <button class="tabbtn is-on" id="ptEasy" type="button">Easy</button>
+        <button class="tabbtn" id="ptMed" type="button">Medium</button>
+        <button class="tabbtn" id="ptHard" type="button">Hard</button>
+      </div>
+      <div class="kcard" id="ptHost">Choose a level, then Start.</div>
+      <div class="smallrow">
+        <button class="btn" id="ptStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="ptCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="ptNext" type="button">➡️ Next</button>
+        <button class="btn btn--ghost" id="ptHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="ptReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="ptFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secReading">
+    <h2>4) Reading comprehension</h2>
+    <div class="card">
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="readListen" type="button">🔊 Listen to the text</button>
+        <button class="btn btn--ghost" id="readCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="readReset" type="button">↺ Reset</button>
+      </div>
+      <div class="kcard" id="readHost">Loading…</div>
+      <div class="feedback hidden" id="readFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secWriting">
+    <h2>5) Write a review (guided + levels)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="writeListen" type="button">🔊 Listen</button>
+        <button class="btn btn--ghost" id="writeCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="writeReset" type="button">↺ Reset</button>
+      </div>
+      <div class="tabs">
+        <button class="tabbtn is-on" id="lvlA1" type="button">A1 version</button>
+        <button class="tabbtn" id="lvlA2" type="button">A2 version</button>
+        <button class="tabbtn" id="lvlB1" type="button">B1 version</button>
+      </div>
+      <div class="kcard" id="writeHost">Loading…</div>
+      <div class="feedback hidden" id="writeFb"></div>
+      <div class="kcard" style="margin-top:.75rem">
+        <strong>Model output (selected level):</strong><br/>
+        <span id="modelOut"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="secListening">
+    <h2>6) Listening (show text + speaker buttons)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <select class="select" id="lisPick"></select>
+        <button class="btn btn--ghost" id="lisPlayAll" type="button">🔊 Play all</button>
+        <button class="btn btn--ghost" id="lisShow" type="button">📄 Show text</button>
+        <button class="btn btn--ghost" id="lisHide" type="button">🙈 Hide text</button>
+      </div>
+      <div class="dialogue" id="lisStream"></div>
+      <hr class="soft"/>
+      <h3>Listening comprehension (5)</h3>
+      <div class="kcard" id="lisQHost">Choose a dialogue above.</div>
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="lisCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="lisReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="lisQFb"></div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer__inner">
+    <div class="tiny" style="opacity:.95">© SpeakEasyTisha · hossegor-trip-review-quest-a1-v2 · Build 20260514-151243</div>
+    <a class="toolmini" href="#top">↑ Back to top</a>
+  </div></footer>
+</main>
+
+<pre id="debugBox" class="hidden" style="white-space:pre-wrap;margin:1rem auto;padding:1rem;border:1px dashed rgba(255,255,255,.35);border-radius:14px;background:rgba(255,255,255,.92);max-width:1180px;color:#0e1f24;">Debug log</pre>
+
+<script src="js/hossegor-trip-review-quest-a1-v2.js"></script>
+</body>
+</html>
