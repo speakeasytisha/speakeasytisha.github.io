@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Angie — Question & Modal Magic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/angie-questions-modals-next-step.css">
+</head>
+<body>
+<div class="stars"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="script">SpeakEasyTisha</span>
+    <span class="tag">Angie’s Disney Question & Modal Magic</span>
+  </div>
+  <div class="controls">
+    <button class="pill active" id="usBtn">US 🇺🇸</button>
+    <button class="pill" id="ukBtn">UK 🇬🇧</button>
+    <span class="score">Score: <strong id="score">0</strong></span>
+    <button class="pill" id="reset">Reset</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="heroText">
+    <p class="kicker">✨ NEXT STEP — QUESTION & MODAL MAGIC</p>
+    <h1>Ask Better Questions & Sound More Professional</h1>
+    <p class="lead">Today you will learn how to ask questions clearly and use <strong>can, may, could, and should</strong> in Disney attractions, boutique, and interview situations.</p>
+    <button class="btn primary" data-speak="Welcome to your question and modal magic lesson. Today you will learn how to ask better questions and use can, may, could, and should in professional Disney situations.">🔊 Listen</button>
+  </div>
+  <div class="castle">🏰✨</div>
+</section>
+
+<main>
+
+<section class="card">
+<h2>🎯 Your mission today</h2>
+<div class="missionGrid">
+  <div><strong>1. Ask questions</strong><br>Do / Are / Can / WH questions</div>
+  <div><strong>2. Offer help</strong><br>Can I help you?</div>
+  <div><strong>3. Sound polite</strong><br>May I / Could you…?</div>
+  <div><strong>4. Give advice</strong><br>You should…</div>
+</div>
+</section>
+
+<section class="card">
+<h2>🧠 Magic Vocabulary</h2>
+<p class="muted">Tap a card to reveal French, definition, and example. Use listen to repeat.</p>
+<div class="tabs">
+<button class="tab active" data-tab="questions">❓ Questions</button>
+<button class="tab" data-tab="modals">🪄 Modals</button>
+<button class="tab" data-tab="attractions">🎢 Attractions</button>
+<button class="tab" data-tab="boutique">🛍️ Boutique</button>
+</div>
+<div class="actions">
+<button class="btn" id="shuffleVocab">🔀 Shuffle</button>
+<button class="btn" id="listenVocab">🔊 Listen all</button>
+</div>
+<div id="vocabGrid" class="vocabGrid"></div>
+</section>
+
+<section class="card">
+<h2>❓ Lesson 1 — YES / NO Questions</h2>
+<div class="ruleGrid">
+<div class="rule">
+<h3>BE questions</h3>
+<p><strong>Am / Is / Are + subject?</strong></p>
+<p class="example">Are you looking for the castle?</p>
+<p class="example">Is the attraction open?</p>
+</div>
+<div class="rule">
+<h3>DO questions</h3>
+<p><strong>Do / Does + subject + verb?</strong></p>
+<p class="example">Do you need help?</p>
+<p class="example">Does she work here?</p>
+</div>
+<div class="rule">
+<h3>CAN questions</h3>
+<p><strong>Can + subject + verb?</strong></p>
+<p class="example">Can I help you?</p>
+<p class="example">Can you repeat, please?</p>
+</div>
+<div class="rule">
+<h3>Magic key</h3>
+<p><strong>Helper word + subject + verb?</strong></p>
+<p class="example">Do you need help?</p>
+</div>
+</div>
+<div class="exercise">
+<h3>Choose the correct question</h3>
+<div id="yesNoQuiz"></div>
+</div>
+<div class="exercise">
+<h3>Build a question</h3>
+<div id="yesNoBuilder"></div>
+</div>
+</section>
+
+<section class="card">
+<h2>🧭 Lesson 2 — WH Questions</h2>
+<p>Use WH questions to get information: where, what, when, who, why, how.</p>
+<div class="whGrid">
+<div><strong>Where</strong><span>place</span><em>Where is the entrance?</em></div>
+<div><strong>What</strong><span>thing / information</span><em>What size do you need?</em></div>
+<div><strong>When</strong><span>time</span><em>When does the show start?</em></div>
+<div><strong>Who</strong><span>person</span><em>Who are you looking for?</em></div>
+<div><strong>Why</strong><span>reason</span><em>Why would you like to work here?</em></div>
+<div><strong>How</strong><span>method</span><em>How can I help you?</em></div>
+</div>
+<div class="ruleGrid">
+<div class="rule">
+<h3>With BE</h3>
+<p><strong>WH + be + subject?</strong></p>
+<p class="example">Where is the boutique?</p>
+</div>
+<div class="rule">
+<h3>With DO</h3>
+<p><strong>WH + do/does + subject + verb?</strong></p>
+<p class="example">What do you need?</p>
+</div>
+</div>
+<div class="exercise"><h3>Choose the WH word</h3><div id="whQuiz"></div></div>
+<div class="exercise"><h3>Build a WH question</h3><div id="whBuilder"></div></div>
+</section>
+
+<section class="card">
+<h2>🪄 Lesson 3 — CAN, MAY, COULD, SHOULD</h2>
+<div class="modalGrid">
+<div class="modal"><h3>CAN</h3><p><strong>Use:</strong> ability / offer / possibility</p><p class="example">Can I help you?</p></div>
+<div class="modal"><h3>MAY</h3><p><strong>Use:</strong> very polite / formal permission</p><p class="example">May I see your ticket?</p></div>
+<div class="modal"><h3>COULD</h3><p><strong>Use:</strong> polite request / soft question</p><p class="example">Could you repeat, please?</p></div>
+<div class="modal"><h3>SHOULD</h3><p><strong>Use:</strong> advice / recommendation</p><p class="example">You should check the app.</p></div>
+</div>
+<div class="ruleGrid">
+<div class="rule">
+<h3>Important structure</h3>
+<p><strong>Modal + base verb</strong></p>
+<p class="example">I can help. / May I see? / Could you repeat? / You should wait.</p>
+</div>
+<div class="rule">
+<h3>Do not add TO</h3>
+<p>❌ I can to help you.</p>
+<p>✅ I can help you.</p>
+<p>❌ You should to wait here.</p>
+<p>✅ You should wait here.</p>
+</div>
+</div>
+<div class="exercise"><h3>Choose the best modal</h3><div id="modalQuiz"></div></div>
+
+<div class="exercise">
+<h3>Modal sorting — drag or tap</h3>
+<p class="muted">On iPad, tap a sentence, then tap the correct zone.</p>
+<div class="dropGrid">
+<div class="dropZone" data-zone="can"><h3>CAN</h3><p>ability / offer</p></div>
+<div class="dropZone" data-zone="may"><h3>MAY</h3><p>formal permission</p></div>
+<div class="dropZone" data-zone="could"><h3>COULD</h3><p>polite request</p></div>
+<div class="dropZone" data-zone="should"><h3>SHOULD</h3><p>advice</p></div>
+</div>
+<div id="dragBank" class="dragBank"></div>
+<p id="dragFeedback" class="feedback"></p>
+</div>
+</section>
+
+<section class="card">
+<h2>🎢 Lesson 4 — Attraction Dialogue</h2>
+<div class="dialogue">
+<p><strong>Guest:</strong> Excuse me, where is the entrance?</p>
+<label>You:
+<select id="attr1">
+<option value="">Choose…</option>
+<option>The entrance is on the left.</option>
+<option>Can I to help you?</option>
+<option>I am 21 years old.</option>
+</select></label>
+<p><strong>Guest:</strong> Can I enter now?</p>
+<label>You:
+<select id="attr2">
+<option value="">Choose…</option>
+<option>Yes, you can. Please keep your ticket.</option>
+<option>Yes, you should to enter.</option>
+<option>I sale strawberries.</option>
+</select></label>
+<p><strong>Guest:</strong> What should I do?</p>
+<label>You:
+<select id="attr3">
+<option value="">Choose…</option>
+<option>You should wait here.</option>
+<option>You may waiting here.</option>
+<option>You can to wait here.</option>
+</select></label>
+<button class="btn primary" id="checkAttr">Check attraction dialogue</button>
+<button class="btn" data-speak="Guest: Excuse me, where is the entrance? You: The entrance is on the left. Guest: Can I enter now? You: Yes, you can. Please keep your ticket. Guest: What should I do? You: You should wait here.">🔊 Listen model</button>
+<p id="attrFeedback" class="feedback"></p>
+</div>
+</section>
+
+<section class="card">
+<h2>🛍️ Lesson 5 — Boutique Dialogue</h2>
+<div class="dialogue">
+<p><strong>Customer:</strong> Hello.</p>
+<label>You:
+<select id="shop1">
+<option value="">Choose…</option>
+<option>Hello! How can I help you?</option>
+<option>Hello! What you need?</option>
+<option>Hello! You need help?</option>
+</select></label>
+<p><strong>Customer:</strong> I would like this T-shirt in medium.</p>
+<label>You:
+<select id="shop2">
+<option value="">Choose…</option>
+<option>Of course. What size do you need?</option>
+<option>Of course. What size you need?</option>
+<option>Of course. May you need?</option>
+</select></label>
+<p><strong>Customer:</strong> Can I pay here?</p>
+<label>You:
+<select id="shop3">
+<option value="">Choose…</option>
+<option>Yes, you can. May I see your card?</option>
+<option>Yes, you may to pay.</option>
+<option>Yes, you should card.</option>
+</select></label>
+<button class="btn primary" id="checkShop">Check boutique dialogue</button>
+<button class="btn" data-speak="Customer: Hello. You: Hello! How can I help you? Customer: I would like this T-shirt in medium. You: Of course. What size do you need? Customer: Can I pay here? You: Yes, you can. May I see your card?">🔊 Listen model</button>
+<p id="shopFeedback" class="feedback"></p>
+</div>
+</section>
+
+<section class="card">
+<h2>🎤 Interview Method — Ask and answer professionally</h2>
+<div class="ruleGrid">
+<div class="rule">
+<h3>Answer structure</h3>
+<p>1. Direct answer</p>
+<p>2. Give a reason</p>
+<p>3. Give a Disney example</p>
+<p>4. Add a future goal</p>
+</div>
+<div class="rule">
+<h3>Model</h3>
+<p class="example">I can help guests by listening carefully and asking clear questions. If a family is lost, I can ask where they want to go and show them the way. I would like to improve my English so I can help guests more confidently.</p>
+</div>
+</div>
+
+<div class="exercise">
+<h3>Interview answer builder</h3>
+<label>Choose your strength
+<select id="intStrength">
+<option>I can help guests.</option>
+<option>I can stay calm.</option>
+<option>I can communicate with customers.</option>
+<option>I can give directions.</option>
+</select></label>
+<label>Choose your example
+<select id="intExample">
+<option>If a guest is lost, I can ask clear questions and show them the way.</option>
+<option>If a customer needs help, I can listen and find a solution.</option>
+<option>If a family needs information, I can explain slowly and clearly.</option>
+</select></label>
+<label>Choose your future goal
+<select id="intGoal">
+<option>I would like to improve my English and become more confident.</option>
+<option>I am going to practise speaking every week.</option>
+<option>I would like to work in attractions or in a boutique.</option>
+</select></label>
+<button class="btn primary" id="buildInterview">Build answer</button>
+<button class="btn" id="speakInterviewBuilt">🔊 Listen</button>
+<div id="interviewOutput" class="output"></div>
+</div>
+</section>
+
+<section class="card">
+<h2>🌟 Model Answers — different levels</h2>
+<div class="actions">
+<button class="btn primary modelBtn" data-model="a1">🟢 A1/A2</button>
+<button class="btn modelBtn" data-model="a2">🟡 A2+/B1</button>
+<button class="btn modelBtn" data-model="b1">🟣 B1+</button>
+</div>
+<div class="modelBox">
+<h3 id="modelTitle"></h3>
+<p id="modelText"></p>
+<button class="btn" id="speakModel">🔊 Listen</button>
+<button class="btn" id="toggleNotes">✨ Show upgrade notes</button>
+<div id="modelNotes" class="feedback hidden"></div>
+</div>
+</section>
+
+<section class="card">
+<h2>🎭 Roleplay Builder — question + modal practice</h2>
+<label>Scenario
+<select id="roleScenario">
+<option value="lost">A guest is lost</option>
+<option value="ticket">A guest asks about a ticket</option>
+<option value="size">A customer wants another size</option>
+<option value="interview">Interview: How can you help guests?</option>
+</select></label>
+<div id="rolePrompt" class="output"></div>
+<div id="roleChoices" class="choiceGrid"></div>
+<button class="btn primary" id="buildRole">Build roleplay answer</button>
+<button class="btn" id="speakRole">🔊 Listen</button>
+<button class="btn" id="resetRole">Reset</button>
+<div id="roleOutput" class="output"></div>
+</section>
+
+<section class="card final">
+<h2>🏰 Final Interview Practice</h2>
+<p><strong>How can you help guests at Disney, and what questions can you ask?</strong></p>
+<textarea id="finalAnswer" placeholder="Use: can, may, could, should, Do you...?, Where is...?, How can I help you?"></textarea>
+<button class="btn primary" id="checkFinal">Check my answer</button>
+<button class="btn" id="speakFinal">🔊 Listen</button>
+<div id="finalFeedback" class="feedback"></div>
+<p class="magicLine">Every question you ask can help you create a magical guest experience. ✨</p>
+</section>
+
+</main>
+<footer>SpeakEasyTisha • Angie’s Disney Question & Modal Magic</footer>
+<script src="js/angie-questions-modals-next-step.js"></script>
+</body>
+</html>
