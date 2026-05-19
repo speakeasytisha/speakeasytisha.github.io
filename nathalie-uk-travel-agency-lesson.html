@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nathalie’s Gulliver-Style UK Travel Quest</title>
+  <link rel="stylesheet" href="css/nathalie-uk-travel-agency-lesson.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar">
+      <div class="brand">SpeakEasyTisha · CLOE Travel English</div>
+      <div class="voice-box">
+        <label for="voiceSelect">Voice</label>
+        <select id="voiceSelect" aria-label="Choose English voice">
+          <option value="en-GB">British English</option>
+          <option value="en-US">American English</option>
+        </select>
+        <button class="small-btn" id="stopSpeech">Stop sound</button>
+      </div>
+    </nav>
+    <div class="hero-card">
+      <p class="eyebrow">A refined travel adventure for oral confidence</p>
+      <h1>Nathalie’s Journeys Around the Planet</h1>
+      <h2>Lesson 1 · Your UK Travel Agency Appointment</h2>
+      <p class="hero-text">Today, you are visiting a travel agency. You will choose a real UK destination, ask polite questions, describe your preferences, and plan your journey by plane, ferry, train, bus or taxi.</p>
+      <div class="hero-actions">
+        <a href="#destinations" class="btn primary">Start the journey</a>
+        <a href="#roleplay" class="btn secondary">Go to roleplay</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="score-panel" aria-live="polite">
+      <div><strong>Global score:</strong> <span id="globalScore">0</span> / <span id="globalTotal">0</span></div>
+      <button class="small-btn" id="resetAll">Reset all exercises</button>
+    </section>
+
+    <section class="lesson-section intro-grid">
+      <div class="card parchment">
+        <h2>Lesson mission</h2>
+        <p>You are ready to travel the world. In this first lesson, you will learn how to speak politely at a travel agency and explain what kind of UK trip you would like.</p>
+        <ul class="pretty-list">
+          <li>Choose a destination.</li>
+          <li>Describe the area, weather and activities.</li>
+          <li>Ask formal travel questions.</li>
+          <li>Practise CLOE-style oral answers.</li>
+        </ul>
+      </div>
+      <div class="card grammar-note">
+        <h2>Today’s key sentence</h2>
+        <p class="big-model">I would like to visit a peaceful place near the coast.</p>
+        <button class="listen" data-speak="I would like to visit a peaceful place near the coast.">Listen</button>
+      </div>
+    </section>
+
+    <section id="destinations" class="lesson-section">
+      <div class="section-title">
+        <p class="eyebrow">Interactive explorer</p>
+        <h2>1. Choose your UK destination</h2>
+        <p>Click a category, then read the cards. You can use the text to prepare your travel agency appointment.</p>
+      </div>
+      <div class="filter-row" id="destinationFilters">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="area">Areas</button>
+        <button class="chip" data-filter="activities">Activities</button>
+        <button class="chip" data-filter="weather">Weather</button>
+        <button class="chip" data-filter="adjectives">Adjectives</button>
+        <button class="chip" data-filter="time">Days & weeks</button>
+        <button class="chip" data-filter="transport">Transport</button>
+      </div>
+      <div class="destination-grid" id="destinationGrid"></div>
+    </section>
+
+    <section class="lesson-section">
+      <div class="section-title">
+        <p class="eyebrow">Vocabulary bank</p>
+        <h2>2. Useful travel words</h2>
+        <p>Each card gives you the English word, French translation, definition and example. Use the filters to revise by category.</p>
+      </div>
+      <div class="filter-row" id="vocabFilters">
+        <button class="chip active" data-vocab-filter="all">All</button>
+        <button class="chip" data-vocab-filter="transport">Transport</button>
+        <button class="chip" data-vocab-filter="weather">Weather</button>
+        <button class="chip" data-vocab-filter="adjective">Adjectives</button>
+        <button class="chip" data-vocab-filter="time">Days & weeks</button>
+        <button class="chip" data-vocab-filter="expression">Formal expressions</button>
+      </div>
+      <div class="vocab-grid" id="vocabGrid"></div>
+    </section>
+
+    <section class="lesson-section grammar-lab">
+      <div class="section-title">
+        <p class="eyebrow">Clear grammar lesson</p>
+        <h2>3. Structured grammar for the travel agency</h2>
+      </div>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="would">Would like</button>
+        <button class="tab" data-tab="present">Present simple</button>
+        <button class="tab" data-tab="there">There is / There are</button>
+        <button class="tab" data-tab="questions">Polite questions</button>
+      </div>
+      <div class="tab-panel active" id="tab-would">
+        <h3>Would like = je voudrais / j’aimerais</h3>
+        <p>Use <strong>would like</strong> to sound polite when you ask for information, book a ticket, or explain your travel wishes.</p>
+        <div class="grammar-table">
+          <div><strong>Affirmative</strong><br>I would like to visit Bath.</div>
+          <div><strong>Negative</strong><br>I would not like a very crowded city.</div>
+          <div><strong>Question</strong><br>Would you like a return ticket?</div>
+        </div>
+        <p class="tip">After <strong>would like</strong>, use <strong>to + verb</strong>: I would like <u>to visit</u> London.</p>
+        <button class="listen" data-speak="I would like to visit Bath. I would not like a very crowded city. Would you like a return ticket?">Listen to the models</button>
+      </div>
+      <div class="tab-panel" id="tab-present">
+        <h3>Present simple = preferences and facts</h3>
+        <p>Use the present simple for things you like, places that exist, and general travel facts.</p>
+        <div class="grammar-table">
+          <div><strong>I / you / we / they</strong><br>I like peaceful places.</div>
+          <div><strong>He / she / it</strong><br>London has many museums.</div>
+          <div><strong>Question</strong><br>Do you like historic cities?</div>
+        </div>
+        <p class="tip">For <strong>he / she / it</strong>, add <strong>-s</strong>: Bath looks elegant. London has many museums.</p>
+        <button class="listen" data-speak="I like peaceful places. London has many museums. Do you like historic cities?">Listen to the models</button>
+      </div>
+      <div class="tab-panel" id="tab-there">
+        <h3>There is / There are = il y a</h3>
+        <p>Use this structure to describe places.</p>
+        <div class="grammar-table">
+          <div><strong>Singular</strong><br>There is a castle.</div>
+          <div><strong>Plural</strong><br>There are many museums.</div>
+          <div><strong>Question</strong><br>Are there good restaurants?</div>
+        </div>
+        <p class="tip">Use <strong>there is</strong> for one thing. Use <strong>there are</strong> for two or more things.</p>
+        <button class="listen" data-speak="There is a castle. There are many museums. Are there good restaurants?">Listen to the models</button>
+      </div>
+      <div class="tab-panel" id="tab-questions">
+        <h3>Formal questions at a travel agency</h3>
+        <p>Use these question starters to sound polite and confident.</p>
+        <div class="phrase-bank phrase-lesson">
+          <div class="phrase-card"><button class="listen phrase" data-speak="Could you recommend a peaceful destination?">Could you recommend a peaceful destination?</button><p class="translation">Pourriez-vous recommander une destination paisible ?</p></div>
+          <div class="phrase-card"><button class="listen phrase" data-speak="I would like some information about train tickets.">I would like some information about train tickets.</button><p class="translation">Je voudrais des renseignements sur les billets de train.</p></div>
+          <div class="phrase-card"><button class="listen phrase" data-speak="Could you tell me the best way to travel there?">Could you tell me the best way to travel there?</button><p class="translation">Pourriez-vous me dire la meilleure façon de s’y rendre ?</p></div>
+          <div class="phrase-card"><button class="listen phrase" data-speak="Would it be possible to travel by ferry?">Would it be possible to travel by ferry?</button><p class="translation">Serait-il possible de voyager en ferry ?</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lesson-section mini-lessons">
+      <div class="section-title">
+        <p class="eyebrow">Before you practise</p>
+        <h2>4. Mini-lessons for every activity</h2>
+        <p>Read these short lessons first. They explain the language you will use in the exercises, dialogue and roleplay.</p>
+      </div>
+      <div class="mini-grid">
+        <article class="card"><h3>🧭 Destination description</h3><p>To describe a place, use: <strong>It is + adjective</strong> and <strong>There is / There are</strong>.</p><p><strong>Model:</strong> It is peaceful. There are museums. There is a castle.</p><p class="translation">C’est paisible. Il y a des musées. Il y a un château.</p></article>
+        <article class="card"><h3>🎫 Formal travel requests</h3><p>At a travel agency, use <strong>Could you...?</strong>, <strong>I would like...</strong> and <strong>Would it be possible...?</strong> to sound polite.</p><p><strong>Model:</strong> Could you tell me the best way to travel there?</p><p class="translation">Pourriez-vous me dire la meilleure façon de s’y rendre ?</p></article>
+        <article class="card"><h3>🚆 Transport language</h3><p>Use <strong>by + transport</strong>: by train, by plane, by ferry, by coach, by bus, by taxi.</p><p><strong>Model:</strong> I would like to travel by ferry and train.</p><p class="translation">Je voudrais voyager en ferry et en train.</p></article>
+        <article class="card"><h3>☁️ Weather + time</h3><p>Use <strong>It is + weather adjective</strong> and time expressions like <strong>next week</strong>, <strong>in July</strong>, <strong>for three days</strong>.</p><p><strong>Model:</strong> It is often mild in spring. I would like to stay for three days.</p><p class="translation">Il fait souvent doux au printemps. Je voudrais rester trois jours.</p></article>
+      </div>
+    </section>
+
+    <section class="lesson-section exercises">
+      <div class="section-title">
+        <p class="eyebrow">Practice zone</p>
+        <h2>4. Grammar exercises</h2>
+      </div>
+      <div class="exercise-card" data-exercise="grammarDropdowns">
+        <h3>A. Choose the correct word</h3>
+        <div id="grammarDropdowns"></div>
+        <button class="btn check" data-check="grammarDropdowns">Check answers</button>
+        <p class="feedback" id="feedback-grammarDropdowns"></p>
+      </div>
+      <div class="exercise-card" data-exercise="sentenceBuilder">
+        <h3>B. Build the sentence</h3>
+        <p>Click the words in the correct order.</p>
+        <div class="word-bank" id="wordBank"></div>
+        <div class="answer-line" id="answerLine"></div>
+        <button class="small-btn" id="clearSentence">Clear</button>
+        <button class="btn check" data-check="sentenceBuilder">Check sentence</button>
+        <p class="feedback" id="feedback-sentenceBuilder"></p>
+      </div>
+      <div class="exercise-card" data-exercise="correctIncorrect">
+        <h3>C. Correct or incorrect?</h3>
+        <div id="correctIncorrect"></div>
+        <button class="btn check" data-check="correctIncorrect">Check answers</button>
+        <p class="feedback" id="feedback-correctIncorrect"></p>
+      </div>
+    </section>
+
+    <section class="lesson-section exercises">
+      <div class="section-title">
+        <p class="eyebrow">Vocabulary games</p>
+        <h2>5. Sort and match</h2>
+      </div>
+      <div class="exercise-card" data-exercise="categorySort">
+        <h3>A. Sort the words by category</h3>
+        <p>Drag each word into the correct category. On iPad, tap a word, then tap a category box.</p>
+        <div id="categorySort"></div>
+        <button class="btn check" data-check="categorySort">Check sorting</button>
+        <p class="feedback" id="feedback-categorySort"></p>
+      </div>
+      <div class="exercise-card" data-exercise="matching">
+        <h3>B. Match English and French</h3>
+        <div id="matching"></div>
+        <button class="btn check" data-check="matching">Check matching</button>
+        <p class="feedback" id="feedback-matching"></p>
+      </div>
+    </section>
+
+    <section class="lesson-section dialogue">
+      <div class="section-title">
+        <p class="eyebrow">Real-life speaking</p>
+        <h2>6. Travel agency dialogue</h2>
+        <p>Read, listen, then practise the conversation. You can show or hide the French translation.</p>
+      </div>
+      <button class="small-btn" id="toggleTranslations">Show / hide French translations</button>
+      <div id="dialogueBox"></div>
+    </section>
+
+    <section id="roleplay" class="lesson-section roleplay">
+      <div class="section-title">
+        <p class="eyebrow">Oral confidence</p>
+        <h2>8. Interactive roleplay simulator</h2>
+        <p>Step by step: listen to the travel agent, click to prepare your response, then reveal a model answer. Each step can be listened to separately.</p>
+      </div>
+      <div class="roleplay-controls card">
+        <h3>Choose your travel details</h3>
+        <div class="roleplay-grid compact">
+          <label>Destination<select id="rpDestination"><option>London</option><option>Bath</option><option>Edinburgh</option><option>Cornwall</option><option>York</option><option>Oxford</option></select></label>
+          <label>Transport<select id="rpTransport"><option>by plane</option><option>by ferry and train</option><option>by train</option><option>by coach</option><option>by taxi from the station</option></select></label>
+          <label>Activity<select id="rpActivity"><option>visit museums</option><option>walk near the coast</option><option>drink tea in a quiet café</option><option>visit a castle</option><option>go shopping</option><option>take photos</option></select></label>
+        </div>
+      </div>
+      <div id="roleplaySteps" class="roleplay-steps"></div>
+      <button class="btn primary" id="resetRoleplay">Restart roleplay</button>
+    </section>
+
+    <section class="lesson-section cloe">
+      <div class="section-title">
+        <p class="eyebrow">CLOE preparation</p>
+        <h2>9. Mini oral task</h2>
+        <p>Prepare a 30–45 second answer.</p>
+      </div>
+      <div class="cloe-grid">
+        <div class="card">
+          <h3>Prompt</h3>
+          <p class="big-model">Describe your ideal trip to the United Kingdom.</p>
+          <button class="listen" data-speak="Describe your ideal trip to the United Kingdom.">Listen</button>
+        </div>
+        <div class="card">
+          <h3>A1 model</h3>
+          <p>I would like to visit Bath. It is calm and elegant. I would like to travel by train. I would like to visit the Roman baths and drink tea in a quiet café.</p>
+          <button class="listen" data-speak="I would like to visit Bath. It is calm and elegant. I would like to travel by train. I would like to visit the Roman baths and drink tea in a quiet café.">Listen</button>
+        </div>
+        <div class="card">
+          <h3>A2 upgrade</h3>
+          <p>I would like to visit Bath because it looks peaceful, elegant and historic. I would prefer to travel by train because it is comfortable. During my holiday, I would like to visit the Roman baths, walk through the city and relax in a traditional café.</p>
+          <button class="listen" data-speak="I would like to visit Bath because it looks peaceful, elegant and historic. I would prefer to travel by train because it is comfortable. During my holiday, I would like to visit the Roman baths, walk through the city and relax in a traditional café.">Listen</button>
+        </div>
+      </div>
+      <div class="timer-card">
+        <h3>Speaking timer</h3>
+        <div class="timer" id="timer">00:45</div>
+        <button class="btn primary" id="startTimer">Start 45 seconds</button>
+        <button class="small-btn" id="resetTimer">Reset timer</button>
+      </div>
+    </section>
+
+    <section class="lesson-section final-mission">
+      <h2>Final mission · Plan your UK adventure</h2>
+      <p>Use today’s language to say:</p>
+      <ol>
+        <li>where you would like to go,</li>
+        <li>how you would like to travel,</li>
+        <li>what activities you would like to do,</li>
+        <li>what the weather may be like,</li>
+        <li>why this destination is a good choice for you.</li>
+      </ol>
+      <textarea id="finalWriting" placeholder="I would like to visit..."></textarea>
+      <button class="listen" id="listenFinal">Listen to my text</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>SpeakEasyTisha · Nathalie’s Journeys Around the Planet · Lesson 1</p>
+  </footer>
+
+  <script src="js/nathalie-uk-travel-agency-lesson.js"></script>
+</body>
+</html>
