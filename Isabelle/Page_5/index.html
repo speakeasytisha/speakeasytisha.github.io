@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpeakEasyTisha | Isabelle Job Abroad Realty Lab</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to lesson</a>
+
+  <header class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <nav class="topbar" aria-label="Page navigation">
+      <div class="brand">
+        <span class="brand-mark">🇳🇱</span>
+        <div>
+          <strong>SpeakEasyTisha</strong>
+          <small>Job Abroad Realty Lab · CV, interview & employer calls</small>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="ghost-btn" data-scroll="#vocab">Vocabulary</button>
+        <button class="ghost-btn" data-scroll="#grammar">Grammar</button>
+        <button class="ghost-btn" data-scroll="#interview">Interview</button>
+        <button class="ghost-btn" data-scroll="#homework">Homework</button>
+      </div>
+    </nav>
+
+    <section class="hero-content">
+      <div class="hero-copy">
+        <p class="eyebrow">CLOE · Real estate career · Netherlands project</p>
+        <h1>Present your profile, contact agencies, and speak like a real estate professional.</h1>
+        <p class="hero-subtitle">
+          A guided speaking and writing workshop to help you explain your dual legal and commercial background, prepare for job opportunities abroad, and answer employer questions with confidence.
+        </p>
+        <div class="hero-badges">
+          <span>🎤 interview answers</span>
+          <span>📞 employer calls</span>
+          <span>⚖️ legal + sales profile</span>
+          <span>🏡 real estate English</span>
+        </div>
+      </div>
+      <aside class="canal-card" aria-label="Amsterdam career journey">
+        <div class="sun"></div>
+        <div class="houses" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="canal" aria-hidden="true"></div>
+        <div class="mini-card">
+          <small>Today’s career sentence</small>
+          <strong>“I combine legal expertise with commercial experience.”</strong>
+          <span>profile · strengths · calls · interviews</span>
+        </div>
+      </aside>
+    </section>
+  </header>
+
+  <main id="main">
+    <section class="control-panel" aria-label="Lesson controls">
+      <article class="control-card">
+        <h2>Audio accent</h2>
+        <p>Choose an accent, then click <strong>Listen</strong>. The audio reads only the English target text.</p>
+        <div class="segmented" role="group" aria-label="Voice accent selector">
+          <button type="button" class="active" data-accent="en-GB">🇬🇧 British</button>
+          <button type="button" data-accent="en-US">🇺🇸 American</button>
+        </div>
+        <p class="voice-status" id="voiceStatus" aria-live="polite">Voice loading…</p>
+      </article>
+      <article class="control-card" id="dashboard">
+        <h2>Progress dashboard</h2>
+        <p class="score-line"><span id="totalScore">0</span>/<span id="totalPossible">0</span> points</p>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="mini-stats">
+          <span>Vocab <strong id="vocabScore">0</strong></span>
+          <span>Grammar <strong id="grammarScore">0</strong></span>
+          <span>Interview <strong id="interviewScore">0</strong></span>
+          <span>Calls <strong id="phoneScore">0</strong></span>
+        </div>
+        <div class="btn-row wrap">
+          <button class="secondary-btn" type="button" onclick="window.print()">Print lesson</button>
+          <button class="danger-btn" type="button" id="resetAll">Reset scores</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="section-card lesson-map">
+      <div class="section-heading">
+        <p class="eyebrow">Lesson route</p>
+        <h2>A career-speaking workshop for your Netherlands project</h2>
+        <p>This page is designed for live practice. It does not start by highlighting mistakes. Instead, it gives you natural English patterns, guided answers, and realistic real estate job scenarios.</p>
+      </div>
+      <div class="map-grid">
+        <button class="map-step" data-scroll="#warmup"><span>1</span><strong>Warm-up</strong><small>Speak from cues</small></button>
+        <button class="map-step" data-scroll="#vocab"><span>2</span><strong>Vocabulary</strong><small>Dropdown bank</small></button>
+        <button class="map-step" data-scroll="#grammar"><span>3</span><strong>Grammar</strong><small>Rule + practice</small></button>
+        <button class="map-step" data-scroll="#interview"><span>4</span><strong>Interview</strong><small>Answer builder</small></button>
+        <button class="map-step" data-scroll="#calls"><span>5</span><strong>Agency calls</strong><small>Phone practice</small></button>
+        <button class="map-step" data-scroll="#homework"><span>6</span><strong>Homework</strong><small>CV profile</small></button>
+      </div>
+    </section>
+
+    <section id="warmup" class="section-card gradient-card">
+      <div class="section-heading">
+        <p class="eyebrow">Step 1</p>
+        <h2>Warm-up: your professional profile in short answers</h2>
+        <p>Use the cue words to answer without reading a full paragraph. Reveal a model only after trying to speak.</p>
+      </div>
+      <div class="cue-grid" id="warmupGrid"></div>
+    </section>
+
+    <section id="vocab" class="section-card">
+      <div class="section-heading">
+        <p class="eyebrow">Step 2</p>
+        <h2>Vocabulary bank: job abroad + real estate profile</h2>
+        <p>Choose a category. Every card gives a French translation, a definition and a professional example sentence.</p>
+      </div>
+      <div class="filter-panel">
+        <label for="vocabCategory"><strong>Category</strong></label>
+        <select id="vocabCategory">
+          <option value="all">All vocabulary</option>
+          <option value="job">Job search & networking</option>
+          <option value="profile">Professional profile</option>
+          <option value="legal">Legal real estate</option>
+          <option value="sales">Sales & commercial</option>
+          <option value="client">Client communication</option>
+          <option value="phone">Calls & interview language</option>
+        </select>
+        <label for="vocabSearch"><strong>Search</strong></label>
+        <input id="vocabSearch" type="search" placeholder="Search: legal, agency, budget, advise…" />
+      </div>
+      <div class="vocab-grid" id="vocabGrid" aria-live="polite"></div>
+
+      <article class="practice-card compact">
+        <h3>Quick vocabulary check</h3>
+        <p>Choose the best professional term.</p>
+        <div id="vocabQuiz" class="quiz-stack"></div>
+        <div id="vocabFeedback" class="feedback" aria-live="polite"></div>
+        <button class="secondary-btn" type="button" id="newVocabQuiz">New questions</button>
+      </article>
+    </section>
+
+    <section id="grammar" class="section-card gradient-card alt">
+      <div class="section-heading">
+        <p class="eyebrow">Step 3</p>
+        <h2>Grammar for a stronger professional profile</h2>
+        <p>These grammar patterns help you speak naturally about your experience, responsibilities, goals and client communication.</p>
+      </div>
+      <div class="filter-panel light-panel">
+        <label for="grammarSelect"><strong>Choose a grammar focus</strong></label>
+        <select id="grammarSelect"><option value="all">Show all grammar points</option></select>
+      </div>
+      <div id="grammarGrid" class="grammar-stack"></div>
+    </section>
+
+    <section id="interview" class="section-card">
+      <div class="section-heading">
+        <p class="eyebrow">Step 4</p>
+        <h2>Interview answer builder: from cues to strong answers</h2>
+        <p>Use the structure to answer employer or CLOE-style questions. Try speaking first, then reveal support.</p>
+      </div>
+      <div class="two-col">
+        <article class="glass-card white">
+          <h3>🎤 Professional profile structure</h3>
+          <ol class="number-list">
+            <li><strong>Background:</strong> I have worked in real estate for 24 years.</li>
+            <li><strong>Double expertise:</strong> I combine legal expertise with commercial experience.</li>
+            <li><strong>Sales:</strong> I have experience in selling different types of properties.</li>
+            <li><strong>Legal:</strong> I can analyse risks and give legal advice.</li>
+            <li><strong>Client approach:</strong> I listen carefully before speaking.</li>
+            <li><strong>Goal:</strong> I would like to work in or around Amsterdam.</li>
+          </ol>
+          <p class="model-box" id="profileModel">I have worked in real estate for 24 years, combining legal expertise with commercial experience. I have experience in selling different types of properties and working with a wide range of clients. I also have a strong legal background, which helps me analyse risks and give appropriate advice. I listen carefully to clients before speaking so that I can understand their expectations and recommend the right solution. I would now like to use this experience in an international real estate environment in or around Amsterdam.</p>
+          <div class="btn-row wrap">
+            <button class="primary-btn" type="button" data-speak-target="profileModel">Listen</button>
+            <button class="secondary-btn" type="button" data-copy-target="profileModel">Copy model</button>
+          </div>
+        </article>
+        <article class="glass-card white">
+          <h3>🎲 Interview question generator</h3>
+          <p>Answer using the cue words. Then reveal a model answer if you need help.</p>
+          <div id="questionCard" class="property-card-output"></div>
+          <div class="btn-row wrap">
+            <button class="primary-btn" type="button" id="newQuestion">New question</button>
+            <button class="secondary-btn" type="button" id="showQuestionModel">Show model answer</button>
+          </div>
+          <div id="questionModel" class="hidden reveal-box"></div>
+        </article>
+      </div>
+
+      <article class="practice-card">
+        <h3>Your answer practice</h3>
+        <p>Write notes or a short answer. Then click “Check structure”. This checks key ideas, not perfection.</p>
+        <textarea id="interviewAnswer" rows="7" placeholder="Example: I have worked in real estate for 24 years…"></textarea>
+        <div class="btn-row wrap">
+          <button class="primary-btn" type="button" id="checkInterviewAnswer">Check structure</button>
+          <button class="secondary-btn" type="button" id="clearInterviewAnswer">Clear</button>
+        </div>
+        <div id="interviewChecklist" class="check-output" aria-live="polite"></div>
+      </article>
+    </section>
+
+    <section id="cvupgrade" class="section-card gradient-card">
+      <div class="section-heading">
+        <p class="eyebrow">Step 5</p>
+        <h2>CV and LinkedIn phrase upgrade</h2>
+        <p>Click each card to reveal a more international professional phrase. This is a positive upgrade, not a correction list.</p>
+      </div>
+      <div id="upgradeGrid" class="cue-grid"></div>
+    </section>
+
+    <section id="calls" class="section-card">
+      <div class="section-heading">
+        <p class="eyebrow">Step 6</p>
+        <h2>Agency calls: contact a potential employer</h2>
+        <p>Practise calling a real estate agency, asking for information, and presenting yourself in a short, professional way.</p>
+      </div>
+      <div class="two-col">
+        <article class="glass-card white">
+          <h3>📞 Phone opening model</h3>
+          <p class="model-box" id="callModel">Good morning. My name is Isabelle Davion. I am a French real estate professional with both legal and commercial experience. I am planning to move to the Netherlands and I am looking for opportunities in or around Amsterdam. I would like to know whether your agency is currently recruiting or open to international profiles.</p>
+          <div class="btn-row wrap">
+            <button class="primary-btn" type="button" data-speak-target="callModel">Listen</button>
+            <button class="secondary-btn" type="button" data-copy-target="callModel">Copy model</button>
+          </div>
+          <div class="phrase-grid" id="phonePhraseGrid"></div>
+        </article>
+        <article class="glass-card white">
+          <h3>🎭 Live call scenario</h3>
+          <div id="callScenario" class="scenario-card"></div>
+          <div class="btn-row wrap">
+            <button class="primary-btn" type="button" id="newCallScenario">New scenario</button>
+            <button class="secondary-btn" type="button" id="showCallSupport">Show support phrases</button>
+          </div>
+          <div id="callSupport" class="hidden reveal-box"></div>
+        </article>
+      </div>
+
+      <article class="practice-card compact">
+        <h3>Numbers and achievements</h3>
+        <p>Practise saying professional achievements clearly.</p>
+        <div id="achievementQuiz" class="quiz-stack"></div>
+        <div id="achievementFeedback" class="feedback" aria-live="polite"></div>
+      </article>
+    </section>
+
+    <section id="cloe" class="section-card gradient-card alt">
+      <div class="section-heading">
+        <p class="eyebrow">CLOE oral mode</p>
+        <h2>60-second speaking missions</h2>
+        <p>Use these prompts like mini CLOE oral tasks. Speak from keywords, not from a script.</p>
+      </div>
+      <div class="roleplay-panel">
+        <div>
+          <h3 id="missionTitle">Mission</h3>
+          <div id="missionCard" class="scenario-card"></div>
+          <div class="btn-row wrap">
+            <button class="primary-btn" type="button" id="newMission">New mission</button>
+            <button class="secondary-btn" type="button" id="showMissionSupport">Show support</button>
+          </div>
+        </div>
+        <div class="timer-card">
+          <h3>Speaking timer</h3>
+          <div class="timer-display" id="timerDisplay">01:00</div>
+          <div class="btn-row wrap center">
+            <button class="primary-btn" type="button" data-timer="60">60s</button>
+            <button class="secondary-btn" type="button" data-timer="90">90s</button>
+            <button class="danger-btn" type="button" id="stopTimer">Stop</button>
+          </div>
+          <div id="missionSupport" class="hidden reveal-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="homework" class="section-card">
+      <div class="section-heading">
+        <p class="eyebrow">Homework</p>
+        <h2>Write a short international profile</h2>
+        <p>This prepares your CV, LinkedIn profile, interviews and CLOE oral introduction.</p>
+      </div>
+      <article class="homework-card">
+        <h3>✍️ Task: 100–130 words</h3>
+        <p>Write a short professional profile for a real estate agency in the Netherlands.</p>
+        <div class="homework-grid">
+          <div>
+            <h4>Include:</h4>
+            <ul class="check-list dark">
+              <li>your years of experience</li>
+              <li>your legal and commercial background</li>
+              <li>one sales achievement or responsibility</li>
+              <li>your client communication style</li>
+              <li>your goal in or around Amsterdam</li>
+              <li>one reason English is important for your project</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Model beginning:</h4>
+            <p class="model-box" id="homeworkModel">I am a French real estate professional with 24 years of experience, combining legal expertise with commercial responsibilities. I have worked with property developers and clients across France.</p>
+            <button class="secondary-btn" type="button" data-copy-target="homeworkModel">Copy model beginning</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section-card notes-section">
+      <div class="section-heading">
+        <p class="eyebrow">Personal notes</p>
+        <h2>Keep your useful phrases here</h2>
+        <p>Your notes stay in this browser until you clear them.</p>
+      </div>
+      <textarea id="notes" rows="8" placeholder="Example: I combine legal expertise with commercial experience…"></textarea>
+      <div class="btn-row wrap">
+        <button class="primary-btn" type="button" id="saveNotes">Save notes</button>
+        <button class="secondary-btn" type="button" id="copyNotes">Copy notes</button>
+        <button class="danger-btn" type="button" id="clearNotes">Clear notes</button>
+      </div>
+      <p id="notesStatus" class="feedback" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="#top">Back to top ↑</a>
+    <span>SpeakEasyTisha · Job Abroad Realty Lab · Mac + iPad friendly</span>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
