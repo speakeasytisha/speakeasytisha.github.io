@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sabine · CLOE Wedding Planner Practice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/sabine-cloe-exam-style-model-answers.css" />
+</head>
+<body>
+  <div class="scp-shell">
+    <header class="scp-hero">
+      <p class="scp-kicker">CERTIFICATION PREP</p>
+      <h1>CLOE-style wedding planner practice</h1>
+      <p class="scp-sub">Exam-feel practice for Sabine with level choices, realistic oral and writing tasks, and optional model answers.</p>
+
+      <div class="scp-controls-grid">
+        <section class="scp-control-card">
+          <h2>Mode</h2>
+          <div class="scp-pill-row" id="modeRow" aria-label="Choose mode">
+            <button class="scp-pill is-active" data-mode="oral" type="button">Oral interview</button>
+            <button class="scp-pill" data-mode="writing" type="button">Writing</button>
+            <button class="scp-pill" data-mode="mixed" type="button">Mixed</button>
+          </div>
+        </section>
+
+        <section class="scp-control-card">
+          <h2>Target</h2>
+          <div class="scp-pill-row" id="levelRow" aria-label="Choose level">
+            <button class="scp-pill is-active" data-level="AUTO" type="button">Auto</button>
+            <button class="scp-pill" data-level="A1" type="button">A1</button>
+            <button class="scp-pill" data-level="A2" type="button">A2</button>
+            <button class="scp-pill" data-level="B1" type="button">B1</button>
+            <button class="scp-pill" data-level="B2" type="button">B2</button>
+          </div>
+        </section>
+
+        <section class="scp-control-card">
+          <h2>Oral scenario</h2>
+          <label class="scp-select-wrap">
+            <span class="scp-sr">Oral scenario</span>
+            <select id="scenarioSelect" class="scp-select">
+              <option value="all">All wedding planner scenarios</option>
+              <option value="client">Client communication</option>
+              <option value="venue">Venue coordination</option>
+              <option value="supplier">Supplier coordination</option>
+              <option value="timeline">Planning and timeline</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="scp-control-card">
+          <h2>Support</h2>
+          <div class="scp-toggle-list">
+            <label class="scp-check"><input type="checkbox" id="frToggle" checked /> French help</label>
+            <label class="scp-check"><input type="checkbox" id="modelToggle" /> Open model answers automatically</label>
+            <label class="scp-check"><input type="checkbox" id="keywordsToggle" checked /> Show key words</label>
+          </div>
+        </section>
+      </div>
+
+      <div class="scp-status-bar">
+        <div class="scp-status"><span class="scp-status-label">Progress</span><strong id="progressLabel">Task 1 / 8</strong></div>
+        <div class="scp-status"><span class="scp-status-label">Focus</span><strong id="focusLabel">Oral interview</strong></div>
+        <div class="scp-status"><span class="scp-status-label">Level</span><strong id="levelLabel">Auto</strong></div>
+        <div class="scp-status"><span class="scp-status-label">Timer</span><strong id="timerLabel">00:00</strong></div>
+      </div>
+
+      <div class="scp-timer-row">
+        <button type="button" class="scp-action" data-seconds="30">30s</button>
+        <button type="button" class="scp-action" data-seconds="45">45s</button>
+        <button type="button" class="scp-action" data-seconds="60">60s</button>
+        <button type="button" class="scp-action" data-seconds="90">90s</button>
+        <button type="button" class="scp-action scp-action-light" id="pauseTimer">Pause</button>
+        <button type="button" class="scp-action scp-action-light" id="resetTimer">Reset</button>
+      </div>
+    </header>
+
+    <main class="scp-main">
+      <section class="scp-help-band">
+        <div class="scp-help-card">
+          <h2>How to use this page</h2>
+          <ol>
+            <li>Choose a level.</li>
+            <li>Read the task.</li>
+            <li>Use the key words and the speaking or writing frame.</li>
+            <li>Try alone first.</li>
+            <li>Open the model answer after.</li>
+          </ol>
+        </div>
+        <div class="scp-help-card">
+          <h2>Useful reminder</h2>
+          <ul>
+            <li>Speak in short, clear sentences.</li>
+            <li>Reuse the same wedding planner vocabulary.</li>
+            <li>Be polite and professional.</li>
+            <li>One idea per sentence is enough.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="tasksMount" class="scp-task-grid" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <template id="taskTemplate">
+    <article class="scp-task-card" data-mode="" data-levels="" data-scenario="">
+      <div class="scp-task-top">
+        <div>
+          <p class="scp-task-badge"></p>
+          <h3 class="scp-task-title"></h3>
+        </div>
+        <span class="scp-task-level"></span>
+      </div>
+
+      <p class="scp-task-prompt"></p>
+      <p class="scp-fr-line"></p>
+
+      <div class="scp-meta-row">
+        <div class="scp-meta-box">
+          <h4>Key words</h4>
+          <ul class="scp-keywords"></ul>
+        </div>
+        <div class="scp-meta-box">
+          <h4>Frame</h4>
+          <ol class="scp-frame"></ol>
+        </div>
+      </div>
+
+      <div class="scp-model-wrap">
+        <button class="scp-model-toggle" type="button">Show model answer</button>
+        <div class="scp-model-panel" hidden>
+          <h4>Model answer</h4>
+          <div class="scp-model-answer"></div>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="/js/sabine-cloe-exam-style-model-answers.js"></script>
+</body>
+</html>
