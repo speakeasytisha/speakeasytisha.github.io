@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yanis — Airport, Plane & Gate Vocabulary Quest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-12-airport-plane-gate-vocabulary.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Yanis · Airport, Plane & Gate Vocabulary ✈️ · Learn it, note it, use it</div>
+    </div>
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+      <div class="scorebox" aria-live="polite">
+        <span class="scorebox__label">Score</span>
+        <span class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></span>
+      </div>
+      <button class="btn btn--ghost" id="btnStopAudio" type="button">⏹ Stop audio</button>
+      <button class="btn btn--danger" id="btnReset" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>Yanis — Airport, Plane & Gate Vocabulary Quest ✈️</h1>
+      <p class="lead">Today you will learn the key vocabulary you need to talk about the <strong>airport</strong>, the <strong>boarding gate</strong>, and the <strong>plane</strong>. You will study the words, hear them, practise them, and use them in short real-life scenarios.</p>
+      <p class="lead fr">Aujourd’hui, vous allez apprendre le vocabulaire essentiel pour parler de <strong>l’aéroport</strong>, de <strong>la porte d’embarquement</strong> et de <strong>l’avion</strong>. Vous allez étudier les mots, les écouter, les pratiquer et les utiliser dans de petites situations réelles.</p>
+      <div class="hero__cta">
+        <a class="btn" href="#vocab">▶️ Start the lesson</a>
+        <button class="btn btn--ghost" id="btnSpeakGoals" type="button">🔊 Listen to the goals</button>
+      </div>
+      <div class="minirow">
+        <div class="minicard"><div class="minicard__t">🧠 Learn</div><div class="minicard__p">Study airport, gate, and plane vocabulary with icons and examples.</div></div>
+        <div class="minicard"><div class="minicard__t">🎯 Practise</div><div class="minicard__p">Choose, fill in, sort, and build the best sentence.</div></div>
+        <div class="minicard"><div class="minicard__t">🎤 Use it</div><div class="minicard__p">Practise mini scenarios with visible model answers and audio.</div></div>
+      </div>
+    </div>
+    <div class="hero__panel card darkcard">
+      <h2>Lesson map</h2>
+      <ol>
+        <li>Learn the vocabulary cards</li>
+        <li>Take notes</li>
+        <li>Do 4 interactive exercises</li>
+        <li>Practise mini scenarios</li>
+        <li>Finish with a short speaking challenge</li>
+      </ol>
+      <div class="progress"><div id="progressBar" class="progress__bar"></div></div>
+      <p class="muted light">Tip: listen, repeat, then say the sentence without looking.</p>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section" id="vocab">
+    <div class="section__head">
+      <h2>1) Vocabulary cards — airport, plane, gate</h2>
+      <p class="muted">Tap a card to flip it. Listen to the English only.</p>
+      <p class="muted fr">Touchez une carte pour la retourner. Écoutez uniquement l’anglais.</p>
+    </div>
+    <div class="filters">
+      <button class="btn btn--ghost filter-btn active" type="button" data-filter="all">All</button>
+      <button class="btn btn--ghost filter-btn" type="button" data-filter="airport">Airport</button>
+      <button class="btn btn--ghost filter-btn" type="button" data-filter="gate">Gate</button>
+      <button class="btn btn--ghost filter-btn" type="button" data-filter="plane">Plane</button>
+    </div>
+    <div class="card-grid" id="cardGrid"></div>
+  </section>
+
+  <section class="section" id="notes">
+    <div class="section__head">
+      <h2>2) Take notes</h2>
+      <p class="muted">Write the words you want to remember and one useful phrase for each place.</p>
+      <p class="muted fr">Écrivez les mots que vous voulez retenir et une expression utile pour chaque lieu.</p>
+    </div>
+    <div class="three">
+      <div class="card">
+        <h3>Airport words</h3>
+        <div class="notes-list">
+          <label>1. <input type="text" placeholder="Example: terminal"></label>
+          <label>2. <input type="text" placeholder="Example: check-in desk"></label>
+          <label>3. <input type="text" placeholder="Example: security"></label>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Gate words</h3>
+        <div class="notes-list">
+          <label>1. <input type="text" placeholder="Example: gate"></label>
+          <label>2. <input type="text" placeholder="Example: boarding pass"></label>
+          <label>3. <input type="text" placeholder="Example: boarding announcement"></label>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Plane words</h3>
+        <div class="notes-list">
+          <label>1. <input type="text" placeholder="Example: aisle"></label>
+          <label>2. <input type="text" placeholder="Example: overhead bin"></label>
+          <label>3. <input type="text" placeholder="Example: seat belt"></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ex1">
+    <div class="section__head">
+      <h2>3) Choose the best word</h2>
+      <p class="muted">Read the definition and choose the correct vocabulary word.</p>
+      <p class="muted fr">Lisez la définition et choisissez le bon mot de vocabulaire.</p>
+    </div>
+    <div class="card" id="mcqHost"></div>
+  </section>
+
+  <section class="section" id="ex2">
+    <div class="section__head">
+      <h2>4) Fill in the blank</h2>
+      <p class="muted">Complete the sentence with the best airport, gate, or plane word.</p>
+      <p class="muted fr">Complétez la phrase avec le meilleur mot sur l’aéroport, la porte ou l’avion.</p>
+    </div>
+    <div class="card" id="fillHost"></div>
+  </section>
+
+  <section class="section" id="ex3">
+    <div class="section__head">
+      <h2>5) Sort the vocabulary</h2>
+      <p class="muted">Tap each word and place it in the correct category.</p>
+      <p class="muted fr">Touchez chaque mot et placez-le dans la bonne catégorie.</p>
+    </div>
+    <div class="card" id="sortHost"></div>
+  </section>
+
+  <section class="section" id="ex4">
+    <div class="section__head">
+      <h2>6) Build the sentence</h2>
+      <p class="muted">Tap the words in the correct order to make a useful sentence.</p>
+      <p class="muted fr">Touchez les mots dans le bon ordre pour construire une phrase utile.</p>
+    </div>
+    <div class="card" id="builderHost"></div>
+  </section>
+
+  <section class="section" id="scenarios">
+    <div class="section__head">
+      <h2>7) Mini scenarios — use the vocabulary</h2>
+      <p class="muted">Listen, read, and practise with visible model answers.</p>
+      <p class="muted fr">Écoutez, lisez et pratiquez avec des réponses modèles visibles.</p>
+    </div>
+    <div id="scenarioHost" class="scenario-grid"></div>
+  </section>
+
+  <section class="section" id="challenge">
+    <div class="section__head">
+      <h2>8) Final challenge — from the airport to the plane</h2>
+      <p class="muted">Use the words to speak about the journey step by step.</p>
+      <p class="muted fr">Utilisez les mots pour parler du parcours étape par étape.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <h3>Speaking frame</h3>
+        <div class="frame-line"><strong>First,</strong> I go to the <span class="hl">terminal</span>.</div>
+        <div class="frame-line"><strong>Then,</strong> I go to the <span class="hl">check-in desk</span>.</div>
+        <div class="frame-line"><strong>After that,</strong> I go through <span class="hl">security</span>.</div>
+        <div class="frame-line"><strong>Next,</strong> I wait at the <span class="hl">gate</span>.</div>
+        <div class="frame-line"><strong>Finally,</strong> I board the plane and fasten my <span class="hl">seat belt</span>.</div>
+        <div class="smallrow topgap">
+          <button class="btn btn--ghost" id="btnSpeakFrame" type="button">🔊 Listen to the model</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Your notes / your sentence</h3>
+        <textarea id="finalText" class="textarea" rows="8" placeholder="Write your own short text here."></textarea>
+        <div class="smallrow topgap">
+          <button class="btn" id="btnCheckFinal" type="button">✅ Check checklist</button>
+        </div>
+        <div id="finalChecklist" class="checklist"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="muted tiny">© SpeakEasyTisha · Touch-friendly · English audio only</div>
+    <a class="iconbtn" href="#top">↑ Back to top</a>
+  </div>
+</footer>
+<script src="js/yanis-page-12-airport-plane-gate-vocabulary.js"></script>
+</body>
+</html>
