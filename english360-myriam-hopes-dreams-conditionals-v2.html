@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SpeakEasyTisha • Myriam • Hopes & Dreams (If I had… / If I were…)</title>
+  <meta name="description" content="Interactive grammar lesson: hopes & dreams, would like to, and the 2nd conditional (If I had…, If I were…). A2→B2 with practice, speaking, and writing.">
+  <link rel="stylesheet" href="./css/english360-myriam-hopes-dreams-conditionals-v2.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to lesson</a>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">SE</div>
+    <div>
+      <div class="title">Myriam • Hopes & Dreams</div>
+      <div class="subtitle">If I had… / If I were… / If I were to… • Would like to • A2.1 → B2.1</div>
+    </div>
+  </div>
+
+  <div class="toolbar" role="region" aria-label="Controls">
+    <div class="tool">
+      <div class="label">Level</div>
+      <div class="seg" role="group" aria-label="Level">
+        <button type="button" class="segBtn on" data-level="A2">A2+</button>
+        <button type="button" class="segBtn" data-level="B1">B1</button>
+        <button type="button" class="segBtn" data-level="B2">B2</button>
+      </div>
+      <div class="tiny muted mt6">Same topic, higher level.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">French help</div>
+      <button type="button" class="pill" id="frToggle" aria-pressed="false">Off</button>
+      <div class="tiny muted mt6">Optional FR support (small hints).</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Accent (TTS)</div>
+      <div class="seg" role="group" aria-label="Accent">
+        <button type="button" class="segBtn on" data-accent="US">US</button>
+        <button type="button" class="segBtn" data-accent="UK">UK</button>
+      </div>
+      <div class="label mt8">Rate</div>
+      <input id="rate" class="range" type="range" min="0.7" max="1.25" step="0.05" value="1">
+    </div>
+
+    <div class="tool">
+      <div class="label">Score</div>
+      <div class="row">
+        <span class="pill mono" id="scorePill">0 / 0</span>
+        <button type="button" class="iconBtn" id="resetScore" title="Reset score">↺</button>
+      </div>
+      <div class="tiny">Accuracy: <span id="acc">0%</span></div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Actions</div>
+      <div class="row">
+        <button type="button" class="pill" id="printBtn">Print</button>
+        <button type="button" class="pill" id="newSetBtn">✨ New prompts</button>
+        <button type="button" class="pill ghost" id="resetAllBtn">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Status</div>
+      <div class="pill ok" id="jsOk">JS: loading…</div>
+      <div class="errBox" id="errBox" hidden></div>
+      <div class="tiny muted mt6">Mac + iPad Safari • Tap‑friendly</div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Navigation">
+    <a class="tab" href="#warmup">Warm‑up</a>
+    <a class="tab" href="#grammar">Grammar</a>
+    <a class="tab" href="#verbs">Verb bank</a>
+    <a class="tab" href="#practice">Practice</a>
+    <a class="tab" href="#builder">Sentence builder</a>
+    <a class="tab" href="#speaking">Speaking</a>
+    <a class="tab" href="#writing">Writing</a>
+    <a class="tab" href="#compare">Teacher compare</a>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <noscript>
+    <div class="noscript"><strong>JavaScript is disabled.</strong> Please enable JS to use this interactive lesson.</div>
+  </noscript>
+
+  <section id="warmup" class="card hero">
+    <h1>Hopes & Dreams ✨</h1>
+    <p class="lead">
+      Practice: <strong>would like to</strong>, <strong>hope to</strong>, and the <strong>2nd conditional</strong>:
+      <strong>If I had…, I would…</strong> / <strong>If I were…, I would…</strong>
+    </p>
+
+    <div class="notice">
+      <div class="noticeTitle">Golden pattern</div>
+      <div class="noticeBody">
+        <div><strong>If + past simple</strong>, <strong>would + base verb</strong></div>
+        <div class="muted mt6">If I had more time, I would travel more.</div>
+        <div class="frOnly muted mt6">Si j’avais plus de temps, je voyagerais plus.</div>
+      </div>
+    </div>
+
+    <div class="miniTitle mt12">Warm‑up prompt (tap to hear)</div>
+    <div class="promptBox mt8" id="warmupPrompt">—</div>
+    <div class="row mt10">
+      <button class="pill" id="newWarmupBtn" type="button">New warm‑up</button>
+      <button class="pill ghost" id="sayWarmupBtn" type="button">▶ Read</button>
+    </div>
+
+    <div class="miniTitle mt12">Safe starters (tap)</div>
+    <div class="chips mt8" id="starterChips"></div>
+  </section>
+
+  <section id="grammar" class="card">
+    <h2>1) Grammar booster</h2>
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3>A) Would like / hope / dream</h3>
+        <div class="lessonBox" id="hopeBox"></div>
+        <div class="row mt10">
+          <button class="pill ghost" id="sayHopeBtn" type="button">▶ Read</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>B) 2nd conditional</h3>
+        <div class="lessonBox" id="condBox"></div>
+        <div class="examTip" id="examTip" role="note">
+          <strong>Exam tip:</strong> For exams and formal writing, prefer <strong>“If I were…”</strong> (not “If I was…”).
+        </div>
+        <div class="row mt10">
+          <button class="pill" id="copyCondBtn" type="button">Copy pattern</button>
+          <button class="pill ghost" id="sayCondBtn" type="button">▶ Read</button>
+        </div>
+        <details class="mt12">
+          <summary class="summary">Extra: “If I were…” vs “If I was…”</summary>
+          <div class="lessonBox mt10" id="wereBox"></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="verbs" class="card">
+    <h2>2) Verb bank</h2>
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3>Irregular verbs (tap)</h3>
+        <div class="chips mt10" id="irregChips"></div>
+      </div>
+      <div class="panel">
+        <h3>Dream verbs (tap)</h3>
+        <div class="chips mt10" id="dreamVerbChips"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="practice" class="card">
+    <h2>3) Practice (auto‑correction)</h2>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3>A) Choose the correct form</h3>
+        <div class="promptBox" id="mcqPrompt">—</div>
+        <div class="mt10" id="mcqOptions"></div>
+        <div class="row mt10">
+          <button class="pill" id="mcqCheckBtn" type="button">Check</button>
+          <button class="pill ghost" id="mcqNextBtn" type="button">Next</button>
+        </div>
+        <div class="model mt10" id="mcqFeedback"></div>
+      </div>
+
+      <div class="panel">
+        <h3>B) Fix the sentence</h3>
+        <div class="promptBox" id="fixPrompt">—</div>
+        <textarea class="textarea mt10" id="fixInput" rows="5" placeholder="Rewrite the sentence correctly…"></textarea>
+        <div class="row mt10">
+          <button class="pill" id="fixCheckBtn" type="button">Check</button>
+          <button class="pill ghost" id="fixShowBtn" type="button">Show answer</button>
+          <button class="pill ghost" id="fixNextBtn" type="button">Next</button>
+        </div>
+        <div class="model mt10" id="fixFeedback"></div>
+      </div>
+    </div>
+
+    <div class="grid2 mt12">
+      <div class="panel">
+        <h3>C) Build a conditional (dropdown)</h3>
+        <div class="row mt10 wrapRow">
+          <span class="pill mono">If</span>
+          <select class="select" id="ddSubject"></select>
+          <select class="select" id="ddPast"></select>
+          <span class="pill mono">,</span>
+          <select class="select" id="ddWould"></select>
+          <select class="select" id="ddBase"></select>
+          <span class="pill mono">.</span>
+        </div>
+        <div class="row mt10">
+          <button class="pill" id="ddBuildBtn" type="button">Build</button>
+          <button class="pill" id="ddCheckBtn" type="button">Check</button>
+          <button class="pill ghost" id="ddRandomBtn" type="button">Random</button>
+          <button class="pill ghost" id="ddSayBtn" type="button">▶ Read</button>
+        </div>
+        <div class="model mt10" id="ddOut"></div>
+      </div>
+
+      <div class="panel">
+        <h3>D) Upgrade (A2 → B2)</h3>
+        <textarea class="textarea mt10" id="upgradeA2" rows="3" placeholder="A2 sentence (simple)…"></textarea>
+        <textarea class="textarea mt10" id="upgradeB1" rows="3" placeholder="B1 upgrade (connector + reason)…"></textarea>
+        <textarea class="textarea mt10" id="upgradeB2" rows="4" placeholder="B2 upgrade (contrast + richer detail)…"></textarea>
+        <div class="row mt10">
+          <button class="pill" id="upgradeFillBtn" type="button">Auto‑fill example</button>
+          <button class="pill ghost" id="upgradeSayBtn" type="button">▶ Read</button>
+          <button class="pill ghost" id="upgradeClearBtn" type="button">Clear</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="builder" class="card">
+    <h2>4) Sentence builder (tap tiles)</h2>
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3>A) Tiles</h3>
+        <div class="chips mt10" id="tileBank"></div>
+        <div class="row mt10">
+          <button class="pill ghost" id="tilesUndoBtn" type="button">Undo</button>
+          <button class="pill ghost" id="tilesClearBtn" type="button">Clear</button>
+          <button class="pill" id="tilesRandomBtn" type="button">Random set</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>B) Your sentence</h3>
+        <div class="promptBox" id="tileOutput">—</div>
+        <div class="row mt10">
+          <button class="pill" id="tilesCheckBtn" type="button">Check</button>
+          <button class="pill ghost" id="tilesSayBtn" type="button">▶ Read</button>
+        </div>
+        <div class="model mt10" id="tilesFeedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="speaking" class="card">
+    <h2>5) Speaking</h2>
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3>A) Prompt</h3>
+        <label class="stack">
+          <span class="label">Scenario</span>
+          <select class="select" id="speakSelect"></select>
+        </label>
+        <div class="promptBox mt10" id="sPrompt">—</div>
+
+        <div class="timerRow mt10">
+          <button type="button" class="pill" id="s60Btn">Start 60s</button>
+          <button type="button" class="pill" id="s90Btn">Start 90s</button>
+          <button type="button" class="pill ghost" id="sStopBtn">Stop</button>
+          <span class="pill mono" id="sTimer">00:00</span>
+          <button type="button" class="pill ghost" id="sSayPromptBtn">▶ Read</button>
+        </div>
+
+        <div class="miniTitle mt12">Fluency boosters (tap)</div>
+        <div class="chips mt8" id="fluencyChips"></div>
+
+        <textarea class="textarea mt10" id="sNotes" rows="8" placeholder="Notes for speaking…"></textarea>
+        <div class="row mt10">
+          <button class="pill ghost" id="sNotesClearBtn" type="button">Clear</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>B) Model (A2/B1/B2)</h3>
+        <div class="row mt10">
+          <button class="pill" id="sModelBtn" type="button">Show model</button>
+          <button class="pill ghost" id="sModelSayBtn" type="button">▶ Read model</button>
+        </div>
+        <div class="model mt10" id="sModelOut"></div>
+
+        <details class="mt12">
+          <summary class="summary">Self-check</summary>
+          <div class="lessonBox mt10" id="sCheck"></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing" class="card">
+    <h2>6) Writing (mini text)</h2>
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3>A) Prompt + phrases</h3>
+        <div class="promptBox" id="wPrompt">—</div>
+        <div class="miniTitle mt12">Useful phrases (tap)</div>
+        <div class="chips mt8" id="wChips"></div>
+      </div>
+
+      <div class="panel">
+        <h3>B) Your writing</h3>
+        <div class="timerRow mt10">
+          <button type="button" class="pill" id="w8Btn">Start 8 min</button>
+          <button type="button" class="pill ghost" id="wStopBtn">Stop</button>
+          <span class="pill mono" id="wTimer">00:00</span>
+          <span class="pill mono">Words: <span id="wWords">0</span></span>
+          <button type="button" class="pill ghost" id="wSayBtn">▶ Read</button>
+        </div>
+
+        <textarea class="textarea mt10" id="wBox" rows="12" placeholder="Write here…"></textarea>
+
+        <div class="row mt10">
+          <button type="button" class="pill" id="wModelBtn">Show model</button>
+          <button type="button" class="pill ghost" id="wClearBtn">Clear</button>
+          <button type="button" class="pill ghost" id="wCopyBtn">Copy</button>
+        </div>
+
+        <div class="model mt10" id="wModelOut"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare" class="card">
+    <h2>7) Teacher compare</h2>
+    <div class="grid3 mt10">
+      <div class="panel">
+        <h3>Student</h3>
+        <textarea class="textarea" id="tStudent" rows="10"></textarea>
+      </div>
+      <div class="panel">
+        <h3>Corrected</h3>
+        <textarea class="textarea" id="tCorrected" rows="10"></textarea>
+      </div>
+      <div class="panel">
+        <h3>Higher-level</h3>
+        <textarea class="textarea" id="tHigher" rows="10"></textarea>
+      </div>
+    </div>
+
+    <div class="row mt10">
+      <button class="pill" id="tCompareBtn" type="button">Compare stats</button>
+      <button class="pill ghost" id="tClearBtn" type="button">Clear</button>
+    </div>
+
+    <div class="model mt10" id="tOut"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="muted">SpeakEasyTisha • Hopes & Dreams • Conditionals • Touch‑friendly • Print‑friendly</div>
+  </footer>
+</main>
+
+<script>
+window.__HopesDreamsLoaded=false;
+setTimeout(function(){
+  if(!window.__HopesDreamsLoaded){
+    var ok=document.getElementById('jsOk'); if(ok) ok.textContent='JS: not loaded ❌';
+    var box=document.getElementById('errBox');
+    if(box){ box.hidden=false; box.textContent='⚠️ JS not loaded. Put HTML in root, CSS in /css/, JS in /js/.'; }
+  }
+},1200);
+</script>
+<script src="./js/english360-myriam-hopes-dreams-conditionals-v2.js"></script>
+</body>
+</html>

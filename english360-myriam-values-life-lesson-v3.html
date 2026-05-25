@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SpeakEasyTisha • Myriam • Values in Life (Family & Character)</title>
+  <meta name="description" content="Interactive lesson: talk about values in life, what you learned from your parents, and what you want to pass down to your children. Grammar + vocab + exercises + speaking + writing.">
+  <link rel="stylesheet" href="/css/english360-myriam-values-life-lesson-v3.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to lesson</a>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">SE</div>
+    <div>
+      <div class="title">Values in Life</div>
+      <div class="subtitle">Myriam • Family values • “I have always tried to…” • “It’s important to…” • A2.1 → B2.1</div>
+    </div>
+  </div>
+
+  <div class="toolbar" role="region" aria-label="Controls">
+    <div class="tool">
+      <div class="label">Level</div>
+      <div class="seg" role="group" aria-label="Level">
+        <button type="button" class="segBtn on" data-level="A2">A2+</button>
+        <button type="button" class="segBtn" data-level="B1">B1</button>
+        <button type="button" class="segBtn" data-level="B2">B2</button>
+      </div>
+      <div class="tiny muted mt6">Same topic, higher level.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">French (vocab only)</div>
+      <button type="button" class="pill" id="frToggle" aria-pressed="true">On</button>
+      <div class="tiny muted mt6">Hide/show translations.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Accent (TTS)</div>
+      <div class="seg" role="group" aria-label="Accent">
+        <button type="button" class="segBtn on" data-accent="US">US</button>
+        <button type="button" class="segBtn" data-accent="UK">UK</button>
+      </div>
+      <div class="label mt8">Rate</div>
+      <input id="rate" class="range" type="range" min="0.7" max="1.25" step="0.05" value="1">
+      <div class="tiny muted mt6">TTS reads English only.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Score</div>
+      <div class="row">
+        <span class="pill mono" id="scorePill">0 / 0</span>
+        <button type="button" class="iconBtn" id="resetScore" title="Reset score">↺</button>
+      </div>
+      <div class="tiny">Accuracy: <span id="acc">0%</span></div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Actions</div>
+      <div class="row">
+        <button type="button" class="pill" id="newSetBtn">✨ New prompts</button>
+        <button type="button" class="pill" id="printBtn">Print</button>
+        <button type="button" class="pill ghost" id="resetAllBtn">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Status</div>
+      <div class="pill ok" id="jsOk">JS: loading…</div>
+      <div class="errBox" id="errBox" hidden></div>
+      <div class="tiny muted mt6">Mac + iPad Safari • Tap‑friendly</div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Navigation">
+    <a class="tab" href="#warmup">Warm‑up</a>
+    <a class="tab" href="#grammar">Grammar</a>
+    <a class="tab" href="#vocab">Vocabulary</a>
+    <a class="tab" href="#practice">Exercises</a>
+    <a class="tab" href="#speaking">Speaking</a>
+    <a class="tab" href="#writing">Writing</a>
+    <a class="tab" href="#compare">Teacher compare</a>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <noscript><div class="noscript"><strong>JavaScript is disabled.</strong> Please enable JS.</div></noscript>
+
+  <section id="warmup" class="card hero">
+    <h1>Important values in life 🌿</h1>
+    <p class="lead">
+      Talk about your values, what you learned from your parents, and what you want to pass down to your children.
+      You’ll practise useful “exam‑safe” structures.
+    </p>
+
+    <div class="notice">
+      <div class="noticeTitle">Fast structure</div>
+      <div class="noticeBody">
+        <strong>I have always tried to be…</strong> + adjective <span class="muted">(honest, kind, patient…)</span><br>
+        <strong>It’s important to be…</strong> + adjective<br>
+        <strong>My parents taught me to…</strong> + verb <span class="muted">(respect, help, work hard…)</span>
+      </div>
+    </div>
+
+    <div class="grid2 mt12">
+      <div class="panel">
+        <div class="miniTitle">Warm‑up prompt</div>
+        <div class="promptBox mt8" id="warmPrompt">—</div>
+        <div class="row mt10">
+          <button class="pill" id="warmNewBtn" type="button">New prompt</button>
+          <button class="pill ghost" id="warmSayBtn" type="button">▶ Read</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="miniTitle">Starter phrases (tap)</div>
+        <div class="chips mt10" id="starterChips"></div>
+        <textarea id="warmNotes" class="textarea mt10" rows="7" placeholder="Notes / ideas…"></textarea>
+        <div class="row mt10">
+          <button class="pill ghost" id="warmClearBtn" type="button">Clear</button>
+          <button class="pill ghost" id="warmNotesSayBtn" type="button">▶ Read notes</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="grammar" class="card">
+    <h2>1) Grammar booster (values + family)</h2>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3>A) “It’s important to…” + adjective / verb</h3>
+        <div class="lessonBox" id="gImportant"></div>
+        <div class="row mt10">
+          <button class="pill ghost" id="sayImportantBtn" type="button">▶ Read</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>B) “I have always tried to…” (present perfect)</h3>
+        <div class="lessonBox" id="gAlways"></div>
+        <div class="row mt10">
+          <button class="pill ghost" id="sayAlwaysBtn" type="button">▶ Read</button>
+        </div>
+        <details class="mt12">
+          <summary class="summary">Extra: “I was raised to…” / “My parents taught me to…”</summary>
+          <div class="lessonBox mt10" id="gRaised"></div>
+        </details>
+      </div>
+    </div>
+
+    <div class="panel mt12">
+      <h3>C) Key patterns you can reuse</h3>
+      <div class="chips mt10" id="patternChips"></div>
+      <div class="tiny muted mt10">Tap a chip to hear it, then copy it into speaking or writing.</div>
+    </div>
+  </section>
+
+  <section id="vocab" class="card">
+    <h2>2) Vocabulary: values & family (icons + FR + definitions)</h2>
+    <p class="muted">Choose a category, then click a word to open the mini‑card (definition + example + TTS).</p>
+
+    <div class="panel mt10">
+      <div class="row wrapRow">
+        <label class="stack">
+          <span class="label">Category</span>
+          <select class="select" id="vCat"></select>
+        </label>
+        <label class="stack">
+          <span class="label">Search</span>
+          <input class="input" id="vSearch" type="search" placeholder="honest, respect, family…">
+        </label>
+        <button class="pill ghost" id="vResetBtn" type="button">Reset</button>
+        <button class="pill" id="vAdd3Btn" type="button">⬇ Add 3 words to notes</button>
+      </div>
+      <div class="vGrid mt12" id="vGrid"></div>
+    </div>
+  </section>
+
+  <section id="practice" class="card">
+    <h2>3) Exercises (immediate feedback)</h2>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3>A) MCQ (choose the best form)</h3>
+        <div class="promptBox" id="mcqPrompt">—</div>
+        <div class="mt10" id="mcqOptions"></div>
+        <div class="row mt10">
+          <button class="pill" id="mcqCheckBtn" type="button">Check</button>
+          <button class="pill ghost" id="mcqNextBtn" type="button">Next</button>
+          <button class="pill ghost" id="mcqSayBtn" type="button">▶ Read</button>
+        </div>
+        <div class="model mt10" id="mcqFeedback"></div>
+      </div>
+
+      <div class="panel">
+        <h3>B) Fix the sentence</h3>
+        <div class="promptBox" id="fixPrompt">—</div>
+        <textarea class="textarea mt10" id="fixInput" rows="6" placeholder="Rewrite the sentence correctly…"></textarea>
+        <div class="row mt10">
+          <button class="pill" id="fixCheckBtn" type="button">Check</button>
+          <button class="pill ghost" id="fixShowBtn" type="button">Show answer</button>
+          <button class="pill ghost" id="fixNextBtn" type="button">Next</button>
+          <button class="pill ghost" id="fixSayBtn" type="button">▶ Read</button>
+        </div>
+        <div class="model mt10" id="fixFeedback"></div>
+      </div>
+    </div>
+
+    <div class="grid2 mt12">
+      <div class="panel">
+        <h3>C) Sentence builder (dropdown)</h3>
+        <p class="tiny muted">Build a complete sentence about values.</p>
+
+        <div class="row mt10 wrapRow">
+          <select class="select" id="bStart"></select>
+          <select class="select" id="bMid"></select>
+          <span class="pill mono">because</span>
+          <select class="select" id="bReason"></select>
+          <span class="pill mono">.</span>
+        </div>
+
+        <div class="row mt10">
+          <button class="pill" id="bBuildBtn" type="button">Build</button>
+          <button class="pill" id="bCheckBtn" type="button">Check</button>
+          <button class="pill ghost" id="bRandomBtn" type="button">Random</button>
+          <button class="pill ghost" id="bSayBtn" type="button">▶ Read</button>
+        </div>
+
+        <div class="model mt10" id="bOut"></div>
+      </div>
+
+      <div class="panel">
+        <h3>D) Mini paragraph builder (connectors)</h3>
+        <p class="tiny muted">Choose a connector to make the text smoother.</p>
+        <div class="promptBox" id="connBox">—</div>
+        <div class="row mt10">
+          <button class="pill" id="connCheckBtn" type="button">Check</button>
+          <button class="pill ghost" id="connNewBtn" type="button">New text</button>
+        </div>
+        <div class="model mt10" id="connFeedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="speaking" class="card">
+    <h2>4) Speaking (60–90 seconds)</h2>
+    <p class="muted">Choose a scenario and speak. Use 2 values + 1 example.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3>A) Prompt</h3>
+        <label class="stack">
+          <span class="label">Scenario</span>
+          <select class="select" id="sSel"></select>
+        </label>
+
+        <div class="timerRow mt10">
+          <button type="button" class="pill" id="s60Btn">Start 60s</button>
+          <button type="button" class="pill" id="s90Btn">Start 90s</button>
+          <button type="button" class="pill ghost" id="sStopBtn">Stop</button>
+          <span class="pill mono" id="sTimer">00:00</span>
+          <button type="button" class="pill ghost" id="sSayBtn">▶ Read</button>
+        </div>
+
+        <div class="promptBox mt10" id="sPrompt">—</div>
+
+        <div class="miniTitle mt12">Fluency boosters (tap)</div>
+        <div class="chips mt8" id="fluencyChips"></div>
+
+        <textarea class="textarea mt10" id="sNotes" rows="8" placeholder="Notes for speaking…"></textarea>
+        <div class="row mt10">
+          <button class="pill ghost" id="sNotesClearBtn" type="button">Clear</button>
+          <button class="pill ghost" id="sNotesSayBtn" type="button">▶ Read notes</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>B) Model (A2/B1/B2)</h3>
+        <div class="row mt10">
+          <button class="pill" id="sModelBtn" type="button">Show model</button>
+          <button class="pill ghost" id="sModelSayBtn" type="button">▶ Read model</button>
+        </div>
+        <div class="model mt10" id="sModelOut"></div>
+
+        <details class="mt12">
+          <summary class="summary">Self‑check</summary>
+          <div class="lessonBox mt10" id="sCheck"></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing" class="card">
+    <h2>5) Writing (exam‑style mini text)</h2>
+    <p class="muted">Write 8–12 lines about your values and family. Use 2–3 key patterns.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h3>A) Prompt + useful phrases</h3>
+        <div class="promptBox" id="wPrompt">—</div>
+        <div class="miniTitle mt12">Useful phrases (tap)</div>
+        <div class="chips mt8" id="wChips"></div>
+      </div>
+
+      <div class="panel">
+        <h3>B) Your writing</h3>
+        <div class="timerRow mt10">
+          <button type="button" class="pill" id="w8Btn">Start 8 min</button>
+          <button type="button" class="pill ghost" id="wStopBtn">Stop</button>
+          <span class="pill mono" id="wTimer">00:00</span>
+          <span class="pill mono">Words: <span id="wWords">0</span></span>
+          <button type="button" class="pill ghost" id="wSayBtn">▶ Read</button>
+        </div>
+
+        <textarea class="textarea mt10" id="wBox" rows="12" placeholder="Write here…"></textarea>
+
+        <div class="row mt10">
+          <button type="button" class="pill" id="wModelBtn">Show model</button>
+          <button type="button" class="pill ghost" id="wClearBtn">Clear</button>
+          <button type="button" class="pill ghost" id="wCopyBtn">Copy</button>
+        </div>
+
+        <div class="model mt10" id="wModelOut"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare" class="card">
+    <h2>6) Teacher compare (student → corrected → higher‑level)</h2>
+    <p class="muted">Paste texts and compare quickly during class.</p>
+
+    <div class="grid3 mt10">
+      <div class="panel">
+        <h3>Student version</h3>
+        <textarea class="textarea" id="tStudent" rows="10" placeholder="Paste student text…"></textarea>
+      </div>
+      <div class="panel">
+        <h3>Corrected version</h3>
+        <textarea class="textarea" id="tCorrected" rows="10" placeholder="Paste corrected text…"></textarea>
+      </div>
+      <div class="panel">
+        <h3>Higher‑level version</h3>
+        <textarea class="textarea" id="tHigher" rows="10" placeholder="Paste higher-level text…"></textarea>
+      </div>
+    </div>
+
+    <div class="row mt10">
+      <button class="pill" id="tCompareBtn" type="button">Compare stats</button>
+      <button class="pill ghost" id="tClearBtn" type="button">Clear</button>
+    </div>
+
+    <div class="model mt10" id="tOut"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="muted">SpeakEasyTisha • Values in Life • Touch‑friendly • Print‑friendly</div>
+  </footer>
+</main>
+
+<div class="modalOverlay" id="modalOverlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Vocabulary card">
+    <button class="modalClose" id="modalClose" type="button" aria-label="Close">✕</button>
+    <div class="modalIcon" id="mIcon">✨</div>
+    <div class="modalWord" id="mEn">—</div>
+    <div class="modalFr" id="mFr">—</div>
+    <div class="modalDef" id="mDef">—</div>
+    <div class="modalEx" id="mEx">—</div>
+    <div class="row mt10">
+      <button class="pill" id="mSayBtn" type="button">▶ Listen</button>
+      <button class="pill ghost" id="mAddBtn" type="button">Add to notes</button>
+    </div>
+  </div>
+</div>
+
+<script>
+window.__ValuesLessonLoaded=false;
+setTimeout(function(){
+  if(!window.__ValuesLessonLoaded){
+    var ok=document.getElementById('jsOk'); if(ok) ok.textContent='JS: not loaded ❌';
+    var box=document.getElementById('errBox');
+    if(box){ box.hidden=false; box.textContent='⚠️ JS not loaded. Put HTML in root, CSS in /css/, JS in /js/.'; }
+  }
+},1200);
+</script>
+<script src="/js/english360-myriam-values-life-lesson-v3.js"></script>
+</body>
+</html>
