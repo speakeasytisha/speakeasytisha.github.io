@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Karine Beach Club · Tense Selector Studio (A1/A2) · SpeakEasyTisha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/karine-tense-selector-studio-a1a2.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Karine Beach Club · Tense Selector Studio (A1/A2) · Choose 1 tense</div>
+    </div>
+
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Tense</span>
+        <select class="select" id="tensePick" aria-label="Choose a tense"></select>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Accent</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <select class="select" id="voiceSelect" aria-label="Voice list"></select>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="seg is-on" id="autoOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="autoOn" type="button" aria-pressed="false">ON</button>
+        <button class="btn btn--ghost" id="btnTestVoice" type="button">🔊 Test</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>🏄‍♀️ Karine Beach Club · Tense Selector Studio</h1>
+      <p class="lead">
+        You choose <strong>one tense</strong> at the beginning: <strong>present simple</strong>, <strong>present continuous</strong>, <strong>future</strong>, or <strong>past simple</strong>.
+        Then you get a full premium lesson: rules + examples + vocabulary + syntax + practice + roleplay + listening with transcript.
+      </p>
+
+      <div class="callout" style="margin-top:.75rem">
+        <strong>Beach Club rule:</strong> One tense at a time. Simple → clear → confident. ✨
+        <div class="tiny" style="margin-top:.35rem;color:rgba(8,34,42,.9)">
+          If you feel lost with syntax, use the “Syntax sorting” box (Subject / Verb / Object / Place / Time).
+        </div>
+      </div>
+
+      <div class="hero__cta">
+        <button class="btn" id="btnChoose" type="button">🎯 Choose your tense</button>
+        <button class="btn btn--ghost" id="btnHow" type="button">ℹ️ How to use</button>
+      </div>
+
+      <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+      <div class="tiny" style="margin-top:.35rem;opacity:.95">Audio is <strong>OFF by default</strong>. Use listen buttons only when you want.</div>
+    </div>
+
+    <div class="panelcard">
+      <div class="panelcard__title">Choose a tense</div>
+      <div id="pickCards" class="grid2" style="margin-top:.55rem"></div>
+      <div class="tiny" style="margin-top:.6rem;opacity:.95">Theme: Sardinia next trip 🌴 + Fabrice surfer buddy.</div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+
+  <section class="section" id="secModule">
+    <h2 id="modTitle">1) Your tense lesson</h2>
+    <div class="card">
+      <div class="smallrow">
+        <span class="badge" id="modTag">—</span>
+        <span class="badge">Signals</span>
+        <div id="sigChips"></div>
+      </div>
+
+      <div class="grid2" id="lessonBoxes"></div>
+
+      <hr class="soft"/>
+      <div class="callout">
+        <strong>Syntax rescue (quick):</strong>
+        <div id="syntaxTip" style="margin-top:.35rem"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="secVocab">
+    <h2>2) Vocabulary (tap to reveal)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="vRevealAll" type="button">👀 Reveal all</button>
+        <button class="btn btn--ghost" id="vHideAll" type="button">🙈 Hide all</button>
+        <button class="btn btn--ghost" id="vQuiz" type="button">✅ Quick quiz</button>
+      </div>
+      <div class="grid3" id="vGrid"></div>
+      <div class="feedback hidden" id="vFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secPractice">
+    <h2>3) Practice lab (score + hints)</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>MCQ</h3>
+        <div class="kcard" id="mcqHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="mcqStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="mcqCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="mcqNext" type="button">➡️ Next</button>
+          <button class="btn btn--ghost" id="mcqHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="mcqReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="mcqFb"></div>
+      </div>
+
+      <div class="card">
+        <h3>Dropdown</h3>
+        <div class="kcard" id="ddHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="ddStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="ddCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="ddNext" type="button">➡️ Next</button>
+          <button class="btn btn--ghost" id="ddHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="ddReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="ddFb"></div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:.8rem">
+      <div class="card">
+        <h3>Sentence builder (tap OR drag)</h3>
+        <div class="kcard" id="ordHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="ordStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="ordCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="ordHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="ordReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="ordFb"></div>
+      </div>
+
+      <div class="card">
+        <h3>Fill the blank (word bank)</h3>
+        <div class="kcard" id="bankHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="bankStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="bankCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="bankHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="bankReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="bankFb"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:.8rem">
+      <h3>Syntax sorting (tap OR drag)</h3>
+      <div class="kcard" id="sortHost"></div>
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="sortCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="sortHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="sortReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="sortFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secRoleplay">
+    <h2>4) Roleplay + speaking (teacher-guided)</h2>
+    <div class="card">
+      <div class="kcard">
+        <div class="badge">Roleplay A · You + Fabrice</div>
+        <div class="smallrow">
+          <button class="btn btn--ghost" id="rpShow" type="button">👀 Show model</button>
+          <button class="btn btn--ghost" id="rpHide" type="button">🙈 Hide model</button>
+          <button class="btn btn--ghost" id="rpListen" type="button">🔊 Listen model</button>
+        </div>
+        <div class="kcard hidden" id="rpBox"></div>
+      </div>
+
+      <div class="kcard" style="margin-top:.75rem">
+        <div class="badge">Sentence builder (speaking)</div>
+        <div class="tiny" style="color:var(--muted)">Choose parts to create your own sentences. Then listen + check.</div>
+        <div id="sBuild" style="margin-top:.55rem"></div>
+        <div class="smallrow">
+          <button class="btn btn--ghost" id="sListen" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="sCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="sReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="sFb"></div>
+        <div class="kcard" style="margin-top:.55rem"><strong>Your sentence:</strong><br/><span id="sOut"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="secListening">
+    <h2>5) Listening (show/hide transcript)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <select class="select" id="lisPick"></select>
+        <button class="btn btn--ghost" id="lisPlayAll" type="button">🔊 Play all</button>
+        <button class="btn btn--ghost" id="lisShow" type="button">📄 Show text</button>
+        <button class="btn btn--ghost" id="lisHide" type="button">🙈 Hide text</button>
+      </div>
+      <div class="dialogue" id="lisStream"></div>
+      <hr class="soft"/>
+      <h3>Listening comprehension (5)</h3>
+      <div class="kcard" id="lisQHost">Choose the dialogue above.</div>
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="lisCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="lisReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="lisQFb"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="tiny" style="opacity:.95">© SpeakEasyTisha · karine-tense-selector-studio-a1a2 · Build 20260525-205320</div>
+      <a class="toolmini" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<pre id="debugBox" class="hidden" style="white-space:pre-wrap;margin:1rem auto;padding:1rem;border:1px dashed rgba(255,255,255,.35);border-radius:14px;background:rgba(255,255,255,.92);max-width:1180px;color:#132026;">Debug log</pre>
+
+<script src="js/karine-tense-selector-studio-a1a2.js"></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Karine Beach Club · Sardinia Review Studio (A1/A2) · SpeakEasyTisha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/karine-barbie-sardinia-review-studio-a1a2.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Karine Beach Club · Sardinia Review Studio (A1/A2) · Recap</div>
+    </div>
+
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Accent</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <select class="select" id="voiceSelect" aria-label="Voice list"></select>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="seg is-on" id="autoOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="autoOn" type="button" aria-pressed="false">ON</button>
+        <button class="btn btn--ghost" id="btnTestVoice" type="button">🔊 Test</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>🏄‍♀️ Karine Beach Club · Sardinia Review Studio</h1>
+      <p class="lead">
+        You’re back on track. This lesson helps you <strong>rebuild confidence</strong> and <strong>connect everything</strong>:
+        vocabulary, grammar, verbs, prepositions, comparisons, and <strong>syntax (word order)</strong>.
+        Your next trip: <strong>Sardinia</strong> 🌴.
+      </p>
+
+      <div class="callout" style="margin-top:.75rem">
+        <strong>Beach Club rule:</strong> simple + clear + confident.
+        When you feel lost, use the “Syntax rescue” tools and build the sentence step by step. ✨
+      </div>
+
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start the recap</button>
+        <button class="btn btn--ghost" id="btnHow" type="button">ℹ️ How to use</button>
+      </div>
+
+      <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+      <div class="tiny" style="margin-top:.35rem;opacity:.95">Audio is <strong>OFF by default</strong>. Use listen buttons only when you want.</div>
+    </div>
+
+    <div class="panelcard">
+      <div class="panelcard__title">Lesson map (2 hours friendly)</div>
+      <ol class="panelcard__list">
+        <li>Quick warm‑up (diagnostic)</li>
+        <li>Vocabulary hub (dropdown categories)</li>
+        <li>Grammar hub (dropdown categories + exercises)</li>
+        <li>Syntax games (word order)</li>
+        <li>Roleplays + listening (transcript toggle)</li>
+        <li>Sardinia plan builder + final mixed test</li>
+      </ol>
+      <div class="tiny" style="margin-top:.6rem;opacity:.95">Fabrice (your surfer buddy) appears in the dialogues to practise friendly, natural English.</div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+
+  <section class="section" id="secWarmup">
+    <h2>0) Quick warm‑up (get back into the groove)</h2>
+    <div class="card">
+      <div class="kcard">
+        <strong>Goal:</strong> choose the right structure. You get instant feedback + hints.
+      </div>
+      <div class="kcard" id="warmHost" style="margin-top:.6rem">Click Start.</div>
+      <div class="smallrow">
+        <button class="btn" id="warmStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="warmCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="warmNext" type="button">➡️ Next</button>
+        <button class="btn btn--ghost" id="warmHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="warmReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="warmFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secVocab">
+    <h2>1) Vocabulary hub (dropdown categories)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <span class="badge">Choose a category</span>
+        <select class="select" id="vCat"></select>
+        <button class="btn btn--ghost" id="btnVRevealAll" type="button">👀 Reveal</button>
+        <button class="btn btn--ghost" id="btnVHideAll" type="button">🙈 Hide</button>
+        <button class="btn btn--ghost" id="btnVQuiz" type="button">✅ Quick quiz</button>
+      </div>
+      <div class="tiny" style="color:rgba(19,32,38,.72)">Tap a card to reveal meaning + FR + example. Use 🔊 to practise pronunciation.</div>
+      <div class="grid3" id="vGrid" style="margin-top:.6rem"></div>
+      <div class="feedback hidden" id="vFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secGrammarHub">
+    <h2>2) Grammar hub (dropdown categories + full recap)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <span class="badge">Choose a grammar lesson</span>
+        <select class="select" id="gPick"></select>
+        <button class="btn btn--ghost" id="gListenRule" type="button">🔊 Listen rule</button>
+        <button class="btn btn--ghost" id="gListenExamples" type="button">🔊 Listen examples</button>
+      </div>
+      <div class="grid2" id="gHost"></div>
+
+      <hr class="soft"/>
+
+      <h3>Grammar practice (matches the lesson)</h3>
+      <div class="grid2">
+        <div class="kcard" id="gMcqHost">Select a grammar lesson above.</div>
+        <div class="kcard" id="gDdHost">Select a grammar lesson above.</div>
+      </div>
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="gCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="gNext" type="button">➡️ Next</button>
+        <button class="btn btn--ghost" id="gHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="gReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="gFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secSyntaxGames">
+    <h2>3) Syntax games (word order + structure)</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Sentence builder (tap OR drag)</h3>
+        <div class="kcard" id="ordHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="ordStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="ordCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="ordHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="ordReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="ordFb"></div>
+      </div>
+
+      <div class="card">
+        <h3>Fill the blank (word bank)</h3>
+        <div class="kcard" id="bankHost">Click Start.</div>
+        <div class="smallrow">
+          <button class="btn" id="bankStart" type="button">▶️ Start</button>
+          <button class="btn btn--ghost" id="bankCheck" type="button">✅ Check</button>
+          <button class="btn btn--ghost" id="bankHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost" id="bankReset" type="button">↺ Reset</button>
+        </div>
+        <div class="feedback hidden" id="bankFb"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:.8rem">
+      <h3>Sorting (tap OR drag): Subject / Verb / Object / Place / Time</h3>
+      <div class="kcard" id="sortHost"></div>
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="sortCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="sortHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="sortReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="sortFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secRoleplay">
+    <h2>4) Roleplays (teacher‑guided)</h2>
+    <div class="card">
+      <div class="tiny" style="color:rgba(19,32,38,.72)">Show the model only when needed. Practise pronunciation with 🔊. You are the main speaker.</div>
+
+      <div class="kcard" style="margin-top:.6rem">
+        <div class="badge">Roleplay A · Hotel check‑in</div>
+        <div class="smallrow">
+          <button class="btn btn--ghost" data-rp="a" data-act="show">👀 Show model</button>
+          <button class="btn btn--ghost" data-rp="a" data-act="hide">🙈 Hide model</button>
+          <button class="btn btn--ghost" data-rp="a" data-act="listen">🔊 Listen model</button>
+        </div>
+        <div class="kcard hidden" id="rpA"></div>
+      </div>
+
+      <div class="kcard" style="margin-top:.8rem">
+        <div class="badge">Roleplay B · Restaurant bill</div>
+        <div class="smallrow">
+          <button class="btn btn--ghost" data-rp="b" data-act="show">👀 Show model</button>
+          <button class="btn btn--ghost" data-rp="b" data-act="hide">🙈 Hide model</button>
+          <button class="btn btn--ghost" data-rp="b" data-act="listen">🔊 Listen model</button>
+        </div>
+        <div class="kcard hidden" id="rpB"></div>
+      </div>
+
+      <div class="kcard" style="margin-top:.8rem">
+        <div class="badge">Roleplay C · Planning with Fabrice (surfer buddy)</div>
+        <div class="smallrow">
+          <button class="btn btn--ghost" data-rp="c" data-act="show">👀 Show model</button>
+          <button class="btn btn--ghost" data-rp="c" data-act="hide">🙈 Hide model</button>
+          <button class="btn btn--ghost" data-rp="c" data-act="listen">🔊 Listen model</button>
+        </div>
+        <div class="kcard hidden" id="rpC"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="secListening">
+    <h2>5) Listening (show/hide transcript)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <select class="select" id="lisPick"></select>
+        <button class="btn btn--ghost" id="lisPlayAll" type="button">🔊 Play all</button>
+        <button class="btn btn--ghost" id="lisShow" type="button">📄 Show text</button>
+        <button class="btn btn--ghost" id="lisHide" type="button">🙈 Hide text</button>
+      </div>
+
+      <div class="dialogue" id="lisStream"></div>
+
+      <hr class="soft"/>
+
+      <h3>Listening comprehension (5)</h3>
+      <div class="kcard" id="lisQHost">Choose a dialogue above.</div>
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="lisCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="lisReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="lisQFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secBuilder">
+    <h2>6) Sardinia plan builder (syntax + connectors)</h2>
+    <div class="card">
+      <div class="tabs">
+        <button class="tabbtn is-on" id="lvlA1" type="button">A1</button>
+        <button class="tabbtn" id="lvlA2" type="button">A2</button>
+        <button class="tabbtn" id="lvlB1" type="button">B1</button>
+      </div>
+
+      <div class="kcard" id="buildHost">Loading…</div>
+
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="buildListen" type="button">🔊 Listen</button>
+        <button class="btn btn--ghost" id="buildCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="buildReset" type="button">↺ Reset</button>
+      </div>
+
+      <div class="feedback hidden" id="buildFb"></div>
+
+      <div class="kcard" style="margin-top:.75rem">
+        <strong>Output:</strong><br/>
+        <span id="buildOut"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="secFinal">
+    <h2>7) Final mixed test (ready to move on?)</h2>
+    <div class="card">
+      <div class="kcard" id="finalHost">Click Start.</div>
+      <div class="smallrow">
+        <button class="btn" id="finalStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="finalCheck" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="finalNext" type="button">➡️ Next</button>
+        <button class="btn btn--ghost" id="finalHint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="finalReset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="finalFb"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="tiny" style="opacity:.95">© SpeakEasyTisha · karine-Beach Club-sardinia-review-studio-a1a2 · Build 20260525-203227</div>
+      <a class="toolmini" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<pre id="debugBox" class="hidden" style="white-space:pre-wrap;margin:1rem auto;padding:1rem;border:1px dashed rgba(255,255,255,.35);border-radius:14px;background:rgba(255,255,255,.92);max-width:1180px;color:#132026;">Debug log</pre>
+
+<script src="js/karine-barbie-sardinia-review-studio-a1a2.js"></script>
+</body>
+</html>
