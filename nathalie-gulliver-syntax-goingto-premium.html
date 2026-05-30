@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nathalie’s Journeys — Syntax & Going To</title>
+  <link rel="stylesheet" href="css/nathalie-gulliver-syntax-goingto-premium.css" />
+</head>
+<body>
+  <div class="js-warning" id="jsWarning">⚠️ JS not loaded. Put HTML in root, CSS in /css/, JS in /js/ or keep the three files together with matching names.</div>
+
+  <header class="hero">
+    <div class="hero-map" aria-hidden="true"></div>
+    <div class="hero-card">
+      <p class="kicker">Gulliver Travel Notebook • CLOE Oral Confidence</p>
+      <h1>Nathalie’s Journeys Around the Planet</h1>
+      <h2>Lesson 3 — Building English Sentences Naturally</h2>
+      <p class="hero-copy">
+        Today you are learning how English sentences work: word order, small words at the end,
+        travel prepositions, and future plans with <strong>going to</strong>.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn primary" data-scroll="map">Start the 1h30 route</button>
+        <button class="btn ghost" data-scroll="roleplay">Go to roleplay</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="lesson-nav" aria-label="Lesson controls">
+    <div class="nav-control">
+      <label for="languageMode">Support language</label>
+      <select id="languageMode">
+        <option value="en">English only</option>
+        <option value="fr">English + French support</option>
+      </select>
+    </div>
+    <div class="nav-control">
+      <label for="voiceMode">Audio accent</label>
+      <select id="voiceMode">
+        <option value="en-GB">British English</option>
+        <option value="en-US">American English</option>
+      </select>
+    </div>
+    <div class="nav-control">
+      <label for="speedMode">Audio speed</label>
+      <select id="speedMode">
+        <option value="0.78">Slow</option>
+        <option value="0.92" selected>Natural</option>
+        <option value="1">Normal</option>
+      </select>
+    </div>
+    <div class="score-pill">Score <span id="score">0</span>/<span id="possible">0</span></div>
+  </nav>
+
+  <main>
+    <section class="panel route" id="map">
+      <p class="kicker">Your route</p>
+      <h2>90-minute lesson plan</h2>
+      <div class="route-grid">
+        <article><span>1</span><h3>Sentence skeleton</h3><p>Subject + verb + complement. Build sentences visually.</p><small>15 min</small></article>
+        <article><span>2</span><h3>Present Simple</h3><p>One verb first: <em>travel</em>. Affirmative, negative, questions.</p><small>20 min</small></article>
+        <article><span>3</span><h3>Present Continuous</h3><p>BE + verb-ing. Actions happening now / today.</p><small>15 min</small></article>
+        <article><span>4</span><h3>Small words at the end</h3><p>talk about, look for, wait for, travel with.</p><small>15 min</small></article>
+        <article><span>5</span><h3>Going to future</h3><p>Plans and intentions, step by step.</p><small>20 min</small></article>
+        <article><span>6</span><h3>Travel roleplay</h3><p>Question → your response → model answer → listen.</p><small>20 min</small></article>
+      </div>
+    </section>
+
+    <section class="panel" id="vocabulary">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Travel words for today</p>
+          <h2>Vocabulary by category</h2>
+          <p class="support fr-only">Choisissez une catégorie pour ne pas surcharger Nathalie. Chaque carte contient une traduction, une définition et un exemple audio.</p>
+        </div>
+        <div class="select-card">
+          <label for="vocabCategory">Category</label>
+          <select id="vocabCategory">
+            <option value="all">All categories</option>
+            <option value="syntax">Sentence building</option>
+            <option value="future">Future plans</option>
+            <option value="prepositions">Small words</option>
+            <option value="travel">Travel situations</option>
+            <option value="hotel">Hotel / preferences</option>
+          </select>
+        </div>
+      </div>
+      <div class="chip-row" id="vocabChips"></div>
+      <div class="vocab-grid" id="vocabGrid"></div>
+    </section>
+
+    <section class="panel grammar" id="syntax">
+      <p class="kicker">Part 1 • English sentence logic</p>
+      <h2>The English sentence skeleton</h2>
+      <div class="teacher">
+        <strong>Big idea:</strong> English usually starts with the person or thing, then the action, then the information.
+        <p class="fr-only">En anglais, on commence souvent par la personne/la chose, puis l’action, puis les informations.</p>
+      </div>
+
+      <div class="formula">
+        <span class="subject">SUBJECT</span>
+        <span class="arrow">+</span>
+        <span class="verb">VERB</span>
+        <span class="arrow">+</span>
+        <span class="info">COMPLEMENT</span>
+      </div>
+
+      <div class="example-stack">
+        <p><span class="subject">I</span> <span class="verb">travel</span> <span class="info">by train.</span></p>
+        <p><span class="subject">You</span> <span class="verb">like</span> <span class="info">quiet hotels.</span></p>
+        <p><span class="subject">We</span> <span class="verb">are looking for</span> <span class="info">platform four.</span></p>
+      </div>
+
+      <div class="compare-box">
+        <div>
+          <h3>French thinking</h3>
+          <p>Je voyage souvent en train.</p>
+        </div>
+        <div>
+          <h3>English structure</h3>
+          <p><span class="subject">I</span> <span class="time">often</span> <span class="verb">travel</span> <span class="info">by train.</span></p>
+        </div>
+      </div>
+
+      <div class="activity">
+        <h3>Activity 1 — Build a simple sentence</h3>
+        <p>Click the words in the correct order.</p>
+        <div class="builder" data-target="I often travel by train">
+          <div class="builder-answer" aria-live="polite"></div>
+          <div class="builder-bank"></div>
+          <div class="btn-row">
+            <button class="btn secondary reset-builder">Reset</button>
+            <button class="btn primary check-builder">Check</button>
+            <button class="btn listen-target">Listen to model</button>
+          </div>
+          <div class="feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel grammar" id="present-simple">
+      <p class="kicker">Part 2 • One verb first</p>
+      <h2>Present Simple with one verb: <em>to travel</em></h2>
+      <div class="teacher">
+        <strong>Use Present Simple for:</strong> habits, routines, facts, and schedules.
+        <p class="fr-only">On utilise le présent simple pour les habitudes, les faits, les routines et les horaires.</p>
+      </div>
+
+      <h3>Step A — Affirmative</h3>
+      <p class="rule">Only <strong>he / she / it</strong> changes. Add <strong>-s</strong>.</p>
+      <table>
+        <tr><th>Subject</th><th>Verb</th><th>Example</th></tr>
+        <tr><td>I</td><td>travel</td><td>I travel by train.</td></tr>
+        <tr><td>You</td><td>travel</td><td>You travel by ferry.</td></tr>
+        <tr><td>He / She / It</td><td>travels</td><td>She travels by plane.</td></tr>
+        <tr><td>We / They</td><td>travel</td><td>They travel every year.</td></tr>
+      </table>
+
+      <h3>Step B — Negative</h3>
+      <p class="rule">Use <strong>do not / does not + base verb</strong>. After <strong>does</strong>, the <strong>-s disappears</strong>.</p>
+      <table>
+        <tr><th>Subject</th><th>Structure</th><th>Example</th></tr>
+        <tr><td>I / you / we / they</td><td>do not travel</td><td>I do not travel every weekend.</td></tr>
+        <tr><td>he / she / it</td><td>does not travel</td><td>She does not travel every weekend.</td></tr>
+      </table>
+
+      <h3>Step C — Questions</h3>
+      <p class="rule">Use <strong>Do / Does + subject + base verb?</strong></p>
+      <table>
+        <tr><th>Question word</th><th>Auxiliary</th><th>Subject</th><th>Base verb</th></tr>
+        <tr><td>—</td><td>Do</td><td>you</td><td>travel?</td></tr>
+        <tr><td>—</td><td>Does</td><td>she</td><td>travel?</td></tr>
+        <tr><td>How</td><td>do</td><td>you</td><td>travel?</td></tr>
+      </table>
+
+      <div class="activity">
+        <h3>Activity 2 — Present Simple choices</h3>
+        <div class="quiz" data-answer="travels"><p>1. She ___ by train every year.</p><button>travel</button><button>travels</button><button>travelling</button><div class="feedback"></div></div>
+        <div class="quiz" data-answer="does not travel"><p>2. She ___ by car.</p><button>do not travel</button><button>does not travel</button><button>is travelling</button><div class="feedback"></div></div>
+        <div class="quiz" data-answer="Does"><p>3. ___ she travel by ferry?</p><button>Do</button><button>Does</button><button>Is</button><div class="feedback"></div></div>
+        <div class="quiz" data-answer="do"><p>4. How ___ you travel to the UK?</p><button>are</button><button>do</button><button>does</button><div class="feedback"></div></div>
+      </div>
+    </section>
+
+    <section class="panel grammar" id="present-continuous">
+      <p class="kicker">Part 3 • Now / today</p>
+      <h2>Present Continuous: what is happening now</h2>
+      <div class="teacher">
+        <strong>Use Present Continuous for actions happening now, today, or at the moment.</strong>
+      </div>
+
+      <h3>Step A — Choose BE</h3>
+      <table>
+        <tr><th>Subject</th><th>BE</th></tr>
+        <tr><td>I</td><td>am</td></tr>
+        <tr><td>You / We / They</td><td>are</td></tr>
+        <tr><td>He / She / It</td><td>is</td></tr>
+      </table>
+
+      <h3>Step B — Add verb-ing</h3>
+      <table>
+        <tr><th>Base verb</th><th>verb-ing</th><th>Example</th></tr>
+        <tr><td>travel</td><td>travelling</td><td>I am travelling today.</td></tr>
+        <tr><td>wait</td><td>waiting</td><td>I am waiting for the train.</td></tr>
+        <tr><td>look</td><td>looking</td><td>I am looking for my hotel.</td></tr>
+      </table>
+
+      <h3>Step C — Same verb: travel</h3>
+      <table>
+        <tr><th>Affirmative</th><th>Negative</th><th>Question</th></tr>
+        <tr><td>I am travelling.</td><td>I am not travelling.</td><td>Am I travelling?</td></tr>
+        <tr><td>You are travelling.</td><td>You are not travelling.</td><td>Are you travelling?</td></tr>
+        <tr><td>She is travelling.</td><td>She is not travelling.</td><td>Is she travelling?</td></tr>
+      </table>
+
+      <div class="activity">
+        <h3>Activity 3 — Present Continuous choices</h3>
+        <div class="quiz" data-answer="am travelling"><p>1. I ___ to Bath today.</p><button>travel</button><button>am travelling</button><button>travels</button><div class="feedback"></div></div>
+        <div class="quiz" data-answer="is looking"><p>2. She ___ for platform four.</p><button>is looking</button><button>look</button><button>looks</button><div class="feedback"></div></div>
+        <div class="quiz" data-answer="Are"><p>3. ___ you waiting for the taxi?</p><button>Do</button><button>Are</button><button>Does</button><div class="feedback"></div></div>
+      </div>
+    </section>
+
+    <section class="panel grammar" id="preposition-end">
+      <p class="kicker">Part 4 • Nathalie’s question</p>
+      <h2>Why is “about” at the end?</h2>
+      <div class="teacher">
+        <strong>Short answer:</strong> English often keeps the small word with the verb idea.
+        Do not learn “about” alone. Learn the expression block.
+        <p class="fr-only">Réponse simple : en anglais, le petit mot reste souvent avec l’idée du verbe. On apprend le bloc complet.</p>
+      </div>
+
+      <div class="block-grid">
+        <article><h3>talk about</h3><p>parler de</p><p>What are you talking <strong>about</strong>?</p></article>
+        <article><h3>look for</h3><p>chercher</p><p>What are you looking <strong>for</strong>?</p></article>
+        <article><h3>wait for</h3><p>attendre</p><p>Who are you waiting <strong>for</strong>?</p></article>
+        <article><h3>travel with</h3><p>voyager avec</p><p>Who are you travelling <strong>with</strong>?</p></article>
+      </div>
+
+      <div class="activity">
+        <h3>Activity 4 — Complete the expression block</h3>
+        <div class="quiz" data-answer="about"><p>1. What are you talking ___?</p><button>for</button><button>about</button><button>with</button><div class="feedback"></div></div>
+        <div class="quiz" data-answer="with"><p>2. Who are you travelling ___?</p><button>about</button><button>with</button><button>for</button><div class="feedback"></div></div>
+        <div class="quiz" data-answer="for"><p>3. What are you looking ___?</p><button>with</button><button>for</button><button>about</button><div class="feedback"></div></div>
+      </div>
+    </section>
+
+    <section class="panel grammar" id="travel-prepositions">
+      <p class="kicker">Part 5 • Travel prepositions</p>
+      <h2>By / on / in / at — the travel logic</h2>
+      <div class="prep-grid">
+        <article><h3>BY = transport method</h3><p>Use <strong>by</strong> when you say the general way you travel.</p><p>by train • by plane • by ferry • by bus</p><p class="warning">Not: by a train</p></article>
+        <article><h3>ON = public transport</h3><p>Use <strong>on</strong> when you are physically inside public transport.</p><p>on the train • on the bus • on the ferry</p></article>
+        <article><h3>IN = small/private vehicle</h3><p>Use <strong>in</strong> with cars and taxis.</p><p>in a taxi • in a car</p></article>
+        <article><h3>AT = exact travel place</h3><p>Use <strong>at</strong> for travel locations.</p><p>at the station • at the airport • at the hotel</p></article>
+      </div>
+
+      <div class="activity">
+        <h3>Activity 5 — Choose the right preposition</h3>
+        <div class="quiz" data-answer="by"><p>1. I usually travel ___ train.</p><button>by</button><button>on</button><button>in</button><button>at</button><div class="feedback"></div></div>
+        <div class="quiz" data-answer="on"><p>2. I am ___ the train now.</p><button>by</button><button>on</button><button>in</button><button>at</button><div class="feedback"></div></div>
+        <div class="quiz" data-answer="in"><p>3. I am ___ a taxi.</p><button>by</button><button>on</button><button>in</button><button>at</button><div class="feedback"></div></div>
+        <div class="quiz" data-answer="at"><p>4. I am waiting ___ the station.</p><button>by</button><button>on</button><button>in</button><button>at</button><div class="feedback"></div></div>
+      </div>
+    </section>
+
+    <section class="panel grammar" id="going-to">
+      <p class="kicker">Part 6 • Future plans</p>
+      <h2>Future with <em>going to</em></h2>
+      <div class="teacher">
+        <strong>Use going to for plans, intentions and future projects.</strong>
+        <p class="fr-only">On utilise <em>going to</em> pour les projets et intentions.</p>
+      </div>
+
+      <div class="formula">
+        <span class="subject">SUBJECT</span>
+        <span class="arrow">+</span>
+        <span class="verb">BE</span>
+        <span class="arrow">+</span>
+        <span class="future">GOING TO</span>
+        <span class="arrow">+</span>
+        <span class="info">BASE VERB</span>
+      </div>
+
+      <h3>Step A — One verb first: travel</h3>
+      <table>
+        <tr><th>Subject</th><th>BE</th><th>going to</th><th>base verb</th><th>Sentence</th></tr>
+        <tr><td>I</td><td>am</td><td>going to</td><td>travel</td><td>I am going to travel.</td></tr>
+        <tr><td>You</td><td>are</td><td>going to</td><td>travel</td><td>You are going to travel.</td></tr>
+        <tr><td>She</td><td>is</td><td>going to</td><td>travel</td><td>She is going to travel.</td></tr>
+        <tr><td>We</td><td>are</td><td>going to</td><td>travel</td><td>We are going to travel.</td></tr>
+      </table>
+
+      <h3>Step B — Negative</h3>
+      <p class="rule">Put <strong>not</strong> after BE.</p>
+      <p>I am <strong>not</strong> going to travel this weekend.</p>
+
+      <h3>Step C — Question</h3>
+      <p class="rule">Move <strong>BE</strong> before the subject.</p>
+      <p><strong>Are</strong> you going to travel this summer?</p>
+
+      <div class="activity">
+        <h3>Activity 6 — Going to choices</h3>
+        <div class="quiz" data-answer="am going to travel"><p>1. I ___ to Scotland next year.</p><button>travel</button><button>am going to travel</button><button>travelling</button><div class="feedback"></div></div>
+        <div class="quiz" data-answer="is going to visit"><p>2. She ___ Edinburgh.</p><button>is going to visit</button><button>visits</button><button>visit</button><div class="feedback"></div></div>
+        <div class="quiz" data-answer="Are"><p>3. ___ you going to travel this summer?</p><button>Do</button><button>Are</button><button>Does</button><div class="feedback"></div></div>
+      </div>
+
+      <div class="activity">
+        <h3>Activity 7 — Build a future sentence</h3>
+        <div class="builder" data-target="I am going to travel to Scotland next year">
+          <div class="builder-answer" aria-live="polite"></div>
+          <div class="builder-bank"></div>
+          <div class="btn-row">
+            <button class="btn secondary reset-builder">Reset</button>
+            <button class="btn primary check-builder">Check</button>
+            <button class="btn listen-target">Listen to model</button>
+          </div>
+          <div class="feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="sorting">
+      <p class="kicker">Hands-on syntax</p>
+      <h2>Sort the sentence pieces</h2>
+      <p>Drag the words into the correct category. On iPad, tap a word, then tap the category.</p>
+      <div class="sort-layout">
+        <div class="sort-bank" id="sortBank"></div>
+        <div class="sort-zones">
+          <div class="dropzone" data-zone="subject"><h3>Subject</h3></div>
+          <div class="dropzone" data-zone="verb"><h3>Verb / verb block</h3></div>
+          <div class="dropzone" data-zone="smallword"><h3>Small word</h3></div>
+          <div class="dropzone" data-zone="time"><h3>Time</h3></div>
+          <div class="dropzone" data-zone="place"><h3>Place / destination</h3></div>
+        </div>
+      </div>
+      <div id="sortFeedback" class="feedback"></div>
+    </section>
+
+    <section class="panel" id="roleplay">
+      <p class="kicker">Part 7 • Interactive speaking</p>
+      <h2>Travel roleplay: question → response → model answer</h2>
+      <div id="roleplayContainer"></div>
+    </section>
+
+    <section class="panel" id="cloe">
+      <p class="kicker">CLOE oral practice</p>
+      <h2>Final 45-second speaking mission</h2>
+      <div class="mission">
+        <h3>Your prompt</h3>
+        <p>You are preparing a future trip. Explain where you are going to travel, how you usually travel, what you are looking for, and who you are travelling with.</p>
+        <div class="btn-row">
+          <button class="btn primary" id="showModel">Show model answer</button>
+          <button class="btn secondary" id="listenModel">Listen to model</button>
+        </div>
+        <div id="modelAnswer" class="model hidden">
+          <p><strong>Model answer:</strong></p>
+          <p>I usually travel by train because it is relaxing. Next year, I am going to travel to Scotland. I am looking for a quiet hotel near the station. I am going to travel with my family, and I would like to visit castles and beautiful landscapes.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>🌍 Nathalie’s journey continues — next lesson: hotel check-in, problems and polite solutions.</p>
+  </footer>
+
+  <script src="js/nathalie-gulliver-syntax-goingto-premium.js"></script>
+</body>
+</html>

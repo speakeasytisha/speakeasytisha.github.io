@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SpeakEasyTisha • Myriam • Conditionals + Values: Choose the Right Structure</title>
+  <meta name="description" content="Interactive add-on: choose the right conditional (If + present / will vs If + past / would) + values structures (I have always tried to be…, It’s important to…, My parents taught me to…).">
+  <link rel="stylesheet" href="./css/english360-myriam-conditional-choice-values-addon.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">SE</div>
+    <div>
+      <div class="title">Choose the Right Structure</div>
+      <div class="subtitle">Conditionals (Real vs Dream) + Values structures • A2.1 → B2.1 • Touch‑friendly</div>
+    </div>
+  </div>
+
+  <div class="toolbar" role="region" aria-label="Controls">
+    <div class="tool">
+      <div class="label">Level</div>
+      <div class="seg" role="group" aria-label="Level">
+        <button type="button" class="segBtn on" data-level="A2">A2+</button>
+        <button type="button" class="segBtn" data-level="B1">B1</button>
+        <button type="button" class="segBtn" data-level="B2">B2</button>
+      </div>
+      <div class="tiny muted mt6">Same topic, higher level.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">French (vocab only)</div>
+      <button type="button" class="pill" id="frToggle" aria-pressed="true">On</button>
+      <div class="tiny muted mt6">Hide/show translations.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Accent (TTS)</div>
+      <div class="seg" role="group" aria-label="Accent">
+        <button type="button" class="segBtn on" data-accent="US">US</button>
+        <button type="button" class="segBtn" data-accent="UK">UK</button>
+      </div>
+      <div class="label mt8">Rate</div>
+      <input id="rate" class="range" type="range" min="0.7" max="1.25" step="0.05" value="1">
+      <div class="tiny muted mt6">TTS reads English only.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Score</div>
+      <div class="row">
+        <span class="pill mono" id="scorePill">0 / 0</span>
+        <button type="button" class="iconBtn" id="resetScore" aria-label="Reset score">↺</button>
+      </div>
+      <div class="tiny">Accuracy: <span id="acc">0%</span></div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Actions</div>
+      <div class="row">
+        <button type="button" class="pill" id="newSetBtn">✨ New set</button>
+        <button type="button" class="pill" id="printBtn">Print</button>
+        <button type="button" class="pill ghost" id="resetAllBtn">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Status</div>
+      <div class="pill ok" id="jsOk">JS: loading…</div>
+      <div class="errBox" id="errBox" hidden></div>
+      <div class="tiny muted mt6">Mac + iPad Safari</div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Navigation">
+    <a class="tab" href="#guide">Quick guide</a>
+    <a class="tab" href="#quiz">Choose the conditional</a>
+    <a class="tab" href="#structure">Build the structure</a>
+    <a class="tab" href="#values">Values builder</a>
+    <a class="tab" href="#vocab">Vocabulary</a>
+    <a class="tab" href="#speaking">Speaking</a>
+    <a class="tab" href="#writing">Writing</a>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <noscript><div class="noscript"><strong>JavaScript is disabled.</strong> Please enable JS.</div></noscript>
+
+  <section id="guide" class="card hero">
+    <h1 class="h1">Real future vs Dream (imaginary now)</h1>
+    <p class="lead">This page helps you choose the correct grammar quickly, then build clean exam‑safe sentences.</p>
+
+    <div class="grid2 mt12">
+      <div class="panel">
+        <div class="kicker">Conditional 1 — Real / possible future</div>
+        <div class="rule">
+          <div class="pill mono">If + present</div>
+          <div class="pill mono">will + verb</div>
+        </div>
+        <div class="ex" id="exFirst">If I have time, I will practise my English.
+If it rains, we will stay inside.</div>
+        <div class="row mt10">
+          <button class="pill ghost" id="sayFirstBtn" type="button">▶ Read</button>
+          <button class="pill" id="copyFirstBtn" type="button">Copy pattern</button>
+        </div>
+        <div class="tiny muted mt10">Use when it can really happen.</div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Conditional 2 — Dream / imaginary now</div>
+        <div class="rule">
+          <div class="pill mono">If + past</div>
+          <div class="pill mono">would + verb</div>
+        </div>
+        <div class="ex" id="exSecond">If I spoke English better, I would visit the USA.
+If I won the lottery, I would travel more.</div>
+        <div class="row mt10">
+          <button class="pill ghost" id="saySecondBtn" type="button">▶ Read</button>
+          <button class="pill" id="copySecondBtn" type="button">Copy pattern</button>
+        </div>
+        <div class="tiny muted mt10">Use for dreams, imaginary situations, “not true now”.</div>
+      </div>
+    </div>
+
+    <div class="panel mt12">
+      <div class="kicker">Fast values structures (from the Values lesson)</div>
+      <div class="grid3 mt10">
+        <div class="miniCard">
+          <div class="miniTitle">Structure 1</div>
+          <div class="miniRule"><span class="pill mono">I have always tried to be</span> + adjective</div>
+          <div class="miniEx">I have always tried to be honest and patient.</div>
+        </div>
+        <div class="miniCard">
+          <div class="miniTitle">Structure 2</div>
+          <div class="miniRule"><span class="pill mono">It’s important to be</span> + adjective</div>
+          <div class="miniEx">It’s important to be respectful.</div>
+        </div>
+        <div class="miniCard">
+          <div class="miniTitle">Structure 3</div>
+          <div class="miniRule"><span class="pill mono">My parents taught me to</span> + verb</div>
+          <div class="miniEx">My parents taught me to work hard.</div>
+        </div>
+      </div>
+
+      <div class="chips mt12" id="fastChips"></div>
+      <div class="row mt10">
+        <button class="pill ghost" id="sayFastBtn" type="button">▶ Read chips</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="card">
+    <h2 class="h2">1) Choose the right conditional</h2>
+    <p class="muted">Read the situation. Choose: <strong>Real future (will)</strong> or <strong>Dream/imaginary (would)</strong>.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">Situation</div>
+        <div class="promptBox" id="qSituation">—</div>
+        <div class="row mt10">
+          <button class="pill big" id="pickFirstBtn" type="button">✅ Real future (will)</button>
+          <button class="pill big ghost" id="pickSecondBtn" type="button">🌙 Dream (would)</button>
+        </div>
+        <div class="row mt10">
+          <button class="pill ghost" id="qSayBtn" type="button">▶ Read</button>
+          <button class="pill ghost" id="qNextBtn" type="button">Next</button>
+        </div>
+        <div class="model mt10" id="qFeedback"></div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Model sentence (for this situation)</div>
+        <div class="model" id="qModel">—</div>
+        <div class="row mt10">
+          <button class="pill" id="qShowModelBtn" type="button">Show model</button>
+          <button class="pill ghost" id="qSayModelBtn" type="button">▶ Read model</button>
+        </div>
+        <div class="tiny muted mt10">Goal: 1 clean conditional + 1 reason (because / so that).</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="structure" class="card">
+    <h2 class="h2">2) Build the correct structure</h2>
+    <p class="muted">Choose the type, then build your conditional. The page will generate the correct grammar.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">A) Conditional builder</div>
+
+        <label class="stack mt10">
+          <span class="label">Choose the type</span>
+          <select class="select" id="bType">
+            <option value="first">Real future (If + present, will + verb)</option>
+            <option value="second">Dream/imaginary (If + past, would + verb)</option>
+          </select>
+        </label>
+
+        <div class="grid2 mt10">
+          <label class="stack">
+            <span class="label">If‑clause</span>
+            <select class="select" id="bIf"></select>
+          </label>
+          <label class="stack">
+            <span class="label">Main clause</span>
+            <select class="select" id="bMain"></select>
+          </label>
+        </div>
+
+        <label class="stack mt10">
+          <span class="label">Reason (optional)</span>
+          <select class="select" id="bReason"></select>
+        </label>
+
+        <div class="row mt10">
+          <button class="pill" id="bBuildBtn" type="button">Build</button>
+          <button class="pill" id="bCheckBtn" type="button">Check</button>
+          <button class="pill ghost" id="bRandomBtn" type="button">Random</button>
+          <button class="pill ghost" id="bSayBtn" type="button">▶ Read</button>
+        </div>
+
+        <div class="model mt10" id="bOut">—</div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">B) Common mistakes (tap to fix)</div>
+        <div class="chips mt10" id="mistakeChips"></div>
+        <div class="lessonBox mt10" id="mistakeBox">Tap a mistake to see the correction.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="values" class="card">
+    <h2 class="h2">3) Values builder (your 3 core structures)</h2>
+    <p class="muted">Build perfect values sentences: the page automatically adds <strong>be</strong> when needed.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">A) Build a values sentence</div>
+
+        <div class="grid2 mt10">
+          <label class="stack">
+            <span class="label">Starter</span>
+            <select class="select" id="vStart"></select>
+          </label>
+          <label class="stack">
+            <span class="label">Word/phrase</span>
+            <select class="select" id="vWord"></select>
+          </label>
+        </div>
+
+        <label class="stack mt10">
+          <span class="label">Connector</span>
+          <select class="select" id="vConn"></select>
+        </label>
+
+        <label class="stack mt10">
+          <span class="label">Reason</span>
+          <select class="select" id="vWhy"></select>
+        </label>
+
+        <div class="row mt10">
+          <button class="pill" id="vBuildBtn" type="button">Build</button>
+          <button class="pill" id="vCheckBtn" type="button">Check</button>
+          <button class="pill ghost" id="vRandomBtn" type="button">Random</button>
+          <button class="pill ghost" id="vSayBtn" type="button">▶ Read</button>
+        </div>
+
+        <div class="model mt10" id="vOut">—</div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">B) Mini paragraph (A2→B2 upgrade)</div>
+        <div class="tiny muted">Write 4–6 lines: values + example + conclusion.</div>
+
+        <div class="grid2 mt10">
+          <textarea class="textarea" id="pA2" rows="7" placeholder="A2: simple sentences…"></textarea>
+          <textarea class="textarea" id="pB2" rows="7" placeholder="B2: connectors + detail + contrast…"></textarea>
+        </div>
+
+        <div class="row mt10">
+          <button class="pill" id="pFillBtn" type="button">Auto‑fill example</button>
+          <button class="pill ghost" id="pClearBtn" type="button">Clear</button>
+          <button class="pill ghost" id="pSayBtn" type="button">▶ Read</button>
+        </div>
+
+        <div class="lessonBox mt10" id="upgradeTips"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vocab" class="card">
+    <h2 class="h2">4) Vocabulary (values + dreams + connectors)</h2>
+    <p class="muted">Filter by category. Click a word to open a mini‑card (definition + example + TTS).</p>
+
+    <div class="panel mt10">
+      <div class="row wrapRow">
+        <label class="stack">
+          <span class="label">Category</span>
+          <select class="select" id="lexCat"></select>
+        </label>
+        <label class="stack">
+          <span class="label">Search</span>
+          <input class="input" id="lexSearch" type="search" placeholder="honest, lottery, because…">
+        </label>
+        <button class="pill ghost" id="lexResetBtn" type="button">Reset</button>
+      </div>
+      <div class="vGrid mt12" id="lexGrid"></div>
+    </div>
+  </section>
+
+  <section id="speaking" class="card">
+    <h2 class="h2">5) Speaking (60–90 seconds)</h2>
+    <p class="muted">Speak with: 1 conditional + 1 value sentence + 1 example.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">Prompt</div>
+        <label class="stack mt10">
+          <span class="label">Scenario</span>
+          <select class="select" id="sSel"></select>
+        </label>
+
+        <div class="timerRow mt10">
+          <button class="pill" id="s60Btn" type="button">Start 60s</button>
+          <button class="pill" id="s90Btn" type="button">Start 90s</button>
+          <button class="pill ghost" id="sStopBtn" type="button">Stop</button>
+          <span class="pill mono" id="sTimer">00:00</span>
+          <button class="pill ghost" id="sSayBtn" type="button">▶ Read</button>
+        </div>
+
+        <div class="promptBox mt10" id="sPrompt">—</div>
+        <div class="chips mt10" id="sChips"></div>
+        <textarea class="textarea mt10" id="sNotes" rows="7" placeholder="Notes…"></textarea>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Model (A2/B1/B2)</div>
+        <div class="row mt10">
+          <button class="pill" id="sModelBtn" type="button">Show model</button>
+          <button class="pill ghost" id="sModelSayBtn" type="button">▶ Read model</button>
+        </div>
+        <div class="model mt10" id="sModelOut">—</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing" class="card">
+    <h2 class="h2">6) Writing (exam‑style mini text)</h2>
+    <p class="muted">Write 8–12 lines. Include: 1 conditional + 2 values sentences + 1 connector.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">Prompt</div>
+        <div class="promptBox mt10" id="wPrompt">—</div>
+        <div class="chips mt10" id="wChips"></div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Your writing</div>
+        <div class="timerRow mt10">
+          <button class="pill" id="w8Btn" type="button">Start 8 min</button>
+          <button class="pill ghost" id="wStopBtn" type="button">Stop</button>
+          <span class="pill mono" id="wTimer">00:00</span>
+          <span class="pill mono">Words: <span id="wWords">0</span></span>
+          <button class="pill ghost" id="wSayBtn" type="button">▶ Read</button>
+        </div>
+        <textarea class="textarea mt10" id="wBox" rows="11" placeholder="Write here…"></textarea>
+        <div class="row mt10">
+          <button class="pill" id="wModelBtn" type="button">Show model</button>
+          <button class="pill ghost" id="wClearBtn" type="button">Clear</button>
+          <button class="pill ghost" id="wCopyBtn" type="button">Copy</button>
+        </div>
+        <div class="model mt10" id="wModelOut">—</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="muted">SpeakEasyTisha • Conditionals + Values Add‑On • Print‑friendly • Touch‑friendly</div>
+  </footer>
+</main>
+
+<div class="modalOverlay" id="modalOverlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Vocabulary card">
+    <button class="modalClose" id="modalClose" type="button" aria-label="Close">✕</button>
+    <div class="modalIcon" id="mIcon">✨</div>
+    <div class="modalWord" id="mEn">—</div>
+    <div class="modalFr" id="mFr">—</div>
+    <div class="modalDef" id="mDef">—</div>
+    <div class="modalEx" id="mEx">—</div>
+    <div class="row mt10">
+      <button class="pill" id="mSayBtn" type="button">▶ Listen</button>
+      <button class="pill ghost" id="mAddBtn" type="button">Add to notes</button>
+    </div>
+  </div>
+</div>
+
+<script>
+window.__CondValuesLoaded = false;
+setTimeout(function(){
+  if(!window.__CondValuesLoaded){
+    var ok=document.getElementById('jsOk'); if(ok) ok.textContent='JS: not loaded ❌';
+    var box=document.getElementById('errBox');
+    if(box){ box.hidden=false; box.textContent='⚠️ JS not loaded. Put HTML in root, CSS in /css/, JS in /js/.'; }
+  }
+},1200);
+</script>
+<script src="./js/english360-myriam-conditional-choice-values-addon.js"></script>
+</body>
+</html>

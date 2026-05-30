@@ -1,0 +1,408 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yanis Review Flight Deck · SpeakEasyTisha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-review-masterclass.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__eyebrow">SpeakEasyTisha · Airline Review Session</div>
+      <h1>Yanis Review Flight Deck ✈️</h1>
+      <p class="brand__sub">A full structured review of your English so far: vocabulary, grammar, expressions, reformulation, airport language, and guided LILATE-style practice.</p>
+    </div>
+
+    <div class="toolbar">
+      <div class="voice-box">
+        <span class="voice-box__label">Accent</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+      <div class="toolbar__audio">
+        <button class="ghost-btn" id="pauseAudio" type="button">⏸ Pause</button>
+        <button class="ghost-btn" id="resumeAudio" type="button">▶ Resume</button>
+        <button class="ghost-btn" id="stopAudio" type="button">⏹ Stop</button>
+      </div>
+      <div class="score-chip" aria-live="polite">
+        Review Score: <span id="scoreNow">0</span>/<span id="scoreMax">0</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__card">
+      <div class="hero__badge">Review mission</div>
+      <h2>Today you review <span>everything you have studied so far</span>.</h2>
+      <p>This page is built to help you slow down, take notes, see models, compare stronger answers, and make sure that you really remember the key information before moving forward.</p>
+      <div class="hero__buttons">
+        <a class="primary-btn" href="#section-map">Start the review</a>
+        <button class="ghost-btn" id="listenIntro" type="button">🔊 Listen to the goal</button>
+      </div>
+    </div>
+    <div class="hero__side">
+      <div class="mini-card">
+        <h3>What you will revise</h3>
+        <ul>
+          <li>Self-introduction and current job</li>
+          <li>Present simple, questions, negatives</li>
+          <li>Articles and prepositions</li>
+          <li>Airport, plane, gate, passenger vocabulary</li>
+          <li>Useful expressions for the LILATE</li>
+          <li>Reformulation and roleplays</li>
+        </ul>
+      </div>
+      <div class="mini-card">
+        <h3>How to use this page</h3>
+        <ul>
+          <li>Read the rule slowly</li>
+          <li>Write notes in each note zone</li>
+          <li>Do the exercises step by step</li>
+          <li>Listen only when you want</li>
+          <li>Compare simple and stronger answers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="page-shell">
+  <section class="section" id="section-map">
+    <div class="section__head">
+      <h2>1) Review map — what you have covered so far</h2>
+      <p class="section__sub">Use this as your roadmap. You do not need to know everything perfectly. You need to understand the main patterns and use them clearly.</p>
+    </div>
+    <div class="route-grid">
+      <article class="route-card"><div class="route-card__icon">🧑‍💼</div><h3>Introduce yourself</h3><p>Name, age, city, current job, duties, and future goal.</p></article>
+      <article class="route-card"><div class="route-card__icon">🧩</div><h3>Build correct sentences</h3><p>Present simple, questions, negatives, articles, prepositions, adjectives, and adverbs.</p></article>
+      <article class="route-card"><div class="route-card__icon">🛫</div><h3>Use professional vocabulary</h3><p>Airport, plane, gate, passengers, baggage, boarding, and service language.</p></article>
+      <article class="route-card"><div class="route-card__icon">🔄</div><h3>Reformulate clearly</h3><p>Listen, identify useful information, and say it back simply and professionally.</p></article>
+      <article class="route-card"><div class="route-card__icon">💬</div><h3>Interact with passengers</h3><p>Ask questions, clarify a problem, give information, and respond calmly.</p></article>
+      <article class="route-card"><div class="route-card__icon">✅</div><h3>Prepare for the LILATE</h3><p>Part 1 self-introduction, Part 2 reformulation, Part 3 information, Part 4 useful information from supports.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="section-intro">
+    <div class="section__head">
+      <h2>2) Self-introduction review</h2>
+      <p class="section__sub">This section helps you review how to present yourself clearly and professionally for Part 1 of the exam.</p>
+    </div>
+    <div class="two-col">
+      <article class="card card--light">
+        <div class="card__tools">
+          <button class="speak-btn" id="listenSelfModel" type="button">🔊 Listen to the model</button>
+        </div>
+        <h3>Model answer</h3>
+        <p class="model-box" id="selfModelText">My name is Yanis. I am twenty-five years old and I live in Schiltigheim. I work as a receptionist in a three-star hotel. My main duties are welcoming guests, answering the phone, replying to emails, and making reservations. I sometimes use English at work, especially on the phone and by email. I am improving my English because I would like to become a steward.</p>
+        <div class="mini-grammar">
+          <h4>Useful patterns</h4>
+          <ul>
+            <li><strong>I work as…</strong> → I work as a receptionist.</li>
+            <li><strong>My main duties are…</strong> → My main duties are welcoming guests and answering the phone.</li>
+            <li><strong>I use English…</strong> → I use English on the phone and by email.</li>
+            <li><strong>I would like to…</strong> → I would like to become a steward.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card card--notes">
+        <h3>Take notes</h3>
+        <p class="notes-help">Write the most important information you want to remember.</p>
+        <div class="note-prompt">My first sentence:</div>
+        <textarea class="note-area" rows="2" placeholder="My name is…"></textarea>
+        <div class="note-prompt">My current job:</div>
+        <textarea class="note-area" rows="2" placeholder="I work as…"></textarea>
+        <div class="note-prompt">My main duties:</div>
+        <textarea class="note-area" rows="3" placeholder="My main duties are…"></textarea>
+        <div class="note-prompt">My goal:</div>
+        <textarea class="note-area" rows="2" placeholder="I would like to…"></textarea>
+      </article>
+    </div>
+    <div class="exercise-card">
+      <h3>Practice — complete the introduction</h3>
+      <p class="task-line">Choose the best word or phrase to complete each sentence.</p>
+      <div id="introFillHost" class="fill-host"></div>
+    </div>
+  </section>
+
+  <section class="section" id="section-grammar">
+    <div class="section__head">
+      <h2>3) Grammar review hub</h2>
+      <p class="section__sub">Review the grammar you have already studied. Each block gives you the rule, examples, a comparison, a note area, and a short practice task with immediate feedback.</p>
+    </div>
+    <div class="grammar-stack">
+      <article class="grammar-card">
+        <h3>Grammar A — Present simple for your job and routine</h3>
+        <p><strong>Rule:</strong> Use the present simple for your job, your routine, and your responsibilities.</p>
+        <div class="example-list">
+          <div class="example-item"><span class="ex-label">Example:</span> I work as a receptionist.</div>
+          <div class="example-item"><span class="ex-label">Example:</span> I answer the phone.</div>
+          <div class="example-item"><span class="ex-label">Example:</span> I use English at work.</div>
+        </div>
+        <div class="compare-box"><div>✅ I work as a receptionist.</div><div>❌ I’m working a receptionist.</div></div>
+        <textarea class="note-area" rows="2" placeholder="Write one sentence about your own job."></textarea>
+        <div class="practice-mini"><h4>Quick check</h4><div id="grammarAHost" class="fill-host"></div></div>
+      </article>
+
+      <article class="grammar-card">
+        <h3>Grammar B — Questions and negatives with do / does</h3>
+        <p><strong>Rule:</strong> Use <strong>do</strong> and <strong>does</strong> for present simple questions and negatives.</p>
+        <div class="grammar-table"><div><strong>Question:</strong> Do you use English at work?</div><div><strong>Negative:</strong> I do not work at an airport.</div><div><strong>Short answer:</strong> Yes, I do. / No, I don’t.</div></div>
+        <div class="compare-box"><div>✅ Do you answer the phone?</div><div>❌ You answer the phone?</div></div>
+        <textarea class="note-area" rows="2" placeholder="Write one question and one negative sentence."></textarea>
+        <div class="practice-mini"><h4>Quick check</h4><div id="grammarBHost" class="quiz-host"></div></div>
+      </article>
+
+      <article class="grammar-card">
+        <h3>Grammar C — Articles: a / an / the / no article</h3>
+        <p><strong>Rule:</strong> Use <strong>a</strong> before a singular noun with a consonant sound, <strong>an</strong> before a vowel sound, <strong>the</strong> for something specific, and sometimes no article at all.</p>
+        <div class="example-list"><div class="example-item">a receptionist</div><div class="example-item">an email</div><div class="example-item">the phone</div><div class="example-item">breakfast / emails / work</div></div>
+        <div class="compare-box"><div>✅ I work in a hotel.</div><div>❌ I work in hotel.</div></div>
+        <textarea class="note-area" rows="2" placeholder="Write one example with a/an and one example with the."></textarea>
+        <div class="practice-mini"><h4>Quick check</h4><div id="grammarCHost" class="fill-host"></div></div>
+      </article>
+
+      <article class="grammar-card">
+        <h3>Grammar D — Prepositions for work</h3>
+        <p><strong>Rule:</strong> Some verbs and expressions need a specific preposition. Learn them as fixed groups.</p>
+        <div class="example-list"><div class="example-item">work <strong>in</strong> a hotel</div><div class="example-item">work <strong>at</strong> reception</div><div class="example-item">speak <strong>to</strong> a passenger</div><div class="example-item">reply <strong>to</strong> emails</div><div class="example-item">use English <strong>on</strong> the phone / <strong>by</strong> email</div></div>
+        <div class="compare-box"><div>✅ I use English on the phone.</div><div>❌ I use English in the phone.</div></div>
+        <textarea class="note-area" rows="2" placeholder="Write two useful work chunks with prepositions."></textarea>
+        <div class="practice-mini"><h4>Quick check</h4><div id="grammarDHost" class="fill-host"></div></div>
+      </article>
+
+      <article class="grammar-card">
+        <h3>Grammar E — Adjectives and adverbs</h3>
+        <p><strong>Rule:</strong> Use an <strong>adjective</strong> to describe a noun or a person. Use an <strong>adverb</strong> to describe how you do something.</p>
+        <div class="example-list"><div class="example-item">a <strong>calm</strong> passenger</div><div class="example-item">to speak <strong>calmly</strong></div><div class="example-item">a <strong>polite</strong> steward</div><div class="example-item">to answer <strong>politely</strong></div></div>
+        <div class="compare-box"><div>✅ The passenger is calm.</div><div>✅ The steward speaks calmly.</div></div>
+        <textarea class="note-area" rows="2" placeholder="Write one adjective sentence and one adverb sentence."></textarea>
+        <div class="practice-mini"><h4>Quick check</h4><div id="grammarEHost" class="quiz-host"></div></div>
+      </article>
+    </div>
+
+    <div class="exercise-card">
+      <h3>Grammar mixed practice</h3>
+      <p class="task-line">Mixed review questions. The correct answer is not always in the same place.</p>
+      <div id="grammarQuizHost" class="quiz-host"></div>
+    </div>
+  </section>
+
+  <section class="section" id="section-vocab">
+    <div class="section__head">
+      <h2>4) Vocabulary review station</h2>
+      <p class="section__sub">Review key words from your job, the airport, the plane, the gate, and passenger situations. Every card gives you the word, translation, definition, and an example sentence.</p>
+    </div>
+    <div class="filter-row">
+      <label class="filter-label" for="vocabFilter">Choose a category:</label>
+      <select id="vocabFilter" class="select-control">
+        <option value="all">All categories</option>
+        <option value="job">Current job</option>
+        <option value="airport">Airport</option>
+        <option value="plane">Plane</option>
+        <option value="gate">Gate & boarding</option>
+        <option value="problem">Passenger problems</option>
+      </select>
+    </div>
+    <div id="vocabGrid" class="vocab-grid"></div>
+  </section>
+
+  <section class="section" id="section-expressions">
+    <div class="section__head">
+      <h2>5) Useful expressions review</h2>
+      <p class="section__sub">Choose a realistic scenario. You will see the useful expressions for that situation, and you can reveal the model response if you need support.</p>
+    </div>
+    <div class="expression-shell">
+      <div class="filter-row">
+        <label class="filter-label" for="expressionScenarioSelect">Choose a scenario:</label>
+        <select id="expressionScenarioSelect" class="select-control"></select>
+      </div>
+      <div class="two-col">
+        <article class="card card--light">
+          <h3>Situation</h3>
+          <div id="expressionScenarioBox" class="scenario-box"></div>
+          <div class="expression-list" id="expressionList"></div>
+        </article>
+        <article class="card card--light">
+          <h3>Model response</h3>
+          <div id="expressionModel" class="model-box">Click the button when you are ready to compare your answer.</div>
+          <div class="scenario-tools">
+            <button class="ghost-btn" id="showExpressionModel" type="button">Show model response</button>
+            <button class="speak-btn" id="listenExpressionModel" type="button">🔊 Listen to the model</button>
+          </div>
+          <textarea id="expressionWrite" class="note-area" rows="5" placeholder="Write your own response here before you compare with the model."></textarea>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="section-airport">
+    <div class="section__head">
+      <h2>6) Airport, gate, and plane practice</h2>
+      <p class="section__sub">Use the vocabulary actively now. Choose the best word, fill in the sentence, choose the best response, and sort the words correctly.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="exercise-card">
+        <h3>Choose the best word</h3>
+        <div id="airportQuizHost" class="quiz-host"></div>
+      </div>
+      <div class="exercise-card">
+        <h3>Fill in the blank</h3>
+        <div id="airportFillHost" class="fill-host"></div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="exercise-card">
+        <h3>Choose the best response</h3>
+        <div id="airportResponseHost" class="quiz-host"></div>
+      </div>
+      <div class="exercise-card">
+        <h3>Sentence builder review</h3>
+        <div id="airportBuildHost" class="fill-host"></div>
+      </div>
+    </div>
+
+    <div class="exercise-card">
+      <h3>Sort the vocabulary</h3>
+      <p class="task-line">Choose a word, then click the correct category. The word will be placed into the category and you will see if it is correct or wrong.</p>
+      <div id="sortHost" class="sort-host"></div>
+    </div>
+  </section>
+
+  <section class="section" id="section-reformulation">
+    <div class="section__head">
+      <h2>7) Reformulation review</h2>
+      <p class="section__sub">This is essential for Part 2 of the LILATE. First identify the essential information, then write your own reformulation, then compare with the model.</p>
+    </div>
+
+    <div class="two-col">
+      <article class="card card--light">
+        <div class="filter-row">
+          <label class="filter-label" for="reformulationSelect">Choose a scenario:</label>
+          <select id="reformulationSelect" class="select-control"></select>
+        </div>
+        <div class="highlight-box">
+          <strong>Essential information</strong>
+          <ul id="reformulationScenario" class="scenario-bullets"></ul>
+        </div>
+        <div class="scenario-tools">
+          <button class="speak-btn" id="reformulationListen" type="button">🔊 Listen</button>
+          <button class="ghost-btn" id="reformulationTranscriptBtn" type="button">Show transcript</button>
+        </div>
+        <div id="reformulationTranscript" class="transcript hidden"></div>
+      </article>
+
+      <article class="card card--light">
+        <h3>Your reformulation</h3>
+        <textarea id="reformulationWrite" class="note-area" rows="5" placeholder="Write your reformulation here. Example: If I understand correctly…"></textarea>
+        <div class="scenario-tools">
+          <button class="ghost-btn" id="showReformulationModel" type="button">Show model reformulation</button>
+          <button class="speak-btn" id="listenReformulationModel" type="button">🔊 Listen to the model</button>
+        </div>
+        <div id="reformulationModel" class="model-box hidden"></div>
+        <div class="mini-grammar">
+          <h4>Useful clarification language</h4>
+          <ul>
+            <li>If I understand correctly…</li>
+            <li>You would like to know…</li>
+            <li>You are also worried about…</li>
+            <li>Is that right? / Is that correct?</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <div class="exercise-card">
+      <h3>Find the useful information</h3>
+      <div id="infoCheckHost" class="quiz-host"></div>
+    </div>
+  </section>
+
+  <section class="section" id="section-roleplay">
+    <div class="section__head">
+      <h2>8) Guided roleplay review</h2>
+      <p class="section__sub">Practice short airline-style situations with visible model answers. Read the prompt, answer aloud, then compare with the model.</p>
+    </div>
+    <div class="filter-row">
+      <label class="filter-label" for="roleplaySelect">Choose a roleplay:</label>
+      <select id="roleplaySelect" class="select-control"></select>
+    </div>
+    <div class="two-col">
+      <article class="card card--light">
+        <h3>Prompt</h3>
+        <div id="roleplayPrompt" class="scenario-box"></div>
+        <div class="scenario-tools">
+          <button class="speak-btn" id="roleplayListenPrompt" type="button">🔊 Listen to the prompt</button>
+          <button class="ghost-btn" id="showRoleplayModel" type="button">Show model answer</button>
+        </div>
+      </article>
+      <article class="card card--light">
+        <h3>Model answer</h3>
+        <div id="roleplayModel" class="model-box">Click “Show model answer” when you are ready.</div>
+        <div class="scenario-tools">
+          <button class="speak-btn" id="roleplayListenModel" type="button">🔊 Listen to the model</button>
+        </div>
+      </article>
+    </div>
+    <div class="exercise-card">
+      <h3>Your own answer</h3>
+      <textarea class="note-area" id="roleplayAnswer" rows="4" placeholder="Write your own answer here before you compare with the model."></textarea>
+    </div>
+  </section>
+
+  <section class="section" id="section-writing">
+    <div class="section__head">
+      <h2>9) Writing ladder — simple, better, stronger</h2>
+      <p class="section__sub">Compare three levels of answer. Notice what changes each time. This helps you improve step by step without feeling lost.</p>
+    </div>
+    <div class="writing-ladder">
+      <article class="ladder-card"><h3>Level 1 — Simple</h3><p id="writingSimple"></p></article>
+      <article class="ladder-card"><h3>Level 2 — Better</h3><p id="writingBetter"></p></article>
+      <article class="ladder-card"><h3>Level 3 — Stronger</h3><p id="writingStronger"></p></article>
+    </div>
+    <div class="exercise-card">
+      <h3>How is the stronger version better?</h3>
+      <div id="writingCompareHost" class="quiz-host"></div>
+    </div>
+  </section>
+
+  <section class="section" id="section-checkpoint">
+    <div class="section__head">
+      <h2>10) Final review checklist</h2>
+      <p class="section__sub">Use this at the end of the lesson to see what you remember clearly and what still needs more work.</p>
+    </div>
+    <div class="checklist-card">
+      <label class="check-item"><input type="checkbox"> I can introduce myself and describe my job.</label>
+      <label class="check-item"><input type="checkbox"> I can use present simple, questions, and negatives more clearly.</label>
+      <label class="check-item"><input type="checkbox"> I can use a / an / the / no article more accurately.</label>
+      <label class="check-item"><input type="checkbox"> I can use key prepositions for work.</label>
+      <label class="check-item"><input type="checkbox"> I can tell the difference between calm and calmly.</label>
+      <label class="check-item"><input type="checkbox"> I can identify useful information in a short passenger situation.</label>
+      <label class="check-item"><input type="checkbox"> I can reformulate a passenger problem more clearly.</label>
+      <label class="check-item"><input type="checkbox"> I can use key airport, gate, and plane vocabulary.</label>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div>SpeakEasyTisha · Yanis Review Flight Deck</div>
+    <div>Review, compare, and build confidence step by step.</div>
+  </div>
+</footer>
+
+<script src="js/yanis-review-masterclass.js"></script>
+</body>
+</html>

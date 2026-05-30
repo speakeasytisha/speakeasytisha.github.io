@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SpeakEasyTisha • Myriam • Midterm Review + Practice Exam</title>
+  <meta name="description" content="Complete review + midterm exam simulation for English 360° (A2.1 → B2.1). Timers, models, and teacher compare." />
+  <link rel="stylesheet" href="./css/english360-myriam-midterm-review-v5.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">SE</div>
+    <div>
+      <div class="title">Midterm Review + Practice Exam</div>
+      <div class="subtitle">Myriam • English 360° • A2.1 → B2.1 • Timers + models • Touch‑friendly</div>
+    </div>
+  </div>
+
+  <div class="toolbar" role="region" aria-label="Controls">
+    <div class="tool">
+      <div class="label">Level</div>
+      <div class="seg" role="group" aria-label="Level">
+        <button class="segBtn on" type="button" data-level="A2">A2+</button>
+        <button class="segBtn" type="button" data-level="B1">B1</button>
+        <button class="segBtn" type="button" data-level="B2">B2</button>
+      </div>
+      <div class="tiny muted mt6">Models adapt to level.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">French (vocab only)</div>
+      <button class="pill" id="frToggle" type="button" aria-pressed="true">On</button>
+      <div class="tiny muted mt6">Hide/show translations.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Accent (TTS)</div>
+      <div class="seg" role="group" aria-label="Accent">
+        <button class="segBtn on" type="button" data-accent="US">US</button>
+        <button class="segBtn" type="button" data-accent="UK">UK</button>
+      </div>
+      <div class="label mt8">Rate</div>
+      <input id="rate" class="range" type="range" min="0.7" max="1.25" step="0.05" value="1">
+      <div class="tiny muted mt6">TTS reads English only.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Global score</div>
+      <div class="row">
+        <span class="pill mono" id="scorePill">0 / 0</span>
+        <button class="iconBtn" id="resetScore" type="button" aria-label="Reset score">↺</button>
+      </div>
+      <div class="tiny">Accuracy: <span id="acc">0%</span></div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Exam clock</div>
+      <div class="row">
+        <button class="pill" id="examStartBtn" type="button">Start 45 min</button>
+        <button class="pill ghost" id="examStopBtn" type="button">Stop</button>
+        <span class="pill mono" id="examClock">00:00</span>
+      </div>
+      <div class="tiny muted mt6">Use for the Practice Exam section.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Actions</div>
+      <div class="row">
+        <button class="pill" id="newSetBtn" type="button">✨ New set</button>
+        <button class="pill" id="printBtn" type="button">Print</button>
+        <button class="pill ghost" id="resetAllBtn" type="button">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Status</div>
+      <div class="pill ok" id="jsOk">JS: loading…</div>
+      <div class="errBox" id="errBox" hidden></div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Navigation">
+    <a class="tab" href="#links">Lesson links</a>
+    <a class="tab" href="#diagnostic">Diagnostic</a>
+    <a class="tab" href="#review">Core review</a>
+    <a class="tab" href="#exam">Practice exam</a>
+    <a class="tab" href="#emailbank">Email bank</a>
+    <a class="tab" href="#teacher">Teacher compare</a>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <noscript><div class="noscript"><strong>JavaScript is disabled.</strong> Please enable JS.</div></noscript>
+
+  
+<section id="links" class="card">
+  <h1 class="h1">Lesson links (from the beginning)</h1>
+  <p class="muted">Filter by <strong>type</strong> and <strong>tag</strong>. Use search to find a lesson fast. Each link has a <strong>Copy</strong> button.</p>
+
+  <div class="panel mt10">
+    <div class="row wrapRow">
+      <label class="stack">
+        <span class="label">Type</span>
+        <select class="select" id="linkType"></select>
+      </label>
+      <label class="stack">
+        <span class="label">Tag</span>
+        <select class="select" id="linkTag"></select>
+      </label>
+      <label class="stack" style="min-width:240px">
+        <span class="label">Search</span>
+        <input class="input" id="linkSearch" type="search" placeholder="reading, pronunciation, hotel, conditionals…" />
+      </label>
+      <button class="pill ghost" id="linkReset" type="button">Reset</button>
+    </div>
+
+    <div class="tiny muted mt10" id="linkCount">—</div>
+    <div class="linkList mt10" id="linkList"></div>
+  </div>
+</section>
+
+
+  <section id="diagnostic" class="card">
+    <h1 class="h1">Quick diagnostic</h1>
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h2 class="h2">A) MCQ</h2>
+        <div class="promptBox" id="mcqQ">—</div>
+        <div class="mt10" id="mcqOpts"></div>
+        <div class="row mt10">
+          <button class="pill" id="mcqCheck" type="button">Check</button>
+          <button class="pill ghost" id="mcqNext" type="button">Next</button>
+          <button class="pill ghost" id="mcqSay" type="button">▶ Read</button>
+        </div>
+        <div class="model mt10" id="mcqFb"></div>
+      </div>
+
+      <div class="panel">
+        <h2 class="h2">B) Fix the sentence</h2>
+        <div class="promptBox" id="fixQ">—</div>
+        <textarea class="textarea mt10" id="fixBox" rows="5" placeholder="Rewrite the sentence correctly…"></textarea>
+        <div class="row mt10">
+          <button class="pill" id="fixCheck" type="button">Check</button>
+          <button class="pill ghost" id="fixShow" type="button">Show answer</button>
+          <button class="pill ghost" id="fixNext" type="button">Next</button>
+        </div>
+        <div class="model mt10" id="fixFb"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="review" class="card">
+    <h1 class="h1">Core review (from the beginning)</h1>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h2 class="h2">A) Tenses map</h2>
+        <div class="lessonBox" id="tenseMap"></div>
+        <div class="chips mt10" id="tenseChips"></div>
+      </div>
+
+      <div class="panel">
+        <h2 class="h2">B) Conditionals</h2>
+        <div class="lessonBox" id="condMap"></div>
+        <div class="row mt10">
+          <button class="pill" id="condQuizBtn" type="button">New prompt</button>
+          <button class="pill ghost" id="condSayBtn" type="button">▶ Read</button>
+        </div>
+        <div class="promptBox mt10" id="condPrompt">—</div>
+      </div>
+    </div>
+
+    <div class="panel mt12">
+      <h2 class="h2">C) Travel situations</h2>
+      <div class="row wrapRow">
+        <label class="stack">
+          <span class="label">Situation</span>
+          <select class="select" id="sitSel"></select>
+        </label>
+        <button class="pill" id="sitModelBtn" type="button">Show model</button>
+        <button class="pill ghost" id="sitSayBtn" type="button">▶ Read</button>
+      </div>
+      <div class="grid2 mt10">
+        <div class="promptBox" id="sitPrompt">—</div>
+        <div class="model" id="sitModel">—</div>
+      </div>
+    </div>
+
+    <div class="panel mt12">
+      <h2 class="h2">D) Vocabulary bank</h2>
+      <div class="row wrapRow">
+        <label class="stack">
+          <span class="label">Category</span>
+          <select class="select" id="vCat"></select>
+        </label>
+        <label class="stack">
+          <span class="label">Search</span>
+          <input class="input" id="vSearch" type="search" placeholder="reservation, refund, aisle…" />
+        </label>
+        <button class="pill ghost" id="vReset" type="button">Reset</button>
+      </div>
+      <div class="vGrid mt12" id="vGrid"></div>
+    </div>
+  </section>
+
+  <section id="exam" class="card">
+    <h1 class="h1">Practice exam (midterm simulation)</h1>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <h2 class="h2">Part 1 • Reading</h2>
+        <div class="promptBox" id="readText">—</div>
+        <div class="mt10" id="readQs"></div>
+        <div class="row mt10">
+          <button class="pill" id="readCheck" type="button">Check</button>
+          <button class="pill ghost" id="readNew" type="button">New text</button>
+        </div>
+        <div class="model mt10" id="readFb"></div>
+      </div>
+
+      <div class="panel">
+        <h2 class="h2">Part 2 • Grammar</h2>
+        <div class="promptBox" id="gramQ">—</div>
+        <div class="mt10" id="gramOpts"></div>
+        <div class="row mt10">
+          <button class="pill" id="gramCheck" type="button">Check</button>
+          <button class="pill ghost" id="gramNew" type="button">New question</button>
+        </div>
+        <div class="model mt10" id="gramFb"></div>
+      </div>
+    </div>
+
+    <div class="grid2 mt12">
+      <div class="panel">
+        <h2 class="h2">Part 3 • Speaking</h2>
+        <label class="stack">
+          <span class="label">Prompt</span>
+          <select class="select" id="spSel"></select>
+        </label>
+        <div class="timerRow mt10">
+          <button class="pill" id="sp60" type="button">Start 60s</button>
+          <button class="pill" id="sp90" type="button">Start 90s</button>
+          <button class="pill ghost" id="spStop" type="button">Stop</button>
+          <span class="pill mono" id="spClock">00:00</span>
+          <button class="pill ghost" id="spSay" type="button">▶ Read</button>
+        </div>
+        <div class="promptBox mt10" id="spPrompt">—</div>
+        <textarea class="textarea mt10" id="spNotes" rows="6" placeholder="Notes…"></textarea>
+        <div class="row mt10">
+          <button class="pill" id="spModelBtn" type="button">Show model</button>
+          <button class="pill ghost" id="spModelSay" type="button">▶ Read model</button>
+        </div>
+        <div class="model mt10" id="spModel">—</div>
+      </div>
+
+      <div class="panel">
+        <h2 class="h2">Part 4 • Writing</h2>
+        <label class="stack">
+          <span class="label">Task</span>
+          <select class="select" id="wrSel"></select>
+        </label>
+        <div class="timerRow mt10">
+          <button class="pill" id="wr15" type="button">Start 15 min</button>
+          <button class="pill ghost" id="wrStop" type="button">Stop</button>
+          <span class="pill mono" id="wrClock">00:00</span>
+          <span class="pill mono">Words: <span id="wrWords">0</span></span>
+          <button class="pill ghost" id="wrSay" type="button">▶ Read</button>
+        </div>
+        <div class="promptBox mt10" id="wrPrompt">—</div>
+        <textarea class="textarea mt10" id="wrBox" rows="10" placeholder="Write here…"></textarea>
+        <div class="row mt10">
+          <button class="pill" id="wrModelBtn" type="button">Show model</button>
+          <button class="pill ghost" id="wrCopyBtn" type="button">Copy</button>
+          <button class="pill ghost" id="wrClearBtn" type="button">Clear</button>
+        </div>
+        <div class="model mt10" id="wrModel">—</div>
+      </div>
+    </div>
+  </section>
+
+  
+<section id="emailbank" class="card">
+  <h1 class="h1">Email bank (extra practice)</h1>
+  <p class="muted">Choose a scenario and copy a model. This is a “one stop shop” for travel + exam emails.</p>
+
+  <div class="panel mt10">
+    <div class="row wrapRow">
+      <label class="stack">
+        <span class="label">Scenario</span>
+        <select class="select" id="ebSel"></select>
+      </label>
+      <button class="pill" id="ebModelBtn" type="button">Show model email</button>
+      <button class="pill ghost" id="ebCopyBtn" type="button">Copy model</button>
+      <button class="pill ghost" id="ebSayBtn" type="button">▶ Read</button>
+    </div>
+    <div class="grid2 mt10">
+      <div class="promptBox" id="ebPrompt">—</div>
+      <div class="model" id="ebModel">—</div>
+    </div>
+  </div>
+</section>
+
+<section id="teacher" class="card">
+    <h1 class="h1">Teacher compare</h1>
+    <p class="muted">Paste Student → Corrected → Higher‑level during class to review progress.</p>
+    <div class="grid3 mt10">
+      <div class="panel">
+        <h2 class="h2">Student</h2>
+        <textarea class="textarea" id="tStudent" rows="10" placeholder="Paste student version…"></textarea>
+      </div>
+      <div class="panel">
+        <h2 class="h2">Corrected</h2>
+        <textarea class="textarea" id="tCorrected" rows="10" placeholder="Paste corrected version…"></textarea>
+      </div>
+      <div class="panel">
+        <h2 class="h2">Higher‑level</h2>
+        <textarea class="textarea" id="tHigher" rows="10" placeholder="Paste higher‑level version…"></textarea>
+      </div>
+    </div>
+    <div class="row mt10">
+      <button class="pill" id="tCompare" type="button">Compare</button>
+      <button class="pill ghost" id="tClear" type="button">Clear</button>
+    </div>
+    <div class="model mt10" id="tOut"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="muted">SpeakEasyTisha • Myriam Midterm Review • Works on Mac & iPad Safari</div>
+  </footer>
+</main>
+
+<!-- vocab modal -->
+<div class="modalOverlay" id="modalOverlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Vocabulary card">
+    <button class="modalClose" id="modalClose" type="button" aria-label="Close">✕</button>
+    <div class="modalIcon" id="mIcon">✨</div>
+    <div class="modalWord" id="mEn">—</div>
+    <div class="modalFr" id="mFr">—</div>
+    <div class="modalDef" id="mDef">—</div>
+    <div class="modalEx" id="mEx">—</div>
+    <div class="row mt10">
+      <button class="pill" id="mSay" type="button">▶ Listen</button>
+      <button class="pill ghost" id="mAdd" type="button">Add to writing</button>
+    </div>
+  </div>
+</div>
+
+<script>
+window.__MidtermLoaded=false;
+setTimeout(function(){
+  if(!window.__MidtermLoaded){
+    var ok=document.getElementById('jsOk'); if(ok) ok.textContent='JS: not loaded ❌';
+    var box=document.getElementById('errBox');
+    if(box){ box.hidden=false; box.textContent='⚠️ JS not loaded. Put HTML in root, CSS in /css/, JS in /js/.'; }
+  }
+},1200);
+</script>
+<script src="./js/english360-myriam-midterm-review-v5.js"></script>
+</body>
+</html>

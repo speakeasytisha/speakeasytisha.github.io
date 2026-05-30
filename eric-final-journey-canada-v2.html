@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Eric · Final Celebration & Lesson Library · SpeakEasyTisha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/eric-final-journey-canada-v2.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Eric · Final Celebration + Lesson Library (Canada)</div>
+    </div>
+
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Accent</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <select class="select" id="voiceSelect" aria-label="Voice list"></select>
+      </div>
+
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="seg is-on" id="autoOff" type="button" aria-pressed="true">OFF</button>
+        <button class="seg" id="autoOn" type="button" aria-pressed="false">ON</button>
+        <button class="btn btn--ghost" id="btnTestVoice" type="button">🔊 Test</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score (final mission)</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+
+      <span class="pill" id="jsStatus">JS: loading…</span>
+      <span class="pill">Build: 20260526-155209</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <div class="confetti"></div>
+      <h1>🍁 Eric — Congratulations!</h1>
+      <p class="lead">
+        You can be proud of your progress and your perseverance. It has been a real pleasure working with you —
+        your positive attitude and consistency made a huge difference.  
+        I hope your trip to Canada will be wonderful, and that these lessons will be a small part of your positive experience abroad this summer.
+      </p>
+
+      <div class="hero__cta">
+        <button class="btn" id="btnGoLibrary" type="button">📚 Open your lesson library</button>
+        <button class="btn btn--ghost" id="btnGoFinal" type="button">🎤 Final mission (special)</button>
+      </div>
+
+      <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+      <div class="tiny" style="margin-top:.35rem;opacity:.95">Audio is <strong>OFF by default</strong>. Use listen buttons only when you want.</div>
+      <div class="tiny" style="margin-top:.25rem;opacity:.95">⚠️ If JS not loaded: put HTML in root, CSS in /css/, JS in /js/.</div>
+    </div>
+
+    <div class="panelcard">
+      <div class="panelcard__title">Your journey (quick snapshot)</div>
+      <ul class="panelcard__list" id="statsList"><li>Loading…</li></ul>
+      <div class="tiny" style="margin-top:.55rem;opacity:.95">
+        Tip: use the library filters to revisit exactly what you need before Canada.
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+
+  <section class="section" id="secLibrary">
+    <h2>1) Lesson Library (click to open)</h2>
+    <div class="card">
+      <div class="smallrow">
+        <span class="badge">Filter</span>
+        <select class="select" id="catPick"></select>
+        <select class="select" id="skillPick"></select>
+        <input class="input" id="q" placeholder="Search: hotel, airport, numbers, speaking…" style="min-width:220px"/>
+        <button class="btn btn--ghost" id="btnClear" type="button">✖ Clear</button>
+      </div>
+      <div class="tiny" style="color:rgba(15,31,38,.72)">Your lesson list is sorted by category. Click a card to open the link(s).</div>
+      <div class="grid2" id="lessonGrid" style="margin-top:.8rem"></div>
+    </div>
+  </section>
+
+  <section class="section" id="secFinal">
+    <h2>2) Final Mission · Present Yourself + Real Travel Scenarios (extra special)</h2>
+    <div class="card">
+      <div class="kcard">
+        <strong>Goal:</strong> You can introduce yourself clearly (name, age, job, where you live, nationality) and handle real situations in Canada:
+        airport, plane, customs, taxi, hotel, restaurant, tickets/paying.
+      </div>
+
+      <div class="grid2" style="margin-top:.8rem">
+        <div class="kcard">
+          <div class="badge gold">Mini lesson: the structure</div>
+          <div style="margin-top:.4rem">
+            • <strong>My name is…</strong><br/>
+            • <strong>I am … years old.</strong><br/>
+            • <strong>I live in …</strong><br/>
+            • <strong>I work as a …</strong> / <strong>I’m a …</strong><br/>
+            • <strong>I am … (nationality).</strong><br/>
+            • <strong>I’m going to Canada next summer.</strong>
+          </div>
+          <div class="smallrow" style="margin-top:.55rem">
+            <button class="toolmini" id="miniListen" type="button">🔊 Listen</button>
+          </div>
+          <div class="tiny" style="color:rgba(15,31,38,.72)">Syntax tip: Subject + verb + place/time.</div>
+        </div>
+
+        <div class="kcard">
+          <div class="badge">Useful questions</div>
+          <div style="margin-top:.4rem">
+            • <strong>What’s your name?</strong><br/>
+            • <strong>How old are you?</strong><br/>
+            • <strong>Where do you live?</strong><br/>
+            • <strong>What do you do?</strong><br/>
+            • <strong>What’s your nationality?</strong>
+          </div>
+          <div class="smallrow" style="margin-top:.55rem">
+            <button class="toolmini" id="qListen" type="button">🔊 Listen</button>
+          </div>
+          <div class="tiny" style="color:rgba(15,31,38,.72)">Question form: <strong>Do you…?</strong> / <strong>Where do you…?</strong></div>
+        </div>
+      </div>
+
+      <hr class="soft"/>
+
+      <h3>Model answers (A1 → A2 → B1)</h3>
+      <div class="tiny" style="color:rgba(15,31,38,.72)">Choose a level and listen. Then build your own version below.</div>
+      <div class="tabs">
+        <button class="tabbtn is-on" id="lvlA1" type="button">A1</button>
+        <button class="tabbtn" id="lvlA2" type="button">A2</button>
+        <button class="tabbtn" id="lvlB1" type="button">B1</button>
+      </div>
+
+      <div class="kcard" id="modelBox"></div>
+      <div class="smallrow">
+        <button class="btn btn--ghost" id="modelListen" type="button">🔊 Listen</button>
+      </div>
+
+      <hr class="soft"/>
+
+      <h3>Your intro builder (make your own)</h3>
+      <div class="grid2">
+        <div class="kcard" id="builder"></div>
+        <div class="kcard">
+          <strong>Your introduction:</strong><br/>
+          <div id="out" style="margin-top:.45rem"></div>
+          <div class="smallrow" style="margin-top:.55rem">
+            <button class="btn btn--ghost" id="outListen" type="button">🔊 Listen</button>
+            <button class="btn btn--ghost" id="outCheck" type="button">✅ Check</button>
+            <button class="btn btn--ghost" id="outReset" type="button">↺ Reset</button>
+          </div>
+          <div class="feedback hidden" id="outFb"></div>
+        </div>
+      </div>
+
+      <hr class="soft"/>
+
+      <h3>Quick practice (score + hints)</h3>
+      <div class="grid2">
+        <div class="kcard" id="mcqHost">Click Start.</div>
+        <div class="kcard" id="ddHost">Click Start.</div>
+      </div>
+      <div class="smallrow">
+        <button class="btn" id="mcqStart" type="button">▶️ Start</button>
+        <button class="btn btn--ghost" id="check" type="button">✅ Check</button>
+        <button class="btn btn--ghost" id="next" type="button">➡️ Next</button>
+        <button class="btn btn--ghost" id="hint" type="button">💡 Hint</button>
+        <button class="btn btn--ghost" id="reset" type="button">↺ Reset</button>
+      </div>
+      <div class="feedback hidden" id="fb"></div>
+
+      <hr class="soft"/>
+
+      <h3>Interactive Dialogue Studio (choose your scenario)</h3>
+      <div class="kcard">
+        <div class="smallrow">
+          <span class="badge">Scenario</span>
+          <select class="select" id="scPick"></select>
+          <button class="btn btn--ghost" id="scPlayAll" type="button">🔊 Play all</button>
+          <button class="btn btn--ghost" id="scShow" type="button">📄 Show text</button>
+          <button class="btn btn--ghost" id="scHide" type="button">🙈 Hide text</button>
+        </div>
+        <div class="tiny" style="color:rgba(15,31,38,.72)">Realistic, polite scenarios for Canada. Practise as “You” and switch roles anytime.</div>
+      </div>
+
+      <div class="grid2" style="margin-top:.8rem">
+        <div class="dialogue" id="scDialogue"></div>
+
+        <div class="kcard">
+          <div class="badge gold">Roleplay help</div>
+
+          <div class="kcard" style="margin-top:.55rem">
+            <strong>Key phrases</strong>
+            <div id="scPhrases" style="margin-top:.35rem"></div>
+          </div>
+
+          <div class="kcard" style="margin-top:.55rem">
+            <strong>Your turn (response builder)</strong>
+            <div class="tiny" style="color:rgba(15,31,38,.72);margin-top:.25rem">Build a sentence, listen, then check.</div>
+            <div id="scBuilder" style="margin-top:.55rem"></div>
+            <div class="smallrow" style="margin-top:.55rem">
+              <button class="btn btn--ghost" id="scBListen" type="button">🔊 Listen</button>
+              <button class="btn btn--ghost" id="scBCheck" type="button">✅ Check</button>
+              <button class="btn btn--ghost" id="scBReset" type="button">↺ Reset</button>
+            </div>
+            <div class="feedback hidden" id="scBFb"></div>
+            <div class="kcard" style="margin-top:.55rem"><strong>Your response:</strong><br/><span id="scBOut"></span></div>
+          </div>
+
+          <div class="kcard" style="margin-top:.55rem">
+            <strong>Quick comprehension (3)</strong>
+            <div id="scQuiz" style="margin-top:.35rem"></div>
+            <div class="smallrow" style="margin-top:.55rem">
+              <button class="btn btn--ghost" id="scQCheck" type="button">✅ Check</button>
+              <button class="btn btn--ghost" id="scQReset" type="button">↺ Reset</button>
+            </div>
+            <div class="feedback hidden" id="scQFb"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="tiny" style="opacity:.95">© SpeakEasyTisha · eric-final-journey-canada-v2 · Build 20260526-155209</div>
+      <a class="toolmini" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<pre id="debugBox" class="hidden" style="white-space:pre-wrap;margin:1rem auto;padding:1rem;border:1px dashed rgba(255,255,255,.35);border-radius:14px;background:rgba(255,255,255,.92);max-width:1180px;color:#0f1f26;">Debug log</pre>
+
+<script src="js/eric-final-journey-canada-v2.js"></script>
+</body>
+</html>
