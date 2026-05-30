@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpeakEasyTisha | Isabelle Client Email & Call Realty Lab</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to lesson</a>
+
+  <header class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <nav class="topbar" aria-label="Page navigation">
+      <div class="brand">
+        <span class="brand-mark">🏡🇳🇱</span>
+        <div>
+          <strong>SpeakEasyTisha</strong>
+          <small>Client emails · calls · technical real estate English</small>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="ghost-btn" data-scroll="#vocab">Vocabulary</button>
+        <button class="ghost-btn" data-scroll="#grammar">Grammar</button>
+        <button class="ghost-btn" data-scroll="#emails">Emails</button>
+        <button class="ghost-btn" data-scroll="#speaking">Speaking</button>
+      </div>
+    </nav>
+
+    <section class="hero-content">
+      <div class="hero-copy">
+        <p class="eyebrow">CLOE · Real estate clients · Netherlands project</p>
+        <h1>Write professional emails, handle client calls, and explain property details with confidence.</h1>
+        <p class="hero-subtitle">
+          A practical client communication lab for your next step: confirming visits, following up with clients, explaining prices, leases and off-plan projects, then speaking from prompts without reading a script.
+        </p>
+        <div class="hero-badges">
+          <span>✉️ email writing</span>
+          <span>📞 client calls</span>
+          <span>🏗️ off-plan sale / lease</span>
+          <span>🎤 speaking practice</span>
+        </div>
+      </div>
+      <aside class="canal-card" aria-label="Amsterdam real estate communication journey">
+        <div class="sun"></div>
+        <div class="houses" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="canal" aria-hidden="true"></div>
+        <div class="mini-card">
+          <small>Today’s professional sentence</small>
+          <strong>“I am following up on your enquiry about the property.”</strong>
+          <span>email · client · call · follow-up</span>
+        </div>
+      </aside>
+    </section>
+  </header>
+
+  <main id="main">
+    <noscript>
+      <div class="js-warning">⚠️ JS not loaded. Put HTML in root, CSS in /css/, JS in /js/.</div>
+    </noscript>
+
+    <section class="control-panel" aria-label="Lesson controls">
+      <article class="control-card">
+        <h2>Audio accent</h2>
+        <p>Choose an accent, then click <strong>Listen</strong>. Audio never starts automatically.</p>
+        <div class="segmented" role="group" aria-label="Voice accent selector">
+          <button type="button" class="active" data-accent="en-GB">🇬🇧 British</button>
+          <button type="button" data-accent="en-US">🇺🇸 American</button>
+        </div>
+        <p class="voice-status" id="voiceStatus" aria-live="polite">Voice loading…</p>
+      </article>
+      <article class="control-card" id="dashboard">
+        <h2>Progress dashboard</h2>
+        <p class="score-line"><span id="totalScore">0</span>/<span id="totalPossible">0</span> points</p>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="mini-stats">
+          <span>Vocab <strong id="vocabScore">0</strong></span>
+          <span>Grammar <strong id="grammarScore">0</strong></span>
+          <span>Email <strong id="emailScore">0</strong></span>
+          <span>Speaking <strong id="speakingScore">0</strong></span>
+        </div>
+        <div class="btn-row wrap">
+          <button class="secondary-btn" type="button" onclick="window.print()">Print lesson</button>
+          <button class="danger-btn" type="button" id="resetAll">Reset scores</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="section-card lesson-map">
+      <div class="section-heading">
+        <p class="eyebrow">Lesson route</p>
+        <h2>From written messages to confident client conversations</h2>
+        <p>This page is designed for live speaking practice. You build the language first, then you use it in realistic emails, calls and client scenarios.</p>
+      </div>
+      <div class="map-grid">
+        <button class="map-step" data-scroll="#warmup"><span>1</span><strong>Warm-up</strong><small>Client phrases</small></button>
+        <button class="map-step" data-scroll="#vocab"><span>2</span><strong>Vocabulary</strong><small>Dropdown bank</small></button>
+        <button class="map-step" data-scroll="#grammar"><span>3</span><strong>Grammar</strong><small>Rule + practice</small></button>
+        <button class="map-step" data-scroll="#offplan"><span>4</span><strong>Technical terms</strong><small>VEFA / BEFA</small></button>
+        <button class="map-step" data-scroll="#emails"><span>5</span><strong>Emails</strong><small>Write + speak</small></button>
+        <button class="map-step" data-scroll="#speaking"><span>6</span><strong>Live practice</strong><small>Client scenarios</small></button>
+      </div>
+    </section>
+
+    <section id="warmup" class="section-card gradient-card">
+      <div class="section-heading">
+        <p class="eyebrow">Step 1</p>
+        <h2>Warm-up: client communication in short answers</h2>
+        <p>Try to answer from the cue words. Then reveal the model. The goal is to speak naturally, not to read a long paragraph.</p>
+      </div>
+      <div class="cue-grid" id="warmupGrid"></div>
+    </section>
+
+    <section id="vocab" class="section-card">
+      <div class="section-heading">
+        <p class="eyebrow">Step 2</p>
+        <h2>Vocabulary bank: emails, calls and client follow-up</h2>
+        <p>Choose a category. Each card includes a French translation, a simple definition and a professional example.</p>
+      </div>
+      <div class="filter-panel">
+        <label for="vocabCategory"><strong>Category</strong></label>
+        <select id="vocabCategory">
+          <option value="all">All vocabulary</option>
+          <option value="email">Email essentials</option>
+          <option value="client">Client communication</option>
+          <option value="viewing">Viewings & follow-up</option>
+          <option value="technical">Legal / technical real estate</option>
+          <option value="figures">Numbers, prices & dates</option>
+          <option value="tone">Professional tone</option>
+        </select>
+        <label for="vocabSearch"><strong>Search</strong></label>
+        <input id="vocabSearch" type="search" placeholder="Search: follow up, lease, rent, viewing…" />
+      </div>
+      <div class="vocab-grid" id="vocabGrid" aria-live="polite"></div>
+
+      <article class="practice-card compact">
+        <h3>Quick vocabulary check</h3>
+        <p>Choose the most natural professional phrase.</p>
+        <div id="vocabQuiz" class="quiz-stack"></div>
+        <div id="vocabFeedback" class="feedback" aria-live="polite"></div>
+        <button class="secondary-btn" type="button" id="newVocabQuiz">New questions</button>
+      </article>
+    </section>
+
+    <section id="grammar" class="section-card gradient-card alt">
+      <div class="section-heading">
+        <p class="eyebrow">Step 3</p>
+        <h2>Grammar patterns for professional messages</h2>
+        <p>Each grammar point gives you a clear pattern, examples and a mini-exercise right away.</p>
+      </div>
+      <div class="filter-panel light-panel">
+        <label for="grammarSelect"><strong>Choose a grammar focus</strong></label>
+        <select id="grammarSelect"><option value="all">Show all grammar points</option></select>
+      </div>
+      <div id="grammarGrid" class="grammar-stack"></div>
+    </section>
+
+    <section id="offplan" class="section-card">
+      <div class="section-heading">
+        <p class="eyebrow">Step 4</p>
+        <h2>Technical real estate terms: off-plan sale, lease and rent</h2>
+        <p>This section helps you explain French real estate concepts in clearer English without overcomplicating the message.</p>
+      </div>
+      <div class="term-grid" id="termGrid"></div>
+      <article class="practice-card compact">
+        <h3>Technical term check</h3>
+        <p>Choose the best phrase for the context.</p>
+        <div id="termQuiz" class="quiz-stack"></div>
+        <div id="termFeedback" class="feedback" aria-live="polite"></div>
+      </article>
+    </section>
+
+    <section id="emails" class="section-card gradient-card">
+      <div class="section-heading">
+        <p class="eyebrow">Step 5</p>
+        <h2>Email studio: write, improve, then speak</h2>
+        <p>Select a scenario. Build the message with a structure, reveal a model, then practise saying the same message as a phone call.</p>
+      </div>
+      <div class="two-col">
+        <article class="glass-card white">
+          <h3>✉️ Choose your email scenario</h3>
+          <label for="emailScenario"><strong>Scenario</strong></label>
+          <select id="emailScenario"></select>
+          <div id="emailTask" class="scenario-box"></div>
+          <div class="email-builder" id="emailBuilder"></div>
+          <div class="btn-row wrap">
+            <button class="primary-btn" type="button" id="checkEmailBuilder">Check structure</button>
+            <button class="secondary-btn" type="button" id="revealEmailModel">Reveal model</button>
+          </div>
+          <div id="emailBuilderFeedback" class="feedback" aria-live="polite"></div>
+        </article>
+        <article class="glass-card white">
+          <h3>📄 Model email</h3>
+          <p class="hint">Try first. Then reveal the model. You can copy or listen to it.</p>
+          <div id="emailModel" class="model-box muted">Choose a scenario, then click “Reveal model”.</div>
+          <div class="btn-row wrap">
+            <button class="primary-btn" type="button" data-speak-target="emailModel">Listen</button>
+            <button class="secondary-btn" type="button" data-copy-target="emailModel">Copy model</button>
+          </div>
+        </article>
+      </div>
+
+      <article class="practice-card compact">
+        <h3>Micro-writing upgrade</h3>
+        <p>Choose a sentence and make it more professional. This is discreet practice: we focus on natural English patterns.</p>
+        <div id="upgradeGrid" class="upgrade-grid"></div>
+      </article>
+    </section>
+
+    <section id="speaking" class="section-card">
+      <div class="section-heading">
+        <p class="eyebrow">Step 6</p>
+        <h2>Live speaking practice: client calls and follow-up</h2>
+        <p>Use the cue cards to speak. Reveal support only if needed. These tasks prepare you for both real work and CLOE-style interaction.</p>
+      </div>
+      <div class="two-col">
+        <article class="glass-card white">
+          <h3>🎲 Scenario generator</h3>
+          <div id="speakingCard" class="property-card-output"></div>
+          <div class="btn-row wrap">
+            <button class="primary-btn" type="button" id="newSpeakingScenario">New scenario</button>
+            <button class="secondary-btn" type="button" id="revealSpeakingSupport">Reveal support</button>
+          </div>
+          <div id="speakingSupport" class="support-box hidden"></div>
+        </article>
+        <article class="glass-card white timer-card">
+          <h3>⏱️ Speaking timer</h3>
+          <p>Speak for 60 seconds. Try to use the target phrases, then give yourself one point.</p>
+          <div class="timer-display" id="timerDisplay">01:00</div>
+          <div class="btn-row center wrap">
+            <button class="primary-btn" type="button" id="startTimer">Start</button>
+            <button class="secondary-btn" type="button" id="pauseTimer">Pause</button>
+            <button class="secondary-btn" type="button" id="resetTimer">Reset</button>
+          </div>
+          <button class="success-btn full" type="button" id="speakingDone">I completed the speaking task</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="homework" class="section-card gradient-card alt">
+      <div class="section-heading">
+        <p class="eyebrow">Homework</p>
+        <h2>Write one professional follow-up email</h2>
+        <p>Choose one situation and write 100–130 words. We will use it in the next lesson as speaking material.</p>
+      </div>
+      <div class="homework-grid">
+        <article class="homework-card">
+          <h3>Option A · After a viewing</h3>
+          <p>Write a follow-up email to a client after a property viewing. Include the property details, the next step and one polite question.</p>
+        </article>
+        <article class="homework-card">
+          <h3>Option B · To a real estate agency</h3>
+          <p>Write a short email to an agency in Amsterdam to introduce your profile and ask whether they are open to international candidates.</p>
+        </article>
+        <article class="homework-card">
+          <h3>Option C · Technical explanation</h3>
+          <p>Write a simple explanation of an off-plan sale or off-plan lease for a client. Keep it clear and client-friendly.</p>
+        </article>
+      </div>
+      <div class="model-box" id="homeworkChecklist">
+        Checklist: clear subject line · greeting · reason for writing · 3 key details · polite question · closing · professional tone.
+      </div>
+      <button class="primary-btn" type="button" data-speak-target="homeworkChecklist">Listen to checklist</button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>SpeakEasyTisha · Isabelle Realty Journey · Client communication, emails and speaking practice</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
