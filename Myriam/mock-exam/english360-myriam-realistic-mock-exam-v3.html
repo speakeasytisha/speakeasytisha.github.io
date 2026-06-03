@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SpeakEasyTisha • Myriam • English 360° Realistic Mock Exam (V3)</title>
+  <meta name="description" content="Realistic English 360° mock exam with exam/practice modes, realistic travel scenarios, timers, and model answers."/>
+  <link rel="stylesheet" href="./css/english360-myriam-realistic-mock-exam-v3.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">360</div>
+    <div>
+      <div class="title">English 360° • Realistic Mock Exam (V3)</div>
+      <div class="subtitle">Myriam • 60‑minute lesson • Exam mode + Practice mode • iPad Safari friendly</div>
+    </div>
+  </div>
+
+  <div class="toolbar" role="region" aria-label="Exam controls">
+    <div class="tool">
+      <div class="label">Mode</div>
+      <div class="seg" role="group" aria-label="Mode">
+        <button type="button" class="segBtn on" data-mode="exam">Exam mode</button>
+        <button type="button" class="segBtn" data-mode="practice">Practice</button>
+      </div>
+      <div class="tiny muted mt6">Exam mode hides hints + models. Practice shows them.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Teacher tools</div>
+      <button type="button" class="pill" id="teacherToggle" aria-pressed="false">Teacher mode: Off</button>
+      <div class="tiny muted mt6">Teacher mode reveals everything.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Level models</div>
+      <div class="seg" role="group" aria-label="Level">
+        <button type="button" class="segBtn on" data-level="A2">A2+</button>
+        <button type="button" class="segBtn" data-level="B1">B1</button>
+        <button type="button" class="segBtn" data-level="B2">B2</button>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="label">TTS Accent</div>
+      <div class="seg" role="group" aria-label="Accent">
+        <button type="button" class="segBtn on" data-accent="US">US</button>
+        <button type="button" class="segBtn" data-accent="UK">UK</button>
+      </div>
+      <div class="label mt8">Rate</div>
+      <input id="rate" class="range" type="range" min="0.7" max="1.25" step="0.05" value="1">
+      <div class="tiny muted mt6">Manual “▶ Read” buttons only.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Exam timer</div>
+      <div class="row">
+        <button type="button" class="pill" id="startExam">Start 45 min</button>
+        <button type="button" class="pill ghost" id="stopExam">Stop</button>
+        <span class="pill mono" id="examClock">00:00</span>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Score (auto‑graded parts)</div>
+      <div class="row">
+        <span class="pill mono" id="scorePill">0 / 0</span>
+        <button type="button" class="iconBtn" id="resetScore" aria-label="Reset score">↺</button>
+      </div>
+      <div class="tiny">Accuracy: <span id="acc">0%</span></div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Status</div>
+      <div class="pill ok" id="jsOk">JS: loading…</div>
+      <div class="errBox" id="errBox" hidden></div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Sections">
+    <a class="tab" href="#setup">0. Setup</a>
+    <a class="tab" href="#listening">1. Listening</a>
+    <a class="tab" href="#reading">2. Reading</a>
+    <a class="tab" href="#language">3. Language use</a>
+    <a class="tab" href="#speaking">4. Speaking</a>
+    <a class="tab" href="#writing">5. Writing</a>
+    <a class="tab" href="#report">6. Report</a>
+    <a class="tab" href="#vocab">Vocab bank</a>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <noscript><div class="noscript"><strong>JavaScript is disabled.</strong> Please enable JS.</div></noscript>
+
+  <section id="setup" class="card hero">
+    <h1 class="h1">0) Setup (2 minutes)</h1>
+    <p class="lead">Use <strong>Exam mode</strong> for the real feeling. Use <strong>Practice</strong> to see hints and model answers.</p>
+
+    <div class="grid2 mt12">
+      <div class="panel">
+        <div class="kicker">Quick techniques</div>
+        <ul class="bullets mt10">
+          <li><strong>Read the question first</strong>, then scan for key words.</li>
+          <li><strong>Use templates</strong>: Subject → Greeting → Reason → Request → Closing.</li>
+          <li><strong>Speaking</strong>: situation → request → one detail → polite close.</li>
+          <li><strong>Connectors</strong>: because / however / in addition / overall.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Tech check</div>
+        <div class="row mt10">
+          <button class="pill big" type="button" id="ttsTest">▶ Test voice</button>
+          <button class="pill big ghost" type="button" id="copyTemplates">Copy templates</button>
+        </div>
+        <div class="lessonBox mt10" id="templateBox">—</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="listening" class="card">
+    <h2 class="h2">1) Listening (10 minutes)</h2>
+    <p class="muted">TTS-based listening: realistic announcements and service dialogues.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">Task</div>
+        <div class="promptBox" id="lisPrompt">—</div>
+
+        <div class="row mt10">
+          <button class="pill" type="button" id="lisPlay">▶ Play</button>
+          <button class="pill ghost" type="button" id="lisReplay">Replay</button>
+          <button class="pill ghost" type="button" id="lisNext">Next</button>
+        </div>
+
+        <div class="row mt10">
+          <button class="pill ghost" type="button" id="lisToggleScript">Show script</button>
+          <button class="pill ghost" type="button" id="lisSayScript">▶ Read script</button>
+        </div>
+        <div class="lessonBox mt10" id="lisScriptBox" style="display:none">—</div>
+
+        <div class="mt10" id="lisOpts"></div>
+        <div class="row mt10">
+          <button class="pill" type="button" id="lisCheck">Check</button>
+          <button class="pill ghost" type="button" id="lisHint">Hint</button>
+        </div>
+        <div class="model mt10" id="lisFb">—</div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Strategy</div>
+        <div class="lessonBox mt10" id="lisTips">—</div>
+        <div class="row mt10">
+          <button class="pill ghost" type="button" id="lisSayTips">▶ Read tips</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reading" class="card">
+    <h2 class="h2">2) Reading (12 minutes)</h2>
+    <p class="muted">Short realistic texts: email reply, lost luggage notice, short article.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">Text</div>
+        <div class="promptBox" id="readText">—</div>
+        <div class="row mt10">
+          <button class="pill ghost" type="button" id="readNew">New text</button>
+          <button class="pill ghost" type="button" id="readSay">▶ Read text</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Questions</div>
+        <div id="readQs"></div>
+        <div class="row mt10">
+          <button class="pill" type="button" id="readCheck">Check</button>
+          <button class="pill ghost" type="button" id="readShow">Show answers</button>
+        </div>
+        <div class="model mt10" id="readFb">—</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="language" class="card">
+    <h2 class="h2">3) Language Use (13 minutes)</h2>
+    <p class="muted">MCQ + fix-the-sentence: conditionals, tenses, polite requests, vocabulary.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">MCQ</div>
+        <div class="promptBox" id="gQ">—</div>
+        <div class="mt10" id="gOpts"></div>
+        <div class="row mt10">
+          <button class="pill" type="button" id="gCheck">Check</button>
+          <button class="pill ghost" type="button" id="gNext">Next</button>
+          <button class="pill ghost" type="button" id="gHint">Hint</button>
+        </div>
+        <div class="model mt10" id="gFb">—</div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Fix the sentence</div>
+        <div class="promptBox" id="fxQ">—</div>
+        <textarea class="textarea mt10" id="fxBox" rows="5" placeholder="Rewrite correctly…"></textarea>
+        <div class="row mt10">
+          <button class="pill" type="button" id="fxCheck">Check</button>
+          <button class="pill ghost" type="button" id="fxShow">Show</button>
+          <button class="pill ghost" type="button" id="fxNext">Next</button>
+        </div>
+        <div class="model mt10" id="fxFb">—</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="speaking" class="card">
+    <h2 class="h2">4) Speaking + Interaction (10–12 minutes)</h2>
+    <p class="muted">In Exam mode, the prompt is hidden until you click a button (real test feeling).</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">Prompt</div>
+        <label class="stack mt10">
+          <span class="label">Scenario</span>
+          <select class="select" id="spSel"></select>
+        </label>
+
+        <div class="timerRow mt10">
+          <button class="pill" type="button" id="sp60">Start 60s</button>
+          <button class="pill" type="button" id="sp90">Start 90s</button>
+          <button class="pill ghost" type="button" id="spStop">Stop</button>
+          <span class="pill mono" id="spClock">00:00</span>
+          <button class="pill ghost" type="button" id="spSay">▶ Read</button>
+        </div>
+
+        <div class="row mt10">
+          <button class="pill ghost" type="button" id="spTogglePrompt">Show prompt</button>
+        </div>
+
+        <div class="promptBox mt10" id="spPromptBox">
+          <div class="muted" id="spPromptPlaceholder">Prompt hidden. Click “Show prompt”.</div>
+          <div id="spPrompt" style="display:none">—</div>
+        </div>
+
+        <div class="chips mt10" id="spPlan"></div>
+        <textarea class="textarea mt10" id="spNotes" rows="7" placeholder="Plan notes (3–5 lines)…"></textarea>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Model answer</div>
+        <div class="row mt10">
+          <button class="pill" type="button" id="spModelBtn">Show model</button>
+          <button class="pill ghost" type="button" id="spModelSay">▶ Read model</button>
+        </div>
+        <div class="model mt10" id="spModel">—</div>
+        <div class="lessonBox mt12" id="spRubric">—</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing" class="card">
+    <h2 class="h2">5) Writing (15 minutes)</h2>
+    <p class="muted">Your text is saved per scenario (so it won’t “disappear”).</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">Task</div>
+        <label class="stack mt10">
+          <span class="label">Scenario</span>
+          <select class="select" id="wrSel"></select>
+        </label>
+        <div class="promptBox mt10" id="wrPrompt">—</div>
+        <div class="chips mt10" id="wrChips"></div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Your answer</div>
+        <div class="timerRow mt10">
+          <button class="pill" type="button" id="wr15">Start 15 min</button>
+          <button class="pill ghost" type="button" id="wrStop">Stop</button>
+          <span class="pill mono" id="wrClock">00:00</span>
+          <span class="pill mono">Words: <span id="wrWords">0</span></span>
+          <button class="pill ghost" type="button" id="wrSay">▶ Read</button>
+        </div>
+
+        <textarea class="textarea mt10" id="wrBox" rows="12" placeholder="Write here…"></textarea>
+
+        <div class="row mt10">
+          <button class="pill" type="button" id="wrModelBtn">Show model</button>
+          <button class="pill ghost" type="button" id="wrCopyBtn">Copy</button>
+          <button class="pill ghost" type="button" id="wrClearBtn">Clear</button>
+        </div>
+
+        <div class="model mt10" id="wrModel">—</div>
+        <div class="lessonBox mt12" id="wrRubric">—</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="report" class="card">
+    <h2 class="h2">6) Score report</h2>
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">Auto results</div>
+        <div class="lessonBox mt10" id="reportBox">Click “Update report”.</div>
+        <div class="row mt10">
+          <button class="pill" type="button" id="updateReport">Update report</button>
+          <button class="pill ghost" type="button" id="resetAll">Reset all</button>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="kicker">Teacher note</div>
+        <textarea class="textarea mt10" id="teacherNote" rows="10" placeholder="Click Generate…"></textarea>
+        <div class="row mt10">
+          <button class="pill" type="button" id="genNote">Generate note</button>
+          <button class="pill ghost" type="button" id="copyNote">Copy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vocab" class="card">
+    <h2 class="h2">Vocab bank (travel + connectors)</h2>
+    <div class="panel mt10">
+      <div class="row wrapRow">
+        <label class="stack">
+          <span class="label">Category</span>
+          <select class="select" id="vCat"></select>
+        </label>
+        <label class="stack">
+          <span class="label">Search</span>
+          <input class="input" id="vSearch" type="search" placeholder="refund, check-in, gate, however…">
+        </label>
+        <label class="stack">
+          <span class="label">French</span>
+          <button type="button" class="pill" id="vFrToggle" aria-pressed="true">On</button>
+        </label>
+        <button type="button" class="pill ghost" id="vReset">Reset</button>
+      </div>
+      <div class="vGrid mt12" id="vGrid"></div>
+    </div>
+  </section>
+
+</main>
+
+<div class="modalOverlay" id="modalOverlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Vocabulary card">
+    <button class="modalClose" id="modalClose" type="button" aria-label="Close">✕</button>
+    <div class="modalIcon" id="mIcon">✨</div>
+    <div class="modalWord" id="mEn">—</div>
+    <div class="modalFr" id="mFr">—</div>
+    <div class="modalDef" id="mDef">—</div>
+    <div class="modalEx" id="mEx">—</div>
+    <div class="row mt10">
+      <button class="pill" id="mSay" type="button">▶ Listen</button>
+      <button class="pill ghost" id="mAdd" type="button">Add to writing</button>
+    </div>
+  </div>
+</div>
+
+<script>
+window.__E360Loaded = false;
+setTimeout(function(){
+  if(!window.__E360Loaded){
+    var ok=document.getElementById('jsOk'); if(ok) ok.textContent='JS: not loaded ❌';
+    var box=document.getElementById('errBox');
+    if(box){ box.hidden=false; box.textContent='⚠️ JS not loaded. Put HTML in root, CSS in /css/, JS in /js/.'; }
+  }
+},1200);
+</script>
+<script src="./js/english360-myriam-realistic-mock-exam-v3.js"></script>
+</body>
+</html>
