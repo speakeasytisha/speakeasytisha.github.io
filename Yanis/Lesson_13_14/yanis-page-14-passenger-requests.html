@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yanis — Passenger Requests, Clarification & Professional Responses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-14-passenger-requests.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Yanis · Passenger Requests · Clarification · Professional Responses</div>
+    </div>
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>Passenger Requests & Clarification ✈️</h1>
+      <p class="lead">A structured lesson to help <strong>you identify the passenger’s request</strong>, ask better follow-up questions, reformulate clearly, and give a short professional response for the <strong>LILATE exam</strong>.</p>
+      <p class="lead fr">Une leçon structurée pour vous aider à <strong>identifier la demande du passager</strong>, poser de meilleures questions, reformuler clairement et donner une réponse professionnelle courte pour le <strong>LILATE</strong>.</p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start lesson</button>
+        <button class="btn btn--ghost" id="btnListenIntro" type="button">🔊 Listen intro</button>
+      </div>
+      <div class="minirow">
+        <div class="minicard"><div class="minicard__t">1) Identify</div><div class="minicard__p">Find the passenger’s problem and key details.</div></div>
+        <div class="minicard"><div class="minicard__t">2) Clarify</div><div class="minicard__p">Use professional question patterns to check meaning.</div></div>
+        <div class="minicard"><div class="minicard__t">3) Respond</div><div class="minicard__p">Give a short, clear, professional answer.</div></div>
+      </div>
+    </div>
+    <div class="hero__panel">
+      <div class="panelcard">
+        <div class="panelcard__title">Lesson road map</div>
+        <ol class="panelcard__list">
+          <li>Passenger request vocabulary</li>
+          <li>Grammar + clarification patterns</li>
+          <li>Fill-in and multiple-choice practice</li>
+          <li>Scenario chooser + roleplay</li>
+          <li>Writing ladder + final checkpoint</li>
+        </ol>
+        <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+        <div class="muted tiny">This page uses English audio only. French support appears in smaller text.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section">
+    <div class="section__head">
+      <h2>1) What you need for this part of the LILATE</h2>
+      <p class="muted">In Part 1 and Part 2, you need to understand the passenger’s request, ask simple questions, and reformulate clearly.</p>
+      <p class="muted fr">Dans les parties 1 et 2, vous devez comprendre la demande du passager, poser des questions simples et reformuler clairement.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Key actions</h3><button class="iconbtn speak" data-say="Identify the request. Ask a clear question. Reformulate the problem. Give a short professional answer." type="button">🔊</button></div>
+        <ul class="list list--dark">
+          <li>Identify the request</li>
+          <li>Ask a follow-up question</li>
+          <li>Reformulate professionally</li>
+          <li>Give useful information</li>
+        </ul>
+      </div>
+      <div class="card note-card">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <div class="noteGrid">
+          <label class="lab">A passenger can ask about…<textarea class="textarea" rows="3" placeholder="a seat / a bag / a gate / a connection..."></textarea></label>
+          <label class="lab">Useful question<textarea class="textarea" rows="3" placeholder="Could you tell me more?"></textarea></label>
+          <label class="lab">Useful reformulation<textarea class="textarea" rows="3" placeholder="If I understand correctly..."></textarea></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>2) Passenger request vocabulary station</h2>
+      <p class="muted">Each word includes an emoji, a French translation, a simple definition, and an example sentence.</p>
+      <p class="muted fr">Chaque mot comprend un emoji, une traduction française, une définition simple et un exemple.</p>
+    </div>
+    <div class="filters">
+      <div class="pill"><span class="pill__label">Category</span><select class="select" id="vocabFilter"></select></div>
+      <button class="btn btn--ghost" id="btnSpeakCategory" type="button">🔊 Listen category words</button>
+    </div>
+    <div class="grid--cards" id="vocabGrid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>3) Grammar & clarification workshop</h2>
+      <p class="muted">Short rules, clearer explanations, concrete examples, and controlled practice to make the structures stick.</p>
+      <p class="muted fr">Des règles courtes, des exemples concrets et des exercices rapides pour bien mémoriser les structures.</p>
+    </div>
+    <div id="grammarHost"></div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>4) Fill in, choose, and identify the request</h2>
+      <p class="muted">Practise the language before moving into the scenarios.</p>
+    </div>
+    <div id="practiceHost"></div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>5) Real passenger scenarios</h2>
+      <p class="muted">Choose a scenario, listen, identify the key information, ask a clarification question, and respond professionally.</p>
+      <p class="muted fr">Choisissez un scénario, écoutez, identifiez les informations essentielles, posez une question de clarification et répondez de manière professionnelle.</p>
+    </div>
+    <div class="filters">
+      <div class="pill"><span class="pill__label">Scenario</span><select class="select" id="scenarioSelect"></select></div>
+      <button class="btn btn--ghost" id="btnScenarioAudio" type="button">🔊 Listen scenario</button>
+      <button class="btn btn--ghost" id="btnScenarioReset" type="button">↺ Reset scenario</button>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3 id="scTitle">Scenario</h3></div>
+        <div id="scBrief"></div>
+        <hr class="sep"/>
+        <div class="smallrow">
+          <button class="hintbtn" id="btnShowTranscript" type="button">Show transcript</button>
+          <button class="hintbtn" id="btnShowModelInfo" type="button">Show essential information</button>
+        </div>
+        <div class="modelBox hidden" id="transcriptBox"></div>
+        <div class="modelBox hidden" id="infoBox"></div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Work directly here</h3></div>
+        <label class="lab">Write the useful information<textarea id="writeInfo" class="textarea" rows="5" placeholder="Passenger name / destination / problem / request..."></textarea></label>
+        <label class="lab">Write a clarification question<textarea id="writeClarify" class="textarea" rows="3" placeholder="If I understand correctly..."></textarea></label>
+        <label class="lab">Write a short response<textarea id="writeResponse" class="textarea" rows="4" placeholder="Your gate is... / You can... / Boarding starts at..."></textarea></label>
+        <div class="smallrow">
+          <button class="btn" id="btnCheckScenario" type="button">✅ Check my work</button>
+          <button class="btn btn--ghost" id="btnShowScenarioModel" type="button">👀 Show model</button>
+        </div>
+        <div class="feedback hidden" id="scenarioFb"></div>
+        <div class="modelBox hidden" id="scenarioModel"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>6) Guided roleplay</h2>
+      <p class="muted">The prompt is visible. The model answer is visible. You can listen, repeat, and then answer.</p>
+    </div>
+    <div class="filters">
+      <div class="pill"><span class="pill__label">Roleplay</span><select class="select" id="roleplaySelect"></select></div>
+      <button class="btn btn--ghost" id="btnPlayPrompt" type="button">🔊 Listen prompt</button>
+      <button class="btn btn--ghost" id="btnPlayModel" type="button">🔊 Listen model</button>
+    </div>
+    <div class="card">
+      <div class="card__head"><h3 id="rpTitle">Roleplay</h3></div>
+      <div class="line"><div class="ico">🧑‍✈️</div><div><strong>Passenger / examiner prompt:</strong><br/><span id="rpPrompt"></span></div></div>
+      <div class="line"><div class="ico">💬</div><div><strong>Useful phrases:</strong><br/><span id="rpPhrases"></span></div></div>
+      <div class="line"><div class="ico">✅</div><div><strong>Model answer:</strong><br/><span id="rpModel"></span></div></div>
+      <label class="lab">Write or say your answer<textarea class="textarea" id="rpWrite" rows="4" placeholder="Your answer..."></textarea></label>
+      <div class="smallrow"><button class="btn" id="btnCheckRoleplay" type="button">✅ Check</button></div>
+      <div class="feedback hidden" id="rpFb"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>7) Writing ladder — simple, better, stronger</h2>
+      <p class="muted">Compare different levels and improve your answer step by step.</p>
+    </div>
+    <div class="two" id="writingLadder"></div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>8) Final LILATE checkpoint</h2>
+      <p class="muted">Short final check: identify the problem, clarify, and respond.</p>
+    </div>
+    <div class="card">
+      <div class="card__head"><h3>Mini checkpoint</h3></div>
+      <div class="line"><div class="ico">🎯</div><div>The passenger is travelling to Rome. She would like to sit next to her husband, and she also wants to check whether her special meal is confirmed.</div></div>
+      <label class="lab">1. Write the essential information<textarea class="textarea" id="finalInfo" rows="3"></textarea></label>
+      <label class="lab">2. Write one clarification question<textarea class="textarea" id="finalClarify" rows="3"></textarea></label>
+      <label class="lab">3. Write one short professional response<textarea class="textarea" id="finalResponse" rows="3"></textarea></label>
+      <div class="smallrow">
+        <button class="btn" id="btnFinalCheck" type="button">✅ Check my checkpoint</button>
+        <button class="btn btn--ghost" id="btnFinalModel" type="button">👀 Show model</button>
+      </div>
+      <div class="feedback hidden" id="finalFb"></div>
+      <div class="modelBox hidden" id="finalModel"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="muted tiny">Yanis · Passenger Requests & Clarification · LILATE preparation page</div>
+      <a class="iconbtn" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<script src="js/yanis-page-14-passenger-requests.js"></script>
+</body>
+</html>

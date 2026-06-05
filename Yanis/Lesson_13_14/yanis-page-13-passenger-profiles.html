@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yanis — Passenger Profiles, Countries, Nationalities & Possessives</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-13-passenger-profiles.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Yanis · Passenger Profiles · Countries, nationalities, pronouns, possessives, family</div>
+    </div>
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div>
+      <h1>Yanis — Passenger Profiles & Professional English ✈️</h1>
+      <p class="lead">In this lesson, you practise an essential step for the LILATE exam and for airline work: <strong>identifying passengers clearly, talking about countries and nationalities, using the right pronouns and possessives, and asking simple professional questions</strong>.</p>
+      <p class="lead fr">Dans cette leçon, vous travaillez une étape essentielle pour le LILATE et pour le travail en compagnie aérienne : <strong>identifier clairement les passagers, parler des pays et des nationalités, utiliser les bons pronoms et possessifs, et poser des questions professionnelles simples</strong>.</p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start lesson</button>
+        <button class="btn btn--ghost speak" data-say="In this lesson, you practise passenger profiles, countries and nationalities, pronouns and possessives, and professional questions.">🔊 Listen lesson goal</button>
+      </div>
+      <div class="minirow">
+        <div class="minicard">
+          <div class="minicard__t">🌍 Countries & nationalities</div>
+          <div class="minicard__p">France → French, Spain → Spanish, Portugal → Portuguese.</div>
+          <div class="fr tiny">France → French, Espagne → Spanish, Portugal → Portuguese.</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">👤 Pronouns & possessives</div>
+          <div class="minicard__p">you / he / she · your / his / her</div>
+          <div class="fr tiny">you / he / she · your / his / her</div>
+        </div>
+        <div class="minicard">
+          <div class="minicard__t">👨‍👩‍👧 Family & passenger profiles</div>
+          <div class="minicard__p">wife, husband, son, daughter, child, family, VIP.</div>
+          <div class="fr tiny">épouse, mari, fils, fille, enfant, famille, VIP.</div>
+        </div>
+      </div>
+    </div>
+    <div class="panelcard">
+      <div class="panelcard__title">Lesson map (≈ 60–75 min)</div>
+      <ol class="panelcard__list">
+        <li>Why this matters for the LILATE exam</li>
+        <li>Countries and nationalities</li>
+        <li>Pronouns and possessives</li>
+        <li>Family members + passenger profiles</li>
+        <li>Vocabulary station with icons, translation, definition, example</li>
+        <li>Fill in, multiple choice, sorting, and mixed practice</li>
+        <li>Useful passenger questions</li>
+        <li>Scenario practice + visible model answers</li>
+        <li>Interactive roleplay</li>
+      </ol>
+      <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+      <div class="muted tiny">Audio reads the English only.</div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section">
+    <div class="section__head">
+      <h2>1) Why this lesson matters for LILATE</h2>
+      <p class="muted">In Part 1 and Part 2, you often need to identify the passenger, understand the situation, and reformulate correctly.</p>
+      <p class="fr">Dans la partie 1 et la partie 2, vous devez souvent identifier le passager, comprendre la situation et reformuler correctement.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>What you need to say clearly</h3><button class="iconbtn speak" data-say="The passenger is Spanish. She is travelling to Madrid. Her husband is travelling with her. If I understand correctly, you need information about your connection.">🔊</button></div>
+        <div class="reading">
+          <div class="line"><div class="ico">🧍</div><div><strong>Identify the passenger</strong><br><span class="muted">The passenger is Italian. He is travelling to Rome.</span><div class="fr tiny">Identifier le passager : The passenger is Italian. He is travelling to Rome.</div></div></div>
+          <div class="line"><div class="ico">👪</div><div><strong>Identify family / companions</strong><br><span class="muted">His wife is travelling with him. Their child needs assistance.</span><div class="fr tiny">Identifier la famille / les accompagnants.</div></div></div>
+          <div class="line"><div class="ico">❓</div><div><strong>Ask professional questions</strong><br><span class="muted">Are you travelling alone? Is this your cabin bag?</span><div class="fr tiny">Poser des questions professionnelles.</div></div></div>
+          <div class="line"><div class="ico">🔁</div><div><strong>Reformulate clearly</strong><br><span class="muted">If I understand correctly, you are travelling with your daughter and you need help.</span><div class="fr tiny">Reformuler clairement.</div></div></div>
+        </div>
+      </div>
+      <div class="card notesCard">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">Key ideas / Idées clés
+          <textarea class="textarea" rows="9" placeholder="The passenger is... / She is from... / He is travelling with... / If I understand correctly..."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>2) Grammar workshop — countries and nationalities</h2>
+      <p class="muted">A country is the place. A nationality is the identity adjective.</p>
+      <p class="fr">Le pays est le lieu. La nationalité est l’adjectif d’identité.</p>
+    </div>
+    <div class="grid-2-1">
+      <div class="card">
+        <div class="card__head"><h3>Rule 1 — country ≠ nationality</h3><button class="iconbtn speak" data-say="Spain is the country. Spanish is the nationality. Italy is the country. Italian is the nationality. Portugal is the country. Portuguese is the nationality.">🔊</button></div>
+        <div class="explainBox">
+          <p><strong>Use the country after from.</strong></p>
+          <ul>
+            <li>She is <strong>from Spain</strong>.</li>
+            <li>He is <strong>from Italy</strong>.</li>
+            <li>They are <strong>from Portugal</strong>.</li>
+          </ul>
+          <p><strong>Use the nationality after be.</strong></p>
+          <ul>
+            <li>She is <strong>Spanish</strong>.</li>
+            <li>He is <strong>Italian</strong>.</li>
+            <li>They are <strong>Portuguese</strong>.</li>
+          </ul>
+          <div class="compareBox">
+            <div class="good">✅ She is from Spain. She is Spanish.</div>
+            <div class="good">✅ He is from Germany. He is German.</div>
+            <div class="bad">❌ She is from Spanish.</div>
+            <div class="bad">❌ He is Germany.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Core list to memorise</h3></div>
+        <table class="miniTable">
+          <tr><th>Country</th><th>Nationality</th><th>Example</th></tr>
+          <tr><td>France</td><td>French</td><td>She is French.</td></tr>
+          <tr><td>Spain</td><td>Spanish</td><td>He is Spanish.</td></tr>
+          <tr><td>Italy</td><td>Italian</td><td>She is Italian.</td></tr>
+          <tr><td>Portugal</td><td>Portuguese</td><td>They are Portuguese.</td></tr>
+          <tr><td>Germany</td><td>German</td><td>He is German.</td></tr>
+          <tr><td>the UK</td><td>British</td><td>She is British.</td></tr>
+          <tr><td>the USA</td><td>American</td><td>He is American.</td></tr>
+        </table>
+        <div class="noteStrip">Remember: <strong>country</strong> after <strong>from</strong> · <strong>nationality</strong> after <strong>be</strong>.</div>
+      </div>
+      <div class="card notesCard">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">Write 5 pairs
+          <textarea class="textarea" rows="11" placeholder="France → French\nSpain → Spanish\nItaly → Italian..."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>3) Grammar workshop — pronouns and possessives</h2>
+      <p class="muted">You need the right person word and the right possessive word.</p>
+      <p class="fr">Vous avez besoin du bon pronom et du bon possessif.</p>
+    </div>
+    <div class="grid-2-1">
+      <div class="card">
+        <div class="card__head"><h3>Rule 2 — pronoun</h3><button class="iconbtn speak" data-say="You is for the passenger. He is for a man. She is for a woman. They is for more than one person.">🔊</button></div>
+        <div class="explainBox">
+          <p><strong>Use the pronoun to replace the person.</strong></p>
+          <ul>
+            <li><strong>You</strong> are travelling to Madrid. (the passenger)</li>
+            <li>David is travelling to Rome. <strong>He</strong> is travelling to Rome.</li>
+            <li>Sofia is travelling to Lisbon. <strong>She</strong> is travelling to Lisbon.</li>
+            <li>The parents are travelling together. <strong>They</strong> are travelling together.</li>
+          </ul>
+          <div class="compareBox">
+            <div class="good">✅ Sofia is travelling. She is worried about the gate change.</div>
+            <div class="bad">❌ Sofia is travelling. You is worried about the gate change.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Rule 3 — possessive</h3><button class="iconbtn speak" data-say="Your seat. His bag. Her boarding pass. Their child. My passport.">🔊</button></div>
+        <table class="miniTable">
+          <tr><th>Pronoun</th><th>Possessive</th><th>Example</th></tr>
+          <tr><td>I</td><td>my</td><td>my passport</td></tr>
+          <tr><td>you</td><td>your</td><td>your seat</td></tr>
+          <tr><td>he</td><td>his</td><td>his bag</td></tr>
+          <tr><td>she</td><td>her</td><td>her boarding pass</td></tr>
+          <tr><td>we</td><td>our</td><td>our flight</td></tr>
+          <tr><td>they</td><td>their</td><td>their child</td></tr>
+        </table>
+        <div class="compareBox topSpace">
+          <div class="good">✅ She has a question about her seat.</div>
+          <div class="good">✅ He is worried about his cabin bag.</div>
+          <div class="bad">❌ She has a question about his seat.</div>
+          <div class="bad">❌ He is worried about her cabin bag.</div>
+        </div>
+      </div>
+      <div class="card notesCard">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">Write your examples
+          <textarea class="textarea" rows="11" placeholder="She is travelling to Madrid. / Her seat is 14A. / He has a question about his bag."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>4) Mini grammar add-on — this / that / these / those</h2>
+      <p class="muted">These words are useful at the airport and on board.</p>
+      <p class="fr">Ces mots sont utiles à l’aéroport et à bord de l’avion.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Simple rule</h3></div>
+        <div class="explainBox">
+          <ul>
+            <li><strong>this</strong> = singular, near → Is <strong>this</strong> your passport?</li>
+            <li><strong>that</strong> = singular, farther → Is <strong>that</strong> your seat?</li>
+            <li><strong>these</strong> = plural, near → Are <strong>these</strong> your bags?</li>
+            <li><strong>those</strong> = plural, farther → Are <strong>those</strong> your children?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card notesCard">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">Write 4 questions
+          <textarea class="textarea" rows="8" placeholder="Is this your boarding pass? / Are these your bags?"></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>5) Vocabulary station — icons, translation, definition, example</h2>
+      <p class="muted">Review the words, listen, and sort them by category.</p>
+      <p class="fr">Relisez les mots, écoutez-les et classez-les par catégorie.</p>
+    </div>
+    <div class="filters">
+      <div class="pill"><span class="pill__label">Category</span>
+        <select class="select" id="vocabFilter">
+          <option value="all">All categories</option>
+          <option value="countries">Countries & nationalities</option>
+          <option value="family">Family members</option>
+          <option value="profiles">Passenger profiles</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid--cards" id="vocabGrid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>6) Practice step by step — fill in, choose, and sort</h2>
+      <p class="muted">Work slowly and check each point.</p>
+      <p class="fr">Travaillez lentement et vérifiez chaque point.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="exerciseTitle">Exercise A — country or nationality?</div>
+        <div id="quizCountries" class="choiceBlock"></div>
+      </div>
+      <div class="card">
+        <div class="exerciseTitle">Exercise B — pronoun or possessive?</div>
+        <div id="quizPronouns" class="choiceBlock"></div>
+      </div>
+      <div class="card">
+        <div class="exerciseTitle">Exercise C — family and passenger details</div>
+        <div id="quizFamily" class="choiceBlock"></div>
+      </div>
+    </div>
+    <div class="card topSpace">
+      <div class="exerciseTitle">Exercise D — sort the vocabulary</div>
+      <p class="helper">Click a word, then click the category. You will see immediately if the choice is correct.</p>
+      <div class="chipBank" id="sortBank"></div>
+      <div class="sortGrid topSpace">
+        <div class="sortZone"><h4>🌍 Countries & nationalities</h4><button class="iconbtn sortTarget" data-target="countries">Place here</button><div class="placedList" id="placed-countries"></div></div>
+        <div class="sortZone"><h4>👪 Family members</h4><button class="iconbtn sortTarget" data-target="family">Place here</button><div class="placedList" id="placed-family"></div></div>
+      </div>
+      <div class="sortGrid topSpace">
+        <div class="sortZone"><h4>🧍 Passenger profiles</h4><button class="iconbtn sortTarget" data-target="profiles">Place here</button><div class="placedList" id="placed-profiles"></div></div>
+        <div class="sortZone"><h4>✈️ Mixed passenger details</h4><button class="iconbtn sortTarget" data-target="mixed">Place here</button><div class="placedList" id="placed-mixed"></div></div>
+      </div>
+      <div class="feedback hidden" id="sortFb"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>7) Useful questions for a future steward</h2>
+      <p class="muted">Choose a scenario and study the best questions and model response.</p>
+      <p class="fr">Choisissez un scénario et étudiez les meilleures questions et le modèle de réponse.</p>
+    </div>
+    <div class="card">
+      <div class="filters">
+        <div class="pill"><span class="pill__label">Scenario</span><select class="select" id="scenarioSelect"></select></div>
+        <button class="btn btn--ghost" id="btnScenarioSpeak" type="button">🔊 Listen scenario</button>
+      </div>
+      <div class="msgBox" id="scenarioPrompt"></div>
+      <div class="topSpace"><strong>Useful questions</strong><div class="fr tiny">Questions utiles</div></div>
+      <div class="reading topSpace" id="scenarioQuestions"></div>
+      <div class="topSpace"><strong>Model response</strong> <button class="iconbtn" id="btnToggleScenarioModel" type="button">Show / hide</button></div>
+      <div class="modelBox hidden topSpace" id="scenarioModel"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>8) Interactive roleplay — identify the passenger and reformulate</h2>
+      <p class="muted">Listen, answer, compare with the model, and improve step by step.</p>
+      <p class="fr">Écoutez, répondez, comparez avec le modèle et améliorez pas à pas.</p>
+    </div>
+    <div class="card">
+      <div class="filters">
+        <div class="pill"><span class="pill__label">Roleplay</span><select class="select" id="roleplaySelect"></select></div>
+        <button class="btn btn--ghost" id="btnPlayRole" type="button">▶️ Start roleplay</button>
+        <button class="btn btn--ghost" id="btnNextLine" type="button">➡️ Next line</button>
+        <button class="btn btn--ghost" id="btnShowModel" type="button">✅ Show model answer</button>
+      </div>
+      <div class="roleplayStream" id="roleStream"></div>
+      <div class="answerArea">
+        <label class="lab">Your answer / Votre réponse
+          <textarea class="textarea" id="roleAnswer" rows="5" placeholder="If I understand correctly, you are..."></textarea>
+        </label>
+        <div class="smallBtns">
+          <button class="btn" id="btnCheckRole" type="button">Check my answer</button>
+          <button class="btn btn--ghost" id="btnSpeakModel" type="button">🔊 Listen model</button>
+        </div>
+        <div class="feedback hidden" id="roleFb"></div>
+        <div class="modelBox hidden" id="roleModel"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>9) Final checkpoint — can you describe a passenger clearly?</h2>
+      <p class="muted">Use the tools from the lesson: country, nationality, pronoun, possessive, family, and question.</p>
+      <p class="fr">Utilisez les outils de la leçon : pays, nationalité, pronom, possessif, famille et question.</p>
+    </div>
+    <div class="compareCols">
+      <div class="compareCard">
+        <h4>Simple</h4>
+        <div class="modelWrite">She is Spanish.
+Her husband is with her.
+She has a question about her seat.</div>
+      </div>
+      <div class="compareCard">
+        <h4>Better</h4>
+        <div class="modelWrite">The passenger is Spanish.
+She is travelling to Madrid with her husband.
+She has a question about her seat.</div>
+      </div>
+      <div class="compareCard">
+        <h4>Stronger</h4>
+        <div class="modelWrite">The passenger is Spanish, and she is travelling to Madrid with her husband.
+If I understand correctly, she has a question about her seat and she would like some help.</div>
+      </div>
+    </div>
+    <div class="card topSpace notesCard">
+      <div class="card__head"><h3>Write your own passenger profile</h3></div>
+      <label class="lab">Write 4 to 6 sentences
+        <textarea class="textarea" rows="8" placeholder="The passenger is... She is from... She is travelling with... She has a question about..."></textarea>
+      </label>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="muted tiny">© SpeakEasyTisha · Yanis passenger profiles lesson · structured, touch-friendly, airline theme</div>
+      <a class="iconbtn" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<script src="js/yanis-page-13-passenger-profiles.js"></script>
+</body>
+</html>
