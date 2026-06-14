@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yanis — Clarify, Confirm & Check Passenger Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-15-clarify-details.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Yanis · Clarify, Confirm & Check Passenger Details</div>
+    </div>
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button" aria-pressed="true">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button" aria-pressed="false">🇬🇧 UK</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Score</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>Clarify, Confirm & Check Details 🛂</h1>
+      <p class="lead">This lesson helps <strong>you check passenger details clearly and professionally</strong> for the LILATE exam and for your future airline job. You will practise <strong>this / that / these / those</strong>, <strong>whether</strong>, <strong>you / she / he</strong>, and <strong>his / her / their</strong>.</p>
+      <p class="lead fr">Cette leçon vous aide à <strong>vérifier les informations du passager de manière claire et professionnelle</strong> pour le LILATE et pour votre futur métier dans l’aérien. Vous allez travailler <strong>this / that / these / those</strong>, <strong>whether</strong>, <strong>you / she / he</strong> et <strong>his / her / their</strong>.</p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start lesson</button>
+        <button class="btn btn--ghost" id="btnListenIntro" type="button">🔊 Listen intro</button>
+      </div>
+      <div class="minirow">
+        <div class="minicard"><div class="minicard__t">1) Check items</div><div class="minicard__p">Use this / that / these / those with real passenger details.</div></div>
+        <div class="minicard"><div class="minicard__t">2) Confirm professionally</div><div class="minicard__p">Use whether to sound calm, precise, and professional.</div></div>
+        <div class="minicard"><div class="minicard__t">3) Handle scenarios</div><div class="minicard__p">Practise with seats, bags, boarding passes, family, and gate changes.</div></div>
+      </div>
+    </div>
+    <div class="hero__panel">
+      <div class="panelcard">
+        <div class="panelcard__title">Lesson map</div>
+        <ol class="panelcard__list">
+          <li>Grammar workshop: demonstratives</li>
+          <li>Grammar workshop: whether</li>
+          <li>Pronouns and possessives clinic</li>
+          <li>Vocabulary station</li>
+          <li>Exercise hub</li>
+          <li>Scenario lab + guided roleplay</li>
+        </ol>
+        <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+        <div class="muted tiny">Goal: identify the passenger, check the details, clarify the request, and confirm the right information.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section" id="sec1">
+    <div class="section__head">
+      <h2>1) Quick review & note-taking</h2>
+      <p class="muted">Start by reviewing the key idea: first identify the passenger, then identify the request, then check the details calmly.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Your review checklist</h3><button class="btn btn--ghost" id="btnSpeakChecklist" type="button">🔊 Listen</button></div>
+        <div class="line"><div class="ico">👤</div><div><strong>Who is the passenger?</strong><br/>Nationality, destination, family, seat, and situation.</div></div>
+        <div class="line"><div class="ico">❓</div><div><strong>What is the request?</strong><br/>Seat, bag, gate, meal, boarding time, or special assistance.</div></div>
+        <div class="line"><div class="ico">✅</div><div><strong>What do you need to check?</strong><br/>Documents, boarding pass, gate number, boarding time, and whether the information is correct.</div></div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>My notes</h3></div>
+        <label class="lab">Write the 3 steps in your own words
+          <textarea class="textarea" rows="7" placeholder="1) ...&#10;2) ...&#10;3) ..."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec2">
+    <div class="section__head">
+      <h2>2) Grammar workshop A — this / that / these / those</h2>
+      <p class="muted">Use these words to point to one thing or several things. This is essential when you check documents, bags, seats, and boarding passes.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>The rule</h3><button class="btn btn--ghost" id="btnSpeakDemoRule" type="button">🔊 Listen</button></div>
+        <div class="gBlock">
+          <div class="gRule"><strong>this</strong> = one thing near you<br/><span class="muted tiny">ce/cette ici</span></div>
+          <div class="gExamples">
+            <div class="example">Is <strong>this</strong> your boarding pass?</div>
+            <div class="example">Is <strong>this</strong> your cabin bag?</div>
+          </div>
+        </div>
+        <div class="gBlock">
+          <div class="gRule"><strong>that</strong> = one thing farther away / less immediate<br/><span class="muted tiny">ce/cette là</span></div>
+          <div class="gExamples">
+            <div class="example">Is <strong>that</strong> your gate?</div>
+            <div class="example">Is <strong>that</strong> your husband over there?</div>
+          </div>
+        </div>
+        <div class="gBlock">
+          <div class="gRule"><strong>these</strong> = several things near you<br/><span class="muted tiny">ces ... ici</span></div>
+          <div class="gExamples">
+            <div class="example">Are <strong>these</strong> your bags?</div>
+            <div class="example">Are <strong>these</strong> your seats?</div>
+          </div>
+        </div>
+        <div class="gBlock">
+          <div class="gRule"><strong>those</strong> = several things farther away<br/><span class="muted tiny">ces ... là-bas</span></div>
+          <div class="gExamples">
+            <div class="example">Are <strong>those</strong> your children?</div>
+            <div class="example">Are <strong>those</strong> the correct documents?</div>
+          </div>
+        </div>
+        <div class="rightwrong">
+          <div class="good">✅ Is <strong>this</strong> your passport?</div>
+          <div class="bad">❌ Is <strong>these</strong> your passport?</div>
+          <div class="good">✅ Are <strong>these</strong> your bags?</div>
+          <div class="bad">❌ Are <strong>this</strong> your bags?</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">My rule
+          <textarea class="textarea" rows="4" placeholder="this = ...&#10;that = ...&#10;these = ...&#10;those = ..."></textarea>
+        </label>
+        <label class="lab">My examples
+          <textarea class="textarea" rows="6" placeholder="Is this your ...?&#10;Are these your ...?&#10;Is that your ...?&#10;Are those your ...?"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="practiceCard">
+      <h3>Practice A1 — choose the correct word</h3>
+      <p class="muted">Select the best demonstrative for each sentence.</p>
+      <div id="demoPractice"></div>
+    </div>
+
+    <div class="practiceCard">
+      <h3>Practice A2 — complete the sentence</h3>
+      <p class="muted">Use the dropdown to complete each sentence correctly.</p>
+      <div id="demoFill"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec3">
+    <div class="section__head">
+      <h2>3) Grammar workshop B — whether</h2>
+      <p class="muted">Use <strong>whether</strong> to sound more professional when you check, confirm, or verify information. It is very useful in the LILATE exam.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>The rule</h3><button class="btn btn--ghost" id="btnSpeakWhetherRule" type="button">🔊 Listen</button></div>
+        <div class="gRule"><strong>whether</strong> = if / si, in a more formal or professional way</div>
+        <div class="gExamples">
+          <div class="example">I would like to check <strong>whether</strong> your special meal is confirmed.</div>
+          <div class="example">Let me see <strong>whether</strong> your gate has changed.</div>
+          <div class="example">Could you confirm <strong>whether</strong> you are travelling alone?</div>
+        </div>
+        <div class="gRule" style="margin-top:.75rem"><strong>Important:</strong> after <strong>whether</strong>, use a normal sentence order.</div>
+        <div class="rightwrong">
+          <div class="good">✅ Let me check whether your gate has changed.</div>
+          <div class="bad">❌ Let me check whether has your gate changed.</div>
+          <div class="good">✅ I need to know whether she is travelling with her husband.</div>
+          <div class="bad">❌ I need to know whether is she travelling with her husband.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Take notes</h3></div>
+        <label class="lab">Write 2 professional sentences with whether
+          <textarea class="textarea" rows="6" placeholder="I would like to check whether...&#10;Could you confirm whether..."></textarea>
+        </label>
+        <div class="modelBox">Use <strong>whether</strong> when you want to sound calm, precise, and professional.</div>
+      </div>
+    </div>
+
+    <div class="practiceCard">
+      <h3>Practice B1 — choose the best professional sentence</h3>
+      <div id="whetherPractice"></div>
+    </div>
+
+    <div class="practiceCard">
+      <h3>Practice B2 — fill in with whether</h3>
+      <div id="whetherFill"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec4">
+    <div class="section__head">
+      <h2>4) Pronouns & possessives clinic</h2>
+      <p class="muted">This section helps with <strong>you / she / he</strong> and <strong>your / her / his / their</strong>, which are very important in airline situations.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Quick reminders</h3></div>
+        <div class="line"><div class="ico">🧍</div><div><strong>you / your</strong><br/>You are travelling to Rome. Is this <strong>your</strong> boarding pass?</div></div>
+        <div class="line"><div class="ico">👩</div><div><strong>she / her</strong><br/><strong>She</strong> is travelling to Lisbon. <strong>Her</strong> gate has changed.</div></div>
+        <div class="line"><div class="ico">👨</div><div><strong>he / his</strong><br/><strong>He</strong> is travelling to Madrid. <strong>His</strong> cabin bag is too large.</div></div>
+        <div class="line"><div class="ico">👨‍👩‍👧</div><div><strong>they / their</strong><br/><strong>They</strong> are travelling with children. <strong>Their</strong> seats are together.</div></div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Practice C — choose the correct form</h3></div>
+        <div id="pronounPractice"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec5">
+    <div class="section__head">
+      <h2>5) Vocabulary station — passenger details & family</h2>
+      <p class="muted">Review the vocabulary you need to identify passengers, family members, and travel details correctly.</p>
+    </div>
+    <div class="filters">
+      <div class="pill"><span class="pill__label">Category</span><select id="vocabFilter" class="select"><option value="all">All</option><option value="documents">Documents</option><option value="travel">Travel details</option><option value="family">Family</option><option value="people">Passenger profiles</option></select></div>
+      <button class="btn btn--ghost" id="btnListenVocabSet" type="button">🔊 Listen category</button>
+    </div>
+    <div class="grid--cards" id="vocabGrid"></div>
+  </section>
+
+  <section class="section" id="sec6">
+    <div class="section__head">
+      <h2>6) Exercise hub — more practice</h2>
+      <p class="muted">Yanis asked for more exercises, so this section gives you extra structured practice.</p>
+    </div>
+    <div class="practiceCard">
+      <h3>Practice D1 — choose the best question</h3>
+      <div id="questionPractice"></div>
+    </div>
+    <div class="practiceCard">
+      <h3>Practice D2 — fill in the missing word</h3>
+      <div id="mixedFill"></div>
+    </div>
+    <div class="practiceCard">
+      <h3>Practice D3 — write and check</h3>
+      <p class="muted">Write a short clarification sentence. Then compare it with the model answer.</p>
+      <label class="lab">Your sentence
+        <textarea id="writeClarification" class="textarea" rows="4" placeholder="If I understand correctly, ..."></textarea>
+      </label>
+      <div class="smallrow">
+        <button class="btn" id="btnCheckWriting" type="button">✅ Check idea</button>
+        <button class="btn btn--ghost" id="btnShowWritingModel" type="button">👀 Show model</button>
+      </div>
+      <div id="writingFb" class="feedback hidden"></div>
+      <div id="writingModel" class="modelBox hidden">If I understand correctly, you would like to know whether your gate has changed and whether boarding starts at 6:15 p.m. Is that right?</div>
+    </div>
+  </section>
+
+  <section class="section" id="sec7">
+    <div class="section__head">
+      <h2>7) Scenario lab — check passenger details</h2>
+      <p class="muted">Choose a scenario, identify the useful information, and practise the best clarification question.</p>
+    </div>
+    <div class="filters">
+      <div class="pill"><span class="pill__label">Scenario</span><select id="scenarioSelect" class="select"></select></div>
+      <button class="btn btn--ghost" id="btnSpeakScenario" type="button">🔊 Listen scenario</button>
+      <button class="btn btn--ghost" id="btnToggleTranscript" type="button">👀 Show transcript</button>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Essential information</h3></div>
+        <div id="scenarioEssentials"></div>
+        <div id="scenarioTranscript" class="modelBox hidden" style="margin-top:.7rem"></div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Best clarification question</h3></div>
+        <div id="scenarioQuestion"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec8">
+    <div class="section__head">
+      <h2>8) Guided roleplay — passenger details</h2>
+      <p class="muted">Choose a scenario and practise the roleplay. You can always see the model answer if needed.</p>
+    </div>
+    <div class="filters">
+      <div class="pill"><span class="pill__label">Roleplay</span><select id="roleplaySelect" class="select"></select></div>
+      <button class="btn btn--ghost" id="btnSpeakPrompt" type="button">🔊 Listen prompt</button>
+      <button class="btn btn--ghost" id="btnShowRoleModel" type="button">👀 Show model</button>
+    </div>
+    <div class="card">
+      <div class="line"><div class="ico">🧑‍✈️</div><div id="roleplayPrompt"></div></div>
+      <label class="lab">Your answer
+        <textarea id="roleplayAnswer" class="textarea" rows="5" placeholder="If I understand correctly, ..."></textarea>
+      </label>
+      <div class="smallrow">
+        <button class="btn" id="btnCheckRoleplay" type="button">✅ Check key ideas</button>
+      </div>
+      <div id="roleplayFb" class="feedback hidden"></div>
+      <div id="roleplayModel" class="modelBox hidden"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec9">
+    <div class="section__head">
+      <h2>9) Final LILATE checkpoint</h2>
+      <p class="muted">Use everything together: identify the passenger, confirm the details, and respond professionally.</p>
+    </div>
+    <div class="card">
+      <div class="line"><div class="ico">🎯</div><div><strong>Your task:</strong> Ask 2 questions, confirm the details, and give 1 professional response.</div></div>
+      <div class="modelBox">Useful structure:<br/><strong>Is this your boarding pass?</strong><br/><strong>Are these your seats?</strong><br/><strong>Could you confirm whether you are travelling with your wife?</strong><br/><strong>If I understand correctly, you would like to know whether your gate has changed. Is that right?</strong></div>
+      <label class="lab">My final notes
+        <textarea class="textarea" rows="7" placeholder="Questions to ask...&#10;Details to check...&#10;Professional response..."></textarea>
+      </label>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="muted tiny">Yanis · Page 15 · Clarify, Confirm & Check Passenger Details</div>
+      <a class="iconbtn" href="#top">↑ Back to top</a>
+    </div>
+  </footer>
+</main>
+
+<script src="js/yanis-page-15-clarify-details.js"></script>
+</body>
+</html>
