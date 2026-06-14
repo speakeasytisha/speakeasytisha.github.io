@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frankie · Lesson 4 · Problems and Solutions</title>
+  <link rel="stylesheet" href="css/frankie-new-session-4.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <div class="js-warning" id="jsWarning">⚠️ JavaScript is not loaded. Please check the JS file path.</div>
+
+    <header class="hero" id="top">
+      <nav class="topbar" aria-label="Lesson navigation">
+        <a class="brand" href="#top"><span class="brand-mark">ST</span><span><strong>SpeakEasyTisha</strong><small>Frankie · Programme 2 · Lesson 4</small></span></a>
+        <div class="top-actions">
+          <button class="ghost-btn" type="button" data-scroll="#lessonPlan">Plan</button>
+          <button class="ghost-btn" type="button" data-scroll="#models">Models</button>
+          <button class="ghost-btn" type="button" data-scroll="#vocabulary">Vocabulary</button>
+          <button class="ghost-btn" type="button" data-scroll="#practice">Practice</button>
+          <button class="print-btn" type="button" id="printBtn">Print / PDF</button>
+        </div>
+      </nav>
+
+      <section class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Lesson 4 · A2 speaking confidence</p>
+          <h1>Problems & Solutions: ask for help without panic</h1>
+          <p class="hero-lead">Today, You learn how to explain a small problem, ask for help politely, understand a simple answer and confirm the solution.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" type="button" data-scroll="#lessonPlan">Start the lesson</button>
+            <button class="secondary-btn listen-only" type="button" data-say="Today, we are going to practise problems and solutions. You will learn simple model sentences to ask for help without panic.">▶ Listen to the lesson goal</button>
+          </div>
+          <p class="audio-note">🔇 Audio never starts automatically. Click <strong>Listen</strong> only when you want to hear a word, sentence or model answer.</p>
+        </div>
+        <aside class="goal-card">
+          <div class="level-tag">A2 consolidation → A2+</div>
+          <h2>Today’s final mission</h2>
+          <p>Explain one problem clearly, ask for help, answer one question and confirm the solution.</p>
+          <div class="goal-checks"><span>✓ problem</span><span>✓ polite request</span><span>✓ question</span><span>✓ solution</span><span>✓ confirmation</span></div>
+        </aside>
+      </section>
+    </header>
+
+    <main>
+      <section class="panel voice-panel">
+        <div><p class="eyebrow">Audio settings</p><h2>Choose the voice before listening</h2><p class="muted">Use the buttons only when needed. Nothing plays automatically.</p></div>
+        <div class="voice-actions">
+          <button class="voice-btn active" type="button" data-voice="en-US">🇺🇸 American voice</button>
+          <button class="voice-btn" type="button" data-voice="en-GB">🇬🇧 British voice</button>
+          <button class="voice-stop" type="button" id="stopVoice">■ Stop</button>
+        </div>
+      </section>
+
+      <section class="panel" id="lessonPlan">
+        <div class="section-heading"><p class="eyebrow">Step-by-step structure</p><h2>Lesson map</h2><p>This lesson is organised in small steps: first the model sentences, then vocabulary, grammar, listening, speaking and writing.</p></div>
+        <div class="timeline-grid">
+          <article class="timeline-card"><span>1</span><strong>Warm-up</strong><small>What is the problem?</small></article>
+          <article class="timeline-card"><span>2</span><strong>Model sentences</strong><small>See it before using it.</small></article>
+          <article class="timeline-card"><span>3</span><strong>Vocabulary</strong><small>Problems, places and help.</small></article>
+          <article class="timeline-card"><span>4</span><strong>Grammar</strong><small>There is / It doesn’t / Can you?</small></article>
+          <article class="timeline-card"><span>5</span><strong>Practice</strong><small>Choose, match and build.</small></article>
+          <article class="timeline-card"><span>6</span><strong>Listening</strong><small>Hotel problem dialogue.</small></article>
+          <article class="timeline-card"><span>7</span><strong>Speaking</strong><small>Role-play with support.</small></article>
+          <article class="timeline-card"><span>8</span><strong>Writing</strong><small>Short message for help.</small></article>
+        </div>
+      </section>
+
+      <section class="panel two-col" id="warmup">
+        <div class="card confidence-card">
+          <p class="eyebrow">Step 1</p><h2>Warm-up: small problems</h2>
+          <p class="muted">Choose a problem. Then say one simple sentence.</p>
+          <div class="chip-zone" id="problemChips"></div>
+          <div class="result-box" id="problemResult">Choose one problem to see a clear model sentence.</div>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Safe speaking frame</p><h2>The 4-sentence method</h2>
+          <div class="method-box">
+            <p><strong>1. Be polite:</strong> Excuse me, could you help me, please?</p>
+            <p><strong>2. Say the problem:</strong> There is a problem with my room.</p>
+            <p><strong>3. Ask for a solution:</strong> Could you check it, please?</p>
+            <p><strong>4. Confirm:</strong> Thank you. That’s perfect.</p>
+          </div>
+          <button class="listen-btn" type="button" data-say="Excuse me, could you help me, please? There is a problem with my room. Could you check it, please? Thank you. That's perfect.">▶ Listen to the 4-sentence method</button>
+        </div>
+      </section>
+
+      <section class="panel model-bank-panel" id="models">
+        <div class="section-heading"><p class="eyebrow">Step 2</p><h2>Visible model sentence bank</h2><p>You can look at the model first, listen, repeat, then use the sentence in a new situation.</p></div>
+        <div class="model-tools"><label class="field-label" for="modelCategory">Situation</label><select id="modelCategory" class="big-select"></select></div>
+        <div class="sentence-bank" id="sentenceBank"></div>
+      </section>
+
+      <section class="panel" id="vocabulary">
+        <div class="section-heading"><p class="eyebrow">Step 3</p><h2>Vocabulary bank by category</h2><p>Choose a category. Each card has an icon, French translation, simple definition, example and Listen button.</p></div>
+        <div class="vocab-tools"><label class="field-label" for="vocabCategory">Category</label><select id="vocabCategory" class="big-select"></select><label class="field-label" for="vocabSearch">Search</label><input id="vocabSearch" class="big-input" type="search" placeholder="example: room, late, bill..." /></div>
+        <div class="vocab-grid" id="vocabGrid"></div>
+      </section>
+
+      <section class="panel" id="grammar">
+        <div class="section-heading"><p class="eyebrow">Step 4</p><h2>Grammar focus: simple problem sentences</h2><p>Use short, safe patterns. They help you speak clearly without translating too much.</p></div>
+        <div class="rule-grid">
+          <article class="rule-card"><h3>There is / There are</h3><p class="model-strip"><strong>There is</strong> a problem with my room.</p><p class="model-strip"><strong>There are</strong> no towels in the bathroom.</p><button class="listen-btn" data-say="There is a problem with my room. There are no towels in the bathroom." type="button">▶ Listen</button></article>
+          <article class="rule-card"><h3>It doesn’t work</h3><p class="model-strip">The Wi-Fi <strong>doesn’t work</strong>.</p><p class="model-strip">The key card <strong>doesn’t work</strong>.</p><button class="listen-btn" data-say="The Wi-Fi doesn't work. The key card doesn't work." type="button">▶ Listen</button></article>
+          <article class="rule-card"><h3>Can / Could you…?</h3><p class="model-strip"><strong>Can you</strong> help me, please?</p><p class="model-strip"><strong>Could you</strong> check it, please?</p><button class="listen-btn" data-say="Can you help me, please? Could you check it, please?" type="button">▶ Listen</button></article>
+          <article class="rule-card"><h3>I would like / I need</h3><p class="model-strip"><strong>I would like</strong> a quiet room, please.</p><p class="model-strip"><strong>I need</strong> a taxi, please.</p><button class="listen-btn" data-say="I would like a quiet room, please. I need a taxi, please." type="button">▶ Listen</button></article>
+        </div>
+      </section>
+
+      <section class="panel" id="practice">
+        <div class="section-heading"><p class="eyebrow">Step 5</p><h2>Guided practice</h2><p>One skill at a time: recognise the problem, choose the polite request, then build the sentence.</p></div>
+        <div class="practice-grid">
+          <article class="activity-card"><h3>Practice A · Match the problem</h3><p class="muted">Choose the best English sentence.</p><div id="matchBox"></div><button class="primary-btn compact" id="checkMatch" type="button">Check</button><div class="feedback" id="matchFeedback"></div></article>
+          <article class="activity-card"><h3>Practice B · Polite or too direct?</h3><p class="muted">Choose the most polite sentence.</p><div id="politeBox"></div><button class="primary-btn compact" id="checkPolite" type="button">Check</button><div class="feedback" id="politeFeedback"></div></article>
+          <article class="activity-card"><h3>Practice C · Build the sentence</h3><p class="muted">Put the words in the correct order.</p><div class="word-order" id="wordOrder"></div><button class="secondary-btn compact" id="resetOrder" type="button">Reset</button><button class="primary-btn compact" id="checkOrder" type="button">Check</button><div class="feedback" id="orderFeedback"></div></article>
+          <article class="activity-card"><h3>Practice D · Choose the correct form</h3><p class="muted">Use <strong>is / are / doesn't / don't</strong>.</p><div id="formBox"></div><button class="primary-btn compact" id="checkForms" type="button">Check</button><div class="feedback" id="formFeedback"></div></article>
+        </div>
+      </section>
+
+      <section class="panel listening-card" id="listening">
+        <div class="section-heading"><p class="eyebrow">Step 6</p><h2>Listening: a problem at the hotel</h2><p>Listen first, answer the questions, then reveal the transcript.</p></div>
+        <div class="listening-layout">
+          <div><h3>Dialogue</h3><p class="model-strip">You are at hotel reception. Your key card doesn’t work and you ask for help.</p><button class="listen-btn" type="button" data-say="Good evening. Could you help me, please? My key card doesn't work. I can't open the door. Of course. What is your room number? Room 214. Thank you. I can make a new key card for you. That's great. Thank you very much.">▶ Listen to the dialogue</button><button class="secondary-btn compact" id="showTranscript" type="button">Show / hide transcript</button><div class="transcript hidden" id="transcript"><p><strong>Frankie:</strong> Good evening. Could you help me, please? My key card doesn’t work. I can’t open the door.</p><p><strong>Receptionist:</strong> Of course. What is your room number?</p><p><strong>Frankie:</strong> Room 214.</p><p><strong>Receptionist:</strong> Thank you. I can make a new key card for you.</p><p><strong>Frankie:</strong> That’s great. Thank you very much.</p></div></div>
+          <div><h3>Comprehension</h3><div id="listeningQuestions"></div><button class="primary-btn compact" id="checkListening" type="button">Check listening</button><div class="feedback" id="listeningFeedback"></div></div>
+        </div>
+      </section>
+
+      <section class="panel" id="speaking">
+        <div class="section-heading"><p class="eyebrow">Step 7</p><h2>Speaking: choose a role-play</h2><p>You can use the model sentences below. The goal is not perfection. The goal is communication.</p></div>
+        <div class="scenario-tools"><label class="field-label" for="scenarioSelect">Role-play</label><select id="scenarioSelect" class="big-select"></select></div>
+        <div class="roleplay-grid"><div class="scenario-card" id="scenarioCard"></div><div class="scenario-card"><h3>Teacher follow-up questions</h3><div class="question-stack" id="followUps"></div></div></div>
+      </section>
+
+      <section class="panel" id="writing">
+        <div class="section-heading"><p class="eyebrow">Step 8</p><h2>Writing: a short message for help</h2><p>Use the guided frame to write a simple message. The model is visible first.</p></div>
+        <div class="two-col">
+          <div class="card"><h3>Model message</h3><p class="model-strip"><strong>Hello,</strong><br>I have a problem with my room. The Wi-Fi doesn’t work. Could you help me, please? My room number is 214.<br><strong>Thank you,</strong><br>Frankie</p><button class="listen-btn" type="button" data-say="Hello, I have a problem with my room. The Wi-Fi doesn't work. Could you help me, please? My room number is two fourteen. Thank you, Frankie.">▶ Listen to the model</button></div>
+          <div class="card"><h3>Your message builder</h3><label>Problem</label><select id="writeProblem" class="big-select"><option>the Wi-Fi doesn’t work</option><option>my key card doesn’t work</option><option>there are no towels</option><option>the room is noisy</option><option>I can’t find my reservation</option></select><label>Place / detail</label><input id="writeDetail" class="big-input" value="Room 214" /><button class="primary-btn compact" id="buildMessage" type="button">Build my message</button><textarea id="messageOutput" rows="7" placeholder="Your message will appear here..."></textarea><button class="listen-btn" type="button" id="listenMessage">▶ Listen to my message</button></div>
+        </div>
+      </section>
+
+      <section class="panel mission-card" id="finalMission">
+        <p class="eyebrow">Final mission</p><h2>Explain a problem in 5 clear sentences</h2>
+        <div class="final-grid"><div><p><strong>Use this safe structure:</strong></p><ol><li>Excuse me, could you help me, please?</li><li>There is a problem with...</li><li>It doesn’t work / I can’t...</li><li>Could you check it, please?</li><li>Thank you. That’s perfect.</li></ol></div><div><p><strong>A2+ model:</strong></p><p class="model-strip">Excuse me, could you help me, please? There is a problem with my room. The Wi-Fi doesn’t work and I need to send a message. Could you check it, please? Thank you very much.</p><button class="listen-btn" type="button" data-say="Excuse me, could you help me, please? There is a problem with my room. The Wi-Fi doesn't work and I need to send a message. Could you check it, please? Thank you very much.">▶ Listen to final model</button></div></div>
+      </section>
+
+      <section class="panel homework-panel">
+        <p class="eyebrow">Homework</p><h2>Small homework for you</h2>
+        <p>Prepare 3 small problems and write one polite request for each problem.</p>
+        <div class="homework-list"><p>1. At the hotel: __________________________</p><p>2. At the restaurant: ______________________</p><p>3. In transport: ___________________________</p></div>
+      </section>
+    </main>
+  </div>
+  <script src="js/frankie-new-session-4.js"></script>
+</body>
+</html>
