@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>English 360° • Myriam • Ultimate Exam Prep Hub (Exam‑style)</title>
+  <meta name="description" content="Professional, structured English 360° exam prep hub with realistic practice and model answers."/>
+  <link rel="stylesheet" href="./css/english360-myriam-exam-ultimate-hub-v2.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">360</div>
+    <div>
+      <div class="title">English 360° • Ultimate Exam Prep Hub (Exam‑style)</div>
+      <div class="subtitle">Myriam • last‑week plan • realistic practice • models on demand • Mac & iPad Safari friendly</div>
+    </div>
+  </div>
+
+  <div class="toolbar" role="region" aria-label="Controls">
+    <div class="tool">
+      <div class="label">Mode</div>
+      <div class="seg" role="group" aria-label="Mode">
+        <button type="button" class="segBtn on" data-mode="practice">Practice</button>
+        <button type="button" class="segBtn" data-mode="exam">Exam mode</button>
+      </div>
+      <div class="tiny">Exam mode hides hints. Models are always available (you choose).</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Teacher tools</div>
+      <button type="button" class="pill" id="teacherToggle" aria-pressed="false">Teacher mode: Off</button>
+      <div class="tiny">Teacher mode reveals hints + answers everywhere.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Model level</div>
+      <div class="seg" role="group" aria-label="Level">
+        <button type="button" class="segBtn on" data-level="A2">A2+</button>
+        <button type="button" class="segBtn" data-level="B1">B1</button>
+        <button type="button" class="segBtn" data-level="B2">B2</button>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="label">TTS Accent</div>
+      <div class="seg" role="group" aria-label="Accent">
+        <button type="button" class="segBtn on" data-accent="US">US</button>
+        <button type="button" class="segBtn" data-accent="UK">UK</button>
+      </div>
+      <div class="label" style="margin-top:10px">Rate</div>
+      <input id="rate" class="input" type="range" min="0.7" max="1.25" step="0.05" value="1">
+      <div class="tiny">Manual ▶ buttons only.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Score (auto parts)</div>
+      <div class="row">
+        <span class="badge" id="scorePill">0 / 0</span>
+        <span class="badge small" id="accPill">0%</span>
+        <button type="button" class="iconBtn" id="resetScore" aria-label="Reset score">↺</button>
+      </div>
+      <div class="tiny">Listening + Reading + Grammar are auto‑graded on this page.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Status</div>
+      <span class="badge small okBadge" id="jsOk">JS: loading…</span>
+      <div class="errBox" id="errBox" hidden></div>
+      <div class="tiny">Put HTML in root, CSS in /css, JS in /js.</div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Sections">
+    <a class="tab" href="#blueprint">0. Exam blueprint</a>
+    <a class="tab" href="#checklist">1. What to master</a>
+    <a class="tab" href="#mini">2. Mini exam practice</a>
+    <a class="tab" href="#oral">3. Oral (end of exam)</a>
+    <a class="tab" href="#writing">4. Writing (end of exam)</a>
+    <a class="tab" href="#library">5. Your lesson library</a>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <noscript><div class="errBox"><strong>JavaScript is disabled.</strong> Please enable JS.</div></noscript>
+
+  <section id="blueprint" class="card hero">
+    <h1 class="h1">0) English 360° exam blueprint (clear + detailed)</h1>
+    <p class="lead">This page mirrors the official structure: <strong>Listening → Reading → Grammar → Oral → Writing</strong>. You can always open models when you want.</p>
+
+    <div class="panel mt12">
+      <div class="kicker">Before you start (technical + ID check)</div>
+
+      <details class="mt10" open>
+        <summary>✅ Technical requirements (recommended)</summary>
+        <div class="box mt10">• Device: laptop/desktop strongly recommended (writing is easier). Smartphones/tablets can work.
+• Internet: stable connection.
+• Audio: headphones + microphone (recommended for clear speaking).
+• Webcam + microphone: used for proctoring/monitoring.
+• Browser: use a modern, up‑to‑date browser. Disable unnecessary extensions.
+• Permissions: allow microphone + camera access.
+• Link: have your personal English 360° link ready.
+• Quiet room: avoid background noise and interruptions.</div>
+      </details>
+
+      <details class="mt10">
+        <summary>🪪 ID verification (proctoring)</summary>
+        <div class="box mt10">Have a valid photo ID ready (ID card/passport). English 360° uses identity verification (photo ID + face check) and proctoring (webcam/microphone monitoring).</div>
+      </details>
+
+      <details class="mt10">
+        <summary>⚠️ What to watch out for</summary>
+        <div class="box mt10">• Avoid copy/paste and switching tabs.
+• Close extra tabs and disable browser extensions.
+• Don’t use AI tools or external help during the exam (the platform can flag suspicious behaviour).
+• Answer quickly: the test is timed.
+• For speaking: speak clearly, don’t rush, and use a simple structure.</div>
+      </details>
+    </div>
+
+    <div class="panel mt12">
+      <div class="kicker">Grading & “barème” (what evaluators look for)</div>
+
+      <details class="mt10" open>
+        <summary>Listening & Reading (auto‑scored)</summary>
+        <div class="box mt10">Criteria:
+• lexical knowledge
+• grammatical knowledge
+• comprehension
+• fluency / speed</div>
+      </details>
+
+      <details class="mt10">
+        <summary>Grammar (auto‑scored)</summary>
+        <div class="box mt10">Criteria:
+• conjugation
+• prepositions
+• modal verbs
+• tenses
+• subject‑verb agreement</div>
+      </details>
+
+      <details class="mt10">
+        <summary>Speaking (interaction + production) — scored by evaluators</summary>
+        <div class="box mt10">Criteria:
+• sentence building / accuracy
+• vocabulary / idioms
+• pronunciation
+• grammar / tenses
+• reactivity / fluency</div>
+      </details>
+
+      <details class="mt10">
+        <summary>Writing — scored by evaluators</summary>
+        <div class="box mt10">Criteria:
+• structure (clear paragraphs)
+• vocabulary (appropriate level)
+• grammar (tenses, prepositions, subject‑verb agreement)
+• spelling
+• clarity & logical flow</div>
+      </details>
+    </div>
+
+
+    <div class="grid2 mt12">
+      <div class="panel">
+        <div class="kicker">What the exam contains (official)</div>
+        <div class="box mt10" id="blueprintBox">—</div>
+        <div class="row mt10">
+          <button class="pill ghost" type="button" id="bpCopy">Copy blueprint</button>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="kicker">Exam-day strategy</div>
+        <div class="box mt10">1) Read the instruction first.
+2) Answer fast: don’t overthink.
+3) Use templates (email + speaking).
+4) Add one connector per answer.
+5) Keep writing at ~125 words (clear beats long).</div>
+        <div class="row mt10">
+          <button class="pill" type="button" id="ttsTest">▶ Test voice</button>
+          <button class="pill ghost" type="button" id="copyTemplates">Copy templates</button>
+        </div>
+        <div class="box mt10" id="templateBox">—</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="checklist" class="card">
+    <h2 class="h2">1) What to master (most likely grammar + vocabulary)</h2>
+    <p class="muted">Short, exam-safe rules + micro drills. Use Practice mode to see hints.</p>
+
+    <div class="grid3 mt10">
+      <div class="panel">
+        <div class="kicker">Tenses (core)</div>
+        <div class="box mt10">Present simple (habits)
+Present continuous (now)
+Past simple (yesterday/last…)
+Present perfect (experience / since/for)
+Future (going to / will)</div>
+        <button class="pill mt10" type="button" data-drill="tenses">Start drill</button>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Conditionals (very common)</div>
+        <div class="box mt10">Real future:
+If + present → will
+If I have time, I will practise.
+
+Imaginary now:
+If + past → would
+If I were rich, I would travel.</div>
+        <button class="pill mt10" type="button" data-drill="conditionals">Start drill</button>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Requests + connectors</div>
+        <div class="box mt10">Could you please…?
+Would it be possible to…?
+I’d appreciate…
+
+Connectors:
+because / however / in addition / overall</div>
+        <button class="pill mt10" type="button" data-drill="requests">Start drill</button>
+      </div>
+    </div>
+
+    <div class="panel mt12">
+      <div class="kicker">Quick drill</div>
+      <div class="promptBox mt10" id="drillQ">Click “Start drill”.</div>
+      <div class="mt10" id="drillOpts"></div>
+      <div class="row mt10">
+        <button class="pill" type="button" id="drillCheck">Check</button>
+        <button class="pill ghost" type="button" id="drillHint">Hint</button>
+        <button class="pill ghost" type="button" id="drillNext">Next</button>
+      </div>
+      <div class="model mt10" id="drillFb">—</div>
+    </div>
+  </section>
+
+  <section id="mini" class="card">
+    <h2 class="h2">2) Mini exam practice (most likely exercise types)</h2>
+    <p class="muted">Listening + Reading + Grammar (auto-graded). Models/scripts always available when you click.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">Listening (MCQ) — with script button</div>
+        <div class="promptBox mt10" id="lisPrompt">—</div>
+        <div class="row mt10">
+          <button class="pill" type="button" id="lisPlay">▶ Play</button>
+          <button class="pill ghost" type="button" id="lisNext">Next</button>
+          <button class="pill ghost" type="button" id="lisScriptBtn">Show script</button>
+        </div>
+        <div class="box mt10" id="lisScript" style="display:none">—</div>
+        <div class="mt10" id="lisOpts"></div>
+        <div class="row mt10">
+          <button class="pill" type="button" id="lisCheck">Check</button>
+        </div>
+        <div class="model mt10" id="lisFb">—</div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Reading (short text + questions)</div>
+        <div class="promptBox mt10" id="readText">—</div>
+        <div class="row mt10">
+          <button class="pill ghost" type="button" id="readNew">New text</button>
+        </div>
+        <div class="mt10" id="readQs"></div>
+        <div class="row mt10">
+          <button class="pill" type="button" id="readCheck">Check</button>
+          <button class="pill ghost" type="button" id="readShow">Show answers</button>
+        </div>
+        <div class="model mt10" id="readFb">—</div>
+      </div>
+    </div>
+
+    <div class="grid2 mt12">
+      <div class="panel">
+        <div class="kicker">Grammar (MCQ)</div>
+        <div class="promptBox mt10" id="gQ">—</div>
+        <div class="mt10" id="gOpts"></div>
+        <div class="row mt10">
+          <button class="pill" type="button" id="gCheck">Check</button>
+          <button class="pill ghost" type="button" id="gHint">Hint</button>
+          <button class="pill ghost" type="button" id="gNext">Next</button>
+        </div>
+        <div class="model mt10" id="gFb">—</div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Fix the sentence</div>
+        <div class="promptBox mt10" id="fxQ">—</div>
+        <textarea class="textarea mt10" id="fxBox" rows="6" placeholder="Rewrite correctly…"></textarea>
+        <div class="row mt10">
+          <button class="pill" type="button" id="fxCheck">Check</button>
+          <button class="pill ghost" type="button" id="fxShow">Show answer</button>
+          <button class="pill ghost" type="button" id="fxNext">Next</button>
+        </div>
+        <div class="model mt10" id="fxFb">—</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="oral" class="card">
+    <h2 class="h2">3) Oral (end of exam) — interaction + production</h2>
+    <p class="muted">Choose a scenario, reveal the prompt, speak 45–60 seconds, then click “Show model”.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">Prompt + timer</div>
+        <label class="stack mt10">
+          <span class="label">Scenario</span>
+          <select class="select" id="spSel"></select>
+        </label>
+
+        <div class="row mt10">
+          <button class="pill" type="button" id="sp45">45s</button>
+          <button class="pill" type="button" id="sp60">60s</button>
+          <button class="pill" type="button" id="sp90">90s</button>
+          <button class="pill ghost" type="button" id="spStop">Stop</button>
+          <span class="badge" id="spClock">00:00</span>
+          <button class="pill ghost" type="button" id="spRead">▶ Read</button>
+        </div>
+
+        <div class="row mt10">
+          <button class="pill ghost" type="button" id="spToggle">Show prompt</button>
+        </div>
+
+        <div class="promptBox mt10" id="spPromptBox">
+          <div class="muted" id="spPh">Prompt hidden. Click “Show prompt”.</div>
+          <div id="spPrompt" style="display:none">—</div>
+        </div>
+
+        <div class="chips mt10" id="spChips"></div>
+        <textarea class="textarea mt10" id="spNotes" rows="7" placeholder="Plan notes (3–5 lines)…"></textarea>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Model answer + self‑score</div>
+        <div class="row mt10">
+          <button class="pill" type="button" id="spModelBtn">Show model</button>
+          <button class="pill ghost" type="button" id="spCopyModel">Copy</button>
+        </div>
+        <div class="model mt10" id="spModel">—</div>
+
+        <div class="kicker mt12">5-point oral checklist</div>
+        <div class="box mt10">✅ polite opener
+✅ clear goal/problem
+✅ clear request
+✅ one connector
+✅ polite close</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing" class="card">
+    <h2 class="h2">4) Writing (end of exam) — 2 tasks × 125 words</h2>
+    <p class="muted">Pick a task, write ~125 words, then show the model when you want.</p>
+
+    <div class="grid2 mt10">
+      <div class="panel">
+        <div class="kicker">Task</div>
+        <label class="stack mt10">
+          <span class="label">Scenario</span>
+          <select class="select" id="wrSel"></select>
+        </label>
+        <div class="row mt10">
+          <span class="badge small" id="wrTag">—</span>
+          <span class="badge small" id="wrType">—</span>
+        </div>
+        <div class="promptBox mt10" id="wrPrompt">—</div>
+        <div class="box mt10" id="wrMust">—</div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Your writing</div>
+        <div class="row mt10">
+          <span class="badge">Words: <span id="wrWords">0</span>/125</span>
+          <div class="progress" style="flex:1;min-width:140px"><div id="wrBar"></div></div>
+          <button class="pill ghost" type="button" id="wrClear">Clear</button>
+        </div>
+        <textarea class="textarea mt10" id="wrBox" rows="12" placeholder="Write here…"></textarea>
+        <div class="row mt10">
+          <button class="pill" type="button" id="wrModelBtn">Show model</button>
+          <button class="pill ghost" type="button" id="wrCopyModel">Copy model</button>
+          <button class="pill ghost" type="button" id="wrCopyText">Copy your text</button>
+        </div>
+        <div class="model mt10" id="wrModel">—</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="library" class="card">
+    <h2 class="h2">5) Your lesson library (complete + searchable)</h2>
+    <p class="muted">This list is rebuilt from your spreadsheet entries (not truncated). Use filters to find anything quickly.</p>
+
+    <div class="panel mt10">
+      <div class="row" style="align-items:flex-end">
+        <label class="stack" style="min-width:210px">
+          <span class="label">Category</span>
+          <select class="select" id="libCat"></select>
+        </label>
+        <label class="stack" style="flex:1;min-width:220px">
+          <span class="label">Search (title, tags, date)</span>
+          <input class="input" id="libSearch" type="search" placeholder="hotel, email, pronunciation, exam, San Francisco…">
+        </label>
+        <button class="pill ghost" type="button" id="libReset">Reset</button>
+      </div>
+
+      <div class="row mt10">
+        <span class="badge small" id="libCount">—</span>
+        <button class="pill ghost" type="button" id="libMore">Show 20 more</button>
+      </div>
+
+      <div class="tableList mt12" id="libList">—</div>
+    </div>
+  </section>
+
+  <script>
+    window.__E360Loaded = false;
+    setTimeout(function(){
+      if(!window.__E360Loaded){
+        var ok = document.getElementById('jsOk');
+        if(ok) ok.textContent = 'JS: not loaded ❌';
+        var box = document.getElementById('errBox');
+        if(box){
+          box.hidden = false;
+          box.textContent = '⚠️ JS not loaded. Put HTML in root, CSS in /css/, JS in /js/.';
+        }
+      }
+    }, 1200);
+  </script>
+
+  <script src="./js/english360-myriam-exam-ultimate-hub-v2.js"></script>
+</main>
+</body>
+</html>

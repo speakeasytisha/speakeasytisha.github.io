@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>English 360° • Myriam • Writing 125‑Word Challenge</title>
+  <meta name="description" content="Last-week writing booster • 2×125 words • Email + story + situation • Models for every task"/>
+  <link rel="stylesheet" href="./css/english360-myriam-writing-125word-challenge.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">360</div>
+    <div>
+      <div class="title">English 360° • Myriam • Writing 125‑Word Challenge</div>
+      <div class="subtitle">Last-week writing booster • 2×125 words • Email + story + situation • Models for every task</div>
+    </div>
+  </div>
+
+  <div class="toolbar" role="region" aria-label="Controls">
+    <div class="tool">
+      <div class="label">Mode</div>
+      <div class="seg" role="group" aria-label="Mode">
+        <button type="button" class="segBtn on" data-mode="practice">Practice</button>
+        <button type="button" class="segBtn" data-mode="exam">Exam mode</button>
+      </div>
+      <div class="tiny muted mt6">Practice shows coaching. Exam hides hints.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Teacher tools</div>
+      <button type="button" class="pill" id="teacherToggle" aria-pressed="false">Teacher mode: Off</button>
+      <div class="tiny muted mt6">Teacher mode reveals everything.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Model level</div>
+      <div class="seg" role="group" aria-label="Level">
+        <button type="button" class="segBtn on" data-level="A2">A2+</button>
+        <button type="button" class="segBtn" data-level="B1">B1</button>
+        <button type="button" class="segBtn" data-level="B2">B2</button>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="label">TTS Accent</div>
+      <div class="seg" role="group" aria-label="Accent">
+        <button type="button" class="segBtn on" data-accent="US">US</button>
+        <button type="button" class="segBtn" data-accent="UK">UK</button>
+      </div>
+      <div class="label mt8">Rate</div>
+      <input id="rate" class="input" type="range" min="0.7" max="1.25" step="0.05" value="1">
+      <div class="tiny muted mt6">Manual “▶ Read” buttons only.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Status</div>
+      <div class="badge small" id="jsOk">JS: loading…</div>
+      <div class="errBox" id="errBox" hidden></div>
+      <div class="tiny muted mt6">Mac + iPad Safari</div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Sections">
+    <a class="tab" href="#overview">0. Exam intro</a><a class="tab" href="#challenge">1. 125‑word challenge</a><a class="tab" href="#library">2. Task library</a><a class="tab" href="#compare">3. Teacher compare</a><a class="tab" href="#links">4. Review links</a>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <noscript><div class="errBox"><strong>JavaScript is disabled.</strong> Please enable JS.</div></noscript>
+
+  <script>
+  window.__E360Loaded=false;
+  setTimeout(function(){
+    if(!window.__E360Loaded){
+      var ok=document.getElementById('jsOk'); if(ok) ok.textContent='JS: not loaded ❌';
+      var box=document.getElementById('errBox');
+      if(box){ box.hidden=false; box.textContent='⚠️ JS not loaded. Put HTML in root, CSS in /css/, JS in /js/.'; }
+    }
+  },1200);
+  </script>
+
+<section id="overview" class="card hero">
+  <h1 class="h1">0) Writing — how to score</h1>
+  <p class="lead">Train two situations (≈125 words each): email reply / professional situation / story from images.</p>
+
+  <div class="grid2 mt12">
+    <div class="panel">
+      <div class="kicker">Winning email structure</div>
+      <div class="box mt10">Subject
+Greeting
+Reason (I’m writing regarding…)
+2 polite requests + 1 detail
+Next step / confirmation
+Closing + name</div>
+    </div>
+    <div class="panel">
+      <div class="kicker">125-word strategy</div>
+      <div class="box mt10">Aim for 8–12 lines.
+Use 3 connectors: because / however / in addition / overall.
+Be precise (dates, numbers, requests).
+Don’t write longer—write clearer.</div>
+    </div>
+  </div>
+</section>
+
+<section id="challenge" class="card">
+  <h2 class="h2">1) 125‑word challenge (timed)</h2>
+  <p class="muted">Pick a task → write → check word count → show model when needed.</p>
+
+  <div class="grid2 mt10">
+    <div class="panel">
+      <div class="kicker">Task</div>
+      <label class="stack mt10">
+        <span class="label">Scenario</span>
+        <select class="select" id="taskSel"></select>
+      </label>
+
+      <div class="row mt10">
+        <span class="badge small" id="taskTag">—</span>
+        <span class="badge small" id="taskType">—</span>
+      </div>
+
+      <div class="promptBox mt10" id="taskPrompt">—</div>
+      <div class="kicker mt12">Must include</div>
+      <div class="box mt10" id="mustInclude">—</div>
+    </div>
+
+    <div class="panel">
+      <div class="kicker">Your text</div>
+
+      <div class="timerRow mt10">
+        <button class="pill" type="button" id="w12">12 min</button>
+        <button class="pill" type="button" id="w15">15 min</button>
+        <button class="pill ghost" type="button" id="wStop">Stop</button>
+        <span class="badge mono" id="wClock">00:00</span>
+        <span class="badge mono">Words: <span id="wCount">0</span>/125</span>
+      </div>
+
+      <div class="progress mt10"><div id="wBar"></div></div>
+
+      <textarea class="textarea mt10" id="wBox" rows="12" placeholder="Write here…"></textarea>
+
+      <div class="row mt10">
+        <button class="pill" type="button" id="showModel">Show model</button>
+        <button class="pill ghost" type="button" id="copyModelBtn">Copy model</button>
+        <button class="pill ghost" type="button" id="copyTextBtn">Copy your text</button>
+        <button class="pill ghost" type="button" id="clearTextBtn">Clear</button>
+      </div>
+
+      <div class="model mt10" id="modelOut">—</div>
+    </div>
+  </div>
+</section>
+
+<section id="library" class="card">
+  <h2 class="h2">2) Task library (review + new)</h2>
+
+  <div class="panel mt10">
+    <div class="row wrapRow">
+      <label class="stack">
+        <span class="label">Filter</span>
+        <select class="select" id="libFilter">
+          <option value="All">All</option>
+          <option value="Review">Review (covered)</option>
+          <option value="New">New (likely exam)</option>
+          <option value="Email reply / request">Email tasks</option>
+          <option value="Email reply / complaint">Complaint tasks</option>
+          <option value="Story from images">Story tasks</option>
+          <option value="Professional situation">Professional situation</option>
+        </select>
+      </label>
+      <label class="stack">
+        <span class="label">Search</span>
+        <input class="input" id="libSearch" type="search" placeholder="refund, tourist, story, training…">
+      </label>
+      <button class="pill ghost" type="button" id="libReset">Reset</button>
+    </div>
+
+    <div class="box mt10" id="libList">—</div>
+  </div>
+</section>
+
+<section id="compare" class="card">
+  <h2 class="h2">3) Teacher compare (student → corrected → upgraded)</h2>
+
+  <div class="grid3 mt10">
+    <div class="panel">
+      <div class="kicker">Student text</div>
+      <textarea class="textarea mt10" id="cStudent" rows="12" placeholder="Paste student text…"></textarea>
+    </div>
+    <div class="panel">
+      <div class="kicker">Corrected version (B1/B1+)</div>
+      <textarea class="textarea mt10" id="cCorrected" rows="12" placeholder="Paste corrected version…"></textarea>
+    </div>
+    <div class="panel">
+      <div class="kicker">Upgraded version (B2 style)</div>
+      <textarea class="textarea mt10" id="cUpgraded" rows="12" placeholder="Paste upgraded version…"></textarea>
+    </div>
+  </div>
+
+  <div class="row mt10">
+    <button class="pill" type="button" id="analyzeBtn">Analyse</button>
+    <button class="pill ghost" type="button" id="copyCompare">Copy corrected</button>
+    <button class="pill ghost" type="button" id="clearCompare">Clear</button>
+  </div>
+
+  <div class="panel mt10">
+    <div class="kicker">Stats & suggestions</div>
+    <div class="box mt10" id="statsOut">—</div>
+  </div>
+</section>
+
+<section id="links" class="card">
+  <h2 class="h2">4) Review links (your full course history)</h2>
+
+  <div class="panel mt10">
+    <div class="row wrapRow">
+      <label class="stack">
+        <span class="label">Category</span>
+        <select class="select" id="linkCat2"></select>
+      </label>
+      <label class="stack">
+        <span class="label">Search</span>
+        <input class="input" id="linkSearch2" type="search" placeholder="email, hotel, pronunciation…">
+      </label>
+      <button class="pill ghost" type="button" id="linkReset2">Reset</button>
+    </div>
+
+    <div class="linkGrid mt12" id="linkGrid2"></div>
+  </div>
+</section>
+
+</main>
+<script src="./js/english360-myriam-writing-125word-challenge.js"></script>
+</body>
+</html>

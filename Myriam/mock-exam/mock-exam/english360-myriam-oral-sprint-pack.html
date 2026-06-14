@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>English 360° • Myriam • Oral Sprint Pack</title>
+  <meta name="description" content="Last-week speaking booster • Timers • Prompts • Models • Self-scoring"/>
+  <link rel="stylesheet" href="./css/english360-myriam-oral-sprint-pack.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">360</div>
+    <div>
+      <div class="title">English 360° • Myriam • Oral Sprint Pack</div>
+      <div class="subtitle">Last-week speaking booster • Timers • Prompts • Models • Self-scoring</div>
+    </div>
+  </div>
+
+  <div class="toolbar" role="region" aria-label="Controls">
+    <div class="tool">
+      <div class="label">Mode</div>
+      <div class="seg" role="group" aria-label="Mode">
+        <button type="button" class="segBtn on" data-mode="practice">Practice</button>
+        <button type="button" class="segBtn" data-mode="exam">Exam mode</button>
+      </div>
+      <div class="tiny muted mt6">Practice shows hints + coaching. Exam hides hints.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Teacher tools</div>
+      <button type="button" class="pill" id="teacherToggle" aria-pressed="false">Teacher mode: Off</button>
+      <div class="tiny muted mt6">Teacher mode reveals everything.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Model level</div>
+      <div class="seg" role="group" aria-label="Level">
+        <button type="button" class="segBtn on" data-level="A2">A2+</button>
+        <button type="button" class="segBtn" data-level="B1">B1</button>
+        <button type="button" class="segBtn" data-level="B2">B2</button>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="label">TTS Accent</div>
+      <div class="seg" role="group" aria-label="Accent">
+        <button type="button" class="segBtn on" data-accent="US">US</button>
+        <button type="button" class="segBtn" data-accent="UK">UK</button>
+      </div>
+      <div class="label mt8">Rate</div>
+      <input id="rate" class="input" type="range" min="0.7" max="1.25" step="0.05" value="1">
+      <div class="tiny muted mt6">Manual “▶ Read” buttons only.</div>
+    </div>
+
+    <div class="tool">
+      <div class="label">Status</div>
+      <div class="badge small" id="jsOk">JS: loading…</div>
+      <div class="errBox" id="errBox" hidden></div>
+      <div class="tiny muted mt6">Mac + iPad Safari</div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Sections">
+    <a class="tab" href="#overview">0. Exam intro</a><a class="tab" href="#sprint">1. Oral sprint</a><a class="tab" href="#bank">2. Scenario bank</a><a class="tab" href="#phrases">3. Phrase bank</a><a class="tab" href="#links">4. Review links</a>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <noscript><div class="errBox"><strong>JavaScript is disabled.</strong> Please enable JS.</div></noscript>
+
+  <script>
+  window.__E360Loaded=false;
+  setTimeout(function(){
+    if(!window.__E360Loaded){
+      var ok=document.getElementById('jsOk'); if(ok) ok.textContent='JS: not loaded ❌';
+      var box=document.getElementById('errBox');
+      if(box){ box.hidden=false; box.textContent='⚠️ JS not loaded. Put HTML in root, CSS in /css/, JS in /js/.'; }
+    }
+  },1200);
+  </script>
+
+
+<section id="overview" class="card hero">
+  <h1 class="h1">0) English 360° exam — oral & writing focus</h1>
+  <p class="lead">This pack trains the <strong>speaking part</strong> with the same timing and structure you need on exam day. Models are available for every prompt.</p>
+
+  <div class="grid2 mt12">
+    <div class="panel">
+      <div class="kicker">Oral (what to do)</div>
+      <div class="box mt10" id="oralIntroBox">—</div>
+      <div class="row mt10">
+        <button class="pill ghost" type="button" id="introRead">▶ Read</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="kicker">Winning structure (45–60 seconds)</div>
+      <div class="box mt10">1) Context (1 sentence)
+2) Problem / goal (1 sentence)
+3) Polite request (Could you…?)
+4) One detail (date/price/preference)
+5) Close (Thank you / I appreciate it)</div>
+      <div class="tiny muted mt10">Tip: add one connector (because / however / in addition / overall).</div>
+    </div>
+  </div>
+</section>
+
+<section id="sprint" class="card">
+  <h2 class="h2">1) Oral sprint (real timing)</h2>
+  <p class="muted">Choose a scenario → click <strong>Show prompt</strong> → plan with chips → speak for 45–60 seconds → check the model.</p>
+
+  <div class="grid2 mt10">
+    <div class="panel">
+      <div class="kicker">Prompt</div>
+
+      <label class="stack mt10">
+        <span class="label">Scenario</span>
+        <select class="select" id="scSel"></select>
+      </label>
+
+      <div class="timerRow mt10">
+        <button class="pill" type="button" id="t45">45s</button>
+        <button class="pill" type="button" id="t60">60s</button>
+        <button class="pill" type="button" id="t90">90s</button>
+        <button class="pill ghost" type="button" id="tStop">Stop</button>
+        <span class="badge mono" id="tClock">00:00</span>
+        <button class="pill ghost" type="button" id="promptRead">▶ Read</button>
+      </div>
+
+      <div class="row mt10">
+        <button class="pill ghost" type="button" id="promptToggle">Show prompt</button>
+      </div>
+
+      <div class="promptBox mt10" id="promptBox">
+        <div class="muted" id="promptPlaceholder">Prompt hidden. Click “Show prompt”.</div>
+        <div id="promptText" style="display:none">—</div>
+      </div>
+
+      <div class="chips mt10" id="planChips"></div>
+      <textarea class="textarea mt10" id="notes" rows="7" placeholder="Plan notes (3–5 lines)…"></textarea>
+
+      <div class="row mt10">
+        <button class="pill" type="button" id="copyNotes">Copy notes</button>
+        <button class="pill ghost" type="button" id="clearNotes">Clear</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="kicker">Model answer (click when needed)</div>
+      <div class="row mt10">
+        <button class="pill" type="button" id="modelBtn">Show model</button>
+        <button class="pill ghost" type="button" id="modelRead">▶ Read model</button>
+        <button class="pill ghost" type="button" id="copyModel">Copy model</button>
+      </div>
+      <div class="model mt10" id="modelBox">—</div>
+
+      <div class="kicker mt12">Self‑score (fast)</div>
+      <div class="klist mt10" id="rubric"></div>
+      <div class="row mt10">
+        <span class="badge mono">Score: <span id="rubricScore">0</span>/5</span>
+        <button class="pill ghost" type="button" id="rubricReset">Reset</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="bank" class="card">
+  <h2 class="h2">2) Scenario bank (review + new)</h2>
+  <p class="muted">Filter by tag and practise quickly. Every scenario has models (A2/B1/B2).</p>
+
+  <div class="panel mt10">
+    <div class="row wrapRow">
+      <label class="stack">
+        <span class="label">Filter</span>
+        <select class="select" id="bankFilter">
+          <option value="All">All</option>
+          <option value="Review">Review (covered)</option>
+          <option value="New">New (likely exam)</option>
+          <option value="Production">1‑minute production</option>
+        </select>
+      </label>
+      <label class="stack">
+        <span class="label">Search</span>
+        <input class="input" id="bankSearch" type="search" placeholder="train, pharmacy, introduce, refund…">
+      </label>
+      <button class="pill ghost" type="button" id="bankReset">Reset</button>
+    </div>
+
+    <div class="box mt10" id="bankList">—</div>
+  </div>
+</section>
+
+<section id="phrases" class="card">
+  <h2 class="h2">3) Phrase bank (exam‑safe)</h2>
+  <div class="grid2 mt10">
+    <div class="panel">
+      <div class="kicker">Polite requests</div>
+      <div class="box mt10" id="phraseRequests">—</div>
+      <div class="row mt10">
+        <button class="pill ghost" type="button" id="addReq">Add to notes</button>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="kicker">Connectors</div>
+      <div class="box mt10" id="phraseConnectors">—</div>
+      <div class="row mt10">
+        <button class="pill ghost" type="button" id="addConn">Add to notes</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="links" class="card">
+  <h2 class="h2">4) Review links (your full course history)</h2>
+  <p class="muted">This list comes from your spreadsheet. Use it as a separate “review day” so the last week stays focused on exam timing.</p>
+
+  <div class="panel mt10">
+    <div class="row wrapRow">
+      <label class="stack">
+        <span class="label">Category</span>
+        <select class="select" id="linkCat"></select>
+      </label>
+      <label class="stack">
+        <span class="label">Search</span>
+        <input class="input" id="linkSearch" type="search" placeholder="hotel, writing, pronunciation…">
+      </label>
+      <button class="pill ghost" type="button" id="linkReset">Reset</button>
+    </div>
+
+    <div class="linkGrid mt12" id="linkGrid"></div>
+  </div>
+</section>
+
+</main>
+
+<script src="./js/english360-myriam-oral-sprint-pack.js"></script>
+</body>
+</html>
