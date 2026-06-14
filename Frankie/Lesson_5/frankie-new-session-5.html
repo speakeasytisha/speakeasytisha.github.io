@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frankie · Lesson 5 · Verb Power</title>
+  <link rel="stylesheet" href="css/frankie-new-session-5.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <div class="js-warning" id="jsWarning">⚠️ JavaScript is not loaded. Please check the JS file path.</div>
+
+    <header class="hero" id="top">
+      <nav class="topbar" aria-label="Lesson navigation">
+        <a class="brand" href="#top"><span class="brand-mark">ST</span><span><strong>SpeakEasyTisha</strong><small>Frankie · Programme 2 · Lesson 5</small></span></a>
+        <div class="top-actions">
+          <button class="ghost-btn" type="button" data-scroll="#lessonPlan">Plan</button>
+          <button class="ghost-btn" type="button" data-scroll="#verbs">Verbs</button>
+          <button class="ghost-btn" type="button" data-scroll="#models">Models</button>
+          <button class="ghost-btn" type="button" data-scroll="#practice">Practice</button>
+          <button class="ghost-btn" type="button" data-scroll="#speaking">Speaking</button>
+          <button class="print-btn" type="button" id="printBtn">Print / PDF</button>
+        </div>
+      </nav>
+
+      <section class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Lesson 5 · Grammar and verbs</p>
+          <h1>Verb Power: talk about yesterday, today and tomorrow</h1>
+          <p class="hero-lead">Today, You strengthen the most useful English verbs and learn how to use them in three simple time zones: present, past and future.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" type="button" data-scroll="#lessonPlan">Start the lesson</button>
+            <button class="secondary-btn listen-only" type="button" data-say="Today, we are going to practise verbs. We will talk about yesterday, today and tomorrow with simple model sentences.">▶ Listen to the lesson goal</button>
+          </div>
+          <p class="audio-note">🔇 Audio never starts automatically. Click <strong>Listen</strong> only when you want to hear a word, sentence or model answer.</p>
+        </div>
+        <aside class="goal-card">
+          <div class="level-tag">A2 consolidation → A2+</div>
+          <h2>Today’s final mission</h2>
+          <p>Say and write a short answer using three moments: <strong>yesterday</strong>, <strong>today</strong> and <strong>tomorrow</strong>.</p>
+          <div class="goal-checks"><span>✓ verbs</span><span>✓ present</span><span>✓ past</span><span>✓ future</span><span>✓ model sentences</span></div>
+        </aside>
+      </section>
+    </header>
+
+    <main>
+      <section class="panel voice-panel">
+        <div>
+          <p class="eyebrow">Audio settings</p>
+          <h2>Choose the voice before listening</h2>
+          <p class="muted">Use the buttons only when needed. Nothing plays automatically.</p>
+        </div>
+        <div class="voice-actions">
+          <button class="voice-btn active" type="button" data-voice="en-US">🇺🇸 American voice</button>
+          <button class="voice-btn" type="button" data-voice="en-GB">🇬🇧 British voice</button>
+          <button class="voice-stop" type="button" id="stopVoice">■ Stop</button>
+        </div>
+      </section>
+
+      <section class="panel" id="lessonPlan">
+        <div class="section-heading">
+          <p class="eyebrow">Step-by-step structure</p>
+          <h2>Lesson map</h2>
+          <p>This lesson is organised progressively: first she sees the models, then she practises the verbs, then she speaks and writes.</p>
+        </div>
+        <div class="timeline-grid">
+          <article class="timeline-card"><span>1</span><strong>Warm-up</strong><small>Choose a time marker.</small></article>
+          <article class="timeline-card"><span>2</span><strong>Verb bank</strong><small>Useful verbs by category.</small></article>
+          <article class="timeline-card"><span>3</span><strong>Grammar compass</strong><small>Past, present and future.</small></article>
+          <article class="timeline-card"><span>4</span><strong>Model sentences</strong><small>Visible examples before practice.</small></article>
+          <article class="timeline-card"><span>5</span><strong>Guided practice</strong><small>One grammar point at a time.</small></article>
+          <article class="timeline-card"><span>6</span><strong>Listening</strong><small>Understand verbs in context.</small></article>
+          <article class="timeline-card"><span>7</span><strong>Speaking</strong><small>Build longer answers.</small></article>
+          <article class="timeline-card"><span>8</span><strong>Writing</strong><small>Write a 3-time paragraph.</small></article>
+        </div>
+      </section>
+
+      <section class="panel two-col" id="warmup">
+        <div class="card confidence-card">
+          <p class="eyebrow">Step 1</p>
+          <h2>Warm-up: yesterday, today or tomorrow?</h2>
+          <p class="muted">Choose a time marker. You see the model sentence before speaking.</p>
+          <div class="chip-zone" id="timeChips"></div>
+          <div class="result-box" id="timeResult">Choose one time marker to see a clear model sentence.</div>
+        </div>
+        <div class="card safe-card">
+          <p class="eyebrow">Safe speaking frame</p>
+          <h2>The 3-time answer</h2>
+          <div class="method-box">
+            <p><strong>Yesterday,</strong> I worked and I went home at 4 p.m.</p>
+            <p><strong>Today,</strong> I am learning English.</p>
+            <p><strong>Tomorrow,</strong> I am going to relax.</p>
+          </div>
+          <button class="listen-btn" type="button" data-say="Yesterday, I worked and I went home at four p.m. Today, I am learning English. Tomorrow, I am going to relax.">▶ Listen to the 3-time answer</button>
+        </div>
+      </section>
+
+      <section class="panel" id="verbs">
+        <div class="section-heading">
+          <p class="eyebrow">Step 2</p>
+          <h2>Verb bank by category</h2>
+          <p>Each card has an icon, French translation, simple definition, example and Listen button. This is the reference bank for the whole lesson.</p>
+        </div>
+        <div class="vocab-tools">
+          <label class="field-label" for="verbCategory">Category</label>
+          <select id="verbCategory" class="big-select"></select>
+          <label class="field-label" for="verbSearch">Search</label>
+          <input id="verbSearch" class="big-input" type="search" placeholder="example: go, need, work, buy..." />
+        </div>
+        <div class="vocab-grid" id="verbGrid"></div>
+      </section>
+
+      <section class="panel" id="grammar">
+        <div class="section-heading">
+          <p class="eyebrow">Step 3</p>
+          <h2>Grammar compass: one verb, three time zones</h2>
+          <p>Use the time marker to choose the verb form. Keep the sentence short, clear and correct.</p>
+        </div>
+        <div class="compass-grid">
+          <article class="compass-card present">
+            <span class="big-icon">☀️</span>
+            <h3>Present simple</h3>
+            <p class="model-strip"><strong>Today / usually / every day</strong></p>
+            <p>I work. · I start at 8. · I like walking.</p>
+            <button class="listen-btn compact" type="button" data-say="Today, I work. Usually, I start at eight. I like walking.">▶ Listen</button>
+          </article>
+          <article class="compass-card past">
+            <span class="big-icon">🌙</span>
+            <h3>Past simple</h3>
+            <p class="model-strip"><strong>Yesterday / last weekend / two days ago</strong></p>
+            <p>I worked. · I went shopping. · I had lunch.</p>
+            <button class="listen-btn compact" type="button" data-say="Yesterday, I worked. Last weekend, I went shopping. Two days ago, I had lunch with my family.">▶ Listen</button>
+          </article>
+          <article class="compass-card future">
+            <span class="big-icon">🌱</span>
+            <h3>Future with going to</h3>
+            <p class="model-strip"><strong>Tomorrow / next week / this summer</strong></p>
+            <p>I am going to work. · We are going to travel.</p>
+            <button class="listen-btn compact" type="button" data-say="Tomorrow, I am going to work. Next week, we are going to travel.">▶ Listen</button>
+          </article>
+        </div>
+        <div class="rule-grid small-rule-grid">
+          <article class="rule-card"><h3>He / She / It + s</h3><p class="model-strip">I work → She <strong>works</strong>.</p><p class="model-strip">I go → He <strong>goes</strong>.</p><p class="model-strip">I watch → She <strong>watches</strong>.</p><button class="listen-btn compact" type="button" data-say="I work. She works. I go. He goes. I watch. She watches.">▶ Listen</button></article>
+          <article class="rule-card"><h3>Questions need a helper</h3><p class="model-strip"><strong>Do</strong> you work today?</p><p class="model-strip"><strong>Did</strong> you work yesterday?</p><p class="model-strip"><strong>Are</strong> you going to work tomorrow?</p><button class="listen-btn compact" type="button" data-say="Do you work today? Did you work yesterday? Are you going to work tomorrow?">▶ Listen</button></article>
+          <article class="rule-card"><h3>Useful verb patterns</h3><p class="model-strip">I <strong>need to</strong> practise.</p><p class="model-strip">I <strong>would like to</strong> travel.</p><p class="model-strip">I <strong>like</strong> walking.</p><button class="listen-btn compact" type="button" data-say="I need to practise. I would like to travel. I like walking.">▶ Listen</button></article>
+        </div>
+      </section>
+
+      <section class="panel model-bank-panel" id="models">
+        <div class="section-heading">
+          <p class="eyebrow">Step 4</p>
+          <h2>Visible model sentence bank</h2>
+          <p>You can see, listen and repeat the models before doing the exercises.</p>
+        </div>
+        <div class="model-tools">
+          <label class="field-label" for="modelCategory">Choose the grammar focus</label>
+          <select id="modelCategory" class="big-select"></select>
+        </div>
+        <div class="sentence-bank" id="sentenceBank"></div>
+      </section>
+
+      <section class="panel" id="practice">
+        <div class="section-heading">
+          <p class="eyebrow">Step 5</p>
+          <h2>Guided grammar practice</h2>
+          <p>Each practice activity has visible model sentences, hints and feedback.</p>
+        </div>
+        <div class="practice-grid">
+          <article class="activity-card">
+            <h3>Practice A · Choose the correct verb form</h3>
+            <p class="model-strip">Model: <strong>Yesterday</strong>, I <strong>went</strong> shopping.</p>
+            <div id="formBox"></div>
+            <button class="primary-btn compact" id="checkForms" type="button">Check</button>
+            <button class="secondary-btn compact" id="resetForms" type="button">Reset</button>
+            <div class="feedback" id="formFeedback"></div>
+          </article>
+
+          <article class="activity-card">
+            <h3>Practice B · Which time zone?</h3>
+            <p class="model-strip">Model: <strong>last weekend</strong> = past.</p>
+            <div id="timeZoneBox"></div>
+            <button class="primary-btn compact" id="checkTimeZones" type="button">Check</button>
+            <div class="feedback" id="timeZoneFeedback"></div>
+          </article>
+
+          <article class="activity-card">
+            <h3>Practice C · Regular past verbs</h3>
+            <p class="model-strip">Model: work → <strong>worked</strong> · start → <strong>started</strong></p>
+            <div id="regularBox"></div>
+            <button class="primary-btn compact" id="checkRegular" type="button">Check</button>
+            <div class="feedback" id="regularFeedback"></div>
+          </article>
+
+          <article class="activity-card">
+            <h3>Practice D · Irregular past verbs</h3>
+            <p class="model-strip">Model: go → <strong>went</strong> · have → <strong>had</strong></p>
+            <div id="irregularBox"></div>
+            <button class="primary-btn compact" id="checkIrregular" type="button">Check</button>
+            <div class="feedback" id="irregularFeedback"></div>
+          </article>
+
+          <article class="activity-card">
+            <h3>Practice E · Choose the helper</h3>
+            <p class="model-strip">Model: <strong>Did</strong> you work yesterday?</p>
+            <div id="helperBox"></div>
+            <button class="primary-btn compact" id="checkHelpers" type="button">Check</button>
+            <div class="feedback" id="helperFeedback"></div>
+          </article>
+
+          <article class="activity-card">
+            <h3>Practice F · Verb patterns</h3>
+            <p class="model-strip">Model: I need <strong>to practise</strong>. · I like <strong>walking</strong>.</p>
+            <div id="patternBox"></div>
+            <button class="primary-btn compact" id="checkPatterns" type="button">Check</button>
+            <div class="feedback" id="patternFeedback"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel builder-panel" id="builder">
+        <div class="section-heading">
+          <p class="eyebrow">Step 6</p>
+          <h2>Verb transformer: today → yesterday → tomorrow</h2>
+          <p>Choose a verb idea and build three useful sentences. This helps you see the logic.</p>
+        </div>
+        <div class="builder-grid">
+          <div class="builder-controls card">
+            <label class="field-label" for="transformVerb">Choose a verb idea</label>
+            <select id="transformVerb" class="big-select"></select>
+            <button class="primary-btn" id="buildTransform" type="button">Build my sentences</button>
+          </div>
+          <div class="transform-output" id="transformOutput">
+            Choose a verb idea to see three model sentences.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="listening">
+        <div class="section-heading">
+          <p class="eyebrow">Step 7</p>
+          <h2>Listening: a week, a problem and a plan</h2>
+          <p>Listen once for the general idea. Listen again for the verbs. Then reveal the transcript.</p>
+        </div>
+        <div class="listening-box">
+          <div class="listen-card">
+            <h3>Dialogue</h3>
+            <p class="muted">Two people talk about yesterday, today and tomorrow.</p>
+            <button class="primary-btn" type="button" data-say="A: Hi Frankie. Did you work yesterday? B: Yes, I worked in the morning and I finished at four. A: What are you doing today? B: Today, I am learning English. We are practising verbs and questions. A: Great. And what are you going to do tomorrow? B: Tomorrow, I am going to relax. I am also going to walk with my dog if the weather is nice.">▶ Listen to the dialogue</button>
+            <button class="secondary-btn" type="button" id="toggleTranscript">Show transcript</button>
+            <div class="transcript hidden" id="transcript">
+              <p><strong>A:</strong> Hi Frankie. Did you work yesterday?</p>
+              <p><strong>B:</strong> Yes, I worked in the morning and I finished at four.</p>
+              <p><strong>A:</strong> What are you doing today?</p>
+              <p><strong>B:</strong> Today, I am learning English. We are practising verbs and questions.</p>
+              <p><strong>A:</strong> Great. And what are you going to do tomorrow?</p>
+              <p><strong>B:</strong> Tomorrow, I am going to relax. I am also going to walk with my dog if the weather is nice.</p>
+            </div>
+          </div>
+          <div class="quiz-card">
+            <h3>Listening questions</h3>
+            <div id="listeningQuiz"></div>
+            <button class="primary-btn compact" type="button" id="checkListening">Check</button>
+            <div class="feedback" id="listeningFeedback"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="speaking">
+        <div class="section-heading">
+          <p class="eyebrow">Step 8</p>
+          <h2>Speaking studio: build longer answers</h2>
+          <p>You can use the model, then personalise it orally.</p>
+        </div>
+        <div class="model-levels">
+          <article class="level-card">
+            <span class="level-badge">A2 safe answer</span>
+            <p>Yesterday, I worked in the morning. Today, I am learning English. Tomorrow, I am going to relax.</p>
+            <button class="listen-btn compact" type="button" data-say="Yesterday, I worked in the morning. Today, I am learning English. Tomorrow, I am going to relax.">▶ Listen</button>
+          </article>
+          <article class="level-card">
+            <span class="level-badge">A2+ better answer</span>
+            <p>Yesterday, I worked in the morning and I finished at four. Today, I am practising English because I want to speak more easily. Tomorrow, I am going to relax and walk with my dog.</p>
+            <button class="listen-btn compact" type="button" data-say="Yesterday, I worked in the morning and I finished at four. Today, I am practising English because I want to speak more easily. Tomorrow, I am going to relax and walk with my dog.">▶ Listen</button>
+          </article>
+          <article class="level-card stretch">
+            <span class="level-badge">B1- stretch answer</span>
+            <p>Yesterday was quite normal: I worked, then I came home and relaxed. Today, I am focusing on English verbs because they help me speak with more structure. Tomorrow, I am going to have a quiet day, but I may go for a walk if the weather is nice.</p>
+            <button class="listen-btn compact" type="button" data-say="Yesterday was quite normal: I worked, then I came home and relaxed. Today, I am focusing on English verbs because they help me speak with more structure. Tomorrow, I am going to have a quiet day, but I may go for a walk if the weather is nice.">▶ Listen</button>
+          </article>
+        </div>
+        <div class="prompt-grid">
+          <article class="prompt-card"><h3>Oral question 1</h3><p>What did you do yesterday?</p><p class="hint">Start: Yesterday, I...</p></article>
+          <article class="prompt-card"><h3>Oral question 2</h3><p>What are you doing today?</p><p class="hint">Start: Today, I am...</p></article>
+          <article class="prompt-card"><h3>Oral question 3</h3><p>What are you going to do tomorrow?</p><p class="hint">Start: Tomorrow, I am going to...</p></article>
+        </div>
+      </section>
+
+      <section class="panel writing-panel" id="writing">
+        <div class="section-heading">
+          <p class="eyebrow">Step 9</p>
+          <h2>Writing studio: my 3-time paragraph</h2>
+          <p>Fill in the boxes, then generate a simple structured paragraph.</p>
+        </div>
+        <div class="writing-grid">
+          <div class="writing-form card">
+            <label class="field-label" for="yesterdayInput">Yesterday, I...</label>
+            <input id="yesterdayInput" class="big-input" type="text" placeholder="worked in the morning" />
+            <label class="field-label" for="todayInput">Today, I am...</label>
+            <input id="todayInput" class="big-input" type="text" placeholder="learning English" />
+            <label class="field-label" for="tomorrowInput">Tomorrow, I am going to...</label>
+            <input id="tomorrowInput" class="big-input" type="text" placeholder="relax and walk with my dog" />
+            <label class="field-label" for="becauseInput">Because...</label>
+            <input id="becauseInput" class="big-input" type="text" placeholder="I want to speak with more confidence" />
+            <button class="primary-btn" id="generateWriting" type="button">Generate my paragraph</button>
+          </div>
+          <div class="writing-output card">
+            <h3>My paragraph</h3>
+            <textarea id="writingOutput" readonly>Use the boxes to create a simple paragraph.</textarea>
+            <div class="button-row">
+              <button class="secondary-btn compact" type="button" id="copyWriting">Copy</button>
+              <button class="listen-btn compact" type="button" id="listenWriting">▶ Listen</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel final-panel" id="final">
+        <div class="section-heading">
+          <p class="eyebrow">Step 10</p>
+          <h2>Final verb mission and homework</h2>
+          <p>Use this structure at the end of the lesson to show progress.</p>
+        </div>
+        <div class="final-grid">
+          <article class="mission-card">
+            <h3>Final oral mission</h3>
+            <ol>
+              <li>Say one sentence about yesterday.</li>
+              <li>Say one sentence about today.</li>
+              <li>Say one sentence about tomorrow.</li>
+              <li>Add one reason with <strong>because</strong>.</li>
+              <li>Answer one follow-up question.</li>
+            </ol>
+            <button class="listen-btn" type="button" data-say="Yesterday, I worked. Today, I am learning English. Tomorrow, I am going to relax because I need a quiet day.">▶ Listen to a final model</button>
+          </article>
+          <article class="mission-card homework">
+            <h3>Homework</h3>
+            <p>Prepare 6 sentences:</p>
+            <ul>
+              <li>2 sentences about yesterday</li>
+              <li>2 sentences about today or usually</li>
+              <li>2 sentences about tomorrow or next week</li>
+            </ul>
+            <p class="model-strip">Remember: short, clear sentences are better than long confusing ones.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>SpeakEasyTisha · Frankie · Programme 2 · Lesson 5 · Verb Power</p>
+      <button class="ghost-btn" type="button" data-scroll="#top">Back to top ↑</button>
+    </footer>
+  </div>
+
+  <script src="js/frankie-new-session-5.js"></script>
+</body>
+</html>
