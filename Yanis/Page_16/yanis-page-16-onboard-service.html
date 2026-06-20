@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yanis — On-board Service & Passenger Needs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-16-onboard-service.css"/>
+  <style>
+    .vocabGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+    @media (max-width:980px){.vocabGrid{grid-template-columns:1fr 1fr}}
+    @media (max-width:620px){.vocabGrid{grid-template-columns:1fr}}
+    .vCard{border-radius:18px;border:1px solid rgba(10,46,52,.14);background:rgba(10,46,52,.04);padding:.8rem}
+    .vTop{display:flex;justify-content:space-between;gap:.6rem;align-items:flex-start}
+    .vWord{font-weight:1000;font-size:1.02rem}
+    .vFr{font-size:.88rem;color:rgba(14,31,36,.72);font-weight:800}
+    .vDef{margin-top:.45rem;font-weight:800}
+    .vEx{margin-top:.45rem;border-top:1px dashed rgba(10,46,52,.16);padding-top:.45rem;font-style:italic;font-weight:800}
+    .catTabs{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:.8rem}
+    .catBtn{border:1px solid rgba(10,46,52,.14);background:#fff;padding:.45rem .7rem;border-radius:999px;font-weight:950;cursor:pointer}
+    .catBtn.is-on{background:rgba(10,46,52,.92);color:#fff}
+    .exercise{border-radius:18px;background:rgba(255,255,255,.92);color:var(--text);padding:.95rem;border:1px solid rgba(10,46,52,.12);margin-top:.8rem}
+    .q{border:1px solid rgba(10,46,52,.12);background:rgba(10,46,52,.04);padding:.75rem;border-radius:16px;margin-top:.6rem}
+    .qTitle{font-weight:1000;margin-bottom:.4rem}
+    .rowChoices{display:grid;gap:.45rem}
+    .choiceBtn{border:1px solid rgba(10,46,52,.14);background:#fff;padding:.55rem .65rem;border-radius:14px;text-align:left;font-weight:850;cursor:pointer}
+    .choiceBtn:hover{background:rgba(10,46,52,.05)}
+    .fb{margin-top:.45rem;border-radius:14px;padding:.55rem .7rem;font-weight:850}
+    .fb.ok{background:rgba(28,154,85,.12);border:1px solid rgba(28,154,85,.35)}
+    .fb.no{background:rgba(209,74,86,.10);border:1px solid rgba(209,74,86,.30)}
+    .fillLine{display:grid;grid-template-columns:1fr auto auto;gap:.5rem;align-items:center;margin-top:.55rem}
+    .fillLine select,.fillLine input,.scenarioSelect{border:1px solid rgba(10,46,52,.18);border-radius:12px;padding:.5rem .6rem;font-weight:850;font-family:inherit}
+    .scenarioBox{display:grid;gap:.7rem}
+    .model{border-radius:14px;padding:.65rem .75rem;background:rgba(10,46,52,.04);border:1px solid rgba(10,46,52,.12)}
+    .noteBox{margin-top:.7rem}
+    .steps{display:grid;gap:.45rem}
+    .step{border-radius:14px;padding:.6rem .7rem;background:rgba(10,46,52,.04);border:1px solid rgba(10,46,52,.12)}
+    .miniTable{width:100%;border-collapse:collapse;margin-top:.4rem}
+    .miniTable td,.miniTable th{border:1px solid rgba(10,46,52,.14);padding:.45rem .5rem;text-align:left}
+    .miniTable th{background:rgba(10,46,52,.06)}
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Yanis · On-board Service & Passenger Needs</div>
+    </div>
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button">🇬🇧 UK</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+      <div class="scorebox"><div class="scorebox__label">Score</div><div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div></div>
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>On-board Service & Passenger Needs ☕🛫</h1>
+      <p class="lead">This is the next logical step after passenger requests and clarification. Now you will learn how to <strong>offer help on board, ask polite questions, respond to passenger needs, and handle simple service situations professionally</strong>.</p>
+      <p class="lead fr">C’est l’étape logique suivante après les demandes passagers et la clarification. Vous allez maintenant apprendre à <strong>proposer de l’aide à bord, poser des questions polies, répondre aux besoins des passagers et gérer des situations de service simples de manière professionnelle</strong>.</p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start lesson</button>
+        <button class="btn btn--ghost" id="btnListenIntro" type="button">🔊 Listen intro</button>
+      </div>
+      <div class="minirow">
+        <div class="minicard"><div class="minicard__t">1) Service vocabulary</div><div class="minicard__p">Drinks, meals, comfort items, and safety language.</div></div>
+        <div class="minicard"><div class="minicard__t">2) Polite offers</div><div class="minicard__p">Would you like…? Can I offer you…? Do you need…?</div></div>
+        <div class="minicard"><div class="minicard__t">3) Real scenarios</div><div class="minicard__p">Meal requests, blankets, water, seatbelt checks, and family needs.</div></div>
+      </div>
+    </div>
+    <div class="hero__panel">
+      <div class="panelcard">
+        <div class="panelcard__title">Lesson map</div>
+        <ol class="panelcard__list">
+          <li>Warm-up and service mindset</li>
+          <li>Vocabulary station with categories</li>
+          <li>Grammar workshop: offers and needs</li>
+          <li>Exercise hub with lots of practice</li>
+          <li>Writing ladder</li>
+          <li>Scenario lab and guided roleplay</li>
+        </ol>
+        <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+        <div class="muted tiny">Goal: welcome, offer, check, and respond calmly on board.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section" id="sec1">
+    <div class="section__head">
+      <h2>1) Warm-up & note-taking</h2>
+      <p class="muted">Before you serve, you need a simple routine: greet, offer help, confirm the need, and respond clearly.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Your service routine</h3><button class="btn btn--ghost" id="btnSpeakRoutine" type="button">🔊 Listen</button></div>
+        <div class="steps">
+          <div class="step"><strong>1. Greet the passenger</strong><br/>Good morning. Hello. Welcome on board.</div>
+          <div class="step"><strong>2. Offer help</strong><br/>Can I help you? Would you like something to drink?</div>
+          <div class="step"><strong>3. Check the need</strong><br/>Do you need a blanket? Would you like water?</div>
+          <div class="step"><strong>4. Respond professionally</strong><br/>Of course. Let me check. Here you are.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>My notes</h3></div>
+        <label class="lab">Write your 4 service steps
+          <textarea class="textarea" rows="8" placeholder="1) ...&#10;2) ...&#10;3) ...&#10;4) ..."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec2">
+    <div class="section__head">
+      <h2>2) Vocabulary station — on-board service</h2>
+      <p class="muted">Learn the key vocabulary you need to help passengers on board. Each card has an emoji, translation, definition, and example.</p>
+    </div>
+    <div class="card">
+      <div class="card__head"><h3>Choose a category</h3></div>
+      <div class="catTabs" id="catTabs"></div>
+      <div class="vocabGrid" id="vocabGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec3">
+    <div class="section__head">
+      <h2>3) Grammar workshop — polite offers, needs, and simple service language</h2>
+      <p class="muted">This grammar helps you sound calm, polite, and professional in airline situations.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>A. Would you like…?</h3><button class="btn btn--ghost" id="btnSpeakWould" type="button">🔊 Listen</button></div>
+        <div class="gRule"><strong>Would you like + noun / to + verb</strong> = polite offer or polite question.</div>
+        <div class="gExamples">
+          <div class="example">Would you like <strong>water</strong>?</div>
+          <div class="example">Would you like <strong>a blanket</strong>?</div>
+          <div class="example">Would you like <strong>to change seats</strong>?</div>
+        </div>
+        <table class="miniTable"><tr><th>Use</th><th>Example</th></tr><tr><td>Offer</td><td>Would you like some tea?</td></tr><tr><td>Check preference</td><td>Would you like an aisle seat?</td></tr><tr><td>Polite tone</td><td>Would you like to board now?</td></tr></table>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>B. Can I offer you…? / Do you need…?</h3><button class="btn btn--ghost" id="btnSpeakNeed" type="button">🔊 Listen</button></div>
+        <div class="gRule"><strong>Can I offer you + noun</strong> = service offer.<br/><strong>Do you need + noun</strong> = check the need.</div>
+        <div class="gExamples">
+          <div class="example">Can I offer you <strong>something to drink</strong>?</div>
+          <div class="example">Do you need <strong>help with your bag</strong>?</div>
+          <div class="example">Do you need <strong>a pillow</strong>?</div>
+        </div>
+        <div class="rightwrong">
+          <div class="good">✅ Can I offer you some water?</div>
+          <div class="bad">❌ Can I offer you to water?</div>
+          <div class="good">✅ Do you need a blanket?</div>
+          <div class="bad">❌ Do you need blanket?</div>
+        </div>
+      </div>
+    </div>
+    <div class="two" style="margin-top:.8rem">
+      <div class="card">
+        <div class="card__head"><h3>C. Here is… / Here are…</h3></div>
+        <div class="gRule">Use <strong>Here is</strong> for one thing and <strong>Here are</strong> for more than one thing.</div>
+        <div class="gExamples">
+          <div class="example">Here is your blanket.</div>
+          <div class="example">Here is your vegetarian meal.</div>
+          <div class="example">Here are your headphones.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>D. Need / would like / would prefer</h3></div>
+        <div class="gExamples">
+          <div class="example">I need water.</div>
+          <div class="example">I would like tea.</div>
+          <div class="example">I would prefer a window seat.</div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="two" style="margin-top:.8rem">
+      <div class="card">
+        <div class="card__head"><h3>F. Quantifiers — some / any / much / many</h3><button class="btn btn--ghost" id="btnSpeakQuant" type="button">🔊 Listen</button></div>
+        <div class="gRule"><strong>Use quantifiers to talk about quantity.</strong> We use different words with <strong>countable nouns</strong> (bags, blankets, seats, meals) and <strong>uncountable nouns</strong> (water, coffee, juice, help, assistance).</div>
+        <div class="gRule fr">On utilise différents quantifieurs avec les noms dénombrables (bags, blankets, seats, meals) et les noms indénombrables (water, coffee, juice, help, assistance).</div>
+        <table class="miniTable">
+          <tr><th>Quantifier</th><th>Use</th><th>Example</th></tr>
+          <tr><td>some</td><td>affirmative / offers</td><td>Would you like <strong>some</strong> water?</td></tr>
+          <tr><td>any</td><td>questions / negatives</td><td>Do you need <strong>any</strong> help?</td></tr>
+          <tr><td>many</td><td>countable plural nouns</td><td>How <strong>many</strong> bags do you have?</td></tr>
+          <tr><td>much</td><td>uncountable nouns</td><td>How <strong>much</strong> juice would you like?</td></tr>
+          <tr><td>a lot of</td><td>countable + uncountable</td><td>There are <strong>a lot of</strong> passengers on board.</td></tr>
+          <tr><td>a few / few</td><td>small number of countable nouns</td><td>There are <strong>a few</strong> empty seats.</td></tr>
+          <tr><td>a little / little</td><td>small quantity of uncountable nouns</td><td>There is <strong>a little</strong> coffee left.</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Countable vs uncountable</h3></div>
+        <div class="gExamples">
+          <div class="example"><strong>Countable:</strong> a bag, two bags, many bags, a few bags</div>
+          <div class="example"><strong>Uncountable:</strong> water, coffee, help, assistance</div>
+          <div class="example">✅ some water / much water / a little water</div>
+          <div class="example">✅ many bags / a few bags / some bags</div>
+          <div class="example">❌ many water / a few help</div>
+        </div>
+      </div>
+    </div>
+    <div class="two" style="margin-top:.8rem">
+      <div class="card">
+        <div class="card__head"><h3>Quantifier note box</h3></div>
+<label class="lab noteBox">My examples
+          <textarea class="textarea" rows="6" placeholder="Would you like ...?&#10;Do you need ...?&#10;Here is ...&#10;I would prefer ..."></textarea>
+        </label>
+      </div>
+    </div>
+    <div class="two" style="margin-top:.8rem">
+      <div class="card">
+        <div class="card__head"><h3>E. Quantifiers — some / any / much / many</h3><button class="btn btn--ghost" id="btnSpeakQuant" type="button">🔊 Listen</button></div>
+        <div class="gRule"><strong>Use quantifiers to talk about quantity.</strong> Some / any / much / many / a lot of / few / little help you say how much or how many there is.</div>
+        <table class="miniTable">
+          <tr><th>Quantifier</th><th>Use</th><th>Example</th></tr>
+          <tr><td>some</td><td>affirmative / polite offers</td><td>Would you like <strong>some</strong> water?</td></tr>
+          <tr><td>any</td><td>questions / negatives</td><td>Do you need <strong>any</strong> help?</td></tr>
+          <tr><td>many</td><td>countable plural nouns</td><td>How <strong>many</strong> bags do you have?</td></tr>
+          <tr><td>much</td><td>uncountable nouns</td><td>How <strong>much</strong> water would you like?</td></tr>
+          <tr><td>a lot of</td><td>countable + uncountable</td><td>There are <strong>a lot of</strong> passengers today.</td></tr>
+          <tr><td>a few / few</td><td>small number of countable things</td><td>There are <strong>a few</strong> empty seats.</td></tr>
+          <tr><td>a little / little</td><td>small quantity of uncountable things</td><td>I have <strong>a little</strong> water left.</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>F. Countable vs uncountable</h3></div>
+        <div class="gRule"><strong>Countable nouns</strong> can be counted: one bag, two bags. <strong>Uncountable nouns</strong> are seen as a mass or general quantity: water, coffee, juice, assistance.</div>
+        <div class="gExamples">
+          <div class="example"><strong>Countable:</strong> bag, blanket, pillow, seat, passenger, meal</div>
+          <div class="example"><strong>Uncountable:</strong> water, coffee, tea, juice, help, assistance</div>
+          <div class="example">Would you like <strong>some water</strong>? / Do you have <strong>any bags</strong>?</div>
+          <div class="example">How <strong>many</strong> children are travelling with you? / How <strong>much</strong> juice would you like?</div>
+        </div>
+        <label class="lab noteBox">My examples
+          <textarea class="textarea" rows="6" placeholder="some water&#10;any help&#10;many bags&#10;much coffee"></textarea>
+        </label>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="section" id="sec4">
+    <div class="section__head">
+      <h2>4) Exercise hub — lots of practice</h2>
+      <p class="muted">You asked for more exercises. This section gives you more controlled practice before speaking.</p>
+    </div>
+    <div class="exercise">
+      <h3>Exercise 1 — choose the best service question</h3>
+      <div id="mcq1"></div>
+    </div>
+    <div class="exercise">
+      <h3>Exercise 2 — fill in the missing words</h3>
+      <div id="fill1"></div>
+    </div>
+    <div class="exercise">
+      <h3>Exercise 3 — choose the best response</h3>
+      <div id="mcq2"></div>
+    </div>
+    <div class="exercise">
+      <h3>Exercise 4 — service sentence builder</h3><p class="muted">Build the sentence in the correct order. Hint: start with <strong>Would you like…</strong></p>
+      <div id="builder"></div>
+      <div class="fb hidden" id="builderFb"></div>
+    </div>
+    <div class="exercise">
+      <h3>Exercise 5 — choose the correct quantifier</h3>
+      <div id="quantifierMcq"></div>
+    </div>
+    <div class="exercise">
+      <h3>Exercise 6 — countable or uncountable?</h3>
+      <div id="countableHost"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec5">
+    <div class="section__head">
+      <h2>5) Writing ladder — simple, better, stronger</h2>
+      <p class="muted">Compare three levels of English and see how to improve your answer step by step.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Scenario</h3></div>
+        <div class="model">A passenger would like water and a blanket because she feels cold.</div>
+        <table class="miniTable">
+          <tr><th>Level</th><th>Answer</th></tr>
+          <tr><td>Simple</td><td>She wants water and a blanket.</td></tr>
+          <tr><td>Better</td><td>The passenger would like water and a blanket because she feels cold.</td></tr>
+          <tr><td>Stronger</td><td>The passenger would like some water and a blanket because she feels cold. I can help her right away.</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Your turn</h3></div>
+        <label class="lab">Write a professional answer
+          <textarea class="textarea" id="writingBox" rows="8" placeholder="The passenger would like ..."></textarea>
+        </label>
+        <button class="btn" id="btnCheckWriting" type="button">✅ Check my writing</button>
+        <div class="checklist" id="writingChecklist"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec6">
+    <div class="section__head">
+      <h2>6) Scenario lab — choose a real on-board situation</h2>
+      <p class="muted">Choose a scenario from the dropdown list. Read it, listen to it, note the useful information, and practise the response.</p>
+    </div>
+    <div class="card scenarioBox">
+      <div class="smallrow">
+        <select class="scenarioSelect" id="scenarioSelect"></select>
+        <button class="btn btn--ghost" id="btnSpeakScenario" type="button">🔊 Listen scenario</button>
+        <button class="btn btn--ghost" id="btnToggleModel" type="button">👀 Show / hide model answer</button>
+      </div>
+      <div class="model" id="scenarioText"></div>
+      <div class="steps" id="scenarioFacts"></div>
+      <label class="lab">Write your response
+        <textarea class="textarea" id="scenarioResponse" rows="6" placeholder="Of course. Let me check ..."></textarea>
+      </label>
+      <div class="model hidden" id="scenarioModel"></div>
+      <div class="model hidden" id="scenarioStronger"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec7">
+    <div class="section__head">
+      <h2>7) Guided roleplay — visible model answers</h2>
+      <p class="muted">Practise a real dialogue. You can listen, then answer, then compare with the model.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Passenger prompt</h3><button class="btn btn--ghost" id="btnSpeakRP" type="button">🔊 Listen</button></div>
+        <div class="model" id="rpPrompt">Hello. Excuse me. I would like some water, and I also need a blanket because I feel cold.</div>
+        <label class="lab">Your answer
+          <textarea class="textarea" id="rpAnswer" rows="6" placeholder="Of course. Here is ..."></textarea>
+        </label>
+        <button class="btn" id="btnToggleRPModel" type="button">👀 Show / hide model answer</button>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Model answer</h3></div>
+        <div class="model hidden" id="rpModel">Of course. Here is some water, and I can bring you a blanket right away.</div>
+        <div class="model" style="margin-top:.7rem">Stronger version: Of course. Here is some water, and I will bring you a blanket right away. Please let me know if you need anything else.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="js/yanis-page-16-onboard-service.js"></script>
+</body>
+</html>
