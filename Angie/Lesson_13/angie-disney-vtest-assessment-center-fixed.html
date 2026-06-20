@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Angie — Disney VTest Assessment Center Fixed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/angie-disney-vtest-assessment-center-fixed.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <div class="script">SpeakEasyTisha</div>
+    <div class="tag">Angie’s Disney VTest Assessment & Exam Simulation Center</div>
+  </div>
+  <div class="controls">
+    <button class="pill active" id="usBtn" type="button">US 🇺🇸</button>
+    <button class="pill" id="ukBtn" type="button">UK 🇬🇧</button>
+    <span class="score">Score: <strong id="score">0</strong></span>
+    <button class="pill" id="resetBtn" type="button">Reset</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="heroText">
+    <p class="kicker">🏰 VTEST MOCK EXAM CENTER</p>
+    <h1>Angie’s Complete Exam Simulation</h1>
+    <p class="lead">A realistic VTest-style preparation center with grammar, vocabulary, reading, listening, writing, speaking, recording and Disney interview practice.</p>
+    <button class="btn primary" data-speak="Welcome to your VTest Assessment Center. This page helps you practise grammar, vocabulary, reading, listening, writing and speaking.">🔊 Listen</button>
+  </div>
+  <div class="castle">🏰✨📋🎤</div>
+</section>
+
+<main>
+<section class="card">
+<h2>📋 1. Understand the VTest</h2>
+<div class="infoGrid">
+  <div class="mini"><h3>Skills tested</h3><p>Grammar, vocabulary, reading, listening, writing, speaking and interaction.</p></div>
+  <div class="mini"><h3>Grading</h3><p>The test estimates your CEFR level: A1, A2, B1, B2 or higher. You are evaluated on communication, vocabulary, accuracy, fluency and task completion.</p></div>
+  <div class="mini"><h3>Exam mindset</h3><p>Communication matters more than perfection. If you make a mistake, continue and complete the task.</p></div>
+</div>
+<table class="examTable">
+<tr><th>Section</th><th>Approx. duration</th><th>Goal</th></tr>
+<tr><td>Connection</td><td>5 min</td><td>Check microphone, camera and instructions.</td></tr>
+<tr><td>Grammar & Vocabulary</td><td>10–15 min</td><td>Choose correct forms and words.</td></tr>
+<tr><td>Reading</td><td>10 min</td><td>Understand emails, notices and short texts.</td></tr>
+<tr><td>Listening</td><td>10 min</td><td>Understand short conversations.</td></tr>
+<tr><td>Writing</td><td>15 min</td><td>Write clear short answers.</td></tr>
+<tr><td>Speaking</td><td>15–20 min</td><td>Speak naturally and complete the task.</td></tr>
+</table>
+</section>
+
+<section class="card">
+<h2>📚 2. Broad Vocabulary Academy</h2>
+<p class="muted">Choose a category. Click each card for French, definition and example.</p>
+<div class="tabs" id="vocabTabs"></div>
+<button class="btn" id="listenVocab" type="button">🔊 Listen vocabulary</button>
+<div id="vocabGrid" class="vocabGrid"></div>
+</section>
+
+<section class="card">
+<h2>🧩 3. Grammar Arena</h2>
+<div class="ruleGrid">
+  <div class="rule"><h3>Present Simple</h3><p>Routines and facts.</p><p class="example">You work hard.</p></div>
+  <div class="rule"><h3>Present Continuous</h3><p>Now / temporary.</p><p class="example">You are improving.</p></div>
+  <div class="rule"><h3>Past Simple</h3><p>Finished past.</p><p class="example">You worked last year.</p></div>
+  <div class="rule"><h3>Present Perfect</h3><p>Experience until now.</p><p class="example">You have worked with customers.</p></div>
+  <div class="rule"><h3>Future</h3><p>Plans and decisions.</p><p class="example">You are going to prepare.</p></div>
+  <div class="rule"><h3>Modals</h3><p>Polite help/advice.</p><p class="example">You should stay calm.</p></div>
+</div>
+<div class="exercise"><h3>Grammar QCM</h3><div id="grammarQuiz"></div></div>
+</section>
+
+<section class="card">
+<h2>🎧 Speaking Studio + Recorder</h2>
+<p class="muted">Record, listen again and download your answer.</p>
+<div class="recorderBox">
+<button class="btn primary" id="startRec" type="button">🎙️ Start recording</button>
+<button class="btn" id="stopRec" type="button" disabled>⏹️ Stop</button>
+<audio id="audioPlayback" controls></audio>
+<a id="downloadRec" class="btn ghost hidden" download="angie-vtest-speaking-answer.webm">💾 Download recording</a>
+<p id="recStatus" class="feedback"></p>
+</div>
+</section>
+
+<section class="card">
+<h2>🎲 11. Real Mock Exam Mini-Simulation — 25 Minutes</h2>
+<p class="muted">This section is now a complete 25-minute mini-mock with grammar, verbs, vocabulary, reading, listening, writing and speaking.</p>
+
+<div class="timerBox">
+  <span id="timer">25:00</span>
+  <button class="btn primary" id="startTimer" type="button">Start timer</button>
+  <button class="btn ghost" id="resetTimer" type="button">Reset timer</button>
+</div>
+
+<div class="examPlan">
+  <div class="mini"><strong>A</strong><br>Grammar & verbs<br>8 min</div>
+  <div class="mini"><strong>B</strong><br>Vocabulary & functions<br>5 min</div>
+  <div class="mini"><strong>C</strong><br>Reading + listening<br>5 min</div>
+  <div class="mini"><strong>D</strong><br>Writing + speaking<br>7 min</div>
+</div>
+
+<div class="exercise mockSection">
+<h3>Part A — Grammar & Verbs</h3>
+<div id="mockGrammarQuiz"></div>
+</div>
+
+<div class="exercise mockSection">
+<h3>Part A2 — Fill in the blanks</h3>
+<div id="mockFillQuiz"></div>
+</div>
+
+<div class="exercise mockSection">
+<h3>Part B — Vocabulary & Function Language</h3>
+<div id="mockVocabQuiz"></div>
+</div>
+
+<div class="exercise mockSection">
+<h3>Part B2 — Word Order</h3>
+<div id="mockWordBank" class="wordBank"></div>
+<div id="mockAnswerBank" class="answerBank"></div>
+<button class="btn primary" id="checkMockBuilder" type="button">Check</button>
+<button class="btn ghost" id="resetMockBuilder" type="button">Reset</button>
+<p id="mockBuilderFeedback" class="feedback"></p>
+</div>
+
+<div class="exercise mockSection">
+<h3>Part C — Reading Comprehension</h3>
+<div class="readingBox">
+<p><strong>Text:</strong> Hello team, tomorrow the park will be very busy because of a special event. Please arrive 15 minutes early, check your uniform, and welcome guests with a smile. If a guest asks for directions, show them on the map. If there is a problem, contact your supervisor immediately.</p>
+</div>
+<div id="mockReadingQuiz"></div>
+</div>
+
+<div class="exercise mockSection">
+<h3>Part C2 — Listening Comprehension</h3>
+<p class="muted">Listen, then answer the questions.</p>
+<button class="btn primary" data-speak="Excuse me, I bought this sweatshirt yesterday, but it is too small. I have the receipt. Could I exchange it for a larger size, please?">▶️ Play listening</button>
+<div id="mockListeningQuiz"></div>
+<button class="btn ghost" data-toggle="mockTranscript" type="button">Show transcript</button>
+<p id="mockTranscript" class="hidden">Excuse me, I bought this sweatshirt yesterday, but it is too small. I have the receipt. Could I exchange it for a larger size, please?</p>
+</div>
+
+<div class="exercise mockSection">
+<h3>Part D — Writing Task</h3>
+<p><strong>Task:</strong> A guest writes that an attraction was closed after a long wait. Write a polite answer with an apology, explanation and solution.</p>
+<textarea id="mockWriting" placeholder="Dear guest,..."></textarea>
+<button class="btn primary" id="checkMockWriting" type="button">Check writing</button>
+<button class="btn" data-listen="mockWriting" type="button">🔊 Listen</button>
+<button class="btn ghost" data-toggle="mockWritingModels" type="button">Show model answers</button>
+<div id="mockWritingModels" class="hidden model">
+<p><strong>A2:</strong> Dear guest, I am sorry. The attraction was closed. You can try another attraction.</p>
+<p><strong>B1:</strong> Dear guest, I am sorry for the inconvenience. The attraction was temporarily closed for safety reasons. You could try another attraction nearby.</p>
+<p><strong>B1+:</strong> Dear guest, thank you for your message. I understand your frustration, and I am sorry for the inconvenience. The attraction was temporarily closed for safety reasons. On your next visit, you could check the app for wait times or ask a cast member for recommendations nearby.</p>
+</div>
+<p id="mockWritingFeedback" class="feedback"></p>
+</div>
+
+<div class="exercise mockSection">
+<h3>Part D2 — Speaking Task</h3>
+<p><strong>Task:</strong> Prepare your spoken answer: Tell me about yourself, your experience and your future goals.</p>
+<textarea id="mockSpeakingNotes" placeholder="My name is... I have worked... In the future..."></textarea>
+<button class="btn primary" id="checkMockSpeaking" type="button">Check speaking notes</button>
+<button class="btn" data-listen="mockSpeakingNotes" type="button">🔊 Listen</button>
+<button class="btn ghost" data-toggle="mockSpeakingModels" type="button">Show model answers</button>
+<div id="mockSpeakingModels" class="hidden model">
+<p><strong>A2:</strong> My name is Angie. I am motivated and friendly. I have worked with customers. In the future, I would like to work at Disney.</p>
+<p><strong>B1:</strong> My name is Angie. I have worked with customers before, especially at Carrefour Market. I am improving my English because I would like to work at Disney in the future.</p>
+<p><strong>B1+:</strong> My name is Angie. I am motivated, patient and passionate about customer service. My past experiences have helped me become more confident with customers, and I am currently improving my English. In the future, I would love to work at Disney and create memorable experiences for international guests.</p>
+</div>
+<p id="mockSpeakingFeedback" class="feedback"></p>
+</div>
+
+<div class="exercise mockSection">
+<h3>Mini-Simulation Result</h3>
+<button class="btn primary" id="generateMockReport" type="button">Generate mini-mock report</button>
+<div id="mockReportOutput" class="report"></div>
+</div>
+</section>
+
+<section class="card final">
+<h2>🏆 Final Progress Report</h2>
+<button class="btn primary" id="generateReport" type="button">Generate full report</button>
+<div id="reportOutput" class="report"></div>
+<p class="magic">Every practice session brings you closer to your Disney dream. ✨</p>
+</section>
+</main>
+
+<footer>SpeakEasyTisha • Angie Disney VTest Assessment Center</footer>
+<script src="js/angie-disney-vtest-assessment-center-fixed.js"></script>
+</body>
+</html>
