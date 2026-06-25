@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isabelle – Amsterdam Speculative Application Lab</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="hero__pattern"></div>
+    <nav class="topbar">
+      <a class="brand" href="#top" aria-label="Back to the top">🏡 Isabelle · Amsterdam Career Journey</a>
+      <div class="topbar__actions">
+        <select id="voiceSelect" aria-label="Choose a voice accent">
+          <option value="en-GB">🇬🇧 British voice</option>
+          <option value="en-US">🇺🇸 American voice</option>
+        </select>
+        <button class="ghost" id="printBtn" type="button">🖨️ Print</button>
+        <button class="ghost" id="resetBtn" type="button">🔄 Reset</button>
+      </div>
+    </nav>
+
+    <div class="hero__content">
+      <p class="eyebrow">Lesson · Amsterdam real estate career</p>
+      <h1>Isabelle – Speculative Application Lab</h1>
+      <p class="subtitle">Turn your strong professional story into a clear, targeted application for real estate agencies in Amsterdam — even when there is no advertised vacancy.</p>
+      <div class="hero__chips">
+        <span>🇳🇱 Amsterdam agencies</span>
+        <span>⚖️ Legal + commercial profile</span>
+        <span>✉️ Targeted writing</span>
+        <span>🗣️ Speak with confidence</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar" aria-label="Lesson navigation">
+      <div class="score-card">
+        <span class="score-label">Your progress</span>
+        <div class="score-number"><strong id="score">0</strong><span>/100</span></div>
+        <div class="progress"><div id="progressBar"></div></div>
+        <small>Build confidence, not perfection.</small>
+      </div>
+      <a href="#step1">1 · Name the application</a>
+      <a href="#step2">2 · Decode the agency</a>
+      <a href="#step3">3 · Letter blueprint</a>
+      <a href="#step4">4 · Grammar studio</a>
+      <a href="#step5">5 · Vocabulary bank</a>
+      <a href="#step6">6 · Upgrade your ideas</a>
+      <a href="#step7">7 · Model letter</a>
+      <a href="#step8">8 · Placement option</a>
+      <a href="#step9">9 · Speak from your letter</a>
+      <a href="#step10">10 · Writing studio</a>
+    </aside>
+
+    <section class="content">
+      <section class="card intro-card">
+        <div>
+          <p class="section-kicker">Today’s mission</p>
+          <h2>Contact agencies with clarity and purpose ✉️</h2>
+          <p>You are not responding to a job advert. You are introducing your profile to an agency and showing why a conversation with you could be worthwhile.</p>
+          <blockquote>“Why this agency, why you, and what professional value could you bring?”</blockquote>
+        </div>
+        <div class="mission-box">
+          <h3>What you will practise</h3>
+          <ul class="check-list compact">
+            <li>Writing a concise, targeted letter</li>
+            <li>Explaining your legal + commercial value</li>
+            <li>Speaking about your motivation naturally</li>
+            <li>Using a professional optional-placement paragraph safely</li>
+          </ul>
+          <button class="speak" data-speak="Speculative application. Real estate legal and commercial professional. Amsterdam. Client-focused communication.">🔊 Listen to key language</button>
+        </div>
+      </section>
+
+      <section class="card" id="step1">
+        <p class="section-kicker">Step 1</p>
+        <h2>🧭 What is this type of application called?</h2>
+        <p>For a letter sent to an agency when no specific vacancy has been advertised, use one of the following professional terms.</p>
+        <div class="grid three">
+          <article class="term-card featured">
+            <span class="pill">Best choice for Amsterdam</span>
+            <h3>Speculative application</h3>
+            <p><strong>FR:</strong> candidature spontanée</p>
+            <p>Professional and common in British and European English.</p>
+            <p class="example">Subject: <em>Speculative application – Real Estate Legal &amp; Commercial Professional</em></p>
+            <button class="speak" data-speak="Speculative application">🔊</button>
+          </article>
+          <article class="term-card">
+            <h3>Unsolicited application</h3>
+            <p><strong>FR:</strong> candidature non sollicitée</p>
+            <p>Clear and correct in international English, especially in North American contexts.</p>
+            <p class="example">I am writing to submit an unsolicited application for future opportunities.</p>
+            <button class="speak" data-speak="Unsolicited application">🔊</button>
+          </article>
+          <article class="term-card">
+            <h3>Open application</h3>
+            <p><strong>FR:</strong> candidature ouverte</p>
+            <p>Often seen on Dutch company career pages. Use it when the company itself uses this wording.</p>
+            <p class="example">Open application – Residential property and client relations.</p>
+            <button class="speak" data-speak="Open application">🔊</button>
+          </article>
+        </div>
+        <div class="tip-box"><strong>Your default:</strong> use <strong>Speculative application</strong> in the subject line and <strong>I am writing to express my interest in possible opportunities at…</strong> in the opening paragraph.</div>
+        <div class="mini-task">
+          <h3>Quick choice</h3>
+          <p>Choose the most natural subject line for a letter sent to an Amsterdam agency without a vacancy.</p>
+          <div class="choice-grid" id="applicationChoice"></div>
+          <p class="feedback" id="applicationFeedback" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="card" id="step2">
+        <p class="section-kicker">Step 2</p>
+        <h2>🔎 Decode the agency before you write</h2>
+        <p>A strong speculative letter is never completely generic. You only need two or three precise details to show that you understand the agency.</p>
+        <div class="grid two">
+          <div class="panel warm">
+            <h3>What Broersma visibly offers</h3>
+            <ul class="check-list">
+              <li>Residential buying and selling</li>
+              <li>Property letting and property search</li>
+              <li>New-build consultancy, project marketing and sales support</li>
+              <li>Commercial property and investment-related services</li>
+              <li>Client-focused, tailored advisory work</li>
+            </ul>
+          </div>
+          <div class="panel blue">
+            <h3>What you can connect to it</h3>
+            <ul class="check-list">
+              <li>24 years in French real estate</li>
+              <li>Sales management and client relations</li>
+              <li>Real estate legal advisory work</li>
+              <li>Property development and new-build experience</li>
+              <li>Contract negotiation and risk awareness</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mini-task">
+          <h3>Interactive task · Make a real connection</h3>
+          <p>Choose the strongest sentence for a targeted Broersma opening.</p>
+          <div class="choice-grid" id="broersmaChoice"></div>
+          <p class="feedback" id="broersmaFeedback" aria-live="polite"></p>
+        </div>
+        <div class="model-strip">
+          <span>Professional model</span>
+          <p>Having explored Broersma’s website, I was immediately drawn to its distinctive style, broad range of services and client-focused approach. Your work across residential property, lettings and new-build consultancy particularly resonates with my legal and commercial background in real estate.</p>
+          <button class="speak" data-speak="Having explored Broersma's website, I was immediately drawn to its distinctive style, broad range of services and client-focused approach. Your work across residential property, lettings and new-build consultancy particularly resonates with my legal and commercial background in real estate.">🔊 Listen</button>
+        </div>
+      </section>
+
+      <section class="card" id="step3">
+        <p class="section-kicker">Step 3</p>
+        <h2>🧩 The four-paragraph blueprint</h2>
+        <p>For an agency in the Netherlands, keep the letter to one page. Use four short paragraphs: agency connection → your experience → your value and availability → clear closing.</p>
+        <div class="timeline">
+          <article><span>1</span><h3>Why this agency?</h3><p>Show one or two specific reasons why the agency interests you.</p></article>
+          <article><span>2</span><h3>What is your evidence?</h3><p>Choose your most relevant legal, sales and property-development experience.</p></article>
+          <article><span>3</span><h3>What can you bring?</h3><p>Explain how you listen, advise, coordinate and support clients or teams.</p></article>
+          <article><span>4</span><h3>What is the next step?</h3><p>Ask for a conversation or future consideration — confidently and politely.</p></article>
+        </div>
+        <div class="mini-task">
+          <h3>Structure challenge</h3>
+          <p>Give each paragraph a different number. Follow the same sequence as the blueprint above.</p>
+          <div class="structure-key" role="note">
+            <strong>Recommended order:</strong> 1. Agency connection &nbsp;→&nbsp; 2. Relevant experience &nbsp;→&nbsp; 3. Value you bring &nbsp;→&nbsp; 4. Clear next step
+          </div>
+          <div class="order-task" id="orderTask"></div>
+          <button class="primary" id="checkOrder" type="button">Check my structure</button>
+          <p class="feedback" id="orderFeedback" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="card" id="step4">
+        <p class="section-kicker">Step 4</p>
+        <h2>🧠 Grammar studio: natural professional patterns</h2>
+        <p>These patterns help you write naturally and explain your experience with confidence. They are not about “finding mistakes”; they are tools you can reuse in future applications.</p>
+
+        <article class="grammar-block">
+          <div class="grammar-title"><h3>1. Having explored… / After reviewing…</h3><button class="speak" data-speak="Having explored Broersma's website, I was immediately drawn to its client-focused approach.">🔊</button></div>
+          <p><strong>Use:</strong> <code>Having + past participle</code> or <code>After + -ing</code> to introduce research you completed before writing.</p>
+          <div class="examples"><p>✅ Having explored your website, I was particularly interested in your new-build consultancy.</p><p>✅ After reviewing your services, I was impressed by the breadth of your residential and commercial activities.</p></div>
+          <div class="quick-check" data-answer="Having explored"><label>__________ the agency’s website, I was impressed by its client-focused approach.</label><input type="text" placeholder="Write the opening"/><button type="button">Check</button><span></span></div>
+        </article>
+
+        <article class="grammar-block">
+          <div class="grammar-title"><h3>2. Interest in + noun / -ing</h3><button class="speak" data-speak="I am interested in working in an agency that combines property expertise and client-focused advice.">🔊</button></div>
+          <p><strong>Use:</strong> <code>interested in + noun</code> or <code>interested in + verb-ing</code>.</p>
+          <div class="examples"><p>✅ I am interested in property development.</p><p>✅ I am interested in working in a client-focused real estate agency.</p></div>
+          <div class="quick-check" data-answer="working"><label>I am interested in ________ in a real estate agency in Amsterdam.</label><input type="text" placeholder="work / working"/><button type="button">Check</button><span></span></div>
+        </article>
+
+        <article class="grammar-block">
+          <div class="grammar-title"><h3>3. With over… years’ experience / I have worked for… years</h3><button class="speak" data-speak="With over twenty-four years' experience in real estate, I can bring both legal and commercial expertise.">🔊</button></div>
+          <p><strong>Use:</strong> <code>with over + number + years’ experience in</code> for a powerful CV-style opening. Use <code>for + duration</code> with a verb.</p>
+          <div class="examples"><p>✅ With over 24 years’ experience in real estate, I bring legal and commercial expertise.</p><p>✅ I have worked in the French property sector for 24 years.</p></div>
+          <div class="quick-check" data-answer="for"><label>I have worked in the French property sector ___ 24 years.</label><input type="text" placeholder="for / since / during"/><button type="button">Check</button><span></span></div>
+        </article>
+
+        <article class="grammar-block">
+          <div class="grammar-title"><h3>4. Specialise in / experience in + noun or -ing</h3><button class="speak" data-speak="I later specialised in urban planning and construction law, with experience in property development and contract negotiation.">🔊</button></div>
+          <p><strong>Use:</strong> <code>specialise in + noun</code> and <code>experience in + noun / -ing</code>.</p>
+          <div class="examples"><p>✅ I later specialised in urban planning and construction law.</p><p>✅ I have experience in negotiating contracts and coordinating external partners.</p></div>
+          <div class="quick-check" data-answer="in"><label>I have experience ___ negotiating real estate contracts.</label><input type="text" placeholder="in / of / for"/><button type="button">Check</button><span></span></div>
+        </article>
+
+        <article class="grammar-block">
+          <div class="grammar-title"><h3>5. Listen carefully to + person / offer + advice</h3><button class="speak" data-speak="I listen carefully to clients and stakeholders in order to understand their needs and offer appropriate advice.">🔊</button></div>
+          <p><strong>Use:</strong> <code>listen carefully to + person</code> and <code>offer / give advice</code>. <em>Advice</em> is a noun; <em>advise</em> is the verb.</p>
+          <div class="examples"><p>✅ I listen carefully to clients before making recommendations.</p><p>✅ I offer practical and appropriate advice.</p><p>✅ I advise clients on real estate matters.</p></div>
+          <div class="quick-check" data-answer="to"><label>I listen carefully ___ clients before making recommendations.</label><input type="text" placeholder="to / at / for"/><button type="button">Check</button><span></span></div>
+        </article>
+
+        <article class="grammar-block">
+          <div class="grammar-title"><h3>6. Would welcome the opportunity to…</h3><button class="speak" data-speak="I would welcome the opportunity to discuss how my experience could support your team.">🔊</button></div>
+          <p><strong>Use:</strong> <code>would welcome the opportunity to + verb</code> for a confident professional close.</p>
+          <div class="examples"><p>✅ I would welcome the opportunity to discuss how my experience could support your team.</p><p>✅ I would be pleased to provide any further information you may require.</p></div>
+          <div class="quick-check" data-answer="to discuss"><label>I would welcome the opportunity ________ how my experience could support your team.</label><input type="text" placeholder="to discuss / discuss / discussing"/><button type="button">Check</button><span></span></div>
+        </article>
+      </section>
+
+      <section class="card" id="step5">
+        <p class="section-kicker">Step 5</p>
+        <h2>📚 Vocabulary bank: speculative applications &amp; Amsterdam real estate</h2>
+        <p>Choose a category or search for a word. Every entry includes French, a clear definition and a professional example.</p>
+        <div class="vocab-controls">
+          <select id="vocabCategory" aria-label="Vocabulary category">
+            <option value="all">All categories</option>
+            <option value="application">Application language</option>
+            <option value="agency">Agency &amp; services</option>
+            <option value="profile">Professional profile</option>
+            <option value="communication">Communication &amp; value</option>
+            <option value="placement">Placement vocabulary</option>
+          </select>
+          <input id="vocabSearch" type="search" placeholder="Search English, French or example…" aria-label="Search vocabulary" />
+        </div>
+        <div class="vocab-grid" id="vocabGrid"></div>
+      </section>
+
+      <section class="card" id="step6">
+        <p class="section-kicker">Step 6</p>
+        <h2>✨ Upgrade your ideas — discreetly and professionally</h2>
+        <p>Your ideas are sincere, specific and valuable. Here, you can see how the same message becomes more concise and natural for an international reader.</p>
+        <div class="upgrade-grid" id="upgradeGrid"></div>
+      </section>
+
+      <section class="card" id="step7">
+        <p class="section-kicker">Step 7</p>
+        <h2>📝 Model speculative cover letter: Broersma</h2>
+        <p>This version is designed for an agency with no advertised vacancy. It is targeted, warm and professional, without overexplaining your personal situation or repeating your CV.</p>
+        <div class="letter-controls">
+          <button class="primary" id="revealLetter" type="button">Reveal the model letter</button>
+          <button class="speak" id="listenLetter" type="button">🔊 Listen paragraph by paragraph</button>
+        </div>
+        <article class="letter-model hidden" id="letterModel">
+          <div class="letter-head">
+            <p><strong>Isabelle Davion</strong><br/>Noorderuitweg 23<br/>1608 EA Wijdenes<br/>The Netherlands<br/>+33 (0) 6 65 94 29 14<br/>isabelledavion5@gmail.com</p>
+            <p>Broersma<br/>Ms Muriël Rikken - ’t Hart<br/>HR Manager<br/>Koningslaan 14<br/>1075 AC Amsterdam</p>
+          </div>
+          <p>4 May 2026</p>
+          <p><strong>Subject: Speculative application – Real Estate Legal &amp; Commercial Professional</strong></p>
+          <p>Dear Ms Rikken - ’t Hart,</p>
+          <p>Having explored Broersma’s website, I was immediately drawn to its distinctive style, broad range of services and client-focused approach. Your work across residential property, lettings and new-build consultancy particularly resonates with my legal and commercial background in real estate.</p>
+          <p>For the past 24 years, I have worked in the French real estate sector, first as a Sales Manager and later as a Real Estate Legal Specialist. I studied law and later specialised in urban planning and construction law. Throughout my career, I have developed experience in property development, sales management, contract negotiation, risk analysis and coordination with clients, notaries, lawyers, investors and operational teams.</p>
+          <p>I listen carefully to clients and stakeholders in order to understand their needs, anticipate risks and offer appropriate advice. My legal and commercial background allows me to approach real estate projects from both a client-focused and a practical perspective. I am now seeking an opportunity to build the next stage of my career in the Amsterdam area, where I can contribute to an agency that values tailored advice, property expertise and long-term client relationships.</p>
+          <p>Please find my CV attached for further details of my experience. I would welcome the opportunity to discuss how my profile could support Broersma’s team, either in an immediate role or in a future opportunity aligned with my experience.</p>
+          <p>Yours sincerely,</p>
+          <p>Isabelle Davion</p>
+        </article>
+        <div class="tip-box"><strong>Why this works:</strong> the letter gives evidence, shows genuine company research, keeps the relocation explanation brief and ends with a practical next step.</div>
+      </section>
+
+      <section class="card" id="step8">
+        <p class="section-kicker">Step 8</p>
+        <h2>🌱 Optional placement pathway: clear and careful language</h2>
+        <p>For an experienced professional, <strong>internship</strong> can sound too student-focused. Use <strong>short professional immersion placement</strong> or <strong>short work-experience placement</strong> instead.</p>
+        <div class="grid two">
+          <div class="panel warm">
+            <h3>Best strategy</h3>
+            <ul class="check-list">
+              <li>Do not lead with the placement in the first sentence.</li>
+              <li>First show your professional value and interest in the agency.</li>
+              <li>Mention a placement only as an optional first step.</li>
+              <li>Confirm the exact programme, duration and agreement with France Travail before sending details.</li>
+            </ul>
+          </div>
+          <div class="panel blue">
+            <h3>Safe optional wording</h3>
+            <p class="quote">If relevant, I would also be open to a short professional immersion placement supported by a French employment programme, as an initial opportunity to gain first-hand experience of the Dutch real estate market. I would be pleased to provide practical details.</p>
+            <button class="speak" data-speak="If relevant, I would also be open to a short professional immersion placement supported by a French employment programme, as an initial opportunity to gain first-hand experience of the Dutch real estate market. I would be pleased to provide practical details.">🔊 Listen</button>
+          </div>
+        </div>
+        <div class="caution-box"><strong>Important:</strong> do not write that the placement is free of charge, lasts one to four weeks, or creates no obligations for the agency until the relevant France Travail programme has confirmed those exact conditions in writing.</div>
+      </section>
+
+      <section class="card" id="step9">
+        <p class="section-kicker">Step 9</p>
+        <h2>🗣️ Speak from your letter: live agency conversations</h2>
+        <p>Start with a level that feels comfortable. Then listen to the stronger version and notice how one extra detail makes your message more convincing.</p>
+        <div class="speaking-controls">
+          <button class="primary" id="startTimer" type="button">▶ Start 60-second speaking timer</button>
+          <span id="timer">01:00</span>
+          <button class="ghost dark" id="stopTimer" type="button">■ Stop</button>
+        </div>
+        <div class="recording-studio" aria-labelledby="recordingTitle">
+          <div>
+            <p class="section-kicker">Your speaking recording</p>
+            <h3 id="recordingTitle">🎙️ Record, listen and try again</h3>
+            <p>Choose one agency question below. Record your answer, listen back and then try one stronger version. Your recording stays on this device unless you choose to download it.</p>
+          </div>
+          <div class="recording-actions">
+            <button class="primary" id="startRecording" type="button">● Start recording</button>
+            <button class="ghost dark" id="stopRecording" type="button" disabled>■ Stop recording</button>
+            <button class="ghost dark" id="clearRecording" type="button" disabled>Clear recording</button>
+          </div>
+          <p class="recording-status" id="recordingStatus" role="status" aria-live="polite">Ready when you are.</p>
+          <audio id="recordedAudio" controls hidden></audio>
+          <a class="download-recording" id="downloadRecording" hidden>Download your recording</a>
+          <p class="recording-note">For recording to work, open this page from your secure GitHub link and allow microphone access when your browser asks. On iPad or iPhone, open it in Safari rather than from a local ZIP file.</p>
+        </div>
+        <div class="speaking-grid" id="speakingGrid"></div>
+      </section>
+
+      <section class="card" id="step10">
+        <p class="section-kicker">Step 10</p>
+        <h2>✍️ Writing studio: your next speculative application</h2>
+        <p>Choose a real agency in Amsterdam. Write a fresh letter with the same structure, but do not copy the Broersma letter word for word.</p>
+        <div class="grid two">
+          <div class="panel blue">
+            <h3>Your 8-minute plan</h3>
+            <ol class="number-list">
+              <li>Agency detail: What did you notice?</li>
+              <li>Match: Which 2 strengths are relevant?</li>
+              <li>Value: How do you work with clients or teams?</li>
+              <li>Next step: What conversation do you want?</li>
+            </ol>
+          </div>
+          <div class="panel warm">
+            <h3>Challenge checklist</h3>
+            <ul class="check-list compact">
+              <li>Use <em>Having explored…</em> or <em>After reviewing…</em></li>
+              <li>Use <em>with over 24 years’ experience</em></li>
+              <li>Include one specific agency detail</li>
+              <li>Use <em>I would welcome the opportunity…</em></li>
+              <li>Keep it between 220 and 320 words</li>
+            </ul>
+          </div>
+        </div>
+        <label class="writing-label" for="writingBox">Draft your letter here</label>
+        <textarea id="writingBox" rows="13" placeholder="Dear …\n\nHaving explored…"></textarea>
+        <div class="writing-actions"><button class="primary" id="saveWriting" type="button">💾 Save your draft</button><button class="ghost dark" id="clearWriting" type="button">Clear</button><span id="saveNote" aria-live="polite"></span></div>
+      </section>
+
+      <section class="card notes-card">
+        <p class="section-kicker">Your personal notes</p>
+        <h2>🗒️ Phrase bank for your next agency</h2>
+        <textarea id="notes" rows="6" placeholder="Write words, phrases, agency details or questions you want to reuse…"></textarea>
+        <div class="writing-actions"><button class="primary" id="saveNotes" type="button">Save notes</button><span id="notesStatus" aria-live="polite"></span></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>Made for your Amsterdam real estate career journey · Speak clearly, write strategically, build your next opportunity. 🏡</footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
