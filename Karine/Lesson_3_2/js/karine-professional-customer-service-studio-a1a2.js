@@ -63,7 +63,7 @@
   function checkWrite(){const w=curWrite(); const low=$('#writeText').value.toLowerCase(); let good=0; w.check.forEach(k=>{if(low.includes(k))good++}); feed('writeFeed',good>=Math.ceil(w.check.length*.65)?'ok':'warn',`Self-check: <strong>${good}/${w.check.length}</strong> key ideas included.`); if(good>=Math.ceil(w.check.length*.65))Score.award('write'+w.id,8)}
   function insertAtCursor(area,text){const a=area.selectionStart??area.value.length,b=area.selectionEnd??area.value.length;area.value=area.value.slice(0,a)+text+area.value.slice(b);area.focus();area.setSelectionRange(a+text.length,a+text.length)}
 
-  async function init(){Score.max=100; upd(); await TTS.load(); $('#jsStatus').textContent='JS ✅ loaded';
+  async function init(){Score.max=100; upd(); await TTS.load(); $('#jsStatus').textContent='✅ loaded';
     safeOn($('#usBtn'),'click',()=>{setLang('en-US'); TTS.say('US accent selected.')}); safeOn($('#ukBtn'),'click',()=>{setLang('en-GB'); TTS.say('UK accent selected.')});
     safeOn($('#voiceSelect'),'change',e=>{TTS.voiceName=e.target.value; TTS.say('Voice selected.')}); safeOn($('#testVoice'),'click',()=>TTS.say('Hello Karine. This is your professional English lesson.')); safeOn($('#stopVoice'),'click',()=>TTS.stop());
     safeOn($('#resetAll'),'click',()=>{if(confirm('Reset the page?')){Score.reset(); renderVocab(); renderMatch(); renderSlot(); renderSeq(); renderListen(false); renderSpeak(); renderWrite();}});
