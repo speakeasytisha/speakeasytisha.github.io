@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Karine’s CLOE Salon Speaking & Writing Studio</title>
+  <link rel="stylesheet" href="css/karine-salon-cloe-speaking-writing-studio-a1a2.css" />
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topwrap">
+    <div class="brand">
+      <h1>Karine’s CLOE Salon Speaking & Writing Studio</h1>
+      <p>Hair salon style · speaking + writing practice · realistic CLOE preparation</p>
+    </div>
+    <div class="toolbar">
+      <div class="pill"><strong>Accent</strong>
+        <button class="seg on" id="usBtn" type="button">US</button>
+        <button class="seg" id="ukBtn" type="button">UK</button>
+      </div>
+      <div class="pill"><strong>Voice</strong>
+        <select id="voiceSelect" class="select"></select>
+      </div>
+      <button class="btn alt" id="testVoice" type="button">🔊 Test</button>
+      <button class="btn alt" id="stopVoice" type="button">⏹ Stop</button>
+      <div class="pill scorepill"><strong>Score</strong> <span id="scoreNow">0</span>/<span id="scoreMax">0</span></div>
+      <span class="pill statuspill" id="jsStatus">JS loading…</span>
+      <button class="btn rose" id="resetAll" type="button">Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="heroCard heroMain">
+    <p class="eyebrow">CLOE speaking and writing success</p>
+    <h2>A vibrant salon lesson with a 1970s psychedelic touch</h2>
+    <p class="lead">This lesson helps <strong>you</strong> prepare for the <strong>CLOE exam</strong> with useful vocabulary, clear grammar, guided oral practice, guided writing, listening with transcript, and model answers for every important activity.</p>
+    <div class="badges">
+      <span class="badge pink">A1/A2 friendly</span>
+      <span class="badge aqua">Manual audio only</span>
+      <span class="badge gold">Speaking + writing focus</span>
+      <span class="badge violet">iPad / iPhone friendly</span>
+    </div>
+    <div class="progress"><div id="bar" class="bar"></div></div>
+    <div class="ctaRow">
+      <button class="btn" id="startBtn" type="button">Start the lesson</button>
+      <button class="btn alt" id="howBtn" type="button">How to use this page</button>
+    </div>
+  </div>
+  <div class="heroCard heroSide">
+    <h3>Your lesson roadmap</h3>
+    <ol class="roadmap">
+      <li><strong>Warm-up:</strong> understand the CLOE focus</li>
+      <li><strong>Vocabulary:</strong> salon, customer service, connectors, opinions</li>
+      <li><strong>Grammar:</strong> present, past, future, questions, connectors</li>
+      <li><strong>Practice lab:</strong> QCM, fill in the blanks, syntax and sequencing</li>
+      <li><strong>Listening:</strong> realistic dialogues with transcript button</li>
+      <li><strong>Speaking:</strong> oral scenarios with model answers</li>
+      <li><strong>Writing:</strong> realistic written tasks with model answers</li>
+      <li><strong>Mini mock:</strong> final CLOE-style mission</li>
+    </ol>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section">
+    <h3>1) CLOE exam focus</h3>
+    <div class="grid2">
+      <div class="card">
+        <span class="sectionTag">What you need</span>
+        <ul class="ticklist">
+          <li>understand short everyday and professional situations</li>
+          <li>answer clearly with useful vocabulary and simple structure</li>
+          <li>write short messages, descriptions, requests and replies</li>
+          <li>use connectors to organise your ideas</li>
+          <li>show that you can manage realistic situations politely</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="sectionTag">Success strategy</span>
+        <ul class="ticklist">
+          <li>give complete answers, not only one word</li>
+          <li>use a simple structure: <strong>first → details → reason → ending</strong></li>
+          <li>recycle useful phrases and adapt them to the situation</li>
+          <li>in writing, check greeting, request, useful details and closing</li>
+          <li>in speaking, slow down and speak clearly</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="vocabSec">
+    <h3>2) Vocabulary studio by category</h3>
+    <div class="card">
+      <div class="row wrap">
+        <span class="sectionTag">Choose a category</span>
+        <select id="vocabCat" class="select"></select>
+        <button class="btn alt" id="revealAll" type="button">Reveal all</button>
+        <button class="btn alt" id="hideAll" type="button">Hide all</button>
+        <button class="btn alt" id="vocabQuizBtn" type="button">Quick quiz</button>
+      </div>
+      <div id="vocabGrid" class="grid3"></div>
+      <div id="vocabFeed" class="feed hidden"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>3) Grammar and structure recap</h3>
+    <div class="card">
+      <div class="row wrap">
+        <span class="sectionTag">Choose a grammar point</span>
+        <select id="grammarPick" class="select"></select>
+        <button class="btn alt" id="showGrammarMiniModel" type="button">Show mini model</button>
+      </div>
+      <div id="grammarBox" class="grammarBox"></div>
+      <div id="grammarMiniModel" class="modelCard hidden"></div>
+    </div>
+  </section>
+
+  <section class="section" id="practiceSec">
+    <h3>4) Practice lab</h3>
+    <div class="grid2">
+      <div class="card">
+        <h4>QCM challenge</h4>
+        <div id="mcqHost" class="note">Press start.</div>
+        <div class="row wrap">
+          <button class="btn" id="mcqStart" type="button">Start</button>
+          <button class="btn alt" id="mcqCheck" type="button">Check</button>
+          <button class="btn alt" id="mcqHint" type="button">Hint</button>
+          <button class="btn alt" id="mcqNext" type="button">Next</button>
+        </div>
+        <div id="mcqFeed" class="feed hidden"></div>
+      </div>
+      <div class="card">
+        <h4>Fill in the blank</h4>
+        <div id="fillHost" class="note">Press start.</div>
+        <div class="row wrap">
+          <button class="btn" id="fillStart" type="button">Start</button>
+          <button class="btn alt" id="fillCheck" type="button">Check</button>
+          <button class="btn alt" id="fillHint" type="button">Hint</button>
+          <button class="btn alt" id="fillNext" type="button">Next</button>
+        </div>
+        <div id="fillFeed" class="feed hidden"></div>
+      </div>
+    </div>
+
+    <div class="grid2 mt">
+      <div class="card">
+        <h4>Syntax builder</h4>
+        <p class="mini">Choose the correct part in each dropdown to build a full sentence.</p>
+        <div id="slotHost"></div>
+        <div id="slotOut" class="sentenceOut"></div>
+        <div class="row wrap">
+          <button class="btn" id="slotNew" type="button">New sentence</button>
+          <button class="btn alt" id="slotCheck" type="button">Check</button>
+          <button class="btn alt" id="slotHint" type="button">Hint</button>
+          <button class="btn alt" id="slotListen" type="button">Listen</button>
+        </div>
+        <div id="slotFeed" class="feed hidden"></div>
+      </div>
+      <div class="card">
+        <h4>Sequencing</h4>
+        <p class="mini">Choose the correct order with numbers. This is great for syntax and logic.</p>
+        <div class="row wrap">
+          <select id="seqPick" class="select"></select>
+          <button class="btn alt" id="seqReset" type="button">Reset</button>
+          <button class="btn alt" id="seqHint" type="button">Hint</button>
+          <button class="btn" id="seqCheck" type="button">Check</button>
+        </div>
+        <div id="seqHost"></div>
+        <div id="seqFeed" class="feed hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="listenSec">
+    <h3>5) Listening studio</h3>
+    <div class="card">
+      <div class="row wrap">
+        <span class="sectionTag">Dialogue</span>
+        <select id="listenPick" class="select"></select>
+        <button class="btn alt" id="playDialogue" type="button">Play dialogue</button>
+        <button class="btn alt" id="showTranscript" type="button">Show text</button>
+        <button class="btn alt" id="hideTranscript" type="button">Hide text</button>
+      </div>
+      <div id="listenDialogue" class="dialogue"></div>
+      <div id="listenQuestions"></div>
+      <div class="row wrap">
+        <button class="btn" id="listenCheck" type="button">Check listening</button>
+        <button class="btn alt" id="listenHint" type="button">Hint</button>
+      </div>
+      <div id="listenFeed" class="feed hidden"></div>
+    </div>
+  </section>
+
+  <section class="section" id="speakSec">
+    <h3>6) Oral practice studio</h3>
+    <div class="card">
+      <div class="row wrap">
+        <span class="sectionTag">Speaking scenario</span>
+        <select id="speakPick" class="select"></select>
+        <button class="btn alt" id="showSpeakModel" type="button">Show model answers</button>
+        <button class="btn alt" id="hideSpeakModel" type="button">Hide model answers</button>
+        <button class="btn alt" id="playSpeakModel" type="button">Listen to model</button>
+      </div>
+      <div id="speakPrompt" class="note"></div>
+      <div class="grid2 mt">
+        <div class="card soft">
+          <h4>Useful sentence starters</h4>
+          <div id="starterBox"></div>
+        </div>
+        <div class="card soft">
+          <h4>Model answers</h4>
+          <div id="speakModelBox" class="hidden"></div>
+        </div>
+      </div>
+      <div class="card soft mt">
+        <h4>Your oral builder</h4>
+        <p class="mini">Choose useful phrases, then practise aloud with your teacher.</p>
+        <div id="oralBuilder"></div>
+        <div id="oralOut" class="sentenceOut"></div>
+        <div class="row wrap">
+          <button class="btn alt" id="oralListen" type="button">Listen</button>
+          <button class="btn alt" id="oralCheck" type="button">Self-check</button>
+          <button class="btn alt" id="oralReset" type="button">Reset builder</button>
+        </div>
+        <div id="oralFeed" class="feed hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="writeSec">
+    <h3>7) Writing studio</h3>
+    <div class="card">
+      <div class="row wrap">
+        <span class="sectionTag">Writing task</span>
+        <select id="writePick" class="select"></select>
+        <button class="btn alt" id="showWriteModel" type="button">Show model answers</button>
+        <button class="btn alt" id="hideWriteModel" type="button">Hide model answers</button>
+      </div>
+      <div id="writePrompt" class="note"></div>
+      <div class="row wrap">
+        <span class="sectionTag">Connector buttons</span>
+        <button class="smallBtn" data-insert="First, " type="button">First</button>
+        <button class="smallBtn" data-insert="Then, " type="button">Then</button>
+        <button class="smallBtn" data-insert="After that, " type="button">After that</button>
+        <button class="smallBtn" data-insert="Also, " type="button">Also</button>
+        <button class="smallBtn" data-insert="Because " type="button">Because</button>
+        <button class="smallBtn" data-insert="Finally, " type="button">Finally</button>
+        <button class="smallBtn" data-insert="I would like " type="button">I would like</button>
+      </div>
+      <textarea id="writeText" placeholder="Write here..."></textarea>
+      <div class="row wrap">
+        <button class="btn" id="writeCheck" type="button">Self-check</button>
+        <button class="btn alt" id="writeListen" type="button">Listen to my text</button>
+        <button class="btn alt" id="writeClear" type="button">Clear</button>
+      </div>
+      <div id="writeFeed" class="feed hidden"></div>
+      <div id="writeModel" class="modelCard hidden"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>8) Final CLOE mini mock</h3>
+    <div class="grid2">
+      <div class="card">
+        <span class="sectionTag">Oral mission</span>
+        <p><strong>Scenario:</strong> You work in a salon. A customer calls to make an appointment and asks about the price of a shampoo, haircut and blow-dry. Explain the available time, give basic information, and end politely.</p>
+        <p class="modelText"><strong>Model A1:</strong><br>Hello. How can I help you? Yes, we have an appointment on Thursday at 2 p.m. A shampoo, haircut and blow-dry is 38 euros. Would you like to book it? Thank you. See you on Thursday.</p>
+        <p class="modelText"><strong>Model A2:</strong><br>Good afternoon. How can I help you? Yes, I can offer you an appointment on Thursday at 2 p.m. A shampoo, haircut and blow-dry costs 38 euros. If you would like, I can book it for you now. Could you please spell your name? Thank you very much. See you on Thursday.</p>
+      </div>
+      <div class="card">
+        <span class="sectionTag">Writing mission</span>
+        <p><strong>Scenario:</strong> Write a short message to a customer to confirm an appointment and ask them to arrive 5 minutes early.</p>
+        <p class="modelText"><strong>Model A1:</strong><br>Hello,<br>Your appointment is confirmed for Friday at 10 a.m.<br>Please arrive 5 minutes early.<br>Thank you.<br>Kind regards,<br>Karine</p>
+        <p class="modelText"><strong>Model A2:</strong><br>Hello,<br>I confirm your appointment for Friday at 10 a.m. at the salon. Please arrive 5 minutes early so we can start on time. If you need to change the appointment, please let us know.<br>Kind regards,<br>Karine</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">SpeakEasyTisha · Karine’s CLOE Salon Speaking & Writing Studio · Build 20260623</footer>
+<pre id="debug" class="debug hidden">Debug</pre>
+<script src="js/karine-salon-cloe-speaking-writing-studio-a1a2.js"></script>
+</body>
+</html>
