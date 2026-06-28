@@ -102,7 +102,7 @@
   function questionById(id){ return allQuestions().find(q=>q.id===id); }
   function autoScore(){ return allQuestions().reduce((sum,q)=>sum+(state.answers.get(q.id)===q.answer?1:0),0); }
   function selectedCount(){ return state.answers.size; }
-  function updateMiniScore(){ $('#miniAutoScore').textContent = `${state.finished?autoScore():selectedCount()} / 34`; }
+  function updateMiniScore(){ $('#miniAutoScore').textContent = `${autoScore()} / 34`; }
   function download(filename,type,content){ const blob = new Blob([content],{type}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=filename; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1200); }
   function speak(text){ if(!('speechSynthesis' in window)){ liveRegion.textContent='Audio is not available in this browser.'; return; } window.speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang=state.voice; u.rate=.88; const voices=speechSynthesis.getVoices(); u.voice=voices.find(v=>v.lang.toLowerCase()===state.voice.toLowerCase())||voices.find(v=>v.lang.toLowerCase().startsWith(state.voice.slice(0,2).toLowerCase()))||null; speechSynthesis.speak(u); }
 
@@ -113,7 +113,15 @@
     question.choices.forEach((choice,index)=>{ const btn=document.createElement('button'); btn.type='button'; btn.className='choice-btn'; btn.textContent=choice; btn.addEventListener('click',()=>choose(question.id,index,card)); choices.appendChild(btn); });
     return card;
   }
-  function choose(id,index,card){ if(state.finished) return; state.answers.set(id,index); card.querySelectorAll('.choice-btn').forEach((b,i)=>b.classList.toggle('selected',i===index)); updateMiniScore(); }
+  function choose(id,index,card){
+    if(state.finished || state.answers.has(id)) return;
+    state.answers.set(id,index);
+    const question=questionById(id);
+    markQuestion(question);
+    updateMiniScore();
+    const correct=index===question.answer;
+    liveRegion.textContent=correct ? 'Correct. Your score has been updated.' : `Not quite. The correct answer is ${question.choices[question.answer]}. Read the short correction below.`;
+  }
   function renderGroup(targetId, questions){ const target=$(targetId); questions.forEach(q=>target.appendChild(renderQuestion(q))); }
 
   function renderListening(){
@@ -180,7 +188,26 @@
   function updateTimer(){ $('#midtermTimer').textContent=clock(state.remaining); const spent=((TOTAL_SECONDS-state.remaining)/TOTAL_SECONDS)*100; $('#timeProgress').style.width=`${Math.max(0,100-spent)}%`; if(state.remaining<=0){ $('#midtermTimer').classList.add('is-over'); $('#timerStatus').textContent='TIME UP'; $('#timerMessage').textContent='Time is up. Finish the tasks and unlock the correction.'; } }
   function startMidterm(){ if(state.started) return; state.started=true; $('#startMidterm').disabled=true; $('#startMidterm').textContent='Checkpoint in progress'; $('#timerStatus').textContent='IN PROGRESS'; $('#timerMessage').textContent='Work steadily and answer from memory.'; state.timerId=setInterval(()=>{ state.remaining-=1; updateTimer(); if(state.remaining<=0){ clearInterval(state.timerId); state.timerId=null; liveRegion.textContent='Time is up. Finish the checkpoint when ready.'; } },1000); updateTimer(); $('#section-foundation').scrollIntoView({behavior:'smooth',block:'start'}); }
 
-  function markQuestion(q){ const selected=state.answers.get(q.id); document.querySelectorAll(`[data-question-id="${q.id}"]`).forEach(card=>{ const feedback=card.querySelector('.question-feedback'); card.querySelectorAll('.choice-btn').forEach((btn,index)=>{ btn.disabled=true; if(index===q.answer) btn.classList.add('correct'); if(selected===index&&index!==q.answer) btn.classList.add('wrong'); }); if(selected===q.answer){ feedback.innerHTML=`✓ Correct. ${q.why}`; feedback.className='question-feedback is-correct'; } else { feedback.innerHTML=`${selected===undefined?'No answer. ':''}Correct answer: <strong>${q.choices[q.answer]}</strong>. ${q.why}`; feedback.className='question-feedback is-wrong'; } }); }
+  function markQuestion(q){
+    const selected=state.answers.get(q.id);
+    document.querySelectorAll(`[data-question-id="${q.id}"]`).forEach(card=>{
+      const feedback=card.querySelector('.question-feedback');
+      card.classList.add('is-answered');
+      card.querySelectorAll('.choice-btn').forEach((btn,index)=>{
+        btn.disabled=true;
+        btn.classList.remove('selected','correct','wrong');
+        if(index===q.answer) btn.classList.add('correct');
+        if(selected===index&&index!==q.answer) btn.classList.add('wrong');
+      });
+      if(selected===q.answer){
+        feedback.innerHTML=`<strong>✓ Correct.</strong> ${q.why}`;
+        feedback.className='question-feedback is-correct';
+      } else {
+        feedback.innerHTML=`<strong>✗ Not quite.</strong> Correct answer: <strong>${q.choices[q.answer]}</strong>. ${q.why}`;
+        feedback.className='question-feedback is-wrong';
+      }
+    });
+  }
   function unlockSupport(){ document.querySelectorAll('.transcript').forEach(t=>t.hidden=false); document.querySelectorAll('.model-answer-wrap').forEach(wrap=>{ wrap.classList.remove('model-locked'); const btn=wrap.querySelector('button'); if(btn){ btn.disabled=false; btn.textContent='Show model answers'; } }); }
   function skillTotal(skill){ const qs=allQuestions().filter(q=>q.skill===skill); return {score:qs.filter(q=>state.answers.get(q.id)===q.answer).length,max:qs.length}; }
   function saveResult(){ if(state.saved) return; const w=reviewScore('writing'); const s=reviewScore('speaking'); const total=autoScore()+w+s; const entry={ id:`midterm-${Date.now()}`, type:'midterm', title:'Midterm Flight Checkpoint', date:new Date().toISOString(), score:total, max:42, percentage:Math.round(total/42*100), note:`Auto-marked ${autoScore()}/34 · Writing self-review ${w}/4 · Speaking self-review ${s}/4`, skills:{ 'Language accuracy':{...skillTotal('Language accuracy'),type:'Auto-marked'}, 'Vocabulary':{...skillTotal('Vocabulary'),type:'Auto-marked'}, 'Service language':{...skillTotal('Service language'),type:'Auto-marked'}, 'Listening':{...skillTotal('Listening'),type:'Auto-marked'}, 'Reading':{...skillTotal('Reading'),type:'Auto-marked'}, 'Writing':{score:w,max:4,type:'Self-review'}, 'Role-play':{score:s,max:4,type:'Self-review'} } };
