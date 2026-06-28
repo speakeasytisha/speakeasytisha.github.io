@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1f3a">
+  <title>Yanis · On-board Service Grammar Add-on</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#practice">Skip to grammar practice</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="https://speakeasytisha.github.io/Yanis/Page_16/yanis-page-16-onboard-service.html" aria-label="Back to Yanis lesson">
+        <span class="brand-mark" aria-hidden="true">✈</span>
+        <span>SpeakEasy Tisha</span>
+      </a>
+      <a class="back-link" href="https://speakeasytisha.github.io/Yanis/Page_16/yanis-page-16-onboard-service.html">← Back to the lesson</a>
+    </div>
+  </header>
+
+  <main id="practice">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">YANIS · PAGE 16 ADD-ON</p>
+          <h1>On-board service<br><em>Grammar Practice</em></h1>
+          <p class="hero-copy">Practise the grammar from your lesson one section at a time. Take your time, read the feedback, and say the correct answer aloud.</p>
+          <p class="hero-fr">Entraîne-toi sur la grammaire de la leçon, section par section. Prends ton temps, lis le retour et répète la bonne réponse à voix haute.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#station-a">Start practice <span aria-hidden="true">↓</span></a>
+            <button class="btn btn-secondary" id="listenWelcome" type="button">🔊 Hear the welcome</button>
+          </div>
+        </div>
+        <aside class="score-panel" aria-label="Your grammar score">
+          <div class="score-topline"><span>YOUR SCORE</span><button id="resetAll" class="text-button" type="button">↺ Reset</button></div>
+          <div class="score-number"><span id="scoreCorrect">0</span><span class="score-divider">/</span><span id="scoreTotal">0</span></div>
+          <p id="scoreMessage" class="score-message">Choose an answer to begin.</p>
+          <div class="progress-track" aria-hidden="true"><div id="progressFill" class="progress-fill"></div></div>
+          <div class="voice-row" role="group" aria-label="Choose an English voice">
+            <span>Voice</span>
+            <button class="voice-button active" data-voice="en-US" type="button">US</button>
+            <button class="voice-button" data-voice="en-GB" type="button">UK</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="flight-plan shell" aria-labelledby="flight-plan-title">
+      <div>
+        <p class="eyebrow">YOUR ROUTE</p>
+        <h2 id="flight-plan-title">Five focused grammar stations</h2>
+      </div>
+      <div class="route-list">
+        <a href="#station-a"><span>A</span> Polite offers</a>
+        <a href="#station-b"><span>B</span> Offer or need?</a>
+        <a href="#station-c"><span>C</span> Here is / Here are</a>
+        <a href="#station-d"><span>D</span> Passenger preferences</a>
+        <a href="#station-e"><span>E</span> Quantifiers</a>
+        <a href="#mission"><span>★</span> Final service mission</a>
+      </div>
+    </section>
+
+    <section class="tip-band">
+      <div class="shell tip-band-inner">
+        <span class="tip-icon" aria-hidden="true">💡</span>
+        <p><strong>How to use this page:</strong> choose an answer, read the explanation, then press the speaker button and repeat the correct sentence. <span lang="fr">Choisis une réponse, lis l’explication, puis répète la phrase correcte.</span></p>
+      </div>
+    </section>
+
+    <div class="shell station-stack">
+      <section class="station" id="station-a" aria-labelledby="station-a-title">
+        <div class="station-heading">
+          <div class="station-number">A</div>
+          <div>
+            <p class="eyebrow">GRAMMAR WORKSHOP A</p>
+            <h2 id="station-a-title">Would you like…?</h2>
+            <p><strong>Would you like + noun / to + verb</strong> is a polite way to offer something or ask a polite question.</p>
+            <p class="translation">C’est une manière polie de proposer quelque chose ou de poser une question.</p>
+          </div>
+          <button class="listen-rule" type="button" data-say="Would you like some water? Would you like to change seats?">🔊 Listen to the rule</button>
+        </div>
+        <div class="formula"><span>Would you like</span><b>+</b><span>a noun</span><i>or</i><span>to + verb</span></div>
+        <div id="quiz-a" class="quiz-grid" data-station="A"></div>
+      </section>
+
+      <section class="station" id="station-b" aria-labelledby="station-b-title">
+        <div class="station-heading">
+          <div class="station-number">B</div>
+          <div>
+            <p class="eyebrow">GRAMMAR WORKSHOP B</p>
+            <h2 id="station-b-title">Can I offer you…? / Do you need…?</h2>
+            <p><strong>Can I offer you + noun?</strong> proposes a service. <strong>Do you need + noun?</strong> checks a passenger’s need.</p>
+            <p class="translation">Can I offer you… propose un service. Do you need… vérifie un besoin.</p>
+          </div>
+          <button class="listen-rule" type="button" data-say="Can I offer you some water? Do you need help with your bag?">🔊 Listen to the rule</button>
+        </div>
+        <div class="comparison-grid">
+          <div><span class="badge offer">OFFER</span><p>Can I offer you <strong>some tea</strong>?</p></div>
+          <div><span class="badge need">CHECK A NEED</span><p>Do you need <strong>a blanket</strong>?</p></div>
+        </div>
+        <div id="quiz-b" class="quiz-grid" data-station="B"></div>
+      </section>
+
+      <section class="station" id="station-c" aria-labelledby="station-c-title">
+        <div class="station-heading">
+          <div class="station-number">C</div>
+          <div>
+            <p class="eyebrow">GRAMMAR WORKSHOP C</p>
+            <h2 id="station-c-title">Here is… / Here are…</h2>
+            <p>Use <strong>Here is</strong> for one thing. Use <strong>Here are</strong> for two or more things.</p>
+            <p class="translation">Here is = une chose. Here are = plusieurs choses.</p>
+          </div>
+          <button class="listen-rule" type="button" data-say="Here is your blanket. Here are your headphones.">🔊 Listen to the rule</button>
+        </div>
+        <div class="mini-rule"><span>1 thing</span><strong>Here is your blanket.</strong><span>2+ things</span><strong>Here are your headphones.</strong></div>
+        <div id="quiz-c" class="quiz-grid" data-station="C"></div>
+      </section>
+
+      <section class="station" id="station-d" aria-labelledby="station-d-title">
+        <div class="station-heading">
+          <div class="station-number">D</div>
+          <div>
+            <p class="eyebrow">GRAMMAR WORKSHOP D</p>
+            <h2 id="station-d-title">Need / would like / would prefer</h2>
+            <p>Passengers use these phrases to say what they need, want, or prefer.</p>
+            <p class="translation">Les passagers utilisent ces expressions pour dire ce dont ils ont besoin, ce qu’ils souhaitent ou ce qu’ils préfèrent.</p>
+          </div>
+          <button class="listen-rule" type="button" data-say="I need water. I would like tea. I would prefer an aisle seat.">🔊 Listen to the rule</button>
+        </div>
+        <div class="preference-cards">
+          <div><span>NEED</span><p>I need water.</p><small>important / necessary</small></div>
+          <div><span>WOULD LIKE</span><p>I would like tea.</p><small>polite request</small></div>
+          <div><span>WOULD PREFER</span><p>I would prefer an aisle seat.</p><small>choice between options</small></div>
+        </div>
+        <div id="quiz-d" class="quiz-grid" data-station="D"></div>
+      </section>
+
+      <section class="station" id="station-e" aria-labelledby="station-e-title">
+        <div class="station-heading">
+          <div class="station-number">E</div>
+          <div>
+            <p class="eyebrow">GRAMMAR WORKSHOP E</p>
+            <h2 id="station-e-title">Quantifiers & countability</h2>
+            <p>Use <strong>some / any / much / many / a few / a little</strong> to talk about quantity professionally on board.</p>
+            <p class="translation">Utilise ces mots pour parler des quantités à bord.</p>
+          </div>
+          <button class="listen-rule" type="button" data-say="Would you like some water? Do you need any help? How many bags do you have? How much juice would you like?">🔊 Listen to the rule</button>
+        </div>
+        <div class="quantifier-table" role="table" aria-label="Quantifier guide">
+          <div class="qt-head" role="row"><span role="columnheader">Word</span><span role="columnheader">Use</span><span role="columnheader">Example</span></div>
+          <div role="row"><strong role="cell">some</strong><span role="cell">offers / positive sentences</span><span role="cell">Would you like some water?</span></div>
+          <div role="row"><strong role="cell">any</strong><span role="cell">questions / negatives</span><span role="cell">Do you need any help?</span></div>
+          <div role="row"><strong role="cell">many</strong><span role="cell">countable plural nouns</span><span role="cell">How many bags?</span></div>
+          <div role="row"><strong role="cell">much</strong><span role="cell">uncountable nouns</span><span role="cell">How much juice?</span></div>
+          <div role="row"><strong role="cell">a few / a little</strong><span role="cell">small quantity</span><span role="cell">a few seats / a little water</span></div>
+        </div>
+        <div id="quiz-e" class="quiz-grid" data-station="E"></div>
+      </section>
+
+      <section class="station mission" id="mission" aria-labelledby="mission-title">
+        <div class="station-heading">
+          <div class="station-number star">★</div>
+          <div>
+            <p class="eyebrow">FINAL SERVICE MISSION</p>
+            <h2 id="mission-title">Choose the most professional response</h2>
+            <p>You are on board. Use everything you have practised to choose the most natural service sentence.</p>
+            <p class="translation">Tu es à bord. Utilise toute la grammaire travaillée pour choisir la phrase de service la plus naturelle.</p>
+          </div>
+          <button class="listen-rule" type="button" data-say="Of course. Here is some water, and I will bring you a blanket right away.">🔊 Hear a model</button>
+        </div>
+        <div id="quiz-mission" class="quiz-grid mission-grid" data-station="Mission"></div>
+        <div class="completion-card" id="completionCard" hidden>
+          <span class="completion-icon" aria-hidden="true">🛫</span>
+          <div><strong>Well done, Yanis!</strong><p>You have completed your on-board service grammar practice. Go back to the main lesson for the roleplays and writing activities.</p></div>
+          <a href="https://speakeasytisha.github.io/Yanis/Page_16/yanis-page-16-onboard-service.html" class="btn btn-primary">Return to the lesson</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell"><span>SpeakEasy Tisha · Yanis’ LILATE preparation</span><a href="https://speakeasytisha.github.io/Yanis/Page_16/yanis-page-16-onboard-service.html">Main lesson ↗</a></div>
+  </footer>
+
+  <div class="sr-only" id="liveRegion" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
