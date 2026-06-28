@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1f3a">
+  <title>Yanis · LILATE Score Passport</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#passport-main">Skip to score passport</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Back to Yanis LILATE Practice Hub"><span class="brand-mark" aria-hidden="true">✈</span><span>SpeakEasy Tisha</span></a>
+      <nav class="header-nav" aria-label="Practice hub navigation"><a href="index.html">Hub</a><a href="midterm-checkpoint.html">Midterm</a><a href="mock-exam.html">Mock exam</a><a href="https://speakeasytisha.github.io/Yanis/Page_16/yanis-page-16-onboard-service.html">Lesson</a></nav>
+    </div>
+  </header>
+
+  <main id="passport-main">
+    <section class="hero passport-hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">YANIS · PROGRESS REFERENCE</p>
+          <h1>Your LILATE<br><em>score passport</em></h1>
+          <p class="hero-copy">A simple record of every midterm, mock and lesson result. Use it to see what is improving and what to practise next.</p>
+          <p class="hero-fr">Un suivi simple des simulations et des leçons : vois tes progrès et ce qu’il faut travailler ensuite.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="midterm-checkpoint.html">Take the midterm <span aria-hidden="true">→</span></a><a class="btn btn-secondary" href="mock-exam.html">Take the full mock</a><a class="btn btn-secondary" href="#add-result">Add a lesson score</a></div>
+        </div>
+        <aside class="score-panel passport-panel">
+          <div class="score-topline"><span>PROGRESS STATUS</span></div>
+          <div class="passport-stats"><div><span id="heroAttempts">0</span><small>results saved</small></div><div><span id="heroBest">—</span><small>best training score</small></div></div>
+          <p id="heroFocus" class="score-message">Complete the midterm or a mock exam to create your first baseline.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="shell dashboard-section" aria-labelledby="overview-title">
+      <div class="section-label"><p class="eyebrow">AT A GLANCE</p><h2 id="overview-title">Your current practice picture</h2></div>
+      <div class="metrics-grid">
+        <article class="metric-card"><span>Latest mock</span><strong id="latestMock">—</strong><small id="latestMockDetail">No mock saved yet</small></article>
+        <article class="metric-card"><span>Best mock</span><strong id="bestMock">—</strong><small id="bestMockDetail">Build your first baseline</small></article>
+        <article class="metric-card"><span>Practice results</span><strong id="totalResults">0</strong><small>Midterms, mocks and lesson results</small></article>
+        <article class="metric-card focus-card"><span>Next focus</span><strong id="focusSkill">—</strong><small id="focusDetail">Your lowest tracked skill will appear here.</small></article>
+      </div>
+    </section>
+
+    <section class="shell skills-section" aria-labelledby="skills-title">
+      <div class="section-label"><p class="eyebrow">SKILL MAP</p><h2 id="skills-title">Build the skills LILATE uses in professional communication.</h2><p>Auto-marked skills come from the midterm and mock questions. Conversation, writing and role-play are self-reviewed practice indicators.</p></div>
+      <div id="skillsMap" class="skills-map"></div>
+    </section>
+
+    <section class="shell dashboard-split">
+      <section class="manual-card" id="add-result" aria-labelledby="add-title">
+        <p class="eyebrow">ADD A LESSON RESULT</p>
+        <h2 id="add-title">Log practice from any lesson.</h2>
+        <p>For example: add the final result from the On-board Service Grammar Add-on after Yanis completes it.</p>
+        <form id="manualScoreForm" class="manual-form">
+          <label>Lesson or activity<input id="lessonTitle" name="title" maxlength="72" required placeholder="e.g. Page 16 Grammar Add-on"></label>
+          <div class="form-two"><label>Score<input id="lessonScore" name="score" type="number" min="0" max="999" step="1" required placeholder="e.g. 28"></label><label>Out of<input id="lessonMax" name="max" type="number" min="1" max="999" step="1" required placeholder="e.g. 40"></label></div>
+          <label>Primary skill<select id="lessonSkill" name="skill"><option value="Language accuracy">Language accuracy</option><option value="Listening">Listening</option><option value="Reading">Reading</option><option value="Writing">Writing</option><option value="Conversation">Conversation</option><option value="Role-play">Role-play</option><option value="Vocabulary">Vocabulary</option></select></label>
+          <label>Optional note<textarea id="lessonNote" name="note" rows="3" maxlength="220" placeholder="What felt easy? What needs review?"></textarea></label>
+          <button class="btn btn-primary" type="submit">Save lesson result <span aria-hidden="true">+</span></button>
+        </form>
+      </section>
+
+      <section class="data-card" aria-labelledby="data-title">
+        <p class="eyebrow">YOUR DATA</p>
+        <h2 id="data-title">Keep or move your progress.</h2>
+        <p>Your dashboard uses this browser’s local storage. It does not send scores anywhere. Export before changing device or clearing browser data.</p>
+        <div class="data-actions"><button id="exportData" class="btn btn-outline" type="button">⇩ Export progress</button><label class="btn btn-outline file-button">⇧ Import progress<input id="importData" type="file" accept="application/json,.json"></label><button id="printReport" class="btn btn-outline" type="button">⎙ Print report</button></div>
+        <button id="clearData" class="text-button danger-text" type="button">Delete all saved practice data</button>
+        <p id="dataMessage" class="data-message" aria-live="polite"></p>
+      </section>
+    </section>
+
+    <section class="shell history-section" aria-labelledby="history-title">
+      <div class="history-title"><div><p class="eyebrow">FLIGHT LOG</p><h2 id="history-title">Every saved result</h2></div><span id="historyCount" class="history-count">0 results</span></div>
+      <div class="history-table-wrap"><table class="history-table"><thead><tr><th>Date</th><th>Activity</th><th>Primary skill</th><th>Score</th><th>Note</th><th></th></tr></thead><tbody id="historyBody"></tbody></table></div>
+      <div id="emptyHistory" class="empty-history"><span>✈</span><h3>Your score passport is ready.</h3><p>Complete the midterm, the full mock exam, or add a lesson result to create your first entry.</p></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell"><span>SpeakEasy Tisha · Yanis LILATE Progress Passport</span><a href="midterm-checkpoint.html">Take the midterm →</a></div></footer>
+  <script src="score-passport.js"></script>
+</body>
+</html>

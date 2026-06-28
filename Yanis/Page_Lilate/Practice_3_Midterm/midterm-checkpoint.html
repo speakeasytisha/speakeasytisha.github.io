@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1f3a">
+  <title>Yanis · Midterm Flight Checkpoint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#midterm-main">Skip to the midterm checkpoint</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Back to Yanis LILATE Practice Hub"><span class="brand-mark" aria-hidden="true">✈</span><span>SpeakEasy Tisha</span></a>
+      <nav class="header-nav" aria-label="Practice hub navigation"><a href="index.html">Hub</a><a href="mock-exam.html">Mock exam</a><a href="score-passport.html">Score passport</a></nav>
+    </div>
+  </header>
+
+  <main id="midterm-main">
+    <section class="hero exam-hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">YANIS · MIDTERM FLIGHT CHECKPOINT</p>
+          <h1>Everything learned<br><em>so far</em></h1>
+          <p class="hero-copy">A 50-minute LILATE-style checkpoint to see what you remember from your foundation, airport, passenger and on-board-service lessons.</p>
+          <p class="hero-fr">Un bilan de mi-parcours de 50 minutes pour vérifier ce que tu retiens : bases, aéroport, passagers et service à bord.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" id="startMidterm" type="button">Start the 50-minute checkpoint <span aria-hidden="true">▶</span></button>
+            <a class="btn btn-secondary" href="#section-foundation">See the route</a>
+          </div>
+        </div>
+        <aside class="score-panel timer-panel" aria-label="Midterm timer and score">
+          <div class="score-topline"><span>CHECKPOINT CLOCK</span><span id="timerStatus">NOT STARTED</span></div>
+          <div class="timer-number" id="midtermTimer">50:00</div>
+          <p id="timerMessage" class="score-message">Start only when you are ready. Work without notes first.</p>
+          <div class="progress-track" aria-hidden="true"><div id="timeProgress" class="progress-fill time-progress"></div></div>
+          <div class="exam-mini-score"><span>Auto-marked</span><strong id="miniAutoScore">0 / 34</strong></div>
+          <div class="voice-row" role="group" aria-label="Choose an English voice"><span>Audio voice</span><button class="voice-button" data-voice="en-US" type="button">US</button><button class="voice-button active" data-voice="en-GB" type="button">UK</button></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="shell exam-route" aria-labelledby="route-title">
+      <div><p class="eyebrow">MIDTERM ROUTE</p><h2 id="route-title">Six focused stages. One clear progress snapshot.</h2></div>
+      <ol class="exam-route-list midterm-route-list">
+        <li><a href="#section-foundation"><span>01</span> Foundation English <small>8 mins</small></a></li>
+        <li><a href="#section-airport"><span>02</span> Airport procedures <small>8 mins</small></a></li>
+        <li><a href="#section-passenger"><span>03</span> Passenger details <small>8 mins</small></a></li>
+        <li><a href="#section-service"><span>04</span> On-board service <small>8 mins</small></a></li>
+        <li><a href="#section-listen-read"><span>05</span> Listen & read <small>8 mins</small></a></li>
+        <li><a href="#section-produce"><span>06</span> Write & speak <small>10 mins</small></a></li>
+      </ol>
+    </section>
+
+    <section class="tip-band"><div class="shell tip-band-inner"><span class="tip-icon" aria-hidden="true">🧭</span><p><strong>Midterm rule:</strong> answer from memory. Models and audio transcripts stay locked until you finish the checkpoint. <span lang="fr">Réponds d’abord sans notes, puis utilise la correction pour apprendre.</span></p></div></section>
+
+    <div class="shell exam-stack">
+      <section class="exam-section" id="section-foundation" aria-labelledby="foundation-title">
+        <div class="exam-heading"><div class="station-number">01</div><div><p class="eyebrow">FOUNDATION ENGLISH · TARGET 8 MINUTES</p><h2 id="foundation-title">Your professional base</h2><p>Self-introduction, present simple, questions, negatives, prepositions and how you speak at work.</p></div><span class="time-badge">8 min</span></div>
+        <div class="exam-brief"><strong>Lessons checked:</strong> Foundation Pages 1–2 and the Review Masterclass. Choose the form that sounds correct and professional.</div>
+        <div id="foundationQuestions" class="quiz-grid midterm-quiz"></div>
+      </section>
+
+      <section class="exam-section" id="section-airport" aria-labelledby="airport-title">
+        <div class="exam-heading"><div class="station-number">02</div><div><p class="eyebrow">AIRPORT PROCEDURES · TARGET 8 MINUTES</p><h2 id="airport-title">Guide a passenger clearly</h2><p>Airport vocabulary, instructions, modal verbs and clear procedure language.</p></div><span class="time-badge">8 min</span></div>
+        <div class="exam-brief"><strong>Lessons checked:</strong> LILATE Part 3, Airport & Plane Vocabulary and Airport Procedures.</div>
+        <div id="airportQuestions" class="quiz-grid midterm-quiz"></div>
+      </section>
+
+      <section class="exam-section" id="section-passenger" aria-labelledby="passenger-title">
+        <div class="exam-heading"><div class="station-number">03</div><div><p class="eyebrow">PASSENGER DETAILS · TARGET 8 MINUTES</p><h2 id="passenger-title">Identify, clarify and confirm</h2><p>Countries and nationalities, possessives, demonstratives and clarification language.</p></div><span class="time-badge">8 min</span></div>
+        <div class="exam-brief"><strong>Lessons checked:</strong> Passenger Profiles, Passenger Requests and Clarify Details.</div>
+        <div id="passengerQuestions" class="quiz-grid midterm-quiz"></div>
+      </section>
+
+      <section class="exam-section" id="section-service" aria-labelledby="service-title">
+        <div class="exam-heading"><div class="station-number">04</div><div><p class="eyebrow">ON-BOARD SERVICE · TARGET 8 MINUTES</p><h2 id="service-title">Welcome, offer, check, respond</h2><p>Use offers, needs, <em>here is / here are</em>, countable nouns and quantifiers naturally.</p></div><span class="time-badge">8 min</span></div>
+        <div class="exam-brief"><strong>Lessons checked:</strong> On-board Service & Passenger Needs and the Grammar Add-on.</div>
+        <div id="serviceQuestions" class="quiz-grid midterm-quiz"></div>
+      </section>
+
+      <section class="exam-section" id="section-listen-read" aria-labelledby="listenread-title">
+        <div class="exam-heading"><div class="station-number">05</div><div><p class="eyebrow">COMPREHENSION · TARGET 8 MINUTES</p><h2 id="listenread-title">Listen, read, find the essential information</h2><p>Play each audio no more than two times. The transcript appears only after you finish the checkpoint.</p></div><span class="time-badge">8 min</span></div>
+        <div class="task-stack" id="listeningTasks"></div>
+        <div class="language-divider"><span>Read a crew support</span></div>
+        <div class="reading-scenario">
+          <div class="scenario-topline"><span>CREW BRIEF · FLIGHT AB 406</span><span>Training support</span></div>
+          <h3>Boarding and passenger notes</h3>
+          <p><strong>Gate change:</strong> Boarding for the Madrid flight has moved from <strong>gate A4 to gate A7</strong> because of a technical check.</p>
+          <p><strong>Seat 10C — Ms Green:</strong> her vegetarian meal request is missing. She is travelling alone and wants an update about her connection after landing.</p>
+          <p><strong>Seats 12A and 12B — Mr and Mrs Rossi:</strong> they need help storing two cabin bags before take-off.</p>
+        </div>
+        <div id="readingQuestions" class="quiz-grid midterm-quiz"></div>
+      </section>
+
+      <section class="exam-section" id="section-produce" aria-labelledby="produce-title">
+        <div class="exam-heading"><div class="station-number">06</div><div><p class="eyebrow">WRITING & SPEAKING · TARGET 10 MINUTES</p><h2 id="produce-title">Communicate like future cabin crew</h2><p>Write one practical handover and respond to three familiar professional prompts. Do not try to be perfect: aim for clear, useful English.</p></div><span class="time-badge">10 min</span></div>
+
+        <article class="writing-brief">
+          <p class="writing-label">WRITING TASK</p>
+          <h3>Write a short handover for the next crew member.</h3>
+          <p>Use the crew support above. Write <strong>70–95 words</strong> about Ms Green and the Rossi family. Include the seat numbers, the meal problem, the connection update and the cabin-bag request.</p>
+          <ul><li>Start professionally: <em>Hello / Dear colleague</em>.</li><li>Use full sentences.</li><li>Use <em>her / their</em> correctly.</li><li>End with a clear next step.</li></ul>
+        </article>
+        <div class="writing-tools">
+          <label for="writingResponse">Your handover</label>
+          <textarea id="writingResponse" rows="11" placeholder="Hello,&#10;&#10;..."></textarea>
+          <div class="writing-status"><span id="wordCount">0 words</span><span>Target: 70–95 words</span></div>
+          <div class="writing-actions"><button id="downloadWriting" class="btn btn-outline" type="button">⇩ Download my writing</button><button id="clearWriting" class="text-button dark-text" type="button">Clear writing</button></div>
+          <div id="writingModels" class="model-answer-wrap model-locked"></div>
+        </div>
+
+        <div class="language-divider"><span>Spoken service prompts</span></div>
+        <div id="speakingTasks" class="roleplay-grid"></div>
+        <div class="self-review-box">
+          <div><p class="eyebrow">YOUR MIDTERM SELF-REVIEW</p><h3>Tick the things you did in your writing and speaking.</h3></div>
+          <div class="checklist two-columns" id="productionChecklist">
+            <label><input type="checkbox" data-review="writing" value="1"> My writing includes the key details.</label>
+            <label><input type="checkbox" data-review="writing" value="1"> My writing uses full sentences and a clear next step.</label>
+            <label><input type="checkbox" data-review="writing" value="1"> My writing is polite and easy to understand.</label>
+            <label><input type="checkbox" data-review="writing" value="1"> I checked pronouns, articles and spelling.</label>
+            <label><input type="checkbox" data-review="speaking" value="1"> I introduced myself or clarified the need clearly.</label>
+            <label><input type="checkbox" data-review="speaking" value="1"> I used polite service language.</label>
+            <label><input type="checkbox" data-review="speaking" value="1"> I used a complete sentence, not only key words.</label>
+            <label><input type="checkbox" data-review="speaking" value="1"> I gave a useful action or next step.</label>
+          </div>
+          <p class="check-help">Self-review: Writing <strong id="writingScore">0 / 4</strong> · Speaking <strong id="speakingScore">0 / 4</strong>.</p>
+        </div>
+      </section>
+
+      <section class="exam-section finish-section" id="finish" aria-labelledby="finish-title">
+        <div class="finish-heading"><p class="eyebrow">MIDTERM DEBRIEF</p><h2 id="finish-title">Finish, correct, reflect.</h2><p>When you finish, the page marks the objective questions, unlocks all models and transcripts, and saves a multi-skill checkpoint to the Score Passport.</p></div>
+        <div class="finish-actions"><button id="finishMidterm" class="btn btn-primary" type="button">Finish & unlock correction <span aria-hidden="true">✓</span></button><button id="downloadSummary" class="btn btn-outline" type="button">⇩ Download result summary</button><a href="score-passport.html" class="btn btn-outline">Open Score Passport →</a></div>
+        <div id="resultCard" class="result-card" hidden aria-live="polite"></div>
+        <p class="simulation-note">This is a SpeakEasy Tisha retention checkpoint, not an official LILATE result. Its purpose is to show what Yanis remembers now and what needs structured review next.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="shell"><span>SpeakEasy Tisha · Yanis Midterm Flight Checkpoint</span><a href="score-passport.html">Open Score Passport →</a></div></footer>
+  <div id="liveRegion" class="sr-only" aria-live="polite"></div>
+  <script src="midterm-checkpoint.js"></script>
+</body>
+</html>
