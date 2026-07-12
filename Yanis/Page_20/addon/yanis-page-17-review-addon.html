@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yanis · Lesson 17 Review Add-on</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-17-review-addon.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div>
+      <div class="eyebrow">Yanis · Lesson 17 Add-on</div>
+      <h1>On-board Problems Review Exercises</h1>
+      <p class="subtitle">A structured practice page to recycle the rules from Lesson 17 with <strong>many exercises by situation</strong>: delay, gate change, seat problem, connection worry, cabin bag, and special assistance.</p>
+    </div>
+    <div class="toolbar">
+      <div class="voiceBox">
+        <span>Voice</span>
+        <button id="voiceUS" class="seg active" type="button">🇺🇸 US</button>
+        <button id="voiceUK" class="seg" type="button">🇬🇧 UK</button>
+      </div>
+      <div class="scorebox">Score: <span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      <button id="stopAudio" class="btn ghost" type="button">Stop audio</button>
+      <button id="resetAll" class="btn ghost" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="shell">
+  <section class="card dark heroCard">
+    <div class="grid2">
+      <div>
+        <h2>How to use this page</h2>
+        <ol class="roadmap">
+          <li>Choose one situation.</li>
+          <li>Read the short rule reminder.</li>
+          <li>Do the exercises from easy to hard.</li>
+          <li>Compare with the model answer.</li>
+          <li>Finish with live oral practice.</li>
+        </ol>
+        <p class="fr">Objectif : se sentir capable de gérer la situation avec plus d’automatismes, plus de précision, et plus de confiance.</p>
+      </div>
+      <div class="miniPanel">
+        <h3>Rules recycled from Lesson 17</h3>
+        <ul>
+          <li><strong>There is / There are</strong></li>
+          <li><strong>be + past participle</strong> to describe the situation now</li>
+          <li><strong>present continuous</strong> for what is happening now</li>
+          <li><strong>I’m sorry for...</strong></li>
+          <li><strong>Your new gate / seat is...</strong></li>
+          <li><strong>because / so / but</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="sectionHead">
+      <div>
+        <h2>1) Choose a situation</h2>
+        <p>Review one situation at a time to feel more secure.</p>
+        <p class="fr">Révisez une situation à la fois pour vous sentir plus en confiance.</p>
+      </div>
+      <div class="controlsRow">
+        <select id="situationSelect" class="select"></select>
+        <button id="speakSituation" class="btn ghost" type="button">🔊 Listen</button>
+      </div>
+    </div>
+    <div class="scenarioCard">
+      <h3 id="situationTitle"></h3>
+      <p id="situationDesc"></p>
+      <div class="miniFacts" id="situationFacts"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>2) Rule reminder for this situation</h2>
+    <p class="muted">Short reminder only: enough to help you answer correctly.</p>
+    <div id="ruleReminder"></div>
+  </section>
+
+  <section class="card">
+    <h2>3) Easy practice — choose the best phrase</h2>
+    <p class="muted">Choose the best professional response or the best structure.</p>
+    <div id="easyHost"></div>
+  </section>
+
+  <section class="card">
+    <h2>4) Controlled practice — fill in the blank</h2>
+    <p class="muted">Complete the structure correctly.</p>
+    <div id="fillHost"></div>
+  </section>
+
+  <section class="card">
+    <h2>5) Structure practice — choose the correct rule</h2>
+    <p class="muted">Focus on grammar, subject, and sentence pattern.</p>
+    <div id="ruleHost"></div>
+  </section>
+
+  <section class="card">
+    <h2>6) Build the sentence</h2>
+    <p class="muted">Put the words in the correct order.</p>
+    <div id="builderHost"></div>
+    <div id="builderFb" class="feedback hidden"></div>
+  </section>
+
+  <section class="card">
+    <h2>7) Reformulate the situation</h2>
+    <p class="muted">Read the useful information, then write or say a short professional reformulation.</p>
+    <div class="scenarioCard">
+      <h3>Useful information</h3>
+      <div id="reformFacts" class="miniFacts"></div>
+      <label class="lab">Your reformulation
+        <textarea id="reformWrite" rows="5" placeholder="If I understand correctly, ..."></textarea>
+      </label>
+      <div class="btnRow">
+        <button id="toggleReformModel" class="btn ghost" type="button">Show / hide model answer</button>
+        <button id="speakReformModel" class="btn ghost" type="button">🔊 Listen model</button>
+      </div>
+      <div id="reformModel" class="modelBox hidden"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>8) Writing ladder — simple, better, stronger</h2>
+    <p class="muted">See how to improve step by step.</p>
+    <div id="ladderHost"></div>
+  </section>
+
+  <section class="card">
+    <h2>9) Live oral practice</h2>
+    <p class="muted">Your teacher is the passenger. You are the cabin crew member.</p>
+    <div class="controlsRow">
+      <select id="oralSelect" class="select"></select>
+      <button id="showOralModel" class="btn ghost" type="button">Show / hide model</button>
+      <button id="speakOralPrompt" class="btn ghost" type="button">🔊 Listen prompt</button>
+    </div>
+    <div class="scenarioCard">
+      <div id="oralPrompt"></div>
+      <ul id="oralChecklist" class="checklist"></ul>
+      <div id="oralModel" class="modelBox hidden"></div>
+    </div>
+  </section>
+</main>
+
+<script src="js/yanis-page-17-review-addon.js"></script>
+</body>
+</html>
