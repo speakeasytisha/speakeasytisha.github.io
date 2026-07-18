@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Angie — Complete VTEST Final Mock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/angie-complete-vtest-final-mock.css">
+</head>
+<body>
+<div class="stars"></div>
+
+<header class="topbar">
+  <div>
+    <div class="script">SpeakEasyTisha</div>
+    <div class="tag">Angie’s Complete VTEST Final Mock</div>
+  </div>
+  <div class="controls">
+    <button class="pill active" id="usBtn" type="button">US 🇺🇸</button>
+    <button class="pill" id="ukBtn" type="button">UK 🇬🇧</button>
+    <span class="score">Score: <strong id="score">0</strong>/<strong id="maxScore">0</strong></span>
+    <button class="pill" id="resetBtn" type="button">Reset</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="heroText">
+    <p class="kicker">🏰 COMPLETE FINAL MOCK</p>
+    <h1>Show Everything You Can Do</h1>
+    <p class="lead">A complete review of your grammar, vocabulary, listening, reading, writing, speaking, photo description, customer service and Disney interview skills.</p>
+    <button class="btn primary" data-speak="Welcome to your complete VTest final mock. You will practise listening, reading, speaking and writing, together with grammar, vocabulary and real communication.">🔊 Listen</button>
+  </div>
+  <div class="castle">🏰✨📋🏆</div>
+</section>
+
+<main>
+
+<section class="card">
+<h2>⚙️ Choose Your Mode</h2>
+<div class="modeGrid">
+  <button class="modeCard active" id="practiceMode" type="button">
+    <strong>📚 Practice Mode</strong>
+    <span>Immediate feedback and explanations.</span>
+  </button>
+  <button class="modeCard" id="examMode" type="button">
+    <strong>⏱ Exam Mode</strong>
+    <span>No corrections until the final report.</span>
+  </button>
+</div>
+<div class="timerBox">
+  <span id="timer">60:00</span>
+  <button class="btn primary" id="startTimer" type="button">Start timer</button>
+  <button class="btn ghost" id="resetTimer" type="button">Reset timer</button>
+</div>
+</section>
+
+<section class="card">
+<h2>📋 Exam Roadmap</h2>
+<div class="grid4">
+  <div class="mini"><strong>1</strong><br>Grammar & vocabulary</div>
+  <div class="mini"><strong>2</strong><br>Reading & listening</div>
+  <div class="mini"><strong>3</strong><br>Writing & photo description</div>
+  <div class="mini"><strong>4</strong><br>Speaking & interview</div>
+</div>
+<div class="tipBox"><strong>Remember:</strong> Speak clearly, use simple complete sentences, develop your answers with connectors, and keep communicating after a mistake.</div>
+</section>
+
+<section class="card">
+<h2>📚 Broad Vocabulary Review</h2>
+<p class="muted">The real exam can move between everyday, travel and professional topics. Review a broad range of vocabulary before starting.</p>
+<div class="tabs" id="vocabTabs"></div>
+<button class="btn" id="listenVocab" type="button">🔊 Listen to visible vocabulary</button>
+<div id="vocabGrid" class="vocabGrid"></div>
+</section>
+
+<section class="card examSection">
+<h2>🧩 Section A — Grammar & Verb Mastery</h2>
+<p class="muted">Present, past, present perfect, future, questions, modals, conditionals, articles, comparatives and prepositions.</p>
+<div id="grammarQuiz"></div>
+</section>
+
+<section class="card examSection">
+<h2>🪄 Section B — Phrasal Verbs, Particles & Prepositions</h2>
+<div id="particleQuiz"></div>
+</section>
+
+<section class="card examSection">
+<h2>🗣 Section C — Functional English</h2>
+<p class="muted">Choose the most natural response for each real-life situation.</p>
+<div id="functionQuiz"></div>
+</section>
+
+<section class="card examSection">
+<h2>🧱 Section D — Sentence Construction</h2>
+<p class="muted">Every sentence starts in a mixed order. Tap words to rebuild it.</p>
+<div id="builders"></div>
+</section>
+
+<section class="card examSection">
+<h2>📖 Section E — Reading Comprehension</h2>
+
+<div class="readingBox">
+<h3>Text 1 — Theme Park Team Notice</h3>
+<p>Tomorrow, the park will be busier than usual because a special evening event is taking place. Team members should arrive fifteen minutes early, check their uniforms and review the safety instructions. If an attraction closes temporarily, guests should be informed calmly and offered another recommendation. Lost-child situations must be reported to a supervisor immediately.</p>
+</div>
+<div id="readingQuiz1"></div>
+
+<div class="readingBox">
+<h3>Text 2 — Travel Email</h3>
+<p>Hello Angie, your train to London leaves at 8:40 a.m. from platform 6. Please arrive at least twenty minutes early. You can bring one large suitcase and one small bag. If the train is delayed, check the information screens or speak to a member of staff. Your hotel reservation begins on Friday afternoon.</p>
+</div>
+<div id="readingQuiz2"></div>
+
+<div class="readingBox">
+<h3>Text 3 — Customer Complaint</h3>
+<p>Dear Customer Service, I bought a sweatshirt from your shop yesterday, but I noticed a tear when I arrived home. I still have the receipt and the original packaging. I would prefer an exchange, but I would accept a refund if the same size is no longer available.</p>
+</div>
+<div id="readingQuiz3"></div>
+</section>
+
+<section class="card examSection">
+<h2>🎧 Section F — Listening Comprehension</h2>
+<p class="muted">In the official exam, recordings may be heard only once. For realistic practice, try listening only once before answering.</p>
+<div class="listenGrid">
+  <div class="listenCard">
+    <h3>1. Airport announcement</h3>
+    <button class="btn primary" data-speak="Attention passengers. Flight two thirty eight to London has been delayed by forty five minutes because of bad weather. Please remain near gate twelve and check the information screens for updates.">▶️ Play once</button>
+    <div id="listenQuiz1"></div>
+    <button class="btn ghost" data-toggle="transcript1">Show transcript</button>
+    <p id="transcript1" class="hidden">Attention passengers. Flight 238 to London has been delayed by 45 minutes because of bad weather. Please remain near gate 12 and check the information screens for updates.</p>
+  </div>
+  <div class="listenCard">
+    <h3>2. Restaurant conversation</h3>
+    <button class="btn primary" data-speak="Good evening. Before you order, could you tell me whether anyone at the table has a food allergy? We can check the ingredients with the kitchen team.">▶️ Play once</button>
+    <div id="listenQuiz2"></div>
+    <button class="btn ghost" data-toggle="transcript2">Show transcript</button>
+    <p id="transcript2" class="hidden">Good evening. Before you order, could you tell me whether anyone at the table has a food allergy? We can check the ingredients with the kitchen team.</p>
+  </div>
+  <div class="listenCard">
+    <h3>3. Lost property</h3>
+    <button class="btn primary" data-speak="Excuse me, I think I left my wallet near the gift shop about ten minutes ago. It is small, black and has a silver zip. Could you help me look for it?">▶️ Play once</button>
+    <div id="listenQuiz3"></div>
+    <button class="btn ghost" data-toggle="transcript3">Show transcript</button>
+    <p id="transcript3" class="hidden">Excuse me, I think I left my wallet near the gift shop about ten minutes ago. It is small, black and has a silver zip. Could you help me look for it?</p>
+  </div>
+  <div class="listenCard">
+    <h3>4. Manager instructions</h3>
+    <button class="btn primary" data-speak="First, welcome the guests and check their tickets. Then, explain the safety instructions clearly. Finally, make sure everyone is seated before the attraction starts.">▶️ Play once</button>
+    <div id="listenQuiz4"></div>
+    <button class="btn ghost" data-toggle="transcript4">Show transcript</button>
+    <p id="transcript4" class="hidden">First, welcome the guests and check their tickets. Then, explain the safety instructions clearly. Finally, make sure everyone is seated before the attraction starts.</p>
+  </div>
+</div>
+</section>
+
+<section class="card examSection">
+<h2>📸 Section G — Realistic Photo Description</h2>
+<p class="muted">Choose one or complete both. Describe the general scene, foreground, background, people, actions, feelings and your opinion.</p>
+<div class="photoGrid">
+  <div class="photoCard">
+    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=85" alt="Tourists looking at a map in a city">
+    <h3>Photo 1 — Tourists Looking at a Map</h3>
+    <p><strong>Useful clues:</strong> tourists, map, directions, foreground, city, confused, planning</p>
+    <button class="btn ghost" data-toggle="photoModel1">Show A2 / B1 / B1+ models</button>
+    <div id="photoModel1" class="model hidden">
+      <p><strong>A2:</strong> This picture shows some tourists. They are looking at a map. They are outside in a city.</p>
+      <p><strong>B1:</strong> This picture shows a group of tourists looking at a map. In the foreground, they are standing together and trying to find their way. They seem interested but a little confused.</p>
+      <p><strong>B1+:</strong> This picture shows several tourists exploring a city. In the foreground, they are studying a large map and discussing the route they should take. They may be looking for a famous attraction. The atmosphere seems relaxed, and I would help them by giving clear directions.</p>
+    </div>
+  </div>
+  <div class="photoCard">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85" alt="Restaurant dining area with tables and staff environment">
+    <h3>Photo 2 — Restaurant Service Environment</h3>
+    <p><strong>Useful clues:</strong> restaurant, tables, customers, staff, service, atmosphere, welcome</p>
+    <button class="btn ghost" data-toggle="photoModel2">Show A2 / B1 / B1+ models</button>
+    <div id="photoModel2" class="model hidden">
+      <p><strong>A2:</strong> This picture shows a restaurant. There are tables and chairs. The restaurant looks clean.</p>
+      <p><strong>B1:</strong> This picture shows a modern restaurant. In the foreground, there are several tables ready for customers. The atmosphere looks calm and welcoming.</p>
+      <p><strong>B1+:</strong> This picture shows a modern restaurant prepared to welcome customers. The tables are neatly arranged, and the atmosphere appears comfortable and professional. Staff working here would need to greet guests, answer questions and provide efficient service.</p>
+    </div>
+  </div>
+</div>
+<textarea id="photoAnswer" placeholder="Describe one or both photos..."></textarea>
+<button class="btn primary" id="checkPhoto" type="button">Check photo description</button>
+<button class="btn" data-listen="photoAnswer" type="button">🔊 Listen</button>
+<p id="photoFeedback" class="feedback"></p>
+</section>
+
+<section class="card examSection">
+<h2>✍ Section H — Writing Tasks</h2>
+<div class="writingGrid">
+  <div class="writingTask">
+    <h3>Task 1 — Professional Self-Introduction</h3>
+    <p>Write 70–100 words about your experience, qualities, progress and future goals.</p>
+    <textarea id="write1"></textarea>
+    <button class="btn primary" data-check-writing="write1" type="button">Check</button>
+    <button class="btn" data-listen="write1" type="button">🔊 Listen</button>
+    <button class="btn ghost" data-toggle="writeModel1">Show models</button>
+    <div id="writeModel1" class="model hidden">
+      <p><strong>A2:</strong> My name is Angie. I am motivated and friendly. I have worked with customers. I am improving my English because I would like to work at Disney.</p>
+      <p><strong>B1:</strong> My name is Angie, and I live near Nantes. I have worked with customers before, especially at Carrefour Market. I am patient, motivated and friendly. I am currently improving my English because I would like to work at Disney in the future.</p>
+      <p><strong>B1+:</strong> My name is Angie. I am motivated, patient and passionate about customer service. My past experiences have helped me become more confident with customers, and I am currently improving my English step by step. In the future, I would love to work at Disney and create memorable experiences for international guests.</p>
+    </div>
+    <p id="feedbackWrite1" class="feedback"></p>
+  </div>
+
+  <div class="writingTask">
+    <h3>Task 2 — Reply to a Complaint</h3>
+    <p>A guest waited for an attraction, but it closed before their turn. Apologise, explain and offer a solution.</p>
+    <textarea id="write2"></textarea>
+    <button class="btn primary" data-check-writing="write2" type="button">Check</button>
+    <button class="btn" data-listen="write2" type="button">🔊 Listen</button>
+    <button class="btn ghost" data-toggle="writeModel2">Show models</button>
+    <div id="writeModel2" class="model hidden">
+      <p><strong>A2:</strong> Dear guest, I am sorry. The attraction was closed. You can try another attraction.</p>
+      <p><strong>B1:</strong> Dear guest, I am sorry for the inconvenience. The attraction was temporarily closed for safety reasons. You could try another attraction nearby.</p>
+      <p><strong>B1+:</strong> Dear guest, thank you for your message. I understand your frustration, and I am sorry for the inconvenience. The attraction was temporarily closed for safety reasons. On your next visit, you could check the app for wait times or ask a cast member for another recommendation nearby.</p>
+    </div>
+    <p id="feedbackWrite2" class="feedback"></p>
+  </div>
+
+  <div class="writingTask">
+    <h3>Task 3 — Incident Report</h3>
+    <p>A guest reported a lost wallet near a shop. Write a short factual report.</p>
+    <textarea id="write3"></textarea>
+    <button class="btn primary" data-check-writing="write3" type="button">Check</button>
+    <button class="btn" data-listen="write3" type="button">🔊 Listen</button>
+    <button class="btn ghost" data-toggle="writeModel3">Show model</button>
+    <div id="writeModel3" class="model hidden">A guest reported a lost black wallet near the gift shop at approximately 3 p.m. I asked for a description, checked where the guest had last seen it and contacted my supervisor. The guest was advised to visit the lost property office.</div>
+    <p id="feedbackWrite3" class="feedback"></p>
+  </div>
+</div>
+</section>
+
+<section class="card examSection">
+<h2>🎤 Section I — Speaking & Interview Randomizer</h2>
+<p class="muted">Generate a prompt, prepare for 30–45 seconds, then record your answer in Voice Memos.</p>
+<button class="btn primary" id="newQuestion" type="button">New question</button>
+<div id="questionBox" class="output"></div>
+<textarea id="speakingNotes" placeholder="Prepare your answer..."></textarea>
+<button class="btn primary" id="checkSpeaking" type="button">Check notes</button>
+<button class="btn" data-listen="speakingNotes" type="button">🔊 Listen</button>
+<button class="btn ghost" data-toggle="speakingModel">Show A2 / B1 / B1+ models</button>
+<div id="speakingModel" class="model hidden"></div>
+<p id="speakingFeedback" class="feedback"></p>
+</section>
+
+<section class="card final">
+<h2>🏆 Final Report & Mistake Notebook</h2>
+<button class="btn primary" id="generateReport" type="button">Generate final report</button>
+<div id="reportOutput" class="report"></div>
+<p class="magic">Trust your training. You are ready to communicate. ✨</p>
+</section>
+
+</main>
+<footer>SpeakEasyTisha • Angie Complete VTEST Final Mock</footer>
+<script src="js/angie-complete-vtest-final-mock.js"></script>
+</body>
+</html>
