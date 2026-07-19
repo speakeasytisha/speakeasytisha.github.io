@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yanis — Cabin Announcements, Safety Instructions & Procedure Language</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-21-cabin-announcements-safety.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Yanis · Cabin announcements, safety instructions & procedure language</div>
+    </div>
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button">🇬🇧 UK</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+      <div class="scorebox">Score <span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>Cabin Announcements & Safety English ✈️</h1>
+      <p class="lead">This lesson helps <strong>you give clear announcements, safety instructions, and procedure information</strong> for the LILATE exam and for your future job. You will practise <strong>imperatives</strong>, <strong>must / have to / need to / can / can’t</strong>, <strong>be + past participle</strong> for status, and <strong>sequence markers</strong>.</p>
+      <p class="lead fr">Cette leçon vous aide à <strong>faire des annonces claires, donner des consignes de sécurité et transmettre des procédures</strong> pour le LILATE et pour votre futur métier.</p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start lesson</button>
+        <button class="btn btn--ghost" id="btnListenIntro" type="button">🔊 Listen intro</button>
+      </div>
+      <div class="minirow">
+        <div class="minicard"><div class="minicard__t">Rules</div><div class="minicard__p">All key structures, notes, and exceptions.</div></div>
+        <div class="minicard"><div class="minicard__t">Vocabulary</div><div class="minicard__p">Dropdown categories with translations, definitions, and examples.</div></div>
+        <div class="minicard"><div class="minicard__t">Practice</div><div class="minicard__p">Many exercises from easy to harder with models.</div></div>
+      </div>
+    </div>
+    <div class="panelcard">
+      <div class="panelcard__title">Lesson map</div>
+      <ol class="panelcard__list">
+        <li>Grammar workshop by rule</li>
+        <li>Vocabulary station</li>
+        <li>Easy → hard exercise hub</li>
+        <li>Writing ladder</li>
+        <li>Scenario lab with visible models</li>
+        <li>Live oral practice</li>
+      </ol>
+      <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+      <div class="muted tiny">Goal: sound calm, clear, and professional when you give instructions.</div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section">
+    <div class="section__head">
+      <h2>1) Rule workshop — grammar for announcements and procedures</h2>
+      <p class="muted">Each block gives you the rule, the nuance, examples, and a note box.</p>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>A. Imperatives</h3><button class="btn btn--ghost speakRule" data-say="Fasten your seatbelt. Remain seated. Please switch off your electronic devices." type="button">🔊 Listen</button></div>
+        <div class="gRule"><strong>Rule:</strong> use the base verb with no subject to give an instruction.</div>
+        <div class="gExamples">
+          <div class="example">Fasten your seatbelt.</div>
+          <div class="example">Remain seated.</div>
+          <div class="example">Please switch off your electronic devices.</div>
+        </div>
+        <div class="gRule alt"><strong>Nuance:</strong> <strong>please</strong> makes the instruction more polite. The verb does not change.</div>
+        <div class="gExamples">
+          <div class="good">✅ Please fasten your seatbelt.</div>
+          <div class="bad">❌ You fasten your seatbelt.</div>
+        </div>
+        <div class="gRule alt"><strong>Negative imperative:</strong> use <strong>Do not / Don’t + base verb</strong>.</div>
+        <div class="gExamples">
+          <div class="example">Do not smoke.</div>
+          <div class="example">Don’t stand up now.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head"><h3>B. Must / have to / need to / can / can’t</h3><button class="btn btn--ghost speakRule" data-say="Passengers must remain seated. You need to put your bag under the seat. You can board now. You can't use your phone now." type="button">🔊 Listen</button></div>
+        <div class="gExamples">
+          <div class="example"><strong>must</strong> = strong rule / safety instruction</div>
+          <div class="example">Passengers must remain seated.</div>
+          <div class="example"><strong>have to / need to</strong> = necessary action</div>
+          <div class="example">You need to put your bag under the seat.</div>
+          <div class="example">You have to wait here.</div>
+          <div class="example"><strong>can / can’t</strong> = permission / possibility / rule</div>
+          <div class="example">You can board now.</div>
+          <div class="example">You can’t use your phone now.</div>
+        </div>
+        <div class="gRule alt"><strong>Nuance:</strong> in airline safety language, <strong>must</strong> sounds stronger and more formal than <strong>have to</strong>.</div>
+      </div>
+    </div>
+
+    <div class="two mt">
+      <div class="card">
+        <div class="card__head"><h3>C. Subject + be + past participle</h3><button class="btn btn--ghost speakRule" data-say="The flight is delayed. The gate is confirmed. Boarding is suspended." type="button">🔊 Listen</button></div>
+        <div class="gRule"><strong>Rule:</strong> use this structure to describe the situation now.</div>
+        <div class="gExamples">
+          <div class="example">The flight is delayed.</div>
+          <div class="example">The gate is confirmed.</div>
+          <div class="example">Boarding is suspended.</div>
+          <div class="example">The safety check is completed.</div>
+        </div>
+        <div class="gRule alt"><strong>Simple learner explanation:</strong> these phrases describe the current status now.</div>
+        <div class="gExamples">
+          <div class="good">✅ The flight is delayed.</div>
+          <div class="good">✅ Boarding is cancelled.</div>
+          <div class="bad">❌ The gate is changed. <span class="muted">Better: Your new gate is A7.</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head"><h3>D. Sequence markers + because / so / but</h3><button class="btn btn--ghost speakRule" data-say="First, show me your boarding pass. Then, please go to gate A7. After that, wait near the desk. Finally, boarding will begin." type="button">🔊 Listen</button></div>
+        <div class="gRule"><strong>Sequence:</strong> first, then, after that, finally.</div>
+        <div class="gExamples">
+          <div class="example">First, show me your boarding pass.</div>
+          <div class="example">Then, please go to gate A7.</div>
+          <div class="example">After that, wait near the desk.</div>
+          <div class="example">Finally, boarding will begin.</div>
+        </div>
+        <div class="gRule alt"><strong>Linkers:</strong> use <strong>because</strong> for reason, <strong>so</strong> for result, and <strong>but</strong> for contrast.</div>
+        <div class="gExamples">
+          <div class="example">Please remain seated because we are preparing for take-off.</div>
+          <div class="example">The flight is delayed, so boarding will begin later.</div>
+          <div class="example">You can board now, but please stay in your zone.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mt">
+      <div class="card__head"><h3>Your notes</h3></div>
+      <label class="lab">Write one rule + two examples
+        <textarea class="textarea" id="notesRules" rows="7" placeholder="Imperatives: ...&#10;Must / have to: ..."></textarea>
+      </label>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>2) Vocabulary station — category dropdown</h2>
+      <p class="muted">Study the words you need for announcements, safety, and procedures.</p>
+    </div>
+    <div class="filters">
+      <label class="selectWrap">Category
+        <select id="vocabCategory"></select>
+      </label>
+      <button class="btn btn--ghost" id="btnSpeakCategory" type="button">🔊 Listen category</button>
+    </div>
+    <div id="vocabGrid" class="vocabGrid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>3) Exercise hub — easy to hard</h2>
+      <p class="muted">Many exercises so you can really feel comfortable with the situations.</p>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 1 — choose the best instruction</h3>
+      <div id="mcq1"></div>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 2 — fill in the missing words</h3>
+      <div id="fill1"></div>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 3 — choose the correct status phrase</h3>
+      <div id="mcq2"></div>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 4 — sequence markers</h3>
+      <div id="seqHost"></div>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 5 — rule focus: must / have to / need to / can / can’t</h3>
+      <div id="modalsHost"></div>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 6 — announcement sentence builder</h3>
+      <div id="builderHost"></div>
+      <div class="fb hidden" id="builderFb"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>4) Writing ladder — simple, better, stronger</h2>
+      <p class="muted">Compare different levels of English, then write your own version.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Scenario</h3></div>
+        <div class="model">You need to make a short announcement because there is turbulence.</div>
+        <table class="miniTable">
+          <tr><th>Level</th><th>Model</th></tr>
+          <tr><td>Simple</td><td>Please sit down.</td></tr>
+          <tr><td>Better</td><td>Please remain seated because there is turbulence.</td></tr>
+          <tr><td>Stronger</td><td>Ladies and gentlemen, we are experiencing turbulence. Please return to your seats and fasten your seatbelts. Thank you for your cooperation.</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Your turn</h3></div>
+        <label class="lab">Write your own announcement
+          <textarea class="textarea" id="writingTry" rows="8" placeholder="Ladies and gentlemen, ..."></textarea>
+        </label>
+        <button class="btn btn--ghost" id="btnCheckWriting" type="button">Check ideas</button>
+        <div class="steps hidden" id="writingChecklist"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>5) Scenario lab — choose a real cabin situation</h2>
+      <p class="muted">Read the situation, collect the useful information, then compare your answer with the models.</p>
+    </div>
+    <div class="filters">
+      <label class="selectWrap">Scenario
+        <select id="scenarioSelect"></select>
+      </label>
+      <button class="btn btn--ghost" id="btnSpeakScenario" type="button">🔊 Listen</button>
+      <button class="btn btn--ghost" id="btnToggleModel" type="button">👀 Show / hide model answers</button>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Situation</h3></div>
+        <div class="model" id="scenarioText"></div>
+        <div class="steps" id="scenarioFacts"></div>
+        <label class="lab">Write your response
+          <textarea class="textarea" id="scenarioResponse" rows="7" placeholder="Good afternoon. ..."></textarea>
+        </label>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Models</h3></div>
+        <div class="model hidden" id="scenarioModel"></div>
+        <div class="model hidden" id="scenarioStronger"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>6) Guided roleplay — visible model answers</h2>
+      <p class="muted">Practise realistic cabin language. You can answer first, then reveal the models.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Crew task</h3><button class="btn btn--ghost" id="btnSpeakRP" type="button">🔊 Listen</button></div>
+        <div class="model" id="rpPrompt">Good afternoon. Please make a short take-off announcement to the passengers.</div>
+        <label class="lab">Your answer
+          <textarea class="textarea" id="rpAnswer" rows="8" placeholder="Good afternoon, ladies and gentlemen..."></textarea>
+        </label>
+        <button class="btn btn--ghost" id="btnToggleRPModel" type="button">👀 Show / hide model answers</button>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Model answers</h3></div>
+        <div class="model hidden" id="rpModel"></div>
+        <div class="model hidden" id="rpStronger"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>7) Live oral practice — you are the crew member</h2>
+      <p class="muted">Your teacher can play the passenger or the examiner. Choose a scenario and respond live.</p>
+    </div>
+    <div class="filters">
+      <label class="selectWrap">Live scenario
+        <select id="oralSelect"></select>
+      </label>
+      <button class="btn btn--ghost" id="btnToggleOralModel" type="button">👀 Show / hide model answer</button>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Prompt</h3></div>
+        <div class="model" id="oralPrompt"></div>
+        <div class="steps" id="oralChecklist"></div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Model answer</h3></div>
+        <div class="model hidden" id="oralModel"></div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class='panel evaluation-panel' id='evaluationReport'>
+    <h2>📋 Suivi des acquis — Qualiopi</h2>
+    <p class='teacher'>Your results are saved in this browser. You can return later and continue. Oral, roleplay and writing tasks can be assessed manually with your trainer.</p>
+    <div class='evaluation-meta'>
+      <label>Learner / Apprenant
+        <input id='learnerName' value='Yanis Deschasset'>
+      </label>
+      <label>Trainer / Formatrice
+        <input id='trainerName' value='Tisha DOUTY-DOSIERE'>
+      </label>
+      <label>Evaluation date
+        <input id='evaluationDate' type='date'>
+      </label>
+    </div>
+    <div class='evaluation-legend'>
+      <span class='status achieved'>Objectif atteint</span>
+      <span class='status progress'>En cours d’acquisition</span>
+      <span class='status not-achieved'>Objectif non atteint</span>
+      <span class='status not-started'>Non commencé</span>
+    </div>
+    <div class='table-wrap'>
+      <table class='evaluation-table'>
+        <thead>
+          <tr><th>Objectif pédagogique</th><th>Support / sujet</th><th>Mode d’évaluation</th><th>Score</th><th>Résultat</th></tr>
+        </thead>
+        <tbody id='evaluationRows'></tbody>
+      </table>
+    </div>
+    <div class='manual-evaluation'>
+      <h3>🗣️ Évaluations à renseigner avec la formatrice</h3>
+      <div class='manual-grid'>
+        <label>Scenario lab — written response
+          <select data-manual='scenario-writing'>
+            <option value='not-started'>Non commencé</option>
+            <option value='progress'>Objectif en cours d’acquisition</option>
+            <option value='achieved'>Objectif atteint</option>
+            <option value='not-achieved'>Objectif non atteint</option>
+          </select>
+        </label>
+        <label>Guided roleplay — oral
+          <select data-manual='guided-roleplay'>
+            <option value='not-started'>Non commencé</option>
+            <option value='progress'>Objectif en cours d’acquisition</option>
+            <option value='achieved'>Objectif atteint</option>
+            <option value='not-achieved'>Objectif non atteint</option>
+          </select>
+        </label>
+        <label>Live oral practice
+          <select data-manual='live-oral'>
+            <option value='not-started'>Non commencé</option>
+            <option value='progress'>Objectif en cours d’acquisition</option>
+            <option value='achieved'>Objectif atteint</option>
+            <option value='not-achieved'>Objectif non atteint</option>
+          </select>
+        </label>
+        <label>Writing ladder
+          <select data-manual='writing-ladder'>
+            <option value='not-started'>Non commencé</option>
+            <option value='progress'>Objectif en cours d’acquisition</option>
+            <option value='achieved'>Objectif atteint</option>
+            <option value='not-achieved'>Objectif non atteint</option>
+          </select>
+        </label>
+        <label>Trainer comments
+          <textarea id='trainerComments' rows='4' placeholder='Observations, strengths, points to review...'></textarea>
+        </label>
+      </div>
+    </div>
+    <div class='overall-box'>
+      <div><strong>Completion:</strong> <span id='completionRate'>0%</span></div>
+      <div><strong>Overall result:</strong> <span id='overallStatus' class='status not-started'>Non commencé</span></div>
+      <div><strong>Last saved:</strong> <span id='lastSaved'>—</span></div>
+    </div>
+    <div class='buttons report-buttons'>
+      <button id='saveProgress'>💾 Save progress</button>
+      <button id='downloadPdf'>📄 Download PDF report</button>
+      <button id='downloadHtml'>⬇ Download readable report</button>
+      <button id='copySummary'>📋 Copy results</button>
+      <button id='emailSummary'>✉️ Prepare email</button>
+      <button id='printReport'>🖨 Print report</button>
+      <button id='resetProgress' class='danger'>↺ Reset results</button>
+    </div>
+    <p class='storage-note'>⚠ Progress is stored only in this browser and on this device. Use “Copy results”, “Prepare email”, “Download PDF report”, or “Download readable report” to keep clear evidence for the learner file.</p>
+  </section>
+
+
+</main>
+
+<script src="js/yanis-page-21-cabin-announcements-safety.js"></script>
+</body>
+</html>
