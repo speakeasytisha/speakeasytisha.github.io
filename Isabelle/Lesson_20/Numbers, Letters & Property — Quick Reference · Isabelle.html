@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)file:///C:/Users/Tisha/Downloads/isabelle-lesson20-reference.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Numbers, Letters &amp; Property — Quick Reference · Isabelle</title>
+<style>
+  :root{
+    --delft:#1D3557;
+    --delft-dim:#2C4A72;
+    --brick:#A9462F;
+    --ochre:#C79A3C;
+    --canal:#4C6B54;
+    --paper:#F5F1E8;
+    --paper-2:#EDE6D6;
+    --ink:#221E19;
+    --ink-soft:#5B564C;
+    --line:#D8CFB8;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Sans 3','Segoe UI',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @font-face{
+    font-family:'Fraunces';
+    src:local('Fraunces');
+  }
+
+  .sheet{
+    max-width:880px;
+    margin:0 auto;
+    padding:40px 44px 60px;
+  }
+
+  /* ---------- Gable motif (signature element) ---------- */
+  .gable{
+    display:flex;
+    align-items:flex-end;
+    gap:3px;
+    height:22px;
+    margin:6px 0;
+  }
+  .gable span{
+    display:block;
+    width:14px;
+    background:var(--ochre);
+  }
+  .gable span:nth-child(1){height:6px;}
+  .gable span:nth-child(2){height:12px;}
+  .gable span:nth-child(3){height:18px;}
+  .gable span:nth-child(4){height:22px;background:var(--brick);}
+  .gable span:nth-child(5){height:18px;}
+  .gable span:nth-child(6){height:12px;}
+  .gable span:nth-child(7){height:6px;}
+
+  .gable-divider{
+    display:flex;
+    align-items:flex-end;
+    gap:2px;
+    height:16px;
+    margin:34px 0 18px;
+    opacity:.6;
+  }
+  .gable-divider span{
+    display:block;
+    width:8px;
+    background:var(--line);
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    border-bottom:3px solid var(--delft);
+    padding-bottom:22px;
+    margin-bottom:8px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--brick);
+    margin:0 0 10px;
+  }
+  h1{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:600;
+    font-size:38px;
+    line-height:1.08;
+    margin:0 0 12px;
+    color:var(--delft);
+    letter-spacing:-.01em;
+  }
+  header p.lede{
+    font-size:16.5px;
+    color:var(--ink-soft);
+    max-width:60ch;
+    margin:0;
+  }
+  header .meta{
+    margin-top:16px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+  }
+
+  /* ---------- Sections ---------- */
+  section{margin-top:6px;}
+  h2{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:600;
+    font-size:21px;
+    color:var(--delft);
+    margin:0 0 4px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  h2 .num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--brick);
+    font-weight:600;
+  }
+  .section-note{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin:0 0 14px;
+  }
+  .fr{
+    color:var(--canal);
+    font-style:italic;
+  }
+
+  /* ---------- Rule cards ---------- */
+  .rule-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .rule-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:4px solid var(--delft);
+    padding:12px 14px;
+  }
+  .rule-card .label{
+    font-weight:700;
+    font-size:14px;
+    color:var(--delft);
+    margin-bottom:3px;
+  }
+  .rule-card .ex{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13.5px;
+    color:var(--ink);
+    background:var(--paper-2);
+    padding:3px 6px;
+    display:inline-block;
+    margin-top:5px;
+  }
+  .rule-card .say{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:6px;
+  }
+
+  /* ---------- Tables ---------- */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+  }
+  th{
+    text-align:left;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    border-bottom:2px solid var(--delft);
+    padding:6px 10px 6px 0;
+  }
+  td{
+    padding:8px 10px 8px 0;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  td.mono{font-family:'IBM Plex Mono',monospace;}
+  tr:last-child td{border-bottom:1px solid var(--delft);}
+
+  /* ---------- Spelling alphabet ---------- */
+  .alpha-grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:6px;
+    margin-top:6px;
+  }
+  .alpha-cell{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:7px 6px;
+    text-align:center;
+    font-size:12.5px;
+  }
+  .alpha-cell b{
+    display:block;
+    font-family:'Fraunces',serif;
+    font-size:17px;
+    color:var(--brick);
+  }
+  .alpha-cell.flag b{color:var(--delft);}
+
+  /* ---------- Phrase list ---------- */
+  .phrases{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    gap:8px;
+  }
+  .phrases li{
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:4px solid var(--canal);
+    padding:9px 13px;
+    font-size:14px;
+  }
+  .phrases li .fr-tag{
+    display:block;
+    font-size:12px;
+    color:var(--canal);
+    margin-top:2px;
+  }
+
+  /* ---------- Two column layout for lower sections ---------- */
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px;
+  }
+
+  .callout{
+    background:var(--delft);
+    color:var(--paper);
+    padding:16px 18px;
+    margin-top:30px;
+    font-size:14px;
+  }
+  .callout b{color:var(--ochre);}
+
+  footer{
+    margin-top:36px;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .print-btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    background:var(--brick);
+    color:#fff;
+    border:none;
+    padding:9px 16px;
+    cursor:pointer;
+  }
+  .print-btn:hover{background:var(--delft);}
+
+  @media print{
+    body{background:#fff;}
+    .no-print{display:none !important;}
+    .sheet{padding:0;max-width:100%;}
+    .rule-card, .phrases li, .alpha-cell, td, th{break-inside:avoid;}
+  }
+
+  @media (max-width:640px){
+    .sheet{padding:26px 18px 40px;}
+    h1{font-size:28px;}
+    .rule-grid, .two-col{grid-template-columns:1fr;}
+    .alpha-grid{grid-template-columns:repeat(4,1fr);}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <p class="eyebrow">SpeakEasy Tisha · Isabelle · Lesson 20 companion</p>
+    <div class="gable"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <h1>Numbers, Letters &amp; Property<br>— Quick Reference</h1>
+    <p class="lede">One page to glance at just before a recruiter call or a property viewing. Full interactive lesson stays at <span style="color:var(--delft);font-weight:600;">Lesson_20/index.html</span> — this is the version you can print and keep next to the phone.</p>
+    <div class="meta">
+      <span>🖨 Printable A4</span>
+      <span>🇳🇱 Netherlands job search &amp; property</span>
+      <span>🇫🇷 FR notes included</span>
+    </div>
+    <button class="print-btn no-print" onclick="window.print()">Print this page</button>
+  </header>
+
+  <section>
+    <div class="gable-divider"><span style="height:4px"></span><span style="height:8px"></span><span style="height:12px"></span><span style="height:16px"></span><span style="height:12px"></span><span style="height:8px"></span><span style="height:4px"></span></div>
+    <h2><span class="num">01</span> Numbers — the four situations</h2>
+    <p class="section-note">Digit by digit for identifiers. Grouped for phone blocks. Full words for money. <span class="fr">Chiffre par chiffre pour les identifiants, groupé pour le téléphone, en toutes lettres pour l'argent.</span></p>
+    <div class="rule-grid">
+      <div class="rule-card">
+        <div class="label">Phone (mobile)</div>
+        <span class="ex">+31 6 12 34 56 78</span>
+        <div class="say">"plus thirty-one, six, twelve, thirty-four, fifty-six, seventy-eight"</div>
+      </div>
+      <div class="rule-card">
+        <div class="label">Phone (landline)</div>
+        <span class="ex">020 612 55 22</span>
+        <div class="say">"zero two zero, six one two, fifty-five, twenty-two"</div>
+      </div>
+      <div class="rule-card">
+        <div class="label">Postcode</div>
+        <span class="ex">1075 AT</span>
+        <div class="say">"one zero seven five — A for Amsterdam, T for Tilburg"</div>
+      </div>
+      <div class="rule-card">
+        <div class="label">Price</div>
+        <span class="ex">€ 895,000 k.k.</span>
+        <div class="say">"eight hundred and ninety-five thousand euros, buyer's costs"</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="gable-divider"><span style="height:4px"></span><span style="height:8px"></span><span style="height:12px"></span><span style="height:16px"></span><span style="height:12px"></span><span style="height:8px"></span><span style="height:4px"></span></div>
+    <h2><span class="num">02</span> Spelling alphabet</h2>
+    <p class="section-note">Use for names, postcode letters and email addresses when the line is unclear. <span class="fr">À utiliser quand la ligne est mauvaise.</span></p>
+    <div class="alpha-grid">
+      <div class="alpha-cell flag"><b>A</b>Amsterdam</div>
+      <div class="alpha-cell"><b>B</b>Bravo</div>
+      <div class="alpha-cell"><b>C</b>Charlie</div>
+      <div class="alpha-cell"><b>D</b>Delta</div>
+      <div class="alpha-cell flag"><b>E</b>Edward</div>
+      <div class="alpha-cell"><b>F</b>Foxtrot</div>
+      <div class="alpha-cell flag"><b>G</b>Golf</div>
+      <div class="alpha-cell flag"><b>H</b>Hotel</div>
+      <div class="alpha-cell flag"><b>I</b>India</div>
+      <div class="alpha-cell flag"><b>J</b>Juliet</div>
+      <div class="alpha-cell"><b>K</b>Kilo</div>
+      <div class="alpha-cell"><b>L</b>Lima</div>
+      <div class="alpha-cell"><b>M</b>Martin</div>
+      <div class="alpha-cell"><b>N</b>November</div>
+      <div class="alpha-cell"><b>O</b>Oscar</div>
+      <div class="alpha-cell"><b>P</b>Papa</div>
+      <div class="alpha-cell"><b>Q</b>Quebec</div>
+      <div class="alpha-cell flag"><b>R</b>Romeo</div>
+      <div class="alpha-cell"><b>S</b>Sierra</div>
+      <div class="alpha-cell flag"><b>T</b>Tilburg</div>
+      <div class="alpha-cell"><b>U</b>Uniform</div>
+      <div class="alpha-cell"><b>V</b>Victor</div>
+      <div class="alpha-cell flag"><b>W</b>Whisky</div>
+      <div class="alpha-cell"><b>X</b>X-ray</div>
+      <div class="alpha-cell flag"><b>Y</b>Yankee</div>
+      <div class="alpha-cell"><b>Z</b>Zulu / zed</div>
+    </div>
+  </section>
+
+  <div class="two-col">
+    <section>
+      <div class="gable-divider"><span style="height:4px"></span><span style="height:8px"></span><span style="height:12px"></span><span style="height:16px"></span><span style="height:12px"></span><span style="height:8px"></span><span style="height:4px"></span></div>
+      <h2><span class="num">03</span> Property money</h2>
+      <table>
+        <tbody><tr><th>Figure</th><th>Say it as</th></tr>
+        <tr><td class="mono">€ 895,000 k.k.</td><td>...euros, buyer's costs</td></tr>
+        <tr><td class="mono">€ 1.25 million v.o.n.</td><td>...free of transfer costs</td></tr>
+        <tr><td class="mono">€ 3,250 / month</td><td>...euros per month</td></tr>
+        <tr><td class="mono">€ 350 service costs</td><td>...in service charges</td></tr>
+        <tr><td class="mono">85 m²</td><td>eighty-five square metres</td></tr>
+        <tr><td class="mono">2.5 %</td><td>two point five percent</td></tr>
+      </tbody></table>
+      <p class="section-note" style="margin-top:10px;"><span class="fr">k.k. = frais d'acquisition à la charge de l'acheteur · v.o.n. = frais de transfert inclus</span></p>
+    </section>
+
+    <section>
+      <div class="gable-divider"><span style="height:4px"></span><span style="height:8px"></span><span style="height:12px"></span><span style="height:16px"></span><span style="height:12px"></span><span style="height:8px"></span><span style="height:4px"></span></div>
+      <h2><span class="num">04</span> Ready phrases</h2>
+      <ul class="phrases">
+        <li>Let me read that back to make sure I have everything correctly.
+          <span class="fr-tag">Je relis pour vérifier.</span></li>
+        <li>Could you spell that for me, please?
+          <span class="fr-tag">Pourriez-vous épeler, s'il vous plaît ?</span></li>
+        <li>Is that B for Bravo or D for Delta?
+          <span class="fr-tag">C'est B comme Bravo ou D comme Delta ?</span></li>
+        <li>The line isn't very clear — could you repeat that, please?
+          <span class="fr-tag">La ligne n'est pas très claire — pourriez-vous répéter ?</span></li>
+        <li>Could you speak a little more slowly, please?
+          <span class="fr-tag">Pourriez-vous parler un peu plus lentement ?</span></li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="callout">
+    <b>Before every call:</b> pick one phone number, one postcode, one email and one price from the lesson and say them out loud once. Thirty seconds of warm-up is usually enough.
+  </div>
+
+  <footer>
+    <span>SpeakEasy Tisha — Isabelle — Lesson 20</span>
+    <span>Full lesson: Lesson_20/index.html</span>
+  </footer>
+
+</div>
+
+
+</body></html>
