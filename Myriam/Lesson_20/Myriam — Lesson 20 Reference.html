@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)file:///C:/Users/Tisha/Downloads/myriam-lesson20-reference.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Myriam — Lesson 20 Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./Myriam — Lesson 20 Reference_files/css2" rel="stylesheet">
+<style>
+  :root{
+    --ink:#22303B;
+    --paper:#FAF6EC;
+    --navy:#1E3A4C;
+    --brass:#B08A4E;
+    --coral:#C1523B;
+    --sage:#5E7A63;
+    --line:#D8CDB4;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.5;
+    padding:0 0 60px;
+  }
+  .boarding-header{
+    background:var(--navy);
+    color:var(--paper);
+    padding:36px 24px 30px;
+    position:relative;
+    overflow:hidden;
+  }
+  .boarding-header::after{
+    content:"";
+    position:absolute;
+    right:-40px; top:-60px;
+    width:220px; height:220px;
+    border:2px dashed rgba(250,246,236,0.15);
+    border-radius:50%;
+  }
+  .route{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:clamp(24px,5.5vw,46px);
+    letter-spacing:1px;
+    flex-wrap:wrap;
+    text-align:center;
+  }
+  .route .arrow{
+    color:var(--brass);
+    font-size:0.6em;
+  }
+  .subline{
+    text-align:center;
+    margin-top:10px;
+    font-size:14px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    opacity:0.75;
+  }
+  .stub-row{
+    display:flex;
+    justify-content:space-between;
+    max-width:720px;
+    margin:26px auto 0;
+    padding-top:18px;
+    border-top:1px dashed rgba(250,246,236,0.3);
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    opacity:0.8;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .stub-row span b{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size:16px;
+    letter-spacing:0;
+    text-transform:none;
+    color:var(--paper);
+    margin-top:2px;
+  }
+
+  .controls{
+    max-width:840px;
+    margin:22px auto 0;
+    padding:0 20px;
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  button.toggle{
+    background:var(--card);
+    border:1.5px solid var(--navy);
+    color:var(--navy);
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:13px;
+    padding:9px 18px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  button.toggle:hover{ background:var(--navy); color:var(--paper); }
+  button.toggle.active{ background:var(--navy); color:var(--paper); }
+
+  main{
+    max-width:840px;
+    margin:30px auto;
+    padding:0 20px;
+    display:grid;
+    gap:22px;
+  }
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    position:relative;
+    overflow:hidden;
+  }
+  .card .perf{
+    position:absolute;
+    left:0; top:52px;
+    width:100%;
+    border-top:2px dashed var(--line);
+  }
+  .card-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    padding:16px 22px;
+    background:linear-gradient(to right, rgba(30,58,76,0.04), transparent);
+  }
+  .tag{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:11px;
+    color:var(--brass);
+    letter-spacing:2px;
+    text-transform:uppercase;
+    border:1px solid var(--brass);
+    border-radius:5px;
+    padding:3px 8px;
+    white-space:nowrap;
+  }
+  .card h2{
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    margin:0;
+    font-weight:600;
+  }
+  .card-body{
+    padding:24px 22px 22px;
+  }
+  .rule{
+    background:#F2ECDD;
+    border-left:3px solid var(--sage);
+    padding:10px 14px;
+    border-radius:0 8px 8px 0;
+    font-size:14.5px;
+    margin-bottom:16px;
+  }
+  .rule .fr{
+    display:none;
+    color:var(--sage);
+    font-style:italic;
+    font-size:13px;
+    margin-top:4px;
+  }
+  body.show-fr .rule .fr{ display:block; }
+
+  table.examples{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14.5px;
+  }
+  table.examples th{
+    text-align:left;
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--brass);
+    padding-bottom:6px;
+    border-bottom:1px solid var(--line);
+  }
+  table.examples td{
+    padding:9px 8px 9px 0;
+    border-bottom:1px solid #F0EADC;
+    vertical-align:top;
+  }
+  table.examples tr:last-child td{ border-bottom:none; }
+  .fr-cell{
+    display:none;
+    color:var(--sage);
+    font-style:italic;
+  }
+  body.show-fr .fr-cell{ display:table-cell; }
+
+  .wrong{
+    color:var(--coral);
+    text-decoration:line-through;
+  }
+  .right{ color:var(--sage); font-weight:600; }
+
+  .chip-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    background:#F2ECDD;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:8px 12px;
+    font-size:13.5px;
+  }
+  .chip b{ color:var(--navy); }
+  .chip .fr{
+    display:none;
+    color:var(--sage);
+    font-style:italic;
+    font-size:12px;
+  }
+  body.show-fr .chip .fr{ display:block; }
+
+  .phrase-list{
+    display:grid;
+    gap:10px;
+  }
+  .phrase{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-size:14.5px;
+  }
+  .phrase .ico{ font-size:16px; flex-shrink:0; }
+  .phrase .fr{
+    display:none;
+    color:var(--sage);
+    font-style:italic;
+    font-size:13px;
+  }
+  body.show-fr .phrase .fr{ display:block; }
+
+  .icon-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:30px; height:30px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--paper);
+    font-size:14px;
+    margin-right:8px;
+    flex-shrink:0;
+  }
+
+  ol.formula{
+    margin:0;
+    padding-left:20px;
+    font-size:14.5px;
+  }
+  ol.formula li{ margin-bottom:6px; }
+
+  ul.checklist{
+    margin:0;
+    padding-left:0;
+    list-style:none;
+    font-size:14.5px;
+    display:grid;
+    gap:8px;
+  }
+  ul.checklist li{
+    display:flex;
+    gap:8px;
+    align-items:flex-start;
+  }
+  ul.checklist li::before{
+    content:"✓";
+    color:var(--sage);
+    font-weight:700;
+    flex-shrink:0;
+  }
+
+  footer{
+    max-width:840px;
+    margin:36px auto 0;
+    padding:18px 22px;
+    text-align:center;
+    font-size:12px;
+    color:#8A8272;
+    border-top:1px solid var(--line);
+  }
+  footer b{ color:var(--navy); }
+  footer a{ color:var(--navy); }
+
+  @media print{
+    .controls{ display:none; }
+    body{ background:white; }
+    .card{ break-inside:avoid; border:1px solid #ccc; }
+    .boarding-header::after{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="boarding-header">
+  <div class="route">Talking about ME <span class="arrow">✈</span> clearly &amp; correctly</div>
+  <div class="subline">Myriam Schuh · Lesson 20 Reference</div>
+  <div class="stub-row">
+    <span>Focus<b>I/me/myself · say/tell</b></span>
+    <span>Task<b>Self-presentation</b></span>
+    <span>Length<b>45–60s oral</b></span>
+    <span>Level<b>A2+ → B1</b></span>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="toggle" id="frToggle" onclick="toggleFr()">🇫🇷 Afficher le français</button>
+  <button class="toggle" onclick="window.print()">🖨️ Print / Imprimer</button>
+</div>
+
+<main>
+
+  <!-- I ME MY MINE MYSELF -->
+  <div class="card">
+    <div class="perf"></div>
+    <div class="card-head">
+      <span class="tag">Grammar</span>
+      <h2>I / me / my / mine / myself</h2>
+    </div>
+    <div class="card-body">
+      <div class="rule">
+        <b>I</b> before the verb (subject) · <b>me</b> after a verb or preposition (object) · <b>my</b> before a noun · <b>mine</b> replaces "my + noun" · <b>myself</b> when subject and object are the same person.
+        <div class="fr">I avant le verbe (sujet) · me après un verbe ou une préposition (objet) · my avant un nom · mine remplace "my + nom" · myself quand le sujet et l'objet sont la même personne.</div>
+      </div>
+      <table class="examples">
+        <tbody><tr><th>Word</th><th>Example</th><th class="fr-cell">Français</th></tr>
+        <tr><td><b>I</b></td><td>I live in Kientzville. I worked in technical support.</td><td class="fr-cell">Je vis à Kientzville. J'ai travaillé dans le support technique.</td></tr>
+        <tr><td><b>me</b></td><td>Tisha helped <b>me</b>. Could you tell <b>me</b>?</td><td class="fr-cell">Tisha m'a aidée. Pourriez-vous me le dire ?</td></tr>
+        <tr><td><b>my / mine</b></td><td>This is <b>my</b> village. This lesson is <b>mine</b>.</td><td class="fr-cell">C'est mon village. Cette leçon est la mienne.</td></tr>
+        <tr><td><b>myself</b></td><td>I introduce <b>myself</b>. I prepared <b>myself</b> for the exam.</td><td class="fr-cell">Je me présente. Je me suis préparée pour l'examen.</td></tr>
+      </tbody></table>
+      <div class="rule" style="margin-top:16px;">
+        <b>Important correction:</b><br>
+        Subject → <em>My husband and I travelled to Paris.</em><br>
+        Object → <em>Tisha gave my husband and me the link.</em>
+        <div class="fr">Sujet → Mon mari et moi avons voyagé à Paris. Objet → Tisha a donné le lien à mon mari et à moi.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAY VS TELL -->
+  <div class="card">
+    <div class="perf"></div>
+    <div class="card-head">
+      <span class="tag">Grammar</span>
+      <h2>Say vs Tell</h2>
+    </div>
+    <div class="card-body">
+      <div class="rule">
+        <b>say</b> + words/information · <b>tell</b> + person + words/information
+        <div class="fr">say + mots/information · tell + personne + mots/information</div>
+      </div>
+      <table class="examples">
+        <tbody><tr><th>Verb</th><th>Example</th><th class="fr-cell">Français</th></tr>
+        <tr><td><b>say</b></td><td>She <b>said</b>, "Good morning." She <b>said</b> that she was ready.</td><td class="fr-cell">Elle a dit "Bonjour". Elle a dit qu'elle était prête.</td></tr>
+        <tr><td><b>tell</b></td><td>She <b>told</b> me the answer. She <b>told</b> me to practise.</td><td class="fr-cell">Elle m'a donné la réponse. Elle m'a dit de m'entraîner.</td></tr>
+        <tr><td>❌ / ✅</td><td><span class="wrong">She said me.</span> → <span class="right">She told me.</span></td><td class="fr-cell">Incorrect → correct</td></tr>
+        <tr><td>❌ / ✅</td><td><span class="wrong">She told to me.</span> → <span class="right">She told me.</span></td><td class="fr-cell">Incorrect → correct</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <!-- SELF PRESENTATION FORMULA -->
+  <div class="card">
+    <div class="perf"></div>
+    <div class="card-head">
+      <span class="tag">Speaking</span>
+      <h2>Exam answer formula</h2>
+    </div>
+    <div class="card-body">
+      <div class="rule">
+        Use this structure for any 45–60 second self-presentation or personal question in the exam.
+        <div class="fr">Utilisez cette structure pour toute présentation personnelle de 45 à 60 secondes ou question personnelle à l'examen.</div>
+      </div>
+      <ol class="formula">
+        <li><b>Start</b> with a clear sentence — who you are or what the topic is.</li>
+        <li><b>Add</b> two or three details.</li>
+        <li><b>Use</b> one connector (because, however, overall).</li>
+        <li><b>Finish</b> with an opinion or a reason.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ORAL CHECKLIST -->
+  <div class="card">
+    <div class="perf"></div>
+    <div class="card-head">
+      <span class="tag">Oral · 45–60s</span>
+      <h2>Speaking checklist</h2>
+    </div>
+    <div class="card-body">
+      <ul class="checklist">
+        <li>Use <b>I</b> as the subject.</li>
+        <li>Use <b>me</b> after tell / help / give.</li>
+        <li>Use <b>myself</b> for "I introduce myself".</li>
+        <li>Say <b>tell me</b>, not "tell to me".</li>
+        <li>End with a reason or opinion.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- WRITING CHECKLIST -->
+  <div class="card">
+    <div class="perf"></div>
+    <div class="card-head">
+      <span class="tag">Writing · 80–125 words</span>
+      <h2>Writing checklist</h2>
+    </div>
+    <div class="card-body">
+      <ul class="checklist">
+        <li>80–125 words.</li>
+        <li>One clear introduction.</li>
+        <li>One detail about your past job.</li>
+        <li>One detail about where you live.</li>
+        <li>Use <b>say</b> or <b>tell</b> correctly.</li>
+        <li>Use one connector: because, however, overall.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- QUICK PHRASES -->
+  <div class="card">
+    <div class="perf"></div>
+    <div class="card-head">
+      <span class="tag">Ready-to-use</span>
+      <h2>Quick self-presentation phrases</h2>
+    </div>
+    <div class="card-body">
+      <div class="phrase-list">
+        <div class="phrase"><span class="ico icon-badge">👤</span><div><b>I live in Kientzville, a village near...</b><div class="fr">Je vis à Kientzville, un village près de...</div></div></div>
+        <div class="phrase"><span class="ico icon-badge">💼</span><div><b>I used to work in technical support.</b><div class="fr">Je travaillais dans le support technique.</div></div></div>
+        <div class="phrase"><span class="ico icon-badge">🗣</span><div><b>Let me introduce myself.</b><div class="fr">Permettez-moi de me présenter.</div></div></div>
+        <div class="phrase"><span class="ico icon-badge">🔗</span><div><b>...because I enjoy the peaceful atmosphere.</b><div class="fr">...parce que j'apprécie l'atmosphère paisible.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Prepared by <b>SpeakEasyTisha</b> · Reference summary for <a href="https://speakeasytisha.github.io/Myriam/Lesson_20/english360-myriam-pronouns-say-tell-self-presentation.html" target="_blank">Lesson 20</a> · Qualiopi-aligned training resource
+</footer>
+
+<script>
+function toggleFr(){
+  document.body.classList.toggle('show-fr');
+  document.getElementById('frToggle').classList.toggle('active');
+}
+</script>
+
+
+
+</body></html>
