@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Analyse des besoins et diagnostic initial LILATE d'Aminata Touré" />
+  <title>Aminata Touré — Analyse des besoins LILATE</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__glow hero__glow--one"></div>
+    <div class="hero__glow hero__glow--two"></div>
+    <div class="container hero__content">
+      <div class="eyebrow">Connect Learning · Diagnostic initial</div>
+      <h1>Aminata Touré<br><span>Analyse des besoins & préparation LILATE</span></h1>
+      <p class="hero__lead">
+        Cette page vous permet de présenter votre projet, d’identifier vos priorités et de réaliser un premier diagnostic écrit et oral avant votre entretien avec votre formatrice.
+      </p>
+      <div class="hero__badges">
+        <span>⏱️ 20 à 30 minutes</span>
+        <span>🎙️ 3 enregistrements</span>
+        <span>✍️ 2 productions écrites</span>
+        <span>💾 Sauvegarde automatique</span>
+      </div>
+      <div class="notice notice--soft">
+        <strong>Important :</strong> ce diagnostic n’est pas un examen. Il sert à personnaliser votre formation, à préparer votre projet Air France et à définir les compétences à travailler pour la certification LILATE.
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <div class="progress-panel" aria-live="polite">
+      <div class="progress-panel__header">
+        <span>Progression</span>
+        <strong id="progressText">0 %</strong>
+      </div>
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <p id="progressMessage">Commencez par confirmer vos informations.</p>
+    </div>
+
+    <form id="needsForm" novalidate>
+      <section class="card section-card" data-section="identity">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <div>
+            <p class="kicker">Vos informations</p>
+            <h2>Identité et contact</h2>
+          </div>
+        </div>
+        <div class="grid grid--2">
+          <label class="field">
+            <span>Nom et prénom</span>
+            <input type="text" name="fullName" value="Aminata Touré" autocomplete="name" data-track />
+          </label>
+          <label class="field">
+            <span>Adresse e-mail</span>
+            <input type="email" name="email" value="aminata.aisse.toure22@gmail.com" autocomplete="email" data-track />
+          </label>
+          <label class="field">
+            <span>Numéro de téléphone</span>
+            <input type="tel" name="phone" placeholder="Votre numéro de téléphone" autocomplete="tel" data-track />
+          </label>
+          <label class="field">
+            <span>Date de réalisation</span>
+            <input type="date" name="completionDate" data-track />
+          </label>
+        </div>
+      </section>
+
+      <section class="card section-card" data-section="career">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <div>
+            <p class="kicker">Votre parcours</p>
+            <h2>Expérience professionnelle</h2>
+          </div>
+        </div>
+        <div class="notice">
+          Nous avons noté environ <strong>15 ans d’expérience dans les secteurs de l’aérien et de la restauration</strong>. Merci de préciser votre parcours pour nous aider à construire des mises en situation réalistes.
+        </div>
+        <div class="grid">
+          <label class="field">
+            <span>Présentez les postes que vous avez occupés et les entreprises ou secteurs concernés.</span>
+            <textarea name="careerHistory" rows="5" placeholder="Exemple : J’ai travaillé pendant… Mes principales fonctions étaient…" data-track></textarea>
+          </label>
+          <label class="field">
+            <span>Quelles étaient vos principales responsabilités ?</span>
+            <textarea name="responsibilities" rows="4" placeholder="Accueil, service, sécurité, relation client, gestion des demandes, travail en équipe…" data-track></textarea>
+          </label>
+        </div>
+        <div class="grid grid--2">
+          <fieldset class="choice-group">
+            <legend>Avez-vous déjà travaillé dans un environnement international ?</legend>
+            <label><input type="radio" name="internationalEnvironment" value="Oui" data-track /> Oui</label>
+            <label><input type="radio" name="internationalEnvironment" value="Non" data-track /> Non</label>
+            <label><input type="radio" name="internationalEnvironment" value="Parfois" data-track /> Parfois</label>
+          </fieldset>
+          <fieldset class="choice-group">
+            <legend>À quelle fréquence utilisiez-vous l’anglais ?</legend>
+            <label><input type="radio" name="englishFrequency" value="Jamais" data-track /> Jamais</label>
+            <label><input type="radio" name="englishFrequency" value="Occasionnellement" data-track /> Occasionnellement</label>
+            <label><input type="radio" name="englishFrequency" value="Régulièrement" data-track /> Régulièrement</label>
+          </fieldset>
+        </div>
+        <fieldset class="choice-group choice-group--chips">
+          <legend>Dans quelles situations avez-vous déjà utilisé l’anglais ?</legend>
+          <label><input type="checkbox" name="englishSituations" value="Accueil des clients ou passagers" data-track /> Accueil</label>
+          <label><input type="checkbox" name="englishSituations" value="Téléphone" data-track /> Téléphone</label>
+          <label><input type="checkbox" name="englishSituations" value="Service et restauration" data-track /> Service / restauration</label>
+          <label><input type="checkbox" name="englishSituations" value="Consignes de sécurité" data-track /> Sécurité</label>
+          <label><input type="checkbox" name="englishSituations" value="Gestion des réclamations" data-track /> Réclamations</label>
+          <label><input type="checkbox" name="englishSituations" value="Travail en équipe" data-track /> Équipe</label>
+          <label><input type="checkbox" name="englishSituations" value="E-mails professionnels" data-track /> E-mails</label>
+          <label><input type="checkbox" name="englishSituations" value="Jamais utilisé professionnellement" data-track /> Jamais professionnellement</label>
+        </fieldset>
+      </section>
+
+      <section class="card section-card" data-section="project">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <div>
+            <p class="kicker">Votre objectif</p>
+            <h2>Projet professionnel et Air France</h2>
+          </div>
+        </div>
+        <div class="grid grid--2">
+          <label class="field">
+            <span>Quel poste souhaitez-vous viser précisément ?</span>
+            <input type="text" name="targetRole" placeholder="Exemple : personnel navigant commercial / hôtesse de l’air" data-track />
+          </label>
+          <label class="field">
+            <span>Avez-vous une date limite pour votre candidature ou votre certification ?</span>
+            <input type="text" name="deadline" placeholder="Date ou période, si connue" data-track />
+          </label>
+          <label class="field">
+            <span>Avez-vous déjà commencé les démarches auprès d’Air France ?</span>
+            <select name="applicationStatus" data-track>
+              <option value="">Sélectionner</option>
+              <option>Pas encore</option>
+              <option>Je prépare ma candidature</option>
+              <option>J’ai déjà postulé</option>
+              <option>J’ai déjà passé une étape de recrutement</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Quel niveau ou résultat vous a été demandé ?</span>
+            <input type="text" name="requiredLevel" value="Objectif B2" data-track />
+          </label>
+        </div>
+        <label class="field">
+          <span>Pourquoi ce projet est-il important pour vous ?</span>
+          <textarea name="projectMotivation" rows="5" placeholder="Expliquez votre motivation, votre projet d’évolution ou de reconversion et ce que la réussite du LILATE vous permettra de faire." data-track></textarea>
+        </label>
+      </section>
+
+      <section class="card section-card" data-section="selfassessment">
+        <div class="section-heading">
+          <span class="section-number">04</span>
+          <div>
+            <p class="kicker">Votre ressenti</p>
+            <h2>Autoévaluation des compétences</h2>
+          </div>
+        </div>
+        <p class="section-intro">Pour chaque compétence, sélectionnez la réponse qui correspond le mieux à votre niveau de confort actuel.</p>
+        <div id="ratingGrid" class="rating-grid"></div>
+        <label class="field">
+          <span>Quelles sont vos principales difficultés en anglais ?</span>
+          <textarea name="mainDifficulties" rows="4" placeholder="Exemple : comprendre quand les personnes parlent vite, trouver mes mots, construire mes phrases, prononcer clairement…" data-track></textarea>
+        </label>
+      </section>
+
+      <section class="card section-card" data-section="priorities">
+        <div class="section-heading">
+          <span class="section-number">05</span>
+          <div>
+            <p class="kicker">Programme personnalisé</p>
+            <h2>Vos priorités de formation</h2>
+          </div>
+        </div>
+        <p class="section-intro">Sélectionnez toutes les compétences que vous souhaitez travailler en priorité.</p>
+        <fieldset class="choice-group choice-group--cards" id="priorityChoices"></fieldset>
+        <label class="field">
+          <span>Y a-t-il une autre situation professionnelle que vous souhaitez absolument travailler ?</span>
+          <textarea name="otherPriority" rows="3" placeholder="Décrivez la situation ou le type de conversation." data-track></textarea>
+        </label>
+      </section>
+
+      <section class="card section-card" data-section="organization">
+        <div class="section-heading">
+          <span class="section-number">06</span>
+          <div>
+            <p class="kicker">Organisation pratique</p>
+            <h2>Disponibilités, matériel et accompagnement</h2>
+          </div>
+        </div>
+        <div class="grid grid--2">
+          <label class="field">
+            <span>Date de début souhaitée</span>
+            <input type="date" name="desiredStart" value="2026-07-27" data-track />
+          </label>
+          <label class="field">
+            <span>Durée de séance préférée</span>
+            <select name="sessionLength" data-track>
+              <option value="">Sélectionner</option>
+              <option>1 heure</option>
+              <option>1 heure 30</option>
+              <option>2 heures</option>
+              <option>Sans préférence</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Jours et créneaux disponibles, de préférence le matin</span>
+            <textarea name="availability" rows="4" placeholder="Exemple : lundi et jeudi de 9 h à 11 h…" data-track></textarea>
+          </label>
+          <label class="field">
+            <span>Contraintes personnelles, professionnelles ou familiales</span>
+            <textarea name="constraints" rows="4" placeholder="Indiquez seulement les contraintes utiles à l’organisation de la formation." data-track></textarea>
+          </label>
+        </div>
+        <div class="grid grid--2">
+          <fieldset class="choice-group">
+            <legend>Matériel disponible</legend>
+            <label><input type="checkbox" name="equipment" value="Ordinateur récent" checked data-track /> Ordinateur récent</label>
+            <label><input type="checkbox" name="equipment" value="Webcam" checked data-track /> Webcam</label>
+            <label><input type="checkbox" name="equipment" value="Microphone" data-track /> Microphone</label>
+            <label><input type="checkbox" name="equipment" value="Casque ou écouteurs" data-track /> Casque ou écouteurs</label>
+            <label><input type="checkbox" name="equipment" value="Connexion internet stable" checked data-track /> Connexion stable</label>
+          </fieldset>
+          <fieldset class="choice-group">
+            <legend>Accompagnement souhaité</legend>
+            <label><input type="checkbox" name="support" value="Coaching individuel" checked data-track /> Coaching individuel</label>
+            <label><input type="checkbox" name="support" value="Tutoriels en ligne" data-track /> Tutoriels en ligne</label>
+            <label><input type="checkbox" name="support" value="Assistance administrative" data-track /> Assistance administrative</label>
+            <label><input type="checkbox" name="support" value="Suivi post-formation" data-track /> Suivi post-formation</label>
+          </fieldset>
+        </div>
+        <div class="grid grid--2">
+          <fieldset class="choice-group">
+            <legend>Êtes-vous en situation de handicap ?</legend>
+            <label><input type="radio" name="disability" value="Non" data-track /> Non</label>
+            <label><input type="radio" name="disability" value="Oui" data-track /> Oui</label>
+            <label><input type="radio" name="disability" value="Je préfère en parler directement" data-track /> Je préfère en parler directement</label>
+          </fieldset>
+          <label class="field">
+            <span>Aménagement pédagogique, technique ou organisationnel nécessaire</span>
+            <textarea name="accommodation" rows="4" placeholder="Laissez vide si aucun aménagement n’est nécessaire." data-track></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="card section-card" data-section="lilate">
+        <div class="section-heading">
+          <span class="section-number">07</span>
+          <div>
+            <p class="kicker">Certification</p>
+            <h2>Votre préparation au LILATE</h2>
+          </div>
+        </div>
+        <div class="grid grid--2">
+          <fieldset class="choice-group">
+            <legend>Connaissez-vous déjà le déroulement du LILATE ?</legend>
+            <label><input type="radio" name="lilateKnowledge" value="Oui, bien" data-track /> Oui, bien</label>
+            <label><input type="radio" name="lilateKnowledge" value="Un peu" data-track /> Un peu</label>
+            <label><input type="radio" name="lilateKnowledge" value="Non" data-track /> Non</label>
+          </fieldset>
+          <fieldset class="choice-group">
+            <legend>Avez-vous déjà passé une certification d’anglais ?</legend>
+            <label><input type="radio" name="previousCertification" value="Oui" data-track /> Oui</label>
+            <label><input type="radio" name="previousCertification" value="Non" data-track /> Non</label>
+          </fieldset>
+        </div>
+        <label class="field">
+          <span>Qu’est-ce qui vous inquiète le plus concernant la certification ou l’entretien en anglais ?</span>
+          <textarea name="examConcerns" rows="4" placeholder="Exemple : ne pas comprendre la question, perdre mes mots, manquer de vocabulaire, parler trop lentement…" data-track></textarea>
+        </label>
+        <label class="consent-line">
+          <input type="checkbox" name="certificationCommitment" data-track />
+          <span>Je confirme avoir compris que la certification est obligatoire et je m’engage à me présenter à l’examen à l’issue de la formation.</span>
+        </label>
+      </section>
+
+      <section class="card section-card" data-section="oral">
+        <div class="section-heading">
+          <span class="section-number">08</span>
+          <div>
+            <p class="kicker">Diagnostic oral</p>
+            <h2>Enregistrez-vous en anglais</h2>
+          </div>
+        </div>
+        <div class="notice notice--warning">
+          <strong>Conseils :</strong> préparez quelques idées, mais ne lisez pas un texte complet. Vous pouvez recommencer chaque enregistrement. Téléchargez ensuite les fichiers sur votre appareil afin de les joindre à votre e-mail.
+        </div>
+        <div id="recordingTasks" class="recording-list"></div>
+      </section>
+
+      <section class="card section-card" data-section="writing">
+        <div class="section-heading">
+          <span class="section-number">09</span>
+          <div>
+            <p class="kicker">Diagnostic écrit</p>
+            <h2>Rédigez deux textes en anglais</h2>
+          </div>
+        </div>
+        <div class="notice">
+          Pour que le diagnostic soit représentatif, essayez d’écrire sans traducteur automatique et sans modèle complet. Vous pourrez modifier votre texte avant de le copier ou de le télécharger.
+        </div>
+
+        <article class="writing-task">
+          <div class="task-title-row">
+            <div>
+              <span class="task-label">Writing task 1</span>
+              <h3>Professional introduction</h3>
+            </div>
+            <span class="target-badge">80–120 words</span>
+          </div>
+          <p class="english-prompt">Write a short professional introduction for an Air France recruiter. Present your experience, your strengths and your professional objective.</p>
+          <details class="help-box">
+            <summary>Afficher les idées pour vous guider</summary>
+            <ul>
+              <li>Who are you and where do you live?</li>
+              <li>What professional experience do you have?</li>
+              <li>What are your strengths?</li>
+              <li>Why do you want to work in the airline industry?</li>
+              <li>What is your current objective?</li>
+            </ul>
+          </details>
+          <textarea id="writing1" name="writing1" rows="10" placeholder="Write your text in English here…" data-track></textarea>
+          <div class="task-tools">
+            <span class="word-count" data-counter-for="writing1">0 words</span>
+            <button type="button" class="btn btn--ghost" data-copy="writing1">Copier</button>
+            <button type="button" class="btn btn--ghost" data-download-text="writing1" data-filename="Aminata_Toure_Writing_1.txt">Télécharger</button>
+            <button type="button" class="btn btn--danger-soft" data-clear="writing1">Effacer</button>
+          </div>
+        </article>
+
+        <article class="writing-task">
+          <div class="task-title-row">
+            <div>
+              <span class="task-label">Writing task 2</span>
+              <h3>Professional email</h3>
+            </div>
+            <span class="target-badge">70–110 words</span>
+          </div>
+          <p class="english-prompt">You are applying for a cabin crew position. Write an email to introduce yourself and ask for information about the recruitment process.</p>
+          <details class="help-box">
+            <summary>Afficher les idées pour vous guider</summary>
+            <ul>
+              <li>Use a professional greeting.</li>
+              <li>Explain why you are writing.</li>
+              <li>Give one or two details about your experience.</li>
+              <li>Ask for information about the next steps.</li>
+              <li>Finish politely.</li>
+            </ul>
+          </details>
+          <textarea id="writing2" name="writing2" rows="10" placeholder="Write your email in English here…" data-track></textarea>
+          <div class="task-tools">
+            <span class="word-count" data-counter-for="writing2">0 words</span>
+            <button type="button" class="btn btn--ghost" data-copy="writing2">Copier</button>
+            <button type="button" class="btn btn--ghost" data-download-text="writing2" data-filename="Aminata_Toure_Writing_2.txt">Télécharger</button>
+            <button type="button" class="btn btn--danger-soft" data-clear="writing2">Effacer</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="card section-card" data-section="summary">
+        <div class="section-heading">
+          <span class="section-number">10</span>
+          <div>
+            <p class="kicker">Transmission</p>
+            <h2>Générez et envoyez votre synthèse</h2>
+          </div>
+        </div>
+        <div class="grid grid--2">
+          <label class="field">
+            <span>Adresse e-mail de votre formatrice</span>
+            <input type="email" id="trainerEmail" name="trainerEmail" placeholder="À compléter si elle vous a été communiquée" data-track />
+            <small>Si ce champ reste vide, votre messagerie s’ouvrira sans destinataire prérempli.</small>
+          </label>
+          <label class="field">
+            <span>Commentaire supplémentaire</span>
+            <textarea name="additionalComment" rows="4" placeholder="Ajoutez toute information utile à votre formatrice." data-track></textarea>
+          </label>
+        </div>
+
+        <label class="consent-line">
+          <input type="checkbox" name="dataConsent" id="dataConsent" data-track />
+          <span>Je comprends que mes réponses et mes enregistrements ne sont transmis que lorsque je décide de les copier, de les télécharger ou de les envoyer.</span>
+        </label>
+
+        <div class="summary-actions">
+          <button type="button" class="btn btn--primary" id="generateSummary">Générer ma synthèse</button>
+          <button type="button" class="btn btn--secondary" id="copySummary" disabled>Copier la synthèse</button>
+          <button type="button" class="btn btn--secondary" id="downloadSummary" disabled>Télécharger la synthèse</button>
+          <button type="button" class="btn btn--accent" id="prepareEmail" disabled>Préparer l’e-mail</button>
+        </div>
+
+        <div class="email-reminder" id="emailReminder" hidden>
+          <strong>Avant d’envoyer votre e-mail :</strong>
+          <ol>
+            <li>Vérifiez que la synthèse est bien présente dans le message.</li>
+            <li>Joignez vos trois fichiers audio téléchargés.</li>
+            <li>Joignez vos textes si votre formatrice vous le demande.</li>
+          </ol>
+        </div>
+
+        <label class="field summary-preview" id="summaryPreviewWrap" hidden>
+          <span>Aperçu de votre synthèse</span>
+          <textarea id="summaryPreview" rows="24" readonly></textarea>
+        </label>
+      </section>
+
+      <section class="card section-card section-card--final">
+        <div class="section-heading">
+          <span class="section-number">✓</span>
+          <div>
+            <p class="kicker">Dernière étape</p>
+            <h2>Validation avant l’entretien</h2>
+          </div>
+        </div>
+        <p>
+          Votre formatrice utilisera vos réponses pour préparer l’entretien téléphonique, vérifier vos besoins réels et construire un parcours adapté à votre projet professionnel.
+        </p>
+        <div class="final-checks">
+          <span>☐ J’ai complété les questions importantes.</span>
+          <span>☐ J’ai téléchargé mes enregistrements audio.</span>
+          <span>☐ J’ai copié ou téléchargé mes productions écrites.</span>
+          <span>☐ J’ai préparé mon e-mail et joint mes fichiers.</span>
+        </div>
+      </section>
+    </form>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer class="footer">
+    <div class="container footer__content">
+      <div>
+        <strong>Analyse des besoins · Anglais professionnel du personnel navigant</strong>
+        <p>Préparation personnalisée à la certification LILATE.</p>
+      </div>
+      <button type="button" class="text-button" id="resetAll">Réinitialiser toutes mes réponses</button>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
