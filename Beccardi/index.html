@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cours d'essai d'anglais personnalisé CFL Welcome pour M. Thomas Beccardi." />
+  <title>CFL Welcome — Cours découverte de Thomas Beccardi</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="show-fr">
+  <a class="skip-link" href="#mainContent">Aller au contenu</a>
+
+  <header class="site-header">
+    <a class="cfl-brand" href="#welcome" aria-label="CFL Welcome — accueil du cours">
+      <span class="cfl-logo-image header-logo" role="img" aria-label="Centre Formation Langues Welcome"></span>
+    </a>
+    <div class="header-message">
+      <span class="header-kicker">Cours découverte personnalisé</span>
+      <strong>Parlez la langue de vos ambitions.</strong>
+    </div>
+    <div class="header-actions">
+      <label class="voice-control" for="accentSelect">
+        <span>Voix / Voice</span>
+        <select id="accentSelect" aria-label="Choisir l'accent anglais">
+          <option value="en-GB">🇬🇧 Britannique</option>
+          <option value="en-US">🇺🇸 Américaine</option>
+        </select>
+      </label>
+      <button class="header-button active" id="translationToggle" type="button" aria-pressed="true">
+        <span aria-hidden="true">FR</span>
+        <span>Traductions visibles</span>
+      </button>
+      <!--<button class="header-button teacher-access" id="teacherPanelButton" type="button">Espace formateur</button>-->
+    </div>
+  </header>
+
+  <div class="lesson-console" aria-label="Progression du cours">
+    <div class="timer-card">
+      <span>Temps de séance</span>
+      <strong id="sessionTimer">30:00</strong>
+      <div class="timer-actions">
+        <button id="timerStart" type="button">Démarrer</button>
+        <button id="timerPause" type="button">Pause</button>
+        <button id="timerReset" type="button">↺</button>
+      </div>
+    </div>
+    <div class="progress-card">
+      <div class="progress-copy">
+        <span>Votre parcours découverte</span>
+        <strong id="progressLabel">Bienvenue</strong>
+      </div>
+      <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+      <nav class="step-nav" id="stepDots" aria-label="Sections du cours"></nav>
+    </div>
+  </div>
+
+  <main id="mainContent">
+    <section class="lesson-section hero active" id="welcome" data-title="Bienvenue" data-minute="3">
+      <div class="hero-copy">
+        <p class="eyebrow gold">Votre cours d'essai de 30 minutes</p>
+        <h1>Bienvenue, <span>Thomas.</span><br />Aujourd'hui, l'anglais s'adapte à vous.</h1>
+        <p class="hero-lead en">This is not an exam. It is your first personalised English success.</p>
+        <p class="fr hero-translation">Ce n'est pas un examen. C'est votre première réussite dans un cours d'anglais réellement personnalisé.</p>
+
+        <div class="welcome-promise">
+          <div><span>01</span><strong>Vous êtes guidé</strong><small class="en">Clear steps, no pressure.</small><small class="fr">Des étapes claires, sans pression.</small></div>
+          <div><span>02</span><strong>Vous choisissez</strong><small class="en">Your goals shape the lesson.</small><small class="fr">Vos objectifs façonnent le cours.</small></div>
+          <div><span>03</span><strong>Vous progressez</strong><small class="en">Support becomes confidence.</small><small class="fr">L'aide se transforme en confiance.</small></div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="button primary" type="button" data-next>Commencer mon expérience</button>
+          <button class="button outline speak-button" type="button" data-speak="Welcome, Thomas. Today is not an exam. This lesson has been prepared especially for you. We will discover your goals, try useful English, and show you how an online lesson can adapt to the way you learn best.">🔊 Écouter le message d'accueil</button>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-globe" aria-hidden="true">
+          <span class="longitude one"></span><span class="longitude two"></span><span class="latitude one"></span><span class="latitude two"></span>
+        </div>
+        <div class="personal-badge">TB</div>
+        <p>Préparé spécialement pour</p>
+        <h2>M. Thomas Beccardi</h2>
+        <div class="session-ready"><span></span> Séance prête</div>
+        <ul>
+          <li><strong>Objectifs personnels</strong><span>Vos besoins réels guident chaque activité.</span></li>
+          <li><strong>Méthode adaptée</strong><span>Écouter, parler, voir et pratiquer.</span></li>
+          <li><strong>Retour après chaque cours</strong><span>Ce qui vous aide — et ce que vous souhaitez changer.</span></li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="lesson-section" id="method" data-title="La méthode CFL" data-minute="4">
+      <div class="section-intro">
+        <p class="eyebrow">Étape 1 · Comprendre la méthode</p>
+        <h2>Une formation sur mesure, humaine et <span>concrète.</span></h2>
+        <p class="en">At CFL Welcome, your training is built around your level, your objectives, your profession, your pace and the way you learn best.</p>
+        <p class="fr">Chez CFL Welcome, votre formation est construite autour de votre niveau, de vos objectifs, de votre métier, de votre rythme et de votre façon d'apprendre.</p>
+      </div>
+
+      <div class="method-grid">
+        <article class="method-card">
+          <span class="card-number">01</span><div class="method-icon">◎</div>
+          <h3>Nous partons de votre réalité</h3>
+          <p class="en">You tell us when, where and why you need English.</p>
+          <p class="fr">Vous nous expliquez quand, où et pourquoi vous avez besoin de l'anglais.</p>
+        </article>
+        <article class="method-card">
+          <span class="card-number">02</span><div class="method-icon">↻</div>
+          <h3>Le cours s'adapte à vous</h3>
+          <p class="en">Listening, speaking, visual explanations and practical tasks are balanced for you.</p>
+          <p class="fr">L'écoute, l'oral, les explications visuelles et les mises en situation sont dosés selon vos besoins.</p>
+        </article>
+        <article class="method-card">
+          <span class="card-number">03</span><div class="method-icon">↗</div>
+          <h3>Vous essayez sans être jugé</h3>
+          <p class="en">A model, a first try, helpful feedback, then a stronger second try.</p>
+          <p class="fr">Un modèle, un premier essai, une correction utile, puis une deuxième version plus forte.</p>
+        </article>
+        <article class="method-card featured">
+          <span class="card-number">04</span><div class="method-icon">♡</div>
+          <h3>Votre avis prépare la suite</h3>
+          <p class="en">After every lesson, you say what you liked, what was difficult and what you want more of.</p>
+          <p class="fr">Après chaque cours, vous indiquez ce que vous avez aimé, ce qui était difficile et ce que vous souhaitez davantage.</p>
+        </article>
+      </div>
+
+      <div class="philosophy-banner">
+        <div class="philosophy-mark">CFL</div>
+        <div>
+          <p class="eyebrow gold">Notre principe</p>
+          <h3>Ce n'est pas à l'apprenant de s'adapter à un cours standard. C'est au cours de s'adapter à l'apprenant.</h3>
+          <p class="en">The aim is not perfection on the first try. The aim is useful communication, visible progress and growing confidence.</p>
+          <p class="fr">L'objectif n'est pas la perfection au premier essai. L'objectif est de communiquer utilement, de voir ses progrès et de gagner en confiance.</p>
+        </div>
+      </div>
+
+      <div class="section-nav"><button class="button text" type="button" data-prev>← Retour</button><button class="button primary" type="button" data-next>Construire mon profil</button></div>
+    </section>
+
+    <section class="lesson-section" id="profile" data-title="Votre profil" data-minute="6">
+      <div class="section-intro split-intro">
+        <div><p class="eyebrow">Étape 2 · Votre formation commence ici</p><h2>Parlez-nous de <span>vous.</span></h2><p>Vous pouvez sélectionner plusieurs réponses. Elles serviront à adapter les activités de cette séance et les futurs cours.</p></div>
+        <div class="live-pill"><span></span> Personnalisation en direct</div>
+      </div>
+
+      <div class="profile-block">
+        <div class="block-heading"><span>1</span><div><h3>Quels sont vos objectifs ?</h3><p class="en">What would you like to do more easily in English?</p><p class="fr">Que souhaitez-vous faire plus facilement en anglais ? Sélectionnez tout ce qui vous correspond.</p></div></div>
+        <div class="choice-grid goals-grid" id="goalChoices">
+          <button class="choice-card" type="button" data-value="professional"><span class="choice-icon">💼</span><strong>Professional English</strong><em>Anglais professionnel</em><small>Meetings, clients, colleagues</small><small class="fr">Réunions, clients, collègues</small></button>
+          <button class="choice-card" type="button" data-value="travel"><span class="choice-icon">✈️</span><strong>Travel with confidence</strong><em>Voyager avec confiance</em><small>Hotels, transport, restaurants</small><small class="fr">Hôtels, transports, restaurants</small></button>
+          <button class="choice-card" type="button" data-value="conversation"><span class="choice-icon">💬</span><strong>Everyday conversation</strong><em>Conversation quotidienne</em><small>Speak more naturally</small><small class="fr">Parler plus naturellement</small></button>
+          <button class="choice-card" type="button" data-value="certification"><span class="choice-icon">🎯</span><strong>Certification or exam</strong><em>Certification ou examen</em><small>Prepare with a clear strategy</small><small class="fr">Se préparer avec une stratégie claire</small></button>
+          <button class="choice-card" type="button" data-value="listeningGoal"><span class="choice-icon">🎧</span><strong>Understand people better</strong><em>Mieux comprendre les autres</em><small>Calls, conversations, videos</small><small class="fr">Appels, conversations, vidéos</small></button>
+          <button class="choice-card" type="button" data-value="confidenceGoal"><span class="choice-icon">🌟</span><strong>Speak with confidence</strong><em>Parler avec confiance</em><small>Stop freezing or overthinking</small><small class="fr">Ne plus bloquer ni trop réfléchir</small></button>
+        </div>
+      </div>
+
+      <div class="profile-block">
+        <div class="block-heading"><span>2</span><div><h3>Quelles difficultés rencontrez-vous aujourd'hui ?</h3><p class="en">Choose as many as you need. This is not a test.</p><p class="fr">Choisissez plusieurs réponses si nécessaire. Il ne s'agit pas d'un test.</p></div></div>
+        <div class="choice-grid difficulties-grid" id="difficultyChoices">
+          <button class="choice-card compact-choice" type="button" data-value="speaking"><span>🗣️</span><strong>Speaking spontaneously</strong><em>Parler spontanément</em></button>
+          <button class="choice-card compact-choice" type="button" data-value="listening"><span>👂</span><strong>Understanding spoken English</strong><em>Comprendre l'anglais oral</em></button>
+          <button class="choice-card compact-choice" type="button" data-value="grammar"><span>🧱</span><strong>Building correct sentences</strong><em>Construire des phrases correctes</em></button>
+          <button class="choice-card compact-choice" type="button" data-value="vocabulary"><span>🔎</span><strong>Finding the right words</strong><em>Trouver les bons mots</em></button>
+          <button class="choice-card compact-choice" type="button" data-value="pronunciation"><span>🔊</span><strong>Pronunciation</strong><em>La prononciation</em></button>
+          <button class="choice-card compact-choice" type="button" data-value="confidence"><span>🧠</span><strong>Feeling confident</strong><em>Se sentir en confiance</em></button>
+          <button class="choice-card compact-choice" type="button" data-value="writing"><span>✍️</span><strong>Writing emails or messages</strong><em>Écrire des e-mails ou messages</em></button>
+          <button class="choice-card compact-choice" type="button" data-value="unknown"><span>❔</span><strong>I am not sure yet</strong><em>Je ne sais pas encore</em></button>
+        </div>
+      </div>
+
+      <div class="profile-block two-column-block">
+        <div>
+          <div class="block-heading small"><span>3</span><div><h3>Comment apprenez-vous le mieux ?</h3><p class="fr">Vous pouvez en choisir plusieurs.</p></div></div>
+          <div class="choice-grid learning-grid" id="learningChoices">
+            <button class="choice-card learning-choice" type="button" data-value="listening"><span>🎧</span><strong>Listening</strong><em>Écouter</em><small>I remember what I hear.</small><small class="fr">Je retiens ce que j'entends.</small></button>
+            <button class="choice-card learning-choice" type="button" data-value="speaking"><span>🎙️</span><strong>Speaking</strong><em>Parler</em><small>I learn by saying it.</small><small class="fr">J'apprends en répétant et en parlant.</small></button>
+            <button class="choice-card learning-choice" type="button" data-value="visual"><span>👁️</span><strong>Visual support</strong><em>Support visuel</em><small>I need examples and structure.</small><small class="fr">J'ai besoin d'exemples et de structure.</small></button>
+            <button class="choice-card learning-choice" type="button" data-value="practice"><span>🧩</span><strong>Practical tasks</strong><em>Mises en situation</em><small>I learn by doing.</small><small class="fr">J'apprends en faisant.</small></button>
+          </div>
+        </div>
+        <div class="context-form">
+          <h3>Votre contexte</h3>
+          <p>Vous pouvez répondre en français. Votre formatrice reformulera ensuite en anglais.</p>
+          <label><span>Votre métier ou secteur d'activité</span><input id="jobInput" type="text" placeholder="Ex. : commerce, industrie, informatique…" /></label>
+          <label><span>Une situation où l'anglais vous serait utile</span><textarea id="situationInput" rows="3" placeholder="Ex. : parler à un client, voyager, participer à une réunion…"></textarea></label>
+          <label><span>Votre souhait principal pour la formation</span><textarea id="wishInput" rows="3" placeholder="Ex. : me sentir plus à l'aise et oser parler…"></textarea></label>
+        </div>
+      </div>
+
+      <div class="adaptive-summary" id="adaptiveBanner" aria-live="polite">
+        <span class="adaptive-icon">✦</span>
+        <div><strong>Votre séance s'adapte en direct.</strong><p>Sélectionnez vos objectifs, vos difficultés et vos préférences pour voir votre profil personnalisé.</p></div>
+      </div>
+
+      <div class="section-nav"><button class="button text" type="button" data-prev>← Retour</button><button class="button primary" type="button" data-next>Commencer en douceur</button></div>
+    </section>
+
+    <section class="lesson-section" id="warmup" data-title="Échauffement" data-minute="6">
+      <div class="section-intro">
+        <p class="eyebrow">Étape 3 · Conversation guidée</p>
+        <h2>Écouter, comprendre, puis <span>répondre.</span></h2>
+        <p class="en">You can listen to the question, listen to a possible answer, read the French translation and try at your own pace.</p>
+        <p class="fr">Vous pouvez écouter la question, écouter une réponse possible, lire la traduction et essayer à votre rythme.</p>
+      </div>
+
+      <div class="warmup-layout">
+        <aside class="question-list" id="questionRail" aria-label="Questions d'échauffement"></aside>
+        <article class="question-stage">
+          <div class="question-meta"><span id="questionLevel">Warm-up · Échauffement</span><strong id="questionCounter">1 / 6</strong></div>
+          <h3 id="currentQuestion">What is your name?</h3>
+          <p class="fr question-fr" id="questionTranslation">Comment vous appelez-vous ?</p>
+
+          <div class="audio-row">
+            <button class="audio-button" id="hearQuestion" type="button"><span>🔊</span><strong>Question</strong><small>Écouter la question</small></button>
+            <button class="audio-button" id="hearAnswer" type="button"><span>▶</span><strong>Answer</strong><small>Écouter la réponse modèle</small></button>
+            <button class="audio-button featured-audio" id="hearBoth" type="button"><span>↔</span><strong>Question + answer</strong><small>Écouter l'échange complet</small></button>
+          </div>
+
+          <div class="support-actions">
+            <button class="mini-button" id="showSupport" type="button">💡 Afficher l'aide</button>
+            <button class="mini-button" id="showModel" type="button">👀 Afficher le modèle</button>
+          </div>
+          <div class="support-box hidden" id="supportBox"></div>
+          <div class="model-box hidden" id="modelBox"></div>
+
+          <label class="answer-area"><span>Vos mots-clés ou votre réponse <em>· Your key words or answer</em></span><textarea id="conversationAnswer" rows="4" placeholder="Vous pouvez écrire quelques mots avant de parler…"></textarea></label>
+          <div class="question-controls"><button class="button text" id="previousQuestion" type="button">← Précédente</button><button class="button outline-dark" id="saveAnswer" type="button">Enregistrer ma réponse</button><button class="button primary" id="nextQuestion" type="button">Question suivante →</button></div>
+          <p class="status-line" id="answerSaved" aria-live="polite"></p>
+        </article>
+      </div>
+
+      <div class="reassurance-strip"><span>✓</span><p><strong>Vous ne trouvez pas les mots ? C'est normal.</strong> Le modèle sert de point de départ. Nous le personnalisons ensemble, puis l'aide diminue progressivement.</p></div>
+      <div class="section-nav"><button class="button text" type="button" data-prev>← Retour</button><button class="button primary" type="button" data-next>Choisir une situation réelle</button></div>
+    </section>
+
+    <section class="lesson-section" id="mission" data-title="Mise en situation" data-minute="5">
+      <div class="section-intro"><p class="eyebrow">Étape 4 · L'anglais utile</p><h2>Choisissez une situation qui vous <span>ressemble.</span></h2><p>La consigne, les phrases proposées et le modèle changent selon votre choix.</p></div>
+
+      <div class="mission-tabs" id="missionTabs">
+        <button class="mission-tab active" type="button" data-mission="professional"><span>💼</span><strong>Professional introduction</strong><em>Présentation professionnelle</em></button>
+        <button class="mission-tab" type="button" data-mission="travel"><span>🏨</span><strong>Hotel request</strong><em>Demande à l'hôtel</em></button>
+        <button class="mission-tab" type="button" data-mission="conversation"><span>🤝</span><strong>Meet someone new</strong><em>Rencontrer quelqu'un</em></button>
+      </div>
+
+      <div class="mission-panel">
+        <div class="mission-brief">
+          <div><p class="eyebrow gold">Votre mission</p><h3 id="missionTitle"></h3><p class="en" id="missionContext"></p><p class="fr" id="missionTranslation"></p></div>
+          <button class="large-audio" id="missionAudio" type="button" aria-label="Écouter la mission">🔊</button>
+        </div>
+
+        <div class="builder-layout">
+          <div class="builder-side"><h3>Construisez votre réponse</h3><p>Choisissez une proposition à chaque étape. La traduction apparaît sous chaque phrase.</p><div id="sentenceParts"></div></div>
+          <div class="preview-side">
+            <div class="preview-label"><span>Votre réponse personnalisée</span><strong>Prête à dire</strong></div>
+            <div class="answer-preview" id="answerPreview">Choisissez une phrase dans chaque catégorie.</div>
+            <div class="preview-tools"><button class="mini-button" id="speakPreview" type="button">🔊 Écouter</button><button class="mini-button" id="copyPreview" type="button">📋 Copier</button><button class="mini-button" id="clearBuilder" type="button">↺ Recommencer</button></div>
+            <label><span>Ajouter une information personnelle</span><input id="personalDetail" type="text" placeholder="Ex. : I often work with international clients." /></label>
+          </div>
+        </div>
+
+        <details class="model-details"><summary>Afficher une réponse modèle complète</summary><div><p class="en" id="missionModel"></p><p class="fr" id="missionModelFr"></p><button class="mini-button" id="speakMissionModel" type="button">🔊 Écouter le modèle</button></div></details>
+      </div>
+
+      <div class="section-nav"><button class="button text" type="button" data-prev>← Retour</button><button class="button primary" type="button" data-next>Voir mon progrès</button></div>
+    </section>
+
+    <section class="lesson-section" id="transformation" data-title="Votre progrès" data-minute="4">
+      <div class="section-intro"><p class="eyebrow">Étape 5 · Le moment avant / après</p><h2>Une première réponse devient une réponse <span>plus forte.</span></h2><p class="fr">Nous ne corrigeons pas tout à la fois. Nous choisissons quelques améliorations utiles, puis vous réessayez avec davantage de confiance.</p></div>
+
+      <div class="transformation-grid">
+        <article class="transform-card before-card">
+          <div class="transform-title"><span>BEFORE</span><div><strong>My first try</strong><small>Mon premier essai</small></div></div>
+          <textarea id="beforeAnswer" rows="7" placeholder="Écrivez ou collez ici la première réponse de Thomas…"></textarea>
+          <div class="record-panel" data-recorder="before"><button class="record-button" type="button" data-record><span></span> Enregistrer avant</button><button class="mini-button" type="button" data-stop disabled>Arrêter</button><audio controls hidden></audio><a class="download-recording hidden" href="#" download="thomas-beccardi-avant.webm">Télécharger l'enregistrement</a><p class="record-status">Le micro demandera une autorisation sur la page publiée en HTTPS.</p></div>
+        </article>
+
+        <div class="transform-arrow" aria-hidden="true"><span>→</span><small>feedback</small></div>
+
+        <article class="transform-card after-card">
+          <div class="transform-title"><span>AFTER</span><div><strong>My stronger version</strong><small>Ma version améliorée</small></div></div>
+          <textarea id="afterAnswer" rows="7" placeholder="La version améliorée apparaîtra ici…"></textarea>
+          <div class="after-model-panel">
+            <div><strong>Besoin d'un modèle ?</strong><small>Choisissez un niveau, puis utilisez ou écoutez la réponse.</small></div>
+            <div class="model-levels">
+              <button type="button" data-after-model="simple">Simple</button>
+              <button type="button" data-after-model="natural" class="active">Naturel</button>
+              <button type="button" data-after-model="confident">Plus assuré</button>
+            </div>
+            <p id="afterModelText"></p>
+            <p class="fr" id="afterModelFr"></p>
+            <div class="after-model-actions"><button class="mini-button" id="hearAfterModel" type="button">🔊 Écouter le modèle</button><button class="mini-button" id="useAfterModel" type="button">✓ Utiliser ce modèle</button></div>
+          </div>
+          <div class="micro-feedback" id="microFeedback">
+            <label><input type="checkbox" value="clearer structure" /> Structure plus claire</label>
+            <label><input type="checkbox" value="more precise vocabulary" /> Vocabulaire plus précis</label>
+            <label><input type="checkbox" value="better pronunciation" /> Prononciation plus claire</label>
+            <label><input type="checkbox" value="more confidence" /> Plus de confiance</label>
+          </div>
+          <div class="record-panel" data-recorder="after"><button class="record-button" type="button" data-record><span></span> Enregistrer après</button><button class="mini-button" type="button" data-stop disabled>Arrêter</button><audio controls hidden></audio><a class="download-recording hidden" href="#" download="thomas-beccardi-apres.webm">Télécharger l'enregistrement</a><p class="record-status"></p></div>
+        </article>
+      </div>
+
+      <div class="progress-definition"><span>★</span><div><h3>La progression, ce n'est pas parler sans aucune erreur.</h3><p>C'est exprimer son idée plus clairement, avec un peu moins d'aide et un peu plus de confiance qu'au premier essai.</p></div></div>
+      <div class="section-nav"><button class="button text" type="button" data-prev>← Retour</button><button class="button primary" type="button" data-next>Donner mon avis</button></div>
+    </section>
+
+    <section class="lesson-section" id="feedback" data-title="Votre avis" data-minute="2">
+      <div class="section-intro"><p class="eyebrow">Étape 6 · Votre voix compte</p><h2>Votre retour prépare le <span>prochain cours.</span></h2><p>Cette courte évaluation est proposée à la fin de chaque séance afin de garder ce qui fonctionne et d'ajuster le reste.</p></div>
+
+      <div class="feedback-layout">
+        <div class="feedback-form">
+          <div class="rating-block"><div><h3>Comment avez-vous vécu le format en ligne ?</h3><p class="en">How did the online format feel?</p></div><span id="onlineRatingLabel">Choisissez</span><div class="emoji-rating" data-rating="online"><button type="button" data-value="1" aria-label="Très inconfortable">😟</button><button type="button" data-value="2" aria-label="Un peu inconfortable">🙁</button><button type="button" data-value="3" aria-label="Neutre">😐</button><button type="button" data-value="4" aria-label="À l'aise">🙂</button><button type="button" data-value="5" aria-label="Très à l'aise">😁</button></div></div>
+          <div class="confidence-block"><div><h3>Votre confiance maintenant</h3><span id="confidenceValue">5 / 10</span></div><input id="confidenceSlider" type="range" min="1" max="10" value="5" /></div>
+          <div class="feedback-fields">
+            <label><span>Ce que j'ai le plus aimé</span><textarea id="likedInput" rows="3" placeholder="Ex. : écouter les modèles, parler avec de l'aide, voir la correction…"></textarea></label>
+            <label><span>Ce que j'ai moins aimé ou voudrais changer</span><textarea id="changeInput" rows="3" placeholder="Votre réponse honnête nous aide à mieux préparer la suite."></textarea></label>
+            <label><span>Ce que j'aimerais davantage</span><select id="moreOfSelect"><option value="speaking practice">Pratique orale · Speaking</option><option value="listening activities">Compréhension orale · Listening</option><option value="visual explanations">Explications visuelles · Visual support</option><option value="grammar support">Grammaire guidée · Grammar</option><option value="professional situations">Situations professionnelles</option><option value="travel situations">Situations de voyage</option><option value="exam-style practice">Préparation à un examen</option></select></label>
+          </div>
+          <div class="evaluation-actions"><button class="button outline-dark" id="copyEvaluation" type="button">Copier mon évaluation</button><button class="button text" id="downloadEvaluation" type="button">Télécharger</button></div><p class="status-line" id="evaluationStatus" aria-live="polite"></p>
+        </div>
+
+        <aside class="pathway-card" id="personalPlan">
+          <p class="eyebrow gold">Votre parcours personnalisé</p>
+          <h3 id="planTitle">Votre plan sera construit à partir de vos choix.</h3>
+          <div id="planContent" class="plan-content"><div class="skeleton"></div><div class="skeleton short"></div><div class="skeleton"></div></div>
+          <button class="button light" id="generatePlan" type="button">Générer mon parcours</button>
+          <button class="mini-button on-dark" id="copyPlan" type="button" disabled>📋 Copier</button>
+        </aside>
+      </div>
+
+      <div class="section-nav"><button class="button text" type="button" data-prev>← Retour</button><button class="button primary" type="button" data-next>Découvrir ma carte de réussite</button></div>
+    </section>
+
+    <section class="lesson-section" id="success" data-title="Votre réussite" data-minute="0">
+      <div class="success-intro"><span class="success-star">✦</span><p class="eyebrow gold">Cours découverte terminé</p><h2>Vous avez déjà commencé à <span>réussir, Thomas.</span></h2><p>Vous avez découvert le format, communiqué en anglais et donné les informations qui permettront de préparer une formation vraiment adaptée à vous.</p></div>
+
+      <article class="success-card" id="successCard">
+        <div class="success-header">
+          <span class="cfl-logo-image" role="img" aria-label="CFL Welcome"></span>
+          <div><span>Personal English Success Card</span><strong>Thomas Beccardi</strong><small id="dateStamp"></small></div>
+          <div class="success-seal">FIRST<br />STEP</div>
+        </div>
+
+        <div class="achievement-banner"><span>✓</span><div><strong>Today's achievement · Ma réussite aujourd'hui</strong><p id="achievementText">I completed my first personalised online English lesson.</p><p class="fr">J'ai terminé mon premier cours d'anglais en ligne personnalisé.</p></div></div>
+
+        <div class="success-profile-grid">
+          <div><span>My goals · Mes objectifs</span><strong id="cardGoal">À compléter pendant la séance</strong></div>
+          <div><span>My learning strengths · Ma façon d'apprendre</span><strong id="cardLearning">À compléter pendant la séance</strong></div>
+          <div><span>My priority areas · Mes priorités</span><strong id="cardFocus">À compléter pendant la séance</strong></div>
+          <div><span>My confidence · Ma confiance</span><strong id="cardConfidence">5 / 10</strong></div>
+        </div>
+
+        <div class="final-text-block">
+          <div class="final-text-heading"><div><span>MY FINAL ENGLISH MESSAGE</span><h3>Un texte que je peux dire avec fierté</h3></div><div class="final-text-tools"><button class="mini-button on-dark" id="refreshFinalText" type="button">↻ Mettre à jour</button><button class="mini-button on-dark" id="hearFinalText" type="button">🔊 Écouter</button></div></div>
+          <textarea id="finalSuccessText" rows="9" aria-label="Texte final en anglais"></textarea>
+          <p class="final-text-note">Ce texte peut être ajusté avec votre formatrice afin qu'il corresponde exactement à votre situation.</p>
+        </div>
+
+        <div class="method-understood">
+          <div><span>1</span><strong>I am supported.</strong><small>Je suis accompagné.</small></div>
+          <div><span>2</span><strong>I practise useful English.</strong><small>Je pratique un anglais utile.</small></div>
+          <div><span>3</span><strong>My feedback changes my lessons.</strong><small>Mon avis fait évoluer mes cours.</small></div>
+          <div><span>4</span><strong>I progress step by step.</strong><small>Je progresse étape par étape.</small></div>
+        </div>
+
+        <blockquote>“I do not need to be perfect before I speak. I can prepare, practise, receive support and try again.”<span>Je n'ai pas besoin d'être parfait avant de parler. Je peux me préparer, pratiquer, être accompagné et réessayer.</span></blockquote>
+      </article>
+
+      <div class="success-actions"><button class="button primary" id="printSuccess" type="button">Imprimer ma carte</button><button class="button outline-dark" id="copyFinalText" type="button">Copier mon texte final</button><button class="button outline-dark" id="downloadSuccess" type="button">Télécharger ma réussite</button><button class="button text" id="saveSession" type="button">Enregistrer les données</button></div><p class="status-line center" id="saveStatus" aria-live="polite"></p>
+      <div class="closing-message"><strong>Se former aujourd'hui pour impacter demain.</strong><span>Merci, Thomas. Votre parcours peut maintenant être construit autour de vous.</span></div>
+      <div class="section-nav centered"><button class="button text" type="button" data-prev>← Revoir mon évaluation</button></div>
+    </section>
+  </main>
+
+  <div class="modal" id="teacherModal" role="dialog" aria-modal="true" aria-labelledby="teacherTitle" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <div class="modal-header"><div><p class="eyebrow">Espace privé formateur</p><h2 id="teacherTitle">Bilan CFL et message de suivi</h2></div><button class="close-modal" type="button" data-close-modal aria-label="Fermer">×</button></div>
+      <div class="teacher-grid">
+        <section class="teacher-panel"><h3>Grille d'observation rapide</h3><div id="rubricGrid" class="rubric-grid"></div></section>
+        <section class="teacher-panel"><h3>Informations de séance</h3><div class="field-stack"><label><span>Niveau CECRL estimé</span><select id="cefrLevel"><option value="à confirmer">À confirmer</option><option value="A1 / débutant">A1 / débutant</option><option value="A1+ / élémentaire">A1+ / élémentaire</option><option value="A2 / pré-intermédiaire">A2 / pré-intermédiaire</option><option value="A2+ / élémentaire solide">A2+ / élémentaire solide</option><option value="B1 / intermédiaire">B1 / intermédiaire</option><option value="B1+ / intermédiaire solide">B1+ / intermédiaire solide</option><option value="B2 ou plus">B2 ou plus</option></select></label><label><span>Connexion et aisance technique</span><select id="technicalComfort"><option value="La connexion s'est déroulée sans difficulté">Sans difficulté</option><option value="Quelques difficultés techniques mineures ont été rencontrées">Quelques difficultés mineures</option><option value="Un accompagnement technique important a été nécessaire">Accompagnement important nécessaire</option></select></label><label><span>Intérêt pour la poursuite</span><select id="continuationInterest"><option value="Il s'est montré intéressé par la poursuite de la formation">Intéressé</option><option value="Il s'est montré intéressé mais conserve quelques réserves">Intéressé avec quelques réserves</option><option value="Il est resté hésitant concernant la poursuite">Toujours hésitant</option><option value="Son intérêt n'a pas été clairement exprimé">Non clairement exprimé</option></select></label><label><span>Rythme recommandé</span><input id="recommendedRhythm" type="text" value="Une séance régulière par semaine, complétée par de courtes activités guidées" /></label></div></section>
+      </div>
+      <div class="teacher-grid">
+        <section class="teacher-panel"><h3>Compétences observées</h3><label><span>Points forts</span><textarea id="teacherStrengths" rows="4" placeholder="Volonté de communiquer, compréhension des questions…"></textarea></label><label><span>Axes prioritaires</span><textarea id="teacherPriorities" rows="4" placeholder="Compréhension orale, construction des phrases, confiance…"></textarea></label></section>
+        <section class="teacher-panel"><h3>Notes professionnelles</h3><label><span>Objectifs et situations utiles</span><textarea id="teacherObjectives" rows="4"></textarea></label><label><span>Réaction au format en ligne et observations</span><textarea id="teacherNotes" rows="4" placeholder="Noter son évolution pendant la séance, les outils appréciés et ses réserves éventuelles."></textarea></label></section>
+      </div>
+      <section class="teacher-panel report-panel"><div class="report-heading"><div><p class="eyebrow gold">Prêt à relire et envoyer</p><h3>Message à Nadège — Katarina en copie</h3></div><button class="button primary" id="generateReport" type="button">Générer le message</button></div><textarea id="teacherReport" rows="20" placeholder="Complétez les observations puis générez le message."></textarea><div class="report-actions"><button class="button primary" id="copyReport" type="button">Copier</button><button class="button outline-dark" id="downloadReport" type="button">Télécharger</button><button class="button text" id="printReport" type="button">Imprimer</button></div><p class="status-line" id="reportStatus"></p></section>
+      <button class="danger-link" id="resetSession" type="button">Réinitialiser entièrement la séance</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <footer><div><span class="cfl-logo-image" role="img" aria-label="CFL Welcome"></span><span>Formation personnalisée · Communication réelle · Progression visible</span></div><button id="footerTeacherButton" type="button">Espace formateur</button></footer>
+  <script src="script.js"></script>
+</body>
+</html>
