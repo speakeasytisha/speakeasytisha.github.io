@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#67226f" />
+  <title>Karine’s Story Street Skills Studio</title>
+  <link rel="stylesheet" href="css/karine-story-street-skills-studio-a1a2.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to lesson</a>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="hero__inner">
+      <div class="badge">New session · 2-hour speaking lab</div>
+      <h1>Karine’s Story Street Skills Studio</h1>
+      <p class="subtitle">Shops, services, petrol stations, useful professions & “something happened” stories.</p>
+      <div class="hero-grid">
+        <div class="mission-card">
+          <span class="icon">🎯</span>
+          <h2>Today’s mission</h2>
+          <p>You will speak more, react faster, ask questions, and tell short stories using the past continuous with the past simple.</p>
+        </div>
+        <div class="mission-card">
+          <span class="icon">🧭</span>
+          <h2>Why this lesson is different</h2>
+          <p>This is not a big grammar lesson. It is an oral adventure: you use what you know in shops, pharmacies, restaurants, campsites, and petrol stations.</p>
+        </div>
+        <div class="mission-card">
+          <span class="icon">💬</span>
+          <h2>CLOE skill</h2>
+          <p>Listen, understand the situation, choose the right tense, answer clearly, and ask a useful question.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sticky-tools" aria-label="Lesson tools">
+    <button id="toggleFr" class="tool-btn" type="button">🇫🇷 Show French help</button>
+    <label class="accent-label" for="accentSelect">Voice:</label>
+    <select id="accentSelect" class="select-small" aria-label="Choose voice accent">
+      <option value="en-GB">British English</option>
+      <option value="en-US">American English</option>
+    </select>
+    <button id="stopAudio" class="tool-btn subtle" type="button">Stop audio</button>
+    <span id="scoreBadge" class="score-badge">Score: 0 / 0</span>
+  </nav>
+
+  <main id="main" class="page">
+    <section class="section overview">
+      <div class="section-title">
+        <p class="kicker">0) Roadmap</p>
+        <h2>2-hour plan</h2>
+      </div>
+      <div class="timeline">
+        <div class="time-block"><b>0–10 min</b><span>Confidence warm-up</span></div>
+        <div class="time-block"><b>10–30 min</b><span>Vocabulary by category</span></div>
+        <div class="time-block"><b>30–50 min</b><span>Past continuous: when something happened</span></div>
+        <div class="time-block"><b>50–75 min</b><span>Interactive dialogues</span></div>
+        <div class="time-block"><b>75–100 min</b><span>Roleplays and role reversal</span></div>
+        <div class="time-block"><b>100–115 min</b><span>Story challenge: worst day / worst client</span></div>
+        <div class="time-block"><b>115–120 min</b><span>Record, recap and next step</span></div>
+      </div>
+    </section>
+
+    <section class="section callout">
+      <div class="callout__text">
+        <p class="kicker">1) Confidence reset</p>
+        <h2>Use English in real places</h2>
+        <p>You have already studied many rules. Today, you will use them in real-life places: a boutique, a supermarket, a pharmacy, a butcher’s, a restaurant, a campsite, and a petrol station.</p>
+        <p class="frhelp">Tu as déjà vu beaucoup de règles. Aujourd’hui, l’objectif est de les utiliser à l’oral dans des situations concrètes, sans ajouter trop de théorie.</p>
+      </div>
+      <div class="quick-speak">
+        <h3>30-second warm-up</h3>
+        <p id="warmupQuestion">What do you usually buy at the supermarket?</p>
+        <button class="primary" data-next-warmup type="button">New question</button>
+        <button class="audio" data-say-target="warmupQuestion" type="button">🔊 Listen</button>
+        <button class="ghost" data-toggle="warmupModel" type="button">Show model</button>
+        <div id="warmupModel" class="hidden model-box">
+          <p><b>Model:</b> I usually buy vegetables, fruit, milk, and things for the house. I also sometimes buy shampoo or cleaning products.</p>
+          <p class="frhelp">Modèle : phrase simple + liste + détail.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <p class="kicker">2) Vocabulary station</p>
+        <h2>Choose a category and practise useful words</h2>
+        <p>Choose a category. Read the words, listen, and use them in one sentence. The vocabulary bank has been expanded so you can understand the words used in the dialogues, roleplays and writing scenarios.</p>
+      </div>
+      <div class="selector-row">
+        <label for="vocabCategory">Vocabulary category</label>
+        <select id="vocabCategory" class="big-select"></select>
+      </div>
+      <div id="vocabCards" class="cards-grid" aria-live="polite"></div>
+      <div class="practice-box">
+        <h3>Vocabulary quick test</h3>
+        <p>Choose the best answer. You will see immediately if you are correct.</p>
+        <div id="vocabQuiz" class="quiz-list"></div>
+      </div>
+    </section>
+
+    <section class="section grammar-zone">
+      <div class="section-title">
+        <p class="kicker">3) New grammar in a story</p>
+        <h2>Past continuous + past simple</h2>
+        <p>Use the past continuous for the background action. Use the past simple for the event that happened.</p>
+        <p class="frhelp">Utilise le <b>past continuous</b> pour l’action en cours dans le passé. Utilise le <b>past simple</b> pour l’événement qui arrive / interrompt.</p>
+      </div>
+
+      <div class="rule-grid">
+        <article class="rule-card">
+          <h3>Background action</h3>
+          <p class="formula">I / he / she / it <b>was</b> + verb-ing</p>
+          <p class="formula">you / we / they <b>were</b> + verb-ing</p>
+          <p>I was waiting at the checkout.</p>
+          <p>They were looking for the shampoo.</p>
+          <button class="audio" data-say="I was waiting at the checkout. They were looking for the shampoo." type="button">🔊 Listen</button>
+        </article>
+        <article class="rule-card">
+          <h3>What happened</h3>
+          <p class="formula">past simple</p>
+          <p>The card machine stopped working.</p>
+          <p>A customer arrived late.</p>
+          <button class="audio" data-say="The card machine stopped working. A customer arrived late." type="button">🔊 Listen</button>
+        </article>
+        <article class="rule-card accent">
+          <h3>Story sentence</h3>
+          <p><b>While</b> I was paying, the card machine stopped working.</p>
+          <p>I was filling up the car <b>when</b> my card was refused.</p>
+          <p class="frhelp"><b>While</b> = pendant que. <b>When</b> = quand / lorsque.</p>
+          <button class="audio" data-say="While I was paying, the card machine stopped working. I was filling up the car when my card was refused." type="button">🔊 Listen</button>
+        </article>
+      </div>
+
+      <div class="mini-table-wrap">
+        <table class="mini-table">
+          <thead>
+            <tr><th>Situation</th><th>Past continuous</th><th>Past simple event</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>At the supermarket</td><td>I was waiting in the queue</td><td>when I dropped my wallet.</td></tr>
+            <tr><td>At the pharmacy</td><td>I was explaining my problem</td><td>when the pharmacist asked for my card.</td></tr>
+            <tr><td>At the petrol station</td><td>I was filling up the car</td><td>when the pump stopped.</td></tr>
+            <tr><td>At the salon</td><td>I was helping a client</td><td>when the phone rang.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="practice-box">
+        <h3>Past continuous detective</h3>
+        <p>Find the correct story sentence. Use the hint before choosing if you need it.</p>
+        <div id="pastQuiz" class="quiz-list"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <p class="kicker">4) Question forms</p>
+        <h2>Ask and answer in the right tense</h2>
+        <p>Practise the question first. Then answer with one complete sentence.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Question practice categories">
+        <button class="tab active" data-question-tab="routine" type="button">Routine</button>
+        <button class="tab" data-question-tab="past" type="button">Past</button>
+        <button class="tab" data-question-tab="story" type="button">Story</button>
+        <button class="tab" data-question-tab="future" type="button">Future</button>
+        <button class="tab" data-question-tab="experience" type="button">Experience</button>
+      </div>
+      <div id="questionPanel" class="question-panel"></div>
+    </section>
+
+    <section class="section dialogue-zone">
+      <div class="section-title">
+        <p class="kicker">5) Interactive dialogues</p>
+        <h2>Listen, answer, then roleplay</h2>
+        <p>Choose a realistic situation. Listen to the dialogue, answer the question, and practise both roles.</p>
+      </div>
+      <div class="selector-row">
+        <label for="dialogueSelect">Dialogue scenario</label>
+        <select id="dialogueSelect" class="big-select"></select>
+      </div>
+      <div id="dialoguePanel" class="dialogue-card"></div>
+      <div id="dialogueQuiz" class="quiz-list"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <p class="kicker">6) Roleplay lab</p>
+        <h2>From model to real conversation</h2>
+        <p>Choose a roleplay. First use the guided model, then hide it and try again.</p>
+      </div>
+      <div class="selector-row">
+        <label for="roleplaySelect">Roleplay</label>
+        <select id="roleplaySelect" class="big-select"></select>
+      </div>
+      <div id="roleplayPanel" class="roleplay-card"></div>
+    </section>
+
+    <section class="section writing-zone">
+      <div class="section-title">
+        <p class="kicker">7) Short message practice</p>
+        <h2>SMS and email scenarios</h2>
+        <p>Choose one situation, write 4–6 lines, then say your message aloud.</p>
+      </div>
+      <div class="selector-row">
+        <label for="writingSelect">Writing scenario</label>
+        <select id="writingSelect" class="big-select"></select>
+      </div>
+      <div id="writingPanel" class="writing-card"></div>
+      <textarea id="studentWriting" class="student-text" rows="8" placeholder="Write your message here..."></textarea>
+      <div class="button-row">
+        <button id="copyWriting" class="ghost" type="button">Copy my message</button>
+        <button id="clearWriting" class="ghost" type="button">Clear</button>
+      </div>
+    </section>
+
+    <section class="section story-zone">
+      <div class="section-title">
+        <p class="kicker">8) Story challenge</p>
+        <h2>The worst day ever / the worst client ever</h2>
+        <p>Use past continuous + past simple to tell a short story. The goal is communication, not perfection.</p>
+      </div>
+      <div class="story-builder">
+        <div>
+          <label for="storyType">Choose your story</label>
+          <select id="storyType" class="big-select"></select>
+        </div>
+        <div id="storyPanel" class="model-box story-card"></div>
+        <div class="timer-panel">
+          <h3>Oral timer</h3>
+          <p id="timerDisplay">01:00</p>
+          <div class="button-row">
+            <button class="primary" data-time="30" type="button">30 sec</button>
+            <button class="primary" data-time="60" type="button">1 min</button>
+            <button class="primary" data-time="120" type="button">2 min</button>
+            <button id="stopTimer" class="ghost" type="button">Stop</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section recorder-zone">
+      <div class="section-title">
+        <p class="kicker">9) Recording corner</p>
+        <h2>Record your final answer</h2>
+        <p>Use this to practise your speaking. Recordings stay on this page/browser. They are not automatically sent to Tisha.</p>
+        <p class="frhelp">Sur iPhone/iPad, l’enregistrement dans une page web peut parfois être limité. Dans ce cas, utilise l’application <b>Dictaphone / Voice Memos</b> sur ton téléphone et envoie l’audio séparément.</p>
+      </div>
+      <div class="recorder-card">
+        <div class="button-row">
+          <button id="startRec" class="primary" type="button">Start recording</button>
+          <button id="stopRec" class="danger" type="button" disabled>Stop recording</button>
+          <button id="downloadRec" class="ghost" type="button" disabled>Download recording</button>
+        </div>
+        <p id="recStatus">Ready to record.</p>
+        <audio id="audioPlayback" controls></audio>
+      </div>
+    </section>
+
+    <section class="section final-card">
+      <div class="section-title">
+        <p class="kicker">10) Final CLOE-style challenge</p>
+        <h2>Speak, ask, react</h2>
+      </div>
+      <div class="final-grid">
+        <div>
+          <h3>Answer</h3>
+          <p>Tell me about a shopping problem you had.</p>
+        </div>
+        <div>
+          <h3>Ask</h3>
+          <p>Ask Tisha three questions about a shop, restaurant, or hotel.</p>
+        </div>
+        <div>
+          <h3>React</h3>
+          <p>You do not understand the price. Ask the person to repeat and confirm.</p>
+        </div>
+      </div>
+      <button class="audio" data-say="Tell me about a shopping problem you had. Ask three questions about a shop, restaurant, or hotel. You do not understand the price. Ask the person to repeat and confirm." type="button">🔊 Listen to final challenge</button>
+    </section>
+
+    <section class="section evaluation-panel" id="evaluationReport">
+      <div class="section-title">
+        <p class="kicker">📊 Qualiopi Evaluation Summary</p>
+        <h2>Suivi des acquis — Karine</h2>
+        <p>This evaluation summary is designed for the learner file. Results are saved in this browser. Oral and writing tasks can be assessed manually with the trainer.</p>
+        <p class="frhelp">Cette section permet de garder une trace claire des acquis travaillés pendant la leçon : vocabulaire, grammaire, compréhension, expression orale, écrit et mise en situation.</p>
+      </div>
+
+      <div class="evaluation-meta">
+        <label>Learner / Apprenante
+          <input id="learnerName" value="Karine Cormier">
+        </label>
+        <label>Trainer / Formatrice
+          <input id="trainerName" value="Tisha DOUTY-DOSIERE">
+        </label>
+        <label>Evaluation date
+          <input id="evaluationDate" type="date">
+        </label>
+      </div>
+
+      <div class="evaluation-legend">
+        <span class="status achieved">Objectif atteint</span>
+        <span class="status progress">En cours d’acquisition</span>
+        <span class="status not-achieved">Objectif non atteint</span>
+        <span class="status not-started">Non commencé</span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="evaluation-table">
+          <thead>
+            <tr>
+              <th>Objectif pédagogique</th>
+              <th>Support / sujet</th>
+              <th>Mode d’évaluation</th>
+              <th>Score</th>
+              <th>Résultat</th>
+            </tr>
+          </thead>
+          <tbody id="evaluationRows"></tbody>
+        </table>
+      </div>
+
+      <div class="manual-evaluation">
+        <h3>🗣️ Évaluations à renseigner avec la formatrice</h3>
+        <div class="manual-grid">
+          <label>Oral questions — ask and answer
+            <select data-manual="oral-questions">
+              <option value="not-started">Non commencé</option>
+              <option value="progress">Objectif en cours d’acquisition</option>
+              <option value="achieved">Objectif atteint</option>
+              <option value="not-achieved">Objectif non atteint</option>
+            </select>
+          </label>
+          <label>Real-life roleplay
+            <select data-manual="roleplay">
+              <option value="not-started">Non commencé</option>
+              <option value="progress">Objectif en cours d’acquisition</option>
+              <option value="achieved">Objectif atteint</option>
+              <option value="not-achieved">Objectif non atteint</option>
+            </select>
+          </label>
+          <label>Short SMS / email writing
+            <select data-manual="writing">
+              <option value="not-started">Non commencé</option>
+              <option value="progress">Objectif en cours d’acquisition</option>
+              <option value="achieved">Objectif atteint</option>
+              <option value="not-achieved">Objectif non atteint</option>
+            </select>
+          </label>
+          <label>Storytelling — past continuous + past simple
+            <select data-manual="story">
+              <option value="not-started">Non commencé</option>
+              <option value="progress">Objectif en cours d’acquisition</option>
+              <option value="achieved">Objectif atteint</option>
+              <option value="not-achieved">Objectif non atteint</option>
+            </select>
+          </label>
+          <label>Final CLOE-style speaking challenge
+            <select data-manual="final-speaking">
+              <option value="not-started">Non commencé</option>
+              <option value="progress">Objectif en cours d’acquisition</option>
+              <option value="achieved">Objectif atteint</option>
+              <option value="not-achieved">Objectif non atteint</option>
+            </select>
+          </label>
+          <label>Trainer comments / Observations de la formatrice
+            <textarea id="trainerComments" rows="5" placeholder="Strengths, points to review, pronunciation, confidence, next objectives..."></textarea>
+          </label>
+        </div>
+      </div>
+
+      <div class="overall-box">
+        <div><strong>Completion:</strong> <span id="completionRate">0%</span></div>
+        <div><strong>Overall result:</strong> <span id="overallStatus" class="status not-started">Non commencé</span></div>
+        <div><strong>Last saved:</strong> <span id="lastSaved">—</span></div>
+      </div>
+
+      <div class="button-row report-buttons">
+        <button id="saveProgress" class="primary" type="button">💾 Save progress</button>
+        <button id="downloadPdf" class="ghost" type="button">📄 Download PDF report</button>
+        <button id="downloadHtml" class="ghost" type="button">⬇ Download readable report</button>
+        <button id="printReport" class="ghost" type="button">🖨 Print report</button>
+        <button id="resetProgress" class="danger" type="button">↺ Reset results</button>
+      </div>
+
+      <p class="storage-note">⚠ Progress is stored only in this browser and on this device. Use “Download PDF report” or “Download readable report” to keep clear evidence for the learner file.</p>
+    </section>
+
+  </main>
+  <footer class="footer">
+    <p><b>SpeakEasyTisha</b> · Karine’s CLOE Confidence Journey · Session 2</p>
+    <p>Training focus: oral fluency, realistic communication, short writing, learner feedback, and confidence.</p>
+  </footer>
+
+  <script src="js/karine-story-street-skills-studio-a1a2.js"></script>
+</body>
+</html>
