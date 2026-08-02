@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Isabelle — Lesson 22 Quick Reference: From First Reply to First Interview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --delft: #1e3a5f;
+    --delft-deep: #14283f;
+    --brick: #a1462f;
+    --ochre: #c68a2e;
+    --canal: #3c6e58;
+    --cream: #f7f2e7;
+    --paper: #fffdf8;
+    --ink: #26241d;
+    --line: #d8cdb4;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 28px;
+  }
+
+  .sheet{
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: 0 1px 3px rgba(30,58,95,0.08);
+  }
+
+  /* ---------- Stepped gable header ---------- */
+  .gable{
+    position: relative;
+    background: var(--delft);
+    color: var(--cream);
+    padding: 34px 40px 46px;
+    overflow: hidden;
+  }
+  .gable::before{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:-1px;
+    height: 26px;
+    background:
+      linear-gradient(var(--paper),var(--paper)) 0 0/14.2857% 100% no-repeat,
+      linear-gradient(var(--paper),var(--paper)) 28.5714% 0/14.2857% 100% no-repeat,
+      linear-gradient(var(--paper),var(--paper)) 57.1428% 0/14.2857% 100% no-repeat,
+      linear-gradient(var(--paper),var(--paper)) 85.7142% 0/14.2857% 100% no-repeat;
+    clip-path: polygon(
+      0% 100%, 0% 40%, 7.14% 40%, 7.14% 20%, 14.28% 20%, 14.28% 0%,
+      21.42% 0%, 21.42% 20%, 28.56% 20%, 28.56% 40%, 35.7% 40%, 35.7% 60%,
+      42.84% 60%, 42.84% 40%, 49.98% 40%, 49.98% 20%, 57.12% 20%, 57.12% 0%,
+      64.26% 0%, 64.26% 20%, 71.4% 20%, 71.4% 40%, 78.54% 40%, 78.54% 60%,
+      85.68% 60%, 85.68% 40%, 92.82% 40%, 92.82% 20%, 100% 20%, 100% 100%
+    );
+    background-color: var(--paper);
+  }
+  .eyebrow{
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.15;
+    margin: 0 0 8px;
+    max-width: 620px;
+  }
+  .subhead{
+    font-size: 14.5px;
+    color: #dfe6ee;
+    max-width: 560px;
+  }
+  .meta-row{
+    display:flex;
+    gap: 22px;
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: #cdd8e3;
+    flex-wrap: wrap;
+  }
+  .meta-row span strong{ color: var(--cream); font-weight:600; }
+
+  /* ---------- Body ---------- */
+  .body{ padding: 30px 40px 36px; }
+
+  .formula{
+    background: #fbf4e4;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--ochre);
+    padding: 16px 20px;
+    margin: 4px 0 30px;
+  }
+  .formula .fr{ color:#6b5c3a; font-style: italic; font-size: 13.5px; margin-top:6px; }
+  .formula-title{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size: 17px;
+    color: var(--delft);
+    margin: 0 0 6px;
+  }
+  .formula-steps{
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--brick);
+  }
+
+  h2{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 19px;
+    color: var(--delft);
+    border-bottom: 2px solid var(--delft);
+    padding-bottom: 6px;
+    margin: 32px 0 14px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  h2 .fr-label{
+    font-family:'Source Sans 3',sans-serif;
+    font-weight:400;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--brick);
+  }
+  h2:first-of-type{ margin-top: 0; }
+
+  /* vocabulary grid */
+  .vocab-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 22px;
+  }
+  .vocab-card{
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .vocab-card h3{
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--paper);
+    background: var(--canal);
+    margin:0;
+    padding: 7px 12px;
+  }
+  .vocab-card ul{
+    list-style:none;
+    margin:0; padding: 10px 12px 12px;
+  }
+  .vocab-card li{
+    font-size: 13.5px;
+    padding: 3px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .vocab-card li:last-child{ border-bottom:none; }
+  .vocab-card li .en{ font-weight: 600; }
+  .vocab-card li .fr{ color:#7a6a45; font-size: 12.5px; }
+
+  /* reply type table */
+  .reply-table{
+    width:100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .reply-table th{
+    text-align:left;
+    background: var(--delft);
+    color: var(--cream);
+    padding: 8px 10px;
+    font-weight:600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .reply-table td{
+    padding: 9px 10px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .reply-table tr:nth-child(even) td{ background:#faf5ea; }
+  .tag{
+    display:inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 2px;
+    color: var(--paper);
+  }
+  .tag.pos{ background: var(--canal); }
+  .tag.neu{ background: var(--ochre); }
+  .tag.neg{ background: var(--brick); }
+  .tag.call{ background: var(--delft); }
+
+  /* two-column phrase blocks */
+  .two-col{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .phrase-block{
+    border: 1px solid var(--line);
+    padding: 14px 16px;
+    background: var(--paper);
+  }
+  .phrase-block h3{
+    font-family:'Fraunces',serif;
+    font-size: 14.5px;
+    color: var(--brick);
+    margin: 0 0 8px;
+  }
+  .phrase-block ul{ margin:0; padding-left: 18px; }
+  .phrase-block li{ margin-bottom: 7px; font-size: 13.5px; }
+  .phrase-block li .fr{ display:block; color:#7a6a45; font-size: 12px; font-style: italic; }
+
+  /* call structure timeline */
+  .call-steps{
+    display:flex;
+    gap: 10px;
+    margin: 6px 0 4px;
+    flex-wrap: wrap;
+  }
+  .call-step{
+    flex: 1 1 150px;
+    background: #fbf4e4;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--canal);
+    padding: 10px 12px;
+  }
+  .call-step .num{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    color: var(--canal);
+    font-size: 12px;
+  }
+  .call-step p{ margin: 4px 0 0; font-size: 12.8px; }
+
+  .followup-grid{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 14px;
+  }
+  .fu-card{
+    border-left: 4px solid var(--delft);
+    background: #f2f2ea;
+    padding: 10px 14px;
+  }
+  .fu-card h4{
+    margin:0 0 4px;
+    font-size: 13px;
+    color: var(--delft);
+    text-transform: uppercase;
+    letter-spacing:.04em;
+  }
+  .fu-card p{ margin: 0; font-size: 13.3px; }
+  .fu-card p.fr{ color:#7a6a45; font-style: italic; font-size: 12px; margin-top:3px; }
+
+  footer{
+    background: var(--delft-deep);
+    color: #c9d3de;
+    padding: 16px 40px;
+    font-size: 11.5px;
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  footer strong{ color: var(--cream); }
+
+  @media print{
+    body{ padding:0; background: var(--paper); font-size: 12.5px; }
+    .sheet{ border:none; box-shadow:none; max-width: 100%; }
+    .gable{ padding: 22px 30px 34px; }
+    .body{ padding: 20px 30px; }
+    h2{ margin: 20px 0 10px; }
+    a{ color: inherit; text-decoration: none; }
+  }
+
+  @media (max-width: 640px){
+    .vocab-grid, .two-col, .followup-grid{ grid-template-columns: 1fr; }
+    .gable, .body{ padding-left: 22px; padding-right: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="gable">
+    <div class="eyebrow">Isabelle · Dutch Job Search English · Lesson 22</div>
+    <h1>From First Reply to First Interview</h1>
+    <div class="subhead">Your quick-reference sheet for recruiter replies, phone calls and follow-ups in your Netherlands real-estate job search.</div>
+    <div class="meta-row">
+      <span><strong>Lesson date:</strong> 29/07/2026</span>
+      <span><strong>Trainer:</strong> Tisha Douty-Dosiere</span>
+      <span><strong>Focus:</strong> Reply · Call · Follow-up</span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="formula">
+      <p class="formula-title">Your golden formula</p>
+      <p class="formula-steps">Thank you → clear purpose → one relevant value → one clear next step.</p>
+      <p class="fr">FR : Merci → objectif clair → une valeur professionnelle pertinente → une prochaine étape claire.</p>
+    </div>
+
+    <h2>Vocabulary you built this lesson <span class="fr-label">— vocabulaire de la leçon</span></h2>
+    <div class="vocab-grid">
+      <div class="vocab-card">
+        <h3>People &amp; intermediaries</h3>
+        <ul>
+          <li><span class="en">recruiter</span><span class="fr"> — recruteur/recruteuse</span></li>
+          <li><span class="en">headhunter</span><span class="fr"> — chasseur de têtes</span></li>
+          <li><span class="en">hiring manager</span><span class="fr"> — responsable du recrutement</span></li>
+          <li><span class="en">temporary / staffing agency</span><span class="fr"> — agence d'intérim</span></li>
+          <li><span class="en">HR contact</span><span class="fr"> — contact RH</span></li>
+        </ul>
+      </div>
+      <div class="vocab-card">
+        <h3>Contracts &amp; work formats</h3>
+        <ul>
+          <li><span class="en">permanent contract</span><span class="fr"> — CDI</span></li>
+          <li><span class="en">fixed-term contract</span><span class="fr"> — CDD</span></li>
+          <li><span class="en">freelance / self-employed</span><span class="fr"> — indépendant(e)</span></li>
+          <li><span class="en">full-time / part-time</span><span class="fr"> — temps plein / temps partiel</span></li>
+          <li><span class="en">notice period</span><span class="fr"> — préavis</span></li>
+        </ul>
+      </div>
+      <div class="vocab-card">
+        <h3>Recruitment process</h3>
+        <ul>
+          <li><span class="en">shortlist</span><span class="fr"> — liste des candidats retenus</span></li>
+          <li><span class="en">screening call</span><span class="fr"> — appel de présélection</span></li>
+          <li><span class="en">to move forward with your application</span><span class="fr"> — donner suite à votre candidature</span></li>
+          <li><span class="en">reference check</span><span class="fr"> — vérification des références</span></li>
+          <li><span class="en">offer</span><span class="fr"> — proposition d'embauche</span></li>
+        </ul>
+      </div>
+      <div class="vocab-card">
+        <h3>Money &amp; conditions</h3>
+        <ul>
+          <li><span class="en">salary expectations</span><span class="fr"> — prétentions salariales</span></li>
+          <li><span class="en">gross / net</span><span class="fr"> — brut / net</span></li>
+          <li><span class="en">benefits</span><span class="fr"> — avantages</span></li>
+          <li><span class="en">commission</span><span class="fr"> — commission</span></li>
+          <li><span class="en">start date / availability</span><span class="fr"> — date de disponibilité</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Recognise the reply <span class="fr-label">— reconnaître le type de message</span></h2>
+    <table class="reply-table">
+      <tr><th>Type</th><th>What it usually looks like</th><th>Your quick reaction</th></tr>
+      <tr>
+        <td><span class="tag pos">Positive</span></td>
+        <td>They ask a question or propose a next step.</td>
+        <td>Thank them, answer directly, confirm the next step.</td>
+      </tr>
+      <tr>
+        <td><span class="tag neu">Neutral</span></td>
+        <td>They acknowledge receipt without commitment.</td>
+        <td>Keep it short, add one relevant detail, stay available.</td>
+      </tr>
+      <tr>
+        <td><span class="tag neg">Refusal</span></td>
+        <td>Polite decline, sometimes vague reasons.</td>
+        <td>Thank them, ask to stay in touch for future roles.</td>
+      </tr>
+      <tr>
+        <td><span class="tag pos">Request for CV</span></td>
+        <td>They ask you to resend or update documents.</td>
+        <td>Send promptly, confirm format, add one sentence of context.</td>
+      </tr>
+      <tr>
+        <td><span class="tag call">Call invitation</span></td>
+        <td>They propose a day/time for a call.</td>
+        <td>Confirm the slot, or propose an alternative clearly.</td>
+      </tr>
+      <tr>
+        <td><span class="tag neu">Dutch-language concern</span></td>
+        <td>They ask about your Dutch level.</td>
+        <td>State your real level honestly, add your learning plan.</td>
+      </tr>
+    </table>
+
+    <h2>Clarify safely on the phone <span class="fr-label">— clarifier sans stress</span></h2>
+    <div class="two-col">
+      <div class="phrase-block">
+        <h3>Ask for repetition</h3>
+        <ul>
+          <li>Could you repeat that, please?<span class="fr">Pourriez-vous répéter, s'il vous plaît ?</span></li>
+          <li>Sorry, could you say that more slowly?<span class="fr">Pardon, pourriez-vous parler plus lentement ?</span></li>
+          <li>Could you spell that for me?<span class="fr">Pourriez-vous épeler, s'il vous plaît ?</span></li>
+        </ul>
+      </div>
+      <div class="phrase-block">
+        <h3>Confirm &amp; recover</h3>
+        <ul>
+          <li>Just to confirm, you said Tuesday at 2pm?<span class="fr">Pour confirmer, vous avez dit mardi à 14h ?</span></li>
+          <li>Could you send that in writing / by email?<span class="fr">Pourriez-vous me l'envoyer par écrit / par e-mail ?</span></li>
+          <li>Let me make sure I understood correctly.<span class="fr">Laissez-moi vérifier que j'ai bien compris.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Handle the call: your 60–90 second pitch <span class="fr-label">— votre présentation orale</span></h2>
+    <div class="call-steps">
+      <div class="call-step"><div class="num">1 · Profile</div><p>Your real-estate background, ~24 years, plus your legal experience.</p></div>
+      <div class="call-step"><div class="num">2 · Target role</div><p>The type of role you're looking for in the Netherlands.</p></div>
+      <div class="call-step"><div class="num">3 · Dutch</div><p>Your honest current level and your learning plan.</p></div>
+      <div class="call-step"><div class="num">4 · Salary</div><p>A realistic range, stated with confidence.</p></div>
+      <div class="call-step"><div class="num">5 · Availability</div><p>Your real start date or notice period.</p></div>
+    </div>
+
+    <h2>Follow up <span class="fr-label">— relancer</span></h2>
+    <div class="followup-grid">
+      <div class="fu-card">
+        <h4>After a call</h4>
+        <p>Thank you for the call today. As discussed, I'm sending my updated CV — I look forward to hearing about the next step.</p>
+        <p class="fr">Merci pour l'appel. Comme convenu, je vous envoie mon CV à jour — j'attends avec intérêt les prochaines étapes.</p>
+      </div>
+      <div class="fu-card">
+        <h4>After sending your CV</h4>
+        <p>I wanted to follow up on the CV I sent last week. I remain very interested in this opportunity.</p>
+        <p class="fr">Je me permets de relancer au sujet du CV envoyé la semaine dernière. Je reste très intéressée.</p>
+      </div>
+      <div class="fu-card">
+        <h4>After no reply</h4>
+        <p>I hope this finds you well. I wanted to check whether there's any update on my application.</p>
+        <p class="fr">J'espère que vous allez bien. Je me permets de demander s'il y a du nouveau concernant ma candidature.</p>
+      </div>
+      <div class="fu-card">
+        <h4>After a refusal</h4>
+        <p>Thank you for letting me know, and for your time. I'd welcome staying in touch for future opportunities.</p>
+        <p class="fr">Merci de m'avoir informée, et pour votre temps. Je serais ravie de rester en contact pour de futures opportunités.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>SpeakEasyTisha · Isabelle — Lesson 22 · 29/07/2026</span>
+    <span>Qualiopi-aligned reference material · <strong>speakeasytisha.github.io/Isabelle</strong></span>
+  </footer>
+
+</div>
+</body>
+</html>
