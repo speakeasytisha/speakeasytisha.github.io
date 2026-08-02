@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yanis — Report What Happened & Explain the Next Step</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-22-past-incidents-next-steps.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Yanis · Past incidents, current status & next steps</div>
+    </div>
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUS" type="button">🇺🇸 US</button>
+        <button class="seg" id="voiceUK" type="button">🇬🇧 UK</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Audio</span>
+        <button class="btn btn--ghost" id="btnPause" type="button">⏸</button>
+        <button class="btn btn--ghost" id="btnResume" type="button">▶️</button>
+        <button class="btn btn--ghost" id="btnStop" type="button">⏹</button>
+      </div>
+      <div class="scorebox">Score <span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      <span class="pillTag" id="jsStatus">JS: loading…</span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <div class="eyebrow">LILATE Part 2 & Part 3 · New tense focus</div>
+      <h1>Report What Happened & Explain the Next Step ✈️</h1>
+      <p class="lead">This lesson introduces the <strong>past simple</strong> in a structured way so you can explain what happened during an airline incident. You will also connect the <strong>past event</strong>, the <strong>current situation</strong>, and the <strong>next step</strong>.</p>
+      <p class="lead fr">Cette leçon introduit le <strong>past simple</strong> de manière structurée afin que vous puissiez expliquer ce qui s’est passé lors d’un incident dans le secteur aérien. Vous allez également relier <strong>l’événement passé</strong>, <strong>la situation actuelle</strong> et <strong>la prochaine étape</strong>.</p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start lesson</button>
+        <button class="btn btn--ghost" id="btnListenIntro" type="button">🔊 Listen intro</button>
+      </div>
+      <div class="minirow">
+        <div class="minicard"><div class="minicard__t">Past event</div><div class="minicard__p">What happened?</div></div>
+        <div class="minicard"><div class="minicard__t">Status now</div><div class="minicard__p">What is the situation now?</div></div>
+        <div class="minicard"><div class="minicard__t">Next step</div><div class="minicard__p">What will happen next?</div></div>
+      </div>
+    </div>
+    <div class="panelcard">
+      <div class="panelcard__title">Lesson map</div>
+      <ol class="panelcard__list">
+        <li>Timeline method</li>
+        <li>Past simple: be, regular and irregular verbs</li>
+        <li>Negatives and questions with did</li>
+        <li>Vocabulary by incident category</li>
+        <li>Many controlled exercises</li>
+        <li>Listening, reformulation and writing</li>
+        <li>Live LILATE roleplay</li>
+      </ol>
+      <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+      <div class="muted tiny">Goal: explain an incident clearly, accurately and professionally.</div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="shell">
+
+  <section class="section" id="timeline">
+    <div class="section__head">
+      <h2>1) The three-time method</h2>
+      <p class="muted">Use this simple structure to organise a professional answer.</p>
+    </div>
+    <div class="timeline-grid">
+      <article class="time-card past-card">
+        <div class="time-icon">⏮️</div>
+        <h3>Past event</h3>
+        <p><strong>What happened?</strong></p>
+        <div class="example">The passenger <strong>missed</strong> the connection.</div>
+        <div class="example">The bag <strong>did not arrive</strong>.</div>
+      </article>
+      <article class="time-card now-card">
+        <div class="time-icon">⏺️</div>
+        <h3>Situation now</h3>
+        <p><strong>What is true now?</strong></p>
+        <div class="example">The passenger <strong>is waiting</strong> at the desk.</div>
+        <div class="example">The bag <strong>is missing</strong>.</div>
+      </article>
+      <article class="time-card next-card">
+        <div class="time-icon">⏭️</div>
+        <h3>Next step</h3>
+        <p><strong>What will happen next?</strong></p>
+        <div class="example">I <strong>will check</strong> the next flight.</div>
+        <div class="example">The baggage team <strong>will contact</strong> the passenger.</div>
+      </article>
+    </div>
+    <div class="teacher-note">
+      <strong>Important:</strong> The new tense in this lesson is the <strong>past simple</strong>. The phrases with <strong>will</strong> are used as practical “next step” language. A complete future-tense lesson will come separately.
+    </div>
+  </section>
+
+  <section class="section" id="grammar">
+    <div class="section__head">
+      <h2>2) Grammar workshop — Past simple</h2>
+      <p class="muted">Learn one rule at a time. Each block includes examples, mistakes, and notes.</p>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>A. Past of “be” — was / were</h3><button class="btn btn--ghost speakRule" data-say="I was at the gate. You were at the gate. The flight was delayed. The passengers were worried." type="button">🔊 Listen</button></div>
+        <div class="formula">I / he / she / it <strong>was</strong> · you / we / they <strong>were</strong></div>
+        <div class="gExamples">
+          <div class="example">The flight <strong>was</strong> delayed yesterday.</div>
+          <div class="example">The passengers <strong>were</strong> worried.</div>
+          <div class="example">I <strong>was not</strong> at the gate.</div>
+          <div class="example"><strong>Were</strong> the passengers on board?</div>
+        </div>
+        <div class="gRule alt"><strong>Negative:</strong> was not / wasn’t · were not / weren’t</div>
+        <div class="gRule alt"><strong>Question:</strong> Was / Were + subject ...?</div>
+        <div class="bad">❌ The passengers was worried.</div>
+        <div class="good">✅ The passengers were worried.</div>
+      </div>
+
+      <div class="card">
+        <div class="card__head"><h3>B. Regular verbs — verb + -ed</h3><button class="btn btn--ghost speakRule" data-say="The passenger asked a question. The crew checked the boarding pass. The flight arrived late." type="button">🔊 Listen</button></div>
+        <div class="formula">Subject + regular verb + <strong>-ed</strong></div>
+        <div class="gExamples">
+          <div class="example">The passenger <strong>asked</strong> for help.</div>
+          <div class="example">The crew <strong>checked</strong> the documents.</div>
+          <div class="example">The flight <strong>arrived</strong> late.</div>
+          <div class="example">We <strong>informed</strong> the passengers.</div>
+        </div>
+        <div class="gRule alt"><strong>Spelling notes:</strong></div>
+        <ul class="rule-list">
+          <li>Most verbs: check → checked</li>
+          <li>Verb ending in -e: arrive → arrived</li>
+          <li>Consonant + y: carry → carried</li>
+          <li>Short verb: stop → stopped</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two mt">
+      <div class="card">
+        <div class="card__head"><h3>C. Irregular verbs</h3><button class="btn btn--ghost speakRule" data-say="go went, leave left, lose lost, find found, tell told, give gave, take took, have had, come came" type="button">🔊 Listen</button></div>
+        <div class="gRule">Irregular verbs do not use a simple <strong>-ed</strong> ending. Learn the past form.</div>
+        <table class="miniTable">
+          <tr><th>Base verb</th><th>Past simple</th><th>Airline example</th></tr>
+          <tr><td>go</td><td>went</td><td>The passenger went to the wrong gate.</td></tr>
+          <tr><td>leave</td><td>left</td><td>The aircraft left at 8 p.m.</td></tr>
+          <tr><td>lose</td><td>lost</td><td>The passenger lost the boarding pass.</td></tr>
+          <tr><td>find</td><td>found</td><td>The crew found the bag.</td></tr>
+          <tr><td>tell</td><td>told</td><td>The agent told the passenger to wait.</td></tr>
+          <tr><td>give</td><td>gave</td><td>The crew gave clear instructions.</td></tr>
+          <tr><td>take</td><td>took</td><td>The passenger took the wrong bus.</td></tr>
+          <tr><td>have</td><td>had</td><td>The passenger had a seat problem.</td></tr>
+          <tr><td>come</td><td>came</td><td>The passenger came to the desk.</td></tr>
+          <tr><td>fall</td><td>fell</td><td>A passenger fell in the aisle.</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card__head"><h3>D. Negative and questions with did</h3><button class="btn btn--ghost speakRule" data-say="The passenger did not miss the flight. Did the passenger miss the flight? Yes, he did. No, he didn't." type="button">🔊 Listen</button></div>
+        <div class="formula">Negative: subject + <strong>did not / didn’t + base verb</strong></div>
+        <div class="formula">Question: <strong>Did + subject + base verb</strong> ...?</div>
+        <div class="gExamples">
+          <div class="example">The bag <strong>didn’t arrive</strong>.</div>
+          <div class="example"><strong>Did</strong> the passenger <strong>miss</strong> the flight?</div>
+          <div class="example">Yes, he did. / No, he didn’t.</div>
+        </div>
+        <div class="gRule alt"><strong>Important exception:</strong> after <strong>did / didn’t</strong>, use the <strong>base verb</strong>, not the past form.</div>
+        <div class="bad">❌ Did the passenger missed the flight?</div>
+        <div class="good">✅ Did the passenger miss the flight?</div>
+        <div class="bad">❌ The bag didn’t arrived.</div>
+        <div class="good">✅ The bag didn’t arrive.</div>
+      </div>
+    </div>
+
+    <div class="two mt">
+      <div class="card">
+        <div class="card__head"><h3>E. Past time markers</h3></div>
+        <div class="gExamples">
+          <div class="example"><strong>yesterday</strong> — The flight arrived late yesterday.</div>
+          <div class="example"><strong>last night / last week</strong> — The passenger called last night.</div>
+          <div class="example"><strong>two hours ago</strong> — The bag arrived two hours ago.</div>
+          <div class="example"><strong>this morning</strong> — The incident happened this morning.</div>
+          <div class="example"><strong>at 6:15 p.m.</strong> — Boarding started at 6:15 p.m.</div>
+        </div>
+        <div class="gRule alt">These time expressions help the listener understand that the action is finished.</div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Your grammar notes</h3></div>
+        <label class="lab">Write the key rules in your own words
+          <textarea class="textarea" id="grammarNotes" rows="11" placeholder="Was / were: ...&#10;Regular verbs: ...&#10;Did / didn't: ..."></textarea>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="vocabulary">
+    <div class="section__head">
+      <h2>3) Vocabulary station — airline incidents</h2>
+      <p class="muted">Choose a category. Each word includes a translation, definition, example, and audio.</p>
+    </div>
+    <div class="filters">
+      <label class="selectWrap">Category
+        <select id="vocabCategory"></select>
+      </label>
+      <button class="btn btn--ghost" id="btnSpeakCategory" type="button">🔊 Listen category</button>
+    </div>
+    <div id="vocabGrid" class="vocabGrid"></div>
+  </section>
+
+  <section class="section" id="exercises">
+    <div class="section__head">
+      <h2>4) Exercise hub — easy to hard</h2>
+      <p class="muted">There are many exercises for each rule so you can build confidence step by step.</p>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 1 — was or were?</h3>
+      <div id="beHost"></div>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 2 — regular verbs in the past</h3>
+      <div id="regularHost"></div>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 3 — irregular verbs</h3>
+      <div id="irregularHost"></div>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 4 — did / didn’t + base verb</h3>
+      <div id="didHost"></div>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 5 — choose the correct time marker</h3>
+      <div id="timeHost"></div>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 6 — past, now, or next step?</h3>
+      <div id="timelineHost"></div>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 7 — correct the mistake</h3>
+      <div id="correctionHost"></div>
+    </div>
+
+    <div class="exercise">
+      <h3>Exercise 8 — sentence builder</h3>
+      <div id="builderHost"></div>
+    </div>
+  </section>
+
+  <section class="section" id="listening">
+    <div class="section__head">
+      <h2>5) Listen, collect the facts, and reformulate</h2>
+      <p class="muted">This is useful for LILATE Parts 2 and 3. Listen first, take notes, then reveal the transcript.</p>
+    </div>
+    <div class="filters">
+      <label class="selectWrap">Scenario
+        <select id="listeningSelect"></select>
+      </label>
+      <button class="btn btn--ghost" id="btnListenScenario" type="button">🔊 Listen</button>
+      <button class="btn btn--ghost" id="btnToggleTranscript" type="button">📄 Show / hide transcript</button>
+      <button class="btn btn--ghost" id="btnToggleListenModel" type="button">👀 Show / hide model</button>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Essential information</h3></div>
+        <div id="listeningQuestions"></div>
+        <label class="lab">Your notes
+          <textarea class="textarea" id="listeningNotes" rows="8" placeholder="Who? What happened? When? Situation now? Next step?"></textarea>
+        </label>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Support</h3></div>
+        <div id="listeningTranscript" class="model hidden"></div>
+        <div id="listeningModel" class="model hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="writing">
+    <div class="section__head">
+      <h2>6) Writing ladder — incident report</h2>
+      <p class="muted">Compare three levels and see how to make the answer clearer and more professional.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Models</h3></div>
+        <table class="miniTable">
+          <tr><th>Level</th><th>Model</th></tr>
+          <tr><td>Simple</td><td>The passenger missed the flight.</td></tr>
+          <tr><td>Better</td><td>The passenger missed the connecting flight because the first flight arrived late.</td></tr>
+          <tr><td>Stronger</td><td>The passenger missed the connecting flight because the first flight arrived late. He is currently waiting at the transfer desk, and I will check the next available flight for him.</td></tr>
+        </table>
+        <div class="teacher-note">A strong LILATE answer connects <strong>what happened</strong>, <strong>the situation now</strong>, and <strong>the next step</strong>.</div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Your turn</h3></div>
+        <label class="lab">Write a short incident report
+          <textarea class="textarea" id="writingTry" rows="10" placeholder="The passenger..."></textarea>
+        </label>
+        <button class="btn btn--ghost" id="btnWritingChecklist" type="button">Check my structure</button>
+        <div id="writingChecklist" class="steps hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="scenario">
+    <div class="section__head">
+      <h2>7) Scenario lab — explain an incident professionally</h2>
+      <p class="muted">Choose a realistic situation. Answer first, then compare with A2, B1 and LILATE models.</p>
+    </div>
+    <div class="filters">
+      <label class="selectWrap">Scenario
+        <select id="scenarioSelect"></select>
+      </label>
+      <button class="btn btn--ghost" id="btnSpeakScenario" type="button">🔊 Listen</button>
+      <button class="btn btn--ghost" id="btnToggleScenarioModels" type="button">👀 Show / hide models</button>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Situation</h3></div>
+        <div id="scenarioPrompt" class="model"></div>
+        <div id="scenarioFacts" class="steps"></div>
+        <label class="lab">Your answer
+          <textarea class="textarea" id="scenarioAnswer" rows="9" placeholder="The passenger..."></textarea>
+        </label>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Models</h3></div>
+        <div id="scenarioA2" class="model hidden"></div>
+        <div id="scenarioB1" class="model hidden"></div>
+        <div id="scenarioLilate" class="model hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="oral">
+    <div class="section__head">
+      <h2>8) Live LILATE roleplay — report and respond</h2>
+      <p class="muted">Your teacher is the examiner, passenger, or colleague. Use the three-time method.</p>
+    </div>
+    <div class="filters">
+      <label class="selectWrap">Live scenario
+        <select id="oralSelect"></select>
+      </label>
+      <button class="btn btn--ghost" id="btnToggleOralModel" type="button">👀 Show / hide model</button>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="card__head"><h3>Prompt</h3></div>
+        <div id="oralPrompt" class="model"></div>
+        <div id="oralChecklist" class="steps"></div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3>Model response</h3></div>
+        <div id="oralModel" class="model hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel evaluation-panel" id="evaluationReport">
+    <h2>📋 Suivi des acquis — Qualiopi</h2>
+    <p class="teacher">Your results are saved in this browser. You can return later and continue. Writing, reformulation and oral tasks can be assessed manually with your trainer.</p>
+
+    <div class="evaluation-meta">
+      <label>Learner / Apprenant
+        <input id="learnerName" value="Yanis Deschasset">
+      </label>
+      <label>Trainer / Formatrice
+        <input id="trainerName" value="Tisha DOUTY-DOSIERE">
+      </label>
+      <label>Evaluation date
+        <input id="evaluationDate" type="date">
+      </label>
+    </div>
+
+    <div class="evaluation-legend">
+      <span class="status achieved">Objectif atteint</span>
+      <span class="status progress-status">En cours d’acquisition</span>
+      <span class="status not-achieved">Objectif non atteint</span>
+      <span class="status not-started">Non commencé</span>
+    </div>
+
+    <div class="table-wrap">
+      <table class="evaluation-table">
+        <thead>
+          <tr><th>Objectif pédagogique</th><th>Support / sujet</th><th>Mode d’évaluation</th><th>Score</th><th>Résultat</th></tr>
+        </thead>
+        <tbody id="evaluationRows"></tbody>
+      </table>
+    </div>
+
+    <div class="manual-evaluation">
+      <h3>🗣️ Évaluations à renseigner avec la formatrice</h3>
+      <div class="manual-grid">
+        <label>Listening reformulation
+          <select data-manual="listening-reformulation">
+            <option value="not-started">Non commencé</option>
+            <option value="progress">Objectif en cours d’acquisition</option>
+            <option value="achieved">Objectif atteint</option>
+            <option value="not-achieved">Objectif non atteint</option>
+          </select>
+        </label>
+        <label>Incident report — writing
+          <select data-manual="incident-writing">
+            <option value="not-started">Non commencé</option>
+            <option value="progress">Objectif en cours d’acquisition</option>
+            <option value="achieved">Objectif atteint</option>
+            <option value="not-achieved">Objectif non atteint</option>
+          </select>
+        </label>
+        <label>Scenario lab
+          <select data-manual="scenario-lab">
+            <option value="not-started">Non commencé</option>
+            <option value="progress">Objectif en cours d’acquisition</option>
+            <option value="achieved">Objectif atteint</option>
+            <option value="not-achieved">Objectif non atteint</option>
+          </select>
+        </label>
+        <label>Live oral roleplay
+          <select data-manual="live-oral">
+            <option value="not-started">Non commencé</option>
+            <option value="progress">Objectif en cours d’acquisition</option>
+            <option value="achieved">Objectif atteint</option>
+            <option value="not-achieved">Objectif non atteint</option>
+          </select>
+        </label>
+        <label>Trainer comments
+          <textarea id="trainerComments" rows="5" placeholder="Observations, strengths, points to review..."></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="overall-box">
+      <div><strong>Completion:</strong> <span id="completionRate">0%</span></div>
+      <div><strong>Overall result:</strong> <span id="overallStatus" class="status not-started">Non commencé</span></div>
+      <div><strong>Last saved:</strong> <span id="lastSaved">—</span></div>
+    </div>
+
+    <div class="buttons report-buttons">
+      <button id="saveProgress">💾 Save progress</button>
+      <button id="downloadHtml">⬇ Download readable report</button>
+      <button id="copySummary">📋 Copy results</button>
+      <button id="emailSummary">✉️ Prepare email</button>
+      <button id="printReport">🖨 Print report</button>
+      <button id="resetProgress" class="danger">↺ Reset results</button>
+    </div>
+    <p class="storage-note">⚠ Progress is stored only in this browser and on this device. Use “Copy results”, “Prepare email”, “Download readable report”, or “Print report” to keep evidence for the learner file.</p>
+  </section>
+
+</main>
+
+<script src="js/yanis-page-22-past-incidents-next-steps.js"></script>
+</body>
+</html>
