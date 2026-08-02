@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VTEST Mock Exam · Sylvain Bailly · Speak Easy Tisha</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="azulejo-bg"></div>
+
+<!-- ============ STICKY PROGRESS BAR ============ -->
+<div class="progress-shell">
+  <div class="progress-top">
+    <div class="brand">Speak Easy <span>Tisha</span> · VTEST Mock Exam</div>
+    <div id="examTimer">45:00</div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-steps" id="progressSteps">
+    <div class="progress-step" data-step="0">Intro</div>
+    <div class="progress-step" data-step="1">Listening</div>
+    <div class="progress-step" data-step="2">Reading</div>
+    <div class="progress-step" data-step="3">Use of English</div>
+    <div class="progress-step" data-step="4">Writing</div>
+    <div class="progress-step" data-step="5">Speaking</div>
+    <div class="progress-step" data-step="6">Results</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ============ SECTION 0 — INTRO ============ -->
+<section class="section active" id="section-0">
+  <div class="tile">
+    <div class="eyebrow" style="color:var(--saffron-100);">VTEST-style practice · B1.1 General English</div>
+    <h1>Your Mock Exam, Sylvain</h1>
+    <p class="lede">This practice test follows the same shape as the real VTEST: Listening, Reading, Use of English, Writing and Speaking. It's built around your world — the kitchen, airline catering, and your move to Lisbon.</p>
+    <div class="meta-row">
+      <span class="badge saffron">⏱ 45 minutes total</span>
+      <span class="badge saffron">5 parts</span>
+      <span class="badge saffron">B1.1 target level</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>How this practice test works</h2>
+    <p class="fr">Comment fonctionne cet examen blanc</p>
+    <ul style="color:var(--ink-soft); line-height:1.9;">
+      <li><strong>Instant feedback.</strong> As soon as you choose or check an answer, you'll see ✅ correct or ❌ incorrect right away, with the right answer shown. <span class="fr">Correction immédiate après chaque réponse</span></li>
+      <li><strong>Every exercise type from the real exam.</strong> Multiple choice, fill-in-the-blank, and drag-and-drop — the same formats you'll see on test day.</li>
+      <li><strong>Model answers everywhere.</strong> Every writing and speaking task has model answers at A2, A2+ and B1, so you can compare your own answer right after you finish it.</li>
+      <li><strong>Timers for Listening and Speaking.</strong> Short preparation and response windows, just like VTEST's adaptive audio tasks.</li>
+      <li><strong>A full summary at the end.</strong> After Part 5, you'll get your overall score and a skill-by-skill breakdown.</li>
+    </ul>
+    <div class="meta-row" style="margin-top:18px;">
+      <span class="badge">🎧 Listening · 3 recordings</span>
+      <span class="badge">📖 Reading · 3 texts</span>
+      <span class="badge">✍️ Use of English · 17 items + 2 drag-and-drop</span>
+      <span class="badge">📝 Writing · 2 tasks</span>
+      <span class="badge">🎤 Speaking · 3 tasks</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Before you start</h3>
+    <p class="fr">Avant de commencer</p>
+    <p style="color:var(--ink-soft);">Find a quiet spot, allow your browser to use your microphone for Part 5, and make sure your sound is on for Part 1. Take a breath — you've built every one of the skills this test checks. <em>Bonne chance, Sylvain !</em></p>
+    <div class="btn-row" style="justify-content:flex-end;">
+      <button class="btn" id="startExamBtn">Start the exam →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 1 — LISTENING ============ -->
+<section class="section" id="section-1">
+  <div class="section-head">
+    <div class="eyebrow">Part 1 of 5</div>
+    <h1>Listening Comprehension</h1>
+    <p class="lede">Press play, listen carefully (you can only play each recording twice), then choose your answer — you'll see instantly if it's correct. <span class="fr">Vous pouvez écouter chaque enregistrement deux fois maximum.</span></p>
+  </div>
+
+  <!-- Listening 1 -->
+  <div class="card" data-listening-card>
+    <h3>Recording 1 — A phone call with the logistics coordinator</h3>
+    <div class="audio-box">
+      <button class="play-btn" data-audio-btn data-audio-id="l1" aria-label="Play recording">▶</button>
+      <div class="audio-info">
+        <strong>"Change to the Thursday order"</strong>
+        <span>Dialogue · plays remaining: <span data-plays-left="l1">2</span></span>
+      </div>
+      <div class="accent-toggle" data-accent-group="l1">
+        <button data-accent="en-GB" class="active">UK</button>
+        <button data-accent="en-US">US</button>
+      </div>
+    </div>
+    <div class="q-block" data-question data-correct="B">
+      <p class="q-text"><span class="q-num">1</span>What does the coordinator ask Sylvain to change?</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="l1q1" value="A"> A. The delivery address</label>
+        <label class="option"><input type="radio" name="l1q1" value="B"> B. The number of meal trays</label>
+        <label class="option"><input type="radio" name="l1q1" value="C"> C. The flight number</label>
+      </div>
+    </div>
+    <div class="q-block" data-question data-correct="A">
+      <p class="q-text"><span class="q-num">2</span>What time does Sylvain need to have the order ready?</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="l1q2" value="A"> A. 6:30 in the morning</label>
+        <label class="option"><input type="radio" name="l1q2" value="B"> B. 6:30 in the evening</label>
+        <label class="option"><input type="radio" name="l1q2" value="C"> C. Midday</label>
+      </div>
+    </div>
+    <p class="small-note hidden" data-transcript>
+      Transcript — Coordinator: "Hi Sylvain, quick change for Thursday — instead of 180 trays, we now need 240, the flight's been upgraded to a bigger aircraft." Sylvain: "OK, 240 trays, no problem. Same pickup time?" Coordinator: "Yes, still 6:30 in the morning, the van will be at your kitchen." Sylvain: "Understood, I'll have it ready."
+    </p>
+  </div>
+
+  <!-- Listening 2 -->
+  <div class="card" data-listening-card>
+    <h3>Recording 2 — A call with a Lisbon estate agent</h3>
+    <div class="audio-box">
+      <button class="play-btn" data-audio-btn data-audio-id="l2" aria-label="Play recording">▶</button>
+      <div class="audio-info">
+        <strong>"A three-bedroom apartment"</strong>
+        <span>Dialogue · plays remaining: <span data-plays-left="l2">2</span></span>
+      </div>
+      <div class="accent-toggle" data-accent-group="l2">
+        <button data-accent="en-GB" class="active">UK</button>
+        <button data-accent="en-US">US</button>
+      </div>
+    </div>
+    <div class="q-block" data-question data-correct="C">
+      <p class="q-text"><span class="q-num">3</span>Where is the apartment the agent describes?</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="l2q1" value="A"> A. Next to the airport</label>
+        <label class="option"><input type="radio" name="l2q1" value="B"> B. In the city centre, above a restaurant</label>
+        <label class="option"><input type="radio" name="l2q1" value="C"> C. Near the sea, ten minutes from the schools</label>
+      </div>
+    </div>
+    <div class="q-block" data-question data-correct="B">
+      <p class="q-text"><span class="q-num">4</span>What does the agent suggest Sylvain do next?</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="l2q2" value="A"> A. Pay a deposit today</label>
+        <label class="option"><input type="radio" name="l2q2" value="B"> B. Visit the apartment next week</label>
+        <label class="option"><input type="radio" name="l2q2" value="C"> C. Send his passport by email</label>
+      </div>
+    </div>
+    <p class="small-note hidden" data-transcript>
+      Transcript — Agent: "So the apartment has three bedrooms, it's near the sea, and it's about ten minutes from the international school." Sylvain: "That sounds perfect for my daughters. Is it far from the centre?" Agent: "Not at all, fifteen minutes by car. Would you like to visit it next week, maybe Tuesday?" Sylvain: "Yes, Tuesday works well for me."
+    </p>
+  </div>
+
+  <!-- Listening 3 -->
+  <div class="card" data-listening-card>
+    <h3>Recording 3 — A voicemail from a private catering client</h3>
+    <div class="audio-box">
+      <button class="play-btn" data-audio-btn data-audio-id="l3" aria-label="Play recording">▶</button>
+      <div class="audio-info">
+        <strong>"A voicemail about a family event"</strong>
+        <span>Monologue · plays remaining: <span data-plays-left="l3">2</span></span>
+      </div>
+      <div class="accent-toggle" data-accent-group="l3">
+        <button data-accent="en-GB" class="active">UK</button>
+        <button data-accent="en-US">US</button>
+      </div>
+    </div>
+    <div class="q-block" data-question data-correct="A">
+      <p class="q-text"><span class="q-num">5</span>Why is the client calling?</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="l3q1" value="A"> A. To book Sylvain for a birthday dinner</label>
+        <label class="option"><input type="radio" name="l3q1" value="B"> B. To cancel a previous order</label>
+        <label class="option"><input type="radio" name="l3q1" value="C"> C. To complain about a meal</label>
+      </div>
+    </div>
+    <div class="q-block" data-question data-correct="C">
+      <p class="q-text"><span class="q-num">6</span>How many guests will there be?</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="l3q2" value="A"> A. About 8</label>
+        <label class="option"><input type="radio" name="l3q2" value="B"> B. About 12</label>
+        <label class="option"><input type="radio" name="l3q2" value="C"> C. About 20</label>
+      </div>
+    </div>
+    <p class="small-note hidden" data-transcript>
+      Transcript — "Hi Sylvain, it's Claire. We loved the meal you cooked for us in June, so we'd like to book you again — it's my husband's birthday, and we're expecting around twenty guests this time. Could you call me back when you have a moment? Thank you!"
+    </p>
+  </div>
+
+  <div class="btn-row">
+    <span></span>
+    <button class="btn" data-next-section>Continue to Reading →</button>
+  </div>
+</section>
+
+<!-- ============ SECTION 2 — READING ============ -->
+<section class="section" id="section-2">
+  <div class="section-head">
+    <div class="eyebrow">Part 2 of 5</div>
+    <h1>Reading Comprehension</h1>
+    <p class="lede">Read each text carefully, then answer the questions — each answer is checked instantly.</p>
+  </div>
+
+  <div class="card">
+    <h3>Text 1 — An email from the logistics company</h3>
+    <div class="passage">
+      <div class="p-source">Email · Subject: Update — Friday deliveries</div>
+      Dear Sylvain,<br><br>
+      Thank you for your flexibility this week. Starting Friday, our driver will collect the meal trays at 5:45 a.m. instead of 6:30 a.m., because the flight now departs earlier. Please make sure the trays are labelled by aircraft number, not by flight number, from now on. If you have any questions before Friday, call the depot directly rather than emailing, as replies can take a day.<br><br>
+      Best regards,<br>Logistics Team
+    </div>
+    <div class="q-block" data-question data-correct="B">
+      <p class="q-text"><span class="q-num">7</span>Why is the collection time changing?</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="r1q1" value="A"> A. The driver requested it</label>
+        <label class="option"><input type="radio" name="r1q1" value="B"> B. The flight departs earlier now</label>
+        <label class="option"><input type="radio" name="r1q1" value="C"> C. The kitchen opens later</label>
+      </div>
+    </div>
+    <div class="q-block" data-question data-correct="A">
+      <p class="q-text"><span class="q-num">8</span>What should Sylvain do if he has a question before Friday?</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="r1q2" value="A"> A. Phone the depot</label>
+        <label class="option"><input type="radio" name="r1q2" value="B"> B. Send an email</label>
+        <label class="option"><input type="radio" name="r1q2" value="C"> C. Wait until Friday</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Text 2 — Property listing</h3>
+    <div class="passage">
+      <div class="p-source">Rental listing · Lisbon, Portugal</div>
+      <strong>Charming 3-bedroom apartment — Restelo, Lisbon</strong><br>
+      This bright apartment is on the third floor of a quiet building, a short walk from an international school and two minutes from a bus stop. There's a small balcony overlooking a garden, and the kitchen was fully renovated last year. Parking is available for an extra fee. Families with children are very welcome, and the neighbourhood is known for being calm and safe. Viewings are possible on weekday evenings and Saturday mornings.
+    </div>
+    <div class="q-block" data-question data-correct="C">
+      <p class="q-text"><span class="q-num">9</span>What was recently renovated in the apartment?</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="r2q1" value="A"> A. The balcony</label>
+        <label class="option"><input type="radio" name="r2q1" value="B"> B. The parking area</label>
+        <label class="option"><input type="radio" name="r2q1" value="C"> C. The kitchen</label>
+      </div>
+    </div>
+    <div class="q-block" data-question data-correct="B">
+      <p class="q-text"><span class="q-num">10</span>When can someone visit the apartment?</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="r2q2" value="A"> A. Only on Sunday</label>
+        <label class="option"><input type="radio" name="r2q2" value="B"> B. Weekday evenings or Saturday morning</label>
+        <label class="option"><input type="radio" name="r2q2" value="C"> C. Any time, day or night</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Text 3 — Short article</h3>
+    <div class="passage">
+      <div class="p-source">Article · Moving abroad for work</div>
+      Every year, thousands of professionals move to a new country for a fresh start. Chefs, in particular, often relocate because their skills are recognised internationally, and some countries offer better working conditions or tax advantages for the self-employed. Experts recommend preparing carefully: research the tax system, learn some basic vocabulary before arriving, and visit the new city at least once before signing a lease. Families who plan ahead — especially when children are changing schools — usually adapt faster than those who don't.
+    </div>
+    <div class="q-block" data-question data-correct="A">
+      <p class="q-text"><span class="q-num">11</span>Why do chefs often relocate, according to the article?</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="r3q1" value="A"> A. Their skills are recognised internationally</label>
+        <label class="option"><input type="radio" name="r3q1" value="B"> B. Cooking schools require it</label>
+        <label class="option"><input type="radio" name="r3q1" value="C"> C. They dislike their home country</label>
+      </div>
+    </div>
+    <div class="q-block" data-question data-correct="C">
+      <p class="q-text"><span class="q-num">12</span>What does the article recommend doing before signing a lease?</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="r3q2" value="A"> A. Selling your car</label>
+        <label class="option"><input type="radio" name="r3q2" value="B"> B. Learning the whole language fluently</label>
+        <label class="option"><input type="radio" name="r3q2" value="C"> C. Visiting the new city at least once</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <span></span>
+    <button class="btn" data-next-section>Continue to Use of English →</button>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 — USE OF ENGLISH ============ -->
+<section class="section" id="section-3">
+  <div class="section-head">
+    <div class="eyebrow">Part 3 of 5</div>
+    <h1>Use of English</h1>
+    <p class="lede">Grammar and vocabulary in context — the tenses, prepositions, and structures from your lessons. Every answer is checked instantly.</p>
+  </div>
+
+  <div class="card">
+    <h3>A. Complete with the correct form of <em>be</em> or <em>have</em></h3>
+    <div class="q-block" data-question data-type="text">
+      <p class="q-text"><span class="q-num">1</span>I <input type="text" class="blank" data-blank data-correct="am"> a chef, and I <input type="text" class="blank" data-blank data-correct="have"> twenty years of experience.</p>
+    </div>
+    <div class="q-block" data-question data-type="text">
+      <p class="q-text"><span class="q-num">2</span>My restaurant <input type="text" class="blank" data-blank data-correct="has"> a very good reputation in the region.</p>
+    </div>
+    <div class="q-block" data-question data-type="text">
+      <p class="q-text"><span class="q-num">3</span>My daughters <input type="text" class="blank" data-blank data-correct="are"> excited about moving to Lisbon.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>B. Present simple or present continuous?</h3>
+    <div class="q-block" data-question data-type="mcq" data-correct="works">
+      <p class="q-text"><span class="q-num">4</span>Normally, Sylvain <strong>[works / is working]</strong> for a logistics company, but this month he is preparing a mock exam for his English test.</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="g4" value="works"> works</label>
+        <label class="option"><input type="radio" name="g4" value="is working"> is working</label>
+      </div>
+    </div>
+    <div class="q-block" data-question data-type="text">
+      <p class="q-text"><span class="q-num">5</span>Right now, I <input type="text" class="blank" data-blank data-correct="am packing"> (pack) the boxes for the move.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>C. Going to / will</h3>
+    <div class="q-block" data-question data-type="mcq" data-correct="going to">
+      <p class="q-text"><span class="q-num">6</span>We've already signed the papers — we <strong>are ___</strong> move to Lisbon in August. (plan already decided)</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="g6" value="going to"> going to</label>
+        <label class="option"><input type="radio" name="g6" value="will"> will</label>
+      </div>
+    </div>
+    <div class="q-block" data-question data-type="mcq" data-correct="will">
+      <p class="q-text"><span class="q-num">7</span>"The kitchen looks messy." "Don't worry, I ___ clean it." (decision made now)</p>
+      <div class="options" data-options>
+        <label class="option"><input type="radio" name="g7" value="going to"> am going to</label>
+        <label class="option"><input type="radio" name="g7" value="will"> will</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>D. Prepositions: at / in / on</h3>
+    <div class="q-block" data-question data-type="text">
+      <p class="q-text"><span class="q-num">8</span>The van arrives <input type="text" class="blank" data-blank data-correct="at"> 6:30 in the morning.</p>
+    </div>
+    <div class="q-block" data-question data-type="text">
+      <p class="q-text"><span class="q-num">9</span>We're moving to Lisbon <input type="text" class="blank" data-blank data-correct="in"> August.</p>
+    </div>
+    <div class="q-block" data-question data-type="text">
+      <p class="q-text"><span class="q-num">10</span>Our first viewing of the apartment is <input type="text" class="blank" data-blank data-correct="on"> Tuesday.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>E. Quantifiers: each / every / some / any / much / many / a lot of</h3>
+    <div class="q-block" data-question data-type="text">
+      <p class="q-text"><span class="q-num">11</span>I check the temperature of the fridge <input type="text" class="blank" data-blank data-correct="every"> morning without exception.</p>
+    </div>
+    <div class="q-block" data-question data-type="text">
+      <p class="q-text"><span class="q-num">12</span>How <input type="text" class="blank" data-blank data-correct="many"> trays do we need for Thursday's flight?</p>
+    </div>
+    <div class="q-block" data-question data-type="text">
+      <p class="q-text"><span class="q-num">13</span>We don't have <input type="text" class="blank" data-blank data-correct="any"> fresh basil left in the kitchen.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>F. Articles: a / an / the / (no article)</h3>
+    <div class="q-block" data-question data-type="text">
+      <p class="q-text"><span class="q-num">14</span>We visited <input type="text" class="blank" data-blank data-correct="the"> apartment in Restelo that the agent recommended.</p>
+    </div>
+    <div class="q-block" data-question data-type="text">
+      <p class="q-text"><span class="q-num">15</span>Sylvain is <input type="text" class="blank" data-blank data-correct="an"> experienced caterer with clients across the region.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>G. Drag and drop — sort by tense</h3>
+    <p class="small-note">Drag each phrase into the correct box — or tap a phrase, then tap a box. Checked instantly.</p>
+    <div class="dnd-bank" data-dnd-bank="dnd1">
+      <div class="dnd-chip" draggable="true" data-chip data-dnd-group="dnd1" data-answer="present-simple">every day</div>
+      <div class="dnd-chip" draggable="true" data-chip data-dnd-group="dnd1" data-answer="present-simple">usually</div>
+      <div class="dnd-chip" draggable="true" data-chip data-dnd-group="dnd1" data-answer="present-continuous">right now</div>
+      <div class="dnd-chip" draggable="true" data-chip data-dnd-group="dnd1" data-answer="present-continuous">at the moment</div>
+      <div class="dnd-chip" draggable="true" data-chip data-dnd-group="dnd1" data-answer="going-to">the tickets are already booked</div>
+      <div class="dnd-chip" draggable="true" data-chip data-dnd-group="dnd1" data-answer="going-to">next month (already planned)</div>
+      <div class="dnd-chip" draggable="true" data-chip data-dnd-group="dnd1" data-answer="will">I promise</div>
+      <div class="dnd-chip" draggable="true" data-chip data-dnd-group="dnd1" data-answer="will">I think</div>
+    </div>
+    <div class="dnd-buckets" data-dnd-buckets="dnd1">
+      <div class="dnd-bucket" data-bucket="present-simple" data-dnd-group="dnd1">
+        <div class="bucket-title">Present Simple</div><div class="bucket-items"></div>
+      </div>
+      <div class="dnd-bucket" data-bucket="present-continuous" data-dnd-group="dnd1">
+        <div class="bucket-title">Present Continuous</div><div class="bucket-items"></div>
+      </div>
+      <div class="dnd-bucket" data-bucket="going-to" data-dnd-group="dnd1">
+        <div class="bucket-title">Going to</div><div class="bucket-items"></div>
+      </div>
+      <div class="dnd-bucket" data-bucket="will" data-dnd-group="dnd1">
+        <div class="bucket-title">Will</div><div class="bucket-items"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>H. Drag and drop — build the question</h3>
+    <p class="small-note">Drag the words into order — or tap a word, then tap a box. Press "Check" when the sentence is complete.</p>
+
+    <div class="q-block" data-wordorder data-answer="Did|you|call|the|estate|agent|?">
+      <p class="q-text"><span class="q-num">1</span>Ask if he phoned the estate agent:</p>
+      <div class="dnd-order-row" data-slots></div>
+      <div class="dnd-bank" data-bank></div>
+      <button class="check-btn" data-check-order>Check</button>
+      <span class="q-feedback" data-feedback style="display:none;"></span>
+    </div>
+
+    <div class="q-block" data-wordorder data-answer="When|will|the|trays|be|ready|?">
+      <p class="q-text"><span class="q-num">2</span>Ask when the trays will be ready:</p>
+      <div class="dnd-order-row" data-slots></div>
+      <div class="dnd-bank" data-bank></div>
+      <button class="check-btn" data-check-order>Check</button>
+      <span class="q-feedback" data-feedback style="display:none;"></span>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <span></span>
+    <button class="btn" data-next-section>Continue to Writing →</button>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 — WRITING ============ -->
+<section class="section" id="section-4">
+  <div class="section-head">
+    <div class="eyebrow">Part 4 of 5</div>
+    <h1>Writing</h1>
+    <p class="lede">Two tasks, just like the real VTEST: describe an image, then write a short opinion piece.</p>
+  </div>
+
+  <div class="card">
+    <h3>Task 1 — Describe the image</h3>
+    <p class="small-note">Minimum 40 words. Describe what you see — the people, the place, the actions.</p>
+    <svg class="prompt-image" viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
+      <rect width="600" height="260" fill="#f2f8f7"/>
+      <rect x="0" y="180" width="600" height="80" fill="#dcefec"/>
+      <rect x="40" y="60" width="220" height="120" rx="8" fill="#fff" stroke="#146e68" stroke-width="3"/>
+      <rect x="60" y="80" width="60" height="18" fill="#f0a83d"/>
+      <rect x="60" y="105" width="60" height="18" fill="#146e68"/>
+      <circle cx="200" cy="110" r="26" fill="#e0932a"/>
+      <rect x="320" y="40" width="240" height="150" rx="8" fill="#fff" stroke="#0b4441" stroke-width="3"/>
+      <circle cx="380" cy="90" r="16" fill="#146e68"/>
+      <rect x="410" y="80" width="120" height="16" fill="#dcefec"/>
+      <rect x="410" y="104" width="90" height="12" fill="#f0a83d"/>
+      <rect x="345" y="130" width="190" height="40" rx="6" fill="#f2f8f7" stroke="#c9a24b" stroke-width="2"/>
+      <text x="440" y="155" font-family="Inter, sans-serif" font-size="12" fill="#4b5c59" text-anchor="middle">meal trays · aircraft #A319</text>
+      <text x="300" y="230" font-family="Fraunces, serif" font-size="16" fill="#0b4441" text-anchor="middle">A kitchen preparing airline meal trays</text>
+    </svg>
+    <textarea class="write-area" id="write1" placeholder="Type your description here..."></textarea>
+    <div class="word-count"><span>Words:</span><span class="count-num" id="count1">0</span><span>· minimum 40</span></div>
+    <details class="model-toggle">
+      <summary>Show model answers (A2 / A2+ / B1)</summary>
+      <div class="model-levels">
+        <div class="model-level"><span class="lvl-tag">A2</span><em>In the picture, I can see a kitchen. There are two chefs. One chef is cooking. The other chef is checking the trays. The trays are for a plane.</em></div>
+        <div class="model-level"><span class="lvl-tag">A2+</span><em>In this picture, two chefs are working in a professional kitchen. One is preparing food on the stove, and the other is organising meal trays for a flight. The kitchen looks clean and well organised.</em></div>
+        <div class="model-level"><span class="lvl-tag">B1</span><em>The image shows two chefs working together in a busy commercial kitchen. While one chef is cooking on the stove, the other is carefully checking the meal trays before they are loaded for an upcoming flight. Everything looks organised, which suggests the team is used to working under time pressure.</em></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <h3>Task 2 — Give your opinion</h3>
+    <p class="small-note">Minimum 150 words. Answer the question below with clear examples.</p>
+    <div class="passage">
+      <div class="p-source">Writing prompt</div>
+      "Moving to another country for work is always a positive experience." Do you agree or disagree? Give reasons and examples.
+    </div>
+    <textarea class="write-area" id="write2" placeholder="Type your essay here..." style="min-height:220px;"></textarea>
+    <div class="word-count"><span>Words:</span><span class="count-num" id="count2">0</span><span>· minimum 150</span></div>
+    <details class="model-toggle">
+      <summary>Show model answers (A2 / A2+ / B1)</summary>
+      <div class="model-levels">
+        <div class="model-level"><span class="lvl-tag">A2</span><em>I don't agree. Moving to another country is not always easy. It can be difficult for children at school. But it can also be a good chance for the family. My family is moving to Lisbon and I think it will be good, but also a little difficult at the beginning.</em></div>
+        <div class="model-level"><span class="lvl-tag">A2+</span><em>In my opinion, moving abroad is not always positive. It depends on the family and the reasons for moving. For example, my family is moving to Lisbon because of my job and because we want a better lifestyle. I think it will be positive for us, but I know it will take time to adapt, especially for my daughters at school.</em></div>
+        <div class="model-level"><span class="lvl-tag">B1</span><em>I partly agree with this statement, but I don't think it is always true. Moving abroad can bring many advantages, such as better career opportunities, a different lifestyle, or a safer environment for children. In my own case, my family is relocating to Lisbon because of my work in catering, and we also hope for a fairer tax system as a self-employed worker. However, the experience isn't always easy. Children often need time to adapt to a new school and a new language, and adults can feel isolated before they build a new network. In conclusion, I believe moving abroad is usually a positive experience in the long term, but only if the family prepares carefully and stays patient during the first few months.</em></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="btn-row">
+    <span></span>
+    <button class="btn" data-next-section>Continue to Speaking →</button>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 — SPEAKING ============ -->
+<section class="section" id="section-5">
+  <div class="section-head">
+    <div class="eyebrow">Part 5 of 5</div>
+    <h1>Speaking</h1>
+    <p class="lede">Record your answers using your microphone. You'll get a short preparation time, then a response time, just like the real VTEST speaking tasks. You can listen back and download each recording.</p>
+  </div>
+
+  <div class="card" data-speak-card>
+    <h3>Task 1 — Describe the image</h3>
+    <p class="small-note">30 seconds to prepare · up to 1 minute to respond</p>
+    <svg class="prompt-image" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+      <rect width="600" height="220" fill="#faf6ee"/>
+      <rect x="0" y="150" width="600" height="70" fill="#fbe6c3"/>
+      <rect x="70" y="40" width="180" height="130" rx="6" fill="#fff" stroke="#0f5c57" stroke-width="3"/>
+      <rect x="90" y="60" width="140" height="14" fill="#e0932a"/>
+      <rect x="90" y="82" width="100" height="10" fill="#dcefec"/>
+      <rect x="90" y="98" width="120" height="10" fill="#dcefec"/>
+      <circle cx="380" cy="90" r="30" fill="#146e68"/>
+      <rect x="440" y="55" width="120" height="90" rx="6" fill="#fff" stroke="#c9a24b" stroke-width="2"/>
+      <text x="300" y="200" font-family="Fraunces, serif" font-size="15" fill="#0b4441" text-anchor="middle">A family looking at an apartment listing</text>
+    </svg>
+    <div class="timer-ring" data-speak-timer="s1"><span>⏱</span> <strong data-timer-display>Ready</strong></div>
+    <div class="recorder">
+      <button class="rec-btn" data-rec-btn data-rec-id="s1">●</button>
+      <p class="rec-status" data-rec-status>Tap to begin — 30s to prepare, then record for up to 1 minute.</p>
+      <audio class="playback hidden" controls data-rec-playback></audio>
+      <div class="rec-controls hidden" data-rec-controls>
+        <button class="btn small ghost" data-rec-download>Download recording</button>
+        <button class="btn small ghost" data-rec-redo>Record again</button>
+      </div>
+    </div>
+    <details class="model-toggle">
+      <summary>Show model answers (A2 / A2+ / B1)</summary>
+      <div class="model-levels">
+        <div class="model-level"><span class="lvl-tag">A2</span><em>I can see a family. There are two parents and two children. They are looking at a paper. Maybe it is for an apartment. They look happy.</em></div>
+        <div class="model-level"><span class="lvl-tag">A2+</span><em>In this picture, a family is looking at an apartment listing together. The parents and the two children seem interested and happy. Maybe they are choosing their new home.</em></div>
+        <div class="model-level"><span class="lvl-tag">B1</span><em>The picture shows a family of four sitting together and looking at an apartment listing. They all seem engaged in the conversation, which suggests they're discussing an important decision, probably about moving to a new home. The atmosphere looks positive and calm.</em></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="card" data-speak-card>
+    <h3>Task 2 — Give your opinion</h3>
+    <p class="small-note">30 seconds to prepare · up to 1.5 minutes to respond</p>
+    <div class="passage">
+      <div class="p-source">Speaking prompt</div>
+      Do you think it's better to work for a company or to be self-employed? Give your opinion with reasons.
+    </div>
+    <div class="timer-ring" data-speak-timer="s2"><span>⏱</span> <strong data-timer-display>Ready</strong></div>
+    <div class="recorder">
+      <button class="rec-btn" data-rec-btn data-rec-id="s2">●</button>
+      <p class="rec-status" data-rec-status>Tap to begin — 30s to prepare, then record for up to 1.5 minutes.</p>
+      <audio class="playback hidden" controls data-rec-playback></audio>
+      <div class="rec-controls hidden" data-rec-controls>
+        <button class="btn small ghost" data-rec-download>Download recording</button>
+        <button class="btn small ghost" data-rec-redo>Record again</button>
+      </div>
+    </div>
+    <details class="model-toggle">
+      <summary>Show model answers (A2 / A2+ / B1)</summary>
+      <div class="model-levels">
+        <div class="model-level"><span class="lvl-tag">A2</span><em>I think it's better to be self-employed. You are free. But it's difficult too, because you don't have a fixed salary every month.</em></div>
+        <div class="model-level"><span class="lvl-tag">A2+</span><em>In my opinion, being self-employed is better because you can organise your own time and be independent. But it's also more difficult, because the income isn't always regular.</em></div>
+        <div class="model-level"><span class="lvl-tag">B1</span><em>Personally, I prefer being self-employed, even though it comes with more risk. I like being able to make my own decisions, choose my clients, and organise my schedule. Of course, working for a company gives you more financial security, like a fixed salary and paid holidays, but for me, the independence is worth the uncertainty.</em></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="card" data-speak-card>
+    <h3>Task 3 — Long turn: tell a story</h3>
+    <p class="small-note">1 minute to prepare · up to 2 minutes to respond</p>
+    <div class="passage">
+      <div class="p-source">Speaking prompt</div>
+      Talk about a big change you have made in your professional life — for example, selling your restaurant, or starting a new job. What happened, and how did you feel about it?
+    </div>
+    <div class="timer-ring" data-speak-timer="s3"><span>⏱</span> <strong data-timer-display>Ready</strong></div>
+    <div class="recorder">
+      <button class="rec-btn" data-rec-btn data-rec-id="s3">●</button>
+      <p class="rec-status" data-rec-status>Tap to begin — 1 minute to prepare, then record for up to 2 minutes.</p>
+      <audio class="playback hidden" controls data-rec-playback></audio>
+      <div class="rec-controls hidden" data-rec-controls>
+        <button class="btn small ghost" data-rec-download>Download recording</button>
+        <button class="btn small ghost" data-rec-redo>Record again</button>
+      </div>
+    </div>
+    <details class="model-toggle">
+      <summary>Show model answers (A2 / A2+ / B1)</summary>
+      <div class="model-levels">
+        <div class="model-level"><span class="lvl-tag">A2</span><em>Last year, I sold my restaurant. It was a big change. I felt sad but also happy, because now I have a new job with airlines. It was difficult at first, but now I am OK.</em></div>
+        <div class="model-level"><span class="lvl-tag">A2+</span><em>Last year, I decided to sell my restaurant after many years. It was a big change for me and my family. At first, I felt a bit sad because I loved my restaurant, but I also felt excited about the new opportunity in airline catering. Now, I feel more confident about the future.</em></div>
+        <div class="model-level"><span class="lvl-tag">B1</span><em>One of the biggest changes in my professional life was selling my restaurant last year. I had run it for many years, so it wasn't an easy decision, but I felt it was the right time for a new challenge. I started working in airline catering instead, which was very different at first — the schedules, the volumes, everything changed. Looking back, I'm proud that I took the risk, because it opened the door to new opportunities, including our move to Lisbon.</em></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="btn-row">
+    <span></span>
+    <button class="btn" id="finishExamBtn">Finish exam & see results →</button>
+  </div>
+</section>
+
+<!-- ============ SECTION 6 — RESULTS ============ -->
+<section class="section" id="section-6">
+  <div class="section-head">
+    <div class="eyebrow">Results</div>
+    <h1>Your Results, Sylvain</h1>
+    <p class="lede">Here's how you did, section by section, with every correct answer explained.</p>
+  </div>
+
+  <div class="tile score-hero">
+    <div class="score-ring">
+      <svg width="170" height="170">
+        <circle class="bg" cx="85" cy="85" r="72" fill="none" stroke-width="14"/>
+        <circle class="fg" id="scoreCircle" cx="85" cy="85" r="72" fill="none" stroke-width="14" stroke-dasharray="452" stroke-dashoffset="452"/>
+      </svg>
+      <div class="score-label">
+        <span class="score-num" id="scorePercent">0%</span>
+        <span class="score-sub">OVERALL SCORE</span>
+      </div>
+    </div>
+    <p id="scoreMessage" style="color:#fff; max-width:480px; margin:0 auto;">—</p>
+  </div>
+
+  <div class="card">
+    <h3>Skill breakdown</h3>
+    <div class="skill-breakdown" id="skillBreakdown"></div>
+  </div>
+
+  <div class="card">
+    <h3>Listening — full review</h3>
+    <div id="reviewListening"></div>
+  </div>
+  <div class="card">
+    <h3>Reading — full review</h3>
+    <div id="reviewReading"></div>
+  </div>
+  <div class="card">
+    <h3>Use of English — full review</h3>
+    <div id="reviewGrammar"></div>
+  </div>
+  <div class="card">
+    <h3>Writing — your responses</h3>
+    <div id="reviewWriting"></div>
+  </div>
+  <div class="card">
+    <h3>Speaking — your recordings</h3>
+    <div id="reviewSpeaking"></div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn ghost" id="restartExamBtn">↻ Restart exam</button>
+    <span></span>
+  </div>
+
+  <div class="qualiopi-footer">
+    Speak Easy Tisha — VTEST-style practice material, prepared for individual coaching purposes.<br>
+    This is exam-style practice, not an official certified VTEST test. Qualiopi-aligned pedagogical tracking.
+  </div>
+</section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
