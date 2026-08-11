@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Myriam • Mock 2 — Full Reference Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;760;850;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef3f8;--panel:#fff;--ink:#172234;--muted:#637389;--line:#dbe3ee;--blue:#2161f3;--green:#12c66a;--amber:#f5ae00;--red:#ef3340;--softB:#eef6ff;--softG:#ecfbf4;--softA:#fff8e8;--shadow:0 14px 34px rgba(25,38,64,.08);--radius:18px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.55}
+.topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:16px;background:#f8fbff;border-bottom:1px solid var(--line);padding:12px 28px;flex-wrap:wrap}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:54px;height:42px;border-radius:16px;background:linear-gradient(135deg,#6349d9,#2da8df);color:#fff;display:grid;place-items:center;font-weight:900;letter-spacing:-.04em}
+.brand span{display:block;color:var(--muted);font-size:.85rem}
+.topnav{display:flex;gap:8px;flex-wrap:wrap}
+.topnav a{border:1px solid var(--line);background:#fff;border-radius:999px;color:var(--ink);padding:8px 14px;font-weight:760;font-size:.85rem;text-decoration:none}
+.topnav a:hover{border-color:var(--blue);color:var(--blue)}
+#frToggle,#printBtn{border:1px solid var(--line);background:var(--blue);color:#fff;border-radius:14px;padding:9px 14px;font-weight:760;cursor:pointer;font:inherit}
+#printBtn{background:#fff;color:var(--ink)}
+main{padding:24px 0 60px}
+.panel{width:min(1100px,calc(100% - 32px));margin:0 auto 22px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius);padding:26px}
+.hero{background:linear-gradient(135deg,#fff,#f7fbff)}
+.kicker{text-transform:uppercase;letter-spacing:.08em;font-weight:900;color:var(--blue);font-size:.75rem;margin:0 0 8px}
+h1{font-size:clamp(1.7rem,3.4vw,2.6rem);line-height:1.08;margin:0 0 10px}
+h2{font-size:clamp(1.25rem,2vw,1.7rem);margin:0 0 14px}
+h3{font-size:1.05rem;margin:0}
+.lead{color:var(--muted);max-width:760px;margin:0}
+.calm-card{background:var(--softG);border:1px solid #aee4c7;border-radius:14px;padding:14px 18px;margin-top:16px;font-weight:850;color:#075f36}
+.mission-grid,.method-grid{display:grid;gap:12px;margin-bottom:6px}
+.mission-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.mission-grid article{background:var(--softB);border:1px solid var(--line);border-radius:14px;padding:14px}
+.mission-grid h4{margin:0 0 6px;font-size:.95rem}
+.mission-grid p{margin:0;font-size:.88rem;color:var(--muted)}
+.method-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+.method-card{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}
+.method-card h3{color:var(--blue);margin-bottom:6px}
+.method-line{font-weight:850;margin:0 0 4px;font-size:.85rem}
+.calm-line{margin:0;font-size:.8rem;color:var(--green);font-weight:760}
+.routine{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:14px 0 0}
+.routine span{background:var(--softA);border:1px solid var(--line);border-radius:999px;padding:9px;text-align:center;font-weight:850;font-size:.8rem}
+.section-title{display:flex;align-items:center;gap:12px;justify-content:space-between;margin-bottom:16px}
+.section-title .pill{border:1px solid var(--line);background:#f7f9fc;border-radius:999px;padding:8px 14px;font-weight:850;font-size:.85rem}
+.ex-card{border:1px solid var(--line);border-radius:14px;background:#fbfdff;padding:16px;margin-bottom:14px}
+.ex-card.nested{background:#fff;margin-top:10px}
+.ex-card.small{margin-bottom:0}
+.ex-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.ex-num{background:var(--blue);color:#fff;border-radius:999px;padding:3px 10px;font-weight:900;font-size:.75rem}
+.family-tag{color:var(--muted);font-size:.78rem;font-weight:760}
+.timer-pill{margin-left:auto;background:#f7f9fc;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:.78rem;font-weight:760;color:var(--muted)}
+.ex-q{font-weight:760;margin:0 0 10px}
+.gap{background:#fff0aa;border-radius:4px;padding:0 4px;font-weight:900}
+.chip{display:inline-block;background:#fff0aa;border-radius:999px;padding:2px 10px;font-size:.78rem;font-weight:760;margin:2px 3px 2px 0}
+.kw-line{font-size:.85rem;margin:6px 0 10px}
+.choices{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:6px}
+.choices.inline{grid-template-columns:1fr 1fr}
+.choices li{border:1.5px solid #c3cddc;border-radius:10px;padding:8px 12px;font-size:.9rem}
+.choices li.right{border-color:var(--green);background:var(--softG);font-weight:760}
+.choices li .tag{color:#075f36;font-weight:900;font-size:.78rem;margin-left:6px}
+.why{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.evidence-line{font-size:.85rem;margin:6px 0 0}
+.evidence{background:#dff8ea;border-radius:4px;padding:0 4px}
+.transcript{margin:8px 0;font-size:.9rem}
+.transcript summary{cursor:pointer;font-weight:760;color:var(--blue)}
+.transcript p{background:#f4f4f5;border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:8px}
+.grammar-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.reading-block{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fbfdff;margin-bottom:20px}
+.text-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px;line-height:1.75}
+.text-card p{margin:0 0 12px}
+.task-block{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fbfdff;margin-bottom:18px}
+.prompt-text{background:var(--softA);border:1px solid var(--line);border-radius:12px;padding:14px;font-weight:760;margin:0 0 12px}
+.plan-row{font-size:.88rem;margin-bottom:10px}
+.frame-box,.model-box{border:1px solid var(--line);border-radius:10px;background:#fff;padding:10px 14px;margin-bottom:8px}
+.frame-box summary,.model-box summary{cursor:pointer;font-weight:760;color:var(--blue);font-size:.9rem}
+.frame-box pre{white-space:pre-wrap;font-family:inherit;margin:10px 0 0;font-size:.9rem}
+.model-box p{margin:10px 0 0;font-size:.9rem}
+.level-models{display:grid;gap:8px}
+.eval-box{background:var(--softB);border:1px solid #c6dcff;border-radius:14px;padding:16px;font-size:.88rem}
+.eval-box strong{color:var(--blue)}
+.promise-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}
+.promise-grid label{display:flex;gap:8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;font-size:.9rem}
+footer.qualiopi{width:min(1100px,calc(100% - 32px));margin:0 auto;background:linear-gradient(180deg,#fff,#f9fbff);border:1px solid var(--line);border-radius:var(--radius);padding:20px 26px;font-size:.82rem;color:var(--muted);text-align:center}
+footer.qualiopi strong{color:var(--ink)}
+[lang="fr"]{display:none}
+body.fr [lang="en"]{display:none}
+body.fr [lang="fr"]{display:inline}
+@media(max-width:900px){.mission-grid,.method-grid{grid-template-columns:repeat(2,1fr)}.grammar-grid{grid-template-columns:1fr}.choices.inline{grid-template-columns:1fr}.routine{grid-template-columns:repeat(3,1fr)}.promise-grid{grid-template-columns:1fr}}
+@media print{.topbar{display:none}body{background:#fff}.panel,footer{box-shadow:none;break-inside:avoid}details{display:block!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="logo">360</div><div><strong>Myriam • Mock 2 Reference Sheet</strong><span>Everything from the reassuring mock, in one printable page</span></div></div>
+  <nav class="topnav">
+    <a href="#dashboard">Method</a><a href="#listening">Listening</a><a href="#grammar">Grammar</a><a href="#reading">Reading</a><a href="#writing">Writing</a><a href="#speaking">Speaking</a><a href="#promise">Promise</a>
+  </nav>
+  <div style="display:flex;gap:8px">
+    <button id="frToggle" type="button">Français</button>
+    <button id="printBtn" type="button" onclick="window.print()">Print</button>
+  </div>
+</header>
+
+<main>
+  <section class="panel hero">
+    <p class="kicker">English 360° · Confidence before speed</p>
+    <h1><span lang="en">You do not need perfect English. You need a clear method.</span><span lang="fr">Vous n'avez pas besoin d'un anglais parfait. Vous avez besoin d'une méthode claire.</span></h1>
+    <p class="lead"><span lang="en">This sheet gathers every exercise from your reassuring Mock 2 — the audio scripts, grammar items, reading texts, writing tasks and speaking prompts — with the strategy and the model answers, so you can practise the real exam routine calmly, on paper or on screen.</span><span lang="fr">Cette fiche rassemble tous les exercices de votre Mock 2 rassurant — scripts audio, items de grammaire, textes de compréhension, sujets d'écriture et d'oral — avec la méthode et les réponses modèles, pour vous entraîner calmement à la routine réelle de l'examen.</span></p>
+    <div class="calm-card">🌱 <span lang="en">One question at a time.</span><span lang="fr">Une question à la fois.</span></div>
+  </section>
+
+  <section class="panel" id="dashboard">
+    <p class="kicker">Before you start</p>
+    <h2><span lang="en">Your success dashboard</span><span lang="fr">Votre tableau de réussite</span></h2>
+    <div class="mission-grid">
+      <article><h4>Recognise the screen</h4><p>You know the type of task before you begin. Nothing is a surprise anymore.</p></article><article><h4>Use a method</h4><p>Every section has a short routine. You follow the routine instead of panicking.</p></article><article><h4>Finish calmly</h4><p>You choose the best answer, write simply, speak clearly and continue.</p></article>
+    </div>
+    <div class="method-grid">
+<article class="method-card">
+  <h3>Listening</h3>
+  <p class="method-line" data-en="Look → predict → listen → eliminate → choose" data-fr="">Look → predict → listen → eliminate → choose</p>
+  <p class="calm-line">You do not need every word. Listen for the key idea.</p>
+</article>
+<article class="method-card">
+  <h3>Grammar</h3>
+  <p class="method-line" data-en="Read around the gap → identify the grammar family → choose" data-fr="">Read around the gap → identify the grammar family → choose</p>
+  <p class="calm-line">It is one sentence. Do not turn it into a big problem.</p>
+</article>
+<article class="method-card">
+  <h3>Reading</h3>
+  <p class="method-line" data-en="Question → keywords → scan → evidence → answer" data-fr="">Question → keywords → scan → evidence → answer</p>
+  <p class="calm-line">The answer is usually near the keyword or synonym.</p>
+</article>
+<article class="method-card">
+  <h3>Writing</h3>
+  <p class="method-line" data-en="Read → plan → write → check" data-fr="">Read → plan → write → check</p>
+  <p class="calm-line">Complete and polite is enough. Do not overdo it.</p>
+</article>
+<article class="method-card">
+  <h3>Speaking</h3>
+  <p class="method-line" data-en="Answer → detail → reason → example" data-fr="">Answer → detail → reason → example</p>
+  <p class="calm-line">Keep speaking. A small mistake is not a failure.</p>
+</article></div>
+    <div class="calm-card" style="background:var(--softA);color:#8a5a00;border-color:#f0d38a">
+      <span lang="en"><strong>When you feel blocked:</strong> 1. Stop → 2. Breathe → 3. Read the question → 4. Find one clue → 5. Choose / write / speak → 6. Continue.</span>
+      <span lang="fr"><strong>Si vous êtes bloquée :</strong> 1. Arrêtez → 2. Respirez → 3. Relisez la question → 4. Trouvez un indice → 5. Choisissez / écrivez / parlez → 6. Continuez.</span>
+    </div>
+  </section>
+
+  <section class="panel" id="listening">
+    <div class="section-title"><h2>🎧 Listening</h2><span class="pill">5 items · Look → predict → listen → eliminate → choose</span></div>
+    
+<article class="ex-card" id="listen-1">
+  <div class="ex-head"><span class="ex-num">L1</span><h3>A favourite place</h3></div>
+  <p class="ex-q">What is the main topic?</p>
+  <details class="transcript"><summary>Show transcript (train with your eyes first, then cover it)</summary><p>I live in a small village in Alsace. It is quiet, peaceful and close to nature. I like it because I can go for walks and relax.</p></details>
+  <p class="kw-line"><strong>Keywords to expect:</strong> <span class="chip">small village</span> <span class="chip">quiet</span> <span class="chip">peaceful</span> <span class="chip">like it</span></p>
+  <ol class="choices" type="A">
+    <li class="">A technical problem</li><li class="right">A favourite place to live <span class="tag">✓ correct</span></li><li class="">A restaurant complaint</li><li class="">A train reservation</li>
+  </ol>
+  <p class="why"><strong>Why:</strong> The speaker describes a place and explains why it is pleasant.</p>
+</article>
+
+<article class="ex-card" id="listen-2">
+  <div class="ex-head"><span class="ex-num">L2</span><h3>A short email message</h3></div>
+  <p class="ex-q">What does the speaker need?</p>
+  <details class="transcript"><summary>Show transcript (train with your eyes first, then cover it)</summary><p>Hello. I am writing because I would like to change our appointment. Could we meet on Thursday morning instead of Wednesday afternoon?</p></details>
+  <p class="kw-line"><strong>Keywords to expect:</strong> <span class="chip">change our appointment</span> <span class="chip">Thursday morning</span> <span class="chip">instead of</span></p>
+  <ol class="choices" type="A">
+    <li class="right">A new appointment time <span class="tag">✓ correct</span></li><li class="">A hotel room</li><li class="">A refund</li><li class="">A weather report</li>
+  </ol>
+  <p class="why"><strong>Why:</strong> The key phrase is change our appointment.</p>
+</article>
+
+<article class="ex-card" id="listen-3">
+  <div class="ex-head"><span class="ex-num">L3</span><h3>A product question</h3></div>
+  <p class="ex-q">What information is requested?</p>
+  <details class="transcript"><summary>Show transcript (train with your eyes first, then cover it)</summary><p>Could you send me more details about the new product, especially the price, the guarantee and the delivery date?</p></details>
+  <p class="kw-line"><strong>Keywords to expect:</strong> <span class="chip">new product</span> <span class="chip">price</span> <span class="chip">guarantee</span> <span class="chip">delivery date</span></p>
+  <ol class="choices" type="A">
+    <li class="">The address of a shop</li><li class="right">The price, guarantee and delivery date <span class="tag">✓ correct</span></li><li class="">A recipe</li><li class="">A holiday plan</li>
+  </ol>
+  <p class="why"><strong>Why:</strong> The speaker lists the exact information needed.</p>
+</article>
+
+<article class="ex-card" id="listen-4">
+  <div class="ex-head"><span class="ex-num">L4</span><h3>At reception</h3></div>
+  <p class="ex-q">What is the problem?</p>
+  <details class="transcript"><summary>Show transcript (train with your eyes first, then cover it)</summary><p>Excuse me, I booked a quiet room, but my room is next to the lift and it is very noisy. Could you help me?</p></details>
+  <p class="kw-line"><strong>Keywords to expect:</strong> <span class="chip">quiet room</span> <span class="chip">next to the lift</span> <span class="chip">noisy</span></p>
+  <ol class="choices" type="A">
+    <li class="right">The room is noisy <span class="tag">✓ correct</span></li><li class="">The breakfast is too expensive</li><li class="">The train is late</li><li class="">The suitcase is missing</li>
+  </ol>
+  <p class="why"><strong>Why:</strong> The problem is clearly connected to noise in the room.</p>
+</article>
+
+<article class="ex-card" id="listen-5">
+  <div class="ex-head"><span class="ex-num">L5</span><h3>Travel preference</h3></div>
+  <p class="ex-q">What does the speaker prefer?</p>
+  <details class="transcript"><summary>Show transcript (train with your eyes first, then cover it)</summary><p>When I travel, I prefer taking the train because it is comfortable and I can look at the countryside.</p></details>
+  <p class="kw-line"><strong>Keywords to expect:</strong> <span class="chip">prefer taking the train</span> <span class="chip">comfortable</span> <span class="chip">countryside</span></p>
+  <ol class="choices" type="A">
+    <li class="right">Travelling by train <span class="tag">✓ correct</span></li><li class="">Travelling by car only</li><li class="">Staying at home</li><li class="">Taking a taxi</li>
+  </ol>
+  <p class="why"><strong>Why:</strong> Prefer taking the train is the answer phrase.</p>
+</article>
+  </section>
+
+  <section class="panel" id="grammar">
+    <div class="section-title"><h2>✏️ Grammar</h2><span class="pill">10 items · Read around the gap → identify the family → choose</span></div>
+    <div class="grammar-grid">
+<article class="ex-card small" id="gram-1">
+  <div class="ex-head"><span class="ex-num">G1</span><span class="family-tag">preposition after adjective</span></div>
+  <p class="ex-q">You are interested <span class="gap">___</span> improving your English.</p>
+  <ol class="choices inline" type="A">
+    <li class="right">in ✓</li><li class="">on</li><li class="">at</li><li class="">for</li>
+  </ol>
+  <p class="why"><strong>Tip:</strong> interested in + noun / -ing</p>
+</article>
+<article class="ex-card small" id="gram-2">
+  <div class="ex-head"><span class="ex-num">G2</span><span class="family-tag">verb pattern</span></div>
+  <p class="ex-q">You have trouble <span class="gap">___</span> fast audio sometimes.</p>
+  <ol class="choices inline" type="A">
+    <li class="">understand</li><li class="right">understanding ✓</li><li class="">to understand</li><li class="">understood</li>
+  </ol>
+  <p class="why"><strong>Tip:</strong> have trouble + -ing</p>
+</article>
+<article class="ex-card small" id="gram-3">
+  <div class="ex-head"><span class="ex-num">G3</span><span class="family-tag">time connector</span></div>
+  <p class="ex-q">You should read the question <span class="gap">___</span> you read the text.</p>
+  <ol class="choices inline" type="A">
+    <li class="right">before ✓</li><li class="">during</li><li class="">since</li><li class="">until</li>
+  </ol>
+  <p class="why"><strong>Tip:</strong> The strategy is question first, so use before.</p>
+</article>
+<article class="ex-card small" id="gram-4">
+  <div class="ex-head"><span class="ex-num">G4</span><span class="family-tag">present perfect</span></div>
+  <p class="ex-q">You <span class="gap">___</span> already practised this format with your trainer.</p>
+  <ol class="choices inline" type="A">
+    <li class="">has</li><li class="right">have ✓</li><li class="">are</li><li class="">were</li>
+  </ol>
+  <p class="why"><strong>Tip:</strong> You + have + past participle.</p>
+</article>
+<article class="ex-card small" id="gram-5">
+  <div class="ex-head"><span class="ex-num">G5</span><span class="family-tag">reflexive pronoun</span></div>
+  <p class="ex-q">You need to prepare <span class="gap">___</span> calmly before you speak.</p>
+  <ol class="choices inline" type="A">
+    <li class="">your</li><li class="">you</li><li class="right">yourself ✓</li><li class="">yours</li>
+  </ol>
+  <p class="why"><strong>Tip:</strong> prepare yourself = get ready.</p>
+</article>
+<article class="ex-card small" id="gram-6">
+  <div class="ex-head"><span class="ex-num">G6</span><span class="family-tag">location word</span></div>
+  <p class="ex-q">The answer is usually <span class="gap">___</span> the keyword.</p>
+  <ol class="choices inline" type="A">
+    <li class="right">near ✓</li><li class="">next</li><li class="">close</li><li class="">beside of</li>
+  </ol>
+  <p class="why"><strong>Tip:</strong> near + noun. Close needs to: close to the keyword.</p>
+</article>
+<article class="ex-card small" id="gram-7">
+  <div class="ex-head"><span class="ex-num">G7</span><span class="family-tag">reason connector</span></div>
+  <p class="ex-q">You can speak more clearly <span class="gap">___</span> you use a simple plan.</p>
+  <ol class="choices inline" type="A">
+    <li class="right">because ✓</li><li class="">but</li><li class="">although</li><li class="">unless</li>
+  </ol>
+  <p class="why"><strong>Tip:</strong> because introduces a reason.</p>
+</article>
+<article class="ex-card small" id="gram-8">
+  <div class="ex-head"><span class="ex-num">G8</span><span class="family-tag">comparative</span></div>
+  <p class="ex-q">A simple answer is <span class="gap">___</span> than a silent answer.</p>
+  <ol class="choices inline" type="A">
+    <li class="">good</li><li class="right">better ✓</li><li class="">best</li><li class="">more good</li>
+  </ol>
+  <p class="why"><strong>Tip:</strong> good → better.</p>
+</article>
+<article class="ex-card small" id="gram-9">
+  <div class="ex-head"><span class="ex-num">G9</span><span class="family-tag">connector</span></div>
+  <p class="ex-q">You must answer all the questions in the email, <span class="gap">___</span> keep the sentences short.</p>
+  <ol class="choices inline" type="A">
+    <li class="right">and ✓</li><li class="">because of</li><li class="">during</li><li class="">near</li>
+  </ol>
+  <p class="why"><strong>Tip:</strong> and connects two actions.</p>
+</article>
+<article class="ex-card small" id="gram-10">
+  <div class="ex-head"><span class="ex-num">G10</span><span class="family-tag">time expression</span></div>
+  <p class="ex-q">When the timer starts, you should continue <span class="gap">___</span> the end.</p>
+  <ol class="choices inline" type="A">
+    <li class="right">until ✓</li><li class="">for</li><li class="">since</li><li class="">during</li>
+  </ol>
+  <p class="why"><strong>Tip:</strong> continue until the end.</p>
+</article></div>
+  </section>
+
+  <section class="panel" id="reading">
+    <div class="section-title"><h2>📖 Reading</h2><span class="pill">6 texts · Question → keywords → scan → evidence → answer</span></div>
+    
+<article class="reading-block" id="read-1">
+  <div class="ex-head"><span class="ex-num">R1</span><h3>A calm village in Alsace</h3><span class="timer-pill">2 min</span></div>
+  <div class="text-card"><p>Kientzville is a small village in Alsace, close to Sélestat and about 45 kilometres from Strasbourg. It has about 500 inhabitants, so it is much quieter than a large city. There are no shops in the village, but the area is pleasant for people who enjoy nature and peaceful surroundings.</p><p>The village has an interesting local history. It was created after the Second World War by Mr Kientz, a textile industrialist whose factory was in Scherwiller, about one kilometre away. He bought land to build houses for workers.</p><p>Today, Kientzville is a calm place to live. Visitors can explore nearby towns, go for walks and discover other villages in Alsace. It is a good choice for people who like quiet places rather than busy tourist centres.</p></div>
+  
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q1.</strong> Where is Kientzville located?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">where</span> <span class="chip">Kientzville</span> <span class="chip">located</span></p>
+    <ol class="choices" type="A">
+      <li class="right">In Alsace, close to Sélestat <span class="tag">✓ correct</span></li><li class="">In Florida, close to Miami</li><li class="">In London, near the Thames</li><li class="">In Paris, near Montmartre</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">Kientzville is a small village in Alsace, close to Sélestat</span></p>
+    <p class="why"><strong>Why:</strong> Location is often in the first sentence.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q2.</strong> Why is it quieter than a large city?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">why</span> <span class="chip">quieter</span> <span class="chip">large city</span></p>
+    <ol class="choices" type="A">
+      <li class="right">It has about 500 inhabitants <span class="tag">✓ correct</span></li><li class="">It has a large airport</li><li class="">It has many shops</li><li class="">It is far from nature</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">It has about 500 inhabitants, so it is much quieter than a large city</span></p>
+    <p class="why"><strong>Why:</strong> The word so gives the consequence.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q3.</strong> Who created the village after the Second World War?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">who</span> <span class="chip">created</span> <span class="chip">Second World War</span></p>
+    <ol class="choices" type="A">
+      <li class="right">Mr Kientz <span class="tag">✓ correct</span></li><li class="">A tourist guide</li><li class="">A hotel manager</li><li class="">A farmer</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">It was created after the Second World War by Mr Kientz</span></p>
+    <p class="why"><strong>Why:</strong> The name appears directly after by.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q4.</strong> What can visitors do nearby?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">visitors</span> <span class="chip">do</span> <span class="chip">nearby</span></p>
+    <ol class="choices" type="A">
+      <li class="right">Explore nearby towns and go for walks <span class="tag">✓ correct</span></li><li class="">Go surfing every day</li><li class="">Visit a desert</li><li class="">Take a direct flight from the village</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">Visitors can explore nearby towns, go for walks and discover other villages in Alsace</span></p>
+    <p class="why"><strong>Why:</strong> The answer is a list of possible activities.</p>
+  </div>
+</article>
+
+<article class="reading-block" id="read-2">
+  <div class="ex-head"><span class="ex-num">R2</span><h3>Training programme email</h3><span class="timer-pill">2 min</span></div>
+  <div class="text-card"><p>Dear Ms Brown, Thank you for your message about our training programme. The course will begin on 12 September and will last six weeks. Participants will have two online lessons per week and will also receive access to digital resources for independent practice.</p><p>The main objective of the programme is to help employees communicate more confidently in professional situations. They will practise writing short emails, answering phone calls, introducing themselves and giving clear information to clients.</p><p>Please let me know if you would like to organise a short meeting next week to discuss the schedule in more detail.</p></div>
+  
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q1.</strong> How long will the programme last?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">how long</span> <span class="chip">last</span></p>
+    <ol class="choices" type="A">
+      <li class="right">Six weeks <span class="tag">✓ correct</span></li><li class="">Two days</li><li class="">One year</li><li class="">Three hours</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">will last six weeks</span></p>
+    <p class="why"><strong>Why:</strong> Numbers are easy keywords. Find last and read the phrase after it.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q2.</strong> How many online lessons will participants have each week?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">how many</span> <span class="chip">online lessons</span> <span class="chip">week</span></p>
+    <ol class="choices" type="A">
+      <li class="right">Two <span class="tag">✓ correct</span></li><li class="">Five</li><li class="">One</li><li class="">Ten</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">two online lessons per week</span></p>
+    <p class="why"><strong>Why:</strong> The answer is a number near online lessons.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q3.</strong> What is the main objective?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">main objective</span></p>
+    <ol class="choices" type="A">
+      <li class="right">To help employees communicate more confidently <span class="tag">✓ correct</span></li><li class="">To organise holidays</li><li class="">To sell computers</li><li class="">To open a restaurant</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">The main objective of the programme is to help employees communicate more confidently</span></p>
+    <p class="why"><strong>Why:</strong> The text uses the same words as the question.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q4.</strong> What does the writer propose at the end?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">propose</span> <span class="chip">end</span> <span class="chip">meeting</span></p>
+    <ol class="choices" type="A">
+      <li class="right">A short meeting next week <span class="tag">✓ correct</span></li><li class="">A refund</li><li class="">A new hotel</li><li class="">A market visit</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">organise a short meeting next week</span></p>
+    <p class="why"><strong>Why:</strong> In emails, the final sentence often gives the next action.</p>
+  </div>
+</article>
+
+<article class="reading-block" id="read-3">
+  <div class="ex-head"><span class="ex-num">R3</span><h3>A visit to Strasbourg</h3><span class="timer-pill">2 min</span></div>
+  <div class="text-card"><p>Strasbourg is one of the most visited cities in Alsace. It is famous for its cathedral, canals and historic centre. Many visitors enjoy walking around Petite France because the streets are picturesque and the atmosphere is lively.</p><p>The city is also important politically because it hosts European institutions. This makes Strasbourg both a tourist destination and an international city. Visitors can learn about history, architecture and European culture in the same place.</p><p>Although Strasbourg is busier than a small village, it is still easy to explore on foot. It is a good choice for travellers who enjoy history, food and beautiful city walks.</p></div>
+  
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q1.</strong> What is Strasbourg famous for?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">famous</span> <span class="chip">Strasbourg</span></p>
+    <ol class="choices" type="A">
+      <li class="right">Its cathedral, canals and historic centre <span class="tag">✓ correct</span></li><li class="">Its desert</li><li class="">Its beaches only</li><li class="">Its volcano</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">famous for its cathedral, canals and historic centre</span></p>
+    <p class="why"><strong>Why:</strong> Famous for introduces the answer.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q2.</strong> Why is Strasbourg important politically?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">politically</span> <span class="chip">important</span></p>
+    <ol class="choices" type="A">
+      <li class="right">It hosts European institutions <span class="tag">✓ correct</span></li><li class="">It has no public buildings</li><li class="">It is a village</li><li class="">It is closed to visitors</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">important politically because it hosts European institutions</span></p>
+    <p class="why"><strong>Why:</strong> Because introduces the reason.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q3.</strong> How can visitors explore Strasbourg?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">explore</span> <span class="chip">how</span></p>
+    <ol class="choices" type="A">
+      <li class="right">On foot <span class="tag">✓ correct</span></li><li class="">Only by plane</li><li class="">Only by boat</li><li class="">By skiing</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">it is still easy to explore on foot</span></p>
+    <p class="why"><strong>Why:</strong> The phrase on foot answers how.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q4.</strong> Who may enjoy Strasbourg?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">who</span> <span class="chip">enjoy</span> <span class="chip">travellers</span></p>
+    <ol class="choices" type="A">
+      <li class="right">Travellers who enjoy history, food and city walks <span class="tag">✓ correct</span></li><li class="">People who dislike cities</li><li class="">People who only want silence</li><li class="">People looking for a tropical island</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">travellers who enjoy history, food and beautiful city walks</span></p>
+    <p class="why"><strong>Why:</strong> The recommendation is at the end of the text.</p>
+  </div>
+</article>
+
+<article class="reading-block" id="read-4">
+  <div class="ex-head"><span class="ex-num">R4</span><h3>A hotel problem</h3><span class="timer-pill">2 min</span></div>
+  <div class="text-card"><p>Dear Reception Team, I am writing because there is a problem with my room. I booked a quiet room with a view of the pool, but my room is next to the lift and faces the street. It was very noisy last night, and I could not sleep well.</p><p>In addition, the fitness centre was advertised as included, but I was told that I had to pay extra to use it. Could you please check my reservation and propose a solution?</p><p>I would appreciate either a quieter room or a partial refund for the inconvenience. Thank you for your help.</p></div>
+  
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q1.</strong> What room did the customer book?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">what room</span> <span class="chip">book</span></p>
+    <ol class="choices" type="A">
+      <li class="right">A quiet room with a view of the pool <span class="tag">✓ correct</span></li><li class="">A room next to the lift</li><li class="">A room with no window</li><li class="">A room in another hotel</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">I booked a quiet room with a view of the pool</span></p>
+    <p class="why"><strong>Why:</strong> The phrase booked tells you the original reservation.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q2.</strong> Why was the room a problem?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">why</span> <span class="chip">problem</span> <span class="chip">room</span></p>
+    <ol class="choices" type="A">
+      <li class="right">It was next to the lift and noisy <span class="tag">✓ correct</span></li><li class="">It was too quiet</li><li class="">It had too many beds</li><li class="">It had free breakfast</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">my room is next to the lift and faces the street. It was very noisy</span></p>
+    <p class="why"><strong>Why:</strong> Problem words include next to the lift and noisy.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q3.</strong> What solution is requested?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">solution</span> <span class="chip">requested</span></p>
+    <ol class="choices" type="A">
+      <li class="right">A quieter room or partial refund <span class="tag">✓ correct</span></li><li class="">A new passport</li><li class="">A train ticket</li><li class="">A cooking class</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">either a quieter room or a partial refund</span></p>
+    <p class="why"><strong>Why:</strong> The solution appears near the end.</p>
+  </div>
+</article>
+
+<article class="reading-block" id="read-5">
+  <div class="ex-head"><span class="ex-num">R5</span><h3>A market visit</h3><span class="timer-pill">2 min</span></div>
+  <div class="text-card"><p>Every Saturday morning, the town centre becomes lively because local producers sell fruit, vegetables, cheese and flowers at the market. Some customers arrive early to avoid the crowds, while others prefer to walk slowly and enjoy the atmosphere.</p><p>The market is more than a place to buy food. It is also a social place where neighbours meet, exchange news and ask for advice about local products. Many people prefer the market because the products are fresh and seasonal.</p><p>Visitors should bring a basket, some cash and enough time. Shopping at the market can take longer than shopping at a supermarket, but it can also be more enjoyable.</p></div>
+  
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q1.</strong> Why do some customers arrive early?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">why</span> <span class="chip">arrive early</span></p>
+    <ol class="choices" type="A">
+      <li class="right">To avoid the crowds <span class="tag">✓ correct</span></li><li class="">To close the market</li><li class="">To buy train tickets</li><li class="">To meet at night</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">arrive early to avoid the crowds</span></p>
+    <p class="why"><strong>Why:</strong> To + verb often gives the purpose.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q2.</strong> Why do many people prefer the market?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">prefer</span> <span class="chip">market</span> <span class="chip">why</span></p>
+    <ol class="choices" type="A">
+      <li class="right">The products are fresh and seasonal <span class="tag">✓ correct</span></li><li class="">It is always faster</li><li class="">It is always empty</li><li class="">There are no products</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">prefer the market because the products are fresh and seasonal</span></p>
+    <p class="why"><strong>Why:</strong> Because gives the reason.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q3.</strong> What should visitors bring?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">visitors</span> <span class="chip">bring</span></p>
+    <ol class="choices" type="A">
+      <li class="right">A basket, cash and enough time <span class="tag">✓ correct</span></li><li class="">A suitcase and passport</li><li class="">A computer and printer</li><li class="">A winter coat only</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">Visitors should bring a basket, some cash and enough time</span></p>
+    <p class="why"><strong>Why:</strong> The answer is directly after should bring.</p>
+  </div>
+</article>
+
+<article class="reading-block" id="read-6">
+  <div class="ex-head"><span class="ex-num">R6</span><h3>Preparing for an online exam</h3><span class="timer-pill">2 min</span></div>
+  <div class="text-card"><p>Before an online language exam, it is important to prepare both the English and the technical environment. A quiet room, a stable internet connection and a working microphone can help you feel more comfortable before the first question appears.</p><p>During the test, it is better to keep a simple method for each section. In reading, read the question first and scan the text for keywords. In writing, answer all parts of the prompt with short clear paragraphs. In speaking, give a direct answer, add a detail and finish with a reason or example.</p><p>The objective is not to produce perfect English. The objective is to communicate clearly, manage time and continue calmly until the final screen.</p></div>
+  
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q1.</strong> What technical elements are mentioned?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">technical</span> <span class="chip">quiet room</span> <span class="chip">internet</span> <span class="chip">microphone</span></p>
+    <ol class="choices" type="A">
+      <li class="right">A quiet room, stable internet and a working microphone <span class="tag">✓ correct</span></li><li class="">A suitcase and passport</li><li class="">A car and map</li><li class="">A restaurant and menu</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">A quiet room, a stable internet connection and a working microphone</span></p>
+    <p class="why"><strong>Why:</strong> These items are listed in the first paragraph.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q2.</strong> What should you do in reading?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">reading</span> <span class="chip">question first</span> <span class="chip">keywords</span></p>
+    <ol class="choices" type="A">
+      <li class="right">Read the question first and scan for keywords <span class="tag">✓ correct</span></li><li class="">Write a long email first</li><li class="">Record your voice immediately</li><li class="">Ignore the text</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">In reading, read the question first and scan the text for keywords</span></p>
+    <p class="why"><strong>Why:</strong> The answer follows In reading.</p>
+  </div>
+  <div class="ex-card nested">
+    <p class="ex-q"><strong>Q3.</strong> What is the objective of the exam strategy?</p>
+    <p class="kw-line"><strong>Scan for:</strong> <span class="chip">objective</span> <span class="chip">clearly</span> <span class="chip">time</span> <span class="chip">calmly</span></p>
+    <ol class="choices" type="A">
+      <li class="right">Communicate clearly, manage time and continue calmly <span class="tag">✓ correct</span></li><li class="">Be perfect and use long sentences</li><li class="">Translate every word</li><li class="">Stop when it is difficult</li>
+    </ol>
+    <p class="evidence-line"><strong>Evidence:</strong> <span class="evidence">communicate clearly, manage time and continue calmly</span></p>
+    <p class="why"><strong>Why:</strong> The last sentence gives the main message.</p>
+  </div>
+</article>
+  </section>
+
+  <section class="panel" id="writing">
+    <div class="section-title"><h2>✍️ Writing studio</h2><span class="pill">6 tasks · Read → plan → write → check · 100–140 words</span></div>
+    <div class="eval-box" style="margin-bottom:16px"><strong>Checklist for every task:</strong> answered all parts of the prompt · used a greeting and closing · short clear sentences · checked verbs, plurals and prepositions · stayed close to 125 words.</div>
+    
+<article class="task-block" id="write-1">
+  <div class="ex-head"><span class="ex-num">W1</span><h3>Reply to additional questions</h3><span class="timer-pill">5 min · 100–140 words</span></div>
+  <p class="prompt-text">You receive an email from Jason. He asks what services your company will deliver before the end of the year. He also asks for more details about a new product for next year. Write a reply in about 125 words.</p>
+  <div class="plan-row"><strong>Plan:</strong> <span class="chip">1. Greeting + thank you</span> <span class="chip">2. Answer services before the end of the year</span> <span class="chip">3. Answer new product next year</span> <span class="chip">4. Polite closing</span></div>
+  <details class="frame-box"><summary>Show sentence frame</summary><pre>Hi Jason,
+
+Thank you for your email.
+
+Before the end of the year, we will...
+
+Regarding the new product, it will...
+
+Please let me know if you need any further information.
+
+Kind regards,
+Virginia</pre></details>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>Hi Jason,</p><p>Thank you for your email.</p><p>Before the end of the year, our company will provide customer support, installation help and product training. Our team will also answer questions if there is a problem.</p><p>Regarding the new product, we will offer a newer version next year. It will be easier to use and more durable. It will also have a two-year guarantee.</p><p>Please let me know if you need any further information.</p><p>Kind regards,<br>Virginia</p></details><details class="model-box"><summary>Model answer — B1</summary><p>Hi Jason,</p><p>Thank you for your email.</p><p>Before the end of the year, our company will deliver several services, including installation assistance, customer support and product training. Our customer service hotline will also be available, so your team can contact us if there is a problem.</p><p>Regarding the new product, we are preparing a more durable and user-friendly version for next year. It will include better materials, a clearer interface and a two-year guarantee. I have attached a document with more details.</p><p>Please let me know if you need any further information.</p><p>Kind regards,<br>Virginia</p></details><details class="model-box"><summary>Model answer — B2</summary><p>Hi Jason,</p><p>Thank you for your email.</p><p>Before the end of the year, our company will provide a complete service package, including installation support, customer training and technical assistance. In addition, our customer service hotline will remain available so that your team can get help quickly if needed.</p><p>As discussed during our last conversation, we are also preparing to launch a new version of the product next year. It will be more durable, easier to use and fully guaranteed for two years. I have attached the detailed document for your review.</p><p>Please let me know if you require any further information.</p><p>Kind regards,<br>Virginia</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="write-2">
+  <div class="ex-head"><span class="ex-num">W2</span><h3>Describe where you live</h3><span class="timer-pill">5 min · 100–140 words</span></div>
+  <p class="prompt-text">Write about where you live. Include the location, what it is near, the atmosphere, what there is to do nearby and your opinion. Aim for 100 to 125 words.</p>
+  <div class="plan-row"><strong>Plan:</strong> <span class="chip">1. Location</span> <span class="chip">2. What it is near</span> <span class="chip">3. Atmosphere</span> <span class="chip">4. Things to do nearby</span> <span class="chip">5. Opinion</span></div>
+  <details class="frame-box"><summary>Show sentence frame</summary><pre>I live in Kientzville, a small village in Alsace.
+
+It is near...
+
+The atmosphere is...
+
+People can...
+
+I like living there because...</pre></details>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>I live in Kientzville, a small village in Alsace. It is close to Sélestat and about 45 kilometres from Strasbourg. There are about 500 inhabitants, so it is quiet and peaceful. There are no shops in the village, but people can go for walks and enjoy nature. It is also possible to visit nearby towns. I like living there because it is calm and pleasant.</p></details><details class="model-box"><summary>Model answer — B1</summary><p>I live in Kientzville, a small village in Alsace with about 500 inhabitants. It is close to Sélestat and about 45 kilometres from Strasbourg. There are no shops in the village, but it is a peaceful and pleasant place to live. People can go for walks, enjoy nature and visit nearby towns such as Sélestat or Strasbourg. I like living there because it is calm and not too far from interesting places.</p></details><details class="model-box"><summary>Model answer — B2</summary><p>I live in Kientzville, a small and peaceful village in Alsace, close to Sélestat and about 45 kilometres from Strasbourg. Although there are no shops in the village, it is a pleasant place to live if you enjoy calm surroundings and nature. Nearby, visitors can explore Sélestat, Strasbourg and several charming Alsatian villages. What I appreciate most is the quiet atmosphere, which makes daily life relaxing while still being close to more lively places.</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="write-3">
+  <div class="ex-head"><span class="ex-num">W3</span><h3>Hotel complaint email</h3><span class="timer-pill">5 min · 100–140 words</span></div>
+  <p class="prompt-text">You booked a quiet hotel room with a pool view. The room is next to the lift and faces the street. The fitness centre was advertised as included, but the hotel asks you to pay extra. Write a polite complaint in about 125 words.</p>
+  <div class="plan-row"><strong>Plan:</strong> <span class="chip">1. Greeting</span> <span class="chip">2. Explain reservation</span> <span class="chip">3. Explain problems</span> <span class="chip">4. Request solution</span> <span class="chip">5. Polite closing</span></div>
+  <details class="frame-box"><summary>Show sentence frame</summary><pre>Dear Sir or Madam,
+
+I am writing because there is a problem with my reservation.
+
+I booked..., but...
+
+In addition,...
+
+Could you please...?
+
+Kind regards,</pre></details>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>Dear Sir or Madam,</p><p>I am writing because there is a problem with my room. I booked a quiet room with a view of the pool, but my room is next to the lift and faces the street. It was very noisy last night.</p><p>Also, I thought the fitness centre was included, but I was told I had to pay extra.</p><p>Could you please check my reservation and propose a solution? I would appreciate a quieter room if possible.</p><p>Kind regards,</p></details><details class="model-box"><summary>Model answer — B1</summary><p>Dear Sir or Madam,</p><p>I am writing because there are two problems with my reservation. I booked a quiet room with a view of the pool, but my room is next to the lift and faces the street. Unfortunately, it was very noisy last night and I could not sleep well.</p><p>In addition, the fitness centre was advertised as included, but I was told that I had to pay extra to use it. Could you please check my reservation and propose a solution? I would appreciate either a quieter room or a partial refund for the inconvenience.</p><p>Kind regards,</p></details><details class="model-box"><summary>Model answer — B2</summary><p>Dear Sir or Madam,</p><p>I am writing to express my dissatisfaction with my current room. I specifically booked a quiet room with a pool view, but I was given a room next to the lift, facing the street. As a result, the room was very noisy and I was unable to sleep properly.</p><p>Furthermore, the fitness centre was advertised as included in the booking, yet I was informed that an additional fee was required. Could you please review my reservation and offer a suitable solution? I would appreciate either a quieter room or a partial refund.</p><p>Kind regards,</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="write-4">
+  <div class="ex-head"><span class="ex-num">W4</span><h3>Recommend a place</h3><span class="timer-pill">5 min · 100–140 words</span></div>
+  <p class="prompt-text">Write a short recommendation for a visitor. Choose a place you know well. Explain where it is, what visitors can do there and why you recommend it. Aim for 100 to 125 words.</p>
+  <div class="plan-row"><strong>Plan:</strong> <span class="chip">1. Name the place</span> <span class="chip">2. Location</span> <span class="chip">3. Two things to do</span> <span class="chip">4. Atmosphere</span> <span class="chip">5. Reason for recommendation</span></div>
+  <details class="frame-box"><summary>Show sentence frame</summary><pre>I would recommend...
+
+It is located...
+
+Visitors can...
+
+The atmosphere is...
+
+I recommend it because...</pre></details>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>I would recommend Strasbourg to a visitor. It is a beautiful city in Alsace, not far from Kientzville. Visitors can see the cathedral, walk in the city centre and visit Petite France. There are also many restaurants and shops. The atmosphere is lively and historic. I recommend Strasbourg because it is interesting, beautiful and easy to visit on foot.</p></details><details class="model-box"><summary>Model answer — B1</summary><p>I would recommend Strasbourg to a visitor because it is one of the most beautiful cities in Alsace. It is located in the north-east of France, not far from Kientzville. Visitors can see the cathedral, walk around Petite France, try local food and enjoy the historic centre. The atmosphere is lively but also charming. I think it is a good place to visit because it offers history, culture, restaurants and beautiful places for a walk.</p></details><details class="model-box"><summary>Model answer — B2</summary><p>I would recommend Strasbourg because it combines history, culture and beautiful architecture. It is located in Alsace, in the north-east of France, and it is not far from Kientzville. Visitors can admire the cathedral, explore Petite France, walk along the canals and try traditional Alsatian food. Compared with a small village, Strasbourg is much livelier, but it is still pleasant to discover on foot. I would recommend it to people who enjoy history, food and charming city walks.</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="write-5">
+  <div class="ex-head"><span class="ex-num">W5</span><h3>Ask for information before a trip</h3><span class="timer-pill">5 min · 100–140 words</span></div>
+  <p class="prompt-text">You are preparing a short trip. Write an email to a hotel asking about availability, breakfast, parking and nearby transport. Aim for about 125 words.</p>
+  <div class="plan-row"><strong>Plan:</strong> <span class="chip">1. Greeting</span> <span class="chip">2. Dates and room request</span> <span class="chip">3. Ask about breakfast and parking</span> <span class="chip">4. Ask about transport</span> <span class="chip">5. Closing</span></div>
+  <details class="frame-box"><summary>Show sentence frame</summary><pre>Dear Sir or Madam,
+
+I would like to ask for some information about your hotel.
+
+I would like to stay...
+
+Could you please tell me...?
+
+I would also like to know...
+
+Kind regards,</pre></details>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>Dear Sir or Madam,</p><p>I would like to ask for some information about your hotel. I would like to stay for two nights next month and I would like to know if you have a quiet double room available.</p><p>Could you please tell me if breakfast is included in the price? I would also like to know if there is parking at the hotel.</p><p>Finally, could you tell me if there is public transport near the hotel?</p><p>Thank you for your help.</p><p>Kind regards,</p></details><details class="model-box"><summary>Model answer — B1</summary><p>Dear Sir or Madam,</p><p>I am preparing a short trip next month and I would like to ask for some information about your hotel. Could you please tell me if you have a quiet double room available for two nights?</p><p>I would also like to know whether breakfast is included in the price and whether parking is available at the hotel. In addition, could you tell me if there is public transport nearby, as I would like to visit the city centre without using my car?</p><p>Thank you in advance for your help.</p><p>Kind regards,</p></details><details class="model-box"><summary>Model answer — B2</summary><p>Dear Sir or Madam,</p><p>I am planning a short trip next month and would like to request some information before making a reservation. Could you please confirm whether a quiet double room is available for two nights?</p><p>I would also appreciate it if you could tell me whether breakfast is included in the room rate and whether private parking is available on site. In addition, I would like to know if there are convenient public transport options nearby, as I am hoping to visit the city centre without using my car.</p><p>Thank you in advance for your assistance.</p><p>Kind regards,</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="write-6">
+  <div class="ex-head"><span class="ex-num">W6</span><h3>Explain your exam preparation</h3><span class="timer-pill">5 min · 100–140 words</span></div>
+  <p class="prompt-text">Write about how you are preparing for the English 360 exam. Explain what you practise, what is difficult and what strategy helps you. Aim for 100 to 125 words.</p>
+  <div class="plan-row"><strong>Plan:</strong> <span class="chip">1. Current objective</span> <span class="chip">2. What you practise</span> <span class="chip">3. What is difficult</span> <span class="chip">4. Strategy</span> <span class="chip">5. Positive conclusion</span></div>
+  <details class="frame-box"><summary>Show sentence frame</summary><pre>I am preparing for the English 360 exam.
+
+I practise...
+
+The most difficult part is...
+
+My strategy is...
+
+I feel more confident because...</pre></details>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>I am preparing for the English 360 exam. I practise listening, reading, writing and speaking. The most difficult parts for me are speaking and reading because I can feel nervous with the timer. My strategy is to read the question first, find the keywords and answer step by step. For speaking, I try to give a simple answer, one detail and one reason. I feel more confident because I know the exam format better now.</p></details><details class="model-box"><summary>Model answer — B1</summary><p>I am preparing for the English 360 exam by practising reading comprehension, writing and speaking with a timer. The most difficult part is staying calm when I do not understand everything immediately. My strategy is to read the question first, find the keywords and look for the evidence in the text. For writing, I use a simple plan with a greeting, clear paragraphs and a polite closing. For speaking, I answer directly, add one detail and give a reason. I feel more confident because I have a clear method.</p></details><details class="model-box"><summary>Model answer — B2</summary><p>I am preparing for the English 360 exam by working on the parts that require both language skills and time management: reading, writing and speaking. The most challenging part is not always the English itself, but staying calm when the timer is visible. My strategy is to follow a simple routine: read the question first, identify key information, answer clearly and continue. For writing, I focus on complete but concise answers. For speaking, I use a short structure: answer, detail, reason and example. This method helps me feel more organised and confident.</p></details>
+  </div>
+</article>
+  </section>
+
+  <section class="panel" id="speaking">
+    <div class="section-title"><h2>🎙️ Speaking studio</h2><span class="pill">10 prompts · Answer → Detail → Reason → Example</span></div>
+    <div class="eval-box" style="margin-bottom:16px"><strong>10-second preparation:</strong> write only 3–5 keywords, never full sentences. Use the A+D+R+E rail: Answer directly, add a Detail, give a Reason, close with an Example.</div>
+    
+<article class="task-block" id="speak-1">
+  <div class="ex-head"><span class="ex-num">S1</span><h3>Introduce yourself</h3><span class="timer-pill">60s</span></div>
+  <p class="prompt-text">Introduce yourself for the English 360 exam.</p>
+  <p class="kw-line"><strong>Keywords only — no full sentences:</strong> <span class="chip">name</span> <span class="chip">retired</span> <span class="chip">past job</span> <span class="chip">where you live</span> <span class="chip">interests</span></p>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>Hello, my name is Myriam. I am retired and I live in Kientzville, a small village in Alsace. Before retiring, I worked in technical support. In my free time, I enjoy walking, cooking and spending time with my family.</p></details><details class="model-box"><summary>Model answer — B1</summary><p>Hello, my name is Myriam. I am retired and I live in Kientzville, a small village in Alsace, near Sélestat. Before retiring, I worked as a computer assistant in technical support. I enjoyed helping people solve problems. In my free time, I like walking, cooking, travelling and spending time with my family.</p></details><details class="model-box"><summary>Model answer — B2</summary><p>Hello, my name is Myriam. I am retired now, and before that I worked as a computer assistant in technical support. My job involved helping users understand and solve computer problems. I live in Kientzville, a small peaceful village in Alsace, close to Sélestat. In my free time, I enjoy walking in nature, cooking, travelling and spending time with my family.</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="speak-2">
+  <div class="ex-head"><span class="ex-num">S2</span><h3>Where you live</h3><span class="timer-pill">60s</span></div>
+  <p class="prompt-text">Tell us about where you live.</p>
+  <p class="kw-line"><strong>Keywords only — no full sentences:</strong> <span class="chip">Kientzville</span> <span class="chip">Alsace</span> <span class="chip">near Sélestat</span> <span class="chip">quiet</span> <span class="chip">nature</span></p>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>I live in Kientzville, a small village in Alsace. It is close to Sélestat and about 45 kilometres from Strasbourg. It is quiet and peaceful. There are no shops, but it is a nice place to live because it is close to nature.</p></details><details class="model-box"><summary>Model answer — B1</summary><p>I live in Kientzville, a small village in Alsace with about 500 inhabitants. It is close to Sélestat and about 45 kilometres from Strasbourg. There are no shops in the village, but people can go for walks and enjoy nature. I like living there because it is calm and pleasant.</p></details><details class="model-box"><summary>Model answer — B2</summary><p>I live in Kientzville, a small and peaceful village in Alsace, close to Sélestat and about 45 kilometres from Strasbourg. Although there are no shops in the village, it is pleasant because it is quiet and close to nature. Nearby, visitors can explore Sélestat, Strasbourg and charming Alsatian villages. What I appreciate most is the calm atmosphere.</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="speak-3">
+  <div class="ex-head"><span class="ex-num">S3</span><h3>Previous job</h3><span class="timer-pill">30s</span></div>
+  <p class="prompt-text">What did you like best about your previous job?</p>
+  <p class="kw-line"><strong>Keywords only — no full sentences:</strong> <span class="chip">helping people</span> <span class="chip">technical support</span> <span class="chip">solutions</span></p>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>What I liked best about my previous job was helping people. I worked in technical support, so I helped users with computer problems. It was sometimes stressful, but I liked finding solutions.</p></details><details class="model-box"><summary>Model answer — B1</summary><p>What I liked best about my previous job was helping people solve technical problems. I worked as a computer assistant in technical support. I enjoyed explaining things clearly and finding solutions. It could be stressful sometimes, but I liked feeling useful.</p></details><details class="model-box"><summary>Model answer — B2</summary><p>What I liked most about my previous job was the combination of technical problem-solving and human contact. I helped users understand and resolve computer issues. Although the work could be demanding, I appreciated being able to make situations easier by giving clear explanations and practical solutions.</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="speak-4">
+  <div class="ex-head"><span class="ex-num">S4</span><h3>Recommend a place</h3><span class="timer-pill">60s</span></div>
+  <p class="prompt-text">Recommend a place to visit and explain why.</p>
+  <p class="kw-line"><strong>Keywords only — no full sentences:</strong> <span class="chip">Strasbourg</span> <span class="chip">cathedral</span> <span class="chip">historic centre</span> <span class="chip">reason</span></p>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>I would recommend Strasbourg because it is a beautiful city in Alsace. Visitors can see the cathedral, walk in the city centre and take photos. I like this city because it is historic and lively.</p></details><details class="model-box"><summary>Model answer — B1</summary><p>I would recommend Strasbourg to a visitor because it is one of the most beautiful cities in Alsace. It is known for its cathedral, historic centre and canals. Visitors can walk around Petite France, try local food and enjoy the atmosphere. I think it is a good place for tourists because it is both historic and lively.</p></details><details class="model-box"><summary>Model answer — B2</summary><p>I would recommend Strasbourg because it offers a rich combination of history, culture and architecture. The cathedral is impressive, the historic centre is picturesque and the canals make the city especially charming. Compared with a small village, Strasbourg is much livelier, but it is still pleasant to explore on foot. It is ideal for visitors who enjoy history, food and beautiful walks.</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="speak-5">
+  <div class="ex-head"><span class="ex-num">S5</span><h3>A stressful situation</h3><span class="timer-pill">60s</span></div>
+  <p class="prompt-text">Describe a stressful situation and explain how you manage it.</p>
+  <p class="kw-line"><strong>Keywords only — no full sentences:</strong> <span class="chip">exam</span> <span class="chip">timer</span> <span class="chip">breathe</span> <span class="chip">method</span></p>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>A stressful situation for me is an exam with a timer. I can feel nervous because I want to do well. To manage it, I breathe, read the question and answer step by step. This helps me stay calm.</p></details><details class="model-box"><summary>Model answer — B1</summary><p>A stressful situation for me is taking an exam with a timer. Sometimes I worry because I want to understand everything perfectly. To manage it, I remind myself to breathe, read the question first and use a simple method. This helps me focus on one task at a time instead of panicking.</p></details><details class="model-box"><summary>Model answer — B2</summary><p>A stressful situation for me is taking an online exam when the timer is visible. It can be difficult because I may want to understand everything perfectly before answering. To manage this, I use a simple routine: breathe, read the instruction, identify the key information and answer clearly. This helps me stay focused and continue calmly.</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="speak-6">
+  <div class="ex-head"><span class="ex-num">S6</span><h3>Reading strategy</h3><span class="timer-pill">30s</span></div>
+  <p class="prompt-text">Explain your strategy for reading comprehension.</p>
+  <p class="kw-line"><strong>Keywords only — no full sentences:</strong> <span class="chip">question first</span> <span class="chip">keywords</span> <span class="chip">scan</span> <span class="chip">evidence</span></p>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>My strategy is to read the question first. Then I look for important words in the question. After that, I scan the text and find the answer. I do not translate everything.</p></details><details class="model-box"><summary>Model answer — B1</summary><p>My strategy for reading comprehension is to read the question before reading the whole text. Then I find the keywords, such as names, dates or important nouns. After that, I scan the text for the same words or synonyms and check the sentence around the answer.</p></details><details class="model-box"><summary>Model answer — B2</summary><p>My reading strategy is to avoid translating the entire text. First, I read the question and identify the key words or the information I need. Then I scan the text for those words or similar ideas. Finally, I read the sentence before and after the answer location to make sure my choice is logical.</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="speak-7">
+  <div class="ex-head"><span class="ex-num">S7</span><h3>Writing strategy</h3><span class="timer-pill">30s</span></div>
+  <p class="prompt-text">Explain how you prepare a writing task.</p>
+  <p class="kw-line"><strong>Keywords only — no full sentences:</strong> <span class="chip">read</span> <span class="chip">plan</span> <span class="chip">paragraphs</span> <span class="chip">check</span></p>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>First, I read the task carefully. Then I make a short plan. I write simple paragraphs and answer all the questions. At the end, I check the verbs, the greeting and the closing.</p></details><details class="model-box"><summary>Model answer — B1</summary><p>To prepare a writing task, I first read the prompt and identify all the questions I need to answer. Then I make a short plan with four parts: greeting, answer one, answer two and closing. I write clear sentences and check the essential points at the end.</p></details><details class="model-box"><summary>Model answer — B2</summary><p>When I prepare a writing task, I focus on being clear and complete rather than perfect. I read the prompt carefully, identify each question and make a short paragraph plan. Then I write concise sentences and leave a little time to check the greeting, closing, verb tenses, prepositions and word count.</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="speak-8">
+  <div class="ex-head"><span class="ex-num">S8</span><h3>Speaking strategy</h3><span class="timer-pill">30s</span></div>
+  <p class="prompt-text">Explain how you prepare an oral answer without overdoing it.</p>
+  <p class="kw-line"><strong>Keywords only — no full sentences:</strong> <span class="chip">answer</span> <span class="chip">detail</span> <span class="chip">reason</span> <span class="chip">example</span></p>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>For speaking, I do not write full sentences. I choose a few key words. Then I answer directly, add one detail and give one reason. This helps me speak more naturally.</p></details><details class="model-box"><summary>Model answer — B1</summary><p>To prepare an oral answer, I write only three or four key words, not full sentences. Then I use a simple structure: answer, detail, reason and example. This helps me continue speaking without overthinking or trying to be perfect.</p></details><details class="model-box"><summary>Model answer — B2</summary><p>To prepare an oral answer without overdoing it, I avoid writing a complete script. I choose a few key words and follow a simple structure: direct answer, one or two details, a reason and, if possible, an example or short conclusion. This makes the answer clear and natural under time pressure.</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="speak-9">
+  <div class="ex-head"><span class="ex-num">S9</span><h3>Talk about a market</h3><span class="timer-pill">60s</span></div>
+  <p class="prompt-text">Describe a local market and explain why people enjoy going there.</p>
+  <p class="kw-line"><strong>Keywords only — no full sentences:</strong> <span class="chip">fresh products</span> <span class="chip">vendors</span> <span class="chip">lively</span> <span class="chip">seasonal</span></p>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>A local market is a pleasant place where people buy fresh fruit and vegetables. The atmosphere is lively and colourful. People enjoy going there because they can talk to the vendors and buy local products.</p></details><details class="model-box"><summary>Model answer — B1</summary><p>A local market is a lively place where people can buy fresh fruit, vegetables, cheese and flowers. Customers often enjoy talking to the vendors and asking for advice. Compared with a supermarket, the market feels more personal and friendly. People like going there because the products are fresh and seasonal.</p></details><details class="model-box"><summary>Model answer — B2</summary><p>A local market is both a shopping place and a social place. People can buy fresh seasonal produce, talk to the vendors and meet neighbours. The atmosphere is usually colourful, lively and friendly. Unlike a supermarket, the market feels more personal because customers can ask questions and get advice. Many people enjoy it because it combines practical shopping with a pleasant local experience.</p></details>
+  </div>
+</article>
+
+<article class="task-block" id="speak-10">
+  <div class="ex-head"><span class="ex-num">S10</span><h3>Final confidence answer</h3><span class="timer-pill">60s</span></div>
+  <p class="prompt-text">Explain why you feel more prepared for the exam now.</p>
+  <p class="kw-line"><strong>Keywords only — no full sentences:</strong> <span class="chip">format</span> <span class="chip">method</span> <span class="chip">practice</span> <span class="chip">calmer</span></p>
+  <div class="level-models">
+    <details class="model-box"><summary>Model answer — A2+</summary><p>I feel more prepared because I know the format better now. I have practised reading, writing and speaking with a timer. I also know that I do not need to be perfect. I need to answer clearly and continue.</p></details><details class="model-box"><summary>Model answer — B1</summary><p>I feel more prepared because I know the exam format better and I have practised the most difficult parts. I know how to read the question first, find keywords, write with a simple plan and speak with a clear structure. I still feel nervous, but I have a method now, and that helps me stay calmer.</p></details><details class="model-box"><summary>Model answer — B2</summary><p>I feel more prepared because the exam format is much more familiar now. I have practised using timers, recognising instructions and applying simple strategies for each section. In reading, I look for keywords and evidence. In writing, I organise my answer before starting. In speaking, I use a short structure instead of trying to be perfect. I may still feel nervous, but I know how to continue calmly.</p></details>
+  </div>
+</article>
+  </section>
+
+  <section class="panel" id="promise">
+    <p class="kicker">Final reassurance</p>
+    <h2><span lang="en">Your exam promise</span><span lang="fr">Votre promesse pour l'examen</span></h2>
+    <div class="promise-grid">
+      <label><input type="checkbox"> <span lang="en">I will not translate everything.</span><span lang="fr">Je ne vais pas tout traduire.</span></label>
+      <label><input type="checkbox"> <span lang="en">I will read the question first.</span><span lang="fr">Je vais lire la question en premier.</span></label>
+      <label><input type="checkbox"> <span lang="en">I will write simple complete answers.</span><span lang="fr">Je vais écrire des réponses simples et complètes.</span></label>
+      <label><input type="checkbox"> <span lang="en">I will speak even with small mistakes.</span><span lang="fr">Je vais parler même avec de petites erreurs.</span></label>
+      <label><input type="checkbox"> <span lang="en">I will continue until the final screen.</span><span lang="fr">Je vais continuer jusqu'à l'écran final.</span></label>
+    </div>
+  </section>
+</main>
+
+<footer class="qualiopi">
+  <strong>SpeakEasyTisha</strong> — English 360° preparation · Myriam Schuh<br>
+  Reference sheet generated from Reassuring Mock 2 (Listening, Grammar, Reading, Writing, Speaking) for independent practice between sessions. Qualiopi-aligned pedagogical resource.
+</footer>
+
+<script>
+document.getElementById('frToggle').addEventListener('click', function(){
+  document.body.classList.toggle('fr');
+  this.textContent = document.body.classList.contains('fr') ? 'English' : 'Français';
+});
+</script>
+</body>
+</html>
