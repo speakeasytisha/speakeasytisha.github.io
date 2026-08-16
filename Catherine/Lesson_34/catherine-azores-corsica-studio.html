@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#0f6b79"/>
+  <meta name="description" content="Catherine's interactive English travel lesson about the Azores and Corsica, with vocabulary, grammar, listening, speaking, writing and Qualiopi evaluation."/>
+  <title>Catherine · Azores or Corsica? · Travel Conversation Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="catherine-azores-corsica-studio.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to lesson</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Catherine · Azores + Corsica · A2+ → B1 · Travel conversation + CLOE</div>
+    </div>
+    <div class="controls">
+      <div class="pill">
+        <span class="pill__label">Voice</span>
+        <button class="seg" id="voiceUS" type="button" aria-pressed="false">🇺🇸 US</button>
+        <button class="seg is-on" id="voiceUK" type="button" aria-pressed="true">🇬🇧 UK</button>
+      </div>
+      <div class="pill">
+        <span class="pill__label">Speed</span>
+        <select class="select select--dark" id="voiceRate">
+          <option value="0.80">Slow</option>
+          <option value="0.94" selected>Clear natural</option>
+          <option value="1.06">Natural challenge</option>
+        </select>
+      </div>
+      <div class="pill">
+        <span class="pill__label">FR help</span>
+        <button class="seg is-on" id="frOn" type="button" aria-pressed="true">ON</button>
+        <button class="seg" id="frOff" type="button" aria-pressed="false">OFF</button>
+      </div>
+      <button class="btn btn--ghost" id="btnSave" type="button">💾 Save</button>
+      <button class="btn btn--ghost" id="btnPrint" type="button">🖨️ Print</button>
+      <div class="scorebox" aria-live="polite">
+        <div class="scorebox__label">Progress</div>
+        <div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <div class="eyebrow">CATHERINE · NEXT-TRIP ENGLISH</div>
+      <h1>Azores or Corsica? 🌋🌿🥾</h1>
+      <p class="lead">Use two possible future trips to practise the English you really need: <strong>walking, landscapes, vegetation, volcanoes, climate, preferences, questions and travel decisions</strong> — then turn those ideas into longer, more natural answers.</p>
+      <p class="fr lead-fr">Deux destinations possibles pour parler de randonnée, paysages, végétation, volcans, climat, préférences et projets — avec des réponses plus longues et plus naturelles.</p>
+      <div class="hero__cta">
+        <button class="btn" id="btnStart" type="button">▶️ Start the journey</button>
+        <button class="btn btn--ghost" id="btnHearGoal" type="button">🔊 Hear your mission</button>
+      </div>
+      <div class="minirow">
+        <div class="minicard"><div class="minicard__t">🌋 The Azores</div><div class="minicard__p">Nine Portuguese islands, volcanic landscapes, crater lakes, geothermal features, lush scenery and walking.</div></div>
+        <div class="minicard"><div class="minicard__t">⛰️ Corsica</div><div class="minicard__p">Mediterranean climate, mountains, coastal paths, fragrant maquis, villages and dramatic sea views.</div></div>
+        <div class="minicard"><div class="minicard__t">🧠 Your level-up</div><div class="minicard__p">A2+ → B1 core, with B1+ stretch language for explaining, comparing and imagining.</div></div>
+      </div>
+    </div>
+    <aside class="hero__panel">
+      <div class="panelcard">
+        <div class="panelcard__title">Your route · about 100–120 min</div>
+        <ol class="panelcard__list">
+          <li>Travel compass: what attracts you?</li>
+          <li>Destination facts + the 9 Azores islands</li>
+          <li>Vocabulary studio: nature, climate, hiking, volcanoes</li>
+          <li>Reading: you and your husband compare options</li>
+          <li>Grammar lab: 6 travel structures</li>
+          <li>Listening + real-life dialogues</li>
+          <li>Speaking ladder + recording</li>
+          <li>Writing + CLOE decision challenge</li>
+          <li>Qualiopi progress + satisfaction</li>
+        </ol>
+        <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+        <div class="muted tiny">Method: see → choose → rebuild → listen → speak → personalise.</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<main id="main" class="shell">
+
+  <section class="section" id="sec1">
+    <div class="section__head">
+      <div><span class="section-kicker">1 · WARM-UP</span><h2>Your travel compass</h2><p class="muted">Start from your own preferences. There is no “correct” destination.</p></div>
+    </div>
+    <div class="three">
+      <article class="card choice-card"><div class="destination-icon">🌋</div><h3>The Azores</h3><p>Volcanic lakes, geothermal areas, green slopes, Atlantic weather, island-hopping.</p><button class="btn card-btn preference-btn" data-pref="Azores">This attracts me</button></article>
+      <article class="card choice-card"><div class="destination-icon">⛰️</div><h3>Corsica</h3><p>Mountain paths, Mediterranean vegetation, coastal scenery, villages, warm light.</p><button class="btn card-btn preference-btn" data-pref="Corsica">This attracts me</button></article>
+      <article class="card choice-card"><div class="destination-icon">💭</div><h3>I need to compare</h3><p>Use English to weigh up climate, walking, scenery, travel style and atmosphere.</p><button class="btn card-btn preference-btn" data-pref="Compare">I want to compare</button></article>
+    </div>
+    <div class="card" style="margin-top:.9rem">
+      <div class="card__head"><h3>Build your first answer</h3><button class="iconbtn" id="warmModel" type="button">👁️ Show model</button></div>
+      <div class="formgrid formgrid--3">
+        <label class="lab">What attracts you most?<select class="select" id="warmAttract"><option>the scenery</option><option>the walking</option><option>the vegetation</option><option>the volcanic landscapes</option><option>the climate</option><option>the mixture of sea and mountains</option></select></label>
+        <label class="lab">How do you feel?<select class="select" id="warmFeeling"><option>curious</option><option>excited</option><option>interested</option><option>undecided</option><option>drawn to both places</option></select></label>
+        <label class="lab">Connector<select class="select" id="warmConnector"><option>because</option><option>especially because</option><option>although</option><option>whereas</option></select></label>
+      </div>
+      <div class="smallrow"><button class="btn" id="warmBuild" type="button">✨ Build my answer</button><button class="iconbtn" id="warmSpeak" type="button">🔊 Listen</button><button class="hintbtn" id="warmChallenge" type="button">➕ Make it B1+</button></div>
+      <textarea class="textarea" id="warmOutput" rows="4" placeholder="Your answer appears here…"></textarea>
+      <div class="feedback hidden" id="warmFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec2">
+    <div class="section__head"><div><span class="section-kicker">2 · DESTINATION KNOWLEDGE</span><h2>Travel facts you can actually use in conversation</h2><p class="muted">Learn enough factual English to speak freely without turning the lesson into a geography test.</p></div></div>
+    <div class="two">
+      <article class="card fact-card">
+        <div class="card__head"><h3>🇵🇹 The Azores / Açores</h3><button class="iconbtn" data-speak-target="azoresFacts">🔊 Listen</button></div>
+        <div class="reading" id="azoresFacts">
+          <div class="line"><div class="ico">9️⃣</div><div><strong>Nine islands:</strong> São Miguel, Terceira, Pico, Faial, São Jorge, Graciosa, Santa Maria, Flores and Corvo.<div class="fr">Neuf îles portugaises dans l’Atlantique.</div></div></div>
+          <div class="line"><div class="ico">🌋</div><div>The archipelago is volcanic. São Miguel is known for crater lakes such as Sete Cidades and Lagoa do Fogo, while Furnas is associated with geothermal activity.<div class="fr">Archipel volcanique, lacs de cratère et activité géothermique.</div></div></div>
+          <div class="line"><div class="ico">🌿</div><div>The climate is generally mild and humid, which helps create the famously green landscapes.<div class="fr">Climat généralement doux et humide, paysages très verts.</div></div></div>
+          <div class="line"><div class="ico">🥾</div><div>Walking routes cross crater rims, forests, coastal areas and viewpoints. Weather can change quickly, so layers and waterproof clothing are useful.<div class="fr">Randonnées variées; météo changeante, vêtements adaptés utiles.</div></div></div>
+        </div>
+      </article>
+      <article class="card fact-card">
+        <div class="card__head"><h3>🇫🇷 Corsica / Corse</h3><button class="iconbtn" data-speak-target="corsicaFacts">🔊 Listen</button></div>
+        <div class="reading" id="corsicaFacts">
+          <div class="line"><div class="ico">☀️</div><div>Corsica has a Mediterranean climate, with warm, dry summers on the coast and cooler conditions at altitude.<div class="fr">Climat méditerranéen, plus frais en altitude.</div></div></div>
+          <div class="line"><div class="ico">🌿</div><div>The <strong>maquis</strong> is a fragrant Mediterranean scrubland with plants such as myrtle and other aromatic shrubs.<div class="fr">Le maquis: végétation méditerranéenne dense et parfumée.</div></div></div>
+          <div class="line"><div class="ico">⛰️</div><div>The island combines coastline and high mountains. There are easy walks, village paths and demanding routes such as the GR20.<div class="fr">Mer + montagne, randonnées faciles ou très exigeantes.</div></div></div>
+          <div class="line"><div class="ico">🪨</div><div>The Calanques de Piana are famous for sculpted pink-red granite cliffs above the sea. Corsica is <strong>not</strong> a destination known for active volcanoes.<div class="fr">Falaises granitiques spectaculaires; pas une destination de volcans actifs.</div></div></div>
+        </div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:.9rem">
+      <div class="card__head"><h3>🧭 The nine Azores islands — say them confidently</h3><button class="iconbtn" id="islandsSpeak" type="button">🔊 Listen</button></div>
+      <div class="island-grid" id="islandGrid"></div>
+      <div class="quiz-strip" id="factQuiz"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec3">
+    <div class="section__head"><div><span class="section-kicker">3 · VOCABULARY</span><h2>Nature & travel vocabulary studio</h2><p class="muted">French help, definition, natural example and audio. Filter by what you want to practise.</p></div></div>
+    <div class="filters">
+      <div class="pill pill--light"><span class="pill__label light-label">Category</span><select class="select" id="vocabSet"></select></div>
+      <button class="btn btn--ghost" id="btnVocabShuffle" type="button">🔀 Shuffle</button>
+      <button class="btn" id="btnVocabQuiz" type="button">🧩 Quiz me</button>
+    </div>
+    <div class="grid grid--cards" id="vocabGrid"></div>
+    <div class="card" style="margin-top:.9rem"><div class="card__head"><h3>Vocabulary challenge</h3><button class="btn btn--ghost dark-ghost" id="btnVocabQuizReset">↺ New question</button></div><div id="vocabQuizHost"></div></div>
+  </section>
+
+  <section class="section" id="sec4">
+    <div class="section__head"><div><span class="section-kicker">4 · READING</span><h2>You and your husband compare two trips</h2><p class="muted">Read for meaning first. Then notice the grammar that makes the answer sound more natural.</p></div></div>
+    <div class="two">
+      <article class="card"><div class="card__head"><h3>Reading text</h3><div class="righttools"><button class="iconbtn" id="readSpeak">🔊 Listen</button><button class="hintbtn" id="readGrammar">🔎 Notice the grammar</button></div></div><div class="reading" id="readingText"></div><div class="feedback hidden" id="readGrammarBox"></div></article>
+      <article class="card"><div class="card__head"><h3>Comprehension + inference</h3><button class="btn btn--ghost dark-ghost" id="readReset">↺ Reset</button></div><div id="readingQuizHost"></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="sec5">
+    <div class="section__head"><div><span class="section-kicker">5 · GRAMMAR LAB</span><h2>Six structures for richer travel English</h2><p class="muted">You already know basic travel English. Here, your goal is to connect ideas, choose the right tense and sound more precise.</p></div></div>
+    <div class="grammar-tabs" id="grammarTabs">
+      <button class="grammar-tab is-on" data-rule="preps">1. in / on / at</button>
+      <button class="grammar-tab" data-rule="compare">2. richer comparisons</button>
+      <button class="grammar-tab" data-rule="perfect">3. present perfect vs past</button>
+      <button class="grammar-tab" data-rule="modals">4. might / could / should</button>
+      <button class="grammar-tab" data-rule="conditionals">5. conditionals</button>
+      <button class="grammar-tab" data-rule="relatives">6. relative clauses</button>
+    </div>
+    <div class="card grammar-card" id="grammarRuleHost"></div>
+    <div class="two" style="margin-top:.9rem">
+      <article class="card"><div class="card__head"><h3>Choose the best form</h3><button class="btn btn--ghost dark-ghost" id="grammarReset">↺ Reset</button></div><div id="grammarMCQHost"></div></article>
+      <article class="card"><div class="card__head"><h3>Complete the sentence</h3></div><div id="grammarFillHost"></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="sec6">
+    <div class="section__head"><div><span class="section-kicker">6 · LISTENING</span><h2>Listen, understand, respond</h2><p class="muted">These are short travel-planning exchanges rather than isolated textbook sentences.</p></div></div>
+    <div class="card"><div class="card__head"><h3>Listening missions</h3><button class="btn btn--ghost dark-ghost" id="listenReset">↺ Reset</button></div><div id="listenHost"></div></div>
+  </section>
+
+  <section class="section" id="sec7">
+    <div class="section__head"><div><span class="section-kicker">7 · DIALOGUES</span><h2>Real-life conversation studio</h2><p class="muted">Play the dialogue, take a role, then hide the model lines and answer yourself.</p></div></div>
+    <div class="filters">
+      <div class="pill pill--light"><span class="pill__label light-label">Situation</span><select class="select" id="dlgSelect"></select></div>
+      <div class="pill pill--light"><span class="pill__label light-label">Your role</span><button class="seg seg--light is-on" id="roleA">Role A</button><button class="seg seg--light" id="roleB">Role B</button></div>
+      <button class="btn" id="dlgPlay">▶️ Play</button><button class="btn btn--ghost" id="dlgStep">➡️ Next</button><button class="btn btn--ghost" id="dlgClear">🧹 Clear</button><button class="btn btn--ghost" id="dlgHints">💡 Phrases</button>
+    </div>
+    <div class="card"><div class="card__head"><h3 id="dlgTitle">Dialogue</h3><button class="iconbtn" id="dlgListenAll">🔊 Listen all</button></div><div class="chat"><div class="chat__stream" id="chatStream"></div></div><div class="feedback hidden" id="dlgHintBox"></div></div>
+  </section>
+
+  <section class="section" id="sec8">
+    <div class="section__head"><div><span class="section-kicker">8 · SPEAKING</span><h2>Speaking ladder: from safe sentence to 90-second answer</h2><p class="muted">Build first, then speak. Each level removes a little support.</p></div></div>
+    <div class="three speaking-levels">
+      <article class="card ladder-card"><span class="level-badge">30 sec</span><h3>Level 1 · Describe</h3><p>Describe what attracts you about one destination.</p><button class="hintbtn ladder-model" data-model="l1">👁️ Model</button><div class="feedback hidden" id="model-l1"></div></article>
+      <article class="card ladder-card"><span class="level-badge">60 sec</span><h3>Level 2 · Compare</h3><p>Compare walking, climate, vegetation and atmosphere.</p><button class="hintbtn ladder-model" data-model="l2">👁️ Model</button><div class="feedback hidden" id="model-l2"></div></article>
+      <article class="card ladder-card"><span class="level-badge">90 sec</span><h3>Level 3 · Decide</h3><p>Explain which trip you would choose with your husband and why.</p><button class="hintbtn ladder-model" data-model="l3">👁️ Model</button><div class="feedback hidden" id="model-l3"></div></article>
+    </div>
+    <div class="card" style="margin-top:.9rem">
+      <div class="card__head"><h3>🎙️ Record · listen · improve</h3><span class="pillTag">Your recording stays in this browser</span></div>
+      <div class="smallrow"><button class="btn" id="recordStart">Start recording</button><button class="btn btn--ghost dark-ghost" id="recordStop" disabled>Stop</button><button class="btn btn--ghost dark-ghost" id="recordClear">Clear</button><a class="btn btn--ghost dark-ghost hidden" id="recordDownload" download="catherine-azores-corsica-speaking.webm">Download recording</a></div>
+      <p class="muted" id="recordStatus">Choose a speaking level, then record your answer.</p>
+      <audio id="recordAudio" controls class="hidden"></audio>
+      <label class="lab" style="margin-top:.7rem">One thing I want to improve<textarea class="textarea" id="speakingReflection" rows="3" placeholder="For example: use more connectors / slow down / use the present perfect correctly…"></textarea></label>
+    </div>
+  </section>
+
+  <section class="section" id="sec9">
+    <div class="section__head"><div><span class="section-kicker">9 · WRITING</span><h2>Write a natural trip message</h2><p class="muted">Imagine you are writing to your husband after looking at both destinations.</p></div></div>
+    <div class="two">
+      <article class="card"><h3>Your mission</h3><p>Write <strong>100–130 words</strong>. Include:</p><ul class="nice-list"><li>which destination interests you most,</li><li>two reasons,</li><li>one comparison,</li><li>one possible disadvantage,</li><li>one conditional sentence,</li><li>a question to your husband.</li></ul><div class="smallrow"><button class="hintbtn" id="writingPlan">🧭 Insert a plan</button><button class="iconbtn" id="writingModel">👁️ Show model answer</button></div><div class="feedback hidden" id="writingHelp"></div></article>
+      <article class="card"><div class="card__head"><h3>Your message</h3><span class="pillTag"><span id="wordCount">0</span> words</span></div><textarea class="textarea" id="writingText" rows="14" placeholder="I’ve been looking at the Azores and Corsica…"></textarea><div class="checklist" id="writingChecklist"></div><div class="smallrow"><button class="btn" id="writingCheck">✅ Check my structure</button><button class="iconbtn" id="writingSpeak">🔊 Listen</button><button class="iconbtn" id="writingCopy">📋 Copy</button></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="sec10">
+    <div class="section__head"><div><span class="section-kicker">10 · FINAL CLOE CHALLENGE</span><h2>Make a decision and keep the conversation going</h2><p class="muted">Answer, justify, compare, imagine — then ask a follow-up question.</p></div></div>
+    <div class="card">
+      <div class="challenge-grid" id="challengeGrid"></div>
+      <div class="final-builder">
+        <div><h3>Your 5-part answer map</h3><ol><li><strong>Choice:</strong> I’m leaning towards…</li><li><strong>Reason 1:</strong> What attracts me most is…</li><li><strong>Comparison:</strong> Compared with…, it seems…</li><li><strong>Conditional:</strong> If we went…, we could…</li><li><strong>Question:</strong> What would you prefer…?</li></ol></div>
+        <div><h3>Useful B1+ connectors</h3><div class="chip-bank"><span>whereas</span><span>although</span><span>on the other hand</span><span>as far as … is concerned</span><span>what appeals to me is…</span><span>I’m still not completely sure</span></div></div>
+      </div>
+      <label class="lab" style="margin-top:.7rem">Your final answer<textarea class="textarea" id="finalAnswer" rows="8" placeholder="I’m leaning towards…"></textarea></label>
+      <div class="smallrow"><button class="btn" id="finalModel">👁️ Reveal a model</button><button class="iconbtn" id="finalSpeak">🔊 Listen to mine</button><button class="btn btn--ghost" id="finalComplete">✓ Mark final challenge complete</button></div>
+      <div class="feedback hidden" id="finalFb"></div>
+    </div>
+  </section>
+
+  <section class="section evaluation-section" id="evaluation">
+    <div class="section__head"><div><span class="section-kicker">QUALIOPI FOLLOW-UP</span><h2>Evaluation of progress & lesson satisfaction</h2><p class="muted">Automatic indicators + trainer assessment + your feedback.</p></div><div class="result-donut" id="evaluationDonut" style="--score:0%"><div><strong id="evaluationScoreValue">0%</strong><small>automatic</small></div></div></div>
+    <div class="evaluation-meta">
+      <label class="lab">Learner<input class="input" id="learnerName" value="Catherine"></label>
+      <label class="lab">Trainer<input class="input" id="trainerName" value="Tisha DOUTY-DOSIERE"></label>
+      <label class="lab">Date<input class="input" id="evaluationDate" type="date"></label>
+    </div>
+    <div class="table-wrap"><table class="evaluation-table"><thead><tr><th>Objective</th><th>Evidence</th><th>Result</th></tr></thead><tbody id="evaluationRows"></tbody></table></div>
+    <div class="two" style="margin-top:.9rem">
+      <article class="card assessment-card"><h3>🗣️ Oral production</h3><label class="lab">Status<select class="select status-select" data-assessment="oral"><option value="not-started">Non commencé</option><option value="progress">En cours d’acquisition</option><option value="achieved">Acquis</option><option value="not-achieved">Non acquis</option></select></label><label class="lab">Trainer comments<textarea class="textarea" data-comment="oral" rows="4" placeholder="Fluency, structure, grammar, pronunciation, next step…"></textarea></label></article>
+      <article class="card assessment-card"><h3>✍️ Written production</h3><label class="lab">Status<select class="select status-select" data-assessment="writing"><option value="not-started">Non commencé</option><option value="progress">En cours d’acquisition</option><option value="achieved">Acquis</option><option value="not-achieved">Non acquis</option></select></label><label class="lab">Trainer comments<textarea class="textarea" data-comment="writing" rows="4" placeholder="Organisation, accuracy, vocabulary, independence…"></textarea></label></article>
+    </div>
+    <div class="three" style="margin-top:.9rem">
+      <label class="lab card">Lesson satisfaction<select class="select" id="satisfaction"><option value="">Choose…</option><option>Very satisfied</option><option>Satisfied</option><option>Partly satisfied</option><option>Not satisfied</option></select></label>
+      <label class="lab card">Confidence after the lesson<select class="select" id="confidenceAfter"><option value="">Choose…</option><option>Much more confident</option><option>More confident</option><option>About the same</option><option>I need more practice</option></select></label>
+      <label class="lab card">Most useful part<select class="select" id="mostUseful"><option value="">Choose…</option><option>Vocabulary</option><option>Grammar</option><option>Listening</option><option>Speaking</option><option>Writing</option><option>Destination comparison</option></select></label>
+    </div>
+    <div class="two" style="margin-top:.9rem">
+      <label class="lab">Your comments<textarea class="textarea" id="learnerComments" rows="4" placeholder="What helped you most? What would you like to practise again?"></textarea></label>
+      <label class="lab">Trainer’s overall comments<textarea class="textarea" id="trainerComments" rows="4"></textarea></label>
+    </div>
+    <div class="smallrow"><button class="btn" id="saveEvaluation">💾 Save evaluation</button><button class="btn btn--ghost" id="copyEvaluation">📋 Copy summary</button><button class="btn btn--ghost" id="exportEvaluation">⬇️ Download report</button></div>
+    <div class="feedback ok" id="overallResult">Complete the activities to generate the progress summary.</div>
+  </section>
+
+  <section class="section source-note">
+    <div class="section__head"><div><span class="section-kicker">TRAVEL FACTS</span><h2>Research basis</h2><p class="muted">The destination facts were checked against official Azores and Corsica tourism resources in August 2026. This lesson uses those facts as conversation material, not as a live travel advisory.</p></div></div>
+  </section>
+
+  <footer class="footer"><div class="footer__inner"><div class="muted tiny">© SpeakEasyTisha · Azores or Corsica? · Interactive travel English</div><a class="iconbtn" href="#top">↑ Back to top</a></div></footer>
+</main>
+
+<div class="toast hidden" id="toast"></div>
+<script src="catherine-azores-corsica-studio.js"></script>
+</body>
+</html>
