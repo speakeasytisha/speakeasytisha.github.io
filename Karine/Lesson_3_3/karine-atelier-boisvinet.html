@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#202423" />
+  <title>Karine · L’Atelier Boisvinet Communication Studio</title>
+  <link rel="stylesheet" href="karine-atelier-boisvinet.css" />
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="hero-grain" aria-hidden="true"></div>
+    <nav class="topbar" aria-label="Lesson controls">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <span class="brand-main">L’ATELIER</span>
+        <span class="brand-sub">BOISVINET · ENGLISH STUDIO</span>
+      </a>
+      <div class="top-actions">
+        <button class="chip" id="translationToggle" type="button" aria-pressed="false">FR OFF</button>
+        <label class="voice-select-wrap" for="voiceMode">
+          <span>Voice</span>
+          <select id="voiceMode" class="chip-select" aria-label="English voice preference">
+            <option value="en-GB">🇬🇧 British</option>
+            <option value="en-US">🇺🇸 American</option>
+          </select>
+        </label>
+        <button class="chip" id="saveProgressTop" type="button">Save</button>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <div class="eyebrow">KARINE · NEXT STEP · A1+/A2 → A2+</div>
+      <h1>Listen. Clarify. Recommend.</h1>
+      <p class="hero-lead">A real-life English lesson inspired by the warm, elegant atmosphere of <strong>L’Atelier Boisvinet</strong>: customer conversations, clear questions, natural recommendations and confident longer answers.</p>
+      <p class="fr">Une leçon d’anglais pratique inspirée par l’univers chaleureux et élégant de L’Atelier Boisvinet : comprendre, clarifier, conseiller et développer vos réponses.</p>
+      <div class="hero-buttons">
+        <a class="btn primary" href="#route">Start the lesson</a>
+        <button class="btn ghost speak" type="button" data-speak="Hello Karine. Today you will practise listening, asking follow-up questions, making recommendations, and speaking with more confidence.">▶ Listen to your mission</button>
+      </div>
+    </div>
+
+    <div class="hero-score" aria-live="polite">
+      <div><strong id="globalScore">0%</strong><span>automatic score</span></div>
+      <div><strong id="globalDone">0 / 58</strong><span>graded items</span></div>
+      <div><strong id="globalStatus">Not started</strong><span>progress</span></div>
+    </div>
+    <div class="ocean-line" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <section class="section intro-section" id="route">
+      <div class="section-heading">
+        <span class="section-number">01</span>
+        <div>
+          <p class="kicker">YOUR ROUTE</p>
+          <h2>One hour, one clear progression</h2>
+          <p>Today is deliberately less about “learning more rules” and more about <strong>activating what you already know</strong> while adding two high-value structures: <em>polite recommendation language</em> and <em>too / enough</em>.</p>
+          <p class="fr">Aujourd’hui, l’objectif est d’activer vos acquis et d’ajouter deux outils très utiles : les recommandations polies et <em>too / enough</em>.</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-card"><span>8 min</span><strong>Warm-up & vocabulary</strong><small>Salon language + pronunciation</small></div>
+        <div class="timeline-card"><span>14 min</span><strong>Grammar 1</strong><small>can · could · should · would like</small></div>
+        <div class="timeline-card"><span>10 min</span><strong>Grammar 2</strong><small>too · enough</small></div>
+        <div class="timeline-card"><span>10 min</span><strong>Listening & questions</strong><small>Clarify + follow up</small></div>
+        <div class="timeline-card"><span>12 min</span><strong>Speaking & writing</strong><small>Real-life missions</small></div>
+        <div class="timeline-card"><span>6 min</span><strong>CLOE sprint</strong><small>Fast retrieval under pressure</small></div>
+      </div>
+      <div class="notice"><strong>Core 60-minute route:</strong> complete the grammar, listening and CLOE blocks, then choose <strong>one speaking mission + one writing task</strong> live. The other production tasks become consolidation or homework, so the lesson stays active rather than overloaded.<span class="fr">Parcours 60 minutes : faites la grammaire, l’écoute et le mini-CLOE, puis choisissez une mission orale et une tâche écrite en direct. Les autres productions servent de consolidation.</span></div>
+      <div class="goal-grid">
+        <article class="goal-card"><span>01</span><h3>Understand</h3><p>Catch the key need, time, problem or preference.</p><p class="fr">Repérer le besoin, l’heure, le problème ou la préférence.</p></article>
+        <article class="goal-card"><span>02</span><h3>Clarify</h3><p>Ask one useful follow-up question instead of guessing.</p><p class="fr">Poser une question de précision utile.</p></article>
+        <article class="goal-card"><span>03</span><h3>Recommend</h3><p>Use <em>could</em> and <em>should</em> without sounding too direct.</p><p class="fr">Utiliser <em>could</em> et <em>should</em> naturellement.</p></article>
+        <article class="goal-card"><span>04</span><h3>Develop</h3><p>Give 2–4 connected sentences instead of one short answer.</p><p class="fr">Développer une réponse en 2 à 4 phrases liées.</p></article>
+      </div>
+    </section>
+
+    <section class="section wood-section" id="vocabulary">
+      <div class="section-heading light-heading">
+        <span class="section-number">02</span>
+        <div>
+          <p class="kicker">WARM-UP</p>
+          <h2>Your salon vocabulary palette</h2>
+          <p>Open a category, listen, then say the word in a short sentence. The vocabulary supports the lesson; you do not need to memorise every item today.</p>
+        </div>
+      </div>
+      <div class="vocab-tabs" role="tablist" aria-label="Vocabulary categories">
+        <button class="vocab-tab active" data-vocab="services" type="button">Services</button>
+        <button class="vocab-tab" data-vocab="hair" type="button">Hair & style</button>
+        <button class="vocab-tab" data-vocab="consultation" type="button">Consultation</button>
+        <button class="vocab-tab" data-vocab="problems" type="button">Problems & solutions</button>
+      </div>
+      <div id="vocabGrid" class="vocab-grid" aria-live="polite"></div>
+      <div class="exercise-shell dark-shell">
+        <div class="exercise-head">
+          <div><span class="exercise-type">QCM · VOCABULARY</span><h3>Choose the word that fits the situation</h3></div>
+          <div class="mini-score" id="vocab-score">0 / 8</div>
+        </div>
+        <div id="vocabQuiz" class="quiz-stack"></div>
+      </div>
+    </section>
+
+    <section class="section" id="grammar1">
+      <div class="section-heading">
+        <span class="section-number">03</span>
+        <div>
+          <p class="kicker">GRAMMAR · HIGH-VALUE LANGUAGE</p>
+          <h2>Can, could, should & would like</h2>
+          <p>These four forms help you move from a basic sentence to a natural conversation.</p>
+        </div>
+      </div>
+
+      <div class="grammar-grid">
+        <article class="rule-card">
+          <div class="rule-label">CAN + BASE VERB</div>
+          <h3>A real possibility / an offer</h3>
+          <p><strong>We can check the appointment now.</strong></p>
+          <p><strong>I can show you two options.</strong></p>
+          <p class="formula">can + verb <span>✓ no “to”</span></p>
+          <p class="fr"><strong>can</strong> = pouvoir / possibilité réelle.</p>
+          <button class="speak icon-btn" data-speak="We can check the appointment now. I can show you two options." type="button">▶ Listen</button>
+        </article>
+        <article class="rule-card">
+          <div class="rule-label">COULD + BASE VERB</div>
+          <h3>A softer suggestion / polite request</h3>
+          <p><strong>You could try a lighter style.</strong></p>
+          <p><strong>Could you arrive ten minutes earlier?</strong></p>
+          <p class="formula">could + verb <span>✓ softer</span></p>
+          <p class="fr"><strong>could</strong> = pourriez / pourrait, plus doux et poli.</p>
+          <button class="speak icon-btn" data-speak="You could try a lighter style. Could you arrive ten minutes earlier?" type="button">▶ Listen</button>
+        </article>
+        <article class="rule-card">
+          <div class="rule-label">SHOULD + BASE VERB</div>
+          <h3>A recommendation</h3>
+          <p><strong>You should use a moisturising conditioner.</strong></p>
+          <p><strong>You shouldn’t wash it with very hot water.</strong></p>
+          <p class="formula">should + verb <span>✓ advice</span></p>
+          <p class="fr"><strong>should</strong> = devriez / conseil.</p>
+          <button class="speak icon-btn" data-speak="You should use a moisturising conditioner. You shouldn't wash it with very hot water." type="button">▶ Listen</button>
+        </article>
+        <article class="rule-card accent-rule">
+          <div class="rule-label">WOULD LIKE</div>
+          <h3>A polite preference</h3>
+          <p><strong>I’d like a trim.</strong> + noun</p>
+          <p><strong>I’d like to keep the length.</strong> + to + verb</p>
+          <p><strong>Would you like to change the colour?</strong></p>
+          <p class="formula">would like + noun / to + verb</p>
+          <p class="fr"><strong>would like</strong> = souhaiter / vouloir de façon polie.</p>
+          <button class="speak icon-btn" data-speak="I'd like a trim. I'd like to keep the length. Would you like to change the colour?" type="button">▶ Listen</button>
+        </article>
+      </div>
+
+      <div class="notice">
+        <strong>Karine’s shortcut:</strong> after <em>can / could / should</em>, use the base verb: <strong>could try</strong>, not <del>could to try</del>. After <em>would like</em>, use a noun or <strong>to + verb</strong>.
+        <span class="fr">Raccourci : après <em>can/could/should</em>, pas de “to”. Après <em>would like</em>, utilisez un nom ou <em>to + verbe</em>.</span>
+      </div>
+
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead><tr><th>Meaning</th><th>Natural English</th><th>French cue</th></tr></thead>
+          <tbody>
+            <tr><td>Possible now</td><td>We <strong>can</strong> move your appointment.</td><td>On peut…</td></tr>
+            <tr><td>Gentle idea</td><td>You <strong>could</strong> add a few layers.</td><td>Vous pourriez…</td></tr>
+            <tr><td>Advice</td><td>You <strong>should</strong> use a gentler shampoo.</td><td>Vous devriez…</td></tr>
+            <tr><td>Preference</td><td>I <strong>would like to</strong> keep the length.</td><td>Je voudrais…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="exercise-shell">
+        <div class="exercise-head">
+          <div><span class="exercise-type">QCM · GRAMMAR</span><h3>Choose the most natural form</h3></div>
+          <div class="mini-score" id="modal-score">0 / 10</div>
+        </div>
+        <div id="modalQuiz" class="quiz-stack"></div>
+      </div>
+
+      <div class="exercise-shell">
+        <div class="exercise-head">
+          <div><span class="exercise-type">WORD ORDER</span><h3>Build the sentence</h3><p>Tap the words in order. Tap a selected word to remove it.</p></div>
+          <div class="mini-score" id="order-score">0 / 6</div>
+        </div>
+        <div id="orderQuiz" class="order-stack"></div>
+      </div>
+    </section>
+
+    <section class="section sand-section" id="grammar2">
+      <div class="section-heading">
+        <span class="section-number">04</span>
+        <div>
+          <p class="kicker">GRAMMAR · NEW TOOL</p>
+          <h2>Too & enough: say what needs to change</h2>
+          <p>This structure is perfect for describing a problem and a solution: length, temperature, colour, time, price, volume or comfort.</p>
+        </div>
+      </div>
+
+      <div class="two-column rules-wide">
+        <article class="rule-card large-rule">
+          <div class="rule-label">TOO + ADJECTIVE</div>
+          <h3>More than you want / a problem</h3>
+          <p class="big-example">The fringe is <strong>too short</strong>.</p>
+          <p>The water is <strong>too hot</strong>.</p>
+          <p>The colour is <strong>too dark</strong> for me.</p>
+          <p class="formula">too + adjective</p>
+          <p class="fr">“Trop” + adjectif : <em>too short, too hot, too dark</em>.</p>
+        </article>
+        <article class="rule-card large-rule">
+          <div class="rule-label">ADJECTIVE + ENOUGH</div>
+          <h3>Sufficient / not sufficient</h3>
+          <p class="big-example">It is <strong>long enough</strong> to tie back.</p>
+          <p>The water isn’t <strong>warm enough</strong>.</p>
+          <p>The result is <strong>natural enough</strong> for work.</p>
+          <p class="formula">adjective + enough</p>
+          <p class="fr">“Assez” se place après l’adjectif : <em>warm enough</em>.</p>
+        </article>
+      </div>
+
+      <div class="micro-rules">
+        <div><strong>1.</strong> too goes <em>before</em> an adjective.</div>
+        <div><strong>2.</strong> enough goes <em>after</em> an adjective.</div>
+        <div><strong>3.</strong> Use <em>not … enough</em> for an insufficient result.</div>
+        <div><strong>4.</strong> Add <em>for + person</em>: “too dark for me.”</div>
+        <div><strong>5.</strong> Add <em>to + verb</em>: “long enough to tie back.”</div>
+      </div>
+
+      <div class="exercise-shell">
+        <div class="exercise-head">
+          <div><span class="exercise-type">FILL IN · GRAMMAR</span><h3>Complete with <em>too</em> or <em>enough</em></h3></div>
+          <div class="mini-score" id="enough-score">0 / 8</div>
+        </div>
+        <div id="enoughQuiz" class="fill-stack"></div>
+      </div>
+
+      <div class="practice-ladder">
+        <div class="ladder-step"><span>1</span><strong>Problem</strong><p>It is too dark.</p></div>
+        <div class="ladder-arrow">→</div>
+        <div class="ladder-step"><span>2</span><strong>Preference</strong><p>I’d like something lighter.</p></div>
+        <div class="ladder-arrow">→</div>
+        <div class="ladder-step"><span>3</span><strong>Recommendation</strong><p>You could try a softer shade.</p></div>
+        <div class="ladder-arrow">→</div>
+        <div class="ladder-step"><span>4</span><strong>Check</strong><p>Would that be light enough?</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="question-lab">
+      <div class="section-heading">
+        <span class="section-number">05</span>
+        <div>
+          <p class="kicker">ORAL CONFIDENCE</p>
+          <h2>The follow-up question staircase</h2>
+          <p>Your objective is not to speak faster. It is to <strong>keep the conversation moving</strong> with one useful question.</p>
+        </div>
+      </div>
+
+      <div class="question-map">
+        <article><span>ROUTINE</span><h3>Present simple</h3><p>How often do you wash your hair?</p><p>What products do you usually use?</p></article>
+        <article><span>NOW</span><h3>Present continuous</h3><p>Are you using anything special at the moment?</p><p>Are you going anywhere special this weekend?</p></article>
+        <article><span>PAST TIME</span><h3>Past simple</h3><p>When did you last have it cut?</p><p>Did you like the result?</p></article>
+        <article><span>LIFE EXPERIENCE</span><h3>Present perfect</h3><p>Have you ever had highlights?</p><p>Have you tried this type of treatment before?</p></article>
+      </div>
+
+      <div class="exercise-shell">
+        <div class="exercise-head">
+          <div><span class="exercise-type">QCM · TENSE CHOICE</span><h3>Choose the question that matches the meaning</h3></div>
+          <div class="mini-score" id="question-score">0 / 8</div>
+        </div>
+        <div id="questionQuiz" class="quiz-stack"></div>
+      </div>
+
+      <div class="speaking-drill">
+        <div>
+          <span class="exercise-type">30-SECOND ACTIVATION</span>
+          <h3>Turn one answer into a conversation</h3>
+          <p><strong>Client:</strong> “I usually keep my hair quite natural.”</p>
+          <p>Ask <strong>two different follow-up questions</strong>. One about the past, one about today.</p>
+        </div>
+        <details>
+          <summary>Show a possible answer</summary>
+          <p>Have you ever tried a different colour? What would you like to do today?</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section ocean-section" id="listening">
+      <div class="section-heading light-heading">
+        <span class="section-number">06</span>
+        <div>
+          <p class="kicker">LISTENING</p>
+          <h2>Catch the need, not every word</h2>
+          <p>Listen once without the transcript. Answer the questions. Then listen again and reveal the transcript only if needed.</p>
+        </div>
+      </div>
+
+      <article class="listening-card">
+        <div class="listening-top">
+          <div><span class="audio-number">A</span><h3>Consultation before an event</h3></div>
+          <button class="btn light speak" type="button" data-speak="Good morning. I have an appointment at ten thirty. I want to keep most of the length, but the ends feel very dry. I'm going to a wedding next month, so I'd like something easy to style. I don't want a dramatic colour change. We can start with a small trim and a few soft layers around your face. You could also try a gloss treatment to add shine without changing your colour very much. Would you like me to explain the difference? Yes, please. That sounds good.">▶ Play dialogue</button>
+        </div>
+        <details class="transcript"><summary>Transcript · reveal after listening</summary><p><strong>Client:</strong> Good morning. I have an appointment at ten thirty. I want to keep most of the length, but the ends feel very dry. I’m going to a wedding next month, so I’d like something easy to style. I don’t want a dramatic colour change.</p><p><strong>Hairdresser:</strong> We can start with a small trim and a few soft layers around your face. You could also try a gloss treatment to add shine without changing your colour very much. Would you like me to explain the difference?</p><p><strong>Client:</strong> Yes, please. That sounds good.</p></details>
+        <div id="listenQuizA" class="quiz-stack listening-quiz"></div>
+      </article>
+
+      <article class="listening-card">
+        <div class="listening-top">
+          <div><span class="audio-number">B</span><h3>A change of appointment</h3></div>
+          <button class="btn light speak" type="button" data-speak="Hello, I'm calling about my appointment on Friday at two. I have a work meeting that afternoon. Could I come later, perhaps after five? Let me check. We don't have anything after five on Friday, but we can offer you Saturday at nine thirty or Monday at eleven. Saturday morning would be perfect. Great. I've moved your appointment to Saturday at nine thirty. You'll receive a confirmation message.">▶ Play dialogue</button>
+        </div>
+        <details class="transcript"><summary>Transcript · reveal after listening</summary><p><strong>Client:</strong> Hello, I’m calling about my appointment on Friday at two. I have a work meeting that afternoon. Could I come later, perhaps after five?</p><p><strong>Salon:</strong> Let me check. We don’t have anything after five on Friday, but we can offer you Saturday at nine thirty or Monday at eleven.</p><p><strong>Client:</strong> Saturday morning would be perfect.</p><p><strong>Salon:</strong> Great. I’ve moved your appointment to Saturday at nine thirty. You’ll receive a confirmation message.</p></details>
+        <div id="listenQuizB" class="quiz-stack listening-quiz"></div>
+      </article>
+      <div class="section-score-strip"><span>Listening score</span><strong id="listening-score">0 / 6</strong></div>
+    </section>
+
+    <section class="section" id="reading">
+      <div class="section-heading">
+        <span class="section-number">07</span>
+        <div>
+          <p class="kicker">READING FOR ACTION</p>
+          <h2>Choose the right service</h2>
+          <p>This is a fictional training menu inspired by common salon services. It is <strong>not</strong> the salon’s current price list.</p>
+          <p class="fr">Menu pédagogique fictif : ce ne sont pas les tarifs actuels du salon.</p>
+        </div>
+      </div>
+      <div class="service-menu">
+        <article><span>30 min</span><h3>Refresh</h3><p>Shampoo + small trim + simple styling</p><strong>Best for:</strong><p>Keeping your shape tidy without a big change.</p></article>
+        <article><span>45 min</span><h3>Shape & Style</h3><p>Consultation + cut + blow-dry</p><strong>Best for:</strong><p>Changing the shape or adding movement.</p></article>
+        <article><span>75 min</span><h3>Shine</h3><p>Gloss treatment + blow-dry</p><strong>Best for:</strong><p>Adding shine with a subtle colour effect.</p></article>
+        <article><span>2 h+</span><h3>Light & Dimension</h3><p>Highlights or balayage + finish</p><strong>Best for:</strong><p>Adding lighter pieces and contrast.</p></article>
+      </div>
+      <div class="exercise-shell">
+        <div class="exercise-head">
+          <div><span class="exercise-type">QCM · READING</span><h3>Read, decide, justify</h3></div>
+          <div class="mini-score" id="reading-score">0 / 6</div>
+        </div>
+        <div id="readingQuiz" class="quiz-stack"></div>
+      </div>
+    </section>
+
+    <section class="section speaking-section" id="speaking">
+      <div class="section-heading light-heading">
+        <span class="section-number">08</span>
+        <div>
+          <p class="kicker">SPEAKING</p>
+          <h2>Three real-life missions</h2>
+          <p>Aim for <strong>clarity + one follow-up question + one reason</strong>. Use the model ladder after you try first.</p>
+        </div>
+      </div>
+
+      <div class="mission-grid">
+        <article class="mission-card">
+          <div class="mission-badge">MISSION 1 · CONSULT</div>
+          <h3>Find out what the client wants</h3>
+          <p><strong>Client:</strong> “I want a change, but I’m not sure what would suit me.”</p>
+          <ul><li>Acknowledge.</li><li>Ask 2 useful questions.</li><li>Make 1 gentle suggestion.</li><li>Check the client’s reaction.</li></ul>
+          <details><summary>Hints</summary><p>What would you like to change? · Have you ever…? · You could… · Would you like…?</p></details>
+          <div class="model-ladder">
+            <details><summary>A1 model</summary><p>I understand. What would you like to change? Do you want it shorter? You could try a small trim.</p><button class="speak icon-btn" type="button" data-speak="I understand. What would you like to change? Do you want it shorter? You could try a small trim.">▶</button></details>
+            <details><summary>A2 model</summary><p>I understand. What would you like to change, the length or the style? Have you ever tried layers? You could add a few soft layers because they give more movement. Would you like to see that option?</p><button class="speak icon-btn" type="button" data-speak="I understand. What would you like to change, the length or the style? Have you ever tried layers? You could add a few soft layers because they give more movement. Would you like to see that option?">▶</button></details>
+            <details><summary>B1 stretch model</summary><p>I understand. Before we decide, could I ask what you like and dislike about your current style? Have you tried anything different recently? If you want a visible but easy change, you could add some face-framing layers. They would create movement without taking off too much length. How does that sound?</p><button class="speak icon-btn" type="button" data-speak="I understand. Before we decide, could I ask what you like and dislike about your current style? Have you tried anything different recently? If you want a visible but easy change, you could add some face-framing layers. They would create movement without taking off too much length. How does that sound?">▶</button></details>
+          </div>
+        </article>
+
+        <article class="mission-card">
+          <div class="mission-badge">MISSION 2 · RECOMMEND</div>
+          <h3>Give practical advice</h3>
+          <p><strong>Client:</strong> “My hair feels dry and it is difficult to style in the morning.”</p>
+          <ul><li>Reformulate the problem.</li><li>Use <em>should</em> once.</li><li>Use <em>could</em> once.</li><li>Give a reason.</li></ul>
+          <details><summary>Hints</summary><p>So, your hair feels… · You should… · You could also… · because…</p></details>
+          <div class="model-ladder">
+            <details><summary>A1 model</summary><p>Your hair is dry. You should use conditioner. You could use a simple styling product too.</p></details>
+            <details><summary>A2 model</summary><p>So, your hair feels dry and it takes too long to style. You should use a moisturising conditioner, and you could also try a lighter leave-in product because it may make styling easier.</p></details>
+            <details><summary>B1 stretch model</summary><p>If your hair feels dry and is difficult to manage, I’d start with a moisturising routine. You should use conditioner regularly, but avoid products that are too heavy. You could also try a lightweight leave-in treatment because it can reduce styling time without making the hair flat.</p></details>
+          </div>
+        </article>
+
+        <article class="mission-card">
+          <div class="mission-badge">MISSION 3 · SOLVE</div>
+          <h3>Handle a problem calmly</h3>
+          <p><strong>Client:</strong> “I think the fringe is too short, and I’m worried about it.”</p>
+          <ul><li>Show understanding.</li><li>Use <em>too</em> or <em>enough</em>.</li><li>Offer a realistic next step.</li><li>Do not make an impossible promise.</li></ul>
+          <details><summary>Hints</summary><p>I understand… · It may feel too… · We can… · You could… · Let’s check…</p></details>
+          <div class="model-ladder">
+            <details><summary>A1 model</summary><p>I understand. It feels too short for you. We can look at different ways to style it today.</p></details>
+            <details><summary>A2 model</summary><p>I understand why you’re worried. The fringe feels too short at the moment. We can look at a softer way to style it, and I can show you how to move it to the side while it grows.</p></details>
+            <details><summary>B1 stretch model</summary><p>I understand your concern. If the fringe feels too short, we can’t change the length immediately, but we can make the result feel softer. I could show you two ways to style it to the side and suggest a light product that gives enough hold without making it stiff.</p></details>
+          </div>
+        </article>
+      </div>
+
+      <div class="recorder-panel">
+        <div>
+          <span class="exercise-type">VOICE RECORDER</span>
+          <h3>Record, listen, improve</h3>
+          <p>Select your mission, record yourself, listen back, then download the recording if you want to keep evidence of progress.</p>
+        </div>
+        <div class="recorder-controls">
+          <select id="recordMission" aria-label="Speaking mission">
+            <option>Mission 1 · Consultation</option>
+            <option>Mission 2 · Recommendation</option>
+            <option>Mission 3 · Problem solving</option>
+            <option>CLOE 30-second challenge</option>
+          </select>
+          <button class="btn primary" id="startRecord" type="button">● Start recording</button>
+          <button class="btn ghost-dark" id="stopRecord" type="button" disabled>■ Stop</button>
+          <a class="btn ghost-dark disabled" id="downloadRecord" href="#" download>Download audio</a>
+        </div>
+        <audio id="recordedAudio" controls hidden></audio>
+        <p id="recordStatus" class="record-status" aria-live="polite">Microphone ready on HTTPS / supported browsers.</p>
+      </div>
+    </section>
+
+    <section class="section" id="writing">
+      <div class="section-heading">
+        <span class="section-number">09</span>
+        <div>
+          <p class="kicker">WRITING</p>
+          <h2>Write short, useful messages</h2>
+          <p>Write your version first. Then compare with the model at the level that helps you most.</p>
+        </div>
+      </div>
+
+      <div class="writing-grid">
+        <article class="writing-card">
+          <span class="mission-badge ink">TASK 1 · CONFIRM</span>
+          <h3>Appointment confirmation</h3>
+          <p>Write 35–50 words. Confirm: Friday, 10 a.m., with Ophélie. Ask the client to say what they would like done.</p>
+          <textarea id="writing1" data-save="true" placeholder="Write your message here…"></textarea>
+          <div class="word-count"><span id="writing1Count">0</span> words</div>
+          <div class="model-ladder light-models">
+            <details><summary>A1 model</summary><p>Hello, I confirm your appointment on Friday at 10 a.m. with Ophélie. Please let us know what you would like done. Kind regards, Karine</p></details>
+            <details><summary>A2 model</summary><p>Hello, I’m writing to confirm your appointment on Friday at 10 a.m. with Ophélie. Could you please let us know what you would like done so that we can prepare for your visit? Kind regards, Karine</p></details>
+            <details><summary>B1 stretch model</summary><p>Hello, I’m writing to confirm your appointment with Ophélie on Friday at 10 a.m. If you already know what you would like to have done, please send us a short message before your appointment. This will help us prepare and make the consultation easier. Kind regards, Karine</p></details>
+          </div>
+        </article>
+
+        <article class="writing-card">
+          <span class="mission-badge ink">TASK 2 · CHANGE</span>
+          <h3>Ask to move an appointment</h3>
+          <p>Write 45–65 words. You cannot come Tuesday at 3 p.m. Ask politely for Thursday morning. Give one reason.</p>
+          <textarea id="writing2" data-save="true" placeholder="Write your message here…"></textarea>
+          <div class="word-count"><span id="writing2Count">0</span> words</div>
+          <div class="model-ladder light-models">
+            <details><summary>A1 model</summary><p>Hello, I’m sorry, but I can’t come on Tuesday at 3 p.m. because I have an appointment at work. Could I come on Thursday morning instead? Thank you.</p></details>
+            <details><summary>A2 model</summary><p>Hello, I’m sorry, but I won’t be able to come to my appointment on Tuesday at 3 p.m. because I have an important work meeting. Would it be possible to move my appointment to Thursday morning? Thank you for your help.</p></details>
+            <details><summary>B1 stretch model</summary><p>Hello, I’m contacting you about my appointment scheduled for Tuesday at 3 p.m. Unfortunately, an important work meeting has been added to my schedule, so I won’t be available. Would you have any availability on Thursday morning instead? I’m flexible with the time. Thank you in advance.</p></details>
+          </div>
+        </article>
+
+        <article class="writing-card">
+          <span class="mission-badge ink">TASK 3 · RECOMMEND</span>
+          <h3>Write a short review</h3>
+          <p>Write 60–80 words. Mention the atmosphere, the welcome, one service and why you recommend the salon.</p>
+          <textarea id="writing3" data-save="true" placeholder="Write your review here…"></textarea>
+          <div class="word-count"><span id="writing3Count">0</span> words</div>
+          <div class="model-ladder light-models">
+            <details><summary>A1 model</summary><p>I recommend this salon because the team is friendly and professional. The salon is comfortable and the atmosphere is warm. I had a haircut and I was very happy with the result. The team listened to me and gave good advice. I would go back.</p></details>
+            <details><summary>A2 model</summary><p>I would recommend L’Atelier Boisvinet because the atmosphere is warm and relaxing, and the team is very welcoming. I had a cut and styling service, and the result was exactly what I wanted. I especially appreciated the consultation because the advice was clear and personalised. It is a lovely place to relax and take care of your hair.</p></details>
+            <details><summary>B1 stretch model</summary><p>I would happily recommend L’Atelier Boisvinet for its welcoming atmosphere and personalised service. From the consultation to the final styling, the team takes time to understand what you want and explains the options clearly. I particularly appreciated the calm setting and the practical advice for looking after my hair at home. The experience feels professional but relaxed, which makes the visit very enjoyable.</p></details>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section cloe-section" id="cloe">
+      <div class="section-heading light-heading">
+        <span class="section-number">10</span>
+        <div>
+          <p class="kicker">CLOE TRANSFER</p>
+          <h2>2-minute retrieval sprint</h2>
+          <p>No new grammar. The goal is to retrieve what you know quickly and stay calm.</p>
+        </div>
+      </div>
+      <div class="timer-box">
+        <div><span>Timer</span><strong id="cloeTimer">02:00</strong></div>
+        <button class="btn light" id="startTimer" type="button">Start 2 minutes</button>
+        <button class="btn ghost" id="resetTimer" type="button">Reset</button>
+      </div>
+      <div class="exercise-shell dark-shell">
+        <div class="exercise-head"><div><span class="exercise-type">MIXED QCM · 6 ITEMS</span><h3>Choose quickly</h3></div><div class="mini-score" id="cloe-score">0 / 6</div></div>
+        <div id="cloeQuiz" class="quiz-stack"></div>
+      </div>
+      <div class="cloe-oral">
+        <span class="exercise-type">30-SECOND ORAL</span>
+        <h3>A client says: “I’m not sure what I want, but my hair is difficult to manage.”</h3>
+        <p>Respond with: <strong>1 acknowledgement + 1 question + 1 recommendation + 1 reason.</strong></p>
+        <details><summary>Model after you try</summary><p>I understand. What is the main problem when you style your hair at home? You could try a softer layered cut because it may be easier to manage in the morning. We can also keep enough length to tie it back.</p></details>
+      </div>
+    </section>
+
+    <section class="section evaluation-section" id="evaluation">
+      <div class="section-heading">
+        <span class="section-number">11</span>
+        <div>
+          <p class="kicker">QUALIOPI · TRACEABILITY</p>
+          <h2>Progress report & end-of-lesson evaluation</h2>
+          <p>Automatic scores are calculated from graded exercises. Speaking and writing are assessed manually by the trainer.</p>
+          <p class="fr">Les scores des exercices interactifs sont calculés automatiquement. L’oral et l’écrit sont évalués manuellement.</p>
+        </div>
+      </div>
+
+      <div class="report-meta">
+        <label>Learner<input id="learnerName" value="Karine" data-save="true" /></label>
+        <label>Trainer<input id="trainerName" value="Tisha" data-save="true" /></label>
+        <label>Date<input id="lessonDate" type="date" data-save="true" /></label>
+        <label>Lesson<input id="lessonTitle" value="L’Atelier Boisvinet · Listen, Clarify & Recommend" data-save="true" /></label>
+      </div>
+
+      <div class="report-summary">
+        <div><span>Automatic</span><strong id="reportAutoPercent">0%</strong><small id="reportAutoDetail">0 / 58 graded items</small></div>
+        <div><span>Manual oral</span><strong id="reportOralPercent">—</strong><small>trainer scoring</small></div>
+        <div><span>Manual writing</span><strong id="reportWritingPercent">—</strong><small>trainer scoring</small></div>
+        <div><span>Overall</span><strong id="reportOverallPercent">0%</strong><small>available results</small></div>
+      </div>
+
+      <div class="table-scroll">
+        <table class="progress-table" id="autoProgressTable">
+          <thead><tr><th>Exercise type / objective</th><th>Score</th><th>Completion</th><th>Status</th></tr></thead>
+          <tbody id="autoProgressBody"></tbody>
+        </table>
+      </div>
+
+      <h3 class="subheading">Manual evaluation · speaking</h3>
+      <div class="manual-grid" id="oralManualGrid">
+        <div class="manual-row"><div><strong>Speaking 1 · Consultation</strong><small>clarify + follow-up + suggestion</small></div><label>Score /5<input class="manual-score oral-score" type="number" min="0" max="5" step="1" data-save="true" /></label><label>Status<select class="manual-status" data-save="true"><option>Non commencé</option><option>En cours</option><option>Acquis</option><option>Non acquis</option></select></label></div>
+        <div class="manual-row"><div><strong>Speaking 2 · Recommendation</strong><small>should + could + reason</small></div><label>Score /5<input class="manual-score oral-score" type="number" min="0" max="5" step="1" data-save="true" /></label><label>Status<select class="manual-status" data-save="true"><option>Non commencé</option><option>En cours</option><option>Acquis</option><option>Non acquis</option></select></label></div>
+        <div class="manual-row"><div><strong>Speaking 3 · Problem solving</strong><small>understanding + realistic solution</small></div><label>Score /5<input class="manual-score oral-score" type="number" min="0" max="5" step="1" data-save="true" /></label><label>Status<select class="manual-status" data-save="true"><option>Non commencé</option><option>En cours</option><option>Acquis</option><option>Non acquis</option></select></label></div>
+        <div class="manual-row"><div><strong>CLOE oral · 30 seconds</strong><small>structure + fluency + intelligibility</small></div><label>Score /5<input class="manual-score oral-score" type="number" min="0" max="5" step="1" data-save="true" /></label><label>Status<select class="manual-status" data-save="true"><option>Non commencé</option><option>En cours</option><option>Acquis</option><option>Non acquis</option></select></label></div>
+      </div>
+      <label class="comment-label">Oral comments<textarea id="oralComments" data-save="true" placeholder="Strengths, recurring errors, pronunciation, next priority…"></textarea></label>
+
+      <h3 class="subheading">Manual evaluation · writing</h3>
+      <div class="manual-grid" id="writingManualGrid">
+        <div class="manual-row"><div><strong>Writing 1 · Confirmation</strong><small>clear information + polite structure</small></div><label>Score /5<input class="manual-score writing-score" type="number" min="0" max="5" step="1" data-save="true" /></label><label>Status<select class="manual-status" data-save="true"><option>Non commencé</option><option>En cours</option><option>Acquis</option><option>Non acquis</option></select></label></div>
+        <div class="manual-row"><div><strong>Writing 2 · Change request</strong><small>reason + polite request + time</small></div><label>Score /5<input class="manual-score writing-score" type="number" min="0" max="5" step="1" data-save="true" /></label><label>Status<select class="manual-status" data-save="true"><option>Non commencé</option><option>En cours</option><option>Acquis</option><option>Non acquis</option></select></label></div>
+        <div class="manual-row"><div><strong>Writing 3 · Review</strong><small>description + reason + recommendation</small></div><label>Score /5<input class="manual-score writing-score" type="number" min="0" max="5" step="1" data-save="true" /></label><label>Status<select class="manual-status" data-save="true"><option>Non commencé</option><option>En cours</option><option>Acquis</option><option>Non acquis</option></select></label></div>
+      </div>
+      <label class="comment-label">Writing comments<textarea id="writingComments" data-save="true" placeholder="Accuracy, structure, vocabulary, next priority…"></textarea></label>
+
+      <div class="objective-checks">
+        <h3>Trainer objective validation</h3>
+        <div class="objective-row"><span>Understand the essential message in a salon/customer situation.</span><select data-save="true"><option>Non commencé</option><option>En cours</option><option>Acquis</option><option>Non acquis</option></select></div>
+        <div class="objective-row"><span>Ask a relevant follow-up question using the correct tense.</span><select data-save="true"><option>Non commencé</option><option>En cours</option><option>Acquis</option><option>Non acquis</option></select></div>
+        <div class="objective-row"><span>Use can/could/should/would like appropriately.</span><select data-save="true"><option>Non commencé</option><option>En cours</option><option>Acquis</option><option>Non acquis</option></select></div>
+        <div class="objective-row"><span>Use too/enough to describe a problem or suitability.</span><select data-save="true"><option>Non commencé</option><option>En cours</option><option>Acquis</option><option>Non acquis</option></select></div>
+        <div class="objective-row"><span>Develop an oral answer with at least 2–4 connected sentences.</span><select data-save="true"><option>Non commencé</option><option>En cours</option><option>Acquis</option><option>Non acquis</option></select></div>
+      </div>
+
+      <div class="satisfaction-block">
+        <h3>Learner evaluation · satisfaction & confidence</h3>
+        <div class="rating-grid">
+          <label>Lesson usefulness<select id="satUseful" data-save="true"><option value="">—</option><option>1 - Low</option><option>2</option><option>3</option><option>4</option><option>5 - Excellent</option></select></label>
+          <label>Difficulty level<select id="satDifficulty" data-save="true"><option value="">—</option><option>1 - Too easy</option><option>2</option><option>3 - Just right</option><option>4</option><option>5 - Too difficult</option></select></label>
+          <label>Confidence after lesson<select id="satConfidence" data-save="true"><option value="">—</option><option>1 - Low</option><option>2</option><option>3</option><option>4</option><option>5 - High</option></select></label>
+          <label>Speaking practice<select id="satSpeaking" data-save="true"><option value="">—</option><option>1 - Low</option><option>2</option><option>3</option><option>4</option><option>5 - Excellent</option></select></label>
+        </div>
+        <label class="comment-label">Learner comments<textarea id="learnerComments" data-save="true" placeholder="What helped you most? What would you like to practise again?"></textarea></label>
+      </div>
+
+      <label class="comment-label">General trainer comments / next step<textarea id="trainerComments" data-save="true" placeholder="Progress observed, priorities, recommended next lesson…"></textarea></label>
+
+      <div class="report-actions">
+        <button class="btn primary" id="saveProgress" type="button">Save progress locally</button>
+        <button class="btn outline" id="copyReport" type="button">Copy report</button>
+        <button class="btn outline" id="downloadReport" type="button">Download HTML report</button>
+        <button class="btn outline" id="printReport" type="button">Print / Save PDF</button>
+        <button class="btn danger" id="resetAll" type="button">Reset lesson</button>
+      </div>
+      <p id="saveMessage" class="save-message" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><span>L’ATELIER</span><small>BOISVINET · ENGLISH STUDIO</small></div>
+    <p>Karine · personalised English learning · interactive practice · Qualiopi traceability</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="karine-atelier-boisvinet.js"></script>
+</body>
+</html>
