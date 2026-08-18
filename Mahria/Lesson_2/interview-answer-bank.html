@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mahria Lakaf · Interview Answer Bank</title>
+<style>
+:root{
+  --orange:#f37021;
+  --orange-deep:#cf5314;
+  --orange-pale:#fff0e5;
+  --cream:#f5f1ea;
+  --paper:#fffdf9;
+  --ink:#171512;
+  --brown:#5f4639;
+  --line:#ded6cc;
+  --line-soft:#ece6df;
+  --good:#286b4a;
+  --shadow-soft:0 10px 34px rgba(45,34,26,.07);
+  --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --label:"Courier New",Courier,ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.62;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:
+  radial-gradient(circle at 9% 3%,rgba(243,112,33,.075),transparent 25%),
+  radial-gradient(circle at 92% 32%,rgba(95,70,57,.055),transparent 28%),
+  linear-gradient(90deg,rgba(95,70,57,.024) 1px,transparent 1px) 0 0/96px 96px,
+  linear-gradient(rgba(95,70,57,.018) 1px,transparent 1px) 0 0/96px 96px}
+.shell{width:min(880px,calc(100% - 48px));margin:auto}
+
+/* header */
+.site-header{background:rgba(255,253,249,.96);border-bottom:1px solid var(--line-soft)}
+.orange-ribbon{height:9px;background:var(--orange)}
+.header-inner{padding:34px 0}
+.brand-kicker{font-family:var(--label);font-weight:700;letter-spacing:.145em;font-size:.7rem;color:var(--orange-deep);text-transform:uppercase}
+.brand-block h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.6rem);font-weight:400;line-height:1;margin:.25rem 0 .5rem;letter-spacing:-.03em}
+.brand-block p{margin:0;color:#655c54;font-size:1rem}
+
+/* intro band */
+.runway{background:var(--orange);padding:30px 0;color:#171512}
+.runway p{margin:0;font-size:1.03rem;max-width:720px;line-height:1.7}
+
+/* sections */
+.section{padding:52px 0;border-bottom:1px solid var(--line-soft)}
+.section:last-of-type{border-bottom:0}
+.section-step{font-family:var(--label);font-weight:700;letter-spacing:.145em;font-size:.68rem;color:var(--orange-deep);text-transform:uppercase;margin:0 0 .35rem}
+.section h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,3vw,2.5rem);margin:0 0 14px;letter-spacing:-.02em}
+.section-intro{font-family:var(--serif);font-size:1.08rem;color:#51483f;max-width:760px;margin:0 0 22px}
+
+/* model ladder (3 levels) */
+.micro-label{font-family:var(--label);font-weight:700;letter-spacing:.145em;font-size:.66rem;text-transform:uppercase;color:var(--orange-deep);display:block;margin-bottom:10px}
+.model-ladder{border-radius:15px;overflow:hidden;border:1px solid var(--line-soft);box-shadow:var(--shadow-soft);margin:0 0 22px}
+.model-ladder>div{padding:16px 20px;border-top:1px solid var(--line-soft);background:#fffdfa}
+.model-ladder>div:first-child{border-top:0}
+.model-ladder b{font-family:var(--serif);font-size:1.02rem;display:block;margin-bottom:4px;color:var(--brown)}
+.model-ladder p{margin:0;font-size:.93rem;line-height:1.65}
+
+/* chosen / final answer callout */
+.chosen-card{border-radius:19px;background:linear-gradient(145deg,#f5792b,#ed6720);color:#fff;padding:22px 24px;box-shadow:0 18px 54px rgba(190,74,11,.18);margin-top:4px}
+.chosen-card .micro-label{color:#fff0e5}
+.chosen-card p{margin:0;font-family:var(--serif);font-size:1.08rem;line-height:1.7}
+
+/* generic card */
+.card{background:var(--paper);border:1px solid var(--line-soft);border-radius:18px;box-shadow:var(--shadow-soft);padding:24px;margin-bottom:18px}
+.card h3{font-family:var(--serif);font-size:1.3rem;margin:.1rem 0 10px;color:var(--ink)}
+
+/* presence card */
+.presence-card{background:var(--ink);color:#fff;border-radius:20px;padding:26px 28px;box-shadow:0 20px 50px rgba(23,21,18,.22);border-top:6px solid var(--orange)}
+.presence-card .headline{font-family:var(--serif);font-size:1.4rem;line-height:1.4;margin:0 0 18px}
+.presence-row{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px;margin-top:14px}
+.presence-row div{border-top:1px solid #3a3530;padding-top:10px}
+.presence-row span{font-family:var(--label);font-size:.62rem;letter-spacing:.1em;color:#f6a16e;text-transform:uppercase;display:block;margin-bottom:5px}
+.presence-row strong{font-weight:600;font-size:.95rem}
+
+/* grammar rule */
+.grammar-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+.grammar-rule{background:var(--brown);color:#fff;border-radius:16px;padding:18px 20px}
+.grammar-rule span{font-family:var(--label);font-size:.63rem;letter-spacing:.13em;font-weight:800;text-transform:uppercase;opacity:.85}
+.grammar-rule h4{font-family:var(--serif);font-size:1.2rem;margin:.35rem 0}
+.grammar-rule p{margin:0;font-size:.92rem}
+
+/* skill snapshots */
+details.skill{border:1px solid var(--line-soft);border-radius:16px;background:#fffdfa;box-shadow:var(--shadow-soft);padding:18px 20px;margin-bottom:14px}
+details.skill summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px}
+details.skill summary::-webkit-details-marker{display:none}
+.skill-tag{font-family:var(--label);font-size:.68rem;letter-spacing:.1em;color:var(--orange-deep);font-weight:800;text-transform:uppercase}
+.skill-title{font-family:var(--serif);font-size:1.15rem;margin:.25rem 0 0}
+.skill-cue{font-family:var(--label);font-size:.68rem;color:#8e8177;white-space:nowrap}
+details.skill[open] summary .skill-cue::after{content:" (shown)"}
+.skill-desc{color:#71675f;font-size:.9rem;margin:8px 0 0}
+.skill-quote{font-family:var(--serif);font-size:1.02rem;line-height:1.7;margin:16px 0 0;padding-top:14px;border-top:1px solid var(--line-soft)}
+
+/* STAR table */
+.star-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0 24px}
+.star-grid>div{border:1px solid var(--line-soft);border-top:4px solid var(--orange);border-radius:14px;padding:14px;background:#fffdfa}
+.star-grid span{font-family:var(--label);font-size:.63rem;letter-spacing:.1em;color:var(--orange-deep);font-weight:800;text-transform:uppercase;display:block;margin-bottom:6px}
+.star-grid p{margin:0;font-size:.87rem;line-height:1.55}
+.question-chip{display:inline-block;background:var(--ink);color:#fff;font-family:var(--serif);font-size:1.05rem;padding:14px 18px;border-radius:14px;margin-bottom:18px}
+
+/* footer */
+.site-footer{background:#0d0c0a;color:#fff;border-top:9px solid var(--orange);padding:26px 0;text-align:center}
+.site-footer .footer-mark{text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;font-family:var(--label);color:#d8d0ca}
+.site-footer strong{display:block;font-family:var(--serif);font-size:1.1rem;font-weight:400;margin-bottom:8px}
+
+@media(max-width:640px){
+  .presence-row{grid-template-columns:1fr}
+  .grammar-grid{grid-template-columns:1fr}
+  .star-grid{grid-template-columns:1fr 1fr}
+}
+@media print{
+  .site-header,.site-footer{background:#fff!important;color:#000!important}
+  body{background:#fff}
+  .chosen-card,.grammar-rule,.presence-card{background:#f4f4f4!important;color:#000!important;box-shadow:none}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="orange-ribbon"></div>
+  <div class="header-inner shell">
+    <span class="brand-kicker">Interview Atelier · Answer Bank</span>
+    <h1>Mahria Lakaf</h1>
+    <p>Own your professional story · Executive Assistant · Métier Chaussure</p>
+  </div>
+</header>
+
+<section class="runway">
+  <div class="shell">
+    <p>This is your working reference of interview answers — each one built the same way: a short model ladder to show the range of possible phrasing, and, where you have already chosen your own wording, <strong>your version</strong> highlighted in orange. Use it to rehearse, not to memorise.</p>
+  </div>
+</section>
+
+<main class="shell">
+
+  <!-- 1 Dubbing example -->
+  <section class="section" id="dubbing">
+    <p class="section-step">Rescue language</p>
+    <h2>The "dubbing" example — three ways</h2>
+    <p class="section-intro">One activity, three levels of phrasing. Notice how each version adds precision and a clearer purpose without becoming more complicated.</p>
+
+    <div class="model-ladder">
+      <div><b>Safe &amp; clear</b><p>We organised a team activity with a short cartoon. Each group created new words for the characters.</p></div>
+      <div><b>Interview-ready</b><p>During the seminar, we organised a team activity using a short extract from an animated film. Each team invented new dialogue for the characters and performed it.</p></div>
+      <div><b>Stronger professional</b><p>One of the activities was a creative dubbing exercise: teams worked from a short animated sequence, created their own dialogue and performed it together. The objective was collaboration and creativity rather than technical performance.</p></div>
+    </div>
+
+    <div class="chosen-card">
+      <span class="micro-label">Mahria's version</span>
+      <p>During the seminar, we organised a team activity using a short extract from an animated film. Each team invented new dialogue for the characters and performed it. The objective was collaboration and creativity rather than technical performance.</p>
+    </div>
+  </section>
+
+  <!-- 2 Model cards / voice -->
+  <section class="section" id="voice">
+    <p class="section-step">Presence · voice, not script</p>
+    <h2>Model cards — choose a voice, not a script</h2>
+    <p class="section-intro">Three complete self-introductions at three levels. Borrow the structure and the expressions that feel natural — not the whole paragraph.</p>
+
+    <div class="model-ladder">
+      <div>
+        <b>Safe &amp; clear</b>
+        <p><strong>Headline:</strong> I am an Executive Assistant with more than ten years of experience.<br>
+        <strong>Proofs:</strong> Cartier · complex diaries · international travel.<br>
+        <strong>Strengths:</strong> organised · reliable · proactive.<br>
+        <strong>Recovery:</strong> Let me think about the best example.</p>
+      </div>
+      <div>
+        <b>Interview-ready</b>
+        <p><strong>Headline:</strong> I am an experienced Executive Assistant specialised in supporting senior managers in demanding environments.<br>
+        <strong>Proofs:</strong> new-director onboarding · seminars · CODIR coordination.<br>
+        <strong>Strengths:</strong> organisation · service mindset · anticipation.<br>
+        <strong>Recovery:</strong> Let me put that another way.</p>
+      </div>
+      <div>
+        <b>Stronger professional</b>
+        <p><strong>Headline:</strong> I create reliable structure around senior leaders so that they can focus on strategic priorities.<br>
+        <strong>Proofs:</strong> complex executive scheduling · transversal coordination · international logistics.<br>
+        <strong>Strengths:</strong> discretion · agility · anticipation.<br>
+        <strong>Recovery:</strong> If I understand correctly, you are asking how I…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Presence card -->
+  <section class="section" id="presence">
+    <p class="section-step">Lock in the learning</p>
+    <h2>Mahria Lakaf — Executive Presence Card</h2>
+    <p class="section-intro">Your one-page memory anchor before the interview. Short enough to rewrite by hand.</p>
+
+    <div class="presence-card">
+      <span class="micro-label">My headline</span>
+      <p class="headline">I am an experienced Executive Assistant who creates reliable structure around senior leaders so that they can focus on strategic priorities.</p>
+
+      <div class="presence-row">
+        <div><span>My proof points</span><strong>1. New director onboarding<br>2. Complex executive scheduling<br>3. Transversal coordination</strong></div>
+        <div><span>My strengths</span><strong>Organization, anticipation and agility.<br><em style="opacity:.85;font-weight:400">A more natural interview version: "My key strengths are organization, anticipation and agility."</em></strong></div>
+        <div><span>My recovery phrase</span><strong>Let me think about that.</strong></div>
+        <div><span>My reminder</span><strong>Clear · Relevant · Structured · Specific · Natural</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 Grammar -->
+  <section class="section" id="grammar">
+    <p class="section-step">Grammar that sells your experience</p>
+    <h2>Conditionals for prioritisation questions</h2>
+    <p class="section-intro">Useful for "what would you do if…" scenario questions.</p>
+    <div class="grammar-grid">
+      <article class="grammar-rule"><span>Real / likely</span><h4>First conditional</h4><p>If + present = will<br><em>If he asks, I will tell him.</em></p></article>
+      <article class="grammar-rule"><span>Hypothetical</span><h4>Second conditional</h4><p>If + past simple = would<br><em>If priorities conflicted, I would assess…</em></p></article>
+    </div>
+  </section>
+
+  <!-- 5 Skill snapshots -->
+  <section class="section" id="snapshots">
+    <p class="section-step">Quick proof builder</p>
+    <h2>Four ready-made strength snapshots</h2>
+    <p class="section-intro">One line of context, one spoken answer. Open each one to hear it in full.</p>
+
+    <details class="skill">
+      <summary><div><span class="skill-tag">Anticipation · Cartier</span><p class="skill-title">New director onboarding</p><p class="skill-desc">Before the new director arrived, you had already structured key meetings, contacts, visits and onboarding steps.</p></div><span class="skill-cue">Hear it</span></summary>
+      <p class="skill-quote">"Anticipation is one of my strengths. For example, before my new director arrived at Cartier, I had already structured her first meetings, key contacts and onboarding schedule so that she could become operational quickly."</p>
+    </details>
+
+    <details class="skill">
+      <summary><div><span class="skill-tag">Coordination · Chloé</span><p class="skill-title">Studio ↔ operational teams</p><p class="skill-desc">You coordinated across different stakeholders to keep collection planning moving.</p></div><span class="skill-cue">Hear it</span></summary>
+      <p class="skill-quote">"I'm comfortable coordinating across different teams. At Chloé, I worked between the design studio and operational teams to support meetings, presentation materials and collection planning."</p>
+    </details>
+
+    <details class="skill">
+      <summary><div><span class="skill-tag">Persistence + judgement · budget issue</span><p class="skill-title">Escalating at the right moment</p><p class="skill-desc">A cost-allocation error remained unresolved for months until you prepared the facts and involved your director.</p></div><span class="skill-cue">Hear it</span></summary>
+      <p class="skill-quote">"I'm persistent, but I have also learned the importance of escalating at the right moment. In one budget issue, I followed up repeatedly, then prepared a precise summary for my director. Once she intervened, the issue was resolved immediately."</p>
+    </details>
+
+    <details class="skill">
+      <summary><div><span class="skill-tag">Executive support · Cartier</span><p class="skill-title">Complex calendars + CODIR</p><p class="skill-desc">Your experience already includes senior-level calendar coordination, travel, executive documents and committee interaction.</p></div><span class="skill-cue">Hear it</span></summary>
+      <p class="skill-quote">"I'm used to creating structure around senior leaders. At Cartier, I managed complex calendars, coordinated with Comité de Direction stakeholders and prepared executive documents while priorities were moving."</p>
+    </details>
+  </section>
+
+  <!-- 6 People skills -->
+  <section class="section" id="people-skills">
+    <p class="section-step">Excellent people skills</p>
+    <h2>Helping new interns integrate at Cartier</h2>
+    <p class="section-intro">Your own draft, corrected in your voice, then two more polished levels.</p>
+
+    <div class="model-ladder">
+      <div><b>Corrected — keeping your voice</b><p>When I arrived at Cartier, I was told that some new arrivals, particularly interns, were finding it difficult to integrate into the company and the department. I therefore made it a priority to help them feel more comfortable and have a positive experience at Cartier. I organised a visit to the headquarters and explained how Cartier worked. I also organised several visits, including visits to the boutique and manufacturing sites, as well as more informal meetings and lunches. Although I was not their manager, I supported them as much as possible to help them integrate successfully.</p></div>
+      <div><b>Interview-ready</b><p>When I arrived at Cartier, I learned that some new interns were finding it difficult to integrate into the company and the department. I made it a priority to improve their onboarding experience and help them feel comfortable from the beginning. I organised visits to the headquarters, boutiques and manufacturing sites, explained how the organisation worked and arranged informal meetings and lunches so that they could build relationships with colleagues. Although I was not their manager, I took the initiative to support them throughout their integration.</p></div>
+      <div><b>Stronger professional</b><p>One example of my people skills comes from Cartier. When I joined, I learned that some new interns had found the integration process difficult. I therefore took the initiative to make their onboarding experience more welcoming and structured. I organised visits to the headquarters, boutiques and manufacturing sites, helped them understand how the organisation worked and arranged informal lunches and meetings to facilitate relationships with colleagues. Although I had no formal management responsibility for them, I wanted to make sure they felt supported and had a positive experience within the company.</p></div>
+    </div>
+    <p style="font-family:var(--label);font-size:.78rem;color:#8e8177;letter-spacing:.02em">Learn the structure, rather than memorise every word: <strong style="color:var(--brown)">problem → initiative → concrete actions → positive employee experience.</strong></p>
+  </section>
+
+  <!-- 7 STAR: director onboarding -->
+  <section class="section" id="star-director">
+    <p class="section-step">Signature STAR story</p>
+    <h2>Onboarding a new director at Cartier</h2>
+    <p class="question-chip">"Tell us about a time you anticipated a senior leader's needs."</p>
+
+    <div class="star-grid">
+      <div><span>Situation</span><p>The previous director left and the team spent two to three months without a director while a replacement was recruited.</p></div>
+      <div><span>Task</span><p>Prepare a smooth arrival and give the new director immediate visibility over priorities and key stakeholders.</p></div>
+      <div><span>Action</span><p>Structure the agenda before arrival; organise key meetings, training, workshop visits, travel and onboarding steps; connect her to the right information.</p></div>
+      <div><span>Result</span><p>The director became operational quickly; HR highlighted that she was in good hands and the role holder praised the quality of the preparation.</p></div>
+    </div>
+
+    <div class="model-ladder">
+      <div><b>Interview-ready</b><p>"At Cartier, our team had been without a director for a few months when the new director was appointed. My role was to make her arrival as smooth as possible. Before she started, I structured her agenda, identified the key people she needed to meet and organised training, visits and travel. This meant she had a clear view of the organisation from the beginning and could become operational quickly."</p></div>
+      <div><b>Stronger professional</b><p>"One example of anticipation was the arrival of a new director at Cartier after the team had spent several months without leadership. I wanted her first weeks to give her immediate visibility rather than a long period of discovery. I prepared the agenda in advance, mapped the key stakeholders, organised meetings, training, workshop visits and travel, and made sure she was connected to the right information. The onboarding was very smooth, and HR specifically commented that she was in good hands."</p></div>
+      <div><b>Executive polish</b><p>"A good example is a director transition I supported at Cartier. After several months without a permanent director, continuity was important, so I treated the onboarding as an executive handover rather than an administrative welcome. I structured the first weeks around priorities, stakeholders, key meetings, training, workshop exposure and travel, and ensured the information flow was already in place before she arrived. The result was a fast, controlled transition and a director who could become operational very quickly."</p></div>
+    </div>
+
+    <div class="chosen-card">
+      <span class="micro-label">Mahria's version</span>
+      <p>One example of anticipation was the arrival of a new director at Cartier after the team had spent several months without leadership. I wanted her first weeks to give her immediate visibility rather than a long period of discovery. I structured the first weeks around priorities, stakeholders, key meetings, training, workshop exposure and travel, and ensured the information flow was already in place before she arrived. The onboarding was very smooth, and HR specifically commented that she was in good hands.</p>
+    </div>
+  </section>
+
+  <!-- 8 STAR: budget -->
+  <section class="section" id="star-budget">
+    <p class="section-step">Signature STAR story</p>
+    <h2>Resolving a budget allocation issue</h2>
+    <p class="question-chip">"Tell us about a difficult situation and what you learned from it."</p>
+
+    <div class="star-grid">
+      <div><span>Situation</span><p>A finance seminar was split across three cost centres, but all expenses were allocated to one centre by mistake.</p></div>
+      <div><span>Task</span><p>Get the allocation corrected so the other budgets were restored and the file could be closed accurately.</p></div>
+      <div><span>Action</span><p>Follow up with accounting repeatedly; when the issue remained blocked, prepare a precise summary and ask the director to intervene with all facts available.</p></div>
+      <div><span>Result</span><p>The issue was resolved immediately after escalation. Learning: escalate earlier when a blockage has moved beyond your scope.</p></div>
+    </div>
+
+    <div class="model-ladder">
+      <div><b>Interview-ready</b><p>"I once had a budget allocation issue after a finance seminar. The costs should have been divided between three cost centres, but everything was charged to one. I followed up with accounting several times, but the issue remained open. Eventually, I prepared all the facts for my director and asked her to intervene. It was resolved immediately, and I learned that when a blockage is clearly outside my scope, I should escalate earlier."</p></div>
+      <div><b>Stronger professional</b><p>"A useful example is a cost-allocation error after a finance seminar. The whole expense had been charged to one cost centre instead of three. I was responsible for getting the budgets corrected, so I followed up persistently with accounting over several months. When I realised the issue was no longer moving, I prepared a concise factual summary for my director so she could intervene immediately. The correction was then made straight away. The experience reinforced an important judgement point for me: persistence is valuable, but so is recognising when timely escalation is the more efficient action."</p></div>
+      <div><b>Executive polish</b><p>"One situation that sharpened my judgement involved a seminar budget incorrectly allocated to a single cost centre instead of three. I initially tried to resolve it directly with accounting and followed up consistently, but the issue remained blocked. Once I recognised that the operational route had reached its limit, I prepared the complete factual background for my director and enabled her to escalate it cleanly. The matter was resolved immediately. My main learning was to distinguish persistence from over-ownership: when a blockage exceeds my authority, early, well-prepared escalation protects time and budget."</p></div>
+    </div>
+  </section>
+
+  <!-- 9 STAR: seminar activity -->
+  <section class="section" id="star-seminar">
+    <p class="section-step">Signature STAR story</p>
+    <h2>Explaining the seminar activity, simply</h2>
+    <p class="question-chip">"Can you describe an activity you organised during a seminar?"</p>
+
+    <div class="star-grid">
+      <div><span>Situation</span><p>A seminar included a creative team-building activity based on a short animated clip.</p></div>
+      <div><span>Task</span><p>Explain the activity clearly without needing specialist vocabulary.</p></div>
+      <div><span>Action</span><p>Describe the category, what participants did and the purpose: small groups created new dialogue for characters and performed it while the clip played.</p></div>
+      <div><span>Result</span><p>You can communicate the full idea with simple language and move on confidently.</p></div>
+    </div>
+
+    <div class="model-ladder">
+      <div><b>Interview-ready</b><p>"One activity was a creative team-building exercise using a short animated video. Participants worked in small groups, created a new dialogue for the characters and performed it while the video played. The aim was to encourage creativity and teamwork."</p></div>
+      <div><b>Stronger professional</b><p>"During one seminar, we used a short animated clip for a creative team-building exercise. In small groups, participants invented new dialogue for the characters and then performed it over the video. It was a simple way to encourage creativity, teamwork and a more relaxed interaction between colleagues."</p></div>
+      <div><b>Executive polish</b><p>"One of the seminar activities used an animated clip as a collaborative creativity exercise. Teams had to reinterpret the scene, write new dialogue and perform it in sync with the video. What mattered was not the technical format itself, but the fact that it gave people a playful way to collaborate, communicate and create something together."</p></div>
+    </div>
+
+    <div class="chosen-card">
+      <span class="micro-label">Mahria's version</span>
+      <p>"During one seminar, we used a short animated clip for a creative team-building exercise. Teams had to reinterpret the scene, write new dialogue and perform it in sync with the video. It was a simple way to encourage creativity, teamwork and a more relaxed interaction between colleagues."</p>
+    </div>
+  </section>
+
+  <!-- 10 Scenario question -->
+  <section class="section" id="scenario">
+    <p class="section-step">Prioritisation scenario</p>
+    <h2>Two directors, one 10:00 slot</h2>
+    <p class="question-chip">The Industrial Director asks for an urgent supplier meeting at 10:00. The Development Director has already asked you to protect that same slot for a collection review involving several teams. What would you do?</p>
+
+    <div class="card">
+      <h3>Structure</h3>
+      <p style="margin:0;font-size:.95rem">Clarify urgency → identify constraints → propose alternatives → communicate transparently.</p>
+    </div>
+
+    <div class="chosen-card">
+      <span class="micro-label">Model answer</span>
+      <p>"I would first clarify the real urgency and constraints behind both requests rather than deciding from the calendar alone. If the supplier issue genuinely required immediate attention, I would look for a way to protect the collection review — for example by moving only the director's participation, adjusting the supplier time or finding a delegate where appropriate. I would then confirm the agreed solution with both directors so that the prioritisation is transparent."</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <strong>Mahria Lakaf · Interview Atelier</strong>
+    <span class="footer-mark">Clear · Relevant · Structured · Specific · Natural</span>
+  </div>
+</footer>
+
+</body>
+</html>
