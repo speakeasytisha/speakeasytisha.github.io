@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>SpeakEasyTisha — First Session · A2.2 → B1.1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./intro-session.css" />
+</head>
+<body>
+  <!-- Sticky score / controls -->
+  <div class="scorebar" role="region" aria-label="Lesson controls">
+    <div class="scorebar__left">
+      <span class="brandMini">SpeakEasyTisha</span>
+      <span class="pill">Introduction Session</span>
+      <span class="pill pill--ghost" id="progressPill">Slide 1 / 19</span>
+    </div>
+
+    <div class="scorebar__right">
+      <button class="btn btn--ghost" id="btnGuided" type="button" aria-haspopup="dialog">Guided Mode</button>
+      <div class="seg" role="group" aria-label="Accent toggle">
+        <button class="seg__btn is-active" id="accentUS" type="button" aria-pressed="true">US</button>
+        <button class="seg__btn" id="accentUK" type="button" aria-pressed="false">UK</button>
+      </div>
+      <span class="score" aria-live="polite">Score: <strong id="scoreTop">0</strong></span>
+      <button class="btn btn--danger" id="btnResetAll" type="button">Reset</button>
+    </div>
+  </div>
+
+  <!-- Header / nav -->
+  <header class="siteHeader">
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="brand__script">SpeakEasyTisha</span>
+        <span class="brand__tag">Interactive First Session</span>
+      </a>
+      <div class="nav__links">
+        <a href="#about">Welcome</a>
+        <a href="#method">Method</a>
+        <a href="#programmeObjectives">Objectives</a>
+        <a href="#verify">Start Check</a>
+        <a href="#tech">Tech</a>
+        <a href="#intro">Self Intro</a>
+        <a href="#greetings">Greetings</a>
+        <a href="#diagnostic">Diagnostic</a>
+        <a href="#wrap">Wrap‑Up</a>
+      </div>
+    </nav>
+
+    <section class="hero" id="top">
+      <div class="hero__content">
+        <div class="hero__kicker">PERSONALISED ENGLISH · FIRST SESSION</div>
+        <h1 class="hero__title">Your English<br><span class="hero__title2">journey starts here.</span></h1>
+        <p class="hero__meta" id="metaLine">
+          <span class="metaItem">Learner: <strong id="learnerNameInline">—</strong></span>
+          <span class="dot">•</span>
+          <span class="metaItem">Duration: <strong>60 min</strong></span>
+          <span class="dot">•</span>
+          <span class="metaItem">Focus: <strong>Confidence · Communication · Personal goals</strong></span>
+          <span class="dot">•</span>
+          <span class="metaItem">Path: <strong>A2.2 → B1.1</strong></span>
+        </p>
+
+        <div class="hero__actions">
+          <button class="btn btn--primary" id="btnStart" type="button">▶ Start Session</button>
+          <button class="btn" id="btnSpeakHero" type="button">🔊 Listen</button>
+          <button class="btn btn--ghost" id="btnPrint" type="button">🖨️ Print Survival Sheet</button>
+        </div>
+
+        <div class="hero__mini">
+          <div class="miniCard">
+            <div class="miniCard__title">Session Timer</div>
+            <div class="timer">
+              <span class="timer__time" id="timerDisplay">60:00</span>
+              <button class="btn btn--ghost" id="timerStart" type="button">Start</button>
+              <button class="btn btn--ghost" id="timerPause" type="button">Pause</button>
+              <button class="btn btn--ghost" id="timerReset" type="button">Reset</button>
+            </div>
+          </div>
+          <div class="miniCard">
+            <div class="miniCard__title">Quick Setup</div>
+            <div class="fieldRow">
+              <label class="field">
+                <span>Learner name</span>
+                <input id="learnerName" type="text" value="" placeholder="Your name (optional)" autocomplete="name" />
+              </label>
+              <button class="btn btn--ghost" id="btnSaveLearner" type="button">Save</button>
+            </div>
+            <p class="small muted">Tip: Use Guided Mode to follow the slides step‑by‑step.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__art" aria-hidden="true">
+        <div class="journeyPanel">
+          <div class="journeyPanel__eyebrow">YOUR FIRST SESSION</div>
+          <h2>Understand. Practise. Personalise.</h2>
+          <p>We identify what already works, what needs attention, and how your English will become more natural step by step.</p>
+          <div class="journeySteps">
+            <div><span>01</span><strong>Connect</strong><small>Get comfortable</small></div>
+            <div><span>02</span><strong>Identify</strong><small>Your priorities</small></div>
+            <div><span>03</span><strong>Practise</strong><small>Real English</small></div>
+            <div><span>04</span><strong>Progress</strong><small>A2.2 → B1.1</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main class="main">
+    <!-- ABOUT -->
+    <section class="section reveal" id="about">
+      <div class="section__head">
+        <h2>👩‍🏫 About Me</h2>
+        <p class="lead">A warm, human first impression — with real listening + speaking right away.</p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="card__head">
+            <h3>My story</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" data-say="#aboutStory" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div class="card__body" id="aboutStory">
+            <!-- Filled from slides -->
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <h3>Objectives (today)</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnObjAll" type="button">✓ Check all</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <ul class="checklist" id="objectivesList" aria-label="Objectives checklist"></ul>
+            <p class="small muted">Checking an objective gives points — your learner sees progress immediately.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section class="section reveal" id="method">
+      <div class="section__head">
+        <h2>🎯 Method: English with Tisha</h2>
+        <p class="lead">A practical, personalised method designed to turn knowledge into confident, automatic communication.</p>
+      </div>
+
+      <div class="philosophySpotlight reveal" id="philosophyStatement">
+        <div class="philosophySpotlight__eyebrow">MY PHILOSOPHY</div>
+        <div class="philosophySpotlight__quote">PRACTICE MAKES PERFECT</div>
+        <div class="philosophySpotlight__sub">— until English becomes automatic.</div>
+        <button class="btn btn--ghost philosophySpotlight__listen" data-say-plain="My philosophy is: practice makes perfect, until English becomes automatic." type="button">🔊 Listen</button>
+      </div>
+
+      <div class="grid3 methodGrid" id="methodCards"></div>
+
+      <div class="card reveal">
+        <div class="card__head">
+          <h3>Learning styles (quick reflection)</h3>
+          <div class="card__actions">
+            <button class="btn btn--ghost" data-say="#learningStyles" type="button">🔊 Listen</button>
+          </div>
+        </div>
+        <div class="card__body" id="learningStyles"></div>
+        <div class="card__foot">
+          <div class="pillGroup" id="learningPick" role="group" aria-label="Choose learning styles">
+            <button class="pillBtn" type="button" data-style="looking">LOOKING 👁️</button>
+            <button class="pillBtn" type="button" data-style="listening">LISTENING 👂</button>
+            <button class="pillBtn" type="button" data-style="reading">READING/WRITING ✍️</button>
+            <button class="pillBtn" type="button" data-style="speaking">SPEAKING/REPEATING 🗣️</button>
+            <button class="pillBtn" type="button" data-style="doing">DOING/PRACTICING 👐</button>
+          </div>
+          <p class="small muted">Tap what feels true for you. (Points included.)</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PROGRAMME OBJECTIVES -->
+    <section class="section reveal" id="programmeObjectives">
+      <div class="section__head section__head--split">
+        <div>
+          <div class="sectionEyebrow">YOUR LEARNING PATH</div>
+          <h2>🎯 Objectifs visés · A2.2 → B1.1</h2>
+          <p class="lead">The programme consolidates A2.2 skills and progressively builds the independence expected at B1.1.</p>
+        </div>
+        <div class="levelRoute" aria-label="Target progression">
+          <span class="levelRoute__level">A2.2</span><span class="levelRoute__arrow">→</span><span class="levelRoute__level levelRoute__level--target">B1.1</span>
+        </div>
+      </div>
+
+      <div class="objectiveLevels">
+        <article class="levelCard levelCard--base">
+          <div class="levelCard__head">
+            <div><span class="levelBadge">CONSOLIDATION</span><h3>A2.2 · Strengthen the foundations</h3></div>
+            <span class="levelMark">A2.2</span>
+          </div>
+          <div class="skillList">
+            <div class="skillItem"><span class="skillIcon">🎧</span><div><strong>Écouter</strong><p>Comprendre des échanges simples sur des thèmes familiers et suivre des consignes plus complexes.</p></div></div>
+            <div class="skillItem"><span class="skillIcon">📖</span><div><strong>Lire</strong><p>Comprendre des textes plus détaillés : articles courts et dialogues structurés.</p></div></div>
+            <div class="skillItem"><span class="skillIcon">💬</span><div><strong>Prendre part à une conversation</strong><p>Poser des questions et répondre sur des sujets quotidiens avec plus d’aisance.</p></div></div>
+            <div class="skillItem"><span class="skillIcon">🗣️</span><div><strong>S’exprimer oralement en continu</strong><p>Faire des descriptions plus précises et raconter des expériences personnelles.</p></div></div>
+            <div class="skillItem"><span class="skillIcon">✍️</span><div><strong>Écrire</strong><p>Rédiger des textes courts plus structurés : e-mails, petites histoires et descriptions.</p></div></div>
+          </div>
+        </article>
+
+        <article class="levelCard levelCard--target">
+          <div class="levelCard__head">
+            <div><span class="levelBadge levelBadge--target">OBJECTIF VISÉ</span><h3>B1.1 · Build greater independence</h3></div>
+            <span class="levelMark levelMark--target">B1.1</span>
+          </div>
+          <div class="skillList">
+            <div class="skillItem"><span class="skillIcon">🎧</span><div><strong>Écouter</strong><p>Comprendre les informations essentielles de messages clairs et de discussions simples sur des thèmes familiers.</p></div></div>
+            <div class="skillItem"><span class="skillIcon">📖</span><div><strong>Lire</strong><p>Comprendre des textes narratifs simples et des informations pratiques comme des consignes.</p></div></div>
+            <div class="skillItem"><span class="skillIcon">💬</span><div><strong>Prendre part à une conversation</strong><p>Discuter simplement de sujets d’intérêt personnel ou professionnel.</p></div></div>
+            <div class="skillItem"><span class="skillIcon">🗣️</span><div><strong>S’exprimer oralement en continu</strong><p>Raconter des événements passés en reliant des phrases claires.</p></div></div>
+            <div class="skillItem"><span class="skillIcon">✍️</span><div><strong>Écrire</strong><p>Rédiger un texte court et structuré sur un sujet familier.</p></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- START-OF-PROGRAMME CHECK -->
+    <section class="section reveal" id="verify">
+      <div class="section__head section__head--split">
+        <div>
+          <div class="sectionEyebrow">FIRST-SESSION ALIGNMENT</div>
+          <h2>✅ Début de programme · fiche de vérification</h2>
+          <p class="lead">A clear record of what has been confirmed together, what matters most, and what will be addressed during the programme.</p>
+        </div>
+        <div class="verifyActions">
+          <button class="btn btn--primary" id="btnVerifySave" type="button">💾 Save results</button>
+          <button class="btn btn--ghost" id="btnVerifyCopy" type="button">📋 Copy results</button>
+          <button class="btn btn--ghost" id="btnVerifyDownload" type="button">⬇️ Download results</button>
+          <button class="btn btn--ghost" id="btnVerifyExport" type="button">📊 Full CSV</button>
+          <button class="btn btn--ghost" id="btnVerifyReset" type="button">↻ Reset</button>
+        </div>
+      </div>
+
+      <article class="card verifyShell" id="verifyCard">
+        <div class="verifyTopbar">
+          <label class="field"><span>Learner / Apprenant</span><input id="verifyLearnerName" type="text" placeholder="Name" autocomplete="name" /></label>
+          <label class="field"><span>Date de démarrage</span><input id="startDate" type="date" /></label>
+          <label class="field"><span>Niveau de référence</span><select id="verifyStartLevel"><option>A2.2</option><option>A2.1</option><option>B1.1</option><option>À confirmer</option></select></label>
+          <label class="field"><span>Objectif visé</span><select id="verifyTargetLevel"><option>B1.1</option><option>B1.2</option><option>A2.2</option><option>À confirmer</option></select></label>
+        </div>
+
+        <div class="verifySummary" aria-live="polite">
+          <div><span class="verifySummary__number" id="verifyValidatedCount">0</span><small>éléments validés</small></div>
+          <div><span class="verifySummary__number" id="verifyPriorityCount">0</span><small>priorités identifiées</small></div>
+          <div><span class="verifySummary__number" id="verifyObjectiveCount">10</span><small>objectifs linguistiques</small></div>
+        </div>
+
+        <div class="verifyLegend">
+          <span><i class="legendDot legendDot--ok"></i> Validé ensemble</span>
+          <span><i class="legendDot legendDot--priority"></i> Priorité du parcours</span>
+          <span class="muted">Les choix sont enregistrés automatiquement sur cet appareil.</span>
+        </div>
+
+        <div id="verifyGroups" class="verifyGroups"></div>
+
+        <label class="field verifyNotesField">
+          <span>Commentaires / points à retenir</span>
+          <textarea id="verifyNotes" rows="4" placeholder="Besoins spécifiques, contraintes, contexte professionnel, points de vigilance…"></textarea>
+        </label>
+
+        <section class="verifyResultsPanel" aria-labelledby="verifyResultsTitle">
+          <div class="verifyResultsPanel__head">
+            <div>
+              <span class="resultKicker">YOUR RECORD</span>
+              <h3 id="verifyResultsTitle">📋 Saved training summary</h3>
+              <p>Only the choices you actively mark are included: validated items and selected follow-up priorities.</p>
+            </div>
+            <span class="saveState" id="verifySaveStatus" aria-live="polite">Saved automatically on this device</span>
+          </div>
+          <div class="verifyResultsPreview" id="verifyResultsPreview" aria-live="polite">
+            Mark items above to build your training summary.
+          </div>
+          <div class="verifyResultsButtons">
+            <button class="btn btn--primary" id="btnVerifySaveBottom" type="button">💾 Save on this device</button>
+            <button class="btn btn--ghost" id="btnVerifyCopyBottom" type="button">📋 Copy selected results</button>
+            <button class="btn btn--ghost" id="btnVerifyDownloadBottom" type="button">⬇️ Download selected results (.txt)</button>
+          </div>
+        </section>
+      </article>
+    </section>
+
+    <!-- TECH -->
+    <section class="section reveal" id="tech">
+      <div class="section__head">
+        <h2>🧩 Tech & Survival Sheet (Google Meet / Visio)</h2>
+        <p class="lead">Vocabulary + survival sentences with instant listening in US/UK English.</p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="card__head">
+            <h3>Key vocabulary</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnVocabShuffle" type="button">🔀 Shuffle</button>
+              <button class="btn btn--ghost" id="btnVocabSpeakAll" type="button">🔊 Listen all</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <div class="flashGrid" id="vocabFlashcards" aria-label="Vocabulary flashcards"></div>
+            <p class="small muted">Tap a card to flip. Tap 🔊 to listen.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <h3>Survival sentences</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnSurvivalSpeakAll" type="button">🔊 Listen all</button>
+              <button class="btn btn--ghost" id="btnSurvivalToggle" type="button" aria-pressed="false">Show French</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <div class="survivalList" id="survivalList"></div>
+            <hr class="hr" />
+            <h4 class="h4">Matching game (tap mode friendly)</h4>
+            <p class="small muted">Match the English sentence with the French meaning.</p>
+            <div class="match" id="survivalMatch" aria-label="Survival matching game"></div>
+            <div class="actionsRow">
+              <button class="btn btn--ghost" id="btnSurvivalHint" type="button">💡 Hint</button>
+              <button class="btn" id="btnSurvivalReset" type="button">Reset</button>
+              <span class="small" id="survivalStatus" aria-live="polite"></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SELF INTRO -->
+    <section class="section reveal" id="intro">
+      <div class="section__head section__head--split">
+        <div>
+          <div class="sectionEyebrow">CONFIDENT FIRST IMPRESSION</div>
+          <h2>🧑‍💬 Self‑Introduction Builder</h2>
+          <p class="lead">Choose simple, safe building blocks. The final paragraph is assembled automatically with correct sentence structure.</p>
+        </div>
+        <div class="introQualityBadge"><span>✓</span> Grammar-safe builder</div>
+      </div>
+
+      <article class="card introBuilderCard">
+        <div class="card__head introBuilderHead">
+          <div>
+            <span class="miniEyebrow">BUILD → LISTEN → REPEAT</span>
+            <h3>Your personalised introduction</h3>
+          </div>
+          <button class="btn btn--ghost" id="btnIntroExample" type="button">✨ Load an example</button>
+        </div>
+
+        <div class="card__body">
+          <div class="introStepGrid">
+            <fieldset class="builderPanel">
+              <legend><span>1</span> Who you are</legend>
+              <label class="field"><span>First name</span><input id="fName" type="text" placeholder="Your first name" autocomplete="given-name" /></label>
+              <label class="field"><span>You are from</span><input id="fFrom" type="text" placeholder="France / the United States / …" /></label>
+              <label class="field"><span>You live in</span><input id="fLive" type="text" placeholder="Nantes / Paris / …" /></label>
+            </fieldset>
+
+            <fieldset class="builderPanel">
+              <legend><span>2</span> Your professional context</legend>
+              <label class="field">
+                <span>Current situation</span>
+                <select id="fWorkStatus">
+                  <option value="">Choose one…</option>
+                  <option value="working">I am working</option>
+                  <option value="student">I am studying</option>
+                  <option value="jobseeker">I am looking for work</option>
+                  <option value="retired">I am retired</option>
+                  <option value="skip">I prefer not to mention it</option>
+                </select>
+              </label>
+              <label class="field" id="fJobWrap">
+                <span>Professional field / study area</span>
+                <select id="fJob">
+                  <option value="">Choose one…</option>
+                  <option value="hospitality">hospitality</option>
+                  <option value="retail">retail</option>
+                  <option value="administration">administration</option>
+                  <option value="finance">finance</option>
+                  <option value="human resources">human resources</option>
+                  <option value="information technology">information technology</option>
+                  <option value="education">education</option>
+                  <option value="healthcare">healthcare</option>
+                  <option value="aviation">aviation</option>
+                  <option value="transport and logistics">transport and logistics</option>
+                  <option value="sales and marketing">sales and marketing</option>
+                  <option value="customer service">customer service</option>
+                  <option value="real estate">real estate</option>
+                  <option value="other">another field</option>
+                </select>
+              </label>
+              <label class="field" id="fJobOtherWrap" hidden>
+                <span>Other field</span>
+                <input id="fJobOther" type="text" placeholder="e.g. architecture" />
+                <small class="fieldHelp">Enter a field or sector, not a full sentence.</small>
+              </label>
+            </fieldset>
+
+            <fieldset class="builderPanel">
+              <legend><span>3</span> Your English & your life</legend>
+              <label class="field">
+                <span>Main reason for English</span>
+                <select id="fNeed">
+                  <option value="">Choose one…</option>
+                  <option value="work">work</option>
+                  <option value="professional communication">professional communication</option>
+                  <option value="meetings and presentations">meetings and presentations</option>
+                  <option value="emails and written communication">emails and written communication</option>
+                  <option value="phone calls and conversations">phone calls and conversations</option>
+                  <option value="travel">travel</option>
+                  <option value="an exam or certification">an exam or certification</option>
+                  <option value="everyday communication">everyday communication</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>In your free time, you enjoy…</span>
+                <select id="fHobby">
+                  <option value="">Choose one…</option>
+                  <option value="reading">reading</option>
+                  <option value="travelling">travelling</option>
+                  <option value="cooking">cooking</option>
+                  <option value="walking">walking</option>
+                  <option value="doing sport">doing sport</option>
+                  <option value="listening to music">listening to music</option>
+                  <option value="spending time with my family">spending time with my family</option>
+                  <option value="creative activities">creative activities</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>How do you feel today?</span>
+                <select id="fFeel">
+                  <option value="">Choose one…</option>
+                  <option value="motivated">motivated</option>
+                  <option value="curious">curious</option>
+                  <option value="happy to get started">happy to get started</option>
+                  <option value="a little nervous, but motivated">a little nervous, but motivated</option>
+                  <option value="ready to learn">ready to learn</option>
+                </select>
+              </label>
+            </fieldset>
+
+            <fieldset class="builderPanel builderPanel--goal">
+              <legend><span>4</span> Your course goal</legend>
+              <label class="field">
+                <span>My main goal is to…</span>
+                <select id="fGoal">
+                  <option value="">Choose one…</option>
+                  <option value="feel more comfortable speaking in English">feel more comfortable speaking in English</option>
+                  <option value="speak more naturally and spontaneously">speak more naturally and spontaneously</option>
+                  <option value="understand spoken English more easily">understand spoken English more easily</option>
+                  <option value="communicate more confidently at work">communicate more confidently at work</option>
+                  <option value="write clearer and more accurate English">write clearer and more accurate English</option>
+                  <option value="prepare confidently for an exam or certification">prepare confidently for an exam or certification</option>
+                  <option value="progress from A2.2 towards B1.1">progress from A2.2 towards B1.1</option>
+                </select>
+              </label>
+              <div class="builderTip"><span>💡</span><p><strong>No grammar puzzle.</strong> You choose the information; the page chooses the correct sentence frame.</p></div>
+            </fieldset>
+          </div>
+
+          <div class="introPreview">
+            <div class="introPreview__top">
+              <div><span class="miniEyebrow">YOUR FINAL VERSION</span><h3>Ready to say aloud</h3></div>
+              <span class="introPreview__status" id="introReadyStatus">Complete the builder</span>
+            </div>
+            <div class="output introOutput" id="introOutput" aria-live="polite">Your personalised paragraph will appear here.</div>
+            <div class="actionsRow introActions">
+              <button class="btn btn--primary" id="btnBuildIntro" type="button">✨ Build my paragraph</button>
+              <button class="btn" id="btnSpeakIntro" type="button">🔊 Listen & repeat</button>
+              <button class="btn btn--ghost" id="btnCopyIntro" type="button">📋 Copy</button>
+              <button class="btn btn--ghost" id="btnIntroReset" type="button">Reset</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="card reveal" id="travelCard">
+        <div class="card__head">
+          <div><span class="miniEyebrow">LIGHT SPEAKING PRACTICE</span><h3>✈️ Travel & holidays mini‑story</h3></div>
+          <div class="card__actions">
+            <button class="btn btn--ghost" id="btnTravelNew" type="button">↻ New</button>
+            <button class="btn btn--ghost" id="btnTravelSpeak" type="button">🔊 Listen</button>
+          </div>
+        </div>
+        <div class="card__body">
+          <p class="muted" style="margin-top:0">Choose how you travel and who you travel with, then practise a short, natural story.</p>
+          <div class="pillGroup" id="travelTransport" aria-label="Travel transport choices"></div>
+          <div style="height:10px"></div>
+          <div class="pillGroup" id="travelCompany" aria-label="Travel company choices"></div>
+          <div class="actionsRow">
+            <button class="btn btn--primary" id="btnTravelBuild" type="button">Build my travel story</button>
+            <button class="btn btn--ghost" id="btnTravelCopy" type="button">📋 Copy</button>
+          </div>
+          <div class="output" id="travelOutput"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GREETINGS -->
+    <section class="section reveal" id="greetings">
+      <div class="section__head">
+        <h2>👋 Greetings & Culture</h2>
+        <p class="lead">Formal vs informal + country variations — then practice in context.</p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="card__head">
+            <h3>Time‑of‑day practice</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnGreetingNew" type="button">↻ New</button>
+              <button class="btn btn--ghost" id="btnGreetingHint" type="button">💡 Hint</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <p class="big" id="greetPrompt">🌅 Morning — what do you say?</p>
+            <div class="choices" id="greetChoices"></div>
+            <p class="status" id="greetStatus" aria-live="polite"></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <h3>Country greeting explorer</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnCountrySpeak" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <label class="field">
+              <span>Choose a country</span>
+              <select id="countrySelect"></select>
+            </label>
+            <div class="countryBox" id="countryBox"></div>
+            <div class="callout" id="culturalReminder"></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="card__head">
+            <h3>How to address people</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnAddressNew" type="button">↻ New</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <p class="big" id="addressPrompt">Situation: …</p>
+            <div class="choices" id="addressChoices"></div>
+            <p class="status" id="addressStatus" aria-live="polite"></p>
+            <div class="miniTable" id="addressTable"></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <h3>Introduce yourself in context</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnContextSpeak" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <label class="field">
+              <span>Context</span>
+              <select id="contextSelect">
+                <option value="hotel">🏨 At the hotel (formal)</option>
+                <option value="email">✉️ In an email (formal / neutral)</option>
+                <option value="conference">🎤 At a conference (neutral)</option>
+                <option value="street">🚶 In the street (informal)</option>
+              </select>
+            </label>
+            <div class="output" id="contextOutput"></div>
+            <div class="actionsRow">
+              <button class="btn btn--primary" id="btnContextBuild" type="button">Build my version</button>
+              <button class="btn btn--ghost" id="btnContextCopy" type="button">📋 Copy</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="card__head">
+            <h3>👋 Saying goodbye (practice)</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnByeNew" type="button">↻ New</button>
+              <button class="btn btn--ghost" id="btnByeHint" type="button">💡 Hint</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <p class="big" id="byePrompt">Situation: …</p>
+            <div class="choices" id="byeChoices"></div>
+            <p class="status" id="byeStatus" aria-live="polite"></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <h3>Formal vs informal (quick sorting)</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnSortReset" type="button">Reset</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <p class="muted" style="margin-top:0">Tap an expression, then tap the category. (Touch‑friendly — no drag needed.)</p>
+            <div class="pillGroup" id="sortPool"></div>
+            <div class="grid2" style="margin-top:12px">
+              <div class="output" id="sortFormal"><strong>Formal / neutral</strong><br><span class="muted small">Tap here to place</span></div>
+              <div class="output" id="sortCasual"><strong>Casual / slang</strong><br><span class="muted small">Tap here to place</span></div>
+            </div>
+            <div class="actionsRow">
+              <button class="btn btn--primary" id="btnSortCheck" type="button">Check</button>
+              <span class="small" id="sortStatus" aria-live="polite"></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- DIAGNOSTIC -->
+    <section class="section reveal" id="diagnostic">
+      <div class="section__head">
+        <h2>🧪 Diagnostic Quiz</h2>
+        <p class="lead">Quick, fun, and revealing — vocabulary + register + survival phrases + introductions.</p>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h3>Ready?</h3>
+          <div class="card__actions">
+            <button class="btn btn--primary" id="btnStartDiag" type="button">Start diagnostic</button>
+            <button class="btn" id="btnDiagReset" type="button">Reset</button>
+          </div>
+        </div>
+        <div class="card__body">
+          <div id="diagArea"></div>
+          <p class="small muted" id="diagNote">Instant feedback + points. Great for the first impression.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WRAP UP -->
+    <section class="section reveal" id="wrap">
+      <div class="section__head">
+        <h2>🧭 Wrap‑Up & Next Steps</h2>
+        <p class="lead">Confirm topics, comfort level, and what to practice next.</p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <div class="card__head">
+            <h3>What we confirmed today</h3>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="btnWrapSpeak" type="button">🔊 Listen</button>
+            </div>
+          </div>
+          <div class="card__body">
+            <ul class="checklist" id="wrapChecklist"></ul>
+            <div class="actionsRow">
+              <button class="btn btn--primary" id="btnPlanNext" type="button">Generate next‑session plan</button>
+              <button class="btn btn--ghost" id="btnCopyPlan" type="button">📋 Copy plan</button>
+            </div>
+            <div class="output" id="planOutput"></div>
+          </div>
+        </article>
+
+        </div>
+    </section>
+
+    <!-- Bottom score -->
+    <div class="scorebar scorebar--bottom" role="region" aria-label="Lesson score">
+      <div class="scorebar__left">
+        <span class="pill pill--ghost">Score</span>
+        <span class="score" aria-live="polite"><strong id="scoreBottom">0</strong></span>
+      </div>
+      <div class="scorebar__right">
+        <button class="btn btn--ghost" id="btnToTop" type="button">↑ Top</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Guided mode dialog -->
+  <div class="modal" id="guidedModal" role="dialog" aria-modal="true" aria-label="Guided Mode" hidden>
+    <div class="modal__overlay" data-close="1"></div>
+    <div class="modal__panel">
+      <div class="modal__head">
+        <h3 class="modal__title">Guided Mode — Follow the slides</h3>
+        <div class="modal__actions">
+          <button class="btn btn--ghost" id="btnGuidedSpeak" type="button">🔊 Listen</button>
+          <button class="btn btn--danger" data-close="1" type="button">Close</button>
+        </div>
+      </div>
+
+      <div class="modal__body">
+        <div class="guided">
+          <div class="guided__nav">
+            <button class="btn" id="btnPrevSlide" type="button">← Prev</button>
+            <button class="btn btn--primary" id="btnNextSlide" type="button">Next →</button>
+          </div>
+          <div class="guided__slide">
+            <div class="guided__badge" id="guidedBadge">Slide 1 / 19</div>
+            <h4 class="guided__title" id="guidedTitle"></h4>
+            <ul class="guided__list" id="guidedList"></ul>
+          </div>
+          <div class="guided__jump">
+            <span class="small muted">Quick jump:</span>
+            <button class="pillBtn" type="button" data-jump="#tech">Tech</button>
+            <button class="pillBtn" type="button" data-jump="#intro">Self‑intro</button>
+            <button class="pillBtn" type="button" data-jump="#greetings">Greetings</button>
+            <button class="pillBtn" type="button" data-jump="#diagnostic">Diagnostic</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./intro-session.js"></script>
+</body>
+</html>
