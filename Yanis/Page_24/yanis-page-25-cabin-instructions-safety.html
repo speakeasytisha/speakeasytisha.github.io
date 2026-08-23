@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Yanis Page 25 — interactive professional English lesson for cabin instructions, safety communication and LILATE transfer.">
+  <title>Yanis · Page 25 · Cabin Instructions & Safety Communication Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-page-25-cabin-instructions-safety.css">
+</head>
+<body>
+<div class="js-warning" id="jsWarning">⚠️ JavaScript is not loaded. Keep the HTML in the root folder, CSS in <strong>/css</strong> and JS in <strong>/js</strong>.</div>
+<a class="skip" href="#main">Skip to the lesson</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Yanis · Page 25 · Cabin Instructions & Safety Communication</div>
+    </div>
+    <div class="controls">
+      <div class="pill" aria-label="Learning mode">
+        <span class="pill__label">Mode</span>
+        <button class="seg is-on" id="practiceMode" type="button">Practice</button>
+        <button class="seg" id="examMode" type="button">Exam</button>
+      </div>
+      <div class="pill" aria-label="English voice">
+        <span class="pill__label">Voice</span>
+        <button class="seg is-on" id="voiceUK" type="button">🇬🇧 UK</button>
+        <button class="seg" id="voiceUS" type="button">🇺🇸 US</button>
+      </div>
+      <button class="btn btn--ghost" id="toggleFrench" type="button">FR: visible</button>
+      <button class="btn btn--ghost supportUnlock hidden" id="unlockSupport" type="button">🔓 Show support</button>
+      <button class="btn btn--ghost" id="stopAudio" type="button">⏹ Stop</button>
+      <div class="scorebox">Score <strong id="score">0</strong>/<span id="maxScore">0</span></div>
+      <button class="btn btn--danger" id="resetLesson" type="button">↺ Reset lesson</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__glow hero__glow--one"></div>
+  <div class="hero__glow hero__glow--two"></div>
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="eyebrow">LILATE professional interaction · instructions, procedures and passenger safety</div>
+      <h1>Cabin Instructions <span>&</span><br>Safety Communication Lab</h1>
+      <p class="lead">You can already <strong>listen, clarify and relay</strong> professional information. Your next mission is to turn that information into <strong>clear action</strong>: tell a passenger what to do, explain what is required, say what is prohibited, and organise a procedure step by step.</p>
+      <p class="lead fr">Vous savez déjà <strong>écouter, clarifier et transmettre</strong> une information professionnelle. Votre prochaine mission consiste à transformer cette information en <strong>action claire</strong> : dire à un passager quoi faire, expliquer ce qui est obligatoire, ce qui est interdit et organiser une procédure étape par étape.</p>
+      <div class="hero__actions">
+        <button class="btn" id="startLesson" type="button">▶ Start the mission</button>
+        <button class="btn btn--ghost" id="listenIntro" type="button">🔊 Listen to the goal</button>
+      </div>
+      <div class="mission-grid">
+        <article><span>1</span><strong>Instruct</strong><small>Use short, clear action language.</small></article>
+        <article><span>2</span><strong>Require</strong><small>Express obligation accurately.</small></article>
+        <article><span>3</span><strong>Protect</strong><small>State prohibitions without ambiguity.</small></article>
+        <article><span>4</span><strong>Sequence</strong><small>Explain procedures in a logical order.</small></article>
+      </div>
+    </div>
+
+    <aside class="hero__aside">
+      <div class="outcome-label">TODAY'S OUTCOME</div>
+      <h2>From information → action</h2>
+      <p>By the end of the lesson, you will be able to:</p>
+      <ul>
+        <li>give positive and negative instructions;</li>
+        <li>choose <strong>must, have to, need to, mustn’t</strong> and <strong>don’t have to</strong> correctly;</li>
+        <li>make instructions professional with <strong>please</strong> and <strong>could you…?</strong>;</li>
+        <li>sequence a cabin procedure with <strong>first, then, next, after that, finally</strong>;</li>
+        <li>complete LILATE-style oral and written safety missions.</li>
+      </ul>
+      <div class="progress"><div id="progressBar"></div></div>
+      <small>Automatic exercises feed the Qualiopi evaluation report.</small>
+    </aside>
+  </div>
+</section>
+
+<nav class="section-nav" aria-label="Lesson sections">
+  <button data-scroll="bridge">Bridge</button>
+  <button data-scroll="grammar">Grammar</button>
+  <button data-scroll="grammarPractice">Practice</button>
+  <button data-scroll="vocabulary">Vocabulary</button>
+  <button data-scroll="procedures">Procedures</button>
+  <button data-scroll="listening">Listening</button>
+  <button data-scroll="writing">Writing</button>
+  <button data-scroll="speaking">Speaking</button>
+  <button data-scroll="evaluationReport">Qualiopi</button>
+</nav>
+
+<main id="main" class="shell">
+
+  <section class="panel" id="bridge">
+    <div class="section-title">
+      <div><span class="section-number">1</span><h2>Bridge from Page 24 — understand it, then make it actionable</h2></div>
+      <button class="btn btn--ghost speak" data-say="Listen. Clarify. Relay. Then give one clear action." type="button">🔊 Listen</button>
+    </div>
+    <div class="bridge-flow">
+      <article><span>1</span><h3>Listen</h3><p>“Seat 18A is blocking the aisle with a cabin bag.”</p></article>
+      <div class="arrow">→</div>
+      <article><span>2</span><h3>Clarify</h3><p>Confirm the exact problem and location.</p></article>
+      <div class="arrow">→</div>
+      <article><span>3</span><h3>Relay</h3><p>“A cabin bag is blocking the aisle at row 18.”</p></article>
+      <div class="arrow">→</div>
+      <article class="accent-card"><span>4</span><h3>Act</h3><p>“Please place your bag under the seat or in the overhead locker.”</p></article>
+    </div>
+    <div class="key-rule"><strong>Your safety communication rule:</strong> one instruction = one clear action. Short sentences are stronger than complicated sentences.</div>
+    <div class="micro-check">
+      <h3>Warm-up · Which sentence is clearest?</h3>
+      <div id="warmupQuiz" class="quiz-grid compact"></div>
+    </div>
+  </section>
+
+  <section class="panel grammar-panel" id="grammar">
+    <div class="section-title">
+      <div><span class="section-number">2</span><h2>Complete grammar rule — instructions, obligation and prohibition</h2></div>
+      <button class="btn btn--ghost supportOnly" id="grammarCheatBtn" type="button">🧠 Show quick French guide</button>
+    </div>
+    <div id="grammarCheat" class="support-card hidden supportOnly">
+      <strong>Repère rapide :</strong> impératif = consigne directe · <em>must / have to / need to</em> = obligation ou nécessité · <em>mustn’t</em> = interdit · <em>don’t have to</em> = pas obligatoire.
+    </div>
+
+    <article class="grammar-master">
+      <div class="grammar-head">
+        <span class="grammar-kicker">RULE 1</span>
+        <h3>The imperative — direct instructions</h3>
+      </div>
+      <div class="formula-grid">
+        <div class="formula-card positive">
+          <b>Positive</b>
+          <div class="formula">Base verb + complement</div>
+          <p><strong>Fasten</strong> your seat belt.</p>
+          <p><strong>Place</strong> your bag under the seat.</p>
+        </div>
+        <div class="formula-card negative">
+          <b>Negative</b>
+          <div class="formula">Do not / Don’t + base verb</div>
+          <p><strong>Do not block</strong> the aisle.</p>
+          <p><strong>Don’t open</strong> the overhead locker.</p>
+        </div>
+        <div class="formula-card polite">
+          <b>Professional tone</b>
+          <div class="formula">Please + imperative / Could you + base verb…?</div>
+          <p><strong>Please remain</strong> seated.</p>
+          <p><strong>Could you place</strong> your bag under the seat?</p>
+        </div>
+      </div>
+      <div class="rule-note">
+        <strong>Important:</strong> after <em>could you</em>, use the <strong>base verb</strong>: “Could you <strong>fasten</strong>…” — not “Could you fastens…” and not “Could you to fasten…”.
+      </div>
+      <p class="fr">L’impératif utilise le verbe à la base sans sujet. Pour une consigne plus professionnelle, ajoutez <strong>please</strong> ou utilisez <strong>Could you + verbe à la base…?</strong>.</p>
+    </article>
+
+    <article class="grammar-master">
+      <div class="grammar-head">
+        <span class="grammar-kicker">RULE 2</span>
+        <h3>Must / have to / need to — what is required?</h3>
+      </div>
+      <div class="modal-table-wrap">
+        <table class="modal-table">
+          <thead><tr><th>Form</th><th>Main meaning</th><th>Structure</th><th>Cabin example</th></tr></thead>
+          <tbody>
+            <tr><td><strong>must</strong></td><td>strong rule / speaker presents it as essential</td><td>must + base verb</td><td>You <strong>must keep</strong> your seat belt fastened.</td></tr>
+            <tr><td><strong>have to</strong></td><td>external rule, regulation or practical obligation</td><td>have / has to + base verb</td><td>You <strong>have to switch</strong> your phone to flight mode.</td></tr>
+            <tr><td><strong>need to</strong></td><td>necessary action to achieve a safe result</td><td>need / needs to + base verb</td><td>You <strong>need to move</strong> your bag away from the exit.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="rule-note">
+        <strong>For today:</strong> in many real cabin situations, <em>must</em>, <em>have to</em> and <em>need to</em> can all communicate necessity. The important goal is to build the form correctly and choose a tone that is clear and professional.
+      </div>
+      <p class="fr"><strong>Must</strong> exprime une obligation forte ; <strong>have to</strong> correspond souvent à une règle extérieure ; <strong>need to</strong> insiste sur une action nécessaire.</p>
+    </article>
+
+    <article class="grammar-master">
+      <div class="grammar-head">
+        <span class="grammar-kicker">RULE 3</span>
+        <h3>Mustn’t ≠ don’t have to — the essential contrast</h3>
+      </div>
+      <div class="contrast-grid">
+        <div class="contrast danger">
+          <div class="contrast-symbol">⛔</div>
+          <h4>mustn’t + base verb</h4>
+          <p><strong>Meaning: prohibited / not allowed.</strong></p>
+          <p>You <strong>mustn’t smoke</strong> on board.</p>
+          <p class="fr">Il est interdit de fumer.</p>
+        </div>
+        <div class="contrast optional">
+          <div class="contrast-symbol">✓</div>
+          <h4>don’t / doesn’t have to + base verb</h4>
+          <p><strong>Meaning: not necessary / optional.</strong></p>
+          <p>You <strong>don’t have to remove</strong> your shoes.</p>
+          <p class="fr">Vous n’êtes pas obligé d’enlever vos chaussures.</p>
+        </div>
+      </div>
+      <div class="mistake"><b>Never confuse them:</b> “You mustn’t do it” = <strong>do not do it</strong>. “You don’t have to do it” = <strong>you can do it, but it is not necessary</strong>.</div>
+    </article>
+
+    <article class="grammar-master">
+      <div class="grammar-head">
+        <span class="grammar-kicker">RULE 4</span>
+        <h3>Sequence a procedure — make every step easy to follow</h3>
+      </div>
+      <div class="sequence-strip">
+        <span><b>First,</b> identify the problem.</span>
+        <span><b>Then,</b> give the first instruction.</span>
+        <span><b>Next,</b> check the passenger understands.</span>
+        <span><b>After that,</b> confirm the safe position.</span>
+        <span><b>Finally,</b> thank the passenger.</span>
+      </div>
+      <p><strong>Comma rule:</strong> when the sequencing word comes first, use a comma: <em>First, fasten your seat belt.</em></p>
+      <p class="fr">Ces connecteurs permettent d’expliquer une procédure dans un ordre logique et facile à suivre.</p>
+    </article>
+
+    <article class="grammar-master extension supportOnly">
+      <div class="grammar-head">
+        <span class="grammar-kicker">OPTIONAL B1 BRIDGE</span>
+        <h3>Reason language — explain why the instruction matters</h3>
+      </div>
+      <p><strong>Please keep the aisle clear because</strong> passengers need access to the exit.</p>
+      <p><strong>For safety reasons,</strong> you need to remain seated.</p>
+      <p><strong>To keep the exit clear,</strong> please move your bag.</p>
+      <p class="fr">Ajoutez une raison courte uniquement quand cela aide le passager à comprendre la consigne.</p>
+    </article>
+  </section>
+
+  <section class="panel" id="grammarPractice">
+    <div class="section-title">
+      <div><span class="section-number">3</span><h2>Grammar training circuit — controlled practice first</h2></div>
+      <span class="section-badge">AUTOMATIC SCORE</span>
+    </div>
+
+    <div class="practice-block">
+      <div class="practice-title"><span>A</span><div><h3>Choose the correct form</h3><p>Imperative, modal or polite request?</p></div></div>
+      <div id="formQuiz" class="quiz-grid"></div>
+    </div>
+
+    <div class="practice-block">
+      <div class="practice-title"><span>B</span><div><h3>Conjugation hangar</h3><p>Use the verb given. This is the only section where different grammatical subjects are used deliberately.</p></div></div>
+      <div id="conjugationGrid" class="fill-grid"></div>
+    </div>
+
+    <div class="practice-block">
+      <div class="practice-title"><span>C</span><div><h3>Mustn’t or don’t have to?</h3><p>Decide: prohibited or simply unnecessary?</p></div></div>
+      <div id="meaningQuiz" class="quiz-grid"></div>
+    </div>
+
+    <div class="practice-block">
+      <div class="practice-title"><span>D</span><div><h3>Error clinic</h3><p>Find the professional, grammatically correct version.</p></div></div>
+      <div id="errorQuiz" class="quiz-grid"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="vocabulary">
+    <div class="section-title">
+      <div><span class="section-number">4</span><h2>Cabin action vocabulary — verbs you need to give instructions</h2></div>
+      <button class="btn btn--ghost" id="listenVocabSet" type="button">🔊 Listen to key verbs</button>
+    </div>
+    <div class="category-tabs" id="vocabTabs"></div>
+    <div id="vocabGrid" class="vocab-grid"></div>
+    <div class="vocab-tip"><strong>Technique:</strong> learn the <em>verb + object</em> together: <strong>fasten your seat belt</strong>, <strong>stow your bag</strong>, <strong>keep the aisle clear</strong>.</div>
+  </section>
+
+  <section class="panel" id="procedures">
+    <div class="section-title">
+      <div><span class="section-number">5</span><h2>Procedure workshop — sequence, instruct and reassure</h2></div>
+    </div>
+
+    <div class="procedure-layout">
+      <article class="procedure-card">
+        <div class="scenario-tag">TAKE-OFF</div>
+        <h3>Put the procedure in order</h3>
+        <p>Click the steps in the correct order. Use “Undo” if needed.</p>
+        <div class="order-source" id="takeoffOrderSource"></div>
+        <div class="order-target" id="takeoffOrderTarget"></div>
+        <div class="button-row">
+          <button class="btn" id="checkTakeoffOrder" type="button">Check order</button>
+          <button class="btn btn--ghost" id="undoTakeoffOrder" type="button">Undo</button>
+          <button class="btn btn--ghost supportOnly" id="hintTakeoffOrder" type="button">Hint</button>
+        </div>
+        <div class="feedback" id="takeoffOrderFeedback"></div>
+      </article>
+
+      <article class="procedure-card">
+        <div class="scenario-tag">TURBULENCE</div>
+        <h3>Build a calm passenger instruction</h3>
+        <p>Choose one element from each line, then build your message.</p>
+        <div id="turbulenceBuilder" class="builder-lines"></div>
+        <button class="btn" id="buildTurbulence" type="button">Build message</button>
+        <div class="model" id="turbulenceOutput">Your message will appear here.</div>
+      </article>
+    </div>
+
+    <div class="practice-block">
+      <div class="practice-title"><span>E</span><div><h3>Real cabin scenarios</h3><p>Choose the clearest and most professional instruction.</p></div></div>
+      <div id="scenarioQuiz" class="quiz-grid"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="reading">
+    <div class="section-title">
+      <div><span class="section-number">6</span><h2>Reading under pressure — short cabin procedure</h2></div>
+      <button class="btn btn--ghost speak" data-say="During light turbulence, passengers should remain seated when possible and keep their seat belts fastened. Cabin bags must be stored safely. The aisle and exits must remain clear. If a passenger needs assistance, assess the situation and inform the cabin supervisor when necessary." type="button">🔊 Listen to the text</button>
+    </div>
+    <article class="reading-card">
+      <h3>Light turbulence procedure</h3>
+      <p>During light turbulence, passengers should remain seated when possible and keep their seat belts fastened. Cabin bags must be stored safely. The aisle and exits must remain clear. If a passenger needs assistance, assess the situation and inform the cabin supervisor when necessary.</p>
+      <p class="fr">Pendant de légères turbulences, les passagers doivent rester assis si possible et garder leur ceinture attachée. Les bagages cabine doivent être rangés en sécurité. L’allée et les issues doivent rester dégagées. Si un passager a besoin d’aide, évaluez la situation et informez le chef de cabine si nécessaire.</p>
+    </article>
+    <div id="readingQuiz" class="quiz-grid"></div>
+  </section>
+
+  <section class="panel" id="listening">
+    <div class="section-title">
+      <div><span class="section-number">7</span><h2>Listening & action — hear the situation, choose the instruction</h2></div>
+    </div>
+    <div class="listening-layout">
+      <aside id="listeningMenu" class="list-menu"></aside>
+      <article class="listen-card">
+        <div class="listen-heading">
+          <div><span class="scenario-pill" id="listenType"></span><h3 id="listenTitle"></h3></div>
+          <span class="attempt-badge" id="listenAttempt">Not attempted</span>
+        </div>
+        <p id="listenContext" class="teacher-note"></p>
+        <div class="button-row">
+          <button class="btn" id="playMessage" type="button">🔊 Play passenger / crew message</button>
+          <button class="btn btn--ghost" id="playSlow" type="button">🐢 Slower</button>
+          <button class="btn btn--ghost supportOnly" id="showTranscript" type="button">📄 Transcript</button>
+          <button class="btn btn--ghost supportOnly" id="showActionModel" type="button">👁 Model response</button>
+        </div>
+        <div id="transcript" class="model hidden supportOnly"></div>
+        <div id="actionModel" class="model hidden supportOnly"></div>
+        <div id="listenQuestions"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel" id="announcement">
+    <div class="section-title">
+      <div><span class="section-number">8</span><h2>Announcement builder — organise a clear safety message</h2></div>
+    </div>
+    <div class="announcement-grid">
+      <article>
+        <h3>The C.A.L.M. structure</h3>
+        <div class="calm-grid">
+          <div><b>C</b><span>Context</span><small>What is happening?</small></div>
+          <div><b>A</b><span>Action</span><small>What must passengers do?</small></div>
+          <div><b>L</b><span>Limit</span><small>What must they not do?</small></div>
+          <div><b>M</b><span>Move forward</span><small>What happens next?</small></div>
+        </div>
+      </article>
+      <article class="builder-card">
+        <label>Context<select id="annContext"></select></label>
+        <label>Required action<select id="annAction"></select></label>
+        <label>Prohibition<select id="annLimit"></select></label>
+        <label>Next step<select id="annNext"></select></label>
+        <button class="btn" id="buildAnnouncement" type="button">Build announcement</button>
+      </article>
+    </div>
+    <div class="model announcement-output" id="announcementOutput">Build your announcement to see it here.</div>
+    <div class="button-row">
+      <button class="btn btn--ghost" id="listenAnnouncement" type="button">🔊 Listen to your announcement</button>
+      <button class="btn btn--ghost supportOnly" id="showAnnouncementModel" type="button">👁 Show strong model</button>
+    </div>
+    <div id="announcementModel" class="model hidden supportOnly">
+      <strong>Model:</strong> Ladies and gentlemen, we are experiencing some turbulence. Please remain seated and keep your seat belt fastened. Do not stand in the aisle until the seat belt sign has been switched off. The cabin crew will continue the service when it is safe to do so.
+    </div>
+  </section>
+
+  <section class="panel" id="writing">
+    <div class="section-title">
+      <div><span class="section-number">9</span><h2>Writing transfer — passenger instruction + crew procedure</h2></div>
+    </div>
+    <div class="writing-method">
+      <h3>Your 4-step writing method</h3>
+      <ol>
+        <li><strong>Situation:</strong> state the problem in one sentence.</li>
+        <li><strong>Instruction:</strong> give the required action.</li>
+        <li><strong>Reason:</strong> add a short safety reason if useful.</li>
+        <li><strong>Check:</strong> confirm the next step or thank the passenger.</li>
+      </ol>
+    </div>
+    <div id="writingTasks" class="writing-grid"></div>
+  </section>
+
+  <section class="panel" id="speaking">
+    <div class="section-title">
+      <div><span class="section-number">10</span><h2>LILATE oral missions — listen, instruct, explain and check</h2></div>
+    </div>
+    <div class="oral-layout">
+      <article class="oral-card">
+        <label class="select-label">Choose a mission<select id="oralSelect"></select></label>
+        <p id="oralInstruction" class="teacher-note"></p>
+        <div class="button-row">
+          <button class="btn" id="playOralPrompt" type="button">🔊 Play examiner prompt</button>
+          <button class="btn btn--ghost supportOnly" id="showOralPrompt" type="button">📄 Prompt text</button>
+          <button class="btn btn--ghost supportOnly" id="showOralModels" type="button">👁 Models A2+ / B1</button>
+        </div>
+        <div id="oralPromptText" class="model hidden supportOnly"></div>
+        <label class="notes-label">Your quick plan<textarea id="oralNotes" rows="6" placeholder="Situation → instruction → prohibition / reason → check"></textarea></label>
+      </article>
+      <article class="oral-card">
+        <h3>Record your answer</h3>
+        <p class="fr">Autorisez le microphone, enregistrez votre réponse, écoutez-la, puis téléchargez-la si nécessaire.</p>
+        <div class="button-row">
+          <button class="btn" id="startRecording" type="button">🎙 Start</button>
+          <button class="btn btn--danger" id="stopRecording" type="button" disabled>⏹ Stop</button>
+          <button class="btn btn--ghost" id="downloadRecording" type="button" disabled>⬇ Download audio</button>
+        </div>
+        <audio id="recordedAudio" controls class="recorded-audio hidden"></audio>
+        <div id="recordingStatus" class="feedback"></div>
+        <div id="oralModels" class="models hidden supportOnly"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel" id="finalMission">
+    <div class="section-title">
+      <div><span class="section-number">11</span><h2>Final integrated mission — cabin safety from message to action</h2></div>
+      <span class="section-badge">LILATE TRANSFER</span>
+    </div>
+    <div class="final-grid">
+      <article class="final-prompt">
+        <span class="scenario-tag">FINAL MISSION</span>
+        <h3>Overhead locker problem before departure</h3>
+        <p>A passenger has placed a heavy bag in an overhead locker. The locker does not close correctly. Boarding is almost complete.</p>
+        <div class="final-checklist">
+          <span>✓ identify the safety problem</span>
+          <span>✓ give one clear instruction</span>
+          <span>✓ state one prohibition or obligation</span>
+          <span>✓ explain the next step</span>
+        </div>
+      </article>
+      <article>
+        <label class="notes-label">Your written response<textarea id="finalWriting" rows="9" placeholder="Write 4–6 clear professional sentences..."></textarea></label>
+        <div class="button-row">
+          <button class="btn btn--ghost supportOnly" id="showFinalHint" type="button">💡 Hint</button>
+          <button class="btn btn--ghost supportOnly" id="showFinalModel" type="button">👁 Model</button>
+          <button class="btn btn--ghost speak" data-say="There is a problem with the overhead locker. Please remove the heavy bag and keep the aisle clear while I find a safe place for it. The locker must close completely before departure. I will help you store the bag safely. Thank you for your cooperation." type="button">🔊 Listen to model</button>
+        </div>
+        <div id="finalHint" class="model hidden supportOnly">Use: <strong>There is… / Please + base verb / must + base verb / I will + base verb</strong>.</div>
+        <div id="finalModel" class="model hidden supportOnly"><strong>B1 model:</strong> There is a problem with the overhead locker. Please remove the heavy bag and keep the aisle clear while I find a safe place for it. The locker must close completely before departure. I will help you store the bag safely. Thank you for your cooperation.</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel" id="personalNotes">
+    <div class="section-title">
+      <div><span class="section-number">12</span><h2>Your personal learning notes</h2></div>
+    </div>
+    <div class="two-col">
+      <label class="notes-label">Useful instructions<textarea id="usefulNotes" rows="8" placeholder="Please remain seated.&#10;You must keep the aisle clear."></textarea></label>
+      <label class="notes-label">Grammar to review<textarea id="reviewNotes" rows="8" placeholder="mustn’t vs don’t have to&#10;Could you + base verb"></textarea></label>
+    </div>
+  </section>
+
+  <section class="panel evaluation-panel" id="evaluationReport">
+    <h2>📋 Suivi des acquis — Qualiopi</h2>
+    <p class="teacher-note">Automatic results are calculated below. Writing and speaking tasks are assessed manually with your trainer. Progress is stored in this browser and can be copied or downloaded.</p>
+    <div class="evaluation-meta">
+      <label>Learner / Apprenant<input id="learnerName" value="Yanis Deschasset"></label>
+      <label>Trainer / Formatrice<input id="trainerName" value="Tisha DOUTY-DOSIERE"></label>
+      <label>Evaluation date<input id="evaluationDate" type="date"></label>
+    </div>
+    <div class="evaluation-legend">
+      <span class="status achieved">Acquis</span>
+      <span class="status progress-status">En cours</span>
+      <span class="status not-achieved">Non acquis</span>
+      <span class="status not-started">Non commencé</span>
+    </div>
+    <div class="table-wrap">
+      <table class="evaluation-table">
+        <thead><tr><th>Objectif / activité</th><th>Type</th><th>Score</th><th>Résultat</th></tr></thead>
+        <tbody id="evaluationRows"></tbody>
+      </table>
+    </div>
+
+    <div class="manual-evaluation">
+      <h3>Évaluations manuelles — production écrite et orale</h3>
+      <div class="manual-grid">
+        <label>Passenger safety instruction — writing
+          <select data-manual="writing-passenger"><option value="not-started">Non commencé</option><option value="progress">En cours</option><option value="achieved">Acquis</option><option value="not-achieved">Non acquis</option></select>
+        </label>
+        <label>Crew procedure note — writing
+          <select data-manual="writing-procedure"><option value="not-started">Non commencé</option><option value="progress">En cours</option><option value="achieved">Acquis</option><option value="not-achieved">Non acquis</option></select>
+        </label>
+        <label>LILATE cabin instruction mission — oral
+          <select data-manual="oral-instruction"><option value="not-started">Non commencé</option><option value="progress">En cours</option><option value="achieved">Acquis</option><option value="not-achieved">Non acquis</option></select>
+        </label>
+        <label>Clarity & pronunciation — oral
+          <select data-manual="oral-clarity"><option value="not-started">Non commencé</option><option value="progress">En cours</option><option value="achieved">Acquis</option><option value="not-achieved">Non acquis</option></select>
+        </label>
+        <label>Final integrated mission
+          <select data-manual="final-mission"><option value="not-started">Non commencé</option><option value="progress">En cours</option><option value="achieved">Acquis</option><option value="not-achieved">Non acquis</option></select>
+        </label>
+        <label>Trainer comments<textarea id="trainerComments" rows="5" placeholder="Strengths, recurring errors, next steps..."></textarea></label>
+      </div>
+    </div>
+
+    <div class="learner-evaluation">
+      <h3>Votre ressenti sur la séance</h3>
+      <div class="satisfaction-grid">
+        <label>Je comprends mieux les règles<select id="satGrammar"><option value="">— Choisir —</option><option>Oui, clairement</option><option>En partie</option><option>Pas encore</option></select></label>
+        <label>Je me sens plus capable de donner une consigne<select id="satSpeaking"><option value="">— Choisir —</option><option>Oui, clairement</option><option>En partie</option><option>Pas encore</option></select></label>
+        <label>Rythme de la séance<select id="satPace"><option value="">— Choisir —</option><option>Adapté</option><option>Trop rapide</option><option>Trop lent</option></select></label>
+        <label>Activité la plus utile<input id="satUseful" placeholder="Ex. mustn’t / don’t have to, listening..."></label>
+      </div>
+      <label class="notes-label">Learner comments / Commentaires<textarea id="learnerComments" rows="4" placeholder="Ce qui vous a aidé, ce que vous voulez revoir..."></textarea></label>
+    </div>
+
+    <div class="overall-box">
+      <div><strong>Completion:</strong> <span id="completionRate">0%</span></div>
+      <div><strong>Automatic score:</strong> <span id="autoRate">0%</span></div>
+      <div><strong>Overall result:</strong> <span id="overallStatus" class="status not-started">Non commencé</span></div>
+      <div><strong>Last saved:</strong> <span id="lastSaved">—</span></div>
+    </div>
+    <div class="button-row report-buttons">
+      <button class="btn" id="saveProgress" type="button">💾 Save progress</button>
+      <button class="btn btn--ghost" id="downloadHtml" type="button">⬇ Download readable report</button>
+      <button class="btn btn--ghost" id="copyResults" type="button">📋 Copy results</button>
+      <button class="btn btn--ghost" id="prepareEmail" type="button">✉️ Prepare email</button>
+      <button class="btn btn--ghost" id="printReport" type="button">🖨 Print / save PDF</button>
+      <button class="btn btn--danger" id="resetProgress" type="button">↺ Reset results</button>
+    </div>
+    <p class="storage-note">Progress stays on this browser/device unless you export it. Copy, download or print the report for the learner file.</p>
+  </section>
+</main>
+
+<div class="modal-overlay hidden" id="vocabModal" role="dialog" aria-modal="true" aria-label="Vocabulary card">
+  <div class="modal-card">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close">×</button>
+    <div class="modal-icon" id="modalIcon">✈️</div>
+    <div class="modal-word" id="modalWord">—</div>
+    <div class="modal-fr fr" id="modalFr">—</div>
+    <div class="modal-def" id="modalDef">—</div>
+    <div class="modal-example" id="modalExample">—</div>
+    <button class="btn" id="modalListen" type="button">🔊 Listen</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand"><span>SpeakEasy</span>Tisha</div>
+  <p>Yanis · Page 25 · Give one clear action. Explain the rule. Keep the cabin safe.</p>
+</footer>
+
+<script src="js/yanis-page-25-cabin-instructions-safety.js"></script>
+</body>
+</html>
