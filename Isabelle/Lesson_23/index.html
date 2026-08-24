@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Isabelle — Lesson 23: Netherlands Real Estate Interview Simulator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-card">
+      <p class="kicker">Lesson 23 · Netherlands real estate career project</p>
+      <h1>Isabelle — Complete Interview Simulator</h1>
+      <p class="subtitle">From recruiter screening to final interview: speak clearly, react naturally, clarify details and make a professional impression.</p>
+      <div class="hero-actions">
+        <button data-scroll="#map">Start the route</button>
+        <button data-scroll="#mock">Full mock interview</button>
+        <button data-scroll="#evaluationReport">Qualiopi evaluation</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="topbar">
+    <select id="accent" aria-label="Choose English accent">
+      <option value="en-GB">🇬🇧 British English</option>
+      <option value="en-US">🇺🇸 American English</option>
+    </select>
+    <button id="stopSpeech">⏹ Stop audio</button>
+    <button id="printLesson">🖨 Print</button>
+    <button id="resetPage" class="danger">↺ Reset lesson</button>
+    <span class="score">Mastery: <strong id="score">0</strong>/<span id="maxScore">0</span></span>
+  </nav>
+
+  <main>
+    <section class="panel" id="map">
+      <h2>🧭 Today’s route</h2>
+      <p class="teacher">This page reviews the language from your job-search project and turns it into a realistic interview journey. You will practise short replies first, then longer professional answers, then a full interview simulation.</p>
+      <div class="route-grid">
+        <article><span>1</span><h3>Job-search identity</h3><p>Say who you are and what you are looking for.</p></article>
+        <article><span>2</span><h3>Recruiter screen</h3><p>React to availability, salary, Dutch, relocation and role-fit questions.</p></article>
+        <article><span>3</span><h3>Technical value</h3><p>Use real-estate, legal, transaction and stakeholder vocabulary naturally.</p></article>
+        <article><span>4</span><h3>STAR stories</h3><p>Present achievements with Situation, Task, Action and Result.</p></article>
+        <article><span>5</span><h3>Live interview</h3><p>Do the complete mock with notes, recording and trainer validation.</p></article>
+      </div>
+    </section>
+
+    <section class="panel" id="identity">
+      <h2>🌟 Part A — Your professional identity in 30 seconds</h2>
+      <p class="teacher">Before an interview, you need one clear professional identity. Do not explain everything. Start with a strong, simple frame.</p>
+      <div class="identity-card">
+        <div>
+          <h3>Core version</h3>
+          <p class="model">I am a real estate legal and commercial professional with over 24 years of experience in the French property sector. My background combines legal advisory work, property development, contract negotiation, risk analysis, sales management and stakeholder coordination.</p>
+          <button class="say" data-say="I am a real estate legal and commercial professional with over twenty-four years of experience in the French property sector. My background combines legal advisory work, property development, contract negotiation, risk analysis, sales management and stakeholder coordination.">🔊 Listen</button>
+        </div>
+        <div>
+          <h3>One-line networking version</h3>
+          <p class="model">I combine legal real-estate expertise with commercial experience and strong stakeholder coordination skills.</p>
+          <button class="say" data-say="I combine legal real estate expertise with commercial experience and strong stakeholder coordination skills.">🔊 Listen</button>
+        </div>
+      </div>
+      <h3>Instant practice — choose the most professional answer</h3>
+      <div id="identityQuiz" class="quiz-grid"></div>
+    </section>
+
+    <section class="panel" id="vocab">
+      <h2>🧠 Part B — Job-search and interview vocabulary bank</h2>
+      <p class="teacher">Filter the vocabulary, listen to examples and reuse the phrases in the interview sections.</p>
+      <div class="filters">
+        <select id="vocabFilter">
+          <option value="all">All categories</option>
+          <option value="profile">Profile</option>
+          <option value="recruiter">Recruiter / agency</option>
+          <option value="technical">Legal & real estate</option>
+          <option value="culture">Dutch professional culture</option>
+          <option value="followup">Follow-up</option>
+        </select>
+        <input id="vocabSearch" type="search" placeholder="Search: stakeholder, Dutch, salary, referral...">
+      </div>
+      <div id="vocabGrid" class="card-grid"></div>
+    </section>
+
+    <section class="panel" id="grammar">
+      <h2>🧩 Part C — Grammar toolkit for interviews</h2>
+      <p class="teacher">Each grammar point is directly connected to your job search. Feedback appears immediately.</p>
+      <div id="grammarGrid" class="grammar-grid"></div>
+    </section>
+
+    <section class="panel" id="screening">
+      <h2>☎️ Part D — Recruiter screening call</h2>
+      <p class="teacher">A screening call is often short. The objective is to answer clearly, ask for clarification when needed and secure the next step.</p>
+      <div id="screeningGrid" class="card-grid"></div>
+    </section>
+
+    <section class="panel" id="listening">
+      <h2>🎧 Part E — Listening focus: recruiter, agency and job-search messages</h2>
+      <p class="teacher">Listen, choose an answer, then reveal the script and the model reply. The script is what you hear. The model reply is what you could say.</p>
+      <div class="listen-box">
+        <div class="pill" id="listeningTitle">Listening</div>
+        <p id="listeningQuestion"></p>
+        <div id="listeningOptions" class="options-vertical"></div>
+        <div class="buttons">
+          <button id="listenAudio">🔊 Listen</button>
+          <button id="newListening">New situation</button>
+          <button id="showScript">📄 Show script</button>
+          <button id="showModelReply">👁 Show model answer</button>
+        </div>
+        <div id="scriptBox" class="model hidden"></div>
+        <div id="modelReplyBox" class="model hidden"></div>
+        <div id="listeningFeedback" class="feedback"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="technical">
+      <h2>🏢 Part F — Technical interview: real estate, legal and business value</h2>
+      <p class="teacher">This section prepares you for technical questions without turning the answer into a law lecture. Keep your answer clear, practical and business-oriented.</p>
+      <div id="technicalGrid" class="card-grid"></div>
+    </section>
+
+    <section class="panel" id="star">
+      <h2>⭐ Part G — STAR achievement simulator</h2>
+      <p class="teacher">Use one strong achievement to answer several interview questions: complex transaction, time pressure, stakeholders, negotiation and risk prevention.</p>
+      <div class="star-story">
+        <h3>Hero story: senior serviced-residence transaction</h3>
+        <p><strong>Situation:</strong> A complex senior serviced-residence project with multiple stakeholders and a very short timeline.</p>
+        <p><strong>Task:</strong> Finalise key off-plan sale and lease documentation before the deadline.</p>
+        <p><strong>Action:</strong> Coordinate stakeholders, negotiate actively, prioritise legal risks and follow up closely.</p>
+        <p><strong>Result:</strong> The transaction moved forward on time and supported the business unit’s objectives.</p>
+      </div>
+      <div id="starGrid" class="card-grid"></div>
+      <div class="manual-section" data-manual-panel="oral-star">
+        <h3>Trainer validation — STAR oral answer</h3>
+        <p class="small-note">Use this box during the lesson when the STAR answer is done orally with the trainer.</p>
+        <label>Status
+          <select data-manual="oral-star">
+            <option value="not-started">Non commencé</option>
+            <option value="progress">Objectif en cours d’acquisition</option>
+            <option value="achieved">Objectif atteint</option>
+            <option value="not-achieved">Objectif non atteint</option>
+          </select>
+        </label>
+        <label>Oral comments / evidence
+          <textarea data-comment="oral-star" rows="4" placeholder="Example: STAR structure clear; result quantified; pronunciation of transaction / stakeholder to review..."></textarea>
+        </label>
+      </div>
+    </section>
+
+    <section class="panel" id="clarify">
+      <h2>🛟 Part H — Clarify, repair and handle unexpected situations</h2>
+      <p class="teacher">A professional speaker does not understand everything perfectly. A professional speaker knows how to clarify calmly.</p>
+      <div id="clarifyGrid" class="quiz-grid"></div>
+    </section>
+
+    <section class="panel" id="writing">
+      <h2>✍️ Part I — Follow-up writing lab</h2>
+      <p class="teacher">After a call or interview, a short follow-up email can create an excellent impression. Write your own version, then compare with the models.</p>
+      <div id="writingGrid" class="card-grid"></div>
+      <div class="manual-section" data-manual-panel="writing-followup">
+        <h3>Trainer validation — written follow-up</h3>
+        <label>Status
+          <select data-manual="writing-followup">
+            <option value="not-started">Non commencé</option>
+            <option value="progress">Objectif en cours d’acquisition</option>
+            <option value="achieved">Objectif atteint</option>
+            <option value="not-achieved">Objectif non atteint</option>
+          </select>
+        </label>
+        <label>Writing comments / evidence
+          <textarea data-comment="writing-followup" rows="4" placeholder="Example: email structure clear; tone professional; needs work on indirect questions / articles..."></textarea>
+        </label>
+      </div>
+    </section>
+
+    <section class="panel" id="recorder">
+      <h2>🎙️ Recording studio</h2>
+      <p class="teacher">Record a 60–90 second answer, listen again, then save the file if you want evidence for progress. Audio stays on this device unless downloaded.</p>
+      <div class="record-task-box">
+        <h3>Choose a recording task first</h3>
+        <p class="small-note">The aim is to practise a real interview reaction, not just to record anything. Choose a task, speak first with the cue cards, then reveal the model.</p>
+        <div class="buttons">
+          <label class="select-label">Recording task
+            <select id="recordTaskSelect"></select>
+          </label>
+          <button id="newRecordTask" class="secondary">New task</button>
+        </div>
+        <div id="recordTaskCard" class="model"></div>
+        <textarea id="recordNotes" rows="4" placeholder="Trainer notes after listening: clarity, pronunciation, grammar, confidence, next correction..."></textarea>
+      </div>
+      <div class="recorder-box">
+        <div class="buttons">
+          <button id="startRec">● Start recording</button>
+          <button id="stopRec" disabled>■ Stop recording</button>
+          <button id="clearRec" class="secondary">Clear</button>
+        </div>
+        <audio id="player" controls></audio>
+        <a id="downloadAudio" class="download hidden" href="#" download="isabelle-interview-practice.webm">Download recording</a>
+        <p id="recStatus" class="small-note">Microphone access requires HTTPS. If recording is blocked, use Voice Memos and upload or save the audio separately.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="mock">
+      <h2>🎯 Part J — Complete mock interview</h2>
+      <p class="teacher">This is the final simulation. Use cue cards first. Reveal model answers only after the oral answer.</p>
+      <div class="mock-layout">
+        <aside class="mock-menu" id="mockMenu"></aside>
+        <article class="mock-card" id="mockCard"></article>
+      </div>
+      <div class="manual-section" data-manual-panel="oral-mock">
+        <h3>Trainer validation — complete oral mock</h3>
+        <label>Status
+          <select data-manual="oral-mock">
+            <option value="not-started">Non commencé</option>
+            <option value="progress">Objectif en cours d’acquisition</option>
+            <option value="achieved">Objectif atteint</option>
+            <option value="not-achieved">Objectif non atteint</option>
+          </select>
+        </label>
+        <label>Oral comments / evidence
+          <textarea data-comment="oral-mock" rows="4" placeholder="Example: answered recruiter questions clearly; clarified unexpected question; good professional tone..."></textarea>
+        </label>
+      </div>
+    </section>
+
+    <section class="panel evaluation-panel" id="evaluationReport">
+      <h2>📋 Suivi des acquis — Qualiopi</h2>
+      <p class="teacher">Results are saved in this browser. Automatic sections track corrected mastery, not old mistakes. Oral and writing tasks can be validated manually with trainer comments.</p>
+      <div class="evaluation-meta">
+        <label>Learner / Apprenante <input id="learnerName" value="Isabelle Davion"></label>
+        <label>Trainer / Formatrice <input id="trainerName" value="Tisha DOUTY-DOSIERE"></label>
+        <label>Evaluation date <input id="evaluationDate" type="date"></label>
+      </div>
+      <div class="evaluation-legend">
+        <span class="status achieved">Objectif atteint</span>
+        <span class="status progress">En cours d’acquisition</span>
+        <span class="status not-achieved">Objectif non atteint</span>
+        <span class="status not-started">Non commencé</span>
+      </div>
+      <div class="table-wrap">
+        <table class="evaluation-table">
+          <thead><tr><th>Objectif pédagogique</th><th>Support / sujet</th><th>Mode d’évaluation</th><th>Score</th><th>Résultat</th></tr></thead>
+          <tbody id="evaluationRows"></tbody>
+        </table>
+      </div>
+      <div class="manual-evaluation">
+        <h3>🗣️ Productions orales et écrites — validation formatrice</h3>
+        <div class="manual-grid">
+          <label>STAR achievement answer
+            <select data-manual="oral-star-footer">
+              <option value="not-started">Non commencé</option>
+              <option value="progress">Objectif en cours d’acquisition</option>
+              <option value="achieved">Objectif atteint</option>
+              <option value="not-achieved">Objectif non atteint</option>
+            </select>
+          </label>
+          <label>Complete mock interview
+            <select data-manual="oral-mock-footer">
+              <option value="not-started">Non commencé</option>
+              <option value="progress">Objectif en cours d’acquisition</option>
+              <option value="achieved">Objectif atteint</option>
+              <option value="not-achieved">Objectif non atteint</option>
+            </select>
+          </label>
+          <label>Written follow-up email
+            <select data-manual="writing-followup-footer">
+              <option value="not-started">Non commencé</option>
+              <option value="progress">Objectif en cours d’acquisition</option>
+              <option value="achieved">Objectif atteint</option>
+              <option value="not-achieved">Objectif non atteint</option>
+            </select>
+          </label>
+          <label>Oral comments
+            <textarea id="oralComments" rows="4" placeholder="Oral strengths, pronunciation, fluency, clarity, spontaneous reactions..."></textarea>
+          </label>
+          <label>Writing comments
+            <textarea id="writingComments" rows="4" placeholder="Writing strengths, grammar, tone, structure, vocabulary..."></textarea>
+          </label>
+          <label>General trainer comments
+            <textarea id="trainerComments" rows="5" placeholder="General progress, next steps, learner engagement, evidence for learner file..."></textarea>
+          </label>
+        </div>
+      </div>
+      <div class="overall-box">
+        <div><strong>Completion:</strong> <span id="completionRate">0%</span></div>
+        <div><strong>Overall result:</strong> <span id="overallStatus" class="status not-started">Non commencé</span></div>
+        <div><strong>Last saved:</strong> <span id="lastSaved">—</span></div>
+      </div>
+      <div class="buttons report-buttons">
+        <button id="saveProgress">💾 Save progress</button>
+        <button id="downloadPdf">📄 Download PDF report</button>
+        <button id="downloadHtml">⬇ Download readable report</button>
+        <button id="printReport">🖨 Print report</button>
+        <button id="resetProgress" class="danger">↺ Reset results</button>
+      </div>
+      <p class="storage-note">⚠ Progress is stored only in this browser and on this device. Use “Download PDF report” or “Download readable report” to keep evidence for the learner file.</p>
+    </section>
+  </main>
+
+  <footer>Amsterdam career path · Prepare, speak, clarify, follow up.</footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
