@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#0f6b79"/>
+  <meta name="description" content="Catherine's interactive English lesson for her September trip to Croatia and Montenegro: Dubrovnik, Mljet, the Bay of Kotor and Durmitor National Park."/>
+  <title>Catherine · Croatia & Montenegro · Adriatic Travel Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="catherine-adriatic-travel-studio.css"/>
+</head>
+<body>
+<a class="skip" href="#main">Skip to lesson</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo"><span class="brand__script">SpeakEasy</span><span class="brand__sans">Tisha</span></div>
+      <div class="brand__tag">Catherine · Croatia + Montenegro · A2+ → B1/B1+ · Travel conversation</div>
+    </div>
+    <div class="controls">
+      <div class="pill"><span class="pill__label">Voice</span><button class="seg" id="voiceUS" type="button">🇺🇸 US</button><button class="seg is-on" id="voiceUK" type="button">🇬🇧 UK</button></div>
+      <div class="pill"><span class="pill__label">Speed</span><select class="select select--dark" id="voiceRate"><option value="0.80">Slow</option><option value="0.94" selected>Clear natural</option><option value="1.06">Natural challenge</option></select></div>
+      <div class="pill"><span class="pill__label">FR help</span><button class="seg is-on" id="frOn" type="button">ON</button><button class="seg" id="frOff" type="button">OFF</button></div>
+      <button class="btn btn--ghost" id="btnSave" type="button">💾 Save</button>
+      <button class="btn btn--ghost" id="btnPrint" type="button">🖨️ Print</button>
+      <div class="scorebox" aria-live="polite"><div class="scorebox__label">Progress</div><div class="scorebox__value"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></div></div>
+      <button class="btn btn--danger" id="btnResetAll" type="button">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <div class="eyebrow">CATHERINE · SEPTEMBER TRAVEL ENGLISH</div>
+      <h1>From Dubrovnik to Mljet & Montenegro 🌊🏛️🌲⛰️</h1>
+      <p class="lead">Prepare to talk naturally about your real trip from <strong>15–25 September</strong>: historic towns, islands, bays, national parks, mountain landscapes, walking, transport and the experiences you hope to have.</p>
+      <p class="fr lead-fr">Parlez de votre vrai voyage : villes historiques, îles, baie, parc national, montagnes, randonnée, transport et projets — avec des phrases plus naturelles et plus précises.</p>
+      <div class="hero__cta"><button class="btn" id="btnStart" type="button">▶️ Start the journey</button><button class="btn btn--ghost" id="btnHearGoal" type="button">🔊 Hear your mission</button></div>
+      <div class="minirow">
+        <div class="minicard"><div class="minicard__t">🇭🇷 Croatia</div><div class="minicard__p">Dubrovnik, the Adriatic coast and the green island of Mljet.</div></div>
+        <div class="minicard"><div class="minicard__t">🇲🇪 Montenegro</div><div class="minicard__p">The Bay of Kotor, mountain scenery and Durmitor National Park.</div></div>
+        <div class="minicard"><div class="minicard__t">🧠 Grammar spotlight</div><div class="minicard__p"><strong>where you can…</strong> vs <strong>which may suit you…</strong>, plus who, that, whose and the reason why.</div></div>
+      </div>
+    </div>
+    <aside class="hero__panel">
+      <div class="panelcard">
+        <div class="panelcard__title">Your route · about 100–120 min</div>
+        <ol class="panelcard__list">
+          <li>Activate your real itinerary</li><li>Destination facts you can reuse</li><li>Travel vocabulary studio</li><li>Reading: your September journey</li><li>Grammar lab: relative clauses + travel structures</li><li>Listening under travel pressure</li><li>Real-life dialogues</li><li>Speaking ladder + recording</li><li>Writing mission</li><li>Final travel conversation + Qualiopi</li>
+        </ol>
+        <div class="progress"><div class="progress__bar" id="progressBar" style="width:0%"></div></div>
+        <div class="muted tiny">Method: notice → choose → build → listen → speak → personalise.</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<main id="main" class="shell">
+  <section class="section" id="sec1">
+    <div class="section__head"><div><span class="section-kicker">1 · WARM-UP</span><h2>Your real September trip</h2><p class="muted">Start with what you already know. The goal is to turn facts into natural conversation.</p></div></div>
+    <div class="route-grid">
+      <div class="route-stop"><span class="route-stop__n">1</span><h4>🏛️ Dubrovnik</h4><p>Old City, stone walls, sea views, narrow streets.</p></div>
+      <div class="route-stop"><span class="route-stop__n">2</span><h4>🌲 Mljet</h4><p>Forests, saltwater lakes, walking, cycling and kayaking.</p></div>
+      <div class="route-stop"><span class="route-stop__n">3</span><h4>🌊 Bay of Kotor</h4><p>Historic coastal towns, steep mountains and boat views.</p></div>
+      <div class="route-stop"><span class="route-stop__n">4</span><h4>⛰️ Durmitor</h4><p>Mountain trails, Black Lake, Tara Canyon and dramatic scenery.</p></div>
+    </div>
+    <div class="card" style="margin-top:.9rem">
+      <div class="card__head"><h3>Build your first answer</h3><button class="iconbtn" id="warmModel" type="button">👁️ Show model</button></div>
+      <div class="formgrid formgrid--3">
+        <label class="lab">Place<select class="select" id="warmPlace"><option>Dubrovnik</option><option>Mljet</option><option>the Bay of Kotor</option><option>Durmitor National Park</option></select></label>
+        <label class="lab">What interests you?<select class="select" id="warmInterest"><option>the scenery</option><option>the history</option><option>the walking</option><option>the lakes and forests</option><option>the sea and mountains</option><option>the atmosphere</option></select></label>
+        <label class="lab">Relative-clause starter<select class="select" id="warmRelative"><option>because it is a place where you can</option><option>which looks</option><option>which may suit you because it is</option><option>where you can</option></select></label>
+      </div>
+      <div class="smallrow"><button class="btn" id="warmBuild" type="button">✨ Build my answer</button><button class="iconbtn" id="warmSpeak" type="button">🔊 Listen</button><button class="hintbtn" id="warmChallenge" type="button">➕ Make it B1+</button></div>
+      <textarea class="textarea" id="warmOutput" rows="4" placeholder="Your answer appears here…"></textarea>
+      <div class="feedback hidden" id="warmFb"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec2">
+    <div class="section__head"><div><span class="section-kicker">2 · DESTINATION KNOWLEDGE</span><h2>Travel facts you can actually say</h2><p class="muted">Use the facts as speaking material, not as a geography test.</p></div></div>
+    <div class="two">
+      <article class="card fact-card"><div class="card__head"><h3>🏛️ Dubrovnik</h3><button class="iconbtn" data-speak-target="dubrovnikFacts">🔊 Listen</button></div><div class="reading" id="dubrovnikFacts">
+        <div class="line"><div class="ico">🧱</div><div>The Old City is surrounded by famous stone walls that are almost two kilometres long.<div class="fr">La vieille ville est entourée de remparts de presque deux kilomètres.</div></div></div>
+        <div class="line"><div class="ico">👣</div><div>You can explore the historic centre on foot, walk along the walls and look down over the red roofs and the Adriatic Sea.<div class="fr">On peut découvrir le centre historique à pied et marcher sur les remparts.</div></div></div>
+        <div class="line"><div class="ico">🌊</div><div>Dubrovnik combines culture and sea views, which makes it easy to describe using relative clauses.<div class="fr">Dubrovnik combine culture et vues sur la mer.</div></div></div>
+      </div></article>
+      <article class="card fact-card"><div class="card__head"><h3>🌲 Mljet</h3><button class="iconbtn" data-speak-target="mljetFacts">🔊 Listen</button></div><div class="reading" id="mljetFacts">
+        <div class="line"><div class="ico">🏞️</div><div>Mljet National Park is in the western part of the island and is known for two saltwater lakes: Veliko and Malo Jezero.<div class="fr">Le parc national est connu pour ses deux lacs salés.</div></div></div>
+        <div class="line"><div class="ico">⛪</div><div>On St Mary’s islet, in the Great Lake, there is a Benedictine monastery that you can reach by boat.<div class="fr">Un monastère bénédictin se trouve sur un îlot du Grand Lac.</div></div></div>
+        <div class="line"><div class="ico">🚲</div><div>It is a place where you can walk, cycle, kayak or simply enjoy the forest and the water.<div class="fr">C'est un endroit où l'on peut marcher, faire du vélo ou du kayak.</div></div></div>
+      </div></article>
+      <article class="card fact-card"><div class="card__head"><h3>🌊 Bay of Kotor</h3><button class="iconbtn" data-speak-target="kotorFacts">🔊 Listen</button></div><div class="reading" id="kotorFacts">
+        <div class="line"><div class="ico">⛰️</div><div>The Bay of Kotor is surrounded by steep mountains and historic coastal towns.<div class="fr">La baie est entourée de montagnes abruptes et de villes historiques.</div></div></div>
+        <div class="line"><div class="ico">⛵</div><div>It is an area where you can take boat trips, kayak, walk and explore places such as Kotor and Perast.<div class="fr">On peut y faire du bateau, du kayak, marcher et visiter Kotor ou Perast.</div></div></div>
+        <div class="line"><div class="ico">🏘️</div><div>Kotor has a walled old town, which may appeal to you if you enjoy history as well as scenery.<div class="fr">La vieille ville fortifiée peut vous plaire si vous aimez l'histoire et les paysages.</div></div></div>
+      </div></article>
+      <article class="card fact-card"><div class="card__head"><h3>⛰️ Durmitor National Park</h3><button class="iconbtn" data-speak-target="durmitorFacts">🔊 Listen</button></div><div class="reading" id="durmitorFacts">
+        <div class="line"><div class="ico">🥾</div><div>Durmitor is a mountain national park where you can find hiking routes for different levels.<div class="fr">Durmitor est un parc de montagne avec des randonnées de niveaux variés.</div></div></div>
+        <div class="line"><div class="ico">🖤</div><div>Black Lake, near Žabljak, is one of the best-known places for an accessible walk and mountain views.<div class="fr">Le Lac Noir est un lieu connu pour marcher et profiter des montagnes.</div></div></div>
+        <div class="line"><div class="ico">🏞️</div><div>The Tara River runs through a deep canyon where rafting and other outdoor activities are possible.<div class="fr">La rivière Tara traverse un canyon profond où l'on peut notamment faire du rafting.</div></div></div>
+      </div></article>
+    </div>
+    <div class="card" style="margin-top:.9rem"><div class="card__head"><h3>Quick destination check</h3><button class="btn btn--ghost dark-ghost" id="factReset" type="button">↺ New order</button></div><div id="factQuizHost"></div></div>
+  </section>
+
+  <section class="section" id="sec3">
+    <div class="section__head"><div><span class="section-kicker">3 · VOCABULARY</span><h2>Your Adriatic travel vocabulary studio</h2><p class="muted">French help, definition, natural example and audio. Filter the words you want to practise.</p></div></div>
+    <div class="filters"><div class="pill pill--light"><span class="pill__label light-label">Category</span><select class="select" id="vocabSet"></select></div><button class="btn btn--ghost" id="btnVocabShuffle" type="button">🔀 Shuffle</button><button class="btn" id="btnVocabQuiz" type="button">🧩 Quiz me</button></div>
+    <div class="grid--cards" id="vocabGrid"></div>
+    <div class="card" style="margin-top:.9rem"><div class="card__head"><h3>Vocabulary challenge</h3><button class="btn btn--ghost dark-ghost" id="btnVocabQuizReset" type="button">↺ New question</button></div><div id="vocabQuizHost"></div></div>
+  </section>
+
+  <section class="section" id="sec4">
+    <div class="section__head"><div><span class="section-kicker">4 · READING</span><h2>A trip that moves from sea to mountains</h2><p class="muted">Read for meaning first. Then notice how relative clauses make the description smoother.</p></div></div>
+    <div class="two">
+      <article class="card"><div class="card__head"><h3>Reading text</h3><div class="righttools"><button class="iconbtn" id="readSpeak" type="button">🔊 Listen</button><button class="hintbtn" id="readGrammar" type="button">🔎 Notice the grammar</button></div></div><div class="reading" id="readingText"></div><div class="feedback hidden" id="readGrammarBox"></div></article>
+      <article class="card"><div class="card__head"><h3>Comprehension + inference</h3><button class="btn btn--ghost dark-ghost" id="readReset" type="button">↺ New order</button></div><div id="readingQuizHost"></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="sec5">
+    <div class="section__head"><div><span class="section-kicker">5 · GRAMMAR LAB</span><h2>Relative clauses first — then the travel structures around them</h2><p class="muted">The key question is not only <em>which word?</em> but also <em>what job does the word do in the clause?</em></p></div></div>
+    <div class="grammar-tabs" id="grammarTabs">
+      <button class="grammar-tab is-on" data-rule="whereWhich">1. where vs which</button><button class="grammar-tab" data-rule="relatives">2. who / which / that</button><button class="grammar-tab" data-rule="why">3. the reason why</button><button class="grammar-tab" data-rule="nondef">4. commas + which / where</button><button class="grammar-tab" data-rule="travel">5. travel prepositions</button><button class="grammar-tab" data-rule="modals">6. can / could / might / should</button>
+    </div>
+    <div class="card grammar-card" id="grammarRuleHost"></div>
+    <div class="two" style="margin-top:.8rem">
+      <article class="card"><div class="card__head"><h3>Choose the grammar</h3><button class="btn btn--ghost dark-ghost" id="grammarReset" type="button">↺ New order</button></div><div id="grammarMCQHost"></div></article>
+      <article class="card"><div class="card__head"><h3>Complete the sentence</h3><button class="btn btn--ghost dark-ghost" id="fillReset" type="button">↺ Reset</button></div><div id="grammarFillHost"></div></article>
+    </div>
+    <div class="card" style="margin-top:.8rem">
+      <div class="card__head"><h3>🧩 Relative-clause sentence builder</h3><button class="iconbtn" id="builderModel" type="button">👁️ Model</button></div>
+      <div class="formgrid formgrid--3"><label class="lab">Place<select class="select" id="builderPlace"><option>Mljet</option><option>Dubrovnik</option><option>the Bay of Kotor</option><option>Durmitor</option></select></label><label class="lab">Connector<select class="select" id="builderRel"><option>where</option><option>which</option><option>that</option></select></label><label class="lab">Ending<select class="select" id="builderEnd"><option>you can enjoy nature at a relaxed pace.</option><option>may suit you if you enjoy walking.</option><option>has spectacular views of the sea.</option><option>you can explore on foot.</option></select></label></div>
+      <div class="smallrow"><button class="btn" id="builderBuild" type="button">Build</button><button class="iconbtn" id="builderSpeak" type="button">🔊 Listen</button></div><textarea class="textarea" id="builderOutput" rows="3" placeholder="Your sentence…"></textarea><div class="feedback hidden" id="builderFeedback"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sec6">
+    <div class="section__head"><div><span class="section-kicker">6 · LISTENING</span><h2>Travel listening — information you need to catch</h2><p class="muted">Audio starts only when you click. Try once without the transcript, then reveal it if needed.</p></div></div>
+    <div id="listenHost"></div>
+  </section>
+
+  <section class="section" id="sec7">
+    <div class="section__head"><div><span class="section-kicker">7 · DIALOGUES</span><h2>Real-life conversation studio</h2><p class="muted">Play the dialogue, take a role, then hide the model lines and answer in your own words.</p></div></div>
+    <div class="filters"><div class="pill pill--light"><span class="pill__label light-label">Situation</span><select class="select" id="dlgSelect"></select></div><div class="pill pill--light"><span class="pill__label light-label">Your role</span><button class="seg seg--light is-on" id="roleA" type="button">Traveller</button><button class="seg seg--light" id="roleB" type="button">Staff / local</button></div><button class="btn" id="dlgPlay" type="button">▶️ Play</button><button class="btn btn--ghost" id="dlgStep" type="button">➡️ Next</button><button class="btn btn--ghost" id="dlgClear" type="button">🧹 Clear</button><button class="btn btn--ghost" id="dlgHints" type="button">💡 Phrases</button></div>
+    <div class="card"><div class="card__head"><h3 id="dlgTitle">Dialogue</h3><button class="iconbtn" id="dlgListenAll" type="button">🔊 Listen all</button></div><div class="chat"><div class="chat__stream" id="chatStream"></div></div><div class="feedback hidden" id="dlgHintBox"></div></div>
+  </section>
+
+  <section class="section" id="sec8">
+    <div class="section__head"><div><span class="section-kicker">8 · SPEAKING</span><h2>Speaking ladder: describe → connect → tell the story</h2><p class="muted">Build first, then speak. Each level removes a little support.</p></div></div>
+    <div class="three speaking-levels">
+      <article class="card"><span class="level-badge">30 sec</span><h3>Level 1 · One place</h3><p>Describe one place and say what you can do there. Use <strong>where</strong> or <strong>which</strong>.</p><button class="hintbtn ladder-model" data-model="l1" type="button">👁️ Model</button><div class="feedback hidden" id="model-l1"></div></article>
+      <article class="card"><span class="level-badge">60 sec</span><h3>Level 2 · Two places</h3><p>Connect two destinations and explain the contrast between sea, history and nature.</p><button class="hintbtn ladder-model" data-model="l2" type="button">👁️ Model</button><div class="feedback hidden" id="model-l2"></div></article>
+      <article class="card"><span class="level-badge">90 sec</span><h3>Level 3 · Your journey</h3><p>Explain your trip from 15–25 September and what you are most looking forward to.</p><button class="hintbtn ladder-model" data-model="l3" type="button">👁️ Model</button><div class="feedback hidden" id="model-l3"></div></article>
+    </div>
+    <div class="card" style="margin-top:.9rem"><div class="card__head"><h3>🎙️ Record · listen · improve</h3><span class="pillTag">Your recording stays in this browser</span></div><div class="recording"><button class="btn" id="recordStart" type="button">Start recording</button><button class="btn btn--ghost dark-ghost" id="recordStop" type="button" disabled>Stop</button><button class="btn btn--ghost dark-ghost" id="recordClear" type="button">Clear</button><a class="btn btn--ghost dark-ghost hidden" id="recordDownload" download="catherine-adriatic-speaking.webm">Download recording</a><span id="recordingDot" class="hidden"><span class="recording-dot"></span> Recording…</span></div><p class="muted" id="recordStatus">Choose a speaking level, then record your answer.</p><audio id="recordAudio" controls class="hidden"></audio><label class="lab" style="margin-top:.7rem">One thing I want to improve<textarea class="textarea" id="speakingReflection" rows="3" placeholder="For example: use where and which correctly / give more detail / slow down…"></textarea></label></div>
+  </section>
+
+  <section class="section" id="sec9">
+    <div class="section__head"><div><span class="section-kicker">9 · WRITING</span><h2>Write about your upcoming trip</h2><p class="muted">Write in your own voice. The checklist helps you notice structure, not replace your ideas.</p></div></div>
+    <div class="two">
+      <article class="card"><h3>Your mission</h3><p>Write <strong>110–150 words</strong> about your trip. Include:</p><ul class="nice-list"><li>your dates: 15–25 September,</li><li>at least three places on your route,</li><li>one sentence with <strong>where</strong>,</li><li>one sentence with <strong>which</strong> or <strong>that</strong>,</li><li>one modal: <strong>can / could / might / should</strong>,</li><li>what you are most looking forward to.</li></ul><div class="smallrow"><button class="hintbtn" id="writingPlan" type="button">🧭 Insert a plan</button><button class="iconbtn" id="writingModel" type="button">👁️ Show model answer</button></div><div class="feedback hidden" id="writingHelp"></div></article>
+      <article class="card"><div class="card__head"><h3>Your message</h3><span class="pillTag"><span id="wordCount">0</span> words</span></div><textarea class="textarea" id="writingText" rows="15" placeholder="I’m going to Croatia and Montenegro from 15 to 25 September…"></textarea><div class="checklist" id="writingChecklist"></div><div class="smallrow"><button class="btn" id="writingCheck" type="button">✅ Check my structure</button><button class="iconbtn" id="writingSpeak" type="button">🔊 Listen</button><button class="iconbtn" id="writingCopy" type="button">📋 Copy</button></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="sec10">
+    <div class="section__head"><div><span class="section-kicker">10 · FINAL CONVERSATION</span><h2>Tell someone about your trip without reading a script</h2><p class="muted">Imagine a friend says: “That sounds amazing — where exactly are you going, and what will you do there?”</p></div></div>
+    <div class="final-builder">
+      <article class="card"><h3>Your 5-part speaking map</h3><div class="cuebox">1. <strong>DATES:</strong> 15–25 September<br>2. <strong>ROUTE:</strong> Croatia → Montenegro<br>3. <strong>DETAIL:</strong> a place where…<br>4. <strong>REACTION:</strong> what appeals to me…<br>5. <strong>NEXT:</strong> I might / we could…</div><h4>Useful chunks</h4><div class="phrase-bank" id="finalPhrases"></div><div class="smallrow"><button class="iconbtn" id="finalModel" type="button">👁️ Show 3-level models</button></div><div class="feedback hidden" id="finalModelBox"></div></article>
+      <article class="card"><div class="card__head"><h3>Your answer</h3><span class="pillTag">Aim: 60–90 sec</span></div><textarea class="textarea" id="finalAnswer" rows="13" placeholder="I’m going to…"></textarea><div class="smallrow"><button class="btn" id="finalCheck" type="button">✅ Check key language</button><button class="iconbtn" id="finalSpeak" type="button">🔊 Listen</button><button class="iconbtn" id="finalCopy" type="button">📋 Copy</button></div><div class="feedback hidden" id="finalFeedback"></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="sec11">
+    <div class="section__head"><div><span class="section-kicker">11 · QUALIOPI</span><h2>Progress & lesson record</h2><p class="muted">Automatic exercise evidence + manual oral/written assessment.</p></div></div>
+    <div class="two">
+      <article class="card"><div class="eval-donut-wrap"><div class="eval-donut" id="evaluationDonut"></div><div class="eval-score" id="evaluationScoreValue">0%</div></div><p id="overallResult" class="muted" style="text-align:center"></p></article>
+      <article class="card"><div class="evaluation-meta"><label class="lab">Learner<input class="input" id="learnerName" value="Catherine"/></label><label class="lab">Trainer<input class="input" id="trainerName" value="Tisha DOUTY-DOSIERE"/></label><label class="lab">Date<input class="input" id="evaluationDate" type="date"/></label></div></article>
+    </div>
+    <div class="card" style="margin-top:.8rem;overflow:auto"><table class="eval-table"><thead><tr><th>Objective</th><th>Evidence</th><th>Status</th></tr></thead><tbody id="evaluationRows"></tbody></table></div>
+    <div class="two" style="margin-top:.8rem">
+      <article class="card"><h3>Oral production</h3><label class="lab">Status<select class="select status-select" data-assessment="oral"><option value="not-started">Non commencé</option><option value="progress">En cours</option><option value="achieved">Acquis</option><option value="not-acquired">Non acquis</option></select></label><label class="lab" style="margin-top:.55rem">Comments<textarea class="textarea" rows="4" data-comment="oral"></textarea></label></article>
+      <article class="card"><h3>Written production</h3><label class="lab">Status<select class="select status-select" data-assessment="writing"><option value="not-started">Non commencé</option><option value="progress">En cours</option><option value="achieved">Acquis</option><option value="not-acquired">Non acquis</option></select></label><label class="lab" style="margin-top:.55rem">Comments<textarea class="textarea" rows="4" data-comment="writing"></textarea></label></article>
+    </div>
+    <div class="card" style="margin-top:.8rem"><div class="formgrid formgrid--3"><label class="lab">Satisfaction<select class="select" id="satisfaction"><option value="">—</option><option>Très satisfaite</option><option>Satisfaite</option><option>Mitigée</option><option>Insatisfaite</option></select></label><label class="lab">Confidence after lesson<select class="select" id="confidenceAfter"><option value="">—</option><option>Much more confident</option><option>More confident</option><option>About the same</option><option>I still need support</option></select></label><label class="lab">Most useful<input class="input" id="mostUseful" placeholder="Relative clauses / vocabulary / speaking…"/></label></div><label class="lab" style="margin-top:.6rem">Learner comments<textarea class="textarea" id="learnerComments" rows="3"></textarea></label><label class="lab" style="margin-top:.6rem">Trainer comments<textarea class="textarea" id="trainerComments" rows="3"></textarea></label><div class="smallrow"><button class="btn" id="copyEvaluation" type="button">📋 Copy summary</button><button class="btn btn--ghost dark-ghost" id="exportEvaluation" type="button">⬇️ Download report</button></div></div>
+  </section>
+
+  <section class="section source-note" id="sources">
+    <div class="section__head"><div><span class="section-kicker">TRAVEL FACTS</span><h2>Sources used to prepare the lesson</h2><p class="muted">Travel details can change. Check transport, opening times and weather shortly before the trip.</p></div></div>
+    <p class="note">Destination facts were checked against official tourism information. Useful references:</p>
+    <ul class="nice-list note">
+      <li><a href="https://tzdubrovnik.hr/lang/en/get/gradski_vodic/5302/city_walls_and_fortresses.html" target="_blank" rel="noopener">Dubrovnik Tourist Board · City Walls</a></li>
+      <li><a href="https://www.mljet.hr/?l=en" target="_blank" rel="noopener">Mljet Tourist Board</a></li>
+      <li><a href="https://www.montenegro.travel/en/unique-montenegro/jewels-of-the-adriatic/bay-of-kotor" target="_blank" rel="noopener">Montenegro Tourism · Bay of Kotor</a></li>
+      <li><a href="https://www.montenegro.travel/en/explore-montenegro/nature-and-adventure/hiking-and-trekking" target="_blank" rel="noopener">Montenegro Tourism · Hiking & Trekking</a></li>
+      <li><a href="https://www.montenegro.travel/en/unique-montenegro/canyons-of-montenegro/tara-canyon" target="_blank" rel="noopener">Montenegro Tourism · Tara Canyon</a></li>
+    </ul>
+  </section>
+
+  <footer class="footer"><div class="footer__inner"><div><strong>SpeakEasy Tisha · Catherine</strong><div class="tiny muted">Croatia & Montenegro · September travel conversation studio</div></div><a class="btn btn--ghost" href="#top">↑ Back to top</a></div></footer>
+</main>
+<div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+<script src="catherine-adriatic-travel-studio.js"></script>
+</body>
+</html>
