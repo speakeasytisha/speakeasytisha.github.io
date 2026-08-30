@@ -61,7 +61,7 @@
     ]
   };
   let currentCat='compare';
-  function renderVocab(){const arr=vocab[currentCat];$('#vocabGrid').innerHTML=arr.map(v=>`<article class="vocab-card" data-cat="${currentCat}"><div class="vocab-card-top"><div class="vocab-icon">${v.i}</div><div><div class="vocab-word">${esc(v.w)}</div><div class="vocab-pos">${esc(v.pos)}</div></div></div><span class="vocab-fr">${esc(v.fr)}</span><p class="vocab-def">${esc(v.d)}</p><p class="vocab-example">“${esc(v.e)}”</p><button class="vocab-audio" data-vocab-speak="${esc(v.w)}. ${esc(v.e)}">▶ Word + sentence</button></article>`).join('');}
+  function renderVocab(){const arr=vocab[currentCat];$('#vocabGrid').innerHTML=arr.map(v=>`<article class="vocab-card" data-cat="${currentCat}"><div class="vocab-card-top"><div class="vocab-icon">${v.i}</div><div><div class="vocab-word">${esc(v.w)}</div><div class="vocab-pos">${esc(v.pos)}</div></div></div><span class="vocab-fr">${esc(v.fr)}</span><p class="vocab-def">${esc(v.d)}</p><p class="vocab-example">“${esc(v.e)}”</p><button class="vocab-audio" data-vocab-speak="${esc(v.w)}. ${esc(v.e)}">▶ </button></article>`).join('');}
   renderVocab();
   $('#vocabTabs')?.addEventListener('click',e=>{const b=e.target.closest('button[data-cat]');if(!b)return;currentCat=b.dataset.cat;$$('#vocabTabs button').forEach(x=>x.classList.toggle('active',x===b));renderVocab();});
   document.addEventListener('click',e=>{const b=e.target.closest('[data-vocab-speak]');if(b)Speech.say(b.dataset.vocabSpeak)});
@@ -137,7 +137,7 @@
     ['🔎','find','found','found','trouver','to discover or locate something','We found a lovely café.'],
     ['📅','plan','planned','planned','planifier','to decide in advance what you are going to do','We planned the trip carefully.']
   ];
-  $('#verbGrid').innerHTML=verbs.map(v=>`<article class="verb-card"><div class="verb-icon">${v[0]}</div><h3>${v[1]}</h3><div class="verb-forms"><span><small>BASE</small>${v[1]}</span><span><small>PAST</small>${v[2]}</span><span><small>PP</small>${v[3]}</span></div><div class="verb-fr">${v[4]}</div><p class="verb-def">${v[5]}</p><p class="verb-example">${v[6]}</p><button data-verb-speak="${esc(`${v[1]}. ${v[6]}`)}">▶ Word + sentence</button></article>`).join('');
+  $('#verbGrid').innerHTML=verbs.map(v=>`<article class="verb-card"><div class="verb-icon">${v[0]}</div><h3>${v[1]}</h3><div class="verb-forms"><span><small>BASE</small>${v[1]}</span><span><small>PAST</small>${v[2]}</span><span><small>PP</small>${v[3]}</span></div><div class="verb-fr">${v[4]}</div><p class="verb-def">${v[5]}</p><p class="verb-example">${v[6]}</p><button data-verb-speak="${esc(`${v[1]}. ${v[6]}`)}"> ▶</button></article>`).join('');
   document.addEventListener('click',e=>{const b=e.target.closest('[data-verb-speak]');if(b)Speech.say(b.dataset.verbSpeak)});
 
   const verbQ=[
