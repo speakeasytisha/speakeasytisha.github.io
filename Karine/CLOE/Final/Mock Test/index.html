@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Karine — Simulation finale CLOE-style</title>
+  <meta name="description" content="Simulation pédagogique indépendante de type CLOE : 50 questions adaptatives, compréhension orale, entretien oral, écrits et bilan CECRL." />
+  <link rel="stylesheet" href="styles.css?v=4.3" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">C</div>
+        <div>
+          <strong>Simulation finale · Anglais professionnel</strong>
+          <span>Évaluation pédagogique indépendante · format CLOE-style</span>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button id="candidateViewBtn" class="ghost small" type="button">Vue candidate</button>
+        <button id="teacherViewBtn" class="ghost small" type="button">Console formateur</button>
+        <button id="saveIndicator" class="save-pill" type="button" disabled>● Sauvegardé</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="homeView" class="view active">
+        <div class="hero exam-shell">
+          <div class="hero-copy">
+            <div class="eyebrow">ÉVALUATION FINALE — KARINE CORMIER</div>
+            <h1>Votre simulation complète<br><span>CLOE-style</span></h1>
+            <p class="lead">Une simulation originale conçue pour mesurer votre niveau actuel après votre formation, dans un environnement proche de la logique et du rythme de la Certification CLOE.</p>
+            <div class="notice">
+              <strong>Important</strong>
+              <p>Cette page est un outil pédagogique indépendant. Elle n’est ni éditée ni certifiée par CCI France et ne remplace pas une Certification CLOE officielle.</p>
+            </div>
+          </div>
+          <div class="hero-card">
+            <div class="status-row"><span>Candidate</span><strong>Karine Cormier</strong></div>
+            <div class="status-row"><span>Langue</span><strong>Anglais professionnel</strong></div>
+            <div class="status-row"><span>Écrit informatisé</span><strong>50 questions · 50 min</strong></div>
+            <div class="status-row"><span>Entretien oral</span><strong>15–20 min</strong></div>
+            <div class="status-row"><span>Extension écrite</span><strong>3 productions</strong></div>
+            <div class="status-row"><span>Progression</span><strong>CECRL A1 → C2</strong></div>
+            <button id="startWrittenBtn" class="primary wide" type="button">Démarrer l’épreuve écrite</button>
+            <button id="resumeBtn" class="secondary wide hidden" type="button">Reprendre l’épreuve en cours</button>
+            <button id="openSavedResultsBtn" class="secondary wide hidden" type="button">Ouvrir le bilan sauvegardé</button>
+          </div>
+        </div>
+
+        <div class="section-grid exam-shell">
+          <article class="info-card">
+            <div class="step-num">01</div>
+            <h2>Épreuve informatisée</h2>
+            <p>50 questions adaptatives : vocabulaire, grammaire & syntaxe, expressions, compréhension écrite et compréhension orale.</p>
+            <div class="mini-bars"><span></span><span></span><span></span><span></span><span></span></div>
+          </article>
+          <article class="info-card">
+            <div class="step-num">02</div>
+            <h2>Entretien oral</h2>
+            <p>Trois phases : questions d’introduction, mise en situation professionnelle, discussion autour d’un sujet professionnel.</p>
+          </article>
+          <article class="info-card">
+            <div class="step-num">03</div>
+            <h2>Extension production écrite</h2>
+            <p>Trois tâches supplémentaires pour mesurer la qualité de vos messages et e-mails professionnels. Cette partie est ajoutée pour votre bilan pédagogique.</p>
+          </article>
+          <article class="info-card">
+            <div class="step-num">04</div>
+            <h2>Bilan & certificat de progression</h2>
+            <p>Résultats par compétence, estimation CECRL, comparaison avec le point de départ, commentaires formateur et certificat privé imprimable.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="writtenView" class="view">
+        <div class="exam-head exam-shell">
+          <div>
+            <div class="eyebrow" id="categoryEyebrow">ÉPREUVE ÉCRITE</div>
+            <h2 id="categoryTitle">Vocabulaire</h2>
+          </div>
+          <div class="timers">
+            <div class="timer-box"><span>Question</span><strong id="questionTimer">00:45</strong></div>
+            <div class="timer-box total"><span>Temps total</span><strong id="totalTimer">50:00</strong></div>
+          </div>
+        </div>
+        <div class="progress-wrap exam-shell">
+          <div class="progress-meta"><span id="progressText">Question 1 / 50</span><span id="levelHint">Test évolutif</span></div>
+          <div class="progress-track"><div id="progressBar"></div></div>
+        </div>
+
+        <div class="question-shell exam-shell">
+          <div class="question-card">
+            <div id="questionInstruction" class="instruction">Choisissez la meilleure réponse.</div>
+            <div id="readingPassage" class="reading-passage hidden"></div>
+            <div id="listeningPanel" class="listening-panel hidden">
+              <button id="playAudioBtn" class="audio-btn" type="button"><span class="speaker">◖)))</span> Écouter l’enregistrement</button>
+              <span id="audioPlays" class="audio-plays">2 écoutes disponibles</span>
+            </div>
+            <h3 id="questionPrompt"></h3>
+            <div id="options" class="options"></div>
+            <div id="practiceFeedback" class="feedback hidden"></div>
+            <div class="question-footer">
+              <span class="kbd-tip">Touches 1–4 pour répondre</span>
+              <button id="validateBtn" class="primary" type="button" disabled>Valider la réponse</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="writtenDoneView" class="view">
+        <div class="exam-shell narrow centered">
+          <div class="completion-card">
+            <div class="complete-icon">✓</div>
+            <div class="eyebrow">PARTIE INFORMATISÉE TERMINÉE</div>
+            <h1>Épreuve écrite enregistrée</h1>
+            <p>Les réponses sont sauvegardées. Le score détaillé reste masqué jusqu’au bilan final afin de conserver une expérience d’examen réaliste.</p>
+            <div class="next-grid">
+              <button id="goOralBtn" class="primary" type="button">Passer à l’entretien oral</button>
+              <button id="goWritingBtn" class="secondary" type="button">Faire l’extension écrite</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="oralView" class="view">
+        <div class="exam-shell">
+          <div class="section-title-row">
+            <div>
+              <div class="eyebrow">ENTRETIEN ORAL · 15–20 MINUTES</div>
+              <h1>Interaction avec l’évaluateur</h1>
+              <p>En vue candidate, écoutez simplement l’évaluateur. La console formateur contient les questions, relances et critères de notation.</p>
+            </div>
+            <div class="timer-box oral-total"><span>Entretien</span><strong id="oralTimer">20:00</strong></div>
+          </div>
+
+          <div id="oralCandidatePanel" class="candidate-panel">
+            <div class="camera-frame">
+              <div class="camera-icon">◉</div>
+              <h2>Votre entretien va commencer</h2>
+              <p>Répondez naturellement. Développez vos réponses et interagissez avec votre évaluateur.</p>
+              <div id="oralPhaseLabel" class="phase-chip">Partie 1 · Introduction</div>
+            </div>
+            <div class="oral-controls">
+              <button id="startOralTimerBtn" class="primary" type="button">Démarrer le chronomètre</button>
+              <button id="recordBtn" class="secondary" type="button">● Enregistrer la réponse</button>
+              <button id="stopRecordBtn" class="danger hidden" type="button">■ Arrêter</button>
+              <a id="recordingDownload" class="download-link hidden" download="karine-oral.webm">Télécharger l’enregistrement</a>
+            </div>
+            <div class="teacher-script-hint teacher-only">
+              <strong>Pour le formateur :</strong> vous n’avez rien à inventer. Le script complet avec vos phrases exactes, vos répliques de « client », les relances et les transitions se trouve dans la Console formateur.
+              <button id="showExaminerScriptBtn" class="ghost small" type="button">Ouvrir le script examinateur</button>
+            </div>
+          </div>
+
+          <div id="oralTeacherPanel" class="teacher-panel hidden">
+            <div class="teacher-banner"><strong>Console formateur · Script examinateur</strong><span>Tout ce qui est marqué ASK / SAY est ce que vous dites à voix haute. Les notes « Observe » restent privées.</span></div>
+            <div class="examiner-toolbar">
+              <div>Partie en cours :</div>
+              <button class="phase-tab active" data-oral-phase="0" type="button">1 · Introduction</button>
+              <button class="phase-tab" data-oral-phase="1" type="button">2 · Role-play</button>
+              <button class="phase-tab" data-oral-phase="2" type="button">3 · Discussion</button>
+            </div>
+            <div class="examiner-rules">
+              <strong>Mode examen :</strong> ne corrigez pas ses erreurs pendant l’entretien, n’offrez pas de vocabulaire et ne terminez pas ses phrases. Vous pouvez répéter une question une fois plus lentement et utiliser les relances proposées.
+            </div>
+            <div id="oralPhases"></div>
+            <div class="rubric-card">
+              <h2>Grille d’évaluation orale</h2>
+              <p class="muted">Sélectionnez le niveau observé pour chacun des cinq critères correspondant à l’évaluation orale CLOE.</p>
+              <div id="oralRubric" class="rubric-grid"></div>
+              <label class="field-label" for="oralComments">Commentaires formateur</label>
+              <textarea id="oralComments" rows="5" placeholder="Points forts, progrès, priorités…"></textarea>
+              <button id="saveOralBtn" class="primary" type="button">Enregistrer l’évaluation orale</button>
+            </div>
+          </div>
+          <div class="section-nav">
+            <button class="secondary" data-nav="home" type="button">Accueil</button>
+            <button id="oralToWritingBtn" class="primary" type="button">Continuer vers l’écrit</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="writingView" class="view">
+        <div class="exam-shell">
+          <div class="section-title-row">
+            <div>
+              <div class="eyebrow">EXTENSION PÉDAGOGIQUE</div>
+              <h1>Production écrite</h1>
+              <p>Trois productions professionnelles pour mesurer ce que vous savez réellement rédiger aujourd’hui.</p>
+            </div>
+            <div class="writing-clock timer-box"><span>Temps conseillé</span><strong>25–30 min</strong></div>
+          </div>
+          <div id="writingTasks"></div>
+          <div id="writingTeacherPanel" class="teacher-panel hidden">
+            <div class="rubric-card">
+              <h2>Grille d’évaluation écrite</h2>
+              <div id="writingRubric" class="rubric-grid"></div>
+              <label class="field-label" for="writingComments">Commentaires formateur</label>
+              <textarea id="writingComments" rows="5" placeholder="Correction, richesse, autonomie, organisation…"></textarea>
+              <button id="saveWritingBtn" class="primary" type="button">Enregistrer l’évaluation écrite</button>
+            </div>
+          </div>
+          <div class="section-nav">
+            <button class="secondary" data-nav="oral" type="button">Retour à l’oral</button>
+            <button id="goResultsBtn" class="primary" type="button">Voir le bilan final</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="resultsView" class="view">
+        <div class="exam-shell">
+          <div class="results-header">
+            <div>
+              <div class="eyebrow">BILAN FINAL</div>
+              <h1>Karine — progression et niveau actuel</h1>
+              <p>Ce bilan combine l’épreuve informatisée et les évaluations manuelles de l’oral et de l’écrit lorsque celles-ci sont renseignées.</p>
+            </div>
+            <div id="overallBadge" class="level-badge big">—</div>
+          </div>
+
+          <div class="baseline-card teacher-only">
+            <div>
+              <span class="eyebrow">POINT DE DÉPART DOCUMENTÉ · 27/08/2026</span>
+              <h2>Résultat CLOE officiel antérieur : A1</h2>
+            </div>
+            <p>Repères du relevé : expression orale A1+ sur les cinq critères ; compréhension orale B1 ; vocabulaire écrit A1+ ; grammaire/structure A1− ; pertinence/précision A1− ; compréhension écrite A1.</p>
+          </div>
+
+          <div id="resultsCards" class="results-grid"></div>
+
+          <div class="rubric-card teacher-only manual-final-card">
+            <div class="qualiopi-head">
+              <div>
+                <div class="eyebrow">NOTATION MANUELLE APRÈS L’ÉPREUVE</div>
+                <h2>Ajouter ou modifier les notes d’oral et d’écrit</h2>
+                <p class="muted">Ces champs permettent de noter les productions après coup <strong>sans effacer les réponses de Karine</strong>. La note /20 et le niveau CECRL sont enregistrés dans le même navigateur et repris dans la synthèse, le rapport JSON et le certificat.</p>
+              </div>
+            </div>
+
+            <div class="manual-grade-grid">
+              <section class="manual-grade-box">
+                <div class="manual-grade-head">
+                  <div>
+                    <span class="eyebrow">EXPRESSION ORALE</span>
+                    <h3>Note formateur</h3>
+                  </div>
+                  <div id="oralManualPercent" class="manual-percent">—</div>
+                </div>
+                <div class="manual-fields">
+                  <label>
+                    <span>Note /20</span>
+                    <input id="oralManualScore" type="number" min="0" max="20" step="0.5" inputmode="decimal" placeholder="Ex. 14" />
+                  </label>
+                  <label>
+                    <span>Niveau CECRL observé</span>
+                    <select id="oralManualLevel">
+                      <option value="">Non évalué</option>
+                      <option>A1−</option><option>A1</option><option>A1+</option>
+                      <option>A2−</option><option>A2</option><option>A2+</option>
+                      <option>B1−</option><option>B1</option><option>B1+</option>
+                      <option>B2−</option><option>B2</option><option>B2+</option>
+                      <option>C1</option><option>C2</option>
+                    </select>
+                  </label>
+                </div>
+                <label class="field-label" for="oralManualComments">Commentaire oral</label>
+                <textarea id="oralManualComments" rows="4" placeholder="Points forts, fluidité, interaction, priorités…"></textarea>
+                <button id="clearOralManualBtn" class="ghost small" type="button">Effacer uniquement la note manuelle</button>
+              </section>
+
+              <section class="manual-grade-box">
+                <div class="manual-grade-head">
+                  <div>
+                    <span class="eyebrow">PRODUCTION ÉCRITE</span>
+                    <h3>Note formateur</h3>
+                  </div>
+                  <div id="writingManualPercent" class="manual-percent">—</div>
+                </div>
+                <div class="manual-fields">
+                  <label>
+                    <span>Note /20</span>
+                    <input id="writingManualScore" type="number" min="0" max="20" step="0.5" inputmode="decimal" placeholder="Ex. 13" />
+                  </label>
+                  <label>
+                    <span>Niveau CECRL observé</span>
+                    <select id="writingManualLevel">
+                      <option value="">Non évalué</option>
+                      <option>A1−</option><option>A1</option><option>A1+</option>
+                      <option>A2−</option><option>A2</option><option>A2+</option>
+                      <option>B1−</option><option>B1</option><option>B1+</option>
+                      <option>B2−</option><option>B2</option><option>B2+</option>
+                      <option>C1</option><option>C2</option>
+                    </select>
+                  </label>
+                </div>
+                <label class="field-label" for="writingManualComments">Commentaire écrit</label>
+                <textarea id="writingManualComments" rows="4" placeholder="Correction, respect des consignes, richesse, autonomie…"></textarea>
+                <button id="clearWritingManualBtn" class="ghost small" type="button">Effacer uniquement la note manuelle</button>
+              </section>
+            </div>
+            <div class="manual-grade-actions">
+              <span class="manual-safe-note">✓ Les réponses et les scores automatiques restent intacts.</span>
+              <button id="saveManualGradesBtn" class="primary" type="button">Enregistrer les notes et recalculer</button>
+            </div>
+          </div>
+
+          <div class="rubric-card teacher-only qualiopi-card">
+            <div class="qualiopi-head">
+              <div>
+                <div class="eyebrow">SUIVI QUALIOPI</div>
+                <h2>Rapport de progression par compétence</h2>
+              </div>
+              <button id="copySummaryBtn" class="secondary small" type="button">Copier la synthèse</button>
+            </div>
+            <div class="table-wrap">
+              <table class="progress-table">
+                <thead><tr><th>Compétence / exercice</th><th>Évaluation</th><th>Niveau</th><th>Statut</th></tr></thead>
+                <tbody id="qualiopiRows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="report-grid">
+            <div class="rubric-card">
+              <h2>Synthèse pédagogique</h2>
+              <div id="summaryText" class="summary-box"></div>
+              <label class="field-label" for="finalComments">Commentaire final</label>
+              <textarea id="finalComments" rows="6" placeholder="Ex. Karine communique maintenant avec davantage d’autonomie…"></textarea>
+              <label class="field-label" for="finalStatus">Statut Qualiopi</label>
+              <select id="finalStatus">
+                <option>Non commencé</option>
+                <option>En cours</option>
+                <option selected>Acquis</option>
+                <option>Non acquis</option>
+              </select>
+            </div>
+            <div class="rubric-card">
+              <h2>Actions</h2>
+              <button id="refreshResultsBtn" class="secondary wide" type="button">Recalculer le bilan</button>
+              <button id="downloadResultsBtn" class="secondary wide" type="button">Télécharger la synthèse (.json)</button>
+              <button id="printReportBtn" class="secondary wide" type="button">Imprimer le rapport</button>
+              <button id="showCertificateBtn" class="primary wide" type="button">Créer le certificat de progression</button>
+              <div class="teacher-only reset-group">
+                <button id="resetWrittenBtn" class="danger-outline wide" type="button">⚠ Réinitialiser l’épreuve écrite et ses réponses</button>
+                <button id="resetOralBtn" class="danger-outline wide" type="button">⚠ Réinitialiser l’oral et ses notes</button>
+                <button id="resetWritingBtn" class="danger-outline wide" type="button">⚠ Réinitialiser la production écrite et ses réponses</button>
+              </div>
+              <button id="resetAllBtn" class="danger-outline wide" type="button">Réinitialiser toute l’évaluation</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="certificateView" class="view certificate-view">
+        <div id="certificate" class="certificate">
+          <div class="certificate-top">
+            <div class="cert-mark">ST</div>
+            <div class="cert-brand">SpeakEasyTisha</div>
+            <div class="cert-label">CERTIFICAT PRIVÉ DE PROGRESSION</div>
+          </div>
+          <div class="certificate-body">
+            <p class="cert-kicker">Anglais professionnel · Évaluation finale</p>
+            <h1>Karine Cormier</h1>
+            <p class="cert-copy">a réalisé une simulation complète de type CLOE et a démontré, au terme de son parcours de formation, un niveau pédagogique estimé de</p>
+            <div id="certLevel" class="cert-level">—</div>
+            <p id="certDescriptor" class="cert-descriptor">Niveau en attente de l’évaluation finale.</p>
+            <div class="cert-scores" id="certScores"></div>
+            <div class="cert-progress" id="certProgress"></div>
+            <p class="cert-disclaimer">Ce document est une attestation pédagogique privée délivrée par la formatrice. Il ne constitue pas une Certification CLOE officielle, ni un document de CCI France.</p>
+          </div>
+          <div class="certificate-bottom">
+            <div><span>Date</span><strong id="certDate"></strong></div>
+            <div class="signature"><span>Formatrice</span><strong>Tisha · SpeakEasyTisha</strong></div>
+          </div>
+        </div>
+        <div class="certificate-actions no-print">
+          <button id="backResultsBtn" class="secondary" type="button">Retour au bilan</button>
+          <button id="printCertificateBtn" class="primary" type="button">Imprimer / Enregistrer en PDF</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="app.js?v=4.3"></script>
+</body>
+</html>
