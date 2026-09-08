@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#173c3a" />
+  <title>Edith · Lesson 1 — Getting to Know Each Other</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Caveat:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="paper-noise" aria-hidden="true"></div>
+
+  <header class="hero" id="top">
+    <nav class="topbar" aria-label="Lesson controls">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <span class="brand-mark">SE</span>
+        <span>SpeakEasy English</span>
+      </a>
+      <div class="top-controls">
+        <div class="segmented" role="group" aria-label="English accent">
+          <button class="seg-btn active" data-accent="en-GB" type="button">🇬🇧 UK</button>
+          <button class="seg-btn" data-accent="en-US" type="button">🇺🇸 US</button>
+        </div>
+        <button class="utility-btn" id="frToggle" type="button" aria-pressed="false">FR help</button>
+        <button class="utility-btn" id="resetAll" type="button">↺ Reset</button>
+      </div>
+    </nav>
+
+    <div class="hero-grid wrap">
+      <div class="hero-copy">
+        <div class="eyebrow">LESSON 01 · 75 MIN · STARTING POINT</div>
+        <h1>Edith <span>— Getting to Know Each Other</span></h1>
+        <p class="hero-lede">A relaxed first stop: your English, your goals, the way you learn, and the roadmap we’ll build together.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#welcome">Start the journey →</a>
+          <button class="btn ghost speak" type="button" data-speak="Welcome to your first lesson. Today is about getting to know each other, understanding how you learn, and setting the direction for your English programme.">🔊 Listen</button>
+        </div>
+        <div class="fr-help callout-fr" hidden>
+          Premier cours détendu : faire connaissance, comprendre vos objectifs, découvrir votre façon d'apprendre et construire ensemble votre parcours.
+        </div>
+      </div>
+
+      <aside class="passport-card" aria-label="Course passport">
+        <div class="passport-stamp">YOUR ENGLISH PASSPORT</div>
+        <div class="passport-row"><span>Starting point</span><strong>A2.2+</strong></div>
+        <div class="passport-row"><span>Destination</span><strong>B1.1−</strong></div>
+        <div class="passport-row"><span>Programme</span><strong>19 hours</strong></div>
+        <div class="passport-row"><span>Focus</span><strong>Everyday + travel English</strong></div>
+        <div class="passport-row"><span>Certification</span><strong>Bright</strong></div>
+        <div class="stamp-circle">LET'S<br>GO!</div>
+      </aside>
+    </div>
+  </header>
+
+  <div class="progress-shell">
+    <div class="wrap progress-inner">
+      <div class="progress-label"><span id="progressPercent">0%</span> explored</div>
+      <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+      <button class="mini-btn" id="jumpNext" type="button">Next stop ↓</button>
+    </div>
+  </div>
+
+  <main>
+    <section class="section wrap" id="welcome" data-section>
+      <div class="section-kicker">01 · WELCOME</div>
+      <div class="section-heading">
+        <div>
+          <h2>Start with your <em>why</em></h2>
+          <p>This is not another placement test. It’s our chance to decide what useful English looks like for you.</p>
+        </div>
+        <span class="time-chip">7 min</span>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <h3>What would make English more useful to you?</h3>
+          <p class="muted">Choose as many as you like.</p>
+          <div class="choice-cloud multi-select" id="whyChoices">
+            <button type="button" data-value="travel more independently">🧳 Travel independently</button>
+            <button type="button" data-value="understand spoken English more easily">🎧 Understand people</button>
+            <button type="button" data-value="speak without searching for every word">💬 Speak more freely</button>
+            <button type="button" data-value="feel more confident">✨ Feel confident</button>
+            <button type="button" data-value="have conversations with international people">🌍 International conversations</button>
+            <button type="button" data-value="understand films and series">🎬 Films & series</button>
+            <button type="button" data-value="write messages and emails more easily">✉️ Messages & emails</button>
+            <button type="button" data-value="prepare progressively for Bright">⏱️ Prepare for Bright</button>
+          </div>
+          <div class="fr-help" hidden><strong>Aide :</strong> choisissez toutes les raisons qui vous correspondent.</div>
+        </article>
+
+        <article class="card prompt-card">
+          <span class="tape">YOUR VOICE</span>
+          <h3>Finish the thought</h3>
+          <label for="whyText">English would make a real difference to me when…</label>
+          <textarea id="whyText" rows="7" placeholder="Write a few words or a full sentence…"></textarea>
+          <div class="inline-actions">
+            <button class="mini-btn hint-btn" type="button" data-hint="whyHint">Need a starter?</button>
+            <button class="mini-btn speak-input" type="button" data-target="whyText">🔊 Read mine</button>
+          </div>
+          <div class="hint" id="whyHint" hidden>Try: <strong>When I travel, I would like to…</strong> / <strong>I want to feel more comfortable when…</strong></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wide-band" id="method" data-section>
+      <div class="wrap">
+        <div class="section-kicker light">02 · HOW WE'LL WORK</div>
+        <div class="section-heading light">
+          <div>
+            <h2>Use it. Notice it. Fix it. Reuse it.</h2>
+            <p>Your lessons are designed around practical communication, guided practice and repeated use — not isolated grammar lists.</p>
+          </div>
+          <span class="time-chip light">5 min</span>
+        </div>
+        <div class="method-grid">
+          <article><span>🎧</span><h3>Listen</h3><p>Catch the main idea, then the precise detail.</p></article>
+          <article><span>🗣️</span><h3>Speak</h3><p>Build answers, react and keep conversations going.</p></article>
+          <article><span>📖</span><h3>Read</h3><p>Find useful information and follow the logic.</p></article>
+          <article><span>✍️</span><h3>Write</h3><p>Build short, organised texts step by step.</p></article>
+          <article><span>🧩</span><h3>Build</h3><p>Learn grammar and vocabulary inside real situations.</p></article>
+          <article><span>🔁</span><h3>Reuse</h3><p>Bring language back until it becomes automatic.</p></article>
+        </div>
+        <div class="fr-help dark-fr" hidden>On travaille l'anglais en contexte : comprendre, parler, corriger, puis réutiliser. L'objectif est l'autonomie et la fluidité.</div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="roadmap" data-section>
+      <div class="section-kicker">03 · YOUR ROADMAP</div>
+      <div class="section-heading">
+        <div>
+          <h2>From functional English to <em>more independent English</em></h2>
+          <p>Your programme is flexible. These are our main destinations; we can spend more time where it is most useful.</p>
+        </div>
+        <span class="time-chip">8 min</span>
+      </div>
+
+      <div class="roadmap" id="roadmapCards">
+        <article class="road-stop current"><div class="stop-no">01</div><h3>Getting to know each other</h3><p>Goals, confidence, learning style, first natural-English habits.</p></article>
+        <article class="road-stop"><div class="stop-no">02</div><h3>Everyday conversation</h3><p>Questions, reactions, follow-up questions and longer answers.</p></article>
+        <article class="road-stop"><div class="stop-no">03</div><h3>Life now & plans ahead</h3><p>Present, present continuous and future forms in real contexts.</p></article>
+        <article class="road-stop"><div class="stop-no">04</div><h3>Travel stories</h3><p>Past experiences, sequence, description and storytelling.</p></article>
+        <article class="road-stop"><div class="stop-no">05</div><h3>Travel with confidence</h3><p>Transport, hotels, restaurants, directions and practical requests.</p></article>
+        <article class="road-stop"><div class="stop-no">06</div><h3>Natural English lab</h3><p>Prepositions, false friends, comparisons and idiomatic phrasing.</p></article>
+        <article class="road-stop"><div class="stop-no">07</div><h3>Listening for precision</h3><p>Main idea + exact details, natural speed, different voices and intonation.</p></article>
+        <article class="road-stop"><div class="stop-no">08</div><h3>Reading & reformulating</h3><p>Practical texts, connectors, key information and short summaries.</p></article>
+        <article class="road-stop"><div class="stop-no">09</div><h3>Opinions & comparisons</h3><p>Give reasons, compare choices, recommend and justify.</p></article>
+        <article class="road-stop"><div class="stop-no">10</div><h3>Writing with confidence</h3><p>Messages, emails, descriptions and structured short texts.</p></article>
+        <article class="road-stop"><div class="stop-no">11</div><h3>Fluency lab</h3><p>Longer answers, varied sentence starters and fewer French calques.</p></article>
+        <article class="road-stop"><div class="stop-no">12</div><h3>Bright skills practice</h3><p>Timed comprehension, vocabulary and grammar practice, then targeted review.</p></article>
+      </div>
+
+      <div class="note-card">
+        <strong>Important:</strong> Bright preparation here is based on the language skills in your programme: comprehension, vocabulary, grammar, speed and precision. We will not invent test sections that are not documented in your training materials.
+      </div>
+    </section>
+
+    <section class="section wrap" id="documents" data-section>
+      <div class="section-kicker">04 · YOUR TRAINING TOOLKIT</div>
+      <div class="section-heading">
+        <div><h2>Know what you’re working toward</h2><p>We’ll take a few minutes to make the programme and the administrative side completely clear.</p></div>
+        <span class="time-chip">5 min</span>
+      </div>
+
+      <div class="admin-checklist" id="adminChecklist">
+        <label><input type="checkbox" data-admin="programme"><span><b>Programme indicatif</b><small>Review the 19-hour pathway and target level.</small></span></label>
+        <label><input type="checkbox" data-admin="objectifs"><span><b>Objectifs visés</b><small>Translate the objectives into real things you will be able to do.</small></span></label>
+        <label><input type="checkbox" data-admin="fiche"><span><b>Fiche pédagogique</b><small>See how objectives and progress are followed during training.</small></span></label>
+        <label><input type="checkbox" data-admin="digiforma"><span><b>Digiforma</b><small>See where the training documents and attendance records are managed.</small></span></label>
+        <label><input type="checkbox" data-admin="emargements"><span><b>Émargements</b><small>Review how attendance signatures work.</small></span></label>
+      </div>
+      <div class="admin-status"><span id="adminCount">0/5 reviewed</span><div class="tiny-track"><i id="adminBar"></i></div></div>
+    </section>
+
+    <section class="section wrap" id="about" data-section>
+      <div class="section-kicker">05 · ABOUT YOU</div>
+      <div class="section-heading">
+        <div><h2>Build your introduction — <em>one piece at a time</em></h2><p>No blank page. Add the pieces you want, then generate a natural first version.</p></div>
+        <span class="time-chip">10 min</span>
+      </div>
+
+      <div class="builder-layout">
+        <div class="builder-steps">
+          <article class="builder-step">
+            <span>1</span><div><h3>Where you are</h3><label for="introPlace">I live in / I'm from…</label><input id="introPlace" type="text" placeholder="e.g. I live near the coast…"></div>
+          </article>
+          <article class="builder-step">
+            <span>2</span><div><h3>Your life today</h3><label for="introLife">At the moment…</label><input id="introLife" type="text" placeholder="e.g. At the moment, I…"></div>
+          </article>
+          <article class="builder-step">
+            <span>3</span><div><h3>Your interests</h3><label for="introInterests">In my free time…</label><input id="introInterests" type="text" placeholder="e.g. I enjoy travelling and…"></div>
+          </article>
+          <article class="builder-step">
+            <span>4</span><div><h3>Your English</h3><label for="introEnglish">I want to improve my English because…</label><input id="introEnglish" type="text" placeholder="e.g. I want to feel more independent when…"></div>
+          </article>
+          <article class="builder-step">
+            <span>5</span><div><h3>Your priority</h3><label for="introPriority">I especially want to become better at…</label><input id="introPriority" type="text" placeholder="e.g. understanding spoken English…"></div>
+          </article>
+        </div>
+
+        <aside class="builder-output sticky-card">
+          <span class="postcard-label">MY FIRST INTRODUCTION</span>
+          <div id="introOutput" class="generated-text">Your introduction will appear here.</div>
+          <div class="stack-actions">
+            <button class="btn primary" id="buildIntro" type="button">Build my introduction ✨</button>
+            <button class="btn ghost speak-output" type="button" data-output="introOutput">🔊 Listen</button>
+            <button class="btn ghost" id="copyIntro" type="button">⧉ Copy</button>
+          </div>
+          <button class="model-link" type="button" data-model="introModels">See 2 model introductions</button>
+          <div class="models" id="introModels" hidden>
+            <div><b>Clear & simple</b><p>I live in France and I enjoy travelling and discovering new places. I want to improve my English because it is important when I travel. I can understand quite a lot, but I would like to speak more easily and feel more confident in conversations.</p></div>
+            <div><b>More developed</b><p>One of the main reasons I want to improve my English is that I enjoy travelling and discovering other cultures. I already have a useful base, but I would like to become more independent when I communicate abroad. I especially want to understand spoken English more precisely and express my ideas without translating everything from French first.</p></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section soft-bg" id="selfcheck" data-section>
+      <div class="wrap">
+        <div class="section-kicker">06 · YOUR ENGLISH TODAY</div>
+        <div class="section-heading">
+          <div><h2>A confidence snapshot</h2><p>This is how English feels to you today — not a grade.</p></div>
+          <span class="time-chip">5 min</span>
+        </div>
+        <div class="slider-grid" id="confidenceGrid">
+          <label>🎧 Listening <input type="range" min="1" max="5" value="3" data-skill="Listening"><output>3</output></label>
+          <label>🗣️ Speaking <input type="range" min="1" max="5" value="3" data-skill="Speaking"><output>3</output></label>
+          <label>📖 Reading <input type="range" min="1" max="5" value="3" data-skill="Reading"><output>3</output></label>
+          <label>✍️ Writing <input type="range" min="1" max="5" value="3" data-skill="Writing"><output>3</output></label>
+          <label>🧩 Grammar <input type="range" min="1" max="5" value="3" data-skill="Grammar"><output>3</output></label>
+          <label>🧠 Vocabulary <input type="range" min="1" max="5" value="3" data-skill="Vocabulary"><output>3</output></label>
+          <label>🎙️ Pronunciation <input type="range" min="1" max="5" value="3" data-skill="Pronunciation"><output>3</output></label>
+          <label>✨ Confidence <input type="range" min="1" max="5" value="3" data-skill="Confidence"><output>3</output></label>
+        </div>
+        <div class="scale-key"><span>1 · very difficult</span><span>3 · it depends</span><span>5 · very comfortable</span></div>
+        <article class="card mt">
+          <label for="biggestDifference"><b>If one area improved significantly, which would make the biggest difference to you?</b></label>
+          <textarea id="biggestDifference" rows="3" placeholder="For me, the biggest difference would be…"></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="learning" data-section>
+      <div class="section-kicker">07 · HOW DO YOU LEARN BEST?</div>
+      <div class="section-heading">
+        <div><h2>Build your learning recipe</h2><p>Choose what genuinely helps you remember and use English.</p></div>
+        <span class="time-chip">8 min</span>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <h3>What helps you remember?</h3>
+          <div class="check-grid" id="learningMethods">
+            <label><input type="checkbox" value="seeing words written"><span>👀 Seeing words written</span></label>
+            <label><input type="checkbox" value="hearing words"><span>🎧 Hearing words</span></label>
+            <label><input type="checkbox" value="repeating aloud"><span>🗣️ Repeating aloud</span></label>
+            <label><input type="checkbox" value="using language in conversation"><span>💬 Using it in conversation</span></label>
+            <label><input type="checkbox" value="writing an example"><span>✍️ Writing an example</span></label>
+            <label><input type="checkbox" value="seeing a French translation"><span>🇫🇷 Seeing a translation</span></label>
+            <label><input type="checkbox" value="understanding the grammar rule"><span>🧩 Understanding the rule</span></label>
+            <label><input type="checkbox" value="discovering through examples"><span>🔎 Discovering through examples</span></label>
+            <label><input type="checkbox" value="correcting my own mistakes"><span>🛠️ Correcting my mistakes</span></label>
+            <label><input type="checkbox" value="role-playing real situations"><span>🎭 Role-playing real situations</span></label>
+            <label><input type="checkbox" value="revisiting language later"><span>🔁 Revisiting it later</span></label>
+            <label><input type="checkbox" value="doing short interactive exercises"><span>🎮 Short interactive practice</span></label>
+          </div>
+        </article>
+
+        <article class="card preference-card">
+          <h3>Which feels more like you?</h3>
+          <div class="either-or" data-pref="speaking">
+            <button type="button" data-value="prepare before speaking">I like time to prepare</button>
+            <span>or</span>
+            <button type="button" data-value="try first and correct afterwards">I prefer trying first</button>
+          </div>
+          <div class="either-or" data-pref="grammar">
+            <button type="button" data-value="clear grammar explanations">Clear grammar explanations</button>
+            <span>or</span>
+            <button type="button" data-value="grammar through examples">Grammar through examples</button>
+          </div>
+          <div class="either-or" data-pref="activity">
+            <button type="button" data-value="structured exercises">Structured exercises</button>
+            <span>or</span>
+            <button type="button" data-value="open conversation">Open conversation</button>
+          </div>
+          <div class="either-or" data-pref="correction">
+            <button type="button" data-value="immediate correction">Correct me immediately</button>
+            <span>or</span>
+            <button type="button" data-value="review after speaking">Review mistakes afterwards</button>
+          </div>
+          <div class="either-or" data-pref="topics">
+            <button type="button" data-value="planned topics">Planned topics</button>
+            <span>or</span>
+            <button type="button" data-value="spontaneous topics too">Spontaneous topics too</button>
+          </div>
+          <div class="learning-summary" id="learningSummary">Make a few choices and your learning profile will appear here.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="vocab" data-section>
+      <div class="section-kicker">08 · WORD BAG</div>
+      <div class="section-heading">
+        <div><h2>Useful words for talking about <em>you</em></h2><p>Explore by category. Every card includes French support, a clear meaning, an example and audio.</p></div>
+        <span class="time-chip">5 min</span>
+      </div>
+      <div class="vocab-toolbar">
+        <div class="vocab-tabs" id="vocabTabs"></div>
+        <input id="vocabSearch" type="search" placeholder="Search a word…" aria-label="Search vocabulary">
+      </div>
+      <div class="vocab-grid" id="vocabGrid"></div>
+    </section>
+
+    <section class="section wrap" id="likes" data-section>
+      <div class="section-kicker">09 · LIKE, LOVE, DON'T MIND…</div>
+      <div class="section-heading">
+        <div><h2>Talk about what makes you <em>you</em></h2><p>Choose a topic, build one sentence, then add a reason or example.</p></div>
+        <span class="time-chip">7 min</span>
+      </div>
+
+      <div class="preference-builder card">
+        <div class="pref-row">
+          <label>1 · Choose a starter
+            <select id="likeStarter">
+              <option value="I really enjoy">I really enjoy…</option>
+              <option value="I quite like">I quite like…</option>
+              <option value="I'm interested in">I'm interested in…</option>
+              <option value="I don't mind">I don't mind…</option>
+              <option value="I'm not very interested in">I'm not very interested in…</option>
+              <option value="I really don't like">I really don't like…</option>
+            </select>
+          </label>
+          <label>2 · Add an activity
+            <input id="likeActivity" type="text" placeholder="travelling / cooking / walking…">
+          </label>
+          <label>3 · Add a reason
+            <input id="likeReason" type="text" placeholder="because…">
+          </label>
+        </div>
+        <div class="built-sentence" id="likeOutput">Your sentence will appear here.</div>
+        <div class="inline-actions"><button class="btn primary" id="buildLike" type="button">Build it</button><button class="btn ghost speak-output" type="button" data-output="likeOutput">🔊 Listen</button></div>
+      </div>
+
+      <div class="conversation-prompts">
+        <article><span>🧳</span><h3>Travel</h3><p>What kind of holidays do you prefer?</p></article>
+        <article><span>🎬</span><h3>Series & films</h3><p>What makes a series interesting to you?</p></article>
+        <article><span>🍽️</span><h3>Food</h3><p>Is there anything you love cooking or eating?</p></article>
+        <article><span>🌿</span><h3>Free time</h3><p>What helps you relax?</p></article>
+      </div>
+    </section>
+
+    <section class="section challenge-band" id="grammar" data-section>
+      <div class="wrap">
+        <div class="section-kicker light">10 · NATURAL ENGLISH CHALLENGE</div>
+        <div class="section-heading light">
+          <div><h2>Small changes, more natural English</h2><p>A quick, friendly check using language that will be useful throughout your programme.</p></div>
+          <span class="time-chip light">8 min</span>
+        </div>
+        <div class="quiz-shell">
+          <div class="quiz-top"><span id="quizCounter">Question 1</span><span id="quizScore">0 correct</span></div>
+          <div id="quizQuestion" class="quiz-question"></div>
+          <div id="quizOptions" class="quiz-options"></div>
+          <div id="quizFeedback" class="quiz-feedback" aria-live="polite"></div>
+          <div class="quiz-actions">
+            <button class="btn pale" id="quizHint" type="button">Hint</button>
+            <button class="btn primary" id="quizNext" type="button" disabled>Next →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="microgrammar" data-section>
+      <div class="section-kicker">11 · QUICK GRAMMAR WIN</div>
+      <div class="section-heading">
+        <div><h2>I like doing vs I’d like to do</h2><p>A simple distinction that immediately helps you talk about yourself.</p></div>
+        <span class="time-chip">5 min</span>
+      </div>
+      <div class="grammar-compare">
+        <article><span class="scribble">habit / enjoyment</span><h3>I like + <b>-ing</b></h3><p>Something you generally enjoy.</p><blockquote>I like travelling.<br>I like watching series.</blockquote></article>
+        <article><span class="scribble">wish / goal</span><h3>I’d like to + <b>verb</b></h3><p>Something you want to do.</p><blockquote>I’d like to visit Canada.<br>I’d like to speak more confidently.</blockquote></article>
+      </div>
+      <div class="mini-exercises" id="likeGrammarExercises"></div>
+      <article class="card mt">
+        <h3>Make it personal</h3>
+        <div class="grid two compact">
+          <label>I like… <input id="personalLike" type="text" placeholder="I like travelling."></label>
+          <label>I'd like to… <input id="personalWouldLike" type="text" placeholder="I'd like to visit…"></label>
+        </div>
+        <div class="inline-actions"><button class="mini-btn speak-input" type="button" data-target="personalLike">🔊 Listen to mine</button><button class="mini-btn speak-input" type="button" data-target="personalWouldLike">🔊 Listen to mine</button></div>
+      </article>
+    </section>
+
+    <section class="section soft-bg" id="checkpoint" data-section>
+      <div class="wrap">
+        <div class="section-kicker">12 · OPTIONAL FIRST-LESSON CHECKPOINT</div>
+        <div class="section-heading">
+          <div><h2>A tiny skills passport</h2><p>Use this only if there is time. It gives us a natural first snapshot without turning the lesson into an exam.</p></div>
+          <span class="time-chip">optional</span>
+        </div>
+
+        <div class="skill-tabs" role="tablist">
+          <button class="skill-tab active" data-panel="listenPanel" type="button">🎧 Listen</button>
+          <button class="skill-tab" data-panel="readPanel" type="button">📖 Read</button>
+          <button class="skill-tab" data-panel="speakPanel" type="button">🗣️ Speak</button>
+          <button class="skill-tab" data-panel="writePanel" type="button">✍️ Write</button>
+        </div>
+
+        <div class="skill-panel active" id="listenPanel">
+          <h3>Listen for the exact detail</h3>
+          <p>Listen once for the main idea. Listen again for the precise information.</p>
+          <button class="btn primary speak" type="button" data-speak="Good afternoon. Your room is ready now, but breakfast starts at seven thirty tomorrow morning. The restaurant is on the ground floor, next to reception. If you need a taxi for the airport, please book it before nine this evening.">▶ Play audio</button>
+          <button class="model-link" type="button" data-model="listenScript">Show script</button>
+          <div class="models" id="listenScript" hidden><p>Good afternoon. Your room is ready now, but breakfast starts at <strong>7:30 tomorrow morning</strong>. The restaurant is on the ground floor, next to reception. If you need a taxi for the airport, please book it before <strong>9:00 this evening</strong>.</p></div>
+          <div class="micro-q" data-answer="7:30 tomorrow morning">
+            <p><b>When does breakfast start?</b></p>
+            <button type="button">7:00 this evening</button><button type="button">7:30 tomorrow morning</button><button type="button">9:00 tomorrow morning</button>
+            <div class="micro-feedback"></div>
+          </div>
+        </div>
+
+        <div class="skill-panel" id="readPanel" hidden>
+          <h3>Read for key information</h3>
+          <div class="reading-card"><span>WEEKEND NOTE</span><p>We arrived in Porto on Friday evening and stayed in a small hotel near the river. On Saturday morning, we walked through the old town before taking a boat trip. The weather changed in the afternoon, so we visited a museum instead of going to the beach. It wasn't what we had planned, but it turned out to be one of the best parts of the weekend.</p></div>
+          <div class="micro-q" data-answer="They visited a museum."><p><b>What did they do when the weather changed?</b></p><button type="button">They went to the beach.</button><button type="button">They took another boat trip.</button><button type="button">They visited a museum.</button><div class="micro-feedback"></div></div>
+          <div class="micro-q" data-answer="It became one of the best parts of the weekend."><p><b>How did they feel about the change of plan?</b></p><button type="button">They were disappointed all day.</button><button type="button">It became one of the best parts of the weekend.</button><button type="button">They decided to go home.</button><div class="micro-feedback"></div></div>
+        </div>
+
+        <div class="skill-panel" id="speakPanel" hidden>
+          <h3>Speak for 45–60 seconds</h3>
+          <div class="mission-card"><b>Your mission</b><p>Talk about a place you have visited or would like to visit. Say where it is, why it interests you, what you can do there, and one thing you would recommend.</p></div>
+          <div class="builder-strips"><span>WHERE</span><span>WHY</span><span>WHAT YOU CAN DO</span><span>RECOMMENDATION</span></div>
+          <div class="record-row">
+            <button class="btn primary" id="recordBtn" type="button">● Start recording</button><span id="recordStatus">Recording is optional and stays in your browser.</span>
+          </div>
+          <audio id="recordPlayback" controls hidden></audio>
+          <button class="model-link" type="button" data-model="speakModels">Reveal 2 model answers</button>
+          <div class="models" id="speakModels" hidden>
+            <div><b>A2+/clear</b><p>I would like to visit Scotland because I love beautiful landscapes. I would like to see Edinburgh and travel through the countryside. I think it would be a good destination for walking and discovering a different culture. I would recommend going in spring if the weather is not too cold.</p></div>
+            <div><b>B1/more developed</b><p>One destination I would really like to explore is Scotland. What attracts me most is the combination of dramatic landscapes, historic cities and local culture. I’d like to spend a few days in Edinburgh and then travel north to see the Highlands. I would probably recommend travelling outside the busiest summer period because it might be easier to enjoy the scenery and smaller towns.</p></div>
+          </div>
+        </div>
+
+        <div class="skill-panel" id="writePanel" hidden>
+          <h3>Build a short paragraph</h3>
+          <div class="writing-staircase">
+            <div><span>1</span><b>Choose</b><p>A place you know or want to discover.</p></div>
+            <div><span>2</span><b>Explain</b><p>Why it interests you.</p></div>
+            <div><span>3</span><b>Add</b><p>One activity or detail.</p></div>
+            <div><span>4</span><b>Connect</b><p>Use because, but, so, however or although.</p></div>
+          </div>
+          <textarea id="writingCheckpoint" rows="7" placeholder="I'd like to visit… because…"></textarea>
+          <div class="word-row"><span><b id="writingWords">0</b> words</span><span>Target: 60–90 words</span></div>
+          <button class="model-link" type="button" data-model="writeModels">Reveal 2 model answers</button>
+          <div class="models" id="writeModels" hidden>
+            <div><b>A2+/clear</b><p>I’d like to visit Copenhagen because I have heard that it is a beautiful and easy city to explore. I would like to walk around the centre, see the colourful harbour and try some local food. I enjoy city trips, but I also like having time to relax. For me, it seems like a good balance.</p></div>
+            <div><b>B1/more developed</b><p>One city I’d really like to discover is Copenhagen. I’m interested in the way it combines modern design with a relaxed atmosphere and a strong cycling culture. I’d like to explore the city on foot, visit a few museums and spend time near the waterfront. Although it can be an expensive destination, I think the overall experience would be worth it.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="goals" data-section>
+      <div class="section-kicker">13 · YOUR PERSONAL GOALS</div>
+      <div class="section-heading">
+        <div><h2>Choose your first three destinations</h2><p>Make the programme personal. These goals will appear in your lesson report.</p></div>
+        <span class="time-chip">5 min</span>
+      </div>
+      <div class="goal-grid">
+        <label><span>💬 Communication goal</span><textarea id="goalCommunication" rows="4" placeholder="By the end of my programme, I would like to be able to…"></textarea></label>
+        <label><span>🧳 Travel goal</span><textarea id="goalTravel" rows="4" placeholder="When I travel, I would like to feel confident enough to…"></textarea></label>
+        <label><span>🧠 English habit</span><textarea id="goalHabit" rows="4" placeholder="One English habit I would like to improve is…"></textarea></label>
+      </div>
+    </section>
+
+    <section class="section wrap" id="agreement" data-section>
+      <div class="section-kicker">14 · YOUR LEARNING AGREEMENT</div>
+      <div class="section-heading"><div><h2>You do not need perfect English before you speak.</h2><p>Mistakes are useful information. Trying again is part of the method.</p></div><span class="time-chip">2 min</span></div>
+      <div class="permission-grid">
+        <span>✓ Ask for help</span><span>✓ Ask me to repeat</span><span>✓ Try a sentence twice</span><span>✓ Make mistakes</span><span>✓ Change your answer</span><span>✓ Use a model first</span><span>✓ Say “too easy”</span><span>✓ Say “too difficult”</span>
+      </div>
+      <div class="survival-strip">
+        <button class="speak" type="button" data-speak="Could you repeat that, please?">Could you repeat that, please? 🔊</button>
+        <button class="speak" type="button" data-speak="Could you speak a little more slowly?">Could you speak a little more slowly? 🔊</button>
+        <button class="speak" type="button" data-speak="What does this word mean?">What does this word mean? 🔊</button>
+        <button class="speak" type="button" data-speak="Can I try again?">Can I try again? 🔊</button>
+        <button class="speak" type="button" data-speak="I'm not sure, but I think...">I'm not sure, but I think… 🔊</button>
+      </div>
+    </section>
+
+    <section class="section teacher-zone" id="evaluation" data-section>
+      <div class="wrap">
+        <div class="section-kicker light">15 · FIRST-LESSON CHECKPOINT & QUALIOPI FOLLOW-UP</div>
+        <div class="section-heading light"><div><h2>Progress we can actually follow</h2><p>Automatic exercises are scored; speaking and writing remain teacher-assessed with a simple rubric.</p></div><span class="time-chip light">teacher</span></div>
+
+        <div class="eval-grid">
+          <article class="eval-card">
+            <h3>Automatic practice</h3>
+            <div class="big-score"><span id="autoScore">0%</span><small>interactive accuracy</small></div>
+            <p id="autoScoreDetail">Complete the interactive questions to generate a score.</p>
+          </article>
+          <article class="eval-card">
+            <h3>Objectives observed today</h3>
+            <div class="objective-checks" id="objectiveChecks">
+              <label><input type="checkbox" value="Introduces self with connected sentences"> Introduces self with connected sentences</label>
+              <label><input type="checkbox" value="Explains why English matters personally"> Explains why English matters personally</label>
+              <label><input type="checkbox" value="Talks about likes and preferences"> Talks about likes and preferences</label>
+              <label><input type="checkbox" value="Distinguishes like + -ing / would like to"> Uses like + -ing / would like to</label>
+              <label><input type="checkbox" value="Recognises selected natural-English corrections"> Recognises selected natural-English corrections</label>
+              <label><input type="checkbox" value="Identifies personal learning preferences"> Identifies learning preferences</label>
+            </div>
+          </article>
+          <article class="eval-card">
+            <h3>Oral — teacher rating</h3>
+            <label>Fluency<select id="oralFluency"><option value="">Not rated</option><option>1 · Needs support</option><option>2 · Developing</option><option>3 · Functional</option><option>4 · Confident today</option></select></label>
+            <label>Range<select id="oralRange"><option value="">Not rated</option><option>1 · Needs support</option><option>2 · Developing</option><option>3 · Functional</option><option>4 · Confident today</option></select></label>
+            <label>Interaction<select id="oralInteraction"><option value="">Not rated</option><option>1 · Needs support</option><option>2 · Developing</option><option>3 · Functional</option><option>4 · Confident today</option></select></label>
+          </article>
+          <article class="eval-card">
+            <h3>Writing — teacher rating</h3>
+            <label>Clarity<select id="writeClarity"><option value="">Not rated</option><option>1 · Needs support</option><option>2 · Developing</option><option>3 · Functional</option><option>4 · Confident today</option></select></label>
+            <label>Accuracy<select id="writeAccuracy"><option value="">Not rated</option><option>1 · Needs support</option><option>2 · Developing</option><option>3 · Functional</option><option>4 · Confident today</option></select></label>
+            <label>Organisation<select id="writeOrganisation"><option value="">Not rated</option><option>1 · Needs support</option><option>2 · Developing</option><option>3 · Functional</option><option>4 · Confident today</option></select></label>
+          </article>
+        </div>
+
+        <div class="grid two mt">
+          <article class="eval-card"><label for="teacherNotes"><h3>Teacher notes</h3></label><textarea id="teacherNotes" rows="6" placeholder="Strengths, points to revisit, useful observations…"></textarea></article>
+          <article class="eval-card"><label for="learnerReflection"><h3>Learner reflection</h3></label><textarea id="learnerReflection" rows="6" placeholder="Today I felt comfortable with… / I would like more practice with…"></textarea></article>
+        </div>
+
+        <div class="report-actions">
+          <button class="btn primary" id="downloadReport" type="button">↓ Download lesson report (.html)</button>
+          <button class="btn pale" id="printReport" type="button">🖨 Print / Save as PDF</button>
+          <button class="btn pale" id="saveLocal" type="button">💾 Save progress</button>
+          <span id="saveStatus" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div><b>Lesson 01</b><span>Getting to Know Each Other</span></div>
+      <div class="footer-quote">“Progress starts when English becomes yours.”</div>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
