@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Original LILATE IA-style training simulation for English certification preparation." />
+  <title>LILATE IA · Full Practice Simulation</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="exam-header">
+      <div class="brand-zone">
+        <div class="brand-mark" aria-hidden="true">L</div>
+        <div>
+          <div class="brand-title">LILATE IA · TRAINING SIMULATION</div>
+          <div class="brand-subtitle">English · Candidate practice environment</div>
+        </div>
+      </div>
+      <div class="header-status">
+        <span class="status-dot"></span>
+        <span id="sessionStatus">Ready</span>
+      </div>
+    </header>
+
+    <div class="exam-layout">
+      <aside class="left-panel">
+        <div class="candidate-card">
+          <span class="mini-label">CANDIDATE</span>
+          <strong>Marine</strong>
+          <small>Full LILATE IA-style mock</small>
+        </div>
+
+        <div class="mode-card">
+          <span class="mini-label">MODE</span>
+          <div class="segmented" role="group" aria-label="Choose mode">
+            <button id="examModeBtn" class="seg active" type="button">Exam</button>
+            <button id="practiceModeBtn" class="seg" type="button">Practice</button>
+          </div>
+          <p id="modeDescription">Exam mode hides help, corrections and models until the end.</p>
+        </div>
+
+        <div class="system-card">
+          <span class="mini-label">SYSTEM CHECK</span>
+          <div class="check-row"><span>Camera</span><strong id="cameraState">Not checked</strong></div>
+          <div class="camera-preview-wrap"><video id="cameraPreview" autoplay muted playsinline></video><div id="cameraPlaceholder">Camera preview</div></div>
+          <button id="checkCameraBtn" class="secondary small" type="button">Check camera</button>
+          <div class="check-row"><span>Microphone</span><strong id="micState">Ready to test</strong></div>
+        </div>
+
+        <div class="support-card">
+          <span class="mini-label">TRAINING SUPPORT</span>
+          <label class="control-row"><span>French help</span><input id="frenchToggle" type="checkbox" /></label>
+          <label class="stacked-label">Audio accent
+            <select id="accentSelect">
+              <option value="en-AU" selected>🇦🇺 Australian</option>
+              <option value="en-GB">🇬🇧 British</option>
+              <option value="en-US">🇺🇸 American</option>
+            </select>
+          </label>
+          <label class="stacked-label">Audio speed
+            <select id="speedSelect">
+              <option value="0.82">Slower</option>
+              <option value="0.94" selected>Natural</option>
+              <option value="1.04">Faster</option>
+            </select>
+          </label>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <section id="welcomeScreen" class="welcome-screen">
+          <div class="welcome-icon">✓</div>
+          <p class="eyebrow">FULL MOCK · IA MODALITY</p>
+          <h1>English certification simulation</h1>
+          <p class="lead">This original practice test reproduces the current LILATE IA structure: four professional communication parts combining comprehension, written production and recorded oral production.</p>
+          <p class="fr-help">Cette simulation originale reprend la structure actuelle du LILATE IA : quatre parties de communication professionnelle avec compréhension, production écrite et production orale enregistrée.</p>
+
+          <div class="welcome-grid">
+            <article><strong>4</strong><span>parts</span><small>About 7 minutes each</small></article>
+            <article><strong>12</strong><span>tasks</span><small>QCU · QCM · open responses</small></article>
+            <article><strong>≈29</strong><span>minutes</span><small>Item timers + overall clock</small></article>
+            <article><strong>4</strong><span>skills</span><small>Read · Listen · Write · Speak</small></article>
+          </div>
+
+          <div class="rules-box">
+            <h2>Before you begin</h2>
+            <ul>
+              <li>In <strong>Exam mode</strong>, corrections, French help and models stay hidden until review.</li>
+              <li>Each task has a response timer. When time expires, you can move on using “I don’t know / Continue”.</li>
+              <li>Listening tasks allow two plays in Exam mode.</li>
+              <li>Oral tasks use your browser microphone. Your recording stays on your device unless you download it.</li>
+              <li>Changing browser tabs is counted in Exam mode to reproduce supervised-test pressure.</li>
+            </ul>
+          </div>
+
+          <div class="notice">Training simulation only — original items, not an official LILATE test or interface.</div>
+          <button id="startExamBtn" class="primary large" type="button">Start the simulation</button>
+        </section>
+
+        <section id="examScreen" class="exam-screen hidden">
+          <div class="question-topbar">
+            <div>
+              <span id="partLabel" class="part-pill">PART 1</span>
+              <h2 id="partTitle">Accueil et interaction</h2>
+            </div>
+            <div class="timers">
+              <div><span>Question</span><strong id="questionTimer">01:30</strong></div>
+              <div><span>Elapsed</span><strong id="overallTimer">00:00</strong></div>
+            </div>
+          </div>
+
+          <div class="progress-wrap">
+            <div class="progress-meta"><span id="questionCounter">Question 1 of 12</span><span id="progressPercent">8%</span></div>
+            <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+          </div>
+
+          <div id="questionCard" class="question-card"></div>
+
+          <div class="question-footer">
+            <div class="left-actions">
+              <button id="helpBtn" class="secondary hidden" type="button">French help</button>
+              <button id="modelBtn" class="secondary hidden" type="button">Model answers</button>
+            </div>
+            <div class="right-actions">
+              <button id="dontKnowBtn" class="ghost" type="button">I don’t know / Continue</button>
+              <button id="nextBtn" class="primary" type="button">Validate & continue</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="resultsScreen" class="results-screen hidden">
+          <div class="result-hero">
+            <p class="eyebrow">SIMULATION COMPLETE</p>
+            <h1>Your LILATE IA practice report</h1>
+            <p>This is a training estimate, not an official CEFR result.</p>
+          </div>
+
+          <div class="result-grid">
+            <article class="score-card overall"><span>Objective questions</span><strong id="objectiveScore">0%</strong><small id="objectiveDetail">0 / 0</small></article>
+            <article class="score-card"><span>Part 1 · Interaction</span><strong id="p1Score">0%</strong></article>
+            <article class="score-card"><span>Part 2 · Transcription</span><strong id="p2Score">0%</strong></article>
+            <article class="score-card"><span>Part 3 · Transmission</span><strong id="p3Score">0%</strong></article>
+            <article class="score-card"><span>Part 4 · Exploitation</span><strong id="p4Score">0%</strong></article>
+            <article class="score-card"><span>Tab changes</span><strong id="tabChangesResult">0</strong><small>Training integrity indicator</small></article>
+          </div>
+
+          <section class="review-section">
+            <h2>Trainer scoring · open productions</h2>
+            <p>Use the rubric after listening to the recordings and reading the written answers.</p>
+            <div id="trainerRubrics" class="rubric-list"></div>
+          </section>
+
+          <section class="review-section">
+            <h2>Review & model answers</h2>
+            <div id="reviewList" class="review-list"></div>
+          </section>
+
+          <section class="review-section">
+            <h2>Trainer comments</h2>
+            <textarea id="trainerComments" rows="6" placeholder="Strengths, recurring errors, next priorities..."></textarea>
+          </section>
+
+          <div class="result-actions">
+            <button id="downloadTxtBtn" class="secondary" type="button">Download TXT results</button>
+            <button id="downloadHtmlBtn" class="secondary" type="button">Download HTML report</button>
+            <button id="printBtn" class="secondary" type="button">Print / Save PDF</button>
+            <button id="restartBtn" class="primary" type="button">Restart mock</button>
+          </div>
+        </section>
+      </main>
+
+      <aside class="right-panel">
+        <div class="section-map">
+          <span class="mini-label">TEST PROGRESS</span>
+          <button class="part-nav active" data-part="1" type="button"><span>1</span><div><strong>Accueil & interaction</strong><small>Identify · respond · welcome</small></div></button>
+          <button class="part-nav" data-part="2" type="button"><span>2</span><div><strong>Recueil & transcription</strong><small>Collect · reformulate · write</small></div></button>
+          <button class="part-nav" data-part="3" type="button"><span>3</span><div><strong>Recueil & transmission</strong><small>Relay · explain · clarify</small></div></button>
+          <button class="part-nav" data-part="4" type="button"><span>4</span><div><strong>Recueil & exploitation</strong><small>Analyse · decide · argue</small></div></button>
+        </div>
+
+        <div class="integrity-card">
+          <span class="mini-label">SESSION</span>
+          <div class="check-row"><span>Answered</span><strong id="answeredCount">0 / 12</strong></div>
+          <div class="check-row"><span>Tab changes</span><strong id="tabChanges">0</strong></div>
+          <div class="check-row"><span>Mode</span><strong id="modeBadge">EXAM</strong></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
