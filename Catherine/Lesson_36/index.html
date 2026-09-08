@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082b4a">
+  <meta name="description" content="Catherine's interactive CLOE exam-preparation lesson using an Adriatic travel theme.">
+  <title>Catherine — Adriatic CLOE Exam Mission</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to lesson content</a>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+
+<header class="hero" id="top">
+  <nav class="topbar">
+    <a href="#top" class="brand" aria-label="Back to top">
+      <span class="brand-mark">ST</span>
+      <span><strong>SpeakEasy Tisha</strong><small>CLOE · Adriatic Mission</small></span>
+    </a>
+    <div class="top-actions">
+      <label class="compact-control"><span>Mode</span>
+        <select id="lessonMode" aria-label="Lesson mode">
+          <option value="practice" selected>Practice</option>
+          <option value="exam">Exam</option>
+        </select>
+      </label>
+      <label class="compact-control"><span>Accent</span>
+        <select id="voiceAccent" aria-label="English accent">
+          <option value="en-GB" selected>🇬🇧 British</option>
+          <option value="en-US">🇺🇸 American</option>
+        </select>
+      </label>
+      <label class="compact-control"><span>Speed</span>
+        <select id="voiceRate" aria-label="Speech speed">
+          <option value="0.78">Slow</option>
+          <option value="0.92" selected>Clear</option>
+          <option value="1.05">Natural</option>
+        </select>
+      </label>
+      <label class="toggle-row"><input id="translationToggle" type="checkbox" checked><span class="toggle-ui"></span><span>FR help</span></label>
+      <button class="icon-button" id="saveBtn" type="button">💾 Save</button>
+      <button class="icon-button" id="printBtn" type="button">🖨️ Print / PDF</button>
+    </div>
+  </nav>
+  <div class="voice-status" id="voiceStatus">Audio is manual: nothing plays automatically.</div>
+
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">CATHERINE · A2+ → B1 · CLOE</p>
+      <h1>Adriatic CLOE<br><span>Exam Mission</span></h1>
+      <p class="hero-subtitle">Turn the language from your Croatia and Montenegro lessons into faster, clearer exam answers — vocabulary, grammar, expressions, reading, listening and oral interaction.</p>
+      <p class="fr">Transformez le vocabulaire de votre voyage en automatismes utiles pour le CLOE : comprendre vite, choisir la bonne structure et répondre avec plus d’aisance.</p>
+      <div class="hero-buttons"><a class="btn primary" href="#roadmap">Start the mission</a><button class="btn ghost" id="resumeBtn" type="button">Resume saved work</button></div>
+      <div class="hero-metrics">
+        <div><strong>30</strong><span>auto-scored items</span></div>
+        <div><strong>5</strong><span>written skill families</span></div>
+        <div><strong>15–20</strong><span>min oral target</span></div>
+      </div>
+    </div>
+    <aside class="passport-card">
+      <div class="passport-top"><div class="flag-symbol">✦</div><div><span>EXAM PASSPORT</span><strong>CATHERINE</strong></div></div>
+      <div class="route-map"><div class="city">DUBROVNIK</div><div class="route-line"><span>➜</span></div><div class="city">MLJET</div><div class="route-line"><span>➜</span></div><div class="city">MONTENEGRO</div></div>
+      <div class="passport-details">
+        <div><span>Current level</span><strong>A2+ developing</strong></div>
+        <div><span>Target</span><strong>B1 / CLOE confidence</strong></div>
+        <div><span>Priority</span><strong>Less support · more retrieval</strong></div>
+        <div><span>Method</span><strong>Notice · Decide · Answer · Extend</strong></div>
+      </div>
+      <p class="passport-note">15–25 September · Adriatic travel context</p>
+    </aside>
+  </div>
+
+  <div class="progress-shell">
+    <div class="progress-meta"><span>Lesson progress</span><strong id="progressText">0%</strong></div>
+    <div class="progress-track"><span id="progressFill"></span></div>
+  </div>
+</header>
+
+<nav class="section-nav" aria-label="Lesson sections">
+  <a href="#roadmap">Plan</a><a href="#vocabulary">Vocabulary</a><a href="#grammar">Grammar</a><a href="#expressions">Expressions</a><a href="#reading">Reading</a><a href="#listening">Listening</a><a href="#oral">Oral</a><a href="#writing">Writing</a><a href="#evaluation">Qualiopi</a>
+</nav>
+
+<main id="main">
+<section class="section intro-section" id="roadmap">
+  <div class="section-heading"><div><p class="kicker">MISSION 01 · EXAM MAP</p><h2>From guided travel English to exam-speed English</h2></div><span class="badge">Next logical step</span></div>
+  <div class="intro-grid">
+    <article class="glass-card">
+      <h3>What changes today?</h3>
+      <p>You already know useful travel language and relative clauses. Today you will see less scaffolding and more mixed retrieval, because the exam can change topic and difficulty quickly.</p>
+      <p class="fr">Vous connaissez déjà les structures. Aujourd’hui, l’objectif est de les retrouver plus vite, sans dépendre du modèle.</p>
+    </article>
+    <article class="glass-card exam-facts">
+      <h3>Real CLOE logic</h3>
+      <ul class="tick-list">
+        <li>Written assessment: vocabulary, grammar/syntax, expressions, reading and listening.</li>
+        <li>Adaptive questions: difficulty changes according to your responses.</li>
+        <li>Oral interview: individual, interactive and adapted to your profile.</li>
+        <li>Your oral score depends on vocabulary, grammar, fluency, pronunciation and interaction.</li>
+      </ul>
+      <p class="tiny-note">This page is a lesson-sized simulation, not the official exam interface.</p>
+    </article>
+  </div>
+
+  <div class="mission-strip">
+    <div><b>1</b><span>Retrieve vocabulary</span></div><div><b>2</b><span>Control grammar</span></div><div><b>3</b><span>Read for evidence</span></div><div><b>4</b><span>Listen once</span></div><div><b>5</b><span>Interact orally</span></div>
+  </div>
+
+  <div class="exam-timer-card">
+    <div><p class="kicker">OPTIONAL MINI-MOCK TIMER</p><h3>30-minute written sprint</h3><p>Use this after the guided review. In Exam mode, hints and models stay hidden until you answer.</p></div>
+    <div class="timer-box"><span id="timerDisplay">30:00</span><div class="button-row"><button class="btn secondary small" id="timerStart" type="button">Start</button><button class="btn ghost small" id="timerPause" type="button">Pause</button><button class="text-button" id="timerReset" type="button">Reset</button></div></div>
+  </div>
+</section>
+
+<section class="section" id="vocabulary" data-section="vocabulary">
+  <div class="section-heading"><div><p class="kicker">MISSION 02 · VOCABULARY</p><h2>Adriatic vocabulary — retrieve it, do not just recognise it</h2><p>Open a category, listen to the examples, then complete the mini-test.</p></div><button class="reset-section" data-reset-section="vocabulary" type="button">↺ Reset section</button></div>
+  <div class="filter-row" id="vocabFilters"></div>
+  <div class="vocab-grid" id="vocabGrid"></div>
+  <div class="quiz-panel">
+    <div class="panel-head"><div><p class="kicker">EXAM DRILL</p><h3>Vocabulary in context · 6 questions</h3></div><span class="live-score" id="vocabularyScore">0 / 6</span></div>
+    <div id="vocabularyQuiz" class="quiz-list"></div>
+  </div>
+</section>
+
+<section class="section" id="grammar" data-section="grammar">
+  <div class="section-heading"><div><p class="kicker">MISSION 03 · GRAMMAR & SYNTAX</p><h2>Relative clauses + tense clues + natural word order</h2><p>Your goal is not to recite rules. Your goal is to spot the clue and choose the structure quickly.</p></div><button class="reset-section" data-reset-section="grammar" type="button">↺ Reset section</button></div>
+
+  <div class="rule-tabs" id="grammarTabs">
+    <button class="rule-tab active" data-rule="relative" type="button">Relative clauses</button>
+    <button class="rule-tab" data-rule="future" type="button">Future plans</button>
+    <button class="rule-tab" data-rule="tenses" type="button">Tense keywords</button>
+    <button class="rule-tab" data-rule="order" type="button">Word order</button>
+  </div>
+  <div class="rule-panel active" id="rule-relative">
+    <div class="rule-grid four">
+      <article><strong>who</strong><span>people</span><p>The guide <b>who</b> helped us was friendly.</p></article>
+      <article><strong>where</strong><span>places</span><p>Mljet is an island <b>where</b> you can enjoy quiet nature.</p></article>
+      <article><strong>which / that</strong><span>things</span><p>We chose a trail <b>which</b> goes around the lake.</p></article>
+      <article><strong>why</strong><span>reason</span><p>That is the reason <b>why</b> I prefer slower travel.</p></article>
+    </div>
+    <p class="fr">Astuce : <b>where</b> remplace « dans lequel / où » pour un lieu ; <b>which/that</b> donne une information sur une chose.</p>
+  </div>
+  <div class="rule-panel" id="rule-future">
+    <div class="rule-grid three">
+      <article><strong>be going to</strong><span>intention / plan</span><p>We are going to visit Mljet.</p></article>
+      <article><strong>present continuous</strong><span>arranged plan</span><p>We are staying in Dubrovnik for two nights.</p></article>
+      <article><strong>will</strong><span>decision / prediction</span><p>I think the views will be beautiful.</p></article>
+    </div>
+  </div>
+  <div class="rule-panel" id="rule-tenses">
+    <div class="keyword-grid"><span><b>usually / every</b> → present simple</span><span><b>now / at the moment</b> → present continuous</span><span><b>yesterday / last / ago</b> → past simple</span><span><b>since / for / already / ever</b> → present perfect</span><span><b>tomorrow / next / in September</b> → future language</span></div>
+  </div>
+  <div class="rule-panel" id="rule-order">
+    <div class="formula-card"><span>SUBJECT</span><b>+</b><span>VERB</span><b>+</b><span>OBJECT / DETAIL</span><b>+</b><span>PLACE</span><b>+</b><span>TIME</span></div>
+    <p class="example-line">We are visiting the old town in Dubrovnik on Tuesday.</p>
+  </div>
+
+  <div class="quiz-panel">
+    <div class="panel-head"><div><p class="kicker">EXAM DRILL</p><h3>Grammar and syntax · 8 questions</h3></div><span class="live-score" id="grammarScore">0 / 8</span></div>
+    <div id="grammarQuiz" class="quiz-list"></div>
+  </div>
+
+  <div class="builder-panel">
+    <div class="panel-head"><div><p class="kicker">TAP-TO-BUILD</p><h3>Build 2 exam-ready sentences</h3><p>Tap a word to place it. Tap it again in the answer line to put it back.</p></div><span class="live-score" id="orderScore">0 / 2</span></div>
+    <div id="orderBuilder"></div>
+  </div>
+</section>
+
+<section class="section" id="expressions" data-section="expressions">
+  <div class="section-heading"><div><p class="kicker">MISSION 04 · EXPRESSIONS</p><h2>Useful chunks for interaction and problem-solving</h2><p>Choose the expression that sounds natural and polite.</p></div><button class="reset-section" data-reset-section="expressions" type="button">↺ Reset section</button></div>
+  <div class="chunk-grid">
+    <article><span>Ask for information</span><strong>Could you tell me…?</strong><button class="audio-mini" data-speak="Could you tell me what time the ferry leaves?" type="button">🔊</button></article>
+    <article><span>Clarify</span><strong>Do you mean…?</strong><button class="audio-mini" data-speak="Do you mean we need to change buses?" type="button">🔊</button></article>
+    <article><span>Gain time</span><strong>Let me think for a moment.</strong><button class="audio-mini" data-speak="Let me think for a moment." type="button">🔊</button></article>
+    <article><span>Reformulate</span><strong>So, if I understand correctly…</strong><button class="audio-mini" data-speak="So, if I understand correctly, the boat has been cancelled." type="button">🔊</button></article>
+    <article><span>Give an opinion</span><strong>In my opinion… because…</strong><button class="audio-mini" data-speak="In my opinion, Mljet is a good choice because it is peaceful and green." type="button">🔊</button></article>
+    <article><span>Contrast</span><strong>However / whereas</strong><button class="audio-mini" data-speak="Dubrovnik is lively, whereas Mljet is much quieter." type="button">🔊</button></article>
+  </div>
+  <div class="quiz-panel"><div class="panel-head"><div><p class="kicker">EXAM DRILL</p><h3>Expressions · 4 questions</h3></div><span class="live-score" id="expressionsScore">0 / 4</span></div><div id="expressionsQuiz" class="quiz-list"></div></div>
+</section>
+
+<section class="section" id="reading" data-section="reading">
+  <div class="section-heading"><div><p class="kicker">MISSION 05 · READING</p><h2>Read for proof — not for every word</h2><p>First identify the situation, then find the exact sentence that proves your answer.</p></div><button class="reset-section" data-reset-section="reading" type="button">↺ Reset section</button></div>
+  <div class="strategy-strip"><span><b>1.</b> Read the question</span><span><b>2.</b> Scan for names / dates / contrast</span><span><b>3.</b> Find evidence</span><span><b>4.</b> Eliminate distractors</span></div>
+  <article class="reading-card">
+    <div class="reading-heading"><div><span class="badge">Travel message</span><h3>A change of plan</h3></div><button class="btn ghost small" data-speak-target="readingText" type="button">🔊 Listen too</button></div>
+    <div id="readingText" class="reading-text">
+      <p>We had originally planned to spend three nights in Dubrovnik, but we changed the itinerary because we wanted more time in nature. We are now staying in the city for two nights before taking a ferry to Mljet, where we hope to walk near the lakes and enjoy a quieter atmosphere. After that, we are travelling south toward Montenegro. If the weather is good, we would like to spend a day in the Durmitor area, which is known for mountain scenery and outdoor activities. We have not booked every excursion yet because we want to keep part of the trip flexible.</p>
+    </div>
+    <div class="fr support-only"><b>Technique :</b> cherchez surtout <i>but</i>, <i>because</i>, <i>before</i>, <i>after that</i>, <i>if</i> et <i>yet</i> : ces mots organisent le sens.</div>
+  </article>
+  <div class="quiz-panel"><div class="panel-head"><div><p class="kicker">COMPREHENSION</p><h3>Reading · 5 questions</h3></div><span class="live-score" id="readingScore">0 / 5</span></div><div id="readingQuiz" class="quiz-list"></div></div>
+</section>
+
+<section class="section" id="listening" data-section="listening">
+  <div class="section-heading"><div><p class="kicker">MISSION 06 · LISTENING</p><h2>Listen once, catch the essentials, then confirm</h2><p>In Practice mode you can replay and reveal the transcript. In Exam mode, answer first.</p></div><button class="reset-section" data-reset-section="listening" type="button">↺ Reset section</button></div>
+  <div class="listening-card">
+    <div class="listening-controls"><button class="btn primary" id="playListening" type="button">▶ Play message</button><button class="btn ghost support-only" id="showTranscript" type="button">Show transcript</button><button class="text-button" id="replayListening" type="button">Replay</button></div>
+    <div id="listeningTranscript" class="transcript" hidden>
+      <p>Hello. I’m calling about tomorrow’s boat trip. The morning departure has been cancelled because of strong wind, but there is another boat at two fifteen in the afternoon. It arrives later, so you will not have enough time for the long walking route. You can either take the afternoon boat and do the short lake walk, or move your visit to Friday, when the weather should be calmer. Please call us before seven this evening if you want to change the date.</p>
+    </div>
+    <div class="listen-note"><span>🎧</span><p><strong>First pass:</strong> situation + problem + options + deadline.</p></div>
+  </div>
+  <div class="quiz-panel"><div class="panel-head"><div><p class="kicker">COMPREHENSION</p><h3>Listening · 5 questions</h3></div><span class="live-score" id="listeningScore">0 / 5</span></div><div id="listeningQuiz" class="quiz-list"></div></div>
+</section>
+
+<section class="section oral-section" id="oral" data-section="oral">
+  <div class="section-heading"><div><p class="kicker">MISSION 07 · ORAL INTERVIEW</p><h2>Answer + detail + reason + interaction</h2><p>The examiner can move from a familiar topic to a problem or opinion. Your job is to stay active in the exchange.</p></div><button class="reset-section" data-reset-section="oral" type="button">↺ Reset section</button></div>
+  <div class="oral-formula"><div><strong>1</strong><span>Answer directly</span></div><div><strong>2</strong><span>Add one detail</span></div><div><strong>3</strong><span>Give a reason / example</span></div><div><strong>4</strong><span>React or ask back</span></div></div>
+
+  <div class="prompt-tabs" id="oralTabs"></div>
+  <div class="oral-stage">
+    <div class="prompt-card"><p class="kicker" id="oralCategory">PROFILE</p><h3 id="oralPrompt">Tell me about yourself.</h3><p class="fr" id="oralFr"></p><div class="button-row"><button class="btn secondary" id="hearPrompt" type="button">🔊 Hear question</button><button class="btn ghost support-only" id="showOralSupport" type="button">Show support</button></div></div>
+    <div class="support-card support-only" id="oralSupport" hidden></div>
+  </div>
+
+  <div class="model-ladder support-only" id="modelLadder" hidden>
+    <article><span>A2 · safe</span><p id="modelA2"></p></article>
+    <article><span>A2+ · fuller</span><p id="modelA2p"></p></article>
+    <article><span>B1 · target</span><p id="modelB1"></p></article>
+  </div>
+
+  <div class="record-card">
+    <div><p class="kicker">RECORD · LISTEN · IMPROVE</p><h3>90-second answer</h3><p>Your recording stays in this browser session unless you download it.</p></div>
+    <div class="recorder-controls"><button class="btn primary" id="recordStart" type="button">Start recording</button><button class="btn secondary" id="recordStop" type="button" disabled>Stop</button><button class="text-button" id="recordClear" type="button">Clear</button></div>
+    <p id="recordStatus">Ready.</p><audio id="recordAudio" controls hidden></audio><a id="recordDownload" class="btn ghost small" hidden download="catherine-adriatic-cloe-oral.webm">Download recording</a>
+    <label class="reflection-label">One thing to improve next time<textarea id="speakingReflection" rows="3" placeholder="For example: add a reason, slow down, use a relative clause, ask a question back..."></textarea></label>
+  </div>
+
+  <div class="manual-check-card">
+    <h3>Trainer quick check</h3>
+    <div class="manual-check-grid">
+      <label><input type="checkbox" data-oral-check="structure"> Clear structure</label>
+      <label><input type="checkbox" data-oral-check="grammar"> Mostly controlled grammar</label>
+      <label><input type="checkbox" data-oral-check="vocabulary"> Appropriate vocabulary</label>
+      <label><input type="checkbox" data-oral-check="fluency"> Keeps speaking</label>
+      <label><input type="checkbox" data-oral-check="interaction"> Reacts / asks back</label>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="writing" data-section="writing">
+  <div class="section-heading"><div><p class="kicker">MISSION 08 · WRITTEN TRANSFER</p><h2>Optional syntax transfer — a short travel problem message</h2><p>This is not presented as a separate official CLOE writing task; it is here to strengthen the grammar and organisation you need across the certification.</p></div><button class="reset-section" data-reset-section="writing" type="button">↺ Reset section</button></div>
+  <div class="writing-grid">
+    <article class="prompt-card">
+      <span class="badge">80–110 words</span><h3>Your ferry is cancelled.</h3><p>Write to your accommodation in Mljet. Explain the problem, give your new arrival time, ask whether late check-in is possible, and thank them.</p>
+      <div class="fr support-only"><b>Plan :</b> situation → conséquence → nouvelle heure → demande polie → remerciement.</div>
+    </article>
+    <article class="glass-card writing-method">
+      <h3>5-line structure</h3><ol><li>Hello / Dear…</li><li>I’m writing because…</li><li>Unfortunately… so…</li><li>Would it be possible to…?</li><li>Thank you for your help.</li></ol>
+    </article>
+  </div>
+  <label class="full-label">Your message<textarea id="writingText" rows="9" placeholder="Write your message here..."></textarea></label>
+  <div class="button-row"><button class="btn secondary" id="analyseWriting" type="button">Analyse my text</button><button class="btn ghost support-only" id="showWritingModels" type="button">Show 3 model levels</button></div>
+  <div id="writingAnalysis" class="analysis-box">Your word count and language signals will appear here.</div>
+  <div class="model-ladder support-only" id="writingModels" hidden>
+    <article><span>A2 · safe</span><p>Hello, I have a problem with my ferry. It is cancelled, so I will arrive later. I think I will arrive at about 8 p.m. Is late check-in possible, please? Thank you for your help. Kind regards, Catherine</p></article>
+    <article><span>A2+ · fuller</span><p>Dear Sir or Madam, I’m writing because our morning ferry to Mljet has been cancelled due to strong wind. We are taking another boat in the afternoon, so we expect to arrive at about 8 p.m. Could you please tell me if late check-in is possible? Thank you for your understanding and your help. Kind regards, Catherine</p></article>
+    <article><span>B1 · target</span><p>Dear Sir or Madam, I’m writing to let you know that the ferry which we were supposed to take this morning has been cancelled because of strong wind. We have booked the afternoon departure instead, which means that we should arrive at around 8 p.m. Would it be possible to arrange a late check-in? Please let me know if you need any additional information. Thank you in advance for your help. Kind regards, Catherine</p></article>
+  </div>
+</section>
+
+<section class="section final-challenge" id="finalChallenge" data-section="final">
+  <div class="section-heading"><div><p class="kicker">MISSION 09 · FINAL TRANSFER</p><h2>One route, four language moves</h2><p>Use your September trip to demonstrate the exact communication habits you want in the oral exam.</p></div><button class="reset-section" data-reset-section="final" type="button">↺ Reset section</button></div>
+  <div class="challenge-grid">
+    <article><span>Describe</span><h3>Dubrovnik</h3><p>Give 3 details and one relative clause.</p></article>
+    <article><span>Compare</span><h3>Dubrovnik vs Mljet</h3><p>Use <b>whereas</b>, a comparative and a preference.</p></article>
+    <article><span>Plan</span><h3>Montenegro</h3><p>Use a future form and one condition with <b>if</b>.</p></article>
+    <article><span>Solve</span><h3>Transport problem</h3><p>Clarify, propose an option, and ask a question.</p></article>
+  </div>
+  <label class="full-label">Trainer notes<textarea id="finalNotes" rows="5" placeholder="Note Catherine's spontaneous strengths and the language to recycle next lesson..."></textarea></label>
+  <button class="btn primary" id="markFinalComplete" type="button">✓ Mark final mission complete</button>
+</section>
+
+<section class="section evaluation-premium" id="evaluation">
+  <div class="evaluation-hero">
+    <div class="evaluation-heading-copy"><span class="evaluation-check">✓</span><div><p class="kicker">QUALIOPI FOLLOW-UP</p><h2>Evidence of progress + next objective</h2><p>The dashboard combines automatic results, manual oral/written assessment and learner feedback.</p><p class="fr">Le tableau combine les résultats automatiques, l’évaluation manuelle et le ressenti de l’apprenante.</p></div></div>
+    <div class="evaluation-hero-badge"><strong id="evaluationHeroScore">0%</strong><span>lesson progress</span></div>
+  </div>
+  <div class="evaluation-meta premium-meta"><label><span>Learner</span><input id="learnerName" value="Catherine"></label><label><span>Trainer</span><input id="trainerName" value="Tisha DOUTY-DOSIERE"></label><label><span>Evaluation date</span><input id="evaluationDate" type="date"></label></div>
+
+  <div class="evaluation-dashboard">
+    <article class="evaluation-score-card"><div class="result-donut" id="evaluationDonut" style="--score:0%"><div><span id="evaluationScoreValue">0%</span><small>overall</small></div></div><div class="score-card-copy"><p class="kicker">LESSON SNAPSHOT</p><h3 id="evaluationHeadline">Your progress will appear here</h3><p id="evaluationSummaryText">Complete the activities to generate a clear progress overview.</p></div></article>
+    <article class="evaluation-breakdown-card"><div class="card-title-row"><div><h3>Skills overview</h3><p>Automatic and teacher-completed indicators.</p></div><span class="badge">Live results</span></div><div id="evaluationBreakdown" class="premium-breakdown"></div></article>
+  </div>
+
+  <article class="glass-card automatic-progress-card"><div class="card-title-row"><div><h3>Learning objectives</h3><p>These rows update as the lesson progresses.</p></div><span class="badge accent">Qualiopi evidence</span></div><div class="progress-table-wrap"><table class="progress-table"><thead><tr><th>Objective</th><th>Activity</th><th>Assessment</th><th>Progress</th><th>Status</th></tr></thead><tbody id="evaluationRows"></tbody></table></div></article>
+
+  <div class="evaluation-grid premium-assessment-grid">
+    <article class="assessment-card premium-assessment"><div class="assessment-icon">🎤</div><p class="kicker">MANUAL ASSESSMENT</p><h3>Oral production</h3><label>Result<select data-assessment="oral"><option value="not-started">Non commencé</option><option value="progress">En cours d’acquisition</option><option value="achieved">Objectif atteint</option><option value="not-achieved">Objectif non atteint</option></select></label><label>Trainer observations<textarea data-comment="oral" rows="5" placeholder="Structure, vocabulary, grammar, fluency, pronunciation, interaction..."></textarea></label></article>
+    <article class="assessment-card premium-assessment writing-assessment"><div class="assessment-icon">✍️</div><p class="kicker">MANUAL ASSESSMENT</p><h3>Written transfer</h3><label>Result<select data-assessment="writing"><option value="not-started">Non commencé</option><option value="progress">En cours d’acquisition</option><option value="achieved">Objectif atteint</option><option value="not-achieved">Objectif non atteint</option></select></label><label>Trainer observations<textarea data-comment="writing" rows="5" placeholder="Organisation, syntax, connectors, independence..."></textarea></label></article>
+  </div>
+
+  <div class="satisfaction-suite"><div class="satisfaction-intro"><span class="satisfaction-icon">★</span><div><p class="kicker">LEARNER EXPERIENCE</p><h3>How did this lesson feel?</h3><p>Use the answers to decide the next pedagogical step.</p></div></div><div class="satisfaction-grid"><label>Overall satisfaction<select id="satisfaction"><option value="">Choose…</option><option>Very satisfied</option><option>Satisfied</option><option>Partly satisfied</option><option>Not satisfied</option></select></label><label>Confidence after lesson<select id="confidenceAfter"><option value="">Choose…</option><option>Much more confident</option><option>More confident</option><option>About the same</option><option>Less confident</option></select></label><label>Most useful part<select id="mostUseful"><option value="">Choose…</option><option>Vocabulary retrieval</option><option>Grammar and syntax</option><option>Reading strategy</option><option>Listening strategy</option><option>Oral interview practice</option><option>Written transfer</option></select></label></div><div class="comment-grid"><label>What helped you most?<textarea id="learnerComments" rows="4"></textarea></label><label>What would you like to practise again?<textarea id="learnerNextPractice" rows="4"></textarea></label></div></div>
+
+  <article class="trainer-summary-card"><div class="trainer-summary-heading"><div><p class="kicker">TRAINER CONCLUSION</p><h3>Progress summary and next objective</h3></div><span class="badge">Training file</span></div><label><textarea id="trainerComments" rows="6" placeholder="Summarise strengths, remaining support needs and the next exam-preparation objective..."></textarea></label></article>
+
+  <div class="evaluation-actions"><button class="btn secondary" id="saveEvaluation" type="button">💾 Save evaluation</button><button class="btn primary" id="exportEvaluation" type="button">⬇ Export HTML report</button><button class="btn ghost" id="resetAll" type="button">Reset whole lesson</button></div>
+  <div id="overallResult" class="evaluation-summary">Complete activities and assessments to generate the final result.</div>
+</section>
+</main>
+
+<button id="backTop" class="back-top" type="button" aria-label="Back to top">↑</button>
+<div id="toast" class="toast" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>

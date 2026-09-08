@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Simulation complète CLOE · Anglais</title>
+  <meta name="description" content="Simulation pédagogique complète au format CLOE : 50 questions, compréhension orale et écrite, entretien oral, prononciation, production écrite et bilan.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">C</div>
+      <div class="brand-copy">
+        <strong>Simulation complète · Anglais</strong>
+        <span>Entraînement au format CLOE</span>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="practiceModeBtn" class="mode-btn active" type="button">Mode entraînement</button>
+      <button id="examModeBtn" class="mode-btn" type="button">Mode examen</button>
+      <button id="candidateViewBtn" class="ghost small" type="button">Vue candidat</button>
+      <button id="teacherViewBtn" class="ghost small" type="button">Console formateur</button>
+      <span id="saveIndicator" class="save-pill">● Prêt</span>
+    </div>
+  </header>
+
+  <main>
+    <section id="homeView" class="view active">
+      <div class="hero exam-shell">
+        <div class="hero-copy">
+          <div class="eyebrow">CERTIFICATION LANGUAGE PRACTICE</div>
+          <h1>Simulation complète<br><span>CLOE · Anglais</span></h1>
+          <p class="lead">Une simulation originale construite pour reproduire le rythme, les compétences et les principaux formats d'exercices publiquement décrits pour la Certification CLOE.</p>
+          <div class="notice">
+            <strong>Entraînement indépendant</strong>
+            <p>Ce support n'est pas une épreuve officielle et ne reproduit ni la banque de questions ni l'algorithme propriétaire de CCI France. Il sert exclusivement à l'entraînement.</p>
+          </div>
+          <div class="mode-explainer">
+            <div><b>Mode entraînement</b><span>Indices, corrections et modèles disponibles après ou pendant les tâches.</span></div>
+            <div><b>Mode examen</b><span>Aucune aide pendant l'épreuve ; résultats et corrections à la fin.</span></div>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <div class="status-row"><span>Langue</span><strong>Anglais</strong></div>
+          <div class="status-row"><span>Épreuve informatisée</span><strong>50 questions</strong></div>
+          <div class="status-row"><span>Compétences</span><strong>5 × 10 questions</strong></div>
+          <div class="status-row"><span>Compréhension orale</span><strong>2 écoutes maximum</strong></div>
+          <div class="status-row"><span>Entretien oral</span><strong>15–20 min · 3 parties</strong></div>
+          <div class="status-row"><span>Extensions entraînement</span><strong>Prononciation + écrit</strong></div>
+          <button id="startWrittenBtn" class="primary wide" type="button">Démarrer l'épreuve</button>
+          <button id="resumeBtn" class="secondary wide hidden" type="button">Reprendre la session</button>
+        </aside>
+      </div>
+
+      <div class="section-grid exam-shell">
+        <article class="info-card">
+          <div class="step-num">01</div>
+          <h2>Test informatisé</h2>
+          <p>10 questions de vocabulaire, 10 de grammaire & syntaxe, 10 d'expressions, 10 de compréhension écrite et 10 de compréhension orale.</p>
+          <div class="mini-bars"><span></span><span></span><span></span><span></span><span></span></div>
+        </article>
+        <article class="info-card">
+          <div class="step-num">02</div>
+          <h2>Entretien oral</h2>
+          <p>Questions d'introduction, mise en situation puis discussion. La console formateur fournit un script complet et des relances.</p>
+        </article>
+        <article class="info-card">
+          <div class="step-num">03</div>
+          <h2>Prononciation</h2>
+          <p>Entraînement ciblé à l'intonation, à l'accent tonique, aux terminaisons et à la fluidité avec écoute et enregistrement.</p>
+        </article>
+        <article class="info-card">
+          <div class="step-num">04</div>
+          <h2>Production écrite</h2>
+          <p>Tâches professionnelles complémentaires avec plans, auto-vérification et modèles à deux niveaux en mode entraînement.</p>
+        </article>
+      </div>
+
+      <div class="prep-card exam-shell">
+        <div>
+          <div class="eyebrow">VÉRIFICATION TECHNIQUE</div>
+          <h2>Tester le son avant de commencer</h2>
+          <p>Choisissez un accent pour les exercices d'écoute et les modèles de prononciation.</p>
+        </div>
+        <div class="voice-tools">
+          <label>Accent
+            <select id="accentSelect">
+              <option value="en-GB">Anglais britannique</option>
+              <option value="en-US">Anglais américain</option>
+            </select>
+          </label>
+          <label>Voix
+            <select id="voiceSelect"><option>Chargement…</option></select>
+          </label>
+          <button id="testAudioBtn" class="secondary" type="button">▶ Tester le son</button>
+          <button id="stopAudioBtn" class="ghost" type="button">■ Arrêter</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="writtenView" class="view">
+      <div class="exam-head exam-shell">
+        <div>
+          <div class="eyebrow" id="categoryEyebrow">ÉPREUVE INFORMATISÉE</div>
+          <h2 id="categoryTitle">Vocabulaire</h2>
+        </div>
+        <div class="timers">
+          <div class="timer-box question-timer-box">
+            <span>Question</span>
+            <strong id="questionTimer">00:45</strong>
+          </div>
+          <div class="timer-box total">
+            <span>Temps total</span>
+            <strong id="totalTimer">50:00</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-wrap exam-shell">
+        <div class="progress-meta">
+          <span id="progressText">Question 1 / 50</span>
+          <span id="levelHint">Questionnaire évolutif</span>
+        </div>
+        <div class="progress-track"><div id="progressBar"></div></div>
+        <div class="category-dots" id="categoryDots"></div>
+      </div>
+
+      <div class="question-shell exam-shell">
+        <article class="question-card">
+          <div class="question-topline">
+            <div id="questionInstruction" class="instruction">Choisissez la meilleure réponse.</div>
+            <button id="hintBtn" class="support-btn practice-only" type="button">Indice</button>
+          </div>
+
+          <div id="readingPassage" class="reading-passage hidden"></div>
+
+          <div id="listeningPanel" class="listening-panel hidden">
+            <div>
+              <button id="playAudioBtn" class="audio-btn" type="button"><span class="speaker">◖)))</span> Écouter l'enregistrement</button>
+              <span id="audioPlays" class="audio-plays">2 écoutes disponibles</span>
+            </div>
+            <div class="audio-note">L'enregistrement ne peut pas être mis en pause.</div>
+          </div>
+
+          <h3 id="questionPrompt"></h3>
+          <div id="questionArea"></div>
+
+          <div id="hintBox" class="hint-box hidden practice-only"></div>
+          <div id="practiceFeedback" class="feedback hidden practice-only"></div>
+
+          <div class="time-strip"><div id="timeStripFill"></div></div>
+
+          <div class="question-footer">
+            <span id="assistFlag" class="assist-flag practice-only"></span>
+            <button id="validateBtn" class="primary" type="button">Valider la réponse</button>
+            <button id="nextQuestionBtn" class="primary hidden" type="button">Question suivante</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="writtenDoneView" class="view">
+      <div class="exam-shell narrow centered">
+        <div class="completion-card">
+          <div class="complete-icon">✓</div>
+          <div class="eyebrow">PARTIE INFORMATISÉE TERMINÉE</div>
+          <h1>50 questions terminées</h1>
+          <p>Les cinq compétences écrites et de compréhension ont été enregistrées. Vous pouvez maintenant passer à l'entretien oral.</p>
+          <div id="writtenPreview" class="practice-only compact-results"></div>
+          <div class="next-grid">
+            <button id="goOralBtn" class="primary" type="button">Passer à l'entretien oral</button>
+            <button id="goResultsEarlyBtn" class="secondary" type="button">Voir le bilan provisoire</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="oralView" class="view">
+      <div class="exam-shell">
+        <div class="section-title-row">
+          <div>
+            <div class="eyebrow">ENTRETIEN ORAL · 15–20 MINUTES</div>
+            <h1>Interaction avec l'évaluateur</h1>
+            <p>Trois parties : introduction, mise en situation et discussion. Répondez de façon naturelle et développez vos idées.</p>
+          </div>
+          <div class="timer-box oral-total"><span>Entretien</span><strong id="oralTimer">20:00</strong></div>
+        </div>
+
+        <div class="oral-layout">
+          <section id="oralCandidatePanel" class="candidate-panel">
+            <div class="camera-frame">
+              <div class="camera-icon">◉</div>
+              <h2 id="oralPhaseTitle">Partie 1 · Introduction</h2>
+              <p id="oralCandidateInstruction">Écoutez les questions de l'évaluateur et répondez en développant vos réponses.</p>
+              <div id="oralCandidatePrompt" class="candidate-prompt practice-only"></div>
+            </div>
+
+            <div class="oral-nav">
+              <button class="phase-tab active" data-oral-phase="0" type="button">1 · Introduction</button>
+              <button class="phase-tab" data-oral-phase="1" type="button">2 · Mise en situation</button>
+              <button class="phase-tab" data-oral-phase="2" type="button">3 · Discussion</button>
+            </div>
+
+            <div class="oral-controls">
+              <button id="startOralTimerBtn" class="primary" type="button">Démarrer le chronomètre</button>
+              <button id="recordBtn" class="secondary" type="button">● Enregistrer</button>
+              <button id="stopRecordBtn" class="danger hidden" type="button">■ Arrêter</button>
+              <audio id="oralPlayback" class="hidden" controls></audio>
+              <a id="recordingDownload" class="download-link hidden" download="cloe-oral-practice.webm">Télécharger l'enregistrement</a>
+            </div>
+
+            <div class="practice-support practice-only">
+              <button id="oralHintBtn" class="support-btn" type="button">Voir une structure utile</button>
+              <button id="oralModelsBtn" class="support-btn" type="button">Voir les modèles</button>
+              <div id="oralHintBox" class="hint-box hidden"></div>
+              <div id="oralModelsBox" class="models-box hidden"></div>
+            </div>
+          </section>
+
+          <aside id="oralTeacherPanel" class="teacher-panel teacher-only">
+            <div class="teacher-banner">
+              <strong>Console formateur · Script examinateur</strong>
+              <span>Lisez les consignes marquées SAY / ASK. Les éléments « Observe » restent privés.</span>
+            </div>
+            <div id="examinerScript"></div>
+            <div class="rubric-card">
+              <h2>Grille d'évaluation orale</h2>
+              <p class="muted">Évaluez les cinq critères correspondant à l'oral : vocabulaire, grammaire, fluidité, prononciation/intonation et interaction.</p>
+              <div id="oralRubric" class="rubric-grid"></div>
+              <label class="field-label" for="oralComments">Commentaires formateur</label>
+              <textarea id="oralComments" rows="5" placeholder="Points forts, erreurs récurrentes, priorités…"></textarea>
+              <button id="saveOralBtn" class="primary" type="button">Enregistrer l'évaluation orale</button>
+            </div>
+          </aside>
+        </div>
+
+        <div class="section-nav">
+          <button class="secondary" data-nav="homeView" type="button">Accueil</button>
+          <button id="oralToPronBtn" class="primary" type="button">Continuer vers la prononciation</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="pronunciationView" class="view">
+      <div class="exam-shell">
+        <div class="section-title-row">
+          <div>
+            <div class="eyebrow">ENTRAÎNEMENT COMPLÉMENTAIRE</div>
+            <h1>Prononciation & intonation</h1>
+            <p>La prononciation est évaluée pendant l'entretien oral. Cette section permet de la travailler séparément avant ou après la simulation.</p>
+          </div>
+          <div class="extension-chip">Non séparé dans l'examen officiel</div>
+        </div>
+
+        <div class="pron-layout">
+          <div class="pron-list" id="pronList"></div>
+          <div class="pron-stage">
+            <div class="focus-chip" id="pronFocus">Accent tonique</div>
+            <h2 id="pronPhrase"></h2>
+            <p id="pronTip" class="muted"></p>
+            <div class="pron-actions">
+              <button id="pronListenBtn" class="primary" type="button">▶ Écouter le modèle</button>
+              <button id="pronStartRecBtn" class="secondary" type="button">● M'enregistrer</button>
+              <button id="pronStopRecBtn" class="danger hidden" type="button">■ Arrêter</button>
+            </div>
+            <audio id="pronPlayback" class="hidden" controls></audio>
+            <div class="practice-only">
+              <button id="pronRevealBtn" class="support-btn" type="button">Voir le conseil détaillé</button>
+              <div id="pronDetail" class="hint-box hidden"></div>
+            </div>
+            <div class="self-check">
+              <label>Clarté
+                <select id="pronClarity"><option value="">—</option><option>À retravailler</option><option>Correct</option><option>Clair et naturel</option></select>
+              </label>
+              <label>Rythme / intonation
+                <select id="pronRhythm"><option value="">—</option><option>À retravailler</option><option>Correct</option><option>Clair et naturel</option></select>
+              </label>
+              <button id="savePronBtn" class="secondary" type="button">Enregistrer l'auto-évaluation</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-nav">
+          <button class="secondary" data-nav="oralView" type="button">Retour à l'oral</button>
+          <button id="pronToWritingBtn" class="primary" type="button">Continuer vers l'écrit</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="writingView" class="view">
+      <div class="exam-shell">
+        <div class="section-title-row">
+          <div>
+            <div class="eyebrow">ENTRAÎNEMENT COMPLÉMENTAIRE</div>
+            <h1>Production écrite</h1>
+            <p>Ces tâches complètent la simulation afin de travailler la production écrite professionnelle avec modèles et grille d'évaluation.</p>
+          </div>
+          <div class="writing-clock timer-box"><span>Temps conseillé</span><strong>25–30 min</strong></div>
+        </div>
+
+        <div id="writingTasks"></div>
+
+        <div id="writingTeacherPanel" class="teacher-panel teacher-only">
+          <div class="rubric-card">
+            <h2>Grille d'évaluation écrite</h2>
+            <div id="writingRubric" class="rubric-grid"></div>
+            <label class="field-label" for="writingComments">Commentaires formateur</label>
+            <textarea id="writingComments" rows="5" placeholder="Pertinence, organisation, grammaire, vocabulaire…"></textarea>
+            <button id="saveWritingBtn" class="primary" type="button">Enregistrer l'évaluation écrite</button>
+          </div>
+        </div>
+
+        <div class="section-nav">
+          <button class="secondary" data-nav="pronunciationView" type="button">Retour à la prononciation</button>
+          <button id="goResultsBtn" class="primary" type="button">Voir le bilan final</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultsView" class="view">
+      <div class="exam-shell">
+        <div class="results-header">
+          <div>
+            <div class="eyebrow">BILAN DE LA SIMULATION</div>
+            <h1>Résultats par compétence</h1>
+            <p>Le niveau indiqué est une estimation pédagogique de pratique et non un résultat officiel CLOE.</p>
+          </div>
+          <div id="overallBadge" class="level-badge big">—</div>
+        </div>
+
+        <div id="resultsCards" class="results-grid"></div>
+
+        <div class="report-grid">
+          <div class="rubric-card">
+            <h2>Synthèse pédagogique</h2>
+            <div id="summaryText" class="summary-box"></div>
+            <label class="field-label teacher-only" for="finalComments">Commentaire final</label>
+            <textarea id="finalComments" class="teacher-only" rows="6" placeholder="Points forts, priorités, objectifs de la prochaine séance…"></textarea>
+          </div>
+
+          <div class="rubric-card">
+            <h2>Actions</h2>
+            <button id="refreshResultsBtn" class="secondary wide" type="button">Recalculer le bilan</button>
+            <button id="downloadResultsBtn" class="secondary wide" type="button">Télécharger le bilan (.html)</button>
+            <button id="printReportBtn" class="secondary wide" type="button">Imprimer / Enregistrer en PDF</button>
+            <button id="reviewAnswersBtn" class="primary wide practice-only" type="button">Revoir les réponses et corrections</button>
+            <button id="resetAllBtn" class="danger-outline wide" type="button">Réinitialiser toute la session</button>
+          </div>
+        </div>
+
+        <div id="answerReview" class="answer-review hidden practice-only"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
