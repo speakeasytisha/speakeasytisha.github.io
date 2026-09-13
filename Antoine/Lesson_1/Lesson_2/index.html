@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Interactive English lesson: spontaneous everyday English, Australia preparation and VTest skills practice.">
+  <title>Antoine — Lesson 2 | Australia: Speak Without a Script</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <noscript><div class="noscript">JavaScript is required for the interactive exercises, audio, scoring and progress tools.</div></noscript>
+  <div id="jsStatus" class="js-status">⚠ JavaScript has not loaded yet.</div>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+
+  <header class="hero" id="top">
+    <nav class="topbar">
+      <a class="brand" href="#top" aria-label="Back to top"><span class="brand-mark">ST</span><span><strong>SpeakEasy Tisha</strong><small>Personalised English Training</small></span></a>
+      <div class="controls">
+        <label class="mini-control">Mode
+          <select id="modeSelect"><option value="practice">Practice</option><option value="exam">Pressure mode</option></select>
+        </label>
+        <label class="mini-control">Accent
+          <select id="accentSelect"><option value="en-AU" selected>🇦🇺 AU</option><option value="en-GB">🇬🇧 UK</option><option value="en-US">🇺🇸 US</option></select>
+        </label>
+        <label class="mini-control">Speed
+          <select id="rateSelect"><option value="0.84">Slow</option><option value="0.96" selected>Natural</option><option value="1.08">Challenge</option></select>
+        </label>
+        <button class="btn ghost" id="toggleFrench" type="button">FR help: ON</button>
+        <button class="btn ghost" id="saveBtn" type="button">Save</button>
+        <button class="btn ghost" id="printBtn" type="button">Print / PDF</button>
+      </div>
+    </nav>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">LESSON 02 · B1.2+ → B2.1- · AUSTRALIA + VTEST</p>
+        <h1>Australia:<br><span>Speak Without a Script</span></h1>
+        <p class="hero-lead">Turn the English you already know into faster, more natural English you can use when there is no time to prepare.</p>
+        <p class="fr">Transformer l'anglais que vous connaissez déjà en anglais plus rapide, plus naturel et plus spontané — sans texte appris par cœur.</p>
+        <div class="hero-actions"><button class="btn primary" data-scroll="#roadmap" type="button">Start the mission</button><button class="btn secondary speak" data-say="Today you will speak without a script. You will react, explain, ask questions, solve problems and reuse new vocabulary for real life in Australia." type="button">▶ Hear the goal</button></div>
+        <div class="badge-row"><span>⚡ spontaneous speaking</span><span>🇦🇺 everyday English</span><span>🧠 active vocabulary</span><span>🎯 VTest transfer</span></div>
+      </div>
+      <aside class="mission-card">
+        <div class="mission-top"><span>PERFORMANCE LAB</span><strong>90 MIN</strong></div>
+        <h2>Your target today</h2>
+        <p>Speak for <strong>60–90 seconds</strong> with a clear structure, accurate tense choices and fewer “translation-from-French” moments.</p>
+        <div class="meter"><div id="progressBar"></div></div>
+        <p class="progress-text"><span id="progressPct">0%</span> lesson progress</p>
+        <ul class="micro-list"><li>React before you overthink</li><li>Keep talking if a word is missing</li><li>Reuse the vocabulary at least 3 times</li><li>Correct, repeat, continue</li></ul>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" id="roadmap" data-track>
+      <div class="section-head"><p class="kicker">00 · ROADMAP</p><h2>Today is a performance session</h2><p>You already know how to prepare professional English. Today, preparation time gets shorter.</p></div>
+      <div class="timeline">
+        <div><b>10 min</b><span>Cold start</span><small>Speak before support appears</small></div>
+        <div><b>15 min</b><span>Vocabulary engine</span><small>Useful words you can recycle</small></div>
+        <div><b>15 min</b><span>Grammar under pressure</span><small>Tenses + questions</small></div>
+        <div><b>15 min</b><span>Australian listening</span><small>Listen once, extract meaning</small></div>
+        <div><b>20 min</b><span>Job + life scenarios</span><small>React to surprises</small></div>
+        <div><b>15 min</b><span>VTest checkpoint</span><small>Timed speaking + writing</small></div>
+      </div>
+    </section>
+
+    <section class="panel dark-panel" id="coldStart" data-track>
+      <div class="section-head"><p class="kicker">01 · COLD START</p><h2>60 seconds. No script.</h2><p>Your trainer chooses one card. You get 15 seconds to think and 60 seconds to answer.</p><p class="fr">Objectif : mobiliser votre anglais immédiatement, avant de voir le vocabulaire et les modèles.</p></div>
+      <div class="challenge-grid">
+        <article class="challenge"><span>01</span><h3>The gap</h3><p>Explain what has changed in your professional situation and why Australia now makes sense.</p></article>
+        <article class="challenge"><span>02</span><h3>The switch</h3><p>Explain how a process analyst could be useful in a completely different job.</p></article>
+        <article class="challenge"><span>03</span><h3>The athlete</h3><p>Explain why training twice a day tells an employer something about the way you work.</p></article>
+        <article class="challenge"><span>04</span><h3>The unknown word</h3><p>Explain HYROX without using the words <em>competition</em>, <em>race</em> or <em>CrossFit</em>.</p></article>
+      </div>
+      <div class="timer-box"><div class="timer-display" id="coldTimer">01:00</div><div><button class="btn primary timer-start" data-seconds="60" data-target="coldTimer" type="button">Start 60s</button><button class="btn ghost timer-reset" data-seconds="60" data-target="coldTimer" type="button">Reset</button></div></div>
+      <div class="recorder" data-recorder="cold"><button class="btn secondary record-start" type="button">● Record</button><button class="btn ghost record-stop" type="button" disabled>■ Stop</button><span class="record-status">Not recording</span><audio controls class="record-playback"></audio></div>
+      <details class="support"><summary>Reveal the B1 → B2 speaking map</summary><div class="model-grid"><div><h4>B1 structure</h4><p><strong>Now → reason → plan → example.</strong></p><p>“At the moment, my situation is changing because… This gives me the opportunity to… For example…”</p></div><div><h4>B2 upgrade</h4><p><strong>Context → contrast → transferable value → conclusion.</strong></p><p>“Although my next job may be completely different from my previous role, the habits I developed—such as analysing problems and following processes—are transferable.”</p></div></div></details>
+    </section>
+
+    <section class="panel" id="vocabulary" data-track>
+      <div class="section-head"><p class="kicker">02 · ACTIVE VOCABULARY</p><h2>Words you can actually use in Australia</h2><p>Filter by category. Listen, read the definition, then use the word aloud in a sentence about your own situation.</p></div>
+      <div class="filter-row" id="vocabFilters"></div>
+      <div class="vocab-grid" id="vocabGrid"></div>
+      <div class="reuse-box"><h3>3-use rule</h3><p>Choose <strong>three</strong> new expressions. Before the lesson ends, use each one in three different contexts.</p><div class="reuse-inputs"><input placeholder="Expression 1"><input placeholder="Expression 2"><input placeholder="Expression 3"></div></div>
+    </section>
+
+    <section class="panel" id="precision" data-track>
+      <div class="section-head"><p class="kicker">03 · PRECISION SPRINT</p><h2>Past, present or future?</h2><p>Your recurring errors are not about ideas. They happen when the tense has to be chosen quickly.</p><p class="fr">Choisissez le temps selon le repère temporel, puis automatisez la structure.</p></div>
+      <div class="rule-strip"><div><b>PAST SIMPLE</b><span>finished time</span><small>I worked in finance for two years.</small></div><div><b>PRESENT PERFECT</b><span>experience / link to now</span><small>I have worked with international teams.</small></div><div><b>PRESENT</b><span>now / routine</span><small>I train twice a day.</small></div><div><b>FUTURE</b><span>plan / arrangement</span><small>I’m going to look for work in Australia.</small></div></div>
+      <div class="quiz" id="tenseQuiz"></div>
+      <div class="instant-note"><strong>Say it again.</strong> After each correction, repeat the complete sentence aloud. Accuracy becomes useful only when it becomes automatic.</div>
+    </section>
+
+    <section class="panel" id="questions" data-track>
+      <div class="section-head"><p class="kicker">04 · QUESTION CONTROL</p><h2>Ask first. Then keep the conversation alive.</h2><p>Question building is a priority because you will need it constantly with employers, landlords and new people.</p></div>
+      <div class="formula"><span>QUESTION WORD</span><b>+</b><span>AUXILIARY</span><b>+</b><span>SUBJECT</span><b>+</b><span>BASE VERB</span></div>
+      <div class="builder-grid" id="questionQuiz"></div>
+      <div class="role-card"><h3>Australian employer: your turn to ask</h3><p>You have already answered the employer’s questions. Now you must ask <strong>four</strong> useful questions without reading them.</p><div class="prompt-tags"><span>hours / roster</span><span>accommodation</span><span>training</span><span>start date</span><span>transport</span><span>physical requirements</span></div><textarea id="questionNotes" placeholder="Write keywords only — not complete scripted questions."></textarea></div>
+      <details class="support"><summary>Model questions</summary><div class="model-grid"><div><h4>B1</h4><p>What time does the shift start?<br>Do you provide accommodation?<br>When would you need me to start?<br>Is training provided?</p></div><div><h4>B2</h4><p>What does a typical roster look like?<br>Would I need my own transport to get to the site?<br>What would you expect me to be able to do independently after the first week?<br>Are there any particular physical requirements I should know about?</p></div></div></details>
+    </section>
+
+    <section class="panel sand-panel" id="listening" data-track>
+      <div class="section-head"><p class="kicker">05 · LISTEN ONCE</p><h2>Australian English: extract meaning, not every word</h2><p>In Pressure mode, each audio can be played only once. Read the questions first.</p><p class="fr">Ne cherchez pas à comprendre chaque mot. Repérez la situation, le problème et l'action à faire.</p></div>
+      <div class="listening-card">
+        <div class="listening-top"><span>Scenario A · Farm supervisor</span><button class="btn secondary listen-once" data-audio-id="farm" data-say="G'day. Just a quick heads-up before you start tomorrow. We kick off at half past five because it gets pretty warm later in the day. Make sure you've got closed shoes, a hat and plenty of water. You don't need to bring tools; we've got all that here. If you haven't got a car, let me know tonight because one of the crew may be able to give you a lift from town." type="button">▶ Listen</button></div>
+        <div class="quiz" id="listenQuizA"></div>
+      </div>
+      <div class="listening-card">
+        <div class="listening-top"><span>Scenario B · Van seller</span><button class="btn secondary listen-once" data-audio-id="van" data-say="The van's done just over two hundred thousand kilometres, but it's been serviced regularly. I replaced the battery last winter and put new tyres on it about three months ago. The rooftop tent is included. The only thing I'd get checked is the air conditioning; it works, but it takes a while to cool down. Registration is paid until February." type="button">▶ Listen</button></div>
+        <div class="quiz" id="listenQuizB"></div>
+      </div>
+      <details class="support transcript"><summary>Show transcripts after answering</summary><p><strong>A.</strong> G'day. Just a quick heads-up before you start tomorrow. We kick off at half past five because it gets pretty warm later in the day. Make sure you've got closed shoes, a hat and plenty of water. You don't need to bring tools; we've got all that here. If you haven't got a car, let me know tonight because one of the crew may be able to give you a lift from town.</p><p><strong>B.</strong> The van's done just over two hundred thousand kilometres, but it's been serviced regularly. I replaced the battery last winter and put new tyres on it about three months ago. The rooftop tent is included. The only thing I'd get checked is the air conditioning; it works, but it takes a while to cool down. Registration is paid until February.</p></details>
+    </section>
+
+    <section class="panel" id="naturalEnglish" data-track>
+      <div class="section-head"><p class="kicker">06 · SOUND NATURAL</p><h2>Replace “French English” with ready-to-use chunks</h2><p>Do not translate word by word. Store the whole expression.</p></div>
+      <div class="chunk-grid" id="chunkGrid"></div>
+      <div class="rapid-fire"><h3>Rapid-fire reformulation</h3><p>Your trainer reads the left idea. You have three seconds to produce natural English.</p><div class="rapid-list"><div><span>Je suis habitué à travailler sous pression.</span><b>I’m used to working under pressure.</b></div><div><span>Je me débrouille bien quand je dois m’adapter.</span><b>I’m good at adapting when things change.</b></div><div><span>Je ne cherche pas forcément un poste similaire.</span><b>I’m not necessarily looking for a similar role.</b></div><div><span>Ça ne me dérange pas de commencer par un travail physique.</span><b>I don’t mind starting with a physical job.</b></div><div><span>Si je ne connais pas le mot, je peux l’expliquer autrement.</span><b>If I don’t know the word, I can explain it another way.</b></div></div></div>
+    </section>
+
+    <section class="panel dark-panel" id="scenarios" data-track>
+      <div class="section-head"><p class="kicker">07 · SURPRISE SCENARIOS</p><h2>No memorised answer survives a surprise</h2><p>Pick a card at random. You get 20 seconds to prepare, then answer for 60–90 seconds.</p></div>
+      <div class="scenario-stage"><div id="scenarioCard" class="scenario-card"><span>READY?</span><h3>Press “New scenario”</h3><p>Your situation will appear here.</p></div><button class="btn primary" id="newScenario" type="button">New scenario</button></div>
+      <div class="timer-box"><div class="timer-display" id="scenarioTimer">01:15</div><div><button class="btn primary timer-start" data-seconds="75" data-target="scenarioTimer" type="button">Start 75s</button><button class="btn ghost timer-reset" data-seconds="75" data-target="scenarioTimer" type="button">Reset</button></div></div>
+      <div class="recorder" data-recorder="scenario"><button class="btn secondary record-start" type="button">● Record</button><button class="btn ghost record-stop" type="button" disabled>■ Stop</button><span class="record-status">Not recording</span><audio controls class="record-playback"></audio></div>
+      <details class="support"><summary>Emergency fluency tools — reveal only if blocked</summary><div class="phrase-bank"><span>Let me think for a second.</span><span>What I mean is…</span><span>I don’t know the exact word, but it’s basically…</span><span>The best way to explain it is…</span><span>One example would be…</span><span>From my experience…</span><span>It depends on the situation.</span><span>I’d probably say that…</span></div></details>
+    </section>
+
+    <section class="panel" id="jobPitch" data-track>
+      <div class="section-head"><p class="kicker">08 · TRANSFERABLE SKILLS</p><h2>Sell the value, not the job title</h2><p>Your next employer may not care what a process analyst is. Make the value obvious in ordinary English.</p></div>
+      <div class="transfer-grid"><div><strong>analyse a process</strong><span>→ spot problems quickly</span></div><div><strong>work with business + tech teams</strong><span>→ communicate with different people</span></div><div><strong>automation</strong><span>→ look for faster, safer ways to work</span></div><div><strong>finance responsibility</strong><span>→ be accurate and reliable</span></div><div><strong>international teams</strong><span>→ adapt to different communication styles</span></div><div><strong>high-level sport</strong><span>→ show discipline, stamina and consistency</span></div></div>
+      <div class="role-card"><h3>45-second job pitch</h3><p><strong>Situation:</strong> You walk into a business that needs temporary staff. The manager asks: “So, what kind of work are you looking for?”</p><div class="speaking-map"><span>1. flexible target</span><span>2. previous value</span><span>3. physical readiness</span><span>4. availability</span><span>5. question back</span></div><textarea id="pitchKeywords" placeholder="Keywords only. Do not write your speech."></textarea></div>
+      <details class="support"><summary>Reveal two model answers</summary><div class="model-grid"><div><h4>B1 model</h4><p>I’m quite flexible about the type of job. I worked for several years in a large international company, where I analysed problems and worked with different teams. I’m reliable, organised and used to learning new things quickly. I also train a lot, so physical work doesn’t worry me. I’m available to start quickly. What kind of person are you looking for?</p></div><div><h4>B2 model</h4><p>I’m deliberately keeping my options open because I’d like to experience a different kind of work while I’m in Australia. My background is in process analysis, so I’m used to identifying problems, following procedures and working with people from very different teams. Outside work, I train twice a day, which has taught me consistency and resilience. I’m happy to start in a hands-on role and learn on the job. What would success look like in the first few weeks?</p></div></div></details>
+    </section>
+
+    <section class="panel vtest-panel" id="vtest" data-track>
+      <div class="section-head"><p class="kicker">09 · VTEST TRANSFER</p><h2>Mini certification checkpoint</h2><p>This is a short practice set inspired by the current VTest task families: contextual response, read-and-discuss, open speaking, and a structured short writing task.</p></div>
+      <div class="exam-strip"><span>⏱ timed</span><span>🎧 one-pass listening mindset</span><span>🎤 concise speaking</span><span>✍ 100-word B1/B2 target</span></div>
+
+      <article class="exam-task"><div class="task-head"><span>Part A · Contextual response</span><span>3 items</span></div><div class="quiz" id="rejoinderQuiz"></div></article>
+
+      <article class="exam-task"><div class="task-head"><span>Part B · Read aloud + discuss</span><span>4 min practice</span></div><div class="read-box"><p id="readText">Many companies value employees who can adapt quickly when priorities change. Technical knowledge is useful, but communication, reliability and the ability to learn may be just as important. In international teams, employees also need to explain problems clearly and ask for clarification when necessary.</p><button class="btn ghost speak" data-say="Many companies value employees who can adapt quickly when priorities change. Technical knowledge is useful, but communication, reliability and the ability to learn may be just as important. In international teams, employees also need to explain problems clearly and ask for clarification when necessary." type="button">▶ Hear model pronunciation</button></div><ol class="prompt-list"><li>What is the main idea of the text?</li><li>Which quality is most important when starting a completely new type of job, and why?</li></ol><div class="recorder" data-recorder="vtest"><button class="btn secondary record-start" type="button">● Record answer</button><button class="btn ghost record-stop" type="button" disabled>■ Stop</button><span class="record-status">Not recording</span><audio controls class="record-playback"></audio></div></article>
+
+      <article class="exam-task"><div class="task-head"><span>Part C · Open speaking</span><span>60 sec</span></div><p><strong>Prompt:</strong> Some people prefer a stable career path. Others prefer changing jobs and trying new environments. Which approach is better for you at this point in your life? Give reasons and an example.</p><div class="timer-box compact"><div class="timer-display" id="vtestTimer">01:00</div><div><button class="btn primary timer-start" data-seconds="60" data-target="vtestTimer" type="button">Start</button><button class="btn ghost timer-reset" data-seconds="60" data-target="vtestTimer" type="button">Reset</button></div></div><details class="support"><summary>Speaking model</summary><div class="model-grid"><div><h4>B1</h4><p>At this point, I prefer trying a new environment because I have already had a stable job for several years. I want to discover another country and improve my English. I think changing environments can help me learn more about myself and develop new skills.</p></div><div><h4>B2</h4><p>Right now, I value exploration more than stability. I’ve already had the opportunity to build a solid career, so moving abroad feels less like starting again and more like testing my ability to adapt. Even if I take a job outside my usual field, I’ll still be developing resilience, communication and independence.</p></div></div></details></article>
+
+      <article class="exam-task"><div class="task-head"><span>Part D · Short writing</span><span>100+ words</span></div><p><strong>Prompt:</strong> A recruitment agency asks you to explain what kind of work you are looking for in Australia. Write a short message. Include: your background, transferable skills, the type of work you are open to, and your availability.</p><textarea id="writingTask" class="writing-area" placeholder="Write at least 100 words..."></textarea><div class="writing-meta"><span><b id="wordCount">0</b> words</span><span>Target: 100+</span></div><details class="support"><summary>Reveal B1 and B2 writing models</summary><div class="model-grid"><div><h4>B1 model</h4><p>Hello, I am looking for temporary work in Australia and I am flexible about the sector. I have several years of experience in an international company, mainly in finance and process analysis. My work taught me to be organised, reliable and comfortable with procedures. I also worked with different teams and learned to solve problems quickly. I am very active and train every day, so I am also interested in physical or outdoor work. I am open to farm, logistics or entry-level operational roles. I can learn quickly and I am motivated to discover a new working environment. I will be available after I arrive in Australia.</p></div><div><h4>B2 model</h4><p>Hello, I’m looking for a hands-on role during my stay in Australia and I’m intentionally open-minded about the sector. My professional background is in process analysis within a large international company, where I learned to identify issues, follow procedures, coordinate with different teams and communicate clearly when priorities changed. Although my previous work was office-based, I’m highly active outside work and used to demanding physical training. I would therefore be comfortable considering farm, logistics, site-support or other operational positions. I’m reliable, adaptable and keen to learn on the job rather than limit myself to my previous field. I’ll be available to start shortly after arriving.</p></div></div></details></article>
+    </section>
+
+    <section class="panel" id="review" data-track>
+      <div class="section-head"><p class="kicker">10 · PERFORMANCE REVIEW</p><h2>Measure what changed today</h2><p>Compare the cold start with your final speaking. Focus on access speed, not perfection.</p></div>
+      <div class="rubric-grid">
+        <label>Fluency <input class="rubric" data-label="Fluency" type="range" min="1" max="5" value="3"><output>3/5</output></label>
+        <label>Grammar control <input class="rubric" data-label="Grammar control" type="range" min="1" max="5" value="3"><output>3/5</output></label>
+        <label>Vocabulary range <input class="rubric" data-label="Vocabulary range" type="range" min="1" max="5" value="3"><output>3/5</output></label>
+        <label>Question accuracy <input class="rubric" data-label="Question accuracy" type="range" min="1" max="5" value="3"><output>3/5</output></label>
+        <label>Listening detail <input class="rubric" data-label="Listening detail" type="range" min="1" max="5" value="3"><output>3/5</output></label>
+        <label>Spontaneity <input class="rubric" data-label="Spontaneity" type="range" min="1" max="5" value="3"><output>3/5</output></label>
+      </div>
+      <div class="teacher-box"><div><label>Trainer feedback<textarea id="teacherFeedback" placeholder="Key strengths, recurring errors, target for next lesson..."></textarea></label></div><div><label>Next vocabulary to recycle<textarea id="nextVocab" placeholder="Words/chunks to bring back next lesson..."></textarea></label></div></div>
+      <div class="score-summary"><div><small>Auto-graded</small><strong id="scoreDisplay">0 / 0</strong></div><div><small>Completion</small><strong id="completionDisplay">0%</strong></div><div><small>Rubric average</small><strong id="rubricAverage">3.0 / 5</strong></div></div>
+      <div class="final-actions"><button class="btn primary" id="downloadReport" type="button">Download progress report</button><button class="btn secondary" id="resetAll" type="button">Reset lesson</button></div>
+    </section>
+  </main>
+
+  <footer><strong>SpeakEasy Tisha</strong><span>Lesson 2 · Australia: Speak Without a Script</span><span>Personalised training · B1.2+ → B2.1- · VTest pathway</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
