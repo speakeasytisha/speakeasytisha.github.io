@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive New York Real Talk lesson: authentic American travel English, cultural register, reviews, real NYC photos, restaurant language and LILATE transfer.">
+  <title>Bethany · New York Real Talk — Fit In, Speak Naturally, Enjoy the City</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="jsWarning" class="js-warning">⚠ JavaScript is not loaded. Keep index.html, styles.css and script.js in the same folder.</div>
+
+<header class="hero" id="top">
+  <nav class="topbar">
+    <a class="brand" href="#top">
+      <span class="apple-logo">NY</span>
+      <span><b>SpeakEasyTisha</b><small>New York Real Talk · Travel English</small></span>
+    </a>
+    <div class="nav-links">
+      <button data-scroll="#culture">Real talk</button>
+      <button data-scroll="#places">Real NYC</button>
+      <button data-scroll="#modals">Modal lab</button>
+      <button data-scroll="#navigation">Getting around</button>
+      <button data-scroll="#restaurant">Restaurant register</button>
+      <button data-scroll="#lilate">LILATE bridge</button>
+    </div>
+  </nav>
+
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="kicker">NEXT LESSON · BIG APPLE / REAL PEOPLE / REAL ENGLISH</p>
+      <h1>Bethany · New York Real Talk</h1>
+      <p class="tagline">Not textbook English. The English people actually use.</p>
+      <p class="lead">Learn how to sound warm without sounding over-formal, understand why Americans say things the way they do, compare real New York experiences, and choose the right language for a fine restaurant, an everyday restaurant, a coffee counter, the subway, a hotel or the street.</p>
+      <div class="hero-actions">
+        <button class="primary gold" data-scroll="#warmup">Start in New York</button>
+        <button class="glass speak" data-text="Hi! Welcome to New York. Today, we're going to work on the English people actually use, how polite it really sounds, and how to choose the right level of formality for each situation.">▶ Hear the lesson opening</button>
+      </div>
+      <div class="hero-badges">
+        <span>📸 Real NYC photography</span><span>💬 Real dialogue</span><span>🍽 3 restaurant registers</span><span>⭐ Review language</span><span>🎯 LILATE transfer</span>
+      </div>
+    </div>
+
+    <aside class="hero-card">
+      <p class="micro">TODAY'S BIG IDEA</p>
+      <h2>“Natural” ≠ “slang”</h2>
+      <p>Natural American English is often friendly, direct and efficient. It uses short polite openers and softeners without sounding formal.</p>
+      <div class="register-stack">
+        <span><b>Neutral everyday</b> Hi, could you help me?</span>
+        <span><b>Warmer</b> Hi! How are you doing?</span>
+        <span><b>More formal</b> Good evening. We have a reservation.</span>
+        <span><b>Too casual for some strangers</b> Hey, what's up?</span>
+      </div>
+    </aside>
+  </div>
+
+  <div class="hero-photo-strip" aria-label="New York photographs">
+    <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Bow_Bridge_in_Central_Park%2C_NYC.jpg/960px-Bow_Bridge_in_Central_Park%2C_NYC.jpg?utm_campaign=index&utm_content=thumbnail&utm_source=commons.wikimedia.org" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:Redirect/file/Bow%20Bridge%20in%20Central%20Park%2C%20NYC.jpg?width=1400'" alt="Bow Bridge in Central Park"><figcaption>Central Park · Bow Bridge</figcaption></figure>
+    <figure><img src="https://images.ctfassets.net/1aemqu6a6t65/7w7xp69KB6TE8fPIyzCihQ/7fae7566ec09ff43ce79975eef5c005c/1-Time-Square-Manhattan-NYC-Photo-Courtesy-Timelapse-Company-12.jpg" alt="Times Square in New York"><figcaption>Times Square · Midtown</figcaption></figure>
+    <figure><img src="https://images.unsplash.com/photo-1761245093712-ffc037acb410?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=70&w=1600" alt="Manhattan skyline and Brooklyn Bridge at dusk"><figcaption>Brooklyn · Skyline at dusk</figcaption></figure>
+  </div>
+</header>
+
+<main>
+  <section class="panel control-panel">
+    <div><p class="micro">LESSON CONTROLS</p><h2>Choose the amount of support</h2></div>
+    <div class="controls">
+      <label>Mode
+        <select id="modeSelect">
+          <option value="practice">Practice · hints + models</option>
+          <option value="lilate">LILATE mode · no models until answer</option>
+        </select>
+      </label>
+      <label>Audio speed
+        <select id="speedSelect">
+          <option value="0.80">Clear</option>
+          <option value="0.95" selected>Natural</option>
+          <option value="1.10">Fast</option>
+        </select>
+      </label>
+      <button id="resetBtn" class="soft-danger">Reset</button>
+    </div>
+    <div class="progress-box">
+      <div class="progress-track"><span id="progressBar"></span></div>
+      <b id="progressText">0% complete</b>
+    </div>
+  </section>
+
+  <section class="panel" id="warmup">
+    <div class="section-head">
+      <div><p class="section-no">01 · WARM-UP</p><h2>Which New York feels most like you?</h2><p>See the question <b>and</b> hear it. Then compare how the same idea changes in formal, polite everyday, casual and slang-heavy English.</p></div>
+      <span class="time-pill">15 min · speaking + register</span>
+    </div>
+    <div class="warmup-scenarios">
+      <article class="warmup-card">
+        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Bow_Bridge_in_Central_Park%2C_NYC.jpg/960px-Bow_Bridge_in_Central_Park%2C_NYC.jpg?utm_campaign=index&utm_content=thumbnail&utm_source=commons.wikimedia.org" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:Redirect/file/Bow%20Bridge%20in%20Central%20Park%2C%20NYC.jpg?width=1400'" alt="Bow Bridge in Central Park">
+        <div class="warmup-body">
+          <p class="micro">CENTRAL PARK · BOW BRIDGE</p>
+          <h3>Quiet + beautiful</h3>
+          <p class="visible-prompt"><b>Question:</b> Would a peaceful morning around Bow Bridge appeal to you? Explain what attracts you, what you would do there, and how long you would want to stay.</p>
+          <button class="secondary speak" data-text="Would a peaceful morning around Bow Bridge appeal to you? Explain what attracts you, what you would do there, and how long you would want to stay.">▶ Hear the question</button>
+          <div class="register-models practice-support">
+            <details><summary>Formal</summary><p>I would be particularly drawn to this part of Central Park because it offers a quieter contrast to the energy of Manhattan. I would probably spend a couple of hours walking, taking photographs and simply enjoying the scenery.</p></details>
+            <details><summary>Polite everyday</summary><p>I'd really like this because it looks peaceful and beautiful. I'd probably walk around, take some photos and stay for a couple of hours without trying to rush through the park.</p></details>
+            <details><summary>Casual</summary><p>I'd love this. I'd just wander around, take a few pictures and enjoy having a quieter morning before heading back into the city.</p></details>
+            <details><summary>Slang / very casual</summary><p>Honestly, this is totally my kind of place. I'd just hang out, walk around and take it easy for a while.</p></details>
+          </div>
+        </div>
+      </article>
+
+      <article class="warmup-card">
+        <img src="https://images.ctfassets.net/1aemqu6a6t65/7w7xp69KB6TE8fPIyzCihQ/7fae7566ec09ff43ce79975eef5c005c/1-Time-Square-Manhattan-NYC-Photo-Courtesy-Timelapse-Company-12.jpg" alt="Times Square in New York">
+        <div class="warmup-body">
+          <p class="micro">TIMES SQUARE · MIDTOWN</p>
+          <h3>Bright + intense</h3>
+          <p class="visible-prompt"><b>Question:</b> Do you think you would enjoy Times Square, or would you find it too crowded and touristy? Give a balanced opinion.</p>
+          <button class="secondary speak" data-text="Do you think you would enjoy Times Square, or would you find it too crowded and touristy? Give a balanced opinion.">▶ Hear the question</button>
+          <div class="register-models practice-support">
+            <details><summary>Formal</summary><p>I would certainly want to experience Times Square once because it is so iconic. However, I suspect I would find the crowds and noise rather overwhelming after a short time.</p></details>
+            <details><summary>Polite everyday</summary><p>I'd definitely like to see it, especially at night, but I don't think I'd want to stay there for hours because it looks extremely busy.</p></details>
+            <details><summary>Casual</summary><p>I'd check it out for sure, but after twenty or thirty minutes I'd probably be ready to go somewhere less hectic.</p></details>
+            <details><summary>Slang / very casual</summary><p>I'd totally go once for the lights, but if it's crazy packed, I'd be out pretty fast.</p></details>
+          </div>
+        </div>
+      </article>
+
+      <article class="warmup-card">
+        <img src="https://images.unsplash.com/photo-1761245093712-ffc037acb410?auto=format&amp;fit=crop&amp;fm=jpg&amp;ixlib=rb-4.1.0&amp;q=70&amp;w=1600" alt="Manhattan skyline and Brooklyn Bridge at dusk">
+        <div class="warmup-body">
+          <p class="micro">BROOKLYN · SKYLINE AT DUSK</p>
+          <h3>Skyline + atmosphere</h3>
+          <p class="visible-prompt"><b>Question:</b> What would make a Brooklyn sunset unforgettable for you? Describe the atmosphere, what you would do, and the kind of conversation you might have.</p>
+          <button class="secondary speak" data-text="What would make a Brooklyn sunset unforgettable for you? Describe the atmosphere, what you would do, and the kind of conversation you might have.">▶ Hear the question</button>
+          <div class="register-models practice-support">
+            <details><summary>Formal</summary><p>The combination of the skyline, the river and the evening light would make the experience especially memorable. I would enjoy walking slowly and perhaps asking a local where they would recommend going afterwards.</p></details>
+            <details><summary>Polite everyday</summary><p>I think the view would be amazing at sunset. I'd love to walk by the water, take photos and maybe ask someone for a good place to have dinner nearby.</p></details>
+            <details><summary>Casual</summary><p>I'd just want to walk around, enjoy the view and find somewhere good to eat afterwards. That sounds like a perfect evening to me.</p></details>
+            <details><summary>Slang / very casual</summary><p>That view would be insane. I'd grab some photos, chill by the water and then find a great spot to eat.</p></details>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="register-note"><b>Important:</b> slang is mainly for recognition and selective use. Your safest travel default is the <b>polite everyday</b> version.</div>
+  </section>
+
+  <section class="panel culture-panel" id="culture">
+    <div class="section-head">
+      <div><p class="section-no">02 · CULTURAL DECODER</p><h2>“Hi” is not as casual as it looks on a French translation</h2><p>Translations such as <i>salut</i> can be misleading. Register depends on situation, tone and relationship—not one dictionary equivalent.</p></div>
+      <span class="time-pill">15 min · pragmatics</span>
+    </div>
+
+    <div class="culture-callout">
+      <div class="big-hi">HI!</div>
+      <div>
+        <h3>In everyday U.S. interactions, “Hi” is normal, warm and often perfectly polite.</h3>
+        <p>A hotel receptionist, server, shop assistant or stranger can all hear <b>“Hi”</b> without it sounding childish or overly familiar. <b>“Hey”</b> is more casual and is also used to get attention, so it can feel less neutral with a stranger.</p>
+        <p><b>Key idea:</b> do not translate the word first. Ask: <i>Who am I talking to? What is the situation? How warm or formal do I want to sound?</i></p>
+      </div>
+    </div>
+
+    <div class="register-table four-col">
+      <div class="reg-head">Expression</div><div class="reg-head">French meaning</div><div class="reg-head">Typical feel in U.S. English</div><div class="reg-head">Best travel use</div>
+      <div><b>Hello.</b></div><div>Bonjour.</div><div>Neutral / a little more formal than “Hi”</div><div>Safe everywhere</div>
+      <div><b>Hi!</b></div><div><b>Bonjour !</b> in many everyday situations — not automatically “salut”</div><div>Friendly, normal, everyday polite</div><div>Excellent default in hotels, restaurants, shops and service situations</div>
+      <div><b>Hey!</b></div><div>Salut ! / Hé ! depending on tone</div><div>More casual / familiar</div><div>Better with someone you already have rapport with</div>
+      <div><b>Good evening.</b></div><div>Bonsoir.</div><div>Polished and situational</div><div>Excellent in a sophisticated restaurant or hotel</div>
+      <div><b>Excuse me…</b></div><div>Excusez-moi… / Pardon…</div><div>Polite way to get someone's attention</div><div>Excellent on the street, subway or in a busy place</div>
+      <div><b>Sorry to bother you…</b></div><div>Désolée de vous déranger…</div><div>Extra-soft and considerate</div><div>Very useful when asking a stranger for help or taking a moment of their time</div>
+    </div>
+
+    <div class="polite-toolbox">
+      <div class="toolbox-intro">
+        <p class="micro">REUSABLE POLITE ENGLISH</p>
+        <h3>Smooth expressions you can use again and again</h3>
+        <p>These are not “too much.” They are common ways to make a request sound considerate and easy to receive.</p>
+      </div>
+      <div class="polite-grid">
+        <article><b>Could you help me with this?</b><span>Pourriez-vous m'aider avec ça ?</span><small>Very useful everyday polite request.</small></article>
+        <article><b>Would you mind helping me?</b><span>Ça vous dérangerait de m'aider ?</span><small>Softer and very polite.</small></article>
+        <article><b>Could I ask you something?</b><span>Est-ce que je peux vous demander quelque chose ?</span><small>Good before a short question.</small></article>
+        <article><b>Do you happen to know…?</b><span>Est-ce que vous sauriez par hasard… ?</span><small>Natural when asking for information.</small></article>
+        <article><b>When you have a moment…</b><span>Quand vous aurez un moment…</span><small>Shows there is no rush.</small></article>
+        <article><b>Would it be possible to…?</b><span>Serait-il possible de… ?</span><small>Polished for hotels, restaurants and changes.</small></article>
+        <article><b>I was wondering if…</b><span>Je voulais savoir si…</span><small>A smooth, indirect way to make a request.</small></article>
+        <article><b>Whenever you have a chance…</b><span>Quand vous aurez l'occasion / un moment…</span><small>Useful when the request is not urgent.</small></article>
+      </div>
+    </div>
+
+    <div class="micro-label">CHOOSE THE MOST NATURAL OPENING</div>
+    <div id="greetingQuiz" class="quiz-stack"></div>
+  </section>
+
+  <section class="panel" id="mentality">
+    <div class="section-head">
+      <div><p class="section-no">03 · WHY IT SOUNDS “TOO POLITE”</p><h2>Friendly + efficient: the logic behind the phrases</h2><p>American travel/service interactions often combine a quick friendly opener with a clear request. The politeness is real—but usually compact.</p></div>
+      <span class="time-pill">10 min · culture + speech</span>
+    </div>
+
+    <div class="logic-grid">
+      <article><span>1</span><h3>Open</h3><p><b>Hi</b> / <b>Excuse me</b></p><small>You acknowledge the person before asking.</small></article>
+      <article><span>2</span><h3>Ask clearly</h3><p><b>Could you help me with…?</b></p><small>Direct does not have to mean rude.</small></article>
+      <article><span>3</span><h3>Give one detail</h3><p><b>I'm trying to get to…</b></p><small>Make the request easy to answer.</small></article>
+      <article><span>4</span><h3>Close warmly</h3><p><b>Perfect, thank you so much.</b></p><small>Short, friendly, finished.</small></article>
+    </div>
+
+    <div class="myth-box">
+      <div><b>The cultural point:</b> Americans often try <em>not to bother other people</em> or impose on their time.</div>
+      <p>That is different from saying that Americans “don't like to be bothered.” The speaker is often showing consideration: <b>Excuse me</b>, <b>Sorry to bother you</b>, <b>Could I ask you something?</b>, or <b>When you have a moment…</b> signals: “I know I'm taking a little of your time, and I want to be respectful.” You do not need to over-apologize; one short softener is enough.</p>
+    </div>
+
+    <div class="before-after">
+      <article><p class="micro">TOO ABRUPT</p><p class="dialogue">“Where is the subway?”</p></article>
+      <article class="arrow">→</article>
+      <article><p class="micro">NATURAL EVERYDAY</p><p class="dialogue">“Excuse me, is there a subway entrance around here?”</p><button class="secondary speak" data-text="Excuse me, is there a subway entrance around here?">▶ Hear it</button></article>
+      <article class="arrow">→</article>
+      <article><p class="micro">EXTRA SOFT</p><p class="dialogue">“Sorry to bother you—do you know where the nearest subway entrance is?”</p><button class="secondary speak" data-text="Sorry to bother you. Do you know where the nearest subway entrance is?">▶ Hear it</button></article>
+    </div>
+  </section>
+
+
+  <section class="panel modal-panel" id="modals">
+    <div class="section-head">
+      <div><p class="section-no">04 · MODAL LAB</p><h2>Can, could, should, may — what changes?</h2><p>These tiny words change meaning, politeness and intention. Learn the rule first, then use them in real New York situations.</p></div>
+      <span class="time-pill">18 min · grammar → speaking</span>
+    </div>
+
+    <div class="modal-rule">
+      <b>Core rule</b>
+      <p><strong>modal + base verb</strong>: <i>can help, could tell, should take, may enter</i>. No <b>to</b> after the modal, and no <b>-s</b> for he/she/it.</p>
+      <p><b>Question:</b> modal + subject + base verb → <i>Could you help me?</i> · <b>Negative:</b> <i>can't / couldn't / shouldn't / may not</i>.</p>
+    </div>
+
+    <div class="modal-grid">
+      <article><div class="modal-word">CAN</div><h3>pouvoir · capacité / possibilité / demande directe</h3><p><b>Everyday request:</b> “Can you tell me which train I need?”</p><p><b>Meaning:</b> normal, direct and friendly. Not rude when your tone is polite.</p><p class="translation">🇫🇷 Vous pouvez me dire quel train je dois prendre ?</p></article>
+      <article><div class="modal-word">COULD</div><h3>pouvoir · demande plus douce / possibilité / capacité passée</h3><p><b>Polite request:</b> “Could you tell me where the entrance is?”</p><p><b>Meaning:</b> softer than <i>can</i>. In a polite request, <b>could is not simply past tense</b>.</p><p class="translation">🇫🇷 Pourriez-vous me dire où se trouve l'entrée ?</p></article>
+      <article><div class="modal-word">SHOULD</div><h3>devrais / devrait · conseil / recommandation / attente</h3><p><b>Advice:</b> “Which station should I get off at?”</p><p><b>Meaning:</b> asks what is advisable or the best choice—not a strong obligation.</p><p class="translation">🇫🇷 À quelle station devrais-je descendre ?</p></article>
+      <article><div class="modal-word">MAY</div><h3>pouvoir · permission / possibilité · registre plus formel</h3><p><b>Formal permission:</b> “May I leave my coat here?”</p><p><b>Possibility:</b> “It may rain later.”</p><p><b>Meaning:</b> correct and polished, but often more formal than you need in an ordinary travel exchange.</p><p class="translation">🇫🇷 Puis-je laisser mon manteau ici ? / Il se peut qu'il pleuve.</p></article>
+    </div>
+
+    <div class="can-could-scale">
+      <div><b>Can you help me?</b><span>normal everyday</span></div><i>→</i><div><b>Could you help me?</b><span>softer / more polite</span></div><i>→</i><div><b>May I ask a question?</b><span>more formal / polished</span></div>
+    </div>
+
+    <div class="modal-traps">
+      <h3>Four traps to avoid</h3>
+      <div><span>❌ Could you <b>to tell</b> me?</span><span>✅ Could you <b>tell</b> me?</span></div>
+      <div><span>❌ She <b>cans</b> help.</span><span>✅ She <b>can</b> help.</span></div>
+      <div><span>❌ You <b>should to take</b> the A.</span><span>✅ You <b>should take</b> the A.</span></div>
+      <div><span>⚠ “May you help me?”</span><span>✅ “Could you help me?” / “Can you help me?”</span></div>
+    </div>
+
+    <div class="micro-label">CHOOSE THE MODAL THAT MATCHES THE INTENTION</div>
+    <div id="modalQuiz" class="quiz-stack"></div>
+  </section>
+
+  <section class="panel places-panel" id="places">
+    <div class="section-head">
+      <div><p class="section-no">05 · REAL NYC / REAL REVIEWS</p><h2>Would you actually enjoy it?</h2><p>Use real photographs and simple traveler-review language. First learn the key vocabulary, then compare what visitors like and dislike, and finally give your own opinion.</p></div>
+      <span class="time-pill">20 min · interpret + compare</span>
+    </div>
+
+    <div class="place-tabs" id="placeTabs"></div>
+    <div id="placeStage"></div>
+  </section>
+
+  <section class="panel review-panel">
+    <div class="section-head">
+      <div><p class="section-no">06 · REVIEW ENGLISH</p><h2>Say more than “It was good”</h2><p>These are useful for travel conversation <em>and</em> interpretation tasks.</p></div>
+      <span class="time-pill">10 min · vocabulary</span>
+    </div>
+    <div class="review-vocab">
+      <button class="speak" data-text="It was absolutely worth it."><b>worth it</b><span>valait le coup</span></button>
+      <button class="speak" data-text="The view was breathtaking."><b>breathtaking</b><span>à couper le souffle</span></button>
+      <button class="speak" data-text="It was packed."><b>packed</b><span>bondé</span></button>
+      <button class="speak" data-text="It's definitely touristy."><b>touristy</b><span>très touristique</span></button>
+      <button class="speak" data-text="It felt immersive."><b>immersive</b><span>immersif</span></button>
+      <button class="speak" data-text="It was a little overrated for me."><b>overrated</b><span>surcoté</span></button>
+      <button class="speak" data-text="I'd go early to avoid the crowds."><b>avoid the crowds</b><span>éviter la foule</span></button>
+      <button class="speak" data-text="I wouldn't skip it on a first trip."><b>I wouldn't skip it</b><span>je ne le raterais pas</span></button>
+    </div>
+    <div id="reviewFill" class="fill-grid"></div>
+  </section>
+
+  <section class="panel slang-panel" id="slang">
+    <div class="section-head">
+      <div><p class="section-no">07 · EVERYDAY vs SLANG</p><h2>Recognize more than you produce</h2><p>The goal is to sound natural—not to perform an American accent or force slang.</p></div>
+      <span class="time-pill">12 min · register</span>
+    </div>
+    <div class="four-registers">
+      <article class="polished-reg"><p class="micro">POLISHED / SMOOTH</p><h3>Especially courteous</h3>
+        <p><b>Good evening.</b> <span>Bonsoir.</span></p>
+        <p><b>Could you please…?</b> <span>Pourriez-vous… s'il vous plaît ?</span></p>
+        <p><b>Would you mind…?</b> <span>Ça vous dérangerait de… ?</span></p>
+        <p><b>Would it be possible…?</b> <span>Serait-il possible de… ?</span></p>
+      </article>
+      <article class="safe-reg"><p class="micro">SAFE EVERYDAY</p><h3>Your best default</h3>
+        <p><b>Hi.</b> <span>Bonjour.</span></p>
+        <p><b>Could I get…?</b> <span>Je pourrais avoir… ?</span></p>
+        <p><b>I'm good, thanks.</b> <span>Ça va / Non merci, ça ira.</span></p>
+        <p><b>Sounds good.</b> <span>Ça me va / Ça a l'air bien.</span></p>
+      </article>
+      <article class="casual-reg"><p class="micro">CASUAL EVERYDAY</p><h3>Relaxed tone</h3>
+        <p><b>grab a bite</b> <span>manger un morceau</span></p>
+        <p><b>pretty good</b> <span>plutôt bien</span></p>
+        <p><b>you guys</b> <span>vous / tout le monde</span></p>
+        <p><b>awesome</b> <span>génial</span></p>
+      </article>
+      <article class="slang-reg"><p class="micro">SLANG / VERY CASUAL</p><h3>Understand first</h3>
+        <p><b>What's up?</b> <span>Quoi de neuf ? / Ça va ?</span></p>
+        <p><b>my bad</b> <span>c'est ma faute / désolé</span></p>
+        <p><b>dude</b> <span>mec</span></p>
+        <p><b>I'm down.</b> <span>je suis partant(e)</span></p>
+      </article>
+    </div>
+
+    <div class="sort-zone">
+      <h3>Sort the expressions</h3>
+      <div id="sortBank" class="token-bank"></div>
+      <div class="sort-columns four-sort">
+        <div class="drop-zone register-drop" data-cat="polished"><b>Polished / smooth</b></div>
+        <div class="drop-zone register-drop" data-cat="safe"><b>Safe everyday</b></div>
+        <div class="drop-zone register-drop" data-cat="casual"><b>Casual everyday</b></div>
+        <div class="drop-zone register-drop" data-cat="slang"><b>Slang / very casual</b></div>
+      </div>
+      <button id="checkSort" class="primary">Check sorting</button>
+      <div id="sortFeedback" class="feedback"></div>
+    </div>
+  </section>
+
+
+  <section class="panel navigation-panel" id="navigation">
+    <div class="section-head">
+      <div><p class="section-no">08 · GETTING AROUND NYC</p><h2>Real subway & street situations — not tourist-book dialogues</h2><p>Entrances can be direction-specific, local and express trains can behave differently, and planned work can change service. Practise the conversations you may actually need.</p></div>
+      <span class="time-pill">22 min · survival speaking</span>
+    </div>
+    <div class="navigation-vocab-box">
+      <div class="nav-vocab-head">
+        <div><p class="micro">BEFORE THE SCENARIOS</p><h3>New York getting-around vocabulary</h3><p>Learn these first so words like <b>tap</b>, <b>turnstile</b>, <b>local</b> and <b>service change</b> do not block the conversation.</p></div>
+        <select id="navVocabCategory">
+          <option value="subway">🚇 Subway basics</option>
+          <option value="directions">🧭 Street directions</option>
+          <option value="problems">⚠ Changes & problems</option>
+        </select>
+      </div>
+      <div id="navVocabGrid" class="nav-vocab-grid"></div>
+    </div>
+
+    <div class="nyc-reality-strip">
+      <span>🚇 Read the entrance sign <b>before</b> you <u>tap</u> your card/phone</span>
+      <span>⚪ Local vs ◉ express matters</span>
+      <span>📢 Listen for service-change announcements</span>
+      <span>💳 OMNY: tap a contactless card/device at the turnstile</span>
+    </div>
+    <div class="navigation-tabs" id="navigationTabs"></div>
+    <div id="navigationStage"></div>
+    <p class="source-mini">Travel realism note: MTA guidance confirms contactless OMNY tapping at turnstiles/buses and recommends checking current/planned service changes, station signage and announcements before and during travel.</p>
+  </section>
+
+  <section class="panel restaurant-panel" id="restaurant">
+    <div class="section-head">
+      <div><p class="section-no">09 · RESTAURANT REGISTER LAB</p><h2>Same person. Three restaurants. Three different tones.</h2><p>Do not change your personality—change the level of polish.</p></div>
+      <span class="time-pill">20 min · role-play</span>
+    </div>
+
+    <div class="restaurant-tabs">
+      <button class="restaurant-tab active" data-r="fine">✨ Sophisticated</button>
+      <button class="restaurant-tab" data-r="casual">🍽 Everyday full-service</button>
+      <button class="restaurant-tab" data-r="counter">🍔 Counter / fast-food</button>
+    </div>
+    <div id="restaurantStage"></div>
+
+    <div class="restaurant-compare">
+      <h3>One request, three natural versions</h3>
+      <div class="compare-row"><b>Need a table</b><span>Good evening. We have a reservation for 7:30 under Martin.</span><span>Hi, we have a reservation for 7:30.</span><span>Hi—are you still serving?</span></div>
+      <div class="compare-row"><b>Order</b><span>I'd like the sea bass, please.</span><span>I'll have the burger, please.</span><span>Hi, can I get a number three with fries?</span></div>
+      <div class="compare-row"><b>Problem</b><span>Excuse me, I think there may have been a small mix-up with my order.</span><span>Sorry, I think I got the wrong dish.</span><span>Hi, sorry—I ordered this without onions.</span></div>
+      <div class="compare-row"><b>Finish</b><span>Could we have the check when you have a moment, please?</span><span>Could we get the check, please?</span><span>That's everything, thanks.</span></div>
+    </div>
+  </section>
+
+  <section class="panel dialogue-panel" id="dialogue">
+    <div class="section-head">
+      <div><p class="section-no">10 · “DO PEOPLE REALLY SAY THAT?”</p><h2>Yes — and this is what YOU should say</h2><p>Read the whole exchange, then focus on the highlighted lines you can actually reuse in New York. No extra levels here: this is the natural travel version to practise.</p></div>
+      <span class="time-pill">12 min · listening</span>
+    </div>
+
+    <div class="dialogue-selector">
+      <button class="dialogue-tab active" data-d="street">Street</button>
+      <button class="dialogue-tab" data-d="hotel">Hotel</button>
+      <button class="dialogue-tab" data-d="restaurant">Restaurant</button>
+      <button class="dialogue-tab" data-d="smalltalk">Small talk</button>
+    </div>
+    <div id="dialogueStage"></div>
+  </section>
+
+  <section class="panel lilate-panel" id="lilate">
+    <div class="section-head">
+      <div><p class="section-no">11 · LILATE BRIDGE</p><h2>Interpret, compare, react, reformulate</h2><p>The travel topic is enjoyable, but the language skills underneath are certification skills.</p></div>
+      <span class="time-pill gold-pill">20 min · exam transfer</span>
+    </div>
+
+    <div class="lilate-grid">
+      <article class="task-card">
+        <p class="micro">TASK A · INTERPRET</p>
+        <h3>Explain a review in your own words</h3>
+        <p>A traveler says an attraction has incredible views but feels crowded and expensive. Explain the message without translating word for word.</p>
+        <textarea id="interpretAnswer" rows="5" placeholder="The traveler likes... However..."></textarea>
+        <button class="hint-btn practice-support" data-hint="interpretHint">Hint</button>
+        <div class="hint hidden" id="interpretHint">Use: overall opinion → positive point → negative point → recommendation.</div>
+        <details class="model-box practice-support"><summary>Model · Level 1</summary><p>The traveler thinks the view is excellent, but the place can be very crowded and the tickets are expensive. Overall, they still think it is worth visiting.</p></details>
+        <details class="model-box practice-support"><summary>Model · Level 2</summary><p>Overall, the traveler is positive about the experience, especially the views, but they also point out two drawbacks: the crowds and the price. Their message is not “don't go”; it is more “go if the view matters enough to you, and choose your time carefully.”</p></details>
+      </article>
+
+      <article class="task-card">
+        <p class="micro">TASK B · COMPARE</p>
+        <h3>Choose between two experiences</h3>
+        <p>Compare a peaceful morning in Central Park with a busy evening in Times Square. Give advantages, disadvantages and your preference.</p>
+        <textarea id="compareAnswer" rows="5"></textarea>
+        <details class="model-box practice-support"><summary>Model · Level 1</summary><p>Central Park is calmer and more relaxing, while Times Square is much busier and more exciting. I would prefer Central Park in the morning because I like walking and beautiful scenery, but I would still visit Times Square once at night.</p></details>
+        <details class="model-box practice-support"><summary>Model · Level 2</summary><p>The two experiences offer completely different versions of New York. Central Park gives you space, nature and a slower rhythm, whereas Times Square is about spectacle, crowds and sensory overload. Personally, I'd spend more time in Central Park, but I think Times Square is worth seeing once because it captures a very recognizable side of the city.</p></details>
+      </article>
+
+      <article class="task-card">
+        <p class="micro">TASK C · REFORMULATE</p>
+        <h3>Make the request sound more natural</h3>
+        <p>Original: <i>“Where is subway for Brooklyn?”</i></p>
+        <textarea id="reformulateAnswer" rows="4"></textarea>
+        <details class="model-box practice-support"><summary>Model · Level 1</summary><p>Excuse me, which subway should I take to get to Brooklyn?</p></details>
+        <details class="model-box practice-support"><summary>Model · Level 2</summary><p>Excuse me, could you tell me the easiest subway route to Brooklyn from here?</p></details>
+      </article>
+
+      <article class="task-card">
+        <p class="micro">TASK D · TIMED ORAL</p>
+        <h3>90 seconds: recommend one NYC experience</h3>
+        <p>Describe it, explain why it suits you, mention one possible drawback, and say what language you might need there.</p>
+        <div class="timer-row"><span id="timer">01:30</span><button id="timerStart" class="primary">Start</button><button id="timerReset" class="secondary">Reset</button></div>
+        <textarea id="oralNotes" rows="4" placeholder="Keywords only..."></textarea>
+        <label>Oral score / 10 <input id="oralScore" type="number" min="0" max="10"></label>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel final-panel" id="finalMission">
+    <div class="section-head">
+      <div><p class="section-no">12 · FINAL MISSION</p><h2>One perfect New York day — but talk like a traveler, not a brochure</h2><p>Use your real preferences, review language, and the right register for each encounter.</p></div>
+      <span class="time-pill">10 min · synthesis</span>
+    </div>
+    <div class="final-grid">
+      <div>
+        <h3>Your plan</h3>
+        <ol>
+          <li>Choose one major sight.</li>
+          <li>Choose one neighborhood / walking moment.</li>
+          <li>Choose one meal style: sophisticated, casual, or quick.</li>
+          <li>Prepare one street interaction.</li>
+          <li>Prepare one opinion based on a review.</li>
+        </ol>
+      </div>
+      <div>
+        <textarea id="finalAnswer" rows="9" placeholder="My perfect day would start with..."></textarea>
+        <label>Final speaking score / 10 <input id="finalScore" type="number" min="0" max="10"></label>
+        <details class="model-box practice-support"><summary>Model · Level 1</summary><p>My perfect day would start in Central Park because I like places that are beautiful but not too busy. After that, I'd go to SUMMIT for the view. The reviews say the views are amazing, although it can be crowded, so I'd try to go at a quieter time. For dinner, I'd choose a nice full-service restaurant. I'd say, “Hi, we have a reservation for 7:30.” If I needed directions, I'd start with “Excuse me” and then ask a clear question.</p></details>
+        <details class="model-box practice-support"><summary>Model · Level 2</summary><p>My ideal day would balance the calmer and more energetic sides of New York. I'd begin with a long walk through Central Park, then head to an observation deck later in the day. Recent reviews make SUMMIT sound visually spectacular but also quite busy, so I'd probably choose a time that avoids the biggest crowds. In the evening, I'd go somewhere polished but not overly formal for dinner. I wouldn't try to sound “fancy”; I'd simply adjust the register: “Good evening, we have a reservation for 7:30,” followed by normal, friendly requests. My goal would be to stay in English even when the conversation moves quickly.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel evaluation-panel">
+    <div class="section-head">
+      <div><p class="section-no">END · QUALIOPI</p><h2>Confidence & transfer check</h2></div>
+      <span class="time-pill">Learning evidence</span>
+    </div>
+    <div class="eval-grid">
+      <label>I can choose between “Hi”, “Hey”, “Hello” and “Excuse me” appropriately.<select class="eval"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select></label>
+      <label>I can explain why a phrase is polite rather than “too much”.<select class="eval"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select></label>
+      <label>I can distinguish safe everyday English from slang.<select class="eval"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select></label>
+      <label>I can adjust my English to a sophisticated, casual or counter-service restaurant.<select class="eval"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select></label>
+      <label>I can interpret and compare traveler reviews.<select class="eval"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select></label>
+      <label>I can reformulate an idea instead of translating word for word.<select class="eval"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select></label>
+    </div>
+    <div class="reflection-grid">
+      <label>One expression that now feels genuinely natural<textarea id="naturalNow" rows="3"></textarea></label>
+      <label>One situation to practise again<textarea id="nextFocus" rows="3"></textarea></label>
+    </div>
+    <div class="report-actions">
+      <button id="downloadToolkit" class="secondary">⬇ Download Real Talk toolkit</button>
+      <button id="downloadReport" class="primary">⬇ Download results</button>
+      <button id="printBtn" class="secondary">Print / PDF</button>
+    </div>
+  </section>
+
+  <section class="panel sources-panel">
+    <p class="section-no">REAL-WORLD SOURCE NOTE</p>
+    <h2>What is based on current real-world information?</h2>
+    <p>The attraction cards use current official visitor information and recent traveler-review themes. Reviews are paraphrased for teaching rather than copied word-for-word.</p>
+    <div class="source-grid">
+      <article><b>Central Park / Bow Bridge</b><p>Place information: Central Park Conservancy. Bow Bridge display photo: Wikimedia Commons (Kevin Poh, CC BY 2.0). Review language is simplified for learning.</p></article>
+      <article><b>SUMMIT One Vanderbilt</b><p>Official SUMMIT visitor information; recent reviews frequently praise the views and immersive elements while some mention price and crowds.</p></article>
+      <article><b>Top of the Rock</b><p>Recent reviews frequently praise the open skyline view, especially the Empire State Building perspective; sunset can be crowded.</p></article>
+      <article><b>Times Square</b><p>NYC Tourism and recent reviews describe an iconic but intense, crowded and very tourist-oriented experience.</p></article>
+      <article><b>Statue of Liberty</b><p>National Park Service visitor guidance; authorized ferry and advance reservation guidance checked September 2026.</p></article>
+      <article><b>Language register</b><p>Cambridge Dictionary definitions were used to distinguish the functions of “hi,” “hey,” and “excuse me.”</p></article>
+      <article><b>NYC transport realism</b><p>MTA guidance was checked for OMNY tap-to-pay, planned service changes, local/express patterns, station signs and travel updates.</p></article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div><b>SpeakEasyTisha</b> · New York Real Talk</div>
+  <div>Everyday English · Cultural confidence · LILATE transfer</div>
+  <a href="#top">Back to top ↑</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

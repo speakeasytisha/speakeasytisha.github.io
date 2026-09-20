@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive everyday English lesson: travel, real-life communication, listening and speaking confidence." />
+  <title>Véronique · Everyday English Confidence Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="jsWarning" class="js-warning">⚠️ JavaScript is not loaded. Keep index.html, styles.css and script.js in the same folder.</div>
+
+  <header class="hero" id="top">
+    <nav class="topbar">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <span class="brand-mark">ST</span>
+        <span><strong>SpeakEasyTisha</strong><small>Everyday English · Travel & confidence</small></span>
+      </a>
+      <div class="top-actions">
+        <button class="nav-btn" data-scroll="#objectives">Objectives</button>
+        <button class="nav-btn" data-scroll="#vocabulary">Vocabulary</button>
+        <button class="nav-btn" data-scroll="#scenarios">Speaking</button>
+        <button class="nav-btn" data-scroll="#examBridge">Exam bridge</button>
+      </div>
+    </nav>
+
+    <div class="skyline" aria-hidden="true">
+      <span class="building b1"></span><span class="building b2"></span><span class="building b3"></span>
+      <span class="building b4"></span><span class="building b5"></span><span class="building b6"></span>
+    </div>
+
+    <section class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Lesson 2 · Speak first, perfect later</p>
+        <h1>Véronique · Everyday English Confidence Lab</h1>
+        <p class="hero-lead">Build the English you can really use: understand faster, find the right everyday words, ask for what you need, keep a conversation moving, and recover calmly when you do not understand.</p>
+        <div class="hero-actions">
+          <button class="primary" data-scroll="#warmup">Start the journey</button>
+          <button class="secondary speak-btn" data-say="Today, you will practise useful English for real life. You do not need perfect English. You need clear English, useful expressions, and the confidence to keep the conversation going.">▶ Hear today’s goal</button>
+        </div>
+        <div class="hero-tags">
+          <span>🗽 New York ready</span><span>🏨 Hotels</span><span>🍽 Restaurants</span><span>🧭 Directions</span><span>💬 Real conversation</span>
+        </div>
+      </div>
+
+      <aside class="travel-card">
+        <div class="stamp">NEXT STOP</div>
+        <h2>From “I know it” to “I can say it”</h2>
+        <p>The priority today is automatic language: short expressions you can retrieve quickly when someone is waiting for your answer.</p>
+        <div class="route">
+          <span>Listen</span><b>→</b><span>React</span><b>→</b><span>Clarify</span><b>→</b><span>Continue</span>
+        </div>
+      </aside>
+    </section>
+  </header>
+
+  <main>
+    <section class="control-dock panel">
+      <div>
+        <p class="micro-label">Lesson controls</p>
+        <h2>Choose how you want to practise</h2>
+      </div>
+      <div class="controls">
+        <label>Mode
+          <select id="modeSelect">
+            <option value="practice">Practice · hints + models</option>
+            <option value="challenge">Challenge · fewer hints</option>
+          </select>
+        </label>
+        <label>Voice
+          <select id="accentSelect">
+            <option value="en-US">US · New York trip</option>
+            <option value="en-GB">UK</option>
+          </select>
+        </label>
+        <button id="resetBtn" class="danger-light">Reset lesson</button>
+      </div>
+      <div class="progress-wrap" aria-label="Lesson progress">
+        <div class="progress-line"><span id="progressBar"></span></div>
+        <strong id="progressText">0% complete</strong>
+      </div>
+    </section>
+
+    <section class="panel" id="objectives">
+      <div class="section-head">
+        <div><p class="step">00 · YOUR ROADMAP</p><h2>Objectives for this training</h2></div>
+        <button id="downloadObjectives" class="secondary">⬇ Download objectives</button>
+      </div>
+      <div class="objective-grid">
+        <article><span>01</span><h3>Speak more spontaneously</h3><p>Answer familiar questions without translating every sentence in your head.</p></article>
+        <article><span>02</span><h3>Understand real speakers</h3><p>Catch the key information even when you do not understand every word.</p></article>
+        <article><span>03</span><h3>Travel independently</h3><p>Handle hotels, restaurants, transport, directions, shopping and small problems.</p></article>
+        <article><span>04</span><h3>Use everyday vocabulary</h3><p>Build a practical bank of expressions you can retrieve quickly.</p></article>
+        <article><span>05</span><h3>Keep conversations going</h3><p>React, ask follow-up questions, show interest and use repair strategies.</p></article>
+        <article><span>06</span><h3>Prepare for certification</h3><p>Transfer real-life English into timed listening, speaking, reading and short writing tasks.</p></article>
+      </div>
+      <p class="trainer-note"><strong>Training direction:</strong> useful communication first; accuracy is improved inside meaningful situations. The aim is not to memorise long scripts, but to build reusable sentence patterns.</p>
+    </section>
+
+    <section class="panel warm-panel" id="warmup">
+      <div class="section-head">
+        <div><p class="step">01 · 0–10 MIN</p><h2>Warm-up · Your life in 60 seconds</h2></div>
+        <span class="time-chip">Speaking confidence</span>
+      </div>
+      <p>Use the cards as prompts. Speak for 20–30 seconds per card. Do not stop because of one missing word: explain it differently.</p>
+      <div class="prompt-grid">
+        <button class="prompt-card speak-btn" data-say="Tell me about a place you enjoyed visiting. What did you like about it?"><b>✈️ Travel</b><span>A place you enjoyed visiting</span></button>
+        <button class="prompt-card speak-btn" data-say="Which sport or activity helps you relax? Why?"><b>🏊 Activity</b><span>Something that helps you relax</span></button>
+        <button class="prompt-card speak-btn" data-say="Tell me about a typical day when you help organize things for other people."><b>📅 Daily life</b><span>Organising a busy day</span></button>
+        <button class="prompt-card speak-btn" data-say="What would you most like to do in New York?"><b>🗽 New York</b><span>One thing you want to experience</span></button>
+      </div>
+      <details class="model-box">
+        <summary>Show a speaking structure</summary>
+        <p><strong>Start:</strong> “One thing I really enjoy is…” → <strong>Detail:</strong> “I usually…” → <strong>Reason:</strong> “because…” → <strong>Extra:</strong> “For example…”</p>
+      </details>
+    </section>
+
+    <section class="panel" id="survivalFormula">
+      <div class="section-head">
+        <div><p class="step">02 · 10–22 MIN</p><h2>The 4-step conversation survival formula</h2></div>
+        <span class="time-chip">Reusable everywhere</span>
+      </div>
+      <div class="formula-grid">
+        <article><span>1</span><h3>OPEN</h3><p>Excuse me. / Hi, could you help me?</p></article>
+        <article><span>2</span><h3>ASK</h3><p>I’d like to… / Could I…? / Do you know if…?</p></article>
+        <article><span>3</span><h3>ADD</h3><p>It’s for tomorrow. / We have a reservation. / I need to be there by 3.</p></article>
+        <article><span>4</span><h3>CHECK</h3><p>Is that right? / Could you repeat that? / So I turn left after the bank?</p></article>
+      </div>
+      <div class="mini-dialogue">
+        <div><b>You</b><p>Excuse me, could you help me? I’m looking for the subway. I need to get to Times Square. Is it far from here?</p></div>
+        <div><b>Speaker</b><p>It’s two blocks down, then take the entrance on your right.</p></div>
+        <div><b>You</b><p>Two blocks, then the entrance on my right. Great, thank you!</p></div>
+      </div>
+      <button class="secondary speak-btn" data-say="Excuse me, could you help me? I'm looking for the subway. I need to get to Times Square. Is it far from here?">▶ Listen & shadow</button>
+    </section>
+
+    <section class="panel" id="vocabulary">
+      <div class="section-head">
+        <div><p class="step">03 · 22–38 MIN</p><h2>Everyday vocabulary bank</h2><p>Choose a category. Learn phrases as complete chunks, not isolated words.</p></div>
+        <select id="vocabCategory" class="category-select">
+          <option value="hotel">Hotel</option>
+          <option value="restaurant">Restaurant</option>
+          <option value="directions">Streets & transport</option>
+          <option value="social">Everyday conversation</option>
+          <option value="appointments">Appointments & organising</option>
+          <option value="rescue">Rescue phrases</option>
+        </select>
+      </div>
+      <div id="vocabGrid" class="vocab-grid"></div>
+    </section>
+
+    <section class="panel exercise-panel" id="qcm">
+      <div class="section-head">
+        <div><p class="step">04 · 38–48 MIN</p><h2>Quick reaction · Choose the most natural reply</h2></div>
+        <span class="score-chip" id="qcmScore">0 / 6</span>
+      </div>
+      <div id="qcmList" class="quiz-list"></div>
+    </section>
+
+    <section class="panel exercise-panel" id="fill">
+      <div class="section-head">
+        <div><p class="step">05 · 48–58 MIN</p><h2>Phrase builder · Fill the gap</h2></div>
+        <span class="score-chip" id="fillScore">0 / 6</span>
+      </div>
+      <p>Type the missing word or short phrase. You get immediate feedback.</p>
+      <div id="fillList" class="fill-list"></div>
+    </section>
+
+    <section class="panel exercise-panel" id="drag">
+      <div class="section-head">
+        <div><p class="step">06 · 58–68 MIN</p><h2>Put the sentence back together</h2></div>
+        <span class="time-chip">Drag & drop</span>
+      </div>
+      <div id="dragExercises"></div>
+    </section>
+
+    <section class="panel listening-panel" id="listening">
+      <div class="section-head">
+        <div><p class="step">07 · 68–80 MIN</p><h2>Listening · Catch the message, not every word</h2></div>
+        <span class="time-chip">US speaker practice</span>
+      </div>
+      <div class="strategy-strip">
+        <b>Before listening:</b><span>What is the situation?</span><span>What information do you need?</span><span>Listen for nouns, times, places and action words.</span>
+      </div>
+      <div class="listening-card">
+        <div class="listen-actions">
+          <button id="playListening" class="primary">▶ Play message</button>
+          <button id="toggleTranscript" class="secondary">Show transcript</button>
+        </div>
+        <div id="transcript" class="transcript hidden">
+          “Hi! Just a quick update: your room isn’t ready yet, but we can store your luggage at the front desk. Check-in starts at three, and there’s a café around the corner if you’d like to wait nearby. When you come back, just give us your last name.”
+        </div>
+        <div id="listeningQuestions" class="quiz-list compact"></div>
+      </div>
+    </section>
+
+    <section class="panel improv-panel" id="improv">
+      <div class="section-head">
+        <div><p class="step">08 · 80–90 MIN</p><h2>Improv for English · “Yes, and…”</h2></div>
+        <span class="time-chip">Fluency over perfection</span>
+      </div>
+      <p>Improvisation is a powerful speaking tool: accept the information, add one idea, then send the conversation back with a question.</p>
+      <div class="improv-formula">
+        <div><b>ACCEPT</b><span>Yes / Right / That sounds good.</span></div>
+        <div><b>ADD</b><span>And I’d also like to…</span></div>
+        <div><b>RETURN</b><span>What do you recommend?</span></div>
+      </div>
+      <div class="improv-prompts">
+        <button class="scenario-prompt">“This neighborhood is famous for its small restaurants.”</button>
+        <button class="scenario-prompt">“The museum is very busy this afternoon.”</button>
+        <button class="scenario-prompt">“Your table will be ready in about twenty minutes.”</button>
+      </div>
+      <details class="model-box">
+        <summary>Show one possible response</summary>
+        <p>“That sounds good, and I’d love to try a local restaurant while I’m here. Do you have a favorite place nearby?”</p>
+      </details>
+    </section>
+
+    <section class="panel" id="scenarios">
+      <div class="section-head">
+        <div><p class="step">09 · 90–112 MIN</p><h2>Real-life speaking scenarios</h2><p>Build your answer first, then compare with two model levels.</p></div>
+        <span class="time-chip">6 scenarios</span>
+      </div>
+      <div id="scenarioTabs" class="scenario-tabs"></div>
+      <div id="scenarioStage" class="scenario-stage"></div>
+    </section>
+
+    <section class="panel" id="writing">
+      <div class="section-head">
+        <div><p class="step">10 · WRITING TRANSFER</p><h2>Short, useful writing</h2></div>
+        <span class="time-chip">Real life + certification</span>
+      </div>
+      <div class="two-col">
+        <article class="task-card">
+          <p class="micro-label">Task A · Travel</p>
+          <h3>Message to a hotel</h3>
+          <p>You arrive before check-in. Ask whether you can leave your luggage, confirm the check-in time, and ask about transport from the hotel to Midtown.</p>
+          <textarea id="writingA" rows="7" placeholder="Write 50–80 words..."></textarea>
+          <div class="manual-score">
+            <label>Your score / 10 <input id="writingAScore" type="number" min="0" max="10" step="1"></label>
+          </div>
+          <details class="model-box model-practice">
+            <summary>Model · Level 1</summary>
+            <p>Hello, I have a reservation for next week. I will arrive before check-in. Could I leave my luggage at the hotel? What time can I check in? Also, what is the easiest way to get to Midtown? Thank you for your help.</p>
+          </details>
+          <details class="model-box model-practice">
+            <summary>Model · Level 2</summary>
+            <p>Hello, I’m staying at your hotel next week and I expect to arrive around 11 a.m. As this is before the normal check-in time, would it be possible to leave my luggage at reception? Could you also confirm the check-in time and recommend the easiest way to travel from the hotel to Midtown? Many thanks in advance.</p>
+          </details>
+        </article>
+
+        <article class="task-card">
+          <p class="micro-label">Task B · Organising</p>
+          <h3>Confirm an appointment</h3>
+          <p>Write a short message confirming an appointment on Tuesday at 2:30 p.m. Ask the person to arrive 10 minutes early and bring the necessary document.</p>
+          <textarea id="writingB" rows="7" placeholder="Write 40–70 words..."></textarea>
+          <div class="manual-score">
+            <label>Your score / 10 <input id="writingBScore" type="number" min="0" max="10" step="1"></label>
+          </div>
+          <details class="model-box model-practice">
+            <summary>Model · Level 1</summary>
+            <p>Hello, your appointment is confirmed for Tuesday at 2:30 p.m. Please arrive 10 minutes early and remember to bring the document with you. If you have a problem, please let me know. See you on Tuesday.</p>
+          </details>
+          <details class="model-box model-practice">
+            <summary>Model · Level 2</summary>
+            <p>Hello, I’m writing to confirm your appointment for Tuesday at 2:30 p.m. Could you please arrive about 10 minutes early and bring the requested document with you? If you need to change the time or have any questions, please let me know as soon as possible.</p>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel exam-panel" id="examBridge">
+      <div class="section-head">
+        <div><p class="step">11 · CERTIFICATION BRIDGE</p><h2>Turn everyday English into exam performance</h2></div>
+        <span class="time-chip">No panic · one strategy at a time</span>
+      </div>
+      <div class="exam-steps">
+        <article><b>1 · Understand the task</b><p>Who? Where? What do they want from you?</p></article>
+        <article><b>2 · Give the direct answer</b><p>Answer first. Do not hide your answer inside a long sentence.</p></article>
+        <article><b>3 · Add one useful detail</b><p>Reason, example, time, place, preference or solution.</p></article>
+        <article><b>4 · Keep speaking</b><p>Use a connector: because, so, but, however, for example, actually.</p></article>
+      </div>
+
+      <div class="timed-card">
+        <div>
+          <p class="micro-label">Timed speaking</p>
+          <h3>You arrive at a hotel and your room is not ready.</h3>
+          <p>Explain the problem, ask for one solution, then ask one follow-up question.</p>
+        </div>
+        <div class="timer-box"><span id="timerDisplay">01:00</span><button id="timerStart" class="primary">Start 60 sec</button><button id="timerReset" class="secondary">Reset</button></div>
+      </div>
+      <textarea id="oralNotes" rows="5" placeholder="Optional notes: useful phrases, feedback, errors to revisit..."></textarea>
+      <div class="manual-score">
+        <label>Oral score / 10 <input id="oralScore" type="number" min="0" max="10"></label>
+      </div>
+      <details class="model-box model-practice">
+        <summary>Model · Level 1</summary>
+        <p>Hi, I have a reservation, but my room isn’t ready yet. Could I leave my luggage here while I wait? I’d like to go for lunch nearby. What time do you think the room will be ready?</p>
+      </details>
+      <details class="model-box model-practice">
+        <summary>Model · Level 2</summary>
+        <p>Hi, I’ve just arrived and I understand that my room isn’t ready yet. Would it be possible to leave my luggage at reception while I go out for lunch? I’m happy to come back later. Do you have an approximate time for when the room should be available?</p>
+      </details>
+    </section>
+
+    <section class="panel final-panel" id="finalMission">
+      <div class="section-head">
+        <div><p class="step">12 · FINAL MISSION</p><h2>New York: three conversations in a row</h2></div>
+        <span class="time-chip">Confidence circuit</span>
+      </div>
+      <div class="mission-grid">
+        <article><span>🏨</span><h3>Stop 1 · Hotel</h3><p>Ask to leave luggage before check-in and confirm when to return.</p><label><input type="checkbox" class="mission-check"> I completed it</label></article>
+        <article><span>🧭</span><h3>Stop 2 · Street</h3><p>Ask for directions, repeat the key information, and check you understood correctly.</p><label><input type="checkbox" class="mission-check"> I completed it</label></article>
+        <article><span>🍽</span><h3>Stop 3 · Restaurant</h3><p>Ask for a table, clarify one menu item, and solve a small problem politely.</p><label><input type="checkbox" class="mission-check"> I completed it</label></article>
+      </div>
+      <div class="confidence-meter">
+        <p><strong>Today I could handle these situations…</strong></p>
+        <label><input type="radio" name="confidence" value="1"> with a lot of help</label>
+        <label><input type="radio" name="confidence" value="2"> with some help</label>
+        <label><input type="radio" name="confidence" value="3"> mostly by myself</label>
+        <label><input type="radio" name="confidence" value="4"> confidently</label>
+      </div>
+    </section>
+
+    <section class="panel qualiopi" id="evaluation">
+      <div class="section-head">
+        <div><p class="step">END OF LESSON · QUALIOPI</p><h2>Learning evaluation & next step</h2></div>
+        <span class="time-chip">Evidence of progress</span>
+      </div>
+      <div class="evaluation-grid">
+        <label>I can ask for help politely.
+          <select class="eval-select"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select>
+        </label>
+        <label>I can ask someone to repeat or slow down.
+          <select class="eval-select"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select>
+        </label>
+        <label>I can manage a hotel or restaurant exchange.
+          <select class="eval-select"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select>
+        </label>
+        <label>I can ask for and check directions.
+          <select class="eval-select"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select>
+        </label>
+        <label>I can keep a short conversation going.
+          <select class="eval-select"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select>
+        </label>
+        <label>I can respond to a short timed speaking task.
+          <select class="eval-select"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select>
+        </label>
+      </div>
+      <label class="full-field">What felt easier today?
+        <textarea id="easyToday" rows="3"></textarea>
+      </label>
+      <label class="full-field">What should we practise again?
+        <textarea id="nextFocus" rows="3"></textarea>
+      </label>
+      <div class="report-actions">
+        <button id="downloadReport" class="primary">⬇ Download lesson report</button>
+        <button id="printBtn" class="secondary">Print / PDF</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>SpeakEasyTisha</strong>
+    <span>Everyday English • speaking • listening • travel • certification transfer</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
