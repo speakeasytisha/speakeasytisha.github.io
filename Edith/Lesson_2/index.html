@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#17384a" />
+  <title>Edith · Lesson 2 · From Montauban to the World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Serif+Display:ital@0;1&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="js-warning" id="jsWarning">⚠️ JavaScript is not loaded. Keep index.html, styles.css and script.js together in the same folder.</div>
+
+  <header class="topbar" id="top">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <span class="brand-script">SpeakEasyTisha</span>
+      <span class="brand-sub">English that becomes automatic.</span>
+    </a>
+    <div class="top-controls">
+      <button class="control-btn" id="frenchToggle" type="button" aria-pressed="false">🇫🇷 French help</button>
+      <div class="accent-switch" role="group" aria-label="Audio accent">
+        <button class="accent-btn active" data-accent="en-GB" type="button" aria-pressed="true">🇬🇧 UK</button>
+        <button class="accent-btn" data-accent="en-US" type="button" aria-pressed="false">🇺🇸 US</button>
+      </div>
+      <select id="speechRate" class="rate-select" aria-label="Audio speed">
+        <option value="0.78">Slow</option>
+        <option value="0.9" selected>Natural</option>
+        <option value="1">Normal</option>
+      </select>
+      <div class="score-chip"><span>Score</span><strong id="scoreNow">0</strong><span>/</span><span id="scoreMax">0</span><small id="scorePct">0%</small></div>
+    </div>
+  </header>
+
+  <nav class="lesson-nav" aria-label="Lesson navigation">
+    <a href="#map">Your map</a>
+    <a href="#upgrade">Language lab</a>
+    <a href="#vocabulary">Vocabulary</a>
+    <a href="#listening">Listening</a>
+    <a href="#conversation">Conversation</a>
+    <a href="#bright">Bright sprint</a>
+    <a href="#production">Speaking & writing</a>
+    <a href="#report">Progress</a>
+  </nav>
+
+  <main>
+    <section class="hero" id="mission">
+      <div class="hero-overlay"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">LESSON 02 · LIFE STORIES · TRAVEL · BRIGHT PREPARATION</p>
+        <h1>Edith<br><span>From Montauban to the World</span></h1>
+        <p class="hero-lead">You already communicate. Now the goal is richer vocabulary, more natural sentences, more precise listening, and the confidence to turn every trip into a real conversation.</p>
+        <div class="hero-actions">
+          <button class="btn primary" data-scroll="#map" type="button">Start your journey</button>
+          <button class="btn glass speak-btn" data-say="You already communicate in English. Now your goal is to speak with more variety, more precision, and more confidence when you travel and meet people." type="button">▶ Listen to your goal</button>
+        </div>
+        <p class="tiny-note">Audio never starts automatically. Choose UK or US English at the top.</p>
+      </div>
+      <aside class="passport-card" aria-label="Lesson focus">
+        <div class="passport-mark">ST</div>
+        <p class="passport-label">YOUR ENGLISH PASSPORT</p>
+        <div class="passport-route">
+          <span>Montauban</span><b>→</b><span>World</span>
+        </div>
+        <ul>
+          <li>🗣️ Conversation first</li>
+          <li>🧳 Travel vocabulary</li>
+          <li>👂 Listening precision</li>
+          <li>⚡ Bright-style speed</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="panel" id="map">
+      <div class="section-head">
+        <div><p class="step">01 · YOUR MAP</p><h2>Your English is connected to your life</h2></div>
+        <p>Start with a real conversation. These are not test questions: they are launch points for natural speaking.</p>
+      </div>
+      <div class="journey-grid">
+        <article class="journey-card brick">
+          <span class="card-icon">🏦</span><h3>A long professional chapter</h3>
+          <p>You worked in banking for about thirty years and were used to an international environment.</p>
+          <button class="mini-btn prompt-btn" type="button" data-prompt="What did you enjoy most about working in banking? How did your work change over thirty years?">Conversation prompt</button>
+        </article>
+        <article class="journey-card sea">
+          <span class="card-icon">🌊</span><h3>Home, family & the Mediterranean</h3>
+          <p>You know the south-west of France well, and family life has shaped important decisions in recent years.</p>
+          <button class="mini-btn prompt-btn" type="button" data-prompt="What do you enjoy about living near home? What makes a place feel like home to you?">Conversation prompt</button>
+        </article>
+        <article class="journey-card gold">
+          <span class="card-icon">🌍</span><h3>Travel as a reason to speak</h3>
+          <p>China, Vietnam, Cambodia and Egypt have given you stories to tell—and more reasons to talk with people.</p>
+          <button class="mini-btn prompt-btn" type="button" data-prompt="Which trip changed the way you see another culture? Why?">Conversation prompt</button>
+        </article>
+        <article class="journey-card ink">
+          <span class="card-icon">💬</span><h3>Your real objective</h3>
+          <p>You do not need English to chase a number. You want words that help you connect, react, ask, explain and enjoy the moment.</p>
+          <button class="mini-btn prompt-btn" type="button" data-prompt="When you travel, which conversations would you most like to have in English?">Conversation prompt</button>
+        </article>
+      </div>
+      <div id="promptBox" class="prompt-box" hidden>
+        <span>Talk together</span><p id="promptText"></p>
+        <button class="btn small speak-btn" id="promptSpeak" type="button">▶ Listen</button>
+      </div>
+      <div class="coach-note"><strong>Trainer route:</strong> encourage follow-up questions. Do not correct every sentence immediately; collect 2–3 useful upgrades and recycle them in the next section.</div>
+    </section>
+
+    <section class="panel warm" id="upgrade">
+      <div class="section-head">
+        <div><p class="step">02 · LANGUAGE LAB</p><h2>Say it naturally: small upgrades, big difference</h2></div>
+        <p>The focus is not “more grammar.” It is choosing the natural structure quickly when you speak.</p>
+      </div>
+
+      <div class="rule-strip">
+        <article><span>FOR</span><h3>duration</h3><p>I worked there <strong>for thirty years</strong>.</p><p class="fr-help">J’y ai travaillé pendant trente ans.</p></article>
+        <article><span>SINCE</span><h3>starting point</h3><p>I have lived here <strong>since 2010</strong>.</p><p class="fr-help">J’habite ici depuis 2010.</p></article>
+        <article><span>AGO</span><h3>finished past</h3><p>I stopped working <strong>a year ago</strong>.</p><p class="fr-help">J’ai arrêté de travailler il y a un an.</p></article>
+        <article><span>USED TO</span><h3>past habit / situation</h3><p>I <strong>used to work</strong> in banking.</p><p class="fr-help">Avant, je travaillais dans la banque.</p></article>
+      </div>
+
+      <div class="quiz-card" data-quiz="upgrade">
+        <h3>Precision challenge</h3>
+        <p>Choose the most natural sentence.</p>
+        <div class="mcq" data-answer="b" data-explain="Use 'for' with a duration: for thirty years.">
+          <p>1. You want to describe a completed thirty-year career.</p>
+          <button data-choice="a">I worked in banking since thirty years.</button>
+          <button data-choice="b">I worked in banking for thirty years.</button>
+          <button data-choice="c">I have worked in banking ago thirty years.</button>
+          <div class="feedback"></div>
+        </div>
+        <div class="mcq" data-answer="c" data-explain="'A year ago' places a finished event in the past.">
+          <p>2. You stopped working one year before now.</p>
+          <button data-choice="a">I stop working since one year.</button>
+          <button data-choice="b">I have stopped working for one year ago.</button>
+          <button data-choice="c">I stopped working a year ago.</button>
+          <div class="feedback"></div>
+        </div>
+        <div class="mcq" data-answer="a" data-explain="For a destination, use travel/go + to + place.">
+          <p>3. Choose the natural travel sentence.</p>
+          <button data-choice="a">Last year, I travelled to China.</button>
+          <button data-choice="b">Last year, I travelled in China.</button>
+          <button data-choice="c">Last year, I travelled at China.</button>
+          <div class="feedback"></div>
+        </div>
+        <div class="mcq" data-answer="b" data-explain="'Other' is an adjective before a noun: other countries. 'Others' stands alone.">
+          <p>4. Complete: “France and ___ countries...”</p>
+          <button data-choice="a">others</button>
+          <button data-choice="b">other</button>
+          <button data-choice="c">another</button>
+          <div class="feedback"></div>
+        </div>
+      </div>
+
+      <div class="builder-card">
+        <div><h3>Make your answer longer without making it harder</h3><p>Build a B1-style answer with three moves.</p></div>
+        <div class="answer-ladder">
+          <span>1 · FACT</span><p>I travelled to Egypt this year.</p>
+          <span>2 · DETAIL</span><p>I spent two days in Cairo before the cruise.</p>
+          <span>3 · REACTION</span><p>What impressed me most was the contrast between the city, the ancient sites and the Red Sea.</p>
+        </div>
+        <button class="btn outline speak-btn" data-say="I travelled to Egypt this year. I spent two days in Cairo before the cruise. What impressed me most was the contrast between the city, the ancient sites and the Red Sea." type="button">▶ Listen to the model</button>
+        <p class="fr-help">Astuce : un bon développement oral n’a pas besoin de phrases très compliquées. Donnez un fait, un détail, puis une réaction personnelle.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="vocabulary">
+      <div class="section-head">
+        <div><p class="step">03 · VOCABULARY PASSPORT</p><h2>More words = more freedom to talk</h2></div>
+        <p>Choose a category, explore useful words, then listen to the word or the complete example.</p>
+      </div>
+      <div class="vocab-toolbar">
+        <label for="vocabCategory">Category</label>
+        <select id="vocabCategory"></select>
+        <button class="btn small outline" id="vocabRandom" type="button">🎲 Surprise word</button>
+      </div>
+      <div id="vocabGrid" class="vocab-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="panel blue" id="listening">
+      <div class="section-head light">
+        <div><p class="step">04 · LISTENING PRECISION</p><h2>Hear the detail, not just the general idea</h2></div>
+        <p>Your initial assessment showed good global understanding. Here, the challenge is to catch the exact detail.</p>
+      </div>
+      <div class="listening-grid">
+        <article class="audio-card">
+          <p class="tag">SCENE A · HOTEL IN CAIRO</p><h3>A small change of plan</h3>
+          <button class="btn cream speak-btn" data-say="Good evening. Your room is ready, but breakfast will be served from six thirty tomorrow because several guests are leaving early for a tour. The museum transfer will meet you in the lobby at seven fifteen, not seven thirty. Please bring your ticket and a bottle of water." type="button">▶ Play audio</button>
+          <button class="text-btn transcript-toggle" type="button" data-target="transcriptA">Show transcript</button>
+          <p id="transcriptA" class="transcript" hidden>Good evening. Your room is ready, but breakfast will be served from <strong>6:30</strong> tomorrow because several guests are leaving early for a tour. The museum transfer will meet you in the lobby at <strong>7:15, not 7:30</strong>. Please bring your ticket and a bottle of water.</p>
+          <div class="mcq" data-answer="b" data-explain="The transfer is at 7:15. The speaker corrects the expected time of 7:30.">
+            <p>What time does the museum transfer leave?</p>
+            <button data-choice="a">6:30</button><button data-choice="b">7:15</button><button data-choice="c">7:30</button>
+            <div class="feedback"></div>
+          </div>
+        </article>
+        <article class="audio-card">
+          <p class="tag">SCENE B · MEETING ANOTHER TRAVELLER</p><h3>Follow the story</h3>
+          <button class="btn cream speak-btn" data-say="I came to Egypt with a group, but I added three days by the Red Sea after the cruise. I nearly booked a diving excursion, although in the end I chose a boat trip because I wanted a more relaxing day. Tomorrow I'm meeting two people from our group for dinner near the marina." type="button">▶ Play audio</button>
+          <button class="text-btn transcript-toggle" type="button" data-target="transcriptB">Show transcript</button>
+          <p id="transcriptB" class="transcript" hidden>I came to Egypt with a group, but I added three days by the Red Sea after the cruise. I nearly booked a diving excursion, although in the end I chose a boat trip because I wanted a more relaxing day. Tomorrow I'm meeting two people from our group for dinner near the marina.</p>
+          <div class="mcq" data-answer="c" data-explain="The speaker considered diving but finally chose a boat trip.">
+            <p>What activity did the speaker finally choose?</p>
+            <button data-choice="a">Diving</button><button data-choice="b">Dinner cruise</button><button data-choice="c">A boat trip</button>
+            <div class="feedback"></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="reading">
+      <div class="section-head">
+        <div><p class="step">05 · READ BETWEEN THE LINES</p><h2>A traveller’s message</h2></div>
+        <p>Move beyond literal details: identify the reason, contrast and implied preference.</p>
+      </div>
+      <div class="reading-card">
+        <blockquote>“I usually prefer independent travel because I like changing my plans at the last minute. This time, however, I joined a small group for part of the trip. It was less flexible, but I enjoyed having a guide at the historical sites. After the organised part, I stayed on for two days on my own. That combination suited me surprisingly well.”</blockquote>
+        <div class="mcq" data-answer="b" data-explain="The traveller values flexibility, but also appreciated the guide. The combination worked well.">
+          <p>What is the main idea?</p>
+          <button data-choice="a">The traveller now dislikes independent travel.</button>
+          <button data-choice="b">A mix of group and independent travel was a good compromise.</button>
+          <button data-choice="c">The organised group was completely flexible.</button>
+          <div class="feedback"></div>
+        </div>
+        <div class="mcq" data-answer="a" data-explain="'However' introduces a contrast with the previous preference for independent travel.">
+          <p>What does “however” signal?</p>
+          <button data-choice="a">A contrast</button><button data-choice="b">A consequence</button><button data-choice="c">An example</button>
+          <div class="feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel sand" id="conversation">
+      <div class="section-head">
+        <div><p class="step">06 · CONVERSATION ENGINE</p><h2>Keep the conversation alive</h2></div>
+        <p>The target is not a perfect monologue. It is a real exchange: react, ask, connect, continue.</p>
+      </div>
+      <div class="conversation-tools">
+        <article><span>REACT</span><h3>Show interest</h3><p>Really? / That sounds amazing. / I can imagine.</p></article>
+        <article><span>ASK</span><h3>Open the door</h3><p>What was it like? / How long did you stay? / What did you enjoy most?</p></article>
+        <article><span>CONNECT</span><h3>Add your experience</h3><p>I had a similar experience in… / That reminds me of…</p></article>
+        <article><span>CONTINUE</span><h3>Go one step further</h3><p>Would you go back? / What would you do differently next time?</p></article>
+      </div>
+      <div class="scenario-stage">
+        <div class="scenario-copy">
+          <p class="tag">ROLE-PLAY · HOTEL TERRACE</p>
+          <h3>You meet another traveller over breakfast.</h3>
+          <p id="scenarioLine">“I’m here for the first time. Yesterday I visited the old city, but I got completely lost.”</p>
+          <div class="scenario-actions"><button class="btn primary" id="newScenario" type="button">New situation</button><button class="btn outline speak-btn" id="scenarioSpeak" type="button">▶ Listen</button></div>
+        </div>
+        <div class="response-builder">
+          <label for="reactionPick">1 · React</label><select id="reactionPick"><option>Really?</option><option>That sounds interesting.</option><option>Oh no! I can imagine.</option><option>That must have been frustrating.</option></select>
+          <label for="questionPick">2 · Ask</label><select id="questionPick"><option>What happened next?</option><option>How did you find your way back?</option><option>What did you enjoy most?</option><option>Would you do it again?</option></select>
+          <button class="btn dark" id="buildResponse" type="button">Build my response</button>
+          <div id="builtResponse" class="built-response">Your response will appear here.</div>
+        </div>
+      </div>
+      <div class="fr-help tip-fr">En français, on répond souvent brièvement avant de raconter sa propre expérience. En anglais conversationnel, une petite réaction + une question de suivi rend l’échange beaucoup plus naturel.</div>
+    </section>
+
+    <section class="panel bright-zone" id="bright">
+      <div class="section-head light">
+        <div><p class="step">07 · BRIGHT-STYLE SPRINT</p><h2>Speed + precision under pressure</h2></div>
+        <p>This is a short training simulation inspired by the Bright format—not an official Bright test.</p>
+      </div>
+      <div class="exam-facts">
+        <span>Written + listening MCQ</span><span>Official test: 60 + 60 questions</span><span>Short time per question</span><span>No backtracking in the official test</span>
+      </div>
+      <div class="exam-shell">
+        <div class="exam-topline">
+          <div><span>Mini sprint</span><strong id="examProgress">0 / 8</strong></div>
+          <div class="timer-ring"><span id="examTimer">45</span><small>sec</small></div>
+        </div>
+        <div id="examIntro" class="exam-intro">
+          <h3>8 questions · written + listening</h3>
+          <p>Each question has one correct answer. Once you answer, you move forward. The timer is for training only.</p>
+          <button class="btn cream" id="startExam" type="button">Start sprint</button>
+        </div>
+        <div id="examQuestion" class="exam-question" hidden></div>
+        <div id="examResult" class="exam-result" hidden></div>
+      </div>
+    </section>
+
+    <section class="panel" id="production">
+      <div class="section-head">
+        <div><p class="step">08 · YOUR VOICE</p><h2>Speaking and writing transfer</h2></div>
+        <p>These activities support your overall B1 progression. They are separate from the standard Bright written/listening MCQ test.</p>
+      </div>
+      <div class="production-grid">
+        <article class="production-card">
+          <p class="tag">SPEAKING · 60–90 SECONDS</p>
+          <h3>Tell a travel story that says something about you</h3>
+          <p>Choose one trip. Explain where you went, what happened, what surprised you and what you learned or would recommend.</p>
+          <div class="model-buttons"><button class="text-btn model-toggle" data-target="speakModel" type="button">Show model</button><button class="btn small speak-btn" data-say="A trip that really stayed with me was my visit to China. I was impressed by the contrast between the country's long history and its modern cities. What I enjoyed most was meeting people and learning more about daily life. I would definitely recommend the trip because it changed some of my ideas about the country." type="button">▶ Listen to model</button></div>
+          <div id="speakModel" class="model-box" hidden>A trip that really stayed with me was my visit to China. I was impressed by the contrast between the country’s long history and its modern cities. What I enjoyed most was meeting people and learning more about daily life. I would definitely recommend the trip because it changed some of my ideas about the country.</div>
+          <div class="record-box">
+            <button class="btn primary" id="recordStart" type="button">● Start recording</button>
+            <button class="btn outline" id="recordStop" type="button" disabled>■ Stop</button>
+            <a class="btn outline" id="recordDownload" hidden>Download recording</a>
+            <span id="recordStatus">Recording is optional and stays on this device.</span>
+          </div>
+          <div class="trainer-grade" data-grade="speaking">
+            <h4>Trainer assessment · Speaking /20</h4>
+            <label>Fluency <input type="number" min="0" max="5" step="1" data-criterion="fluency" value="0"></label>
+            <label>Vocabulary <input type="number" min="0" max="5" step="1" data-criterion="vocabulary" value="0"></label>
+            <label>Accuracy <input type="number" min="0" max="5" step="1" data-criterion="accuracy" value="0"></label>
+            <label>Development <input type="number" min="0" max="5" step="1" data-criterion="development" value="0"></label>
+            <strong>Total: <span class="grade-total">0</span>/20</strong>
+          </div>
+        </article>
+
+        <article class="production-card">
+          <p class="tag">WRITING · 90–120 WORDS</p>
+          <h3>Message to a traveller you met</h3>
+          <p>You met someone during a group trip. Write a friendly message after the trip: mention one shared memory, say what you enjoyed, and suggest keeping in touch.</p>
+          <textarea id="writingBox" rows="10" placeholder="Write here..."></textarea>
+          <div class="writing-tools"><span>Words: <strong id="wordCount">0</strong></span><button class="text-btn model-toggle" data-target="writeModel" type="button">Show model</button><button class="text-btn" id="clearWriting" type="button">Clear</button></div>
+          <div id="writeModel" class="model-box" hidden>Hi! It was lovely meeting you during the trip. I especially enjoyed our conversation after the museum visit because we had very different impressions of the day. The cruise was also a great memory, although I think my favourite moment was simply watching the landscape change in the evening. I hope you had a good journey home. If you travel to the south-west of France one day, let me know. It would be nice to meet again and continue our conversation. Take care and keep in touch!</div>
+          <div class="trainer-grade" data-grade="writing">
+            <h4>Trainer assessment · Writing /20</h4>
+            <label>Task completion <input type="number" min="0" max="5" step="1" data-criterion="task" value="0"></label>
+            <label>Vocabulary <input type="number" min="0" max="5" step="1" data-criterion="vocabulary" value="0"></label>
+            <label>Grammar <input type="number" min="0" max="5" step="1" data-criterion="grammar" value="0"></label>
+            <label>Coherence <input type="number" min="0" max="5" step="1" data-criterion="coherence" value="0"></label>
+            <strong>Total: <span class="grade-total">0</span>/20</strong>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel soft" id="report">
+      <div class="section-head">
+        <div><p class="step">09 · PROGRESS REPORT</p><h2>What became easier today?</h2></div>
+        <p>Your results are stored only in this browser unless you download them.</p>
+      </div>
+      <div class="report-grid">
+        <div class="report-stat"><span>Interactive score</span><strong id="reportScore">0%</strong><small>auto-graded questions</small></div>
+        <div class="report-stat"><span>Bright sprint</span><strong id="reportExam">—</strong><small>mini simulation</small></div>
+        <div class="report-stat"><span>Speaking</span><strong id="reportSpeaking">0/20</strong><small>trainer assessment</small></div>
+        <div class="report-stat"><span>Writing</span><strong id="reportWriting">0/20</strong><small>trainer assessment</small></div>
+      </div>
+      <div class="goal-checks">
+        <label><input type="checkbox" class="goal-check"> I can keep a travel conversation going with follow-up questions.</label>
+        <label><input type="checkbox" class="goal-check"> I can use richer vocabulary to describe travel and culture.</label>
+        <label><input type="checkbox" class="goal-check"> I can distinguish small listening details more accurately.</label>
+        <label><input type="checkbox" class="goal-check"> I can respond faster to Bright-style grammar and vocabulary questions.</label>
+      </div>
+      <div class="report-actions"><button class="btn primary" id="downloadResults" type="button">⬇ Download results</button><button class="btn outline" id="printPage" type="button">🖨 Print / PDF</button><button class="btn danger-outline" id="resetAll" type="button">↺ Reset lesson</button></div>
+    </section>
+
+    <section class="panel qualiopi" id="evaluation">
+      <div class="section-head">
+        <div><p class="step">10 · END-OF-LESSON EVALUATION</p><h2>Your feedback</h2></div>
+        <p>A short Qualiopi-friendly evaluation to close the session.</p>
+      </div>
+      <div class="eval-grid">
+        <label>Today’s lesson was useful.
+          <select class="eval-input" data-eval="useful"><option value="">Choose</option><option>1 - Not yet</option><option>2</option><option>3</option><option>4</option><option>5 - Very useful</option></select>
+        </label>
+        <label>I feel more confident speaking.
+          <select class="eval-input" data-eval="confidence"><option value="">Choose</option><option>1 - Not yet</option><option>2</option><option>3</option><option>4</option><option>5 - Much more confident</option></select>
+        </label>
+        <label>The pace was right for me.
+          <select class="eval-input" data-eval="pace"><option value="">Choose</option><option>Too slow</option><option>Good</option><option>Too fast</option></select>
+        </label>
+        <label>For the next lesson, I want more...
+          <select class="eval-input" data-eval="next"><option value="">Choose</option><option>Conversation</option><option>Vocabulary</option><option>Listening</option><option>Grammar precision</option><option>Bright practice</option></select>
+        </label>
+      </div>
+      <label class="full-label">One thing I want to remember:
+        <textarea id="evalComment" rows="3" placeholder="Write a word, phrase, strategy or goal..."></textarea>
+      </label>
+      <button class="btn dark" id="saveEvaluation" type="button">Save evaluation</button><span id="evalSaved" class="saved-note"></span>
+    </section>
+  </main>
+
+  <footer>
+    <div><span class="brand-script">SpeakEasyTisha</span><p>Lesson 2 · personalised English for conversation, travel and Bright preparation.</p></div>
+    <p class="footer-note">Bright® is a registered assessment. This learning page is independent practice and is not an official Bright test interface.</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
