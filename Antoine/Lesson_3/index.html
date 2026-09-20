@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Antoine · Australia Job Search & Conversation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div class="topline">
+        <div class="brand-lockup">SpeakEasy Tisha <span>Career English Lab</span></div>
+        <div class="lesson-badge">Lesson 02 · Australia job search</div>
+      </div>
+
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <div class="eyebrow">ANTOINE · CAREER SPRINT · AUSTRALIA</div>
+          <h1>Make the move.<br><span>Own the conversation.</span></h1>
+          <p class="subtitle">Build the language you need to explain your experience, connect with recruiters and turn six years of process-analysis experience into a clear professional story.</p>
+          <div class="hero-pills">
+            <span>🇦🇺 Australia</span><span>⚙️ Process analysis</span><span>💬 Spontaneous conversation</span><span>🎯 VTest transfer</span>
+          </div>
+        </div>
+        <aside class="hero-route" aria-label="Professional route">
+          <div class="route-label">Your route</div>
+          <div class="route-step"><div class="route-dot">01</div><div><strong>Experience</strong><span>6 years in process analysis</span></div></div>
+          <div class="route-step"><div class="route-dot">02</div><div><strong>Transition</strong><span>Clarify your value and sharpen your English</span></div></div>
+          <div class="route-step active"><div class="route-dot">03</div><div><strong>Next move</strong><span>Australia · recruiters · new opportunities</span></div></div>
+        </aside>
+      </div>
+
+      <div class="hero-grid">
+        <div><strong>60-sec reflex</strong><span>Speak without a script</span></div>
+        <div><strong>Career language</strong><span>Explain impact, not just tasks</span></div>
+        <div><strong>B2 direction</strong><span>Clearer grammar + stronger interaction</span></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toolbar" aria-label="Lesson controls">
+    <div class="control-group">
+      <label for="accent">Listening accent</label>
+      <select id="accent">
+        <option value="en-AU" selected>🇦🇺 Australian</option>
+        <option value="en-GB">🇬🇧 British</option>
+        <option value="en-US">🇺🇸 American</option>
+      </select>
+    </div>
+    <button class="btn ghost" id="toggleFrench" type="button">🇫🇷 French help: OFF</button>
+    <button class="btn ghost" id="resetLesson" type="button">↻ Reset</button>
+    <button class="btn primary" id="downloadResults" type="button">⇩ Download results</button>
+  </nav>
+
+  <div class="progress-wrap">
+    <div class="progress-label"><span>Lesson progress</span><span id="progressText">0%</span></div>
+    <div class="progress-track"><div id="progressBar"></div></div>
+  </div>
+
+  <main>
+    <section class="card intro" data-track="section">
+      <div class="section-kicker">01 · WARM-UP</div>
+      <h2>Your Australia story — 60 seconds, no script</h2>
+      <p>Start naturally. The objective is not perfection: it is to sound clear, confident and easy to follow.</p>
+      <div class="prompt-grid">
+        <article class="prompt"><span>1</span><p>Why Australia, and why now?</p></article>
+        <article class="prompt"><span>2</span><p>What kind of role would be a good next step for you?</p></article>
+        <article class="prompt"><span>3</span><p>What do you want your daily life to look like there?</p></article>
+      </div>
+      <div class="coach french-help"><strong>Aide FR :</strong> Répondez avec une structure simple : <em>context → reason → next step</em>. Évitez de traduire mot à mot.</div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">02 · CONVERSATION TOOLKIT</div>
+      <h2>Sound natural when the conversation changes direction</h2>
+      <p>Use these phrases to buy time, clarify, react and keep the conversation moving.</p>
+      <div class="phrase-list" id="conversationPhrases"></div>
+      <div class="mini-challenge">
+        <h3>Fast transfer</h3>
+        <p>Your interviewer says: <strong>“That’s interesting. Can you give me a concrete example?”</strong></p>
+        <textarea id="transfer1" placeholder="Write the first 2–3 sentences you would say..."></textarea>
+        <div class="button-row">
+          <button class="btn ghost speak-target" data-target="transferPrompt" type="button">🔊 Listen to prompt</button>
+          <button class="btn secondary model-toggle" data-model="transferModels" type="button">Show two model answers</button>
+        </div>
+        <p id="transferPrompt" class="sr-only">That's interesting. Can you give me a concrete example?</p>
+        <div id="transferModels" class="models hidden">
+          <article><h4>Strong B1</h4><p>Sure. In my previous role, I often had to improve a process that involved several teams. One example was when we needed to make the workflow simpler and reduce unnecessary steps. I spoke with the people involved, identified the main problem and proposed a clearer process.</p></article>
+          <article><h4>B2 / VTest target</h4><p>Absolutely. A good example would be a cross-functional process I had to streamline. I first mapped the existing workflow, then spoke with the teams using it to understand the friction points. Based on that feedback, I proposed a simpler process and helped align the different stakeholders around the change.</p></article>
+        </div>
+      </div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">03 · VOCABULARY</div>
+      <h2>Australia job-search vocabulary by category</h2>
+      <div class="vocab-controls">
+        <label for="vocabCategory">Choose a category</label>
+        <select id="vocabCategory"></select>
+      </div>
+      <div id="vocabCards" class="vocab-grid"></div>
+      <div class="coach french-help"><strong>Aide FR :</strong> Ne mémorisez pas seulement le mot. Dites l’exemple à voix haute, puis créez votre propre phrase professionnelle.</div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card pitch-lab" data-track="section">
+      <div class="section-kicker">04 · YOUR PROFESSIONAL PITCH</div>
+      <h2>From “what you did” to “what you can bring”</h2>
+      <p>Your pitch should not sound like a list of duties. Build a short story that moves from experience → action → value → next step.</p>
+
+      <div class="value-map" aria-label="Professional value map">
+        <article class="value-card"><span class="value-no">STEP 01</span><h3>Your background</h3><p>Set the context: six years in process analysis, working across people, workflows and operational needs.</p><span class="value-arrow">→</span></article>
+        <article class="value-card"><span class="value-no">STEP 02</span><h3>What you actually did</h3><p>Use concrete verbs: map, analyse, question, identify, simplify, coordinate, align, improve.</p><span class="value-arrow">→</span></article>
+        <article class="value-card"><span class="value-no">STEP 03</span><h3>What that proves</h3><p>Show the transferable value: structured thinking, cross-team communication, practical problem-solving and change support.</p><span class="value-arrow">→</span></article>
+        <article class="value-card"><span class="value-no">STEP 04</span><h3>What you can bring next</h3><p>Connect your experience to a future employer: understand fast, ask the right questions and turn complexity into workable solutions.</p></article>
+      </div>
+
+      <div class="pitch-builder-grid">
+        <div class="builder">
+          <div class="builder-field">
+            <label for="pitchA">1. Your background — establish credibility</label>
+            <p class="field-note">Think: role + years + type of environment. Keep it factual and easy to follow.</p>
+            <input id="pitchA" placeholder="I spent six years working as a process analyst..." />
+            <div class="idea-bank">
+              <button type="button" class="idea-chip" data-target="pitchA" data-text="I spent six years working as a process analyst, with a strong focus on how teams and workflows operate in practice.">6 years + process analysis</button>
+              <button type="button" class="idea-chip" data-target="pitchA" data-text="My background is in process analysis, where I worked across different teams to understand how work was actually being done.">cross-functional angle</button>
+            </div>
+          </div>
+
+          <div class="builder-field">
+            <label for="pitchB">2. What you did — show the work, not the job title</label>
+            <p class="field-note">Choose 2–3 actions that sound concrete. Avoid “I did many things”.</p>
+            <input id="pitchB" placeholder="I mapped workflows, identified friction points and..." />
+            <div class="idea-bank">
+              <button type="button" class="idea-chip" data-target="pitchB" data-text="I mapped workflows, identified friction points and worked with the people using the process to understand what needed to change.">map + identify + listen</button>
+              <button type="button" class="idea-chip" data-target="pitchB" data-text="A big part of my role was bringing different teams together, clarifying needs and helping turn them into a more workable process.">align teams</button>
+              <button type="button" class="idea-chip" data-target="pitchB" data-text="I analysed how processes worked day to day and looked for practical ways to make them clearer, simpler and more efficient.">continuous improvement</button>
+            </div>
+          </div>
+
+          <div class="builder-field">
+            <label for="pitchC">3. What you can bring — convert tasks into value</label>
+            <p class="field-note">This is the part recruiters remember. Explain what your experience allows you to do for a new team.</p>
+            <input id="pitchC" placeholder="That experience taught me how to..." />
+            <div class="idea-bank">
+              <button type="button" class="idea-chip" data-target="pitchC" data-text="That experience taught me how to understand a complex situation quickly, ask the right questions and turn it into clear next steps.">complexity → clarity</button>
+              <button type="button" class="idea-chip" data-target="pitchC" data-text="I can bring structured problem-solving, strong communication across teams and a practical approach to improvement.">transferable strengths</button>
+              <button type="button" class="idea-chip" data-target="pitchC" data-text="I am comfortable working with different viewpoints and finding a solution that is both useful for the business and realistic for the people using the process.">stakeholder value</button>
+            </div>
+          </div>
+
+          <div class="builder-field">
+            <label for="pitchD">4. What you are looking for now</label>
+            <p class="field-note">Focus on the next challenge, not on escaping your current situation.</p>
+            <input id="pitchD" placeholder="I'm now looking for a role where I can..." />
+            <div class="idea-bank">
+              <button type="button" class="idea-chip" data-target="pitchD" data-text="I'm now looking for a role where I can use that experience in a new environment, keep learning and contribute from the start.">new challenge</button>
+              <button type="button" class="idea-chip" data-target="pitchD" data-text="I'm particularly interested in roles where process improvement, collaboration and problem-solving are central to the work.">target role</button>
+            </div>
+          </div>
+
+          <div class="builder-field">
+            <label for="pitchE">5. Why Australia — make it professional and personal</label>
+            <p class="field-note">One professional reason + one personal reason is enough.</p>
+            <input id="pitchE" placeholder="Australia appeals to me because..." />
+            <div class="idea-bank">
+              <button type="button" class="idea-chip" data-target="pitchE" data-text="Australia appeals to me because I want international professional experience as well as a genuine lifestyle change.">international + lifestyle</button>
+              <button type="button" class="idea-chip" data-target="pitchE" data-text="For me, Australia represents both a professional step forward and the chance to build a new experience outside my usual environment.">next chapter</button>
+            </div>
+          </div>
+
+          <div class="builder-actions">
+            <button class="btn primary" id="buildPitch" type="button">Build my pitch</button>
+            <button class="btn ghost" id="listenPitch" type="button">🔊 Listen</button>
+            <button class="btn secondary model-toggle" data-model="pitchModels" type="button">Show two models</button>
+          </div>
+          <div id="pitchOutput" class="output-box" aria-live="polite">Your pitch will appear here.</div>
+        </div>
+
+        <aside class="pitch-side">
+          <div class="pitch-guide">
+            <h3>Keep the pitch conversational</h3>
+            <p>A recruiter does not need your whole CV in 60 seconds.</p>
+            <ol>
+              <li><strong>Start broad:</strong> who you are professionally.</li>
+              <li><strong>Add proof:</strong> what you actually worked on.</li>
+              <li><strong>Name the value:</strong> what that taught you to bring.</li>
+              <li><strong>Finish forward:</strong> what you want next and why Australia.</li>
+            </ol>
+          </div>
+          <div class="task-to-value">
+            <h3>Upgrade the language</h3>
+            <div class="translation-row"><span class="weak">“I organised meetings.”</span><span class="strong">→ I brought different teams together to align on priorities and next steps.</span></div>
+            <div class="translation-row"><span class="weak">“I analysed processes.”</span><span class="strong">→ I identified friction points and translated them into practical improvements.</span></div>
+            <div class="translation-row"><span class="weak">“I worked with many departments.”</span><span class="strong">→ I worked cross-functionally and adapted my communication to different stakeholders.</span></div>
+          </div>
+        </aside>
+      </div>
+
+      <div id="pitchModels" class="models hidden">
+        <article><h4>Strong B1</h4><p>I spent six years working as a process analyst. My role was to understand how processes worked in practice, identify problems and work with different teams to make them clearer and more efficient. That experience helped me become organised, analytical and comfortable communicating with different people. I'm now looking for a new challenge where I can use those skills in an international environment. Australia interests me because I want both professional experience abroad and a real change of lifestyle.</p></article>
+        <article><h4>B2 / VTest target</h4><p>I spent six years working in process analysis, with a strong focus on understanding how workflows operated in practice and how they could be improved. I regularly worked across teams to identify friction points, clarify needs and turn them into workable solutions. What I can bring is a structured way of thinking, the ability to communicate with different stakeholders and a practical approach to continuous improvement. I'm now looking for a role where I can apply that experience in a new environment, and Australia appeals to me because it combines an international professional challenge with a broader personal move.</p></article>
+      </div>
+      <div class="coach french-help"><strong>Aide FR :</strong> Pour chaque idée, posez-vous la question : « Qu'est-ce que cela prouve sur ma manière de travailler ? » C'est ce passage de la tâche à la valeur qui rend le pitch plus convaincant.</div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">05 · CAREER BREAK</div>
+      <h2>Explain your current situation positively and professionally</h2>
+      <p>You do not need to over-explain. Keep the answer factual, forward-looking and comfortable.</p>
+      <div class="formula"><span>Past</span><strong>→</strong><span>Transition</span><strong>→</strong><span>Action now</span><strong>→</strong><span>Next goal</span></div>
+      <div class="scenario-box">
+        <p><strong>Question:</strong> “What have you been doing since leaving your previous role?”</p>
+        <textarea id="careerBreak" placeholder="Answer in 45–60 seconds..."></textarea>
+        <div class="button-row">
+          <button class="btn ghost speak-text" data-text="What have you been doing since leaving your previous role?" type="button">🔊 Listen</button>
+          <button class="btn secondary model-toggle" data-model="breakModels" type="button">Show two models</button>
+        </div>
+      </div>
+      <div id="breakModels" class="models hidden">
+        <article><h4>Strong B1</h4><p>After six years in the same company, my position came to an end because of a reorganisation. I decided to use the transition as an opportunity to think carefully about my next step. I’ve been staying active, improving my English and preparing for a possible move to Australia. I’m now ready to return to work in a role where I can use my experience and continue developing.</p></article>
+        <article><h4>B2 / VTest target</h4><p>My previous role ended as part of a wider reorganisation, so I chose to use the transition productively rather than rush into the first available position. I’ve been focusing on my English, keeping a structured routine and exploring opportunities in Australia. It has also given me time to clarify what I want from my next role: a position where I can use my process-analysis experience, work with different stakeholders and contribute in an international environment.</p></article>
+      </div>
+      <div class="coach french-help"><strong>Aide FR :</strong> Évitez les formulations négatives comme “I have no job” ou “I’m doing nothing”. Préférez <em>transition, reorganisation, exploring opportunities, preparing for my next role</em>.</div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">06 · RECRUITER SMALL TALK</div>
+      <h2>Turn small talk into connection</h2>
+      <p>Professional small talk is not filler. It helps a recruiter hear how naturally you interact, develop an idea and keep a conversation moving.</p>
+
+      <div class="connection-formula">
+        <div><span>1</span><strong>Answer</strong><p>Respond directly to the question.</p></div>
+        <div><span>2</span><strong>Add detail</strong><p>Give one concrete reason or example.</p></div>
+        <div><span>3</span><strong>Open the door</strong><p>Finish with an idea the recruiter can react to.</p></div>
+      </div>
+
+      <div id="smallTalkDeck" class="question-deck"></div>
+      <div class="button-row">
+        <button class="btn primary" id="nextSmallTalk" type="button">New question</button>
+        <button class="btn ghost" id="listenSmallTalk" type="button">🔊 Listen</button>
+        <button class="btn secondary" id="showSmallTalkModel" type="button">Show model answer</button>
+      </div>
+
+      <div id="smallTalkSupport" class="question-support hidden" aria-live="polite">
+        <div class="support-label">MODEL FOR THIS QUESTION</div>
+        <p id="smallTalkModel"></p>
+        <div class="button-row">
+          <button class="btn ghost" id="listenSmallTalkModel" type="button">🔊 Listen to model</button>
+        </div>
+        <div class="why-box"><strong>Why it works</strong><p id="smallTalkWhy"></p></div>
+        <div class="bridge-box"><strong>Natural follow-up / bridge</strong><p id="smallTalkBridge"></p></div>
+      </div>
+
+      <textarea id="smallTalkNotes" placeholder="Your answer, useful expressions or corrections..."></textarea>
+      <div class="coach french-help"><strong>Aide FR :</strong> Ne cherchez pas une réponse parfaite. Répondez, ajoutez un détail concret, puis laissez une ouverture pour continuer l’échange.</div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">07 · INTERVIEW REACTION DRILLS</div>
+      <h2>Choose the response that sounds most natural</h2>
+      <p>The options are shuffled each time you load or reset the lesson.</p>
+      <div id="mcqContainer"></div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">08 · REFORMULATION</div>
+      <h2>Say the same idea more professionally</h2>
+      <p>This is useful both for interviews and VTest-style spontaneous reformulation.</p>
+      <div id="reformulationContainer"></div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">09 · ROLE-PLAY</div>
+      <h2>Recruiter call — Australia</h2>
+      <p><strong>Situation:</strong> A recruiter has seen your profile and calls for an informal 10-minute conversation. Work through the call question by question, then compare your answer with a model written specifically for that prompt.</p>
+
+      <div class="timeline">
+        <div><span>1</span><p><strong>Connect:</strong> greet the recruiter and react naturally.</p></div>
+        <div><span>2</span><p><strong>Position:</strong> explain your background clearly.</p></div>
+        <div><span>3</span><p><strong>Motivate:</strong> explain Australia and your next move.</p></div>
+        <div><span>4</span><p><strong>Prove:</strong> give evidence of how you work.</p></div>
+        <div><span>5</span><p><strong>Engage:</strong> ask intelligent questions and close well.</p></div>
+      </div>
+
+      <div class="roleplay-panel">
+        <div class="role-meta"><span id="roleStep">QUESTION 1 / 9</span><span>Recruiter simulation</span></div>
+        <div id="roleQuestion" class="role-question">Click “Start / next question” when you are ready.</div>
+        <div class="button-row">
+          <button class="btn primary" id="nextRoleQuestion" type="button">Start / next question</button>
+          <button class="btn ghost" id="listenRoleQuestion" type="button">🔊 Listen</button>
+          <button class="btn secondary" id="showRoleModel" type="button">Show models for this question</button>
+        </div>
+        <textarea id="roleNotes" placeholder="Answer first. Then add useful corrections or stronger wording here..."></textarea>
+      </div>
+
+      <div id="roleSupport" class="role-support hidden" aria-live="polite">
+        <div class="role-coach-card">
+          <span class="support-label">WHAT THE RECRUITER IS LISTENING FOR</span>
+          <p id="roleCoach"></p>
+        </div>
+        <div class="models role-dynamic-models">
+          <article><h4>Strong B1</h4><p id="roleModelB1"></p><button class="listen-chip dynamic-role-listen" type="button" data-level="b1">🔊</button></article>
+          <article><h4>B2 / VTest target</h4><p id="roleModelB2"></p><button class="listen-chip dynamic-role-listen" type="button" data-level="b2">🔊</button></article>
+        </div>
+        <div class="role-upgrade"><strong>Useful upgrade</strong><p id="roleUpgrade"></p></div>
+      </div>
+
+      <div class="role-reflex-bank">
+        <h3>Keep these conversation reflexes available</h3>
+        <div class="reflex-grid">
+          <div><strong>Buy time</strong><span>“That’s a good question. Let me think of a concrete example.”</span></div>
+          <div><strong>Clarify</strong><span>“Do you mean in my previous role specifically, or more generally?”</span></div>
+          <div><strong>Structure</strong><span>“There are two things I’d highlight…”</span></div>
+          <div><strong>Reformulate</strong><span>“Let me put that another way.”</span></div>
+        </div>
+      </div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card workplace-lab" data-track="section">
+      <div class="section-kicker">10 · AUSTRALIAN WORKPLACE ENGLISH</div>
+      <h2>Communicate naturally at work — not just with slang</h2>
+      <p>The goal is not to “sound Australian”. It is to understand a workplace style that is often relatively direct, collaborative and informal while still being professional. Practise the communication moves you will actually need in meetings, projects and everyday teamwork.</p>
+
+      <div class="workplace-principles">
+        <article><span>01</span><h3>Direct, not blunt</h3><p>Get to the point, but soften disagreement and requests enough to keep the exchange constructive.</p><div class="micro-example">“I’m not sure that approach will solve the main issue. Could we look at another option?”</div></article>
+        <article><span>02</span><h3>Informal, not careless</h3><p>First names and relaxed wording are common, but clarity, reliability and preparation still matter.</p><div class="micro-example">“Hi Sam, just checking whether you’ve had a chance to review the latest version.”</div></article>
+        <article><span>03</span><h3>Collaborative</h3><p>Show that you can contribute your view while making space for other people’s expertise.</p><div class="micro-example">“That’s how I see it from the process side. What are you seeing operationally?”</div></article>
+        <article><span>04</span><h3>Action-oriented</h3><p>Translate discussion into ownership, timing and a clear next step.</p><div class="micro-example">“I’ll update the workflow today and send the team a revised version by tomorrow morning.”</div></article>
+        <article><span>05</span><h3>Comfortable with clarification</h3><p>Asking a concise question is better than pretending you understood an unclear instruction.</p><div class="micro-example">“Just to confirm, do you want the full analysis or only the key issues for now?”</div></article>
+        <article><span>06</span><h3>Evidence over theory</h3><p>Use short examples and results when explaining a recommendation.</p><div class="micro-example">“We tried something similar before, and the main bottleneck was the handover between the two teams.”</div></article>
+      </div>
+
+      <div class="workplace-module">
+        <div class="workplace-module-head">
+          <div><span class="support-label">TONE & RESPONSE LAB</span><h3>Make the sentence sound natural, clear and professional</h3></div>
+          <span id="workplaceCounter" class="counter-badge">1 / 8</span>
+        </div>
+        <div id="workplaceSituation" class="workplace-situation"></div>
+        <div class="button-row">
+          <button class="btn primary" id="nextWorkplace" type="button">Next situation</button>
+          <button class="btn ghost" id="listenWorkplace" type="button">🔊 Listen to situation</button>
+          <button class="btn secondary" id="showWorkplaceModel" type="button">Show natural response</button>
+        </div>
+        <div id="workplaceSupport" class="question-support hidden">
+          <div class="support-label">NATURAL WORKPLACE RESPONSE</div>
+          <p id="workplaceModel"></p>
+          <button class="btn ghost" id="listenWorkplaceModel" type="button">🔊 Listen to model</button>
+          <div class="why-box"><strong>Communication skill</strong><p id="workplaceSkill"></p></div>
+          <div class="bridge-box"><strong>Language to notice</strong><p id="workplaceLanguage"></p></div>
+        </div>
+      </div>
+
+      <div class="workplace-language-bank">
+        <div>
+          <h3>Starting and joining a discussion</h3>
+          <p>“Can I add something here?” · “From my side…” · “The way I see it…” · “One thing I’d flag is…”</p>
+        </div>
+        <div>
+          <h3>Disagreeing constructively</h3>
+          <p>“I see your point, but…” · “I’m not sure that would address the main issue.” · “Could we look at another option?”</p>
+        </div>
+        <div>
+          <h3>Clarifying</h3>
+          <p>“Just to make sure I’ve understood…” · “When you say X, do you mean…?” · “What would be the priority here?”</p>
+        </div>
+        <div>
+          <h3>Taking ownership</h3>
+          <p>“I can take that.” · “I’ll come back to you by…” · “I’ll check that and update the team.”</p>
+        </div>
+        <div>
+          <h3>Giving an update</h3>
+          <p>“A quick update on…” · “We’re on track for…” · “The main issue at the moment is…” · “The next step is…”</p>
+        </div>
+        <div>
+          <h3>Moving from small talk to business</h3>
+          <p>“Anyway, shall we get started?” · “So, coming back to the project…” · “Before we finish, can we confirm the next steps?”</p>
+        </div>
+      </div>
+
+      <details class="slang-note">
+        <summary>Useful expressions you may hear — without forcing the slang</summary>
+        <div class="au-grid">
+          <article><h3>“No worries”</h3><p>Often means “that’s fine / no problem”. Understand it first; use it only if it feels natural.</p></article>
+          <article><h3>“Keen”</h3><p>Interested or enthusiastic: “I’d be keen to learn more about the role.”</p></article>
+          <article><h3>“Sounds good”</h3><p>A very natural way to agree to a plan without sounding overly formal.</p></article>
+          <article><h3>“Just checking…”</h3><p>A useful softener for follow-ups: “Just checking whether the figures have been confirmed.”</p></article>
+        </div>
+      </details>
+      <div class="coach french-help"><strong>Aide FR :</strong> Ici, l’objectif n’est pas l’argot. Travaillez surtout la capacité à être clair, collaboratif, suffisamment direct et orienté vers une solution.</div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card final-mission" data-track="section">
+      <div class="section-kicker">11 · FINAL MISSION</div>
+      <h2>3-minute “Why should we speak again?” recruiter close</h2>
+      <p>Do not jump straight into the timer. Build the answer in six short blocks first, then connect them into one natural conversation. The final goal is to sound credible, specific and easy to continue talking to.</p>
+
+      <div class="mission-map">
+        <article><span>01</span><h3>Position yourself</h3><p>Who are you professionally in one sentence?</p><small>Useful start: “My background is in…”</small><textarea id="finalA" placeholder="Your 1–2 sentence opening..."></textarea></article>
+        <article><span>02</span><h3>Show what you did</h3><p>Name the kind of work you handled, not every duty.</p><small>Useful start: “A big part of my role was…”</small><textarea id="finalB" placeholder="Processes, teams, analysis, improvement..."></textarea></article>
+        <article><span>03</span><h3>Prove your value</h3><p>What did those six years teach you to bring to a team?</p><small>Useful start: “What that taught me was…”</small><textarea id="finalC" placeholder="Structured thinking, communication, problem-solving..."></textarea></article>
+        <article><span>04</span><h3>Explain the transition</h3><p>Keep the career break factual and forward-looking.</p><small>Useful start: “When the role ended as part of…”</small><textarea id="finalD" placeholder="Transition + what you have been doing now..."></textarea></article>
+        <article><span>05</span><h3>Connect to Australia</h3><p>Give one professional reason and one personal reason.</p><small>Useful start: “Australia appeals to me because…”</small><textarea id="finalE" placeholder="Why Australia fits the next step..."></textarea></article>
+        <article><span>06</span><h3>Create the next conversation</h3><p>Finish with a relevant question, not a speech-ending statement.</p><small>Useful start: “I’d be interested to know…”</small><textarea id="finalF" placeholder="Your recruiter question..."></textarea></article>
+      </div>
+
+      <div class="builder-actions">
+        <button class="btn primary" id="buildFinalMission" type="button">Build my 3-minute answer</button>
+        <button class="btn ghost" id="listenFinalMission" type="button">🔊 Listen</button>
+        <button class="btn secondary model-toggle" data-model="finalMissionModels" type="button">Show full model answers</button>
+      </div>
+      <div id="finalMissionOutput" class="output-box final-output">Your connected answer will appear here.</div>
+
+      <div id="finalMissionModels" class="models hidden">
+        <article><h4>Strong B1 model</h4><p>My background is in process analysis, and I spent six years working on how teams and workflows operate in practice. A big part of my role was understanding problems, speaking with the people involved and helping make processes clearer and more efficient. That experience taught me to be structured, practical and comfortable working with different teams. My role ended because of a wider reorganisation, and I have used the transition to work on my English, stay active and think carefully about my next step. I’m now looking for a new professional challenge, and Australia interests me because I want international experience as well as a real lifestyle change. I’d be interested to know what the main priorities would be for someone joining this role in the first few months.</p></article>
+        <article><h4>B2 / VTest target model</h4><p>I’ve spent the last six years in process analysis, working at the point where operational needs, people and workflows meet. My role involved understanding how a process worked in practice, identifying friction points and then working across teams to turn those issues into realistic improvements. What I can bring is a structured way of analysing a problem, an ability to communicate with different stakeholders and a strong preference for solutions that actually work for the people using them. My previous role ended as part of a broader reorganisation, so I’ve used the transition to improve my English, maintain a disciplined routine and define what I want from the next stage of my career. Australia appeals to me because I’m looking for both an international professional challenge and a meaningful personal change. I’d be keen to understand what success in this position would look like after the first six months and which stakeholders the role works with most closely.</p></article>
+      </div>
+
+      <div class="performance-zone">
+        <div>
+          <h3>Now perform it — without reading</h3>
+          <p>Use your preparation as a map, not a script. If you lose a word, reformulate and keep moving.</p>
+          <div class="timer" id="timerDisplay">03:00</div>
+          <div class="button-row">
+            <button class="btn primary" id="startTimer" type="button">▶ Start</button>
+            <button class="btn ghost" id="pauseTimer" type="button">Ⅱ Pause</button>
+            <button class="btn ghost" id="resetTimer" type="button">↻ Reset timer</button>
+          </div>
+        </div>
+        <div class="success-check">
+          <h3>Success checklist</h3>
+          <label><input type="checkbox"> I gave a clear professional identity.</label>
+          <label><input type="checkbox"> I used at least one concrete example.</label>
+          <label><input type="checkbox"> I explained value, not only duties.</label>
+          <label><input type="checkbox"> I handled the transition positively.</label>
+          <label><input type="checkbox"> I connected Australia to a real goal.</label>
+          <label><input type="checkbox"> I finished with a strong recruiter question.</label>
+        </div>
+      </div>
+
+      <div class="trainer-scorecard">
+        <div><h3>Trainer oral scorecard</h3><p>Score each area separately after the final performance.</p></div>
+        <div class="score-grid">
+          <label>Structure<select class="oral-score"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
+          <label>Fluency<select class="oral-score"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
+          <label>Vocabulary<select class="oral-score"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
+          <label>Grammar<select class="oral-score"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
+          <label>Interaction<select class="oral-score"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
+          <div class="oral-total"><span>Total</span><strong id="oralTotal">0 / 20</strong></div>
+        </div>
+      </div>
+
+      <textarea id="finalReflection" placeholder="After speaking: what sounded strong? Where did you hesitate? Which sentence should you improve next time?"></textarea>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card homework" data-track="section">
+      <div class="section-kicker">12 · BETWEEN LESSONS</div>
+      <h2>Homework — one real application, one real conversation</h2>
+      <div class="homework-grid">
+        <article><h3>Application language</h3><p>Choose one Australian job advert. Write down 8 recurring words or phrases and rewrite your professional pitch using at least 4 of them.</p></article>
+        <article><h3>Voice practice</h3><p>Record a 90-second answer to: “Tell me about yourself and what you’re looking for in Australia.” Listen once and note 3 improvements.</p></article>
+        <article><h3>Conversation reflex</h3><p>Prepare 5 follow-up questions you could ask a recruiter, colleague or new contact instead of ending the conversation after one answer.</p></article>
+      </div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>End-of-lesson evaluation</strong>
+      <p>Rate how confident you feel now about discussing your job search in Australia.</p>
+      <div class="rating" id="confidenceRating">
+        <button type="button" data-score="1">1</button><button type="button" data-score="2">2</button><button type="button" data-score="3">3</button><button type="button" data-score="4">4</button><button type="button" data-score="5">5</button>
+      </div>
+      <textarea id="evaluationComment" placeholder="What should we practise again next time?"></textarea>
+    </div>
+    <p class="footer-note">SpeakEasyTisha · Interactive English Training</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
