@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sylvain Bailly · Lesson 16 · Lisbon Narrative Tenses & Job Bridge</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="azulejo-strip" aria-hidden="true"></div>
+    <nav class="topbar">
+      <a href="#roadmap">Roadmap</a>
+      <a href="#vocab">Vocabulary</a>
+      <a href="#when-while">When/While</a>
+      <a href="#grammar">Grammar</a>
+      <a href="#joblab">Job Lab</a>
+      <a href="#writing">Writing</a>
+      <a href="#eval">Evaluation</a>
+      <button id="toggleFr" class="btn ghost" type="button">FR help</button>
+      <button id="resetAll" class="btn ghost danger" type="button">Reset</button>
+    </nav>
+    <section class="hero-content">
+      <div>
+        <p class="eyebrow">Portugal bridge lesson · 90 minutes · VTest preparation</p>
+        <h1>Sylvain Bailly</h1>
+        <h2>Lesson 16 · What Was Happening?</h2>
+        <p class="subtitle">Narrative tenses, <strong>when / while</strong>, job-search communication and stronger writing from your new life near Lisbon.</p>
+        <div class="hero-actions">
+          <button class="btn primary speak" data-speak="Today you are learning how to explain what was happening, what had happened before, and what you did next. This lesson connects grammar to real life, job search, family, housing and professional communication.">🔊 Listen</button>
+          <button class="btn secondary" onclick="window.print()">Print / PDF</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="tram">28</div>
+        <h3>Today’s mission</h3>
+        <p>Tell a clear story: <strong>background</strong>, <strong>event</strong>, <strong>earlier situation</strong>, <strong>result</strong>, <strong>next step</strong>.</p>
+        <ul class="checklist mini">
+          <li>Past continuous</li>
+          <li>When vs while</li>
+          <li>Past perfect</li>
+          <li>Past perfect continuous preview</li>
+          <li>Job-search speaking & writing</li>
+        </ul>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="panel intro" id="roadmap">
+      <div class="section-head">
+        <span class="badge">01</span>
+        <div>
+          <h2>Where you are now</h2>
+          <p>You already have the basic tense blocks. This lesson shows how to connect them in a story without feeling lost.</p>
+        </div>
+      </div>
+      <div class="roadmap-grid">
+        <article class="road-card done">
+          <h3>Already learned</h3>
+          <p>Present simple, present continuous, past simple, present perfect, future forms, articles, pronouns, connectors and writing structure.</p>
+        </article>
+        <article class="road-card today">
+          <h3>Today’s bridge</h3>
+          <p>Past continuous and past perfect in real situations: work problems, moving, housing, family and job search.</p>
+        </article>
+        <article class="road-card next">
+          <h3>Coming next</h3>
+          <p>Hypothetical situations, conditionals, stronger opinions, professional role-plays and full VTest practice.</p>
+        </article>
+      </div>
+      <div class="note fr-help">FR : tu n’apprends pas “encore tout l’anglais” aujourd’hui. Tu apprends à organiser ce que tu sais déjà, puis à ajouter deux outils pour raconter une situation clairement.</div>
+    </section>
+
+    <section class="panel" id="vocab">
+      <div class="section-head">
+        <span class="badge">02</span>
+        <div>
+          <h2>New vocabulary bank</h2>
+          <p>Choose a category. Use the words in the grammar, speaking and writing tasks.</p>
+        </div>
+      </div>
+      <div class="vocab-controls">
+        <label for="vocabSelect">Category</label>
+        <select id="vocabSelect"></select>
+      </div>
+      <div id="vocabCards" class="vocab-grid"></div>
+      <div class="tip-card">
+        <strong>Use the vocabulary, do not just translate it.</strong> A good exam answer uses useful words in simple, clear sentences.
+      </div>
+    </section>
+
+    <section class="panel" id="same-subject">
+      <div class="section-head">
+        <span class="badge">03</span>
+        <div>
+          <h2>Same subject, different tense</h2>
+          <p>The same idea can change tense depending on the meaning.</p>
+        </div>
+      </div>
+      <div class="mirror-tabs" role="tablist" aria-label="same subject examples">
+        <button class="tab active" data-tab="move">Moving</button>
+        <button class="tab" data-tab="work">Work</button>
+        <button class="tab" data-tab="job">Job search</button>
+      </div>
+      <div id="mirrorContent" class="mirror-table"></div>
+      <div class="exercise" data-exercise="tenseMarker">
+        <div class="exercise-head">
+          <h3>Exercise A · Match the meaning to the tense</h3>
+          <span class="level easy">easy</span>
+        </div>
+        <p class="instructions">Choose the best tense for each meaning.</p>
+        <div class="quiz" id="quizTenseMarker"></div>
+        <div class="section-eval" data-section="same-subject"></div>
+      </div>
+    </section>
+
+    <section class="panel grammar-block" id="when-while">
+      <div class="section-head">
+        <span class="badge">04</span>
+        <div>
+          <h2>When / While — not only “short” and “long”</h2>
+          <p>This is the key clarification from the last lesson.</p>
+        </div>
+      </div>
+      <div class="rule-grid two">
+        <article class="rule-card blue">
+          <h3>WHEN = at the moment / at the time / event</h3>
+          <p>Use <strong>when</strong> to introduce the moment something happened, or a period in your life.</p>
+          <ul>
+            <li><strong>I was preparing an order when the client called.</strong></li>
+            <li><strong>When I lived in France, I worked in catering.</strong></li>
+          </ul>
+          <p class="counter">Important: <strong>when</strong> can introduce a long period too. So it is not only “short action”.</p>
+        </article>
+        <article class="rule-card teal">
+          <h3>WHILE = during the same time</h3>
+          <p>Use <strong>while</strong> to show that two actions or situations happened at the same time.</p>
+          <ul>
+            <li><strong>The client called while I was preparing the order.</strong></li>
+            <li><strong>While I was looking for a house, I was also preparing for interviews.</strong></li>
+          </ul>
+          <p class="counter">Useful extra meaning: <strong>while</strong> can also show contrast: <em>While I like the house, it is too expensive.</em></p>
+        </article>
+      </div>
+      <div class="formula-row">
+        <div><strong>when + past simple</strong><br><span>when the client called</span></div>
+        <div><strong>while + past continuous</strong><br><span>while I was preparing</span></div>
+        <div><strong>when + life period</strong><br><span>when I lived in France</span></div>
+        <div><strong>while + contrast</strong><br><span>while I understand, I disagree</span></div>
+      </div>
+      <div class="note fr-help">FR : <strong>when</strong> répond souvent à “à quel moment ? / quand ?”. <strong>while</strong> insiste sur “pendant que / en même temps que”. Ce n’est donc pas seulement court contre long.</div>
+      <div class="exercise">
+        <div class="exercise-head"><h3>Exercise B · Choose when or while</h3><span class="level easy">easy → medium</span></div>
+        <div class="quiz" id="quizWhenWhile"></div>
+        <div class="section-eval" data-section="when-while"></div>
+      </div>
+    </section>
+
+    <section class="panel grammar-block" id="grammar">
+      <div class="section-head">
+        <span class="badge">05</span>
+        <div>
+          <h2>Narrative grammar bridge</h2>
+          <p>Use the tenses together to explain a real situation clearly.</p>
+        </div>
+      </div>
+
+      <article class="grammar-card ocean">
+        <h3>Past continuous · action in progress in the past</h3>
+        <p><strong>Use:</strong> for the background action at a specific past moment.</p>
+        <div class="structure">Subject + was / were + verb-ing</div>
+        <div class="examples-columns">
+          <div><h4>Affirmative</h4><p>I was preparing the order.<br>We were checking the labels.</p></div>
+          <div><h4>Negative</h4><p>I was not driving.<br>We were not speaking Portuguese yet.</p></div>
+          <div><h4>Questions</h4><p>Were you working?<br>What were you doing?</p></div>
+        </div>
+        <p class="avoid">Avoid: ❌ Did you were working? → ✅ Were you working?</p>
+      </article>
+
+      <article class="grammar-card gold">
+        <h3>Past simple + past continuous</h3>
+        <p><strong>Past continuous</strong> = background. <strong>Past simple</strong> = event / interruption / next action.</p>
+        <div class="structure">I was preparing the order when the client called.</div>
+        <p>Meaning: first, you were in the middle of preparing the order. Then, the client called.</p>
+      </article>
+
+      <article class="grammar-card violet">
+        <h3>Past perfect · before another past action</h3>
+        <p><strong>Use:</strong> when you need to show that one past action happened before another past action.</p>
+        <div class="structure">Subject + had + past participle</div>
+        <div class="examples-columns">
+          <div><h4>Affirmative</h4><p>I had checked the labels before the driver arrived.</p></div>
+          <div><h4>Negative</h4><p>I had not received the address before I left.</p></div>
+          <div><h4>Question</h4><p>Had you confirmed the time before the delivery?</p></div>
+        </div>
+        <p class="counter">Use it only when the order of events is important. If the order is clear, past simple can be enough.</p>
+      </article>
+
+      <article class="grammar-card green">
+        <h3>Past perfect continuous · duration before a past moment</h3>
+        <p><strong>Use:</strong> when an action continued for a period of time before a past event or result.</p>
+        <div class="structure">Subject + had been + verb-ing</div>
+        <div class="examples-columns">
+          <div><h4>Affirmative</h4><p>I had been looking for a house for several weeks before we found this rental.</p></div>
+          <div><h4>Negative</h4><p>I had not been working in Portugal before we moved.</p></div>
+          <div><h4>Question</h4><p>How long had you been looking for a job before the interview?</p></div>
+        </div>
+        <p class="counter">This tense is useful, but not urgent to master today. Today, the objective is to recognise it and understand the meaning.</p>
+      </article>
+
+      <div class="exercise-grid">
+        <div class="exercise">
+          <div class="exercise-head"><h3>Exercise C · Was or were?</h3><span class="level easy">easy</span></div>
+          <div class="quiz" id="quizWasWere"></div>
+        </div>
+        <div class="exercise">
+          <div class="exercise-head"><h3>Exercise D · Past simple or past continuous?</h3><span class="level medium">medium</span></div>
+          <div class="quiz" id="quizPastSimpleContinuous"></div>
+        </div>
+      </div>
+      <div class="exercise">
+        <div class="exercise-head"><h3>Exercise E · Past perfect or past simple?</h3><span class="level medium">medium → hard</span></div>
+        <div class="quiz" id="quizPastPerfect"></div>
+      </div>
+      <div class="section-eval" data-section="grammar"></div>
+    </section>
+
+    <section class="panel" id="joblab">
+      <div class="section-head">
+        <span class="badge">06</span>
+        <div>
+          <h2>Job-search communication lab</h2>
+          <p>Use English to describe your experience, your move, your skills and what you are looking for.</p>
+        </div>
+      </div>
+      <div class="skill-grid">
+        <article class="skill-card">
+          <h3>Experience</h3>
+          <p>I have worked in catering for many years.<br>I have managed orders, deadlines and client requests.</p>
+        </article>
+        <article class="skill-card">
+          <h3>Past achievement</h3>
+          <p>I developed an airline-catering activity.<br>I solved last-minute problems with clients and deliveries.</p>
+        </article>
+        <article class="skill-card">
+          <h3>Current situation</h3>
+          <p>I am settling near Lisbon.<br>I am looking for a position where I can use my professional experience.</p>
+        </article>
+        <article class="skill-card">
+          <h3>Future objective</h3>
+          <p>I would like to work in a professional environment where organisation, quality and client service are important.</p>
+        </article>
+      </div>
+      <div class="exercise">
+        <div class="exercise-head"><h3>Exercise F · Build stronger job-search sentences</h3><span class="level medium">medium</span></div>
+        <p class="instructions">Choose the most professional sentence.</p>
+        <div class="quiz" id="quizJobSearch"></div>
+      </div>
+      <div class="section-eval" data-section="joblab"></div>
+    </section>
+
+    <section class="panel" id="listening-reading">
+      <div class="section-head">
+        <span class="badge">07</span>
+        <div>
+          <h2>VTest-style listening & reading</h2>
+          <p>Short exam-style tasks with professional and everyday subjects.</p>
+        </div>
+      </div>
+      <div class="exam-card listening">
+        <h3>Listening simulation · voicemail</h3>
+        <p class="script-label">Listen, then answer. You may listen twice in a real exam-style practice.</p>
+        <button class="btn primary speak" data-speak="Hello, this is Carla from Atlantic Crew Services. I am calling about tomorrow's delivery. The aircraft will arrive at gate B twelve at seven forty-five, but the crew has changed the breakfast order. One passenger needs a gluten-free meal, and another one cannot eat nuts. Please confirm that each meal will have a clear label in English. Thank you.">🔊 Play voicemail</button>
+        <div class="quiz" id="quizListening"></div>
+      </div>
+      <div class="exam-card reading">
+        <h3>Reading simulation · short email</h3>
+        <div class="email-box">
+          <p><strong>Subject:</strong> Interview confirmation</p>
+          <p>Hello,</p>
+          <p>Thank you for your application. We have reviewed your profile and would like to meet you online next Tuesday at 10:30. The interview will focus on your experience, your move to Portugal and your ability to manage client requests in English. Please confirm your availability before Friday.</p>
+          <p>Best regards,<br>Recruitment Team</p>
+        </div>
+        <div class="quiz" id="quizReading"></div>
+      </div>
+      <div class="section-eval" data-section="listening-reading"></div>
+    </section>
+
+    <section class="panel" id="integrated">
+      <div class="section-head">
+        <span class="badge">08</span>
+        <div>
+          <h2>Integrated practice</h2>
+          <p>Now combine grammar, vocabulary and connectors.</p>
+        </div>
+      </div>
+      <div class="exercise">
+        <div class="exercise-head"><h3>Exercise G · Complete the story</h3><span class="level hard">harder</span></div>
+        <p class="instructions">Choose the best option. Think: background, event, before the event, result now.</p>
+        <div class="quiz" id="quizIntegrated"></div>
+      </div>
+      <div class="builder-card">
+        <h3>Sentence builder · story formula</h3>
+        <div class="formula-large">Past background + event + earlier situation + action + result now + next step</div>
+        <p><strong>Example:</strong> I was checking the labels when the client called. I had already received the updated order, so I changed the delivery list. I have confirmed the new details, and I will send the final message today.</p>
+      </div>
+      <div class="section-eval" data-section="integrated"></div>
+    </section>
+
+    <section class="panel" id="speaking">
+      <div class="section-head">
+        <span class="badge">09</span>
+        <div>
+          <h2>Speaking lab</h2>
+          <p>Practise speaking for VTest-style answers: clear, structured and not too long.</p>
+        </div>
+      </div>
+      <div class="recording-box">
+        <h3>How to record yourself during the lesson</h3>
+        <ol>
+          <li>Read the question first.</li>
+          <li>Prepare 3 keywords, not a full text.</li>
+          <li>Click <strong>Start recording</strong>.</li>
+          <li>Speak for 45 to 90 seconds.</li>
+          <li>Click <strong>Stop</strong> and download your audio.</li>
+        </ol>
+        <div class="recorder-controls">
+          <button class="btn primary" id="startRec">🎙️ Start recording</button>
+          <button class="btn secondary" id="stopRec" disabled>⏹ Stop</button>
+          <span id="recStatus">Recorder ready.</span>
+        </div>
+        <div id="recordings"></div>
+      </div>
+      <div class="oral-grid">
+        <article class="prompt-card open-task" data-manual-section="speaking">
+          <h3>Speaking 1 · Explain a problem</h3>
+          <p>Tell the story of a last-minute change at work. Use past continuous + past simple.</p>
+          <textarea placeholder="Trainer notes / useful keywords..."></textarea>
+          <button class="btn hint" data-hint="Start with: Yesterday, I was ... when ... Then, I ... Finally, ...">Hint</button>
+          <button class="btn model" data-model-target="sp1">Show model answers</button>
+          <div class="model-box" id="sp1">
+            <h4>A2+ model</h4>
+            <p>Yesterday, I was preparing an order when the client called. The client changed the delivery time. First, I checked the new information. Then, I changed the labels. Finally, I sent the confirmation.</p>
+            <h4>B1 model</h4>
+            <p>Yesterday, I was preparing an airline order when the client called to change the delivery time. I had already checked the quantities, but I needed to verify the labels again because one passenger had an allergy. Finally, I updated the order and sent a clear confirmation to the client.</p>
+          </div>
+          <div class="manual-eval"></div>
+        </article>
+        <article class="prompt-card open-task" data-manual-section="speaking">
+          <h3>Speaking 2 · Job interview answer</h3>
+          <p>Answer: What kind of job are you looking for near Lisbon, and why?</p>
+          <textarea placeholder="Trainer notes / useful keywords..."></textarea>
+          <button class="btn hint" data-hint="Use: I am looking for..., I have experience in..., I would like..., because...">Hint</button>
+          <button class="btn model" data-model-target="sp2">Show model answers</button>
+          <div class="model-box" id="sp2">
+            <h4>A2+ model</h4>
+            <p>I am looking for a job near Lisbon. I have experience in catering, organisation and client service. I would like to work in a professional company because I like quality and clear communication.</p>
+            <h4>B1 model</h4>
+            <p>I am looking for a position near Lisbon where I can use my experience in catering, logistics and client service. I have managed orders, deadlines and last-minute changes, so I can work carefully under pressure. I would like to join a professional team where quality, organisation and communication are important.</p>
+          </div>
+          <div class="manual-eval"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="writing">
+      <div class="section-head">
+        <span class="badge">10</span>
+        <div>
+          <h2>Writing lab · professional and personal</h2>
+          <p>Use grammar + connectors + useful vocabulary in realistic writing tasks.</p>
+        </div>
+      </div>
+      <div class="writing-task open-task" data-manual-section="writing">
+        <h3>Task 1 · Professional email after a last-minute change</h3>
+        <p><strong>Situation:</strong> A client changed an order while you were preparing it. Write a short professional email to explain what happened, what you had already done, what you are checking now and what you will do next.</p>
+        <textarea class="large" placeholder="Write your email here..."></textarea>
+        <div class="button-row">
+          <button class="btn hint" data-hint="Use: Thank you for your message. I was preparing... when... I had already... At the moment, I am... I will... Could you confirm...?">Hint</button>
+          <button class="btn model" data-model-target="w1">Show A2+ / B1 models</button>
+        </div>
+        <div class="model-box" id="w1">
+          <h4>A2+ model</h4>
+          <p>Hello,<br><br>Thank you for your message. I was preparing the order when I received your update. I had already checked the quantities, but I am checking the labels again now because there are new dietary requirements. I will send the final confirmation this afternoon.<br><br>Could you confirm the exact delivery point?<br><br>Best regards</p>
+          <h4>B1 model</h4>
+          <p>Hello,<br><br>Thank you for sending the updated order. I was preparing the meals when I received your message, so I immediately checked the new information. I had already confirmed the quantities, but I am now verifying each label carefully because some passengers have specific dietary requirements.<br><br>I will send the final confirmation this afternoon. Could you please confirm the exact delivery point and the name of the contact person at the airport?<br><br>Best regards</p>
+        </div>
+        <div class="manual-eval"></div>
+      </div>
+      <div class="writing-task open-task" data-manual-section="writing">
+        <h3>Task 2 · Personal message about settling near Lisbon</h3>
+        <p><strong>Situation:</strong> Write a message to a friend. Explain that you moved, what you have already done, what you were doing this week and what you are looking for now.</p>
+        <textarea class="large" placeholder="Write your message here..."></textarea>
+        <div class="button-row">
+          <button class="btn hint" data-hint="Use: We have moved..., We have already..., This week, we were..., Now, we are looking for..., I hope...">Hint</button>
+          <button class="btn model" data-model-target="w2">Show A2+ / B1 models</button>
+        </div>
+        <div class="model-box" id="w2">
+          <h4>A2+ model</h4>
+          <p>Hi,<br><br>We have moved near Lisbon and we are settling in. We have found a temporary rental home with a pool. This week, we were organising the house and the girls started school. Now, we are looking for a new home to buy, and I am also looking for a job.<br><br>It is a big change, but it is exciting.</p>
+          <h4>B1 model</h4>
+          <p>Hi,<br><br>We have moved to a town near Lisbon, and we are slowly settling into our new life. We have already found a temporary rental home with a pool, which is comfortable while we look for a house to buy. This week, we were organising the house, helping the girls start school and discovering the area.<br><br>At the moment, I am also looking for a new job. It is a big change, but I think it is a good opportunity for the family.</p>
+        </div>
+        <div class="manual-eval"></div>
+      </div>
+    </section>
+
+    <section class="panel final-mission" id="final">
+      <div class="section-head">
+        <span class="badge">11</span>
+        <div>
+          <h2>Final mission · choose one scenario</h2>
+          <p>Speak first, then write. Use at least three tenses and four connectors.</p>
+        </div>
+      </div>
+      <div class="mission-grid">
+        <article class="mission-card">
+          <h3>Scenario A · Interview introduction</h3>
+          <p>Explain your professional background, what changed, what you have done recently and what you are looking for now.</p>
+        </article>
+        <article class="mission-card">
+          <h3>Scenario B · Housing story</h3>
+          <p>Explain the move, the temporary rental, the pool, the girls at school and the search for a house to buy.</p>
+        </article>
+        <article class="mission-card">
+          <h3>Scenario C · Work problem</h3>
+          <p>Describe a professional problem: what you were doing, what happened, what you had already done and what you did next.</p>
+        </article>
+      </div>
+      <div class="final-models">
+        <button class="btn model" data-model-target="finalModels">Show final model answers</button>
+        <div class="model-box" id="finalModels">
+          <h4>Scenario A · B1 model</h4>
+          <p>I have worked in catering and client service for many years. Before moving to Portugal, I developed an airline-catering activity and managed different orders, deadlines and client requests. Recently, I have moved near Lisbon with my family, and I am now looking for a position where I can use my experience. I am organised, careful and used to working under pressure.</p>
+          <h4>Scenario B · B1 model</h4>
+          <p>We have recently moved near Lisbon, and we are settling into our new life. At first, we needed a temporary solution, so we found a rental home with a pool. While we were organising the house, the girls started school. Now, we are looking for a home to buy. It is a big change, but it is also a positive opportunity for the family.</p>
+          <h4>Scenario C · B1 model</h4>
+          <p>Yesterday, I was preparing an order when the client called with a last-minute change. I had already checked the quantities, but I had not confirmed all the labels yet. First, I listened carefully to the new information. Then, I checked each dietary requirement again. Finally, I sent a clear confirmation to the client.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel qualiopi" id="eval">
+      <div class="section-head">
+        <span class="badge">✓</span>
+        <div>
+          <h2>Qualiopi end-of-lesson evaluation</h2>
+          <p>Automatic objective score + manual speaking/writing assessment.</p>
+        </div>
+      </div>
+      <div class="eval-summary">
+        <div class="score-ring"><span id="globalScore">0%</span><small>objective</small></div>
+        <div>
+          <h3>Objective section results</h3>
+          <div id="sectionScores" class="score-list"></div>
+        </div>
+      </div>
+      <div class="manual-grid">
+        <article>
+          <h3>Writing assessment</h3>
+          <label><input type="radio" name="writingLevel" value="Non acquis"> Non acquis</label>
+          <label><input type="radio" name="writingLevel" value="En cours"> En cours</label>
+          <label><input type="radio" name="writingLevel" value="Acquis"> Acquis</label>
+          <label><input type="radio" name="writingLevel" value="Maîtrisé"> Maîtrisé</label>
+          <textarea placeholder="Writing feedback..."></textarea>
+        </article>
+        <article>
+          <h3>Speaking assessment</h3>
+          <label><input type="radio" name="speakingLevel" value="Non acquis"> Non acquis</label>
+          <label><input type="radio" name="speakingLevel" value="En cours"> En cours</label>
+          <label><input type="radio" name="speakingLevel" value="Acquis"> Acquis</label>
+          <label><input type="radio" name="speakingLevel" value="Maîtrisé"> Maîtrisé</label>
+          <textarea placeholder="Speaking feedback..."></textarea>
+        </article>
+      </div>
+      <div class="qual-grid">
+        <label>Today I can understand the lesson objective.
+          <select><option>Choose</option><option>Oui</option><option>Partiellement</option><option>Non</option></select>
+        </label>
+        <label>The exercises helped me practise.
+          <select><option>Choose</option><option>Oui</option><option>Partiellement</option><option>Non</option></select>
+        </label>
+        <label>I know what to review next.
+          <select><option>Choose</option><option>Oui</option><option>Partiellement</option><option>Non</option></select>
+        </label>
+        <label>Comments
+          <textarea placeholder="What was clear? What needs more practice?"></textarea>
+        </label>
+      </div>
+      <div class="button-row">
+        <button class="btn primary" id="downloadResults">Download results</button>
+        <button class="btn secondary" onclick="window.print()">Print lesson</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>SpeakEasyTisha · Portugal Bridge Lesson · Built for structured progress, confidence and VTest-style communication.</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
