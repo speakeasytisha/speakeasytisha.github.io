@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Guided LILATE IA-style strategy mock for professional English preparation.">
+  <title>LILATE IA · Strategy Mock 2</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the mock</a>
+  <div class="app-shell">
+    <header class="exam-header">
+      <div class="brand-zone">
+        <div class="brand-mark" aria-hidden="true">L</div>
+        <div>
+          <div class="brand-title">LILATE IA · STRATEGY MOCK 2</div>
+          <div class="brand-subtitle">Professional English · guided confidence simulation</div>
+        </div>
+      </div>
+      <div class="header-status"><span class="status-dot"></span><span id="sessionStatus">Ready to train</span></div>
+    </header>
+
+    <div class="exam-layout">
+      <aside class="left-panel" aria-label="Training controls">
+        <div class="candidate-card">
+          <span class="mini-label">YOUR MISSION</span>
+          <strong>Communicate, not translate</strong>
+          <small>Understand → organise → respond clearly</small>
+        </div>
+
+        <div class="mode-card">
+          <span class="mini-label">MODE</span>
+          <div class="segmented" role="group" aria-label="Choose mode">
+            <button id="practiceModeBtn" class="seg active" type="button">Practice</button>
+            <button id="examModeBtn" class="seg" type="button">Exam</button>
+          </div>
+          <p id="modeDescription">Practice mode shows techniques, hints, instant feedback and models.</p>
+        </div>
+
+        <div class="system-card">
+          <span class="mini-label">SYSTEM CHECK</span>
+          <div class="check-row"><span>Camera</span><strong id="cameraState">Not checked</strong></div>
+          <div class="camera-preview-wrap"><video id="cameraPreview" autoplay muted playsinline></video><div id="cameraPlaceholder">Camera preview</div></div>
+          <button id="checkCameraBtn" class="secondary small" type="button">Check camera</button>
+          <div class="check-row"><span>Microphone</span><strong id="micState">Ready to test</strong></div>
+          <button id="checkMicBtn" class="secondary small" type="button">Check microphone</button>
+        </div>
+
+        <div class="support-card">
+          <span class="mini-label">TRAINING SUPPORT</span>
+          <label class="control-row"><span>French help</span><input id="frenchToggle" type="checkbox"></label>
+          <label class="stacked-label">Audio accent
+            <select id="accentSelect">
+              <option value="en-AU" selected>🇦🇺 Australian</option>
+              <option value="en-GB">🇬🇧 British</option>
+              <option value="en-US">🇺🇸 American</option>
+            </select>
+          </label>
+          <label class="stacked-label">Audio speed
+            <select id="speedSelect">
+              <option value="0.82">Slower</option>
+              <option value="0.94" selected>Natural</option>
+              <option value="1.04">Faster</option>
+            </select>
+          </label>
+          <button id="stopAudioBtn" class="ghost small wide" type="button">Stop audio</button>
+        </div>
+
+        <div class="save-card">
+          <span class="mini-label">YOUR PROGRESS</span>
+          <div class="check-row"><span>Autosave</span><strong>On</strong></div>
+          <button id="resetAllBtn" class="ghost small wide" type="button">Reset everything</button>
+        </div>
+      </aside>
+
+      <main id="main" class="main-panel">
+        <section id="welcomeScreen" class="welcome-screen">
+          <div class="welcome-icon">✓</div>
+          <p class="eyebrow">GUIDED → INDEPENDENT → EXAM READY</p>
+          <h1>Your next LILATE IA strategy mock</h1>
+          <p class="lead">The goal is not to be perfect. The goal is to understand the mission, select the useful information and give a clear professional answer before the timer finishes.</p>
+          <p class="fr-help">Le but n’est pas d’être parfaite. Le but est de comprendre la mission, sélectionner les informations utiles et donner une réponse professionnelle claire avant la fin du temps.</p>
+
+          <div class="confidence-banner">
+            <div class="confidence-number">4</div>
+            <div><strong>Four steps for every task</strong><span>STOP: Spot the task · Target the facts · Organise · Produce & check</span></div>
+          </div>
+
+          <div class="welcome-grid">
+            <article><strong>4</strong><span>parts</span><small>Same professional actions</small></article>
+            <article><strong>12</strong><span>mock tasks</span><small>QCU · QCM · open responses</small></article>
+            <article><strong>≈30</strong><span>minutes</span><small>Realistic timed phase</small></article>
+            <article><strong>2</strong><span>modes</span><small>Coached practice + exam</small></article>
+          </div>
+
+          <div class="strategy-grid">
+            <article><span>S</span><h2>Spot</h2><p>What are you being asked to do: identify, explain, reformulate, transmit, compare or recommend?</p></article>
+            <article><span>T</span><h2>Target</h2><p>Listen or read for names, dates, times, numbers, changes, reasons, actions and constraints.</p></article>
+            <article><span>O</span><h2>Organise</h2><p>Use a simple structure: answer first, then 2–3 useful details, then the next action.</p></article>
+            <article><span>P</span><h2>Produce</h2><p>Speak in short complete sentences. Check that you answered the mission—not every word you heard.</p></article>
+          </div>
+
+          <div class="toolkit-section">
+            <div class="section-title-line"><div><p class="eyebrow">BEFORE THE TIMER</p><h2>Phrase & vocabulary toolkit</h2></div><span class="badge">Audio on every phrase</span></div>
+            <div class="toolkit-controls">
+              <label>Category<select id="vocabCategory"></select></label>
+              <label>Level<select id="vocabLevel"><option value="all">All</option><option value="core">Core</option><option value="stretch">Stretch</option></select></label>
+            </div>
+            <div id="vocabGrid" class="vocab-grid"></div>
+          </div>
+
+          <div class="warmup-panel">
+            <div><p class="eyebrow">30-SECOND RESET</p><h2>When you freeze, use this</h2><p><strong>1.</strong> Breathe out. <strong>2.</strong> Say one buying-time phrase. <strong>3.</strong> Give the answer you know. <strong>4.</strong> Add one detail. <strong>5.</strong> Stop cleanly.</p></div>
+            <button class="audio-chip" data-speak="Let me think for a moment. The main point is that... From the information I have, I would..." type="button">▶ Hear the reset phrases</button>
+          </div>
+
+          <div class="rules-box">
+            <h2>How to use this page</h2>
+            <ul>
+              <li>Start in <strong>Practice mode</strong>. Read the technique before each task and use the hint only if you need it.</li>
+              <li>Objective questions give <strong>instant feedback</strong> in Practice mode. In Exam mode, feedback waits until the report.</li>
+              <li>Listening tasks allow two plays in Exam mode. Practice mode allows replay while you learn the technique.</li>
+              <li>Speaking tasks can record your voice locally in the browser. Written and oral work have separate trainer scoring.</li>
+              <li>When you feel calmer, restart in <strong>Exam mode</strong> and complete the same communication actions without support.</li>
+            </ul>
+          </div>
+
+          <div class="format-note">
+            <strong>Format note · checked September 2026</strong>
+            <p>The official LILATE IA guidance describes four professional sections, approximately seven minutes each, using QCU/QCM and open written/oral responses. This page uses original training items and is not an official LILATE interface.</p>
+          </div>
+
+          <button id="startExamBtn" class="primary large" type="button">Start your guided mock</button>
+        </section>
+
+        <section id="examScreen" class="exam-screen hidden">
+          <div class="question-topbar">
+            <div>
+              <span id="partLabel" class="part-pill">PART 1</span>
+              <h2 id="partTitle">Accueil et interaction</h2>
+            </div>
+            <div class="timers">
+              <div><span>Question</span><strong id="questionTimer">01:30</strong></div>
+              <div><span>Elapsed</span><strong id="overallTimer">00:00</strong></div>
+            </div>
+          </div>
+
+          <div id="strategyBar" class="strategy-bar">
+            <span class="strategy-step active">S · Spot</span><span>→</span><span class="strategy-step">T · Target</span><span>→</span><span class="strategy-step">O · Organise</span><span>→</span><span class="strategy-step">P · Produce</span>
+          </div>
+
+          <div class="progress-wrap">
+            <div class="progress-meta"><span id="questionCounter">Question 1 of 12</span><span id="progressPercent">8%</span></div>
+            <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+          </div>
+
+          <div id="questionCard" class="question-card"></div>
+
+          <div class="question-footer">
+            <div class="left-actions">
+              <button id="hintBtn" class="secondary" type="button">Technique / hint</button>
+              <button id="helpBtn" class="secondary hidden" type="button">French help</button>
+              <button id="modelBtn" class="secondary" type="button">Model answer</button>
+            </div>
+            <div class="right-actions">
+              <button id="dontKnowBtn" class="ghost" type="button">I’m stuck → continue</button>
+              <button id="nextBtn" class="primary" type="button">Validate & continue</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="resultsScreen" class="results-screen hidden">
+          <div class="result-hero">
+            <p class="eyebrow">MOCK COMPLETE</p>
+            <h1>Your strategy & LILATE practice report</h1>
+            <p id="resultMessage">You have finished the simulation. Use the evidence below to choose the next priority.</p>
+          </div>
+
+          <div class="result-grid">
+            <article class="score-card overall"><span>Objective questions</span><strong id="objectiveScore">0%</strong><small id="objectiveDetail">0 / 0</small></article>
+            <article class="score-card"><span>Part 1 · Interaction</span><strong id="p1Score">0%</strong></article>
+            <article class="score-card"><span>Part 2 · Transcription</span><strong id="p2Score">0%</strong></article>
+            <article class="score-card"><span>Part 3 · Transmission</span><strong id="p3Score">0%</strong></article>
+            <article class="score-card"><span>Part 4 · Exploitation</span><strong id="p4Score">0%</strong></article>
+            <article class="score-card"><span>Tab changes</span><strong id="tabChangesResult">0</strong><small>Training integrity indicator</small></article>
+          </div>
+
+          <section class="review-section readiness-section">
+            <div class="section-title-line"><div><p class="eyebrow">CONFIDENCE DIAGNOSTIC</p><h2>What to do next</h2></div><span id="readinessBadge" class="badge">Building</span></div>
+            <div id="readinessAdvice" class="readiness-advice"></div>
+          </section>
+
+          <section class="review-section">
+            <h2>Trainer scoring · written & oral productions</h2>
+            <p>Score each open response independently. This keeps automatic quiz performance separate from communication performance.</p>
+            <div id="trainerRubrics" class="rubric-list"></div>
+          </section>
+
+          <section class="review-section">
+            <h2>Review · techniques, answers & models</h2>
+            <div id="reviewList" class="review-list"></div>
+          </section>
+
+          <section class="review-section qualiopi-section">
+            <div class="section-title-line"><div><p class="eyebrow">QUALIOPI TRACE</p><h2>End-of-session evaluation</h2></div><span class="badge">Saved locally</span></div>
+            <div class="evaluation-grid">
+              <label>How useful was this mock?<input id="usefulnessRange" type="range" min="1" max="5" value="4"><span id="usefulnessValue">4 / 5</span></label>
+              <label>How confident do you feel now?<input id="confidenceRange" type="range" min="1" max="5" value="3"><span id="confidenceValue">3 / 5</span></label>
+              <label>Which technique helped most?<select id="methodSelect"><option>STOP method</option><option>Keywords & facts</option><option>Answer + detail + action</option><option>Reformulation phrases</option><option>Buying-time phrases</option></select></label>
+              <label>What should you practise again?<textarea id="learnerNext" rows="4" placeholder="Example: listening for dates and changes; speaking without stopping..."></textarea></label>
+            </div>
+            <label class="trainer-comments-label">Trainer comments<textarea id="trainerComments" rows="6" placeholder="Strengths, recurring errors, next priorities..."></textarea></label>
+          </section>
+
+          <div class="result-actions">
+            <button id="downloadTxtBtn" class="secondary" type="button">Download TXT results</button>
+            <button id="downloadHtmlBtn" class="secondary" type="button">Download HTML report</button>
+            <button id="printBtn" class="secondary" type="button">Print / Save PDF</button>
+            <button id="restartBtn" class="primary" type="button">Restart mock</button>
+          </div>
+        </section>
+      </main>
+
+      <aside class="right-panel" aria-label="Test progress">
+        <div class="section-map">
+          <span class="mini-label">TEST PROGRESS</span>
+          <button class="part-nav active" data-part="1" type="button"><span>1</span><div><strong>Accueil & interaction</strong><small>Identify · respond · welcome</small></div></button>
+          <button class="part-nav" data-part="2" type="button"><span>2</span><div><strong>Recueil & transcription</strong><small>Collect · reformulate · write</small></div></button>
+          <button class="part-nav" data-part="3" type="button"><span>3</span><div><strong>Recueil & transmission</strong><small>Relay · explain · clarify</small></div></button>
+          <button class="part-nav" data-part="4" type="button"><span>4</span><div><strong>Recueil & exploitation</strong><small>Analyse · decide · argue</small></div></button>
+        </div>
+
+        <div class="technique-card">
+          <span class="mini-label">YOUR RESCUE FORMULA</span>
+          <strong>Answer → Detail → Action</strong>
+          <p>“Yes, certainly. The main issue is… So I would…”</p>
+          <button class="audio-chip compact" data-speak="Yes, certainly. The main issue is... So I would..." type="button">▶ Hear it</button>
+        </div>
+
+        <div class="integrity-card">
+          <span class="mini-label">SESSION</span>
+          <div class="check-row"><span>Answered</span><strong id="answeredCount">0 / 12</strong></div>
+          <div class="check-row"><span>Tab changes</span><strong id="tabChanges">0</strong></div>
+          <div class="check-row"><span>Mode</span><strong id="modeBadge">PRACTICE</strong></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button id="closeModalBtn" class="modal-close" type="button" aria-label="Close">×</button>
+      <p class="eyebrow" id="modalKicker">COACHING</p>
+      <h2 id="modalTitle">Technique</h2>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
