@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Independent realistic CLOE English mock exam simulator." />
+  <title>CLOE English · Realistic Mock Exam · Version 1</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="exam-page" data-page="exam">
+  <a class="skip-link" href="#examMain">Skip to exam</a>
+  <header class="exam-header">
+    <div class="brand" aria-label="CLOE practice simulator">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div><strong>CLOE</strong><small>ENGLISH MOCK · VERSION 1</small></div>
+    </div>
+    <div class="exam-head-meta">
+      <span id="modeBadge">EXAM MODE</span>
+      <a href="index.html">Review page</a>
+    </div>
+  </header>
+
+  <main id="examMain" class="exam-shell">
+    <section id="examIntro" class="exam-intro">
+      <div class="intro-copy">
+        <span class="eyebrow">FULL PRACTICE SIMULATOR</span>
+        <h1>Realistic CLOE English Mock Exam</h1>
+        <p>This simulator reproduces the documented mechanics of the CLOE written core and oral interview as closely as possible with original training questions.</p>
+        <div class="intro-warning"><b>Important:</b> this is an independent practice simulator, not the official CLOE platform. The interface is CLOE-inspired and the content is original.</div>
+      </div>
+      <div class="intro-grid">
+        <article><b>50</b><span>adaptive-style core questions</span></article>
+        <article><b>5 × 10</b><span>skill distribution</span></article>
+        <article><b>2 plays</b><span>maximum for listening</span></article>
+        <article><b>3 stages</b><span>oral interview simulation</span></article>
+      </div>
+      <div class="setup-card">
+        <div class="setup-row">
+          <label class="switch-row"><input id="practiceModeToggle" type="checkbox" /><span class="switch-ui"></span><span><b>Practice mode</b><small>Show feedback, hints and models during the test</small></span></label>
+          <label><span>Listening voice</span><select id="examAccent"><option value="mix">Mixed UK/US/AU</option><option value="en-GB">British</option><option value="en-US">American</option><option value="en-AU">Australian</option></select></label>
+          <label><span>Start level</span><select id="startLevel"><option value="A2">A2</option><option value="B1" selected>B1</option><option value="B2">B2</option><option value="C1">C1</option></select></label>
+        </div>
+        <div class="setup-checks">
+          <label><input type="checkbox" id="readySound" /> Sound is on</label>
+          <label><input type="checkbox" id="readyQuiet" /> Quiet environment</label>
+          <label><input type="checkbox" id="readyTime" /> I have enough uninterrupted time</label>
+        </div>
+        <button class="button primary big" id="startExam" type="button">Begin the mock exam</button>
+      </div>
+    </section>
+
+    <section id="examWorkspace" class="exam-workspace hidden" aria-live="polite">
+      <aside class="exam-sidebar">
+        <div class="side-progress"><span>Core progress</span><strong id="overallProgressText">1 / 50</strong><div class="mini-progress"><i id="overallProgressBar"></i></div></div>
+        <div class="domain-list" id="domainList"></div>
+        <div class="side-card"><span>Current estimate</span><strong id="liveLevel">B1</strong><small>Practice estimate only</small></div>
+        <button class="side-link" id="pauseExam" type="button">Pause</button>
+        <button class="side-link danger" id="resetExam" type="button">Reset exam</button>
+      </aside>
+
+      <section class="question-panel">
+        <div class="question-topline">
+          <div><span class="question-domain" id="questionDomain">Vocabulary</span><span class="question-count" id="questionCount">Question 1 / 50</span></div>
+          <div class="question-actions"><span id="questionTypeBadge">Multiple choice</span><span id="questionTimeText">00:45</span></div>
+        </div>
+        <div class="timer-track" aria-label="Question time remaining"><i id="questionTimerBar"></i></div>
+        <div id="questionStage" class="question-stage"></div>
+        <div id="practiceFeedback" class="practice-feedback hidden"></div>
+        <div class="question-footer">
+          <button class="button subtle hidden" id="hintButton" type="button">Hint</button>
+          <button class="button primary" id="validateAnswer" type="button">Validate answer</button>
+        </div>
+      </section>
+    </section>
+
+    <section id="transitionScreen" class="transition-screen hidden">
+      <div class="countdown-ring"><span id="transitionCount">3</span></div>
+      <h2>Get ready for the next question</h2>
+      <p>The documented CLOE flow gives a short preparation interval before the next item.</p>
+    </section>
+
+    <section id="writingSection" class="post-core hidden">
+      <span class="eyebrow">CURRENT 2026 COMPETENCY PRACTICE</span>
+      <h1>Professional written production</h1>
+      <p class="section-note">The current RS7667 framework explicitly assesses professional writing, but public sources do not specify an official task count or exact timing. These two tasks are therefore realistic preparation rather than a claimed copy of the live exam.</p>
+      <div class="writing-exam-grid">
+        <article class="writing-task">
+          <div class="task-head"><span>Task A</span><b>Professional email</b></div>
+          <p>A customer reports that an order arrived damaged and asks for an immediate refund. You need photos and the order reference before you can process the request. Write a clear, professional reply.</p>
+          <textarea id="examWritingA" rows="10" placeholder="Write your answer…"></textarea>
+          <div class="writing-meta"><span id="examWritingCountA">0 words</span><span>Focus: clarity · tone · action · next step</span></div>
+        </article>
+        <article class="writing-task">
+          <div class="task-head"><span>Task B</span><b>Short professional note</b></div>
+          <p>A weekly team meeting has been moved from Tuesday morning to Wednesday afternoon because a client presentation was added. Write a short note explaining the change and what colleagues need to prepare.</p>
+          <textarea id="examWritingB" rows="10" placeholder="Write your answer…"></textarea>
+          <div class="writing-meta"><span id="examWritingCountB">0 words</span><span>Focus: purpose · details · preparation · concise style</span></div>
+        </article>
+      </div>
+      <div class="post-actions"><button class="button primary big" id="continueToOral" type="button">Continue to oral simulation</button></div>
+    </section>
+
+    <section id="oralSection" class="post-core hidden">
+      <span class="eyebrow">15–20 MINUTE FORMAT PRACTICE</span>
+      <h1>Oral interview simulator</h1>
+      <p class="section-note">The real CLOE oral is a live one-to-one exchange with a certified assessor. This simulator gives you the same three documented stages so you can practise answering aloud.</p>
+      <div class="oral-sim-layout">
+        <aside class="oral-stage-nav" id="oralStageNav"></aside>
+        <article class="oral-stage-card">
+          <div class="oral-stage-head"><span id="oralStageLabel">Stage 1</span><strong id="oralStageTimer">04:00</strong></div>
+          <h2 id="oralPromptTitle">Introduction</h2>
+          <div id="oralPromptBody" class="oral-prompt-body"></div>
+          <div class="oral-control-row">
+            <button class="button secondary" id="startOralStage" type="button">Start stage timer</button>
+            <button class="button subtle" id="nextOralPrompt" type="button">Next prompt</button>
+            <button class="button subtle" id="showOralHelp" type="button">Speaking framework</button>
+          </div>
+          <div id="oralHelp" class="reveal-box hidden"></div>
+          <div class="self-rubric">
+            <h3>Self-check after speaking</h3>
+            <div class="rubric-grid">
+              <label>Vocabulary<select data-rubric="vocab"><option value="">—</option><option>Needs work</option><option>Functional</option><option>Strong</option></select></label>
+              <label>Grammar<select data-rubric="grammar"><option value="">—</option><option>Needs work</option><option>Functional</option><option>Strong</option></select></label>
+              <label>Fluency<select data-rubric="fluency"><option value="">—</option><option>Needs work</option><option>Functional</option><option>Strong</option></select></label>
+              <label>Pronunciation<select data-rubric="pronunciation"><option value="">—</option><option>Needs work</option><option>Functional</option><option>Strong</option></select></label>
+              <label>Interaction<select data-rubric="interaction"><option value="">—</option><option>Needs work</option><option>Functional</option><option>Strong</option></select></label>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="post-actions"><button class="button primary big" id="finishExam" type="button">Finish mock & see results</button></div>
+    </section>
+
+    <section id="resultsSection" class="results-section hidden">
+      <div class="results-hero">
+        <span class="eyebrow">PRACTICE REPORT</span>
+        <h1>Mock exam results</h1>
+        <div class="result-level" id="resultLevel">B1</div>
+        <p id="resultSummary">Your practice estimate will appear here.</p>
+      </div>
+      <div id="resultCards" class="result-cards"></div>
+      <div class="result-grid">
+        <article class="result-panel"><h2>What to revise next</h2><div id="priorityList"></div></article>
+        <article class="result-panel"><h2>Writing self-check</h2><div id="writingReport"></div></article>
+        <article class="result-panel"><h2>Oral self-check</h2><div id="oralReport"></div></article>
+      </div>
+      <div class="result-actions">
+        <button class="button secondary" id="downloadResults" type="button">Download results</button>
+        <button class="button subtle" id="redoExam" type="button">Redo mock</button>
+        <a class="button primary" href="index.html">Return to complete review</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="pauseOverlay" class="modal hidden" role="dialog" aria-modal="true" aria-label="Exam paused">
+    <div class="modal-card pause-card"><span class="kicker">PAUSED</span><h2>Your mock is paused.</h2><p>The question timer is stopped.</p><button class="button primary full" id="resumeExam" type="button">Resume</button></div>
+  </div>
+
+  <footer class="footer exam-footer"><p>Independent CLOE-style practice simulator · Original questions · Not affiliated with or endorsed by CCI France.</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
