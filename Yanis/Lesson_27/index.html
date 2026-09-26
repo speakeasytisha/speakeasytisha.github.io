@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Yanis — realistic LILATE-style PNC / cabin crew mock exam with examiner-style interaction, listening, reformulation, writing and oral recording.">
+  <title>Yanis — LILATE PNC Realistic Mock Exam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/yanis-lilate-pnc-mock.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to exam content</a>
+
+<header class="appbar">
+  <div class="appbar__left">
+    <div class="brandmark" aria-hidden="true">L</div>
+    <div>
+      <div class="brandline">PNC Professional English · Live Mock</div>
+      <div class="brandsub">Yanis — 4-part examiner simulation</div>
+    </div>
+  </div>
+  <div class="appbar__right">
+    <div class="connection"><span class="dot"></span> Session ready</div>
+    <div class="timebox" aria-live="polite"><span>Test</span><strong id="globalTimer">60:00</strong></div>
+    <div class="timebox section-time"><span>Part</span><strong id="sectionTimer">15:00</strong></div>
+  </div>
+</header>
+
+<div class="workspace">
+  <aside class="sidebar" aria-label="Exam navigation">
+    <div class="candidate-card">
+      <div class="avatar">YD</div>
+      <div><strong>Candidate</strong><span>English · PNC</span></div>
+    </div>
+    <nav class="part-nav">
+      <button class="part-link is-active" data-go="room"><span>00</span><div>Exam room<small>Setup & confidence</small></div></button>
+      <button class="part-link" data-go="part1"><span>01</span><div>Interaction<small>Welcome & respond</small></div></button>
+      <button class="part-link" data-go="part2"><span>02</span><div>Transcription<small>Understand & reformulate</small></div></button>
+      <button class="part-link" data-go="part3"><span>03</span><div>Transmission<small>Relay & manage</small></div></button>
+      <button class="part-link" data-go="part4"><span>04</span><div>Exploitation<small>Analyse & decide</small></div></button>
+      <button class="part-link" data-go="report"><span>✓</span><div>Trainer report<small>Internal readiness</small></div></button>
+    </nav>
+    <div class="sidebar__foot">
+      <div class="mini-progress"><span id="sideProgressText">0% complete</span><div><i id="sideProgressBar"></i></div></div>
+      <button class="linkbtn" id="openTrainerGuide" type="button">Open trainer guide ↗</button>
+    </div>
+  </aside>
+
+  <main id="main" class="main">
+    <section class="top-controls" aria-label="Mock controls">
+      <div class="seg-group">
+        <span class="control-label">Mode</span>
+        <button id="practiceMode" class="seg is-on" type="button">Guided practice</button>
+        <button id="examMode" class="seg" type="button">Real exam</button>
+      </div>
+      <div class="seg-group voice-controls">
+        <span class="control-label">Audio</span>
+        <button class="seg voice is-on" data-voice="GB" type="button">UK</button>
+        <button class="seg voice" data-voice="US" type="button">US</button>
+        <button class="seg voice" data-voice="AU" type="button">AU</button>
+        <button class="seg voice" data-voice="MIX" type="button">Mixed</button>
+      </div>
+      <button class="control-btn" id="toggleFrench" type="button">FR help: on</button>
+      <button class="control-btn" id="stopAudio" type="button">Stop audio</button>
+      <button class="control-btn danger" id="resetAll" type="button">Reset</button>
+    </section>
+
+    <section id="room" class="screen is-visible">
+      <div class="exam-hero">
+        <div class="exam-hero__copy">
+          <span class="eyebrow">Cabin crew / PNC · Human-examiner simulation</span>
+          <h1>Your professional English, in action.</h1>
+          <p class="lead">This mock is designed to feel like a live professional evaluation: you listen, interact, clarify, reformulate, transmit and make decisions. Your goal is <strong>not perfect English</strong>. Your goal is to keep the professional mission moving clearly.</p>
+          <p class="fr">Ce test blanc reproduit la logique d'une évaluation professionnelle en direct. Votre objectif n'est pas un anglais parfait : il faut comprendre, clarifier, reformuler et agir de façon compréhensible.</p>
+          <div class="hero-actions">
+            <button class="primary" id="enterRoom" type="button">Enter the exam room</button>
+            <button class="secondary speak" data-say="You do not need perfect English. Listen for the essential information, ask for clarification when you need it, and keep the professional interaction moving." type="button">Listen to the confidence brief</button>
+          </div>
+        </div>
+        <div class="status-card">
+          <div class="status-head"><span class="pulse"></span><strong>Mock status</strong></div>
+          <div class="statrow"><span>Format</span><b>4 × ~15 min</b></div>
+          <div class="statrow"><span>Context</span><b>PNC / cabin crew</b></div>
+          <div class="statrow"><span>Interaction</span><b>Live role-play</b></div>
+          <div class="statrow"><span>Target</span><b>B1 operational signal</b></div>
+          <div class="auth-note">Original training simulation — not an official LILATE test or official interface.</div>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <div class="card-kicker">Before the real test</div>
+          <h2>Exam-day setup</h2>
+          <div class="check-grid">
+            <label><input type="checkbox" class="prep-check"> Computer + Chrome ready</label>
+            <label><input type="checkbox" class="prep-check"> Webcam + microphone working</label>
+            <label><input type="checkbox" class="prep-check"> ID ready</label>
+            <label><input type="checkbox" class="prep-check"> Paper + pencil ready</label>
+            <label><input type="checkbox" class="prep-check"> Quiet room</label>
+            <label><input type="checkbox" class="prep-check"> Other tabs/apps closed</label>
+          </div>
+          <button class="secondary" id="mediaTest" type="button">Run optional camera / mic check</button>
+          <button class="ghost hidden" id="stopMediaTest" type="button">Stop equipment check</button>
+        </article>
+        <article class="card media-card">
+          <div class="video-stage">
+            <video id="cameraPreview" autoplay muted playsinline></video>
+            <div class="video-placeholder" id="videoPlaceholder"><div class="cam-icon">◉</div><strong>Camera preview</strong><span>Optional equipment check</span></div>
+            <div class="video-badge">You</div>
+          </div>
+          <div class="meter"><span>Microphone</span><div><i id="micLevel"></i></div><b id="mediaStatus">Not tested</b></div>
+        </article>
+      </div>
+
+      <article class="confidence-banner practice-only">
+        <div class="confidence-icon">✦</div>
+        <div>
+          <strong>What a successful B1-style performance sounds like</strong>
+          <p>You understand the main point, ask useful questions, explain the next step, and recover when you do not know a word. Small grammar mistakes are acceptable when the meaning stays clear.</p>
+        </div>
+      </article>
+
+      <section class="toolkit practice-only">
+        <div class="section-heading">
+          <div><span class="step-chip">Warm-up</span><h2>Pre-flight confidence toolkit</h2></div>
+          <p>Use this before the mock. It disappears in Real exam mode.</p>
+        </div>
+        <div class="grid two">
+          <article class="card compact">
+            <h3>High-yield grammar rescue</h3>
+            <div class="accordion">
+              <details open><summary>Polite professional requests</summary><p><b>Could you + base verb…?</b> · Could you show me your boarding pass? <br><b>Would you mind + -ing…?</b> · Would you mind moving your bag?</p></details>
+              <details><summary>Explain a situation now</summary><p><b>Present continuous</b>: The crew is checking the cabin. Boarding is starting now.</p></details>
+              <details><summary>Report what happened</summary><p><b>Past simple</b>: A passenger reported a missing bag. The gate agent called the crew.</p></details>
+              <details><summary>Give the next step</summary><p><b>will / be going to</b>: I will check that for you. We are going to update you as soon as we have more information.</p></details>
+              <details><summary>Use a safe conditional</summary><p><b>If + present, will + base verb</b>: If a seat becomes available, I will let you know.</p></details>
+              <details><summary>Relay information simply</summary><p><b>According to… / The message says…</b>: According to the gate agent, boarding will start at 18:20.</p></details>
+            </div>
+          </article>
+          <article class="card compact">
+            <h3>Vocabulary cockpit</h3>
+            <label class="select-label">Choose a category
+              <select id="vocabCategory">
+                <option value="welcome">Welcome & requests</option>
+                <option value="clarify">Clarify & reformulate</option>
+                <option value="seat">Seats & baggage</option>
+                <option value="delay">Delays & connections</option>
+                <option value="service">Onboard service</option>
+                <option value="reassure">Reassure & de-escalate</option>
+                <option value="relay">Crew handover & transmission</option>
+              </select>
+            </label>
+            <div id="vocabList" class="vocab-list"></div>
+          </article>
+        </div>
+        <article class="card compact">
+          <div class="card-title-row"><h3>8-question confidence check</h3><span id="warmupScore">0 / 8</span></div>
+          <div id="warmupQuiz" class="warmup-grid"></div>
+        </article>
+      </section>
+    </section>
+
+    <section id="part1" class="screen">
+      <div class="part-header">
+        <div><span class="part-chip">Part 1 · ~15 min</span><h1>Welcome & interaction</h1><p>Enter the conversation, identify the request, ask useful questions and provide an appropriate service.</p></div>
+        <div class="competencies"><span>Speaking</span><span>Listening</span><span>Interaction</span></div>
+      </div>
+
+      <div class="exam-room-grid">
+        <article class="call-card">
+          <div class="call-stage examiner">
+            <div class="examiner-avatar">E</div>
+            <strong>Examiner</strong><span>Connected · live role-play</span>
+            <div class="call-controls"><span>● mic</span><span>● camera</span></div>
+          </div>
+          <div class="call-stage candidate">
+            <div class="candidate-avatar">You</div>
+            <strong>Candidate</strong><span>PNC professional context</span>
+          </div>
+        </article>
+        <article class="mission-card">
+          <span class="mission-label">Mission 1</span>
+          <h2>Professional introduction</h2>
+          <p class="examiner-line">“Good afternoon. Before we begin, could you tell me about yourself and the role you would like to do?”</p>
+          <div class="prompt-box"><strong>Your task</strong><p>Give a natural 45–60 second introduction. Explain your professional goal and why you would like to work as cabin crew.</p></div>
+          <div class="practice-tools practice-only">
+            <button class="hint-toggle" data-target="p1hint1" type="button">Need a lifeline?</button>
+            <button class="model-toggle" data-target="p1model1" type="button">Show model levels</button>
+            <div id="p1hint1" class="hint hidden"><b>Simple structure:</b> present role → strengths → cabin-crew goal → why English matters.</div>
+            <div id="p1model1" class="models hidden">
+              <div><span>A2 support</span><p>I work as a receptionist. I like helping people and working in a team. I would like to become a steward because I enjoy customer service and travel. I am improving my English to communicate with passengers.</p></div>
+              <div><span>B1 target</span><p>I currently work in reception, so I am used to welcoming people, solving small problems and staying calm. I would like to become cabin crew because I enjoy customer contact and teamwork. I know that clear English is essential for helping international passengers, especially when something unexpected happens.</p></div>
+              <div><span>B1+ upgrade</span><p>My current experience in reception has taught me to listen carefully, adapt to different people and remain professional under pressure. Cabin crew appeals to me because it combines safety, service and teamwork. I am particularly motivated to strengthen my English so I can react clearly and confidently with international passengers.</p></div>
+            </div>
+          </div>
+          <div class="response-row">
+            <textarea id="p1notes1" rows="4" placeholder="Optional preparation notes — in the real exam, keep notes minimal."></textarea>
+            <div class="record-box" data-recorder="p1intro">
+              <button class="record-start" type="button">Record answer</button><button class="record-stop" type="button" disabled>Stop</button>
+              <audio controls class="recorded hidden"></audio><span class="record-status">Ready</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <article class="mission-card wide">
+        <span class="mission-label">Mission 2 · Passenger role-play</span>
+        <h2>Seat problem during boarding</h2>
+        <div class="dialogue-box"><div class="passenger-tag">Passenger</div><p>“Excuse me, I think someone is sitting in my seat. My boarding pass says 14A, but the passenger says this is his seat.”</p></div>
+        <div class="prompt-box"><strong>Your task</strong><p>Take control of the interaction. Ask for the information you need, clarify the problem and explain the next step without making an unrealistic promise.</p></div>
+        <div class="surprise-row practice-only">
+          <button class="secondary" id="p1Surprise" type="button">Examiner: add an unexpected follow-up</button>
+          <div id="p1SurpriseText" class="surprise-text">The examiner may change the situation after your first response.</div>
+        </div>
+        <div class="practice-tools practice-only">
+          <button class="hint-toggle" data-target="p1hint2" type="button">Recovery phrases</button>
+          <button class="model-toggle" data-target="p1model2" type="button">Show model levels</button>
+          <div id="p1hint2" class="hint hidden"><p>Could I see both boarding passes, please? · Let me check the seat numbers. · I’m sorry about the confusion. · I’ll find the correct solution for you.</p></div>
+          <div id="p1model2" class="models hidden">
+            <div><span>A2 support</span><p>I’m sorry. Can I see your boarding pass, please? I will check the seat numbers.</p></div>
+            <div><span>B1 target</span><p>I’m sorry about the confusion. Could I see both boarding passes, please? I’ll check the seat numbers and passenger names. If there is a duplicate seat assignment, I’ll contact the appropriate colleague and explain the next step.</p></div>
+            <div><span>B1+ upgrade</span><p>I understand why that is confusing. May I check both boarding passes? I’ll verify the seat numbers and names first. If there has been a duplicate allocation, I’ll coordinate with the gate team or senior crew member so we can resolve it as quickly as possible.</p></div>
+          </div>
+        </div>
+        <div class="response-row">
+          <textarea id="p1notes2" rows="5" placeholder="Useful questions / key information / next step"></textarea>
+          <div class="record-box" data-recorder="p1roleplay"><button class="record-start" type="button">Record answer</button><button class="record-stop" type="button" disabled>Stop</button><audio controls class="recorded hidden"></audio><span class="record-status">Ready</span></div>
+        </div>
+      </article>
+
+      <article class="mission-card wide">
+        <span class="mission-label">Mission 3 · Pressure follow-up</span>
+        <h2>Maintain the interaction</h2>
+        <div id="p1PressureCard" class="pressure-card">
+          <strong>Examiner follow-up</strong>
+          <p>“I only have thirty-five minutes before my next flight. I’m in row 29. Can I get off first?”</p>
+        </div>
+        <div class="prompt-box"><strong>Your task</strong><p>Respond professionally, show empathy, avoid an unauthorised promise and give a realistic next step.</p></div>
+        <div class="practice-tools practice-only"><button class="model-toggle" data-target="p1model3" type="button">Show model levels</button><div id="p1model3" class="models hidden"><div><span>A2 support</span><p>I understand. I’m sorry, but I cannot promise that. I will inform my colleagues about your connection.</p></div><div><span>B1 target</span><p>I understand that you’re worried about your connection. I can’t promise that you’ll be able to leave the aircraft first, but I can inform the crew about your situation and make sure your connection is reported. We’ll give you the latest information as soon as we have it.</p></div><div><span>B1+ upgrade</span><p>I completely understand your concern. I’m not able to guarantee priority disembarkation, but I can pass your connection details to the crew and ask what assistance is available on arrival. I’ll keep you updated as soon as we receive confirmed information.</p></div></div></div>
+        <div class="response-row"><textarea id="p1notes3" rows="4" placeholder="Your response"></textarea><div class="record-box" data-recorder="p1pressure"><button class="record-start" type="button">Record answer</button><button class="record-stop" type="button" disabled>Stop</button><audio controls class="recorded hidden"></audio><span class="record-status">Ready</span></div></div>
+      </article>
+
+      <div class="part-actions"><button class="secondary nav-prev" data-target="room" type="button">Back</button><button class="primary nav-next" data-target="part2" type="button">Continue to Part 2</button></div>
+    </section>
+
+    <section id="part2" class="screen">
+      <div class="part-header">
+        <div><span class="part-chip">Part 2 · ~15 min</span><h1>Collect & transcribe information</h1><p>Understand essential information, take accurate notes, reformulate it and change it into a useful professional format.</p></div>
+        <div class="competencies"><span>Listening</span><span>Reading</span><span>Writing</span></div>
+      </div>
+
+      <article class="mission-card wide">
+        <span class="mission-label">Mission 1 · Audio briefing</span>
+        <h2>Lead crew handover</h2>
+        <div class="audio-panel">
+          <div class="audio-icon">▶</div>
+          <div><strong>Crew message</strong><span>Listen, take notes, then brief another crew member.</span></div>
+          <button class="primary play-script" data-script="briefing1" type="button">Play message</button>
+          <button class="secondary practice-only play-script" data-script="briefing1" data-rate="0.82" type="button">Play slower</button>
+          <button class="secondary practice-only transcript-toggle" data-target="transcript2a" type="button">Transcript</button>
+        </div>
+        <div id="transcript2a" class="transcript hidden practice-only"></div>
+        <div class="note-template">
+          <label>Flight / destination<input id="p2flight" placeholder="e.g. AF842 / Dublin"></label>
+          <label>Delay / timing<input id="p2timing" placeholder="essential timing"></label>
+          <label>Passenger issue<input id="p2passenger" placeholder="who / seat / request"></label>
+          <label>Crew action<input id="p2action" placeholder="what needs to happen next"></label>
+        </div>
+        <div class="response-row">
+          <label class="writing-label grow">Write a concise crew handover (50–80 words)<textarea id="p2handover" rows="7" placeholder="Write only the operationally useful information."></textarea><span class="wordcount" data-for="p2handover">0 words</span></label>
+          <div class="record-box" data-recorder="p2handoverrec"><button class="record-start" type="button">Record oral handover</button><button class="record-stop" type="button" disabled>Stop</button><audio controls class="recorded hidden"></audio><span class="record-status">Ready</span></div>
+        </div>
+        <div class="practice-tools practice-only"><button class="model-toggle" data-target="p2model1" type="button">Show model levels</button><div id="p2model1" class="models hidden"><div><span>A2 support</span><p>Flight AF842 to Dublin is delayed by 25 minutes. A passenger in 22C needs a vegetarian meal, but it is not on board. A family in row 18 wants to sit together. A wheelchair passenger will board at door 4L. Please inform the crew.</p></div><div><span>B1 target</span><p>Flight AF842 to Dublin is currently delayed by 25 minutes because the inbound aircraft arrived late. Please note that the vegetarian meal for the passenger in 22C has not been loaded. A family in row 18 has also asked to sit together. A wheelchair passenger is expected at door 4L, so the crew should be ready to assist.</p></div><div><span>B1+ upgrade</span><p>Handover for AF842 to Dublin: departure is running approximately 25 minutes late due to the late inbound aircraft. The vegetarian meal requested by the passenger in 22C is unavailable, so an alternative will need to be discussed. The family seated in row 18 would like to sit together, and a wheelchair passenger is due to board through door 4L.</p></div></div></div>
+      </article>
+
+      <article class="mission-card wide">
+        <span class="mission-label">Mission 2 · Written document</span>
+        <h2>Passenger service update</h2>
+        <div class="doc-shell">
+          <div class="doc-head"><div><span>CREW OPS</span><strong>Passenger Service Update · Flight AF317</strong></div><small>18:05 local</small></div>
+          <div class="doc-grid">
+            <div><span class="doc-label">Seat change</span><strong>Mr. Howard</strong><p>Original seat 12C → new seat 16A. Passenger has not yet been informed.</p></div>
+            <div><span class="doc-label">Connection</span><strong>Ms. Kim</strong><p>Connecting flight KL1423 departs at 20:10 from gate D42. Estimated arrival: 19:25.</p></div>
+            <div><span class="doc-label">Special assistance</span><strong>Mr. Pereira</strong><p>Reduced mobility assistance requested on arrival. Airport assistance team has been notified.</p></div>
+            <div><span class="doc-label">Service</span><strong>Row 24</strong><p>Three pre-ordered children’s meals are confirmed and stored in the forward galley.</p></div>
+          </div>
+        </div>
+        <div class="prompt-box"><strong>Your task</strong><p>Imagine the senior crew member asks you: “What are the three most important things I need to know before boarding is complete?” Give a short oral summary, then write a 45–70 word internal note.</p></div>
+        <div class="response-row">
+          <label class="writing-label grow">Internal note<textarea id="p2written" rows="7" placeholder="Prioritise what the crew must know and what action is required."></textarea><span class="wordcount" data-for="p2written">0 words</span></label>
+          <div class="record-box" data-recorder="p2summary"><button class="record-start" type="button">Record oral summary</button><button class="record-stop" type="button" disabled>Stop</button><audio controls class="recorded hidden"></audio><span class="record-status">Ready</span></div>
+        </div>
+        <div class="practice-tools practice-only"><button class="hint-toggle" data-target="p2hint2" type="button">What should you prioritise?</button><button class="model-toggle" data-target="p2model2" type="button">Show B1 model</button><div id="p2hint2" class="hint hidden"><p>Prioritise <b>action</b>: passenger not informed of seat change; tight connection information; assistance on arrival. Mention the meals only if you have time.</p></div><div id="p2model2" class="models hidden single"><div><span>B1 target</span><p>Before boarding is complete, please inform Mr. Howard that his seat has changed from 12C to 16A. Ms. Kim has a connection leaving from D42 at 20:10, so we should monitor the arrival time. Mr. Pereira has reduced-mobility assistance arranged on arrival. The assistance team has already been notified.</p></div></div></div>
+      </article>
+
+      <div class="part-actions"><button class="secondary nav-prev" data-target="part1" type="button">Back</button><button class="primary nav-next" data-target="part3" type="button">Continue to Part 3</button></div>
+    </section>
+
+    <section id="part3" class="screen">
+      <div class="part-header">
+        <div><span class="part-chip">Part 3 · ~15 min</span><h1>Collect & transmit information</h1><p>Relay a third party’s instructions accurately, adapt your language to the passenger and manage an unexpected situation.</p></div>
+        <div class="competencies"><span>Listening</span><span>Speaking</span><span>Reformulation</span></div>
+      </div>
+
+      <article class="mission-card wide">
+        <span class="mission-label">Mission 1 · Listen → relay</span>
+        <h2>Captain’s operational message</h2>
+        <div class="audio-panel">
+          <div class="audio-icon">▶</div><div><strong>Message from the flight deck</strong><span>Listen and then explain the information to passengers in clear, simple English.</span></div>
+          <button class="primary play-script" data-script="captain1" type="button">Play message</button>
+          <button class="secondary practice-only transcript-toggle" data-target="transcript3a" type="button">Transcript</button>
+        </div>
+        <div id="transcript3a" class="transcript hidden practice-only"></div>
+        <label class="writing-label">Your quick notes<textarea id="p3notes1" rows="4" placeholder="Situation → essential information → passenger action → next update"></textarea></label>
+        <div class="response-row"><div class="prompt-box grow"><strong>Your task</strong><p>Make a clear passenger-facing announcement. Keep it calm and easy to understand. Do not add information that was not in the message.</p></div><div class="record-box" data-recorder="p3announcement"><button class="record-start" type="button">Record announcement</button><button class="record-stop" type="button" disabled>Stop</button><audio controls class="recorded hidden"></audio><span class="record-status">Ready</span></div></div>
+        <div class="practice-tools practice-only"><button class="model-toggle" data-target="p3model1" type="button">Show model levels</button><div id="p3model1" class="models hidden"><div><span>A2 support</span><p>Ladies and gentlemen, the captain has informed us that we may have some turbulence about twenty minutes after take-off. Please remain seated when the seat belt sign is on. The hot drinks service will start later. Thank you for your understanding.</p></div><div><span>B1 target</span><p>Ladies and gentlemen, the captain has advised us that we may experience moderate turbulence approximately twenty minutes after take-off. For your comfort and safety, please remain seated with your seat belt fastened whenever the sign is illuminated. The hot drinks service will be postponed until conditions improve. We’ll keep you updated. Thank you for your cooperation.</p></div><div><span>B1+ upgrade</span><p>Ladies and gentlemen, the captain has advised us to expect a period of moderate turbulence around twenty minutes after departure. Please remain seated with your seat belt securely fastened whenever the sign is on. As a precaution, the hot drinks service will be delayed until conditions are stable. We’ll provide another update as soon as we can. Thank you for your cooperation.</p></div></div></div>
+      </article>
+
+      <article class="mission-card wide">
+        <span class="mission-label">Mission 2 · Passenger complaint</span>
+        <h2>Connection under pressure</h2>
+        <div class="dialogue-box"><div class="passenger-tag">Passenger</div><p>“This delay is ridiculous. My connection leaves in forty minutes and nobody is telling me anything. I need you to guarantee that someone will be waiting for me.”</p></div>
+        <div class="prompt-box"><strong>Your task</strong><p>De-escalate the situation. Separate what you know from what you cannot guarantee. Ask one useful question and give a realistic next step.</p></div>
+        <div class="surprise-row practice-only"><button class="secondary" id="p3Surprise" type="button">Add examiner follow-up</button><div id="p3SurpriseText" class="surprise-text">The passenger may challenge your first answer.</div></div>
+        <div class="practice-tools practice-only"><button class="hint-toggle" data-target="p3hint2" type="button">Four-step rescue</button><button class="model-toggle" data-target="p3model2" type="button">Show model levels</button><div id="p3hint2" class="hint hidden"><p><b>1 Empathise</b> → I understand why you’re concerned. <b>2 Clarify</b> → What is your connecting flight number? <b>3 Boundary</b> → I can’t guarantee… <b>4 Action</b> → I can report your connection and give you the latest confirmed information.</p></div><div id="p3model2" class="models hidden"><div><span>A2 support</span><p>I understand. What is your next flight number, please? I cannot guarantee that someone will wait, but I can inform my colleagues and give you the latest information.</p></div><div><span>B1 target</span><p>I understand why you’re frustrated, especially with a tight connection. Could you give me your connecting flight number, please? I can’t guarantee that someone will be waiting for you, but I can report your connection to the crew and check what confirmed assistance is available when we arrive.</p></div><div><span>B1+ upgrade</span><p>I understand how stressful that is when your connection is close. May I take your onward flight number first? I don’t want to make a promise that I can’t confirm, but I can make sure your connection is reported and ask for the latest arrival assistance information so we can give you a clear next step.</p></div></div></div>
+        <div class="response-row"><textarea id="p3response2" rows="5" placeholder="Your response"></textarea><div class="record-box" data-recorder="p3complaint"><button class="record-start" type="button">Record response</button><button class="record-stop" type="button" disabled>Stop</button><audio controls class="recorded hidden"></audio><span class="record-status">Ready</span></div></div>
+      </article>
+
+      <article class="mission-card wide">
+        <span class="mission-label">Mission 3 · Crew handover</span>
+        <h2>Transmit the situation to the senior crew member</h2>
+        <div class="prompt-box"><strong>Your task</strong><p>After speaking with the passenger, give the senior crew member a 30–45 second factual handover: passenger concern → verified information → what you said → action needed.</p></div>
+        <div class="practice-tools practice-only"><button class="model-toggle" data-target="p3model3" type="button">Show B1 model</button><div id="p3model3" class="models hidden single"><div><span>B1 target</span><p>The passenger in 29C has a tight connection and is concerned about missing flight KL1423. I explained that I couldn’t guarantee priority disembarkation or that the next flight would wait. I asked for the connection details and told the passenger I would report the situation. Could you confirm what arrival assistance we can offer?</p></div></div></div>
+        <div class="response-row"><textarea id="p3handover" rows="4" placeholder="Your handover notes"></textarea><div class="record-box" data-recorder="p3handoverrec"><button class="record-start" type="button">Record handover</button><button class="record-stop" type="button" disabled>Stop</button><audio controls class="recorded hidden"></audio><span class="record-status">Ready</span></div></div>
+      </article>
+
+      <div class="part-actions"><button class="secondary nav-prev" data-target="part2" type="button">Back</button><button class="primary nav-next" data-target="part4" type="button">Continue to Part 4</button></div>
+    </section>
+
+    <section id="part4" class="screen">
+      <div class="part-header">
+        <div><span class="part-chip">Part 4 · ~15 min</span><h1>Collect & exploit information</h1><p>Read and connect several pieces of professional information, identify priorities, explain your reasoning and propose an appropriate solution.</p></div>
+        <div class="competencies"><span>Reading</span><span>Listening</span><span>Speaking</span><span>Writing</span></div>
+      </div>
+
+      <article class="mission-card wide">
+        <span class="mission-label">Final scenario · Integrated mission</span>
+        <h2>Flight disruption: prioritise, explain, act</h2>
+        <div class="ops-dashboard">
+          <div class="ops-top"><div><span>OPERATIONS UPDATE</span><strong>Flight AF604 · Paris → Copenhagen</strong></div><div class="ops-status">DELAYED +35</div></div>
+          <div class="ops-columns">
+            <div class="ops-panel"><h3>Flight timeline</h3><ul><li><span>18:10</span> Boarding planned</li><li><span>18:22</span> Technical inspection extended</li><li><span>18:35</span> New estimated boarding: 18:55</li><li><span>19:05</span> New estimated departure: 19:25</li></ul></div>
+            <div class="ops-panel"><h3>Passenger alerts</h3><ul><li><b>21B · Ms. Novak</b> — connecting flight SK556 at 20:50</li><li><b>8D · Mr. Lee</b> — reduced-mobility assistance confirmed on arrival</li><li><b>17A/B/C · Family Martin</b> — travelling with two young children</li></ul></div>
+            <div class="ops-panel"><h3>Crew note</h3><p>The gate team will provide a new update at <b>18:50</b>. Do not promise rebooking before confirmation. Passengers with tight connections should be identified and reported to the senior crew member.</p></div>
+            <div class="ops-panel"><h3>Service note</h3><p>Water is available at the gate. Boarding order is unchanged. Cabin crew should be ready to support families and passengers requiring assistance once boarding begins.</p></div>
+          </div>
+        </div>
+        <div class="audio-panel compact-audio"><div class="audio-icon">▶</div><div><strong>Additional gate message</strong><span>One new detail arrives after you have read the dashboard.</span></div><button class="primary play-script" data-script="gate4" type="button">Play update</button><button class="secondary practice-only transcript-toggle" data-target="transcript4a" type="button">Transcript</button></div>
+        <div id="transcript4a" class="transcript hidden practice-only"></div>
+      </article>
+
+      <div class="grid two">
+        <article class="mission-card">
+          <span class="mission-label">Task A · Analyse</span>
+          <h2>Identify your priorities</h2>
+          <p>Tell the examiner the <strong>three priorities</strong> you would deal with first and explain why.</p>
+          <textarea id="p4priorities" rows="6" placeholder="1… 2… 3… + why"></textarea>
+          <div class="record-box" data-recorder="p4analyse"><button class="record-start" type="button">Record analysis</button><button class="record-stop" type="button" disabled>Stop</button><audio controls class="recorded hidden"></audio><span class="record-status">Ready</span></div>
+          <div class="practice-tools practice-only"><button class="model-toggle" data-target="p4modelA" type="button">Show B1 model</button><div id="p4modelA" class="models hidden single"><div><span>B1 target</span><p>First, I would identify and report the passenger with the tight connection because the delay may affect the onward flight. Second, I would make sure the passenger requiring mobility assistance remains correctly coordinated for arrival. Third, I would prepare to support the family with young children during boarding. I would also make sure nobody is promised rebooking before we have confirmation.</p></div></div></div>
+        </article>
+        <article class="mission-card">
+          <span class="mission-label">Task B · Passenger interaction</span>
+          <h2>Explain the delay</h2>
+          <p>Ms. Novak asks: “Am I going to miss my connection? Can you rebook me now?” Respond using only confirmed information.</p>
+          <textarea id="p4passenger" rows="6" placeholder="Your response"></textarea>
+          <div class="record-box" data-recorder="p4passengerrec"><button class="record-start" type="button">Record response</button><button class="record-stop" type="button" disabled>Stop</button><audio controls class="recorded hidden"></audio><span class="record-status">Ready</span></div>
+          <div class="practice-tools practice-only"><button class="model-toggle" data-target="p4modelB" type="button">Show B1 model</button><div id="p4modelB" class="models hidden single"><div><span>B1 target</span><p>I understand your concern. At the moment, departure is estimated for 19:25, so your connection may be tight. I can’t confirm a rebooking yet because we haven’t received that instruction. I’ll report your connection to the senior crew member, and the gate team will give another update at 18:50. I’ll share any confirmed information with you as soon as possible.</p></div></div></div>
+        </article>
+      </div>
+
+      <article class="mission-card wide">
+        <span class="mission-label">Task C · Written exploitation</span>
+        <h2>Write the handover after the disruption</h2>
+        <p>Write a professional 80–110 word handover to the senior crew member. Include the delay, the most urgent passenger issues, what is confirmed, what is not confirmed, and the next update.</p>
+        <label class="writing-label"><textarea id="p4written" rows="9" placeholder="Subject: AF604 operational handover…"></textarea><span class="wordcount" data-for="p4written">0 words</span></label>
+        <div class="practice-tools practice-only"><button class="hint-toggle" data-target="p4hintC" type="button">B1 structure</button><button class="model-toggle" data-target="p4modelC" type="button">Show B1 model</button><div id="p4hintC" class="hint hidden"><p><b>1 Situation</b> → flight + delay. <b>2 Priority passengers</b> → connection / assistance / family. <b>3 Boundaries</b> → no rebooking promise. <b>4 Next action</b> → report + update time.</p></div><div id="p4modelC" class="models hidden single"><div><span>B1 target</span><p>AF604 to Copenhagen is currently delayed by approximately 35 minutes, with departure estimated at 19:25. Ms. Novak in 21B has a connection at 20:50 and should be reported as a tight-connection passenger. Mr. Lee in 8D has reduced-mobility assistance confirmed on arrival. The Martin family in row 17 is travelling with two young children. We have not received authorisation to promise any rebooking. The gate team will provide another operational update at 18:50, and passengers should be informed only with confirmed information.</p></div></div></div>
+      </article>
+
+      <article class="confidence-banner final-banner">
+        <div class="confidence-icon">✓</div><div><strong>You reached the end of the full simulation.</strong><p>The key evidence is whether you kept the missions moving: understand → clarify → reformulate → transmit → act. Use the trainer report to evaluate that, not to punish small language mistakes.</p></div>
+      </article>
+
+      <div class="part-actions"><button class="secondary nav-prev" data-target="part3" type="button">Back</button><button class="primary nav-next" data-target="report" type="button">Open trainer report</button></div>
+    </section>
+
+    <section id="report" class="screen">
+      <div class="part-header report-head">
+        <div><span class="part-chip">Internal training report</span><h1>B1 operational readiness</h1><p>This is a trainer estimate for confidence and planning. It is <strong>not</strong> an official LILATE score or CEFR result.</p></div>
+        <div class="readiness-ring"><span id="readinessPercent">0%</span><small>readiness evidence</small></div>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <h2>Trainer evaluation</h2>
+          <p class="muted">Rate what you actually observed. A score of 3 means the mission was completed independently at a useful B1-style level.</p>
+          <div id="rubricGrid" class="rubric-grid"></div>
+        </article>
+        <article class="card">
+          <h2>Readiness summary</h2>
+          <div id="readinessMessage" class="readiness-message neutral"><strong>Not rated yet</strong><p>Complete the trainer ratings to generate a supportive evidence-based summary.</p></div>
+          <div class="evidence-grid"><div><span>Parts visited</span><b id="partsVisited">0 / 4</b></div><div><span>Written tasks</span><b id="writtenDone">0 / 4</b></div><div><span>Recorded tasks</span><b id="recordedDone">0 / 10</b></div><div><span>Warm-up</span><b id="warmupFinal">0 / 8</b></div></div>
+          <label class="writing-label">Trainer comments<textarea id="trainerComments" rows="8" placeholder="Strengths first, then 1–2 priorities for the next session."></textarea></label>
+        </article>
+      </div>
+
+      <article class="card report-actions-card">
+        <div><h2>Save the evidence</h2><p>Your entries are saved in this browser automatically. You can also download, copy or print a readable record.</p></div>
+        <div class="report-actions"><button class="primary" id="downloadReport" type="button">Download report</button><button class="secondary" id="copyReport" type="button">Copy summary</button><button class="secondary" id="printReport" type="button">Print / Save PDF</button><button class="danger-btn" id="resetReport" type="button">Reset report only</button></div>
+      </article>
+
+      <article class="authenticity-note">
+        <strong>Authenticity note</strong>
+        <p>This independent mock follows the publicly described LILATE examiner structure and uses original PNC/cabin-crew training scenarios. It does not reproduce official proprietary test items, scoring or branding.</p>
+      </article>
+      <div class="part-actions"><button class="secondary nav-prev" data-target="part4" type="button">Back to Part 4</button><button class="primary" id="backToStart" type="button">Return to exam room</button></div>
+    </section>
+  </main>
+</div>
+
+<div class="floating-exam-controls hidden" id="floatingExamControls">
+  <button id="pauseTimers" type="button">Pause</button>
+  <button id="restartPartTimer" type="button">Restart 15:00</button>
+  <button id="nextPartFloating" type="button">Next part</button>
+</div>
+
+<footer>
+  <div><strong>SpeakEasyTisha · PNC English Mock</strong><span>Original pedagogical simulation for professional-language training.</span></div>
+  <div class="footer-links"><span>Practice support</span><span>Audio accents</span><span>Recording</span><span>Qualiopi-ready internal evidence</span></div>
+</footer>
+<script src="js/yanis-lilate-pnc-mock.js"></script>
+</body>
+</html>
