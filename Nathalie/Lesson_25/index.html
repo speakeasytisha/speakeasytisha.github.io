@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive English pronunciation lesson: vowels, endings, silent letters, consonants, stress and connected speech." />
+  <title>Nathalie — English Pronunciation Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="js-warning" id="jsWarning">⚠️ JavaScript is not loaded. Keep index.html, styles.css and script.js together in the same folder.</div>
+
+  <header class="hero" id="top">
+    <div class="hero-map" aria-hidden="true"></div>
+    <div class="hero-wave" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="hero-card">
+      <p class="kicker hero-kicker">Sound Passport • Oral Confidence</p>
+      <h1>Nathalie — English Pronunciation Lab</h1>
+      <h2>Hear it · Feel it · Say it · Use it</h2>
+      <p class="hero-copy">Train your ear first, then your mouth. You will work on the vowel contrasts that change meaning, the endings that carry grammar, and the rhythm that makes English easier to understand.</p>
+      <div class="hero-tags">
+        <span>/ɪ/ ↔ /iː/</span><span>/æ/ ↔ /eɪ/</span><span>/e/ ↔ /æ/</span><span>-ED</span><span>silent letters</span><span>stress</span>
+      </div>
+      <div class="hero-buttons">
+        <button class="btn primary" data-scroll="route" type="button">Start your sound route</button>
+        <button class="btn ghost" data-scroll="final-mission" type="button">Jump to final mission</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="lesson-nav" aria-label="Lesson controls">
+    <div class="nav-control">
+      <label for="languageMode">Support</label>
+      <select id="languageMode">
+        <option value="en">English only</option>
+        <option value="fr">English + French</option>
+      </select>
+    </div>
+    <div class="nav-control">
+      <label for="voiceMode">Accent</label>
+      <select id="voiceMode">
+        <option value="en-GB">British English</option>
+        <option value="en-US">American English</option>
+      </select>
+    </div>
+    <div class="nav-control">
+      <label for="speedMode">Audio</label>
+      <select id="speedMode">
+        <option value="0.72">Slow</option>
+        <option value="0.88" selected>Practice</option>
+        <option value="1">Natural</option>
+      </select>
+    </div>
+    <div class="nav-control">
+      <label for="trainingMode">Mode</label>
+      <select id="trainingMode">
+        <option value="guided">Guided</option>
+        <option value="challenge">Challenge</option>
+      </select>
+    </div>
+    <button class="nav-btn" id="transcriptToggle" type="button" aria-pressed="true">Transcript: ON</button>
+    <div class="score-pill">Score <strong id="score">0</strong>/<span id="possible">0</span></div>
+    <div class="score-pill sea">Progress <strong id="progressPct">0%</strong></div>
+  </nav>
+
+  <main>
+    <section class="panel route" id="route">
+      <p class="kicker">Your route</p>
+      <h2>90-minute pronunciation journey</h2>
+      <p class="lead">You do not need to sound “native”. Your target is clarity: hear the contrast, produce it clearly, then keep it while speaking naturally.</p>
+      <p class="support fr-only">Votre objectif n’est pas de perdre votre accent. Vous entraînez les différences qui changent le sens, les terminaisons grammaticales et le rythme de l’anglais.</p>
+      <div class="route-grid">
+        <article><span>1</span><h3>Ear warm-up</h3><p>Learn why spelling can mislead you and how to listen for vowel quality.</p><small>10 min</small></article>
+        <article><span>2</span><h3>Vowel laboratory</h3><p>/ɪ/–/iː/, /aɪ/, /æ/–/eɪ/, /e/–/æ/, /ʌ/, /ɑː/ and schwa.</p><small>30 min</small></article>
+        <article><span>3</span><h3>Grammar sounds</h3><p>Past endings -ED and final -S/-ES: hear the last sound, not the spelling.</p><small>15 min</small></article>
+        <article><span>4</span><h3>Consonant traps</h3><p>H, TH, W/V, English R, final consonants and silent letters.</p><small>15 min</small></article>
+        <article><span>5</span><h3>English music</h3><p>Word stress, schwa, sentence stress, linking and connected speech.</p><small>10 min</small></article>
+        <article><span>6</span><h3>Your voice</h3><p>Record, compare, repeat, then speak for one minute with three targets.</p><small>10 min</small></article>
+      </div>
+      <div class="teacher-note">
+        <strong>Your rule today:</strong> first <em>hear</em>, then <em>shape</em>, then <em>speak</em>. If your ear cannot hear a contrast yet, slow down and compare only two words.
+      </div>
+    </section>
+
+    <section class="panel" id="vocabulary">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Your pronunciation toolkit</p>
+          <h2>Vocabulary by category</h2>
+          <p>Open the terms you need. Every card includes a translation, a definition, an example and manual audio.</p>
+          <p class="support fr-only">Ouvrez uniquement les catégories utiles. L’audio ne démarre jamais automatiquement.</p>
+        </div>
+        <div class="select-card">
+          <label for="vocabCategory">Category</label>
+          <select id="vocabCategory">
+            <option value="all">All categories</option>
+            <option value="vowels">Vowels</option>
+            <option value="mouth">Mouth & voice</option>
+            <option value="endings">Endings</option>
+            <option value="rhythm">Rhythm</option>
+            <option value="silent">Silent letters</option>
+          </select>
+        </div>
+      </div>
+      <div class="chip-row" id="vocabChips"></div>
+      <div class="vocab-grid" id="vocabGrid"></div>
+    </section>
+
+    <section class="panel grammar" id="spelling">
+      <p class="kicker">Part 1 • Your ear before your eyes</p>
+      <h2>English spelling is a clue — not a guarantee</h2>
+      <div class="teacher-grid">
+        <div class="teacher">
+          <h3>One letter, several sounds</h3>
+          <p>The letter <strong>i</strong> can sound different in <em>sit</em>, <em>site</em>, <em>machine</em> and <em>bird</em>.</p>
+          <p class="fr-only">Une même lettre peut correspondre à plusieurs sons. Il faut donc écouter le son, pas seulement lire la lettre.</p>
+        </div>
+        <div class="teacher">
+          <h3>One sound, several spellings</h3>
+          <p>The /iː/ sound appears in <em>see, sea, machine, key, people</em>.</p>
+          <p class="fr-only">Un même son peut s’écrire de plusieurs façons.</p>
+        </div>
+      </div>
+      <div class="gold-rule">
+        <span class="rule-icon">👂</span>
+        <div><strong>Ask this:</strong> “Is the sound quick, stretched, open, relaxed or moving?”</div>
+      </div>
+      <div class="audio-row">
+        <button class="btn secondary listen" data-say="sit, seat, site" type="button">🔊 Hear three different I sounds</button>
+        <button class="btn secondary listen" data-say="see, sea, machine, key, people" type="button">🔊 Hear one sound with five spellings</button>
+      </div>
+    </section>
+
+    <section class="panel vowel-panel" id="i-lab">
+      <p class="kicker">Part 2A • The priority contrast</p>
+      <h2>/ɪ/ vs /iː/ — short I and long E</h2>
+      <div class="contrast-grid">
+        <article class="sound-card short">
+          <div class="ipa">/ɪ/</div><h3>Quick + relaxed</h3>
+          <p><strong>sit · live · ship · fit · fill · bit</strong></p>
+          <ul><li>Keep the vowel short.</li><li>Relax your jaw and lips.</li><li>Do not stretch it into “ee”.</li></ul>
+          <p class="fr-only">Son bref et relâché. Ne l’allongez pas.</p>
+          <button class="btn listen" data-say="sit, live, ship, fit, fill, bit" type="button">🔊 Listen</button>
+        </article>
+        <div class="versus">VS</div>
+        <article class="sound-card long">
+          <div class="ipa">/iː/</div><h3>Long + tense</h3>
+          <p><strong>seat · leave · sheep · feet · feel · beat</strong></p>
+          <ul><li>Smile slightly.</li><li>Keep the tongue high.</li><li>Let the vowel last longer.</li></ul>
+          <p class="fr-only">Son plus long et plus tendu. Étirez légèrement la voyelle.</p>
+          <button class="btn listen" data-say="seat, leave, sheep, feet, feel, beat" type="button">🔊 Listen</button>
+        </article>
+      </div>
+
+      <div class="activity" id="minimalI">
+        <div class="activity-head"><div><span class="step">Ear training</span><h3>Which word do you hear?</h3></div><div class="mini-score" id="iPairScore">0/0</div></div>
+        <p>Play the mystery word, then choose what you heard. The choices change order.</p>
+        <div class="pair-stage">
+          <button class="big-listen" id="iPairAudio" type="button">🔊 Play mystery word</button>
+          <div class="choice-row" id="iPairChoices"></div>
+          <div class="feedback" id="iPairFeedback" aria-live="polite"></div>
+        </div>
+        <div class="btn-row">
+          <button class="btn secondary" id="iPairHint" type="button">💡 Hint</button>
+          <button class="btn" id="iPairNext" type="button">Next pair →</button>
+        </div>
+        <div class="hint-box hidden" id="iPairHintBox"></div>
+      </div>
+
+      <div class="meaning-alert">
+        <strong>Meaning can change:</strong>
+        <div><button class="micro-listen" data-say="I live in France." type="button">🔊</button> I <mark>live</mark> in France.</div>
+        <div><button class="micro-listen" data-say="I leave France tomorrow." type="button">🔊</button> I <mark>leave</mark> France tomorrow.</div>
+      </div>
+    </section>
+
+    <section class="panel vowel-panel" id="long-i">
+      <p class="kicker">Part 2B • Another I</p>
+      <h2>/ɪ/ vs /aɪ/ — sit or site?</h2>
+      <div class="teacher">
+        <strong>/aɪ/ is a moving vowel.</strong> Your mouth changes position during the sound. You can hear it in <em>time, like, five, drive, island</em>.
+        <p class="fr-only">/aɪ/ est une diphtongue : votre bouche bouge pendant le son.</p>
+      </div>
+      <div class="minimal-grid">
+        <button data-say="sit, site" type="button">🔊 sit ↔ site</button>
+        <button data-say="bit, bite" type="button">🔊 bit ↔ bite</button>
+        <button data-say="rid, ride" type="button">🔊 rid ↔ ride</button>
+        <button data-say="win, wine" type="button">🔊 win ↔ wine</button>
+      </div>
+      <div class="quick-check" data-qid="longi1" data-answer="bite" data-explain="The final silent e often signals the /aɪ/ sound here: bite.">
+        <p><strong>Quick check:</strong> Which word has /aɪ/?</p>
+        <div class="shuffle-options" data-options="bit|bite|bid"></div>
+        <div class="feedback"></div>
+      </div>
+    </section>
+
+    <section class="panel vowel-panel" id="a-lab">
+      <p class="kicker">Part 2C • Your A family</p>
+      <h2>/æ/, /eɪ/, /ʌ/ and /ɑː/</h2>
+      <div class="sound-family">
+        <article><div class="ipa">/æ/</div><h3>Short A</h3><p>cat · bad · man · plan · travel</p><p class="mouth-tip">Open your mouth wider. The sound sits between a French A and E.</p><button data-say="cat, bad, man, plan, travel" type="button">🔊 Hear /æ/</button></article>
+        <article><div class="ipa">/eɪ/</div><h3>“Long A”</h3><p>day · name · late · make · rain</p><p class="mouth-tip">This vowel moves. Do not freeze it on a single French vowel.</p><button data-say="day, name, late, make, rain" type="button">🔊 Hear /eɪ/</button></article>
+        <article><div class="ipa">/ʌ/</div><h3>Relaxed central vowel</h3><p>cut · run · bus · love · country</p><p class="mouth-tip">Keep it short, central and relaxed.</p><button data-say="cut, run, bus, love, country" type="button">🔊 Hear /ʌ/</button></article>
+        <article><div class="ipa">/ɑː/</div><h3>Open long vowel</h3><p>car · start · calm · father</p><p class="mouth-tip">Open and lengthen the sound. Accent note: some words vary between UK and US English.</p><button data-say="car, start, calm, father" type="button">🔊 Hear /ɑː/</button></article>
+      </div>
+
+      <div class="activity" id="aMinimalLab">
+        <div class="activity-head"><div><span class="step">Contrast training</span><h3>Short A vs long A</h3></div><div class="mini-score" id="aPairScore">0/0</div></div>
+        <p>Listen first. Choose second. The answer position is randomized.</p>
+        <button class="big-listen" id="aPairAudio" type="button">🔊 Play mystery word</button>
+        <div class="choice-row" id="aPairChoices"></div>
+        <div class="feedback" id="aPairFeedback"></div>
+        <div class="btn-row"><button class="btn secondary" id="aPairHint" type="button">💡 Mouth hint</button><button class="btn" id="aPairNext" type="button">Next pair →</button></div>
+        <div class="hint-box hidden" id="aPairHintBox"></div>
+      </div>
+
+      <div class="compare-table-wrap">
+        <table>
+          <thead><tr><th>/æ/</th><th>/eɪ/</th><th>/æ/ vs /ʌ/</th></tr></thead>
+          <tbody>
+            <tr><td>mad</td><td>made</td><td>cat ↔ cut</td></tr>
+            <tr><td>hat</td><td>hate</td><td>hat ↔ hut</td></tr>
+            <tr><td>plan</td><td>plane</td><td>ran ↔ run</td></tr>
+            <tr><td>tap</td><td>tape</td><td>bad ↔ bud</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel vowel-panel" id="e-lab">
+      <p class="kicker">Part 2D • The E family</p>
+      <h2>/e/ vs /æ/ — bed or bad?</h2>
+      <div class="contrast-grid compact">
+        <article class="sound-card"><div class="ipa">/e/</div><h3>Short E</h3><p>bed · red · ten · get · tell · friend</p><button data-say="bed, red, ten, get, tell, friend" type="button">🔊 Listen</button></article>
+        <div class="versus">VS</div>
+        <article class="sound-card"><div class="ipa">/æ/</div><h3>Short A</h3><p>bad · man · pan · sand · sad</p><button data-say="bad, man, pan, sand, sad" type="button">🔊 Listen</button></article>
+      </div>
+      <div class="minimal-grid">
+        <button data-say="bed, bad" type="button">🔊 bed ↔ bad</button>
+        <button data-say="men, man" type="button">🔊 men ↔ man</button>
+        <button data-say="send, sand" type="button">🔊 send ↔ sand</button>
+        <button data-say="pen, pan" type="button">🔊 pen ↔ pan</button>
+        <button data-say="said, sad" type="button">🔊 said ↔ sad</button>
+      </div>
+      <div class="quiz-stack" id="eQuiz"></div>
+    </section>
+
+    <section class="panel vowel-panel" id="schwa">
+      <p class="kicker">Part 2E • The hidden superstar</p>
+      <h2>Schwa /ə/ — the most common relaxed vowel</h2>
+      <div class="schwa-demo">
+        <div class="big-schwa">/ə/</div>
+        <div><p>Schwa appears in <strong>unstressed syllables</strong>. It is short, neutral and relaxed.</p>
+        <p class="fr-only">Le schwa apparaît souvent dans les syllabes non accentuées. Le son est très court et relâché.</p></div>
+      </div>
+      <div class="schwa-grid">
+        <button data-say="about" type="button"><strong>about</strong><small>a-BOUT</small>🔊</button>
+        <button data-say="banana" type="button"><strong>banana</strong><small>bə-NA-nə</small>🔊</button>
+        <button data-say="computer" type="button"><strong>computer</strong><small>kəm-PYU-tər</small>🔊</button>
+        <button data-say="support" type="button"><strong>support</strong><small>sə-PORT</small>🔊</button>
+      </div>
+      <div class="teacher-note"><strong>Why it matters:</strong> English does not give equal weight to every syllable. Strong syllables stand out; weak syllables often shrink toward schwa.</div>
+    </section>
+
+    <section class="panel grammar" id="ed-lab">
+      <p class="kicker">Part 3A • Grammar you can hear</p>
+      <h2>-ED has three pronunciations: /t/, /d/, /ɪd/</h2>
+      <div class="ed-rule-grid">
+        <article class="ed-card t"><div class="ipa">/t/</div><h3>After an unvoiced sound</h3><p>worked · watched · helped · washed · laughed · stopped</p><div class="syllable">No extra syllable</div><button data-say="worked, watched, helped, washed, laughed, stopped" type="button">🔊 Listen</button></article>
+        <article class="ed-card d"><div class="ipa">/d/</div><h3>After a voiced sound</h3><p>played · lived · travelled · called · opened · cleaned</p><div class="syllable">No extra syllable</div><button data-say="played, lived, travelled, called, opened, cleaned" type="button">🔊 Listen</button></article>
+        <article class="ed-card id"><div class="ipa">/ɪd/</div><h3>After a T or D sound</h3><p>wanted · needed · visited · started · decided · waited</p><div class="syllable">Extra syllable</div><button data-say="wanted, needed, visited, started, decided, waited" type="button">🔊 Listen</button></article>
+      </div>
+      <div class="gold-rule"><span class="rule-icon">🎯</span><div><strong>Do not look at the last letter.</strong> Listen to the last <em>sound</em> of the base verb.</div></div>
+
+      <div class="activity">
+        <div class="activity-head"><div><span class="step">Instant correction</span><h3>Sort the -ED endings</h3></div><div class="mini-score" id="edScore">0/0</div></div>
+        <p>Choose the pronunciation. You will see immediately if you are correct.</p>
+        <div id="edSorter" class="sorter"></div>
+        <div class="btn-row"><button class="btn secondary" id="edReset" type="button">↺ New randomized round</button><button class="btn" id="edHint" type="button">💡 Show the rule</button></div>
+        <div class="hint-box hidden" id="edHintBox"><strong>Rescue rule:</strong> T/D sound → /ɪd/. Unvoiced sound → /t/. Most other voiced sounds → /d/.</div>
+      </div>
+
+      <div class="story-strip">
+        <h3>Past-story pronunciation</h3>
+        <p><button class="micro-listen" data-say="Last weekend, we visited Nantes. We walked around the island and watched the mechanical elephant. We loved it and decided to stay longer." type="button">🔊</button>
+        Last weekend, we <strong>visited</strong> Nantes. We <strong>walked</strong> around the island and <strong>watched</strong> the mechanical elephant. We <strong>loved</strong> it and <strong>decided</strong> to stay longer.</p>
+        <div class="label-row"><span>visited /ɪd/</span><span>walked /t/</span><span>watched /t/</span><span>loved /d/</span><span>decided /ɪd/</span></div>
+      </div>
+    </section>
+
+    <section class="panel grammar" id="s-lab">
+      <p class="kicker">Part 3B • Another final-sound rule</p>
+      <h2>-S / -ES also has three pronunciations</h2>
+      <div class="ed-rule-grid">
+        <article class="ed-card"><div class="ipa">/s/</div><h3>After an unvoiced sound</h3><p>cats · books · stops</p><button data-say="cats, books, stops" type="button">🔊 Listen</button></article>
+        <article class="ed-card"><div class="ipa">/z/</div><h3>After a voiced sound</h3><p>dogs · cars · lives · plays</p><button data-say="dogs, cars, lives, plays" type="button">🔊 Listen</button></article>
+        <article class="ed-card"><div class="ipa">/ɪz/</div><h3>After s, z, sh, ch, j, x sounds</h3><p>buses · watches · wishes · changes · boxes</p><button data-say="buses, watches, wishes, changes, boxes" type="button">🔊 Listen</button></article>
+      </div>
+      <div class="quiz-stack" id="sQuiz"></div>
+    </section>
+
+    <section class="panel grammar" id="silent-lab">
+      <p class="kicker">Part 4A • Written but not spoken</p>
+      <h2>Silent letters — train your eye to ignore them</h2>
+      <div class="silent-grid">
+        <article><div class="silent-letter">W</div><h3>wrong · write · wrist · wrap</h3><p>The W disappears before R.</p><button data-say="wrong, write, wrist, wrap" type="button">🔊 Listen</button></article>
+        <article><div class="silent-letter">K</div><h3>know · knife · knee · knock</h3><p>The K disappears before N at the beginning.</p><button data-say="know, knife, knee, knock" type="button">🔊 Listen</button></article>
+        <article><div class="silent-letter">B</div><h3>climb · comb · lamb · thumb</h3><p>Final B often disappears after M.</p><button data-say="climb, comb, lamb, thumb" type="button">🔊 Listen</button></article>
+        <article><div class="silent-letter">L</div><h3>walk · talk · half · calm</h3><p>The L is silent in several frequent words.</p><button data-say="walk, talk, half, calm" type="button">🔊 Listen</button></article>
+        <article><div class="silent-letter">T</div><h3>listen · castle · Christmas</h3><p>The T is silent in these common patterns.</p><button data-say="listen, castle, Christmas" type="button">🔊 Listen</button></article>
+        <article><div class="silent-letter">GH</div><h3>night · light · right · daughter</h3><p>GH can be silent — but in <em>laugh</em> it becomes /f/.</p><button data-say="night, light, right, daughter, laugh" type="button">🔊 Listen</button></article>
+      </div>
+      <div class="quiz-stack" id="silentQuiz"></div>
+    </section>
+
+    <section class="panel grammar" id="consonants">
+      <p class="kicker">Part 4B • High-impact consonants</p>
+      <h2>H · TH · W/V · R · final consonants</h2>
+      <div class="consonant-grid">
+        <article><div class="con-icon">💨</div><h3>H — use air</h3><p>Imagine gently breathing onto a mirror: <strong>hair, heat, hill</strong>.</p><div class="mini-pairs"><button data-say="air, hair" type="button">air ↔ hair 🔊</button><button data-say="eat, heat" type="button">eat ↔ heat 🔊</button></div></article>
+        <article><div class="con-icon">👅</div><h3>TH — tongue visible</h3><p><strong>/θ/</strong> no vibration: think, three. <strong>/ð/</strong> vibration: this, those.</p><div class="mini-pairs"><button data-say="think, this" type="button">think ↔ this 🔊</button><button data-say="three, these" type="button">three ↔ these 🔊</button></div></article>
+        <article><div class="con-icon">👄</div><h3>W vs V</h3><p>W: rounded lips. V: top teeth touch bottom lip.</p><div class="mini-pairs"><button data-say="wine, vine" type="button">wine ↔ vine 🔊</button><button data-say="west, vest" type="button">west ↔ vest 🔊</button></div></article>
+        <article><div class="con-icon">↩</div><h3>English R</h3><p>Pull your tongue slightly back. Do not use the back-of-throat French R.</p><button data-say="red, right, really, around, restaurant" type="button">🔊 Listen</button></article>
+        <article><div class="con-icon">🚪</div><h3>Keep the final sound</h3><p>English final consonants can carry meaning or grammar: <strong>work/worked, want/wanted, car/card</strong>.</p><button data-say="work, worked, want, wanted, car, card" type="button">🔊 Listen</button></article>
+      </div>
+      <div class="quick-check" data-qid="wv1" data-answer="rounded lips" data-explain="For W, round your lips without touching your teeth to your lip.">
+        <p><strong>Quick check:</strong> What do you do for English W?</p><div class="shuffle-options" data-options="top teeth on bottom lip|rounded lips|tongue between teeth"></div><div class="feedback"></div>
+      </div>
+    </section>
+
+    <section class="panel rhythm-panel" id="rhythm">
+      <p class="kicker">Part 5 • The music of English</p>
+      <h2>Stress, reduction and linking</h2>
+      <div class="rhythm-grid">
+        <article><h3>1 · Word stress</h3><p>One syllable usually stands out.</p><p class="stress-line"><strong>PHO</strong>tograph → pho<strong>TOG</strong>raphy</p><p class="stress-line"><strong>TA</strong>ble · a<strong>BOUT</strong> · im<strong>POR</strong>tant</p><button data-say="photograph, photography, table, about, important" type="button">🔊 Listen</button></article>
+        <article><h3>2 · Sentence stress</h3><p>Content words carry the message.</p><p>I <strong>WENT</strong> to <strong>NANTES</strong> with my <strong>DAUGHTER</strong> on <strong>SUNDAY</strong>.</p><button data-say="I went to Nantes with my daughter on Sunday." type="button">🔊 Listen</button></article>
+        <article><h3>3 · Linking</h3><p>English words connect instead of standing alone.</p><p><strong>turn‿off · pick‿it‿up · an‿apple · go‿out</strong></p><button data-say="turn off, pick it up, an apple, go out" type="button">🔊 Listen</button></article>
+      </div>
+
+      <div class="activity builder-activity">
+        <div class="activity-head"><div><span class="step">Word order + rhythm</span><h3>Build the sentence, then stress the important words</h3></div><div class="mini-score" id="builderScore">0/0</div></div>
+        <p>The words are deliberately shuffled. Click them in the correct order.</p>
+        <div id="builderHost"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="speed-round">
+      <p class="kicker">Part 6A • Controlled speed</p>
+      <h2>30-second pronunciation sprint</h2>
+      <p>Choose one target. Start the timer and repeat slowly first, then naturally. Clarity beats speed.</p>
+      <div class="sprint-grid">
+        <label><input type="radio" name="sprintTarget" value="ship sheep sit seat live leave" checked /> /ɪ/ ↔ /iː/</label>
+        <label><input type="radio" name="sprintTarget" value="mad made hat hate plan plane" /> /æ/ ↔ /eɪ/</label>
+        <label><input type="radio" name="sprintTarget" value="worked played wanted watched lived needed" /> -ED</label>
+        <label><input type="radio" name="sprintTarget" value="wine vine west vest hair air think this" /> Consonants</label>
+      </div>
+      <div class="timer-box">
+        <div class="timer-display" id="sprintTimer">00:30</div>
+        <div class="btn-row"><button class="btn primary" id="sprintStart" type="button">▶ Start 30 sec</button><button class="btn secondary" id="sprintReset" type="button">↺ Reset</button><button class="btn" id="sprintAudio" type="button">🔊 Hear target</button></div>
+      </div>
+    </section>
+
+    <section class="panel recording-panel" id="recording">
+      <p class="kicker">Part 6B • Your voice</p>
+      <h2>Record → compare → repeat</h2>
+      <div class="record-grid">
+        <div class="record-card">
+          <h3>Model sentence</h3>
+          <p id="recordPrompt">Last weekend, we visited Nantes, walked around the island and watched the mechanical elephant.</p>
+          <button class="btn listen" id="recordModel" type="button">🔊 Listen to model</button>
+        </div>
+        <div class="record-card">
+          <h3>Your recording</h3>
+          <p class="micro-note">Recording works in modern browsers when microphone permission is allowed. Nothing is uploaded.</p>
+          <div class="btn-row left"><button class="btn record" id="recordStart" type="button">● Start recording</button><button class="btn secondary" id="recordStop" type="button" disabled>■ Stop</button></div>
+          <audio id="recordPlayback" controls class="hidden"></audio>
+          <a id="recordDownload" class="text-link hidden" download="pronunciation-practice.webm">Download your recording</a>
+          <div class="feedback" id="recordStatus"></div>
+        </div>
+      </div>
+      <div class="self-check">
+        <h3>Self-check</h3>
+        <label><input type="checkbox" class="progress-check" data-skill="vowel-contrast" /> I can hear my vowel contrasts.</label>
+        <label><input type="checkbox" class="progress-check" data-skill="ed-endings" /> I can hear my -ED endings.</label>
+        <label><input type="checkbox" class="progress-check" data-skill="final-sounds" /> I keep important final consonants.</label>
+        <label><input type="checkbox" class="progress-check" data-skill="rhythm" /> I can hear stressed words and lighter words.</label>
+      </div>
+    </section>
+
+    <section class="panel mission-panel" id="final-mission">
+      <p class="kicker">Final mission • Transfer to real speaking</p>
+      <h2>One minute: tell a memorable story</h2>
+      <p>Choose three pronunciation objectives, then speak naturally. Do not stop every time you make a mistake.</p>
+      <div class="target-picker">
+        <label><input type="checkbox" class="mission-target" value="/ɪ/ vs /iː/" /> /ɪ/ vs /iː/</label>
+        <label><input type="checkbox" class="mission-target" value="/æ/ vs /eɪ/" /> /æ/ vs /eɪ/</label>
+        <label><input type="checkbox" class="mission-target" value="-ED endings" /> -ED endings</label>
+        <label><input type="checkbox" class="mission-target" value="H / TH / W-V" /> H / TH / W-V</label>
+        <label><input type="checkbox" class="mission-target" value="word stress" /> word stress</label>
+        <label><input type="checkbox" class="mission-target" value="linking" /> linking</label>
+      </div>
+      <div class="mission-status" id="missionStatus">Choose 3 targets.</div>
+
+      <div class="timer-box mission-timer">
+        <div class="timer-display" id="missionTimer">01:00</div>
+        <div class="btn-row"><button class="btn primary" id="missionStart" type="button">▶ Start 1 minute</button><button class="btn secondary" id="missionReset" type="button">↺ Reset</button></div>
+      </div>
+
+      <div class="prompt-box">
+        <strong>Your prompt:</strong> Tell your teacher about a memorable weekend, outing or family activity. Explain where you went, what you did, what you saw and why you remember it.
+      </div>
+
+      <div class="model-tabs">
+        <button class="tab-btn active" data-model="a2" type="button">A2+ clear model</button>
+        <button class="tab-btn" data-model="b1" type="button">B1 target model</button>
+      </div>
+      <div class="model-panel" id="modelA2">
+        <p>Last weekend, I visited Nantes with my family. We walked around the Île de Nantes and watched the mechanical elephant. It was very impressive. We also visited Les Machines de l’Île. I really enjoyed the day because we discovered something unusual together.</p>
+        <button class="btn listen" data-say="Last weekend, I visited Nantes with my family. We walked around the Île de Nantes and watched the mechanical elephant. It was very impressive. We also visited Les Machines de l’Île. I really enjoyed the day because we discovered something unusual together." type="button">🔊 Listen to model</button>
+      </div>
+      <div class="model-panel hidden" id="modelB1">
+        <p>One of my most memorable recent outings was a family day in Nantes. We visited the Île de Nantes, where we watched the mechanical elephant and explored Les Machines de l’Île. What made the experience special was seeing the unusual machines together and sharing everyone’s reactions. I particularly remember how impressive the elephant looked when it moved through the area.</p>
+        <button class="btn listen" data-say="One of my most memorable recent outings was a family day in Nantes. We visited the Île de Nantes, where we watched the mechanical elephant and explored Les Machines de l’Île. What made the experience special was seeing the unusual machines together and sharing everyone’s reactions. I particularly remember how impressive the elephant looked when it moved through the area." type="button">🔊 Listen to model</button>
+      </div>
+
+      <details class="coach-details"><summary>💡 Open your speaking technique</summary><ol><li>Think about your message first.</li><li>Choose only three pronunciation targets.</li><li>Speak in short thought groups.</li><li>Keep final sounds.</li><li>If one word is difficult, repeat the whole phrase — not the isolated word forever.</li></ol></details>
+    </section>
+
+    <section class="panel results-panel" id="results">
+      <p class="kicker">Your progress evidence</p>
+      <h2>Pronunciation progress report</h2>
+      <div class="results-grid">
+        <div class="result-card"><span>Interactive score</span><strong id="reportScore">0/0</strong></div>
+        <div class="result-card"><span>Accuracy</span><strong id="reportAccuracy">0%</strong></div>
+        <div class="result-card"><span>Completed skills</span><strong id="reportSkills">0/4</strong></div>
+        <div class="result-card"><span>Mission targets</span><strong id="reportTargets">0/3</strong></div>
+      </div>
+      <div class="skill-report" id="skillReport"></div>
+      <label class="trainer-comments">Teacher notes<textarea id="trainerComments" rows="5" placeholder="Strengths, sounds to revisit, next pronunciation priority..."></textarea></label>
+      <div class="btn-row report-buttons">
+        <button class="btn primary" id="saveProgress" type="button">💾 Save progress</button>
+        <button class="btn secondary" id="downloadReport" type="button">⬇ Download readable report</button>
+        <button class="btn secondary" id="exportProgress" type="button">⬇ Export progress data</button>
+        <button class="btn" id="printReport" type="button">🖨 Print / save PDF</button>
+        <button class="btn danger" id="resetAll" type="button">↺ Reset everything</button>
+      </div>
+      <p class="micro-note">Progress is stored only in this browser on this device. Audio is always manual: nothing plays automatically.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pronunciation Lab · Hear it · Feel it · Say it · Use it</div>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
