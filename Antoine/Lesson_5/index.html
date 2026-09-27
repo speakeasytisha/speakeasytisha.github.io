@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Antoine · VTest Precision Under Pressure · grammar accuracy and Australia career English" />
+  <title>Antoine · VTest Precision Under Pressure</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">VTEST BUSINESS ENGLISH · AUSTRALIA · B1.2+ → B2.1-</div>
+      <h1>Antoine</h1>
+      <p class="subtitle">Precision Under Pressure</p>
+      <p class="hero-lead">Turn small grammar slips into reliable B2-level reflexes — then use them under VTest timing.</p>
+      <div class="hero-grid">
+        <div><strong>Mission</strong><span>Keep your strong ideas, remove the small accuracy errors</span></div>
+        <div><strong>Grammar</strong><span>Tenses · questions · agreement · articles · prepositions</span></div>
+        <div><strong>Transfer</strong><span>VTest writing + speaking tasks with Australia-focused content</span></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toolbar" aria-label="Lesson controls">
+    <div class="control-group">
+      <label for="modeSelect">VTest transfer mode</label>
+      <select id="modeSelect">
+        <option value="guided" selected>🧭 Guided feedback</option>
+        <option value="exam">⏱ VTest mode</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label for="accentSelect">Listening accent</label>
+      <select id="accentSelect">
+        <option value="en-AU" selected>🇦🇺 Australian</option>
+        <option value="en-GB">🇬🇧 British</option>
+        <option value="en-US">🇺🇸 American</option>
+      </select>
+    </div>
+    <button class="btn ghost" id="toggleFrench" type="button">🇫🇷 French help: OFF</button>
+    <button class="btn ghost" id="resetLesson" type="button">↻ Reset</button>
+    <button class="btn primary" id="downloadResults" type="button">⇩ Download results</button>
+  </nav>
+
+  <div class="progress-wrap">
+    <div class="progress-label"><span>Lesson progress</span><span id="progressText">0%</span></div>
+    <div class="progress-track"><div id="progressBar"></div></div>
+  </div>
+
+  <main>
+    <section class="card notice-card" data-track="section">
+      <div class="section-kicker">00 · YOUR ROUTE TODAY · 60 MIN</div>
+      <h2>From “I know the rule” to “I use it automatically”</h2>
+      <p>This lesson follows your full review. You are not relearning English from zero: you are stabilising the small structures that can lower accuracy when you speak or write quickly.</p>
+      <div class="route-grid">
+        <article><span>5 min</span><strong>Diagnose</strong><p>Spot the error family before you correct it.</p></article>
+        <article><span>15 min</span><strong>Secure</strong><p>Build reliable tense and question reflexes.</p></article>
+        <article><span>15 min</span><strong>Sharpen</strong><p>Articles, prepositions, agreement and verb patterns.</p></article>
+        <article><span>15 min</span><strong>VTest transfer</strong><p>Scrambled sentences + rejoinders under timing.</p></article>
+        <article><span>10 min</span><strong>Produce</strong><p>Speak and write with a precision checklist.</p></article>
+      </div>
+      <div class="exam-note"><strong>Training simulation:</strong> this page is designed to mirror relevant VTest Business English task types, but it is not the official exam.</div>
+      <div class="coach french-help"><strong>Aide FR :</strong> Le problème principal n’est pas votre niveau d’idées ou de compréhension. L’objectif est d’automatiser la grammaire pour ne plus perdre de précision quand vous parlez vite.</div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">01 · DIAGNOSTIC · 5 MIN</div>
+      <h2>Find the weak link before fixing the sentence</h2>
+      <p>Each sentence contains one typical accuracy problem. First identify the category. Then choose the best correction.</p>
+      <div id="diagnosticContainer"></div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">02 · GRAMMAR MAP · 5 MIN</div>
+      <h2>Your five precision locks</h2>
+      <div class="rule-grid">
+        <article>
+          <span class="rule-number">1</span><h3>Time anchor first</h3>
+          <p><strong>Finished time</strong> → Past Simple. <strong>Life / unfinished connection</strong> → Present Perfect. <strong>Earlier past</strong> → Past Perfect.</p>
+          <p class="micro">last year → worked · since June → have been preparing · before the reorganisation → had worked</p>
+        </article>
+        <article>
+          <span class="rule-number">2</span><h3>Auxiliary before subject</h3>
+          <p>Direct question = <strong>question word + auxiliary + subject + base form</strong>.</p>
+          <p class="micro">Why did you choose…? · What have you learned…? · What can you bring…?</p>
+        </article>
+        <article>
+          <span class="rule-number">3</span><h3>One tense marker is enough</h3>
+          <p>After <strong>did / does / can / would / might</strong>, use the base verb.</p>
+          <p class="micro">Did you enjoy…? · He doesn’t understand… · I could relocate…</p>
+        </article>
+        <article>
+          <span class="rule-number">4</span><h3>Noun needs a frame</h3>
+          <p>Use <strong>a/an</strong> for one non-specific countable noun, <strong>the</strong> when identified, and no article for many general plural/uncountable ideas.</p>
+          <p class="micro">a process · the role we discussed · experience · stakeholders</p>
+        </article>
+        <article>
+          <span class="rule-number">5</span><h3>Learn chunks, not translations</h3>
+          <p>Prepositions and verb patterns are often fixed combinations.</p>
+          <p class="micro">go to Australia · interested in working · responsible for improving · used to working</p>
+        </article>
+      </div>
+      <div class="coach french-help"><strong>Aide FR :</strong> Avant de parler, repérez mentalement le “signal” : temps fini ? question ? modal ? nom singulier ? expression fixe ? Cela déclenche automatiquement la bonne structure.</div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">03 · TENSE CONTROL · 10 MIN</div>
+      <h2>Choose the time line before the tense</h2>
+      <div class="timeline-strip">
+        <div><span>EARLIER PAST</span><strong>had + past participle</strong><small>before another past event</small></div>
+        <div><span>FINISHED PAST</span><strong>Past Simple</strong><small>yesterday · in 2024 · when I worked…</small></div>
+        <div><span>PAST → NOW</span><strong>Present Perfect</strong><small>since · for · already · yet · experience</small></div>
+        <div><span>NOW / ROUTINE</span><strong>Present Simple / Continuous</strong><small>usually / currently</small></div>
+        <div><span>FUTURE</span><strong>will / going to / present continuous</strong><small>prediction / plan / arrangement</small></div>
+      </div>
+      <div id="tenseQuiz"></div>
+      <div class="mini-challenge">
+        <h3>One story, three time envelopes</h3>
+        <p>Complete your answer using all three anchors: <strong>past experience → current preparation → next step in Australia</strong>.</p>
+        <textarea id="timeEnvelopeAnswer" placeholder="I spent… / Since… I’ve been… / I’m now planning to…"></textarea>
+        <div class="button-row">
+          <button class="btn secondary model-toggle" data-model="timeModels" type="button">Show two models</button>
+          <button class="btn ghost speak-text" data-text="Tell me about your previous experience, what you have been doing recently, and what you are planning to do next in Australia." type="button">🔊 Listen to prompt</button>
+        </div>
+        <div id="timeModels" class="models hidden">
+          <article><h4>Strong B1</h4><p>I spent six years working as a process analyst, where I learned how to understand workflows and work with different teams. Since my previous role ended, I’ve been improving my English and preparing for my move. I’m now planning to find a role in Australia where I can use my experience and keep developing.</p></article>
+          <article><h4>B2 / VTest target</h4><p>I spent six years in process analysis, focusing on how workflows operated in practice and how they could be improved. Since my role ended following a reorganisation, I’ve been using the transition to strengthen my English and prepare for the Australian job market. My next step is to secure a role where I can contribute quickly while adapting to a new professional environment.</p></article>
+        </div>
+      </div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">04 · QUESTION ENGINE · 8 MIN</div>
+      <h2>Build the question before you speak</h2>
+      <p>Questions are a high-value accuracy point because one missing auxiliary can make a strong answer sound less controlled.</p>
+      <div class="formula wide"><span>Question word</span><strong>+</strong><span>auxiliary</span><strong>+</strong><span>subject</span><strong>+</strong><span>base / participle</span><strong>+</strong><span>rest?</span></div>
+      <div id="questionBuilders"></div>
+      <div class="question-transfer">
+        <h3>Turn answers into recruiter questions</h3>
+        <p>Write a natural question for each answer.</p>
+        <div id="questionTransform"></div>
+      </div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">05 · MICRO-ACCURACY · 7 MIN</div>
+      <h2>The tiny words that separate B1 from controlled B2</h2>
+      <div class="accuracy-tabs" role="tablist" aria-label="Accuracy categories">
+        <button class="tab-btn active" data-tab="agreement" type="button">3rd person & auxiliaries</button>
+        <button class="tab-btn" data-tab="articles" type="button">Articles</button>
+        <button class="tab-btn" data-tab="prepositions" type="button">Prepositions</button>
+        <button class="tab-btn" data-tab="patterns" type="button">Verb patterns</button>
+        <button class="tab-btn" data-tab="pronouns" type="button">Pronouns</button>
+      </div>
+      <div id="accuracyContent"></div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">06 · VOCABULARY · 5 MIN</div>
+      <h2>Precise words for your situation and the VTest</h2>
+      <p>Choose a category. Say the example aloud, then create one sentence of your own.</p>
+      <div class="vocab-controls">
+        <label for="vocabCategory">Vocabulary category</label>
+        <select id="vocabCategory"></select>
+      </div>
+      <div id="vocabCards" class="vocab-grid"></div>
+      <div class="coach french-help"><strong>Aide FR :</strong> Apprenez le mot avec sa structure complète : par exemple <em>apply for a role</em>, <em>responsible for improving</em>, <em>adapt to a new environment</em>. C’est plus utile qu’un mot isolé.</div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card vtest-card" data-track="section">
+      <div class="section-kicker">07 · VTEST WRITING TRANSFER · 7 MIN</div>
+      <h2>Scrambled sentences — accuracy before speed</h2>
+      <p>VTest Business English uses a pre-writing task in which you arrange scrambled words into correct sentences. In guided mode you can check each one immediately; in VTest mode, feedback waits until you submit the section.</p>
+      <div class="exam-toolbar">
+        <div><strong>Target</strong><span>9 sentences</span></div>
+        <div><strong>Timer</strong><span id="scrambleTimer">07:00</span></div>
+        <div class="button-row compact">
+          <button class="btn primary" id="startScrambleTimer" type="button">▶ Start</button>
+          <button class="btn ghost" id="resetScrambleTimer" type="button">↻ Reset</button>
+        </div>
+      </div>
+      <div id="scrambleContainer"></div>
+      <div class="button-row">
+        <button class="btn primary exam-only hidden" id="submitScrambleExam" type="button">Submit VTest section</button>
+      </div>
+      <div id="scrambleSummary" class="section-summary hidden" aria-live="polite"></div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card vtest-card" data-track="section">
+      <div class="section-kicker">08 · VTEST SPEAKING TRANSFER · 6 MIN</div>
+      <h2>Rejoinders — choose the response that fits the situation</h2>
+      <p>Listen once. Choose the most natural response. Use the transcript only in guided mode if you need it.</p>
+      <div class="exam-toolbar">
+        <div><strong>Practice set</strong><span>6 rejoinders</span></div>
+        <div><strong>Focus</strong><span>meaning + grammar + register</span></div>
+      </div>
+      <div id="rejoinderContainer"></div>
+      <div class="button-row">
+        <button class="btn primary exam-only hidden" id="submitRejoinderExam" type="button">Submit VTest section</button>
+      </div>
+      <div id="rejoinderSummary" class="section-summary hidden" aria-live="polite"></div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">09 · SPEAKING PRODUCTION · 4 MIN</div>
+      <h2>Read, react, then develop your answer</h2>
+      <div class="reading-box">
+        <p id="speakingText"><strong>Workplace text:</strong> A company is redesigning its onboarding process for new employees. The current process includes several long documents, separate meetings with different departments and repeated information. The company wants the new process to be clearer, faster and easier for employees to follow.</p>
+        <button class="btn ghost speak-target" data-target="speakingText" type="button">🔊 Listen to text</button>
+      </div>
+      <div class="prompt-grid two">
+        <article class="prompt"><span>1</span><p>What is the main problem with the current onboarding process?</p></article>
+        <article class="prompt"><span>2</span><p>What would you change first, and why?</p></article>
+      </div>
+      <div class="timer-panel">
+        <div class="timer" id="speakingTimer">01:00</div>
+        <div class="button-row compact"><button class="btn primary" id="startSpeakingTimer" type="button">▶ Start 60s</button><button class="btn ghost" id="resetSpeakingTimer" type="button">↻ Reset</button></div>
+      </div>
+      <textarea id="speakingNotes" placeholder="Keywords only: problem → recommendation → reason → example"></textarea>
+      <div class="button-row">
+        <button class="btn secondary model-toggle" data-model="speakingModels" type="button">Show two models</button>
+      </div>
+      <div id="speakingModels" class="models hidden">
+        <article><h4>Strong B1</h4><p>The main problem is that the process is too long and some information is repeated. I would first combine the documents and meetings into a clearer sequence. This would help new employees understand what they need to do and avoid wasting time.</p></article>
+        <article><h4>B2 / VTest target</h4><p>The main weakness is fragmentation: new employees receive overlapping information from several departments, which makes the process longer than necessary. I would start by mapping the full onboarding journey and removing duplicated steps. That would make responsibilities clearer and create a more consistent experience for new starters.</p></article>
+      </div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card" data-track="section">
+      <div class="section-kicker">10 · WRITING PRODUCTION · 5 MIN</div>
+      <h2>100-word B1/B2 workplace response</h2>
+      <p><strong>Prompt:</strong> An Australian company is considering allowing new employees to work partly from home after their first month. Write a short response giving your view.</p>
+      <ul class="mission-list">
+        <li>State your position clearly</li>
+        <li>Give one advantage</li>
+        <li>Give one possible difficulty</li>
+        <li>Suggest one practical solution</li>
+      </ul>
+      <textarea id="writingAnswer" class="large-textarea" placeholder="Write approximately 100 words..."></textarea>
+      <div class="writing-meter"><span id="wordCount">0 words</span><span id="writingChecklist">Target: 100+ words · 2+ connectors · controlled verb forms</span></div>
+      <div class="button-row">
+        <button class="btn secondary" id="checkWriting" type="button">Check structure</button>
+        <button class="btn ghost" id="writingHint" type="button">Hint</button>
+        <button class="btn secondary model-toggle" data-model="writingModels" type="button">Show two models</button>
+      </div>
+      <div id="writingFeedback" class="feedback-box" aria-live="polite"></div>
+      <div id="writingModels" class="models hidden">
+        <article><h4>Strong B1</h4><p>I think hybrid work can be a good option after the first month because new employees have time to understand the company and meet their colleagues first. Working from home can then give them more flexibility and reduce commuting time. However, it can also make communication more difficult, especially for someone who is still learning the job. I would suggest keeping regular team meetings and clear weekly priorities. This would give employees more flexibility while making sure they still receive enough support and stay connected with the team.</p></article>
+        <article><h4>B2 / VTest target</h4><p>In my view, a hybrid arrangement can work well once a new employee has completed an initial period in the workplace. It offers greater flexibility and can reduce unnecessary commuting, which may improve concentration and work-life balance. The main risk is weaker communication during the onboarding phase. To avoid this, managers could set clear expectations, schedule regular check-ins and define which meetings should take place in person. This would preserve the advantages of remote work without reducing the support and collaboration that new employees need.</p></article>
+      </div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card final-card" data-track="section">
+      <div class="section-kicker">11 · FINAL MISSION · 5 MIN</div>
+      <h2>90 seconds: accurate, natural, employable</h2>
+      <p><strong>Recruiter prompt:</strong> “Tell me what kind of role you are looking for in Australia and what you could bring to the team.”</p>
+      <div class="precision-checklist">
+        <label><input type="checkbox" /> I used the correct tense for each time period.</label>
+        <label><input type="checkbox" /> My verbs agree with the subject.</label>
+        <label><input type="checkbox" /> I used articles with singular countable nouns.</label>
+        <label><input type="checkbox" /> I used natural preposition chunks.</label>
+        <label><input type="checkbox" /> I gave evidence, not only adjectives.</label>
+        <label><input type="checkbox" /> I focused on the job in Australia, not distant personal plans.</label>
+      </div>
+      <div class="timer-panel">
+        <div class="timer" id="finalTimer">01:30</div>
+        <div class="button-row compact"><button class="btn primary" id="startFinalTimer" type="button">▶ Start 90s</button><button class="btn ghost" id="resetFinalTimer" type="button">↻ Reset</button></div>
+      </div>
+      <textarea id="finalNotes" placeholder="After speaking: write the 2 small errors you want to eliminate next time."></textarea>
+      <div class="button-row">
+        <button class="btn secondary model-toggle" data-model="finalModels" type="button">Show two models</button>
+      </div>
+      <div id="finalModels" class="models hidden">
+        <article><h4>Strong B1</h4><p>I’m looking for a role where I can use my experience in process analysis and work with different teams. I spent six years analysing workflows and looking for practical ways to make them clearer and more efficient. I’m comfortable asking questions, understanding how people work and turning problems into concrete next steps. I’m now preparing to move to Australia, and I’d like to join a company where I can contribute quickly, learn the local way of working and continue developing professionally.</p></article>
+        <article><h4>B2 / VTest target</h4><p>I’m looking for a role in Australia where I can combine process analysis with practical collaboration across teams. Over six years, I developed a strong ability to understand complex workflows, identify friction points and translate them into workable improvements. I also learned how important it is to involve the people who actually use a process rather than design solutions in isolation. I’m now ready to bring that experience into a new environment, contribute from the start and keep developing in an international setting.</p></article>
+      </div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+
+    <section class="card homework" data-track="section">
+      <div class="section-kicker">12 · PERSONAL ERROR LOG</div>
+      <h2>Keep only the errors that are still alive</h2>
+      <p>Your goal is not to collect every grammar rule. Record only the errors you still make under pressure.</p>
+      <div class="error-log-grid">
+        <label>My recurring tense error<textarea id="logTense" placeholder="Example + corrected version"></textarea></label>
+        <label>My recurring question error<textarea id="logQuestion" placeholder="Example + corrected version"></textarea></label>
+        <label>My recurring article / preposition error<textarea id="logSmallWord" placeholder="Example + corrected version"></textarea></label>
+        <label>My next reflex<textarea id="logReflex" placeholder="The rule I will trigger before I speak/write"></textarea></label>
+      </div>
+      <button class="btn done-btn" type="button">✓ Mark complete</button>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>End-of-lesson precision check</strong>
+        <p>How automatic did the grammar feel by the end?</p>
+        <div class="rating" id="confidenceRating">
+          <button type="button" data-score="1">1</button><button type="button" data-score="2">2</button><button type="button" data-score="3">3</button><button type="button" data-score="4">4</button><button type="button" data-score="5">5</button>
+        </div>
+      </div>
+      <div class="score-panel">
+        <span>Guided / exam score</span>
+        <strong id="overallScore">0 / 0</strong>
+        <small>Only automatically checked activities are included.</small>
+      </div>
+    </div>
+    <p class="footer-note">SpeakEasyTisha · VTest-focused English training · Training simulation, not an official VTest product</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
