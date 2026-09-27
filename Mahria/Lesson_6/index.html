@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A pressure-free conversational English lesson: light choices, opinions, tiny pleasures and natural conversation." />
+  <title>Mahria · No Goals Today</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <header class="hero" id="top">
+    <nav class="topbar" aria-label="Lesson navigation">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <span class="brand-mark">ST</span>
+        <span class="brand-copy"><strong>SpeakEasyTisha</strong><small>Conversation Atelier</small></span>
+      </a>
+      <div class="nav-actions">
+        <button class="nav-btn" data-scroll="#choices" type="button">Choices</button>
+        <button class="nav-btn" data-scroll="#pleasures" type="button">Tiny pleasures</button>
+        <button class="nav-btn" data-scroll="#opinions" type="button">Opinions</button>
+        <button class="nav-btn" data-scroll="#tellme" type="button">Tell me something</button>
+        <button class="nav-btn" data-scroll="#lounge" type="button">Language lounge</button>
+        <button class="nav-btn teacher-toggle" id="teacherToggle" type="button">Tisha's corner</button>
+      </div>
+    </nav>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">A different kind of English lesson</p>
+        <h1>No Goals Today.</h1>
+        <p class="hero-subtitle">Just English, good conversation, and a little fun.</p>
+        <p class="hero-rule"><span>Today’s rule</span> You have absolutely nothing to prove.</p>
+        <div class="hero-actions">
+          <button class="primary-btn" type="button" data-scroll="#permission">Come in</button>
+          <button class="secondary-btn speak-btn" type="button" data-say="Today, you have absolutely nothing to prove. We are simply going to talk, laugh, choose, disagree, and enjoy your English.">▶ Listen</button>
+        </div>
+        <p class="audio-note">Audio only plays when you choose it. Nothing starts automatically.</p>
+      </div>
+
+      <aside class="hero-card" aria-label="Today is different">
+        <div class="hero-card-spark">✦</div>
+        <p class="hero-card-kicker">TODAY IS DIFFERENT</p>
+        <ul class="soft-list">
+          <li>No score</li>
+          <li>No timer</li>
+          <li>No perfect answer</li>
+          <li>No final challenge</li>
+          <li>No homework</li>
+        </ul>
+        <p class="hero-card-footer">You can simply be here.</p>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="section permission" id="permission">
+      <div class="section-number">00</div>
+      <div class="section-heading">
+        <p class="eyebrow">Permission slip</p>
+        <h2>Nothing to achieve.</h2>
+        <p>You can answer in one sentence, ten sentences, or simply say “next one”. This page is here to give the conversation somewhere easy to go.</p>
+      </div>
+      <div class="permission-grid">
+        <button class="permission-card" type="button" data-permission="I can change my mind."><span>↻</span><strong>I can change my mind.</strong></button>
+        <button class="permission-card" type="button" data-permission="I can say, ‘I don’t know.’"><span>…</span><strong>I can say “I don’t know.”</strong></button>
+        <button class="permission-card" type="button" data-permission="I can laugh at my English."><span>☺</span><strong>I can laugh at my English.</strong></button>
+        <button class="permission-card" type="button" data-permission="I can skip a question."><span>→</span><strong>I can skip a question.</strong></button>
+      </div>
+      <div class="gentle-message" id="permissionMessage" aria-live="polite">Pick any one if you feel like it. Or pick none.</div>
+    </section>
+
+    <section class="section" id="warmup">
+      <div class="section-number">01</div>
+      <div class="section-heading">
+        <p class="eyebrow">Easy start</p>
+        <h2>What kind of day is it?</h2>
+        <p>No explanation required. Choose the one that feels closest—or invent your own.</p>
+      </div>
+      <div class="mood-row" id="moodRow">
+        <button type="button" data-mood="quiet">☁️ Quiet</button>
+        <button type="button" data-mood="soft">🫖 Soft</button>
+        <button type="button" data-mood="funny">🙂 A little funny</button>
+        <button type="button" data-mood="low battery">🪫 Low battery</button>
+        <button type="button" data-mood="surprisingly okay">✨ Surprisingly okay</button>
+      </div>
+      <div class="conversation-strip" id="moodFollowup">If you want: <strong>What would make today 5% nicer?</strong></div>
+    </section>
+
+    <section class="section" id="choices">
+      <div class="section-number">02</div>
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">This or that</p>
+          <h2>Choose fast. Explain only if you want.</h2>
+          <p>There is no “interesting” answer to give. Your answer is enough.</p>
+        </div>
+        <button class="secondary-btn" id="shuffleChoices" type="button">↻ Mix the cards</button>
+      </div>
+      <div class="choice-grid" id="choiceGrid"></div>
+      <div class="helper-dock">
+        <button class="quiet-btn" type="button" data-toggle="choiceHelper">Need a sentence starter?</button>
+        <div class="helper-box hidden" id="choiceHelper">
+          <span>I’d definitely choose…</span>
+          <span>It depends, but probably…</span>
+          <span>I’m torn between the two.</span>
+          <span>For me, there’s no competition.</span>
+          <button class="mini-speak" type="button" data-say="I'd definitely choose... It depends, but probably... I'm torn between the two. For me, there's no competition.">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pleasures">
+      <div class="section-number">03</div>
+      <div class="section-heading">
+        <p class="eyebrow">Tiny pleasures</p>
+        <h2>Small things that make an ordinary day better.</h2>
+        <p>Tap anything you genuinely like. The page will give you a tiny conversation prompt—not a task.</p>
+      </div>
+      <div class="pleasure-grid" id="pleasureGrid"></div>
+      <div class="prompt-stage" id="pleasurePrompt">
+        <span class="prompt-label">Your conversation prompt</span>
+        <p>Pick a tiny pleasure above.</p>
+      </div>
+    </section>
+
+    <section class="section" id="opinions">
+      <div class="section-number">04</div>
+      <div class="section-heading">
+        <p class="eyebrow">Unimportant opinions</p>
+        <h2>Strong feelings about completely unimportant things.</h2>
+        <p>Agree, disagree, or object dramatically. This is a serious-free zone.</p>
+      </div>
+      <div class="opinion-stack" id="opinionStack"></div>
+      <div class="reaction-bank">
+        <button class="quiet-btn" data-toggle="reactionHelp" type="button">Optional reaction phrases</button>
+        <div class="helper-box hidden" id="reactionHelp">
+          <span>Absolutely.</span><span>Not a chance.</span><span>I see your point, but…</span><span>I couldn’t disagree more.</span><span>That’s ridiculous—and I love it.</span>
+          <button class="mini-speak" type="button" data-say="Absolutely. Not a chance. I see your point, but... I couldn't disagree more. That's ridiculous, and I love it.">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="debate">
+      <div class="section-number">05</div>
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">The completely useless debate</p>
+          <h2>Which is worse?</h2>
+          <p>Pick a side. Defend it with unreasonable passion if the mood strikes.</p>
+        </div>
+        <button class="secondary-btn" type="button" id="newDebate">Give me another</button>
+      </div>
+      <div class="debate-card">
+        <button class="debate-side" id="debateA" type="button"></button>
+        <div class="versus">VS</div>
+        <button class="debate-side" id="debateB" type="button"></button>
+      </div>
+      <div class="debate-response" id="debateResponse">Your verdict can be as serious—or as silly—as you like.</div>
+    </section>
+
+    <section class="section" id="rather">
+      <div class="section-number">06</div>
+      <div class="section-heading">
+        <p class="eyebrow">Would you rather…?</p>
+        <h2>No good choices. That’s the point.</h2>
+      </div>
+      <div class="rather-stage">
+        <p id="ratherQuestion">Loading a ridiculous dilemma…</p>
+        <div class="rather-actions">
+          <button class="primary-btn" id="ratherA" type="button"></button>
+          <button class="primary-btn alt" id="ratherB" type="button"></button>
+        </div>
+        <div class="rather-comment" id="ratherComment">Choose one. Regret it immediately.</div>
+        <button class="quiet-btn" id="nextRather" type="button">Next dilemma →</button>
+      </div>
+    </section>
+
+    <section class="section" id="tellme">
+      <div class="section-number">07</div>
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Tell me something</p>
+          <h2>One card. One little conversation.</h2>
+          <p>No preparation. No “good” answer. Just whatever comes to mind.</p>
+        </div>
+        <button class="secondary-btn" type="button" id="drawPrompt">Draw a card</button>
+      </div>
+      <div class="tell-card" id="tellCard">
+        <div class="card-corner">✦</div>
+        <p>Press “Draw a card” when you feel like it.</p>
+      </div>
+      <div class="tell-controls">
+        <button class="quiet-btn" type="button" data-toggle="tellStarters">Show easy starters</button>
+        <div class="helper-box hidden" id="tellStarters">
+          <span>The first thing that comes to mind is…</span>
+          <span>I’ve never really thought about that, but…</span>
+          <span>That’s an easy one for me because…</span>
+          <span>I’m not sure, but maybe…</span>
+          <button class="mini-speak" type="button" data-say="The first thing that comes to mind is... I've never really thought about that, but... That's an easy one for me because... I'm not sure, but maybe...">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lounge" id="lounge">
+      <div class="section-number">08</div>
+      <div class="section-heading">
+        <p class="eyebrow">Optional language lounge</p>
+        <h2>Words you can borrow if you want them.</h2>
+        <p>This section is not an exercise. Open a drawer only when a phrase would make the conversation easier or more fun.</p>
+      </div>
+      <div class="vocab-toolbar" role="tablist" aria-label="Vocabulary categories">
+        <button class="vocab-tab active" type="button" data-vocab="preferences">Preferences</button>
+        <button class="vocab-tab" type="button" data-vocab="reactions">Reactions</button>
+        <button class="vocab-tab" type="button" data-vocab="stories">Little stories</button>
+        <button class="vocab-tab" type="button" data-vocab="disagreeing">Disagreeing nicely</button>
+      </div>
+      <div class="vocab-list" id="vocabList"></div>
+    </section>
+
+    <section class="section teacher-section hidden" id="teacherCorner">
+      <div class="section-number">T</div>
+      <div class="section-heading">
+        <p class="eyebrow">Tisha’s corner · discreet teacher tool</p>
+        <h2>Little language notes.</h2>
+        <p>Only use this if it adds something useful. Four notes maximum for the whole lesson.</p>
+      </div>
+      <div class="teacher-note-grid" id="teacherNotes"></div>
+      <div class="teacher-actions">
+        <button class="secondary-btn" type="button" id="saveNotes">Keep these notes on this device</button>
+        <button class="quiet-btn" type="button" id="clearNotes">Clear</button>
+        <span id="saveStatus" aria-live="polite"></span>
+      </div>
+
+      <div class="heard-today">
+        <h3>What I heard today</h3>
+        <p>Tap only the words that genuinely fit the conversation. They will appear in the closing card.</p>
+        <div class="quality-pills" id="qualityPills"></div>
+      </div>
+    </section>
+
+    <section class="section closing" id="closing">
+      <div class="closing-card">
+        <p class="eyebrow">One little note before you go…</p>
+        <h2>Today wasn’t about achieving anything.</h2>
+        <p>I simply wanted to spend an hour speaking English with you.</p>
+        <p>You don’t have to earn the right to enjoy something, and you don’t have to be perfect for me to be proud of how far you’ve come.</p>
+        <p>I love teaching you because of the person you bring to our lessons — your humour, your thoughtfulness, your curiosity, your honesty, and all the little conversations in between.</p>
+        <div class="qualities-output hidden" id="qualitiesOutput"></div>
+        <p class="closing-big">Today, that’s enough.</p>
+        <p class="closing-bigger">Actually, it’s more than enough. ♡</p>
+        <button class="no-homework-btn" id="noHomework" type="button">That’s it. No homework. ☺</button>
+        <div class="final-message" id="finalMessage" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>SpeakEasyTisha · Conversation Atelier</span>
+    <a href="#top">Back to the top ↑</a>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
