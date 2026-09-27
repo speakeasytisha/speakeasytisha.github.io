@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Reusable VTest Business English orientation and guided practice lesson." />
+  <title>VTest Business English · Lesson 1 · The Real Deal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand" aria-label="VTest practice lab">
+        <span class="vmark">V</span><span class="brand-word">TEST</span>
+        <span class="brand-sub">PRACTICE LAB</span>
+      </div>
+      <div class="top-actions">
+        <button class="ghost small" id="fontToggle" type="button" aria-pressed="false">A+</button>
+        <button class="ghost small" id="contrastToggle" type="button" aria-pressed="false">Contrast</button>
+        <button class="ghost small" id="resetBtn" type="button">Reset</button>
+      </div>
+    </header>
+
+    <section class="exam-bar" aria-label="lesson status">
+      <div>
+        <span class="eyebrow">VTEST BUSINESS ENGLISH · LESSON 1</span>
+        <h1>Know the Test. Control the Test.</h1>
+      </div>
+      <div class="mode-switch" role="group" aria-label="Practice mode">
+        <button class="mode-btn active" data-mode="coach" type="button">COACH MODE</button>
+        <button class="mode-btn" data-mode="exam" type="button">EXAM-FEEL MODE</button>
+      </div>
+    </section>
+
+    <div class="layout">
+      <aside class="sidebar" aria-label="Lesson navigation">
+        <div class="mission-clock">
+          <span>LESSON TARGET</span>
+          <strong>60–75 min</strong>
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+          <small id="progressText">0% explored</small>
+        </div>
+        <nav id="lessonNav">
+          <a href="#welcome" data-section="welcome"><span>01</span> Briefing</a>
+          <a href="#setup" data-section="setup"><span>02</span> Test-day setup</a>
+          <a href="#adaptive" data-section="adaptive"><span>03</span> Adaptive logic</a>
+          <a href="#listening" data-section="listening"><span>04</span> Listening</a>
+          <a href="#reading" data-section="reading"><span>05</span> Reading</a>
+          <a href="#writing" data-section="writing"><span>06</span> Writing</a>
+          <a href="#speaking" data-section="speaking"><span>07</span> Speaking</a>
+          <a href="#mission" data-section="mission"><span>08</span> Final mission</a>
+        </nav>
+        <div class="sidebar-card">
+          <strong>TRAINER NOTE</strong>
+          <p>Start in Coach Mode. Switch to Exam-feel Mode for the last 15–20 minutes.</p>
+        </div>
+      </aside>
+
+      <main>
+        <section class="hero lesson-section" id="welcome" data-section-id="welcome">
+          <div class="hero-copy">
+            <span class="step-label">01 · BRIEFING · 8 MIN</span>
+            <h2>This is not a mystery anymore.</h2>
+            <p class="lead">You are going to see the test before you have to perform in it. Today you learn the interface, the timing, the task types, and the techniques that keep you moving.</p>
+            <div class="reassure">
+              <span class="pulse-dot"></span>
+              <p><strong>Important:</strong> VTest is adaptive. A harder question is not bad news — it can mean the test is moving upward to find your level.</p>
+            </div>
+            <div class="hero-actions">
+              <button class="primary" type="button" data-scroll="#map">SEE THE TEST MAP</button>
+              <button class="secondary fr-toggle" type="button" data-target="welcome-fr">AIDE EN FRANÇAIS</button>
+            </div>
+            <div class="translation hidden" id="welcome-fr">
+              <strong>En clair :</strong> le test s’adapte à vos réponses. Si les questions deviennent plus difficiles, ne paniquez pas. Continuez à répondre à ce que vous pouvez faire maintenant, sans essayer de deviner votre niveau.
+            </div>
+          </div>
+          <div class="hero-panel">
+            <div class="candidate-card">
+              <span class="status-pill">TRAINING SESSION</span>
+              <h3>Candidate dashboard</h3>
+              <dl>
+                <div><dt>Test</dt><dd>Business English · 4 Skills</dd></div>
+                <div><dt>Style</dt><dd>Multistage adaptive</dd></div>
+                <div><dt>Result</dt><dd>CEFR skill profile</dd></div>
+                <div><dt>Today</dt><dd>Guided orientation</dd></div>
+              </dl>
+              <button class="dark-btn" type="button" data-scroll="#setup">NEXT</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="lesson-section" id="map" data-section-id="welcome">
+          <div class="section-head">
+            <div>
+              <span class="step-label">THE REAL TEST MAP</span>
+              <h2>Four skills. One clear route.</h2>
+            </div>
+            <div class="legend"><span class="dot coach"></span> Guided today <span class="dot exam"></span> Exam behaviour</div>
+          </div>
+          <div class="skill-grid">
+            <article class="skill-card listening-card">
+              <div class="skill-icon">◖))</div><span class="module-num">01</span>
+              <h3>Listening</h3>
+              <p>8–12 recordings · 12–26 questions · conversations + monologues.</p>
+              <ul><li>30 sec to preview</li><li>Audio plays once in the real test</li><li>30 sec to finish answering</li></ul>
+              <span class="time-tag">ADAPTIVE TIMING</span>
+            </article>
+            <article class="skill-card">
+              <div class="skill-icon">▤</div><span class="module-num">02</span>
+              <h3>Reading</h3>
+              <p>9 texts · 12–26 questions · emails, notices, articles, reports.</p>
+              <ul><li>Up to 5 min per text</li><li>Skim → scan → prove</li><li>Auto-advance when time ends</li></ul>
+              <span class="time-tag">15–35 MIN BY LEVEL</span>
+            </article>
+            <article class="skill-card">
+              <div class="skill-icon">✎</div><span class="module-num">03</span>
+              <h3>Writing</h3>
+              <p>Part 1: 9 scrambled sentences. Part 2: one workplace essay.</p>
+              <ul><li>Pre-writing adapts the prompt level</li><li>1 min preparation</li><li>20 min writing</li></ul>
+              <span class="time-tag">ABOUT 28 MIN</span>
+            </article>
+            <article class="skill-card">
+              <div class="skill-icon">●)))</div><span class="module-num">04</span>
+              <h3>Speaking</h3>
+              <p>Rejoinders → read aloud + discuss → four workplace prompts.</p>
+              <ul><li>9 pre-speaking items</li><li>60-sec spoken responses</li><li>Keep speaking until time ends</li></ul>
+              <span class="time-tag">ABOUT 18 MIN</span>
+            </article>
+          </div>
+          <div class="accuracy-note"><strong>France / CPF context:</strong> VTest Business English – 4 Skills is registered as RS6905. This lesson is independent training material and is not the official VTest platform.</div>
+        </section>
+
+        <section class="lesson-section" id="setup" data-section-id="setup">
+          <div class="section-head">
+            <div><span class="step-label">02 · TEST-DAY SETUP · 8 MIN</span><h2>Make the technology boring.</h2></div>
+            <div class="section-status" id="setupStatus">0 / 6 ready</div>
+          </div>
+          <p class="section-intro">The goal is to solve technical problems <em>before</em> you are using English under time pressure.</p>
+          <div class="setup-grid">
+            <div class="check-panel">
+              <h3>Candidate checklist</h3>
+              <label class="check-row"><input type="checkbox" class="setup-check"> Quiet room, nobody else present</label>
+              <label class="check-row"><input type="checkbox" class="setup-check"> Reliable internet + charged device</label>
+              <label class="check-row"><input type="checkbox" class="setup-check"> Camera, microphone and speakers working</label>
+              <label class="check-row"><input type="checkbox" class="setup-check"> One screen only</label>
+              <label class="check-row"><input type="checkbox" class="setup-check"> Valid photo ID ready if proctored</label>
+              <label class="check-row"><input type="checkbox" class="setup-check"> Secure exam code ready</label>
+              <button class="secondary" id="saveSetup" type="button">SAVE CHECKLIST</button>
+            </div>
+            <div class="system-panel">
+              <div class="fake-window-head"><span></span><span></span><span></span><strong>System Check</strong></div>
+              <div class="system-body">
+                <h3>We need to check some things on your system.</h3>
+                <div class="system-line"><span>Browser session</span><b id="browserCheck">Checking…</b></div>
+                <div class="system-line"><span>Internet status</span><b id="onlineCheck">Checking…</b></div>
+                <div class="system-line"><span>Microphone API</span><b id="micApiCheck">Checking…</b></div>
+                <div class="system-line manual"><span>One screen</span><b>Confirm manually ✓</b></div>
+                <button class="primary" id="deviceTestBtn" type="button">TEST MICROPHONE PERMISSION</button>
+                <p class="tiny">This training page only checks browser capability. Use VTest’s official compatibility check before the real exam.</p>
+              </div>
+            </div>
+          </div>
+          <details class="rule-drawer">
+            <summary>What changes in an online-proctored exam?</summary>
+            <div class="drawer-content">
+              <p>Keep your face visible, camera and microphone on, remain in full-screen, do not open other apps or external resources, and use only one screen. Dictionaries, reference materials and scratch paper are not permitted under the candidate rules.</p>
+              <button class="fr-toggle link-btn" data-target="proctor-fr" type="button">Voir l'explication en français</button>
+              <p class="translation hidden" id="proctor-fr">En mode surveillé, l’environnement fait partie de l’examen : restez face à la caméra, ne quittez pas le plein écran, n’ouvrez aucune autre application et n’utilisez pas d’aide extérieure. Préparez tout avant de commencer.</p>
+            </div>
+          </details>
+        </section>
+
+        <section class="lesson-section" id="adaptive" data-section-id="adaptive">
+          <div class="section-head"><div><span class="step-label">03 · ADAPTIVE LOGIC · 6 MIN</span><h2>Harder does not mean “I’m failing.”</h2></div></div>
+          <div class="adaptive-lab">
+            <div class="adaptive-copy">
+              <h3>Try the adaptive simulator</h3>
+              <p>Choose an answer. The next card will become easier or harder to demonstrate the principle. This is a teaching simulation, not VTest’s scoring algorithm.</p>
+              <div class="level-meter"><span>A2</span><span>B1</span><span>B2</span><span>C1</span><div id="levelMarker"></div></div>
+            </div>
+            <div class="question-shell" id="adaptiveQuestion">
+              <div class="q-top"><span>ADAPTIVE DEMO</span><span id="adaptiveLevel">B1</span></div>
+              <p class="q-prompt" id="adaptivePrompt">The client asked us to ___ the deadline because their internal approval is delayed.</p>
+              <div class="options" id="adaptiveOptions"></div>
+              <div class="feedback hidden" id="adaptiveFeedback"></div>
+            </div>
+          </div>
+          <div class="technique-strip"><strong>Technique:</strong> Answer the question in front of you. Never waste time trying to calculate what level the test thinks you are.</div>
+        </section>
+
+        <section class="lesson-section" id="listening" data-section-id="listening">
+          <div class="section-head">
+            <div><span class="step-label">04 · LISTENING TASTER · 8 MIN</span><h2>Preview first. Then listen for proof.</h2></div>
+            <div class="timer-chip"><span>PREP</span><strong id="listenPrepTimer">00:30</strong></div>
+          </div>
+          <div class="strategy-row">
+            <div><b>1</b><span>Read the questions</span></div><div><b>2</b><span>Predict the information</span></div><div><b>3</b><span>Listen once</span></div><div><b>4</b><span>Eliminate + answer all</span></div>
+          </div>
+          <div class="exam-window">
+            <div class="window-status"><span>LISTENING · PRACTICE 1 / 2</span><span id="listenPlayState">Ready</span></div>
+            <div class="audio-panel">
+              <div>
+                <span class="mini-label">WORKPLACE CONVERSATION</span>
+                <h3>Read the question before you press PLAY.</h3>
+              </div>
+              <div class="audio-actions">
+                <button class="secondary" id="startPrepBtn" type="button">START 30s PREP</button>
+                <button class="play-btn" id="listenPlayBtn" type="button" data-speech="Hi Marta, just a quick update on tomorrow's client visit. The train from Lyon is arriving twenty minutes later than planned, so could you move the site tour to ten thirty? Keep the eleven thirty product demonstration as it is, and please let reception know that Mr Lewis will arrive with two colleagues instead of one. Thanks.">▶ PLAY AUDIO</button>
+              </div>
+            </div>
+            <div class="question-block" data-question="listen1">
+              <p><strong>What change does the speaker ask Marta to make?</strong></p>
+              <label><input type="radio" name="listen1" value="a"> Move the product demonstration to 10:30.</label>
+              <label><input type="radio" name="listen1" value="b" data-correct="true"> Move the site tour to 10:30.</label>
+              <label><input type="radio" name="listen1" value="c"> Cancel the client visit.</label>
+              <button class="check-btn" type="button" data-check="listen1">CHECK</button>
+              <button class="hint-btn coach-only" type="button" data-hint="listen1hint">HINT</button>
+              <p class="hint hidden" id="listen1hint">Listen for the event that is followed by the new time. One other event is explicitly kept unchanged.</p>
+              <div class="feedback hidden" id="listen1-feedback"></div>
+            </div>
+            <button class="transcript-toggle coach-only" type="button" data-target="listenTranscript">SHOW TRAINING TRANSCRIPT</button>
+            <div class="transcript hidden" id="listenTranscript"><strong>Transcript:</strong> “Hi Marta, just a quick update on tomorrow's client visit. The train from Lyon is arriving twenty minutes later than planned, so could you move the site tour to ten thirty? Keep the eleven thirty product demonstration as it is, and please let reception know that Mr Lewis will arrive with two colleagues instead of one. Thanks.”</div>
+          </div>
+          <div class="coach-tip coach-only"><span>COACH</span><p>In the real test, the audio plays once. Today you may replay it in Coach Mode. Switch to Exam-feel Mode to lock it after one play.</p></div>
+        </section>
+
+        <section class="lesson-section" id="reading" data-section-id="reading">
+          <div class="section-head"><div><span class="step-label">05 · READING TASTER · 8 MIN</span><h2>Do not read every word first.</h2></div><div class="timer-chip"><span>PASSAGE</span><strong id="readTimer">03:00</strong></div></div>
+          <div class="reading-layout">
+            <article class="reading-text">
+              <span class="mini-label">INTERNAL EMAIL</span>
+              <h3>Updated visitor procedure</h3>
+              <p><strong>From:</strong> Facilities Team<br><strong>Subject:</strong> Visitor access from 1 October</p>
+              <p>From 1 October, all external visitors must be registered in the reception system by 4 p.m. on the previous working day. Employees should enter the visitor’s full name, company and expected arrival time. Visitors who have not been registered may experience delays while reception contacts the host.</p>
+              <p>The procedure for delivery drivers has not changed. Drivers should continue to use the service entrance and show their delivery reference to security. If you are expecting a large group of more than eight visitors, please contact Facilities at least two working days in advance so that additional badges can be prepared.</p>
+              <button class="secondary" id="readTimerBtn" type="button">START READING TIMER</button>
+            </article>
+            <div class="reading-questions">
+              <div class="question-block" data-question="read1"><p><strong>Why should visitors be registered before the day of arrival?</strong></p>
+                <label><input type="radio" name="read1" value="a"> To receive a delivery reference.</label>
+                <label><input type="radio" name="read1" value="b" data-correct="true"> To reduce possible delays at reception.</label>
+                <label><input type="radio" name="read1" value="c"> To use the service entrance.</label>
+                <button class="check-btn" type="button" data-check="read1">CHECK</button><button class="hint-btn coach-only" type="button" data-hint="read1hint">HINT</button>
+                <p class="hint hidden" id="read1hint">Scan for the consequence of “not been registered.”</p><div class="feedback hidden" id="read1-feedback"></div>
+              </div>
+              <div class="question-block" data-question="read2"><p><strong>Which situation requires two working days’ notice?</strong></p>
+                <label><input type="radio" name="read2" value="a"> A delivery driver.</label>
+                <label><input type="radio" name="read2" value="b"> Any external visitor.</label>
+                <label><input type="radio" name="read2" value="c" data-correct="true"> A group of more than eight visitors.</label>
+                <button class="check-btn" type="button" data-check="read2">CHECK</button><div class="feedback hidden" id="read2-feedback"></div>
+              </div>
+            </div>
+          </div>
+          <div class="technique-strip"><strong>Reading formula:</strong> Questions → keywords → skim for meaning → scan for proof → eliminate distractors.</div>
+        </section>
+
+        <section class="lesson-section" id="writing" data-section-id="writing">
+          <div class="section-head"><div><span class="step-label">06 · WRITING TASTER · 10 MIN</span><h2>First, control the sentence. Then control the message.</h2></div></div>
+          <div class="submodule">
+            <div class="submodule-head"><span>PART 1 · PRE-WRITING</span><strong>Scrambled sentence</strong></div>
+            <p>Click the words in the correct order. In the real test, there are 9 timed items.</p>
+            <div class="word-bank" id="wordBank">
+              <button type="button">the</button><button type="button">meeting</button><button type="button">has</button><button type="button">been</button><button type="button">moved</button><button type="button">to</button><button type="button">Thursday</button>
+            </div>
+            <div class="sentence-build" id="sentenceBuild"><span>Build your sentence here…</span></div>
+            <div class="inline-actions"><button class="check-btn" id="checkSentence" type="button">CHECK SENTENCE</button><button class="secondary" id="undoSentence" type="button">UNDO</button><button class="secondary" id="resetSentence" type="button">RESET</button></div>
+            <div class="feedback hidden" id="sentenceFeedback"></div>
+          </div>
+          <div class="submodule essay-box">
+            <div class="submodule-head"><span>PART 2 · WORKPLACE WRITING</span><strong>1 min prepare · 20 min write</strong></div>
+            <div class="prompt-card">
+              <span class="mini-label">PRACTICE PROMPT</span>
+              <h3>Your team is considering introducing two remote-working days per week.</h3>
+              <p>Write a short response for your manager. Include:</p>
+              <ul><li>one advantage for employees</li><li>one possible difficulty for the team</li><li>one practical recommendation</li></ul>
+            </div>
+            <div class="essay-tools">
+              <div class="plan-grid coach-only">
+                <label>POINT 1<input type="text" id="plan1" placeholder="Advantage…"></label>
+                <label>POINT 2<input type="text" id="plan2" placeholder="Difficulty…"></label>
+                <label>POINT 3<input type="text" id="plan3" placeholder="Recommendation…"></label>
+              </div>
+              <textarea id="essayText" rows="9" placeholder="Write your response here…"></textarea>
+              <div class="counter-row"><span id="wordCount">0 words</span><span class="target-note">B1/B2 practice target: 100+ words</span></div>
+              <div class="inline-actions">
+                <button class="hint-btn coach-only" type="button" data-hint="essayHint">STRUCTURE HINT</button>
+                <button class="secondary coach-only" type="button" data-target-model="modelB1">B1 MODEL</button>
+                <button class="secondary coach-only" type="button" data-target-model="modelB2">B2 MODEL</button>
+              </div>
+              <div class="hint hidden" id="essayHint"><strong>4-block plan:</strong> opinion → advantage → difficulty → recommendation + reason.</div>
+              <div class="model-answer hidden" id="modelB1"><strong>B1 model:</strong> I think two remote-working days could be a good option for our team. First, employees could save commuting time and have more flexibility. However, communication may be more difficult when several people are working from home on different days. I recommend choosing the same two remote days for most of the team and keeping at least one full team day in the office. We should also use a shared calendar and short online meetings to keep everyone informed. This system could improve flexibility without making teamwork more complicated.</div>
+              <div class="model-answer hidden" id="modelB2"><strong>B2 model:</strong> Introducing two remote-working days per week could improve both flexibility and concentration, particularly for tasks that require uninterrupted focus. The main risk is that information may become fragmented if team members are rarely present at the same time. I would therefore recommend establishing common remote-working days, while keeping one fixed in-office collaboration day. In addition, clear response-time expectations and a shared project dashboard would help prevent communication gaps. A short trial period of six weeks would allow the company to evaluate productivity and employee feedback before making the arrangement permanent.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="lesson-section" id="speaking" data-section-id="speaking">
+          <div class="section-head"><div><span class="step-label">07 · SPEAKING TASTER · 12 MIN</span><h2>The only empty answer is a lost opportunity.</h2></div><div class="timer-chip"><span>RESPONSE</span><strong id="speakTimer">01:00</strong></div></div>
+          <div class="speaking-parts">
+            <article class="speak-card">
+              <div class="part-number">1</div><div><span class="mini-label">PRE-SPEAKING · REJOINDER</span><h3>Choose the best response.</h3></div>
+              <div class="question-block" data-question="speak1">
+                <p><strong>“I’m afraid the supplier won’t be able to deliver before Friday.”</strong></p>
+                <label><input type="radio" name="speak1" value="a"> Yes, Friday is a supplier.</label>
+                <label><input type="radio" name="speak1" value="b" data-correct="true"> Thanks for letting me know. I’ll update the schedule.</label>
+                <label><input type="radio" name="speak1" value="c"> I delivered the supplier yesterday.</label>
+                <button class="check-btn" type="button" data-check="speak1">CHECK</button><div class="feedback hidden" id="speak1-feedback"></div>
+              </div>
+            </article>
+
+            <article class="speak-card">
+              <div class="part-number">2</div><div><span class="mini-label">READ ALOUD + DISCUSS</span><h3>Read naturally, then answer.</h3></div>
+              <div class="read-aloud-box">Our customer support team is introducing a new ticket system next month. The aim is to make requests easier to track and reduce response times. All staff will receive a short training session before the system goes live.</div>
+              <div class="speak-prompts"><p><strong>Q1.</strong> What is the main purpose of the new system?</p><p><strong>Q2.</strong> In your opinion, what makes a new workplace system easy to adopt?</p></div>
+              <div class="record-tools">
+                <button class="primary record-btn" type="button" data-record="readDiscuss">● RECORD 60s</button>
+                <button class="secondary stop-record" type="button" data-stop="readDiscuss" disabled>■ STOP</button>
+                <audio id="readDiscussPlayback" controls class="hidden"></audio>
+              </div>
+              <div class="inline-actions coach-only"><button class="secondary" type="button" data-target-model="speakB1">B1 MODEL</button><button class="secondary" type="button" data-target-model="speakB2">B2 MODEL</button></div>
+              <div class="model-answer hidden" id="speakB1"><strong>B1 model:</strong> The main purpose is to track customer requests more easily and answer faster. In my opinion, a new system is easier to use when the training is clear and people can practise before using it with customers. It also helps to have simple instructions and someone to contact if there is a problem.</div>
+              <div class="model-answer hidden" id="speakB2"><strong>B2 model:</strong> The new system is intended to improve visibility over customer requests and shorten response times. I think adoption is much smoother when employees understand why the change is being introduced, not just how the tool works. Short practical training, realistic examples and accessible support during the first few weeks can make a significant difference.</div>
+            </article>
+
+            <article class="speak-card full">
+              <div class="part-number">3</div><div><span class="mini-label">DISCUSS TOPICS</span><h3>Build a 60-second answer, not a one-sentence answer.</h3></div>
+              <div class="prompt-selector">
+                <button class="prompt-tab active" data-prompt="0" type="button">PROMPT 1</button>
+                <button class="prompt-tab" data-prompt="1" type="button">PROMPT 2</button>
+                <button class="prompt-tab" data-prompt="2" type="button">PROMPT 3</button>
+                <button class="prompt-tab" data-prompt="3" type="button">PROMPT 4</button>
+              </div>
+              <div class="open-prompt" id="openPrompt">Describe a typical busy day in your work or in a workplace you know. What makes it busy, and how do people organize priorities?</div>
+              <div class="speaking-frame coach-only"><span>ANSWER FRAME</span><p><b>Situation</b> → <b>2 details</b> → <b>example</b> → <b>opinion/result</b></p></div>
+              <div class="record-tools"><button class="primary record-btn" type="button" data-record="openTopic">● RECORD 60s</button><button class="secondary stop-record" type="button" data-stop="openTopic" disabled>■ STOP</button><audio id="openTopicPlayback" controls class="hidden"></audio></div>
+              <details class="self-check"><summary>After speaking: quick self-check</summary><div class="rubric-grid"><label><input type="checkbox"> I answered the prompt.</label><label><input type="checkbox"> I added details.</label><label><input type="checkbox"> I used connectors.</label><label><input type="checkbox"> I kept speaking.</label><label><input type="checkbox"> I spoke clearly, not too fast.</label><label><input type="checkbox"> I corrected myself and continued.</label></div></details>
+            </article>
+          </div>
+        </section>
+
+        <section class="lesson-section" id="vocab" data-section-id="speaking">
+          <div class="section-head"><div><span class="step-label">VTEST SURVIVAL VOCABULARY</span><h2>Know the instruction words before the clock starts.</h2></div></div>
+          <div class="vocab-toolbar" role="tablist">
+            <button class="vocab-tab active" data-category="instructions" type="button">Instructions</button>
+            <button class="vocab-tab" data-category="timing" type="button">Timing</button>
+            <button class="vocab-tab" data-category="workplace" type="button">Workplace</button>
+            <button class="vocab-tab" data-category="connectors" type="button">Speaking & writing</button>
+          </div>
+          <div class="vocab-list" id="vocabList"></div>
+        </section>
+
+        <section class="lesson-section final-mission" id="mission" data-section-id="mission">
+          <div class="section-head"><div><span class="step-label">08 · FINAL MISSION · 8–12 MIN</span><h2>Now remove the safety net.</h2></div><div class="status-pill dark">EXAM-FEEL CHALLENGE</div></div>
+          <p class="section-intro">Switch to Exam-feel Mode. Hints, transcripts and model answers disappear. Complete the four mini tasks without checking until the end.</p>
+          <div class="mission-grid">
+            <div class="mission-task"><span>LISTENING</span><p>Play one short recording once and answer the question.</p><button class="secondary" data-scroll="#listening" type="button">GO TO TASK</button></div>
+            <div class="mission-task"><span>READING</span><p>Give yourself three minutes and answer both questions.</p><button class="secondary" data-scroll="#reading" type="button">GO TO TASK</button></div>
+            <div class="mission-task"><span>WRITING</span><p>Write 100+ words using all three bullet points.</p><button class="secondary" data-scroll="#writing" type="button">GO TO TASK</button></div>
+            <div class="mission-task"><span>SPEAKING</span><p>Record one full 60-second workplace response.</p><button class="secondary" data-scroll="#speaking" type="button">GO TO TASK</button></div>
+          </div>
+          <div class="finish-panel">
+            <div><span class="mini-label">THE RULE TO REMEMBER</span><h3>Keep moving. Answer everything. Use the time you are given.</h3><p>Difficulty changing is normal in an adaptive test. Your job is not to feel perfect; your job is to give the clearest English you can at each stage.</p></div>
+            <div class="finish-score"><span>LESSON PROGRESS</span><strong id="finishProgress">0%</strong><small>explored</small></div>
+          </div>
+          <div class="export-row">
+            <button class="primary" id="downloadResults" type="button">DOWNLOAD LESSON SUMMARY</button>
+            <button class="secondary" id="exportProgress" type="button">EXPORT PROGRESS (.JSON)</button>
+          </div>
+        </section>
+
+        <section class="sources-note">
+          <strong>Training accuracy note</strong>
+          <p>Format and test-day information in this lesson is based on the current Burlington VTest Business English product information and Candidate’s Guide, plus the French RS6905 registration. The official test may be updated; candidates should always follow the latest VTest instructions on exam day.</p>
+          <p><a href="https://www.vtest.com/products/business-english/" target="_blank" rel="noopener">Official Business English format</a> · <a href="https://www.vtest.com/prepare-for-vtest/" target="_blank" rel="noopener">Official preparation resources</a> · <a href="https://www.francecompetences.fr/recherche/rs/6905/" target="_blank" rel="noopener">France Compétences RS6905</a></p>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
