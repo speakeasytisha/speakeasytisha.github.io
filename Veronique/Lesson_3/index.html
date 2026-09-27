@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="New York Real Talk: spontaneous English and LILATE preparation.">
+  <title>Véronique · New York Real Talk — Think Fast, Speak Clearly</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="jsWarning">⚠ JavaScript is not loaded. Keep index.html, styles.css, script.js and the assets folder together.</div>
+
+<header class="hero" id="top">
+  <nav class="topbar">
+    <a class="brand" href="#top"><span class="apple">NY</span><span><b>SpeakEasyTisha</b><small>New York Real Talk · Next Step</small></span></a>
+    <div class="navlinks">
+      <button data-scroll="#listening">Listening</button>
+      <button data-scroll="#reformulate">Reformulate</button>
+      <button data-scroll="#circuit">Challenge circuit</button>
+      <button data-scroll="#exam">LILATE sprint</button>
+    </div>
+  </nav>
+  <div class="hero-grid">
+    <div>
+      <p class="kicker">LESS SCRIPT · MORE THINKING ON YOUR FEET</p>
+      <h1>Véronique · New York Real Talk</h1>
+      <p class="tagline">Think fast. Speak clearly. Keep the conversation alive.</p>
+      <p class="lead">The next step is not more tourist phrases. It is learning to understand the essential message, react immediately, explain a problem in your own words, negotiate a solution and continue speaking when you did not prepare the conversation in advance.</p>
+      <div class="hero-actions">
+        <button class="primary gold" data-scroll="#warmup">Start the mission</button>
+        <button class="glass speak" data-text="Today, you will stop relying on prepared scripts. Listen for the essential information, react, clarify, reformulate, and keep the conversation moving.">▶ Hear today’s goal</button>
+      </div>
+      <div class="badges"><span>🎧 Essential listening</span><span>🧠 Reformulation</span><span>🗣 Spontaneous speaking</span><span>🔁 Follow-up questions</span><span>🎯 LILATE transfer</span></div>
+    </div>
+    <aside class="hero-card">
+      <p class="micro">THE NEW SKILL</p>
+      <h2>Do not search for the perfect sentence.</h2>
+      <div class="skill-flow">
+        <span><b>1</b> Catch the key message</span>
+        <span><b>2</b> React naturally</span>
+        <span><b>3</b> Say what you understood</span>
+        <span><b>4</b> Ask / solve / confirm</span>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<main>
+<section class="panel controls">
+  <div><p class="micro">LESSON CONTROLS</p><h2>Choose your training mode</h2></div>
+  <label>Mode<select id="modeSelect"><option value="practice">Practice · support available</option><option value="exam">LILATE · answer first</option></select></label>
+  <label>Audio<select id="speedSelect"><option value=".80">Clear</option><option value=".95" selected>Natural</option><option value="1.10">Fast</option></select></label>
+  <button id="resetBtn" class="danger">Reset</button>
+  <div class="progress-wrap"><div class="progress"><span id="progressBar"></span></div><b id="progressText">0% complete</b></div>
+</section>
+
+<section class="panel" id="warmup">
+  <div class="section-head">
+    <div><p class="section-no">01 · WARM-UP</p><h2>Ten seconds: what is the problem?</h2><p>This is deliberately different from the previous lesson. You are not choosing an attraction or learning a register. You are extracting information and reacting immediately.</p></div>
+    <span class="time">8–10 min</span>
+  </div>
+  <div class="warm-layout">
+    <figure class="local-visual">
+      <img src="assets/nyc_subway_mission.svg" alt="New York subway mission graphic for Times Square">
+      <figcaption>Local lesson visual stored inside the ZIP — it cannot disappear because of an external website.</figcaption>
+    </figure>
+    <div class="warm-task">
+      <p class="micro">LISTEN ONCE</p>
+      <h3>You are at Times Square. The train you planned to take has changed.</h3>
+      <button class="primary speak" data-text="Attention passengers. Uptown 1 trains are running express from 42nd Street to 72nd Street. For local service, take the 2 train to 72nd Street and transfer to a downtown local train.">▶ Play announcement</button>
+      <div class="answer-box">
+        <label>1. What changed?<textarea id="warm1" rows="2" placeholder="Answer in your own words..."></textarea></label>
+        <label>2. What do you need to do?<textarea id="warm2" rows="2" placeholder="Answer in your own words..."></textarea></label>
+        <label>3. What would you ask a person nearby?<textarea id="warm3" rows="2" placeholder="One natural question..."></textarea></label>
+      </div>
+      <button class="hint-btn practice-support" data-hint="warmHint">Hint</button>
+      <div class="hint hidden" id="warmHint">Do not repeat the full announcement. Find: <b>train / direction / change / action</b>.</div>
+      <details class="model practice-support"><summary>Natural model</summary><p>The 1 train is skipping the local stops. I need to take the 2 and change at 72nd Street. I’d ask: “Excuse me, just to check, do I change at 72nd for a local train?”</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="vocabulary">
+  <div class="section-head">
+    <div><p class="section-no">02 · VOCABULARY FOR UNEXPECTED SITUATIONS</p><h2>Words that help you solve the problem</h2><p>Only useful vocabulary for the situations in this lesson. Choose a category.</p></div>
+    <select id="vocabCategory">
+      <option value="transport">🚇 Transport</option>
+      <option value="timing">⏰ Timing</option>
+      <option value="problem">⚠ Problems</option>
+      <option value="solution">🧩 Solutions</option>
+      <option value="clarify">💬 Clarifying</option>
+      <option value="confirm">✅ Confirming</option>
+    </select>
+  </div>
+  <div id="vocabGrid" class="vocab-grid"></div>
+</section>
+
+<section class="panel dark-panel" id="listening">
+  <div class="section-head">
+    <div><p class="section-no light-no">03 · LISTENING FOR ACTION</p><h2>What happened? What do you do next?</h2><p>Each message contains extra words. Your job is to identify the information that changes your action.</p></div>
+    <span class="time dark-time">15 min</span>
+  </div>
+  <div class="listen-tabs" id="listenTabs"></div>
+  <div id="listenStage"></div>
+</section>
+
+<section class="panel" id="reformulate">
+  <div class="section-head">
+    <div><p class="section-no">04 · REFORMULATION</p><h2>When the exact word disappears</h2><p>This is one of the most important next-step skills: explain the idea instead of stopping or translating word by word.</p></div>
+    <span class="time">12 min</span>
+  </div>
+  <div class="reform-tools">
+    <article><b>What I mean is…</b><span>Ce que je veux dire, c’est…</span></article>
+    <article><b>It’s the thing you use to…</b><span>C’est la chose qu’on utilise pour…</span></article>
+    <article><b>It’s a place where…</b><span>C’est un endroit où…</span></article>
+    <article><b>I don’t know the exact word, but…</b><span>Je ne connais pas le mot exact, mais…</span></article>
+    <article><b>Let me put it another way.</b><span>Je vais le dire autrement.</span></article>
+    <article><b>Basically…</b><span>En gros / essentiellement…</span></article>
+  </div>
+  <div id="reformQuiz" class="quiz-stack"></div>
+</section>
+
+<section class="panel" id="interaction">
+  <div class="section-head">
+    <div><p class="section-no">05 · INTERACTION SKILL</p><h2>Do not answer and stop</h2><p>LILATE-style communication requires interaction. Use the “Answer + Detail + Return” technique.</p></div>
+    <span class="time">10 min</span>
+  </div>
+  <div class="adr-grid">
+    <article><span>1</span><h3>ANSWER</h3><p>Give the direct answer first.</p><b>“Yes, I can come back at four.”</b></article>
+    <article><span>2</span><h3>DETAIL</h3><p>Add one useful piece of information.</p><b>“We can leave our bags here until then.”</b></article>
+    <article><span>3</span><h3>RETURN</h3><p>Ask a question or confirm.</p><b>“Do you think the room will definitely be ready by four?”</b></article>
+  </div>
+  <div id="followQuiz" class="quiz-stack"></div>
+</section>
+
+<section class="panel circuit-panel" id="circuit">
+  <div class="section-head">
+    <div><p class="section-no">06 · NYC CHALLENGE CIRCUIT</p><h2>Six conversations you cannot script in advance</h2><p>Each card gives you new information. Listen, identify the problem and respond.</p></div>
+    <span class="time">20 min</span>
+  </div>
+  <div class="scenario-tabs" id="scenarioTabs"></div>
+  <div id="scenarioStage"></div>
+</section>
+
+<section class="panel" id="grammar">
+  <div class="section-head">
+    <div><p class="section-no">07 · SPEAK MORE CLEARLY</p><h2>Connect your ideas instead of making isolated sentences</h2><p>No new complicated grammar. Use four connectors to make your answer sound structured and exam-ready.</p></div>
+    <span class="time">10 min</span>
+  </div>
+  <div class="connector-grid">
+    <article><b>because</b><span>parce que</span><p>Give a reason.</p><small>I’d take the subway <b>because</b> it’s faster.</small></article>
+    <article><b>so</b><span>donc / alors</span><p>Give a result.</p><small>The room isn’t ready, <b>so</b> we’ll leave the bags.</small></article>
+    <article><b>but / however</b><span>mais / cependant</span><p>Show contrast.</p><small>The taxi is easier, <b>but</b> it’s more expensive.</small></article>
+    <article><b>if</b><span>si</span><p>Give a condition / solution.</p><small><b>If</b> we’re late, I’ll call the restaurant.</small></article>
+  </div>
+  <div id="connectorQuiz" class="quiz-stack"></div>
+</section>
+
+<section class="panel writing-panel" id="writing">
+  <div class="section-head">
+    <div><p class="section-no">08 · SHORT WRITING</p><h2>Write the message you would actually send</h2><p>Short, clear and useful. No essay language.</p></div>
+    <span class="time">10 min</span>
+  </div>
+  <div class="two-col">
+    <article class="task-card">
+      <p class="micro">MESSAGE A · RESTAURANT</p><h3>You are going to be 20 minutes late.</h3>
+      <p>Apologize briefly, give the new arrival time and ask whether they can keep the table.</p>
+      <textarea id="writeA" rows="6"></textarea>
+      <button class="hint-btn practice-support" data-hint="hintA">Hint</button>
+      <div class="hint hidden" id="hintA">Opening → reason → new time → request → thanks.</div>
+      <details class="model practice-support"><summary>Natural model</summary><p>Hi, I’m sorry, but we’re running about 20 minutes late because of the subway. We should arrive around 7:50. Would it be possible to keep our table? Thanks very much.</p></details>
+    </article>
+    <article class="task-card">
+      <p class="micro">MESSAGE B · HOTEL</p><h3>Your arrival time has changed.</h3>
+      <p>Explain that you will arrive after 10 p.m. and ask whether late check-in is possible.</p>
+      <textarea id="writeB" rows="6"></textarea>
+      <button class="hint-btn practice-support" data-hint="hintB">Hint</button>
+      <div class="hint hidden" id="hintB">Reservation → change → expected arrival → question.</div>
+      <details class="model practice-support"><summary>Natural model</summary><p>Hello, I have a reservation for tonight, but my arrival time has changed. I now expect to arrive shortly after 10 p.m. Is late check-in possible, and is there anything I need to do in advance?</p></details>
+    </article>
+  </div>
+</section>
+
+<section class="panel exam-panel" id="exam">
+  <div class="section-head">
+    <div><p class="section-no exam-no">09 · LILATE SPRINT</p><h2>Four skills in increasing difficulty</h2><p>Practice mode gives support. LILATE mode hides it until you have answered.</p></div>
+    <span class="time gold-time">20 min</span>
+  </div>
+  <div class="exam-grid">
+    <article>
+      <p class="micro">SPRINT 1 · 30 SEC</p><h3>Summarize</h3>
+      <button class="secondary exam-audio" data-text="Your reservation is confirmed, but the restaurant has moved your table from the terrace to the dining room because of the weather. If you prefer, you can move the reservation to tomorrow evening.">▶ Listen</button>
+      <p>Give the essential message in your own words.</p>
+      <textarea id="sprint1" rows="4"></textarea>
+      <details class="model practice-support"><summary>Model</summary><p>The reservation is still confirmed, but the table is now inside because of the weather. The other option is to change the reservation to tomorrow evening.</p></details>
+    </article>
+    <article>
+      <p class="micro">SPRINT 2 · 45 SEC</p><h3>React and solve</h3>
+      <p>Your hotel says your room will not be ready until 5 p.m. You have bags and a 2 p.m. museum ticket.</p>
+      <textarea id="sprint2" rows="4"></textarea>
+      <details class="model practice-support"><summary>Model</summary><p>That’s okay. Could we leave our bags at the hotel and come back after the museum? We have tickets for two, so we need to leave soon. Is there anything we need to do before we go?</p></details>
+    </article>
+    <article>
+      <p class="micro">SPRINT 3 · 60 SEC</p><h3>Compare quickly</h3>
+      <p>You can take a taxi for $45 and arrive in 20 minutes, or take the subway for much less and arrive in about 35 minutes. Explain your choice.</p>
+      <textarea id="sprint3" rows="4"></textarea>
+      <details class="model practice-support"><summary>Model</summary><p>I’d take the subway unless we were in a hurry. It takes about 15 minutes longer, but it costs much less. If we had heavy luggage or an important reservation, I’d probably choose the taxi instead.</p></details>
+    </article>
+    <article>
+      <p class="micro">SPRINT 4 · 90 SEC</p><h3>Speak without a script</h3>
+      <p>Describe a day when two things do not go according to plan. Explain the problems, what you do, and how you keep the day enjoyable.</p>
+      <div class="timer-row"><span id="timer">01:30</span><button id="timerStart" class="primary">Start</button><button id="timerReset" class="secondary">Reset</button></div>
+      <textarea id="sprint4" rows="4" placeholder="Keywords only..."></textarea>
+    </article>
+  </div>
+</section>
+
+<section class="panel final-panel" id="final">
+  <div class="section-head">
+    <div><p class="section-no">10 · FINAL MISSION</p><h2>One New York day. Three surprises. Keep going.</h2><p>This is the real progression: understand, adapt and continue—not recite.</p></div>
+    <span class="time">10 min</span>
+  </div>
+  <div class="final-route">
+    <article><b>08:30</b><span>🚇 Your planned train is not stopping at your station.</span></article>
+    <article><b>13:00</b><span>🍽 The restaurant cannot find your booking.</span></article>
+    <article><b>18:30</b><span>🎭 You realize the show starts 30 minutes earlier than you thought.</span></article>
+  </div>
+  <p><b>Your task:</b> Talk through the whole day. For each surprise: explain what happened, react, find a solution and confirm the next step. Use <i>because, so, but/however</i> and <i>if</i>.</p>
+  <textarea id="finalAnswer" rows="8"></textarea>
+  <label class="score-line">Final oral score / 10 <input id="finalScore" type="number" min="0" max="10"></label>
+  <details class="model practice-support"><summary>Structured model</summary><p>First, the train wasn’t stopping at the station we needed, so I asked which local train we should take instead. At lunchtime, the restaurant couldn’t find the reservation, but I had the confirmation email, so I showed it to them and asked whether they could check the booking number. Later, I realized the show started earlier than I thought. If there wasn’t enough time for dinner, I’d have something quick nearby and go straight to the theatre. The important thing would be to stay calm and keep asking clear questions.</p></details>
+</section>
+
+<section class="panel evaluation">
+  <div class="section-head"><div><p class="section-no">END · QUALIOPI</p><h2>What can you now do without a script?</h2></div></div>
+  <div class="eval-grid">
+    <label>I can identify the important information in a spoken message.<select class="eval"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select></label>
+    <label>I can reformulate when I do not know a word.<select class="eval"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select></label>
+    <label>I can react and ask a follow-up question.<select class="eval"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select></label>
+    <label>I can explain a problem and suggest a solution.<select class="eval"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select></label>
+    <label>I can summarize information instead of translating word for word.<select class="eval"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select></label>
+    <label>I can speak for 60–90 seconds with a clear structure.<select class="eval"><option value="">Choose…</option><option>Not yet</option><option>With help</option><option>Almost independently</option><option>Independently</option></select></label>
+  </div>
+  <div class="reflection">
+    <label>What felt easier today?<textarea id="easier" rows="3"></textarea></label>
+    <label>What should you practise again?<textarea id="again" rows="3"></textarea></label>
+  </div>
+  <div class="report-actions">
+    <button id="downloadToolkit" class="secondary">⬇ Download survival toolkit</button>
+    <button id="downloadReport" class="primary">⬇ Download results</button>
+    <button id="printBtn" class="secondary">Print / PDF</button>
+  </div>
+</section>
+</main>
+
+<footer><b>SpeakEasyTisha · New York Real Talk</b><span>Spontaneous English · Listening · Interaction · LILATE transfer</span><a href="#top">Back to top ↑</a></footer>
+<script src="script.js"></script>
+</body>
+</html>
