@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Antoine · Experience Storytelling Career Sprint · Past Simple and Present Perfect transfer" />
+  <title>Antoine · Experience Storytelling Career Sprint</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="topline">
+      <div class="brand-lockup">SpeakEasy Tisha <span>Career English Lab</span></div>
+      <div class="lesson-badge">VTest Pathway · Story Transfer</div>
+    </div>
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <div class="eyebrow">ANTOINE · CAREER SPRINT · AUSTRALIA</div>
+        <h1>Tell the past.<br><span>Connect it to now.</span></h1>
+        <p class="subtitle">Turn the grammar you have learned into clear stories about your experience, your career, your challenges and the journey you are preparing for now.</p>
+        <div class="hero-pills"><span>🧭 Real stories</span><span>⚙️ Career experience</span><span>🏃 Challenges & sport</span><span>🇦🇺 Australia transfer</span><span>🎯 VTest speaking</span></div>
+      </div>
+      <aside class="hero-route" aria-label="Story route">
+        <div class="route-label">Your route</div>
+        <div class="route-step"><div class="route-dot">01</div><div><strong>Experience</strong><span>Introduce it with the right tense</span></div></div>
+        <div class="route-step"><div class="route-dot">02</div><div><strong>Story</strong><span>Move into specific past events</span></div></div>
+        <div class="route-step active"><div class="route-dot">03</div><div><strong>Impact now</strong><span>Explain what it has changed or taught you</span></div></div>
+      </aside>
+    </div>
+    <div class="hero-grid">
+      <div><strong>60-min core</strong><span>Activation → guided stories → independent transfer</span></div>
+      <div><strong>12+ story missions</strong><span>Two-level models for every open task</span></div>
+      <div><strong>B2 direction</strong><span>Accuracy + detail + natural chronology</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toolbar" aria-label="Lesson controls">
+  <div class="control-group"><label for="modeSelect">Lesson mode</label><select id="modeSelect"><option value="guided" selected>🧭 Guided practice</option><option value="challenge">🎯 Challenge mode</option></select></div>
+  <div class="control-group"><label for="accentSelect">Listening accent</label><select id="accentSelect"><option value="en-AU" selected>🇦🇺 Australian</option><option value="en-GB">🇬🇧 British</option><option value="en-US">🇺🇸 American</option></select></div>
+  <button class="btn ghost" id="toggleFrench" type="button">🇫🇷 French help: OFF</button>
+  <button class="btn ghost" id="resetLesson" type="button">↻ Reset</button>
+  <button class="btn primary" id="downloadResults" type="button">⇩ Download results</button>
+</nav>
+<div class="progress-wrap"><div class="progress-label"><span>Lesson progress</span><span id="progressText">0%</span></div><div class="progress-track"><div id="progressBar"></div></div></div>
+
+<main>
+<section class="card route-card-section" data-track="section" id="route">
+  <div class="section-kicker">00 · TODAY'S ROUTE · USE THE GRAMMAR</div>
+  <h2>From tense choice to real storytelling.</h2>
+  <p>You already know the rules. Today, the goal is to use them while you speak and write about real experiences. Start controlled, then remove the support little by little.</p>
+  <div class="lesson-route-grid transfer-route">
+    <article><span>01</span><strong>Reactivate</strong><small>18 fast tense decisions</small></article>
+    <article><span>02</span><strong>Story language</strong><small>Vocabulary + chronology</small></article>
+    <article><span>03</span><strong>Build an event</strong><small>Past Simple storytelling</small></article>
+    <article><span>04</span><strong>Build an experience</strong><small>Perfect → Past → Perfect</small></article>
+    <article><span>05</span><strong>Tell real stories</strong><small>Career · studies · sport · travel</small></article>
+    <article><span>06</span><strong>Perform</strong><small>VTest-style speaking + writing</small></article>
+  </div>
+  <div class="coach french-help"><strong>Aide FR :</strong> Le schéma essentiel du jour : <em>expérience générale = Present Perfect → moment précis = Past Simple → conséquence actuelle = Present Perfect</em>.</div>
+  <button class="btn done-btn" type="button">✓ Mark complete</button>
+</section>
+
+<section class="card practice-card" data-track="section" id="activation">
+  <div class="section-kicker">01 · 0–8 MIN · FAST ACTIVATION</div>
+  <h2>Choose the tense before you tell the story.</h2>
+  <p>18 one-by-one decisions. Use the time expression and the meaning — not instinct alone. Immediate feedback and a hint are available for every question.</p>
+  <div class="transfer-formula"><span>PRESENT PERFECT</span><b>experience / now</b><i>→</i><span>PAST SIMPLE</span><b>specific finished story</b><i>→</i><span>PRESENT PERFECT</span><b>impact now</b></div>
+  <div id="activationDeck"></div>
+  <button class="btn done-btn" type="button">✓ Mark complete</button>
+</section>
+
+<section class="card" data-track="section" id="vocabulary">
+  <div class="section-kicker">02 · STORY TOOLBOX · VOCABULARY</div>
+  <h2>Vocabulary that helps a story move.</h2>
+  <p>Choose a category. Each expression includes French help, a definition, a model sentence and manual audio.</p>
+  <div class="vocab-controls"><label for="vocabCategory">Choose a category</label><select id="vocabCategory"></select></div>
+  <div id="vocabCards" class="vocab-grid"></div>
+  <div class="coach french-help"><strong>Aide FR :</strong> Pour chaque expression, dites l'exemple à voix haute puis adaptez-le à une expérience réelle.</div>
+  <button class="btn done-btn" type="button">✓ Mark complete</button>
+</section>
+
+<section class="card practice-card" data-track="section" id="pastStory">
+  <div class="section-kicker">03 · 8–18 MIN · BUILD A FINISHED EVENT</div>
+  <h2>Past Simple = the camera moves through the story.</h2>
+  <p>Use a clear sequence: <strong>when → context → action → result → reflection</strong>. These exercises train chronology, not isolated verb forms.</p>
+  <div class="story-map"><article><span>1</span><strong>WHEN</strong><small>Last year / in 2024 / when...</small></article><article><span>2</span><strong>CONTEXT</strong><small>What was happening?</small></article><article><span>3</span><strong>ACTION</strong><small>What did you do?</small></article><article><span>4</span><strong>RESULT</strong><small>What happened?</small></article><article><span>5</span><strong>REFLECTION</strong><small>What did you learn?</small></article></div>
+  <div class="bank-head"><div><span>STORY BUILDER</span><h3>18 chronology exercises</h3></div><small>Choose the sentence that moves the story forward most naturally.</small></div>
+  <div id="pastStoryDeck"></div>
+  <button class="btn done-btn" type="button">✓ Mark complete</button>
+</section>
+
+<section class="card practice-card" data-track="section" id="experienceBridge">
+  <div class="section-kicker">04 · 18–28 MIN · EXPERIENCE → STORY → NOW</div>
+  <h2>The switch that makes your English sound natural.</h2>
+  <p>Introduce experience with the Present Perfect. Once you give a finished time or a specific example, switch to the Past Simple. Return to the Present Perfect when you connect the experience to now.</p>
+  <div class="experience-pattern">
+    <article><span>1</span><h3>Experience</h3><p><b>I’ve worked</b> with several teams.</p></article>
+    <div class="pattern-arrow">→</div>
+    <article><span>2</span><h3>Specific example</h3><p>In my previous role, I <b>worked</b> with...</p></article>
+    <div class="pattern-arrow">→</div>
+    <article><span>3</span><h3>Impact now</h3><p>It <b>has taught</b> me to...</p></article>
+  </div>
+  <div class="bank-head"><div><span>BRIDGE PRACTICE</span><h3>20 mixed-but-guided exercises</h3></div><small>Every explanation tells you why the timeline changes.</small></div>
+  <div id="bridgeDeck"></div>
+  <button class="btn done-btn" type="button">✓ Mark complete</button>
+</section>
+
+<section class="card story-missions" data-track="section" id="missions">
+  <div class="section-kicker">05 · 28–43 MIN · REAL STORY MISSIONS</div>
+  <h2>Tell experiences that belong to your real life.</h2>
+  <p>Select a mission. Speak first from the prompt. Use the model only afterward. Every mission includes a <strong>Strong B1</strong> and a <strong>B2 / VTest target</strong> model.</p>
+  <div class="mission-selector"><label for="missionSelect">Choose a story mission</label><select id="missionSelect"></select></div>
+  <div id="missionPanel"></div>
+  <button class="btn done-btn" type="button">✓ Mark complete</button>
+</section>
+
+<section class="card experience-interview" data-track="section" id="experienceInterview">
+  <div class="section-kicker">06 · 43–51 MIN · EXPERIENCE INTERVIEW</div>
+  <h2>“Have you ever…?” → answer with a real example.</h2>
+  <p>This is the ideal transfer pattern for interviews and VTest speaking: answer the experience question, move into one concrete past event, then explain what it has taught you.</p>
+  <div class="interview-rules"><span>1 · Answer</span><b>Yes, I have / No, I haven't...</b><span>2 · Prove it</span><b>A specific Past Simple story</b><span>3 · Connect it</span><b>What it has changed / taught you</b></div>
+  <div id="interviewPanel"></div>
+  <div class="button-row"><button class="btn primary" id="nextInterview" type="button">Next experience question</button><button class="btn ghost" id="listenInterview" type="button">🔊 Listen</button></div>
+  <button class="btn done-btn" type="button">✓ Mark complete</button>
+</section>
+
+<section class="card listening-transfer" data-track="section" id="listening">
+  <div class="section-kicker">07 · LISTEN → NOTICE → RETELL</div>
+  <h2>Hear the tense switch, then retell the story.</h2>
+  <p>Listen without the transcript first. Answer the comprehension question, then use the retell prompt. The transcript is optional.</p>
+  <div id="listeningPanel"></div>
+  <div class="button-row"><button class="btn primary" id="nextListening" type="button">Next story</button></div>
+  <button class="btn done-btn" type="button">✓ Mark complete</button>
+</section>
+
+<section class="card practice-card" data-track="section" id="storyUpgrade">
+  <div class="section-kicker">08 · STORY UPGRADE · B1 → B2</div>
+  <h2>Make the chronology clearer without making it complicated.</h2>
+  <p>Use connectors and precise time phrases so your listener always knows what happened first, what changed, and what matters now.</p>
+  <div class="upgrade-strip"><span>first</span><span>at the time</span><span>after that</span><span>eventually</span><span>since then</span><span>as a result</span><span>so far</span></div>
+  <div id="upgradeDeck"></div>
+  <button class="btn done-btn" type="button">✓ Mark complete</button>
+</section>
+
+<section class="card vtest-studio" data-track="section" id="vtestStudio">
+  <div class="section-kicker">09 · 51–58 MIN · VTEST SPEAKING STUDIO</div>
+  <h2>90 seconds. One experience. Clear timeline.</h2>
+  <p>Choose a prompt, prepare with keywords only, then speak. In Challenge mode, the support is reduced. Every prompt has two reference models.</p>
+  <div class="mission-selector"><label for="vtestPromptSelect">Choose a speaking prompt</label><select id="vtestPromptSelect"></select></div>
+  <div id="vtestPromptPanel"></div>
+  <button class="btn done-btn" type="button">✓ Mark complete</button>
+</section>
+
+<section class="card writing-studio" data-track="section" id="writing">
+  <div class="section-kicker">10 · WRITING TRANSFER · 120–150 WORDS</div>
+  <h2>Write a story with a visible tense switch.</h2>
+  <div class="mission-selector"><label for="writingPromptSelect">Choose a writing prompt</label><select id="writingPromptSelect"></select></div>
+  <div id="writingPromptText" class="writing-prompt"></div>
+  <div class="writing-checklist"><label><input type="checkbox"> Present Perfect introduction</label><label><input type="checkbox"> 4+ Past Simple verbs</label><label><input type="checkbox"> clear finished-time marker</label><label><input type="checkbox"> return to Present Perfect / now</label><label><input type="checkbox"> 3+ connectors</label></div>
+  <textarea id="writingAnswer" maxlength="1800" placeholder="Write your answer here..."></textarea>
+  <div class="writing-meta"><span id="wordCount">0 words</span><button class="btn ghost" id="writingHint" type="button">Hint</button><button class="btn primary" id="checkWriting" type="button">Check structure</button><button class="btn secondary" id="showWritingModels" type="button">Show two models</button></div>
+  <div id="writingFeedback" class="feedback neutral" aria-live="polite"></div><div id="writingModels" class="models hidden"></div>
+  <button class="btn done-btn" type="button">✓ Mark complete</button>
+</section>
+
+<section class="card final-mission" data-track="section" id="finalMission">
+  <div class="section-kicker">11 · FINAL MISSION · 2 MINUTES</div>
+  <h2>One story that shows where you have come from and where you are now.</h2>
+  <p>Tell one meaningful past event or experience. Use a specific Past Simple story, then connect it to what you have learned, changed or prepared since.</p>
+  <div class="final-framework"><span>EXPERIENCE</span><i>→</i><span>SPECIFIC EVENT</span><i>→</i><span>RESULT</span><i>→</i><span>IMPACT NOW</span><i>→</i><span>NEXT STEP</span></div>
+  <div class="timer-box final-timer" data-seconds="120"><span class="timer-display">02:00</span><div><button class="btn primary timer-start" type="button">▶ Start</button><button class="btn ghost timer-reset" type="button">↻ Reset</button></div></div>
+  <textarea id="finalNotes" placeholder="Keywords only: when / what happened / what you did / result / what it has taught you / connection to Australia..."></textarea>
+  <button class="btn secondary model-toggle" data-model="finalModels" type="button">Show two models</button>
+  <div id="finalModels" class="models hidden">
+    <article><h4>Strong B1</h4><p>I’ve had several experiences that have helped me understand what I want next. One important example was the end of my previous role. I worked in process analysis for six years, and my position ended after a reorganisation. At first, the change was unexpected, but I decided to use the time positively. Since then, I’ve improved my English, prepared more seriously for Australia and thought about the type of role I want. The experience has made me more flexible and more confident about making a change.</p><button class="listen-chip" type="button" data-speak="I’ve had several experiences that have helped me understand what I want next. One important example was the end of my previous role. I worked in process analysis for six years, and my position ended after a reorganisation. At first, the change was unexpected, but I decided to use the time positively. Since then, I’ve improved my English, prepared more seriously for Australia and thought about the type of role I want. The experience has made me more flexible and more confident about making a change.">🔊</button></article>
+    <article><h4>B2 / VTest target</h4><p>Several experiences have shaped the way I’m approaching my next step, but one of the most significant was the end of my previous role. I spent six years in process analysis before my position ended as part of a wider reorganisation. Rather than rushing into another role, I chose to use the transition productively. Since then, I’ve strengthened my English, clarified the value I can bring to a team and prepared more actively for opportunities in Australia. The experience has taught me that an unexpected change can also create space for a more deliberate next move.</p><button class="listen-chip" type="button" data-speak="Several experiences have shaped the way I’m approaching my next step, but one of the most significant was the end of my previous role. I spent six years in process analysis before my position ended as part of a wider reorganisation. Rather than rushing into another role, I chose to use the transition productively. Since then, I’ve strengthened my English, clarified the value I can bring to a team and prepared more actively for opportunities in Australia. The experience has taught me that an unexpected change can also create space for a more deliberate next move.">🔊</button></article>
+  </div>
+  <button class="btn done-btn" type="button">✓ Mark complete</button>
+</section>
+
+<section class="card reflection-card" data-track="section" id="reflection">
+  <div class="section-kicker">12 · EXIT CHECK</div><h2>What can you now do with the two tenses?</h2>
+  <div class="exit-grid"><label>I use Present Perfect when...<textarea id="exitPerfect" placeholder="Your rule in your own words..."></textarea></label><label>I switch to Past Simple when...<textarea id="exitPast" placeholder="Your rule in your own words..."></textarea></label><label>My storytelling target next time...<textarea id="exitTarget" placeholder="One thing to keep improving..."></textarea></label></div>
+  <div class="final-result"><span>Interactive accuracy</span><strong id="overallScore">0 / 0</strong></div>
+  <button class="btn done-btn" type="button">✓ Mark complete</button>
+</section>
+
+<details class="card teacher-admin" id="teacherAdmin"><summary>🔐 Teacher / Admin · Qualiopi & spreadsheet copy-paste</summary><div class="teacher-inner">
+  <div class="section-kicker">ADMIN · NOT PART OF LEARNER PRACTICE</div><h2>Session follow-up — ready to paste</h2><p>Automatic exercise results are tracked below. Oral and writing tasks can be assessed manually, then copied directly into the centre spreadsheet.</p>
+  <div class="admin-meta"><label>Session no.<input id="adminSession" type="text" placeholder="e.g. 8"></label><label>Duration<input id="adminDuration" type="text" value="1h"></label><label>Hours remaining<input id="adminRemaining" type="text" placeholder="enter remaining hours"></label><label>Date<input id="adminDate" type="date"></label></div>
+  <div class="table-wrap"><table class="evaluation-table"><thead><tr><th>Objectif pédagogique</th><th>Support / sujet</th><th>Mode d’évaluation</th><th>Score / validation</th><th>Résultat</th></tr></thead><tbody id="evaluationRows"></tbody></table></div>
+  <div class="manual-grid">
+    <label>Oral — real story mission<select data-manual-status="oral-story"><option value="not-started">Non commencé</option><option value="progress">Objectif en cours d’acquisition</option><option value="achieved">Objectif atteint</option><option value="not-achieved">Objectif non atteint</option></select><textarea data-manual-comment="oral-story" rows="3" placeholder="Chronology, tense switch, connectors, fluency..."></textarea></label>
+    <label>Oral — VTest speaking<select data-manual-status="oral-vtest"><option value="not-started">Non commencé</option><option value="progress">Objectif en cours d’acquisition</option><option value="achieved">Objectif atteint</option><option value="not-achieved">Objectif non atteint</option></select><textarea data-manual-comment="oral-vtest" rows="3" placeholder="Spontaneity, structure, accuracy, development..."></textarea></label>
+    <label>Written production<select data-manual-status="writing"><option value="not-started">Non commencé</option><option value="progress">Objectif en cours d’acquisition</option><option value="achieved">Objectif atteint</option><option value="not-achieved">Objectif non atteint</option></select><textarea data-manual-comment="writing" rows="3" placeholder="Tense coherence, connectors, structure, vocabulary..."></textarea></label>
+  </div>
+  <div class="admin-copy-grid"><label>Objectifs de la séance<textarea id="adminObjectives" rows="5"></textarea><button class="copy-btn" data-copy="adminObjectives" type="button">Copy objectives</button></label><label>Contenu / sujets abordés<textarea id="adminContent" rows="5"></textarea><button class="copy-btn" data-copy="adminContent" type="button">Copy content</button></label><label>Méthodes / activités pédagogiques<textarea id="adminMethods" rows="5"></textarea><button class="copy-btn" data-copy="adminMethods" type="button">Copy methods</button></label><label>Évaluation des acquis<textarea id="adminEvaluation" rows="5"></textarea><button class="copy-btn" data-copy="adminEvaluation" type="button">Copy evaluation</button></label><label>Ressource pédagogique<textarea id="adminResource" rows="3"></textarea><button class="copy-btn" data-copy="adminResource" type="button">Copy resource</button></label></div>
+  <div class="admin-actions"><button class="btn primary" id="refreshAdmin" type="button">↻ Refresh from lesson results</button><button class="btn secondary" id="copySpreadsheetRow" type="button">📋 Copy spreadsheet row</button><button class="btn ghost" id="copyAdminSummary" type="button">📋 Copy full admin summary</button></div><div id="copyStatus" class="copy-status" aria-live="polite"></div><p class="admin-note">Spreadsheet row: Session · Duration · Hours remaining · Date · Objectives · Content · Methods · Evaluation · Resource.</p>
+</div></details>
+</main>
+<footer><div><strong>SpeakEasyTisha · Career English Lab</strong><p>Experience → specific story → impact now → confident next step</p></div></footer>
+<script src="script.js"></script>
+</body>
+</html>
