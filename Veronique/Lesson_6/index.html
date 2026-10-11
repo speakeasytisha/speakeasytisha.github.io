@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Interactive New York hotel English journey: booking, hotel vocabulary, check-in, amenities, problems, phrasal verbs, past simple, present perfect and review writing.">
+<title>Véronique · New York Real Talk — Your Hotel Journey</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="jsWarning" class="js-warning">⚠ JavaScript is not loaded. Keep index.html, styles.css and script.js together.</div>
+
+<header class="hero" id="top">
+  <nav class="topbar">
+    <a class="brand" href="#top"><span class="ny-dot">NY</span><span><b>SpeakEasyTisha</b><small>New York Real Talk · Hotel Journey</small></span></a>
+    <div class="navlinks">
+      <button data-scroll="#book">Book</button>
+      <button data-scroll="#compare">Hotels</button>
+      <button data-scroll="#checkin">Check-in</button>
+      <button data-scroll="#tenses">Tenses</button>
+      <button data-scroll="#admin">Admin</button>
+    </div>
+  </nav>
+
+  <div class="hero-grid">
+    <div>
+      <p class="kicker">FROM BOOKING TO CHECK-OUT · ONE COMPLETE NEW YORK STAY</p>
+      <h1>Véronique · New York Real Talk</h1>
+      <p class="tagline">Your Hotel Journey</p>
+      <p class="lead">Choose a hotel, build your real May trip, write to the hotel, check in, understand the card hold, use the facilities, ask for recommendations, solve room problems, order food, check out, and finally write a review using the grammar you have learned.</p>
+      <div class="hero-actions">
+        <button class="primary gold" data-scroll="#roadmap">See the journey</button>
+        <button class="glass speak" data-text="Today, you will build one complete hotel stay in New York, step by step. You will learn the language before you need to use it, and every grammar point will come back in a real hotel situation.">▶ Hear today’s goal</button>
+      </div>
+      <div class="badges"><span>🗓 Booking</span><span>🏨 Real hotels</span><span>💳 Check-in & payment</span><span>🛎 Problems & service</span><span>📚 Past vs Present Perfect</span><span>⭐ Final review</span></div>
+    </div>
+    <aside class="hero-card">
+      <p class="micro">TODAY'S METHOD</p>
+      <h2>One trip. One story. Visible progress.</h2>
+      <div class="promise-flow">
+        <span><b>1</b> Choose & plan</span>
+        <span><b>2</b> Learn the language</span>
+        <span><b>3</b> Use it in a real situation</span>
+        <span><b>4</b> Recycle it at check-out</span>
+      </div>
+      <p class="reassure">Large grammar exercises are split into groups of five, so you can progress without facing twenty questions at once.</p>
+    </aside>
+  </div>
+
+  <div class="skyline" aria-hidden="true">
+    <svg viewBox="0 0 1200 230"><g fill="rgba(255,255,255,.15)">
+      <rect x="20" y="120" width="85" height="110"/><rect x="120" y="75" width="100" height="155"/><rect x="235" y="100" width="76" height="130"/><rect x="330" y="36" width="115" height="194"/><rect x="462" y="112" width="90" height="118"/><rect x="570" y="70" width="105" height="160"/><rect x="690" y="128" width="95" height="102"/><rect x="805" y="82" width="112" height="148"/><rect x="933" y="105" width="86" height="125"/><rect x="1035" y="60" width="130" height="170"/></g></svg>
+  </div>
+</header>
+
+<main>
+<section class="panel control-panel">
+  <div><p class="micro">LESSON CONTROLS</p><h2>Choose your support</h2></div>
+  <label>Mode<select id="modeSelect"><option value="practice">Practice · hints + models</option><option value="challenge">Challenge · answer first</option></select></label>
+  <label>Audio speed<select id="speedSelect"><option value=".78">Clear</option><option value=".92" selected>Natural</option><option value="1.05">Fast</option></select></label>
+  <button id="resetBtn" class="danger">Reset</button>
+  <div class="progress-wrap"><div class="progress"><span id="progressBar"></span></div><b id="progressText">0% complete</b></div>
+</section>
+
+<section class="panel" id="roadmap">
+  <div class="section-head">
+    <div><p class="section-no">00 · YOUR HOTEL JOURNEY</p><h2>What you will be able to do</h2></div>
+    <span class="time-pill">Step by step</span>
+  </div>
+  <div class="objective-grid">
+    <article><span>01</span><h3>Book</h3><p>Choose dates, room, view, arrival time and what is included.</p></article>
+    <article><span>02</span><h3>Compare</h3><p>Explain why one hotel suits your trip better than another.</p></article>
+    <article><span>03</span><h3>Write</h3><p>Send a reservation question and a problem email.</p></article>
+    <article><span>04</span><h3>Stay</h3><p>Check in, pay, use amenities and solve realistic room problems.</p></article>
+    <article><span>05</span><h3>Recommend</h3><p>Ask the concierge for places, transport and practical advice.</p></article>
+    <article><span>06</span><h3>Review</h3><p>Use Past Simple and Present Perfect to talk about the stay accurately.</p></article>
+  </div>
+</section>
+
+<section class="panel booking-panel" id="book">
+  <div class="section-head">
+    <div><p class="section-no">01 · BUILD YOUR MAY TRIP</p><h2>Book it like a real travel website</h2><p>Choose your actual dates, arrival time and hotel preferences. The trip card updates automatically.</p></div>
+    <span class="time-pill">Dates · seasons · time</span>
+  </div>
+
+  <div class="booking-grid">
+    <div class="booking-form">
+      <label>Check-in date<input id="checkinDate" type="date" min="2027-05-01" max="2027-05-31"></label>
+      <label>Check-out date<input id="checkoutDate" type="date" min="2027-05-02" max="2027-06-05"></label>
+      <label>Expected arrival time<input id="arrivalTime" type="time" value="15:00"></label>
+      <label>Expected departure time<input id="departureTime" type="time" value="11:00"></label>
+      <label>Guests<select id="guestCount"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label>
+      <label>Hotel<select id="hotelSelect"><option value="plaza">The Plaza</option><option value="arlo" selected>Arlo Midtown</option><option value="citizenm">citizenM Times Square</option></select></label>
+      <label>Room type<select id="roomSelect"></select></label>
+      <label>Preference<select id="viewSelect"></select></label>
+      <label>Breakfast<select id="breakfastSelect"><option value="check">Check the live rate</option><option value="included">Choose a breakfast-included rate</option><option value="notneeded">No breakfast needed</option></select></label>
+      <label>Nightly rate found ($)<input id="nightlyRate" type="number" min="0" step="1" placeholder="Enter the live rate you find"></label>
+    </div>
+
+    <aside class="trip-card">
+      <p class="micro">YOUR TRIP CARD</p>
+      <div id="tripSummary"></div>
+      <div class="trip-actions">
+        <button id="downloadTrip" class="primary">⬇ Download trip plan</button>
+        <button id="copyTrip" class="secondary">📋 Copy paragraph</button>
+      </div>
+      <div id="tripCopyFeedback" class="feedback"></div>
+    </aside>
+  </div>
+
+  <div class="time-rule">
+    <h3>Quick grammar reminder: AT / ON / IN for time</h3>
+    <div class="time-rule-grid">
+      <article><b>AT</b><p>at 3:00 p.m. · at noon · at night</p><span>heure précise</span></article>
+      <article><b>ON</b><p>on May 12th · on Friday · on Friday morning</p><span>jour / date</span></article>
+      <article><b>IN</b><p>in May · in spring · in 2027 · in the afternoon</p><span>mois / saison / année / partie de la journée</span></article>
+    </div>
+    <p class="cultural-note"><b>May in New York = spring.</b> U.S. dates are often written <b>May 12, 2027</b>. In speech: <b>May twelfth</b>.</p>
+  </div>
+  <div id="timePrepQuiz" class="quiz-host"></div>
+</section>
+
+<section class="panel compare-panel" id="compare">
+  <div class="section-head">
+    <div><p class="section-no">02 · CHOOSE YOUR HOTEL</p><h2>Three real New York experiences</h2><p>Compare location, room style, views, dining and services. Prices change, so use the official link to check your chosen dates.</p></div>
+    <span class="time-pill">TripAdvisor-style comparison</span>
+  </div>
+
+  <div class="hotel-grid">
+    <article class="hotel-card luxury-card" data-hotel-card="plaza">
+      <div class="hotel-image">
+        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Plaza_New_York.jpg?width=1200" alt="The Plaza Hotel in New York" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <div class="photo-fallback">THE PLAZA<br><small>Fifth Avenue · Central Park South</small></div>
+        <span class="hotel-style">ICONIC LUXURY</span>
+      </div>
+      <div class="hotel-body">
+        <h3>The Plaza</h3>
+        <p class="hotel-address">768 Fifth Avenue · Central Park South</p>
+        <p><b>Best for:</b> classic New York luxury, Central Park, Fifth Avenue, refined service and a special-occasion stay.</p>
+        <div class="feature-columns">
+          <div><b>Rooms & views</b><span>Plaza King · Deluxe King · Deluxe Two Queens · Grand Luxe King · Terrace Room · suites</span><span>Courtyard, city, 58th Street, Fifth Avenue and selected park/partial park views depending on category.</span></div>
+          <div><b>Hotel experience</b><span>Palm Court · Champagne Bar · spa · 24-hour fitness center · concierge · luggage assistance.</span><span>In-room dining is available 24 hours.</span></div>
+        </div>
+        <div class="fact-strip"><span>Check-in 3 p.m.</span><span>Check-out 12 p.m.</span><span>Central Park at the door</span></div>
+        <p class="watch"><b>Check before booking:</b> breakfast and other inclusions depend on the rate/package; hotel fees and credits can change.</p>
+        <div class="hotel-actions">
+          <a href="https://www.theplazany.com/" target="_blank" rel="noopener">Official hotel ↗</a>
+          <a href="https://www.theplazany.com/rooms-suites/guest-rooms/" target="_blank" rel="noopener">Rooms ↗</a>
+          <button class="choose-hotel" data-hotel="plaza">Choose this hotel</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="hotel-card" data-hotel-card="arlo">
+      <div class="hotel-image">
+        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Arlo_Midtown_2024_jeh.jpg?width=1200" alt="Arlo Midtown hotel in New York" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <div class="photo-fallback">ARLO MIDTOWN<br><small>Midtown West · Theater District</small></div>
+        <span class="hotel-style">STYLISH MIDTOWN</span>
+      </div>
+      <div class="hotel-body">
+        <h3>Arlo Midtown</h3>
+        <p class="hotel-address">351 West 38th Street · Midtown West</p>
+        <p><b>Best for:</b> a contemporary hotel near Broadway, Times Square, Hudson Yards and the High Line, with easy access to Midtown transport.</p>
+        <div class="feature-columns">
+          <div><b>Rooms & views</b><span>Urban King · King City · Terrace King City · Two Double · Terrace Two Double · Arlo Suite.</span><span>Urban street views, city views and terrace options. Some suites are on high floors.</span></div>
+          <div><b>Hotel experience</b><span>Altair restaurant · Bar Room · ART Midtown rooftop · café · 24-hour fitness · Wi-Fi · CitiBike passes.</span><span>Room service currently 9 a.m.–5 p.m.; 24-hour snack option after that.</span></div>
+        </div>
+        <div class="fact-strip"><span>Check-in after 3 p.m.</span><span>Check-out 12 p.m.</span><span>Luggage storage for early arrival</span></div>
+        <p class="watch"><b>Breakfast:</b> available, and some direct packages specifically include it. <b>Payment example:</b> current FAQ lists a $100 security deposit authorization at check-in.</p>
+        <div class="hotel-actions">
+          <a href="https://arlohotels.com/midtown/" target="_blank" rel="noopener">Official hotel ↗</a>
+          <a href="https://arlohotels.com/midtown/rooms/" target="_blank" rel="noopener">Rooms ↗</a>
+          <button class="choose-hotel" data-hotel="arlo">Choose this hotel</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="hotel-card modern-card" data-hotel-card="citizenm">
+      <div class="hotel-image">
+        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/CitizenM_New_York_Times_Square_PA02.jpg?width=1200" alt="citizenM New York Times Square hotel lobby" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <div class="photo-fallback">citizenM<br><small>Times Square · 50th Street</small></div>
+        <span class="hotel-style">SMART + COMPACT</span>
+      </div>
+      <div class="hotel-body">
+        <h3>citizenM New York Times Square</h3>
+        <p class="hotel-address">218 West 50th Street · Theater District</p>
+        <p><b>Best for:</b> a central, modern, tech-forward stay with a compact room and strong public spaces.</p>
+        <div class="feature-columns">
+          <div><b>Rooms & views</b><span>King room · High Floor King · Premium View King · accessible options.</span><span>Compact room, XL king bed, rainfall shower, smart controls, high-floor/premium view options.</span></div>
+          <div><b>Hotel experience</b><span>canteenM 24/7 · breakfast buffet · cloudM rooftop bar · 24-hour fitness center · living-room spaces.</span><span>No traditional room service; food is available through canteenM.</span></div>
+        </div>
+        <div class="fact-strip"><span>Check-in 2 p.m.</span><span>Check-out 11 a.m.</span><span>Self check-in available</span></div>
+        <p class="watch"><b>Breakfast:</b> available for a fee unless your booking rate includes it. Very close to Broadway, Times Square and Rockefeller Center.</p>
+        <div class="hotel-actions">
+          <a href="https://www.marriott.com/en-us/hotels/nyczt-citizenm-new-york-times-square/overview/" target="_blank" rel="noopener">Official hotel ↗</a>
+          <a href="https://www.marriott.com/en-us/hotels/nyczt-citizenm-new-york-times-square/dining/" target="_blank" rel="noopener">Dining ↗</a>
+          <button class="choose-hotel" data-hotel="citizenm">Choose this hotel</button>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="compare-task">
+    <h3>Your choice</h3>
+    <p>Explain why the hotel you chose suits your trip. Include <b>location + room/view + two amenities + one possible drawback.</b></p>
+    <textarea id="hotelChoiceReason" rows="5"></textarea>
+    <details class="model practice-support"><summary>Model · Everyday natural</summary><p>I’d choose Arlo Midtown because the location is practical for Broadway, Times Square and Hudson Yards. I’d like a King City room because I want a city view. The rooftop and 24-hour gym are useful, and there is a restaurant in the hotel. One drawback is that breakfast is not automatically included in every rate, so I’d check the package carefully.</p></details>
+    <details class="model practice-support"><summary>Model · Extra polite / luxury style</summary><p>I would probably choose The Plaza for a special stay because the location beside Central Park is exceptional and the service is much more refined. I’d be particularly interested in a room with a city or park view, and I’d make use of the concierge and in-room dining. The main consideration would be the overall cost and which services are actually included in the selected rate.</p></details>
+  </div>
+</section>
+
+<section class="panel grammar-panel" id="grammarAmenities">
+  <div class="section-head">
+    <div><p class="section-no">03 · GRAMMAR WIN #1</p><h2>Describe a hotel: HAVE / INCLUDE / BE INCLUDED</h2><p>Three structures you can reuse when comparing hotels.</p></div>
+    <span class="time-pill">Full forms</span>
+  </div>
+  <div class="grammar-three">
+    <article>
+      <p class="micro">HAVE / HAS</p><h3>The hotel has a gym.</h3>
+      <p><b>Affirmative:</b> It has a gym.</p><p><b>Negative:</b> It doesn't have a pool.</p><p><b>Question:</b> Does it have room service?</p>
+    </article>
+    <article>
+      <p class="micro">INCLUDE</p><h3>The rate includes breakfast.</h3>
+      <p><b>Affirmative:</b> The rate includes Wi-Fi.</p><p><b>Negative:</b> The rate doesn't include breakfast.</p><p><b>Question:</b> What does the rate include?</p>
+    </article>
+    <article>
+      <p class="micro">BE INCLUDED</p><h3>Breakfast is included.</h3>
+      <p><b>Affirmative:</b> Wi-Fi is included.</p><p><b>Negative:</b> Breakfast isn't included.</p><p><b>Question:</b> Is breakfast included?</p>
+    </article>
+  </div>
+  <div class="rule-note"><b>Meaning:</b> <i>The rate includes breakfast</i> and <i>Breakfast is included in the rate</i> describe the same fact from two different angles.</div>
+  <div id="amenitiesQuiz" class="quiz-host"></div>
+</section>
+
+<section class="panel vocab-panel" id="vocabulary">
+  <div class="section-head">
+    <div><p class="section-no">04 · HOTEL VOCABULARY BANK</p><h2>Learn by category — not all at once</h2><p>Every card gives you the French translation, meaning, example and audio.</p></div>
+    <select id="vocabCategory">
+      <option value="booking">🗓 Booking</option>
+      <option value="rooms">🛏 Rooms & views</option>
+      <option value="areas">🏨 Hotel areas</option>
+      <option value="amenities">✨ Amenities</option>
+      <option value="payment">💳 Payment</option>
+      <option value="problems">🛎 Room problems</option>
+      <option value="roomservice">🍽 Room service</option>
+      <option value="recommendations">🗽 Recommendations</option>
+      <option value="phrasal">🔗 Phrasal verbs</option>
+    </select>
+  </div>
+  <div id="vocabGrid" class="vocab-grid"></div>
+
+  <div class="hotel-map">
+    <h3>Inside the hotel</h3>
+    <div class="hotel-floor">
+      <button class="area-chip speak" data-text="the lobby">LOBBY</button>
+      <button class="area-chip speak" data-text="the front desk">FRONT DESK</button>
+      <button class="area-chip speak" data-text="the concierge desk">CONCIERGE</button>
+      <button class="area-chip speak" data-text="the luggage storage area">LUGGAGE</button>
+      <button class="area-chip speak" data-text="the elevators">ELEVATORS</button>
+      <button class="area-chip speak" data-text="the restaurant">RESTAURANT</button>
+      <button class="area-chip speak" data-text="the fitness center">GYM</button>
+      <button class="area-chip speak" data-text="the guest room">GUEST ROOM</button>
+      <button class="area-chip speak" data-text="housekeeping">HOUSEKEEPING</button>
+      <button class="area-chip speak" data-text="the rooftop">ROOFTOP</button>
+    </div>
+  </div>
+</section>
+
+<section class="panel email-panel" id="email">
+  <div class="section-head">
+    <div><p class="section-no">05 · BEFORE YOU TRAVEL</p><h2>Turn the booking form into a natural email</h2><p>Your trip data is already organized. Now turn it into a short, useful message.</p></div>
+    <span class="time-pill">Writing</span>
+  </div>
+
+  <div class="email-layout">
+    <div class="email-source">
+      <p class="micro">YOUR BOOKING INFORMATION</p>
+      <div id="emailTripFacts"></div>
+      <h3>Email structure</h3>
+      <ol><li>Why you are writing</li><li>Reservation details</li><li>Your question(s)</li><li>Polite closing</li></ol>
+      <div class="useful-lines">
+        <span>I’m planning a stay from… to…</span><span>I’d like to confirm whether…</span><span>Could you let me know if…?</span><span>Is breakfast included in this rate?</span><span>Would it be possible to…?</span>
+      </div>
+    </div>
+    <div>
+      <label><b>Your reservation email</b><textarea id="reservationEmail" rows="11" placeholder="Subject: Question about my reservation..."></textarea></label>
+      <button class="hint-btn practice-support" data-hint="reservationHint">Hint</button>
+      <div id="reservationHint" class="hint hidden">Use 5 parts: greeting → dates/hotel → room preference → 1–2 questions → thanks.</div>
+      <details class="model practice-support"><summary>Model · Everyday natural</summary><p>Subject: Question about my stay<br><br>Hello,<br>I’m planning to stay at your hotel in May for five nights. I’m interested in a king room with a city view. Could you let me know whether breakfast is included in the rate and whether I can leave my luggage at the hotel if I arrive before check-in?<br><br>Thank you very much for your help.<br>Best regards,</p></details>
+      <details class="model practice-support"><summary>Model · Extra polite / luxury style</summary><p>Subject: Questions regarding an upcoming stay<br><br>Dear Reservations Team,<br>I am planning an upcoming stay in May and would be grateful if you could clarify a few details before I complete my booking. I am particularly interested in a king room with a city or park view. Could you please confirm whether breakfast is included in the selected rate and whether luggage storage is available before the official check-in time?<br><br>Thank you in advance for your assistance. I look forward to hearing from you.<br>Kind regards,</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="panel checkin-panel" id="checkin">
+  <div class="section-head">
+    <div><p class="section-no">06 · ARRIVAL & CHECK-IN</p><h2>From the lobby to the room</h2><p>Understand the credit-card language before you stand at the front desk.</p></div>
+    <span class="time-pill">Dialogue + payment</span>
+  </div>
+
+  <div class="payment-grid">
+    <article><b>deposit</b><span>caution / somme versée ou bloquée</span><p>Money used to guarantee the booking or cover possible charges.</p></article>
+    <article><b>security deposit</b><span>caution de garantie</span><p>A refundable amount for possible extras or damage.</p></article>
+    <article><b>authorization hold</b><span>empreinte / préautorisation bancaire</span><p>The hotel temporarily blocks an amount on your card; it is not necessarily a final charge.</p></article>
+    <article><b>incidentals</b><span>frais supplémentaires</span><p>Extras such as food, minibar, services or other room charges.</p></article>
+    <article><b>prepayment</b><span>paiement à l’avance</span><p>Money actually paid before arrival.</p></article>
+    <article><b>balance</b><span>solde restant</span><p>The amount still due.</p></article>
+  </div>
+  <div class="culture-note"><b>Important:</b> “down payment” exists in English, but for a hotel you will more often hear <b>deposit, prepayment, security deposit, incidental hold</b> or <b>card authorization</b>.</div>
+
+  <div class="dialogue-box">
+    <div class="dialogue-line"><b>Reception</b><p>Hi! Welcome. Could I see your photo ID and the card you’d like to use for the room?</p></div>
+    <div class="dialogue-line"><b>You</b><p>Of course. Is the room already paid for, or is there a balance due?</p></div>
+    <div class="dialogue-line"><b>Reception</b><p>The room is prepaid, but we do need a card for an incidental hold.</p></div>
+    <div class="dialogue-line"><b>You</b><p>Could you tell me how much the hold is and when it will be released?</p></div>
+    <button class="secondary speak" data-text="Hi! Welcome. Could I see your photo ID and the card you'd like to use for the room? Of course. Is the room already paid for, or is there a balance due? The room is prepaid, but we do need a card for an incidental hold. Could you tell me how much the hold is and when it will be released?">▶ Hear dialogue</button>
+  </div>
+
+  <div class="role-task">
+    <h3>Your check-in</h3>
+    <p>Confirm your name, room type, breakfast, check-out time and the card hold.</p>
+    <textarea id="checkinResponse" rows="6"></textarea>
+    <details class="model practice-support"><summary>Model · Everyday natural</summary><p>Hi, I have a reservation for two people. I booked a king room with a city view. Could you confirm whether breakfast is included? And what time is check-out? Also, will there be a security hold on my card?</p></details>
+    <details class="model practice-support"><summary>Model · Extra polite / luxury style</summary><p>Good afternoon. I have a reservation for two guests and I believe I booked a king room with a city view. Could you please confirm whether breakfast is included in my rate and what the check-out time is? I’d also be grateful if you could explain any security deposit or card authorization required at check-in.</p></details>
+  </div>
+</section>
+
+<section class="panel phrasal-panel" id="phrasal">
+  <div class="section-head">
+    <div><p class="section-no">07 · GRAMMAR WIN #2</p><h2>Phrasal verbs: what do IN, OUT, UP, DOWN, BACK and THROUGH suggest?</h2><p>Particles often give a direction or completion idea — but they are patterns, not perfect mathematical rules.</p></div>
+    <span class="time-pill">Verb + small word</span>
+  </div>
+  <div class="particle-grid">
+    <article><b>IN</b><p>enter / begin</p><span>check in · go in</span></article>
+    <article><b>OUT</b><p>exit / finish / complete</p><span>check out · go out · fill out</span></article>
+    <article><b>UP</b><p>higher / prepare / complete</p><span>go up · send up · set up · wake up</span></article>
+    <article><b>DOWN</b><p>lower / toward a lower floor</p><span>go down · call down</span></article>
+    <article><b>BACK</b><p>return</p><span>come back · give back</span></article>
+    <article><b>THROUGH</b><p>from beginning to end / through a process</p><span>go through the details</span></article>
+  </div>
+  <div class="rule-note"><b>Do not translate the small word alone.</b> Learn the whole verb as a unit: <i>check out = leave a hotel and finish the account</i>; <i>run out of = have no more of something</i>.</div>
+  <div id="phrasalQuiz" class="quiz-host"></div>
+</section>
+
+<section class="panel recommend-panel" id="recommend">
+  <div class="section-head">
+    <div><p class="section-no">08 · ASKING FOR RECOMMENDATIONS</p><h2>SHOULD, COULD, WOULD + natural question forms</h2><p>Use the concierge to practise advice and polite requests.</p></div>
+    <span class="time-pill">Grammar + conversation</span>
+  </div>
+  <div class="recommend-rules">
+    <article><b>What would you recommend?</b><span>Qu’est-ce que vous recommanderiez ?</span><p>Open recommendation question.</p></article>
+    <article><b>Could you recommend…?</b><span>Pourriez-vous recommander… ?</span><p>Polite request for a suggestion.</p></article>
+    <article><b>Where should we go?</b><span>Où devrions-nous aller ?</span><p>Ask for the best choice/advice.</p></article>
+    <article><b>Do you have any recommendations for…?</b><span>Avez-vous des recommandations pour… ?</span><p>Very reusable everyday formula.</p></article>
+  </div>
+  <div class="modal-mini"><b>SHOULD forms:</b> You <u>should book</u>. · You <u>shouldn't wait</u>. · <u>Should we book</u> in advance?</div>
+  <div id="recommendQuiz" class="quiz-host"></div>
+
+  <div class="dialogue-box">
+    <div class="dialogue-line"><b>You</b><p>Could you recommend a good restaurant within walking distance?</p></div>
+    <div class="dialogue-line"><b>Concierge</b><p>Absolutely. Would you prefer something casual or something more formal?</p></div>
+    <div class="dialogue-line"><b>You</b><p>Something local and not too formal. Should we book in advance?</p></div>
+    <div class="dialogue-line"><b>Concierge</b><p>Yes, I would. I can make a reservation for you if you like.</p></div>
+    <button class="secondary speak" data-text="Could you recommend a good restaurant within walking distance? Absolutely. Would you prefer something casual or something more formal? Something local and not too formal. Should we book in advance? Yes, I would. I can make a reservation for you if you like.">▶ Hear dialogue</button>
+  </div>
+</section>
+
+<section class="panel service-panel" id="service">
+  <div class="section-head">
+    <div><p class="section-no">09 · DURING THE STAY</p><h2>Room problems, housekeeping & room service</h2><p>Choose a situation, learn the exact vocabulary, then solve it.</p></div>
+    <span class="time-pill">Realistic role-plays</span>
+  </div>
+  <div id="scenarioTabs" class="scenario-tabs"></div>
+  <div id="scenarioStage"></div>
+
+  <div class="problem-email">
+    <h3>Write to the hotel about a problem</h3>
+    <p>Choose one room problem from the scenarios. Explain what has happened, what you need, and what solution you would like.</p>
+    <textarea id="problemEmail" rows="8"></textarea>
+    <button class="hint-btn practice-support" data-hint="problemHint">Hint</button>
+    <div id="problemHint" class="hint hidden">Problem → when you noticed it → what you have already tried / what has happened → requested solution → thanks.</div>
+    <details class="model practice-support"><summary>Model · Everyday natural</summary><p>Hello, I’m in room 1208. We’ve run out of clean towels, and housekeeping hasn’t replaced them yet. Could someone send up two bath towels, please? We’re going out in about an hour. Thank you.</p></details>
+    <details class="model practice-support"><summary>Model · Extra polite / luxury style</summary><p>Good evening. I’m staying in room 1208 and I’m afraid we have run out of clean bath towels. Housekeeping has not replaced them yet. Would it be possible to have two fresh bath towels sent up to the room when convenient? Thank you very much for your assistance.</p></details>
+  </div>
+</section>
+
+<section class="panel tense-intro" id="tenses">
+  <div class="section-head">
+    <div><p class="section-no">10 · CHECK-OUT GRAMMAR MASTERCLASS</p><h2>Past Simple vs Present Perfect</h2><p>You need both to talk about a hotel stay and write a convincing review.</p></div>
+    <span class="time-pill">60 questions · staged</span>
+  </div>
+  <div class="tense-roadmap">
+    <span><b>A</b> Past Simple rules → 20 exercises</span><span><b>B</b> Present Perfect rules → 20 exercises</span><span><b>C</b> Contrast → 20 mixed exercises</span><span><b>D</b> Write your review</span>
+  </div>
+</section>
+
+<section class="panel tense-panel" id="pastSimple">
+  <div class="section-head"><div><p class="section-no">11 · PAST SIMPLE</p><h2>Finished actions in finished past time</h2></div><span class="time-pill">20 exercises</span></div>
+  <div class="tense-rule-grid">
+    <article><p class="micro">AFFIRMATIVE</p><h3>subject + past form</h3><p>We <b>checked in</b> at 3 p.m.<br>The room <b>was</b> quiet.</p></article>
+    <article><p class="micro">NEGATIVE</p><h3>subject + didn't + base verb</h3><p>We <b>didn't use</b> room service.<br>The room <b>wasn't</b> noisy.</p></article>
+    <article><p class="micro">QUESTION</p><h3>Did + subject + base verb?</h3><p><b>Did</b> you enjoy breakfast?<br><b>Was</b> the room clean?</p></article>
+  </div>
+  <div class="tense-meaning"><b>Use Past Simple when the time is finished or stated:</b> yesterday · last night · on Tuesday · in 2025 · when we arrived · during our stay last May.</div>
+  <div class="irregular-strip"><b>Useful irregulars:</b> go → went · have → had · get → got · find → found · bring → brought · leave → left · pay → paid · take → took · be → was/were</div>
+  <div id="pastSimpleQuiz" class="quiz-host large-quiz"></div>
+</section>
+
+<section class="panel tense-panel pp-panel" id="presentPerfect">
+  <div class="section-head"><div><p class="section-no">12 · PRESENT PERFECT</p><h2>Past + connection to now</h2></div><span class="time-pill">20 exercises</span></div>
+  <div class="tense-rule-grid">
+    <article><p class="micro">AFFIRMATIVE</p><h3>have / has + past participle</h3><p>We <b>have stayed</b> here twice.<br>The hotel <b>has confirmed</b> the booking.</p></article>
+    <article><p class="micro">NEGATIVE</p><h3>haven't / hasn't + participle</h3><p>We <b>haven't had</b> breakfast yet.</p></article>
+    <article><p class="micro">QUESTION</p><h3>Have / Has + subject + participle?</h3><p><b>Have</b> you ever stayed here?<br><b>Has</b> the hotel replied?</p></article>
+  </div>
+  <div class="tense-meaning"><b>Use Present Perfect for:</b> experience with no finished time · a recent/current result · an unfinished period · since / for · already / just / yet / ever / never / so far.</div>
+  <div class="us-note"><b>American English note — recognition only:</b> in everyday U.S. speech you may also hear Past Simple with <i>already / just / yet</i> in situations where a British textbook strongly prefers Present Perfect. Learn the core distinction first.</div>
+  <div id="presentPerfectQuiz" class="quiz-host large-quiz"></div>
+</section>
+
+<section class="panel tense-panel mix-panel">
+  <div class="section-head"><div><p class="section-no">13 · PAST SIMPLE OR PRESENT PERFECT?</p><h2>Find the time signal first</h2></div><span class="time-pill">20 mixed exercises</span></div>
+  <div class="contrast-table">
+    <div><b>Finished time?</b><span>last year · yesterday · at 8:00 · in 2025</span><strong>→ PAST SIMPLE</strong></div>
+    <div><b>No finished time / result now?</b><span>ever · never · already · yet · so far · since · for</span><strong>→ PRESENT PERFECT</strong></div>
+  </div>
+  <div class="contrast-example">
+    <p><b>We stayed there last year.</b> → finished time.</p>
+    <p><b>We have stayed there three times.</b> → experience, no finished time.</p>
+    <p><b>I lost my key last night.</b> → tells the past event.</p>
+    <p><b>I have lost my key.</b> → the key is missing now.</p>
+  </div>
+  <div id="mixedTensesQuiz" class="quiz-host large-quiz"></div>
+</section>
+
+<section class="panel checkout-panel" id="checkout">
+  <div class="section-head">
+    <div><p class="section-no">14 · CHECK-OUT</p><h2>Settle the bill and talk about the stay</h2></div>
+    <span class="time-pill">Conversation</span>
+  </div>
+  <div class="dialogue-box">
+    <div class="dialogue-line"><b>Reception</b><p>How was your stay?</p></div>
+    <div class="dialogue-line"><b>You</b><p>It was very good overall. We really enjoyed the location, and the staff have been very helpful.</p></div>
+    <div class="dialogue-line"><b>Reception</b><p>I’m glad to hear that. Would you like a printed receipt or an email copy?</p></div>
+    <div class="dialogue-line"><b>You</b><p>An email copy would be perfect. Could I also check whether the incidental hold has been released?</p></div>
+  </div>
+  <div class="checkout-task">
+    <p><b>Your turn:</b> mention one finished event with Past Simple and one overall/current result with Present Perfect.</p>
+    <textarea id="checkoutResponse" rows="5"></textarea>
+    <details class="model practice-support"><summary>Model · Everyday natural</summary><p>We had a great stay. We ate at the hotel restaurant on our first night, and the food was excellent. The staff have been really helpful throughout the stay. Could you email me the final receipt, please?</p></details>
+    <details class="model practice-support"><summary>Model · Extra polite / luxury style</summary><p>We have had a very enjoyable stay overall. We dined at the hotel restaurant on our first evening, and the service was excellent. The staff have been exceptionally helpful throughout our visit. Could you please email me the final itemized receipt and confirm that the card authorization will be released?</p></details>
+  </div>
+</section>
+
+<section class="panel review-panel" id="review">
+  <div class="section-head">
+    <div><p class="section-no">15 · WRITE YOUR HOTEL REVIEW</p><h2>Use precise vocabulary + both tenses</h2><p>A useful review describes facts, gives an opinion and explains whether you would recommend the hotel.</p></div>
+    <span class="time-pill">Final writing</span>
+  </div>
+  <div class="review-vocab">
+    <span>spotless <small>impeccable / très propre</small></span><span>spacious <small>spacieux</small></span><span>cramped <small>exigu</small></span><span>comfortable <small>confortable</small></span><span>quiet <small>calme</small></span><span>noisy <small>bruyant</small></span><span>convenient <small>pratique</small></span><span>welcoming <small>accueillant</small></span><span>responsive <small>réactif</small></span><span>breathtaking <small>à couper le souffle</small></span><span>overpriced <small>trop cher</small></span><span>good value <small>bon rapport qualité-prix</small></span>
+  </div>
+  <div id="reviewQuiz" class="quiz-host"></div>
+  <div class="review-structure">
+    <span><b>1</b> Overall impression</span><span><b>2</b> Specific past examples</span><span><b>3</b> Experience up to now</span><span><b>4</b> Recommendation</span>
+  </div>
+  <textarea id="reviewAnswer" rows="12" placeholder="Write your review here..."></textarea>
+  <details class="model practice-support"><summary>Model · Everyday natural</summary><p>We had a very enjoyable five-night stay. The hotel was in a really convenient location, and our room was clean, quiet and comfortable. We checked in around 3 p.m., and the receptionist explained everything clearly. We also asked the concierge for a restaurant recommendation, which was excellent. The staff have been friendly and helpful throughout our stay, and we haven't had any major problems. I would definitely recommend the hotel for a New York trip.</p></details>
+  <details class="model practice-support"><summary>Model · Polished review</summary><p>We have had an excellent stay overall. The location has been extremely convenient for exploring Midtown, and the staff have consistently been attentive and responsive. Our room was spotless and comfortable, and the city view was particularly impressive. We had one small issue with the towels on our second evening, but housekeeping resolved it quickly. I would happily recommend this hotel to anyone looking for a well-located and comfortable base in New York.</p></details>
+</section>
+
+<section class="panel bridge-panel" id="bridge">
+  <div class="section-head">
+    <div><p class="section-no bridge-no">16 · ONE CERTIFICATION BRIDGE</p><h2>One short hotel task. Nothing new.</h2><p>Listen → identify → respond. Use only language from this lesson.</p></div>
+    <span class="time-pill gold-pill">8 min</span>
+  </div>
+  <div class="bridge-card">
+    <button id="bridgeAudio" class="primary">▶ Hear hotel message</button>
+    <button id="bridgeTranscriptBtn" class="secondary practice-support">Show transcript</button>
+    <div id="bridgeTranscript" class="transcript hidden">“Good afternoon. Your room is ready on the 14th floor. Breakfast is not included in your current rate, but you can add it at the front desk. Check-out is at 11 a.m. on Friday.”</div>
+    <div class="bridge-fields">
+      <label>Floor<input id="bridgeFloor"></label><label>Breakfast<input id="bridgeBreakfast"></label><label>Check-out<input id="bridgeCheckout"></label>
+    </div>
+    <button id="bridgeCheck" class="secondary">Check key information</button>
+    <div id="bridgeFeedback" class="feedback"></div>
+    <p><b>Then respond:</b> confirm the information and ask one question about breakfast or late check-out.</p>
+    <textarea id="bridgeOral" rows="5"></textarea>
+    <details class="model practice-support"><summary>Model · Everyday natural</summary><p>Great, thank you. So the room is on the 14th floor, breakfast isn't included, and check-out is at 11 on Friday. How much would it cost to add breakfast?</p></details>
+    <details class="model practice-support"><summary>Model · Extra polite / luxury style</summary><p>Thank you. Just to confirm, the room is on the 14th floor, breakfast is not included in my current rate, and check-out is at 11 a.m. on Friday. Could you please let me know how much it would cost to add breakfast?</p></details>
+  </div>
+</section>
+
+<section class="panel recap-panel">
+  <div class="section-head"><div><p class="section-no">17 · WHAT YOU LEARNED TODAY</p><h2>Your progress is visible</h2></div><span class="time-pill">Recap</span></div>
+  <div class="learned-grid">
+    <article><b>Booking</b><p>dates · seasons · times · room types · views</p></article>
+    <article><b>Hotel grammar</b><p>has / doesn't have / does it have? · includes / is included</p></article>
+    <article><b>Phrasal verbs</b><p>check in/out · fill out · look up · pick up · run out of</p></article>
+    <article><b>Recommendations</b><p>would recommend · could recommend · should</p></article>
+    <article><b>Past Simple</b><p>finished past events + affirmative / negative / questions</p></article>
+    <article><b>Present Perfect</b><p>experience/result/unfinished time + affirmative / negative / questions</p></article>
+    <article><b>Tense contrast</b><p>finished time vs connection to now</p></article>
+    <article><b>Real hotel English</b><p>check-in · payment · problems · room service · check-out · review</p></article>
+  </div>
+  <div class="reflection-grid">
+    <label>Three things I can do now<textarea id="learnedToday" rows="4"></textarea></label>
+    <label>One thing I want to practise again<textarea id="nextPractice" rows="4"></textarea></label>
+  </div>
+</section>
+
+<section class="panel admin-panel" id="admin">
+  <div class="section-head">
+    <div><p class="section-no">18 · ADMIN / QUALIOPI</p><h2>Trainer trace — scores + manual section checks + written work</h2><p>Automatic activities calculate scores. Every lesson section can also be marked manually with comments. Written responses are pulled into the final report.</p></div>
+    <span class="time-pill">Centre-ready</span>
+  </div>
+
+  <div class="admin-meta">
+    <label>Session number<input id="sessionNumber" type="number" min="1"></label>
+    <label>Duration<input id="sessionDuration" value="1h00"></label>
+    <label>Hours remaining<input id="hoursRemaining"></label>
+    <label>Lesson date<input id="lessonDate" type="date"></label>
+  </div>
+
+  <div class="admin-actions">
+    <button id="refreshAdmin" class="secondary">↻ Refresh trace</button>
+    <button id="copyCentre" class="primary">📋 Copy centre summary</button>
+    <button id="downloadReport" class="secondary">⬇ Download full report</button>
+    <button id="printBtn" class="secondary">Print / PDF</button>
+  </div>
+  <div id="copyFeedback" class="feedback"></div>
+
+  <h3>Automatic exercise results</h3>
+  <div class="table-wrap"><table class="admin-table"><thead><tr><th>Activity</th><th>Score</th><th>%</th><th>Automatic status</th></tr></thead><tbody id="autoTable"></tbody></table></div>
+
+  <h3>Section-by-section trainer validation</h3>
+  <div class="table-wrap"><table class="admin-table manual-section-table"><thead><tr><th>Section</th><th>Manual status</th><th>Comments</th></tr></thead><tbody id="sectionValidationTable"></tbody></table></div>
+
+  <h3>Written production captured from the lesson</h3>
+  <div id="writtenCapture" class="written-capture"></div>
+
+  <div class="admin-text-grid">
+    <label>Content / activities<textarea id="adminContent" rows="5"></textarea></label>
+    <label>Competencies worked<textarea id="adminCompetencies" rows="5"></textarea></label>
+    <label>Evaluation methods<textarea id="adminMethods" rows="5"></textarea></label>
+    <label>General observations<textarea id="adminObservations" rows="5"></textarea></label>
+  </div>
+
+  <label class="overall">Overall acquisition level<select id="overallLevel"><option>Pas commencé</option><option>En cours d’acquisition</option><option>Objectif atteint</option><option>À renforcer</option></select></label>
+  <details class="centre-preview"><summary>Preview copy/paste centre summary</summary><pre id="centrePreview"></pre></details>
+</section>
+
+<section class="panel source-panel">
+  <details>
+    <summary>Hotel information & photo sources</summary>
+    <p>Hotel facts checked October 2026 from official hotel websites. Prices, fees, packages, policies and availability can change, so the live official booking page should always be checked before travel.</p>
+    <ul>
+      <li>The Plaza — official hotel, rooms, guest information and dining pages.</li>
+      <li>Arlo Midtown — official hotel, rooms, services, dining and FAQ pages.</li>
+      <li>citizenM New York Times Square — official Marriott/citizenM hotel and dining pages.</li>
+      <li>Hotel photographs: Wikimedia Commons. If an image cannot load, the lesson automatically displays a matching hotel fallback card instead.</li>
+    </ul>
+  </details>
+</section>
+</main>
+
+<footer><b>SpeakEasyTisha · New York Real Talk</b><span>Booking · Hotel English · Grammar · Check-out · Review</span><a href="#top">Back to top ↑</a></footer>
+<script src="script.js"></script>
+</body>
+</html>
