@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mounia — World Ready | Lesson 1</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Lesson navigation">
+      <div class="brand-card">
+        <div class="brand-mark"><span>✦</span><b>CR</b></div>
+        <div>
+          <p class="eyebrow">CONNECT LEARNING</p>
+          <h1>Mounia — World Ready</h1>
+          <p class="lesson-tag">Lesson 1 · Cabin Crew English · B1 → B2</p>
+        </div>
+      </div>
+
+      <div class="passport-card">
+        <span class="passport-label">YOUR ROUTE</span>
+        <div class="passport-route"><b>B1</b><span>✈</span><b>B2</b></div>
+        <small>Precision · Confidence · Professional control</small>
+      </div>
+
+      <div class="mode-card">
+        <span class="mode-label">Learning mode</span>
+        <div class="segmented" role="group" aria-label="Learning mode">
+          <button id="practiceModeBtn" class="mode-btn active" type="button">Practice</button>
+          <button id="examModeBtn" class="mode-btn" type="button">Challenge</button>
+        </div>
+        <p id="modeHelp" class="tiny">Practice mode keeps models visible.</p>
+        <button id="transcriptToggleBtn" class="ghost full transcript-toggle" type="button">Transcripts: off</button>
+      </div>
+
+      <nav class="nav-list">
+        <a href="#briefing"><span>00</span> World Ready</a>
+        <a href="#intro"><span>01</span> Introduce yourself</a>
+        <a href="#baseline"><span>02</span> Your baseline</a>
+        <a href="#translate"><span>03</span> Stop translating</a>
+        <a href="#grammar"><span>04</span> Grammar flight school</a>
+        <a href="#grammar-lab"><span>05</span> B2 grammar academy</a>
+        <a href="#vocab"><span>06</span> Airport power words</a>
+        <a href="#global"><span>07</span> Global English</a>
+        <a href="#formula"><span>08</span> Calm-control formula</a>
+        <a href="#baggage"><span>09</span> Baggage conflict</a>
+        <a href="#assistance"><span>10</span> Special assistance</a>
+        <a href="#lilate"><span>11</span> LILATE mission</a>
+        <a href="#writing"><span>12</span> Professional writing</a>
+        <a href="#debrief"><span>13</span> Ready for the world</a>
+      </nav>
+
+      <div class="progress-card">
+        <div class="progress-head"><span>Flight progress</span><strong id="progressPercent">0%</strong></div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+        <button id="downloadResultsBtn" class="secondary full" type="button">Download results</button>
+        <button id="resetLessonBtn" class="ghost full" type="button">Reset lesson</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="hero" id="briefing">
+        <div class="hero-copy">
+          <p class="kicker">LESSON 01 · YOUR ENGLISH. YOUR CAREER. THE WORLD.</p>
+          <h2>Cabin crew confidence,<br><em>world-ready English.</em></h2>
+          <p class="hero-lead">You already know aviation. You already know how to stay calm when situations become difficult. Now your mission is to make your English as professional, precise and confident as you are.</p>
+          <div class="hero-actions">
+            <a class="cta" href="#intro">Start your journey <span>→</span></a>
+            <div class="hero-pill">Target <b>B2</b> · LILATE · Recruitment</div>
+          </div>
+          <div class="route-cities"><span>PARIS</span><i></i><span>LONDON</span><i></i><span>DUBLIN</span><i></i><span>NEW YORK</span><i></i><span>DUBAI</span><i></i><span>WORLD</span></div>
+        </div>
+
+        <div class="world-visual" aria-label="Cabin crew world-ready illustration">
+          <svg viewBox="0 0 620 500" role="img" aria-label="Flight attendant facing a globe and international route">
+            <defs>
+              <linearGradient id="globeG" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#164c70"/><stop offset="1" stop-color="#0a233d"/></linearGradient>
+              <linearGradient id="uniformG" x1="0" x2="1"><stop stop-color="#0a1e36"/><stop offset="1" stop-color="#123b5c"/></linearGradient>
+              <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <circle cx="337" cy="234" r="177" fill="url(#globeG)" stroke="#53e1d0" stroke-opacity=".5" stroke-width="2"/>
+            <ellipse cx="337" cy="234" rx="177" ry="66" fill="none" stroke="#7cded5" stroke-opacity=".22"/>
+            <ellipse cx="337" cy="234" rx="177" ry="120" fill="none" stroke="#7cded5" stroke-opacity=".16"/>
+            <ellipse cx="337" cy="234" rx="72" ry="177" fill="none" stroke="#7cded5" stroke-opacity=".22"/>
+            <ellipse cx="337" cy="234" rx="126" ry="177" fill="none" stroke="#7cded5" stroke-opacity=".13"/>
+            <path d="M170 254 C242 118 402 110 520 190" fill="none" stroke="#f1c86a" stroke-width="3" stroke-dasharray="8 10" filter="url(#glow)"/>
+            <g transform="translate(500 172) rotate(17)"><path d="M0 14 L42 0 31 13 49 23 42 28 23 21 13 35 7 32 13 19 0 14Z" fill="#f1c86a"/></g>
+            <circle cx="180" cy="252" r="7" fill="#f1c86a"/><circle cx="520" cy="190" r="7" fill="#f1c86a"/>
+            <text x="172" y="278" fill="#d7edf2" font-size="14" font-family="sans-serif">START</text>
+            <text x="492" y="218" fill="#f1c86a" font-size="14" font-family="sans-serif">WORLD</text>
+            <g transform="translate(72 118)">
+              <circle cx="84" cy="48" r="34" fill="#d6aa8d"/>
+              <path d="M51 44 C54 0 118 0 119 44 C104 27 70 24 51 44Z" fill="#171b28"/>
+              <path d="M49 47 C55 72 71 82 85 82 C105 80 117 66 120 45 C113 62 106 66 94 67 C77 68 61 60 49 47Z" fill="#d6aa8d"/>
+              <path d="M55 96 Q84 77 114 96 L135 204 Q87 228 35 203Z" fill="url(#uniformG)"/>
+              <path d="M76 88 L85 105 94 88 106 98 85 121 64 98Z" fill="#f1c86a"/>
+              <path d="M56 98 L86 126 116 98" fill="none" stroke="#e8f2f6" stroke-width="3"/>
+              <path d="M37 125 Q11 159 17 213" fill="none" stroke="#0d2945" stroke-width="17" stroke-linecap="round"/>
+              <path d="M133 126 Q154 156 158 204" fill="none" stroke="#0d2945" stroke-width="17" stroke-linecap="round"/>
+              <rect x="67" y="130" width="38" height="15" rx="7" fill="#f1c86a" opacity=".95"/>
+              <path d="M52 201 L42 309 M118 201 L127 309" stroke="#13243b" stroke-width="20" stroke-linecap="round"/>
+              <path d="M31 310 L58 310 M115 310 L141 310" stroke="#111827" stroke-width="12" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(376 363)"><rect width="190" height="72" rx="20" fill="#081b30" stroke="#53e1d0" stroke-opacity=".45"/><text x="18" y="29" fill="#8be8dc" font-size="13" font-weight="700" font-family="sans-serif">DESTINATION</text><text x="18" y="54" fill="#ffffff" font-size="25" font-weight="800" font-family="sans-serif">WORLD READY</text></g>
+          </svg>
+        </div>
+      </header>
+
+      <section class="panel opening-panel">
+        <div class="section-heading"><span class="step">00</span><div><p class="overline">FLIGHT BRIEFING</p><h3>Today, your English catches up with your experience.</h3></div></div>
+        <div class="mission-grid">
+          <article><span>01</span><b>Sound natural</b><p>Stop translating French structures word for word.</p></article>
+          <article><span>02</span><b>Pass the test</b><p>Diagnose the grammar that could cost points.</p></article>
+          <article><span>03</span><b>Stay in control</b><p>Handle conflict, baggage and special-assistance situations.</p></article>
+          <article><span>04</span><b>Go global</b><p>Recognise UK/US differences and cope with unfamiliar accents.</p></article>
+        </div>
+        <div class="gold-note"><b>Your advantage:</b> you already understand the aviation world. This course does not teach you the job — it gives you the English to show what you can already do.</div>
+      </section>
+
+      <section class="panel signature-panel" id="intro" data-progress-section>
+        <div class="section-heading"><span class="step">01</span><div><p class="overline">YOUR PROFESSIONAL SIGNATURE</p><h3>Introduce yourself like the professional you already are.</h3></div></div>
+        <p class="section-intro">A strong introduction is useful for recruitment, a LILATE interaction and every first professional contact. Build yours, listen to it, then make it sound like you.</p>
+
+        <div class="builder intro-builder-v2" data-builder="intro" id="introBuilder">
+          <div class="builder-top">
+            <div><span class="builder-badge">PROFESSIONAL IDENTITY BUILDER</span><h4>Build Mounia’s 45–60 second introduction</h4><p>Choose the facts that are true for you. Select several tasks from your real aviation experience.</p></div>
+            <div class="level-switch"><button type="button" class="builder-level-btn intro-level-btn active" data-level="clear">Clear B2</button><button type="button" class="builder-level-btn intro-level-btn" data-level="stretch">Stretch B2+</button></div>
+          </div>
+          <div class="intro-builder-body">
+            <div class="intro-profile-grid">
+              <label>Your name<input id="introName" class="intro-input" type="text" value="Mounia" /></label>
+              <label>Your aviation background<select id="introBackground" class="intro-input"><option value="airport passenger service">airport passenger service</option><option value="airport ground operations">airport ground operations</option><option value="passenger service and special services">passenger service and special services</option><option value="ground operations and passenger assistance">ground operations and passenger assistance</option></select></label>
+              <label>Your qualification<select id="introQualification" class="intro-input"><option value="qualified">Qualified cabin crew</option><option value="qualification">Cabin crew qualification</option></select></label>
+              <label>Your B2 goal<select id="introGoal" class="intro-input"><option value="airport">Work confidently in an international airport environment</option><option value="recruitment">Succeed in recruitment tests and interviews</option><option value="precision">Make your English as precise as your professional skills</option><option value="lilate">Reach a secure B2 level and prepare for LILATE</option></select></label>
+            </div>
+
+            <div class="task-picker">
+              <div class="task-picker-head"><div><span class="micro-label">YOUR REAL EXPERIENCE</span><h5>Which tasks have you handled?</h5><p>Select as many as apply. The builder will combine them naturally.</p></div><span id="introTaskCount" class="task-count">0 selected</span></div>
+              <div id="introTasks" class="task-chip-grid">
+                <label><input type="checkbox" value="check-in and boarding operations"><span>Check-in & boarding</span></label>
+                <label><input type="checkbox" value="travel-document and boarding-pass checks"><span>Document checks</span></label>
+                <label><input type="checkbox" value="baggage issues" checked><span>Baggage issues</span></label>
+                <label><input type="checkbox" value="delays and missed connections"><span>Delays & connections</span></label>
+                <label><input type="checkbox" value="special-assistance requests" checked><span>Special assistance</span></label>
+                <label><input type="checkbox" value="passenger complaints and conflict situations" checked><span>Conflict & complaints</span></label>
+                <label><input type="checkbox" value="gate changes and passenger information"><span>Gate changes & information</span></label>
+                <label><input type="checkbox" value="coordination with ground teams and other services"><span>Team coordination</span></label>
+                <label><input type="checkbox" value="stressful and emergency situations" checked><span>Stress & emergencies</span></label>
+                <label><input type="checkbox" value="passengers with specific needs"><span>Specific passenger needs</span></label>
+                <label><input type="checkbox" value="unexpected operational problems"><span>Operational problems</span></label>
+                <label><input type="checkbox" value="clear explanations of procedures and travel options"><span>Procedures & options</span></label>
+              </div>
+            </div>
+
+            <div class="intro-profile-grid secondary-grid">
+              <label>Your professional strength<select id="introStrength" class="intro-input"><option value="calm">Stay calm and solution-focused under pressure</option><option value="conflict">De-escalate conflict while staying professional</option><option value="clarity">Explain information clearly to stressed passengers</option><option value="adapt">Adapt quickly to different passengers and situations</option></select></label>
+              <label>What aviation means to you<select id="introValue" class="intro-input"><option value="people">Helping people feel supported when travel becomes stressful</option><option value="international">Working with people and cultures from around the world</option><option value="responsibility">Combining responsibility, service and teamwork</option><option value="solutions">Turning difficult situations into practical solutions</option></select></label>
+            </div>
+          </div>
+          <div class="builder-output intro-output" id="introBuilderOutput" aria-live="polite">Your introduction will appear here.</div>
+          <div class="builder-completeness"><span id="introBuilderStatus">Choose at least two tasks for a strong professional introduction.</span></div>
+          <div class="builder-actions"><button class="audio-btn" id="introListenBtn" type="button">🔊 Listen</button><button class="ghost" id="introCopyBtn" type="button">Copy</button><button class="ghost" id="introResetBtn" type="button">Reset builder</button></div>
+        </div>
+
+        <div class="model-switcher practice-only elevated-model">
+          <div class="model-tabs"><button class="model-tab active" data-target="introClear" type="button">Clear B2 model</button><button class="model-tab" data-target="introStretch" type="button">Stretch B2+ model</button></div>
+          <div id="introClear" class="model-content active"><p><strong>Model:</strong> Hello, my name is Mounia. I have experience in aviation, particularly in airport passenger service, and I am also a qualified cabin crew member. In my previous roles, I handled baggage issues, special-assistance requests, passenger complaints and stressful situations. I am comfortable staying calm, explaining the options clearly and helping passengers find practical solutions. I am now working towards a secure B2 level so I can work confidently in an international airport environment.</p><button class="audio-btn" type="button" data-speak="Hello, my name is Mounia. I have experience in aviation, particularly in airport passenger service, and I am also a qualified cabin crew member. In my previous roles, I handled baggage issues, special-assistance requests, passenger complaints and stressful situations. I am comfortable staying calm, explaining the options clearly and helping passengers find practical solutions. I am now working towards a secure B2 level so I can work confidently in an international airport environment.">🔊 Listen</button></div>
+          <div id="introStretch" class="model-content"><p><strong>Model:</strong> I’m Mounia, and my professional background is firmly rooted in aviation, particularly airport passenger service. I have handled baggage disruptions, special-assistance requests, conflict situations and passengers under significant stress, so I have learned to remain calm, identify the real issue and communicate practical solutions clearly. I also hold a cabin crew qualification. My objective now is to reach a secure B2 level so that my English reflects the level of my professional experience and allows me to work confidently in an international environment.</p><button class="audio-btn" type="button" data-speak="I'm Mounia, and my professional background is firmly rooted in aviation, particularly airport passenger service. I have handled baggage disruptions, special-assistance requests, conflict situations and passengers under significant stress, so I have learned to remain calm, identify the real issue and communicate practical solutions clearly. I also hold a cabin crew qualification. My objective now is to reach a secure B2 level so that my English reflects the level of my professional experience and allows me to work confidently in an international environment.">🔊 Listen</button></div>
+        </div>
+
+        <div class="oral-stage">
+          <div><p class="prompt-label">YOUR TURN</p><h4>Say your introduction without reading it word for word.</h4><p>Use your builder as support, then look away and speak naturally.</p></div>
+          <div class="recorder" data-recorder="intro"><span class="status-dot"></span><span class="record-status">Ready to record</span><button class="record-btn primary" type="button">Record</button><button class="stop-btn ghost" type="button" disabled>Stop</button><audio class="record-playback" controls hidden></audio></div>
+        </div>
+        <button class="complete-btn" type="button">Mark section complete</button>
+      </section>
+
+      <section class="panel" id="baseline" data-progress-section>
+        <div class="section-heading"><span class="step">02</span><div><p class="overline">TAKE-OFF RECORDING</p><h3>Your B2 baseline</h3></div></div>
+        <div class="split-stage">
+          <div class="prompt-card dark-prompt"><p class="prompt-label">90-SECOND CHALLENGE</p><h4>Tell a recruiter about your aviation experience and explain why you can handle difficult passenger situations.</h4><div class="prompt-points"><span>background</span><span>difficult situation</span><span>action</span><span>professional quality</span></div></div>
+          <div class="practice-only mini-model"><span class="model-tag">ORAL MODEL · CLEAR B2</span><p>“In my previous airport roles, I often had to deal with passengers who were stressed or frustrated. I learned to listen first, clarify the problem and explain the available options calmly. I’m comfortable working under pressure, and I try to make sure the passenger understands what will happen next.”</p><button class="audio-btn" data-speak="In my previous airport roles, I often had to deal with passengers who were stressed or frustrated. I learned to listen first, clarify the problem and explain the available options calmly. I'm comfortable working under pressure, and I try to make sure the passenger understands what will happen next." type="button">🔊 Listen</button></div>
+        </div>
+        <div class="tool-row"><div class="timer-widget" data-timer="90"><div><span class="timer-value">01:30</span><small>speaking timer</small></div><button class="timer-start primary" type="button">Start</button><button class="timer-reset ghost" type="button">Reset</button></div><div class="recorder" data-recorder="baseline"><span class="status-dot"></span><span class="record-status">Ready</span><button class="record-btn primary" type="button">Record</button><button class="stop-btn ghost" type="button" disabled>Stop</button><audio class="record-playback" controls hidden></audio></div></div>
+        <label class="field-label" for="baselineNotes">What felt difficult?</label><textarea id="baselineNotes" class="long-input save-field" placeholder="Example: I translated from French / I hesitated with a tense / I needed more vocabulary..."></textarea>
+        <button class="complete-btn" type="button">Mark section complete</button>
+      </section>
+
+      <section class="panel" id="translate" data-progress-section>
+        <div class="section-heading"><span class="step">03</span><div><p class="overline">STOP TRANSLATING</p><h3>French idea → natural English reflex</h3></div></div>
+        <p class="section-intro">These are exactly the small patterns that make fluent English sound less natural. Choose an answer: you get immediate feedback and a hint every time.</p>
+        <div class="rule-strip"><b>New habit:</b> learn complete chunks — <em>handle a situation · make sure · explain something to someone · be used to doing</em>.</div>
+        <div id="translationQuiz" class="quiz-stack"></div>
+        <div class="practice-only model-box"><div class="model-head"><span>Oral transfer model</span><button class="audio-btn" type="button" data-speak="I handle difficult situations. I am used to working under pressure. Let me check that for you. I'll explain the procedure to you. I want to make sure you understood.">🔊 Listen</button></div><p>Use the chunks in one answer: “I’m used to working under pressure, so when a passenger is upset, I handle the situation calmly. I first check the facts, then I explain the procedure and make sure the passenger understands the next step.”</p></div>
+        <button class="complete-btn" type="button">Mark section complete</button>
+      </section>
+
+      <section class="panel grammar-school-panel" id="grammar" data-progress-section>
+        <div class="section-heading"><span class="step">04</span><div><p class="overline">B2 GRAMMAR FLIGHT SCHOOL</p><h3>Learn the rule first. Then prove you can use it.</h3></div></div>
+        <p class="section-intro">This is not a list of grammar topics. Every grammar module below follows the same learning route so you can understand the structure before you are tested on it.</p>
+        <div class="learning-route">
+          <article><span>1</span><b>MAIN RULE</b><p>When and why do you use it?</p></article>
+          <i>→</i><article><span>2</span><b>FORM</b><p>Affirmative · negative · question.</p></article>
+          <i>→</i><article><span>3</span><b>KEY WORDS</b><p>Signals that help you choose.</p></article>
+          <i>→</i><article><span>4</span><b>TRAPS</b><p>Exceptions and French interference.</p></article>
+          <i>→</i><article><span>5</span><b>MODEL</b><p>Aviation example in context.</p></article>
+          <i>→</i><article><span>6</span><b>PRACTISE</b><p>Immediate correction + hint.</p></article>
+        </div>
+        <div class="grammar-goal-grid">
+          <div><span class="micro-label">YOUR TARGET</span><h4>B2 = control, not perfection</h4><p>You can still make occasional mistakes at B2. The goal is to choose the right tense or structure reliably enough that your message stays clear, professional and flexible.</p></div>
+          <div><span class="micro-label">YOUR TEST STRATEGY</span><h4>Signal → rule → form → meaning</h4><p>When you see a gap-fill question, first identify the time marker or function. Then choose the grammar family. Finally check the form: auxiliary, verb ending, preposition or article.</p></div>
+        </div>
+        <div class="grammar-route-map">
+          <span>01 Present routines</span><span>02 Past & experience</span><span>03 Present Perfect signals</span><span>04 Future</span><span>05 Modals</span><span>06 Questions</span><span>07 Articles</span><span>08 Prepositions</span><span>09 Quantifiers</span><span>10 Comparison</span><span>11 Conditionals</span><span>12 Gerund / infinitive</span><span>13 Relative clauses</span><span>14 Passive</span><span>15 Natural English</span>
+        </div>
+        <button class="complete-btn" type="button">Mark section complete</button>
+      </section>
+
+      <section class="panel grammar-lab-panel" id="grammar-lab" data-progress-section>
+        <div class="section-heading"><span class="step">05</span><div><p class="overline">YOUR B2 GRAMMAR ACADEMY</p><h3>15 mini-lessons. One clear route from B1 to B2.</h3></div></div>
+        <p class="section-intro">Open one grammar module at a time. Read the rule, compare affirmative / negative / interrogative forms, notice the key words and traps, study the aviation model, then answer the three questions directly underneath. Every answer tells you immediately whether it is correct and gives you a hint when you need one.</p>
+        <div class="lab-mode-card"><div><p class="overline">TRAIN YOUR WAY</p><h4>Guided or quick-test rhythm</h4><p class="tiny">Both modes give immediate correction. Guided shows live category scores; Quick Test keeps the running score discreet until you submit.</p></div><div class="segmented lab-segmented"><button id="grammarPracticeBtn" class="mode-btn active" type="button">Guided</button><button id="grammarTestBtn" class="mode-btn" type="button">Quick Test</button></div></div>
+        <div class="diagnostic-banner"><span><strong>45</strong> questions</span><span><strong>15</strong> categories</span><span><strong>3</strong> per category</span><span><strong>B2</strong> target</span></div>
+        <div id="grammarLab" class="grammar-lab"></div>
+        <div class="grammar-submit-row"><button id="submitGrammarTestBtn" class="primary" type="button">Show my grammar map</button><button id="resetGrammarLabBtn" class="ghost" type="button">Reset lab</button><span id="grammarLabStatus" class="tiny">Guided: immediate feedback + live category score.</span></div>
+        <div id="grammarLabResults" class="grammar-results" hidden><div class="result-hero"><div><span class="overline">YOUR DIAGNOSTIC</span><h4 id="grammarTotalScore">0 / 45</h4></div><p id="grammarResultMessage">Complete the test to see your priority areas.</p></div><div id="grammarCategoryScores" class="category-score-grid"></div><div class="study-key"><span class="score-strong">3/3 = secure</span><span class="score-watch">2/3 = review</span><span class="score-priority">0–1/3 = priority</span></div></div>
+        <button class="complete-btn" type="button">Mark section complete</button>
+      </section>
+
+      <section class="panel" id="vocab" data-progress-section>
+        <div class="section-heading"><span class="step">06</span><div><p class="overline">AIRPORT POWER WORDS</p><h3>Vocabulary that helps you take control.</h3></div></div>
+        <p class="section-intro">Open a category. Each phrase includes French meaning, a professional example and manual audio.</p>
+        <div id="vocabAccordion" class="accordion"></div>
+        <div class="vocab-challenge"><p class="prompt-label">YOUR POWER 3</p><p>Choose three phrases you want to make automatic today.</p><div class="inline-fields"><input class="save-field" id="phrase1" placeholder="Phrase 1"/><input class="save-field" id="phrase2" placeholder="Phrase 2"/><input class="save-field" id="phrase3" placeholder="Phrase 3"/></div></div>
+        <button class="complete-btn" type="button">Mark section complete</button>
+      </section>
+
+      <section class="panel global-panel" id="global" data-progress-section>
+        <div class="section-heading"><span class="step">07</span><div><p class="overline">GLOBAL ENGLISH</p><h3>One career. Many accents. Two major vocabulary systems.</h3></div></div>
+        <div class="global-intro"><div class="flag-card"><b>🇬🇧 British English</b><span>recognise + understand</span></div><div class="world-divider">✈</div><div class="flag-card"><b>🇺🇸 American English</b><span>recognise + understand</span></div></div>
+        <div id="dialectTable" class="dialect-table"></div>
+        <div class="listen-row"><div><b>Compare the rhythm</b><p class="tiny">Voice availability depends on the browser/device.</p></div><button class="audio-btn" type="button" data-lang="en-GB" data-speak="Could you place your hand luggage in the overhead locker, please?">🔊 UK model</button><button class="audio-btn" type="button" data-lang="en-US" data-speak="Could you place your carry-on bag in the overhead bin, please?">🔊 US model</button></div>
+        <div class="accent-coach"><span>IRISH ACCENT STRATEGY</span><p>Do not chase every sound. Catch the <strong>noun + verb + number + destination + intention</strong>, then confirm: <em>“Just to make sure I understood correctly…”</em></p></div>
+        <button class="complete-btn" type="button">Mark section complete</button>
+      </section>
+
+      <section class="panel" id="formula" data-progress-section>
+        <div class="section-heading"><span class="step">08</span><div><p class="overline">CALM-CONTROL FORMULA</p><h3>Five steps when the pressure rises.</h3></div></div>
+        <div class="formula-track"><div><span>1</span><b>ACKNOWLEDGE</b><p>I understand your concern.</p></div><i>→</i><div><span>2</span><b>CLARIFY</b><p>Let me check what happened.</p></div><i>→</i><div><span>3</span><b>EXPLAIN</b><p>Here is what I can confirm.</p></div><i>→</i><div><span>4</span><b>OFFER</b><p>What I can do is…</p></div><i>→</i><div><span>5</span><b>CHECK</b><p>Would that work for you?</p></div></div>
+        <div class="builder smart-builder" data-builder="control"><div class="builder-top"><div><span class="builder-badge">SMART BUILDER</span><h4>Build a professional response</h4></div><div class="level-switch"><button class="builder-level-btn active" data-level="clear" type="button">Clear B2</button><button class="builder-level-btn" data-level="stretch" type="button">Stretch B2+</button></div></div><div class="builder-controls"></div><div class="builder-output">Choose one option in each step.</div><div class="builder-actions"><button class="audio-btn builder-listen" type="button">🔊 Listen</button><button class="ghost builder-copy" type="button">Copy</button><button class="ghost builder-clear" type="button">Clear</button></div></div>
+        <button class="complete-btn" type="button">Mark section complete</button>
+      </section>
+
+      <section class="panel scenario-panel" id="baggage" data-progress-section>
+        <div class="scenario-header"><div><p class="overline">LIVE SCENARIO 01</p><h3>Baggage conflict · stay calm, stay in control.</h3></div><span class="scenario-code">BAG / 01</span></div>
+        <div class="passenger-message"><span class="avatar">!</span><div><b>PASSENGER</b><p>“I paid for this ticket and nobody told me my bag was too big. I’m not paying another fee. This is ridiculous.”</p></div></div>
+        <div id="baggageQuiz" class="quiz-stack"></div>
+        <div class="builder smart-builder scenario-builder" data-builder="baggage"><div class="builder-top"><div><span class="builder-badge">SCENARIO BUILDER</span><h4>Build your response</h4></div><div class="level-switch"><button class="builder-level-btn active" data-level="clear" type="button">Clear B2</button><button class="builder-level-btn" data-level="stretch" type="button">Stretch B2+</button></div></div><div class="builder-controls"></div><div class="builder-output">Build a calm response step by step.</div><div class="builder-actions"><button class="audio-btn builder-listen" type="button">🔊 Listen</button><button class="ghost builder-copy" type="button">Copy</button><button class="ghost builder-clear" type="button">Clear</button></div></div>
+        <label class="field-label" for="baggageResponse">Your own version</label><textarea id="baggageResponse" class="long-input save-field" placeholder="Use the builder, then make the response sound like you..."></textarea>
+        <div class="tool-row"><div class="timer-widget" data-timer="60"><div><span class="timer-value">01:00</span><small>prep</small></div><button class="timer-start primary" type="button">Start</button><button class="timer-reset ghost" type="button">Reset</button></div><div class="recorder" data-recorder="baggage"><span class="status-dot"></span><span class="record-status">Ready for role-play</span><button class="record-btn primary" type="button">Record</button><button class="stop-btn ghost" type="button" disabled>Stop</button><audio class="record-playback" controls hidden></audio></div></div>
+        <div class="model-switcher practice-only"><div class="model-tabs"><button class="model-tab active" data-target="bagClear" type="button">Clear B2 model</button><button class="model-tab" data-target="bagStretch" type="button">Stretch B2+ model</button></div><div id="bagClear" class="model-content active"><p>I understand why you’re frustrated. Let me check the baggage allowance on your booking first. Your bag is above the permitted cabin size, so it cannot travel in the overhead locker. What I can do is explain the available options and help you find the quickest solution.</p><button class="audio-btn" data-speak="I understand why you're frustrated. Let me check the baggage allowance on your booking first. Your bag is above the permitted cabin size, so it cannot travel in the overhead locker. What I can do is explain the available options and help you find the quickest solution." type="button">🔊 Listen</button></div><div id="bagStretch" class="model-content"><p>I completely understand why this feels frustrating, especially if you were not expecting an additional charge. Let me check your booking and the baggage allowance first. The bag exceeds the permitted cabin dimensions, so unfortunately it cannot be accepted in the overhead compartment. I’ll talk you through the available options so we can resolve this as smoothly as possible.</p><button class="audio-btn" data-speak="I completely understand why this feels frustrating, especially if you were not expecting an additional charge. Let me check your booking and the baggage allowance first. The bag exceeds the permitted cabin dimensions, so unfortunately it cannot be accepted in the overhead compartment. I'll talk you through the available options so we can resolve this as smoothly as possible." type="button">🔊 Listen</button></div></div>
+        <button class="complete-btn" type="button">Mark section complete</button>
+      </section>
+
+      <section class="panel scenario-panel" id="assistance" data-progress-section>
+        <div class="scenario-header"><div><p class="overline">LIVE SCENARIO 02</p><h3>Connection + wheelchair assistance · reassure without promising.</h3></div><span class="scenario-code">ASSIST / 02</span></div>
+        <div class="passenger-message calm"><span class="avatar">?</span><div><b>PASSENGER</b><p>“My flight is late, I have a short connection, and my mother needs wheelchair assistance. I don’t know what to do.”</p></div></div>
+        <div id="assistanceQuiz" class="quiz-stack"></div>
+        <div class="builder smart-builder scenario-builder" data-builder="assistance"><div class="builder-top"><div><span class="builder-badge">SCENARIO BUILDER</span><h4>Build a reassuring response without making a false promise</h4></div><div class="level-switch"><button class="builder-level-btn active" data-level="clear" type="button">Clear B2</button><button class="builder-level-btn" data-level="stretch" type="button">Stretch B2+</button></div></div><div class="builder-controls"></div><div class="builder-output">Choose the key steps.</div><div class="builder-actions"><button class="audio-btn builder-listen" type="button">🔊 Listen</button><button class="ghost builder-copy" type="button">Copy</button><button class="ghost builder-clear" type="button">Clear</button></div></div>
+        <label class="field-label" for="assistanceResponse">Your own version</label><textarea id="assistanceResponse" class="long-input save-field" placeholder="I understand. Let me first check..."></textarea>
+        <div class="recorder" data-recorder="assistance"><span class="status-dot"></span><span class="record-status">Ready</span><button class="record-btn primary" type="button">Record response</button><button class="stop-btn ghost" type="button" disabled>Stop</button><audio class="record-playback" controls hidden></audio></div>
+        <div class="model-switcher practice-only"><div class="model-tabs"><button class="model-tab active" data-target="assistClear" type="button">Clear B2 model</button><button class="model-tab" data-target="assistStretch" type="button">Stretch B2+ model</button></div><div id="assistClear" class="model-content active"><p>I understand. Let me first check your connection time and confirm the wheelchair assistance for your mother. I can’t guarantee the connection yet, but I can check the latest information and explain the next steps. If there is a delay, the ground team can also help you when you arrive.</p><button class="audio-btn" data-speak="I understand. Let me first check your connection time and confirm the wheelchair assistance for your mother. I can't guarantee the connection yet, but I can check the latest information and explain the next steps. If there is a delay, the ground team can also help you when you arrive." type="button">🔊 Listen</button></div><div id="assistStretch" class="model-content"><p>I completely understand why you’re concerned. Let me check the connection time first and make sure the wheelchair assistance is correctly arranged for your mother. I don’t want to promise something before I have confirmed information, but I can check the latest arrival details and coordinate the next step with the ground team if necessary.</p><button class="audio-btn" data-speak="I completely understand why you're concerned. Let me check the connection time first and make sure the wheelchair assistance is correctly arranged for your mother. I don't want to promise something before I have confirmed information, but I can check the latest arrival details and coordinate the next step with the ground team if necessary." type="button">🔊 Listen</button></div></div>
+        <button class="complete-btn" type="button">Mark section complete</button>
+      </section>
+
+      <section class="panel lilate-panel" id="lilate" data-progress-section>
+        <div class="section-heading"><span class="step">11</span><div><p class="overline">LILATE-STYLE MINI MISSION</p><h3>Understand. Reformulate. Interact. Write.</h3></div></div>
+        <div class="exam-banner"><span>⏱ 7 minutes</span><span>4 professional skills</span><span>Models in Practice mode</span></div>
+        <div class="timer-widget wide" data-timer="420"><div><span class="timer-value">07:00</span><small>mission timer</small></div><button class="timer-start primary" type="button">Start mission</button><button class="timer-reset ghost" type="button">Reset</button></div>
+
+        <article class="mission-block"><span class="mission-number">A</span><div class="mission-body"><h4>Read → reformulate orally</h4><p class="source-message">“Gate 42 has changed to Gate 18. Boarding will begin 20 minutes later than planned. Passengers requiring assistance should remain near the information desk.”</p><div class="builder smart-builder compact-builder" data-builder="gate"><div class="builder-top"><div><span class="builder-badge">REFORMULATION BUILDER</span><h4>Do not repeat. Rephrase.</h4></div><div class="level-switch"><button class="builder-level-btn active" data-level="clear" type="button">Clear B2</button><button class="builder-level-btn" data-level="stretch" type="button">Stretch B2+</button></div></div><div class="builder-controls"></div><div class="builder-output">Build the passenger-friendly update.</div><div class="builder-actions"><button class="audio-btn builder-listen" type="button">🔊 Listen</button><button class="ghost builder-clear" type="button">Clear</button></div></div><div class="recorder" data-recorder="lilate-a"><span class="status-dot"></span><span class="record-status">Ready</span><button class="record-btn primary" type="button">Record reformulation</button><button class="stop-btn ghost" type="button" disabled>Stop</button><audio class="record-playback" controls hidden></audio></div><div class="practice-only two-models"><div><span>Clear B2</span><p>Your gate has changed from 42 to 18. Boarding will start about 20 minutes later than planned. If you need assistance, please stay near the information desk.</p></div><div><span>Stretch B2+</span><p>There has been a gate change, so you’ll now need to go to Gate 18 instead of Gate 42. Boarding is expected to begin around 20 minutes later than originally planned. If you require assistance, please remain close to the information desk.</p></div></div></div></article>
+
+        <article class="mission-block"><span class="mission-number">B</span><div class="mission-body"><h4>Listen → capture the key information</h4><button class="audio-btn" type="button" data-speak="Attention please. Flight CL 274 to Dublin has been delayed by approximately thirty-five minutes due to an operational issue. Passengers should remain in the boarding area. A further update will be provided at twelve forty-five.">🔊 Play message</button><div class="transcript" id="listenTranscript"><b>Transcript:</b> Attention please. Flight CL 274 to Dublin has been delayed by approximately thirty-five minutes due to an operational issue. Passengers should remain in the boarding area. A further update will be provided at twelve forty-five.</div><textarea id="listenWrite" class="long-input save-field" placeholder="1. Destination...&#10;2. Delay...&#10;3. Passenger instruction...&#10;4. Next update..."></textarea><button class="check-open-answer secondary" data-keywords="Dublin,35,boarding,12:45" data-target="listenWrite" type="button">Check key information</button><div class="open-feedback" id="listenWriteFeedback"></div><div class="practice-only mini-model"><span class="model-tag">WRITTEN MODEL</span><p>Flight CL 274 to Dublin is delayed by about 35 minutes. Passengers should stay in the boarding area. The next update will be given at 12:45.</p></div></div></article>
+
+        <article class="mission-block"><span class="mission-number">C</span><div class="mission-body"><h4>Interaction → clarify before acting</h4><p>A passenger says: “My bag hasn’t arrived, but I have medication inside and I need it tonight.” What should you ask first?</p><div id="lilateInteractionQuiz" class="quiz-stack compact"></div><div class="practice-only mini-model"><span class="model-tag">ORAL FOLLOW-UP MODEL</span><p>“I understand this is urgent. Can you tell me what medication you need and whether you have any with you now? I’ll then check the baggage tracing information and the quickest escalation option.”</p></div></div></article>
+
+        <article class="mission-block"><span class="mission-number">D</span><div class="mission-body"><h4>Write → short professional message</h4><p>Write 45–70 words to a colleague explaining that essential medication is in a delayed bag. Include the facts, what has been checked and the next action needed.</p><div class="builder smart-builder compact-builder" data-builder="medication"><div class="builder-top"><div><span class="builder-badge">WRITING BUILDER</span><h4>Build the structure first</h4></div><div class="level-switch"><button class="builder-level-btn active" data-level="clear" type="button">Clear B2</button><button class="builder-level-btn" data-level="stretch" type="button">Stretch B2+</button></div></div><div class="builder-controls"></div><div class="builder-output writing-output">Build the message structure.</div><div class="builder-actions"><button class="ghost builder-copy" type="button">Copy</button><button class="ghost builder-clear" type="button">Clear</button></div></div><textarea id="lilateWriting" class="long-input save-field" placeholder="Hi ...,&#10;A passenger needs urgent assistance because..."></textarea><div class="word-count"><span id="lilateWordCount">0</span> words</div><div class="model-switcher practice-only"><div class="model-tabs"><button class="model-tab active" data-target="medClear" type="button">Clear B2 model</button><button class="model-tab" data-target="medStretch" type="button">Stretch B2+ model</button></div><div id="medClear" class="model-content active"><p>Hi Sam,<br><br>A passenger needs urgent assistance because essential medication is inside a delayed suitcase. I have confirmed the baggage reference and checked the latest tracing status, but the bag has not yet been located. Could you please contact baggage services and confirm the fastest possible next step?<br><br>Thanks.</p></div><div id="medStretch" class="model-content"><p>Hi Sam,<br><br>Could you please urgently follow up on a delayed suitcase containing essential medication? I have already confirmed the passenger’s baggage reference and checked the current tracing status, but there is still no confirmed location. Please liaise with baggage services and advise us of the quickest available solution so we can update the passenger promptly.<br><br>Many thanks.</p></div></div></div></article>
+        <button class="complete-btn" type="button">Mark section complete</button>
+      </section>
+
+      <section class="panel" id="writing" data-progress-section>
+        <div class="section-heading"><span class="step">12</span><div><p class="overline">PROFESSIONAL WRITING</p><h3>Clear, concise, operational.</h3></div></div>
+        <div class="writing-framework"><div><span>1</span><b>Purpose</b><p>Why are you writing?</p></div><div><span>2</span><b>Facts</b><p>What is confirmed?</p></div><div><span>3</span><b>Action</b><p>What needs to happen?</p></div><div><span>4</span><b>Close</b><p>Deadline / next update.</p></div></div>
+        <div class="builder smart-builder" data-builder="writing"><div class="builder-top"><div><span class="builder-badge">WRITING BUILDER</span><h4>Build the operational message</h4></div><div class="level-switch"><button class="builder-level-btn active" data-level="clear" type="button">Clear B2</button><button class="builder-level-btn" data-level="stretch" type="button">Stretch B2+</button></div></div><div class="builder-controls"></div><div class="builder-output writing-output">Build your message.</div><div class="builder-actions"><button class="ghost builder-copy" type="button">Copy</button><button class="ghost builder-clear" type="button">Clear</button></div></div>
+        <div class="writing-task"><p class="prompt-label">TASK</p><p>A passenger’s suitcase was sent to the wrong airport. Write to a colleague asking them to confirm the tracing status and contact the passenger before 18:00.</p><textarea id="writingTask" class="long-input save-field" placeholder="Hi ...,&#10;Could you please..."></textarea><div class="word-count"><span id="writingWordCount">0</span> words</div></div>
+        <div class="model-switcher practice-only"><div class="model-tabs"><button class="model-tab active" data-target="writeClear" type="button">Clear B2 model</button><button class="model-tab" data-target="writeStretch" type="button">Stretch B2+ model</button></div><div id="writeClear" class="model-content active"><p>Hi Alex,<br><br>A passenger’s suitcase was sent to the wrong airport this morning. Could you please check the current tracing status and confirm whether the bag has been located? The passenger needs an update before 18:00, so please contact them as soon as you have confirmed information.<br><br>Thanks.</p></div><div id="writeStretch" class="model-content"><p>Hi Alex,<br><br>Could you please check the latest tracing status for a suitcase that was mistakenly routed to the wrong airport this morning? The passenger is waiting for confirmation and needs to be contacted before 18:00. Once the bag has been located, please update the passenger directly and let me know the expected delivery arrangements.<br><br>Many thanks.</p></div></div>
+        <button class="complete-btn" type="button">Mark section complete</button>
+      </section>
+
+      <section class="panel finale" id="debrief" data-progress-section>
+        <div class="finale-banner"><span>DESTINATION REACHED</span><h3>Ready for the world starts with one stronger answer.</h3><p>Record the opening challenge again. This time, use natural chunks, accurate grammar and your professional response structure.</p></div>
+        <div class="debrief-grid"><div class="self-score"><h4>Rate your control now</h4><label>Natural phrasing<input id="scoreNatural" class="save-field" type="range" min="1" max="5" value="3"/></label><label>Grammar precision<input id="scoreGrammar" class="save-field" type="range" min="1" max="5" value="3"/></label><label>Conflict language<input id="scoreConflict" class="save-field" type="range" min="1" max="5" value="3"/></label><label>Airport vocabulary<input id="scoreVocab" class="save-field" type="range" min="1" max="5" value="3"/></label></div><div class="practice-only mini-model final-model"><span class="model-tag">STRETCH ORAL MODEL</span><p>“My aviation experience has taught me that difficult situations are rarely solved by speaking faster or giving more information. I first identify the real need, confirm the facts and then explain the options clearly. I’m comfortable dealing with pressure, and I know how important it is to remain calm, professional and solution-focused when a passenger is stressed.”</p><button class="audio-btn" data-speak="My aviation experience has taught me that difficult situations are rarely solved by speaking faster or giving more information. I first identify the real need, confirm the facts and then explain the options clearly. I'm comfortable dealing with pressure, and I know how important it is to remain calm, professional and solution-focused when a passenger is stressed." type="button">🔊 Listen</button></div></div>
+        <div class="final-record"><div class="timer-widget" data-timer="90"><div><span class="timer-value">01:30</span><small>final take</small></div><button class="timer-start primary" type="button">Start</button><button class="timer-reset ghost" type="button">Reset</button></div><div class="recorder" data-recorder="final"><span class="status-dot"></span><span class="record-status">Ready for your second take</span><button class="record-btn primary" type="button">Record final answer</button><button class="stop-btn ghost" type="button" disabled>Stop</button><audio class="record-playback" controls hidden></audio></div></div>
+        <label class="field-label" for="takeaway">Your one-sentence takeaway</label><textarea id="takeaway" class="long-input save-field" placeholder="Today I realised that..."></textarea>
+        <div class="practice-only two-models reflection-models"><div><span>Clear B2 model</span><p>Today I realised that I already communicate confidently, but I need to make my grammar and professional phrases more automatic.</p></div><div><span>Stretch B2+ model</span><p>Today I realised that my main challenge is not speaking more, but making my English more precise, natural and consistent under pressure.</p></div></div>
+        <button class="complete-btn" type="button">Mark section complete</button>
+      </section>
+
+      <section class="panel teacher-admin" id="trainer-admin">
+        <div class="section-heading"><span class="step">T</span><div><p class="overline">TRAINER ONLY</p><h3>Connect Learning tracking</h3></div></div>
+        <details><summary>Open trainer tracking</summary><div class="admin-grid"><label>Session focus<textarea id="adminFocus">Professional introduction; natural phrasing; grammar diagnostic B1→B2; airport vocabulary; conflict and assistance scenarios; UK/US English; LILATE-style reformulation and writing.</textarea></label><label>Observed strengths<textarea id="adminStrengths" placeholder="Add observations..."></textarea></label><label>Priority errors<textarea id="adminErrors" placeholder="Add recurring errors..."></textarea></label><label>Next lesson recommendation<textarea id="adminNext">Use the grammar diagnostic + written sample to target the weakest structures. Continue operational scenarios with accent variation and spontaneous follow-up questions.</textarea></label></div><button id="copyAdminLineBtn" class="secondary" type="button">Copy centre tracking line</button><div id="adminCopyFeedback" class="tiny"></div></details>
+      </section>
+
+      <footer class="page-footer"><p>WORLD READY · Lesson 1 · Professional aviation English</p><p class="tiny">Manual audio uses browser speech synthesis. Microphone recording availability depends on browser permissions.</p></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
