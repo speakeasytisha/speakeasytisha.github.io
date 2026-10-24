@@ -1,0 +1,23 @@
+NATHALIE · RÉCUPÉRATION SANS PERDRE LES 50 RÉPONSES
+
+1. Dans Phoenix, ouvrez exactement l'ANCIEN aperçu dans lequel Nathalie a passé son test.
+   Si l'aperçu est fermé : Phoenix > historique / conversation du projet > ancien aperçu du même projet.
+   Le stockage local est lié à l'origine (adresse) de la page et au profil navigateur.
+2. NE CLIQUEZ PAS SUR RÉINITIALISER. Ne videz pas les données du site. Ne changez pas de profil de navigateur.
+3. Si l'ancienne version est ouverte et vous pouvez ouvrir les outils de développement (F12) :
+   onglet Console > collez ce code, puis Entrée :
+
+(()=>{const k='nathalie_gulliver_final_cloe_v1';const raw=localStorage.getItem(k);if(!raw){alert('Pas de données ici : rouvrir le preview original et le même profil Phoenix.');return;}let attempt;try{attempt=JSON.parse(raw)}catch(e){alert('Données non JSON, rien modifié');return}const exportData={format:'Nathalie-Gulliver-CLOE-Backup',version:1,storageKey:k,exportedAt:new Date().toISOString(),origin:location.origin,attempt,connectDate:localStorage.getItem('nathalie_connect_connectDate')||'',connectNotes:localStorage.getItem('nathalie_connect_connectNotes')||''};const blob=new Blob([JSON.stringify(exportData,null,2)],{type:'application/json'});const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='Nathalie_CLOE_RESCUE_PH OENIX.json'.replace(' ','');document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),3000);alert('Sauvegarde créée : '+(attempt.written?.answers?.length||0)+' réponses');})();
+
+4. Gardez ce fichier de sauvegarde à part. Ouvrez la NOUVELLE version de l'examen : index.html,
+   puis cliquez « Restaurer une sauvegarde » et choisissez le fichier JSON créé.
+   Une confirmation vous indiquera le nombre de réponses trouvées avant de remplacer la tentative de l'aperçu courant.
+5. Pour la nouvelle version, vous pouvez librement naviguer entre Bilan, Entretien oral et Production écrite.
+   Le bouton « Sauvegarder toutes les réponses » produit un export complet à tout moment.
+
+IMPORTANT : si l'ancien aperçu Phoenix ou les données du site ont été supprimés,
+la seule présence de l'ancien ZIP ne permet pas de retrouver les réponses effectivement saisies.
+Il faut alors une sauvegarde JSON, le même stockage navigateur ou un bilan exporté auparavant.
+
+Le bilan JSON de synthèse de l'ancienne page est différent de cette sauvegarde exhaustive :
+il peut être utile pour les notes, mais ne contient pas nécessairement toutes les réponses QCM.
