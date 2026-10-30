@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aurélie | Lesson 1 · Welcome</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-top">
+        <span class="eyebrow">SPEAKEASY · CFL WELCOME · LESSON 01</span>
+        <div class="hero-actions no-print">
+          <button type="button" class="ghost-btn" onclick="window.print()">Print / Save as PDF</button>
+          <button type="button" class="ghost-btn" onclick="resetAll()">Reset page</button>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">A NEW CHAPTER · ENGLISH FOR REAL CONNECTIONS</p>
+          <h1>Where your world<br><em>meets English.</em></h1><p class="hero-name">Welcome aboard, Aurélie!</p>
+          <p class="lead">Your work connects people, vehicles, information and ideas. Your English journey can do the same — opening up new conversations, one enjoyable step at a time.</p>
+          <p class="lead small-lead">Explore your story, make your own English introduction, discover useful expressions and choose the path that suits you.</p><div class="route-art" aria-hidden="true"><svg viewBox="0 0 740 110" preserveAspectRatio="xMidYMid meet"><path d="M20 78 C100 10 160 105 245 58 S370 18 445 70 580 100 710 24" stroke="#c9f8ed" stroke-width="3" fill="none" stroke-dasharray="7 10"/><circle cx="20" cy="78" r="7" fill="#f4d071"/><circle cx="245" cy="58" r="8" fill="#f4d071"/><circle cx="445" cy="70" r="8" fill="#f4d071"/><circle cx="710" cy="24" r="10" fill="#f4d071"/><text x="12" y="102" fill="white" font-size="13">START</text><text x="212" y="35" fill="white" font-size="13">CONNECT</text><text x="422" y="99" fill="white" font-size="13">SPEAK</text><text x="650" y="55" fill="white" font-size="13">GROW</text></svg></div>
+
+          <div class="hero-tags">
+            <span>19-hour programme</span>
+            <span>Start: 13 Oct 2026</span>
+            <span>First lesson: 30 Oct · 16:00</span>
+            <span>Finish by: 31 May 2027</span>
+            <span>VTEST later</span>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <div class="route-symbol">🚘 <span>✦</span> 💬</div><h2>Your journey, your direction</h2>
+          <ol>
+            <li>Get to know each other</li>
+            <li>Confirm useful goals</li>
+            <li>Organise the programme</li>
+            <li>Learn the language of online lessons</li>
+            <li>Choose the best learning style</li>
+          </ol>
+          <div class="progress-wrap">
+            <div class="progress-label">
+              <span>Page progress</span>
+              <strong id="progressText">0%</strong>
+            </div>
+            <div class="progress"><div id="progressBar"></div></div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <nav class="topnav no-print">
+      <a href="#welcome">Welcome</a>
+      <a href="#goals">Goals</a>
+      <a href="#plan">Programme</a>
+      <a href="#meet">Online lesson toolkit</a>
+      <a href="#preferences">Preferences</a>
+      <a href="#discovery">Something fun</a><a href="#tracking">Trainer report</a>
+    </nav>
+
+    <main>
+      <section id="welcome" class="section-card">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <div>
+            <h2>Let’s get to know each other</h2>
+            <p>A friendly introduction to begin the programme in a positive way.</p>
+          </div>
+        </div>
+
+        <div class="grid two-col">
+          <article class="content-card accent-card trainer-card">
+            <div class="card-icon">✨</div>
+            <h3>Meet your trainer · Tisha</h3>
+            <p>I am a French–American English trainer with professional experience in training, communication and technology. I have worked in IT support, web design, and educational settings, where explaining things clearly and helping people solve real problems are essential. I also work with adults preparing for professional English certifications and real workplace conversations.</p>
+            <p>I came to France as a sixteen-year-old exchange student, so I know firsthand what it means to communicate in a new language. I teach with clear step-by-step explanations, French support when useful, examples, immediate feedback and plenty of opportunities to practise without pressure. My goal is to help you make English your own.</p>
+            <div class="button-row no-print">
+              <button type="button" onclick="speak('Hello, Aurélie. Welcome. I am very happy to meet you. We will learn English together, step by step.')">▶ Listen</button>
+            </div>
+          </article>
+
+          <article class="content-card learner-card">
+            <div class="card-icon">🧭</div>
+            <h3>Let’s discover your world</h3>
+            <p class="supporting">Choose from the guided menus and add your own details. There is no pressure to answer everything today.</p>
+            <div class="grid form-grid profile-form">
+              <label>Your name<input data-save id="personName" value="Aurélie" placeholder="First name"></label>
+              <label>Where you live<input data-save id="personCity" placeholder="Example: Nantes / Les Sables-d’Olonne…"><span class="field-help">Your city or town, only if you want to share it.</span></label>
+              <label>Where you are from<input data-save id="personOrigin" placeholder="Example: Vendée, Nantes, Brittany, France…"><span class="field-help">Where you are originally from — town, region or country. You can leave this blank.</span></label>
+              <label>Your workplace<input data-save id="personCompany" placeholder="Example: a transport company, a local business, XYZ Group…"><span class="field-help">Enter the company name, or simply describe the organisation if you prefer.</span></label>
+              <label>Your position<select data-save id="personRole"><option value="">Choose…</option><option value="fleet coordinator">Fleet coordinator</option><option value="fleet manager">Fleet manager</option><option value="fleet administrator">Fleet administrator</option><option value="administrative assistant">Administrative assistant</option><option value="operations coordinator">Operations coordinator</option><option value="other">Another position</option></select></label>
+              <label>Another position (optional)<input data-save id="personRoleOther" placeholder="Example: vehicle fleet assistant / logistics officer"><span class="field-help">Use your real job title in English if you know it. We can help translate it together.</span></label>
+              <label>Area of responsibility<select data-save id="personTask"><option value="">Choose…</option><option value="coordinate vehicles and schedules">Coordinate vehicles and schedules</option><option value="manage fleet information">Manage fleet information</option><option value="work with vehicle data and software">Work with vehicle data and software</option><option value="communicate with drivers and colleagues">Communicate with drivers and colleagues</option><option value="organise maintenance and services">Organise maintenance and services</option><option value="other">Something else</option></select></label>
+              <label>Other responsibilities<input data-save id="personTaskOther" placeholder="Example: prepare vehicle reports; organise bookings"><span class="field-help">Write a short verb phrase describing what you do (no need to write “I”).</span></label>
+              <label>English at work<select data-save id="personUse"><option value="">Choose…</option><option value="talking with colleagues">Talking with colleagues</option><option value="online meetings">Online meetings</option><option value="understanding information">Understanding information</option><option value="using professional software">Using professional software</option><option value="sharing updates">Sharing updates</option><option value="other">Other situations</option></select></label>
+              <label>Other English situations<input data-save id="personUseOther" placeholder="Example: speaking to suppliers / reading technical documents"><span class="field-help">Describe a specific situation when English could be useful.</span></label>
+              <label>Outside work, you enjoy<select data-save id="personHobby"><option value="">Choose…</option><option value="travelling">Travelling</option><option value="walking and nature">Walking and nature</option><option value="music">Music</option><option value="sport and fitness">Sport and fitness</option><option value="cooking">Cooking</option><option value="reading">Reading</option><option value="spending time with friends and family">Friends and family</option><option value="other">Another activity</option></select></label>
+              <label>Another interest<input data-save id="personHobbyOther" placeholder="Example: gardening, cycling, photography…"><span class="field-help">Choose an activity you enjoy doing in your free time.</span></label>
+              <label>Your ideal next step<select data-save id="personAim"><option value="">Choose…</option><option value="feel comfortable speaking">Feel comfortable speaking</option><option value="understand conversations at work">Understand conversations at work</option><option value="participate in online meetings">Participate in online meetings</option><option value="share ideas more easily">Share ideas more easily</option><option value="communicate with international colleagues">Communicate with international colleagues</option></select></label>
+              <label>What does your team coordinate?<select data-save id="personTeam"><option value="">Choose a detail…</option><option value="vehicles and schedules">Vehicles and schedules</option><option value="fleet services and maintenance">Fleet services and maintenance</option><option value="information and reporting">Information and reporting</option><option value="requests from colleagues">Requests from colleagues</option><option value="other">Add my own detail…</option></select></label>
+              <label>Your own team detail<input data-save id="personTeamOther" placeholder="Example: planning vehicle deliveries and driver schedules"><span class="field-help">What does your team organise or coordinate? A few words are enough.</span></label>
+              <label>What do you like about your work?<select data-save id="personWorkLike"><option value="">Choose…</option><option value="working with people">Working with people</option><option value="organising information">Organising information</option><option value="solving practical problems">Solving practical problems</option><option value="helping the team">Helping the team</option><option value="learning new things">Learning new things</option><option value="other">Something else…</option></select></label>
+              <label>Your own work interest<input data-save id="personWorkLikeOther" placeholder="Example: helping customers / finding practical solutions"><span class="field-help">What part of your work do you enjoy? Use a verb ending in -ing if possible.</span></label>
+              <label>Your personal motivation<select data-save id="personMotivation"><option value="">Choose…</option><option value="feel proud of my progress">Feel proud of my progress</option><option value="connect with more people">Connect with more people</option><option value="be more independent">Be more independent</option><option value="enjoy international conversations">Enjoy international conversations</option><option value="other">Add my own…</option></select></label>
+              <label>Your own motivation<input data-save id="personMotivationOther" placeholder="Example: feel more at ease when travelling or meeting colleagues"><span class="field-help">What would make you happy or proud at the end of this course? Start with a verb.</span></label>
+            </div>
+          </article>
+        </div>
+
+        <div class="content-card builder" id="introBuilder">
+          <div class="builder-head"><div><span class="micro-kicker">YOUR FIRST ENGLISH ACHIEVEMENT</span><h3>My introduction · 3 levels, one personal story</h3><p>Start simply, then choose how much detail you want to add. Everything comes from your choices above — no invented biography.</p></div><span class="builder-stamp">MADE BY YOU ✨</span></div>
+          <div class="builder-steps"><span>1 · Choose your details</span><span>2 · Build a paragraph</span><span>3 · Listen & practise</span></div>
+          <div class="button-row"><button type="button" onclick="buildIntro()">✦ Build my 3 introductions</button><button type="button" onclick="copyIntro()">Copy chosen introduction</button><button type="button" onclick="speakIntro()">▶ Listen to my introduction</button></div>
+          <label class="small-note">Choose your speaking level<select data-save id="introLevel" onchange="displayIntro()"><option value="1">Level 1 · Friendly introduction (A2 model)</option><option value="2">Level 2 · Detailed introduction (A2+/B1 model)</option><option value="3">Level 3 · Professional presentation (B1+ model)</option></select></label>
+          <div class="intro-preview-label">YOUR PERSONAL PARAGRAPH <span>Read • practise • personalise</span></div><div id="introResult" class="intro-result" aria-live="polite">Fill in a few details above, then choose “Build my 3 introductions”.</div>
+          <p class="small-note">You can edit the generated text below to make it sound exactly like you. Your personal version is saved in the browser.</p>
+          <textarea id="introEditable" data-save placeholder="Edit your introduction here if you wish..." aria-label="Editable introduction"></textarea>
+          <label class="checkline"><input type="checkbox" data-save id="introBuilt"> We created and practised a personal introduction.</label>
+        </div>
+        <div class="info-strip">
+          <div>
+            <strong>Helpful model</strong>
+            <p>“I work in fleet management. I organise information, communicate with colleagues and help coordinate daily activities.”</p>
+          </div>
+          <div>
+            <strong>French support</strong>
+            <p>« Je travaille dans la gestion de flotte. J’organise les informations et je communique avec mes collègues. »</p>
+          </div>
+        </div>
+
+        <label class="checkline"><input type="checkbox" data-save id="introDone"> We introduced ourselves and discussed Aurélie’s background.</label>
+      </section>
+
+      <section id="goals" class="section-card">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <div>
+            <h2>Let’s agree on the training goals</h2>
+            <p>These are positive learning priorities that we can confirm together and adjust as the training evolves.</p>
+          </div>
+        </div>
+
+        <div class="intro-banner warm">
+          <strong>Today’s mindset</strong>
+          <p>We are not evaluating difficulties here — we are identifying useful directions, practical needs and motivating objectives for the programme.</p>
+        </div>
+
+        <div class="intro-banner cool">🇫🇷 <strong>Les objectifs de formation, en français et en anglais</strong><p>Nous les validons un par un pendant le premier cours. Les formulations françaises reprennent les besoins indiqués par CFL.</p></div><div id="objectives" class="stack"></div>
+
+        <label>Additional goals or adjustments
+          <textarea data-save id="extraGoals" placeholder="Other priorities, interests, situations or projects to include..."></textarea>
+        </label>
+
+        <label class="checkline"><input type="checkbox" data-save id="goalsDone"> We reviewed and agreed on the learning priorities.</label>
+      </section>
+
+      <section id="plan" class="section-card">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <div>
+            <h2>Your learning programme</h2>
+            <p>Clear dates, planning, Digiforma follow-up and a calm introduction to the overall pathway.</p>
+          </div>
+        </div>
+
+        <div class="grid timeline-grid">
+          <article class="content-card roadmap-card">
+            <h3>Programme landmarks</h3>
+            <div class="timeline">
+              <div class="timeline-item"><span class="dot"></span><div><strong>Contractual start</strong><p>13 October 2026</p></div></div>
+              <div class="timeline-item"><span class="dot"></span><div><strong>First lesson</strong><p>Friday 30 October 2026 · 16:00</p></div></div>
+              <div class="timeline-item"><span class="dot"></span><div><strong>Total volume</strong><p>19 hours</p></div></div>
+              <div class="timeline-item end"><span class="dot"></span><div><strong>Contractual finish date</strong><p>31 May 2027</p></div></div>
+            </div>
+          </article>
+
+          <article class="content-card caution-card">
+            <h3>Important date reminder</h3>
+            <p>All lessons need to be organised and completed by <strong>31 May 2027</strong>.</p>
+            <p>We’ll build the schedule together inside this period. This helps avoid last-minute issues and keeps the training on track.</p>
+            <p class="small-note">If anything ever needs to change, it must be discussed with the centre — lessons cannot simply continue beyond the contractual finish date.</p>
+          </article>
+        </div>
+
+        <div class="grid form-grid">
+          <label>Preferred rhythm
+            <select data-save id="rhythm">
+              <option value="">Choose together…</option>
+              <option>Weekly</option>
+              <option>Twice a week</option>
+              <option>Every two weeks</option>
+              <option>Flexible — to confirm</option>
+            </select>
+          </label>
+          <label>Preferred day(s) / time(s)
+            <input data-save id="times" type="text" placeholder="e.g. Fridays at 16:00">
+          </label>
+          <label>Usual lesson duration (hours)
+            <input data-save id="duration" type="number" min="0.25" max="3" step="0.25" value="1">
+          </label>
+          <label>Hours delivered during this first lesson
+            <input data-save id="actualDuration" type="number" min="0" max="3" step="0.25" value="0">
+          </label>
+        </div>
+
+        <div id="scheduleHint" class="content-card soft-highlight"></div>
+
+        <label>Planned lesson dates (one per line)
+          <textarea data-save id="dates" placeholder="30/10/2026 16:00&#10;...&#10;..."></textarea>
+        </label>
+
+        <label class="checkline"><input type="checkbox" data-save id="datesDone"> Aurélie understands the end date and we discussed the training schedule.</label>
+
+        <div class="grid two-col">
+          <article class="content-card">
+            <h3>Digiforma · attendance signatures</h3>
+            <ol class="simple-steps">
+              <li>After each lesson, open the Digiforma message or secure link.</li>
+              <li>Check the information and sign the <strong>émargement</strong>.</li>
+              <li>If the message does not arrive or the link does not work, contact your trainer.</li>
+            </ol>
+            <label class="checkline"><input type="checkbox" data-save id="signDone"> We explained how Digiforma signatures work.</label>
+          </article>
+
+          <article class="content-card exam-card">
+            <h3>VTEST · later, not today</h3>
+            <p>This programme includes a <strong>VTEST certification</strong> at the end.</p>
+            <p>We will talk about the exam format progressively, at the right moment. For now, the goal is simply to build a strong and comfortable learning routine.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="meet" class="section-card">
+        <div class="section-heading">
+          <span class="section-number">04</span>
+          <div>
+            <h2>Online lesson toolkit · communicate easily on Google Meet</h2>
+            <p>A general support section for any online lesson: useful vocabulary, helpful actions and practical English.</p>
+          </div>
+        </div>
+
+        <div class="intro-banner cool">
+          <strong>Goal</strong>
+          <p>Learn what to say and what to do if there is a sound, video, connection or chat issue during an online lesson — calmly and efficiently.</p>
+        </div>
+
+        <div class="grid three-col">
+          <article class="content-card">
+            <div class="card-icon">💬</div>
+            <h3>Useful phrases by category</h3>
+            <label>Choose a category
+              <select id="phraseCategory" data-save>
+                <option value="audio">Audio & sound</option>
+                <option value="video">Video & connection</option>
+                <option value="chat">Chat & clarification</option>
+                <option value="actions">Useful actions</option>
+              </select>
+            </label>
+            <div id="phraseBank" class="phrase-bank"></div>
+          </article>
+
+          <article class="content-card">
+            <div class="card-icon">🛠️</div><h3>Situation → What can I do?</h3><p class="supporting">Choose a situation and explore a useful sequence. These are universal video-call tips, not a personal checklist.</p>
+            <label>Choose a common situation<select id="troubleSituation" data-save onchange="renderSituation()"><option value="audio">🔊 Sound is unclear</option><option value="video">📷 Video is frozen</option><option value="chat">💬 I need clarification</option><option value="screen">🖥️ We need to share a screen</option><option value="connection">🌐 Connection is unstable</option></select></label>
+            <div id="situationSteps" class="situation-steps"></div>
+          </article>
+
+          <article class="content-card">
+            <div class="card-icon">🗺️</div>
+            <h3>A simple 4-step reflex</h3>
+            <ol class="simple-steps">
+              <li><strong>Notice the problem</strong> · “I can’t hear you.”</li>
+              <li><strong>Describe it</strong> · “Your image is frozen.”</li>
+              <li><strong>Ask for help</strong> · “Could you write it in the chat?”</li>
+              <li><strong>Try a solution</strong> · “I’ll leave and rejoin.”</li>
+            </ol>
+          </article>
+        </div>
+
+        <div class="grid two-col practice-grid">
+          <article class="content-card"><h3>🎴 Flip & listen · online vocabulary</h3><p class="supporting">Select “Reveal French” to see the translation, then use the clearly marked “▶ Listen” button when you want to hear the English word. Audio never starts automatically.</p><div class="flash-grid" id="flashcards"></div><p id="flashStatus" class="flash-status" aria-live="polite">Choose a word, reveal its meaning or listen whenever you wish.</p></article>
+          <article class="content-card"><h3>🧩 Match it! · English ↔ français</h3><p class="supporting">Tap an English expression, then its French translation. Each correct pair is confirmed immediately.</p><div id="matchingGame" class="matching-game"></div><div class="button-row"><button type="button" onclick="matchingHint()">💡 Hint</button><button type="button" onclick="resetMatching()">New round</button></div><p id="matchFeedback" class="feedback" aria-live="polite"></p></article>
+        </div>
+        <div class="content-card"><h3>✨ Put the words in order</h3><p class="supporting">Tap words to build your sentence. When the last word is placed, you will see immediate feedback. Audio is optional and available only after a correct answer.</p><div id="wordOrder" class="word-order"></div><div class="button-row"><button type="button" id="orderListen" onclick="listenCorrectOrder()" disabled>▶ Listen to my correct sentence</button><button type="button" onclick="orderHint()">Hint</button><button type="button" onclick="resetOrder()">Another sentence</button></div><p id="orderFeedback" class="feedback" aria-live="polite"></p></div>
+        <div class="grid two-col">
+          <article class="content-card quiz-panel">
+            <h3>Guided practice · mini-activities</h3>
+            <p class="supporting">Immediate feedback and hints are available for each question.</p>
+            <div id="quiz"></div>
+          </article>
+
+          <article class="content-card voice-panel">
+            <h3>Listen with a UK or US voice</h3>
+            <label>Accent
+              <select data-save id="accent">
+                <option value="en-GB">British English · UK</option>
+                <option value="en-US">American English · US</option>
+              </select>
+            </label>
+            <div class="button-row no-print">
+              <button type="button" onclick="speak(samplePhrase())">▶ Listen to a sample phrase</button>
+              <button type="button" onclick="speechSynthesis.cancel()">■ Stop</button>
+            </div>
+            <p id="voiceStatus" class="small-note"></p>
+
+            <div class="voice-guide"><h4>🎧 Set up your listening voice · 3 simple steps</h4><div class="voice-guide-grid"><div><b>1</b><strong>Choose your computer</strong><p>Windows or Mac</p></div><div><b>2</b><strong>Install an English voice</strong><p>Select US or UK</p></div><div><b>3</b><strong>Test the voice</strong><p>Press ▶ above</p></div></div><label>Show instructions for<select id="voicePlatform" onchange="renderVoiceGuide()"><option value="windows">🪟 Windows 11</option><option value="mac">🍎 Mac</option></select></label><div id="voiceGuideDetail"></div></div>
+            <details>
+              <summary>More detail · English voices and browser compatibility</summary>
+              <div class="details-content">
+                <p><strong>Windows 11:</strong> Settings → Time & language → Language & region → Add a language → English (United Kingdom) or English (United States). Install speech features if available. In some versions, additional voices can be managed through Accessibility or Narrator settings. Then restart the browser.</p>
+                <p><strong>macOS:</strong> System Settings → Accessibility → Spoken Content → System Voice → Manage Voices (the wording may vary by version). Download an English UK or US voice, then restart the browser.</p>
+                <p>Your available voices depend on your browser and operating system. If the requested accent is not installed, the page will use another available English voice.</p>
+              </div>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <section id="preferences" class="section-card">
+        <div class="section-heading">
+          <span class="section-number">05</span>
+          <div>
+            <h2>How do you like to learn?</h2>
+            <p>We can tailor the course according to the techniques that feel most helpful and motivating.</p>
+          </div>
+        </div>
+
+        <div class="intro-banner cool"><strong>🎨 Discover what works for you</strong><p>Try different ways to learn. Tick as many as you like — there is no single “correct” learning style.</p></div><div id="learning" class="grid learning-grid"></div><div class="content-card soft-highlight"><h3>🌟 Your preferred ways to practise</h3><p>Choose the frequency of a gentle progress review. This is a supportive checkpoint, not a surprise exam.</p><label>Review rhythm<select data-save id="reviewFrequency"><option>Discuss together</option><option>Every 3 lessons · a short progress review</option><option>Every 4 lessons · a short progress review</option><option>At the end of each topic</option><option>Only when I request a review</option></select></label><label>Preferred review format<select data-save id="reviewFormat"><option>A mixture of speaking, listening and short exercises</option><option>Friendly conversation and feedback</option><option>Small quiz with corrections and explanations</option><option>Role-play linked to work situations</option><option>Written recap and guided corrections</option></select></label></div>
+
+        <div class="grid form-grid">
+          <label>Homework preference
+            <select data-save id="homework">
+              <option>Discuss together</option>
+              <option>Yes, after every lesson</option>
+              <option>Yes, occasionally</option>
+              <option>No homework</option>
+            </select>
+          </label>
+
+          <label>How would you like to check your progress?
+            <select data-save id="assessment">
+              <option>Mix of short activities</option>
+              <option>Frequent short quizzes</option>
+              <option>Speaking and role-play</option>
+              <option>Writing and corrections</option>
+              <option>Conversation with feedback</option>
+            </select>
+          </label>
+        </div>
+
+        <label>What helps you feel comfortable speaking?
+          <textarea data-save id="comfort" placeholder="Examples: time to prepare, written support, examples, repetition, corrections after speaking..."></textarea>
+        </label>
+
+        <label class="checkline"><input type="checkbox" data-save id="preferencesDone"> We discussed learning preferences, rhythm and feedback style.</label>
+      </section>
+
+      <section id="discovery" class="section-card discovery-section">
+        <div class="section-heading"><span class="section-number">06</span><div><h2>A little something about you ✨</h2><p>A relaxed way to finish: everyday interests, greetings and a tiny personal story.</p></div></div>
+        <div class="grid two-col"><article class="content-card"><h3>🌍 English around the world</h3><p class="supporting">Compare everyday, professional and more sophisticated English. The goal is to choose a natural, appropriate tone.</p><label>Choose a country<select id="cultureCountry" data-save onchange="renderCulture()"><option value="uk">🇬🇧 United Kingdom</option><option value="us">🇺🇸 United States</option><option value="ie">🇮🇪 Ireland</option><option value="au">🇦🇺 Australia</option><option value="nz">🇳🇿 New Zealand</option></select></label><div id="cultureOutput" class="info-strip"></div><button type="button" onclick="speakCulture()">▶ Listen</button></article>
+        <article class="content-card"><h3>🌿 Weekend or travel mini-story</h3><p class="supporting">Choose a subject, build a short sentence, and enjoy speaking about something personal — only if you wish.</p><label>Your topic<select data-save id="funTopic"><option value="weekend">My weekend</option><option value="travel">My travel plans</option><option value="hobbies">My free time</option></select></label><label>Choose an activity<select data-save id="funActivity"><option value="walking">Walking</option><option value="travelling">Travelling</option><option value="reading">Reading</option><option value="cooking">Cooking</option><option value="doing sport">Doing sport</option><option value="seeing friends">Seeing friends</option><option value="listening to music">Listening to music</option></select></label><label>Why do you enjoy it?<select id="funReason" data-save><option value="relax after a busy week">It helps me relax</option><option value="spend quality time with people I care about">I spend time with people I care about</option><option value="discover new places and ideas">I discover new places and ideas</option><option value="stay active and healthy">I stay active</option><option value="be creative and learn something new">I can be creative</option><option value="other">My own reason…</option></select></label><label>Add your own reason (optional)<input id="funReasonOther" data-save placeholder="What makes it special to you?"></label><div class="button-row"><button type="button" onclick="buildMiniStory()">Build my story</button><button type="button" onclick="speakMiniStory()">▶ Listen</button></div><div id="miniStory" class="intro-result">Choose a topic and an activity.</div></article></div>
+        <label class="checkline"><input type="checkbox" id="funDone" data-save> We ended the first lesson with something positive and personal.</label>
+      </section>
+
+      <section id="tracking" class="section-card trainer-section">
+        <div class="section-heading">
+          <span class="section-number">07</span>
+          <div>
+            <h2>CFL trainer tracking & session report</h2>
+            <p>This section is for trainer follow-up and export. It is intentionally separate from the learner-facing parts of the lesson.</p>
+          </div>
+        </div>
+
+        <div class="intro-banner neutral">
+          <strong>Trainer note</strong>
+          <p>The report and export fields below help you complete the CFL pedagogical follow-up, keep notes, and generate a printable summary.</p>
+        </div>
+
+        <div class="grid form-grid">
+          <label>Session number
+            <input data-save id="session" type="number" min="1" value="1">
+          </label>
+          <label>Session date
+            <input data-save id="lessonDate" type="date" value="2026-10-30">
+          </label>
+          <label>Lesson URL
+            <input data-save id="lessonURL" type="url" placeholder="https://...">
+          </label>
+          <label>Overall acquisition level (trainer only)
+            <select data-save id="level">
+              <option>Non évalué</option>
+              <option>En cours d'acquisition</option>
+              <option>Acquis</option>
+              <option>Non Acquis</option>
+            </select>
+          </label>
+        </div>
+
+        <details>
+          <summary>Trainer-only CFL objective acquisition tracking</summary>
+          <div class="details-content">
+            <p class="small-note">This private area helps you mirror CFL terminology without displaying an evaluative message to the learner in this first welcome lesson.</p>
+            <div id="trainerAcquisition" class="stack"></div>
+          </div>
+        </details>
+
+        <label>Objectives of the session
+          <textarea data-save id="sessionObjectives">Faire connaissance ; confirmer les objectifs de formation ; convenir du calendrier ; découvrir les outils de visio et le suivi de formation.</textarea>
+        </label>
+
+        <label>Content and activities completed
+          <textarea data-save id="content">Présentation mutuelle, échange sur le contexte professionnel, validation des objectifs, organisation des séances, Digiforma, Google Meet, vocabulaire de la visioconférence et exercices guidés.</textarea>
+        </label>
+
+        <label>Skills evaluated
+          <textarea data-save id="skills">Interaction orale simple ; compréhension et utilisation d’expressions de visioconférence ; autonomie numérique.</textarea>
+        </label>
+
+        <label>Evaluation methods (choose all that apply)</label>
+        <div id="methods" class="grid methods-grid"></div>
+
+        <label>Trainer notes / observations
+          <textarea data-save id="notes" placeholder="Participation, interests, preferred activities, next steps..."></textarea>
+        </label>
+
+        <label>Next steps
+          <textarea data-save id="next">Reprendre les besoins prioritaires et commencer une progression orale guidée dans le contexte professionnel.</textarea>
+        </label>
+
+        <div class="button-row no-print wrap">
+          <button type="button" onclick="makeReport()">↻ Generate report</button>
+          <button type="button" onclick="copyReport()">Copy report</button>
+          <button type="button" onclick="exportTSV()">Export CFL spreadsheet row (.tsv)</button>
+          <button type="button" onclick="exportJSON()">Save all responses (.json)</button>
+          <button type="button" onclick="window.print()">Print / Save as PDF</button>
+        </div>
+
+        <pre id="report" aria-live="polite">Click “Generate report”.</pre>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
