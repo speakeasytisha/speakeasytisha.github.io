@@ -1,0 +1,600 @@
+<title>VTest Writing Reference · Antoine</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: VTEST Practice Lab theme — white top bar, grey canvas, white section panels, teal eyebrows, gold V mark, dark prompt cards, soft-yellow rule boxes */
+:root{
+  --ink:#1c2030; --muted:#5d6577; --paper:#ffffff; --canvas:#f4f5f7; --line:#d9dce3; --soft-line:#eceef1;
+  --teal:#0795a8; --teal-dark:#087d8d; --gold:#f5b51b; --soft-teal:#eef9fb; --soft-yellow:#fff8dd; --yellow-line:#f1dc8f;
+  --green:#18794e; --soft-green:#edf8f2; --red:#b42318; --soft-red:#fff2f4; --dark-card:#1c2030; --dark-card-fg:#ffffff; --dark-card-muted:#c3c8d4;
+  --shadow:0 18px 45px rgba(28,32,48,.07);
+  --display:"Space Grotesk",Inter,"Segoe UI",Arial,sans-serif; --body:Inter,"Segoe UI",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --ink:#e8eaf0; --muted:#a3abbb; --paper:#1b1f2b; --canvas:#12151d; --line:#343a4a; --soft-line:#2a2f3c;
+  --teal:#3cc0d2; --teal-dark:#5fd0df; --gold:#f5b51b; --soft-teal:#13303a; --soft-yellow:#2e2814; --yellow-line:#5c4c1c;
+  --green:#5ccf95; --soft-green:#15301f; --red:#ff8a80; --soft-red:#3a1b1e; --dark-card:#0b0d13; --dark-card-fg:#f3f4f7; --dark-card-muted:#a9b0bf;
+  --shadow:0 18px 45px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ink:#e8eaf0; --muted:#a3abbb; --paper:#1b1f2b; --canvas:#12151d; --line:#343a4a; --soft-line:#2a2f3c;
+  --teal:#3cc0d2; --teal-dark:#5fd0df; --gold:#f5b51b; --soft-teal:#13303a; --soft-yellow:#2e2814; --yellow-line:#5c4c1c;
+  --green:#5ccf95; --soft-green:#15301f; --red:#ff8a80; --soft-red:#3a1b1e; --dark-card:#0b0d13; --dark-card-fg:#f3f4f7; --dark-card-muted:#a9b0bf;
+  --shadow:0 18px 45px rgba(0,0,0,.35); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.55}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1120px;margin:0 auto}
+
+/* top bar */
+.topbar{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:50}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:2px;font-family:var(--display)}
+.vmark{font-size:28px;font-weight:700;color:var(--gold);letter-spacing:-3px;margin-right:6px}
+.brand-word{font-size:24px;letter-spacing:7px;font-weight:700}
+.brand-sub{font-size:10px;letter-spacing:2px;color:var(--teal);margin-left:10px;font-weight:600}
+.jump{display:flex;gap:6px;flex-wrap:wrap}
+.jump a{font-size:12px;font-weight:700;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 11px;background:var(--paper)}
+.jump a:hover,.jump a:focus-visible{border-color:var(--teal);color:var(--teal);outline:none}
+
+/* hero */
+.hero{background:var(--paper);border-bottom:1px solid var(--line)}
+.hero .wrap{padding-block:30px 28px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:end}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin:0 0 8px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,4.4vw,40px);line-height:1.1;letter-spacing:-.01em}
+.lede{color:var(--muted);max-width:62ch;margin:12px 0 0}
+.learner{background:var(--dark-card);color:var(--dark-card-fg);border-radius:16px;padding:18px 20px}
+.learner .k{font-size:10px;letter-spacing:.14em;color:var(--dark-card-muted);font-weight:700}
+.learner .v{font-family:var(--display);font-size:22px;font-weight:700;margin:2px 0 10px}
+.learner .bar{height:6px;border-radius:9px;background:rgba(255,255,255,.15);overflow:hidden}
+.learner .bar i{display:block;height:100%;width:55%;background:var(--gold)}
+.learner small{display:block;color:var(--dark-card-muted);margin-top:8px;font-size:12px}
+
+/* sections */
+main .wrap{padding-block:26px 40px;display:grid;gap:22px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px clamp(18px,3vw,32px);box-shadow:var(--shadow);min-width:0}
+.panel-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap;margin-bottom:16px}
+h2{font-size:clamp(22px,2.8vw,28px);line-height:1.15}
+h3{font-size:17px;line-height:1.25}
+.tag{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:5px 10px;background:var(--soft-yellow);color:var(--ink);border:1px solid var(--yellow-line);white-space:nowrap}
+.tag.teal{background:var(--soft-teal);border-color:transparent;color:var(--teal-dark)}
+p{margin:0}
+.muted{color:var(--muted)}
+.fr{color:var(--muted);font-style:italic;font-size:.92em}
+
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.box{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper);min-width:0}
+.box h3{margin-bottom:6px}
+.box .k{font-size:10.5px;font-weight:800;letter-spacing:.12em;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
+.rule{background:var(--soft-yellow);border:1px solid var(--yellow-line);border-radius:12px;padding:13px 16px}
+.note{background:var(--soft-teal);border-left:4px solid var(--teal);border-radius:10px;padding:13px 16px}
+.dark{background:var(--dark-card);color:var(--dark-card-fg);border-radius:14px;padding:18px 20px}
+.dark .k{color:var(--teal);font-size:10.5px;font-weight:800;letter-spacing:.12em}
+.dark ul{margin:8px 0 0;padding-left:20px}
+.dark p{color:var(--dark-card-fg)}
+.stack{display:grid;gap:12px}
+ul.clean{margin:6px 0 0;padding-left:18px}
+ul.clean li+li{margin-top:3px}
+
+/* exam route */
+.route{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.part{border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:0}
+.part header{background:var(--canvas);padding:12px 18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--line)}
+.part header strong{font-family:var(--display);font-size:17px}
+.part .body{padding:14px 18px}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:0}
+.facts dt{color:var(--muted);font-size:13.5px}
+.facts dd{margin:0;font-weight:700;font-size:13.5px}
+.words{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.words div{border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+.words div.me{border-color:var(--teal);background:var(--soft-teal)}
+.words b{display:block;font-family:var(--display);font-size:24px;font-variant-numeric:tabular-nums}
+.words span{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.06em}
+
+/* method steps */
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;counter-reset:s}
+.step{border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.step b{display:block;font-size:11px;letter-spacing:.12em;color:var(--teal);font-weight:800}
+.step strong{display:block;font-family:var(--display);font-size:16px;margin:2px 0}
+.step p{font-size:13.5px;color:var(--muted)}
+.timeline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:14px}
+.timeline div{padding:10px 12px;border-right:1px solid var(--line);min-width:0}
+.timeline div:last-child{border-right:0}
+.timeline span{display:block;font-size:10.5px;font-weight:800;color:var(--teal);letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.timeline p{font-size:13px}
+.formula{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
+.formula span{background:var(--dark-card);color:var(--dark-card-fg);border-radius:8px;padding:7px 12px;font-weight:700;font-size:13.5px}
+.formula i{color:var(--muted);font-style:normal}
+
+/* tables */
+.tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--soft-line)}
+th{background:var(--canvas);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.lab{font-weight:700;white-space:nowrap}
+td .fr{display:block;margin-top:3px}
+.min{min-width:780px}
+.ok{color:var(--green);font-weight:600}
+.no{color:var(--red);text-decoration:line-through;text-decoration-thickness:1px}
+
+/* errors */
+.fixes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.fix{border:1px solid var(--line);border-radius:12px;padding:11px 14px;display:grid;gap:3px;min-width:0}
+.fix .no::before{content:"✗ ";text-decoration:none;display:inline-block}
+.fix .ok::before{content:"✓ "}
+.fix small{color:var(--muted);font-size:12.5px}
+
+/* language bank */
+.bank{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.bank .box ul{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:8px}
+.bank .box li{font-size:14px}
+.bank .box li b{display:inline}
+.bank .box li em{display:block;color:var(--muted);font-style:normal;font-size:13px}
+
+/* levels */
+.ladder{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.lvl{border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0;display:flex;flex-direction:column;gap:6px}
+.lvl .badge{font-family:var(--display);font-weight:700;font-size:20px}
+.lvl.now{border-color:var(--teal);background:var(--soft-teal)}
+.lvl.target{border-color:var(--gold);background:var(--soft-yellow)}
+.lvl .who{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--teal-dark)}
+.lvl p{font-size:13.5px}
+.lvl blockquote{margin:4px 0 0;font-size:13.5px;border-top:1px solid var(--line);padding-top:8px;color:var(--ink)}
+
+/* model essays */
+.prompt{background:var(--dark-card);color:var(--dark-card-fg);border-radius:14px;padding:18px 20px}
+.prompt .k{color:var(--teal);font-size:10.5px;font-weight:800;letter-spacing:.12em}
+.prompt h3{color:var(--dark-card-fg);margin:6px 0 8px;font-size:18px}
+.prompt ul{margin:0;padding-left:20px;color:var(--dark-card-muted)}
+.essay{border:1px solid var(--line);border-radius:14px;padding:16px 18px;min-width:0}
+.essay header{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.essay header strong{font-family:var(--display);font-size:16px}
+.essay p{font-size:14.5px;line-height:1.65;max-width:70ch}
+.essay .why{margin-top:10px;font-size:13px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
+mark{background:var(--soft-yellow);color:inherit;border-radius:3px;padding:0 2px;box-shadow:inset 0 -2px 0 var(--gold)}
+.plan3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+
+/* scenarios */
+.scen td:first-child{white-space:nowrap}
+.scen ol{margin:0;padding-left:18px}
+.scen .plan{color:var(--teal-dark);font-weight:600}
+
+/* rubric */
+.rubric{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.crit{border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.crit b{font-family:var(--display);font-size:22px;display:block;font-variant-numeric:tabular-nums}
+.crit strong{display:block;font-size:14px;margin-bottom:3px}
+.crit p{font-size:13px;color:var(--muted)}
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;list-style:none;padding:0;margin:12px 0 0}
+.checks li{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.checks li::before{content:"";flex:0 0 16px;height:16px;border:2px solid var(--teal);border-radius:4px;margin-top:2px}
+
+/* quick check */
+.qc{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.q{border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.q p{font-weight:600;font-size:14px}
+.q .opts{font-size:13px;color:var(--muted)}
+.q details summary{cursor:pointer;font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--teal);list-style:none}
+.q details summary::-webkit-details-marker{display:none}
+.q details summary:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px}
+.q details p{font-weight:400;font-size:13px;margin-top:6px}
+
+footer{border-top:1px solid var(--line);background:var(--paper)}
+footer .wrap{padding-block:20px;font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:960px){
+  .hero .wrap{grid-template-columns:1fr}
+  .steps,.timeline{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .timeline div{border-bottom:1px solid var(--line)}
+  .ladder,.rubric,.qc{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bank,.g3,.plan3{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .route,.g2,.g3,.fixes,.bank,.ladder,.rubric,.qc,.plan3,.checks,.steps,.timeline{grid-template-columns:1fr}
+  .timeline div{border-right:0}
+  .jump{display:none}
+  .words b{font-size:20px}
+}
+@media print{
+  body{background:#fff;font-size:12px}
+  .topbar{position:static}.jump{display:none}
+  .panel{box-shadow:none;break-inside:auto}
+  .box,.fix,.lvl,.essay,.q,.crit,.step{break-inside:avoid}
+  .q details{display:block}.q details>*{display:block}
+}
+</style>
+
+<header class="topbar gutter">
+  <div class="wrap">
+    <div class="brand" aria-label="VTest Practice Lab"><span class="vmark">V</span><span class="brand-word">TEST</span><span class="brand-sub">PRACTICE LAB</span></div>
+    <nav class="jump" aria-label="Jump to section">
+      <a href="#route">Exam route</a><a href="#method">Method</a><a href="#grammar">Grammar</a><a href="#errors">Errors</a><a href="#bank">Phrases</a><a href="#levels">Levels</a><a href="#models">Models</a><a href="#scenarios">Scenarios</a><a href="#check">Checklist</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero gutter">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">VTest Business English · Lesson 4 · Writing reference sheet</p>
+      <h1>Answer every bullet. Develop every idea.</h1>
+      <p class="lede">Everything from Lessons 4A–4F on one page: the exam route, the 1-minute plan, the grammar you need, the phrases that link ideas, model answers at each level and the final proofreading checklist. Keep it open while you practise; read it once more the day before the test.</p>
+    </div>
+    <aside class="learner" aria-label="Learner">
+      <div class="k">LEARNER</div>
+      <div class="v">Antoine</div>
+      <div class="k">LEVEL NOW → TARGET</div>
+      <div class="v" style="font-size:18px">Strong B1 → B2</div>
+      <div class="bar" aria-hidden="true"><i></i></div>
+      <small>Your essay minimum at B1/B2: 100+ words. Your upgrade: add evaluation and consequences (see “Levels”).</small>
+    </aside>
+  </div>
+</section>
+
+<main class="gutter">
+<div class="wrap">
+
+<!-- ROUTE -->
+<section class="panel" id="route">
+  <div class="panel-head">
+    <div><p class="eyebrow">01 · The exam route</p><h2>Two official parts. Only the essay is scored.</h2></div>
+    <span class="tag">Under 25 min</span>
+  </div>
+  <div class="route">
+    <article class="part">
+      <header><strong>Part 1 · Scrambled sentences</strong><span class="tag teal">Screening</span></header>
+      <div class="body stack">
+        <dl class="facts">
+          <dt>Items</dt><dd>9 sentence-order items</dd>
+          <dt>Time</dt><dd>~7 min · each item is timed</dd>
+          <dt>Job</dt><dd>Put the words in the correct order</dd>
+          <dt>Counts?</dt><dd>No. It chooses the level of your essay prompt</dd>
+        </dl>
+        <div class="note"><strong>Build from grammar, not guesses:</strong> 1. find the subject → 2. find the verb group → 3. add the object → 4. place time/reason phrases at the end. Questions: auxiliary before the subject. Passive: keep <em>be + participle</em> together.</div>
+      </div>
+    </article>
+    <article class="part">
+      <header><strong>Part 2 · Workplace essay</strong><span class="tag">Scored</span></header>
+      <div class="body">
+        <dl class="facts">
+          <dt>Prompt</dt><dd>1 workplace situation + 3 guiding bullets</dd>
+          <dt>Time</dt><dd>1 min preparation · 20 min writing</dd>
+          <dt>Job</dt><dd>Answer all 3 bullets, clearly organised</dd>
+          <dt>On screen</dt><dd>A live word counter and a NEXT button</dd>
+        </dl>
+        <div class="words" aria-label="Minimum words by level">
+          <div><b>80+</b><span>A1 · A2</span></div>
+          <div class="me"><b>100+</b><span>B1 · B2 · YOU</span></div>
+          <div><b>120+</b><span>C1 · C2</span></div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="rule" style="margin-top:14px"><strong>Rule:</strong> if one bullet is missing, the task is incomplete, even if your English is strong. A longer answer is not automatically better. A complete, organised answer is safer. <span class="fr">Une puce oubliée = tâche incomplète.</span></div>
+</section>
+
+<!-- METHOD -->
+<section class="panel" id="method">
+  <div class="panel-head">
+    <div><p class="eyebrow">02 · The writing method</p><h2>Plan → answer every bullet → develop → proofread.</h2></div>
+  </div>
+  <div class="steps">
+    <div class="step"><b>STEP 1</b><strong>Read</strong><p>Identify the situation and who you are writing for.</p></div>
+    <div class="step"><b>STEP 2</b><strong>Bullets</strong><p>Turn each bullet into one idea.</p></div>
+    <div class="step"><b>STEP 3</b><strong>Plan</strong><p>Use the 1-minute prep: keywords, not sentences.</p></div>
+    <div class="step"><b>STEP 4</b><strong>Develop</strong><p>Add a reason, an example and a result to each idea.</p></div>
+    <div class="step"><b>STEP 5</b><strong>Check</strong><p>Word count, verbs, spelling, punctuation.</p></div>
+  </div>
+  <h3 style="margin-top:20px">The 1-minute plan</h3>
+  <div class="timeline">
+    <div><span>0–10 SEC</span><p>Read the prompt and the 3 bullets.</p></div>
+    <div><span>10–25 SEC</span><p>Choose your position or story.</p></div>
+    <div><span>25–45 SEC</span><p>One keyword idea per bullet.</p></div>
+    <div><span>45–55 SEC</span><p>Add one example or result.</p></div>
+    <div><span>55–60 SEC</span><p>Choose your opening sentence.</p></div>
+  </div>
+  <h3 style="margin-top:20px">Build every paragraph with this formula</h3>
+  <div class="formula" aria-label="Paragraph formula">
+    <span>Point</span><i>→</i><span>because…</span><i>→</i><span>For example,…</span><i>→</i><span>As a result,…</span><i>→</i><span>Next step / recommendation</span>
+  </div>
+  <p class="muted" style="margin-top:10px">Example: “The tool is useful <strong>because</strong> everyone sees the same deadlines. <strong>For example,</strong> we can check who is responsible for each task. <strong>As a result,</strong> there are fewer repeated questions.” <span class="fr">Une idée, une explication, un exemple concret, la conséquence.</span></p>
+
+  <h3 style="margin-top:22px">Six ways the prompt can be asked</h3>
+  <p class="muted" style="margin:4px 0 10px">Different wording, same job. These are training shapes, not official categories.</p>
+  <div class="grid g3">
+    <div class="box"><div class="k">Past experience</div><p>“Describe a time when you had to solve a difficult problem at work.”</p></div>
+    <div class="box"><div class="k">Opinion + reasons</div><p>“Should companies allow employees to work remotely several days a week?”</p></div>
+    <div class="box"><div class="k">Problem → solution</div><p>“Your team is missing deadlines. What could improve the situation?”</p></div>
+    <div class="box"><div class="k">Choice / recommendation</div><p>“Which training format would be best for new employees?”</p></div>
+    <div class="box"><div class="k">Change / improvement</div><p>“Your company is introducing new software. How should the change be managed?”</p></div>
+    <div class="box"><div class="k">People / teamwork</div><p>“Describe a time you worked with someone very different from you.”</p></div>
+  </div>
+</section>
+
+<!-- GRAMMAR -->
+<section class="panel" id="grammar">
+  <div class="panel-head">
+    <div><p class="eyebrow">03 · Grammar essentials</p><h2>Eight structures you can control.</h2></div>
+    <span class="tag teal">Affirmative · negative · question</span>
+  </div>
+  <div class="tscroll">
+    <table class="min">
+      <thead><tr><th>Structure</th><th>Form</th><th>+ / − / ?</th><th>Watch out</th></tr></thead>
+      <tbody>
+        <tr><td class="lab">1 · Word order</td><td>Subject + verb + object<span class="fr">L’ordre sujet–verbe est essentiel.</span></td><td>We sent the report yesterday. / We did not send it. / Did we send it?</td><td>No <em>do</em> with <em>be</em>: <span class="ok">Is she ready?</span> Frequency adverbs go before the main verb but after <em>be</em>.</td></tr>
+        <tr><td class="lab">2 · Past simple</td><td>Subject + past verb (-ed / irregular)<span class="fr">Action terminée, date précise.</span></td><td>We completed the audit. / We did not complete it. / Did we complete it?</td><td>After <em>did/didn’t</em> → base verb. Irregular: went, sent, wrote, made.</td></tr>
+        <tr><td class="lab">3 · Present perfect</td><td>have/has + past participle<span class="fr">Résultat ou bilan lié au présent.</span></td><td>The team has finished. / It has not finished yet. / Has it finished?</td><td>Markers: already, yet, just, ever, for, since. Never with <em>yesterday</em> or a finished date.</td></tr>
+        <tr><td class="lab">4 · Passive voice</td><td>be (right tense) + past participle (+ by…)<span class="fr">On met l’action au premier plan.</span></td><td>The meeting was moved. / It was not moved. / Was it moved?</td><td><em>be</em> changes, the participle does not. Add <em>by</em> only if the person matters. No passive with happen/arrive.</td></tr>
+        <tr><td class="lab">5 · Questions</td><td>Do/Does/Did + subject + base verb?<span class="fr">L’auxiliaire avant le sujet.</span></td><td>Why did the team postpone the meeting?</td><td>No extra <em>do</em> with be/have/modals. Subject questions: <span class="ok">Who approved the plan?</span></td></tr>
+        <tr><td class="lab">6 · Modals</td><td>should/could/must/might + base verb<span class="fr">should = conseil · could = possibilité · must = obligation</span></td><td>We should inform the team. / We should not delay. / Should we inform them?</td><td>No <em>to</em>, no <em>-s</em>: <span class="ok">she should send</span>. <em>Must not</em> = prohibition.</td></tr>
+        <tr><td class="lab">7 · Reason, contrast, result</td><td>because + clause · because of + noun · although + clause · However, + sentence<span class="fr">parce que · à cause de · bien que · cependant</span></td><td>We delayed the launch because testing was incomplete.</td><td>Never <em>although … but</em>. <em>However/therefore</em> need a full stop or semicolon before them.</td></tr>
+        <tr><td class="lab">8 · Paragraph flow</td><td>Point → reason → example → consequence → action</td><td>Training helps because… For example,… As a result,…</td><td>An example alone is not an argument. <em>Such as</em> + noun phrase.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:22px">The passive in every tense</h3>
+  <div class="tscroll" style="margin-top:10px">
+    <table>
+      <thead><tr><th>Tense</th><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="lab">Present simple</td><td>am/is/are + participle</td><td>The reports are checked every Friday.</td></tr>
+        <tr><td class="lab">Past simple</td><td>was/were + participle</td><td>The meeting was moved to Friday.</td></tr>
+        <tr><td class="lab">Present perfect</td><td>has/have been + participle</td><td>The issue has been resolved.</td></tr>
+        <tr><td class="lab">Future</td><td>will be + participle</td><td>The documents will be sent tomorrow.</td></tr>
+        <tr><td class="lab">Modal</td><td>should/could be + participle</td><td>The form should be completed today.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="margin-top:10px">In an essay: “New employees <mark>are given</mark> a welcome guide. Their questions <mark>are answered</mark> during the first week.” Use the passive when the result matters more than the person, not in every sentence.</p>
+
+  <h3 style="margin-top:22px">Part 1 sentence map</h3>
+  <div class="grid g3" style="margin-top:10px">
+    <div class="box"><div class="k">Statement</div><p>We sent the revised proposal yesterday.</p></div>
+    <div class="box"><div class="k">Present perfect</div><p>The team has completed the first phase.</p></div>
+    <div class="box"><div class="k">Passive</div><p>The meeting was moved to Friday.</p></div>
+    <div class="box"><div class="k">Question</div><p>Did the client approve the budget?</p></div>
+    <div class="box"><div class="k">Modal</div><p>We should confirm the booking today.</p></div>
+    <div class="box"><div class="k">Linking clause</div><p>We postponed the launch because testing was incomplete.</p></div>
+  </div>
+</section>
+
+<!-- ERRORS -->
+<section class="panel" id="errors">
+  <div class="panel-head">
+    <div><p class="eyebrow">04 · Fix these before you click NEXT</p><h2>The twelve most common errors.</h2></div>
+  </div>
+  <div class="fixes">
+    <div class="fix"><span class="no">She should to email the client.</span><span class="ok">She should email the client.</span><small>Modal + base verb, no <em>to</em>.</small></div>
+    <div class="fix"><span class="no">She should emails the client.</span><span class="ok">She should email the client.</span><small>No -s after a modal.</small></div>
+    <div class="fix"><span class="no">Did they sent the email?</span><span class="ok">Did they send the email?</span><small>After <em>did</em>, base verb.</small></div>
+    <div class="fix"><span class="no">We have sent it yesterday.</span><span class="ok">We sent it yesterday.</span><small>Finished time → past simple.</small></div>
+    <div class="fix"><span class="no">The meeting was move to Friday.</span><span class="ok">The meeting was moved to Friday.</span><small>Passive needs the past participle.</small></div>
+    <div class="fix"><span class="no">The report was wrote last week.</span><span class="ok">The report was written last week.</span><small>Irregular participles: written, sent, made, taken.</small></div>
+    <div class="fix"><span class="no">The problem was happened.</span><span class="ok">The problem happened.</span><small>happen / arrive have no passive.</small></div>
+    <div class="fix"><span class="no">Why they did postpone it?</span><span class="ok">Why did they postpone it?</span><small>Auxiliary before the subject.</small></div>
+    <div class="fix"><span class="no">Although it was late, but we continued.</span><span class="ok">Although it was late, we continued.</span><small>One connector for one contrast.</small></div>
+    <div class="fix"><span class="no">Because of it was late, we stopped.</span><span class="ok">Because it was late, we stopped.</span><small>because + clause; because of + noun (because of the delay).</small></div>
+    <div class="fix"><span class="no">Despite it was late, we finished.</span><span class="ok">Despite the delay, we finished.</span><small>Despite + noun or -ing.</small></div>
+    <div class="fix"><span class="no">I suggest to introduce a checklist.</span><span class="ok">I suggest introducing a checklist.</span><small>suggest + -ing, or suggest that + subject + verb.</small></div>
+  </div>
+  <div class="rule" style="margin-top:14px"><strong>Comma splice:</strong> <span class="no">The tool is useful, however some people need training.</span> → <span class="ok">The tool is useful. However, some people need training.</span> <span class="fr">Pas deux phrases complètes reliées par une simple virgule.</span></div>
+</section>
+
+<!-- LANGUAGE BANK -->
+<section class="panel" id="bank">
+  <div class="panel-head">
+    <div><p class="eyebrow">05 · Writing language bank</p><h2>Phrases that connect your ideas.</h2></div>
+    <span class="tag teal">EN · FR · example</span>
+  </div>
+  <div class="bank">
+    <div class="box"><div class="k">Opinion</div><ul>
+      <li><b>In my view</b> <span class="fr">à mon avis</span><em>In my view, the new system would improve coordination.</em></li>
+      <li><b>I believe</b> <span class="fr">je pense / je crois</span><em>I believe practical training is essential.</em></li>
+      <li><b>From my perspective</b> <span class="fr">de mon point de vue</span><em>From my perspective, flexibility can improve motivation.</em></li></ul></div>
+    <div class="box"><div class="k">Reason</div><ul>
+      <li><b>because / since / as</b> <span class="fr">parce que / puisque / comme</span><em>We changed the schedule because the supplier was late.</em></li>
+      <li><b>because of + noun</b> <span class="fr">à cause de</span><em>The launch was delayed because of the cost.</em></li></ul></div>
+    <div class="box"><div class="k">Contrast</div><ul>
+      <li><b>however</b> <span class="fr">cependant</span><em>However, the change may create difficulties at first.</em></li>
+      <li><b>although</b> <span class="fr">bien que</span><em>Although the system is useful, some employees may need support.</em></li>
+      <li><b>on the other hand</b> <span class="fr">d’un autre côté</span><em>On the other hand, remote work can make communication harder.</em></li></ul></div>
+    <div class="box"><div class="k">Example</div><ul>
+      <li><b>for example / for instance</b> <span class="fr">par exemple</span><em>For example, a shared dashboard can reduce duplicated work.</em></li>
+      <li><b>such as + noun</b> <span class="fr">tel que</span><em>Resources such as checklists can reduce confusion.</em></li>
+      <li><b>in addition</b> <span class="fr">de plus</span><em>In addition, managers should provide clear guidance.</em></li></ul></div>
+    <div class="box"><div class="k">Result</div><ul>
+      <li><b>as a result</b> <span class="fr">par conséquent</span><em>As a result, employees may adapt more quickly.</em></li>
+      <li><b>therefore</b> <span class="fr">donc / par conséquent</span><em>The tool saves time. Therefore, it should be used by every team.</em></li>
+      <li><b>this would…</b> <span class="fr">cela permettrait…</span><em>This would reduce confusion in the first week.</em></li></ul></div>
+    <div class="box"><div class="k">Recommendation</div><ul>
+      <li><b>I would recommend + -ing</b> <span class="fr">je recommanderais</span><em>I would recommend running a short trial period.</em></li>
+      <li><b>should / could</b> <span class="fr">devrait / pourrait</span><em>Managers should explain the purpose of the change.</em></li>
+      <li><b>I would suggest + -ing</b> <span class="fr">je suggérerais</span><em>I would suggest piloting the timetable for one month.</em></li></ul></div>
+  </div>
+  <p class="muted" style="margin-top:12px">Use connectors, but do not overuse them: one per sentence is plenty. No text-message forms, no ALL CAPS.</p>
+</section>
+
+<!-- LEVELS -->
+<section class="panel" id="levels">
+  <div class="panel-head">
+    <div><p class="eyebrow">06 · How answers grow from A2 to C1</p><h2>Same task. What changes is the development.</h2></div>
+  </div>
+  <div class="rule" style="margin-bottom:14px"><strong>Task:</strong> A company is changing its meeting schedule. Explain one benefit and one challenge. Read the four answers and notice <em>what has been added</em>, not how many difficult words appear.</div>
+  <div class="ladder">
+    <div class="lvl"><span class="badge">A2</span><p><strong>Make the message understandable.</strong> Answer the bullets with clear, correct short sentences.</p>
+      <blockquote>The company has new meeting times. This is good because we can plan our day. But some people may be busy. I think the manager should tell everyone early.</blockquote></div>
+    <div class="lvl now"><span class="who">ANTOINE · NOW</span><span class="badge">B1</span><p><strong>Explain and illustrate.</strong> Add a reason, a workplace example and an explicit result.</p>
+      <blockquote>Our company is introducing a new meeting schedule. I think this could help employees organise their work because they will know when to prepare. However, some colleagues may find the new times difficult. For example, parents may need more flexibility. I recommend asking teams for feedback before confirming the schedule.</blockquote></div>
+    <div class="lvl target"><span class="who">ANTOINE · TARGET</span><span class="badge">B2</span><p><strong>Develop and evaluate.</strong> Compare options, explain consequences, propose a realistic action.</p>
+      <blockquote>Changing the meeting schedule could improve efficiency by reducing interruptions during busy periods. For instance, holding shorter meetings in the morning may leave the afternoon free for focused work. Nevertheless, the company should consider colleagues in different time zones and those with caring responsibilities. I would suggest piloting the timetable for one month and reviewing attendance and feedback before making it permanent.</blockquote></div>
+    <div class="lvl"><span class="badge">C1</span><p><strong>Qualify and synthesise.</strong> Add balance, a feasible implementation and a measured conclusion.</p>
+      <blockquote>Although a revised meeting schedule may initially disrupt established routines, a well-designed timetable could significantly improve coordination without sacrificing individual flexibility. … A four-week pilot, supported by clear participation guidelines and anonymous feedback, would allow management to assess the impact before adopting a permanent policy.</blockquote></div>
+  </div>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="box"><div class="k">B1 → B2 move 1</div><h3>Name the mechanism</h3><p>“could help employees” → “could improve efficiency <strong>by reducing</strong> interruptions”.</p></div>
+    <div class="box"><div class="k">B1 → B2 move 2</div><h3>Qualify the difficulty</h3><p>“some colleagues may find it difficult” → “<strong>Nevertheless,</strong> the company should consider colleagues in different time zones”.</p></div>
+    <div class="box"><div class="k">B1 → B2 move 3</div><h3>Make the action testable</h3><p>“ask for feedback” → “pilot it <strong>for one month</strong> and review attendance <strong>before</strong> making it permanent”.</p></div>
+  </div>
+  <p class="muted" style="margin-top:12px">More sophisticated language only helps when it is accurate, relevant and clearly organised.</p>
+</section>
+
+<!-- MODELS -->
+<section class="panel" id="models">
+  <div class="panel-head">
+    <div><p class="eyebrow">07 · Worked example</p><h2>One prompt, one plan, two answers.</h2></div>
+    <span class="tag">Practice exam prompt</span>
+  </div>
+  <div class="grid g2" style="align-items:start">
+    <div class="prompt">
+      <div class="k">WRITING · ESSAY · 20:00</div>
+      <h3>Your team has recently started using a new digital project-management tool.</h3>
+      <p style="color:var(--dark-card-muted);margin-bottom:6px">Write about:</p>
+      <ul><li>one benefit of the new tool</li><li>one difficulty employees may experience</li><li>what the company should do to help people use it successfully</li></ul>
+    </div>
+    <div class="stack">
+      <div class="plan3">
+        <div class="box"><div class="k">01 · Benefit</div><p><strong>Clearer teamwork</strong></p><p class="muted" style="font-size:13px">Everyone sees the same deadlines → fewer repeated questions.</p></div>
+        <div class="box"><div class="k">02 · Difficulty</div><p><strong>Learning a new system</strong></p><p class="muted" style="font-size:13px">Some colleagues forget to update their tasks.</p></div>
+        <div class="box"><div class="k">03 · Support</div><p><strong>Training + short guide</strong></p><p class="muted" style="font-size:13px">Demonstrations + a named contact for the first month.</p></div>
+      </div>
+      <p class="muted" style="font-size:13.5px">This is what your 1-minute plan should look like: three keywords, one example each.</p>
+    </div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <article class="essay">
+      <header><strong>Shorter answer</strong><span class="tag teal">A2–B1</span></header>
+      <p>I think using a project-management tool can be useful for a team. First, it gives everyone the same information about tasks and deadlines. <mark>For example,</mark> employees can see what is finished and what still needs to be done. <mark>However,</mark> some people may find the new system difficult at first, especially if they are not comfortable with technology. I think the company <mark>should organize</mark> a short practical training session and give employees a simple guide. A colleague could also be available to answer questions during the first weeks. This would help people feel more confident and use the tool correctly.</p>
+      <p class="why">Covers all three bullets with an example and a recommendation. Ideas are listed rather than analysed.</p>
+    </article>
+    <article class="essay">
+      <header><strong>Developed answer</strong><span class="tag">B2–C1</span></header>
+      <p>Introducing a digital project-management tool can improve visibility and coordination <mark>because</mark> team members can follow responsibilities, deadlines and progress in one place. The main difficulty is likely to be adoption: employees who are comfortable with existing routines may see the new platform as additional work rather than a useful resource. <mark>I would therefore recommend</mark> a short hands-on training session using realistic projects, followed by simple written guidance and accessible support during the first few weeks. Managers should also explain why the tool <mark>is being introduced</mark> and agree on clear rules for updating tasks. This combination of practical training and consistent expectations would make the transition smoother and reduce duplicated work.</p>
+      <p class="why">Not simply longer: precise vocabulary (visibility, adoption, transition), the cause of the difficulty is explained, and the recommendation has a clear result.</p>
+    </article>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="box"><div class="k">Sentence starters for this prompt</div>
+      <ul class="clean">
+        <li><strong>B1:</strong> “Because the tasks are visible to everyone, we can plan our work better. For example, we can check who is responsible for each deadline.”</li>
+        <li><strong>B2:</strong> “Although the platform improves transparency, the transition may temporarily slow down employees who are unfamiliar with it.”</li>
+        <li><strong>C1:</strong> “A phased rollout, supported by hands-on demonstrations and follow-up feedback, would minimise disruption.”</li>
+      </ul></div>
+    <div class="box"><div class="k">One idea, upgraded (onboarding)</div>
+      <ul class="clean">
+        <li><span class="no">New workers have problems. Managers help them.</span></li>
+        <li><strong>B1:</strong> Starting a new job can be stressful because employees may not understand the company’s procedures. For example, a welcome guide could explain how to request IT support.</li>
+        <li><strong>B2:</strong> New employees often receive too much information without knowing which tasks to prioritize. Essential IT access could be arranged before they arrive, allowing them to contribute from day one.</li>
+      </ul></div>
+  </div>
+</section>
+
+<!-- SCENARIOS -->
+<section class="panel" id="scenarios">
+  <div class="panel-head">
+    <div><p class="eyebrow">08 · Practice scenarios</p><h2>Eight prompts with a model plan.</h2></div>
+    <span class="tag teal">Plan first, then write</span>
+  </div>
+  <p class="muted" style="margin-bottom:12px">Cover the plan column, make your own 1-minute plan, then compare. Full A2–C1 essays for each prompt are on the Lesson 4C page.</p>
+  <div class="tscroll">
+    <table class="scen min">
+      <thead><tr><th>Shape</th><th>Prompt</th><th>Three bullets</th><th>Model plan (keywords)</th></tr></thead>
+      <tbody>
+        <tr><td class="lab">Past experience</td><td>Describe a time you had to work with someone very different from you.</td><td><ol><li>who the person was</li><li>how you were different</li><li>how you managed it</li></ol></td><td class="plan">colleague from another department · direct vs detailed communication · short daily check-ins + written summary</td></tr>
+        <tr><td class="lab">Problem → solution</td><td>Your team has missed several important deadlines.</td><td><ol><li>one reason</li><li>impact on clients or colleagues</li><li>what the manager should change</li></ol></td><td class="plan">unclear priorities / too many urgent tasks · late client information + stress · weekly priorities + one owner per task + realistic deadlines</td></tr>
+        <tr><td class="lab">Recommendation</td><td>Your company wants to improve training for new employees.</td><td><ol><li>what they need first</li><li>which format you recommend</li><li>how to check it works</li></ol></td><td class="plan">role + systems + key contacts · workshop + job shadowing + guide · feedback after 2 weeks + manager check</td></tr>
+        <tr><td class="lab">Change</td><td>Your company is introducing new software across several teams.</td><td><ol><li>one benefit</li><li>one risk</li><li>how managers should introduce it</li></ol></td><td class="plan">shared data, fewer duplicate files · resistance + learning curve · pilot group + practical training + support</td></tr>
+        <tr><td class="lab">Teamwork</td><td>Some employees prefer working independently, others prefer teamwork.</td><td><ol><li>advantage of independent work</li><li>advantage of teamwork</li><li>when teamwork is essential</li></ol></td><td class="plan">focus / speed · share ideas, solve complex problems · projects with dependencies, customer issues</td></tr>
+        <tr><td class="lab">Customer service</td><td>Customer complaints have increased during the last month.</td><td><ol><li>one possible cause</li><li>how to respond now</li><li>one long-term improvement</li></ol></td><td class="plan">longer response times · acknowledge + prioritise + update customers · track complaint types + review process/staffing</td></tr>
+        <tr><td class="lab">Opinion</td><td>Your company is considering letting employees work from home two days per week.</td><td><ol><li>one advantage for employees</li><li>one difficulty for the team</li><li>one recommendation</li></ol></td><td class="plan">no commute → more focus · harder quick communication · fixed team day + clear availability hours</td></tr>
+        <tr><td class="lab">Change</td><td>Describe a workplace change that required people to adapt.</td><td><ol><li>what changed</li><li>how people reacted</li><li>what helped it succeed</li></ol></td><td class="plan">reorganisation of a process · worry, then questions · clear explanation + training + feedback loop</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="margin-top:10px;font-size:13px">The last two plans are suggestions written for this sheet; the first six come from the Lesson 4C scenario labs.</p>
+</section>
+
+<!-- QUICK CHECK -->
+<section class="panel" id="quick">
+  <div class="panel-head">
+    <div><p class="eyebrow">09 · Quick grammar check</p><h2>Five questions. Answer, then reveal.</h2></div>
+  </div>
+  <div class="qc">
+    <div class="q"><p>1. The meeting ___ moved to Friday.</p><span class="opts">was · were · did</span><details><summary>SHOW ANSWER</summary><p><strong>was</strong>: meeting is singular; past passive = was + moved.</p></details></div>
+    <div class="q"><p>2. The report should ___ completed today.</p><span class="opts">be · is · to be</span><details><summary>SHOW ANSWER</summary><p><strong>be</strong>: after should → be + past participle.</p></details></div>
+    <div class="q"><p>3. ___ the delay, we finished on time.</p><span class="opts">Despite · Although · However</span><details><summary>SHOW ANSWER</summary><p><strong>Despite</strong> + noun; although + clause.</p></details></div>
+    <div class="q"><p>4. She ___ explain the procedure.</p><span class="opts">should · shoulds · should to</span><details><summary>SHOW ANSWER</summary><p><strong>should</strong>: modal + base verb.</p></details></div>
+    <div class="q"><p>5. The problem ___ resolved yesterday.</p><span class="opts">was · has · is being</span><details><summary>SHOW ANSWER</summary><p><strong>was</strong>: yesterday = finished time → past simple passive.</p></details></div>
+  </div>
+</section>
+
+<!-- CHECKLIST + RUBRIC -->
+<section class="panel" id="check">
+  <div class="panel-head">
+    <div><p class="eyebrow">10 · Before you click NEXT</p><h2>Proofreading checklist and practice rubric.</h2></div>
+    <span class="tag">Trainer rubric · /25</span>
+  </div>
+  <ul class="checks">
+    <li>I answered all three bullets (benefit, difficulty AND recommendation).</li>
+    <li>I wrote at least 100 words.</li>
+    <li>Each point has a reason (because…) and an example (for example…).</li>
+    <li>My ideas follow an order: opening → three points → closing action.</li>
+    <li>Verbs: tense, third-person -s, base verb after did/should.</li>
+    <li>Passive: be + past participle (written, sent, made).</li>
+    <li>Capital letters, full stops, a comma after For example / However.</li>
+    <li>No comma splices, no although … but.</li>
+  </ul>
+  <div class="rubric" style="margin-top:18px">
+    <div class="crit"><b>/5</b><strong>Task coverage</strong><p>Every bullet answered; who, what and why.</p></div>
+    <div class="crit"><b>/5</b><strong>Organisation</strong><p>Clear opening, paragraphs, connectors, final action.</p></div>
+    <div class="crit"><b>/5</b><strong>Grammar</strong><p>Tense, agreement, questions; passive when useful.</p></div>
+    <div class="crit"><b>/5</b><strong>Vocabulary</strong><p>Precise, relevant, varied but natural.</p></div>
+    <div class="crit"><b>/5</b><strong>Accuracy</strong><p>Spelling, punctuation, readable sentences.</p></div>
+  </div>
+  <p class="muted" style="margin-top:12px;font-size:13px">This 25-point rubric is a training tool for tracking progress. It is not the official VTest scoring formula.</p>
+</section>
+
+<!-- OTHER FORMATS -->
+<section class="panel" id="other">
+  <div class="panel-head">
+    <div><p class="eyebrow">11 · Extension formats (4E · 4F)</p><h2>Picture description and professional email.</h2></div>
+    <span class="tag teal">Not in the Business English exam</span>
+  </div>
+  <div class="grid g2">
+    <div class="box"><div class="k">General English · picture task</div>
+      <ul class="clean">
+        <li><strong>Overview:</strong> The picture shows…</li>
+        <li><strong>Actions:</strong> present continuous: <em>three colleagues are sitting around a table</em></li>
+        <li><strong>Position:</strong> in the foreground / behind / next to</li>
+        <li><strong>Careful inference:</strong> they <em>seem to</em> be discussing… / they <em>may</em> be…</li>
+      </ul>
+      <p class="muted" style="margin-top:8px;font-size:13.5px">Separate what you can see from what you think.</p></div>
+    <div class="box"><div class="k">Professional email · 6 blocks</div>
+      <ul class="clean">
+        <li><strong>Greeting:</strong> Hello Sam, / Dear Ms Smith,</li>
+        <li><strong>Purpose:</strong> I’m writing to…</li>
+        <li><strong>Context:</strong> As discussed / Regarding…</li>
+        <li><strong>Request or update:</strong> Could you… / Please note…</li>
+        <li><strong>Deadline / next step:</strong> I will update you by 3 p.m.</li>
+        <li><strong>Closing:</strong> Kind regards, Antoine</li>
+      </ul></div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer class="gutter">
+  <div class="wrap">
+    <span>VTest Business English · Writing reference · Lesson 4 (4A–4F) · Prepared for Antoine</span>
+    <span>Independent preparation material, not an official Burlington VTest product.</span>
+  </div>
+</footer>
