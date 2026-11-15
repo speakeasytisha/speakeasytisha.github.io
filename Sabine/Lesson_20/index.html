@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sabine · Your Personal English Travel Guide</title>
+<link rel="stylesheet" href="style.css"><script src="audio-clips.js" defer></script><script src="script.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to guide</a>
+<header class="hero hero-bostonpt"><div class="wrap">
+<div class="topbar"><img class="brand" src="brand.svg" alt="SpeakEasy Tisha"><div class="top-actions">
+<button class="ghost" id="french" aria-pressed="true">🇫🇷 French help: ON</button>
+<select id="accent" aria-label="Audio accent"><option value="en-GB">UK English</option><option value="en-US">US English</option></select>
+<button class="ghost" id="stop">■ Stop audio</button><button class="ghost" id="print">Print / Save as PDF</button>
+</div></div>
+<div class="hero-grid"><div><div class="kicker">Real Trip Studio · Your review and pocket guide</div>
+<h1>Sabine · Your Personal English Travel Guide</h1>
+<p>Introduce yourself, talk about your work and find the words you need from the airport counter to the restaurant table.</p>
+<span class="fr" lang="fr">Présentez-vous, parlez de votre métier et retrouvez vos phrases utiles à chaque étape du voyage.</span></div>
+<aside class="journey-card"><h2>Your lesson route</h2><div class="milestones">
+<div class="milestone"><span class="badge">1</span> Introduce yourself and keep talking</div>
+<div class="milestone"><span class="badge">2</span> Prepare, depart and arrive</div>
+<div class="milestone"><span class="badge">3</span> Check in, eat out and find your way</div>
+<div class="milestone"><span class="badge">4</span> Try a full conversation</div>
+</div></aside></div></div></header>
+<nav><div class="nav-inner" id="nav"><a href="#pocket">Pocket guide</a><a href="#words">Vocabulary</a><a href="#review">Verb review</a></div></nav>
+<main id="main" class="wrap">
+<noscript><p class="warning">Enable JavaScript to open the guide and practise.</p></noscript>
+<section id="pocket" class="section study"><div class="section-head"><div><div class="eyebrow">Open this when you need a phrase</div><h2>What do you need to say?</h2></div></div>
+<div class="panel"><div class="jump" id="jump"></div><label for="pocketSelect"><b>Choose your situation</b></label><select id="pocketSelect"></select><div id="pocketLines" class="vocab-list"></div>
+<div class="tip rescue"><strong>If you miss a word</strong><p>Sorry, could you say that again more slowly, please?</p><span class="fr" lang="fr">Pourriez-vous répéter plus lentement, s’il vous plaît ?</span><button class="audio-btn" data-say="Sorry, could you say that again more slowly, please?">▶ Listen</button></div>
+</div></section>
+<section id="words" class="section study"><div class="section-head"><div><div class="eyebrow">Look up a word or a phrase</div><h2>Travel & conversation vocabulary</h2></div></div><div class="panel"><div class="row"><label>Category <select id="vocabSelect"></select></label><label>Search in this category <input id="filter" type="search" placeholder="e.g. gate or porte"></label></div><div class="vocab-list" id="vocab"></div></div></section>
+<div class="panel mode-panel"><div class="row"><label>Practice mode <select id="mode"><option value="guided">Guided · hints & immediate feedback</option><option value="exam">Exam · 12 min, results at submission</option></select></label><strong id="score"></strong></div>
+<div id="examBox" hidden><p>Start the timer, answer the exercises, then submit. Use a fresh attempt to try again.</p><div class="row"><button class="primary" id="start">Start 12-minute attempt</button><button class="secondary" id="submit">Submit attempt</button><strong id="clock"></strong></div></div></div>
+<section id="review" class="section study"><div class="section-head"><div><div class="eyebrow">One rule at a time</div><h2>Choose the verb before you speak</h2><p>Start with the meaning, read the three forms, then try one short check.</p></div></div><div id="rules"></div></section>
+<div id="scenes"></div>
+<section id="mission" class="section"><div class="section-head"><div><div class="eyebrow">Put it together</div><h2>Your full travel conversation</h2></div></div><div class="panel">
+<div class="study note">One-hour review: 10 min introduction and work · 8 min small talk · 10 min verbs and preparation · 22 min travel counters, hotel, restaurant and directions · 10 min final role-play and recap.</div>
+<p>Use your own trip, or imagine travelling from France to Boston and then visiting Provincetown. The times and bookings in the practice are examples.</p>
+<ol><li>Introduce yourself and give two details about your work. Ask your partner a question.</li><li>At the airport, show your passport, check a bag and confirm the gate. On arrival, find your bag and ask how to get into town.</li><li>At the hotel, give the booking name and ask about breakfast. At the restaurant, order and ask for the check.</li><li>Show your ticket at an attraction. Ask for directions back and repeat one detail to confirm.</li></ol>
+<div class="study"><label for="reflection"><b>Write your useful phrases or your next step</b></label><textarea id="reflection" rows="4" placeholder="Next time I want to practise…"></textarea><div id="missionModels"></div></div>
+</div></section>
+<section id="tracking" class="section"><div class="section-head"><div><div class="eyebrow">Review your progress</div><h2>Lesson record</h2></div></div><div class="panel">
+<div class="grid-2"><label>Lesson URL <input type="url" id="lessonUrl" placeholder="https://…"></label><label>Trainer notes <textarea id="trainerNotes" rows="2"></textarea></label></div>
+<div class="table-wrap"><table><thead><tr><th>Section</th><th>Guided</th><th>Exam</th><th>Acquisition</th></tr></thead><tbody id="trackingRows"></tbody></table></div>
+<div class="row"><button id="copyTracking" class="primary">Copy CFL tracking (TSV)</button><button id="saveTracking" class="secondary">Download TSV</button><span id="copyStatus" role="status"></span></div>
+<p class="muted">Objective scores cover the short checks. Review spoken responses together before choosing an acquisition status.</p></div></section>
+<section id="earlier" class="section study"><h2>Revisit your earlier lessons</h2><div class="panel" id="earlierLinks"></div></section>
+</main>
+<footer class="wrap"><p>SpeakEasy Tisha · Real Trip Studio <span id="audioStatus" role="status"></span></p></footer>
+</body></html>
