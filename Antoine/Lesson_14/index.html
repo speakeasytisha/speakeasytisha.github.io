@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Antoine · VTEST Final Masterclass</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">SPEAKEASY TISHA · VTEST PRACTICE STUDIO</div>
+    <h1>The Final Push</h1>
+    <p class="lead">Antoine · Grammar, expressions &amp; confidence · Final pre-exam masterclass</p>
+    <div class="hero-grid">
+      <div class="stat"><strong>5</strong><span>focused modules</span></div>
+      <div class="stat"><strong id="statQ">0</strong><span>auto-checked questions</span></div>
+      <div class="stat"><strong>8</strong><span>mini-games</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar" role="toolbar" aria-label="Lesson tools">
+  <div class="toolbar-inner">
+    <div class="tool-group">
+      <button id="helpToggle" class="chip-btn" aria-pressed="true">🇫🇷 FR help: ON</button>
+      <button id="accentToggle" class="chip-btn">🔊 Accent: 🇬🇧 UK</button>
+      <button id="modeToggle" class="chip-btn" aria-pressed="false">🎓 Guided mode</button>
+    </div>
+    <div class="score-pill" aria-live="polite">
+      <span><b id="score">0 / 0</b> correct / attempted</span>
+      <div class="progress-track"><div id="bar"></div></div>
+    </div>
+    <div class="tool-group">
+      <button id="print" class="ghost">🖨 Print / PDF</button>
+      <button id="reset" class="ghost danger">↺ Reset</button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="notice">Independent VTEST-inspired preparation. This is not an official VTEST examination or a reproduction of its interface.</div>
+
+  <nav id="nav" class="module-nav" aria-label="Modules"></nav>
+
+  <section class="card module-head">
+    <div class="module-kicker" id="moduleKicker"></div>
+    <h2 id="sectionTitle"></h2>
+    <p id="rule" class="goal"></p>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span class="step">1</span><h2>Learn it</h2></div>
+    <div id="teaching"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span class="step">2</span><h2>Vocabulary &amp; useful expressions</h2></div>
+    <label for="vocab" class="label">Select a category</label>
+    <select id="vocab"></select>
+    <div id="vocabList" class="vocab-grid"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span class="step">3</span><h2>Guided practice</h2><span id="count" class="badge"></span></div>
+    <p class="small">Choose an answer — you get feedback immediately. In Guided mode you can use a hint or reveal the answer.</p>
+    <div id="questions"></div>
+  </section>
+
+  <section class="card game-card">
+    <div class="card-head"><span class="step">4</span><h2>Play &amp; practise</h2></div>
+    <div id="game"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span class="step">5</span><h2>Build the sentence · word order</h2><span id="buildCount" class="badge"></span></div>
+    <p class="small">Click the scrambled tiles in the right order. Feedback appears as soon as all the tiles are placed.</p>
+    <div id="builder"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span class="step">6</span><h2>Speak &amp; write · two model levels</h2></div>
+    <p class="small">Use <b>PREP</b>: Point → Reason → Example → Result. Speak aloud or write your draft; compare with the B1 and B2 models (self-assessed).</p>
+    <div id="missions"></div>
+    <button id="moduleDone" class="primary wide">✓ Mark this module as completed</button>
+  </section>
+
+  <section class="card final">
+    <div class="card-head"><span class="step">★</span><h2>Final mixed exam-style challenge</h2></div>
+    <p>Switch to <b>Exam mode</b> to hide hints and answers. 15 questions from all five modules, shuffled every time.</p>
+    <div class="btn-row"><button id="mixed" class="primary">Launch the 15-question challenge</button></div>
+    <div id="mixedArea"></div>
+  </section>
+
+  <section class="card game-card">
+    <div class="card-head"><span class="step">⏱</span><h2>Speed round · 60 seconds</h2></div>
+    <p class="small">All modules mixed. Answer as many as you can in 60 seconds. Your best score is saved.</p>
+    <div id="speed"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span class="step">✎</span><h2>Trainer notes &amp; next steps</h2></div>
+    <textarea id="notes" rows="5" placeholder="Strengths, points to revisit, pronunciation, next steps..."></textarea>
+    <label for="url" class="label">Lesson URL</label>
+    <input id="url" placeholder="Paste the lesson URL">
+    <div class="btn-row">
+      <button id="copySummary" class="primary">📋 Copy results &amp; notes</button>
+      <span id="copyMsg" class="small"></span>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <h3>Your feedback on this lesson</h3>
+    <p class="fr-line"><span class="fr">Votre avis sur cette séance</span></p>
+    <div class="rating" id="rating" role="radiogroup" aria-label="Confidence rating 1 to 5"></div>
+    <p class="small light">1 = not confident yet · 5 = very confident for the exam</p>
+    <textarea id="evalComment" rows="3" placeholder="What helped you most? What would you like to practise again?"></textarea>
+    <p class="small light" id="evalSaved"></p>
+    <p class="brand">SpeakEasyTisha · Final VTEST preparation · Practise with confidence · Qualiopi traceability: lesson evaluation saved on this device.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
