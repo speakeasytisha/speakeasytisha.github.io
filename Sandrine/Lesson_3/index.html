@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sandrine — London Calling · Lesson 03 | London Explorer</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="lesson3.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand">LONDON <span>CALLING</span><small>LESSON 03 · THE EXPLORER EDITION</small></div>
+  <nav id="nav"></nav>
+  <div class="sidefoot">
+    <div class="passport-mini"><b>🛂 My London passport</b><div id="passportMini"></div></div>
+    <button id="resetBtn" type="button">↺ Reset this lesson</button>
+    <p>Discover · Plan · Navigate · Experience · Review</p>
+  </div>
+</aside>
+
+<main>
+<header class="hero">
+  <div class="eyebrow">THE LONDON EXPERIENCE / 03</div>
+  <h1>Sandrine — <em>Live London</em></h1>
+  <p>Choose your adventures, read the sky, plan two weeks around the weather (and tired teenagers!), travel like a local, get through the doors, find the loo and order lunch for four.</p>
+  <div class="heroactions"><span>YOUR FAMILY OF FOUR</span><span>REAL LONDON PLACES</span><span>WEATHER-PROOF PLANNING</span><span>COLLECT 12 PASSPORT STAMPS</span></div>
+  <div class="hero-tools">
+    <label>Accent<select id="accent"><option value="en-GB">🇬🇧 British</option><option value="en-US">🇺🇸 American</option></select></label>
+    <label class="switch"><input type="checkbox" id="frenchHelp"> French support</label>
+    <label>Practice mode<select id="mode"><option value="guided">Guided · feedback &amp; hints</option><option value="exam">Challenge · no hints</option></select></label>
+    <button id="printBtn" type="button">Print / Save as PDF</button>
+    <button id="exportBtn" type="button">Save my progress (file)</button>
+    <button id="importBtn" type="button">Reload saved progress</button>
+    <input id="importFile" type="file" accept=".json,application/json" hidden>
+  </div>
+  <div id="passport" class="passport"></div>
+</header>
+<div class="progress"><div id="bar"></div></div>
+
+<!-- 01 RECEPTION -->
+<section id="recap" data-nav="Reception">
+  <div class="eyebrow">01 · FROM YOUR HOTEL</div>
+  <h2>Your next London chapter</h2>
+  <div class="notice"><b>Previously:</b> you booked a quiet family room and confirmed your arrival. <b>Now:</b> you choose real places, plan your fortnight around the weather, travel, buy tickets, find your way inside and tell the story. This is a learning simulation, not a booking website.</div>
+  <div class="chapter">
+    <h3>At the reception desk</h3>
+    <div class="dialogue" id="receptionDialogue"></div>
+    <details class="fr-details"><summary>🇫🇷 Help · asking for recommendations</summary><p><b>Could you recommend…?</b> = Pourriez-vous recommander… ? · <b>What would you suggest?</b> = Que conseilleriez-vous ? · <b>Is it worth visiting?</b> = Est-ce que ça vaut la peine ?</p></details>
+  </div>
+  <div id="recapQuestions"></div>
+  <div id="recapOpen"></div>
+</section>
+
+<!-- 02 EXPLORE -->
+<section id="discover" data-nav="Explore London">
+  <div class="eyebrow">02 · YOUR MINI GUIDEBOOK</div>
+  <h2>Choose what to discover</h2>
+  <p>Read each card, open the <b>📍 Map</b> to see which part of London it is in, visit the official page, then press <b>＋ Add to my list</b>. Everything you add appears in your two-week calendar in Section 04.</p>
+  <div id="attractionCards" class="attraction-grid"></div>
+  <div id="wishlist" class="wishlist"></div>
+  <div class="formgrid">
+    <label>Main attraction for this lesson (directions, tickets, review)<select id="destination"></select></label>
+    <label>Your second choice<select id="secondDestination"></select></label>
+  </div>
+  <div id="readings"></div>
+  <h3 class="mini-title">Quick reading check · one question per place</h3>
+  <div id="readingQuestions"></div>
+</section>
+
+<!-- 03 WEATHER -->
+<section id="weather" data-nav="Weather talk">
+  <div class="eyebrow">03 · WHAT'S THE WEATHER LIKE?</div>
+  <h2>Sun, showers &amp; a change of plan</h2>
+  <p>In Britain, the weather is a national conversation starter! Learn to <b>ask</b> about it, <b>describe</b> it, and <b>decide</b> what to do because of it.</p>
+
+  <div class="three-jobs">
+    <article class="job"><div class="job-num">1</div><h3>Ask</h3><div class="phrase-list" data-phrases="ask"></div></article>
+    <article class="job"><div class="job-num">2</div><h3>Describe</h3><div class="phrase-list" data-phrases="describe"></div></article>
+    <article class="job"><div class="job-num">3</div><h3>Decide</h3><div class="phrase-list" data-phrases="decide"></div></article>
+  </div>
+
+  <div class="rule">
+    <h3>Teach first · grammar for weather and plans</h3>
+    <div class="grammar-columns">
+      <article><h4>NOW vs IN GENERAL</h4><p><b>It's raining.</b> (right now)<br><b>It rains a lot in London.</b> (in general)</p><p>⚠️ Not <s>It rains now</s>.</p><div class="french-note">Présent continu pour maintenant ; présent simple pour une généralité.</div></article>
+      <article><h4>PREDICTIONS</h4><p><b>It's going to rain.</b> — I can see dark clouds (evidence).<br><b>It will be sunny tomorrow.</b> — the forecast says so.<br><b>It might rain.</b> — maybe (50/50).</p><div class="french-note">going to = indice visible · will = prévision · might = peut-être.</div></article>
+      <article><h4>DECISIONS</h4><p><b>If it rains, we'll</b> go to the museum.<br><b>Since / As</b> it's sunny, let's have a picnic.<br>It's windy, <b>so</b> we won't take the boat.</p><p>⚠️ Not <s>If it will rain</s>.</p><div class="french-note">If + présent, will + verbe. Since/As = puisque ; so = donc.</div></article>
+    </div>
+    <p class="tip">🌡️ <b>Culture tip:</b> the UK uses <b>Celsius</b> (“It's 18 degrees”). Americans use <b>Fahrenheit</b>: 64°F ≈ 18°C. And the British say <b>brolly</b> for umbrella and <b>sunny spells</b> for “éclaircies”.</p>
+  </div>
+
+  <h3 class="mini-title">Weather words · tap to listen</h3>
+  <div id="weatherWords" class="weather-words"></div>
+
+  <h3 class="mini-title">Game 1 · Match the sky to the word</h3>
+  <div id="weatherMatch"></div>
+
+  <h3 class="mini-title">Game 2 · Choose the right sentence</h3>
+  <div id="weatherQuestions"></div>
+
+  <h3 class="mini-title">Game 3 · What should we do today?</h3>
+  <p>Read the forecast and the family's mood. Choose the best plan.</p>
+  <div id="weatherDecisions"></div>
+
+  <h3 class="mini-title">Build the sentences</h3>
+  <div id="weatherOrder"></div>
+  <div id="weatherOpen"></div>
+</section>
+
+<!-- 04 PLANNER -->
+<section id="planner" data-nav="Two-week planner">
+  <div class="eyebrow">04 · YOUR LONDON FORTNIGHT</div>
+  <h2>Plan two weeks · weather &amp; energy first</h2>
+  <div class="notice"><b>Practice forecast:</b> this 14-day forecast is a <b>simulation</b> for the lesson (real forecasts are not reliable two weeks ahead). Before you travel, check the real forecast on <a href="https://www.bbc.co.uk/weather/2643743" target="_blank" rel="noopener">BBC Weather · London ↗</a> or the <a href="https://www.metoffice.gov.uk/" target="_blank" rel="noopener">Met Office ↗</a>.</div>
+
+  <div class="planner-controls">
+    <label>First day of the trip<input id="planStart" type="date"></label>
+    <button type="button" id="newForecast">🔀 New forecast</button>
+    <button type="button" id="twistBtn" class="twist-btn">⚡ Surprise twist!</button>
+    <button type="button" id="checkPlan">✅ Check my plan</button>
+    <button type="button" id="icsBtn">📅 Add to my phone calendar (.ics)</button>
+    <button type="button" id="clearPlan" class="secondary">Clear calendar</button>
+  </div>
+
+  <h3 class="mini-title">The forecast · tap a day to hear it</h3>
+  <div id="forecast" class="forecast"></div>
+
+  <div class="rule compact">
+    <h3>Language for changing plans</h3>
+    <div class="phrase-list inline" data-phrases="change"></div>
+  </div>
+
+  <div class="planner-layout">
+    <aside class="bank-wrap">
+      <h3>Activity bank</h3>
+      <p class="small">Drag an activity onto a <b>morning</b> or <b>afternoon</b> slot, or <b>tap it, then tap a slot</b>. Tap a planned activity to move it; ✕ removes it.</p>
+      <div class="legend"><span>🏠 indoor</span><span>☂️ covered</span><span>🌳 outdoor</span><span>👀 needs clear views</span><span>⚡ energy</span></div>
+      <div id="activityBank"></div>
+    </aside>
+    <div>
+      <div id="twistBox"></div>
+      <div id="calendar" class="calendar"></div>
+    </div>
+  </div>
+  <div id="planFeedback" class="plan-feedback"></div>
+
+  <div class="taskactions"><button type="button" id="planSentencesBtn">🗣️ Turn my calendar into sentences</button><button type="button" id="planSentencesListen" class="secondary">▶ Listen to my plan</button></div>
+  <div id="planSentences" class="output">Your plan sentences will appear here (for example: “On Tuesday the 13th of April, it's going to rain, so we're going to visit the Natural History Museum.”)</div>
+
+  <h3 class="mini-title">Check the language of changing plans</h3>
+  <div id="planQuestions"></div>
+  <div id="planOpen"></div>
+</section>
+
+<!-- 05 VOCABULARY -->
+<section id="vocabulary" data-nav="Vocabulary">
+  <div class="eyebrow">05 · VOCABULARY PASSPORT</div>
+  <h2>Words for every stage</h2>
+  <p>Choose a category. Every entry has English, French, a definition, an example and Listen. The voice follows the accent selector.</p>
+  <div class="formgrid"><label>Vocabulary category<select id="vocabCategory"></select></label><label>Search<input id="vocabSearch" placeholder="Search English or French…"></label></div>
+  <div id="vocabList" class="wordgrid"></div>
+</section>
+
+<!-- 06 DIRECTIONS -->
+<section id="directions" data-nav="Directions &amp; transport">
+  <div class="eyebrow">06 · HOW DO WE GET THERE?</div>
+  <h2>Plan a real London journey</h2>
+  <div class="rule">
+    <h3>Teach first · make a polite travel question</h3>
+    <p><b>Could you tell me how to get to…?</b> · <b>Which line should we take?</b> · <b>Do we need to change?</b> · <b>Which stop should we get off at?</b> · <b>Is it within walking distance?</b></p>
+    <p><b>Directions:</b> go straight on → cross at the pedestrian crossing → turn left / right → go past the pharmacy → it's on your right → opposite / next to / between / on the corner of / at the end of the street.</p>
+    <p><b>Question pattern:</b> Could + subject + base verb…? / How + do + we + get…? <b>Negative:</b> We don't need to change. <b>Imperative:</b> Don't cross here!</p>
+    <div class="french-note">On your left = sur votre gauche · opposite = en face de · on the corner of = à l'angle de · go past = passez devant.</div>
+  </div>
+
+  <h3 class="mini-title">Game · Follow the directions and tap the building</h3>
+  <div id="mapGame"></div>
+
+  <div class="routebox">
+    <h3>Live journey check · real routes, not invented timetables</h3>
+    <p>Starting point: <b>The Resident Covent Garden</b> (your hotel from Lesson 2). Check routes, disruption and step-free access on the official planners.</p>
+    <div id="routeInfo"></div>
+    <div class="taskactions"><a id="mapsOut" target="_blank" rel="noopener" class="buttonlink">Open Google Maps directions ↗</a><a href="https://tfl.gov.uk/plan-a-journey/" target="_blank" rel="noopener" class="buttonlink secondary">TfL Journey Planner ↗</a><a href="https://tfl.gov.uk/status-updates/" target="_blank" rel="noopener" class="buttonlink secondary">Live service updates ↗</a></div>
+    <small>Real journeys vary with time, closures, route choice and accessibility.</small>
+  </div>
+  <div class="rule">
+    <h3>London transport · bus, Tube, DLR, boat and walking</h3>
+    <p><b>Tube / Underground:</b> find the correct line and direction, tap in and tap out. <b>Bus:</b> tap in only; press the bell to request your stop. <b>DLR:</b> a light railway that is useful for Greenwich (Cutty Sark station). <b>River Bus:</b> a scenic paid boat. <b>Walking:</b> often the easiest way in central London. <b>Black cab:</b> direct, but check the cost.</p>
+    <p><b>Family travel:</b> children under 11 travel free. Travellers aged 11–15 may get a Young Visitor discount on a Visitor Oyster card (ask staff to set it). Travellers aged 16+ pay adult fares unless they have a special card. Each adult needs their own card or phone. Always check current rules with TfL.</p>
+  </div>
+  <div id="routeQuestions"></div>
+  <div id="routeOrder"></div>
+  <div id="routeOpen"></div>
+</section>
+
+<!-- 07 TICKETS -->
+<section id="booking" data-nav="Arrive &amp; buy tickets">
+  <div class="eyebrow">07 · ARRIVE, CHECK PRICES, PAY</div>
+  <h2>From an idea to an entry ticket</h2>
+  <div class="rule">
+    <h3>Useful language · before you pay</h3>
+    <p><b>Is admission free?</b> / <b>Do we need to book in advance?</b> / <b>Is there a family ticket?</b> / <b>How much is it for two adults and two teenagers?</b> / <b>Is there a booking fee?</b> / <b>Can we pay by card / contactless?</b> / <b>Could we change the time?</b></p>
+    <p><b>There is / are:</b> There are four of us. <b>Modals:</b> Could we…? / Do we have to…? / We don't have to…</p>
+  </div>
+
+  <div class="grammar-masterclass" id="muchManyMasterclass">
+    <div class="eyebrow">LANGUAGE LAB · FIRST, UNDERSTAND THE RULE</div>
+    <h3>How much or how many? · Count it or measure it</h3>
+    <p>Before asking about tickets and prices, learn to distinguish <strong>quantity</strong> from <strong>price</strong>.</p>
+    <div class="grammar-columns">
+      <article><h4>HOW MANY + plural countable noun</h4><p>Things you can count: <b>tickets, teenagers, stops, lifts, floors, sandwiches, bottles</b>.</p><p><b>How many tickets</b> do we need? — Four tickets.</p><p><b>How many stops</b> are there? — Three stops.</p><div class="french-note">Combien de + nom dénombrable au pluriel.</div></article>
+      <article><h4>HOW MUCH + uncountable noun</h4><p>Things you measure: <b>money, time, water, information, advice, luggage, traffic</b>.</p><p><b>How much time</b> do we have? — About twenty minutes.</p><p><b>How much luggage</b> can we bring? — Two bags each (count the bags, not the luggage).</p><div class="french-note">Combien de + nom indénombrable.</div></article>
+      <article><h4>HOW MUCH for prices</h4><p><b>How much is it?</b> / <b>How much does it cost?</b> / <b>How much are the tickets?</b></p><p><b>How much is an adult ticket?</b> — Twenty-two pounds.</p><p><b>How much are four tickets?</b> — Sixty-six pounds.</p><div class="french-note">Pour un prix, toujours <b>how much</b>, même pour plusieurs billets.</div></article>
+    </div>
+    <div class="grammar-steps"><h4>Build questions correctly</h4><p><b>How many + plural noun + are there?</b> → How many stops are there?<br><b>How much + uncountable noun + do we need?</b> → How much water do we need?<br><b>How much + does + subject + cost?</b> → How much does admission cost?<br><b>How much + are + plural items?</b> → How much are the tickets?</p><p><b>Negatives:</b> We don't have <b>much</b> time. / There aren't <b>many</b> seats left. <b>Questions:</b> Is there <b>much</b> traffic? / Are there <b>many</b> people?</p></div>
+    <div class="grammar-steps"><h4>Key exceptions and natural English</h4><p><b>Uncountable in English:</b> information, advice, luggage/baggage, furniture, equipment. Count <i>pieces of advice</i>, <i>bags</i> or <i>suitcases</i> instead.</p><p><b>Meaning changes:</b> <i>How much time?</i> (duration) vs <i>How many times?</i> (occasions); <i>How much coffee?</i> (liquid) vs <i>How many coffees?</i> (cups).</p><p><b>Natural alternative:</b> <i>a lot of</i> works with both: <i>We have a lot of time / There are a lot of people.</i></p></div>
+    <h4>Guided practice · choose and check (15 questions)</h4><div id="muchManyQuestions"></div>
+    <h4>Build the sentences</h4><div id="muchManyOrder"></div>
+    <h4>Speak or write · two real-life role-plays</h4><div id="muchManyOpen"></div>
+  </div>
+
+  <h3 class="mini-title">Scene 1 · You arrive at Cutty Sark, Greenwich</h3>
+  <div id="arrivalScene"></div>
+
+  <h3 class="mini-title">Scene 2 · Read the price board like a detective 🔍</h3>
+  <div id="priceBoard"></div>
+  <div id="priceCalc"></div>
+  <div id="priceQuestions"></div>
+  <div id="priceOpen"></div>
+
+  <h3 class="mini-title">Scene 3 · At the ticket desk</h3>
+  <div id="cuttyDesk"></div>
+  <div id="ticketScenario"></div>
+  <div id="ticketQuestions"></div>
+  <div id="ticketOrder"></div>
+  <div id="ticketOpen"></div>
+</section>
+
+<!-- 08 INSIDE -->
+<section id="inside" data-nav="Inside the attraction">
+  <div class="eyebrow">08 · INSIDE THE ATTRACTION</div>
+  <h2>Floors, signs and finding the loo</h2>
+  <div class="rule">
+    <h3>UK ↔ US floors · the important difference!</h3>
+    <div class="floor-grid"><div><h4>🇬🇧 UK · same as France</h4><p><b>Lower ground floor</b> = niveau -1<br><b>Ground floor</b> = rez-de-chaussée<br><b>First floor</b> = 1er étage<br><b>Second floor</b> = 2e étage</p></div><div><h4>🇺🇸 US</h4><p><b>Basement</b> = niveau -1<br><b>First floor</b> = rez-de-chaussée<br><b>Second floor</b> = 1er étage<br><b>Third floor</b> = 2e étage</p></div></div>
+    <p><b>Ordinals:</b> first (1st), second (2nd), third (3rd), fourth (4th), fifth (5th), eleventh (11th), twelfth (12th), twenty-first (21st), twenty-second (22nd), twenty-third (23rd). Exceptions: 11th, 12th, 13th — NOT 11st or 12nd.</p>
+    <p><b>UK:</b> lift, toilets / loo (informal), ground floor, queue, way out. <b>US:</b> elevator, restroom / bathroom, first floor, line, exit. In London, “Excuse me, where are the toilets, please?” is perfect.</p>
+  </div>
+
+  <h3 class="mini-title">Read the signs · you are on the ground floor</h3>
+  <div id="signBoard"></div>
+
+  <h3 class="mini-title">Game 1 · Where do we go? Drag each need to the right sign</h3>
+  <div id="signMatch"></div>
+  <h3 class="mini-title">Game 2 · British or American? Match the pairs</h3>
+  <div id="ukusMatch"></div>
+
+  <div class="chapter"><h3>Follow the signs</h3><p>Go through the entrance. Show your e-ticket or QR code. Go along the corridor, past the information desk, then take the lift or the stairs. Turn right at the end of the corridor. The toilets are opposite the café.</p><button class="speak" type="button" data-say="Go through the entrance, take the lift to the first floor, and turn right at the end of the corridor. The toilets are opposite the café.">▶ Listen</button></div>
+  <div id="signQuestions"></div>
+  <div id="floorQuestions"></div>
+  <div id="floorOrder"></div>
+  <div id="insideScenario"></div>
+  <div id="insideOpen"></div>
+</section>
+
+<!-- 09 FOOD -->
+<section id="food" data-nav="Food &amp; family">
+  <div class="eyebrow">09 · A FAMILY BREAK</div>
+  <h2>We're starving — lunch for four!</h2>
+  <div class="rule">
+    <h3>Real-life requests · food, allergies and payment</h3>
+    <p><b>Could we have a table for four?</b> · <b>Is there somewhere nearby to grab a bite?</b> · <b>Do you have anything vegetarian?</b> · <b>Does this contain nuts?</b> · <b>Is that to eat in or take away?</b> · <b>Could we have the bill, please?</b> (UK) / <b>the check</b> (US).</p>
+    <p><b>Countable:</b> two sandwiches, four drinks, some apples. <b>Uncountable:</b> some water, a little cheese, not much time. <b>Would like</b> + noun / to + verb: I'd like a pot of tea. Negative: I wouldn't like anything spicy. Question: Would you like anything else?</p>
+    <div class="french-note">British café food: <b>toastie</b> = croque-monsieur grillé · <b>jacket potato</b> = pomme de terre au four · <b>scone</b> = petit pain au lait, servi avec confiture et crème (clotted cream).</div>
+  </div>
+  <div id="cafeGame"></div>
+  <div id="foodQuestions"></div>
+  <div id="foodOrder"></div>
+  <div id="foodOpen"></div>
+</section>
+
+<!-- 10 RETURN -->
+<section id="return" data-nav="Back to the hotel">
+  <div class="eyebrow">10 · BACK TO THE HOTEL</div>
+  <h2>One more little adventure</h2>
+  <div class="chapter"><h3>The last challenge of your day</h3><p>It's getting late, it has started to drizzle and everyone is worn out. Your phone battery is low. Ask somebody for help, identify the right stop, check the direction of travel, and explain the return route to your family.</p></div>
+  <div id="returnQuestions"></div>
+  <div id="returnOrder"></div>
+  <div id="returnOpen"></div>
+</section>
+
+<!-- 11 REVIEW -->
+<section id="reviews" data-nav="Write your review">
+  <div class="eyebrow">11 · TELL THE STORY</div>
+  <h2>Write a believable review</h2>
+  <div class="rule">
+    <h3>Past simple → present perfect → opinion</h3>
+    <p><b>Past simple:</b> finished actions at a finished time. (+) We <b>visited</b> the museum yesterday. (−) We <b>didn't wait</b> long. (?) <b>Did</b> you enjoy it? Irregular: go → went; see → saw; buy → bought; take → took; have → had; get → got.</p>
+    <p><b>Present perfect:</b> experience/result connected to now; no finished time. (+) We <b>have visited</b> several attractions. (−) We <b>haven't tried</b> the boat yet. (?) <b>Have</b> you <b>ever taken</b> a river bus? Keywords: ever, never, already, just, yet, so far, since, for. Never say “We have visited it yesterday”.</p>
+    <p><b>For vs since:</b> for + duration (for two hours); since + starting point (since 10 a.m.). <b>Adjectives</b> describe nouns (a beautiful ship); <b>adverbs</b> describe actions (the guide explained everything clearly). Exception: good → well; fast → fast.</p>
+    <p><b>Connectors:</b> first, then, after that, however, although, because, so, finally, overall. <b>Structure:</b> context → what happened → positives → drawbacks → recommendation.</p>
+  </div>
+  <div id="reviewQuestions"></div>
+  <div id="reviewOrder"></div>
+  <div class="formgrid"><label>Review rating<select id="rating"><option value="5">★★★★★ Excellent</option><option value="4">★★★★ Good</option><option value="3">★★★ Mixed</option><option value="2">★★ Disappointing</option><option value="1">★ Poor</option></select></label><label>Review subject<select id="reviewPlace"></select></label></div>
+  <div id="reviewExamples"></div>
+  <div id="reviewOpen"></div>
+</section>
+
+<!-- 12 HOME -->
+<section id="home" data-nav="Travel home">
+  <div class="eyebrow">12 · THE JOURNEY HOME</div>
+  <h2>London → France, your choice</h2>
+  <p>Choose the way you travel home. The page adapts the dialogue and practice to your route.</p>
+  <div class="formgrid"><label>Return transport<select id="returnMode"><option value="eurostar">Eurostar / train</option><option value="plane">Plane</option><option value="ferry">Car + ferry</option></select></label><label>One practical concern<select id="returnConcern"><option>Passport / documents</option><option>Luggage / bags</option><option>Time and delays</option><option>Changing transport</option><option>Food and facilities</option></select></label></div>
+  <div id="homeText"></div>
+  <div id="homeQuestions"></div>
+  <div id="homeOrder"></div>
+  <div id="homeOpen"></div>
+  <div class="notice"><b>Travel-document reminder:</b> check the official rules for each traveller, including any ETA requirement for entry to the UK. A simulation cannot replace carrier or government guidance.</div>
+</section>
+
+<!-- 13 FINAL -->
+<section id="final" data-nav="Final mission">
+  <div class="eyebrow">13 · YOUR LONDON STORY</div>
+  <h2>The complete day · final challenge</h2>
+  <p>Speak or write a complete first-person account: your chosen place and why, the weather and how it changed your plans, how you travelled, how you got in, what you ate, how you got back and whether you would recommend it.</p>
+  <div id="finalOpen"></div>
+  <div class="taskactions"><button id="transcriptBtn" type="button">Generate speaking notes</button><button id="copyTranscript" type="button" class="secondary">Copy</button></div>
+  <div id="transcript" class="output">Your editable speaking notes will appear here.</div>
+  <div class="scoreboard"><div><b id="correctCount">0</b><small>Correct exercises</small></div><div><b id="attemptCount">0</b><small>Attempted</small></div><div><b id="practicePct">—</b><small>Success on attempted</small></div><div><b id="stampCount">0/12</b><small>Passport stamps</small></div></div>
+</section>
+
+<!-- 14 TRAINER -->
+<section id="trainer" data-nav="CFL tracking">
+  <div class="eyebrow">14 · TRAINER / CFL WELCOME</div>
+  <h2>Lesson tracking &amp; spreadsheet export</h2>
+  <p>Complete the pedagogical follow-up only for activities actually observed. Scores from this page are automatic; teacher assessment remains a professional judgement.</p>
+  <div class="formgrid"><label>Lesson date<input id="lessonDate" type="date"></label><label>Duration (minutes)<input id="duration" type="number" min="15" max="240" value="60"></label><label>Lesson URL<input id="lessonUrl" type="url" placeholder="https://…"></label><label>General status<select id="generalStatus"><option>En cours</option><option>Acquis</option><option>Non acquis</option></select></label><label>Supports used<select id="supportUsed"><option>Interactive web lesson + authentic links</option><option>Interactive web lesson + speaking</option><option>Reading documents + websites</option><option>Role-play + live map</option><option>Other (specify in notes)</option></select></label><label>Exercise types<select id="exerciseTypes"><option>QCM · matching · word order · planner · oral · writing</option><option>QCM · reading comprehension</option><option>Role-play · oral presentation</option><option>Writing · grammar practice</option><option>Transport / map tasks</option></select></label></div>
+  <h3>Learning objectives assessed</h3>
+  <div id="cflObjectives"></div>
+  <div class="formgrid"><label>Strengths<textarea id="strengths" placeholder="What was observed?"></textarea></label><label>To reinforce<textarea id="revisit" placeholder="What needs more practice?"></textarea></label><label>Next steps<textarea id="nextSteps" placeholder="What comes next?"></textarea></label><label>Private trainer notes<textarea id="trainerNotes" placeholder="Trainer-only notes; stored locally in this browser."></textarea></label></div>
+  <div class="taskactions"><button id="cflGenerate" type="button">Create CFL tracking row</button><button id="cflCopy" type="button">Copy spreadsheet row (TSV)</button><button id="downloadReport" type="button">Download full lesson report</button></div>
+  <div id="cflOutput" class="output">The CFL tracking row will appear here.</div>
+  <div class="notice"><b>Saving:</b> “Save my progress (file)” downloads a small .json file. To continue on another computer or browser, press “Reload saved progress” and choose that file — you don't need to open it yourself.</div>
+</section>
+<footer>London Calling · Lesson 03 · A personalised learning simulation by SpeakEasyTisha · Attraction, price and transport information must be checked on the linked official sites before travelling.</footer>
+</main>
+
+<dialog id="mapDialog" class="map-dialog">
+  <div class="mapbox">
+    <div class="maphead"><div><small id="mapArea"></small><h3 id="mapTitle"></h3></div><button type="button" id="mapClose" aria-label="Close map">✕</button></div>
+    <iframe id="mapFrame" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <p id="mapSay" class="map-say"></p>
+    <div class="taskactions"><a id="mapOpen" class="buttonlink" target="_blank" rel="noopener">Open in Google Maps ↗</a><a id="mapRoute" class="buttonlink secondary" target="_blank" rel="noopener">Route from our hotel ↗</a><button type="button" class="secondary" id="mapListen">▶ Listen</button></div>
+  </div>
+</dialog>
+
+<script src="lesson3.js"></script>
+</body>
+</html>
