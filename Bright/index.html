@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bright English Prep · Lesson 01 · SpeakEasyTisha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ WELCOME / DISCLAIMER ============ -->
+<div id="disclaimer" class="overlay">
+  <div class="modal">
+    <div class="sunburst" aria-hidden="true">☀️</div>
+    <div class="eyebrow">SPEAKEASYTISHA · INDEPENDENT TRAINING</div>
+    <h2>Welcome to your Bright English preparation</h2>
+    <p>This course is an <strong>independent practice programme</strong>. It is not the official Bright Language test or website. Practice scores are for training only.</p>
+    <p class="fr">Ce parcours est un entraînement indépendant : ce n'est pas l'examen officiel Bright. Les scores sont indicatifs.</p>
+    <label class="namefield">Your first name <span class="fr">· votre prénom</span>
+      <input id="learnerName" type="text" placeholder="e.g. Claire" autocomplete="given-name">
+    </label>
+    <button id="enter" class="btn primary big">Let's start →</button>
+  </div>
+</div>
+
+<!-- ============ EXAM CONSOLE (simulation overlay) ============ -->
+<div id="examConsole" class="console" hidden>
+  <div class="console-top">
+    <div class="console-brand"><span class="dot"></span><div><strong id="cTitle">Practice test</strong><small id="cPart">Part 1</small></div></div>
+    <div class="console-meta"><span id="cCounter">Question 1 / 10</span><span id="cClock" class="cclock">0:45</span></div>
+    <button id="cQuit" class="btn ghost light small">✕ Quit test</button>
+  </div>
+  <div class="console-bar"><div id="cBar"></div></div>
+  <div id="cBody" class="console-body"></div>
+  <div class="console-foot">Practice simulation · Independent training · Not the official Bright interface</div>
+</div>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <button id="menuBtn" class="menuBtn" aria-label="Open menu">☰</button>
+  <div class="brand">
+    <span class="brandmark">☀</span>
+    <div><strong>BRIGHT ENGLISH PREP</strong><small>SpeakEasyTisha · Lesson 01</small></div>
+  </div>
+  <div class="topactions">
+    <div class="xp" title="Bright points"><span>☀️</span><b id="xpCount">0</b><small id="xpLevel">Starter</small></div>
+    <label class="ctl">🔊
+      <select id="accent" aria-label="Accent">
+        <option value="en-GB">UK accent</option>
+        <option value="en-US">US accent</option>
+      </select>
+    </label>
+    <label class="ctl">🐢
+      <select id="rate" aria-label="Speed">
+        <option value="0.95">Normal</option>
+        <option value="0.75">Slow</option>
+      </select>
+    </label>
+    <button id="frBtn" class="btn chip">🇫🇷 French: ON</button>
+    <button id="printBtn" class="btn chip">⎙ Print</button>
+  </div>
+</header>
+
+<div class="shell">
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidehead">YOUR PATH</div>
+  <nav id="nav">
+    <div class="navgroup">Start</div>
+    <button class="nav" data-go="home"><i>00</i>Welcome<b class="tick"></b></button>
+    <button class="nav" data-go="exam"><i>01</i>The exam explained<b class="tick"></b></button>
+    <button class="nav" data-go="lab"><i>02</i>Discovery test<b class="tick"></b></button>
+    <div class="navgroup">Written test · grammar &amp; vocabulary</div>
+    <button class="nav" data-go="vocab"><i>03</i>Core vocabulary<b class="tick"></b></button>
+    <button class="nav" data-go="g1"><i>04</i>Verb + to / -ing<b class="tick"></b></button>
+    <button class="nav" data-go="g2"><i>05</i>Present perfect vs past<b class="tick"></b></button>
+    <button class="nav" data-go="g3"><i>06</i>Prepositions that go together<b class="tick"></b></button>
+    <button class="nav" data-go="g4"><i>07</i>Word families<b class="tick"></b></button>
+    <div class="navgroup">Listening</div>
+    <button class="nav" data-go="listen"><i>08</i>Listening toolkit<b class="tick"></b></button>
+    <div class="navgroup">Writing</div>
+    <button class="nav" data-go="write"><i>09</i>Writing toolkit<b class="tick"></b></button>
+    <div class="navgroup">Speaking</div>
+    <button class="nav" data-go="speak"><i>10</i>Speaking toolkit<b class="tick"></b></button>
+    <div class="navgroup">Play &amp; prove it</div>
+    <button class="nav" data-go="arcade"><i>11</i>Game arcade<b class="tick"></b></button>
+    <button class="nav" data-go="final"><i>12</i>Final mock &amp; results<b class="tick"></b></button>
+  </nav>
+  <div class="sidefoot">
+    <div class="progresstext"><b id="progCount">0 / 0</b> activities completed</div>
+    <div class="progressbar"><div id="progFill"></div></div>
+    <small>Saved automatically in this browser.</small>
+  </div>
+</aside>
+
+<main id="main">
+
+<!-- ===================== 00 HOME ===================== -->
+<section id="home" class="page">
+  <div class="hero">
+    <div class="eyebrow">LESSON 01 · DISCOVERY &amp; FOUNDATIONS</div>
+    <h1>Hello <span class="learnerName">there</span>! <br><em>Let's get you Bright-ready.</em></h1>
+    <p class="lead">In this first lesson you will discover exactly how the Bright test works, try a realistic practice test, then learn the vocabulary, grammar, listening tricks, writing and speaking skills you need, step by step.</p>
+    <p class="fr">Dans cette première leçon : découvrir l'examen, faire un test de positionnement, puis apprendre étape par étape le vocabulaire, la grammaire, l'écoute, l'écrit et l'oral.</p>
+    <div class="herostats">
+      <div><strong>120</strong><span>multiple-choice questions (written + listening)</span></div>
+      <div><strong>45 s</strong><span>per written question</span></div>
+      <div><strong>60 s</strong><span>per listening question</span></div>
+      <div><strong>0–5</strong><span>Bright score scale</span></div>
+    </div>
+  </div>
+
+  <h2>How this lesson works</h2>
+  <div class="route">
+    <div class="routecard c1"><span>1</span><h3>🔍 Discover</h3><p>Understand the test, then take a short <b>discovery test</b> in a real exam-style screen.</p></div>
+    <div class="routecard c2"><span>2</span><h3>📚 Learn</h3><p>Vocabulary, grammar, listening, writing and speaking, each with rules, examples and exercises.</p></div>
+    <div class="routecard c3"><span>3</span><h3>🎮 Play</h3><p>Beat your best score in the <b>Grammar Sprint</b> and the <b>Word Match</b> memory game.</p></div>
+    <div class="routecard c4"><span>4</span><h3>🏁 Prove it</h3><p>Take the <b>final mock test</b>, compare with your discovery score and download your results.</p></div>
+  </div>
+
+  <h2>Your tools</h2>
+  <div class="legend">
+    <div><b>🔊</b><span>Listen to any word or sentence (choose UK or US accent at the top)</span></div>
+    <div><b>🇫🇷</b><span>Turn French help on or off at any time</span></div>
+    <div><b>💡</b><span>Hints in practice exercises (never in the test simulation)</span></div>
+    <div><b>☀️</b><span>Earn Bright points for every exercise you complete</span></div>
+  </div>
+  <div class="callout sun"><strong>🎯 Today's objective</strong>
+    <p>By the end of this lesson you will know the test format, your starting level, and the first grammar and vocabulary points that appear again and again in the test.</p>
+    <p class="fr">Objectif : connaître le format, votre niveau de départ et les premiers points de grammaire et de vocabulaire les plus fréquents.</p>
+  </div>
+  <div class="pagenav"><span></span><button class="btn primary" data-go="exam">Start: the exam explained →</button></div>
+</section>
+
+<!-- ===================== 01 EXAM ===================== -->
+<section id="exam" class="page">
+  <div class="eyebrow">01 · THE EXAM EXPLAINED</div>
+  <h1>What happens on test day?</h1>
+  <p class="lead">Your pathway assesses five skills. The online multiple-choice part is the same for everyone; writing and speaking follow your centre's instructions.</p>
+  <p class="fr">Votre parcours évalue cinq compétences. La partie QCM en ligne est commune ; l'écrit et l'oral suivent les consignes de votre centre.</p>
+
+  <div class="modules">
+    <article class="module m1">
+      <div class="micon">✍️</div>
+      <h3>Written expression</h3>
+      <small>Grammar · vocabulary · sentence structure</small>
+      <ul><li><b>60</b> questions</li><li>Complete the sentence: <b>4 options</b> (A–D)</li><li><b>45 seconds</b> per question</li></ul>
+    </article>
+    <article class="module m2">
+      <div class="micon">🎧</div>
+      <h3>Listening</h3>
+      <small>Short sentences or mini-dialogues</small>
+      <ul><li><b>60</b> questions</li><li>Choose the meaning: usually <b>3 options</b> (A–C)</li><li><b>60 seconds</b> per question</li><li>You may <b>replay</b> the audio, but the clock keeps running</li></ul>
+    </article>
+    <article class="module m3">
+      <div class="micon">📧</div>
+      <h3>Writing</h3>
+      <small>According to your centre's guide</small>
+      <ul><li>A professional <b>email</b></li><li>A short developed text (about <b>140 words</b>)</li><li>About <b>30 minutes</b></li></ul>
+    </article>
+    <article class="module m4">
+      <div class="micon">🗣️</div>
+      <h3>Speaking</h3>
+      <small>Live, with an examiner by video</small>
+      <ul><li>Introduce yourself, talk about your work</li><li>Answer questions, give opinions and examples</li><li>About <b>20 minutes</b></li></ul>
+    </article>
+  </div>
+
+  <h2>The 5 golden rules</h2>
+  <div class="rules">
+    <div><span>1</span><p><b>The clock decides.</b> When time runs out, the test moves to the next question automatically.</p><p class="fr">Quand le temps est écoulé, on passe automatiquement à la question suivante.</p></div>
+    <div><span>2</span><p><b>Never leave a blank.</b> An unanswered question counts as wrong. A guess gives you a chance.</p><p class="fr">Une question sans réponse compte comme fausse : répondez toujours.</p></div>
+    <div><span>3</span><p><b>Keep moving forward.</b> You normally cannot go back to an earlier question.</p><p class="fr">On ne peut normalement pas revenir en arrière.</p></div>
+    <div><span>4</span><p><b>Listening has no pictures.</b> Read the 3 short options first, then listen for the general meaning.</p><p class="fr">Pas d'image ni de contexte : lisez les options, puis écoutez le sens global.</p></div>
+    <div><span>5</span><p><b>Grammar matters a lot.</b> Many written questions test verb forms, prepositions and word types.</p><p class="fr">Beaucoup de questions portent sur les formes verbales, les prépositions et la nature des mots.</p></div>
+  </div>
+
+  <h2>Your score</h2>
+  <div class="scorebox">
+    <div class="scale"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+    <div class="cefr"><span>A1</span><span>A2</span><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>
+    <p>Bright gives a score from <b>0 to 5</b>, linked to the CEFR levels (A1 → C2). Your results appear immediately after the online test. Your employer or training organisation may ask for a specific level.</p>
+    <p class="fr">Score de 0 à 5, relié aux niveaux du CECRL. Les scores de ce parcours sont seulement indicatifs.</p>
+  </div>
+
+  <h2>✅ Quick check: do you know the rules?</h2>
+  <div id="ex-examQuiz" class="exercise"></div>
+
+  <div class="pagenav"><button class="btn ghost" data-go="home">← Back</button><button class="btn primary" data-go="lab">Next: discovery test →</button></div>
+</section>
+
+<!-- ===================== 02 LAB ===================== -->
+<section id="lab" class="page">
+  <div class="eyebrow">02 · DISCOVERY TEST</div>
+  <h1>Try the real format, right now.</h1>
+  <p class="lead">This short test uses the same rules as the real one: a countdown for each question, automatic move to the next question, no going back, no hints.</p>
+  <p class="fr">Ce test reprend les règles réelles : chronomètre, passage automatique, pas de retour, pas d'aide. Ne vous inquiétez pas : il sert à voir votre point de départ.</p>
+
+  <div class="testcard">
+    <div class="testinfo">
+      <h3>Discovery test</h3>
+      <div class="testparts">
+        <div><b>Part 1 · Written</b><span>12 questions · 4 options · 45 s each</span></div>
+        <div><b>Part 2 · Listening</b><span>6 questions · 3 options · 60 s each · replay allowed</span></div>
+      </div>
+      <p class="small">⏱ About 15 minutes. Use headphones for the listening part.</p>
+    </div>
+    <button class="btn primary big" data-exam="discovery">▶ Start the discovery test</button>
+  </div>
+  <div id="labResult" class="resultpanel" hidden></div>
+
+  <div class="callout"><strong>💬 After the test</strong><p>You will see your score for each part, the correct answers and a short explanation for every question. Then continue with the lessons: each one trains a skill you just tested.</p></div>
+  <div class="pagenav"><button class="btn ghost" data-go="exam">← Back</button><button class="btn primary" data-go="vocab">Next: core vocabulary →</button></div>
+</section>
+
+<!-- ===================== 03 VOCAB ===================== -->
+<section id="vocab" class="page">
+  <div class="eyebrow">03 · WRITTEN TEST · VOCABULARY</div>
+  <h1>40 words you will meet again and again.</h1>
+  <p class="lead">Bright questions use everyday professional situations: meetings, HR, money, customers. Learn these words by category, listen to them, and test yourself.</p>
+
+  <div class="toolbar">
+    <label class="selectlabel">Category
+      <select id="vocabCat"></select>
+    </label>
+    <button id="vocabHideFr" class="btn chip">🙈 Hide translations (self-test)</button>
+  </div>
+  <div id="vocabGrid" class="vocabgrid"></div>
+
+  <div class="callout warn"><strong>⚠️ False friends · Faux amis</strong>
+    <div class="faux">
+      <div><b>attend</b> = assister à <span>≠ attendre (= wait)</span></div>
+      <div><b>actually</b> = en fait <span>≠ actuellement (= currently)</span></div>
+      <div><b>eventually</b> = finalement <span>≠ éventuellement (= possibly)</span></div>
+      <div><b>library</b> = bibliothèque <span>≠ librairie (= bookshop)</span></div>
+      <div><b>assist</b> = aider <span>≠ assister à (= attend)</span></div>
+      <div><b>sensible</b> = raisonnable <span>≠ sensible (= sensitive)</span></div>
+    </div>
+  </div>
+
+  <h2>✅ Practice · Choose the right word</h2>
+  <div id="ex-vocabQuiz" class="exercise"></div>
+  <div class="pagenav"><button class="btn ghost" data-go="lab">← Back</button><button class="btn primary" data-go="g1">Next: verb + to / -ing →</button></div>
+</section>
+
+<!-- ===================== 04 G1 ===================== -->
+<section id="g1" class="page">
+  <div class="eyebrow">04 · GRAMMAR · VERB PATTERNS</div>
+  <h1>“to do” or “doing”?</h1>
+  <p class="lead">This is one of the most frequent traps in the written test. The first verb decides the form of the second verb.</p>
+  <p class="fr">C'est le premier verbe qui décide de la forme du second : « to + verbe » ou « verbe + -ing ».</p>
+
+  <div class="rulegrid">
+    <div class="rule r1"><h3>Verb + <u>to</u> + verb</h3><p class="words">want · decide · agree · plan · hope · need · offer · refuse · manage · afford · would like</p><p class="ex"><button class="say" data-say="We decided to change our supplier.">🔊</button> We <b>decided to change</b> our supplier.</p></div>
+    <div class="rule r2"><h3>Verb + <u>-ing</u></h3><p class="words">enjoy · avoid · finish · suggest · consider · mind · keep · recommend</p><p class="ex"><button class="say" data-say="She suggested meeting online.">🔊</button> She <b>suggested meeting</b> online.</p></div>
+    <div class="rule r3"><h3>Verb + person + <u>to</u></h3><p class="words">ask · remind · tell · allow · advise · encourage someone to…</p><p class="ex"><button class="say" data-say="Could you remind me to call the client?">🔊</button> Could you <b>remind me to call</b> the client?</p></div>
+    <div class="rule r4"><h3>Preposition + <u>-ing</u></h3><p class="words">interested in · good at · before / after · look forward to · thank you for</p><p class="ex"><button class="say" data-say="I look forward to hearing from you.">🔊</button> I <b>look forward to hearing</b> from you.</p></div>
+  </div>
+  <div class="tip"><b>💡 Trap:</b> in <i>look forward <u>to</u></i>, “to” is a preposition, so it is followed by <b>-ing</b>: <i>I look forward to <b>meeting</b> you</i>, never <s>to meet</s>.
+    <span class="fr">Dans « look forward to », « to » est une préposition : on met donc -ing.</span></div>
+
+  <h2>✅ Practice · Choose the correct form</h2>
+  <div id="ex-g1" class="exercise"></div>
+  <div class="pagenav"><button class="btn ghost" data-go="vocab">← Back</button><button class="btn primary" data-go="g2">Next: present perfect vs past simple →</button></div>
+</section>
+
+<!-- ===================== 05 G2 ===================== -->
+<section id="g2" class="page">
+  <div class="eyebrow">05 · GRAMMAR · TENSES</div>
+  <h1>Present perfect or past simple?</h1>
+  <p class="lead">Look for the <b>time word</b>. It almost always tells you which tense to choose.</p>
+  <p class="fr">Cherchez le marqueur de temps : il indique presque toujours le temps à utiliser.</p>
+
+  <div class="tensecompare">
+    <div class="tense pastS">
+      <h3>Past simple <small>finished time</small></h3>
+      <p class="form">I <b>worked</b> · I <b>went</b> · Did you <b>go</b>?</p>
+      <p>The action is finished and we know <b>when</b>.</p>
+      <div class="markers">yesterday · last week · in 2020 · two days ago · when I was…</div>
+      <p class="ex"><button class="say" data-say="I sent the report yesterday.">🔊</button> I <b>sent</b> the report <u>yesterday</u>.</p>
+      <p class="fr">Action terminée, moment précis → prétérit.</p>
+    </div>
+    <div class="tense presP">
+      <h3>Present perfect <small>link with now</small></h3>
+      <p class="form">I <b>have worked</b> · She <b>has gone</b> · Have you <b>been</b>?</p>
+      <p>Experience, a result now, or a situation that is still true.</p>
+      <div class="markers">since · for · already · yet · just · ever · never · so far</div>
+      <p class="ex"><button class="say" data-say="We have worked here since 2019.">🔊</button> We <b>have worked</b> here <u>since 2019</u>.</p>
+      <p class="fr">Lien avec le présent → present perfect. « since 2019 » = depuis 2019.</p>
+    </div>
+  </div>
+  <div class="tip"><b>💡 French speakers:</b> « Je travaille ici depuis 5 ans » = <b>I have worked here for 5 years</b>, never <s>I work here since 5 years</s>. <span class="fr">since + point de départ (since 2019) · for + durée (for 5 years).</span></div>
+
+  <h2>🎯 Sorting game · Which tense goes with each time word?</h2>
+  <div id="ex-g2sort" class="exercise"></div>
+  <h2>✅ Practice · Choose the correct tense</h2>
+  <div id="ex-g2" class="exercise"></div>
+  <div class="pagenav"><button class="btn ghost" data-go="g1">← Back</button><button class="btn primary" data-go="g3">Next: prepositions →</button></div>
+</section>
+
+<!-- ===================== 06 G3 ===================== -->
+<section id="g3" class="page">
+  <div class="eyebrow">06 · GRAMMAR · DEPENDENT PREPOSITIONS</div>
+  <h1>Words that travel in pairs.</h1>
+  <p class="lead">Some words are always followed by the same preposition. Learn them as one block: <b>responsible for</b>, not just “responsible”.</p>
+  <p class="fr">Apprenez le mot avec sa préposition, comme un seul bloc.</p>
+  <div id="prepGrid" class="prepgrid"></div>
+  <h2>✅ Practice · Choose the right preposition</h2>
+  <div id="ex-g3" class="exercise"></div>
+  <div class="pagenav"><button class="btn ghost" data-go="g2">← Back</button><button class="btn primary" data-go="g4">Next: word families →</button></div>
+</section>
+
+<!-- ===================== 07 G4 ===================== -->
+<section id="g4" class="page">
+  <div class="eyebrow">07 · GRAMMAR · WORD FAMILIES</div>
+  <h1>Noun, verb, adjective or adverb?</h1>
+  <p class="lead">Often the four options are the same word in different forms. Look at the <b>position</b> of the gap to find the type of word you need.</p>
+  <p class="fr">Souvent, les 4 options sont le même mot sous des formes différentes. La place du blanc indique la nature du mot.</p>
+  <div class="posgrid">
+    <div><b>NOUN</b><span>after <i>a / the / my</i> or an adjective</span><em>a great <u>success</u></em></div>
+    <div><b>VERB</b><span>after a subject or <i>to / can / will</i></span><em>we hope to <u>succeed</u></em></div>
+    <div><b>ADJECTIVE</b><span>before a noun or after <i>be</i></span><em>a <u>successful</u> project</em></div>
+    <div><b>ADVERB</b><span>describes a verb · often <i>-ly</i></span><em>it ended <u>successfully</u></em></div>
+  </div>
+  <div class="tablewrap">
+    <table class="family">
+      <thead><tr><th>Noun</th><th>Verb</th><th>Adjective</th><th>Adverb</th></tr></thead>
+      <tbody>
+        <tr><td>success</td><td>succeed</td><td>successful</td><td>successfully</td></tr>
+        <tr><td>decision</td><td>decide</td><td>decisive</td><td>decisively</td></tr>
+        <tr><td>efficiency</td><td>—</td><td>efficient</td><td>efficiently</td></tr>
+        <tr><td>competition</td><td>compete</td><td>competitive</td><td>competitively</td></tr>
+        <tr><td>improvement</td><td>improve</td><td>improved</td><td>—</td></tr>
+        <tr><td>reliability</td><td>rely (on)</td><td>reliable</td><td>reliably</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h2>✅ Practice · Choose the right form</h2>
+  <div id="ex-g4" class="exercise"></div>
+  <div class="pagenav"><button class="btn ghost" data-go="g3">← Back</button><button class="btn primary" data-go="listen">Next: listening toolkit →</button></div>
+</section>
+
+<!-- ===================== 08 LISTEN ===================== -->
+<section id="listen" class="page">
+  <div class="eyebrow">08 · LISTENING TOOLKIT</div>
+  <h1>Hear the meaning, not every word.</h1>
+  <p class="lead">In the listening test you hear one short sentence with no picture and no context. The correct answer <b>says the same thing with different words</b>.</p>
+  <p class="fr">La bonne réponse reformule la phrase entendue avec d'autres mots.</p>
+
+  <div class="steps">
+    <article><span>1</span><div><h3>Read the 3 options first</h3><p>They are short. They tell you what to listen for.</p><p class="fr">Lisez d'abord les 3 options.</p></div></article>
+    <article><span>2</span><div><h3>Listen for the key idea</h3><p>Who? What? When? Positive or negative?</p><p class="fr">Qui ? Quoi ? Quand ? Positif ou négatif ?</p></div></article>
+    <article><span>3</span><div><h3>Beware of the “same word” trap</h3><p>An option that repeats a word you heard is often <b>wrong</b>.</p><p class="fr">Une option qui reprend un mot entendu est souvent un piège.</p></div></article>
+    <article><span>4</span><div><h3>Replay if you need to</h3><p>You can replay within the 60 seconds. Decide before time runs out.</p><p class="fr">Réécoutez si besoin, mais décidez avant la fin des 60 secondes.</p></div></article>
+  </div>
+
+  <h2>🗝️ Expressions you will hear</h2>
+  <div id="exprGrid" class="exprgrid"></div>
+
+  <h2>✅ Practice 1 · Match each expression with its meaning</h2>
+  <div id="ex-l1" class="exercise"></div>
+
+  <h2>🔢 Practice 2 · Number traps</h2>
+  <p>Numbers like <b>thirteen / thirty</b> and <b>fifteen / fifty</b> sound similar. Listen for the stress: thir<b>TEEN</b> vs <b>THIR</b>ty.</p>
+  <p class="fr">Accent sur la fin pour -teen, sur le début pour -ty.</p>
+  <div id="ex-l2" class="exercise"></div>
+
+  <h2>🎧 Practice 3 · Listen and choose the meaning</h2>
+  <div id="ex-l3" class="exercise"></div>
+  <div class="pagenav"><button class="btn ghost" data-go="g4">← Back</button><button class="btn primary" data-go="write">Next: writing toolkit →</button></div>
+</section>
+
+<!-- ===================== 09 WRITE ===================== -->
+<section id="write" class="page">
+  <div class="eyebrow">09 · WRITING TOOLKIT</div>
+  <h1>A clear email in 5 steps.</h1>
+  <p class="lead">The examiner looks at whether your message is <b>relevant</b>, <b>clear</b>, <b>correct</b> and in the right <b>register</b> (formal or informal).</p>
+  <p class="fr">L'évaluateur regarde la pertinence, la clarté, la correction et le registre.</p>
+
+  <div class="emailsteps">
+    <div><span>1</span><b>Greeting</b><em>Dear Ms Carter, · Hello Alex,</em></div>
+    <div><span>2</span><b>Purpose</b><em>I am writing to… / about…</em></div>
+    <div><span>3</span><b>Details</b><em>who · what · when · where · why</em></div>
+    <div><span>4</span><b>Request / action</b><em>Could you please…?</em></div>
+    <div><span>5</span><b>Closing</b><em>I look forward to hearing from you. Kind regards,</em></div>
+  </div>
+
+  <h2>📝 Phrase bank</h2>
+  <div id="phraseBank" class="phrasebank"></div>
+
+  <h2>🧩 Practice 1 · Put the email in the right order</h2>
+  <div id="ex-w1" class="exercise"></div>
+
+  <h2>🎯 Practice 2 · Formal or informal?</h2>
+  <div id="ex-w2" class="exercise"></div>
+
+  <h2>🔗 Practice 3 · Linking words</h2>
+  <div class="connectors">
+    <div><b>Contrast</b><span>however · although · but · despite</span></div>
+    <div><b>Reason</b><span>because · as · since</span></div>
+    <div><b>Result</b><span>therefore · as a result · so</span></div>
+    <div><b>Adding</b><span>in addition · also · moreover</span></div>
+    <div><b>Example</b><span>for example · for instance · such as</span></div>
+  </div>
+  <div id="ex-w3" class="exercise"></div>
+
+  <h2>⏳ Practice 4 · Tenses in emails</h2>
+  <div class="tablewrap"><table class="family left">
+    <thead><tr><th>Use</th><th>Tense</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Something that happened</td><td>Past simple</td><td>I <b>received</b> your email yesterday.</td></tr>
+      <tr><td>Recent news</td><td>Present perfect (+ just)</td><td>I <b>have just paid</b> the invoice.</td></tr>
+      <tr><td>A fixed arrangement</td><td>Present continuous</td><td>We <b>are meeting</b> the client on Monday.</td></tr>
+      <tr><td>A plan / intention</td><td>be going to</td><td>We <b>are going to</b> open a new office.</td></tr>
+      <tr><td>A promise / quick decision</td><td>will</td><td>I <b>will send</b> it today.</td></tr>
+      <tr><td>A polite request</td><td>could / would</td><td><b>Could</b> you…? I <b>would</b> be grateful if…</td></tr>
+    </tbody>
+  </table></div>
+  <div id="ex-w4" class="exercise"></div>
+
+  <h2>✍️ Your turn · Task 1: professional email</h2>
+  <div class="workspace" id="task1"></div>
+
+  <h2>✍️ Your turn · Task 2: short text (about 140 words)</h2>
+  <div class="prep">
+    <div><b>P</b>oint<span>Give your opinion</span></div>
+    <div><b>R</b>eason<span>Explain why</span></div>
+    <div><b>E</b>xample<span>Give an example</span></div>
+    <div><b>P</b>oint again<span>Conclude</span></div>
+  </div>
+  <div class="workspace" id="task2"></div>
+  <div class="pagenav"><button class="btn ghost" data-go="listen">← Back</button><button class="btn primary" data-go="speak">Next: speaking toolkit →</button></div>
+</section>
+
+<!-- ===================== 10 SPEAK ===================== -->
+<section id="speak" class="page">
+  <div class="eyebrow">10 · SPEAKING TOOLKIT</div>
+  <h1>Build an answer, not just a sentence.</h1>
+  <p class="lead">The speaking test is a live conversation with an examiner by video. They assess <b>fluency</b>, <b>interaction</b>, <b>professional vocabulary</b>, <b>comprehension</b> and the <b>quality</b> of what you say.</p>
+  <p class="fr">L'oral est un échange en direct par visio : fluidité, interaction, vocabulaire professionnel, compréhension et qualité du discours.</p>
+
+  <div class="formula">
+    <div><b>1 · Answer</b><span>Answer the question directly.</span></div>
+    <div><b>2 · Reason</b><span>…because…</span></div>
+    <div><b>3 · Example</b><span>For example, last month…</span></div>
+    <div><b>4 · Result</b><span>So / In the end…</span></div>
+  </div>
+
+  <h2>⏳ Your tense map for speaking</h2>
+  <div class="tensemap">
+    <div><b>Present simple</b><span>routines, facts</span><em>I <u>manage</u> a team of six.</em></div>
+    <div><b>Present continuous</b><span>now, current projects</span><em>I'<u>m working</u> on a new project.</em></div>
+    <div><b>Present perfect</b><span>experience, “depuis”</span><em>I'<u>ve worked</u> here for six years.</em></div>
+    <div><b>Past simple</b><span>a story</span><em>Last year, I <u>went</u> to Berlin.</em></div>
+    <div><b>Future</b><span>plans</span><em>I'<u>m going to</u> start a course.</em></div>
+  </div>
+  <div id="ex-s1" class="exercise"></div>
+
+  <h2>🗨️ Phrases that keep the conversation going</h2>
+  <div id="speakBank" class="phrasebank"></div>
+
+  <h2>🎙️ Speaking studio</h2>
+  <div class="studio" id="studio"></div>
+  <div class="pagenav"><button class="btn ghost" data-go="write">← Back</button><button class="btn primary" data-go="arcade">Next: game arcade →</button></div>
+</section>
+
+<!-- ===================== 11 ARCADE ===================== -->
+<section id="arcade" class="page">
+  <div class="eyebrow">11 · GAME ARCADE</div>
+  <h1>Play, repeat, get faster.</h1>
+  <p class="lead">Speed matters in the Bright test. These games train you to recognise the right answer quickly.</p>
+  <div class="games">
+    <div class="game" id="sprint"></div>
+    <div class="game" id="match"></div>
+  </div>
+  <div class="pagenav"><button class="btn ghost" data-go="speak">← Back</button><button class="btn primary" data-go="final">Next: final mock →</button></div>
+</section>
+
+<!-- ===================== 12 FINAL ===================== -->
+<section id="final" class="page">
+  <div class="eyebrow">12 · FINAL MOCK &amp; RESULTS</div>
+  <h1>Show what you have learned.</h1>
+  <p class="lead">A new practice test with the same rules. Then compare it with your discovery test.</p>
+  <div class="testcard">
+    <div class="testinfo">
+      <h3>Final mock test · Lesson 01</h3>
+      <div class="testparts">
+        <div><b>Part 1 · Written</b><span>15 questions · 4 options · 45 s each</span></div>
+        <div><b>Part 2 · Listening</b><span>8 questions · 3 options · 60 s each · replay allowed</span></div>
+      </div>
+    </div>
+    <button class="btn primary big" data-exam="final">▶ Start the final mock</button>
+  </div>
+  <div id="finalResult" class="resultpanel" hidden></div>
+  <div id="compare" class="compare"></div>
+
+  <h2>✅ Test-day checklist</h2>
+  <div class="checklist" id="checklist"></div>
+
+  <h2>⭐ Your feedback on this lesson</h2>
+  <div class="survey" id="survey"></div>
+  <label class="block">Comments, questions for your trainer <span class="fr">· commentaires, questions</span>
+    <textarea id="comments" rows="4" placeholder="What was most useful? What would you like to practise more?"></textarea>
+  </label>
+  <label class="block">My notes <span class="fr">· mes notes</span>
+    <textarea id="notes" rows="4" placeholder="Words to remember, grammar points, goals…"></textarea>
+  </label>
+
+  <div class="exportbar">
+    <button id="dlBtn" class="btn primary">⬇ Download my results (.txt)</button>
+    <button id="copyBtn" class="btn ghost">📋 Copy my results</button>
+    <button id="resetAll" class="btn ghost danger">↺ Reset the whole lesson</button>
+  </div>
+  <p class="small">The download is a simple text file that opens in Notepad or any text editor. You can send it to your trainer by email.</p>
+  <div class="callout sun"><strong>🚀 Coming next</strong><p>Lesson 02 builds on today: more tenses and question forms, new vocabulary sets, longer listening practice and a second mock test.</p></div>
+  <div class="pagenav"><button class="btn ghost" data-go="arcade">← Back</button><button class="btn primary" data-go="home">Back to the start ↺</button></div>
+</section>
+
+<footer class="qualiopi">
+  <div><b>Suivi pédagogique</b> · Formation : anglais professionnel, préparation à la certification Bright · Module : Leçon 01, découverte et fondamentaux</div>
+  <div><b>Objectifs</b> : connaître le format de l'épreuve, se positionner, maîtriser les premiers points de grammaire, vocabulaire, compréhension, expression écrite et orale</div>
+  <div><b>Évaluation</b> : test de positionnement, exercices autocorrigés, production écrite et orale, examen blanc, questionnaire de satisfaction</div>
+  <div><b>Formatrice</b> : Tisha Douty · SpeakEasyTisha · Support d'entraînement indépendant, non affilié à Bright Language</div>
+</footer>
+</main>
+</div>
+
+<div id="toast" class="toast" aria-live="polite"></div>
+<div id="confetti" aria-hidden="true"></div>
+<script src="script.js" defer></script>
+</body>
+</html>
